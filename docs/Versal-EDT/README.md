@@ -39,18 +39,18 @@
      processors. This chapter is an introduction to the hardware and
      software tools using a simple design as the example.
 
-- **[Debugging Using the Vitis Software Platform](#chapter-3):** Introduces debugging features of the
+- **[Debugging Using the Vitis Software Platform](debugging):** Introduces debugging features of the
      Xilinx Vitis software platform. This chapter uses the previous
      design and runs the software on bare metal (without an OS) to show
      the debugging features of the Vitis IDE. This chapter also lists
      debug configurations for Versal ACAP.
 
-- **[Boot and Configuration](#boot-and-config):** Shows
+- **[Boot and Configuration](boot-and-config):** Shows
      integration of components to configure and create boot images for
      Versal ACAP. The purpose of this chapter is to understand how to
      integrate and load boot loaders.
 
-- **[System Design Example using Scalar Engine and Adaptable Engine](#chapter-5):** Describes building a system on
+- **[System Design Example using Scalar Engine and Adaptable Engine](system-design-example):** Describes building a system on
      Versal ACAP using available tools and supported software blocks.
      This chapter demonstrates how to use the Vivado tool to create an
      embedded design using PL AXI GPIO. It also demonstrates the steps
