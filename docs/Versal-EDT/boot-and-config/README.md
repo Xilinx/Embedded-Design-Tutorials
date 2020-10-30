@@ -1,7 +1,7 @@
 # Boot and Configuration
 
  The purpose of this chapter is to show how to integrate and load boot
- loaders, bare-metal applications (For APU/RPU), and Linux Operating
+ loaders, bare-metal applications (For APU/RPU), and the Linux Operating
  System for a Versal&trade; ACAP. This chapter discusses the following
  topics:
 
@@ -9,14 +9,14 @@
 
 - Steps to generate boot image for standalone application.
 
-- Boot sequences for SD-boot and QSPI boot modes.
+- Boot sequences for SD-boot, and QSPI and OSPI boot modes.
 
  You can achieve these configurations using a the Xilinx&reg; Vitis&trade;
  software platform and PetaLinux Tool flow. While [Chapter 2: Versal
  ACAP CIPS and NoC (DDR) IP Core Configuration](#chapter-2) focused
  only on creating software blocks for each processing unit in the PS,
  this chapter explains how these blocks can be loaded as a part of a
- bigger system. This chapter makes use of processing system block.
+ bigger system.
 
 ## System Software
 
@@ -25,9 +25,7 @@
 
 ### Platform Loader and Manager
 
- The platform loader and manager (PLM) is the main component of a
- Versal ACAP. It is responsible for boot and run time management,
- including platform management, error management, partial
+ The platform loader and manager (PLM) is software that runs on one of the dedicated processors in the Platform Management Controller (PMC) block of the Versal ACAP. It is responsible for boot and run time management, including platform management, error management, partial
  reconfiguration, and subsystem restart of the device. PLM can reload
  images, and load partial PDIs and service interrupts. The PLM reads
  the programmable device image from the boot source and the PLM
@@ -69,7 +67,7 @@
  integrate the various partitions of the bootable image. Bootgen uses a
  Bootgen Image Format (BIF) file as an input and generates a single
  file image in binary BIN or PDI format. It outputs a single file image
- which can be loaded into NVM (QSPI or SD Card). Use the following
+ which can be loaded into non-volatile memory (NVM) (QSPI or SD Card). Use the following
  steps to generate a PDI/BIN file:
 
 1. Open the XSCT Console view in the Vitis IDE, if not already open, by
@@ -218,9 +216,8 @@
  To configure the design for the OSPI boot mode, see [OSPI Boot Mode
  Configuration](#ospi-boot-mode-configuration).
 
- This section demonstrates the boot sequence for the QSPI boot mode.
- For this, you need to connect a QSPI daughter card (part number \<yet
- to provide the daughter card specs\) as shown in the following
+ This section demonstrates the boot sequence for the OSPI boot mode.
+ For this, you need to connect a OSPI daughter card (X-EBM-03 REV_A02) as shown in the following
  figure:
 
  *Figure 3:* **VCK190 OSPI Boot**
@@ -238,17 +235,15 @@
 
 1. With the card powered off, install the daughter card.
 
-2. Set the boot mode switch SW1 to ON-OFF-OFF-OFF as shown in the
-     following figure.
+2. Set the boot mode switch SW1 (M[0:3] and ON=0) to ON-OFF-OFF-OFF as shown in the following figure.
 
-    ![](./media/image58.jpeg)
+     ![](./media/image58.jpeg)
 
-3. Insert the SD card in the SD card
-     slot on the board, as follows:
+3. Insert the SD card in the SD card slot on the board, as follows:
      ![](./media/image59.png)
 
-4. Power on the board. At the U-Boot stage, when the message \"Hit any
-     key to stop autoboot:\" appears, hit any key, then run the
+4. Power on the board. At the U-Boot stage, when the message "Hit any
+     key to stop autoboot:" appears, hit any key, then run the
      following commands to flash the images on the OSPI daughter card:
 
     ```
@@ -266,5 +261,4 @@
      and change the boot mode pin settings to OSPI mode, that is
      OFF-ON-ON-ON.
 
-6. Power cycle the board. The board now boots up using the images in
-     the QSPI flash.
+6. Power cycle the board. The board now boots up using the images in the OSPI flash.
