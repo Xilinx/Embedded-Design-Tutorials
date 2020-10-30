@@ -32,7 +32,7 @@
  varied results. These examples focus on introducing you to the following aspects of
  embedded design.
 
-- **[Versal ACAP CIPS and NoC (DDR) IP Core Configuration](#chapter-2):** Describes creation
+- **[Versal ACAP CIPS and NoC (DDR) IP Core Configuration](cips-noc-ip-config):** Describes creation
      of a design with Versal&trade; ACAP Control, Interfaces, and Processing
      System (CIPS) IP core and an NoC and running a simple "Hello
      World" application on Arm&reg; Cortex&trade;-A72, and Cortex&trade;-R5F
@@ -45,7 +45,7 @@
      the debugging features of the Vitis IDE. This chapter also lists
      debug configurations for Versal ACAP.
 
-- **[Boot and Configuration](#_bookmark23):** Shows
+- **[Boot and Configuration](#boot-and-config):** Shows
      integration of components to configure and create boot images for
      Versal ACAP. The purpose of this chapter is to understand how to
      integrate and load boot loaders.
