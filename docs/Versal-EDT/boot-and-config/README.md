@@ -82,10 +82,15 @@
      `<design-package>/standalone/helloworld_images_cips_ddr`
      directory, the PDI file present within `<Vitis platform project>/hw/<.pdi-file>` and the application elf files present within the `<Vitis application-project>/Debug` folder to this location.
 
-    >***Note*:** If needed, open the sd_boot.bif file in a text editor of
-    your choice and modify the name of the PDI or elfs as per your Vitis
-    projects.
-
+     <div class="note">
+     <div class="title">
+     Note
+     </div>
+     If needed, open the sd_boot.bif file in a text editor of
+     your choice and modify the name of the PDI or elfs as per your Vitis
+     projects.
+     </div>
+    
     ![](./media/image50.png)
 
 3. Run the following command in the XSCT Console view.
@@ -96,8 +101,12 @@
 
     ![](./media/image51.jpeg)
 
-    >***Note*:** To run the images using SD boot mode, see [Boot Sequence
-    for SD-Boot Mode](#boot-sequence-for-sd-boot-mode).
+    <div class="note">
+    <div class="title">
+    Note
+    </div>
+    To run the images using SD boot mode, see [Boot Sequence for SD-Boot Mode](#boot-sequence-for-sd-boot-mode).
+    </div>
 
 ###### Related Information
 
@@ -148,11 +157,16 @@
 
 8. Turn on the VMK180/VCK190 board using the power switch (SW13).
 
-    >***Note*:** For standalone images, the respective logs are displayed
+     <div class="note">
+     <div class="title">
+     Note
+     </div>
+     For standalone images, the respective logs are displayed
     on the terminal. For Linux images, you can log in using user: root and
     pw: root after the boot-up sequence on the terminal. After that, run
     gpiotest on the terminal. You will see logs as shown in the following
     figure.
+    </div>
 
     ![](./media/image53.jpeg)
 
@@ -166,13 +180,12 @@
 
 ![](./media/image54.jpeg)
 
- >***Note*:** For standalone, copy the BOOT.BIN to the SD card. For
- Linux images, you can either boot the VCK190 board using the
- ready-to-test images as part of the released package path,
- `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating
- Linux Images Using
- PetaLinux](#example-project-creating-linux-images-using-petalinux) to
- build your own set of Linux images using the PetaLinux tool.
+<div class="note">
+     <div class="title">
+     Note
+     </div>
+     For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
+     </div>
 
  You need to flash the images to the daughter card, using the following
  steps:
