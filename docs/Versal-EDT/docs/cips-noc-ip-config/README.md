@@ -150,7 +150,7 @@ preset enables those peripherals on the CIPS that have board connections to thei
 
 4. Double-click versal_cips_0 in the Block Diagram window. The Re-customize IP dialog box opens, as shown in the following figure.
 
-    ![](./media/1.png)
+    ![](./media/image9.png)
 
 5. Expand the **PS-PMC** drop-down menu. Click **IO Configuration** as
      shown in the following figure. The IO Configuration dialog box
