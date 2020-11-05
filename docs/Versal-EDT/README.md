@@ -32,25 +32,25 @@
  varied results. These examples focus on introducing you to the following aspects of
  embedded design.
 
-- **[Versal ACAP CIPS and NoC (DDR) IP Core Configuration](cips-noc-ip-config):** Describes creation
+- **[Versal ACAP CIPS and NoC (DDR) IP Core Configuration](#cips-noc-ip-config):** Describes creation
      of a design with Versal&trade; ACAP Control, Interfaces, and Processing
      System (CIPS) IP core and an NoC and running a simple "Hello
      World" application on Arm&reg; Cortex&trade;-A72, and Cortex&trade;-R5F
      processors. This chapter is an introduction to the hardware and
      software tools using a simple design as the example.
 
-- **[Debugging Using the Vitis Software Platform](debugging):** Introduces debugging features of the
+- **[Debugging Using the Vitis Software Platform](#debugging):** Introduces debugging features of the
      Xilinx Vitis software platform. This chapter uses the previous
      design and runs the software on bare metal (without an OS) to show
      the debugging features of the Vitis IDE. This chapter also lists
      debug configurations for Versal ACAP.
 
-- **[Boot and Configuration](boot-and-config):** Shows
+- **[Boot and Configuration](#boot-and-config):** Shows
      integration of components to configure and create boot images for
      Versal ACAP. The purpose of this chapter is to understand how to
      integrate and load boot loaders.
 
-- **[System Design Example using Scalar Engine and Adaptable Engine](system-design-example):** Describes building a system on
+- **[System Design Example using Scalar Engine and Adaptable Engine](#system-design-example):** Describes building a system on
      Versal ACAP using available tools and supported software blocks.
      This chapter demonstrates how to use the Vivado tool to create an
      embedded design using PL AXI GPIO. It also demonstrates the steps
