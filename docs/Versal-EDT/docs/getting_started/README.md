@@ -1,12 +1,11 @@
 # Getting Started
 
  Before discussing the tools in depth, you should make sure they are
- installed properly and your environments match the requirements
- mentioned in [Example Project](#example-project).
+ installed properly and your environments match the requirements.
 
 ## Hardware Requirements
 
- This tutorial targets the Zynq UltraScale+ ZCU102 evaluation board.
+ This tutorial targets the Versal ACAP VCK190 and VMK 180 evaluation boards.
  The examples in this tutorial were tested using the ZCU102 Rev 1
  board. To use this guide, you need the following hardware items, which
  are included with the evaluation board:
@@ -41,12 +40,8 @@
  IDE. You do not have to make any extra selections in the installer.
  The installation and selection window is shown below.
 
- ***Note*:** Visit <https://www.xilinx.com/support/download.html> to
+ >***Note*:** Visit <https://www.xilinx.com/support/download.html> to
  confirm that you have the latest tools version.
-
-*Figure 2:* Vitis IDE Installer with Vivado Design Suite
-
-![](./media/image6.jpeg)
 
  For more information on installing the Vivado Design Suite, refer to
  the *Vitis Unified Software Platform Documentation: Embedded Software
@@ -99,7 +94,7 @@
  Alternatively, an installation path may be specified.
 
  For example, to install PetaLinux tools under
- `/opt/pkg/petalinux/2020.1`:
+ `/opt/pkg/petalinux/2020.2`:
 
  For more information, see *PetaLinux Tools Documentation: Reference
  Guide*
