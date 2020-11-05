@@ -103,7 +103,8 @@ This chapter describes how to create a Vivado® project for the Versal™
 To create an embedded processor project:
 
 1. In the Flow Navigator, under IP integrator, click **Create Block Design**.
-    ![](media/image5.png)
+    
+	![](media/image5.png)
 
     The Create Block Design wizard opens.
 
