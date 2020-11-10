@@ -138,7 +138,7 @@
 
 - System-level performance analysis.
 
-- Focused special tools to configure FPGAs.
+- Focused special tools to configure FPGAs. 
 
 - Bootable image creation.
 
