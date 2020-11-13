@@ -38,13 +38,13 @@
  on the Linux host machine to execute parts of this document.
 
  [Zynq UltraScale+ MPSoC Processing System
- Configuration](./docs/3-system-configuration.md) describes the creation of a system with the
+ Configuration](./docs/#3-system-configuration) describes the creation of a system with the
  Zynq UltraScale+ MPSoC Processing System (PS) and the creation of a
  hardware platform for Zynq UltraScale+ MPSoC. This chapter is an
  introduction to the hardware and software tools using a simple design
  as the example.
 
- [Build Software for PS Subsystems](./docs/#4-build-sw-for-ps-subsystems.md) describes
+ [Build Software for PS Subsystems](./docs/#4-build-sw-for-ps-subsystems) describes
  the steps to configure and build software for processing blocks in
  processing system, including application processing unit (APU),
  real-time processing unit (RPU). Steps to create bare metal
@@ -59,7 +59,7 @@
  chapter also lists the debug configurations for Zynq UltraScale+
  MPSoC.
 
- [Boot and Configuration](./docs/#6-boot-and-configuration.md) shows integration of
+ [Boot and Configuration](./docs/#6-boot-and-configuration) shows integration of
  components to configure and create boot images for a Zynq UltraScale+
  system. The purpose of this chapter is to understand how to integrate
  and load boot loaders.
