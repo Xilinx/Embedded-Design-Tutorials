@@ -38,13 +38,13 @@
  on the Linux host machine to execute parts of this document.
 
  [Zynq UltraScale+ MPSoC Processing System
- Configuration](./docs/#3-system-configuration) describes the creation of a system with the
+ Configuration](./docs/3-system-configuration.md) describes the creation of a system with the
  Zynq UltraScale+ MPSoC Processing System (PS) and the creation of a
  hardware platform for Zynq UltraScale+ MPSoC. This chapter is an
  introduction to the hardware and software tools using a simple design
  as the example.
 
- [Build Software for PS Subsystems](./docs/#4-build-sw-for-ps-subsystems) describes
+ [Build Software for PS Subsystems](./docs/4-build-sw-for-ps-subsystems.md) describes
  the steps to configure and build software for processing blocks in
  processing system, including application processing unit (APU),
  real-time processing unit (RPU). Steps to create bare metal
@@ -52,19 +52,19 @@
  and conducting a review of boot components in hardware platform is
  also included.
 
- [Debugging with the Vitis Debugger](./docs/#5-debugging-with-vitis-debugger) provides an
+ [Debugging with the Vitis Debugger](./docs/debugging-with-vitis-debugger.md) provides an
  introduction to debugging software using the debug features of the
  Vitis IDE. This chapter uses the previous design and runs the software
  bare metal (without an OS) to demonstrate the debugging process. This
  chapter also lists the debug configurations for Zynq UltraScale+
  MPSoC.
 
- [Boot and Configuration](./docs/#6-boot-and-configuration) shows integration of
+ [Boot and Configuration](./docs/boot-and-configuration.md) shows integration of
  components to configure and create boot images for a Zynq UltraScale+
  system. The purpose of this chapter is to understand how to integrate
  and load boot loaders.
 
- [System Design Examples](./docs/#7-system-design-examples) highlights how you
+ [System Design Examples](./docs/7-system-design-examples.md) highlights how you
  can use the software blocks you configured in [Build
  Software for PS Subsystems](./docs/#4-build-sw-for-ps-subsystems.md) to create a Zynq UltraScale+ system.
 
