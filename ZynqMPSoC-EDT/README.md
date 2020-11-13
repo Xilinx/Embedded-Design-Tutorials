@@ -1,5 +1,26 @@
-# UG1209
+<p align="right">
+            Read this page in other languages:<a href="../docs-jp/readme.md">日本語</a>    <table style="width:100%"><table style="width:100%">
+  <tr>
 
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+</th>
+
+  </tr>
+  <tr>
+    <td width="17%" align="center">1. Introduction</td>
+    <td width="16%" align="center"><a href=".docs/2-getting-started.md">2. Getting Started</a></td>
+    <td width="17%" align="center"><a href=".docs/3-system-configuration.md">3. Zynq UltraScale+ MPSoC System Configuration</a></td>
+    <td width="17%" align="center"><a href=".docs/4-build-sw-for-ps-subsystems.md">4. Build Software for PS Subsystems</a></td>
+</tr>
+<tr>
+    <td width="17%" align="center"><a href=".docs/5-debugging-with-vitis-debugger.md">5. Debugging with the Vitis Debugger</a></td>
+    <td width="16%" align="center"><a href=".docs/6-boot-and-configuration.md">6. Boot and Configuration</a></td>
+    <td width="17%" align="center"><a href=".docs/7-system-design-examples.md">7. System Design Examples</a></td>
+    <td width="17%" align="center"><a href=".docs/8-debugging-problems-with-secure-boot.md">8. Debugging Problems with Secure Boot</a></td>    
+  </tr>
+</table>
+
+# Introduction
 
  This document provides an introduction to using the Vivado&reg; Design
  Suite flow for the Xilinx&reg; Zynq&reg; UltraScale+&trade; MPSoC ZCU102 Rev 1.0 and
@@ -16,14 +37,14 @@
  Linux on the hardware is specific to 2020.1, which must be installed
  on the Linux host machine to execute parts of this document.
 
- [Chapter 2: Zynq UltraScale+ MPSoC Processing System
- Configuration](#chapter-2) describes the creation of a system with the
+ [Zynq UltraScale+ MPSoC Processing System
+ Configuration](./docs/3-system-configuration/3-system-configuration.md) describes the creation of a system with the
  Zynq UltraScale+ MPSoC Processing System (PS) and the creation of a
  hardware platform for Zynq UltraScale+ MPSoC. This chapter is an
  introduction to the hardware and software tools using a simple design
  as the example.
 
- [Chapter 3: Build Software for PS Subsystems](#chapter-3) describes
+ [Build Software for PS Subsystems](./docs/#4-build-sw-for-ps-subsystems.md) describes
  the steps to configure and build software for processing blocks in
  processing system, including application processing unit (APU),
  real-time processing unit (RPU). Steps to create bare metal
@@ -31,22 +52,21 @@
  and conducting a review of boot components in hardware platform is
  also included.
 
- [Chapter 4: Debugging with the Vitis Debugger](#chapter-4) provides an
+ [Debugging with the Vitis Debugger](./docs/#5-debugging-with-vitis-debugger) provides an
  introduction to debugging software using the debug features of the
  Vitis IDE. This chapter uses the previous design and runs the software
  bare metal (without an OS) to demonstrate the debugging process. This
  chapter also lists the debug configurations for Zynq UltraScale+
  MPSoC.
 
- [Chapter 5: Boot and Configuration](#_bookmark35) shows integration of
+ [Boot and Configuration](./docs/#6-boot-and-configuration.md) shows integration of
  components to configure and create boot images for a Zynq UltraScale+
  system. The purpose of this chapter is to understand how to integrate
  and load boot loaders.
 
- [Chapter 6: System Design Examples](#_bookmark60) highlights how you
- can use the software blocks you configured in [Chapter 3: Build
- Software for PS Subsystems](#chapter-3) to create a Zynq UltraScale+
- system.
+ [System Design Examples](./docs/#7-system-design-examples) highlights how you
+ can use the software blocks you configured in [Build
+ Software for PS Subsystems](./docs/#4-build-sw-for-ps-subsystems.md) to create a Zynq UltraScale+ system.
 
 ## Example Project
 
@@ -57,11 +77,6 @@
  chapter and examples are meant to showcase different aspects of
  embedded design. The example takes you through the entire flow to
  complete the learning and then moves on to another topic.
-
-### Additional Documentation
-
- Additional documentation is listed in [Appendix B: Additional
- Resources and Legal Notices](#appendix-b).
 
 ## How Zynq UltraScale+ Devices Offer a Single Chip Solution
 
@@ -138,7 +153,7 @@
 
 - System-level performance analysis.
 
-- Focused special tools to configure FPGAs. 
+- Focused special tools to configure FPGAs.
 
 - Bootable image creation.
 
@@ -217,3 +232,5 @@
  For more information about the Zynq UltraScale+ Processing System,
  refer to the *Zynq UltraScale + MPSoC Processing System LogiCORE IP Product Guide*
  ([PG201](https://www.xilinx.com/cgi-bin/docs/ipdoc?c=zynq_ultra_ps_e%3Bv%3Dlatest%3Bd%3Dpg201-zynq-ultrascale-plus-processing-system.pdf)).
+
+ © Copyright 2017-2020 Xilinx, Inc.
