@@ -7,10 +7,10 @@
 
   </tr>
   <tr>
-    <td width="17%" align="center">1. Introduction</td>
-    <td width="16%" align="center"><a href="./docs/2-using-zynq.md">2. Using the Zynq SoC Processing System</a></td>
-    <td width="17%" align="center"><a href="./docs/3-using-gp-port-zynq.md">3. Using the GP Port in Zynq Devices</a></td>
-    <td width="17%" align="center"><a href="./docs/4-debugging-vitis.md">4. Debugging with the Vitis Software Platform</a></td>    
+    <td width="25%" align="center">1. Introduction</td>
+    <td width="25%" align="center"><a href="./docs/2-using-zynq.md">2. Using the Zynq SoC Processing System</a></td>
+    <td width="25%" align="center"><a href="./docs/3-using-gp-port-zynq.md">3. Using the GP Port in Zynq Devices</a></td>
+    <td width="25%" align="center"><a href="./docs/4-debugging-vitis.md">4. Debugging with the Vitis Software Platform</a></td>    
 </tr>
 <tr>
     <td width="17%" align="center"><a href="./docs/5-using-hp-port.md">5. Using the HP Slave Port with AXI CDMA IP</a></td>
