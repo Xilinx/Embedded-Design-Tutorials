@@ -1,3 +1,28 @@
+<p align="right">
+            Read this page in other languages:<a href="../docs-jp/readme.md">日本語</a>    <table style="width:100%"><table style="width:100%">
+  <tr>
+
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
+</th>
+
+  </tr>
+  <tr>
+    <td width="17%" align="center">1. Introduction</td>
+    <td width="16%" align="center"><a href="./docs/2-using-zynq.md">2. Using the Zynq SoC Processing System</a></td>
+    <td width="17%" align="center"><a href="./docs/3-using-gp-port-zynq.md">3. Using the GP Port in Zynq Devices</a></td>
+    <td width="17%" align="center"><a href="./docs/4-debugging-vitis.md">4. Debugging with the Vitis Software Platform</a></td>    
+</tr>
+<tr>
+    <td width="17%" align="center"><a href="./docs/5-using-hp-port.md">5. Using the HP Slave Port with AXI CDMA IP</a></td>
+    <td width="16%" align="center"><a href="./docs/6-linux-booting-debug.md">6. Linux Booting and Debug in the Vitis Software Platform</a></td>
+    <td width="17%" align="center"><a href="./docs/7-custom-ip-driver-linux.md">7. Creating Custom IP and Device Driver for Linux
+</a></td>
+    <td width="17%" align="center"><a href="./docs/8-sw-profiling.md">8. Software Profiling Using the Vitis Software Platform</a></td>    
+    <td width="17%" align="center"><a href="./docs/9-linux-aware-debugging.md">9. Linux Aware Debugging</a></td>    
+  </tr>
+</table>
+
+
 # Introduction
 
 This document provides an introduction to using the Xilinx&reg; Vivado&reg; Design Suite flow for using the Zynq&reg;-7000 SoC device. The examples are targeted for the Xilinx ZC702 Rev 1.0 evaluation board and the tools used are the Vivado&reg; Design Suite and the Vitis&trade; unified software platform.
