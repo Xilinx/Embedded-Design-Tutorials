@@ -13,12 +13,12 @@
     <td width="25%" align="center"><a href="./docs/4-debugging-vitis.md">4. Debugging with the Vitis Software Platform</a></td>    
 </tr>
 <tr>
-    <td width="17%" align="center"><a href="./docs/5-using-hp-port.md">5. Using the HP Slave Port with AXI CDMA IP</a></td>
-    <td width="16%" align="center"><a href="./docs/6-linux-booting-debug.md">6. Linux Booting and Debug in the Vitis Software Platform</a></td>
-    <td width="17%" align="center"><a href="./docs/7-custom-ip-driver-linux.md">7. Creating Custom IP and Device Driver for Linux
+    <td width="20%" align="center"><a href="./docs/5-using-hp-port.md">5. Using the HP Slave Port with AXI CDMA IP</a></td>
+    <td width="20%" align="center"><a href="./docs/6-linux-booting-debug.md">6. Linux Booting and Debug in the Vitis Software Platform</a></td>
+    <td width="20%" align="center"><a href="./docs/7-custom-ip-driver-linux.md">7. Creating Custom IP and Device Driver for Linux
 </a></td>
-    <td width="17%" align="center"><a href="./docs/8-sw-profiling.md">8. Software Profiling Using the Vitis Software Platform</a></td>    
-    <td width="17%" align="center"><a href="./docs/9-linux-aware-debugging.md">9. Linux Aware Debugging</a></td>    
+    <td width="20%" align="center"><a href="./docs/8-sw-profiling.md">8. Software Profiling Using the Vitis Software Platform</a></td>    
+    <td width="20%" align="center"><a href="./docs/9-linux-aware-debugging.md">9. Linux Aware Debugging</a></td>    
   </tr>
 </table>
 
