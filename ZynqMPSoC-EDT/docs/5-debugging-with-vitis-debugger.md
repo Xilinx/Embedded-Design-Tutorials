@@ -2,7 +2,7 @@
             Read this page in other languages:<a href="../docs-jp/5-debugging-with-vitis-debugger.md">日本語</a>    <table style="width:100%"><table style="width:100%">
   <tr>
 
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
   </tr>
@@ -102,9 +102,8 @@ The Vitis debugger provides the following debug capabilities:
 
  >***Note*:** If you did not create a Hello World application on APU or
  RPU, follow the steps in [Create
- Custom](#create-custom-bare-metal-application-for-arm-cortex-a53-based-apu)
- [Bare-Metal Application for Arm Cortex-A53 based
- APU](#create-custom-bare-metal-application-for-arm-cortex-a53-based-apu)
+ Custom Bare-Metal Application for Arm Cortex-A53 based
+ APU](4-build-sw-for-ps-subsystems.md#create-custom-bare-metal-application-for-arm-cortex-a53-based-apu)
  to create a new hello world application.
 
  After you create the Hello World application, work through the
