@@ -2,7 +2,7 @@
             Read this page in other languages:<a href="../docs-jp/6-boot-and-configuration.md">日本語</a>    <table style="width:100%"><table style="width:100%">
   <tr>
 
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
   </tr>
@@ -66,8 +66,7 @@ This chapter shows integration of components to create a Zynq&reg;
  single file image which is loaded into NVM (QSPI, SD Card). The
  Bootgen GUI facilitates the creation of the BIF input file.
 
- This chapter makes use of Processing System block. [Design Example 1:
- Using GPIOs, Timers, and Interrupts](#design-example-1-using-gpios-timers-and-interrupts)
+ This chapter makes use of a processing system block. [Design Example 1: Using GPIOs, Timers, and Interrupts](7-system-design-examples.md#design-example-1-using-gpios-timers-and-interrupts)
  covers boot image which will include the PS partitions used in this
  chapter and a bitstream targeted for PL fabric.
 
@@ -121,15 +120,11 @@ This chapter shows integration of components to create a Zynq&reg;
 
  The PMU Firmware can be loaded in the following ways:
 
-1. Using BootROM to load PMU Firmware, as described in [Boot Sequence
-     for SD-Boot](#boot-sequence-for-sd-boot).
+1. Using BootROM to load PMU Firmware, as described in [Boot Sequence for SD-Boot](#boot-sequence-for-sd-boot).
 
-2. Using FSBL to load PMU Firmware, as described in [Boot Sequence for
-     QSPI Boot Mode](#boot-sequence-for-qspi-boot-mode).
+2. Using FSBL to load PMU Firmware, as described in [Boot Sequence for QSPI Boot Mode](#boot-sequence-for-qspi-boot-mode).
 
-3. Loading PMU Firmware in JTAG boot mode, as described in [Boot
-     Sequence for QSPI-Boot Mode Using
-     JTAG](#boot-sequence-for-qspi-boot-mode-using-jtag).
+3. Loading PMU Firmware in JTAG boot mode, as described in [Boot Sequence for QSPI-Boot Mode Using JTAG](#boot-sequence-for-qspi-boot-mode-using-jtag).
 
  For more information, see the [PMU Firmware Xilinx
  Wiki](http://www.wiki.xilinx.com/PMU%2BFirmware).
@@ -147,8 +142,7 @@ This chapter shows integration of components to create a Zynq&reg;
  U-Boot can be configured and built using the PetaLinux tool flow. For
  this example, you can use the U-Boot image that you created in
  [Build Software for PS Subsystems](#4-build-sw-for-ps-subsystems) or from the
- design files shared with this document. See [Design Files for This
- Tutorial](#design-files-for-this-tutorial) for information about
+ design files shared with this document. See [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial) for information about
  downloading the design files for this tutorial.
 
 ### Arm Trusted Firmware
@@ -206,12 +200,10 @@ This chapter shows integration of components to create a Zynq&reg;
  Application on RPU Cortex- R5F in Lockstep mode.
 
  For this example, refer the testapp_r5 application that you created in
- [Create Custom Bare-Metal Application for Arm Cortex-R5 based
- RPU](#create-custom-bare-metal-application-for-arm-cortex-r5-based-rpu).
+ [Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU](4-build-sw-for-ps-subsystems.md#create-custom-bare-metal-application-for-arm-cortex-r5-based-rpu).
 
  Alternatively, you can also find the testapp_r5.elf executable in the
- design files that accompany this tutorial. See [Design Files for This
- Tutorial](#design-files-for-this-tutorial) for information about
+ design files that accompany this tutorial. See [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial) for information about
  downloading the design files for this tutorial.
 
 ## Boot Sequence for SD-Boot
@@ -265,7 +257,7 @@ This chapter shows integration of components to create a Zynq&reg;
 
         > ***Note*:** ATF Firmware (`bl31.elf`) can be found in `<PetaLinux
             Project>/image/linux/`. Alternatively, you can also use `bl31.elf` from
-            [Design Files for This Tutorial](#design-files-for-this-tutorial).
+            [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial).
 
         1. For this partition, select **datafile** as the partition type.
         2. Set the Destination Device as **PS**.
@@ -403,12 +395,10 @@ This chapter shows integration of components to create a Zynq&reg;
 
  >***Note*:** This section assumes that you have created PetaLinux
  Images for QSPI Boot mode by following steps from [Create Linux Images
- Using PetaLinux for QSPI
- Flash](#create-linux-images-using-petalinux-for-qspi-flash).
+ Using PetaLinux for QSPI Flash](4-build-sw-for-ps-subsystems.md#create-linux-images-using-petalinux-for-qspi-flash).
 
 1. If the Vitis IDE is not already running, start it and set the
-     workspace as indicated in [Build Software for PS
-     Subsystems](#4-build-sw-for-ps-subsystems).
+     workspace as indicated in [Build Software for PS Subsystems](#4-build-sw-for-ps-subsystems).
 
 2. Select **Xilinx → Create Boot Image**.
 
@@ -519,8 +509,7 @@ This chapter shows integration of components to create a Zynq&reg;
 
         4. Leave Exception Level and TrustZone unselected.
 
-        ***Note*:** See [Create Linux Images Using PetaLinux for QSPI
-        Flash](#create-linux-images-using-petalinux-for-qspi-flash), to
+        ***Note*:** See [Create Linux Images Using PetaLinux for QSPI Flash](4-build-sw-for-ps-subsystems.md#create-linux-images-using-petalinux-for-qspi-flash), to
         understand the offset value.
 
    9. Click **Add** to add the `boot.scr` script file.
@@ -822,8 +811,7 @@ This chapter shows integration of components to create a Zynq&reg;
     ```
 
 2. After successfully writing the image to QSPI, turn off the board and
-     set up the ZCU102 board as described in [Set Up the ZCU102
-     Board](#set-up-the-zcu102-board).
+     set up the ZCU102 board as described in [Set Up the ZCU102 Board](#set-up-the-zcu102-board).
 
     You can see Linux loading on the UART-0 terminal and the R5
     application executing in the UART-1 terminal.
@@ -959,7 +947,7 @@ This chapter shows integration of components to create a Zynq&reg;
 
 The following steps describe how to create a `usb_boot.bin` comprising rest of the partitions.
 
->***Note*:** Copy the newly generated U-Boot to `C:\edt\usb_boot\`. The `u-boot.elf` is also available in [Design Files for This Tutorial](#design-files-for-this-tutorial).
+>***Note*:** Copy the newly generated U-Boot to `C:\edt\usb_boot\`. The `u-boot.elf` is also available in [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial).
 
 1. In the Vitis IDE, select **Xilinx → Create Boot Image**.
 
@@ -1077,9 +1065,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
  on \#define DFU_ALT_INFO_RAM settings in U-Boot configuration. The
  same can be modified to copy other image files to DDR location. Then,
  if required, these images can be copied to QSPI using U-Boot commands
- listed in [Boot Sequence
- for](#boot-sequence-for-qspi-boot-mode-using-jtag) [QSPI-Boot Mode
- Using JTAG](#boot-sequence-for-qspi-boot-mode-using-jtag).
+ listed in [Boot Sequence for QSPI-Boot Mode Using JTAG](#boot-sequence-for-qspi-boot-mode-using-jtag).
 
 #### Boot Commands for Windows Host Machine
 
@@ -1099,8 +1085,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
     **Options** and select **List all devices**. Select device **Xilinx
     Dfu Downloader** and click **Install driver**.
 
-4. Now download the Boot.bin that was created in [Creating Boot Images
-     for USB Boot](#creating-boot-images-for-usb-boot).
+4. Now download the Boot.bin that was created in [Creating Boot Images for USB Boot](#creating-boot-images-for-usb-boot).
 
     `$ dfu-util.exe -d 03fd:0050 -D BOOT.bin`
 
@@ -1167,23 +1152,17 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
  Decisions](#secure-boot-system-design-decisions) outlines high level
  secure boot decisions which should be made early in design
  development. The [Hardware Root of Trust](#hardware-root-of-trust)
- section discusses the use of a Root of Trust (RoT) in boot. The [Boot
- Image Confidentiality and DPA](#boot-image-confidentiality-and-dpa)
+ section discusses the use of a Root of Trust (RoT) in boot. The [Boot Image Confidentiality and DPA](#boot-image-confidentiality-and-dpa)
  section discusses methods to use AES encryption.
 
- The [Boot Image Confidentiality and
- DPA](#boot-image-confidentiality-and-dpa) section discusses the use of
+ The [Boot Image Confidentiality and DPA](#boot-image-confidentiality-and-dpa) section discusses the use of
  the operational key and key rolling techniques as countermeasures to a
  DPA attack. Changing the AES key reduces the exposure of both the key
  and the data protected by the key.
 
- A red key is a key in unencrypted format. The [Black Key
- Storage](#black-key-storage) section provides a method for storing the
- AES key in encrypted, or black format. Black key store uses the
- physically unclonable function (PUF) as a Key Encryption Key (KEK).
+ A red key is a key in unencrypted format. The [Black Key Storage](#black-key-storage) section provides a method for storing the AES key in encrypted, or black format. Black key store uses the physically unclonable function (PUF) as a Key Encryption Key (KEK).
 
- The [Practical Methods in Secure
- Boot](#practical-methods-in-secure-boot) section provides steps to
+ The [Practical Methods in Secure Boot](#practical-methods-in-secure-boot) section provides steps to
  develop and test systems that use AES encryption and RSA
  authentication.
 
@@ -1327,8 +1306,7 @@ The following are device level decisions affecting secure boot:
  section. To maintain Boot image confidentiality, Encrypted Boot images
  can be created using Bootgen. Software examples to program keys to
  BBRAM and eFUSE are also available in the Vitis IDE. One such example
- is discussed in [Practical Methods in Secure
- Boot](#practical-methods-in-secure-boot).
+ is discussed in [Practical Methods in Secure Boot](#practical-methods-in-secure-boot).
 
 #### DPA Protections
 
@@ -1400,7 +1378,7 @@ The following are device level decisions affecting secure boot:
  This section starts by showing how to generate AES and RSA keys.
  Following key generation, systems using the advanced AES and RSA
  methods are developed and tested. Keys generated in this section are
- also included in the [Design Files for This Tutorial](#design-files-for-this-tutorial), released with this
+ also included in the [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial), released with this
  tutorial.
 
  The methods used to develop AES functionality are provided in the
@@ -1447,13 +1425,13 @@ The following are device level decisions affecting secure boot:
  and decryption. This is not the only means of booting a system.
  However, it is the simple and secure method, as of 2019.1.
 
-![Sample Design Overview](./media/sample-design.png)
+(./media/sample-design.png)
 
  Different sections within the boot image have different levels of
  security and are loaded into different locations. The following table
  explains the contents of the final boot image.
 
-*Table 11:* **Final Boot Image with Secure Attributes**
+**Final Boot Image with Secure Attributes**
 
 |  Binary     | RSA Authenticated |  AES Encrypted | Exception Level  | Loader        |
 |-------------|-------------|-------------|-------------|-------------|
@@ -1471,11 +1449,10 @@ The following are device level decisions affecting secure boot:
 > 2. As of 2019.1, U-Boot does not perform a secure authenticated loading of Linux. So instead of U-Boot, FSBL loads the Linux images to memory address and then uses U-Boot to jump to that memory address.
 
  This tutorial demonstrates assembling the binaries that are created
- using [System Design
- Examples](#7-system-design-examples.md) in a boot image with all the security features
+ using [System Design Examples](#7-system-design-examples.md) in a boot image with all the security features
  enabled. This section also shows how PL bitstream can be added as a
  part of secure boot flow. Follow the information in this chapter until [Modifying the
- Build Settings](#modifying-the-build-settings) to create all the
+ Build Settings](7-system-design-examples.md#modifying-the-build-settings) to create all the
  necessary files and then switch back.
 
  Enabling the security features in boot image is done in two different
@@ -1538,8 +1515,7 @@ The following are device level decisions affecting secure boot:
 
 4. Save the `key_generation.bif` file in the C:\edt\secure_boot_sd\keys directory.
 
-5. Copy all of the ELF, BIF and UB files built in [System
-     Design Examples](#7-system-design-examples.md) to `C:\edt\secure_boot_sd\keys directory`.
+5. Copy all of the ELF, BIF and UB files built in [System Design Examples](#7-system-design-examples.md) to `C:\edt\secure_boot_sd\keys directory`.
 
 6. Navigate to the folder containing the BIF file.
 
@@ -1598,12 +1574,7 @@ The following are device level decisions affecting secure boot:
  ([XAPP1319](https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf)).
  You can skip this section if you do not intend to use Key Revocation.
 
- Repeat steps from [Creating RSA Private/Public Key
- Pairs](#creating-rsa-privatepublic-key-pairs) and [Generate SHA3 of
- Public Key
- in](#generate-sha3-of-public-key-in-rsa-privatepublic-key-pair) [RSA
- Private/Public Key
- Pair](#generate-sha3-of-public-key-in-rsa-privatepublic-key-pair) to
+ Repeat steps from [Creating RSA Private/Public Key Pairs](#creating-rsa-privatepublic-key-pairs) and [Generate SHA3 of Public Key in RSA Private/Public Key Pair](#generate-sha3-of-public-key-in-rsa-privatepublic-key-pair) to
  generate the second RSA private/public key pair and generate the SHA3
  of the second PPK.
 
@@ -1880,8 +1851,7 @@ the_ROM_image:
     3. Set XSK_PUF_AES_KEY (256-bit key).
 
         The key is to be entered in HEX format and should be Key 0 from the
-        fsbl_a53.nky file that you generated in [Generating All of the AES
-        Keys](#generating-all-of-the-aes-keys). You can find a sample key
+        fsbl_a53.nky file that you generated in [Generating All of the AES Keys](#generating-all-of-the-aes-keys). You can find a sample key
         below:
 
         ```
@@ -2348,9 +2318,7 @@ the_ROM_image:
     password: root
 
     Run the Linux Application as described in [Design Example 1: Using
-    GPIOs, Timers,
-    and](#design-example-1-using-gpios-timers-and-interrupts)
-    [Interrupts](#design-example-1-using-gpios-timers-and-interrupts)
+    GPIOs, Timers, and Interrupts](7-system-design-examples.md#design-example-1-using-gpios-timers-and-interrupts)
 
     ![](./media/image95.png)
 

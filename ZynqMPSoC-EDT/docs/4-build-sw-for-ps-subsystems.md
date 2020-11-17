@@ -2,7 +2,7 @@
             Read this page in other languages:<a href="../docs-jp/4-build-sw-for-ps-subsystems.md">日本語</a>    <table style="width:100%"><table style="width:100%">
   <tr>
 
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
   </tr>
@@ -449,9 +449,7 @@ To create a Vitis domain for cortexr5_0, follow these steps:
  application targeted for an Arm A53 Core 0.
 
  For this example, you will use the test_a53 application that you
- created in [Example
- Project: Running the "Hello World" Application from Arm
- Cortex-A53](#example-project-running-the-hello-world-application-from-arm-cortex-a53).
+ created in [Example Project: Running the "Hello World" Application from Arm Cortex-A53](#example-project-running-the-hello-world-application-from-arm-cortex-a53).
 
  In test_a53, you selected a simple Hello World application. This
  application can be loaded on APU by FSBL running on either APU or RPU.
@@ -489,7 +487,7 @@ To create a Vitis domain for cortexr5_0, follow these steps:
  the application source files available in the Design Files ZIP file
  released with this tutorial. For information about locating these
  design files, refer to [Design Files for This
- Tutorial](#design-files-for-this-tutorial).
+ Tutorial](2-getting-started.md#design-files-for-this-tutorial).
 
 #### Creating the Application Project
 
@@ -525,8 +523,7 @@ To create a Vitis domain for cortexr5_0, follow these steps:
 7. Click **Next**.
 
 8. Select **Browse** and navigate to the design files folder, which you
-     saved earlier (see [Design Files for This
-     Tutorial](#design-files-for-this-tutorial)).
+     saved earlier (see [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial)).
 
 9. Click **OK**.
 

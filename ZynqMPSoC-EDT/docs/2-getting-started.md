@@ -2,7 +2,7 @@
             Read this page in other languages:<a href="../docs-jp/2-getting-started.md">日本語</a>    <table style="width:100%"><table style="width:100%">
   <tr>
 
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
   </tr>
@@ -21,6 +21,10 @@
 </table>
 
 # Getting Started
+
+## Design Files for this Tutorial
+
+The ZIP file associated with this document contains the design files for the tutorial. You can download the <a href="https://www.xilinx.com/cgi-bin/docs/ctdoc?cid=0029d5d7-6dbc-498d-af43-0735c9abfdc4;d=ug1209-embedded-design-tutorial.zip">reference design files</a> from the Xilinx website.
 
 ## Hardware Requirements
 

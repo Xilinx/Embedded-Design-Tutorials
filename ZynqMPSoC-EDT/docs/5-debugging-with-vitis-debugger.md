@@ -109,9 +109,7 @@ The Vitis debugger provides the following debug capabilities:
  After you create the Hello World application, work through the
  following example to debug the software using the Vitis debugger.
 
-1. Follow the steps in [Example Project: Running the "Hello World"
-     Application from Arm
-     Cortex-A53](#example-project-running-the-hello-world-application-from-arm-cortex-a53)
+1. Follow the steps in [Example Project: Running the "Hello World" Application from Arm Cortex-A53](4-build-sw-for-ps-subsystems.md#example-project-running-the-hello-world-application-from-arm-cortex-a53)
      to set the target in JTAG mode and power ON.
 
 2. In the C/C++ Perspective, right-click the **test_a53 Project** and

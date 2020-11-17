@@ -2,7 +2,7 @@
             Read this page in other languages:<a href="../docs-jp/7-system-design-examples.md">日本語</a>    <table style="width:100%"><table style="width:100%">
   <tr>
 
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
   </tr>
@@ -278,14 +278,14 @@ This chapter guides you through building a system based on Zynq&reg;
      You will also need to configure PetaLinux to create images for SD
      boot.
 
-2. Repeat steps 2 to 13 as described in [Example Project: Create Linux Images using PetaLinux](#example-project-create-linux-images-using-petalinux) to update the device tree and build Linux images using PetaLinux. Alternatively, you can also use the Linux image files shared with this tutorial. The images for this section can be found in `<design_files/design>`.
+2. Repeat steps 2 to 13 as described in [Example Project: Create Linux Images using PetaLinux](4-build-sw-for-ps-subsystems.md#example-project-create-linux-images-using-petalinux) to update the device tree and build Linux images using PetaLinux. Alternatively, you can also use the Linux image files shared with this tutorial. The images for this section can be found in `<design_files/design>`.
 
 3. Follow step 15 to verify the images. The next step is to create a Bare-metal Application targeted for Arm Cortex-R5F based RPU.
 
  >***Note*:** For this design example, you must import the application
  source files available in the Design Files ZIP file released with this
  tutorial. For information about locating these design files, see the
- [Design Files for This Tutorial](#design-files-for-this-tutorial).
+ [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial).
 
 #### Creating the Bare-Metal Application Project
 
@@ -320,7 +320,7 @@ This chapter guides you through building a system based on Zynq&reg;
 
 7. Click **Next**.
 
-8. Select **Browse** and navigate to the `design-files/design1` folder, which you saved earlier (see [Design Files for This Tutorial](#design-files-for-this-tutorial)).
+8. Select **Browse** and navigate to the `design-files/design1` folder, which you saved earlier (see [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial)).
 
 9. Click **OK**.
 
@@ -358,7 +358,7 @@ This chapter guides you through building a system based on Zynq&reg;
 
 6. Verify that the application is compiled and linked successfully and that thetmr_psled_r5.elf file was generated in the `tmr_psled_r5\Debug` folder.
 
-7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package](#modifying-the-board-support-package).
+7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package](4-build-sw-for-ps-subsystems.md#modifying-the-board-support-package).
 
 #### Creating the Linux Domain for Linux Applications
 
@@ -426,7 +426,7 @@ This chapter guides you through building a system based on Zynq&reg;
 
 7. Click **Next**.
 
-8. Select **Browse** and navigate to the design-files/design1 folder, which you saved earlier (see [Design Files for This Tutorial](#design-files-for-this-tutorial)).
+8. Select **Browse** and navigate to the design-files/design1 folder, which you saved earlier (see [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial)).
 
 9. Click **OK**.
 
@@ -472,7 +472,7 @@ This chapter guides you through building a system based on Zynq&reg;
 
 5. Add the partitions as shown in the following figure.
 
-    >***Note*:** For detailed steps on how to add partitions, see [Boot Sequence for SD-Boot](#boot-sequence-for-sd-boot).
+    >***Note*:** For detailed steps on how to add partitions, see [Boot Sequence for SD-Boot](6-boot-and-configuration.md#boot-sequence-for-sd-boot).
 
     ![](./media/image112.png)
 
@@ -628,7 +628,7 @@ This chapter guides you through building a system based on Zynq&reg;
 
 9. After the bitstream is generated successfully, export the hardware
      platform using the Vivado export hardware platform wizard as shown
-     in [Exporting Hardware Platform](#exporting-hardware-platform-1).
+     in [Exporting Hardware Platform](#exporting-hardware-platform).
 
 10. Copy the XSA file to a Linux host machine.
 
@@ -668,7 +668,7 @@ This chapter guides you through building a system based on Zynq&reg;
  application. This application is written in OpenGLES and is based on
  the X Window System. For more details and for the application source
  code, refer to tricube in the design_files folder of the zip file that
- accompanies this tutorial. See [Design Files for This Tutorial](#design-files-for-this-tutorial).
+ accompanies this tutorial. See [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial).
 
  Use the following steps to build the OpenGLES application:
 
@@ -764,7 +764,7 @@ This chapter guides you through building a system based on Zynq&reg;
  >
  >*See the example eglfbdev application (based on fdev) that is
  available in the [Design Files for
- This Tutorial](#design-files-for-this-tutorial). For more information, see
+ This Tutorial](2-getting-started.md#design-files-for-this-tutorial). For more information, see
  the Xilinx Answer
  [68821](https://www.xilinx.com/cgi-bin/docs/ndoc?t=answers%3Bd%3D68821.html).*
 
