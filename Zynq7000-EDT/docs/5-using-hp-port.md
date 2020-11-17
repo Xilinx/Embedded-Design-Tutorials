@@ -117,8 +117,8 @@ on the serial terminal and stops execution.
     -   Create a new project as described in [Creating an Embedded
         Processor Project](#creating-an-embedded-processor-project).
 
-2.  Open the Vivado&reg; design from [Chapter 3: Using the GP Port in Zynq
-    Devices](#chapter-3) called **edt_tutorial** and from the IP integrator click **Open Block Design**.
+2.  Open the Vivado&reg; design from [Using the GP Port in Zynq
+    Devices](#3-using-gp-port-zynq.md) called **edt_tutorial** and from the IP integrator click **Open Block Design**.
 
 3.  In the Diagram window, right-click in the blank space and select
     **Add IP**.
@@ -567,10 +567,10 @@ Application software creation is composed of the following steps:
 ## Running Linux CDMA Application Using the Vitis Software Platform
 
 Detailed steps on running Linux on the target board are outlined in
-[Chapter 6: Linux Booting and](#chapter-6) [Debug in the Vitis
-Software Platform](#chapter-6). If you are not comfortable running
-Linux, run through the [Chapter 6: Linux Booting and Debug in the
-Vitis Software Platform](#chapter-6) examples prior to running this
+[Linux Booting and Debug in the Vitis
+Software Platform](#6-linux-booting-debug.md). If you are not comfortable running
+Linux, run through the [Linux Booting and Debug in the
+Vitis Software Platform](#6-linux-booting-debug.md) examples prior to running this
 example. Running a Linux OS based application is composed of the
 following steps:
 
@@ -589,9 +589,8 @@ following steps:
 You will now boot Linux on the Zynq-7000 SoC ZC702 target board using
 JTAG mode.
 
-***Note*:** Additional boot options will be explained in [Chapter 6:
-Linux Booting and Debug in the Vitis](#chapter-6) [Software
-Platform](#chapter-6).
+***Note*:** Additional boot options will be explained in [Linux Booting and Debug in the Software
+Platform](#6-linux-booting-debug.md).
 
 1.  Check the following Board Connection and Setting for Linux booting
     using JTAG mode:
@@ -638,9 +637,9 @@ Platform](#chapter-6).
 5.  Power on the target board.
 
 6.  Launch the Vitis software platform and open the same workspace you
-    used in [Chapter 2: Using the Zynq SoC Processing
-    System](#chapter-2) and [Chapter 3: Using the GP Port in Zynq
-    Devices](#chapter-3).
+    used in [Using the Zynq SoC Processing
+    System](2-using-zynq.md) and [Using the GP Port in Zynq
+    Devices](#3-using-gp-port-zynq.md).
 
 7.  If the serial terminal is not open, connect the serial communication
     utility with the baud rate set to **115200**.

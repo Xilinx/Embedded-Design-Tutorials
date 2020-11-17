@@ -325,7 +325,7 @@ following figure.
 
 18. Debug a Linux Process or thread.
 
-As shown in [Debugging Linux Processes and Threads Using OS Aware
+As shown in Debugging Linux Processes and Threads Using OS Aware
 Debug](#debugging-linux-processes-and-threads-using-os-aware-debug) ,
 the list of processes running on the target is displayed. You can
 right-click any process and click **Suspend**. Using this method, you

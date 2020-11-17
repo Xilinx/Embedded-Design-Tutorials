@@ -45,9 +45,6 @@ Windows host machine. For application debugging, the platform
 establishes an Ethernet connection to the target board that is already
 running the Linux OS.
 
-For more information, see the Embedded Design Tools web page [Support
-Resources](#support-resources).
-
 ## Requirements
 
 In this chapter, the target platform refers to a Zynq SoC board. The
@@ -62,28 +59,28 @@ that you will download next.
 From the Xilinx documentation website, download the ZIP file that
 accompanies this guide. See [Design Files for This Tutorial](#design-files-for-this-tutorial). It includes the following files:
 
--   BOOT.bin**:** Binary image containing the FSBL and U-Boot images
+-   **BOOT.bin:** Binary image containing the FSBL and U-Boot images
     produced by bootgen.
 
--   cdma_app.c**:** Standalone Application software for the system you
+-   **cdma_app.c:** Standalone Application software for the system you
     will create in this chapter.
 
--   helloworld.c**:** Standalone Application software for the system you
-    created in [Chapter 3: Using the GP Port in Zynq
-    Devices](#chapter-3).
+-   **helloworld.c:** Standalone Application software for the system you
+    created in [Using the GP Port in Zynq
+    Devices](#3-using-gp-port-zynq.md).
 
--   linux_cdma_app**:** Linux OS based Application software for the
+-   **linux_cdma_app:** Linux OS based Application software for the
     system you will create in this chapter.
 
--   README.txt**:** Copyright and release information pertaining to the
+-   **README.txt:** Copyright and release information pertaining to the
     ZIP file.
 
--   u-boot.elf**:** U-Boot file used to create the BOOT.BIN image.
+-   **u-boot.elf:** U-Boot file used to create the BOOT.BIN image.
 
--   Image.ub**:** PetaLinux build Image (which have kernel image,
-    ramdisk and dtb)
+-   **Image.ub:** PetaLinux build image (with kernel image,
+    ramdisk, and dtb)
 
--   fsbl.elf**:** FSBL image used to create BOOT.BIN image.
+-   **fsbl.elf:** FSBL image used to create BOOT.BIN image.
 
 ## Booting Linux on a Zynq SoC Board
 
@@ -218,8 +215,8 @@ section \"Debugging Applications with TCF Agent.\"
 5.  Power on the target board.
 
 6.  Launch the Vitis software platform and open same workspace you used
-    in [Chapter 2: Using the Zynq SoC Processing System](#chapter-2)
-    and [Chapter 3: Using the GP Port in Zynq Devices](#chapter-3).
+    in [Using the Zynq SoC Processing System](#2-using-zynq.md)
+    and [Using the GP Port in Zynq Devices](#3-using-gp-port-zynq.md).
 
 7.  If the serial terminal is not open, connect the serial communication
     utility with the baud rate set to **115200**.

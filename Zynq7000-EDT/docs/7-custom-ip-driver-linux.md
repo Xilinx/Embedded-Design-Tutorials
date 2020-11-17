@@ -48,9 +48,7 @@ compilation are as follows:
 
 -   An Eclipse-based integrated development environment (IDE) that
     incorporates the GNU Toolchain for cross development for target
-    architectures. For Tool related information and installation,
-    refer to the Xilinx Zynq Tools Wiki Page [Support
-    Resources](#support-resources).
+    architectures.
 
 -   Kernel source code and build environment. Refer to the Xilinx Zynq
     Linux Wiki Page [Support Resources](#support-resources), which
@@ -84,8 +82,7 @@ Resources](#additional-resources).
 (LKM) as part of the same kernel build process that generates the base
 kernel image. If you want to skip kernel or LKM Build process, use the
 precompiled images for both kernel and LKM module for this section
-provided in the ZIP file that accompanies this guide. See [Design
-Files for This Tutorial](#design-files-for-this-tutorial).*
+provided in the ZIP file that accompanies this guide.
 
 ## Creating Peripheral IP
 
@@ -545,8 +542,7 @@ commands, which can be of the following types:
 -   Neither read nor write ioctl.
 
 For more details about LKM, refer to the Linux Kernel Module
-Programming Guide in [Additional](#additional-resources)
-[Resources](#additional-resources).
+Programming Guide in [Additional Resources](#additional-resources).
 
 In this section you are going to develop a peripheral IP Device driver
 as a LKM, which is dynamically loadable onto the running Kernel. You
@@ -563,7 +559,7 @@ following steps are required:
 
 1.  Set the toolchain path in your Linux Workstation.
 
-2.  Download kernel source code and compile it. For downloading and
+2.  Download the kernel source code and compile it. For downloading and
     compilation, refer to the steps mentioned in Xilinx Zynq Linux
     Wiki Page [Support Resources](#support-resources).
 
@@ -655,10 +651,9 @@ blinking and retain the previous state.
 #### *Booting Linux on the Target Board*
 
 Boot Linux on the Zynq SoC ZC702 target board, as described in
-[Booting Linux on a Zynq SoC](#booting-linux-on-a-zynq-soc-board)
-[Board](#booting-linux-on-a-zynq-soc-board).
+[Booting Linux on a Zynq SoC Board](#booting-linux-on-a-zynq-soc-board).
 
-#### *Loading Modules and Executing Applications*
+#### Loading Modules and Executing Applications
 
 In this section, you will use the Vitis software platform installed on
 a Windows machine.
@@ -751,8 +746,8 @@ a Windows machine.
 11. Click **Program** to download the bitstream and program the PL
     fabric.
 
-12. Follow the steps described in [Chapter 6: Linux Booting and Debug in
-    the Vitis Software Platform](#chapter-6) to load the Linux image
+12. Follow the steps described in [Linux Booting and Debug in
+    the Vitis Software Platform](#6-linux-booting-debug.md) to load the Linux image
     and start it.
 
     After the kernel boots successfully, in a serial terminal, navigate to /lib/modules/\<kernel-version\>/extra and run the command:
