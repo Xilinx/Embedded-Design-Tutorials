@@ -61,9 +61,7 @@ is as shown in the following figure.
 
 ![](./media/image38.jpeg)
 
-You can use the system created in [Using the Zynq SoC
-Processing System](#2-using-zynq.md) and continue after [Creating an
-Embedded Processor Project](#creating-an-embedded-processor-project).
+You can use the system created in [Using the Zynq SoC Processing System](#2-using-zynq.md) and continue after [Creating an Embedded Processor Project](2-using-zynq.md#creating-an-embedded-processor-project).
 
 In the examples in this chapter, we will expand on the design in
 [Using the Zynq SoC Processing System](#2-using-zynq.md). You will make the following design changes:
@@ -383,9 +381,7 @@ Vivado.
     pop up opens and shows the status as FPGA configuration complete.
 
 11. Run the project similar to the steps in
-    [Creating a Platform Project in the Vitis Software Platform with
-    an XSA from
-    Vivado](#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado).
+    [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado).
 
     If steps 9 and 10 fail, open the **Run Configurations** view,
     browse for the bitstream file exported by Vivado, and then click
@@ -472,5 +468,4 @@ Application software is composed of the following steps:
 
 The Application software for the system is included in helloworld.c,
 which is available in the ZIP file that accompanies this guide. For
-more details, see [Design Files for This
-Tutorial](#design-files-for-this-tutorial).
+more details, see [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).

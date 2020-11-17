@@ -57,7 +57,7 @@ tutorials in this chapter. It is included in the precompiled images
 that you will download next.
 
 From the Xilinx documentation website, download the ZIP file that
-accompanies this guide. See [Design Files for This Tutorial](#design-files-for-this-tutorial). It includes the following files:
+accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial). It includes the following files:
 
 -   **BOOT.bin:** Binary image containing the FSBL and U-Boot images
     produced by bootgen.
@@ -177,7 +177,7 @@ section \"Debugging Applications with TCF Agent.\"
     a.  Ensure that the settings of Jumpers J27 and J28 are set as
         described in [Creating a Platform Project in the Vitis
         Software Platform with an XSA from
-        Vivado](#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado).
+        Vivado](2-using-zynq.md#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado).
 
     b.  Ensure that the SW16 switch is set as shown in the following
         figure.
@@ -641,7 +641,7 @@ This example project covers the following steps:
 
     ***Note*:** The QSPI Boot file, BOOT.bin, is available in the ZIP file
     that accompanies this guide. See [Design Files for This
-    Tutorial](#design-files-for-this-tutorial).
+    Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 
 5.  Click **Add** to add the following boot image partitions:
 
@@ -766,14 +766,9 @@ saying Flash Operation Successful.
     finishes, the root\@xilinx-zc702-2020_1:\~\# prompt appears. Enter the
     login and password as root when prompted.
 
-4.  Check the Board IP address connectivity as described in [Booting
-    Linux Using JTAG Mode](#booting-linux-using-jtag-mode).
+4.  Check the Board IP address connectivity as described in [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode).
 
-    For Linux Application creation and debugging, refer to [Example
-    Design: Debugging the
-    Linux](#example-design-debugging-the-linux-application-using-the-vitis-software-platform)
-    [Application Using the Vitis Software
-    Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform).
+    For Linux Application creation and debugging, refer to [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform).
 
 #### Booting Linux from the SD Card
 
@@ -791,7 +786,7 @@ saying Flash Operation Successful.
     ***Note*:** If you do not need to change the default FSBL image, you
     can use the fsbl.elf file that you downloaded as part of the ZIP file
     for this guide. See [Design Files for This
-    Tutorial](#design-files-for-this-tutorial).
+    Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 
 4.  In the Vitis IDE, select **Xilinx → Create Boot Image** to open the
     Create Boot Image wizard.
@@ -818,8 +813,4 @@ saying Flash Operation Successful.
 10. Set the board IP address and check the connectivity as described in
     [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode).
 
-For Linux application creation and debugging, see [Example Design:
-Debugging the
-Linux](#example-design-debugging-the-linux-application-using-the-vitis-software-platform)
-[Application Using the Vitis Software
-Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform).
+For Linux application creation and debugging, see [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform).

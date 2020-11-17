@@ -191,9 +191,7 @@ machine.
     click **OK**.
 
     ***Note*:** For more information about downloading the design files
-    for this tutorial, see [Design Files
-    for](#design-files-for-this-tutorial) [This
-    Tutorial](#design-files-for-this-tutorial).
+    for this tutorial, see [Design Files for this Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 
 10. Add the linux_hello.c file and click **Finish**.
 
@@ -205,7 +203,7 @@ machine.
 ### Debugging Linux Processes and Threads Using OS Aware Debug
 
 1.  Boot Linux as described in [Booting Linux from the SD
-    Card](#booting-linux-from-the-sd-card).
+    Card](6-linux-booting-debug.md#booting-linux-from-the-sd-card).
 
 2.  Create a Debug configuration.
 
@@ -349,9 +347,7 @@ from the addresses shown on your system.
 
 3.  To debug the linux_hello application you created in the previous
     section using OS aware debug, follow the steps described in
-    [Debugging Linux Processes and Threads Using OS Aware
-    Debug](#debugging-linux-processes-and-threads-using-os-aware-debug), and in addition, add the path mappings for the linux_hello
-    application as given in the following figure.
+    [Debugging Linux Processes and Threads Using OS Aware Debug](#debugging-linux-processes-and-threads-using-os-aware-debug), and in addition, add the path mappings for the linux_hello application as given in the following figure.
 
     The source path is /linux_hello.elf. The destination path is \<vitis-
     workspace\>linux_hello/Debug/linux_hello.elf.

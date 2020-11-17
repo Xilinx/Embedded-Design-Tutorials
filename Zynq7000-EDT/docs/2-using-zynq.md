@@ -25,6 +25,12 @@
 
 # Using the Zynq SoC Processing System
 
+## Design Files for this Tutorial
+
+The ZIP file associated with this document contains the design files for the tutorial. You can download this file from <a href="https://www.xilinx.com/cgi-bin/docs/ctdoc?cid=584abf8e-7c05-471e-ab16-6135205cfbd9;d=ug1165-zynq-embedded-design-tutorial.zip">this link</a>.
+
+Design files contain the HDF files for each section, and the source code and pre-built images forall the sections.
+
 Now that you have been introduced to the Xilinx&reg; Vivado&reg; Design Suite, you will begin looking at how to use it to develop an embedded system using the Zynq&reg;-7000 SoC processing system (PS).
 
 The Zynq SoC consists of Arm&reg; Cortex&trade;-A9 cores, many hard intellectual property components (IPs), and programmable logic (PL). This offering can be used in two ways:

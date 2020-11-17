@@ -110,7 +110,7 @@ application.
 
 If you modified the Hello World application in the prior chapter, you
 will need to create a new Hello World application prior to debugging.
-Follow the steps in [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado) to create a new Hello World application.
+Follow the steps in [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado) to create a new Hello World application.
 
 After you create the Hello World application, work through below
 example to debug the software using the Vitis software platform.

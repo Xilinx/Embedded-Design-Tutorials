@@ -110,15 +110,11 @@ on the serial terminal and stops execution.
 
 1.  Start with one of the following:
 
-    -   Use the system you created in [Example Project: Validate
-        Instantiated Fabric IP
-        Functionality](#example-project-validate-instantiated-fabric-ip-functionality).
+    -   Use the system you created in [Example Project: Validate Instantiated Fabric IP Functionality](3-using-gp-port-zynq.md#example-project-validate-instantiated-fabric-ip-functionality).
 
-    -   Create a new project as described in [Creating an Embedded
-        Processor Project](#creating-an-embedded-processor-project).
+    -   Create a new project as described in [Creating an Embedded Processor Project](2-using-zynq.md#creating-an-embedded-processor-project).
 
-2.  Open the Vivado&reg; design from [Using the GP Port in Zynq
-    Devices](#3-using-gp-port-zynq.md) called **edt_tutorial** and from the IP integrator click **Open Block Design**.
+2.  Open the Vivado&reg; design from [Using the GP Port in Zynq Devices](#3-using-gp-port-zynq.md) called **edt_tutorial** and from the IP integrator click **Open Block Design**.
 
 3.  In the Diagram window, right-click in the blank space and select
     **Add IP**.
@@ -297,7 +293,7 @@ on the serial terminal and stops execution.
 
 30. After the bitstream generation completes, export the hardware and
     launch the Vitis unified software platform as described in
-    [Exporting a Hardware Platform](#exporting-a-hardware-platform).
+    [Exporting a Hardware Platform](2-using-zynq.md#exporting-a-hardware-platform).
 
     ***Note*:** Make sure to select **Include bitstream** instead of the
     **Pre-synthesis** on the Output page of the for Export Hardware
@@ -442,7 +438,7 @@ The application software does the following:
 8.  In the **Import Sources** dialog box, click the **Browse** button
     next to the **From directory** field and specify the design files
     folder you saved earlier (see [Design Files for This
-    Tutorial](#design-files-for-this-tutorial)).
+    Tutorial](2-using-zynq.md#design-files-for-this-tutorial)).
 
 9.  Select the cdma_app.c file and click **Finish**.
 
@@ -458,9 +454,7 @@ The application software does the following:
 
 12. Make sure that the hardware board is set up and turned on.
 
-    ***Note*:** Refer to [Creating a Platform Project in the Vitis
-    Software Platform with an XSA from
-    Vivado](#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado)
+    ***Note*:** Refer to [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado)
     for information about setting up the board.
 
 13. Select **Xilinx → Program FPGA** to open the Program FPGA dialog
@@ -574,8 +568,7 @@ Vitis Software Platform](#6-linux-booting-debug.md) examples prior to running th
 example. Running a Linux OS based application is composed of the
 following steps:
 
-1.  [Booting Linux on the Target
-    Board](#booting-linux-on-the-target-board)
+1.  [Booting Linux on the Target Board](#booting-linux-on-the-target-board)
 
 2.  [Linux Domain Creation for Linux
     Applications](#linux-domain-creation-for-linux-applications)
@@ -596,9 +589,7 @@ Platform](#6-linux-booting-debug.md).
     using JTAG mode:
 
     a.  Ensure that the settings of Jumpers J27 and J28 are set as
-        described in [Creating a Platform Project in the Vitis
-        Software Platform with an XSA from
-        Vivado](#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado).
+        described in [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado).
 
     b.  Ensure that the SW16 switch is set as shown in the following
         figure.
@@ -614,8 +605,7 @@ Platform](#6-linux-booting-debug.md).
 
 2.  Connect a micro USB cable between the Windows host machine and the
     target board with the following SW10 switch settings, as shown in
-    [Booting Linux on the Target
-    Board](#booting-linux-on-the-target-board).
+    [Booting Linux on the Target Board](6-linux-booting-debug.md#booting-linux-on-the-target-board).
 
     -   Bit-1 is 0
 
@@ -637,9 +627,7 @@ Platform](#6-linux-booting-debug.md).
 5.  Power on the target board.
 
 6.  Launch the Vitis software platform and open the same workspace you
-    used in [Using the Zynq SoC Processing
-    System](2-using-zynq.md) and [Using the GP Port in Zynq
-    Devices](#3-using-gp-port-zynq.md).
+    used in [Using the Zynq SoC Processing System](2-using-zynq.md) and [Using the GP Port in Zynq Devices](#3-using-gp-port-zynq.md).
 
 7.  If the serial terminal is not open, connect the serial communication
     utility with the baud rate set to **115200**.
@@ -884,7 +872,7 @@ b.  Create one BIF file as below.
 
     ***Note*:** The example application software file is available in the
     ZIP file that accompanies this guide. See [Design Files for This
-    Tutorial](#design-files-for-this-tutorial).
+    Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 
 6.  Build the application project either by clicking the hammer button
     or by right-clicking on the linux_cdma_app project and selecting
