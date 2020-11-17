@@ -38,8 +38,8 @@ In this chapter, you will create a design with:
 -   Zynq SoC PS GPIO pin connected to the fabric (PL) side pin using the
     EMIO interface
 
-The flow of this chapter is similar to that in [Using the
-Zynq SoC Processing System](./#2-using-zynq) and uses the Zynq device as a
+The flow of this chapter is similar to that in <a href="2-using-zynq.md">Using the
+Zynq SoC Processing System</a> and uses the Zynq device as a
 base hardware design. It is assumed that you understand the concepts
 discussed in [Using the Zynq SoC Processing
 System](./#2-using-zynq.md) regarding adding the Zynq device into a Vivado IP
