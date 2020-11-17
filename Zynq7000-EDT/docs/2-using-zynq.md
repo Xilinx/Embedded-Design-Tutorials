@@ -699,3 +699,5 @@ threaded semi-hosted environment.
 top of the standalone OS. The domain/BSP that your software
 application targets is selected during the New Platform Project
 creation process.*
+
+© Copyright 2015–2020 Xilinx, Inc.

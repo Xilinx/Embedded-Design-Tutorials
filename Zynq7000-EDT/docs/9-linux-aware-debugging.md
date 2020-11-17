@@ -398,3 +398,5 @@ information about this command, refer to the osa command help in
 Tool](https://www.xilinx.com/cgi-bin/docs/rdoc?t=vitis%2Bdoc%3Bv%3D2020.1%3Bd%3Dupu1569395223804.html)
 in the Embedded Software Development flow of the *Vitis Unified
 Software Platform Documentation* (UG1416).
+
+© Copyright 2015–2020 Xilinx, Inc.

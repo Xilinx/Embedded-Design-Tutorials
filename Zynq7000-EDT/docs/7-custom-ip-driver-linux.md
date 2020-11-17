@@ -743,7 +743,7 @@ a Windows machine.
     fabric.
 
 12. Follow the steps described in [Linux Booting and Debug in
-    the Vitis Software Platform](#6-linux-booting-debug.md) to load the Linux image
+    the Vitis Software Platform](6-linux-booting-debug.md) to load the Linux image
     and start it.
 
     After the kernel boots successfully, in a serial terminal, navigate to /lib/modules/\<kernel-version\>/extra and run the command:
@@ -830,3 +830,5 @@ a Windows machine.
 
 20. After you finish debugging the Linux application, close the Vitis
     software platform.
+
+  © Copyright 2015–2020 Xilinx, Inc.

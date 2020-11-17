@@ -41,8 +41,8 @@ In this chapter, you will create a design with:
 The flow of this chapter is similar to that in <a href="2-using-zynq.md">Using the
 Zynq SoC Processing System</a> and uses the Zynq device as a
 base hardware design. It is assumed that you understand the concepts
-discussed in [Using the Zynq SoC Processing
-System](./#2-using-zynq.md) regarding adding the Zynq device into a Vivado IP
+discussed in <a href="2-using-zynq.md">Using the
+Zynq SoC Processing System</a> regarding adding the Zynq device into a Vivado IP
 integrator block diagram design. If you skipped that chapter, you
 might want to look at it because we will continually refer to it throughout this chapter.
 
@@ -61,10 +61,11 @@ is as shown in the following figure.
 
 ![](./media/image38.jpeg)
 
-You can use the system created in [Using the Zynq SoC Processing System](#2-using-zynq.md) and continue after [Creating an Embedded Processor Project](2-using-zynq.md#creating-an-embedded-processor-project).
+You can use the system created in <a href="2-using-zynq.md">Using the
+Zynq SoC Processing System</a> and continue after [Creating an Embedded Processor Project](2-using-zynq.md#creating-an-embedded-processor-project).
 
-In the examples in this chapter, we will expand on the design in
-[Using the Zynq SoC Processing System](#2-using-zynq.md). You will make the following design changes:
+In the examples in this chapter, we will expand on the design in <a href="2-using-zynq.md">Using the
+Zynq SoC Processing System</a>. You will make the following design changes:
 
 -   The fabric-side AXI GPIO is assigned a 1-bit channel width and is
     connected to the SW5 push- button switch on the ZC702 board.
@@ -105,8 +106,8 @@ the fabric additions.
 1.  Open the Vivado&reg; Design Suite.
 
 2.  Under the Recent Projects column, click the **edt_tutorial** design
-    that you created in [Using the Zynq SoC Processing
-    System](#2-using-zynq.md).
+    that you created in <a href="2-using-zynq.md">Using the
+    Zynq SoC Processing System</a>.
 
 3.  Under **IP Integrator**, click **Open Block Design**.
 
@@ -356,8 +357,8 @@ Vivado.
     ![](./media/image54.jpeg)
 
 5.  Open the helloworld.c file from the hello_world project created with
-    standalone PS in [Using the Zynq SoC Processing
-    System](#2-using-zynq.md) and modify the application software code as
+    standalone PS in <a href="2-using-zynq.md">Using the
+    Zynq SoC Processing System</a> and modify the application software code as
     described in [Standalone Application Software for the
     Design](#standalone-application-software-for-the-design).
 

@@ -28,7 +28,7 @@
 In this chapter, you will enable profiling features for the standalone
 domain or board support package (BSP) and the application related to
 AXI CDMA, which you created in [Linux Booting
-and Debug in the Vitis Software Platform](#6-linux-booting-debug.md).
+and Debug in the Vitis Software Platform](6-linux-booting-debug.md).
 
 ## Profiling an Application in the Vitis Software Platform with System Debugger
 
@@ -95,3 +95,5 @@ the Vitis software platform, refer to the following documentation:
 
 -   *System Performance Analysis of an SoC*
     ([XAPP1219](https://www.xilinx.com/support/documentation/application_notes/xapp1219-system-performance-modeling.pdf))
+
+    © Copyright 2015–2020 Xilinx, Inc.

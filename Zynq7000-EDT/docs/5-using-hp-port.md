@@ -114,7 +114,7 @@ on the serial terminal and stops execution.
 
     -   Create a new project as described in [Creating an Embedded Processor Project](2-using-zynq.md#creating-an-embedded-processor-project).
 
-2.  Open the Vivado&reg; design from [Using the GP Port in Zynq Devices](#3-using-gp-port-zynq.md) called **edt_tutorial** and from the IP integrator click **Open Block Design**.
+2.  Open the Vivado&reg; design from [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md) called **edt_tutorial** and from the IP integrator click **Open Block Design**.
 
 3.  In the Diagram window, right-click in the blank space and select
     **Add IP**.
@@ -562,9 +562,9 @@ Application software creation is composed of the following steps:
 
 Detailed steps on running Linux on the target board are outlined in
 [Linux Booting and Debug in the Vitis
-Software Platform](#6-linux-booting-debug.md). If you are not comfortable running
+Software Platform](6-linux-booting-debug.md). If you are not comfortable running
 Linux, run through the [Linux Booting and Debug in the
-Vitis Software Platform](#6-linux-booting-debug.md) examples prior to running this
+Vitis Software Platform](6-linux-booting-debug.md) examples prior to running this
 example. Running a Linux OS based application is composed of the
 following steps:
 
@@ -583,7 +583,7 @@ You will now boot Linux on the Zynq-7000 SoC ZC702 target board using
 JTAG mode.
 
 ***Note*:** Additional boot options will be explained in [Linux Booting and Debug in the Software
-Platform](#6-linux-booting-debug.md).
+Platform](6-linux-booting-debug.md).
 
 1.  Check the following Board Connection and Setting for Linux booting
     using JTAG mode:
@@ -921,3 +921,5 @@ b.  Create one BIF file as below.
     Transfer is Successful appears in the console window, as shown in the following figure.
 
     ![](./media/image78.jpeg)
+
+    © Copyright 2015–2020 Xilinx, Inc.

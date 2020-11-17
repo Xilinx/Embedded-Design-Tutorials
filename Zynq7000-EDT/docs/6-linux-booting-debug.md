@@ -67,7 +67,7 @@ accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#des
 
 -   **helloworld.c:** Standalone Application software for the system you
     created in [Using the GP Port in Zynq
-    Devices](#3-using-gp-port-zynq.md).
+    Devices](3-using-gp-port-zynq.md).
 
 -   **linux_cdma_app:** Linux OS based Application software for the
     system you will create in this chapter.
@@ -215,8 +215,8 @@ section \"Debugging Applications with TCF Agent.\"
 5.  Power on the target board.
 
 6.  Launch the Vitis software platform and open same workspace you used
-    in [Using the Zynq SoC Processing System](#2-using-zynq.md)
-    and [Using the GP Port in Zynq Devices](#3-using-gp-port-zynq.md).
+    in [Using the Zynq SoC Processing System](2-using-zynq.md)
+    and [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md).
 
 7.  If the serial terminal is not open, connect the serial communication
     utility with the baud rate set to **115200**.
@@ -814,3 +814,5 @@ saying Flash Operation Successful.
     [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode).
 
 For Linux application creation and debugging, see [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform).
+
+© Copyright 2015–2020 Xilinx, Inc.

@@ -187,3 +187,5 @@ example to debug the software using the Vitis software platform.
     (F5), step-return (F7), step-over (F6), and resume (F8).*
 
 8.  Exit the Vitis software platform.
+
+© Copyright 2015–2020 Xilinx, Inc.
