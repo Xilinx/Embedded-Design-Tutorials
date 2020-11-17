@@ -26,7 +26,7 @@ This chapter guides you through building a system based on Zynq&reg;
  UltraScale+&trade; devices using available tools and supported software
  blocks. This chapter highlights how you can use the software blocks
  you configured in [Build Software for PS
- Subsystems](#4-build-sw-for-ps-subsystems) to create a Zynq&reg; UltraScale+ system. It does
+ Subsystems](4-build-sw-for-ps-subsystems.md) to create a Zynq&reg; UltraScale+ system. It does
  not discuss domain-specific designs, but rather highlights different
  ways to use low-level software available for Zynq UltraScale+ devices.
 
@@ -243,7 +243,7 @@ This chapter guides you through building a system based on Zynq&reg;
 
  This use case has a bare-metal application running on an R5 core and a
  Linux Application running on APU Linux Target. Most of the software
- blocks will remain the same as mentioned in [Build Software for PS Subsystems](#4-build-sw-for-ps-subsystems). The software for this
+ blocks will remain the same as mentioned in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). The software for this
  design example requires additional drivers for components added in the
  PL Logic. For this reason, you will need to generate a new Bare-metal
  BSP in the Vitis IDE using the Hardware files generated for this
@@ -464,7 +464,7 @@ This chapter guides you through building a system based on Zynq&reg;
 
 1. Launch the Vitis IDE, if it is not already running.
 
-2. Set the workspace based on the project you created in [Zynq UltraScale+ MPSoC Processing System Configuration](#3-system-configuration). For example: `C:\edt`.
+2. Set the workspace based on the project you created in [Zynq UltraScale+ MPSoC Processing System Configuration](3-system-configuration.md). For example: `C:\edt`.
 
 3. Select **Xilinx → Create Boot Image**.
 

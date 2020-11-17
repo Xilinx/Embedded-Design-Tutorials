@@ -386,7 +386,7 @@ The Vitis debugger provides the following debug capabilities:
 
  Now, create a new FSBL for this section instead of modifying the FSBL
  created in [Build Software for PS
- Subsystems](#4-build-sw-for-ps-subsystems). This is to avoid disturbing the FSBL_a53
+ Subsystems](4-build-sw-for-ps-subsystems.md). This is to avoid disturbing the FSBL_a53
  project, which will be used extensively in rest of the chapters in
  this tutorial.
 
@@ -396,7 +396,7 @@ The Vitis debugger provides the following debug capabilities:
 
 1. Launch the Vitis debugger if it is not already open.
 
-2. Set the Workspace path based on the project you created in [Build Software for PS Subsystems](#4-build-sw-for-ps-subsystems). For example,
+2. Set the Workspace path based on the project you created in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). For example,
      C:\edt.
 
 3. Select **File→ New → Application Project**. The New Project dialog

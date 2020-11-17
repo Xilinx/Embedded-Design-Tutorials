@@ -51,7 +51,7 @@ This chapter shows integration of components to create a Zynq&reg;
  This boot sequence also includes loading the PMU Firmware for the
  Platform Management Unit (PMU). The Vitis IDE and PetaLinux can be
  used to create boot images to fulfill different boot requirements.
- While [Build Software for PS Subsystems](#4-build-sw-for-ps-subsystems)
+ While [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md)
  focused only on creating software blocks for each processing unit in
  the PS, this chapter explains how these blocks can be loaded as a part
  of a bigger system.
@@ -100,7 +100,7 @@ This chapter shows integration of components to create a Zynq&reg;
  ([UG1137](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1137-zynq-ultrascale-mpsoc-swdev.pdf)).
 
  For this chapter, you can use the FSBL executable that you created in
- [Build Software for PS Subsystems](#4-build-sw-for-ps-subsystems). In FSBL application, the
+ [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). In FSBL application, the
  xfsbl_translation_table.S differs from translation_table.S (of
  Cortex-A53) in only one aspect, to mark DDR region as reserved. This
  is to avoid speculative access to DDR before it is initialized. Once
@@ -141,7 +141,7 @@ This chapter shows integration of components to create a Zynq&reg;
 
  U-Boot can be configured and built using the PetaLinux tool flow. For
  this example, you can use the U-Boot image that you created in
- [Build Software for PS Subsystems](#4-build-sw-for-ps-subsystems) or from the
+ [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md) or from the
  design files shared with this document. See [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial) for information about
  downloading the design files for this tutorial.
 
@@ -178,7 +178,7 @@ This chapter shows integration of components to create a Zynq&reg;
 
  Now that the system software is configured, create Linux Images using
  PetaLinux tool flow. You already created the PetaLinux images in
- [Build Software for PS Subsystems](#4-build-sw-for-ps-subsystems). For this
+ [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). For this
  example, the PetaLinux is configured to build images for SD-boot. This
  is the default boot setting in PetaLinux.
 
@@ -398,7 +398,7 @@ This chapter shows integration of components to create a Zynq&reg;
  Using PetaLinux for QSPI Flash](4-build-sw-for-ps-subsystems.md#create-linux-images-using-petalinux-for-qspi-flash).
 
 1. If the Vitis IDE is not already running, start it and set the
-     workspace as indicated in [Build Software for PS Subsystems](#4-build-sw-for-ps-subsystems).
+     workspace as indicated in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md).
 
 2. Select **Xilinx → Create Boot Image**.
 
@@ -1413,7 +1413,7 @@ The following are device level decisions affecting secure boot:
  After implementing AES and RSA cryptography in secure boot, a boot
  test is done. The system loads successfully and displays the FSBL
  messages on the terminal. These messages indicate the cryptographic
- operations performed on each partition. [Debugging Problems with Secure Boot](#8-debugging-problems-with-secure-boot) provides steps
+ operations performed on each partition. [Debugging Problems with Secure Boot](8-debugging-problems-with-secure-boot.md) provides steps
  that are required to use, if the secure boot test fails.
 
 #### Sample Design Overview
@@ -1449,7 +1449,7 @@ The following are device level decisions affecting secure boot:
 > 2. As of 2019.1, U-Boot does not perform a secure authenticated loading of Linux. So instead of U-Boot, FSBL loads the Linux images to memory address and then uses U-Boot to jump to that memory address.
 
  This tutorial demonstrates assembling the binaries that are created
- using [System Design Examples](#7-system-design-examples.md) in a boot image with all the security features
+ using [System Design Examples](7-system-design-examples.md) in a boot image with all the security features
  enabled. This section also shows how PL bitstream can be added as a
  part of secure boot flow. Follow the information in this chapter until [Modifying the
  Build Settings](7-system-design-examples.md#modifying-the-build-settings) to create all the
@@ -1515,7 +1515,7 @@ The following are device level decisions affecting secure boot:
 
 4. Save the `key_generation.bif` file in the C:\edt\secure_boot_sd\keys directory.
 
-5. Copy all of the ELF, BIF and UB files built in [System Design Examples](#7-system-design-examples.md) to `C:\edt\secure_boot_sd\keys directory`.
+5. Copy all of the ELF, BIF and UB files built in [System Design Examples](7-system-design-examples.md) to `C:\edt\secure_boot_sd\keys directory`.
 
 6. Navigate to the folder containing the BIF file.
 

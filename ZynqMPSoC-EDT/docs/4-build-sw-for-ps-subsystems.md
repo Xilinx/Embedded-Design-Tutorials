@@ -28,7 +28,7 @@
  Design Suite.
 
  In [Zynq UltraScale+ MPSoC Processing System
- Configuration](#3-system-configuration), you created and exported the hardware
+ Configuration](3-system-configuration.md), you created and exported the hardware
  platform from Vivado. This hardware platform contains the hardware
  handoff file, the processing system initialization files (psu_init),
  and the PL bitstream. In this chapter, you will use the hardware
@@ -634,7 +634,7 @@ To review the PMU firmware in the platform, follow these steps:
 1. Launch the Vitis IDE if it is not already open.
 
 2. Set the Workspace path based on the project you created in [Zynq UltraScale+ MPSoC Processing System
-     Configuration](#3-system-configuration). For example, `C:\\edt`.
+     Configuration](3-system-configuration.md). For example, `C:\\edt`.
 
 3. Select **File→ New → Application Project**. The New Project dialog
      box opens.
@@ -740,7 +740,7 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
     The ZCU102 PetaLinux-BSP is the default ZCU102 Linux BSP. For this
     example, you reconfigure the PetaLinux Project based on theZynq
     UltraScale+ hardware platform that you configured using Vivado Design
-    Suite in [Zynq UltraScale+ MPSoC Processing System Configuration](#3-system-configuration).
+    Suite in [Zynq UltraScale+ MPSoC Processing System Configuration](3-system-configuration.md).
 
 3. Copy the hardware platform edt_zcu102_wrapper.xsa to the Linux Host
      machine.
@@ -936,7 +936,7 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
     need basis.
 
     b.  Based on this, the offset for Linux Images is calculated as
-        0x1E40000 in QSPI Flash device. This will be used in [Boot and Configuration](6-boot-and-configuration), while creating Boot image
+        0x1E40000 in QSPI Flash device. This will be used in [Boot and Configuration](6-boot-and-configuration.md), while creating Boot image
         for QSPI Boot-mode.
 
     The following steps will set the Linux System Memory Size to about
@@ -953,7 +953,7 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
 10. Rebuild using the `petalinux-build` command.
 
 11. Take a backup of u-boot.elf and the other images. These will be used
-     in [Boot and Configuration](#6-boot-and-configuration).
+     in [Boot and Configuration](6-boot-and-configuration.md).
 
  ***Note*:** For more information, refer to the *PetaLinux Tools
  Documentation: Reference Guide*
@@ -961,11 +961,11 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
 
  In this chapter, you learned how to configure and compile software
  blocks for Zynq UltraScale+ devices using Xilinx tools. You will use
- these images in [System Design Examples](#7-system-design-examples) to
+ these images in [System Design Examples](7-system-design-examples.md) to
  create Boot images for a specific design example.
 
  Next, you will debug software for Zynq UltraScale+ devices using the
  Vitis IDE in [Debugging with the Vitis
- Debugger](#5-debugging-with-vitis-debugger).
+ Debugger](5-debugging-with-vitis-debugger.md).
 
 © Copyright 2017-2020 Xilinx, Inc.
