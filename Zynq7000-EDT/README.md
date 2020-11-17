@@ -171,12 +171,10 @@ By default, the installer installs the package as a subdirectory within the curr
 
 PetaLinux is installed in the petalinux-v2020.1-final directory, directly underneath the working directory of this command. If the installer is placed in the home directory /home/user, PetaLinux is installed in /home/user/petalinux-v2020.1-final.
 
-Refer to [Chapter 6: Linux Booting and Debug in the Vitis Software Platform](#linux-booting-and-debug-in-the-vitis-software-platform) for additional information about the PetaLinux environment setup, project creation, and project usage examples. A detailed guide on PetaLinux Installation and usage can be found in the *PetaLinux Tools Documentation: Reference Guide* ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
+Refer to <a href="./docs/6-linux-booting-debug.md">Linux Booting and Debug in the Vitis Software Platform</a> for additional information about the PetaLinux environment setup, project creation, and project usage examples. A detailed guide on PetaLinux Installation and usage can be found in the *PetaLinux Tools Documentation: Reference Guide* ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
 
 #### Software Licensing
 
 Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license.For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* ([UG973](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bt%3Dvivado%2Binstall%2Bguide)).
 
-#### Tutorial Design Files
-
-See [Design Files for This Tutorial](#design-files-for-this-tutorial) for information about downloading the design files for this tutorial.
+© Copyright 2015–2020 Xilinx, Inc.
