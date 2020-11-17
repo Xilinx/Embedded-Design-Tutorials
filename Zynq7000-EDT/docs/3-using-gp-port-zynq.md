@@ -39,7 +39,7 @@ In this chapter, you will create a design with:
     EMIO interface
 
 The flow of this chapter is similar to that in [Using the
-Zynq SoC Processing System](#2-using-zynq.md) and uses the Zynq device as a
+Zynq SoC Processing System](#2-using-zynq) and uses the Zynq device as a
 base hardware design. It is assumed that you understand the concepts
 discussed in [Using the Zynq SoC Processing
 System](#2-using-zynq.md) regarding adding the Zynq device into a Vivado IP
@@ -469,3 +469,5 @@ Application software is composed of the following steps:
 The Application software for the system is included in helloworld.c,
 which is available in the ZIP file that accompanies this guide. For
 more details, see [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+
+© Copyright 2015–2020 Xilinx, Inc.
