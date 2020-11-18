@@ -137,13 +137,11 @@
     >***Note*:** You can either boot the VCK190 board using the
     ready-to-test images as part of the released package path,
     `<design-package>/GPIO/bootimages`, or refer to [Example Project:
-    Creating](#example-project-creating-linux-images-using-petalinux)
-    [Linux Images Using
+    Creating Linux Images Using
     PetaLinux](#example-project-creating-linux-images-using-petalinux) to
     build your own set of Linux images using the PetaLinux tool.
 
-2. Load the SD card into the VMK180/VCK190 board, in the J302
-     connector.
+2. Load the SD card into the VMK180/VCK190 board, in the J302 connector.
 
 3. Connect the Micro USB cable into the VMK180/VCK190 Board Micro USB
      port (J207), and the other end into an open USB port on the host
@@ -191,12 +189,7 @@
 
 ![QSPI-boot-halfform-factor-module](./media/image54.jpeg)
 
-<div class="important">
-     <div class="title">
-     Note
-     </div>
-     For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
-</div>
+>***Note*:** For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
 
  You need to flash the images to the daughter card, using the following
  steps:

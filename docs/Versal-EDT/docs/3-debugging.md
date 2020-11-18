@@ -103,14 +103,7 @@ This chapter describes debugging possibilities with the design flow
 
  If you did not create a hello world application on APU or RPU, follow
  the steps in
- [Example](#example-project-bare-metal-hello-world-project-with-apu-on-ocm-and-rpu-on-tcm)
- [Project: Bare-metal Hello World Project with APU on OCM and RPU on
- TCM](#example-project-bare-metal-hello-world-project-with-apu-on-ocm-and-rpu-on-tcm)
- or [Example
- Project:](#example-project-creating-a-bare-metal-hello-world-system-project-with-apu-and-rpu-running-on-ddr-memory)
- [Creating a bare-metal Hello World System Project with APU and RPU
- Running on DDR
- Memory](#example-project-creating-a-bare-metal-hello-world-system-project-with-apu-and-rpu-running-on-ddr-memory).
+ [Running a Bare-Metal Hello World Application](./2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application) or [Running a Bare-Metal Hello World Application on DDR Memory](./2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application-on-ddr-memory).
 
  After you create the Hello World Application, work through the
  following example to debug the software using the Vitis™ software
@@ -228,7 +221,7 @@ This chapter describes debugging possibilities with the design flow
 
 6. Load the pdi/bin file:
 
-    ``device program \<path to .pdi file\``
+    ``device program <path to .pdi file>``
 
     >***Note*:** The PDI file can be found at
     `C:\edt\edt_versal\edt_versal.runs\impl_1\edt_versal_wrapper.pdi`. In Windows, path names should be enclosed in braces, for example, {`C:\path\to\file.pdi`} to prevent the backslash being interpreted as an escape character. This is not necessary for Linux, which uses forward slashes.

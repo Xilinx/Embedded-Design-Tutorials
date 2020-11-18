@@ -38,8 +38,7 @@
   ***Note*:** If the Vivado&reg; Design Suite is open already, jump to step 3.
 
 1. Open the Vivado project you created in [Chapter 2: Versal ACAP CIPS
-     and NoC (DDR) IP Core Configuration](#chapter-2) and [NoC (and
-     DDR) IP Core Configuration](#noc-and-ddr-ip-core-configuration).
+     and NoC (DDR) IP Core Configuration](#chapter-2).
 
     `C:/edt/edt_versal/edt_versal.xpr`
 
@@ -188,7 +187,7 @@ To validate the design and to generate the output product, follow
 
     A dialog box with the following message opens:
 
-    ![validation_message](./media/validation_message.png)
+    ![validation_message](./media/validation_message.PNG)
 
 3. Click **OK** to close the message.
 
@@ -373,24 +372,16 @@ For building the Linux images and incorporating the FreeRTOS elf into the image,
 
  This section explains how to  configure and build the Linux operating system for an Arm&reg; Cortex&trade;-A72 core- based APU on a Versal&trade; device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.
 
- This example needs a Linux host machine. Refer to the [PetaLinux Tools Documentation](https://www.xilinx.com/member/versal_tools_ea.html#embedded)
- [Reference Guide (UG1144)](https://www.xilinx.com/member/versal_tools_ea.html#embedded)
- for information on dependencies and installation procedure for the
- PetaLinux tool.
+ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documentation Reference Guide (UG1144)](https://www.xilinx.com/member/versal_tools_ea.html#embedded) for information on dependencies and installation procedure for the PetaLinux tool.
 
-<div class="important">
-<div class="title">
-Important
-</div>*This example uses the VCK190 PetaLinux BSP to create a
- PetaLinux project. Ensure that you have downloaded the respective BSP
- for PetaLinux (VCK190/VMK180).*
-
-- If you are using the VCK190 board, download the `xilinx-vck190-v2020.2-final.bsp` file from
-     <https://www.xilinx.com/member/vck190_headstart.html>.
-
-- If you are using the VMK180 board, download the VMK180 PetaLinux 2020.2 BSP (xilinx- vmk180-v2020.2-final.bsp) from <https://www.xilinx.com/member/vmk180_headstart.html>.
-
- </div>
+>**Important:** *This example uses the VCK190 PetaLinux BSP to create a
+> PetaLinux project. Ensure that you have downloaded the respective BSP
+> for PetaLinux (VCK190/VMK180).*
+>
+>- If you are using the VCK190 board, download the `xilinx-vck190-v2020.2-final.bsp` file from
+>    <https://www.xilinx.com/member/vck190_headstart.html>.
+>
+> - If you are using the VMK180 board, download the VMK180 PetaLinux 2020.2 BSP (xilinx- vmk180-v2020.2-final.bsp) > from <https://www.xilinx.com/member/vmk180_headstart.html>.
 
 1. Copy the respective board's PetaLinux BSP to the current directory.
 
@@ -406,8 +397,7 @@ Important
 4. Copy the hardware platform project XSA to the Linux host machine.
 
     >***Note*:** For the VMK180 board, use the XSA file which you generated in
-    the [Design Example: Using AXI](#design-example-using-axi-gpio)
-    [GPIO](#design-example-using-axi-gpio) section.
+    the [Design Example: Using AXI GPIO](#design-example-using-axi-gpio)
 
 5. Reconfigure the BSP using the following commands.
 
@@ -477,5 +467,4 @@ Important
 
     This creates a `BOOT.BIN` image file in the `<petalinux-project>/images/linux/` directory.
 
->***Note*:** To run the images using SD boot mode, see [Boot Sequence
- for SD-Boot Mode](#boot-sequence-for-sd-boot-mode).
+>***Note*:** To run the images using SD boot mode, see [Boot Sequence for SD-Boot Mode](./4-boot-and-config.md#boot-sequence-for-sd-boot-mode).

@@ -688,16 +688,13 @@ application linker script for the application project helloworld_r5.
 ### Configuring the NoC IP Core in an Existing Project
 
  For this example, launch the Vivado&reg; Design Suite and project with
- basic CIPS configuration done as shown in [Example Project: Creating a
- New Embedded Project with the Versal ACAP](#example-project-creating-a-new-embedded-project-with-the-versal-acap).
+ basic CIPS configuration done as shown in [Example Project: Creating a New Embedded Project with the Versal ACAP](./2-cips-noc-ip-config.md#creating-a-new-embedded-project-with-the-versal-acap).
 
 #### Configuring Your Design
 
 To configure your design, follow these steps:
 
-1. Open the design created in [Example Project: Creating a New Embedded
-     Project with the Versal
-     ACAP](#example-project-creating-a-new-embedded-project-with-the-versal-acap),
+1. Open the design created in [Example Project: Creating a New Embedded Project with the Versal ACAP](./2-cips-noc-ip-config.md#creating-a-new-embedded-project-with-the-versal-acap),
      `edt_versal.xpr`.
 
 2. Open the block design `edt_versal.bd`.
@@ -731,9 +728,7 @@ To validate the design and generate the output, follow these steps:
      **Validate Design**. Alternatively, you can press the **F6** key.
      A dialog box with the following message opens:
 
-    ```
-    Validation successful. There are no errors or critical warnings in this design.
-    ```
+    ![validation-message](media/validation_message.PNG)
 
 2. Click **OK** to close the message.
 
@@ -840,52 +835,36 @@ Follow these steps to generate a device image for the design.
  hello world software application from Arm Cortex-A72 and Arm
  Cortex-R5F on DDR memory in the Xilinx Vitis software platform.
 
- You will create a new Vitis project, similar to the one in [Example Project: Bare-metal Hello World Project with APU on OCM and RPU on TCM](#example-project-bare-metal-hello-world-project-with-apu-on-ocm-and-rpu-on-tcm), except that it will use the default linker
+ You will create a new Vitis project, similar to the one in [Running a Bare-Metal Hello World Application](#running-a-bare-metal-hello-world-application), except that it will use the default linker
  scripts, which will reference the DDR memory.
 
 1. Manage board settings, make cable connections, and connect to the
      board through your system and launch the Vitis software platform
-     as discussed in steps 1 through 7 in [Example Project: Bare-metal Hello World Project with APU on OCM and RPU on TCM](#example-project-bare-metal-hello-world-project-with-apu-on-ocm-and-rpu-on-tcm)
-     .
+     as discussed in steps 1 through 7 in [Running a Bare-Metal Hello World Application](#running-a-bare-metal-hello-world-application).
 
     >***Note*:** A new Vitis workspace needs to be created for this. Do not
-    use the workspace created in [Example Project: Bare-metal Hello World Project with APU on OCM and RPU on TCM](#example-project-bare-metal-hello-world-project-with-apu-on-ocm-and-rpu-on-tcm).
+    use the workspace created in [Running a Bare-Metal Hello World Application](#running-a-bare-metal-hello-world-application).
 
 2. Create a bare-metal Hello World system project with application
      running on Arm Cortex-A72 and modify its source code as discussed
-     in steps 1 through 3 of [Creating a Hello World Application for
-     the Arm Cortex-A72 on
-     OCM](#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm)
-     and steps 1 through 3 of [Modifying the helloworld_a72 Application
-     Source
-     Code](#modifying-the-helloworld_a72-application-source-code).
+     in steps 1 through 3 of [Creating a Hello World Application for the Arm Cortex-A72 on OCM](#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm)
+     and steps 1 through 3 of [Modifying the helloworld_a72 Application Source Code](#modifying-the-helloworld_a72-application-source-code).
 
 3. Right-click **helloworld \_system** and select **Build Project** or click ![](./media/image29.png) to generate the project elf files within the Debug folder of the application project.
 
 4. Create an additional RPU domain for your platform (created in
-     Step 2) as discussed in [Adding a New RPU Domain to the Platform
-     Project](#adding-a-new-rpu-domain-to-the-platform-project).
+     Step 2) as discussed in [Adding a New RPU Domain to the Platform Project](#adding-a-new-rpu-domain-to-the-platform-project).
 
 5. Create a bare-metal Hello World application running on Arm
      Cortex-R5F within the existing system project (built in Step 2)
      and modify its source code as discussed in steps 1 through 3 of
-     [Creating the Standalone Application Project for the Arm
-     Cortex-R5F](#creating-the-standalone-application-project-for-the-arm-cortex-r5f)
-     and steps 1 through 3 of [Modifying the helloworld_r5 Application
-     Source
-     Code](#modifying-the-helloworld_r5-application-source-code).
+     [Creating the Standalone Application Project for the Arm Cortex-R5F](#creating-the-standalone-application-project-for-the-arm-cortex-r5f)
+     and steps 1 through 3 of [Modifying the helloworld_r5 Application Source Code](#modifying-the-helloworld_r5-application-source-code).
 
 6. Right-click **helloworld \_system** and select Build Project or
      click ![](./media/image29.png) to generate the project elf files
      within the Debug folder of the application project.
 
- Refer to [Running Applications in the JTAG Mode using the System
- Debugger in the
- Vitis](#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform)
- [Software
- Platform](#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform)
- for running the applications built above in JTAG mode using system
- debugger in the Vitis software platform and to [Generating Boot Image
- for Standalone
- Application](#generating-boot-image-for-standalone-application) for
+ Refer to [Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform](#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform) for running the applications built above in JTAG mode using system
+ debugger in the Vitis software platform and to [Generating Boot Image for Standalone Application](#generating-boot-image-for-standalone-application) for
  generating boot images for standalone applications.
