@@ -7,7 +7,7 @@
 
   </tr>
   <tr>
-    <td width="17%" align="center"><a href="../docs/readme.md">1. Introduction</a></td>
+    <td width="17%" align="center"><a href="../README.md">1. Introduction</a></td>
     <td width="16%" align="center"><a href="2-getting-started.md">2. Getting Started</a></td>
     <td width="17%" align="center"><a href="3-system-configuration.md">3. Zynq UltraScale+ MPSoC System Configuration</a></td>
     <td width="17%" align="center"><a href="4-build-sw-for-ps-subsystems.md">4. Build Software for PS Subsystems</a></td>
@@ -989,7 +989,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
 4. Start a terminal session, using Tera Term or Minicom depending on
      the host machine being used, as well as the COM port and baud rate
-     for your system, as shown in Figure 5-31.
+     for your system.
 
 5. Power ON the board.
 
@@ -1263,8 +1263,6 @@ The following are device level decisions affecting secure boot:
  of the primary private/ public key pair is to authenticate the
  secondary private/public key pair. The function of the secondary key
  is to sign/verify partitions.
-
- *Figure 4:* **Zynq UltraScale+ RSA Authentication**
 
 ![](./media/zynqus-rsa-auth.png)
 
