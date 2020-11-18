@@ -271,15 +271,11 @@ following figure.
 
     ![](./media/image110.png)
 
-14. You can also enable the **Auto refresh on exec** and **Auto refresh
-    on suspend** options to get the refreshed process data while
-    debugging the current application.
-
-15. Click **OK**.
+14. Click **OK**.
 
     The Symbol File window closes.
 
-16. Click **Continue** and then click **Save** for saving the
+15. Click **Continue** and then click **Save** for saving the
     configuration changes. The Debug view opens, as shown in the
     following figure.
 
@@ -302,7 +298,7 @@ following figure.
 
     ![](./media/image112.jpeg)
 
-17. Set up the Path Map.
+16. Set up the Path Map.
 
     a.  Click the **Path Map** tab.
 
@@ -321,7 +317,7 @@ following figure.
 
         ![](./media/image113.jpeg)
 
-18. Debug a Linux Process or thread.
+17. Debug a Linux Process or thread.
 
 As shown in Debugging Linux Processes and Threads Using OS Aware
 Debug](#debugging-linux-processes-and-threads-using-os-aware-debug) ,
