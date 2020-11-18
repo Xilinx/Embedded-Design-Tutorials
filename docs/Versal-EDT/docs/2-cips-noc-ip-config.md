@@ -184,7 +184,7 @@ preset enables those peripherals on the CIPS that have board connections to thei
     Alternatively, you can press the **F6** key. A message dialog box
     opens as shown below:
 
-    ![validation_message](./media/validation_message.png)
+    ![validation_message](media/validation_message.png)
 
 2. In the Block Design view, click the **Sources** tab.
 
