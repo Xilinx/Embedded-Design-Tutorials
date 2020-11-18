@@ -39,18 +39,18 @@
      processors. This chapter is an introduction to the hardware and
      software tools using a simple design as the example.
 
-- **[Debugging Using the Vitis Software Platform](3-debugging.md):** Introduces debugging features of the
+- **[Debugging Using the Vitis Software Platform](../Versal-EDT/docs/3-debugging.md):** Introduces debugging features of the
      Xilinx Vitis software platform. This chapter uses the previous
      design and runs the software on bare metal (without an OS) to show
      the debugging features of the Vitis IDE. This chapter also lists
      debug configurations for Versal ACAP.
 
-- **[Boot and Configuration](4-boot-and-config.md):** Shows
+- **[Boot and Configuration](../Versal-EDT/docs/4-boot-and-config.md):** Shows
      integration of components to configure and create boot images for
      Versal ACAP. The purpose of this chapter is to understand how to
      integrate and load boot loaders.
 
-- **[System Design Example using Scalar Engine and Adaptable Engine](5-system-design-example.md):** Describes building a system on
+- **[System Design Example using Scalar Engine and Adaptable Engine](../Versal-EDT/docs/5-system-design-example.md):** Describes building a system on
      Versal ACAP using available tools and supported software blocks.
      This chapter demonstrates how to use the Vivado tool to create an
      embedded design using PL AXI GPIO. It also demonstrates the steps
@@ -59,5 +59,5 @@
 
  This design tutorial requires use of a number of files provided by
  Xilinx. These are contained in a ZIP file that can be downloaded from
- the Xilinx web site. (See [Getting Started](1-getting-started.md)). The tutorial assumes the contents of
+ the Xilinx web site. (See [Getting Started](../Versal-EDT/docs/1-getting-started.md)). The tutorial assumes the contents of
  the ZIP file are extracted to `C:\edt`.
