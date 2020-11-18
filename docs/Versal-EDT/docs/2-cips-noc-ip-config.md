@@ -169,7 +169,7 @@ preset enables those peripherals on the CIPS that have board connections to thei
 
     >***Notes*:** Block Automation is not explicitly run. It is disabled when the Board interface is changed to cips fixed io from Custom.
 
-    ![](media/Recustomize-IP.png)
+    ![](./media/Recustomize-IP.PNG)
 
 6. Click **OK** to close the CIPS GUI.
 
@@ -184,7 +184,7 @@ preset enables those peripherals on the CIPS that have board connections to thei
     Alternatively, you can press the **F6** key. A message dialog box
     opens as shown below:
 
-    ![validation_message](media/validation_message.png)
+    ![validation_message](./media/validation_message.PNG)
 
 2. In the Block Design view, click the **Sources** tab.
 
