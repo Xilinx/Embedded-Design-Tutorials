@@ -7,7 +7,7 @@
 
   </tr>
   <tr>
-    <td width="33%" align="center"><a href="../readme.md">1. Introduction</a></td>
+    <td width="33%" align="center"><a href="../README.md">1. Introduction</a></td>
     <td width="33%" align="center">2. Using the Zynq SoC Processing System</td>
     <td width="33%" align="center"><a href="3-using-gp-port-zynq.md">3. Using the GP Port in Zynq Devices</a></td>
 </tr>
