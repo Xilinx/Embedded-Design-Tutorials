@@ -116,13 +116,6 @@
 
     ![](./media/image51.jpeg)
 
-    <div class="note">
-    <div class="title">
-    Note
-    </div>
-    To run the images using SD boot mode, see [Boot Sequence for SD-Boot Mode](#boot-sequence-for-sdboot-mode).
-    </div>
-
 ## Boot Sequence for SD-Boot Mode
 
  The following steps demonstrate the boot sequence for the SD-boot
