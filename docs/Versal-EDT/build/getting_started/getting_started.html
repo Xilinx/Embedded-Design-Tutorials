@@ -348,7 +348,7 @@
 			
 			<p class="caption"><span class="caption-text">This Page</span></p>
 				<ul class="current">
-				  <li class="toctree-l1"><a href="../_sources/debugging/README.md.txt"
+				  <li class="toctree-l1"><a href="../_sources/getting_started/getting_started.md.txt"
 						rel="nofollow">Show Source</a></li>						
 				</ul>
           
@@ -394,13 +394,13 @@
     
       <li><a href="../README.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Debugging Using the Vitis Software Platform</li>
+      <li>Getting Started</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/debugging/README.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/getting_started/getting_started.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -413,321 +413,114 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <ul class="simple">
-<li><p><a class="reference external" href="#debugging-using-the-vitis-software-platform">Debugging Using the Vitis Software Platform</a></p>
-<ul>
-<li><p><a class="reference external" href="#xilinx-system-debugger">Xilinx System Debugger</a></p></li>
-<li><p><a class="reference external" href="#debugging-software-using-the-vitis-software-platform">Debugging Software Using the Vitis Software Platform</a></p></li>
-<li><p><a class="reference external" href="#debugging-using-xsct">Debugging Using XSCT</a></p>
-<ul>
-<li><p><a class="reference external" href="#setting-up-target">Setting Up Target</a></p></li>
-<li><p><a class="reference external" href="#loading-the-application-using-xsct">Loading the Application Using XSCT</a></p></li>
-<li><p><a class="reference external" href="#serial-terminal-configuration">Serial Terminal Configuration</a></p></li>
-<li><p><a class="reference external" href="#running-and-debugging-application-using-xsct">Running and Debugging Application Using XSCT</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<div class="section" id="debugging-using-the-vitis-software-platform">
-<h1>Debugging Using the Vitis Software Platform<a class="headerlink" href="#debugging-using-the-vitis-software-platform" title="Permalink to this headline">¶</a></h1>
-<p>This chapter describes debugging possibilities with the design flow
-you have already been working with. The first option is debugging
-using the Xilinx® Vitis™ software platform.</p>
-<p>The Vitis software platform debugger provides the following debug
-capabilities:</p>
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Ensure that the required tools are installed properly and your environments match the requirements.</p>
+<div class="section" id="hardware-requirements">
+<h2>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial targets the Versal ACAP VCK190 and VMK 180 evaluation boards.
+The examples in this tutorial were tested using the VCK190 ES1
+board. To use this guide, you need the following hardware items, which
+are included with the evaluation board:</p>
 <ul class="simple">
-<li><p>Supports debugging of programs on Arm® Cortex™-A72, Arm
-Cortex-R5F, and MicroBlaze™ processor architectures
-(heterogeneous multi-processor hardware system debugging).</p></li>
-<li><p>Supports debugging of programs on hardware boards.</p></li>
-<li><p>Supports debugging on remote hardware systems.</p></li>
-<li><p>Provides a feature-rich IDE to debug programs.</p></li>
-<li><p>Provides a tool command language (Tcl) interface for running test
-scripts and automation.</p></li>
+<li><p>VCK 190/ VMK 180 ES1 board</p></li>
+<li><p>AC power adapter (12 VDC)</p></li>
+<li><p>USB Type-A to USB Micro cable (for UART communications)</p></li>
+<li><p>USB Micro cable for programming and debugging via USB-Micro JTAG connection</p></li>
+<li><p>SD-MMC flash card for Linux booting</p></li>
+<li><p>QSPI daughter card X_EBM-01, REV_A01</p></li>
+<li><p>OSPI daughter card X-EBM-03 REV_A02</p></li>
 </ul>
-<p>The Vitis software platform debugger enables you to see what is
-happening to a program while it executes. You can set breakpoints or
-watch points to stop the processor, step through program execution,
-view the program variables and stack, and view the contents of the
-memory in the system.</p>
-<p>The Vitis software platform supports debugging through Xilinx system
-debugger.</p>
-<div class="section" id="xilinx-system-debugger">
-<h2>Xilinx System Debugger<a class="headerlink" href="#xilinx-system-debugger" title="Permalink to this headline">¶</a></h2>
-<p>The Xilinx® Vitis™ software platform debugger enables you to step
-through your code line by line. You can set breakpoints or watchpoints
-to stop the processor, step through program execution, view the
-program variables and stack, and view the contents of the memory in
-the system.</p>
-<p>The debugger supports debugging through Single Application Debug and
-GNU Debugger (GDB). The Xilinx customized system debugger is derived
-from open-source tools and is integrated with the Vitis software
-platform.</p>
-<p>The Xilinx system debugger uses the Xilinx hw_server as the underlying
-debug engine. The Vitis software platform translates each user
-interface action into a sequence of target communication framework
-(TCF) commands. It then processes the output from System Debugger to
-display the current state of the program being debugged. It
-communicates to the processor on the hardware using Xilinx hw_server.
-The debug workflow is described in the following figure.</p>
-<p><em>Figure 1:</em> <strong>System Debugger Flow</strong></p>
-<p><img alt="../_images/quz1567060977342_LowRes.png" src="../_images/quz1567060977342_LowRes.png" /></p>
-<p>The debug workflow is made up of the following components.</p>
+</div>
+<div class="section" id="installation-requirements">
+<h2>Installation Requirements<a class="headerlink" href="#installation-requirements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vitis-integrated-design-environment-and-vivado-design-suite">
+<h3>Vitis Integrated Design Environment and Vivado Design Suite<a class="headerlink" href="#vitis-integrated-design-environment-and-vivado-design-suite" title="Permalink to this headline">¶</a></h3>
+<p>Ensure that you have the Vitis 2020.2 software development platform
+installed. The Vitis IDE is a Xilinx unified tool which comes with all
+the hardware and software as a package. If you install the Vitis IDE,
+you will automatically get both the Vivado Design Suite and the Vitis
+IDE. You do not have to make any extra selections in the installer.</p>
+<blockquote>
+<div><p><strong><em>Note</em>:</strong> Visit <a class="reference external" href="https://www.xilinx.com/support/download.html">https://www.xilinx.com/support/download.html</a> to
+confirm that you have the latest tools version.</p>
+</div></blockquote>
+<p>For more information on installing the Vivado Design Suite, refer to
+the <em>Vitis Unified Software Platform Documentation: Embedded Software
+Development</em>
+(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1400-vitis-embedded.pdf">UG1400</a>).</p>
+</div>
+<div class="section" id="petalinux-tools">
+<h3>PetaLinux Tools<a class="headerlink" href="#petalinux-tools" title="Permalink to this headline">¶</a></h3>
+<p>Install the PetaLinux tools to run through the Linux portion of this
+tutorial. PetaLinux tools run under the Linux host system running one
+of the following:</p>
 <ul class="simple">
-<li><p><strong>Executable ELF File:</strong> To debug your application, you must use an
-elf file compiled for debugging. The debug elf file contains
-additional debug information for the debugger to make direct
-associations between the source code and the binaries generated
-from that original source. To manage the build configurations,
-right-click the software application and select <strong>Build
-Configurations → Manage</strong>.</p></li>
-<li><p><strong>Debug Configuration:</strong> To launch the debug session, you must
-create a debug configuration in the Vitis software platform. This
-configuration captures options required to start a debug session,
-including the executable name, processor target to debug, and
-other information. To create a debug configuration, right-click
-your software application and select <strong>Debug As→ Debug
-Configurations</strong>.</p></li>
-<li><p><strong>The Vitis Software Platform Debug Perspective:</strong> Using the Debug
-perspective, you can manage the debugging or running of a program
-in the Workbench. You can control the execution of your program by
-setting breakpoints, suspending launched programs, stepping
-through your code and examining the contents of variables. To view
-the <strong>Debug</strong> perspective select <strong>Window→ Open Perspective →
-Debug</strong>.</p></li>
+<li><p>Red Hat Enterprise Workstation/Server 7.4, 7.5, 7.6, 7.7, 7.8 (64-bit)</p></li>
+<li><p>CentOS Workstation/Server 7.4, 7.5, 7.6, 7.7, 7.8 (64-bit)</p></li>
+<li><p>Ubuntu Linux Workstation/Server 16.04.5, 16.04.6, 18.04.1, 18.04.02, 18.04.3, 18.04.4 (64-bit)</p></li>
 </ul>
-<p>You can repeat the cycle of modifying the code, building the
-executable, and debugging the program in the Vitis software platform.</p>
-<blockquote>
-<div><p><strong><em>Note</em>:</strong> If you edit the source after compiling, it changes the
-line numbering as the debug information is linked directly to the
-source. Similarly, debugging optimized binaries can also cause
-unexpected jumps in the execution trace.</p>
-</div></blockquote>
+<p>This can use either a dedicated Linux host system or a virtual machine
+running one of these Linux operating systems on your Windows
+development platform.</p>
+<p>When you install PetaLinux tools on your system of choice, you must do
+the following:</p>
+<ul class="simple">
+<li><p>Download PetaLinux 2020.2 software from the Xilinx website.</p></li>
+<li><p>Download the respective BSP as described in <a class="reference external" href="example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a>.</p></li>
+<li><p>Add common system packages and libraries to the workstation or
+virtual machine. For more information, see the Installation
+Requirements from the <em>PetaLinux Tools Documentation: Reference
+Guide</em>
+(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) and the <a class="reference external" href="https://xilinx.sharepoint.com/sites/XKB/SitePages/Articleviewer.aspx?ArticleNumber=75775">PetaLinux Release Notes 2020.2</a>.</p></li>
+</ul>
 </div>
-<div class="section" id="debugging-software-using-the-vitis-software-platform">
-<h2>Debugging Software Using the Vitis Software Platform<a class="headerlink" href="#debugging-software-using-the-vitis-software-platform" title="Permalink to this headline">¶</a></h2>
-<p>This example describes debugging a hello world application.</p>
-<p>If you did not create a hello world application on APU or RPU, follow
-the steps in
-<a class="reference external" href="#example-project-bare-metal-hello-world-project-with-apu-on-ocm-and-rpu-on-tcm">Example</a>
-<a class="reference external" href="#example-project-bare-metal-hello-world-project-with-apu-on-ocm-and-rpu-on-tcm">Project: Bare-metal Hello World Project with APU on OCM and RPU on
-TCM</a>
-or <a class="reference external" href="#example-project-creating-a-bare-metal-hello-world-system-project-with-apu-and-rpu-running-on-ddr-memory">Example
-Project:</a>
-<a class="reference external" href="#example-project-creating-a-bare-metal-hello-world-system-project-with-apu-and-rpu-running-on-ddr-memory">Creating a bare-metal Hello World System Project with APU and RPU
-Running on DDR
-Memory</a>.</p>
-<p>After you create the Hello World Application, work through the
-following example to debug the software using the Vitis™ software
-platform.</p>
-<ol>
-<li><p>Right-click the application and click <strong>Build Project</strong> to build the
-application.</p></li>
-<li><p>Right-click the application project and select <strong>Debug As→ Launch on
-Hardware (Single Application Debug)</strong> as shown in the following
-figure.</p>
-<p><img alt="../_images/image40.jpeg" src="../_images/image40.jpeg" /></p>
-<blockquote>
-<div><p><strong><em>Note</em>:</strong> The Debug perspective can also be launched by selecting
-<strong>Window→ Debug Perspective</strong>.</p>
-</div></blockquote>
-<p><img alt="../_images/image41.jpeg" src="../_images/image41.jpeg" /></p>
-<p><strong><em>Note</em>:</strong> The addresses shown on this page might slightly differ
-from the addresses shown on your system.</p>
-<p>The processor is currently sitting at the beginning of main() method
-with program execution suspended at line 0x00000000fffc0cf0. You can
-confirm this information in the Disassembly view, which shows the
-assembly-level program execution also suspended at 0x00000000fffc0cf0.</p>
-<p><strong><em>Note</em>:</strong> If the <strong>Disassembly</strong> view is not visible, select
-<strong>Window→ Disassembly</strong>.</p>
-</li>
-<li><p>The helloworld.c window also shows execution suspended at the first
-executable line of C code. Select the <strong>Registers</strong> view to
-confirm that the program counter, pc register, contains
-0x00000000fffc0cf0.</p>
-<blockquote>
-<div><p><strong><em>Note</em>:</strong> If the Registers view is not visible, select <strong>Window→
-Registers</strong>.</p>
-</div></blockquote>
-</li>
-<li><p>Double-click in the margin (to the left of the line numbers) of the
-helloworld.c window next to the line of code that reads
-printf(“Hello World from APU\n\r”);. This sets a breakpoint at
-the printf command. To confirm the breakpoint, review the
-Breakpoints view.</p>
-<blockquote>
-<div><p><strong><em>Note</em>:</strong> If the Breakpoints view is not visible, select <strong>Window →
-Breakpoints</strong>.</p>
-</div></blockquote>
-</li>
-<li><p>Select <strong>Run → Step Into</strong> to step into the init_platform() routine.
-Program execution suspends at location 0x00000000fffc0cf0. The
-call stack is now two levels deep.</p></li>
-<li><p>Select <strong>Run → Resume</strong> to continue running the program to the
-breakpoint.</p>
-<p>Program execution stops at the line of code that includes the printf
-command. The <strong>Disassembly</strong> and <strong>Debug</strong> windows both show program
-execution stopped at 0x00000000fffc0cf4.</p>
-<blockquote>
-<div><p><strong><em>Note</em>:</strong> The execution address in your debugging window might
-differ if you modified the helloworld source code in any way.</p>
-</div></blockquote>
-</li>
-<li><p>Select <strong>Run → Resume</strong> to run the program to conclusion.</p>
-<p>When the program completes, the <strong>Debug</strong> window shows that the
-program is suspended in a routine called <strong>exit</strong>. This happens when
-you are running under control of the debugger.</p>
-</li>
-<li><p>Re-run your code several times. Experiment with single-stepping,
-examining memory, breakpoints, modifying code, and adding print
-statements. Try adding and moving views.</p>
-<blockquote>
-<div><p><strong>TIP:</strong> You can use the Vitis software platform debugging shortcuts
-for step-into (F5), step-return (F7), step-over (F6), and resume (F8).
-Alternatively, you can use the toolbar buttons.</p>
-</div></blockquote>
-</li>
-</ol>
 </div>
-<div class="section" id="debugging-using-xsct">
-<h2>Debugging Using XSCT<a class="headerlink" href="#debugging-using-xsct" title="Permalink to this headline">¶</a></h2>
-<p>You can debug in the command line mode using XSDB, which is
-encapsulated as a part of XSCT. This example describes debugging the
-bare-metal application helloworld_r5 using XSCT.</p>
-<p>The following steps indicate how to load a bare-metal application on
-Arm Cortex-R5F using XSCT.</p>
-<p>This example is just to demonstrate the command line debugging
-possibility using XSDB/XSCT. Based on the requirement, you can choose
-to debug the code using either the system debugger graphical interface
-or the command line debugger in XSCT. All XSCT commands are scriptable
-and this applies to the commands covered in this example.</p>
-<div class="section" id="setting-up-target">
-<h3>Setting Up Target<a class="headerlink" href="#setting-up-target" title="Permalink to this headline">¶</a></h3>
-<ol>
-<li><p>Connect a USB cable between USB-JTAG connector on the target and the
-USB port on the host machine.</p></li>
-<li><p>Set the board in JTAG Boot mode,
-where SW1 is set as shown in following figure.</p>
-<p><img alt="../_images/image43.jpeg" src="../_images/image43.jpeg" /></p>
-</li>
-<li><p>Power on the board using the power switch SW13.</p></li>
-<li><p>Click <strong>XSCT Console</strong> button in the Vitis software platform toolbar
-to open the XSCT Console view. Alternatively, you can open the
-XSCT Console view by clicking <strong>Xilinx → XSCT Console</strong>.</p>
-<p><img alt="../_images/image44.jpeg" src="../_images/image44.jpeg" /></p>
-</li>
-<li><p>In the <strong>XSCT Console</strong> view, connect to the target over JTAG using
-the connect command:</p>
-<p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">connect</span></code></p>
-<p>The connect command returns the channel ID of the connection.</p>
-</li>
-<li><p>Load the pdi/bin file:</p>
-<p><code class="docutils literal notranslate"><span class="pre">device</span> <span class="pre">program</span> <span class="pre">\&lt;path</span> <span class="pre">to</span> <span class="pre">.pdi</span> <span class="pre">file\</span></code></p>
-<blockquote>
-<div><p><strong><em>Note</em>:</strong> The PDI file can be found at
-<code class="docutils literal notranslate"><span class="pre">C:\edt\edt_versal\edt_versal.runs\impl_1\edt_versal_wrapper.pdi</span></code>. In Windows, path names should be enclosed in braces, for example, {<code class="docutils literal notranslate"><span class="pre">C:\path\to\file.pdi</span></code>} to prevent the backslash being interpreted as an escape character. This is not necessary for Linux, which uses forward slashes.</p>
-</div></blockquote>
-</li>
-</ol>
-</div>
-<div class="section" id="loading-the-application-using-xsct">
-<h3>Loading the Application Using XSCT<a class="headerlink" href="#loading-the-application-using-xsct" title="Permalink to this headline">¶</a></h3>
-<p>Following are the steps to load the application using XSCT.</p>
-<ol>
-<li><p>Run <code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">targets</span></code>.</p>
-<p>The targets command lists the available targets and allows you to
-select a target through its ID. The targets are assigned IDs as they
-are discovered on the JTAG chain, so the target IDs can change from
-session to session.</p>
-<blockquote>
-<div><p><strong><em>Note</em>:</strong> For non-interactive usage such as scripting, the -filter
-option can be used to select a target instead of selecting the target
-through its ID.</p>
-</div></blockquote>
-<p>The targets are listed as shown in the following figure.</p>
-<p><img alt="../_images/image45.png" src="../_images/image45.png" /></p>
-</li>
-<li><p>Now download the hello_world_r5 application on the Arm® Cortex-R5F
-Core 0.</p></li>
-<li><p>Select RPU Cortex™-R5F Core 0 target ID.</p>
-<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">xsct</span><span class="o">%</span> targets <span class="mi">3</span>
-<span class="nv">xsct</span><span class="o">%</span> rst <span class="o">-</span>processor
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>8 GB RAM (recommended minimum for Xilinx tools)</p></li>
+<li><p>2 GHz CPU clock or equivalent (minimum of eight cores)</p></li>
+<li><p>100 GB free HDD space</p></li>
+</ul>
+<div class="section" id="extracting-the-petalinux-package">
+<h3>Extracting the PetaLinux Package<a class="headerlink" href="#extracting-the-petalinux-package" title="Permalink to this headline">¶</a></h3>
+<p>PetaLinux tools installation is straight-forward. Without any options,
+the PetaLinux tools are installed into the current working directory.
+Alternatively, an installation path may be specified.</p>
+<p>For example, to install PetaLinux tools under <code class="docutils literal notranslate"><span class="pre">/opt/pkg/petalinux/&lt;petalinux-version&gt;</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p /opt/pkg/petalinux/&lt;petalinux-version&gt;
+$ ./petalinux-v&lt;petalinux-version&gt;-final-installer.run --dir /opt/pkg/petalinux/&lt;petalinux-version&gt;
 </pre></div>
 </div>
-<p>The command rst -processor clears the reset on an individual processor
-core. This step is important because when the Versal™ ACAP boots up
-the JTAG boot mode, all the Cortex- A72 and Cortex-R5F cores are held
-in reset. You must clear the resets on each core, before debugging on
-these cores. The rst command in XSDB can be used to clear the resets.</p>
 <blockquote>
-<div><p><strong><em>Note</em>:</strong> The command rst -cores clears resets on all the processor
-cores in the group (such as APU or RPU) of which the current target is
-a child. For example, when Cortex-A72 #0 is the current target, rst
--cores clears resets on all the Cortex-A72 cores in APU.</p>
+<div><p><strong><em>Note</em>:</strong> Do not change the install directory permissions to CHMOD 775 as it might cause BitBake errors.
+This installs the PetaLinux tool into the <code class="docutils literal notranslate"><span class="pre">/opt/pkg/petalinux/&lt;petalinux-version&gt;</span></code> directory.</p>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">dow</span> <span class="pre">{C:\edt\edt_vck190\helloworld_r5\Debug\helloworld_r5.elf}</span></code></p>
-<p>or</p>
-<p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">dow</span> <span class="pre">C:/edt/edt_vck190/helloworld_r5/Debug/helloworld_r5.elf</span></code></p>
-<p>At this point, you can see the sections from the elf file downloaded
-sequentially. The XSCT prompt can be seen after a successful download.
-Now, configure a serial terminal (Tera Term, Mini com, or the Vitis
-software platform Serial Terminal interface for UART-0 USB-serial
-connection).</p>
-</li>
-</ol>
+<p>For more information, see <em>PetaLinux Tools Documentation: Reference Guide</em>
+(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf">UG1144</a>).</p>
+<div class="section" id="software-licensing">
+<h4>Software Licensing<a class="headerlink" href="#software-licensing" title="Permalink to this headline">¶</a></h4>
+<p>Xilinx software uses FLEXnet licensing. When the software is first
+run, it performs a license verification process. If the license
+verification does not find a valid license, the license wizard guides
+you through the process of obtaining a license and ensuring that the
+license can be used with the tools installed. If you do not need the
+full version of the software, you can use an evaluation license. For
+installation instructions and information, see the <em>Vivado Design
+Suite User Guide: Release Notes, Installation, and Licensing</em>
+(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bt%3Dvivado%2Binstall%2Bguide">UG973</a>).</p>
 </div>
-<div class="section" id="serial-terminal-configuration">
-<h3>Serial Terminal Configuration<a class="headerlink" href="#serial-terminal-configuration" title="Permalink to this headline">¶</a></h3>
-<ol>
-<li><p>Start a terminal session, using Tera Term or Mini com depending on
-the host machine being used, and the COM port and baud rate as
-shown in following figure.</p>
-<p><img alt="../_images/image461.png" src="../_images/image461.png" /></p>
-</li>
-<li><p>For port settings, verify the COM port in the device manager. There
-are three USB UART interfaces exposed by the VCK190 board. Select
-the COM port associated with the interface with the lowest number.
-So in this case, for UART-0, select the com-port with interface-0.</p></li>
+<div class="section" id="tutorial-design-files">
+<h4>Tutorial Design Files<a class="headerlink" href="#tutorial-design-files" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Download the <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ctdoc?cid=12516610-29d7-4627-bd77-dbfaa3a50ef0%3Bd=ug1305-versal-embedded-tutorial.zip">reference design files</a> from the Xilinx website.</p></li>
+<li><p>Extract the ZIP file contents into any write-accessible location.</p></li>
 </ol>
+<p>To view the contents of the ZIP file, download and extract the
+contents from the ZIP file to <code class="docutils literal notranslate"><span class="pre">C:\edt</span></code>. The design files contain the
+XSA files, source code and prebuilt images for all the sections.</p>
 </div>
-<div class="section" id="running-and-debugging-application-using-xsct">
-<h3>Running and Debugging Application Using XSCT<a class="headerlink" href="#running-and-debugging-application-using-xsct" title="Permalink to this headline">¶</a></h3>
-<ol>
-<li><p>Before you run the application, set a breakpoint at <code class="docutils literal notranslate"><span class="pre">main()</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">bpadd</span> <span class="pre">-addr</span> <span class="pre">&amp;main</span></code></p>
-<p>This command returns the breakpoint ID. You can verify the breakpoints planted using command bplist. For more details on breakpoints in XSCT, type <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">breakpoint</span></code> in XSCT.</p>
-</li>
-<li><p>Resume the processor core.</p>
-<p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">con</span></code></p>
-<p>The following message is displayed when the core hits the breakpoint.</p>
-<p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">Info:</span> <span class="pre">Cortex-R5</span> <span class="pre">\#0</span> <span class="pre">Stopped</span> <span class="pre">at</span> <span class="pre">0x10021C</span> <span class="pre">(Breakpoint)</span></code></p>
-</li>
-<li><p>At this point, you can view registers when the core is stopped.</p>
-<p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">rrd</span></code></p>
-</li>
-<li><p>View local variables.</p>
-<p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">locals</span></code></p>
-</li>
-<li><p>Step over a line of the source code and view the stack trace.</p>
-<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span>xsct% nxt
-Info: Cortex-R5 #0 Stopped at 0x100490 (Step)
-xsct% bt
-</pre></div>
-</div>
-<p>You can use the <code class="docutils literal notranslate"><span class="pre">help</span></code> command to find other options.</p>
-<p><img alt="../_images/image47.png" src="../_images/image47.png" />}</p>
-<p>You can use the <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">running</span></code> command to get a list of possible options
-for running or debugging an application using XSCT.</p>
-<p><img alt="../_images/image48.png" src="../_images/image48.png" /></p>
-</li>
-<li><p>You can now run the code.</p>
-<p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">con</span></code></p>
-<p>At this point, you can see the R5 application print messages on the
-UART-0 terminal.</p>
-</li>
-</ol>
 </div>
 </div>
 </div>

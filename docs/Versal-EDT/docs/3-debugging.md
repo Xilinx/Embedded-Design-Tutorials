@@ -190,7 +190,7 @@ This chapter describes debugging possibilities with the design flow
 
  You can debug in the command line mode using XSDB, which is
  encapsulated as a part of XSCT. This example describes debugging the
- bare-metal application helloworld_r5 using XSCT.
+ bare-metal application hello_world_r5 using XSCT.
 
  The following steps indicate how to load a bare-metal application on
  Arm Cortex-R5F using XSCT.

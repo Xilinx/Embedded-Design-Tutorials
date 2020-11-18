@@ -128,7 +128,8 @@ This chapter describes debugging possibilities with the design flow
     >***Note*:** The Debug perspective can also be launched by selecting
     **Window→ Debug Perspective**.
 
-    ![](./media/image41.jpeg)
+    ![](./media/image41.jpeg){width="6.089746281714786in"
+    height="4.216874453193351in"}
 
     ***Note*:** The addresses shown on this page might slightly differ
     from the addresses shown on your system.
@@ -190,7 +191,7 @@ This chapter describes debugging possibilities with the design flow
 
  You can debug in the command line mode using XSDB, which is
  encapsulated as a part of XSCT. This example describes debugging the
- bare-metal application helloworld_r5 using XSCT.
+ bare-metal application hello_world_r5 using XSCT.
 
  The following steps indicate how to load a bare-metal application on
  Arm Cortex-R5F using XSCT.

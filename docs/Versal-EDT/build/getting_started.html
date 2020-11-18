@@ -6,11 +6,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		<meta content="Vitis, tutorials, core, development" name="keywords" />
-<meta content="Learn how to develop accelerated applications using the Vitis core development kit." name="description" />
-<meta content="Document" name="xlnxdocumentclass" />
-<meta content="Tutorials" name="xlnxdocumenttype" />
-
+		
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -61,7 +57,8 @@
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting Started" href="getting_started.html" /> 
+    <link rel="next" title="Versal ACAP CIPS and NoC (DDR) IP Core Configuration" href="cips-noc-ip-config.html" />
+    <link rel="prev" title="Overview" href="README.html" /> 
 	</head>
 	<body>
 		<div class="xilinx-bs3"/>
@@ -299,7 +296,7 @@
           
 
           
-            <a href="#" class="icon icon-home" alt="Documentation Home"> Vitis™ Application Acceleration Development Flow Tutorials
+            <a href="README.html" class="icon icon-home" alt="Documentation Home"> Vitis™ Application Acceleration Development Flow Tutorials
           
 
           
@@ -335,8 +332,24 @@
             
             
               <p class="caption"><span class="caption-text">Getting Started Pathway</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-requirements">Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-requirements">Installation Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vitis-integrated-design-environment-and-vivado-design-suite">Vitis Integrated Design Environment and Vivado Design Suite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#petalinux-tools">PetaLinux Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extracting-the-petalinux-package">Extracting the PetaLinux Package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#software-licensing">Software Licensing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tutorial-design-files">Tutorial Design Files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="cips-noc-ip-config.html">Versal ACAP CIPS and NoC (DDR) IP Core Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging Using the Vitis Software Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot-and-config.html">Boot and Configuration</a></li>
@@ -353,7 +366,7 @@
 			
 			<p class="caption"><span class="caption-text">This Page</span></p>
 				<ul class="current">
-				  <li class="toctree-l1"><a href="_sources/README.rst.txt"
+				  <li class="toctree-l1"><a href="_sources/getting_started.md.txt"
 						rel="nofollow">Show Source</a></li>						
 				</ul>
           
@@ -368,7 +381,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Vitis™ Application Acceleration Development Flow Tutorials</a>
+          <a href="README.html">Vitis™ Application Acceleration Development Flow Tutorials</a>
         
       </nav>
 
@@ -397,15 +410,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="README.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Overview</li>
+      <li>Getting Started</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/README.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/getting_started.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -418,82 +431,114 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="getting-started-pathway">
-<span id="getting-started"></span><h2>Getting Started Pathway<a class="headerlink" href="#getting-started-pathway" title="Permalink to this headline">¶</a></h2>
-<p>Learn how to <a class="reference external" href="./vitis-getting-started/README.html">develop accelerated applications using the Vitis core development kit</a>.</p>
-<div class="toctree-wrapper compound">
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Ensure that the required tools are installed properly and your environments match the requirements.</p>
+<div class="section" id="hardware-requirements">
+<h2>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial targets the Versal ACAP VCK190 and VMK 180 evaluation boards.
+The examples in this tutorial were tested using the VCK190 ES1
+board. To use this guide, you need the following hardware items, which
+are included with the evaluation board:</p>
+<ul class="simple">
+<li><p>VCK 190/ VMK 180 ES1 board</p></li>
+<li><p>AC power adapter (12 VDC)</p></li>
+<li><p>USB Type-A to USB Micro cable (for UART communications)</p></li>
+<li><p>USB Micro cable for programming and debugging via USB-Micro JTAG connection</p></li>
+<li><p>SD-MMC flash card for Linux booting</p></li>
+<li><p>QSPI daughter card X_EBM-01, REV_A01</p></li>
+<li><p>OSPI daughter card X-EBM-03 REV_A02</p></li>
+</ul>
+</div>
+<div class="section" id="installation-requirements">
+<h2>Installation Requirements<a class="headerlink" href="#installation-requirements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vitis-integrated-design-environment-and-vivado-design-suite">
+<h3>Vitis Integrated Design Environment and Vivado Design Suite<a class="headerlink" href="#vitis-integrated-design-environment-and-vivado-design-suite" title="Permalink to this headline">¶</a></h3>
+<p>Ensure that you have the Vitis 2020.2 software development platform
+installed. The Vitis IDE is a Xilinx unified tool which comes with all
+the hardware and software as a package. If you install the Vitis IDE,
+you will automatically get both the Vivado Design Suite and the Vitis
+IDE. You do not have to make any extra selections in the installer.</p>
+<blockquote>
+<div><p><strong><em>Note</em>:</strong> Visit <a class="reference external" href="https://www.xilinx.com/support/download.html">https://www.xilinx.com/support/download.html</a> to
+confirm that you have the latest tools version.</p>
+</div></blockquote>
+<p>For more information on installing the Vivado Design Suite, refer to
+the <em>Vitis Unified Software Platform Documentation: Embedded Software
+Development</em>
+(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1400-vitis-embedded.pdf">UG1400</a>).</p>
+</div>
+<div class="section" id="petalinux-tools">
+<h3>PetaLinux Tools<a class="headerlink" href="#petalinux-tools" title="Permalink to this headline">¶</a></h3>
+<p>Install the PetaLinux tools to run through the Linux portion of this
+tutorial. PetaLinux tools run under the Linux host system running one
+of the following:</p>
+<ul class="simple">
+<li><p>Red Hat Enterprise Workstation/Server 7.4, 7.5, 7.6, 7.7, 7.8 (64-bit)</p></li>
+<li><p>CentOS Workstation/Server 7.4, 7.5, 7.6, 7.7, 7.8 (64-bit)</p></li>
+<li><p>Ubuntu Linux Workstation/Server 16.04.5, 16.04.6, 18.04.1, 18.04.02, 18.04.3, 18.04.4 (64-bit)</p></li>
+</ul>
+<p>This can use either a dedicated Linux host system or a virtual machine
+running one of these Linux operating systems on your Windows
+development platform.</p>
+<p>When you install PetaLinux tools on your system of choice, you must do
+the following:</p>
+<ul class="simple">
+<li><p>Download PetaLinux 2020.2 software from the Xilinx website.</p></li>
+<li><p>Download the respective BSP as described in <a class="reference external" href="example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a>.</p></li>
+<li><p>Add common system packages and libraries to the workstation or
+virtual machine. For more information, see the Installation
+Requirements from the <em>PetaLinux Tools Documentation: Reference
+Guide</em>
+(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) and the <a class="reference external" href="https://xilinx.sharepoint.com/sites/XKB/SitePages/Articleviewer.aspx?ArticleNumber=75775">PetaLinux Release Notes 2020.2</a>.</p></li>
+</ul>
 </div>
 </div>
-<div class="section" id="intermediate">
-<span id="id1"></span><h2>Intermediate<a class="headerlink" href="#intermediate" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-given docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 20%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Tutorial</p></th>
-<th class="head"><p>Kernel</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="./getting-started-rtl-kernels/README.html">Getting Started with RTL Kernels</a></p></td>
-<td><p>RTL</p></td>
-<td><p>This tutorial demonstrates how to use the Vitis core development kit to program an RTL kernel into an FPGA and build a Hardware Emulation using a common development flow.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="./vitis_hls_analysis/README.html">Vitis HLS Analysis and Optimization</a></p></td>
-<td><p>C</p></td>
-<td><p>This tutorial demonstrates how you can use the Vitis HLS tool GUI to build, analyze, and optimize a hardware kernel.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="./mixing-c-rtl-kernels/README.html">Mixing C and RTL</a></p></td>
-<td><p>C and RTL</p></td>
-<td><p>This tutorial demonstrates working with an application containing RTL and OpenCL kernels to familiarize yourself with the Vitis core development kit flow, along with various design analysis features.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="using-multiple-cu/README.html">Using Multiple Compute Units</a></p></td>
-<td><p>C and RTL</p></td>
-<td><p>This tutorial demonstrates the flexible kernel linking process to increase the number of kernel instances on an FPGA, which improves the parallelism in a combined host-kernel system.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="host-code-opt/README.html">Host Code Optimization</a></p></td>
-<td><p>C and RTL</p></td>
-<td><p>This tutorial demonstrates applying host code optimization techniques to your design.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="mult-ddr-banks/README.html">Using Multiple DDR Banks</a></p></td>
-<td><p>C and RTL</p></td>
-<td><p>This tutorial demonstrates how using multiple DDRs can improve data transfer between kernels and global memory.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="toctree-wrapper compound">
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>8 GB RAM (recommended minimum for Xilinx tools)</p></li>
+<li><p>2 GHz CPU clock or equivalent (minimum of eight cores)</p></li>
+<li><p>100 GB free HDD space</p></li>
+</ul>
+<div class="section" id="extracting-the-petalinux-package">
+<h3>Extracting the PetaLinux Package<a class="headerlink" href="#extracting-the-petalinux-package" title="Permalink to this headline">¶</a></h3>
+<p>PetaLinux tools installation is straight-forward. Without any options,
+the PetaLinux tools are installed into the current working directory.
+Alternatively, an installation path may be specified.</p>
+<p>For example, to install PetaLinux tools under <code class="docutils literal notranslate"><span class="pre">/opt/pkg/petalinux/&lt;petalinux-version&gt;</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p /opt/pkg/petalinux/&lt;petalinux-version&gt;
+$ ./petalinux-v&lt;petalinux-version&gt;-final-installer.run --dir /opt/pkg/petalinux/&lt;petalinux-version&gt;
+</pre></div>
 </div>
+<blockquote>
+<div><p><strong><em>Note</em>:</strong> Do not change the install directory permissions to CHMOD 775 as it might cause BitBake errors.
+This installs the PetaLinux tool into the <code class="docutils literal notranslate"><span class="pre">/opt/pkg/petalinux/&lt;petalinux-version&gt;</span></code> directory.</p>
+</div></blockquote>
+<p>For more information, see <em>PetaLinux Tools Documentation: Reference Guide</em>
+(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf">UG1144</a>).</p>
+<div class="section" id="software-licensing">
+<h4>Software Licensing<a class="headerlink" href="#software-licensing" title="Permalink to this headline">¶</a></h4>
+<p>Xilinx software uses FLEXnet licensing. When the software is first
+run, it performs a license verification process. If the license
+verification does not find a valid license, the license wizard guides
+you through the process of obtaining a license and ensuring that the
+license can be used with the tools installed. If you do not need the
+full version of the software, you can use an evaluation license. For
+installation instructions and information, see the <em>Vivado Design
+Suite User Guide: Release Notes, Installation, and Licensing</em>
+(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bt%3Dvivado%2Binstall%2Bguide">UG973</a>).</p>
 </div>
-<div class="section" id="advanced">
-<span id="id2"></span><h2>Advanced<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-given docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 20%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Tutorial</p></th>
-<th class="head"><p>Kernel</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="./controlling-vivado-impl/README.html">Controlling Vivado Implementation</a></p></td>
-<td><p>RTL</p></td>
-<td><p>This tutorial demonstrates how you can control the Vivado® tools flow when implementing your project.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="toctree-wrapper compound">
+<div class="section" id="tutorial-design-files">
+<h4>Tutorial Design Files<a class="headerlink" href="#tutorial-design-files" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Download the <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ctdoc?cid=12516610-29d7-4627-bd77-dbfaa3a50ef0%3Bd=ug1305-versal-embedded-tutorial.zip">reference design files</a> from the Xilinx website.</p></li>
+<li><p>Extract the ZIP file contents into any write-accessible location.</p></li>
+</ol>
+<p>To view the contents of the ZIP file, download and extract the
+contents from the ZIP file to <code class="docutils literal notranslate"><span class="pre">C:\edt</span></code>. The design files contain the
+XSA files, source code and prebuilt images for all the sections.</p>
 </div>
-<div class="toctree-wrapper compound" id="versions">
 </div>
 </div>
 </div>
@@ -514,8 +559,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="cips-noc-ip-config.html" class="btn btn-neutral float-right" title="Versal ACAP CIPS and NoC (DDR) IP Core Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="README.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

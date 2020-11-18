@@ -27,12 +27,12 @@ Learn how to `develop accelerated applications using the Vitis core development 
    :caption: Getting Started Pathway
    :hidden:
 
-   cips-noc-ip-config/README
-   debugging/README
-   boot-and-config/README
-   boot-and-config/README1
-   system-design-example/README
-   creating-plm/README
+   1-getting-started
+   2-cips-noc-ip-config
+   3-debugging
+   4-boot-and-config
+   5-system-design-example
+   6-creating-plm
       
    
 .. _Intermediate:

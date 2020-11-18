@@ -6,11 +6,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		<meta content="Vitis, tutorials, core, development" name="keywords" />
-<meta content="Learn how to develop accelerated applications using the Vitis core development kit." name="description" />
-<meta content="Document" name="xlnxdocumentclass" />
-<meta content="Tutorials" name="xlnxdocumenttype" />
-
+		
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -61,7 +57,7 @@
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting Started" href="getting_started.html" /> 
+    <link rel="prev" title="System Design Example using Scalar Engine and Adaptable Engine" href="system-design-example.html" /> 
 	</head>
 	<body>
 		<div class="xilinx-bs3"/>
@@ -299,7 +295,7 @@
           
 
           
-            <a href="#" class="icon icon-home" alt="Documentation Home"> Vitis™ Application Acceleration Development Flow Tutorials
+            <a href="README.html" class="icon icon-home" alt="Documentation Home"> Vitis™ Application Acceleration Development Flow Tutorials
           
 
           
@@ -335,13 +331,13 @@
             
             
               <p class="caption"><span class="caption-text">Getting Started Pathway</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cips-noc-ip-config.html">Versal ACAP CIPS and NoC (DDR) IP Core Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging Using the Vitis Software Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot-and-config.html">Boot and Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system-design-example.html">System Design Example using Scalar Engine and Adaptable Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="creating-plm.html">Appendix: Creating the PLM</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Appendix: Creating the PLM</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
@@ -353,7 +349,7 @@
 			
 			<p class="caption"><span class="caption-text">This Page</span></p>
 				<ul class="current">
-				  <li class="toctree-l1"><a href="_sources/README.rst.txt"
+				  <li class="toctree-l1"><a href="_sources/creating-plm.md.txt"
 						rel="nofollow">Show Source</a></li>						
 				</ul>
           
@@ -368,7 +364,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Vitis™ Application Acceleration Development Flow Tutorials</a>
+          <a href="README.html">Vitis™ Application Acceleration Development Flow Tutorials</a>
         
       </nav>
 
@@ -397,15 +393,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="README.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Overview</li>
+      <li>Appendix: Creating the PLM</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/README.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/creating-plm.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -418,84 +414,101 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="getting-started-pathway">
-<span id="getting-started"></span><h2>Getting Started Pathway<a class="headerlink" href="#getting-started-pathway" title="Permalink to this headline">¶</a></h2>
-<p>Learn how to <a class="reference external" href="./vitis-getting-started/README.html">develop accelerated applications using the Vitis core development kit</a>.</p>
-<div class="toctree-wrapper compound">
-</div>
-</div>
-<div class="section" id="intermediate">
-<span id="id1"></span><h2>Intermediate<a class="headerlink" href="#intermediate" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-given docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 20%" />
-<col style="width: 50%" />
-</colgroup>
+  <div class="section" id="appendix-creating-the-plm">
+<h1>Appendix: Creating the PLM<a class="headerlink" href="#appendix-creating-the-plm" title="Permalink to this headline">¶</a></h1>
+<p>Following are the steps to create a platform loader and manager (PLM)
+elf file in the Vitis™ software platform. In Versal™ devices, the PLM
+executes in the PMC, and is used to bootstrap the APU and RPU.</p>
+<ol>
+<li><p>Select <strong>File → New → Application Project</strong>. The New Application
+Project wizard opens.</p></li>
+<li><p>Use the following information in the table to make your selections
+in the wizard screens.</p>
+<p><em>Table 10:</em> <strong>System Property Settings</strong></p>
+</li>
+</ol>
+<table border="1" class="docutils">
 <thead>
-<tr class="row-odd"><th class="head"><p>Tutorial</p></th>
-<th class="head"><p>Kernel</p></th>
-<th class="head"><p>Description</p></th>
+<tr>
+<th>Wizard Screen</th>
+<th>System Properties</th>
+<th>Setting or Command to Use</th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="./getting-started-rtl-kernels/README.html">Getting Started with RTL Kernels</a></p></td>
-<td><p>RTL</p></td>
-<td><p>This tutorial demonstrates how to use the Vitis core development kit to program an RTL kernel into an FPGA and build a Hardware Emulation using a common development flow.</p></td>
+<tr>
+<td>Platform</td>
+<td>Create a new platform from hardware (XSA)</td>
+<td>Click the <strong>Browse</strong> button to add your XSA file.</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="./vitis_hls_analysis/README.html">Vitis HLS Analysis and Optimization</a></p></td>
-<td><p>C</p></td>
-<td><p>This tutorial demonstrates how you can use the Vitis HLS tool GUI to build, analyze, and optimize a hardware kernel.</p></td>
+<tr>
+<td></td>
+<td>Platform name</td>
+<td>plm_platform</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="./mixing-c-rtl-kernels/README.html">Mixing C and RTL</a></p></td>
-<td><p>C and RTL</p></td>
-<td><p>This tutorial demonstrates working with an application containing RTL and OpenCL kernels to familiarize yourself with the Vitis core development kit flow, along with various design analysis features.</p></td>
+<tr>
+<td>Application Project Details</td>
+<td>Application project name</td>
+<td>plm</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="using-multiple-cu/README.html">Using Multiple Compute Units</a></p></td>
-<td><p>C and RTL</p></td>
-<td><p>This tutorial demonstrates the flexible kernel linking process to increase the number of kernel instances on an FPGA, which improves the parallelism in a combined host-kernel system.</p></td>
+<tr>
+<td></td>
+<td>Select a system project</td>
+<td>+Create New</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="host-code-opt/README.html">Host Code Optimization</a></p></td>
-<td><p>C and RTL</p></td>
-<td><p>This tutorial demonstrates applying host code optimization techniques to your design.</p></td>
+<tr>
+<td></td>
+<td>System project name</td>
+<td>plm_system</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="mult-ddr-banks/README.html">Using Multiple DDR Banks</a></p></td>
-<td><p>C and RTL</p></td>
-<td><p>This tutorial demonstrates how using multiple DDRs can improve data transfer between kernels and global memory.</p></td>
+<tr>
+<td></td>
+<td>Target processor</td>
+<td>psv_pmc_0</td>
+</tr>
+<tr>
+<td>Domain</td>
+<td>Select a domain</td>
+<td>+Create New</td>
+</tr>
+<tr>
+<td></td>
+<td>Name</td>
+<td>The default name assigned</td>
+</tr>
+<tr>
+<td></td>
+<td>Display Name</td>
+<td>The default name assigned</td>
+</tr>
+<tr>
+<td></td>
+<td>Operating System</td>
+<td>standalone</td>
+</tr>
+<tr>
+<td></td>
+<td>Processor</td>
+<td>psv_pmc_0   <br> <strong><em>Note:</em></strong> If the psv_pmc_0 option is not visible under the list of processors, check the box next to Show all processors in the hardware specification option to view all the available target processors for the application project.</td>
+</tr>
+<tr>
+<td></td>
+<td>Architecture</td>
+<td>32-bit</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Available Templates</td>
+<td>Versal PLM</td>
 </tr>
 </tbody>
-</table>
-<div class="toctree-wrapper compound">
-</div>
-</div>
-<div class="section" id="advanced">
-<span id="id2"></span><h2>Advanced<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-given docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 20%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Tutorial</p></th>
-<th class="head"><p>Kernel</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="./controlling-vivado-impl/README.html">Controlling Vivado Implementation</a></p></td>
-<td><p>RTL</p></td>
-<td><p>This tutorial demonstrates how you can control the Vivado® tools flow when implementing your project.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound" id="versions">
-</div>
-</div>
+</table><p>The Vitis™ software platform creates the plm application project and
+edt_versal_wrapper platform under the Explorer view. Right-click the
+platform project and select <strong>Build Project</strong>. After building the
+platform project, right-click the plm_system project and click on
+<strong>Build Project</strong>. This generates the plm.elf file within the Debug
+folder of the application project. After building the project, build
+the platform as well.</p>
 </div>
 
 
@@ -514,8 +527,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+        <a href="system-design-example.html" class="btn btn-neutral float-left" title="System Design Example using Scalar Engine and Adaptable Engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
