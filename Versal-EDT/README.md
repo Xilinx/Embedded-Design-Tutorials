@@ -32,7 +32,7 @@
  varied results. These examples focus on introducing you to the following aspects of
  embedded design.
 
-- **[Versal ACAP CIPS and NoC (DDR) IP Core Configuration](cips-noc-ip-config):** Describes creation
+- **[Versal ACAP CIPS and NoC (DDR) IP Core Configuration](./docs/cips-noc-ip-config.md):** Describes creation
      of a design with Versal&trade; ACAP Control, Interfaces, and Processing
      System (CIPS) IP core and an NoC and running a simple "Hello
      World" application on Arm&reg; Cortex&trade;-A72, and Cortex&trade;-R5F
