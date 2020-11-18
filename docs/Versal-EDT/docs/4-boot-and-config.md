@@ -246,7 +246,7 @@
  Linux images, you can either boot the VCK190 board using the
  ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages,`, or refer to [Example Project:
  Creating Linux Images Using
- PetaLinux](#example-project-creating-linux-images-using-petalinux) to
+ PetaLinux](./docs/Versal-EDT/docs/5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to
  build your own set of Linux images using the PetaLinux tool.
 
  To flash the images to the daughter card, use the following steps:
