@@ -169,9 +169,7 @@ preset enables those peripherals on the CIPS that have board connections to thei
 
     >***Notes*:** Block Automation is not explicitly run. It is disabled when the Board interface is changed to cips fixed io from Custom.
 
-    ![](media/image10.jpeg)
-
-    >***Notes*:** Verify that MIO 37 is set to GPIO 1 as shown in the previous figure. The VccAux workaround requires this setting.
+    ![](media/Recustomize-IP.png)
 
 6. Click **OK** to close the CIPS GUI.
 
@@ -184,8 +182,9 @@ preset enables those peripherals on the CIPS that have board connections to thei
      **Validate Design**.
 
     Alternatively, you can press the **F6** key. A message dialog box
-    opens and states `Validation successful. There are no errors or
-    critical warnings in this design`.
+    opens as shown below:
+
+    ![validation_message](./media/validation_message.png)
 
 2. In the Block Design view, click the **Sources** tab.
 
@@ -310,7 +309,7 @@ Follow these steps to generate a device image for the design.
 In this example, you will learn how to manage the board settings, make
 cable connections, connect to the board through your system, and run a
 hello world software application from Arm Cortex-A72 on On-chip-memory
-(OCM) and Arm Cortex- R5 on Tightly-coupled-memory (TCM) in the Xilinx
+(OCM) and Arm Cortex- R5F on Tightly-coupled-memory (TCM) in the Xilinx
 Vitis software platform.
 
 The following steps demonstrate the procedure to make the required
@@ -329,7 +328,7 @@ the Vitis software platform.
 3. Power on the VMK180/VCK190 board using the
      power switch as shown in the following figure.
 
-    ![](media/image20.jpeg)
+    ![](media/image20.png)
     >**Note:** If the Vitis software platform is already running, jump to
     step 6.
 

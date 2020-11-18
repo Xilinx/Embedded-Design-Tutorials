@@ -343,5 +343,5 @@ Following are the steps to load the application using XSCT.
 
     `xsct% con`
 
-    At this point, you can see the R5 application print messages on the
+    At this point, you can see the Cortex-R5F application print messages on the
     UART-0 terminal.

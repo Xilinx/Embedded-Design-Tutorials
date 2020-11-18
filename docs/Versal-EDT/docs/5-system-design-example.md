@@ -188,8 +188,7 @@ To validate the design and to generate the output product, follow
 
     A dialog box with the following message opens:
 
-    `Validation successful. There are no errors or critical warnings in this
-design.`
+    ![validation_message](./media/validation_message.png)
 
 3. Click **OK** to close the message.
 
