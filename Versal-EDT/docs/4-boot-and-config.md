@@ -173,16 +173,9 @@
 
 ![QSPI-boot-halfform-factor-module](./media/image54.jpeg)
 
-<<<<<<< HEAD
 >***Note*:** For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
-=======
-<div class="important">
-     <div class="title">
-     Note
-     </div>
-     For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
-</div>
->>>>>>> ec78fea5cfaae251a0b9ddede282d67ee8d0bc55
+
+>***IMPORTANT*:** *For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.*
 
  You need to flash the images to the daughter card, using the following
  steps:
