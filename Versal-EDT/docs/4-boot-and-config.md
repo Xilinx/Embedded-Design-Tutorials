@@ -1,13 +1,3 @@
-- [Boot and Configuration](#boot-and-configuration)
-  - [System Software](#system-software)
-    - [Platform Loader and Manager](#platform-loader-and-manager)
-    - [U-Boot](#u-boot)
-    - [Arm Trusted Firmware](#arm-trusted-firmware)
-  - [Generating Boot Image for Standalone Application](#generating-boot-image-for-standalone-application)
-  - [Boot Sequence for SD-Boot Mode](#boot-sequence-for-sd-boot-mode)
-  - [Boot Sequence for QSPI Boot Mode](#boot-sequence-for-qspi-boot-mode)
-  - [Boot Sequence for OSPI Boot Mode](#boot-sequence-for-ospi-boot-mode)
-
 # Boot and Configuration
 
  The purpose of this chapter is to show how to integrate and load boot
@@ -171,7 +161,8 @@
     </div>
 
     ![](./media/image53.jpeg)
-
+    
+    
 ## Boot Sequence for QSPI Boot Mode
 
  This section demonstrates the boot sequence for the QSPI boot mode.
@@ -231,56 +222,4 @@
 6. Power cycle the board. The board now boots up using the images in
      the QSPI flash.
 
-## Boot Sequence for OSPI Boot Mode
 
- To configure the design for the OSPI boot mode, see [OSPI Boot Mode
- Configuration](#ospi-boot-mode-configuration).
-
- This section demonstrates the boot sequence for the OSPI boot mode.
- For this, you need to connect a OSPI daughter card (X-EBM-03 REV_A02) as shown in the following
- figure:
-
- *Figure 3:* **VCK190 OSPI Boot**
-
-![](./media/image57.jpeg)
-
- >***Note*:** For standalone, copy the `BOOT.BIN` to the SD card. For
- Linux images, you can either boot the VCK190 board using the
- ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages,`, or refer to [Example Project:
- Creating Linux Images Using
- PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to
- build your own set of Linux images using the PetaLinux tool.
-
- To flash the images to the daughter card, use the following steps:
-
-1. With the card powered off, install the daughter card.
-
-2. Set the boot mode switch SW1 (M[0:3] and ON=0) to ON-OFF-OFF-OFF as shown in the following figure.
-
-     ![](./media/image58.jpeg)
-
-3. Insert the SD card in the SD card slot on the board, as follows:
-     ![](./media/image59.png)
-
-4. Power on the board. At the U-Boot stage, when the message "Hit any
-     key to stop autoboot:" appears, hit any key, then run the
-     following commands to flash the images on the OSPI daughter card:
-
-    ```
-    sf probe 0 0 0
-    sf erase 0x0 0x10000000
-    fatload mmc 0 0x80000 BOOT.BIN
-    sf write 0x80000 0x0 ${filesize}
-    fatload mmc 0 0x80000 image.ub
-    sf write 0x80000 0xF00000 0x6400000
-    fatload mmc 0 0x80000 boot.scr
-    sf write 0x80000 0x7F80000 0x999
-    ```
-
-5. After flashing the images, turn off the power switch on the board,
-     and change the boot mode pin settings to OSPI mode, that is
-     ON-ON-ON-OFF.
-
-     ![OSPIbootpins](media/OSPIbootpins.jpg)
-
-6. Power cycle the board. The board now boots up using the images in the OSPI flash.
