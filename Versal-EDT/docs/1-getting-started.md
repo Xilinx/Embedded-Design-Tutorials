@@ -9,7 +9,7 @@
  board. To use this guide, you need the following hardware items, which
  are included with the evaluation board:
 
-- VCK 190/ VMK 180 ES1 board
+- VCK 190/VMK 180 ES1 board
 - AC power adapter (12 VDC)
 - USB Type-A to USB Micro cable (for UART communications)
 - USB Micro cable for programming and debugging via USB-Micro JTAG connection

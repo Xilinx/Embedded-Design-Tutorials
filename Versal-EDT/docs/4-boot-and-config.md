@@ -1,13 +1,3 @@
-- [Boot and Configuration](#boot-and-configuration)
-  - [System Software](#system-software)
-    - [Platform Loader and Manager](#platform-loader-and-manager)
-    - [U-Boot](#u-boot)
-    - [Arm Trusted Firmware](#arm-trusted-firmware)
-  - [Generating Boot Image for Standalone Application](#generating-boot-image-for-standalone-application)
-  - [Boot Sequence for SD-Boot Mode](#boot-sequence-for-sd-boot-mode)
-  - [Boot Sequence for QSPI Boot Mode](#boot-sequence-for-qspi-boot-mode)
-  - [Boot Sequence for OSPI Boot Mode](#boot-sequence-for-ospi-boot-mode)
-
 # Boot and Configuration
 
  The purpose of this chapter is to show how to integrate and load boot
@@ -97,17 +87,10 @@
      `<design-package>/standalone/helloworld_images_cips_ddr`
      directory, the PDI file present within `<Vitis platform project>/hw/<.pdi-file>`, and the application elf files present within the `<Vitis application-project>/Debug` folder to the folder created in step 2.
 
-     <div class="note">
-     <div class="title">
-     Note
-     </div>
-     If needed, open the `sd_boot.bif` file in a text editor of
+   >***Note*:** If needed, open the `sd_boot.bif` file in a text editor of
      your choice and modify the name of the PDI or elfs as per your Vitis
      projects.
-     </div>
-    
-    ![](./media/image50.png)
-
+     
 4. Run the following command in the XSCT Console view.
 
     `bootgen -image <bif filename>.bif -arch versal -o BOOT.BIN`
@@ -159,18 +142,13 @@
 
 8. Turn on the VMK180/VCK190 board using the power switch (SW13).
 
-     <div class="note">
-     <div class="title">
-     Note
-     </div>
-     For standalone images, the respective logs are displayed
+     >***Note*:** For standalone images, the respective logs are displayed
     on the terminal. For Linux images, you can log in using user: root and
     pw: root after the boot-up sequence on the terminal. After that, run
     gpiotest on the terminal. You will see logs as shown in the following
     figure.
-    </div>
 
-    ![](./media/image53.jpeg)
+    ![](./media/led_example_console_prints.PNG)
 
 ## Boot Sequence for QSPI Boot Mode
 
@@ -182,16 +160,7 @@
 
 ![QSPI-boot-halfform-factor-module](./media/image54.jpeg)
 
-<<<<<<< HEAD
 >***Note*:** For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
-=======
-<div class="important">
-     <div class="title">
-     Note
-     </div>
-     For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
-</div>
->>>>>>> ec78fea5cfaae251a0b9ddede282d67ee8d0bc55
 
  You need to flash the images to the daughter card, using the following
  steps:

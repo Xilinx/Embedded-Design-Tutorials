@@ -4,7 +4,7 @@
    </td>
  </tr>
  <tr>
- <td align=center><h2>Versal&trade; Adaptive Compute Acceleration Platform
+ <td align=center><h2>Versal&trade; Adaptive Compute Acceleration Platform (UG1305)
  </td>
  </tr>
 </table>
@@ -61,3 +61,33 @@
  Xilinx. These are contained in a ZIP file that can be downloaded from
  the Xilinx web site. (See [Getting Started](../Versal-EDT/docs/1-getting-started.md)). The tutorial assumes the contents of
  the ZIP file are extracted to `C:\edt`.
+
+ ## Navigating Content by Design Process
+
+ Xilinx&reg; documentation is organized around a set of standard design processes to help you find
+relevant content for your current development task. This document covers the following design
+processes:
+
+* **System and Solution Planning**: Identifying the components, performance, I/O, and data transfer requirements at a system level. Includes application mapping for the solution to PS, PL, and AI Engine.
+  
+  * [Configuring the NoC IP Core in an Existing Project](/Versal-EDT/docs/2-cips-noc-ip-config.md#configuring-the-noc-ip-core-in-an-existing-project)
+  * [System Design Example using Scalar Engine and Adaptable Engine](..Versal-EDT/docs/5-system-design-example.md)
+
+* **Embedded Software Development**: Creating the software platform from the hardware
+platform and developing the application code using the embedded CPU. Also covers XRT and Graph APIs.
+
+  * [Running a Bare-Metal Hello World Application](../Versal-EDT/docs/2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application)
+  * [Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform](../Versal-EDT/docs/2-cips-noc-ip-config.md#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform)
+  * [Running a Bare-Metal Hello World Application on DDR Memory](../Versal-EDT/docs/2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application-on-ddr-memory)
+
+* **Hardware, IP, and Platform Development**: Creating the PL IP blocks for the hardware platform, creating PL kernels, subsystem functional simulation, and evaluating the Vivado® timing, resource use, and power closure. Also involves developing the hardware platform for system integration. Topics in this document that apply to this design process include:
+  
+  * [CIPS IP Core Configuration](../Versal-EDT/docs/2-cips-noc-ip-config.md#cips-ip-core-configuration)
+  * [NoC (and DDR) IP Core Configuration](../Versal-EDT/docs/2-cips-noc-ip-config.md#noc-and-ddr-ip-core-configuration)
+  * [Design Example: Using AXI GPIO](../Versal-EDT/docs/5-system-design-example.md#design-example-using-axi-gpio)
+
+* **System Integration and Validation**: Integrating and validating the system functional performance, including timing, resource use, and power closure. Topics in this document that apply to this design process include:
+  
+  * [Boot and Configuration](../Versal-EDT/docs/4-boot-and-config.md)
+  * [Example Project: FreeRTOS GPIO Application Project With RPU](../Versal-EDT/docs/5-system-design-example.md#example-project-freertos-gpio-application-project-with-rpu)
+  * [Example Project: Creating Linux Images Using PetaLinux](../Versal-EDT/docs/5-system-design-example.md#example-project-creating-linux-images-using-petalinux)

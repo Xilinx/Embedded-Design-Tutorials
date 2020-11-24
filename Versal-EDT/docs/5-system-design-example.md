@@ -1,15 +1,3 @@
-- [System Design Example using Scalar Engine and Adaptable Engine](#system-design-example-using-scalar-engine-and-adaptable-engine)
-  - [Design Example: Using AXI GPIO](#design-example-using-axi-gpio)
-    - [Configuring Hardware](#configuring-hardware)
-      - [Connecting IP Blocks to Create a Complete System](#connecting-ip-blocks-to-create-a-complete-system)
-      - [Adding and Configuring IP Addresses](#adding-and-configuring-ip-addresses)
-      - [Validating the Design and Generating the Output](#validating-the-design-and-generating-the-output)
-      - [Synthesizing, Implementing, and Generating the Device Image](#synthesizing-implementing-and-generating-the-device-image)
-      - [Exporting Hardware](#exporting-hardware)
-  - [Example Project: FreeRTOS GPIO Application Project With RPU](#example-project-freertos-gpio-application-project-with-rpu)
-  - [Example Project: Creating Linux Images Using PetaLinux](#example-project-creating-linux-images-using-petalinux)
-    - [Combining FreeRTOS and APU Images using a BIF File](#combining-freertos-and-apu-images-using-a-bif-file)
-     
 # System Design Example using Scalar Engine and Adaptable Engine
 
  This chapter guides you through building a system based on Versal&trade;
@@ -24,8 +12,8 @@
 ## Design Example: Using AXI GPIO
 
  The Linux application uses a PL-based AXI GPIO interface to monitor
- the DIP switch of the board and accordingly control the board\'s LEDs.
- The LED application can run on both the VMK180/ VCK190.
+ the DIP switch of the board and accordingly control the board's LEDs.
+ The LED application can run on both the VMK180/VCK190.
 
 ### Configuring Hardware
 
@@ -148,12 +136,7 @@ To add and configure IP addresses, follow these steps.
 
 18. Make the same setting for axi_gpio_1.
 
-19. Add the **Slice IP**.
-
-20. Connect the AXI GPIO output
-     gpio_io_o\[4:0\] to the Din\[3:0\] pin of slice IP.
-
-21. Add three more instances of Slice IP.
+19. Add four more instances of Slice IP.
 22. Delete the external pins of the AXI GPIO IP and expand the interfaces.
 23. Connect the output pin gpio_io_0 of axi_gpio_0 to slice 0 and slice 1.
 24. Similarly, connect the output pin gpio_io_0 of axi_gpio_1 to slice 2 and slice 3.
@@ -192,30 +175,29 @@ To validate the design and to generate the output product, follow
 3. Click **OK** to close the message.
 
 4. Click the **Sources** window.
+   1. Expand Constraints.
+   2. Right-click on **constrs_1-> ADD Sources**.
+   The Add Sources window opens. 
+   3. Choose **Add or Create Constraints** option and click **Next**.
+   4. Choose the .xdc file to be added
+        >***Note*:**The constraints file is provided as part of the package in the `pl_axigpio/ constrs` folder.
+   5. Click **Finish**.
 
-5. Add the constraints file under Constraints.
+5. Click **Hierarchy**.
 
-     <div class="note">
-          <div class="title">
-          Note
-          </div>The constraints file is provided as part of the package in the `pl_axigpio/constrs` folder.
-     </div>
-
-6. Click **Hierarchy**.
-
-7. In the Sources window, under Design Sources, expand
+6. In the Sources window, under Design Sources, expand
      **edt_versal_wrapper**.
 
-8. Right-click the top-level block design, edt_versal_i : edt_versal
+7. Right-click the top-level block design, edt_versal_i : edt_versal
      (`edt_versal.bd`), and select **Generate Output Products**.
 
     ![](./media/image15.png)
 
-9. Click **Generate**.
+8. Click **Generate**.
 
-10. When the Generate Output Products process completes, click **OK**.
+9.  When the Generate Output Products process completes, click **OK**.
 
-11. In the Sources window, click the **IP Sources** view. Here you can
+10. In the Sources window, click the **IP Sources** view. Here you can
      see the output products that you just generated, as shown in the
      following figure.
 
@@ -416,9 +398,10 @@ For building the Linux images and incorporating the FreeRTOS elf into the image,
      the project using the following commands.
 
      ```
-     $cp <design-package>/GPIO/design_files/files/* <plnx-proj-root>/project-spec/meta-user/recipes-apps/gpiotest/files/
-     $cp <design-package>/GPIO/design_files/gpiotest.bb <plnx-proj-root>/project-spec/meta-user/recipes-apps/gpiotest/gpiotest.bb
-    ```
+     $cp <design-package>/vck190/linux/design_files/gpiotest_app/files/* <plnx-proj-root>/projectspec/meta-user/recipes-apps/gpiotest/files/
+     $cp <design-package>/vck190/linux/design_files/gpiotest_app/gpiotest.bb <plnx-proj-root>/projectspec/meta-user/recipes-apps/gpiotest/gpiotest.bb
+     $cp <design-package>/vck190/linux/design_files/device_tree/system-user.dtsi
+     ```
 
 9. Enable GPIO support within kernel configuration.
 

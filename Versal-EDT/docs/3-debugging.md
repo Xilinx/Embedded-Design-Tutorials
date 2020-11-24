@@ -1,12 +1,3 @@
-- [Debugging Using the Vitis Software Platform](#debugging-using-the-vitis-software-platform)
-  - [Xilinx System Debugger](#xilinx-system-debugger)
-  - [Debugging Software Using the Vitis Software Platform](#debugging-software-using-the-vitis-software-platform)
-  - [Debugging Using XSCT](#debugging-using-xsct)
-    - [Setting Up Target](#setting-up-target)
-    - [Loading the Application Using XSCT](#loading-the-application-using-xsct)
-    - [Serial Terminal Configuration](#serial-terminal-configuration)
-    - [Running and Debugging Application Using XSCT](#running-and-debugging-application-using-xsct)
-
 # Debugging Using the Vitis Software Platform
 
 This chapter describes debugging possibilities with the design flow
