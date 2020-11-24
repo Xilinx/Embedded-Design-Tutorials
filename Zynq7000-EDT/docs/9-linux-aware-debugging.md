@@ -23,6 +23,13 @@
     </tr>
 </table>
 
+- [Linux OS Aware Debugging Using the Vitis Software Platform](#linux-os-aware-debugging-using-the-vitis-software-platform)
+  - [Setting Up Linux OS Aware Debugging](#setting-up-linux-os-aware-debugging)
+    - [Configure the Linux Kernel](#configure-the-linux-kernel)
+    - [Creating the Hello World Linux Application to Exercise the OS Aware Debugging Feature](#creating-the-hello-world-linux-application-to-exercise-the-os-aware-debugging-feature)
+    - [Debugging Linux Processes and Threads Using OS Aware Debug](#debugging-linux-processes-and-threads-using-os-aware-debug)
+    - [Debugging the linux_hello Application with OS Aware Debug](#debugging-the-linux_hello-application-with-os-aware-debug)
+
 # Linux OS Aware Debugging Using the Vitis Software Platform
 
 OS-aware debugging helps you to visualize OS-specific information such

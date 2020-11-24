@@ -23,6 +23,20 @@
     </tr>
 </table>
 
+- [Using the HP Slave Port with AXI CDMA IP](#using-the-hp-slave-port-with-axi-cdma-ip)
+  - [Integrating AXI CDMA with the Zynq SoC PS HP Slave Port](#integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port)
+  - [Example Project: Integrating AXI CDMA with the PS HP Slave Port](#example-project-integrating-axi-cdma-with-the-ps-hp-slave-port)
+    - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
+      - [Application Software Flow](#application-software-flow)
+    - [Running the Standalone CDMA Application Using the Vitis Software Platform](#running-the-standalone-cdma-application-using-the-vitis-software-platform)
+  - [Linux OS Based Application Software for the CDMA System](#linux-os-based-application-software-for-the-cdma-system)
+    - [Application Software Creation Steps](#application-software-creation-steps)
+  - [Running Linux CDMA Application Using the Vitis Software Platform](#running-linux-cdma-application-using-the-vitis-software-platform)
+    - [Booting Linux on the Target Board](#booting-linux-on-the-target-board)
+    - [Linux Domain Creation for Linux Applications](#linux-domain-creation-for-linux-applications)
+    - [Building an Application and Running it on the Target Board Using the Vitis Software Platform](#building-an-application-and-running-it-on-the-target-board-using-the-vitis-software-platform)
+
+
 # Using the HP Slave Port with AXI CDMA IP
 
 In this chapter, you will instantiate AXI CDMA IP in fabric and

@@ -23,6 +23,10 @@
     </tr>
 </table>
 
+- [Debugging with the Vitis Software Platform](#debugging-with-the-vitis-software-platform)
+  - [Xilinx System Debugger](#xilinx-system-debugger)
+  - [Debugging Software Using the Vitis Software Platform](#debugging-software-using-the-vitis-software-platform)
+
 # Debugging with the Vitis Software Platform
 
 This chapter describes debug possibilities with the design flow you

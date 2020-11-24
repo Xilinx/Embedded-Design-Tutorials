@@ -23,6 +23,11 @@
     </tr>
 </table>
 
+- [Software Profiling Using the Vitis Software Platform](#software-profiling-using-the-vitis-software-platform)
+  - [Profiling an Application in the Vitis Software Platform with System Debugger](#profiling-an-application-in-the-vitis-software-platform-with-system-debugger)
+  - [Additional Design Support Options](#additional-design-support-options)
+    - [The System Performance Analysis (SPA) Toolbox](#the-system-performance-analysis-spa-toolbox)
+
 # Software Profiling Using the Vitis Software Platform
 
 In this chapter, you will enable profiling features for the standalone

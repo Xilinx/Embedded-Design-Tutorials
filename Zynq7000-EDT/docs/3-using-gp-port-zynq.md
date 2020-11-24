@@ -23,6 +23,14 @@
     </tr>
 </table>
 
+- [Using the GP Port in Zynq Devices](#using-the-gp-port-in-zynq-devices)
+  - [Adding IP in PL to the Zynq SoC Processing System](#adding-ip-in-pl-to-the-zynq-soc-processing-system)
+  - [Example Project: Validate Instantiated Fabric IP Functionality](#example-project-validate-instantiated-fabric-ip-functionality)
+  - [Working with the Vitis Software Platform](#working-with-the-vitis-software-platform)
+  - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
+    - [Application Software Steps](#application-software-steps)
+      - [Application Software Code](#application-software-code)
+
 # Using the GP Port in Zynq Devices
 
 One of the unique features of using the Xilinx&reg; Zynq&reg;-7000 SoC as an

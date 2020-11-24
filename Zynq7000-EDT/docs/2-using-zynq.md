@@ -23,6 +23,26 @@
     </tr>
 </table>
 
+- [Using the Zynq SoC Processing System](#using-the-zynq-soc-processing-system)
+  - [Design Files for this Tutorial](#design-files-for-this-tutorial)
+  - [Embedded System Configuration](#embedded-system-configuration)
+  - [Example Project: Creating a New Embedded Project with Zynq SoC](#example-project-creating-a-new-embedded-project-with-zynq-soc)
+    - [Starting Your Design](#starting-your-design)
+    - [Creating an Embedded Processor Project](#creating-an-embedded-processor-project)
+    - [Managing the Zynq7 Processing System in Vivado](#managing-the-zynq7-processing-system-in-vivado)
+    - [Validating the Design and Connecting Ports](#validating-the-design-and-connecting-ports)
+    - [Synthesizing the Design, Running Implementation, and Generating the Bitstream](#synthesizing-the-design-running-implementation-and-generating-the-bitstream)
+    - [Exporting a Hardware Platform](#exporting-a-hardware-platform)
+      - [What Just Happened?](#what-just-happened)
+      - [What's Next?](#whats-next)
+    - [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado)
+      - [What Just Happened?](#what-just-happened-1)
+  - [Example Project: Running the \"Hello World\" Application](#example-project-running-the-hello-world-application)
+    - [What Just Happened?](#what-just-happened-2)
+  - [Additional Information](#additional-information)
+    - [Domain or Board Support Package](#domain-or-board-support-package)
+    - [Standalone OS](#standalone-os)
+
 # Using the Zynq SoC Processing System
 
 ## Design Files for this Tutorial

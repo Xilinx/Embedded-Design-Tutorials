@@ -23,6 +23,24 @@
     </tr>
 </table>
 
+- [Linux Booting and Debug in the Vitis Software Platform](#linux-booting-and-debug-in-the-vitis-software-platform)
+  - [Requirements](#requirements)
+  - [Booting Linux on a Zynq SoC Board](#booting-linux-on-a-zynq-soc-board)
+    - [Boot Methods](#boot-methods)
+      - [*Master Boot Method*](#master-boot-method)
+      - [*Slave Boot Method*](#slave-boot-method)
+    - [Booting Linux from JTAG](#booting-linux-from-jtag)
+    - [Preparing the PetaLinux Build for Debugging](#preparing-the-petalinux-build-for-debugging)
+    - [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode)
+    - [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform)
+    - [Example Project: Booting Linux from QSPI Flash](#example-project-booting-linux-from-qspi-flash)
+      - [Create the First Stage Boot Loader Executable File](#create-the-first-stage-boot-loader-executable-file)
+      - [*Make a Linux Bootable Image for QSPI Flash*](#make-a-linux-bootable-image-for-qspi-flash)
+      - [*Program QSPI Flash with the Boot Image Using JTAG*](#program-qspi-flash-with-the-boot-image-using-jtag)
+      - [Program QSPI Flash with the Flash Programming Tool](#program-qspi-flash-with-the-flash-programming-tool)
+      - [*Booting Linux from QSPI Flash*](#booting-linux-from-qspi-flash)
+      - [Booting Linux from the SD Card](#booting-linux-from-the-sd-card)
+
 # Linux Booting and Debug in the Vitis Software Platform
 
 This chapter describes the steps to configure and build the Linux OS

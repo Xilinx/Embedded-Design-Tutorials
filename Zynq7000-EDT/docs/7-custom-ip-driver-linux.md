@@ -22,6 +22,20 @@
     </tr>
 </table>
 
+- [Creating Custom IP and Device Driver for Linux](#creating-custom-ip-and-device-driver-for-linux)
+  - [Requirements](#requirements)
+  - [Creating Peripheral IP](#creating-peripheral-ip)
+    - [Example Project: Creating Peripheral IP](#example-project-creating-peripheral-ip)
+  - [Integrating Peripheral IP with PS GP Master Port](#integrating-peripheral-ip-with-ps-gp-master-port)
+    - [Connecting an AXI4-Lite Compliant Custom Slave IP](#connecting-an-axi4-lite-compliant-custom-slave-ip)
+    - [Example Project: Device Driver Development](#example-project-device-driver-development)
+  - [Loading Module into Running Kernel and Application Execution](#loading-module-into-running-kernel-and-application-execution)
+    - [Loading Module into Kernel Memory](#loading-module-into-kernel-memory)
+    - [Application Software](#application-software)
+    - [Example Project: Loading a Module into Kernel and Executing the Application](#example-project-loading-a-module-into-kernel-and-executing-the-application)
+      - [*Booting Linux on the Target Board*](#booting-linux-on-the-target-board)
+      - [Loading Modules and Executing Applications](#loading-modules-and-executing-applications)
+
 # Creating Custom IP and Device Driver for Linux
 
 In this chapter, you will create an intellectual property (IP) using
