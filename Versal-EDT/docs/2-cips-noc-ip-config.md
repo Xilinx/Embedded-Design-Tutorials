@@ -838,3 +838,5 @@ Follow these steps to generate a device image for the design.
  Refer to [Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform](#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform) for running the applications built above in JTAG mode using system
  debugger in the Vitis software platform and to [Generating Boot Image for Standalone Application](#generating-boot-image-for-standalone-application) for
  generating boot images for standalone applications.
+
+  © Copyright 2020 Xilinx, Inc.

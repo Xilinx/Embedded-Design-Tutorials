@@ -329,3 +329,5 @@ Following are the steps to load the application using XSCT.
 
     At this point, you can see the Cortex-R5F application print messages on the
     UART-0 terminal.
+
+© Copyright 2020 Xilinx, Inc.

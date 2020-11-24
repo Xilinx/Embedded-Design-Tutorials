@@ -200,4 +200,4 @@
 6. Power cycle the board. The board now boots up using the images in
      the QSPI flash.
 
-
+ © Copyright 2020 Xilinx, Inc.

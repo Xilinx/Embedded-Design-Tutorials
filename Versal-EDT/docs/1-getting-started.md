@@ -108,3 +108,6 @@ This installs the PetaLinux tool into the `/opt/pkg/petalinux/<petalinux-version
  To view the contents of the ZIP file, download and extract the
  contents from the ZIP file to `C:\edt`. The design files contain the
  XSA files, source code and prebuilt images for all the sections.
+
+ 
+ © Copyright 2020 Xilinx, Inc.

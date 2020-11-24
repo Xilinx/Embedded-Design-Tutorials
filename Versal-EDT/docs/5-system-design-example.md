@@ -451,3 +451,5 @@ For building the Linux images and incorporating the FreeRTOS elf into the image,
     This creates a `BOOT.BIN` image file in the `<petalinux-project>/images/linux/` directory.
 
 >***Note*:** To run the images using SD boot mode, see [Boot Sequence for SD-Boot Mode](./4-boot-and-config.md#boot-sequence-for-sd-boot-mode).
+
+ © Copyright 2020 Xilinx, Inc.

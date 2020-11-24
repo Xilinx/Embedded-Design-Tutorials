@@ -35,3 +35,5 @@ Following are the steps to create a platform loader and manager (PLM)
  **Build Project**. This generates the plm.elf file within the Debug
  folder of the application project. After building the project, build
  the platform as well.
+
+ © Copyright 2020 Xilinx, Inc.
