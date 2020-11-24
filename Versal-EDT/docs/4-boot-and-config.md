@@ -90,7 +90,7 @@
    >***Note*:** If needed, open the `sd_boot.bif` file in a text editor of
      your choice and modify the name of the PDI or elfs as per your Vitis
      projects.
-     
+
 4. Run the following command in the XSCT Console view.
 
     `bootgen -image <bif filename>.bif -arch versal -o BOOT.BIN`
@@ -148,14 +148,8 @@
     gpiotest on the terminal. You will see logs as shown in the following
     figure.
 
-<<<<<<< HEAD
     ![](./media/led_example_console_prints.PNG)
 
-=======
-    ![](./media/image53.jpeg)
-    
-    
->>>>>>> baadec16b96f0cebc4d679f1a2f20d895d8b98ee
 ## Boot Sequence for QSPI Boot Mode
 
  This section demonstrates the boot sequence for the QSPI boot mode.
@@ -167,11 +161,6 @@
 ![QSPI-boot-halfform-factor-module](./media/image54.jpeg)
 
 >***Note*:** For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
-<<<<<<< HEAD
-=======
-
->***IMPORTANT*:** *For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.*
->>>>>>> baadec16b96f0cebc4d679f1a2f20d895d8b98ee
 
  You need to flash the images to the daughter card, using the following
  steps:
