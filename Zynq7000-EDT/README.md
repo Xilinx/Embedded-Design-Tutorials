@@ -23,6 +23,24 @@
     </tr>
 </table>
 
+- [Introduction](#introduction)
+  - [Example Project](#example-project)
+  - [Additional Documentation](#additional-documentation)
+    - [*Vivado Design Suite, System Edition*](#vivado-design-suite-system-edition)
+    - [*Other Vivado Components*](#other-vivado-components)
+  - [*Vitis Unified Software Platform*](#vitis-unified-software-platform)
+  - [*PetaLinux Tools*](#petalinux-tools)
+  - [How Zynq Devices Simplify Embedded Processor Design](#how-zynq-devices-simplify-embedded-processor-design)
+  - [How the Vivado Tools Expedite the Design Process](#how-the-vivado-tools-expedite-the-design-process)
+  - [What You Need to Set Up Before Starting](#what-you-need-to-set-up-before-starting)
+    - [Hardware Requirements for this Guide](#hardware-requirements-for-this-guide)
+    - [Installation Requirements](#installation-requirements)
+      - [Vitis Software Platform and Vivado Design Suite](#vitis-software-platform-and-vivado-design-suite)
+      - [PetaLinux Tools](#petalinux-tools-1)
+          - [Prerequisites](#prerequisites)
+          - [Extract the PetaLinux Package](#extract-the-petalinux-package)
+      - [Software Licensing](#software-licensing)
+
 
 # Introduction
 
