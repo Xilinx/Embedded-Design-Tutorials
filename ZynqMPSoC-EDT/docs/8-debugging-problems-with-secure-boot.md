@@ -20,6 +20,10 @@
   </tr>
 </table>
 
+- [Debugging Problems with Secure Boot](#debugging-problems-with-secure-boot)
+  - [Determine if PUF Registration is Running](#determine-if-puf-registration-is-running)
+  - [Read the Boot Image](#read-the-boot-image)
+
 # Debugging Problems with Secure Boot
 
  This appendix describes how to debug security failures. One procedure

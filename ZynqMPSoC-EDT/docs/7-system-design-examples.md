@@ -20,6 +20,39 @@
   </tr>
 </table>
 
+- [System Design Examples](#system-design-examples)
+  - [Design Example 1: Using GPIOs, Timers, and Interrupts](#design-example-1-using-gpios-timers-and-interrupts)
+    - [Configuring Hardware](#configuring-hardware)
+      - [Adding and Configuring IPs](#adding-and-configuring-ips)
+      - [Connecting IP Blocks to Create a Complete System](#connecting-ip-blocks-to-create-a-complete-system)
+      - [Validating the Design and Generating Output](#validating-the-design-and-generating-output)
+      - [Synthesizing the Design, Running Implementation, and Generating the Bitstream](#synthesizing-the-design-running-implementation-and-generating-the-bitstream)
+      - [Exporting Hardware Platform](#exporting-hardware-platform)
+    - [Configuring Software](#configuring-software)
+      - [Configure and Build Linux Using PetaLinux](#configure-and-build-linux-using-petalinux)
+      - [Creating the Bare-Metal Application Project](#creating-the-bare-metal-application-project)
+      - [Modifying the Linker Script](#modifying-the-linker-script)
+      - [Creating the Linux Domain for Linux Applications](#creating-the-linux-domain-for-linux-applications)
+      - [Creating the Linux Application Project](#creating-the-linux-application-project)
+      - [Modifying the Build Settings](#modifying-the-build-settings)
+      - [Creating a Boot Image](#creating-a-boot-image)
+      - [Running the Image on a ZCU102 Board](#running-the-image-on-a-zcu102-board)
+      - [Prepare the SD Card](#prepare-the-sd-card)
+      - [Target Setup](#target-setup)
+      - [Power ON Target and Run Applications](#power-on-target-and-run-applications)
+        - [Running Linux Applications](#running-linux-applications)
+  - [Design Example 2: Example Setup for Graphics and DisplayPort Based Sub-System](#design-example-2-example-setup-for-graphics-and-displayport-based-sub-system)
+    - [Configuring the Hardware](#configuring-the-hardware)
+      - [Configuring Hardware in Vivado IP Integrator](#configuring-hardware-in-vivado-ip-integrator)
+    - [Modifying the Configuration and Building Linux Images Using PetaLinux](#modifying-the-configuration-and-building-linux-images-using-petalinux)
+    - [Building the Mali OpenGLES Application](#building-the-mali-opengles-application)
+    - [Enable GPU Libraries and Other Packages in RootFS](#enable-gpu-libraries-and-other-packages-in-rootfs)
+    - [Loading Linux and Running the OpenGLES Application on the Target and Viewing the Result on the Display Port](#loading-linux-and-running-the-opengles-application-on-the-target-and-viewing-the-result-on-the-display-port)
+      - [Preparing the SD Card](#preparing-the-sd-card)
+      - [Running the Application on a Linux Target](#running-the-application-on-a-linux-target)
+        - [Setting Up the Target](#setting-up-the-target)
+      - [Powering On the Target and Running the Applications](#powering-on-the-target-and-running-the-applications)
+
 # System Design Examples
 
 This chapter guides you through building a system based on Zynq&reg;

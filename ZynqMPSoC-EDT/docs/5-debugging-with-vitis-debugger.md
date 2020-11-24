@@ -20,6 +20,16 @@
   </tr>
 </table>
 
+- [Debugging with the Vitis Debugger](#debugging-with-the-vitis-debugger)
+  - [Xilinx System Debugger](#xilinx-system-debugger)
+  - [Debugging Software Using the Vitis Debugger](#debugging-software-using-the-vitis-debugger)
+  - [Debugging Using XSCT](#debugging-using-xsct)
+    - [Set Up Target](#set-up-target)
+    - [Load the Application Using XSCT](#load-the-application-using-xsct)
+    - [Serial Terminal Configuration](#serial-terminal-configuration)
+    - [Run and Debug Application Using XSCT](#run-and-debug-application-using-xsct)
+  - [Debugging FSBL Using the Vitis Debugger](#debugging-fsbl-using-the-vitis-debugger)
+    - [Create and Modify FSBL](#create-and-modify-fsbl)
 
 # Debugging with the Vitis Debugger
 

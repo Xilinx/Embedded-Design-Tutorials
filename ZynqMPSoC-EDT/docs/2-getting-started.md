@@ -20,6 +20,17 @@
   </tr>
 </table>
 
+- [Getting Started](#getting-started)
+  - [Design Files for this Tutorial](#design-files-for-this-tutorial)
+  - [Hardware Requirements](#hardware-requirements)
+  - [Installation Requirements](#installation-requirements)
+    - [Vitis Integrated Design Environment and Vivado Design Suite](#vitis-integrated-design-environment-and-vivado-design-suite)
+    - [PetaLinux Tools](#petalinux-tools)
+      - [Prerequisites](#prerequisites)
+      - [Extracting the PetaLinux Package](#extracting-the-petalinux-package)
+    - [Software Licensing](#software-licensing)
+    - [Tutorial Design Files](#tutorial-design-files)
+
 # Getting Started
 
 ## Design Files for this Tutorial

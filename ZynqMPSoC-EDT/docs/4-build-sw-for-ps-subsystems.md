@@ -20,6 +20,34 @@
   </tr>
 </table>
 
+- [Build Software for PS Subsystems](#build-software-for-ps-subsystems)
+  - [Processing Units in Zynq UltraScale+](#processing-units-in-zynq-ultrascale)
+  - [Creating a Platform Using Vitis IDE](#creating-a-platform-using-vitis-ide)
+  - [Example Project: Running the "Hello World" Application from Arm Cortex-A53](#example-project-running-the-hello-world-application-from-arm-cortex-a53)
+    - [Board Setup](#board-setup)
+      - [What Just Happened?](#what-just-happened)
+  - [Creating a Domain for cortexr5_0](#creating-a-domain-for-cortexr5_0)
+  - [Example Project: Running the "Hello World" Application from Arm Cortex-R5](#example-project-running-the-hello-world-application-from-arm-cortex-r5)
+      - [What Just Happened?](#what-just-happened-1)
+  - [Additional Information](#additional-information)
+    - [Domain](#domain)
+      - [Board Support Package](#board-support-package)
+      - [Standalone BSP](#standalone-bsp)
+  - [Example Project: Create a Bare-Metal Application Project in the Vitis IDE](#example-project-create-a-bare-metal-application-project-in-the-vitis-ide)
+    - [Create Custom Bare-Metal Application for Arm Cortex-A53 based APU](#create-custom-bare-metal-application-for-arm-cortex-a53-based-apu)
+    - [Modify the Application Source Code](#modify-the-application-source-code)
+    - [Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU](#create-custom-bare-metal-application-for-arm-cortex-r5-based-rpu)
+      - [Creating the Application Project](#creating-the-application-project)
+      - [Modifying the Linker Script](#modifying-the-linker-script)
+      - [Modifying the Board Support Package](#modifying-the-board-support-package)
+  - [Reviewing Software Projects in the Platform](#reviewing-software-projects-in-the-platform)
+    - [Reviewing FSBL in Platform](#reviewing-fsbl-in-platform)
+    - [Reviewing PMU Firmware in Platform](#reviewing-pmu-firmware-in-platform)
+  - [Create First Stage Boot Loader for Arm Cortex-A53-Based APU](#create-first-stage-boot-loader-for-arm-cortex-a53-based-apu)
+  - [Example Project: Create Linux Images using PetaLinux](#example-project-create-linux-images-using-petalinux)
+    - [Verify the Image on the ZCU102 Board](#verify-the-image-on-the-zcu102-board)
+    - [Create Linux Images Using PetaLinux for QSPI Flash](#create-linux-images-using-petalinux-for-qspi-flash)
+
 # Build Software for PS Subsystems
 
  This chapter lists the steps to configure and build software for PS
