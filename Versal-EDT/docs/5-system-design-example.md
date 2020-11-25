@@ -394,7 +394,7 @@ For building the Linux images and incorporating the FreeRTOS elf into the image,
 
     `\$petalinux-create -t apps \--template install \--name gpiotest\--enable`
 
-8. Copy application files from `<design-package>/GPIO/bootimages` to
+8. Copy application files from `<design-package>/<vck190 or vmk180>/linux/bootimages` to
      the project using the following commands.
 
      ```
