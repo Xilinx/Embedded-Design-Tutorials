@@ -570,8 +570,8 @@ following steps are required:
 1.  Set the toolchain path in your Linux Workstation.
 
 2.  Download the kernel source code and compile it. For downloading and
-    compilation, refer to the steps mentioned in Xilinx Zynq Linux
-    Wiki Page [Support Resources](#support-resources).
+    compilation, refer to the steps mentioned in the <a href="http://wiki.xilinx.com/zynq-linux">Xilinx Zynq Linux
+    Wiki Page</a>.
 
 ### Example Project: Device Driver Development
 

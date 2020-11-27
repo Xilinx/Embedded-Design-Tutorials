@@ -36,18 +36,18 @@ software using the Xilinx&reg; Vitis&trade; unified software platform.
 The Vitis software platform debugger provides the following debug
 capabilities:
 
--   Supports debugging of programs on MicroBlaze&trade; and Arm Cortex&trade;-A9
+-   Debugging of programs on MicroBlaze&trade; and Arm Cortex&trade;-A9
     processor architectures (heterogeneous multi-processor hardware
     system debugging)
 
--   Supports debugging of programs on hardware boards
+-   Debugging of programs on hardware boards
 
--   Supports debugging on remote hardware systems
+-   Debugging on remote hardware systems
 
--   Provides a feature-rich integrated design environment (IDE) to debug
+-   A feature-rich integrated design environment (IDE) to debug
     programs
 
--   Provides a Tool Command Language (Tcl) interface for running test
+-   A Tool Command Language (Tcl) interface for running test
     scripts and automation
 
 The Vitis debugger enables you to see what is happening to a program
@@ -93,7 +93,7 @@ The workflow is made up of the following components:
     Configurations**.
 
 -   **Debug Perspective:** Using the Debug perspective, you can manage
-    the debugging or running of a program in the Workbench. You can
+    the debugging or running of a program in the Vitis IDE. You can
     control the execution of your program by setting breakpoints,
     suspending launched programs, stepping through your code, and
     examining the contents of variables. To view the Debug
@@ -125,9 +125,9 @@ example to debug the software using the Vitis software platform.
     In Target Setup tab, fill the Hardware Platform field with the one
     exported by the Vivado&reg; Design Suite, and click the **Debug** button.
 
-    The Debug perspective opens.
-
     ![](./media/image58.jpeg)
+
+    The Debug perspective opens.
 
     ***Note*:** If the Debug Perspective window does not automatically
     open, select **Window → Open perspective** and select **Debug** in the

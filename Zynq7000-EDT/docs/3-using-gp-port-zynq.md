@@ -366,9 +366,7 @@ Vivado.
 
 5.  Open the helloworld.c file from the hello_world project created with
     standalone PS in <a href="2-using-zynq.md">Using the
-    Zynq SoC Processing System</a> and modify the application software code as
-    described in [Standalone Application Software for the
-    Design](#standalone-application-software-for-the-design).
+    Zynq SoC Processing System</a> and modify the application software code.
 
 6.  Save the file and re-build the project.
 
