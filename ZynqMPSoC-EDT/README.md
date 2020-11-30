@@ -43,7 +43,7 @@
 
  >**Note**: The sequence mentioned in the tutorial steps for booting
  Linux on the hardware is specific to 2020.1, which must be installed
- on the Linux host machine to execute parts of this document.
+ on the Linux host machine to execute the Linux portions of this document.
 
  [Zynq UltraScale+ MPSoC Processing System
  Configuration](./docs/3-system-configuration.md) describes the creation of a system with the
