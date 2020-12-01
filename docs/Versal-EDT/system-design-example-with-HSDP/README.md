@@ -21,6 +21,9 @@ The first step in this design is to enable the HSDP interface.  You can do this 
 1. Click **OK** to save the changes.  Two ports will be created on the CIPS IP `gt_refclk1` and `HSDP1_GT`.  
 1. In the **IP Integrator** canvas, right click on `gt_refclk1` and select **Make External**.  Do the same for **HSDP1\_GT**.
 1. In the **IP Integrator** canvas, right click on `HSDP1_GT` and select **Make External**. 
+1. Click **Validate Design**, then **Save**.
+1. In the Flow Navigator, under **Programming and Debug**, click **Generate Device Image** to launch implementation.
+1. Once implemenation completes
  
 
 
