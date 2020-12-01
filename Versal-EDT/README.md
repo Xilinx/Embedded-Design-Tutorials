@@ -4,27 +4,27 @@
    </td>
  </tr>
  <tr>
- <td align=center><h2>Versal&trade; Adaptive Compute Acceleration Platform (UG1305)
+ <td align=center><h2>Versal Adaptive Compute Acceleration Platform (UG1305)
  </td>
  </tr>
 </table>
 
  This document provides an introduction for using the Xilinx&reg; Vivado&reg;
- Design Suite flow for a VMK180/VCK190 evaluation board. The tools used
+ Design Suite flow for a Versal&trade; VMK180/VCK190 evaluation board. The tools used
  are Vivado Design Suite and the Vitis&trade; unified software platform,
  version 2020.2. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1400-vitis-embedded.pdf)).
 
->***Note*:** In this tutorial, the instructions for booting Linux on
+>**Note:** *In this tutorial, the instructions for booting Linux on
  the hardware is specific to the PetaLinux tools released for 2020.2,
  which must be installed on a Linux host machine for exercising the
- Linux portions of this document.
+ Linux portions of this document.*
 
  >**IMPORTANT!** *The VCK190/VMK180 Evaluation kit has a Silicon Labs
  CP210x VCP USB-UART Bridge. Ensure that these drivers are installed.
  See the Silicon Labs CP210x USB-to-UART Installation Guide
  ([UG1033](https://www.xilinx.com/cgi-bin/docs/bkdoc?k=install%3Bd%3Dug1033-cp210x-usb-uart-install.pdf))
  for more information.*
- 
+
  The examples in this document are created using the Xilinx tools
  running on a Windows 10, 64-bit operating system, Vitis software
  platform and PetaLinux on a Linux 64-bit operating system. Other
@@ -69,7 +69,7 @@ relevant content for your current development task. This document covers the fol
 processes:
 
 * **System and Solution Planning**: Identifying the components, performance, I/O, and data transfer requirements at a system level. Includes application mapping for the solution to PS, PL, and AI Engine.
-  
+
   * [Configuring the NoC IP Core in an Existing Project](/Versal-EDT/docs/2-cips-noc-ip-config.md#configuring-the-noc-ip-core-in-an-existing-project)
   * [System Design Example using Scalar Engine and Adaptable Engine](..Versal-EDT/docs/5-system-design-example.md)
 
@@ -81,13 +81,13 @@ platform and developing the application code using the embedded CPU. Also covers
   * [Running a Bare-Metal Hello World Application on DDR Memory](../Versal-EDT/docs/2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application-on-ddr-memory)
 
 * **Hardware, IP, and Platform Development**: Creating the PL IP blocks for the hardware platform, creating PL kernels, subsystem functional simulation, and evaluating the Vivado® timing, resource use, and power closure. Also involves developing the hardware platform for system integration. Topics in this document that apply to this design process include:
-  
+
   * [CIPS IP Core Configuration](../Versal-EDT/docs/2-cips-noc-ip-config.md#cips-ip-core-configuration)
   * [NoC (and DDR) IP Core Configuration](../Versal-EDT/docs/2-cips-noc-ip-config.md#noc-and-ddr-ip-core-configuration)
   * [Design Example: Using AXI GPIO](../Versal-EDT/docs/5-system-design-example.md#design-example-using-axi-gpio)
 
 * **System Integration and Validation**: Integrating and validating the system functional performance, including timing, resource use, and power closure. Topics in this document that apply to this design process include:
-  
+
   * [Boot and Configuration](../Versal-EDT/docs/4-boot-and-config.md)
   * [Example Project: FreeRTOS GPIO Application Project With RPU](../Versal-EDT/docs/5-system-design-example.md#example-project-freertos-gpio-application-project-with-rpu)
   * [Example Project: Creating Linux Images Using PetaLinux](../Versal-EDT/docs/5-system-design-example.md#example-project-creating-linux-images-using-petalinux)

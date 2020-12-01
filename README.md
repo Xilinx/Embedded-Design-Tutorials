@@ -11,7 +11,7 @@
  <td width="50%" align="center"><b>Description</b></td>
  </tr>
  <tr>
- <td align="center"><a href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/Versal-EDT"></a></td>
+ <td align="center"><a href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/Versal-EDT">Versal Adaptive Compute Acceleration Platform (UG1305)</a></td>
  <td>
 Provides an introduction for using the Xilinx&reg; Vivado&reg; Design Suite flow for a Versal&trade; VMK180/VCK190 evaluation board.</td></tr></table>
 
