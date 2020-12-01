@@ -11,8 +11,8 @@
  <td width="50%" align="center"><b>Description</b></td>
  </tr>
  <tr>
- <td align="center"><a href="https://gitenterprise.xilinx.com/techdocs/Emb-Design-Tutorials/tree/Versal-EDT">Versal Adaptive Compute Acceleration Platform (UG1305)</a></td>
+ <td align="center"><a href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/Versal-EDT"></a></td>
  <td>
-Provides an introduction for using the Xilinx® Vivado® Design Suite flow for a Versal&trade; VMK180/VCK190 evaluation board.</td></tr></table>
+Train, prune, and quantize a modified version of the AlexNet convolutional neural network (CNN) with the Kaggle Dogs vs. Cats dataset in order to deploy it on the Xilinx&reg; ZCU102 board.</td></tr></table>
 
 <p align="center"><sup>Copyright&copy; 2019-2020 Xilinx</sup></p>
