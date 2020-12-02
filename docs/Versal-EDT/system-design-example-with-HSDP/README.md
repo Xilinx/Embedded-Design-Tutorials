@@ -26,11 +26,11 @@ The first step in this design is to enable the HSDP interface.  You can do this 
 ### Synthesizing, Implementing, and Generating the Device Image
 
 1. In the Flow Navigator, under **Programming and Debug**, click **Generate Device Image** to launch implementation.
-  _Note: when the device image generation complests, the device image generation completed dialog box opens._
+  _Note: when the device image generation completes, the device image generation completed dialog box opens._
 
 ### Exporting Hardware
 
-1.  From the Vivado toolbar, select **File → Export → Export Hardware**.  The Export Hardware Dialog Box will open.
+1.  From the Vivado tool-bar, select **File → Export → Export Hardware**.  The Export Hardware Dialog Box will open.
 1.  Choose **Fixed** and click **Next**.
 1.  Choose **Include Device Image** and click **Next**.
 1.  Provide the name fo ryour exported file (example: `edt_versal_wrapper_with_hsdp`).  Click **Next**.
@@ -45,19 +45,18 @@ Once the Linux images have been built and packaged, they can be loaded onto the 
 
 1.  Connect the USB-C cable between the Board and the SmartLynq+.
 1.  Connect the SmartLynq+ using either Ethernet or USB.
-    * **Using Ethernet:** Connect an ethernet cable between ethernet port on the SmartLynq+ and your local area network.
+    * **Using Ethernet:** Connect an Ethernet cable between Ethernet port on the SmartLynq+ and your local area network.
     * **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
-1.  Connect the provided power adaptor to the SmartLynq+ and power on the VCK190/VMK180.
-1.  Once the SmartLynq+ finishes booting up an IP address will appear on the screen under either `eth0` or `usb0`.  This will be the IP address used to connect to the SmartLynq+ in both the Ethernet and USB usecase.
-    * **Using Ethernet:** by default, this will be a DHCP address assigned by a DHCP server found on the LAN.
-    * **Using USB:** 
-1.  Copy the linux download scripts from the design package `<design-package>/smartlynq_plus/xsdb`.  This script will configure the Versal device and load the Linux images built in the prior steps using either JTAG or HSDP.
+1.  Connect the provided power adapter to the SmartLynq+ and power on the VCK190/VMK180.
+1.  Once the SmartLynq+ finishes booting up an IP address will appear on the screen under either `eth0` or `usb0`.  This will be the IP address used to connect to the SmartLynq+ in both the Ethernet and USB use case.
+    * _If using Ethernet the SmartLynq+ will acquire an IP address from a DHCP server found on the network.  If using USB the USB port will have a fixed IP of `10.0.0.2`._ 
+1.  Copy the Linux download scripts from the design package `<design-package>/smartlynq_plus/xsdb`.  This script will configure the Versal device and load the Linux images built in the prior steps using either JTAG or HSDP.
 1.  SSH instructions.
-1.  To load the linux images, do one of the following:
+1.  To load the Linux images, do one of the following:
     * **To use HSDP** `xsdb linux_download.tcl <smartlynq+ ip> images/linux HSDP`.  
         * This will first load `BOOT.BIN` using JTAG after which an HSDP link will be auto-negotiated and the rest of the boot images will be loaded using HSDP, offering a substantial speed increase compared to JTAG.
     * **To use JTAG** `xsdb linux-download <smartlynq+ ip> images/linux FTDI-JTAG`.
-        * This will use JTAG to program all of the linux boot images.
+        * This will use JTAG to program all of the Linux boot images.
 1.  
 
 
