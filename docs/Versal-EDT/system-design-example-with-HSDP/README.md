@@ -47,15 +47,18 @@ Once the Linux images have been built and packaged, they can be loaded onto the 
 1.  Connect the SmartLynq+ using either Ethernet or USB.
     * **Using Ethernet:** Connect an ethernet cable between ethernet port on the SmartLynq+ and your local area network.
     * **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
-1.  Connect the provided power adaptor to the SmartLynq+.
-1.  Once the SmartLynq+ finishes booting up an IP address will appear on the screen.
+1.  Connect the provided power adaptor to the SmartLynq+ and power on the VCK190/VMK180.
+1.  Once the SmartLynq+ finishes booting up an IP address will appear on the screen under either `eth0` or `usb0`.  This will be the IP address used to connect to the SmartLynq+ in both the Ethernet and USB usecase.
+    * **Using Ethernet:** by default, this will be a DHCP address assigned by a DHCP server found on the LAN.
+    * **Using USB:** 
+1.  Copy the linux download scripts from the design package `<design-package>/smartlynq_plus/xsdb`.  This script will configure the Versal device and load the Linux images built in the prior steps using either JTAG or HSDP.
+1.  SSH instructions.
+1.  To load the linux images, do one of the following:
+    * **To use HSDP** `xsdb linux_download.tcl <smartlynq+ ip> images/linux HSDP`.  
+        * This will first load `BOOT.BIN` using JTAG after which an HSDP link will be auto-negotiated and the rest of the boot images will be loaded using HSDP, offering a substantial speed increase compared to JTAG.
+    * **To use JTAG** `xsdb linux-download <smartlynq+ ip> images/linux FTDI-JTAG`.
+        * This will use JTAG to program all of the linux boot images.
 1.  
 
 
- 
 
-
-
-
-
-   
