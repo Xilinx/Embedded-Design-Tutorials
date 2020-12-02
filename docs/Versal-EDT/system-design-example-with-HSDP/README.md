@@ -5,7 +5,7 @@ This chapter guides you through building a system based on Versal devices that u
 
 ## Design Example: Enabling High-Speed Debug Port (HSDP)
 
-### Configuring Hardware
+### Building a HSDP Capable Design
 
 The first step in this design is to enable the HSDP interface.  You can do this using the Vivado IP Integrator.  
 
@@ -22,8 +22,36 @@ The first step in this design is to enable the HSDP interface.  You can do this 
 1. In the **IP Integrator** canvas, right click on `gt_refclk1` and select **Make External**.  Do the same for **HSDP1\_GT**.
 1. In the **IP Integrator** canvas, right click on `HSDP1_GT` and select **Make External**. 
 1. Click **Validate Design**, then **Save**.
+
+### Synthesizing, Implementing, and Generating the Device Image
+
 1. In the Flow Navigator, under **Programming and Debug**, click **Generate Device Image** to launch implementation.
-1. Once implemenation completes
+  _Note: when the device image generation complests, the device image generation completed dialog box opens._
+
+### Exporting Hardware
+
+1.  From the Vivado toolbar, select **File → Export → Export Hardware**.  The Export Hardware Dialog Box will open.
+1.  Choose **Fixed** and click **Next**.
+1.  Choose **Include Device Image** and click **Next**.
+1.  Provide the name fo ryour exported file (example: `edt_versal_wrapper_with_hsdp`).  Click **Next**.
+1.  Click **Finish**.
+
+## Creating a Linux Image Using Petalinux
+
+
+## Using SmartLynq+ High-Speed Debug Port for Linux Image Download and Boot
+
+Once the Linux images have been built and packaged, they can be loaded onto the VCK190 or VMK180 board using either JTAG or High-Speed Debug Port.  
+
+1.  Connect the USB-C cable between the Board and the SmartLynq+.
+1.  Connect the SmartLynq+ using either Ethernet or USB.
+  * **Using Ethernet:** Connect an ethernet cable between ethernet port on the SmartLynq+ and your local area network.
+  * **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
+1.  Connect the provided power adaptor to the SmartLynq+.
+1.  Once the SmartLynq+ finishes booting up an IP address will appear on the screen.
+1.  
+
+
  
 
 
