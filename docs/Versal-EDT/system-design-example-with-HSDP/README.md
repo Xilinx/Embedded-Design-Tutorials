@@ -45,8 +45,8 @@ Once the Linux images have been built and packaged, they can be loaded onto the 
 
 1.  Connect the USB-C cable between the Board and the SmartLynq+.
 1.  Connect the SmartLynq+ using either Ethernet or USB.
-  * **Using Ethernet:** Connect an ethernet cable between ethernet port on the SmartLynq+ and your local area network.
-  * **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
+    * **Using Ethernet:** Connect an ethernet cable between ethernet port on the SmartLynq+ and your local area network.
+    * **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
 1.  Connect the provided power adaptor to the SmartLynq+.
 1.  Once the SmartLynq+ finishes booting up an IP address will appear on the screen.
 1.  
