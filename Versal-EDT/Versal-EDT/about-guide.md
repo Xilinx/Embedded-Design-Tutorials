@@ -1,4 +1,13 @@
-# About the Guide
+<table class="sphinxhide">
+ <tr>
+   <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Xilinx Embedded Design Tutorials</h1></a>
+   </td>
+ </tr>
+ <tr>
+ <td align=center><h2>Versal Adaptive Compute Acceleration Platform (UG1305)
+ </td>
+ </tr>
+</table>
 
  This document provides an introduction for using the Xilinx&reg; Vivado&reg;
  Design Suite flow for a Versal&trade; VMK180/VCK190 evaluation board. The tools used
