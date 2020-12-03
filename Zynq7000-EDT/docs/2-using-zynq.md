@@ -87,7 +87,7 @@ project with an embedded processor system as the top level.
 <thead>
 <tr class="header">
 <th><blockquote>
-<p><strong>Wizard Screen</strong></p>
+<p><strong>Screen</strong></p>
 </blockquote></th>
 <th><blockquote>
 <p><strong>System Property</strong></p>
@@ -171,7 +171,7 @@ The Create Block Design dialog box opens.
     <thead>
     <tr class="header">
     <th><blockquote>
-    <p><strong>Wizard Screen</strong></p>
+    <p><strong>Screen</strong></p>
     </blockquote></th>
     <th><blockquote>
     <p><strong>System Property</strong></p>

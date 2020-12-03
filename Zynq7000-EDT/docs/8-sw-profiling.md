@@ -50,8 +50,7 @@ to profile your application.
 
 1.  Select the application you want to profile.
 
-2.  Right-click the application and select **Debug As→ Launch on
-    Hardware (Application Debugger)**.
+2.  Right-click the application and select **Debug As → Launch on Hardware (Single Application Debug)**.
 
 If the Confirm Perspective Switch popup window appears, click **Yes**.
 The Debug perspective opens.

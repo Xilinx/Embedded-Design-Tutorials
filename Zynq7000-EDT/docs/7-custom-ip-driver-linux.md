@@ -570,8 +570,8 @@ following steps are required:
 1.  Set the toolchain path in your Linux Workstation.
 
 2.  Download the kernel source code and compile it. For downloading and
-    compilation, refer to the steps mentioned in Xilinx Zynq Linux
-    Wiki Page [Support Resources](#support-resources).
+    compilation, refer to the steps mentioned in the <a href="http://wiki.xilinx.com/zynq-linux">Xilinx Zynq Linux
+    Wiki Page</a>.
 
 ### Example Project: Device Driver Development
 
@@ -670,8 +670,7 @@ a Windows machine.
 
 1.  Open the Vitis software platform. You must run the Target Communication Frame (TCF) agent on the host machine.
 
-2.  Select XSCT and then connect to connect to the Xilinx Software
-    Command-Line Tool (XSCT).
+2.  In the XSCT Console view, type ``connect`` to connect to the Xilinx Software Command-Line Tool (XSCT).
 
 3.  In the Vitis software platform, select **File → New → Application
     Project** to open the New Application Project wizard.
@@ -818,7 +817,7 @@ a Windows machine.
     i.  Right-click the **/** in the path name and create a new directory;
         name it Apps.
 
-    j.  Using the Remote Systems Perspective explorer, copy the
+    j.  Using the Remote System explorer perspective, copy the
         linux_blinkled_app.elf file from the \<project-dir\>
         linux_blinkled_app/Debug folder and paste it into the /Apps
         directory under **blink connection**.
