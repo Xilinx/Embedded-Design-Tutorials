@@ -27,12 +27,13 @@ Learn how to `use the Xilinx® Vivado® Design Suite flow for a VMK180/VCK190 ev
    :caption: Getting Started
    :hidden:
 
-   1-getting-started
-   2-cips-noc-ip-config
-   3-debugging
-   4-boot-and-config
-   5-system-design-example
-   6-creating-plm
+   Versal-edt/docs/README
+   Versal-edt/docs/1-getting-started
+   Versal-edt/docs/2-cips-noc-ip-config
+   Versal-edt/docs/3-debugging
+   Versal-edt/docs/4-boot-and-config
+   Versal-edt/docs/5-system-design-example
+   Versal-edt/docs/6-creating-plm
       
    
 .. _Example Projects:
@@ -75,4 +76,9 @@ Example Projects
    :hidden:
 
 
-   Master <https://gitenterprise.xilinx.com/techdocs/Emb-Design-Tutorials/tree/master/Versal-EDT>
+   Master <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master>
+      
+	 
+
+
+   
