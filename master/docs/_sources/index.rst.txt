@@ -27,6 +27,7 @@ Learn how to `use the Xilinx® Vivado® Design Suite flow for a VMK180/VCK190 ev
    :caption: Getting Started
    :hidden:
 
+   README
    1-getting-started
    2-cips-noc-ip-config
    3-debugging
@@ -38,7 +39,7 @@ Learn how to `use the Xilinx® Vivado® Design Suite flow for a VMK180/VCK190 ev
 .. _Example Projects:
 
 Example Projects
-=============
+================
 
 .. list-table:: 
    :widths: 30 70
@@ -75,7 +76,7 @@ Example Projects
    :hidden:
 
 
-   Master <https://gitenterprise.xilinx.com/techdocs/Emb-Design-Tutorials/tree/master/Versal-EDT>
+   Master <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master>
       
 	 
 
