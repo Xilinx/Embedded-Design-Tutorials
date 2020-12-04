@@ -33,7 +33,7 @@ The first step in this design is to enable the HSDP interface.  You can do this 
 1.  From the Vivado tool-bar, select **File → Export → Export Hardware**.  The Export Hardware Dialog Box will open.
 1.  Choose **Fixed** and click **Next**.
 1.  Choose **Include Device Image** and click **Next**.
-1.  Provide the name fo ryour exported file (example: `edt_versal_wrapper_with_hsdp`).  Click **Next**.
+1.  Provide the name for your exported file (example: `edt_versal_wrapper_with_hsdp`).  Click **Next**.
 1.  Click **Finish**.
 
 ## Creating a Linux Image Using Petalinux
