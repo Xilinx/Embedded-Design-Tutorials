@@ -32,14 +32,14 @@
  varied results. These examples focus on introducing you to the following aspects of
  embedded design.
 
-- **[Versal ACAP CIPS and NoC (DDR) IP Core Configuration](../Versal-EDT/docs/2-cips-noc-ip-config.md):** Describes creation
+- **[Versal ACAP CIPS and NoC (DDR) IP Core Configuration](../Versal-EDT/docs/2-cips-noc-ip-config.html):** Describes creation
      of a design with Versal&trade; ACAP Control, Interfaces, and Processing
      System (CIPS) IP core and an NoC and running a simple "Hello
      World" application on Arm&reg; Cortex&trade;-A72, and Cortex&trade;-R5F
      processors. This chapter is an introduction to the hardware and
      software tools using a simple design as the example.
 
-- **[Debugging Using the Vitis Software Platform](../Versal-EDT/docs/3-debugging.md):** Introduces debugging features of the
+- **[Debugging Using the Vitis Software Platform](../Versal-EDT/docs/3-debugging.html):** Introduces debugging features of the
      Xilinx Vitis software platform. This chapter uses the previous
      design and runs the software on bare metal (without an OS) to show
      the debugging features of the Vitis IDE. This chapter also lists
