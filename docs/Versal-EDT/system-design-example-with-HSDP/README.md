@@ -56,13 +56,18 @@ Once the Linux images have been built and packaged, they can be loaded onto the 
 
 The SmartLynq+ can also be used as a serial terminal to remotely view serial terminal output.  This feature can be useful when physical access to the remote setup is not available.
 
-1.  Using an SSH client such as `PuTTY` on Windows or `ssh` on Unix based systems, connect to the IP address shown on the SmartLynq+ display.  
+1.  Using an SSH client such as `PuTTY` on Windows or `ssh` on Unix based systems, connect using SSH to the IP address shown on the SmartLynq+ display.  
     * Username: `xilinx`
     * Password: `xilinx`
-1.  SmartLynq+ comes with the `minicom` application pre-installed, which can be used to connect to a serial terminal.  To connect to the VCK190/VMK180 serial terminal output do the following:
+1.  SmartLynq+ ships with the `minicom` application pre-installed, which can be used to connect to a serial terminal.  To connect to the VCK190/VMK180 serial terminal output do the following:
     * `sudo minicom --device /dev/ttyUSB1`
 
+It is now possible to view the boot loader output as well as access a serial terminal on the VCK190/VMK180.
+
 ### Booting Linux Images over JTAG or HSDP
+
+SmartLynq+ can be used to download linux images directly to the VCK190/VMK180 without using an SD Card.  Linux images can be loaded using JTAG or HSDP.
+
 1.  To load the Linux images, do one of the following:
     * **To use HSDP** `xsdb linux_download.tcl <smartlynq+ ip> images/linux HSDP`.  
         * This will first load `BOOT.BIN` using JTAG after which an HSDP link will be auto-negotiated and the rest of the boot images will be loaded using HSDP, offering a substantial speed increase compared to JTAG.
