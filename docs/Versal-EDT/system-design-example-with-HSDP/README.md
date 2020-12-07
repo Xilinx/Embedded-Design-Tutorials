@@ -5,7 +5,7 @@ This chapter guides you through building a system based on Versal devices that u
 
 ## Design Example: Enabling High-Speed Debug Port (HSDP)
 
-### Building a HSDP Capable Design
+### Building an HSDP Capable Design
 
 The first step in this design is to enable the HSDP interface.  You can do this using the Vivado IP Integrator.  
 
@@ -47,11 +47,22 @@ Once the Linux images have been built and packaged, they can be loaded onto the 
 1.  Connect the SmartLynq+ using either Ethernet or USB.
     * **Using Ethernet:** Connect an Ethernet cable between Ethernet port on the SmartLynq+ and your local area network.
     * **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
-1.  Connect the provided power adapter to the SmartLynq+ and power on the VCK190/VMK180.
+1.  Connect the provided power adapter to the SmartLynq+ and power on the VCK190/VMK180 board.
 1.  Once the SmartLynq+ finishes booting up an IP address will appear on the screen under either `eth0` or `usb0`.  This will be the IP address used to connect to the SmartLynq+ in both the Ethernet and USB use case.
     * _If using Ethernet the SmartLynq+ will acquire an IP address from a DHCP server found on the network.  If using USB the USB port will have a fixed IP of `10.0.0.2`._ 
-1.  Copy the Linux download scripts from the design package `<design-package>/smartlynq_plus/xsdb`.  This script will configure the Versal device and load the Linux images built in the prior steps using either JTAG or HSDP.
-1.  SSH instructions.
+1.  Copy the Linux download scripts from the design package `<design-package>/smartlynq_plus/xsdb`.
+
+### Using The SmartLynq+ as a Serial Terminal
+
+The SmartLynq+ can also be used as a serial terminal to remotely view serial terminal output.  This feature can be useful when physical access to the remote setup is not available.
+
+1.  Using an SSH client such as `PuTTY` on Windows or `ssh` on Unix based systems, connect to the IP address shown on the SmartLynq+ display.  
+    * Username: `xilinx`
+    * Password: `xilinx`
+1.  SmartLynq+ comes with the `minicom` application pre-installed, which can be used to connect to a serial terminal.  To connect to the VCK190/VMK180 serial terminal output do the following:
+    * `sudo minicom --device /dev/ttyUSB1`
+
+### Booting Linux Images over JTAG or HSDP
 1.  To load the Linux images, do one of the following:
     * **To use HSDP** `xsdb linux_download.tcl <smartlynq+ ip> images/linux HSDP`.  
         * This will first load `BOOT.BIN` using JTAG after which an HSDP link will be auto-negotiated and the rest of the boot images will be loaded using HSDP, offering a substantial speed increase compared to JTAG.
