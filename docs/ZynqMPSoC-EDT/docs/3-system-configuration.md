@@ -84,18 +84,16 @@
 
     *Table 1:* **New Project Wizard Options**
 
-   | Wizard Screen       | System Property     | Setting or  Command to Use     |
-   |---------------------|---------------------|----------------------|
-   |  Project Name       |  Project name       |  edt_zcu102         |
-   |                     |  Project Location   |  C:/edt             |
-   |                     |  Create ProjecSub-directory     |  Leave this checked |
-   |  Project Type       |  Specify the type of sources for your design. You can start with RTL or a synthesized EDIF. |  **RTL Project**    |
-   |                     |  Do not specify sources at this time check box    |  Leave this unchecked.       |
-   |  Add Sources        |  Do not make any  changes to this screen.  
-   |  Add Constraints    |  Do not make any changes to this screen.  
-   |  Default Part       |  Select             |  **Boards**         |
-   |                     |  Display Name       |  Zynq UltraScale+ ZCU102 Evaluation Board  |
-   |  New Project Summary       |  Project Summary    |  Review the project summary|
+   | Wizard Screen        | System Property     | Setting or  Command to Use     |
+   |----------------------|---------------------|----------------------|
+   |  Project Name        |  Project name       |  edt_zcu102         |
+   |                      |  Project Location   |  C:/edt             |
+   |                      |  Create Project Sub-directory     |  Leave this checked |
+   |  Project Type        |  Specify the type of sources for your design. You can start with RTL or a synthesized EDIF. |  RTL Project    |
+   |                      |  Do not specify sources at this time check box    |  Leave this checked.       |
+   |  Default Part        |  Select             |  **Boards**         |
+   |                      |  Display Name       |  **Zynq UltraScale+ ZCU102 Evaluation Board**  |
+   |  New Project Summary |  Project Summary    |  Review the project summary|
 
 4. Click **Finish**. The New Project wizard closes and the project you
      just created opens in the Vivado design tool.
@@ -232,8 +230,7 @@
  identify dependencies during run-time power management or warm restart
  for upgrade or recovery. An example of this use-case can be found on
  the [Zynq UltraScale+ Restart solution
- wiki](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841820/Zynq%2BUltraScale%2BPlus%2BRestart%2Bsolution)
- [page](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841820/Zynq%2BUltraScale%2BPlus%2BRestart%2Bsolution).
+ wiki page](httpsisolation://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841820/Zynq%2BUltraScale%2BPlus%2BRestart%2Bsolution).
  The Xilinx Memory Protection Unit (XMPU) and Xilinx Peripheral
  Protection Unit (XPPU) in Zynq UltraScale+ provide hardware protection
  for memory and peripherals. These protection units complement the
@@ -248,7 +245,7 @@
  initialization file which is loaded as a part of the bootloader,
  which, in this case, is the First Stage Boot Loader (FSBL). For more
  details, see the *Zynq UltraScale Device Technical Reference Manual*
- ([UG1085](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides%3Bd%3Dug1085-zynq-ultrascale-trm.pdf)).
+ ([UG1085](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug1085-zynq-ultrascale-trm.pdf)).
 
 1. Double-click **Zynq UltraScale+ Processing System** in the block
      diagram window, if it is not open.

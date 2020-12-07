@@ -51,45 +51,36 @@
 # Build Software for PS Subsystems
 
  This chapter lists the steps to configure and build software for PS
- subsystems. In this chapter, you will use the Zynq® UltraScale+™
- hardware platform (hardware definition file) configured in the Vivado®
- Design Suite.
+ subsystems. 
 
- In [Zynq UltraScale+ MPSoC Processing System
+ In previous chapter, [Zynq UltraScale+ MPSoC Processing System
  Configuration](3-system-configuration.md), you created and exported the hardware
- platform from Vivado. This hardware platform contains the hardware
- handoff file, the processing system initialization files (psu_init),
- and the PL bitstream. In this chapter, you will use the hardware
- platform in the Vitis™ IDE and PetaLinux to configure software for the
- processing system.
+ design from Vivado. The exported XSA file contains the hardware
+ handoff, the processing system initialization (psu_init),
+ and the PL bitstream. In this chapter, you will import the XSA to the Vitis™ IDE 
+ and PetaLinux to configure software for the processing system.
 
- This chapter serves two important purposes. One, it helps you build
- and configure the software components that can be used in future
- chapters. Second, it describes the build steps for a specific PS
- subsystem.
+ This chapter serves two important purposes. 
+ 
+ 1. It helps you build and configure the software components that can be used in future chapters. 
+ 2. It describes the build steps for a specific PS subsystem.
 
 ## Processing Units in Zynq UltraScale+
 
  The main processing units in the processing system in Zynq UltraScale+
  are listed below.
 
-- **Application Processing Unit:** Quad-core Arm® Cortex™-A53 MPCore
-     Processors.
-
-- **Real Time Processing Unit:** Dual-core Arm Cortex™-R5F MPCore
-     Processors.
-
+- **Application Processing Unit:** Quad-core Arm® Cortex™-A53 MPCore Processors.
+- **Real Time Processing Unit:** Dual-core Arm Cortex™-R5F MPCore Processors.
 - **Graphics Processing Unit:** Arm Mali™ 400 MP2 GPU
-
-- **Platform Management Unit (PMU):**
+- **Platform Management Unit (PMU):** Xilinx MicroBlaze based platform management unit.
 
  This section demonstrates configuring these units using system
  software. This can be achieved either at the boot-level using First
  Stage Boot Loader (FSBL) or via system firmware, which is applicable
  to the platform management unit (PMU).
 
- You will use the Zynq UltraScale+ hardware platform in the Vitis IDE
- to perform the following tasks:
+ You will use the Vitis IDE to perform the following tasks:
 
 1. Create a First Stage Boot Loader (FSBL) for the Arm Cortex-A53
      64-bit quad-core processor unit (APU) and the Cortex-R5F dual-core
@@ -97,8 +88,7 @@
 
 2. Create bare-metal applications for APU and RPU.
 
-3. Create platform management unit (PMU) firmware for the platform
-     management unit using the Vitis IDE.
+3. Create platform management unit (PMU) firmware for PMU.
 
  In addition to the bare-metal applications, this chapter also
  describes building U-Boot and Linux Images for the APU. The Linux
@@ -108,7 +98,7 @@
 ## Creating a Platform Using Vitis IDE
 
 1. Launch the Vitis IDE from the Windows start menu shortcut or by
-     double-clicking the `C:\Xilinx\Vitis\2020.1\bin\vitis.bat` file.
+     double-clicking the `C:\Xilinx\Vitis\2020.2\bin\vitis.bat` file.
 
 2. Select the workspace and continue.
 
@@ -120,25 +110,28 @@
      **Next**.
 
 5. In the Platform view, select **Create from hardware specification
-     (XSA)**. Browse the XSA file and select the preferred operating
-     system, processor, and architecture.
+     (XSA)**. 
+
+6. Click Browse to select the XSA file exported from previous chapter.
+
+7. Select the preferred operating system, processor, and architecture.
 
     ![](./media/image22.jpeg)
 
-6. Click **Finish**.
+8. Click **Finish**.
 
-7. In a few minutes, the Vitis IDE generates the platform. The files
+9. In a few minutes, the Vitis IDE generates the platform. The files
      that are generated are displayed in the explorer window as shown
      in the following figure.
 
     ![](./media/image23.jpeg)
 
-8. Default FSBL and PMU firmware comes with the platform project and
+10. Default FSBL and PMU firmware comes with the platform project and
      psu_cortexa53_0 domain also added to the platform. We can add
      multiple domains to platform and we can also create FSBL like any
      other application.
 
-9. Optional: To add the following libraries by modifying the standalone
+11. Optional: To add the following libraries by modifying the standalone
      on psu_cortexa53_0 domain, follow these steps:
 
     a.  Double-click the **standalone on psu_cortexa53_0** BSP.
@@ -147,7 +140,7 @@
 
     c.  On the Overview page, select the xilffs, xilpm, xilsecure libraries.
 
-10. Now build the hardware by right-clicking the platform, then
+12. Now build the hardware by right-clicking the platform, then
      selecting **Build Project**.
 
     ![](./media/image24.jpeg)
@@ -155,7 +148,7 @@
     The hardware platform is ready. You can create applications using this
     platform and test on zcu102 hardware.
 
-## Example Project: Running the "Hello World" Application from Arm Cortex-A53
+## Example Project 1: Running the "Hello World" Application from Arm Cortex-A53
 
  In this example, you will learn how to manage the board settings, make
  cable connections, connect to the board through your PC, and run a
@@ -181,19 +174,23 @@
 
     ![](./media/image27.jpeg)
 
-To send the \"Hello World\" string to the UART0 peripheral, follow these steps:
+### Print Hello World
+
+To send the "Hello World" string to the UART0 peripheral, follow these steps:
 
 1. Open the Vitis IDE and set the workspace path to your project file,
-     which in this example is `C:\\edt`.
+     which in this example is `C:\edt`.
 
-    Alternately, you can open the Vitis IDE with a default workspace and
-    later switch it to the correct workspace by selecting **File→ Switch
-    Workspace** and then selecting the workspace.
+    Alternately, if Vitis IDE is already open, you can
+    switch it to the correct workspace by selecting 
+    **File→ Switch Workspace** and then selecting the workspace.
 
-2. Open a serial communication utility for the COM port assigned on
-     your system. The Vitis IDE provides a serial terminal utility,
-     which will be used throughout the tutorial; select **Window→ Show
-     View→ Terminal** to open it.
+2. Open your preferred serial communication utility for the COM port.
+     
+   The Vitis IDE provides a serial terminal utility. We will use it throughout the tutorial; 
+   select **Window→ Show View→ Terminal** to open it.
+
+   ***Note***: On Linux, you'll need root previliage to use UART.
 
 3.  Click the **Connect** button to set the serial configuration and connect it.
 
@@ -204,7 +201,7 @@ To send the \"Hello World\" string to the UART0 peripheral, follow these steps:
 
 5. Click the **Settings** button to open the Terminal Settings view.
 
-6. Verify the port details in the device manager.
+6. Verify the port details in the Windows Device Manager.
 
     UART-0 terminal corresponds to COM port with Interface-0. For this
     example, UART-0 terminal is set by default, so for the COM port,
@@ -223,7 +220,7 @@ To send the \"Hello World\" string to the UART0 peripheral, follow these steps:
 9. Use the information in the table below to make your selections in
      the wizard screens.
 
-    *Table 3:* **New Application Project Settings for Standalone APU Application
+    *Table 3*: **New Application Project Settings for Standalone APU Application**
 
    |  Wizard Screen       |  System Properties          |  Settings       |
    |----------------------|-----------------------------|----------------------|
@@ -282,9 +279,9 @@ To send the \"Hello World\" string to the UART0 peripheral, follow these steps:
  terminal application running on the host machine, which displays it as
  a string.
 
-## Creating a Domain for cortexr5_0
+## Creating a standalone BSP Domain for cortexr5_0
 
-To create a Vitis domain for cortexr5_0, follow these steps:
+In this step, we will prepare for the next example design: running a Hello World application on Arm Cortex-R5. We will create a standalone BSP domain for cortexr5_0. Please follow these steps:
 
 1. The edt_zcu102_wrapper platform is, by default, assigned the default
      domain for psu_cortexa53_0. For applications targeting the RPU,
@@ -304,7 +301,7 @@ To create a Vitis domain for cortexr5_0, follow these steps:
    | Name                              | psu_cortexr5_0                  |
    | Display name                      | psu_cortexr5_0                  |
    | OS                                | Standalone                      |
-   | Version                           | Standalone (7.1)                |
+   | Version                           | Standalone (7.3)                |
    | Processor                         | psu_cortexr5_0                  |
    | Supported Runtime                 | C/C++                           |
    | Architecture                      | 32-bit                          |
@@ -317,7 +314,7 @@ To create a Vitis domain for cortexr5_0, follow these steps:
     psu_cortexr5_0 BSP, then click **Modify BSP Settings**. On the
     Overview page, select the desired libraries.
 
-## Example Project: Running the "Hello World" Application from Arm Cortex-R5
+## Example Project 2: Running the "Hello World" Application from Arm Cortex-R5
 
  In this example, you will learn how to manage the board settings, make
  cable connections, connect to the board through your PC, and run a
@@ -366,11 +363,9 @@ To create a Vitis domain for cortexr5_0, follow these steps:
     ![](./media/image29.png)
 
 9. In the Vitis IDE, switch back from the Debug perspective to the
-     C/C++ perspective by selecting **Windows→ Open Perspective →
-     C/C++**.
+     C/C++ perspective by selecting **Windows→ Open Perspective → C/C++**.
 
-    Ignore this step, if the Vitis IDE is already in the C/C++
-    perspective.
+    Ignore this step, if the Vitis IDE is already in the C/C++ perspective.
 
 10. Select **File→ New → Application Project**. The New Project wizard
      opens.
@@ -425,10 +420,10 @@ To create a Vitis domain for cortexr5_0, follow these steps:
 
 #### What Just Happened?
 
- The application software sent the \"Hello World" string to the UART0
+ The application software sent the "Hello World" string to the UART0
  peripheral of the PS section.
 
- From UART0, the \"Hello world\" string goes byte-by-byte to the serial
+ From UART0, the "Hello world" string goes byte-by-byte to the serial
  terminal application running on the host machine, which displays it as
  a string.
 
@@ -436,9 +431,12 @@ To create a Vitis domain for cortexr5_0, follow these steps:
 
 ### Domain
 
- A domain can refer to the settings and files of a standalone BSP, a
- Linux OS, a third-party OS/BSP like FreeRTOS, or a component like the
- device tree generator.
+A domain can refer to the settings and files of a standalone BSP, a
+Linux OS, a third-party OS/BSP like FreeRTOS, or a component like the
+device tree generator.
+
+You can create multiple applications to run on the domain. 
+A domain is tied to a single processor or a cluster of isomorphic processors (for example: A53_0 or A53) in the platform.
 
 #### Board Support Package
 
@@ -465,11 +463,11 @@ To create a Vitis domain for cortexr5_0, follow these steps:
  profiling, abort, and exit. It is a single threaded semi-hosted
  environment.
 
-## Example Project: Create a Bare-Metal Application Project in the Vitis IDE
+<!-- TODO: add system project part -->
+<!-- TODO: alternativly, remove this example and add it later -->
+## Example Project 3: Create a Bare-Metal System Application Project in the Vitis IDE
 
- For this example, you will launch the Vitis IDE and create a
- bare-metal application using the hardware platform for Zynq
- UltraScale+ created using the Vivado Design Suite.
+ In this example, we will do apply some custimizations to the hello world applications we created for Arm Cortex-A53 and Arm Cortex-R5, combine them in a system project.
 
 ### Create Custom Bare-Metal Application for Arm Cortex-A53 based APU
 
@@ -649,6 +647,8 @@ To review the PMU firmware in the platform, follow these steps:
     The psu_pmu_0 processor domain is created automatically for the
     zynqmp_pmufw software project.
 
+<!-- This FSBL creation is not used by the whole example project. -->
+<!-- TODO: make it more comprehensive -->
 ## Create First Stage Boot Loader for Arm Cortex-A53-Based APU
 
  FSBL can load the required application or data to memory and launch
@@ -733,7 +733,7 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
     >***Note*:** If the system design demands, the FSBL can be targeted to
     run on the RPU.
 
-## Example Project: Create Linux Images using PetaLinux
+## Example Project 4: Create Linux Images using PetaLinux
 
  The earlier example highlighted creation of the bootloader images and
  bare-metal applications for APU, RPU, and PMU using the Vitis IDE. In
@@ -745,7 +745,7 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
  >**IMPORTANT!**
     >1.  This example needs a Linux Host
      machine. *PetaLinux Tools Documentation: Reference Guide* ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf))
- for information about dependencies for PetaLinux 2020.1.
+ for information about dependencies for PetaLinux 2020.2.
     >1.  This example uses the ZCU102 PetaLinux BSP to create a PetaLinux
      project. Ensure that you have downloaded the ZCU102 BSP for
      PetaLinux as instructed in [PetaLinux Tools](#petalinux-tools-1).
@@ -753,17 +753,17 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
 1. Create a PetaLinux project using the following command:
 
     This creates a PetaLinux project directory, for example,
-    xilinx-zcu102-2020.1.
+    xilinx-zcu102-2020.2.
 
-    >***Note*:** xilinx-zcu102-v2020.1-final.bsp is the PetaLinux BSP for
+    >***Note*:** xilinx-zcu102-v2020.2-final.bsp is the PetaLinux BSP for
     ZCU102 Production Silicon Rev1.0 Board. Use
-    xilinx-zcu102-ZU9-ES2-Rev1.0-v2020.1-final.bsp, if you are using ES2
+    xilinx-zcu102-ZU9-ES2-Rev1.0-v2020.2-final.bsp, if you are using ES2
     Silicon on Rev 1.0 board.
 
 2. Change to the PetaLinux project directory using the following
      command:
 
-    `$ cd xilinx-zcu102-2020.1`
+    `$ cd xilinx-zcu102-2020.2`
 
     The ZCU102 PetaLinux-BSP is the default ZCU102 Linux BSP. For this
     example, you reconfigure the PetaLinux Project based on theZynq
@@ -823,14 +823,15 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
     ```
     /include/ "system-conf.dtsi"
     / {
-    gpio-keys { sw19 {
-    status = "disabled";
+        gpio-keys { 
+            sw19 {
+                status = "disabled";
+            };
+        };
     };
-    };
-    };
-    &uart1
-    {
-    status = "disabled";
+    
+    &uart1 {
+        status = "disabled";
     };
     ````
 
@@ -908,7 +909,7 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
  The earlier example highlighted creation of the Linux Images and Boot
  images to boot from an SD card. This section explains the
  configuration of PetaLinux to generate Linux images for QSPI flash.
- For more information about the dependencies for PetaLinux 2020.1, see
+ For more information about the dependencies for PetaLinux 2020.2, see
  the *PetaLinux Tools Documentation: Reference Guide*
  ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
 
@@ -916,7 +917,7 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
      created for SD card setup using the following commands:
 
     ``` shell
-    $ cd <Petalinux-project-path>/xilinx-zcu102-2020.1/images/linux/
+    $ cd <Petalinux-project-path>/xilinx-zcu102-2020.2/images/linux/
     $ mkdir sd_boot
     $ cp image.ub sd_boot/
     $ cp u-boot.elf sd_boot/
@@ -925,7 +926,7 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
 
 2. Change the directory to the PetaLinux Project root directory:
 
-    `$ cd \<Petalinux-project-path\/xilinx-zcu102-2020.1`
+    `$ cd \<Petalinux-project-path\/xilinx-zcu102-2020.2`
 
 3. Launch the top level system configuration menu:
 
