@@ -1,16 +1,17 @@
 # System Design Example for SmartLynq+ HSDP
 
 ## Introduction
-This chapter guides you through building a system based on Versal devices that utilizes the High-Speed Debug Port (HSDP).  
+This chapter guides you through building a system based on Versal devices that utilizes both the SmartLynq+ Module and High-Speed Debug Port (HSDP).  It also demonstrates the steps to setup the SmartLynq+ Module and download a Linux image using both JTAG and High-Speed Debug Port.  
 
 ## Design Example: Enabling High-Speed Debug Port (HSDP)
 To use High-Speed Debug Port, the design must be modified to include HSDP support.  
 
 ### Enabling HSDP
 
-The first step in this design is to enable the HSDP interface.  You can do this using the Vivado IP Integrator.  
+This design uses the project built in chapter 5 and enables the High-Speed Debug Port (HSDP) interface.  You can do this using the Vivado IP Integrator.  
 
 1. Open the project you created in Chapter 5.
+   `C:/edt/edt_versal/edt_versal.xpr`
 1. In the Flow Navigator, under **IP Integrator**, click **Open Block Design**.
 1. Double-click the Versal ACAP CIPS IP core and click **Debug -> Debug Configuration**.
 1. Under **High-Speed Debug Port (HSDP)** select **AURORA** as the **Pathway to/from Debug Packet Controller (DPC)**.  
