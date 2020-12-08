@@ -54,7 +54,7 @@
 
 - Download PetaLinux 2020.2 software from the Xilinx website.
 
-- Download the respective BSP as described in [Example Project: Creating Linux Images Using PetaLinux](./Versal-EDT/5-system-design-example.md#example-project-creating-linux-images-using-petalinux).
+- Download the respective BSP as described in [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux).
 
 - Add common system packages and libraries to the workstation or
      virtual machine. For more information, see the Installation
