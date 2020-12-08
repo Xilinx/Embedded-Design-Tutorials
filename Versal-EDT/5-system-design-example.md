@@ -25,8 +25,8 @@
 
   ***Note*:** If the Vivado&reg; Design Suite is open already, jump to step 3.
 
-1. Open the Vivado project you created in [Chapter 2: Versal ACAP CIPS
-     and NoC (DDR) IP Core Configuration](#chapter-2).
+1. Open the Vivado project you created in [Versal ACAP CIPS
+     and NoC (DDR) IP Core Configuration](./2-cips-noc-ip-config.md).
 
     `C:/edt/edt_versal/edt_versal.xpr`
 
@@ -220,7 +220,7 @@ Follow these steps to generate a device image for the design.
 5. Export hardware after you generate the Device Image.
 
 >**Note:** The following steps are optional and you can skip these
-    and go to the [Exporting Hardware](#exporting-hardware) section. These
+    and go to the [Exporting Hardware](./2-cips-noc-ip-config.md#exporting-hardware) section. These
     steps provide the detailed flow for generating the device image by
     running synthesis and implementation before generating device image.
     If you need to understand the flow of generating the device image, follow
