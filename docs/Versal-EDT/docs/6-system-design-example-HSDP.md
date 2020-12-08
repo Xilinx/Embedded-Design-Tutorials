@@ -12,7 +12,10 @@ This design uses the project built in chapter 5 and enables the High-Speed Debug
 
 1. Open the project you created in Chapter 5.
    `C:/edt/edt_versal/edt_versal.xpr`
-1. In the Flow Navigator, under **IP Integrator**, click **Open Block Design**.
+2. In the Flow Navigator, under **IP Integrator**, click **Open Block
+     Design**.
+
+    ![](./media/image5.png)
 1. Double-click the Versal ACAP CIPS IP core and click **Debug -> Debug Configuration**.
 1. Under **High-Speed Debug Port (HSDP)** select **AURORA** as the **Pathway to/from Debug Packet Controller (DPC)**.  
 1. Set the following options:
