@@ -43,7 +43,55 @@ This design uses the project built in chapter 5 and enables the High-Speed Debug
 
 ## Creating a Linux Image Using Petalinux
 
-Copy most from other chapter.
+ This section explains how to  configure and build the Linux operating system for an Arm&reg; Cortex&trade;-A72 core- based APU on a Versal&trade; device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.
+
+ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documentation Reference Guide (UG1144)](https://www.xilinx.com/member/versal_tools_ea.html#embedded) for information on dependencies and installation procedure for the PetaLinux tool.
+
+>**Important:** *This example uses the VCK190 PetaLinux BSP to create a
+> PetaLinux project. Ensure that you have downloaded the respective BSP
+> for PetaLinux (VCK190/VMK180).*
+>
+>- If you are using the VCK190 board, download the `xilinx-vck190-v2020.2-final.bsp` file from
+>    <https://www.xilinx.com/member/vck190_headstart.html>.
+>
+> - If you are using the VMK180 board, download the VMK180 PetaLinux 2020.2 BSP (xilinx- vmk180-v2020.2-final.bsp) > from <https://www.xilinx.com/member/vmk180_headstart.html>.
+
+1. Copy the respective board's PetaLinux BSP to the current directory.
+
+2. Create a PetaLinux project using the following command.
+
+    >***Note*:** For VMK180 board, use `xilinx-vmk180-vxxyy.z-final.bsp`
+    after the `-s` option in the command.
+
+3. Change to the PetaLinux project directory using the following command.
+
+    `\$cd led_example`
+
+4. Copy the hardware platform project XSA to the Linux host machine.
+
+    >***Note*:** For the VMK180 board, use the XSA file which you generated in
+    the [Design Example: Using AXI GPIO](#design-example-using-axi-gpio)
+
+5. Reconfigure the BSP using the following commands.
+
+    This command opens the PetaLinux Configuration window. For this
+    example, no need to change anything in this window.
+
+6. Select **<Save>**, then **<OK>** to save the above configuration and then
+     **<Exit>** to exit the configuration wizard.
+
+7. Create a Linux application named gpiotest within the PetaLinux
+     project using the following command.
+
+    `\$petalinux-create -t apps \--template install \--name gpiotest\--enable`
+
+8. Copy application files from `<design-package>/<vck190 or vmk180>/linux/bootimages` to
+     the project using the following commands.
+
+     ```
+     $cp <design-package>/vck190/linux/design_files/gpiotest_app/files/* <plnx-proj-root>/projectspec/meta-user/recipes-apps/gpiotest/files/
+     $cp <design-package>/vck190/linux/design_files/gpiotest_app/gpiotest.bb <plnx-proj-root>/projectspec/meta-user/recipes-apps/gpiotest/gpiotest.bb
+     $cp <design-package>/vck190/linux/design_files/device_tree/system-user.dtsi
 
 ## Using SmartLynq+ High-Speed Debug Port for Linux Image Download and Boot
 
