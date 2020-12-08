@@ -12,8 +12,8 @@
 - Boot sequences for SD-boot, and QSPI and OSPI boot modes.
 
  You can achieve these configurations using a the Xilinx&reg; Vitis&trade;
- software platform and PetaLinux Tool flow. While [Chapter 2: Versal
- ACAP CIPS and NoC (DDR) IP Core Configuration](#chapter-2) focused
+ software platform and PetaLinux Tool flow. While [Versal
+ ACAP CIPS and NoC (DDR) IP Core Configuration](./2-cips-noc-ip-config.md) focused
  only on creating software blocks for each processing unit in the PS,
  this chapter explains how these blocks can be loaded as a part of a
  bigger system.
@@ -114,7 +114,7 @@
     ready-to-test images as part of the released package path,
     `<design-package>/GPIO/bootimages`, or refer to [Example Project:
     Creating Linux Images Using
-    PetaLinux](#example-project-creating-linux-images-using-petalinux) to
+    PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to
     build your own set of Linux images using the PetaLinux tool.
 
 2. Load the SD card into the VMK180/VCK190 board, in the J302 connector.
@@ -160,7 +160,7 @@
 
 ![QSPI-boot-halfform-factor-module](./media/image54.jpeg)
 
->***Note*:** For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./Versal-EDT/5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
+>***Note*:** For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
 
  You need to flash the images to the daughter card, using the following
  steps:
