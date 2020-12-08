@@ -92,7 +92,36 @@ This design uses the project built in chapter 5 and enables the High-Speed Debug
      $cp <design-package>/vck190/linux/design_files/gpiotest_app/files/* <plnx-proj-root>/projectspec/meta-user/recipes-apps/gpiotest/files/
      $cp <design-package>/vck190/linux/design_files/gpiotest_app/gpiotest.bb <plnx-proj-root>/projectspec/meta-user/recipes-apps/gpiotest/gpiotest.bb
      $cp <design-package>/vck190/linux/design_files/device_tree/system-user.dtsi
+     ```
 
+9. Enable GPIO support within kernel configuration.
+
+    `\$petalinux-config -c kernel`
+
+    >***Note*:** This command opens the kernel configuration wizard for the
+    PetaLinux project.
+
+10. Navigate to **Device drivers→ GPIO
+     Support** and enable it by pressing the **<Y>** key. Press
+     **Enter** and enable the Debug GPIO calls and `/sys/class/gpio/...
+     (sysfs interface)` entries by pressing the **<Y>** key as shown
+     in the following figure.
+     
+     ![](./media/image79.jpeg)
+
+11. Navigate to **Memory mapped GPIO drivers** and enable Xilinx GPIO
+     support and Xilinx Zynq GPIO support by pressing **<Y>** key as
+     shown in the following figure.
+
+    ![](./media/image80.jpeg)
+
+12. Click **<Save>** to save the above configuration and then
+     **<Exit>** option to exit the configuration wizard.
+
+13. Build the Linux images using the following command.
+
+    `$ petalinux-build`
+    
 ## Using SmartLynq+ High-Speed Debug Port for Linux Image Download and Boot
 
 Once the Linux images have been built and packaged, they can be loaded onto the VCK190 or VMK180 board using either JTAG or High-Speed Debug Port.  
