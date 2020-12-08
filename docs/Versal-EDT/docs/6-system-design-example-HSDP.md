@@ -9,9 +9,9 @@ To use High-Speed Debug Port, the design must be modified to include HSDP suppor
 ### Enabling HSDP
 
 This design uses the project built in chapter 5 and enables the High-Speed Debug Port (HSDP) interface.  You can do this using the Vivado IP Integrator.  
+1. Open the Vivado project you created in [Chapter 5: System Design Example using Scalar Engine and Adaptable Engine](#chapter-5).
 
-1. Open the project you created in Chapter 5.
-   `C:/edt/edt_versal/edt_versal.xpr`
+    `C:/edt/edt_versal/edt_versal.xpr`
 2. In the Flow Navigator, under **IP Integrator**, click **Open Block
      Design**.
 
