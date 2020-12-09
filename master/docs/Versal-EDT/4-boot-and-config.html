@@ -27,15 +27,15 @@
   
 
   
-      <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+      <script type="text/javascript" src="../_static/js/jquery.min.js"></script>	
 	  <script type="text/javascript" src="../_static/js/gtm.js"></script>
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
     <script type="text/javascript" src="../_static/js/d3dd8c60ed.js"></script>
-    <script type="text/javascript" src="../_static/js/common-ui-all.min.js"></script>
-    <script type="text/javascript" src="../_static/js/header-footer.min.js"></script>
-    <script type="text/javascript" src="../_static/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="../_static/js/CoveoJsSearch.Lazy.min.js"></script>
-    <script type="text/javascript" src="../_static/js/linkid.js"></script>
+    <script type="text/javascript" src="../_static/js/common-ui-all.min.js"></script>		
+    <script type="text/javascript" src="../_static/js/header-footer.min.js"></script>	
+    <script type="text/javascript" src="../_static/js/jquery-ui.min.js"></script>	
+    <script type="text/javascript" src="../_static/js/CoveoJsSearch.Lazy.min.js"></script>	
+    <script type="text/javascript" src="../_static/js/linkid.js"></script>		
     <script type="text/javascript" src="../_static/js/Searchbox.min.js"></script>
   
     
@@ -56,7 +56,9 @@
   <link rel="stylesheet" href="../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/pro.min.css" media="all" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="System Design Example using Scalar Engine and Adaptable Engine" href="5-system-design-example.html" />
+    <link rel="prev" title="Debugging Using the Vitis Software Platform" href="3-debugging.html" /> 
 	</head>
 	<body>
 		<div class="xilinx-bs3"/>
@@ -84,7 +86,7 @@
 																<div class="navbar navbar-collapse collapse" id="xilinx-main-menu">
 																	<div class="mobile-search-container">
 																		<div id="headerSearchBox" class="headerSearch"
-																			data-component="header-search"
+																			data-component="header-search" 
 																			data-redirect-if-empty="false"
 																			data-coveo-access-token="xxa237d4dd-f0aa-47fc-9baa-af9121851b33"
 																			data-coveo-organization-id="xilinxcomprode2rjoqok">
@@ -146,23 +148,23 @@
 																	<ul class="nav navbar-nav nav-justified">
 																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
 																			<a href="https://www.xilinx.com/applications.html">
-																			Applications</a>
+																			Applications</a> 
 																		</li>
 																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
 																			<a href="https://www.xilinx.com/products/silicon-devices.html">
-																			Products</a>
+																			Products</a> 
 																		</li>
 																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
 																			<a href="https://developer.xilinx.com/">
-																			Developers</a>
+																			Developers</a> 
 																		</li>
 																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
 																			<a href="https://www.xilinx.com/support.html">
-																			Support</a>
+																			Support</a> 
 																		</li>
 																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
 																			<a href="https://www.xilinx.com/about/company-overview.html">
-																			About</a>
+																			About</a> 
 																		</li>
 																	</ul>
 																</div>
@@ -207,7 +209,7 @@
 															-->
 															<div class="search-container">
 																<div id="headerSearchBox" class="headerSearch"
-																	data-component="header-search"
+																	data-component="header-search" 
 																	data-redirect-if-empty="false"
 																	data-coveo-access-token="xxa237d4dd-f0aa-47fc-9baa-af9121851b33"
 																	data-coveo-organization-id="xilinxcomprode2rjoqok">
@@ -294,7 +296,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> ENTER YOUR LIBRARY PROJECT NAME HERE
+            <a href="../README.html" class="icon icon-home" alt="Documentation Home"> Embedded Design Tutorials
           
 
           
@@ -302,6 +304,10 @@
 
           
             
+            
+              <div class="version">
+                2020.2
+              </div>
             
           
 
@@ -317,15 +323,35 @@
           
         </div>
 
-      
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-            
+          
             
             
               
             
             
-              <p class="caption"><span class="caption-text">Versions</span></p>
+              <p class="caption"><span class="caption-text">Versal Embedded Design Tutorial</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about-guide.html">Versal Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-cips-noc-ip-config.html">Versal ACAP CIPS and NoC (DDR) IP Core Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-debugging.html">Debugging Using the Vitis Software Platform</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Boot and Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#system-software">System Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#platform-loader-and-manager">Platform Loader and Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#u-boot">U-Boot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arm-trusted-firmware">Arm Trusted Firmware</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-boot-image-for-standalone-application">Generating Boot Image for Standalone Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boot-sequence-for-sd-boot-mode">Boot Sequence for SD-Boot Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boot-sequence-for-qspi-boot-mode">Boot Sequence for QSPI Boot Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="5-system-design-example.html">System Design Example using Scalar Engine and Adaptable Engine</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master">Master</a></li>
 </ul>
@@ -335,7 +361,7 @@
 			<p class="caption"><span class="caption-text">This Page</span></p>
 				<ul class="current">
 				  <li class="toctree-l1"><a href="../_sources/Versal-EDT/4-boot-and-config.md.txt"
-						rel="nofollow">Show Source</a></li>
+						rel="nofollow">Show Source</a></li>						
 				</ul>
           
         </div>
@@ -349,7 +375,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">ENTER YOUR LIBRARY PROJECT NAME HERE</a>
+          <a href="../README.html">Vitis™ Application Acceleration Development Flow Tutorials</a>
         
       </nav>
 
@@ -378,7 +404,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../README.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Boot and Configuration</li>
     
@@ -386,7 +412,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/Versal-EDT/4-boot-and-config.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/Versal-EDT/4-boot-and-config.html" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -411,7 +437,7 @@ topics:</p>
 <li><p>Boot sequences for SD-boot, and QSPI and OSPI boot modes.</p></li>
 </ul>
 <p>You can achieve these configurations using a the Xilinx® Vitis™
-software platform and PetaLinux Tool flow. While <a class="reference external" href="#chapter-2">Chapter 2: Versal
+software platform and PetaLinux Tool flow. While <a class="reference external" href="../Versal-EDT/2-cips-noc-ip-config.html">Versal
 ACAP CIPS and NoC (DDR) IP Core Configuration</a> focused
 only on creating software blocks for each processing unit in the PS,
 this chapter explains how these blocks can be loaded as a part of a
@@ -508,7 +534,7 @@ mode.</p>
 <blockquote>
 <div><p><strong><em>Note</em>:</strong> You can either boot the VCK190 board using the
 ready-to-test images as part of the released package path,
-<code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/GPIO/bootimages</span></code>, or refer to <a class="reference external" href="#example-project-creating-linux-images-using-petalinux">Example Project:
+<code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/GPIO/bootimages</span></code>, or refer to <a class="reference external" href="..Versal-EDT/5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project:
 Creating Linux Images Using
 PetaLinux</a> to
 build your own set of Linux images using the PetaLinux tool.</p>
@@ -551,7 +577,7 @@ X_EBM-01, REV_A01) as shown in the following figure:</p>
 <p><em>Figure 2:</em> <strong>Daughter Card on VCK190</strong></p>
 <p><img alt="QSPI-boot-halfform-factor-module" src="../_images/image54.jpeg" /></p>
 <blockquote>
-<div><p><strong><em>Note</em>:</strong> For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, <code class="docutils literal notranslate"><span class="pre">&lt;designpackage&gt;/GPIO/bootimages</span></code>, or refer to <a class="reference external" href="./5-system-design-example.md#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
+<div><p><strong><em>Note</em>:</strong> For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, <code class="docutils literal notranslate"><span class="pre">&lt;designpackage&gt;/GPIO/bootimages</span></code>, or refer to <a class="reference external" href="./5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
 </div></blockquote>
 <p>You need to flash the images to the daughter card, using the following
 steps:</p>
@@ -600,9 +626,18 @@ the QSPI flash.</p></li>
 
         </div>
       </div>
-
-
+	  
+	  
 	  <!-- Sphinx Page Footer block -->
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="5-system-design-example.html" class="btn btn-neutral float-right" title="System Design Example using Scalar Engine and Adaptable Engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="3-debugging.html" class="btn btn-neutral float-left" title="Debugging Using the Vitis Software Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -610,17 +645,19 @@ the QSPI flash.</p></li>
   <div role="contentinfo" class="copyright">
     <p class="footerinfo">
       <span class="lastupdated">
-        Last updated on December 03, 2020.
+        Last updated on December 07, 2020.
       </span>
 
     </p>
-	<br>
-  </div>
+  </div>	  
       </div>
     </section>
 
 
   
+
+
+
 
   <script type="text/javascript">
       jQuery(function () {
@@ -632,16 +669,16 @@ the QSPI flash.</p></li>
     jQuery(function() { Search.loadIndex("searchindex.js"); });
   </script>
 
-  <script type="text/javascript" id="searchindexloader"></script>
-
-
+  <script type="text/javascript" id="searchindexloader"></script>     	    
+	    
+	    
   
   
     
   
+  
 
-
-
+  
   <!--  Xilinx template footer block -->
 							</div>
 						</div>
@@ -652,16 +689,6 @@ the QSPI flash.</p></li>
 						<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 ">
 							<div class="footer parbase aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16">
 								<noindex>
-                  <!-- make footer fixed - NileshP -->
-                  <style>
-                        .footer {
-                        position: fixed;
-                        left: 0;
-                        bottom: 0;
-                        width: 100%;
-                        }
-                  </style>
-                  <!-- make footer fixed NileshP-->
 									<footer>
 										<div class="aem-Grid aem-Grid--16">
 											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
@@ -753,7 +780,7 @@ the QSPI flash.</p></li>
 			  _.templateSettings.evaluate = /\{\{([^-=][\S\s]+?)\}\}/g;
 			  _.templateSettings.escape = /\{\{-([^=][\S\s]+?)\}\}/g;
 			}
-
+			
 			underscoreSetup();
 		</script>
 	</body>

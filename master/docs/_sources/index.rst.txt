@@ -20,26 +20,30 @@ Overview
 Getting Started
 ===============
 
-Learn how to `use the Xilinx® Vivado® Design Suite flow for a VMK180/VCK190 evaluation board <./1-getting-started.html>`__.
 
-.. toctree::
-   :maxdepth: 5
-   :caption: Getting Started
-   :hidden:
 
-   README
-   1-getting-started
-   2-cips-noc-ip-config
-   3-debugging
-   4-boot-and-config
-   5-system-design-example
-   6-creating-plm
-      
+.. list-table:: 
+   :widths: 30 70
+   :header-rows: 1
    
-.. _Example Projects:
+   * - Tutorial
+     - Description
+	 
+   * - Versal Embedded Design Tutorial (UG1305)
+     - This tutorial demonstrates how to use the Xilinx® Vivado® Design Suite flow for a VMK180/VCK190 evaluation board.
 
-Example Projects
-================
+   * - Zynq UltraScale+ MPSoC Embedded Design Tutorial (UG1209)
+     - TBD
+
+   * - Zynq-7000 Embedded Design Tutorial (UG1165)
+     - TBD
+                 
+  
+   
+.. _Versal Embedded Design Tutorial:
+
+Versal Embedded Design Tutorial
+===============================
 
 .. list-table:: 
    :widths: 30 70
@@ -47,12 +51,15 @@ Example Projects
 
    * - Tutorial
      - Description
+	 
+   * - `Getting Started <./1-getting-started.html>`__
+     -  xyz
 
-   * - `Creating a New Embedded Project with the Versal ACAP <./2-cips-noc-ip-config.html#creating-a-new-embedded-project-with-the-versal-acap>`__
+   * - `Creating a New Embedded Project with the Versal ACAP <./2-cips-noc-ip-config.html>`__
      - This tutorial demonstrates how to create a project with an embedded processor system as the top level.
 
    * - `Running a Bare-Metal Hello World Application <./2-cips-noc-ip-config.html#running-a-bare-metal-hello-world-application>`__
-     - This tutorial demonstrates how to run a hello world software application from Arm Cortex-A72 on OCM and Arm Cortex-R5F on TCM in the Xilinx Vitis software platform..
+     - This tutorial demonstrates how to run a hello world software application from Arm Cortex-A72 on OCM and Arm Cortex-R5F on TCM in the Xilinx Vitis software platform.
 
    * - `Running Applications in the JTAG Mode using the System Debugger <./2-cips-noc-ip-config.html#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform>`__
      - This tutorial demonstrates how to create a ‘Run configuration’ that captures the settings for executing the application.
@@ -65,8 +72,20 @@ Example Projects
 
    * - `Creating Linux Images Using PetaLinux <5-system-design-example.html#example-project-creating-linux-images-using-petalinux>`__
      - This tutorial demonstrates how to configure and build the Linux operating system for an Arm® Cortex™-A72 core- based APU on a Versal™ device.
-   
 
+
+.. toctree::
+   :maxdepth: 5
+   :caption: Versal Embedded Design Tutorial
+   :hidden:
+
+   Versal-EDT/docs/about-guide.md
+   Versal-EDT/docs/1-getting-started.md
+   Versal-EDT/docs/2-cips-noc-ip-config.md
+   Versal-EDT/docs/3-debugging.md
+   Versal-EDT/docs/4-boot-and-config.md
+   Versal-EDT/docs/5-system-design-example.md
+   
 
 .. _Versions:
 
