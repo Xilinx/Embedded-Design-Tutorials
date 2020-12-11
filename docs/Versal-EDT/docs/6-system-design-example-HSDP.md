@@ -80,10 +80,13 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
 1.  Once the build completes, package the boot images with the following command:
     
     `$ petalinux-package --force --boot --atf --u-boot` 
+
+    > **Note:** the packaged linux boot images will be placed in the `images/linux` directory in the PetaLinux build root.  Make note of this directory location as it will be used in the next steps.  If you intend to use a Windows machine to download the Linux boot images using SmartLynq+ the contents of this directory should be transferred to that machine.
     
 ## Using SmartLynq+ High-Speed Debug Port for Linux Image Download and Boot
 
 Once the Linux images have been built and packaged, they can be loaded onto the VCK190 or VMK180 board using either JTAG or High-Speed Debug Port.  
+
 
 1.  Connect the USB-C cable between the Board and the SmartLynq+.
 1.  Connect the SmartLynq+ using either Ethernet or USB.
