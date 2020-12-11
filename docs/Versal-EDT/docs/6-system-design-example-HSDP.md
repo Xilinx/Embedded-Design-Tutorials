@@ -24,11 +24,12 @@ This design uses the project built in chapter 5 and enables the High-Speed Debug
    - **GT Refclk Selection** to **REFCLK1** 
    - **GT Refclk Freq (MHz)** to **156.25**  
    **Note:** _Line rate will be fixed at **10.0 Gbps**._
-1. When finished the High-Speed Debug Port menu should contain the following settings:
-    <!-- ![](./media/ch6-image3.png) -->
+<!-- 1. When finished the High-Speed Debug Port menu should contain the following settings:
+     ![](./media/ch6-image3.png) -->
 1. Click **OK** to save the changes.  Two ports will be created on the CIPS IP `gt_refclk1` and `HSDP1_GT`.  
 1. In the **IP Integrator** canvas, right click on `gt_refclk1` and select **Make External**.  Do the same for **HSDP1\_GT**.
-1. In the **IP Integrator** canvas, right click on `HSDP1_GT` and select **Make External**. 
+    ![](./media/ch6-image4.png)
+    ![](./media/ch6-image5.png)
 1. Click **Validate Design**, then **Save**.
 
 ### Synthesizing, Implementing, and Generating the Device Image
