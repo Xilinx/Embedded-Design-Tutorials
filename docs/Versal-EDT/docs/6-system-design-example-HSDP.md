@@ -12,13 +12,17 @@ This design uses the project built in chapter 5 and enables the High-Speed Debug
 1. Open the Vivado project you created in [Chapter 5: System Design Example using Scalar Engine and Adaptable Engine](#chapter-5).
 
     `C:/edt/edt_versal/edt_versal.xpr`
+
 2. In the Flow Navigator, under **IP Integrator**, click **Open Block
      Design**.
 
     ![](./media/image5.png)
+
 1. Double-click the Versal ACAP CIPS IP core and click **Debug -> Debug Configuration**.
     ![](./media/ch6-image1.png)
+
 1. Under **High-Speed Debug Port (HSDP)** select **AURORA** as the **Pathway to/from Debug Packet Controller (DPC)**.   ![](./media/ch6-image2.png)
+
 1. Set the following options:
    - **GT Selection** to **HSDP1 GT**
    - **GT Refclk Selection** to **REFCLK1** 
@@ -26,59 +30,56 @@ This design uses the project built in chapter 5 and enables the High-Speed Debug
    **Note:** _Line rate will be fixed at **10.0 Gbps**._
 <!-- 1. When finished the High-Speed Debug Port menu should contain the following settings:
      ![](./media/ch6-image3.png) -->
-1. Click **OK** to save the changes.  Two ports will be created on the CIPS IP `gt_refclk1` and `HSDP1_GT`.  
+
+1. Click **OK** to save the changes.  Two ports will be created on the CIPS IP `gt_refclk1` and `HSDP1_GT`.
+
 1. In the **IP Integrator** canvas, right click on `gt_refclk1` and select **Make External**.  Do the same for **HSDP1\_GT**.
     ![](./media/ch6-image4.png)
     ![](./media/ch6-image5.png)
+
 1. Click **Validate Design**, then **Save**.
 
 ### Synthesizing, Implementing, and Generating the Device Image
 
 1. In the Flow Navigator, under **Programming and Debug**, click **Generate Device Image** to launch implementation.
   _Note: when the device image generation completes, the device image generation completed dialog box opens._
+    ![](./media/ch6-image9.png)
 
 ### Exporting Hardware (XSA)
 
 1.  From the Vivado tool-bar, select **File → Export → Export Hardware**.  The Export Hardware Dialog Box will open.
+    ![](./media/ch6-image10.png)
+
 1.  Choose **Fixed** and click **Next**.
+
 1.  Choose **Include Device Image** and click **Next**.
+
 1.  Provide the name for your exported file (example: `edt_versal_wrapper_with_hsdp`).  Click **Next**.
+
 1.  Click **Finish**.
 
-## Creating a Linux Image Using Petalinux
+## Creating the HSDP Enabled Linux Image Using Petalinux
 
- This section explains how to  configure and build the Linux operating system for an Arm&reg; Cortex&trade;-A72 core- based APU on a Versal&trade; device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.
+This example re-builds the PetaLinux project using the HSDP enabled XSA that was built in the prior step.  The assumption is that the PetaLinux project has been created as per the instructions in [Chapter 5](5-system-design-example.md).  
 
- This example needs a Linux host machine. Refer to the [PetaLinux Tools Documentation Reference Guide (UG1144)](https://www.xilinx.com/member/versal_tools_ea.html#embedded) for information on dependencies and installation procedure for the PetaLinux tool.
+This example needs a Linux host machine. Refer to the [PetaLinux Tools Documentation Reference Guide (UG1144)](https://www.xilinx.com/member/versal_tools_ea.html#embedded) for information on dependencies and installation procedure for the PetaLinux tool.
 
->**Important:** *This example uses the VCK190 PetaLinux BSP to create a
-> PetaLinux project. Ensure that you have downloaded the respective BSP
-> for PetaLinux (VCK190/VMK180).*
->
->- If you are using the VCK190 board, download the `xilinx-vck190-v2020.2-final.bsp` file from
->    <https://www.xilinx.com/member/vck190_headstart.html>.
->
-> - If you are using the VMK180 board, download the VMK180 PetaLinux 2020.2 BSP (xilinx- vmk180-v2020.2-final.bsp) > from <https://www.xilinx.com/member/vmk180_headstart.html>.
 
-1. Copy the respective board's PetaLinux BSP to the current directory.
+3. Change to the PetaLinux project directory that was created in [Chapter 5](5-system-design-example.md) using the following command.
 
-2. Create a PetaLinux project using the following command.
+    `$cd led_example`
 
-    >***Note*:** For VMK180 board, use `xilinx-vmk180-vxxyy.z-final.bsp`
-    after the `-s` option in the command.
+4. Copy the new hardware platform project XSA to the Linux host machine.
 
-3. Change to the PetaLinux project directory using the following command.
-
- 
-4. Copy the hardware platform project XSA to the Linux host machine.
-
-    >***Note*:** Use the XSA file which you generated in
-    the prior step.
-   
+    >***Note*:** Ensure you are using the updated the XSA file which you generated in the prior step.
 
 13. Build the Linux images using the following command.
 
     `$ petalinux-build`
+
+1.  Once the build completes, package the boot images with the following command:
+    
+    `$ petalinux-package --force --boot --atf --u-boot` 
     
 ## Using SmartLynq+ High-Speed Debug Port for Linux Image Download and Boot
 
