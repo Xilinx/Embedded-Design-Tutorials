@@ -65,15 +65,15 @@ This example re-builds the PetaLinux project using the HSDP enabled XSA that was
 This example needs a Linux host machine. Refer to the [PetaLinux Tools Documentation Reference Guide (UG1144)](https://www.xilinx.com/member/versal_tools_ea.html#embedded) for information on dependencies and installation procedure for the PetaLinux tool.
 
 
-3. Change to the PetaLinux project directory that was created in [Chapter 5](5-system-design-example.md) using the following command.
+1. Change to the PetaLinux project directory that was created in [Chapter 5](5-system-design-example.md#example-project-creating-linux-images-using-petalinux) using the following command.
 
     `$cd led_example`
 
-4. Copy the new hardware platform project XSA to the Linux host machine.
+1. Copy the new hardware platform project XSA to the Linux host machine.
 
     >***Note*:** Ensure you are using the updated the XSA file which you generated in the prior step.
 
-13. Build the Linux images using the following command.
+1. Build the Linux images using the following command.
 
     `$ petalinux-build`
 
