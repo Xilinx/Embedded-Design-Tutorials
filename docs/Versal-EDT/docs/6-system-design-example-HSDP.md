@@ -65,58 +65,12 @@ This design uses the project built in chapter 5 and enables the High-Speed Debug
 
 3. Change to the PetaLinux project directory using the following command.
 
-    `\$cd led_example`
-
+ 
 4. Copy the hardware platform project XSA to the Linux host machine.
 
-    >***Note*:** For the VMK180 board, use the XSA file which you generated in
-    the [Design Example: Using AXI GPIO](#design-example-using-axi-gpio)
-
-5. Reconfigure the BSP using the following commands.
-
-    This command opens the PetaLinux Configuration window. For this
-    example, no need to change anything in this window.
-
-6. Select **<Save>**, then **<OK>** to save the above configuration and then
-     **<Exit>** to exit the configuration wizard.
-
-7. Create a Linux application named gpiotest within the PetaLinux
-     project using the following command.
-
-    `\$petalinux-create -t apps \--template install \--name gpiotest\--enable`
-
-8. Copy application files from `<design-package>/<vck190 or vmk180>/linux/bootimages` to
-     the project using the following commands.
-
-     ```
-     $cp <design-package>/vck190/linux/design_files/gpiotest_app/files/* <plnx-proj-root>/projectspec/meta-user/recipes-apps/gpiotest/files/
-     $cp <design-package>/vck190/linux/design_files/gpiotest_app/gpiotest.bb <plnx-proj-root>/projectspec/meta-user/recipes-apps/gpiotest/gpiotest.bb
-     $cp <design-package>/vck190/linux/design_files/device_tree/system-user.dtsi
-     ```
-
-9. Enable GPIO support within kernel configuration.
-
-    `\$petalinux-config -c kernel`
-
-    >***Note*:** This command opens the kernel configuration wizard for the
-    PetaLinux project.
-
-10. Navigate to **Device drivers→ GPIO
-     Support** and enable it by pressing the **<Y>** key. Press
-     **Enter** and enable the Debug GPIO calls and `/sys/class/gpio/...
-     (sysfs interface)` entries by pressing the **<Y>** key as shown
-     in the following figure.
-     
-     ![](./media/image79.jpeg)
-
-11. Navigate to **Memory mapped GPIO drivers** and enable Xilinx GPIO
-     support and Xilinx Zynq GPIO support by pressing **<Y>** key as
-     shown in the following figure.
-
-    ![](./media/image80.jpeg)
-
-12. Click **<Save>** to save the above configuration and then
-     **<Exit>** option to exit the configuration wizard.
+    >***Note*:** Use the XSA file which you generated in
+    the prior step.
+   
 
 13. Build the Linux images using the following command.
 
