@@ -60,7 +60,9 @@ This design uses the project built in chapter 5 and enables the High-Speed Debug
 
 ## Creating the HSDP Enabled Linux Image Using Petalinux
 
-This example re-builds the PetaLinux project using the HSDP enabled XSA that was built in the prior step.  The assumption is that the PetaLinux project has been created as per the instructions in [Chapter 5](5-system-design-example.md).  
+This example re-builds the PetaLinux project using the HSDP enabled XSA that was built in the prior step.  The assumption is that the PetaLinux project has been created as per the instructions in [Chapter 5](5-system-design-example.md).
+
+> **Important:** If you are building this tutorial without having created a PetaLinux project in the prior chapter, you can follow steps 1 through 12 in the section [Example Project: Creating Linux Images Using PetaLinux](5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to create a new PetaLinux project.
 
 This example needs a Linux host machine. Refer to the [PetaLinux Tools Documentation Reference Guide (UG1144)](https://www.xilinx.com/member/versal_tools_ea.html#embedded) for information on dependencies and installation procedure for the PetaLinux tool.
 
