@@ -69,7 +69,7 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
 
 1. Change to the PetaLinux project directory that was created in [Chapter 5](5-system-design-example.md#example-project-creating-linux-images-using-petalinux) using the following command.
 
-    `$cd led_example`
+    `$ cd led_example`
 
 1. Copy the new hardware platform project XSA to the Linux host machine.
 
@@ -83,7 +83,7 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
     
     `$ petalinux-package --force --boot --atf --u-boot` 
 
-    > **Note:** the packaged linux boot images will be placed in the `images/linux` directory in the PetaLinux build root.  Make note of this directory location as it will be used in the next steps.  If you intend to use a Windows machine to download the Linux boot images using SmartLynq+ the contents of this directory should be transferred to that machine.
+    > **Note:** the packaged linux boot images will be placed in the `images/linux` directory in the PetaLinux build root.  Make a note of this directory location as it will be used in the next steps.  If you intend to use a different machine than the one that was used to build PetaLinux or a Windows based PC to download the Linux boot images using SmartLynq+ the contents of this directory should be transferred to that machine before proceeding to the next steps.
     
 ## Using SmartLynq+ High-Speed Debug Port for Linux Image Download and Boot
 
