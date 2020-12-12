@@ -85,12 +85,11 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
 
     > **Note:** The packaged linux boot images will be placed in the `images/linux` directory in the PetaLinux build root.  Make a note of this directory location as it will be used in the next steps.  If you intend to use a different machine than the one that was used to build PetaLinux or a Windows based PC to download the Linux boot images using SmartLynq+ the contents of this directory should be transferred to that machine before proceeding to the next steps.
     
-## Using SmartLynq+ High-Speed Debug Port for Linux Image Download and Boot
+## Setting Up The SmartLynq+ Module
 
-Once the Linux images have been built and packaged, they can be loaded onto the VCK190 or VMK180 board using either JTAG or High-Speed Debug Port.  
+Once the Linux images have been built and packaged, they can be loaded onto the VCK190 or VMK180 board using either JTAG or HSDP.  This section will guide you through the basic steps required to setup the SmartLynq+ module for connectivity using HSDP.
 
-
-1.  Connect the USB-C cable between the Board and the SmartLynq+.
+1.  Connect the USB-C cable between the VCK190 USB-C connector found on the  and the SmartLynq+ Module.
 1.  Connect the SmartLynq+ using either Ethernet or USB.
     * **Using Ethernet:** Connect an Ethernet cable between Ethernet port on the SmartLynq+ and your local area network.
     * **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
@@ -101,15 +100,20 @@ Once the Linux images have been built and packaged, they can be loaded onto the 
 
 ### Using The SmartLynq+ as a Serial Terminal
 
-The SmartLynq+ can also be used as a serial terminal to remotely view serial terminal output.  This feature can be useful when physical access to the remote setup is not available.
+The SmartLynq+ can also be used as a serial terminal to remotely view serial terminal output.  This feature can be useful when physical access to the remote setup is not available.  SmartLynq+ ships with the `minicom` application pre-installed, which can be used to connect directly to the UART on the VCK190.
 
 1.  Using an SSH client such as `PuTTY` on Windows or `ssh` on Unix based systems, connect using SSH to the IP address shown on the SmartLynq+ display.  
     * Username: `xilinx`
     * Password: `xilinx`
-1.  SmartLynq+ ships with the `minicom` application pre-installed, which can be used to connect to a serial terminal.  To connect to the VCK190/VMK180 serial terminal output do the following:
+    > For example, if your SmartLynq+ displays IP address `192.168.0.10`, you should issue the following command: `ssh xilinx@192.168.0.10`.
+
+1.  By default, the minicom application will use hardware flow control. To successfully connect to the UART on Xilinx boards, hardware flow control must be disabled in minicom as it is not enabled by default on the VCK190 UART.  This can be done by entering the minicom setup mode by issuing `minicom -s` and disabling the feature or by issuing the following command as root:
+    `echo "pu rtscts           No" >> sudo tee -a /etc/minicom/minirc.dfl`
+
+1.  To connect to the VCK190/VMK180 serial terminal output do the following:
     * `sudo minicom --device /dev/ttyUSB1`
 
-It is now possible to view the boot loader output as well as access a serial terminal on the VCK190/VMK180.
+It is now possible to view the boot loader output as well as interact with a serial terminal on the VCK190/VMK180.
 
 ### Booting Linux Images over JTAG or HSDP
 
@@ -122,7 +126,7 @@ The design package included with this tutorial contains a script that will downl
         * This will first load `BOOT.BIN` using JTAG after which an HSDP link will be auto-negotiated and the rest of the boot images will be loaded using HSDP, offering a substantial speed increase compared to JTAG.
     * **To use JTAG** `xsdb linux-download <smartlynq+ ip> images/linux FTDI-JTAG`.
         * This will use JTAG to program all of the Linux boot images.
-
+    > Take note of the 
 
 
 
