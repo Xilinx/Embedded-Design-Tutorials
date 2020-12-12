@@ -107,11 +107,12 @@ The SmartLynq+ can also be used as a serial terminal to remotely view serial ter
     * Password: `xilinx`
     > For example, if your SmartLynq+ displays IP address `192.168.0.10`, you should issue the following command: `ssh xilinx@192.168.0.10`.
 
-1.  By default, the minicom application will use hardware flow control. To successfully connect to the UART on Xilinx boards, hardware flow control must be disabled in minicom as it is not enabled by default on the VCK190 UART.  This can be done by entering the minicom setup mode by issuing `minicom -s` and disabling the feature or by issuing the following command as root to modify the minicom default configuration:
+1.  By default, the minicom application will use hardware flow control. To successfully connect to the UART on Xilinx boards, hardware flow control must be disabled in minicom as it is not enabled by default on the VCK190 UART.  This can be done by entering the minicom setup mode by issuing `sudo minicom -s` and disabling the feature or by issuing the following command as root to modify the minicom default configuration:
     `echo "pu rtscts No" | sudo tee -a /etc/minicom/minirc.dfl`
 
 1.  To connect to the VCK190/VMK180 serial terminal output do the following:
     * `sudo minicom --device /dev/ttyUSB1`
+    ![](./media/ch6-images15.png)
 
 It is now possible to view the boot loader output as well as interact with a serial terminal on the VCK190/VMK180.
 
