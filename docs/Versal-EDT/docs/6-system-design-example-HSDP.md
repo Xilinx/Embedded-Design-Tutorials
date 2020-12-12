@@ -83,7 +83,7 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
     
     `$ petalinux-package --force --boot --atf --u-boot` 
 
-    > **Note:** the packaged linux boot images will be placed in the `images/linux` directory in the PetaLinux build root.  Make a note of this directory location as it will be used in the next steps.  If you intend to use a different machine than the one that was used to build PetaLinux or a Windows based PC to download the Linux boot images using SmartLynq+ the contents of this directory should be transferred to that machine before proceeding to the next steps.
+    > **Note:** The packaged linux boot images will be placed in the `images/linux` directory in the PetaLinux build root.  Make a note of this directory location as it will be used in the next steps.  If you intend to use a different machine than the one that was used to build PetaLinux or a Windows based PC to download the Linux boot images using SmartLynq+ the contents of this directory should be transferred to that machine before proceeding to the next steps.
     
 ## Using SmartLynq+ High-Speed Debug Port for Linux Image Download and Boot
 
@@ -114,6 +114,8 @@ It is now possible to view the boot loader output as well as access a serial ter
 ### Booting Linux Images over JTAG or HSDP
 
 SmartLynq+ can be used to download linux images directly to the VCK190/VMK180 without using an SD Card.  Linux images can be loaded using JTAG or HSDP.
+
+The design package included with this tutorial contains a script that will download the Linux images created in the prior steps using the SmartLynq+ Module.  The script can use either JTAG or HSDP.  
 
 1.  To load the Linux images, do one of the following:
     * **To use HSDP** `xsdb linux_download.tcl <smartlynq+ ip> images/linux HSDP`.  
