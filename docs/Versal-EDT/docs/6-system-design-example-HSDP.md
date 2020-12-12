@@ -107,8 +107,8 @@ The SmartLynq+ can also be used as a serial terminal to remotely view serial ter
     * Password: `xilinx`
     > For example, if your SmartLynq+ displays IP address `192.168.0.10`, you should issue the following command: `ssh xilinx@192.168.0.10`.
 
-1.  By default, the minicom application will use hardware flow control. To successfully connect to the UART on Xilinx boards, hardware flow control must be disabled in minicom as it is not enabled by default on the VCK190 UART.  This can be done by entering the minicom setup mode by issuing `minicom -s` and disabling the feature or by issuing the following command as root:
-    `echo "pu rtscts           No" | sudo tee -a /etc/minicom/minirc.dfl`
+1.  By default, the minicom application will use hardware flow control. To successfully connect to the UART on Xilinx boards, hardware flow control must be disabled in minicom as it is not enabled by default on the VCK190 UART.  This can be done by entering the minicom setup mode by issuing `minicom -s` and disabling the feature or by issuing the following command as root to modify the minicom default configuration:
+    `echo "pu rtscts No" | sudo tee -a /etc/minicom/minirc.dfl`
 
 1.  To connect to the VCK190/VMK180 serial terminal output do the following:
     * `sudo minicom --device /dev/ttyUSB1`
@@ -126,7 +126,7 @@ The design package included with this tutorial contains a script that will downl
         * This will first load `BOOT.BIN` using JTAG after which an HSDP link will be auto-negotiated and the rest of the boot images will be loaded using HSDP, offering a substantial speed increase compared to JTAG.
     * **To use JTAG** `xsdb linux-download <smartlynq+ ip> images/linux FTDI-JTAG`.
         * This will use JTAG to program all of the Linux boot images.
-    > Take note of the 
+    > Take note of the difference in download speed when using HSDP.
 
 
 
