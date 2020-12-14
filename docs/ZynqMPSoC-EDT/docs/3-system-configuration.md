@@ -26,7 +26,6 @@
     - [Starting Your Design](#starting-your-design)
     - [Creating a Block Design Project](#creating-a-block-design-project)
     - [Managing the Zynq UltraScale+ Processing System in Vivado](#managing-the-zynq-ultrascale-processing-system-in-vivado)
-    - [Isolation Configuration](#isolation-configuration)
     - [Validating the Design and Connecting Ports](#validating-the-design-and-connecting-ports)
     - [Exporting Hardware Platform](#exporting-hardware-platform)
 
@@ -84,19 +83,19 @@
 
     *Table 1:* **New Project Wizard Options**
 
-   | Wizard Screen        | System Property     | Setting or  Command to Use     |
-   |----------------------|---------------------|----------------------|
-   |  Project Name        |  Project name       |  edt_zcu102         |
-   |                      |  Project Location   |  C:/edt             |
-   |                      |  Create Project Sub-directory     |  Leave this checked |
-   |  Project Type        |  Specify the type of sources for your design. You can start with RTL or a synthesized EDIF. |  RTL Project    |
-   |                      |  Do not specify sources at this time check box    |  Leave this checked.       |
-   |  Default Part        |  Select             |  **Boards**         |
-   |                      |  Display Name       |  **Zynq UltraScale+ ZCU102 Evaluation Board**  |
-   |  New Project Summary |  Project Summary    |  Review the project summary|
+| Wizard Screen       | System Property                               | Setting or  Command to Use                          |
+|---------------------|-----------------------------------------------|-----------------------------------------------------|
+| Project Name        | Project name                                  | **edt_zcu102**                                      |
+|                     | Project Location                              | **C:/edt**                                          |
+|                     | Create Project Sub-directory                  | Leave this checked                                  |
+| Project Type        | Specify the type of project to create         | RTL Project                                         |
+|                     | Do not specify sources at this time check box | Leave this checked.                                 |
+|                     | Project is an extensible Vitis platform       | Leave this unchecked                                |
+| Default Part        | Select                                        | Select **Boards** tab                               |
+|                     | Display Name                                  | Select **Zynq UltraScale+ ZCU102 Evaluation Board** |
+| New Project Summary | Project Summary                               | Review the project summary                          |
 
-4. Click **Finish**. The New Project wizard closes and the project you
-     just created opens in the Vivado design tool.
+1. Click **Finish**. The New Project wizard closes and the project you just created opens in the Vivado design tool.
 
 ### Creating a Block Design Project
 
@@ -210,62 +209,6 @@
 
 10. Click **OK** to close the Re-customize IP wizard.
 
-### Isolation Configuration
-
- This section is for reference only. It explains the importance of
- Isolation Configuration settings for different use-cases. Different
- use-cases may need to establish Isolation Configurations on a need
- basis. Isolation configuration is optional and you can set it as per
- your system requirement. Safety/Security critical use cases typically
- require isolation between safe/non-safe or secure/ non-secure portions
- of the design. This requires a safe/secure region that contains a
- master (such as the RPU) along with its slaves (memory regions and
- peripherals) to be isolated from non-safe or non-secure portions of
- the design. In such cases, the TrustZone attribute can be applied to
- the dedicated peripherals or memory locations. In this way only a
- valid and trusted master can access the secure slaves. Another
- use-case requiring Isolation is for Platform and Power management. In
- this case, independent subsystems can be created with masters and
- slaves. This is used to
- identify dependencies during run-time power management or warm restart
- for upgrade or recovery. An example of this use-case can be found on
- the [Zynq UltraScale+ Restart solution
- wiki page](httpsisolation://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841820/Zynq%2BUltraScale%2BPlus%2BRestart%2Bsolution).
- The Xilinx Memory Protection Unit (XMPU) and Xilinx Peripheral
- Protection Unit (XPPU) in Zynq UltraScale+ provide hardware protection
- for memory and peripherals. These protection units complement the
- isolation provided by TrustZone and the Zynq UltraScale+ MPSoC SMMU.
-
- The XMPU and XPPU in Zynq UltraScale+ allow the isolation of resources
- at the SoC level. Arm MMU and TrustZone enable isolation within Arm
- Cortex-A53 core APU. Hypervisor and SMMU allow setting isolation
- between Cortex-A53 cores. From a tools standpoint, these protection
- units can be configured using Isolation Configuration in Zynq
- UltraScale+ PS IP wizard. The isolation settings are exported as an
- initialization file which is loaded as a part of the bootloader,
- which, in this case, is the First Stage Boot Loader (FSBL). For more
- details, see the *Zynq UltraScale Device Technical Reference Manual*
- ([UG1085](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug1085-zynq-ultrascale-trm.pdf)).
-
-1. Double-click **Zynq UltraScale+ Processing System** in the block
-     diagram window, if it is not open.
-
-2. Select **Switch To Advanced Mode**.
-
-    Notice the protection elements indicated by red blocks in the wizard.
-
-    ![](./media/image16.jpeg)
-
-3. To create an isolation setup, click **Isolation Configuration**.
-
-    This tutorial does not use Isolation Configuration and hence, no
-    Isolation related settings are requested.
-
-4. Click **OK** to close the Re-customize IP wizard.
-
-    >***Note*:** For detailed steps to create isolation configuration, see
-    *Isolation Methods in Zynq UltraScale+ MPSoC*
-    ([XAPP1320](https://www.xilinx.com/support/documentation/application_notes/xapp1320-isolation-methods.pdf)).
 
 ### Validating the Design and Connecting Ports
 
@@ -274,8 +217,8 @@
 1. Right-click in the white space of the Block Diagram view and select
      **Validate Design**. Alternatively, you can press the F6 key.
 
-    A message dialog box that states \"Validation successful. There are no
-    errors or critical warnings in this design\" opens.
+    A message dialog box that states "Validation successful. There are no
+    errors or critical warnings in this design" opens.
 
 2. Click **OK** to close the message.
 
@@ -293,61 +236,51 @@
     >**TIP:** *The HDL wrapper is a top-level entity required by the design
     tools.*
 
-6. Select **Let Vivado Manage Wrapper** and auto-update and click
-     **OK**.
+6. Select **Let Vivado Manage Wrapper** and auto-update and click **OK**.
 
-7. In the Block Diagram, Sources window, under Design Sources, expand
-     **edt_zcu102_wrapper**.
+7. In the Block Diagram, Sources window, under Design Sources, you can see **edt_zcu102_wrapper** is created by Vivado. Expand the hierarchy, you can see **edt_zcu102.bd** is instantiated.
 
-8. Right-click the top-level block diagram, titled **edt_zcu102_i :
-     edt_zcu102 (edt_zcu102.bd)** and select **Generate Output
-     Products**.
+8. Select **Generate Block Design** from Flow Navigator -> IP INTEGRATOR.
 
     The Generate Output Products dialog box opens, as shown in the
     following figure.
 
-    ![](./media/image18.png)
+    ![Generate Output Products dialog](./media/image18.png)
 
     >***Note*:** If you are running the Vivado Design Suite on a Linux host
     machine, you might see additional options under Run Settings. In this
     case, continue with the default settings.
 
-9.  Click **Generate**.
+9.  Select Synthesis Options to **Global** and click **Generate**.
 
     This step builds all required output products for the selected source.
     For example, constraints do not need to be manually created for the IP
     processor system. The Vivado tools automatically generate the XDC file
-    for the processor subsystem when **Generate Output Products** is
-    selected.
+    for the processor subsystem when **Generate Output Products** is selected.
 
-10. Click **OK**, if you see the message: "Out-of-context module run was launched for generating output products".
+10. When the Generate Output Products process completes, click **OK**.
 
-11. When the Generate Output Products process completes, click **OK**.
-
-12. In the Block Diagram Sources window, click the IP Sources page. Here
+11. In the Block Diagram Sources window, click the IP Sources page. Here
      you can see the output products that you just generated, as shown
      in the following figure.
 
-    ![](./media/image19.jpeg)
+    ![Generated output products](./media/image19.png)
 
 ### Exporting Hardware Platform
 
 To write a hardware platform using the GUI, follow these steps:
 
 1. Select **File→ Export → Export Hardware** in the Vivado Design
-     Suite. The Export Hardware Platform window opens.
+     Suite. The Export Hardware Platform window opens. 
 
-2. Select Platform Type as **Fixed**.
+2. Click **Next**.
 
-3. Click **Next**.
+3. In the output window, select **Pre-synthesis** and click **Next**.
 
-4. In the output window, select **Pre-synthesis** and click **Next**.
+4. Provide the **XSA file name** and **Export path**, then click **Next**.
 
-5. Provide the **XSA file name** and **Export path**, then click **Next**.
+     ![Files window for Export Hardware](./media/image20.png)
 
-     ![](./media/image20.jpeg)
-
-6. Click **Finish** to generate the hardware platform file in the
-     specified path.
+5. Click **Finish** to generate the hardware platform file in the specified path.
 
 © Copyright 2017-2020 Xilinx, Inc.
