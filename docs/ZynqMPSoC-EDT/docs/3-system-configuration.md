@@ -55,17 +55,6 @@
  through creating a simple PS-based design that does not require a
  bitstream.
 
- In addition to the basic PS configuration, this chapter will briefly
- touch upon the concept of [Isolation
- Configuration](#isolation-configuration) to create subsystems with
- protected memory and peripherals. This advanced configuration mode in
- the PS Block enables you to setup subsystems comprising Masters with
- dedicated memory and peripherals. The protection is provided by the
- XMPU and the XPPU in Zynq UltraScale+ PS block. The isolation
- configuration also allows the TrustZone settings for components to
- create and configure the systems in Secure and Non-Secure
- Environments.
-
 ## Example Project: Creating a New Embedded Project with Zynq UltraScale+ MPSoC
 
  For this example, you will launch the Vivado Design Suite and create a
