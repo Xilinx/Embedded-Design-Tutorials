@@ -247,8 +247,7 @@ To send the "Hello World" string to the UART0 peripheral, follow these steps:
 
 4.  Click the **Target Setup** page and review the settings.
 
-    >***Note*:** The board should be in JTAG boot mode before power
-    cycling.
+    >***Note*:** The board should be in JTAG boot mode before power cycling.
 
 5. Power cycle the board.
 
@@ -270,10 +269,10 @@ To send the "Hello World" string to the UART0 peripheral, follow these steps:
 
 #### What Just Happened?
 
- The application software sent the \"Hello World\" string to the UART0
+ The application software sent the "Hello World" string to the UART0
  peripheral of the PS section.
 
- From UART0, the \"Hello world\" string goes byte-by-byte to the serial
+ From UART0, the "Hello world" string goes byte-by-byte to the serial
  terminal application running on the host machine, which displays it as
  a string.
 
