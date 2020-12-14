@@ -85,7 +85,7 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
     
     `$ petalinux-package --force --boot --atf --u-boot` 
 
-    > **Note:** The packaged linux boot images will be placed in the `images/linux` directory in the PetaLinux build root.  Make a note of this directory location as it will be used in the next steps.  If you intend to use a different machine than the one that was used to build PetaLinux or a Windows based PC to download the Linux boot images using SmartLynq+ the contents of this directory should be transferred to that machine before proceeding to the next steps.
+    > **Note:** The packaged linux boot images will be placed in the `<petalinux-project>/images/linux/` directory in the PetaLinux build root.  Make a note of this directory location as it will be used in the next steps.  If you intend to use a different machine than the one that was used to build PetaLinux or a Windows based PC to download the Linux boot images using SmartLynq+ the contents of this directory should be transferred to that machine before proceeding to the next steps.
     
 ## Setting Up The SmartLynq+ Module
 
@@ -126,7 +126,7 @@ SmartLynq+ can be used to download linux images directly to the VCK190/VMK180 wi
 The design package included with this tutorial contains a script that will download the Linux images created in the prior steps using the SmartLynq+ Module.  The script can use either JTAG or HSDP.  
 
 1.  On the machine with access to the SmartLynq+ Module, open the Vivado tcl shell.
-1.  Change the working directory to the petalinux build root if working on the machine used to build petalinux, or the location where the `images/linux` directory was transfered to the local machine in the [prior step]().
+1.  Change the working directory to the petalinux build root if working on the machine used to build petalinux, or the location where the `images/linux` directory was transfered to the local machine in the prior steps.
 1.  At the Vivado tcl shell, issue the following to download the images using HSDP:
     * `xsdb linux_download.tcl <smartlynq+ ip> images/linux HSDP`.  
         * This will first load `BOOT.BIN` using JTAG after which an HSDP link will be auto-negotiated and the rest of the boot images will be loaded using HSDP, offering a substantial speed increase compared to JTAG.
