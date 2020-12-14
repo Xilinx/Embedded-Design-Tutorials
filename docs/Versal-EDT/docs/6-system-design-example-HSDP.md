@@ -136,6 +136,9 @@ The design package included with this tutorial contains a script that will downl
 1.  Once Linux has completed booting using either JTAG or HSDP, you will be presented with the following login screen:
     ![](./media/ch6-image18.png)
 
+## Summary
+In this section you have built a design that uses the High-Speed Debug Port, connected the SmartLynq+ Module, configured the SmartLynq+ for remote UART access and used the High-Speed Debug Port to download Linux images onto your board.
+
 
 
 
