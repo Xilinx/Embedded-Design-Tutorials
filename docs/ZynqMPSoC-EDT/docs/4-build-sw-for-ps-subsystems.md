@@ -21,7 +21,6 @@
 </table>
 
 - [Build Software for PS Subsystems](#build-software-for-ps-subsystems)
-  - [Processing Units in Zynq UltraScale+](#processing-units-in-zynq-ultrascale)
   - [Creating a Platform Using Vitis IDE](#creating-a-platform-using-vitis-ide)
   - [Example Project 1: Running the "Hello World" Application from Arm Cortex-A53](#example-project-1-running-the-hello-world-application-from-arm-cortex-a53)
     - [Board Setup](#board-setup)
@@ -51,37 +50,17 @@
 
 # Build Software for PS Subsystems
 
- This chapter lists the steps to configure and build software for PS
- subsystems. 
+This chapter lists the steps to configure and build software for PS
+subsystems. 
 
- In previous chapter, [Zynq UltraScale+ MPSoC Processing System
- Configuration](3-system-configuration.md), you created and exported the hardware
- design from Vivado. The exported XSA file contains the hardware
- handoff, the processing system initialization (psu_init),
- and the PL bitstream. In this chapter, you will import the XSA to the Vitis™ IDE 
- and PetaLinux to configure software for the processing system.
+In previous chapter, [Zynq UltraScale+ MPSoC Processing System
+Configuration](3-system-configuration.md), you created and exported the hardware
+design from Vivado. The exported XSA file contains the hardware
+handoff, the processing system initialization (psu_init),
+and the PL bitstream. In this chapter, you will import the XSA to the Vitis™ IDE 
+and PetaLinux to configure software for the processing system.
 
- This chapter serves two important purposes. 
- 
- 1. It helps you build and configure the software components that can be used in future chapters. 
- 2. It describes the build steps for a specific PS subsystem.
-
-## Processing Units in Zynq UltraScale+
-
- The main processing units in the processing system in Zynq UltraScale+
- are listed below.
-
-- **Application Processing Unit:** Quad-core Arm® Cortex™-A53 MPCore Processors.
-- **Real Time Processing Unit:** Dual-core Arm Cortex™-R5F MPCore Processors.
-- **Graphics Processing Unit:** Arm Mali™ 400 MP2 GPU
-- **Platform Management Unit (PMU):** Xilinx MicroBlaze based platform management unit.
-
- This section demonstrates configuring these units using system
- software. This can be achieved either at the boot-level using First
- Stage Boot Loader (FSBL) or via system firmware, which is applicable
- to the platform management unit (PMU).
-
- You will use the Vitis IDE to perform the following tasks:
+You will use the Vitis IDE to perform the following tasks:
 
 1. Create a Platform project for the hardware XSA. First Stage Boot Loader (FSBL) and PMU firmware for PMU (platform management unit) will be created as boot components in this platform project.
 
@@ -91,7 +70,17 @@
 
 ## Creating a Platform Using Vitis IDE
 
-The platform project reads in hardware info from XSA file and contains the runtime environment for sofware applications. Here are the steps of creating a platform project.
+The main processing units in the processing system in Zynq UltraScale+
+are listed below.
+
+- **Application Processing Unit:** Quad-core Arm® Cortex™-A53 MPCore Processors.
+- **Real Time Processing Unit:** Dual-core Arm Cortex™-R5F MPCore Processors.
+- **Graphics Processing Unit:** Arm Mali™ 400 MP2 GPU
+- **Platform Management Unit (PMU):** Xilinx MicroBlaze based platform management unit.
+
+The platform project reads in hardware info from XSA file and contains the runtime environment for the above processing units. Application software can link against the libraries generated in the platform project. 
+
+Here are the steps of creating a platform project.
 
 1. Launch the Vitis IDE 
 
