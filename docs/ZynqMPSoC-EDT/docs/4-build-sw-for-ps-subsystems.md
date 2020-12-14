@@ -129,7 +129,8 @@ Here are the steps of creating a platform project.
      multiple domains to platform and we can also create FSBL like any
      other application.
 
-11. Optional: To add the following libraries by modifying the standalone
+<!-- TODO: remove these libraries because they are not used in the following tutorial. -->
+11. **Optional**: To add the following libraries by modifying the standalone
      on psu_cortexa53_0 domain, follow these steps:
 
     a.  Double-click the **standalone on psu_cortexa53_0** BSP.
@@ -178,46 +179,33 @@ Here are the steps of creating a platform project.
 
 To send the "Hello World" string to the UART0 peripheral, follow these steps:
 
-1. Open the Vitis IDE and set the workspace path to your project file,
-     which in this example is `C:\edt`.
-
-    Alternately, if Vitis IDE is already open, you can
-    switch it to the correct workspace by selecting 
-    **File→ Switch Workspace** and then selecting the workspace.
-
-2. Open your preferred serial communication utility for the COM port.
+1. Open your preferred serial communication utility for the COM port.
      
-   The Vitis IDE provides a serial terminal utility. We will use it throughout the tutorial; 
-   select **Window→ Show View→ Terminal** to open it.
+   **Note**: It can be any serial communication utilities in your system. The Vitis IDE provides a serial terminal utility. We will use it throughout the tutorial; 
+   select **Window→ Show View→ Terminal** in Vitis IDE to open it.
 
-   ***Note***: On Linux, you'll need root previliage to use UART.
+   **Note**: On Linux, you'll need root previliage to use UART.
 
-3.  Click the **Connect** button to set the serial configuration and connect it.
+2.  Click the **Connect** button to set the serial configuration and connect it.
 
-    ![](./media/image28.png)
+    ![Vitis Terminal Window](./media/image28.png)
 
-4. To modify, disconnect the connection by clicking the **Disconnect**
-     button.
+3. To modify the serial connection properties, disconnect the connection by clicking the **Disconnect** button and click the **Settings** button to open the Terminal Settings view.
 
-5. Click the **Settings** button to open the Terminal Settings view.
+4. On Windows, Verify the port details in the **Device Manager**. On Linux, check the COM port in `/dev`
 
-6. Verify the port details in the Windows Device Manager.
+    MPSoC UART-0 corresponds to COM port with Interface-0. Windows Device Manager provides a mapping between Interface-x to COM-x.
 
-    UART-0 terminal corresponds to COM port with Interface-0. For this
-    example, UART-0 terminal is set by default, so for the COM port,
-    select the port with interface-0.
+    ![Windows Device Manager](./media/image29.png)
 
-    The following figure shows the standard configuration for the Zynq
-    UltraScale+ MPSoC Processing System.
+    The the above example, please use COM5 for Interface-0 and Baud rate 115200.
 
-    ![](./media/image29.png)
-
-7. Select **File→ New → Application Project**. The Create new
+5. Select **File→ New → Application Project**. The Create new
      application project wizard welcome screen opens.
 
-8. Click **Next**.
+6. Click **Next**.
 
-9. Use the information in the table below to make your selections in
+7. Use the information in the table below to make your selections in
      the wizard screens.
 
     *Table 3*: **New Application Project Settings for Standalone APU Application**
@@ -225,24 +213,23 @@ To send the "Hello World" string to the UART0 peripheral, follow these steps:
 | Wizard Screen               | System Properties               | Settings                      |
 |-----------------------------|---------------------------------|-------------------------------|
 | Platform                    | Select platform from repository | edt_zcu102_wrapper            |
-| Application project details | Application project name        | test_a53                      |
-|                             | System project name             | test_a53_system               |
+| Application project details | Application project name        | hello_a53                      |
+|                             | System project name             | hello_a53_system               |
 |                             | Target processor                | psu_cortexa53_0               |
 | Domain                      | Domain                          | standalone on psu_cortexa53_0 |
 | Templates                   | Available templates             | Hello World                   |
 
-    The Vitis IDE creates the test_a53 application project and
-    test_a53_system project in the Explorer view. Right-click the
-    **test_a53 application project** and select **Build** to build the
-    application.
+    The Vitis IDE creates the hello_a53 application project and
+    hello_a53_system project in the Explorer view. 
+    
+8. Right-click the **hello_a53 application project** and select **Build** to build the application.
 
-10. Right-click **test_a53** and select **Run as → Run Configurations**.
+10. Right-click **hello_a53** and select **Run as → Run Configurations**.
 
-11. Right-click **Xilinx Application Debugger** and click **New
-     Configuration**.
+11. Right-click **Xilinx Application Debugger** and click **New Configuration**.
 
     The Vitis IDE creates the new run configuration, named
-    Debugger_test_a53-Default.
+    Debugger_hello_a53-Default.
 
     The configurations associated with the application are pre-populated
     in the Main page of the launch configurations.
@@ -474,10 +461,10 @@ A domain is tied to a single processor or a cluster of isomorphic processors (fo
  Now that the FSBL is created, you will now create a simple bare-metal
  application targeted for an Arm A53 Core 0.
 
- For this example, you will use the test_a53 application that you
+ For this example, you will use the hello_a53 application that you
  created in [Example Project: Running the "Hello World" Application from Arm Cortex-A53](#example-project-running-the-hello-world-application-from-arm-cortex-a53).
 
- In test_a53, you selected a simple Hello World application. This
+ In hello_a53, you selected a simple Hello World application. This
  application can be loaded on APU by FSBL running on either APU or RPU.
  The Vitis IDE also provides a few other bare-metal application
  templates to make it easy to start running applications on Zynq
@@ -487,9 +474,9 @@ A domain is tied to a single processor or a cluster of isomorphic processors (fo
 
 ### Modify the Application Source Code
 
-1. In the Explorer view, click **test_a53 → src → helloworld.c**.
+1. In the Explorer view, click **hello_a53 → src → helloworld.c**.
 
-    This opens the helloworld.c source file for the test_a53 application.
+    This opens the helloworld.c source file for the hello_a53 application.
 
 2. Modify the arguments in the print command, as shown below.
 
@@ -502,8 +489,8 @@ A domain is tied to a single processor or a cluster of isomorphic processors (fo
 4. Right-click the **test_a 53** project and select **Build Project**.
 
 5. Verify that the application is
-     compiled and linked successfully and the test_a53.elf file is
-     generated in the **test_a53 → Debug folder**.
+     compiled and linked successfully and the hello_a53.elf file is
+     generated in the **hello_a53 → Debug folder**.
      ![](./media/image35.png)
 
 ### Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU
