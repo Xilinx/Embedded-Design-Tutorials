@@ -24,6 +24,7 @@
   - [Creating a Platform Using Vitis IDE](#creating-a-platform-using-vitis-ide)
   - [Example Project 1: Running the "Hello World" Application from Arm Cortex-A53](#example-project-1-running-the-hello-world-application-from-arm-cortex-a53)
     - [Board Setup](#board-setup)
+    - [Connect Serial Port](#connect-serial-port)
     - [Print Hello World](#print-hello-world)
       - [What Just Happened?](#what-just-happened)
   - [Creating a standalone BSP Domain for cortexr5_0](#creating-a-standalone-bsp-domain-for-cortexr5_0)
@@ -175,30 +176,40 @@ Here are the steps of creating a platform project.
 
     ![](./media/image27.jpeg)
 
-### Print Hello World
-
-To send the "Hello World" string to the UART0 peripheral, follow these steps:
+### Connect Serial Port
 
 1. Open your preferred serial communication utility for the COM port.
      
    **Note**: It can be any serial communication utilities in your system. The Vitis IDE provides a serial terminal utility. We will use it throughout the tutorial; 
-   select **Window→ Show View→ Terminal** in Vitis IDE to open it.
+   select **Window→ Show View → Vitis Serial Terminal** in Vitis IDE to open it.
 
    **Note**: On Linux, you'll need root previliage to use UART.
 
-2.  Click the **Connect** button to set the serial configuration and connect it.
+2.  Click the **+** button to set the serial configuration.
 
-    ![Vitis Terminal Window](./media/image28.png)
+    ![Vitis Terminal Window](./media/vitis_serial_terminal.png)
 
-3. To modify the serial connection properties, disconnect the connection by clicking the **Disconnect** button and click the **Settings** button to open the Terminal Settings view.
-
-4. On Windows, Verify the port details in the **Device Manager**. On Linux, check the COM port in `/dev`
+3. To find out the correct COM port, on Windows, verify the port details in the **Device Manager**. On Linux, check the COM port in `/dev`
 
     MPSoC UART-0 corresponds to COM port with Interface-0. Windows Device Manager provides a mapping between Interface-x to COM-x.
 
     ![Windows Device Manager](./media/image29.png)
 
     The the above example, please use COM5 for Interface-0 and Baud rate 115200.
+
+4. Click the drop down menu of **Port**, select the port number for Interface-0 (COM5 in this example).
+
+   ![](./media/vitis_serial_terminal_connect.png)
+
+5. Keep other settings and click OK to connect.
+
+6. It will show connect status in the Vitis Serial Terminal window
+
+   ![](./media/vitis_serial_terminal_connected.png)
+
+### Print Hello World
+
+To send the "Hello World" string to the UART0 peripheral, follow these steps:
 
 5. Select **File→ New → Application Project**. The Create new
      application project wizard welcome screen opens.
