@@ -126,6 +126,8 @@ SmartLynq+ can be used to download linux images directly to the VCK190/VMK180 wi
 The design package included with this tutorial contains a script that will download the Linux images created in the prior steps using the SmartLynq+ Module.  The script can use either JTAG or HSDP.  
 
 1.  On the machine with access to the SmartLynq+ Module, open the Vivado tcl shell.
+    ![](./media/ch6-image24.png)
+
 1.  Change the working directory to the petalinux build root if working on the machine used to build petalinux, or the location where the `images/linux` directory was transfered to the local machine in the prior steps.
 1.  At the Vivado tcl shell, issue the following to download the images using HSDP:
     * `xsdb linux_download.tcl <smartlynq+ ip> images/linux HSDP`.  
