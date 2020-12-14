@@ -1,12 +1,14 @@
 # System Design Example for SmartLynq+ HSDP
 
 ## Introduction
-This chapter guides you through building a system based on Versal devices that utilizes both the SmartLynq+ Module and High-Speed Debug Port (HSDP).  It also demonstrates the steps to setup the SmartLynq+ Module and download a Linux image using both JTAG and High-Speed Debug Port.  
+This chapter guides you through building a system based on Versal devices that utilizes both the SmartLynq+ Module and High-Speed Debug Port (HSDP).  It also demonstrates the steps to setup the SmartLynq+ Module and download a Linux image using either JTAG or High-Speed Debug Port. 
+
+> **Important:** This tutorial requires a SmartLynq+ Module.
 
 ## Design Example: Enabling High-Speed Debug Port (HSDP)
-To use High-Speed Debug Port, the design must be modified to include HSDP support.  
+To use High-Speed Debug Port, the design must be modified to include HSDP support.  This section will modify the project built in the prior chapter to enable the High-Speed Debug Port interface.  
 
-### Enabling HSDP
+### Modifying the Chapter 5 design to enable High-Speed Debug Port (HSDP)
 
 This design uses the project built in chapter 5 and enables the High-Speed Debug Port (HSDP) interface.  You can do this using the Vivado IP Integrator.  
 1. Open the Vivado project you created in [Chapter 5: System Design Example using Scalar Engine and Adaptable Engine](#chapter-5).
@@ -100,7 +102,7 @@ Once the Linux images have been built and packaged, they can be loaded onto the 
 
 ### Using The SmartLynq+ as a Serial Terminal
 
-The SmartLynq+ can also be used as a serial terminal to remotely view serial terminal output from the VCK190.  This feature can be useful when physical access to the remote setup is not available.  The SmartLynq+ module comes with the `minicom` application pre-installed, which can be used to connect directly to the UART on the VCK190.
+The SmartLynq+ can also be used as a serial terminal to remotely view UART output from the VCK190.  This feature can be useful when physical access to the remote setup is not available.  The SmartLynq+ module has the minicom application pre-installed, which can be used to connect directly to the UART on the VCK190.
 
 1.  Using an SSH client such as `PuTTY` on Windows or `ssh` on Unix based systems, connect using SSH to the IP address shown on the SmartLynq+ display.  
     * Username: `xilinx`
@@ -122,17 +124,18 @@ SmartLynq+ can be used to download linux images directly to the VCK190/VMK180 wi
 
 The design package included with this tutorial contains a script that will download the Linux images created in the prior steps using the SmartLynq+ Module.  The script can use either JTAG or HSDP.  
 
-1.  To load the Linux images, do one of the following:
-    * **To use HSDP** `xsdb linux_download.tcl <smartlynq+ ip> images/linux HSDP`.  
+1.  On the machine with access to the SmartLynq+ Module, open the Vivado tcl shell.
+1.  Change the working directory to the petalinux build root if working on the machine used to build petalinux, or the location where the `images/linux` directory was transfered to the local machine in the [prior step]().
+1.  At the Vivado tcl shell, issue the following to download the images using HSDP:
+    * `xsdb linux_download.tcl <smartlynq+ ip> images/linux HSDP`.  
         * This will first load `BOOT.BIN` using JTAG after which an HSDP link will be auto-negotiated and the rest of the boot images will be loaded using HSDP, offering a substantial speed increase compared to JTAG.
-    * **To use JTAG** `xsdb linux-download <smartlynq+ ip> images/linux FTDI-JTAG`.
-        * This will use JTAG to program all of the Linux boot images.
-    > Take note of the difference in download speed when using HSDP.
     ![](./media/ch6-image16.png)
+    > **Note:** It is also possible to download the Linux images using JTAG by changing the scripts last argument to `FTDI-JTAG` `xsdb linux-download <smartlynq+ ip> images/linux FTDI-JTAG`. This will use JTAG to program all of the Linux boot images.  Take note of the difference in download speed when using HSDP.
 1.  Returning to the terminal opened in the prior section, Versal boot messages can be viewed from the VCK190 UART:
     ![](./media/ch6-image17.png)
 1.  Once Linux has completed booting using either JTAG or HSDP, you will be presented with the following login screen:
     ![](./media/ch6-image18.png)
+
 
 
 
