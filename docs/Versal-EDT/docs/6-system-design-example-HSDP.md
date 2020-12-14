@@ -116,7 +116,7 @@ The SmartLynq+ can also be used as a serial terminal to remotely view UART outpu
     * `sudo minicom --device /dev/ttyUSB1`
 
 1.  Leave this terminal open and proceed to the next section.
-    ![](./media/ch6-images15.png)
+    ![](./media/ch6-image15.png)
 
 ### Booting Linux Images over JTAG or HSDP
 
