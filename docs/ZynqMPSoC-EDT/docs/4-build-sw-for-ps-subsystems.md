@@ -25,11 +25,12 @@
   - [Example Project 1: Running the "Hello World" Application from Arm Cortex-A53](#example-project-1-running-the-hello-world-application-from-arm-cortex-a53)
     - [Board Setup](#board-setup)
     - [Connect Serial Port](#connect-serial-port)
-    - [Create Hello World Application](#create-hello-world-application)
+    - [Create Hello World Application on ARM Cortex-A53](#create-hello-world-application-on-arm-cortex-a53)
     - [Run Hello World on the Board](#run-hello-world-on-the-board)
       - [What Just Happened?](#what-just-happened)
-  - [Creating a standalone BSP Domain for cortexr5_0](#creating-a-standalone-bsp-domain-for-cortexr5_0)
   - [Example Project 2: Running the "Hello World" Application from Arm Cortex-R5](#example-project-2-running-the-hello-world-application-from-arm-cortex-r5)
+    - [Creating a standalone BSP Domain for cortexr5_0](#creating-a-standalone-bsp-domain-for-cortexr5_0)
+    - [Creating Hello World Application on ARM Cortex-R5F](#creating-hello-world-application-on-arm-cortex-r5f)
       - [What Just Happened?](#what-just-happened-1)
   - [Additional Information](#additional-information)
     - [Domain](#domain)
@@ -206,7 +207,7 @@ Here are the steps of creating a platform project.
 
    ![](./media/vitis_serial_terminal_connected.png)
 
-### Create Hello World Application
+### Create Hello World Application on ARM Cortex-A53
 
 To send the "Hello World" string to the UART0 peripheral, follow these steps:
 
@@ -222,9 +223,9 @@ To send the "Hello World" string to the UART0 peripheral, follow these steps:
 
      | Wizard Screen               | System Properties               | Settings                      |
      |-----------------------------|---------------------------------|-------------------------------|
-     | Platform                    | Select platform from repository | edt_zcu102_wrapper            |
+     | Platform                    | Select platform from repository | zcu102_edt            |
      | Application project details | Application project name        | hello_a53                      |
-     |                             | System project name             | hello_a53_system               |
+     |                             | System project name             | hello_system               |
      |                             | Target processor                | psu_cortexa53_0               |
      | Domain                      | Domain                          | standalone on psu_cortexa53_0 |
      | Templates                   | Available templates             | Hello World                   |
@@ -276,18 +277,32 @@ To send the "Hello World" string to the UART0 peripheral, follow these steps:
  terminal application running on the host machine, which displays it as
  a string.
 
-## Creating a standalone BSP Domain for cortexr5_0
+
+
+## Example Project 2: Running the "Hello World" Application from Arm Cortex-R5
+
+In this example, you will learn how to run a
+simple hello world software application for the Arm Cortex-R5F
+processor in the JTAG mode using System Debugger in the Vitis IDE.
+
+The application for Cortex-R5F needs a domain for cortexr5_0. We will create it in the zcu102_edt platform and reuse it for the new application. We will create the Cortex-R5F application in the hello_system system project together with hello_a53. These two applications can run at the same time. 
+
+Alternatively, you're free to create the Cortex-R5F application with a platform of its own domain and its own system project. The workflow is the same as Example 1, while exchanging Cortex-A53 with Cortex-R5F.
+
+The hardwar setup and serial console connection is the same as Example 1.  
+
+
+### Creating a standalone BSP Domain for cortexr5_0
 
 In this step, we will prepare for the next example design: running a Hello World application on Arm Cortex-R5. We will create a standalone BSP domain for cortexr5_0. Please follow these steps:
 
 1. The edt_zcu102_wrapper platform is, by default, assigned the default
      domain for psu_cortexa53_0. For applications targeting the RPU,
-     you have to create a domain for cortexr5_0.
+     you need create a new domain for cortexr5_0.
 
-2. Double-click `platform.spr`. The platform opens in the Explorer
-     view.
+2. Double-click `platform.spr`. The platform opens in the Explorer view.
 
-3. Click in the top-right corner to add a domain ![](./media/image31.png).
+3. Click in the top-right corner to add a domain ![Add Icon](./media/image31.png).
 
 4. Create a domain with the following settings:
 
@@ -295,91 +310,35 @@ In this step, we will prepare for the next example design: running a Hello World
 
    |  System Properties                |  Setting or Command to Use      |
    |-----------------------------------|---------------------------------|
-   | Name                              | psu_cortexr5_0                  |
-   | Display name                      | psu_cortexr5_0                  |
+   | Name                              | standalone_r5                  |
+   | Display name                      | standalone_r5                  |
    | OS                                | Standalone                      |
    | Version                           | Standalone (7.3)                |
    | Processor                         | psu_cortexr5_0                  |
    | Supported Runtime                 | C/C++                           |
    | Architecture                      | 32-bit                          |
 
-5.  The Vitis IDE creates a new domain and psu_cortexr5_0 appears under
-     the edt_zcu102_wrapper platform.
+5.  The Vitis IDE creates a new domain and **standalone_r5** appears under
+     the **zcu102_edt** platform.
 
-    >***Note*:** Add the xilffs, xilpm, and xilsecure libraries by
-    modifying psu_cortexr5_0 domain. To do so, double-click standalone on
-    psu_cortexr5_0 BSP, then click **Modify BSP Settings**. On the
-    Overview page, select the desired libraries.
+### Creating Hello World Application on ARM Cortex-R5F
 
-## Example Project 2: Running the "Hello World" Application from Arm Cortex-R5
-
- In this example, you will learn how to manage the board settings, make
- cable connections, connect to the board through your PC, and run a
- simple hello world software application for the Arm Cortex-R5F
- processor in the JTAG mode using System Debugger in the Vitis IDE.
-
- >***Note*:** If you have already set up the board, skip to step 5.
-
-1. Connect the power cable to the board.
-
-2. Connect a USB micro cable between the Windows Host machine and the
-     J2 USB JTAG connector on the target board.
-
-3. Connect a USB cable to connector J83 on the target board with the
-     Windows Host machine. This is used for USB to serial transfer.
-
-4. Power on the ZCU102 board using the switch indicated in
-
- >***Note*:** If the Vitis IDE is already open, jump to step 6.
-
-5. Launch the Vitis IDE and set the workspace path to your project
-     file, which in this example is `C:\\edt\`.
-
-    Alternately, you can open the Vitis IDE with a default workspace and
-    later switch it to the correct workspace by selecting **File → Switch
-    Workspace** and then selecting the workspace.
-
-6. Open a serial communication utility
-     for the COM port assigned on your system. The Vitis IDE provides a
-     serial terminal utility, which will be used throughout the
-     tutorial; select **Window → Show View→ Terminal** to open it.
-
-     ![](./media/image28.png)
-
-7. Click **Connect** to set the serial configuration and connect it.
-
-8. Click **Settings** to open the Terminal Settings view.
-
-    The Com-port details can be found in the device manager on host
-    machine. UART-0 terminal corresponds to Com-Port with Interface-0. For
-    this example, UART-0 terminal is set by default, so for the Com-port,
-    select the port with interface-0. The following figure shows the
-    standard configuration for the Zynq UltraScale+ MPSoC Processing
-    System.
-
-    ![](./media/image29.png)
-
-9. In the Vitis IDE, switch back from the Debug perspective to the
-     C/C++ perspective by selecting **Windows→ Open Perspective → C/C++**.
-
-    Ignore this step, if the Vitis IDE is already in the C/C++ perspective.
-
-10. Select **File→ New → Application Project**. The New Project wizard
+6.  In the Vitis IDE, select **File→ New → Application Project**. The New Project wizard
      opens.
 
-11. Use the information in the following table to make your selections
+8.  Use the information in the following table to make your selections
      in the wizard screens.
 
      *Table 5:* **System Properties**
 
-   |  Wizard Screen       |  System Properties   |  Settings            |
-   |----------------------|----------------------|----------------------|
-   | Platform             | Select platform from repository | edt_zcu102_wrapper   |
-   | Application project details | Application project name | hello_world_r5       |
-   |                      | System project name  | hello_world_r5_system                    |
-   |                      | Target processor     | psu_cortexr5_0       |
-   | Domain               | Domain               | psu_cortexr5_0       |
-   | Templates            | Available templates  | Hello World          |
+     | Wizard Screen               | System Properties               | Settings              |
+     |-----------------------------|---------------------------------|-----------------------|
+     | Platform                    | Select platform from repository | zcu102_edt    |
+     | Application project details | Application project name        | hello_world_r5        |
+     |                             | System project name             | hello_world_r5_system |
+     |                             | Target processor                | psu_cortexr5_0        |
+     | Domain                      | Domain                          | psu_cortexr5_0        |
+     | Templates                   | Available templates             | Hello World           |
 
     The Vitis IDE creates the hello_world_r5 application project and
     hello_world_r5_system project under the Project Explorer. You have to
