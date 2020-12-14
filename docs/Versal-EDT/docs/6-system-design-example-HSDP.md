@@ -117,7 +117,7 @@ The SmartLynq+ can also be used as a serial terminal to remotely view UART outpu
     * `sudo minicom --device /dev/ttyUSB1`
 
 1.  Leave this terminal open and proceed to the next section.
-    ![](./media/ch6-images15.png)
+    ![](./media/ch6-image15.png)
 
 ### Booting Linux Images over JTAG or HSDP
 
@@ -136,6 +136,9 @@ The design package included with this tutorial contains a script that will downl
     ![](./media/ch6-image17.png)
 1.  Once Linux has completed booting using either JTAG or HSDP, you will be presented with the following login screen:
     ![](./media/ch6-image18.png)
+
+## Summary
+In this section you have built a design that uses the High-Speed Debug Port, connected the SmartLynq+ Module, configured the SmartLynq+ for remote UART access and used the High-Speed Debug Port to download Linux images onto your board.
 
 
 
