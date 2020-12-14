@@ -1,4 +1,4 @@
-# System Design Example for SmartLynq+ HSDP
+# System Design Example for High-Speed Debug Port with SmartLynq+ Module
 
 ## Introduction
 This chapter guides you through building a system based on Versal devices that utilizes both the SmartLynq+ Module and High-Speed Debug Port (HSDP).  It also demonstrates the steps to setup the SmartLynq+ Module and download a Linux image using either JTAG or High-Speed Debug Port. 
