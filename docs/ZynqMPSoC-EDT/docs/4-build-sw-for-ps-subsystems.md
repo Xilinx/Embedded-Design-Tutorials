@@ -23,17 +23,18 @@
 - [Build Software for PS Subsystems](#build-software-for-ps-subsystems)
   - [Processing Units in Zynq UltraScale+](#processing-units-in-zynq-ultrascale)
   - [Creating a Platform Using Vitis IDE](#creating-a-platform-using-vitis-ide)
-  - [Example Project: Running the "Hello World" Application from Arm Cortex-A53](#example-project-running-the-hello-world-application-from-arm-cortex-a53)
+  - [Example Project 1: Running the "Hello World" Application from Arm Cortex-A53](#example-project-1-running-the-hello-world-application-from-arm-cortex-a53)
     - [Board Setup](#board-setup)
+    - [Print Hello World](#print-hello-world)
       - [What Just Happened?](#what-just-happened)
-  - [Creating a Domain for cortexr5_0](#creating-a-domain-for-cortexr5_0)
-  - [Example Project: Running the "Hello World" Application from Arm Cortex-R5](#example-project-running-the-hello-world-application-from-arm-cortex-r5)
+  - [Creating a standalone BSP Domain for cortexr5_0](#creating-a-standalone-bsp-domain-for-cortexr5_0)
+  - [Example Project 2: Running the "Hello World" Application from Arm Cortex-R5](#example-project-2-running-the-hello-world-application-from-arm-cortex-r5)
       - [What Just Happened?](#what-just-happened-1)
   - [Additional Information](#additional-information)
     - [Domain](#domain)
       - [Board Support Package](#board-support-package)
       - [Standalone BSP](#standalone-bsp)
-  - [Example Project: Create a Bare-Metal Application Project in the Vitis IDE](#example-project-create-a-bare-metal-application-project-in-the-vitis-ide)
+  - [Example Project 3: Create a Bare-Metal System Application Project in the Vitis IDE](#example-project-3-create-a-bare-metal-system-application-project-in-the-vitis-ide)
     - [Create Custom Bare-Metal Application for Arm Cortex-A53 based APU](#create-custom-bare-metal-application-for-arm-cortex-a53-based-apu)
     - [Modify the Application Source Code](#modify-the-application-source-code)
     - [Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU](#create-custom-bare-metal-application-for-arm-cortex-r5-based-rpu)
@@ -44,7 +45,7 @@
     - [Reviewing FSBL in Platform](#reviewing-fsbl-in-platform)
     - [Reviewing PMU Firmware in Platform](#reviewing-pmu-firmware-in-platform)
   - [Create First Stage Boot Loader for Arm Cortex-A53-Based APU](#create-first-stage-boot-loader-for-arm-cortex-a53-based-apu)
-  - [Example Project: Create Linux Images using PetaLinux](#example-project-create-linux-images-using-petalinux)
+  - [Example Project 4: Create Linux Images using PetaLinux](#example-project-4-create-linux-images-using-petalinux)
     - [Verify the Image on the ZCU102 Board](#verify-the-image-on-the-zcu102-board)
     - [Create Linux Images Using PetaLinux for QSPI Flash](#create-linux-images-using-petalinux-for-qspi-flash)
 
@@ -82,49 +83,57 @@
 
  You will use the Vitis IDE to perform the following tasks:
 
-1. Create a First Stage Boot Loader (FSBL) for the Arm Cortex-A53
-     64-bit quad-core processor unit (APU) and the Cortex-R5F dual-core
-     real-time processor unit (RPU).
+1. Create a Platform project for the hardware XSA. First Stage Boot Loader (FSBL) and PMU firmware for PMU (platform management unit) will be created as boot components in this platform project.
 
 2. Create bare-metal applications for APU and RPU.
 
-3. Create platform management unit (PMU) firmware for PMU.
-
- In addition to the bare-metal applications, this chapter also
- describes building U-Boot and Linux Images for the APU. The Linux
- images and U-Boot can be configured and built using the PetaLinux
- build system.
+3. Create a Linux application.
 
 ## Creating a Platform Using Vitis IDE
 
-1. Launch the Vitis IDE from the Windows start menu shortcut or by
-     double-clicking the `C:\Xilinx\Vitis\2020.2\bin\vitis.bat` file.
+The platform project reads in hardware info from XSA file and contains the runtime environment for sofware applications. Here are the steps of creating a platform project.
 
-2. Select the workspace and continue.
+1. Launch the Vitis IDE 
 
-   ![](./media/image21.png)
+   - From the open Vivado IDE, click Tools -> Launch Vitis IDE; or
+   - Click the Windows start menu -> Xilinx Design Tools -> Xilinx Vitis 2020.2; or
+   - Double-click the `C:\Xilinx\Vitis\2020.2\bin\vitis.bat` file.
+
+2. Select the workspace `C\edt\edt_zcu102_workspace` and continue.
+
+   ![Vitis IDE Launcher](./media/image21.png)
+
+   >Note: If the directory doesn't exist, Vitis will create it.
 
 3. In the Vitis IDE, go to **File → New → Platform Project**.
 
-4. In the Create New Platform page, enter the platform name and click
-     **Next**.
+4. In the Create New Platform page, enter the platform name `zcu102_edt` and click **Next**.
 
-5. In the Platform view, select **Create from hardware specification
-     (XSA)**. 
+5. In the Platform view, go with the default tab **Create from hardware specification (XSA)**. 
 
-6. Click Browse to select the XSA file exported from previous chapter.
+   > Note: **Select a platform from repository** tab can be used when you have a pre-built platform and you'd like to copy it to local to modify it.
+
+6. Click **Browse...** to select the XSA file exported from previous chapter.
 
 7. Select the preferred operating system, processor, and architecture.
 
-    ![](./media/image22.jpeg)
+| Wizard Screen                   | Property        |
+|---------------------------------|-----------------|
+| Operating System                | Standalone      |
+| Processor                       | psu_cortexa53_0 |
+| Architecture                    | 64-bit          |
+| Generate Boot Components        | Keep it checked |
+| Target processor to create FSBL | psu_cortexa53_0 |
 
-8. Click **Finish**.
+    ![Create a new platform from XSA](./media/image22.png)
 
-9. In a few minutes, the Vitis IDE generates the platform. The files
+8.  Click **Finish**.
+
+9.  In a few minutes, the Vitis IDE generates the platform. The files
      that are generated are displayed in the explorer window as shown
      in the following figure.
 
-    ![](./media/image23.jpeg)
+    ![Generated platform files](./media/image23.png)
 
 10. Default FSBL and PMU firmware comes with the platform project and
      psu_cortexa53_0 domain also added to the platform. We can add
@@ -143,10 +152,12 @@
 12. Now build the hardware by right-clicking the platform, then
      selecting **Build Project**.
 
-    ![](./media/image24.jpeg)
+    ![Build Project](./media/image24.jpeg)
 
-    The hardware platform is ready. You can create applications using this
+    The platform project is ready. You can create applications using this
     platform and test on zcu102 hardware.
+
+    > Note: The project build process will build the standlaone BSP, FSBL and PMUFW. FSBL and PMUFW has their own BSP. The build process will take some time.
 
 ## Example Project 1: Running the "Hello World" Application from Arm Cortex-A53
 
@@ -222,14 +233,14 @@ To send the "Hello World" string to the UART0 peripheral, follow these steps:
 
     *Table 3*: **New Application Project Settings for Standalone APU Application**
 
-   |  Wizard Screen       |  System Properties          |  Settings       |
-   |----------------------|-----------------------------|----------------------|
-   |  Platform           |  Select platform from repository   |  edt_zcu102_wrapper |
-   |  Application project details       |  Application project name       |  test_a53           |
-   |                      |  System project name    |  test_a53_system    |
-   |                      |  Target processor   |  psu_cortexa53_0    |
-   |  Domain              |  Domain             |  standalone on psu_cortexa53_0     |
-   |  Templates          |  Available templates         |  Hello World        |
+| Wizard Screen               | System Properties               | Settings                      |
+|-----------------------------|---------------------------------|-------------------------------|
+| Platform                    | Select platform from repository | edt_zcu102_wrapper            |
+| Application project details | Application project name        | test_a53                      |
+|                             | System project name             | test_a53_system               |
+|                             | Target processor                | psu_cortexa53_0               |
+| Domain                      | Domain                          | standalone on psu_cortexa53_0 |
+| Templates                   | Available templates             | Hello World                   |
 
     The Vitis IDE creates the test_a53 application project and
     test_a53_system project in the Explorer view. Right-click the
@@ -525,14 +536,14 @@ A domain is tied to a single processor or a cluster of isomorphic processors (fo
 
     *Table 6:* **Settings to Create New RPU Application Project**
 
-   |  Wizard Screen        |  System Properties    |  Settings          |
-   |-----------------------|-----------------------|--------------------|
-   | Platform              | Select platform from repository | edt_zcu102_wrapper |
-   | Application project details   | Application project name  | testapp_r5         |
-   |                       | System project name   | testapp_r5_system  |
-   |                       | Target processor      | psu_cortexr5_0     |
-   | Domain                | Domain                | psu_cortexr5_0     |
-   | Templates             | Available templates   | Empty application  |
+| Wizard Screen               | System Properties               | Settings           |
+|-----------------------------|---------------------------------|--------------------|
+| Platform                    | Select platform from repository | edt_zcu102_wrapper |
+| Application project details | Application project name        | testapp_r5         |
+|                             | System project name             | testapp_r5_system  |
+|                             | Target processor                | psu_cortexr5_0     |
+| Domain                      | Domain                          | psu_cortexr5_0     |
+| Templates                   | Available templates             | Empty application  |
 
 3. Click **Finish**.
 
