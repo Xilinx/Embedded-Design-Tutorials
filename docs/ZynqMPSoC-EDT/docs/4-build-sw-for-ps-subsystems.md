@@ -25,7 +25,8 @@
   - [Example Project 1: Running the "Hello World" Application from Arm Cortex-A53](#example-project-1-running-the-hello-world-application-from-arm-cortex-a53)
     - [Board Setup](#board-setup)
     - [Connect Serial Port](#connect-serial-port)
-    - [Print Hello World](#print-hello-world)
+    - [Create Hello World Application](#create-hello-world-application)
+    - [Run Hello World on the Board](#run-hello-world-on-the-board)
       - [What Just Happened?](#what-just-happened)
   - [Creating a standalone BSP Domain for cortexr5_0](#creating-a-standalone-bsp-domain-for-cortexr5_0)
   - [Example Project 2: Running the "Hello World" Application from Arm Cortex-R5](#example-project-2-running-the-hello-world-application-from-arm-cortex-r5)
@@ -159,22 +160,20 @@ Here are the steps of creating a platform project.
 
 ### Board Setup
 
+![ZCU102 Board Connection Guide](./media/image27.jpeg)
+
 1. Connect the power cable to the board.
 
-2. Connect a USB micro cable between the Windows host machine and J2 USB JTAG connector on the target board.
+2. Connect a USB micro cable between the Windows host machine and J2 **USB JTAG** connector on the target board.
 
 3. Connect a USB micro cable to connector J83 on the target board with the Windows host machine.
-     This is used for USB to serial transfer.
+     This is used for **USB to serial transfer**.
 
-	 >**IMPORTANT!** *Ensure that SW6 Switch, on the bottom right, is set to
-	 JTAG boot mode as shown in the following figure.*
-	 >
-	 > ![](./media/image26.jpeg)
+4. Ensure that SW6 Switch, on the bottom right, is set to **JTAG boot mode** as shown in the following figure.
 
-4. Power on the ZCU102 board using the switch indicated in the figure
-     below.
+   ![](./media/image26.jpeg)
 
-    ![](./media/image27.jpeg)
+5. Power on the ZCU102 board.
 
 ### Connect Serial Port
 
@@ -207,37 +206,38 @@ Here are the steps of creating a platform project.
 
    ![](./media/vitis_serial_terminal_connected.png)
 
-### Print Hello World
+### Create Hello World Application
 
 To send the "Hello World" string to the UART0 peripheral, follow these steps:
 
-5. Select **File→ New → Application Project**. The Create new
+1. Select **File→ New → Application Project**. The Create new
      application project wizard welcome screen opens.
 
-6. Click **Next**.
+2. Click **Next**.
 
-7. Use the information in the table below to make your selections in
+3. Use the information in the table below to make your selections in
      the wizard screens.
 
     *Table 3*: **New Application Project Settings for Standalone APU Application**
 
-| Wizard Screen               | System Properties               | Settings                      |
-|-----------------------------|---------------------------------|-------------------------------|
-| Platform                    | Select platform from repository | edt_zcu102_wrapper            |
-| Application project details | Application project name        | hello_a53                      |
-|                             | System project name             | hello_a53_system               |
-|                             | Target processor                | psu_cortexa53_0               |
-| Domain                      | Domain                          | standalone on psu_cortexa53_0 |
-| Templates                   | Available templates             | Hello World                   |
+     | Wizard Screen               | System Properties               | Settings                      |
+     |-----------------------------|---------------------------------|-------------------------------|
+     | Platform                    | Select platform from repository | edt_zcu102_wrapper            |
+     | Application project details | Application project name        | hello_a53                      |
+     |                             | System project name             | hello_a53_system               |
+     |                             | Target processor                | psu_cortexa53_0               |
+     | Domain                      | Domain                          | standalone on psu_cortexa53_0 |
+     | Templates                   | Available templates             | Hello World                   |
 
-    The Vitis IDE creates the hello_a53 application project and
-    hello_a53_system project in the Explorer view. 
+    The Vitis IDE creates the **hello_a53_system** project in the Explorer view. **hello_a53** sits inside **hello_a53_system**.
+
+### Run Hello World on the Board
     
-8. Right-click the **hello_a53 application project** and select **Build** to build the application.
+1. Right-click the **hello_a53 application project** and select **Build** to build the application.
 
-10. Right-click **hello_a53** and select **Run as → Run Configurations**.
+2. Right-click **hello_a53** and select **Run as → Run Configurations**.
 
-11. Right-click **Xilinx Application Debugger** and click **New Configuration**.
+3. Right-click **Xilinx Application Debugger** and click **New Configuration**.
 
     The Vitis IDE creates the new run configuration, named
     Debugger_hello_a53-Default.
@@ -245,14 +245,14 @@ To send the "Hello World" string to the UART0 peripheral, follow these steps:
     The configurations associated with the application are pre-populated
     in the Main page of the launch configurations.
 
-12. Click the **Target Setup** page and review the settings.
+4.  Click the **Target Setup** page and review the settings.
 
     >***Note*:** The board should be in JTAG boot mode before power
     cycling.
 
-13. Power cycle the board.
+5. Power cycle the board.
 
-14. Click **Run**.
+6. Click **Run**.
 
     Hello World appears on the serial communication utility in Terminal 1,
     as shown in the following figure.
@@ -265,7 +265,7 @@ To send the "Hello World" string to the UART0 peripheral, follow these steps:
     processing system. Basic initialization of this system to run a simple
     application is done by the device initialization Tcl script.
 
-15. Power cycle the board and retain same connections and board settings
+7. Power cycle the board and retain same connections and board settings
      for the next section.
 
 #### What Just Happened?
