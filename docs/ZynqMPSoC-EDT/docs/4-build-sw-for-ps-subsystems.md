@@ -31,7 +31,10 @@
   - [Example Project 2: Running the "Hello World" Application from Arm Cortex-R5](#example-project-2-running-the-hello-world-application-from-arm-cortex-r5)
     - [Creating a standalone BSP Domain for cortexr5_0](#creating-a-standalone-bsp-domain-for-cortexr5_0)
     - [Creating Hello World Application on ARM Cortex-R5F](#creating-hello-world-application-on-arm-cortex-r5f)
-      - [What Just Happened?](#what-just-happened-1)
+    - [Run Hello World Application on ARM Cortex-R5F](#run-hello-world-application-on-arm-cortex-r5f)
+    - [What Just Happened?](#what-just-happened-1)
+    - [Run Hello World Application on ARM Cortex-A53 and Cortex-R5F Together](#run-hello-world-application-on-arm-cortex-a53-and-cortex-r5f-together)
+      - [What Just Happened?](#what-just-happened-2)
   - [Additional Information](#additional-information)
     - [Domain](#domain)
       - [Board Support Package](#board-support-package)
@@ -323,45 +326,44 @@ In this step, we will prepare for the next example design: running a Hello World
 
 ### Creating Hello World Application on ARM Cortex-R5F
 
-6.  In the Vitis IDE, select **File→ New → Application Project**. The New Project wizard
-     opens.
+1.  In the Vitis IDE, select **hello_system** and right click. Select **Add Application Project**. The New Application Project wizard opens.
 
-8.  Use the information in the following table to make your selections
+     Use the information in the following table to make your selections
      in the wizard screens.
 
      *Table 5:* **System Properties**
 
-     | Wizard Screen               | System Properties               | Settings              |
-     |-----------------------------|---------------------------------|-----------------------|
-     | Platform                    | Select platform from repository | zcu102_edt    |
-     | Application project details | Application project name        | hello_world_r5        |
-     |                             | System project name             | hello_world_r5_system |
-     |                             | Target processor                | psu_cortexr5_0        |
-     | Domain                      | Domain                          | psu_cortexr5_0        |
-     | Templates                   | Available templates             | Hello World           |
+     | Wizard Screen               | System Properties        | Settings       |
+     |-----------------------------|--------------------------|----------------|
+     | Application project details | Application project name | hello_r5       |
+     |                             | Select a system project  | hello_system   |
+     |                             | Target processor         | psu_cortexr5_0 |
+     | Domain                      | Domain                   | standalone_r5  |
+     | Templates                   | Available templates      | Hello World    |
 
-    The Vitis IDE creates the hello_world_r5 application project and
-    hello_world_r5_system project under the Project Explorer. You have to
+    The Vitis IDE creates the **hello_r5** application project under the hello_system system project. You have to
     compile the application manually.
 
-12. Right-click **hello_world_r5** and select **Run as → Run
-     Configurations**.
+2. Select hello_system and click hammer icon on the tool bar to build the system project.
 
-13. Right-click **Xilinx Application Debugger** and click **New
-     Configuration**.
+### Run Hello World Application on ARM Cortex-R5F
+
+1.  Right-click **hello_r5** and select **Run as → Run Configurations**.
+
+2.  Right-click **Xilinx Application Debugger** and click **New Configuration**.
 
     The Vitis IDE creates the new run configuration, named
-    Debugger_hello_world_r5-Default. The configurations associated with
+    Debugger_hello_r5-Default. The configurations associated with
     the application are pre-populated in the Main page of the launch
     configurations.
 
-14. Click the **Target Setup** page and review the settings.
+3.  Click the **Target Setup** page and review the settings.
 
     This file is exported when you create the platform using the Vitis
     IDE; it contains the initialization information for the processing
     system.
 
-15. Click **Run**.
+4.  Click **Run**.
 
     ![](./media/image30.png)
 
@@ -374,14 +376,40 @@ In this step, we will prepare for the next example design: running a Hello World
     Basic initialization of this system to run a simple application is
     done by the device initialization Tcl script.
 
+### What Just Happened?
+
+Vitis IDE uses JTAG to control the processors. It uses FSBL to initialize ARM Cortex-A53, syspend the processors, then loads hello_r5 to DDR, launch ARM Cortex-R5F core 0.
+
+The application software sent the "Hello World" string to the UART0 peripheral of the PS section on each processor.
+
+From UART0, the "Hello world" string goes byte-by-byte to the serial terminal application running on the host machine, which displays it as a string.
+
+### Run Hello World Application on ARM Cortex-A53 and Cortex-R5F Together
+
+1.  Right-click **hello_system** and select **Run as → Run Configurations**.
+
+2.  Right-click **Xilinx Application Debugger** and click **New Configuration**.
+
+    The Vitis IDE creates the new run configuration, named
+    **SystemDebugger_hello_system**. The configurations associated with
+    the application are pre-populated in the Main page of the launch
+    configurations.
+
+3.  Click the **Target Setup** page and review the settings.
+
+    This file is exported when you create the platform using the Vitis
+    IDE; it contains the initialization information for the processing
+    system.
+
+4.  Click **Run**.
+
 #### What Just Happened?
 
- The application software sent the "Hello World" string to the UART0
- peripheral of the PS section.
+Vitis IDE uses JTAG to control the processors. It uses FSBL to initialize ARM Cortex-A53, syspend the processors, then loads hello_a53 and hello_r5 to DDR, launch them together with very slight delays.
 
- From UART0, the "Hello world" string goes byte-by-byte to the serial
- terminal application running on the host machine, which displays it as
- a string.
+The application software sent the "Hello World" string to the UART0 peripheral of the PS section on each processor.
+
+From UART0, the "Hello world" string goes byte-by-byte to the serial terminal. Since these two application races to use UART0, the string shows on host can have a race condition. Print characters may be mixed.
 
 ## Additional Information
 
@@ -419,7 +447,6 @@ A domain is tied to a single processor or a cluster of isomorphic processors (fo
  profiling, abort, and exit. It is a single threaded semi-hosted
  environment.
 
-<!-- TODO: add system project part -->
 <!-- TODO: alternativly, remove this example and add it later -->
 ## Example Project 3: Create a Bare-Metal System Application Project in the Vitis IDE
 
