@@ -21,19 +21,22 @@
 </table>
 
 - [Build Software for PS Subsystems](#build-software-for-ps-subsystems)
-  - [Processing Units in Zynq UltraScale+](#processing-units-in-zynq-ultrascale)
   - [Creating a Platform Using Vitis IDE](#creating-a-platform-using-vitis-ide)
-  - [Example Project: Running the "Hello World" Application from Arm Cortex-A53](#example-project-running-the-hello-world-application-from-arm-cortex-a53)
+  - [Example Project 1: Running the "Hello World" Application from Arm Cortex-A53](#example-project-1-running-the-hello-world-application-from-arm-cortex-a53)
     - [Board Setup](#board-setup)
+    - [Connect Serial Port](#connect-serial-port)
+    - [Create Hello World Application on ARM Cortex-A53](#create-hello-world-application-on-arm-cortex-a53)
+    - [Run Hello World on the Board](#run-hello-world-on-the-board)
       - [What Just Happened?](#what-just-happened)
-  - [Creating a Domain for cortexr5_0](#creating-a-domain-for-cortexr5_0)
-  - [Example Project: Running the "Hello World" Application from Arm Cortex-R5](#example-project-running-the-hello-world-application-from-arm-cortex-r5)
+  - [Example Project 2: Running the "Hello World" Application from Arm Cortex-R5](#example-project-2-running-the-hello-world-application-from-arm-cortex-r5)
+    - [Creating a standalone BSP Domain for cortexr5_0](#creating-a-standalone-bsp-domain-for-cortexr5_0)
+    - [Creating Hello World Application on ARM Cortex-R5F](#creating-hello-world-application-on-arm-cortex-r5f)
       - [What Just Happened?](#what-just-happened-1)
   - [Additional Information](#additional-information)
     - [Domain](#domain)
       - [Board Support Package](#board-support-package)
       - [Standalone BSP](#standalone-bsp)
-  - [Example Project: Create a Bare-Metal Application Project in the Vitis IDE](#example-project-create-a-bare-metal-application-project-in-the-vitis-ide)
+  - [Example Project 3: Create a Bare-Metal System Application Project in the Vitis IDE](#example-project-3-create-a-bare-metal-system-application-project-in-the-vitis-ide)
     - [Create Custom Bare-Metal Application for Arm Cortex-A53 based APU](#create-custom-bare-metal-application-for-arm-cortex-a53-based-apu)
     - [Modify the Application Source Code](#modify-the-application-source-code)
     - [Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU](#create-custom-bare-metal-application-for-arm-cortex-r5-based-rpu)
@@ -44,94 +47,93 @@
     - [Reviewing FSBL in Platform](#reviewing-fsbl-in-platform)
     - [Reviewing PMU Firmware in Platform](#reviewing-pmu-firmware-in-platform)
   - [Create First Stage Boot Loader for Arm Cortex-A53-Based APU](#create-first-stage-boot-loader-for-arm-cortex-a53-based-apu)
-  - [Example Project: Create Linux Images using PetaLinux](#example-project-create-linux-images-using-petalinux)
+  - [Example Project 4: Create Linux Images using PetaLinux](#example-project-4-create-linux-images-using-petalinux)
     - [Verify the Image on the ZCU102 Board](#verify-the-image-on-the-zcu102-board)
     - [Create Linux Images Using PetaLinux for QSPI Flash](#create-linux-images-using-petalinux-for-qspi-flash)
 
 # Build Software for PS Subsystems
 
- This chapter lists the steps to configure and build software for PS
- subsystems. 
+This chapter lists the steps to configure and build software for PS
+subsystems. 
 
- In previous chapter, [Zynq UltraScale+ MPSoC Processing System
- Configuration](3-system-configuration.md), you created and exported the hardware
- design from Vivado. The exported XSA file contains the hardware
- handoff, the processing system initialization (psu_init),
- and the PL bitstream. In this chapter, you will import the XSA to the Vitis™ IDE 
- and PetaLinux to configure software for the processing system.
+In previous chapter, [Zynq UltraScale+ MPSoC Processing System
+Configuration](3-system-configuration.md), you created and exported the hardware
+design from Vivado. The exported XSA file contains the hardware
+handoff, the processing system initialization (psu_init),
+and the PL bitstream. In this chapter, you will import the XSA to the Vitis™ IDE 
+and PetaLinux to configure software for the processing system.
 
- This chapter serves two important purposes. 
- 
- 1. It helps you build and configure the software components that can be used in future chapters. 
- 2. It describes the build steps for a specific PS subsystem.
+You will use the Vitis IDE to perform the following tasks:
 
-## Processing Units in Zynq UltraScale+
+1. Create a Platform project for the hardware XSA. First Stage Boot Loader (FSBL) and PMU firmware for PMU (platform management unit) will be created as boot components in this platform project.
 
- The main processing units in the processing system in Zynq UltraScale+
- are listed below.
+2. Create bare-metal applications for APU and RPU.
+
+3. Create a Linux application.
+
+## Creating a Platform Using Vitis IDE
+
+The main processing units in the processing system in Zynq UltraScale+
+are listed below.
 
 - **Application Processing Unit:** Quad-core Arm® Cortex™-A53 MPCore Processors.
 - **Real Time Processing Unit:** Dual-core Arm Cortex™-R5F MPCore Processors.
 - **Graphics Processing Unit:** Arm Mali™ 400 MP2 GPU
 - **Platform Management Unit (PMU):** Xilinx MicroBlaze based platform management unit.
 
- This section demonstrates configuring these units using system
- software. This can be achieved either at the boot-level using First
- Stage Boot Loader (FSBL) or via system firmware, which is applicable
- to the platform management unit (PMU).
+The platform project reads in hardware info from XSA file and contains the runtime environment for the above processing units. Application software can link against the libraries generated in the platform project. 
 
- You will use the Vitis IDE to perform the following tasks:
+Here are the steps of creating a platform project.
 
-1. Create a First Stage Boot Loader (FSBL) for the Arm Cortex-A53
-     64-bit quad-core processor unit (APU) and the Cortex-R5F dual-core
-     real-time processor unit (RPU).
+1. Launch the Vitis IDE 
 
-2. Create bare-metal applications for APU and RPU.
+   - From the open Vivado IDE, click Tools -> Launch Vitis IDE; or
+   - Click the Windows start menu -> Xilinx Design Tools -> Xilinx Vitis 2020.2; or
+   - Double-click the `C:\Xilinx\Vitis\2020.2\bin\vitis.bat` file.
 
-3. Create platform management unit (PMU) firmware for PMU.
+2. Select the workspace `C\edt\edt_zcu102_workspace` and continue.
 
- In addition to the bare-metal applications, this chapter also
- describes building U-Boot and Linux Images for the APU. The Linux
- images and U-Boot can be configured and built using the PetaLinux
- build system.
+   ![Vitis IDE Launcher](./media/image21.png)
 
-## Creating a Platform Using Vitis IDE
-
-1. Launch the Vitis IDE from the Windows start menu shortcut or by
-     double-clicking the `C:\Xilinx\Vitis\2020.2\bin\vitis.bat` file.
-
-2. Select the workspace and continue.
-
-   ![](./media/image21.png)
+   >Note: If the directory doesn't exist, Vitis will create it.
 
 3. In the Vitis IDE, go to **File → New → Platform Project**.
 
-4. In the Create New Platform page, enter the platform name and click
-     **Next**.
+4. In the Create New Platform page, enter the platform name `zcu102_edt` and click **Next**.
 
-5. In the Platform view, select **Create from hardware specification
-     (XSA)**. 
+5. In the Platform view, go with the default tab **Create from hardware specification (XSA)**. 
 
-6. Click Browse to select the XSA file exported from previous chapter.
+   > Note: **Select a platform from repository** tab can be used when you have a pre-built platform and you'd like to copy it to local to modify it.
+
+6. Click **Browse...** to select the XSA file exported from previous chapter.
 
 7. Select the preferred operating system, processor, and architecture.
 
-    ![](./media/image22.jpeg)
+| Wizard Screen                   | Property        |
+|---------------------------------|-----------------|
+| Operating System                | Standalone      |
+| Processor                       | psu_cortexa53_0 |
+| Architecture                    | 64-bit          |
+| Generate Boot Components        | Keep it checked |
+| Target processor to create FSBL | psu_cortexa53_0 |
 
-8. Click **Finish**.
+    ![Create a new platform from XSA](./media/image22.png)
 
-9. In a few minutes, the Vitis IDE generates the platform. The files
+8.  Click **Finish**.
+
+9.  In a few minutes, the Vitis IDE generates the platform. The files
      that are generated are displayed in the explorer window as shown
      in the following figure.
 
-    ![](./media/image23.jpeg)
+    ![Generated platform files](./media/image23.png)
 
 10. Default FSBL and PMU firmware comes with the platform project and
      psu_cortexa53_0 domain also added to the platform. We can add
      multiple domains to platform and we can also create FSBL like any
      other application.
 
-11. Optional: To add the following libraries by modifying the standalone
+<!-- TODO: remove these libraries because they are not used in the following tutorial. -->
+11. **Optional**: To add the following libraries by modifying the standalone
      on psu_cortexa53_0 domain, follow these steps:
 
     a.  Double-click the **standalone on psu_cortexa53_0** BSP.
@@ -143,10 +145,12 @@
 12. Now build the hardware by right-clicking the platform, then
      selecting **Build Project**.
 
-    ![](./media/image24.jpeg)
+    ![Build Project](./media/image24.jpeg)
 
-    The hardware platform is ready. You can create applications using this
+    The platform project is ready. You can create applications using this
     platform and test on zcu102 hardware.
+
+    > Note: The project build process will build the standlaone BSP, FSBL and PMUFW. FSBL and PMUFW has their own BSP. The build process will take some time.
 
 ## Example Project 1: Running the "Hello World" Application from Arm Cortex-A53
 
@@ -157,104 +161,98 @@
 
 ### Board Setup
 
+![ZCU102 Board Connection Guide](./media/image27.jpeg)
+
 1. Connect the power cable to the board.
 
-2. Connect a USB micro cable between the Windows host machine and J2 USB JTAG connector on the target board.
+2. Connect a USB micro cable between the Windows host machine and J2 **USB JTAG** connector on the target board.
 
 3. Connect a USB micro cable to connector J83 on the target board with the Windows host machine.
-     This is used for USB to serial transfer.
+     This is used for **USB to serial transfer**.
 
-	 >**IMPORTANT!** *Ensure that SW6 Switch, on the bottom right, is set to
-	 JTAG boot mode as shown in the following figure.*
-	 >
-	 > ![](./media/image26.jpeg)
+4. Ensure that SW6 Switch, on the bottom right, is set to **JTAG boot mode** as shown in the following figure.
 
-4. Power on the ZCU102 board using the switch indicated in the figure
-     below.
+   ![](./media/image26.jpeg)
 
-    ![](./media/image27.jpeg)
+5. Power on the ZCU102 board.
 
-### Print Hello World
+### Connect Serial Port
+
+1. Open your preferred serial communication utility for the COM port.
+     
+   **Note**: It can be any serial communication utilities in your system. The Vitis IDE provides a serial terminal utility. We will use it throughout the tutorial; 
+   select **Window→ Show View → Vitis Serial Terminal** in Vitis IDE to open it.
+
+   **Note**: On Linux, you'll need root previliage to use UART.
+
+2.  Click the **+** button to set the serial configuration.
+
+    ![Vitis Terminal Window](./media/vitis_serial_terminal.png)
+
+3. To find out the correct COM port, on Windows, verify the port details in the **Device Manager**. On Linux, check the COM port in `/dev`
+
+    MPSoC UART-0 corresponds to COM port with Interface-0. Windows Device Manager provides a mapping between Interface-x to COM-x.
+
+    ![Windows Device Manager](./media/image29.png)
+
+    The the above example, please use COM5 for Interface-0 and Baud rate 115200.
+
+4. Click the drop down menu of **Port**, select the port number for Interface-0 (COM5 in this example).
+
+   ![](./media/vitis_serial_terminal_connect.png)
+
+5. Keep other settings and click OK to connect.
+
+6. It will show connect status in the Vitis Serial Terminal window
+
+   ![](./media/vitis_serial_terminal_connected.png)
+
+### Create Hello World Application on ARM Cortex-A53
 
 To send the "Hello World" string to the UART0 peripheral, follow these steps:
 
-1. Open the Vitis IDE and set the workspace path to your project file,
-     which in this example is `C:\edt`.
-
-    Alternately, if Vitis IDE is already open, you can
-    switch it to the correct workspace by selecting 
-    **File→ Switch Workspace** and then selecting the workspace.
-
-2. Open your preferred serial communication utility for the COM port.
-     
-   The Vitis IDE provides a serial terminal utility. We will use it throughout the tutorial; 
-   select **Window→ Show View→ Terminal** to open it.
-
-   ***Note***: On Linux, you'll need root previliage to use UART.
-
-3.  Click the **Connect** button to set the serial configuration and connect it.
-
-    ![](./media/image28.png)
-
-4. To modify, disconnect the connection by clicking the **Disconnect**
-     button.
-
-5. Click the **Settings** button to open the Terminal Settings view.
-
-6. Verify the port details in the Windows Device Manager.
-
-    UART-0 terminal corresponds to COM port with Interface-0. For this
-    example, UART-0 terminal is set by default, so for the COM port,
-    select the port with interface-0.
-
-    The following figure shows the standard configuration for the Zynq
-    UltraScale+ MPSoC Processing System.
-
-    ![](./media/image29.png)
-
-7. Select **File→ New → Application Project**. The Create new
+1. Select **File→ New → Application Project**. The Create new
      application project wizard welcome screen opens.
 
-8. Click **Next**.
+2. Click **Next**.
 
-9. Use the information in the table below to make your selections in
+3. Use the information in the table below to make your selections in
      the wizard screens.
 
     *Table 3*: **New Application Project Settings for Standalone APU Application**
 
-   |  Wizard Screen       |  System Properties          |  Settings       |
-   |----------------------|-----------------------------|----------------------|
-   |  Platform           |  Select platform from repository   |  edt_zcu102_wrapper |
-   |  Application project details       |  Application project name       |  test_a53           |
-   |                      |  System project name    |  test_a53_system    |
-   |                      |  Target processor   |  psu_cortexa53_0    |
-   |  Domain              |  Domain             |  standalone on psu_cortexa53_0     |
-   |  Templates          |  Available templates         |  Hello World        |
+     | Wizard Screen               | System Properties               | Settings                      |
+     |-----------------------------|---------------------------------|-------------------------------|
+     | Platform                    | Select platform from repository | zcu102_edt            |
+     | Application project details | Application project name        | hello_a53                      |
+     |                             | System project name             | hello_system               |
+     |                             | Target processor                | psu_cortexa53_0               |
+     | Domain                      | Domain                          | standalone on psu_cortexa53_0 |
+     | Templates                   | Available templates             | Hello World                   |
 
-    The Vitis IDE creates the test_a53 application project and
-    test_a53_system project in the Explorer view. Right-click the
-    **test_a53 application project** and select **Build** to build the
-    application.
+    The Vitis IDE creates the **hello_a53_system** project in the Explorer view. **hello_a53** sits inside **hello_a53_system**.
 
-10. Right-click **test_a53** and select **Run as → Run Configurations**.
+### Run Hello World on the Board
+    
+1. Right-click the **hello_a53 application project** and select **Build** to build the application.
 
-11. Right-click **Xilinx Application Debugger** and click **New
-     Configuration**.
+2. Right-click **hello_a53** and select **Run as → Run Configurations**.
+
+3. Right-click **Xilinx Application Debugger** and click **New Configuration**.
 
     The Vitis IDE creates the new run configuration, named
-    Debugger_test_a53-Default.
+    Debugger_hello_a53-Default.
 
     The configurations associated with the application are pre-populated
     in the Main page of the launch configurations.
 
-12. Click the **Target Setup** page and review the settings.
+4.  Click the **Target Setup** page and review the settings.
 
-    >***Note*:** The board should be in JTAG boot mode before power
-    cycling.
+    >***Note*:** The board should be in JTAG boot mode before power cycling.
 
-13. Power cycle the board.
+5. Power cycle the board.
 
-14. Click **Run**.
+6. Click **Run**.
 
     Hello World appears on the serial communication utility in Terminal 1,
     as shown in the following figure.
@@ -267,30 +265,44 @@ To send the "Hello World" string to the UART0 peripheral, follow these steps:
     processing system. Basic initialization of this system to run a simple
     application is done by the device initialization Tcl script.
 
-15. Power cycle the board and retain same connections and board settings
+7. Power cycle the board and retain same connections and board settings
      for the next section.
 
 #### What Just Happened?
 
- The application software sent the \"Hello World\" string to the UART0
+ The application software sent the "Hello World" string to the UART0
  peripheral of the PS section.
 
- From UART0, the \"Hello world\" string goes byte-by-byte to the serial
+ From UART0, the "Hello world" string goes byte-by-byte to the serial
  terminal application running on the host machine, which displays it as
  a string.
 
-## Creating a standalone BSP Domain for cortexr5_0
+
+
+## Example Project 2: Running the "Hello World" Application from Arm Cortex-R5
+
+In this example, you will learn how to run a
+simple hello world software application for the Arm Cortex-R5F
+processor in the JTAG mode using System Debugger in the Vitis IDE.
+
+The application for Cortex-R5F needs a domain for cortexr5_0. We will create it in the zcu102_edt platform and reuse it for the new application. We will create the Cortex-R5F application in the hello_system system project together with hello_a53. These two applications can run at the same time. 
+
+Alternatively, you're free to create the Cortex-R5F application with a platform of its own domain and its own system project. The workflow is the same as Example 1, while exchanging Cortex-A53 with Cortex-R5F.
+
+The hardwar setup and serial console connection is the same as Example 1.  
+
+
+### Creating a standalone BSP Domain for cortexr5_0
 
 In this step, we will prepare for the next example design: running a Hello World application on Arm Cortex-R5. We will create a standalone BSP domain for cortexr5_0. Please follow these steps:
 
 1. The edt_zcu102_wrapper platform is, by default, assigned the default
      domain for psu_cortexa53_0. For applications targeting the RPU,
-     you have to create a domain for cortexr5_0.
+     you need create a new domain for cortexr5_0.
 
-2. Double-click `platform.spr`. The platform opens in the Explorer
-     view.
+2. Double-click `platform.spr`. The platform opens in the Explorer view.
 
-3. Click in the top-right corner to add a domain ![](./media/image31.png).
+3. Click in the top-right corner to add a domain ![Add Icon](./media/image31.png).
 
 4. Create a domain with the following settings:
 
@@ -298,91 +310,35 @@ In this step, we will prepare for the next example design: running a Hello World
 
    |  System Properties                |  Setting or Command to Use      |
    |-----------------------------------|---------------------------------|
-   | Name                              | psu_cortexr5_0                  |
-   | Display name                      | psu_cortexr5_0                  |
+   | Name                              | standalone_r5                  |
+   | Display name                      | standalone_r5                  |
    | OS                                | Standalone                      |
    | Version                           | Standalone (7.3)                |
    | Processor                         | psu_cortexr5_0                  |
    | Supported Runtime                 | C/C++                           |
    | Architecture                      | 32-bit                          |
 
-5.  The Vitis IDE creates a new domain and psu_cortexr5_0 appears under
-     the edt_zcu102_wrapper platform.
+5.  The Vitis IDE creates a new domain and **standalone_r5** appears under
+     the **zcu102_edt** platform.
 
-    >***Note*:** Add the xilffs, xilpm, and xilsecure libraries by
-    modifying psu_cortexr5_0 domain. To do so, double-click standalone on
-    psu_cortexr5_0 BSP, then click **Modify BSP Settings**. On the
-    Overview page, select the desired libraries.
+### Creating Hello World Application on ARM Cortex-R5F
 
-## Example Project 2: Running the "Hello World" Application from Arm Cortex-R5
-
- In this example, you will learn how to manage the board settings, make
- cable connections, connect to the board through your PC, and run a
- simple hello world software application for the Arm Cortex-R5F
- processor in the JTAG mode using System Debugger in the Vitis IDE.
-
- >***Note*:** If you have already set up the board, skip to step 5.
-
-1. Connect the power cable to the board.
-
-2. Connect a USB micro cable between the Windows Host machine and the
-     J2 USB JTAG connector on the target board.
-
-3. Connect a USB cable to connector J83 on the target board with the
-     Windows Host machine. This is used for USB to serial transfer.
-
-4. Power on the ZCU102 board using the switch indicated in
-
- >***Note*:** If the Vitis IDE is already open, jump to step 6.
-
-5. Launch the Vitis IDE and set the workspace path to your project
-     file, which in this example is `C:\\edt\`.
-
-    Alternately, you can open the Vitis IDE with a default workspace and
-    later switch it to the correct workspace by selecting **File → Switch
-    Workspace** and then selecting the workspace.
-
-6. Open a serial communication utility
-     for the COM port assigned on your system. The Vitis IDE provides a
-     serial terminal utility, which will be used throughout the
-     tutorial; select **Window → Show View→ Terminal** to open it.
-
-     ![](./media/image28.png)
-
-7. Click **Connect** to set the serial configuration and connect it.
-
-8. Click **Settings** to open the Terminal Settings view.
-
-    The Com-port details can be found in the device manager on host
-    machine. UART-0 terminal corresponds to Com-Port with Interface-0. For
-    this example, UART-0 terminal is set by default, so for the Com-port,
-    select the port with interface-0. The following figure shows the
-    standard configuration for the Zynq UltraScale+ MPSoC Processing
-    System.
-
-    ![](./media/image29.png)
-
-9. In the Vitis IDE, switch back from the Debug perspective to the
-     C/C++ perspective by selecting **Windows→ Open Perspective → C/C++**.
-
-    Ignore this step, if the Vitis IDE is already in the C/C++ perspective.
-
-10. Select **File→ New → Application Project**. The New Project wizard
+6.  In the Vitis IDE, select **File→ New → Application Project**. The New Project wizard
      opens.
 
-11. Use the information in the following table to make your selections
+8.  Use the information in the following table to make your selections
      in the wizard screens.
 
      *Table 5:* **System Properties**
 
-   |  Wizard Screen       |  System Properties   |  Settings            |
-   |----------------------|----------------------|----------------------|
-   | Platform             | Select platform from repository | edt_zcu102_wrapper   |
-   | Application project details | Application project name | hello_world_r5       |
-   |                      | System project name  | hello_world_r5_system                    |
-   |                      | Target processor     | psu_cortexr5_0       |
-   | Domain               | Domain               | psu_cortexr5_0       |
-   | Templates            | Available templates  | Hello World          |
+     | Wizard Screen               | System Properties               | Settings              |
+     |-----------------------------|---------------------------------|-----------------------|
+     | Platform                    | Select platform from repository | zcu102_edt    |
+     | Application project details | Application project name        | hello_world_r5        |
+     |                             | System project name             | hello_world_r5_system |
+     |                             | Target processor                | psu_cortexr5_0        |
+     | Domain                      | Domain                          | psu_cortexr5_0        |
+     | Templates                   | Available templates             | Hello World           |
 
     The Vitis IDE creates the hello_world_r5 application project and
     hello_world_r5_system project under the Project Explorer. You have to
@@ -474,10 +430,10 @@ A domain is tied to a single processor or a cluster of isomorphic processors (fo
  Now that the FSBL is created, you will now create a simple bare-metal
  application targeted for an Arm A53 Core 0.
 
- For this example, you will use the test_a53 application that you
+ For this example, you will use the hello_a53 application that you
  created in [Example Project: Running the "Hello World" Application from Arm Cortex-A53](#example-project-running-the-hello-world-application-from-arm-cortex-a53).
 
- In test_a53, you selected a simple Hello World application. This
+ In hello_a53, you selected a simple Hello World application. This
  application can be loaded on APU by FSBL running on either APU or RPU.
  The Vitis IDE also provides a few other bare-metal application
  templates to make it easy to start running applications on Zynq
@@ -487,9 +443,9 @@ A domain is tied to a single processor or a cluster of isomorphic processors (fo
 
 ### Modify the Application Source Code
 
-1. In the Explorer view, click **test_a53 → src → helloworld.c**.
+1. In the Explorer view, click **hello_a53 → src → helloworld.c**.
 
-    This opens the helloworld.c source file for the test_a53 application.
+    This opens the helloworld.c source file for the hello_a53 application.
 
 2. Modify the arguments in the print command, as shown below.
 
@@ -502,8 +458,8 @@ A domain is tied to a single processor or a cluster of isomorphic processors (fo
 4. Right-click the **test_a 53** project and select **Build Project**.
 
 5. Verify that the application is
-     compiled and linked successfully and the test_a53.elf file is
-     generated in the **test_a53 → Debug folder**.
+     compiled and linked successfully and the hello_a53.elf file is
+     generated in the **hello_a53 → Debug folder**.
      ![](./media/image35.png)
 
 ### Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU
@@ -525,14 +481,14 @@ A domain is tied to a single processor or a cluster of isomorphic processors (fo
 
     *Table 6:* **Settings to Create New RPU Application Project**
 
-   |  Wizard Screen        |  System Properties    |  Settings          |
-   |-----------------------|-----------------------|--------------------|
-   | Platform              | Select platform from repository | edt_zcu102_wrapper |
-   | Application project details   | Application project name  | testapp_r5         |
-   |                       | System project name   | testapp_r5_system  |
-   |                       | Target processor      | psu_cortexr5_0     |
-   | Domain                | Domain                | psu_cortexr5_0     |
-   | Templates             | Available templates   | Empty application  |
+| Wizard Screen               | System Properties               | Settings           |
+|-----------------------------|---------------------------------|--------------------|
+| Platform                    | Select platform from repository | edt_zcu102_wrapper |
+| Application project details | Application project name        | testapp_r5         |
+|                             | System project name             | testapp_r5_system  |
+|                             | Target processor                | psu_cortexr5_0     |
+| Domain                      | Domain                          | psu_cortexr5_0     |
+| Templates                   | Available templates             | Empty application  |
 
 3. Click **Finish**.
 
