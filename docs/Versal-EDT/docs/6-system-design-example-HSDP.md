@@ -5,7 +5,7 @@ This chapter guides you through building a system based on Versal devices that u
 
 > **Important:** This tutorial requires a SmartLynq+ Module, VCK190 or VMK180, and Linux host machine.
 
-> **Note:** This tutorial is part of the Versal Embedded Design Tutorial.  For more information, see [README.md](../docs/README.md).
+> **Note:** This tutorial is part of the Versal Embedded Design Tutorial.  For more information, see [README.md](../../README.md).
 
 ## Design Example: Enabling High-Speed Debug Port (HSDP)
 This section will start with the VCK190 or VMK180 project built in the prior chapter (or the pre-built project in the design package `<design-package>/smartlynq_plus/pre_built/edt_versal.xpr.zip`). We will modify the project to include HSDP support.
