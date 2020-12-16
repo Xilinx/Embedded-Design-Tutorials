@@ -92,7 +92,9 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
 Once the Linux images have been built and packaged, they can be loaded onto the VCK190 or VMK180 board using either JTAG or HSDP.  This section will guide you through the basic steps required to setup the SmartLynq+ module for connectivity using HSDP.
 
 1.  Connect the USB-C cable between the VCK190 USB-C connector and the SmartLynq+ Module.
+
     ![](./media/ch6-slp1.png)
+    
 1.  Connect the SmartLynq+ to either Ethernet or USB.
     * **Using Ethernet:** Connect an Ethernet cable between Ethernet port on the SmartLynq+ and your local area network.
     * **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
