@@ -3,10 +3,12 @@
 ## Introduction
 This chapter guides you through building a system based on Versal devices that utilizes both the SmartLynq+ Module and High-Speed Debug Port (HSDP).  It also demonstrates the steps to setup the SmartLynq+ Module and download a Linux image using either JTAG or High-Speed Debug Port. 
 
-> **Important:** This tutorial requires a SmartLynq+ Module.
+> **Important:** This tutorial requires a SmartLynq+ Module, VCK190 or VMK180, and Linux host machine.
+
+> **Note:** This tutorial is part of the Versal Embedded Design Tutorial.  For more information, see [README.md](./README.md).
 
 ## Design Example: Enabling High-Speed Debug Port (HSDP)
-To use High-Speed Debug Port, the design must be modified to include HSDP support.  This section will modify the project built in the prior chapter to enable the High-Speed Debug Port interface.  
+This section will start with the VCK190 or VMK180 project built in the prior chapter (or the pre-built project in the design package `<design-package>/smartlynq_plus/pre_built/edt_versal.xpr.zip`). We will modify the project to include HSDP support.
 
 ### Modifying the Chapter 5 design to enable High-Speed Debug Port (HSDP)
 
@@ -30,8 +32,6 @@ This design uses the project built in chapter 5 and enables the High-Speed Debug
    - **GT Refclk Selection** to **REFCLK1** 
    - **GT Refclk Freq (MHz)** to **156.25**  
    **Note:** _Line rate will be fixed at **10.0 Gbps**._
-<!-- 1. When finished the High-Speed Debug Port menu should contain the following settings:
-     ![](./media/ch6-image3.png) -->
 
 1. Click **OK** to save the changes.  Two ports will be created on the CIPS IP `gt_refclk1` and `HSDP1_GT`.
 
@@ -60,16 +60,16 @@ This design uses the project built in chapter 5 and enables the High-Speed Debug
 
 1.  Click **Finish**.
 
-## Creating the HSDP Enabled Linux Image Using Petalinux
+## Creating the HSDP Enabled Linux Image Using PetaLinux
 
 This example re-builds the PetaLinux project using the HSDP enabled XSA that was built in the prior step.  The assumption is that the PetaLinux project has been created as per the instructions in [Chapter 5](5-system-design-example.md).
 
-> **Important:** If you are building this tutorial without having created a PetaLinux project in the prior chapter, you can follow steps 1 through 12 in the section [Example Project: Creating Linux Images Using PetaLinux](5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to create a new PetaLinux project.
+> **Important:** If you are building this tutorial without having created a PetaLinux project in the prior chapter, you can follow steps 1 through 12 in the section [Example Project: Creating Linux Images Using PetaLinux](5-system-design-example.md#example-project-creating-Linux-images-using-PetaLinux) to create a new PetaLinux project.
 
 This example needs a Linux host machine. Refer to the [PetaLinux Tools Documentation Reference Guide (UG1144)](https://www.xilinx.com/member/versal_tools_ea.html#embedded) for information on dependencies and installation procedure for the PetaLinux tool.
 
 
-1. Change to the PetaLinux project directory that was created in [Chapter 5](5-system-design-example.md#example-project-creating-linux-images-using-petalinux) using the following command.
+1. Change to the PetaLinux project directory that was created in [Chapter 5](5-system-design-example.md#example-project-creating-Linux-images-using-PetaLinux) using the following command.
 
     `$ cd led_example`
 
@@ -79,29 +79,29 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
 
 1. Build the Linux images using the following command.
 
-    `$ petalinux-build`
+    `$ PetaLinux-build`
 
 1.  Once the build completes, package the boot images with the following command:
     
-    `$ petalinux-package --force --boot --atf --u-boot` 
+    `$ PetaLinux-package --force --boot --atf --u-boot` 
 
-    > **Note:** The packaged linux boot images will be placed in the `<petalinux-project>/images/linux/` directory in the PetaLinux build root.  Make a note of this directory location as it will be used in the next steps.  If you intend to use a different machine than the one that was used to build PetaLinux or a Windows based PC to download the Linux boot images using SmartLynq+ the contents of this directory should be transferred to that machine before proceeding to the next steps.
+    > **Note:** The packaged Linux boot images will be placed in the `<PetaLinux-project>/images/Linux/` directory in the PetaLinux build root.  Make a note of this directory location as it will be used in the next steps.  If you intend to use a different machine than the one that was used to build PetaLinux (e.g. a Windows Based PC) to download the Linux boot images using SmartLynq+ the contents of this directory should be transferred to that machine before proceeding to the next steps.
     
-## Setting Up The SmartLynq+ Module
+## Setting Up the SmartLynq+ Module
 
 Once the Linux images have been built and packaged, they can be loaded onto the VCK190 or VMK180 board using either JTAG or HSDP.  This section will guide you through the basic steps required to setup the SmartLynq+ module for connectivity using HSDP.
 
-1.  Connect the USB-C cable between the VCK190 USB-C connector found on the  and the SmartLynq+ Module.
+1.  Connect the USB-C cable between the VCK190 USB-C connector and the SmartLynq+ Module.
 1.  Connect the SmartLynq+ to either Ethernet or USB.
     * **Using Ethernet:** Connect an Ethernet cable between Ethernet port on the SmartLynq+ and your local area network.
     * **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
 1.  Connect the SmartLynq+'s provided power adapter to the SmartLynq+ and power on the VCK190/VMK180 board.
 1.  Once the SmartLynq+ finishes booting up an IP address will appear on the screen under either `eth0` or `usb0`.  This will be the IP address used to connect to the SmartLynq+ in both the Ethernet and USB use case.
     ![](./media/ch6-image23.jpg)
-    > **Note:** If using Ethernet the SmartLynq+ will acquire an IP address from a DHCP server found on the network.  If using USB the USB port will have a fixed IP of `10.0.0.2`. 
+    > **Note:** If using Ethernet, the SmartLynq+ will acquire an IP address from a DHCP server found on the network.  If using USB the USB port will have a fixed IP of `10.0.0.2`. 
 1.  Copy the Linux download scripts from the design package `<design-package>/smartlynq_plus/xsdb`.
 
-### Using The SmartLynq+ as a Serial Terminal
+### Using the SmartLynq+ as a Serial Terminal
 
 The SmartLynq+ can also be used as a serial terminal to remotely view UART output from the VCK190.  This feature can be useful when physical access to the remote setup is not available.  The SmartLynq+ module has the minicom application pre-installed, which can be used to connect directly to the UART on the VCK190.
 
@@ -121,23 +121,29 @@ The SmartLynq+ can also be used as a serial terminal to remotely view UART outpu
 
 ### Booting Linux Images over JTAG or HSDP
 
-SmartLynq+ can be used to download linux images directly to the VCK190/VMK180 without using an SD Card.  Linux images can be loaded using JTAG or HSDP.
+SmartLynq+ can be used to download Linux images directly to the VCK190/VMK180 without using an SD Card.  Linux images can be loaded using JTAG or HSDP.
 
 The design package included with this tutorial contains a script that will download the Linux images created in the prior steps using the SmartLynq+ Module.  The script can use either JTAG or HSDP.  
 
 1.  On the machine with access to the SmartLynq+ Module, open the Vivado tcl shell.
     ![](./media/ch6-image24.png)
 
-1.  Change the working directory to the petalinux build root if working on the machine used to build petalinux, or the location where the `images/linux` directory was transfered to the local machine in the prior steps.
+1.  Change the working directory to the PetaLinux build root if working on the machine used to build PetaLinux, or the location where the `images/Linux` directory was transferred to the local machine in the prior steps.
 1.  At the Vivado tcl shell, issue the following to download the images using HSDP:
-    * `xsdb linux_download.tcl <smartlynq+ ip> images/linux HSDP`.  
+    * `xsdb Linux_download.tcl <smartlynq+ ip> images/Linux HSDP`.  
         * This will first load `BOOT.BIN` using JTAG after which an HSDP link will be auto-negotiated and the rest of the boot images will be loaded using HSDP, offering a substantial speed increase compared to JTAG.
     ![](./media/ch6-image16.png)
-    > **Note:** It is also possible to download the Linux images using JTAG by changing the scripts last argument to `FTDI-JTAG` `xsdb linux-download <smartlynq+ ip> images/linux FTDI-JTAG`. This will use JTAG to program all of the Linux boot images.  Take note of the difference in download speed when using HSDP.
+    > **Note:** It is also possible to download the Linux images using JTAG by changing the scripts last argument to `FTDI-JTAG` `xsdb Linux-download <smartlynq+ ip> images/Linux FTDI-JTAG`. This will use JTAG to program all of the Linux boot images.  Take note of the difference in download speed when using HSDP.
 1.  Returning to the terminal opened in the prior section, Versal boot messages can be viewed from the VCK190 UART:
     ![](./media/ch6-image17.png)
 1.  Once Linux has completed booting using either JTAG or HSDP, you will be presented with the following login screen:
     ![](./media/ch6-image18.png)
+
+## Useful Links
+* _For more information on using PL hardware debug cores such as the AXIS-ILA, AXIS-VIO, PCIe Debugger, and/or DDRMC Calibration Interfaces refer to the [Vivado Design Suite User Guide Programming and Debugging](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug908-vivado-programming-debugging.pdf)_
+* _For more information on the SmartLynq+ Module, refer to [SmartLynq+ Module User Guide]()_
+
+
 
 ## Summary
 In this section you have built a design that uses the High-Speed Debug Port, connected the SmartLynq+ Module, configured the SmartLynq+ for remote UART access and used the High-Speed Debug Port to download Linux images onto your board.
