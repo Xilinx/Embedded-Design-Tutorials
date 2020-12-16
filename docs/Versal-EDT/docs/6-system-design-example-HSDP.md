@@ -73,9 +73,14 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
 
     `$ cd led_example`
 
-1. Copy the new hardware platform project XSA to the Linux host machine.
+1. Copy the new hardware platform project XSA to the Linux host machine one directory above the PetaLinux build root.
 
     >***Note*:** Ensure you are using the updated the XSA file which you generated in the prior step.
+
+1.  Reconfigure the BSP using the following commands.
+
+    `petalinux-config --get-hw-description=<path till the directory
+containing the respective xsa file>`
 
 1. Build the Linux images using the following command.
 
