@@ -140,7 +140,7 @@ The design package included with this tutorial contains a script that will downl
     ![](./media/ch6-image18.png)
 
 ## Useful Links
-* _For more information on using PL hardware debug cores such as the AXIS-ILA, AXIS-VIO, PCIe Debugger, and/or DDRMC Calibration Interfaces refer to the [Vivado Design Suite User Guide Programming and Debugging](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug908-vivado-programming-debugging.pdf)_
+* _For more information on using PL hardware debug cores such as the AXIS-ILA, AXIS-VIO, PCIe Debugger, and/or DDRMC Calibration Interfaces refer to the [UG908: Vivado Design Suite User Guide Programming and Debugging](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug908-vivado-programming-debugging.pdf)_
 * _For more information on the SmartLynq+ Module, refer to [SmartLynq+ Module User Guide]()_
 
 
