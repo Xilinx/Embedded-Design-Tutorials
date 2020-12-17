@@ -8,7 +8,7 @@ This chapter guides you through building a system based on Versal devices that u
 > **Note:** This tutorial is part of the Versal Embedded Design Tutorial.  For more information, see [README.md](../README.md).
 
 ## Design Example: Enabling High-Speed Debug Port (HSDP)
-This section will start with the VCK190 or VMK180 project built in the prior chapter (or the pre-built project in the design package `<design-package>/smartlynq_plus/pre_built/edt_versal.xpr.zip`). We will modify the project to include HSDP support.
+This section will start with the VCK190 or VMK180 project built in the prior chapter (or the pre-built project in the design package `<design-package>/smartlynq_plus/vck190/design_files/vck190_edt_versal_hsdp.xpr.zip`). We will modify the project to include HSDP support.
 
 ### Modifying the Chapter 5 design to enable High-Speed Debug Port (HSDP)
 
@@ -105,7 +105,9 @@ Once the Linux images have been built and packaged, they can be loaded onto the 
     * **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
 1.  Connect the SmartLynq+'s provided power adapter to the SmartLynq+ and power on the VCK190/VMK180 board.
 1.  Once the SmartLynq+ finishes booting up an IP address will appear on the screen under either `eth0` or `usb0`.  Make note of this IP address as it will be the IP address used to connect to the SmartLynq+ in both the Ethernet and USB use case.
+
     ![](./media/ch6-image23.jpg)
+    
     > **Note:** If using Ethernet, the SmartLynq+ will acquire an IP address from a DHCP server found on the network.  If using USB the USB port will have a fixed IP of `10.0.0.2`. 
 1.  Copy the Linux download scripts from the design package `<design-package>/smartlynq_plus/xsdb`.
 
