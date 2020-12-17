@@ -190,3 +190,5 @@ The design package included with this tutorial contains a script that will downl
 ## Summary
 
 In this section you have built a design that uses the HSDP, connected the SmartLynq+ module, configured the SmartLynq+ for remote UART access, and used the HSDP to download Linux images onto your board.
+
+ © Copyright 2020 Xilinx, Inc.
