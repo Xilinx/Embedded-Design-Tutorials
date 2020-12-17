@@ -56,6 +56,11 @@
      embedded design using PL AXI GPIO. It also demonstrates the steps
      to configure and build the Linux operating system for an Arm
      Cortex-A72 core- based APU on a Versal device.
+- **[System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module](../Versal-EDT/docs/6-system-design-example-HSDP.md):** Describes building a system on Versal ACAP that 
+     utilizes the High-Speed Debug Port (HSDP). 
+     This chapter demonstrates how to use the Vivado tool to create an
+     embedded design that utilizes HSDP and uses the SmartLynq+ 
+     module for downloading Linux images.
 
  This design tutorial requires use of a number of files provided by
  Xilinx. These are contained in a ZIP file that can be downloaded from
