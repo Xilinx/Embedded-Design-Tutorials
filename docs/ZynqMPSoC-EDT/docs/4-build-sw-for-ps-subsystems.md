@@ -20,7 +20,7 @@
   </tr>
 </table>
 
-- [Build Software for PS Subsystems](#build-software-for-ps-subsystems)
+- [Build Standalone Software for PS Subsystems](#build-standalone-software-for-ps-subsystems)
   - [Creating a Platform Using Vitis IDE](#creating-a-platform-using-vitis-ide)
   - [Example Project 1: Running the "Hello World" Application from Arm Cortex-A53](#example-project-1-running-the-hello-world-application-from-arm-cortex-a53)
     - [Board Setup](#board-setup)
@@ -47,7 +47,7 @@
     - [Verify the Image on the ZCU102 Board](#verify-the-image-on-the-zcu102-board)
     - [Create Linux Images Using PetaLinux for QSPI Flash](#create-linux-images-using-petalinux-for-qspi-flash)
 
-# Build Software for PS Subsystems
+# Build Standalone Software for PS Subsystems
 
 This chapter lists the steps to configure and build software for PS
 subsystems. 
