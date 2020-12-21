@@ -1,3 +1,25 @@
+<p align="right">
+            Read this page in other languages:<a href="../docs-jp/4-build-sw-for-ps-subsystems.md">日本語</a>    <table style="width:100%"><table style="width:100%">
+  <tr>
+
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+</th>
+
+  </tr>
+  <tr>
+    <td width="17%" align="center"><a href="../README.md">1. Introduction</a></td>
+    <td width="16%" align="center"><a href="2-getting-started.md">2. Getting Started</a></td>
+    <td width="17%" align="center"><a href="3-system-configuration.md">3. Zynq UltraScale+ MPSoC System Configuration</a></td>
+    <td width="17%" align="center">4. Build Software for PS Subsystems</td>
+</tr>
+<tr>
+    <td width="17%" align="center">5. Building Linux Applications for PS</td>
+    <td width="16%" align="center"><a href="6-debugging-with-vitis-debugger.md">6. Debugging Standalone Applications</a></td>
+    <td width="17%" align="center"><a href="7-debugging-linux-app.md">7. Debugging Linux Applications</a></td>
+    <td width="17%" align="center"><a href="8-boot-and-configuration.md">8. Boot and Configuration</a></td>    
+  </tr>
+</table>
+
 ## Example Project 3: Create Linux Images using PetaLinux
 
  The earlier example highlighted creation of the bootloader images and

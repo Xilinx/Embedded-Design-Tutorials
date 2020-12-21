@@ -13,10 +13,10 @@
     <td width="17%" align="center">4. Build Software for PS Subsystems</td>
 </tr>
 <tr>
-    <td width="17%" align="center"><a href="5-debugging-with-vitis-debugger.md">5. Debugging with the Vitis Debugger</a></td>
-    <td width="16%" align="center"><a href="6-boot-and-configuration.md">6. Boot and Configuration</a></td>
-    <td width="17%" align="center"><a href="7-system-design-examples.md">7. System Design Examples</a></td>
-    <td width="17%" align="center"></td>    
+    <td width="17%" align="center"><a href="5-debugging-with-vitis-debugger.md">5. Building Linux Applications for PS</a></td>
+    <td width="16%" align="center"><a href="6-boot-and-configuration.md">6. Debugging Standalone Applications</a></td>
+    <td width="17%" align="center"><a href="7-system-design-examples.md">7. Debugging Linux Applications</a></td>
+    <td width="17%" align="center"><a href="6-boot-and-configuration.md">8. Boot and Configuration</a></td>    
   </tr>
 </table>
 

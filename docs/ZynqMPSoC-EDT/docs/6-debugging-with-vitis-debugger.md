@@ -13,14 +13,14 @@
     <td width="17%" align="center"><a href="4-build-sw-for-ps-subsystems.md">4. Build Software for PS Subsystems</a></td>
 </tr>
 <tr>
-    <td width="17%" align="center">5. Debugging with the Vitis Debugger</td>
-    <td width="16%" align="center"><a href="6-boot-and-configuration.md">6. Boot and Configuration</a></td>
-    <td width="17%" align="center"><a href="7-system-design-examples.md">7. System Design Examples</a></td>
-    <td width="17%" align="center"></td>    
+    <td width="17%" align="center"><a href="5-build-linux-sw-for-ps.md">5. Building Linux Applications for PS</a></td>
+    <td width="16%" align="center">6. Debugging Standalone Applications</td>
+    <td width="17%" align="center"><a href="7-debugging-linux-app.md">7. Debugging Linux Applications</a></td>
+    <td width="17%" align="center"><a href="8-boot-and-configuration.md">8. Boot and Configuration</a></td>    
   </tr>
 </table>
 
-- [Debugging with the Vitis Debugger](#debugging-with-the-vitis-debugger)
+- [Debugging Standalone Applications with the Vitis Debugger](#debugging-standalone-applications-with-the-vitis-debugger)
   - [Xilinx System Debugger](#xilinx-system-debugger)
   - [Debugging Software Using the Vitis Debugger](#debugging-software-using-the-vitis-debugger)
   - [Debugging Using XSCT](#debugging-using-xsct)
@@ -29,7 +29,7 @@
     - [Serial Terminal Configuration](#serial-terminal-configuration)
     - [Run and Debug Application Using XSCT](#run-and-debug-application-using-xsct)
 
-# Debugging with the Vitis Debugger
+# Debugging Standalone Applications with the Vitis Debugger
 
 This chapter describes debug possibilities with the design flow you
 have already been working with. The first option is debugging with
