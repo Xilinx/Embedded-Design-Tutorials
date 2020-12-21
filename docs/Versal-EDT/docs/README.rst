@@ -31,6 +31,7 @@ Embedded Design Tutorials
    ../Versal-EDT/3-debugging
    ../Versal-EDT/4-boot-and-config
    ../Versal-EDT/5-system-design-example
+   ../Versal-EDT/6-system-design-example-HSDP
    ../Versal-EDT/A-creating-plm
    
 
@@ -42,7 +43,7 @@ Embedded Design Tutorials
      - Board
      - Description
 	 
-   * - Versal Embedded Design Tutorial (UG1305)
+   * - `Versal Embedded Design Tutorial (UG1305) <https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/Versal-EDT/about-guide.html>`__
      - Versal VMK180/VCK190
      - Provides an introduction for using the Xilinx® Vivado® Design Suite flow and the Vitis™ unified software platform for embedded development on a Versal™ VMK180/VCK190 evaluation board.
 
