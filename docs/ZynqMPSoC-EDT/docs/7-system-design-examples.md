@@ -16,7 +16,7 @@
     <td width="17%" align="center"><a href="5-debugging-with-vitis-debugger.md">5. Debugging with the Vitis Debugger</a></td>
     <td width="16%" align="center"><a href="6-boot-and-configuration.md">6. Boot and Configuration</a></td>
     <td width="17%" align="center">7. System Design Examples</td>
-    <td width="17%" align="center"><a href="8-debugging-problems-with-secure-boot.md">8. Debugging Problems with Secure Boot</a></td>    
+    <td width="17%" align="center"></td>    
   </tr>
 </table>
 
