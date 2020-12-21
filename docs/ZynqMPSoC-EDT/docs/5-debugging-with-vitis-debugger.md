@@ -28,8 +28,6 @@
     - [Load the Application Using XSCT](#load-the-application-using-xsct)
     - [Serial Terminal Configuration](#serial-terminal-configuration)
     - [Run and Debug Application Using XSCT](#run-and-debug-application-using-xsct)
-  - [Debugging FSBL Using the Vitis Debugger](#debugging-fsbl-using-the-vitis-debugger)
-    - [Create and Modify FSBL](#create-and-modify-fsbl)
 
 # Debugging with the Vitis Debugger
 
@@ -382,94 +380,6 @@ The Vitis debugger provides the following debug capabilities:
     At this point, you can see the Cortex-R5F application print message on
     UART-1 terminal.
 
-## Debugging FSBL Using the Vitis Debugger
 
- The FSBL is built with Size Optimization and Link Time Optimization
- Flags, that is -Os and LTO optimizations by default in the Vitis
- debugger. This reduces the memory footprint of FSBL. This needs to be
- disabled for debugging FSBL.
-
- Removing optimization can lead to increased code size, resulting in
- failure to build the FSBL. To disable the optimization (for
- debugging), some FSBL features (that are not required), need to be
- disabled in xfsbl_config.h file of FSBL.
-
- Now, create a new FSBL for this section instead of modifying the FSBL
- created in [Build Software for PS
- Subsystems](4-build-sw-for-ps-subsystems.md). This is to avoid disturbing the FSBL_a53
- project, which will be used extensively in rest of the chapters in
- this tutorial.
-
-### Create and Modify FSBL
-
- Use the following steps to create an FSBL project.
-
-1. Launch the Vitis debugger if it is not already open.
-
-2. Set the Workspace path based on the project you created in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). For example,
-     C:\edt.
-
-3. Select **File→ New → Application Project**. The New Project dialog
-     box opens.
-
-4. Use the information in the following table to make your selections
-     in the New Project dialog box.
-
-    *Table 8:* **Settings to Create FSBL_debug Project**
-
-   |  Wizard Screen        |  System Properties    |  Settings     |
-   |-----------------------|-----------------------|--------------------|
-   | Platform              | Select platform from repository | edt_zcu102_wrapper |
-   | Application project details  | Application project name  | fsbl_debug         |
-   |                       | System project name   | fsbl_debug_system  |
-   |                       | Target processor      | psu_cortexa53_0    |
-   | Domain                | Domain                | psu_cortexa53_0    |
-   | Templates             | Available templates   | Zynq MP FSBL       |
-
-5. Click **Finish**.
-
-    The Vitis debugger creates the System project and an FSBL application.
-    Now disable Optimizations as shown below.
-
-1. In the Explorer view, right-click the **fsbl_debug application**.
-
-2. Click **C/C++ Build Settings**.
-
-3. Select **Settings→ Tool Settings page→ Arm v8 gcc Compiler→ Miscellaneous**.
-
-4. Remove `-flto -ffat-lto-objects` from other flags, as shown below.
-
-    ![](./media/image53.png)
-
-    Similarly, the fsbl_debug_bsp needs to be modified to disable
-    optimization.
-
-5. Right-click **fsbl_debug_bsp** and select **Board Support Package
-     Settings**.
-
-6. Under **Overview → Drivers → psu_cortexa53_0 → extra_compiler_flags**, edit **extra_compiler_flags** to ensure
-     extra compiler has this value `-g -Wall -Wextra -Os` as shown below.
-
-    ![](./media/image54.png)
-
-7. Click **OK**, to save these settings. BSP re-builds automatically
-     after this.
-
-8. Go to the **fsbl_debug→ src → fsbl_config.h file**. In the FSBL code
-     include the options and disable the following:
-
-    - `#define FSBL_NAND_EXCLUDE_VAL (1U)`
-
-    - `#define FSBL_SECURE_EXCLUDE_VAL (1U)`
-
-    - `#define FSBL_SD_EXCLUDE_VAL (1U)`
-
- >***Note*:** '1' is disable and '0' is enable.
-
- At this point, FSBL is ready to be debugged.
-
- You can either debug the FSBL like any other standalone application
- (as shown in [Debugging Using XSCT](#debugging-using-xsct), or debug FSBL as a part of a Boot
- image by using the 'Attach to running target' mode of System Debugger.
 
  © Copyright 2017-2020 Xilinx, Inc.
