@@ -279,23 +279,23 @@ device tree generator.
 You can create multiple applications to run on the domain. 
 A domain is tied to a single processor or a cluster of isomorphic processors (for example: A53_0 or A53) in the platform.
 
-#### Board Support Package
+### Board Support Package
 
- The board support package (BSP) is the support code for a given
- hardware platform or board that helps in basic initialization at power
- up and helps software applications to be run on top of it. It can be
- specific to some operating systems with boot loader and device
- drivers.
+The board support package (BSP) is the support code for a given
+hardware platform or board that helps in basic initialization at power
+up and helps software applications to be run on top of it. It can be
+specific to some operating systems with boot loader and device
+drivers.
 
- >**TIP:** *To reset the BSP source, double-click **platform.prj**,
- select a BSP in a domain, and click **Reset BSP Source**. This action
- only resets the source files while settings are not touched. To change the target domain after an
- application project creation, double-click the **project.prj** file in
- Explorer view. In the Application Project Settings, select
- **Domain→Domain change option →Drop-down Domain**, then select
- available domains for this application.
+>**TIP:** *To reset the BSP source, double-click **platform.prj**,
+select a BSP in a domain, and click **Reset BSP Source**. This action
+only resets the source files while settings are not touched. To change the target domain after an
+application project creation, double-click the **project.prj** file in
+Explorer view. In the Application Project Settings, select
+**Domain→Domain change option →Drop-down Domain**, then select
+available domains for this application.
 
-#### Standalone BSP
+### Standalone BSP
 
  Standalone is a simple, low-level software layer. It provides access
  to basic processor features such as caches, interrupts, and
@@ -349,18 +349,13 @@ code in the application folder structure.
 
  In this example, you will create a bare-metal application project for
  Arm Cortex-R5F based RPU. For this project, you will need to import
- the application source files available in the Design Files ZIP file
- released with this tutorial. For information about locating these
- design files, refer to [Design Files for This
- Tutorial](2-getting-started.md#design-files-for-this-tutorial).
+ the application source files available in the [ref_files](../ref_files/system_project_example) directory.
 
 #### Creating the Application Project
 
-1. In the Vitis IDE, select **File→ New → Application Project** to open
-     the New Project wizard.
+1. In the Vitis IDE, select **File→ New → Application Project** to open the New Project wizard.
 
-2. Use the information in the following table to make your selections
-     in the wizard.
+2. Use the information in the following table to make your selections in the wizard.
 
     *Table 6:* **Settings to Create New RPU Application Project**
 
