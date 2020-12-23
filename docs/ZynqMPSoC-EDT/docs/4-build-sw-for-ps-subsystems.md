@@ -31,16 +31,15 @@
       - [One Step Further](#one-step-further)
   - [Additional Information](#additional-information)
     - [Domain](#domain)
-      - [Board Support Package](#board-support-package)
-      - [Standalone BSP](#standalone-bsp)
+    - [Board Support Package](#board-support-package)
+    - [Standalone BSP](#standalone-bsp)
   - [Example Project 2: Create a Bare-Metal System Application Project in the Vitis IDE](#example-project-2-create-a-bare-metal-system-application-project-in-the-vitis-ide)
-    - [Create Custom Bare-Metal Application for Arm Cortex-A53 based APU](#create-custom-bare-metal-application-for-arm-cortex-a53-based-apu)
-    - [Modify the Application Source Code](#modify-the-application-source-code)
+    - [Modify the Application Source Code of hello_a53](#modify-the-application-source-code-of-hello_a53)
     - [Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU](#create-custom-bare-metal-application-for-arm-cortex-r5-based-rpu)
-      - [Creating the Application Project](#creating-the-application-project)
-      - [Modifying the Linker Script](#modifying-the-linker-script)
-      - [Modifying the Board Support Package](#modifying-the-board-support-package)
-  - [Reviewing Software Projects in the Platform](#reviewing-software-projects-in-the-platform)
+    - [Modifying the Linker Script for testapp_r5](#modifying-the-linker-script-for-testapp_r5)
+    - [Modifying the Board Support Package for testapp_r5](#modifying-the-board-support-package-for-testapp_r5)
+    - [Run hello_system system project on hardware](#run-hello_system-system-project-on-hardware)
+  - [Reviewing Bootloader Projects in the Platform](#reviewing-bootloader-projects-in-the-platform)
     - [Reviewing FSBL in Platform](#reviewing-fsbl-in-platform)
     - [Reviewing PMU Firmware in Platform](#reviewing-pmu-firmware-in-platform)
 
@@ -306,96 +305,102 @@ available domains for this application.
 
 ## Example Project 2: Create a Bare-Metal System Application Project in the Vitis IDE
 
-In this example, we will do apply some custimizations to the hello world applications we created for Arm Cortex-A53, import a prepared source code for Arm Cortex-R5, adjust linkscript, and combine them in a system project.
+In this example, we will do update the hello_system project we created in Example Project 1
 
-### Create Custom Bare-Metal Application for Arm Cortex-A53 based APU
+- Modify the source code hello world application source code
+- Import prepared source codes for Arm Cortex-R5F
+- Adjust the linker script
 
-Now that the FSBL is created, you will now create a simple bare-metal
-application targeted for an Arm A53 Core 0.
+Cortex-A53 application and Cortex-R5F application will be organized in one system application. They can be launched simultaneously.
 
-For this example, you will use the hello_a53 application that you
-created in [Example Project: Running the "Hello World" Application from Arm Cortex-A53](#example-project-running-the-hello-world-application-from-arm-cortex-a53).
+### Modify the Application Source Code of hello_a53
 
-In hello_a53, you selected a simple Hello World application. This
-application can be loaded on APU by FSBL running on either APU or RPU.
-The Vitis IDE also provides a few other bare-metal application
-templates to make it easy to start running applications on Zynq
-UltraScale+ devices. Alternatively, you can also select the Empty
-Application template and copy or create your custom application source
-code in the application folder structure.
+1. Open the **helloworld.c** source file for the **hello_a53** application
 
-### Modify the Application Source Code
-
-1. In the Explorer view, click **hello_a53 → src → helloworld.c**.
-
-    This opens the helloworld.c source file for the hello_a53 application.
+   - In the Explorer view, double click **helloworld.c** in **hello_a53 → src**.
 
 2. Modify the arguments in the print command, as shown below.
 
-    `Print(\"Hello World from APU\\n\\r\");`
+    `Print("Hello World from APU\n\r");`
 
     ![](./media/image34.png)
 
-3. Type **Ctrl + S** to save the changes.
+3. Save the changes
 
-4. Right-click the **test_a 53** project and select **Build Project**.
+   - Press **Ctrl + S**.
+   - Or click the Save icon on the tool bar.
 
-5. Verify that the application is
-     compiled and linked successfully and the hello_a53.elf file is
-     generated in the **hello_a53 → Debug folder**.
+4. Build hello_a53 application
+
+   - Right-click the **hello_a53** application and select **Build Project**.
+   - Alternatively it can be done by clicking the save button on the tool bar.
+
+5. Verify that the application is compiled and linked successfully
+
+   - Console window report logs like
+
+   ```
+     'Invoking: ARM v8 Print Size'
+     aarch64-none-elf-size hello_a53.elf  |tee "hello_a53.elf.size"
+     text	   data	    bss	    dec	    hex	filename
+     30212	   2048	  20676	  52936	   cec8	hello_a53.elf
+    'Finished building: hello_a53.elf.size'
+   ```
+
+   - The **hello_a53.elf** file is generated in the **hello_a53 → Debug folder**.
      ![](./media/image35.png)
 
 ### Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU
 
- In this example, you will create a bare-metal application project for
- Arm Cortex-R5F based RPU. For this project, you will need to import
+ In this session, you will create a bare-metal application for
+ Arm Cortex-R5F based RPU. You will need to import
  the application source files available in the [ref_files](../ref_files/system_project_example) directory.
 
-#### Creating the Application Project
+1. Create an empty bare-metal application for Cortex-R5F Core 0 in hello_system system project
 
-1. In the Vitis IDE, select **File→ New → Application Project** to open the New Project wizard.
+   - In the Explorer View, select hello_system, right click, select **New Application Project** to open the New Project wizard.
 
-2. Use the information in the following table to make your selections in the wizard.
+   - Use the information in the following table to make your selections in the wizard.
 
     *Table 6:* **Settings to Create New RPU Application Project**
 
-| Wizard Screen               | System Properties               | Settings           |
-|-----------------------------|---------------------------------|--------------------|
-| Platform                    | Select platform from repository | edt_zcu102_wrapper |
-| Application project details | Application project name        | testapp_r5         |
-|                             | System project name             | testapp_r5_system  |
-|                             | Target processor                | psu_cortexr5_0     |
-| Domain                      | Domain                          | psu_cortexr5_0     |
-| Templates                   | Available templates             | Empty application  |
+     | Wizard Screen               | System Properties               | Settings           |
+     |-----------------------------|---------------------------------|--------------------|
+     | Application project details | Application project name        | testapp_r5         |
+     |                             | System project name             | hello_system  |
+     |                             | Show all processors in hardware specification | check |
+     |                             | Target processor                | psu_cortexr5_0     |
+     | Domain                      | Domain                          | standalone_r5     |
+     | Templates                   | Available templates             | Empty application  |
 
-3. Click **Finish**.
+   - Click **Finish**.
 
     The New Project wizard closes and the Vitis IDE creates the testapp_r5
-    application project, which can be found in the Explorer view.
+    application project in hello_system system project.
 
-4. In the Explorer view, expand the **testapp_r5 project**.
+2. Import prepared source code for **testapp_r5**
 
-5. Right-click the **src directory**, and select **Import** to open the
-     Import view.
+   - In the Explorer view, expand the **hello_system** project to find **testapp_r5** project.
 
-6. Expand **General** in the Import view and select **File System**.
+   - Right-click the **testapp_r5**, and select **Import Sources** to open the Import view.
 
-7. Click **Next**.
+   - On the line of **From directory**, select **Browse** and navigate to the design files folder (ref_files/system_project_example).
 
-8. Select **Browse** and navigate to the design files folder, which you
-     saved earlier (see [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial)).
+   - Click **OK**.
 
-9. Click **OK**.
+   - Select the **testapp.c file**.
 
-10. Select the **testapp.c file**.
+   - Click **Finish**.
 
-11. Click **Finish**.
+   ![Vitis import source files](./media/vitis_import_source.png)
 
-12. Open **testapp.c** to review the source code for this application.
-     The application configures the UART interrupt and sets the
-     processor to WFI mode.
 
-#### Modifying the Linker Script
+3.  Open **testapp_r5.c** in to review the source code for this application.
+
+   - Double click **testapp_r5.c**
+   - The application configures the UART interrupt and sets the processor to WFI mode.
+
+### Modifying the Linker Script for testapp_r5
 
 1. In the Explorer view, expand the **testapp_r5 project**.
 
@@ -403,7 +408,7 @@ code in the application folder structure.
      script for this project.
 
 3. In the linker script, in Available Memory Regions, modify following
-     attributes for psu_r5_ddr_0\_MEM_0:
+     attributes for **psu_r5_ddr_0_MEM_0**:
 
     - Base Address: 0x70000000
 
@@ -413,7 +418,7 @@ code in the application folder structure.
     following figure is for representation only. Actual memory regions may
     vary in case of Isolation settings.
 
-    ![](./media/image36.png)
+    ![Linker Script View](./media/image36.png)
 
     This modification in the linker script ensures that the RPU bare-metal
     application resides above 0x70000000 base address in the DDR, and
@@ -426,7 +431,7 @@ code in the application folder structure.
 6. Verify that the application is compiled and linked successfully and
      that the `testapp_r5.elf` file was generated in the testapp_r5/Debug folder.
 
-#### Modifying the Board Support Package
+### Modifying the Board Support Package for testapp_r5
 
  The ZCU102 Evaluation kit has a USB-TO-QUAD-UART Bridge IC from
  Silicon Labs (CP2108). This enables you to select a different UART
@@ -435,31 +440,70 @@ code in the application folder structure.
  receive RPU serial data over UART 1. This requires a small
  modification in the r5_bsp file.
 
-1. Navigate to psu_cortexr5_0 domain BSP settings. In the Board Support
-     Package Settings page, expand Overview and click **Standalone**.
+1. Open platform details tab by double clicking **zcu102_edt -> platform.spr**
 
-2. Modify the stdin and stdout values to psu_uart_1, as shown in the
-     figure below.
+2. Open standalone domain BSP setting details for Cortex-R5F
+
+   - Navigate to **psu_cortexr5 -> standalone_r5 -> Board Support Package**
+   - Click Modify BSP Settings
+
+3. Change UART settings for standalone_r5
+
+   - Select **Standalone** tab
+   - Change stdin to psu_uart_1
+   - Change stdout to psu_uart_1
 
     ![](./media/image37.png)
 
-3. Click **OK**.
+   - Click **OK**.
 
 4. Build the psu_cortexr5_0 domain and the testapp_r5 application.
 
 5. Verify that the application is compiled and linked successfully and
      that the `testapp_r5.elf` was generated in the `testapp_r5/Debug` folder.
 
-## Reviewing Software Projects in the Platform
+### Run hello_system system project on hardware
+
+1. Setup board as Example Project 1
+
+   - Connect power and USB cables for UART and JTAG
+   - Set boot mode to JTAG boot mode
+   - Open Serial console
+   - Power on
+
+2. Run hello_system on hardware
+
+   - Right click **hello_system** in Explorer window, select **Run As -> Launch Hardware**
+   - Message from Vitis Serial window shows prints from APU and RPU
+
+   ![System Project Prints on Serial window](media/system_project_print.png)
+
+**What happened just now?**
+
+Vitis uses JTAG to control the board and did the following tasks.
+
+- Used FSBL to initialize MPSoC
+- Reset system
+- Enable RPU in split mode
+- Download elf to Cortex-A53_0 and Cortex-R5F_0. Put processors in suspend mode
+- Run applications on both processors
+
+You can view the detailed steps by right clicking hello_system, select **Run As -> Run Configurations** and view the Target Setup tab.
+
+![Vitis Run Configurations](media/vitis_run_configurations.png)
+
+## Reviewing Bootloader Projects in the Platform
+
+
 
 ### Reviewing FSBL in Platform
 
 To review the FSBL in platform, follow these steps:
 
 1. In the Explorer view, navigate to zynqmp_fsbl by expanding the
-     edt_zcu102_wrapper platform (right pane) to see the FSBL source
-     code for Zynq-7000 devices. You can edit this source for
-     customizations.
+     **zcu102_edt** platform to see the FSBL source
+     code. You can edit this source for
+     customizations. Build the platform after code modification.
 
 2. The platform generated FSBL is involved in PS initialization while
      launching standalone applications using JTAG.
@@ -468,18 +512,20 @@ To review the FSBL in platform, follow these steps:
      re-target the FSBL to psu_cortexr5_0 using the re-target to
      psu_cortexr5_0 option in the zynqmp_fsbl domain settings.
 
+4. The zynqmp_fsbl domain is created automatically if bootloader creation is enabled during platform creation.
+
 ### Reviewing PMU Firmware in Platform
 
 To review the PMU firmware in the platform, follow these steps:
 
-1. Click the desired platform drop-down menu to view the zynqmp_pmufw
-     software project that was created within the platform by default.
+1. In the Explorer view, navigate to zynqmp_pmufw by expanding the
+     **zcu102_edt** platform to see the PMUFW source code. 
 
 2. The zynqmp_pmufw software project contains the source code of PMU
      firmware for psu_pmu_0. Compile and run the firmware on psu_pmu_0.
 
-    The psu_pmu_0 processor domain is created automatically for the
-    zynqmp_pmufw software project.
+3. The psu_pmu_0 processor domain is created automatically for the
+    zynqmp_pmufw software project if bootloader creation is enabled during platform creation.
 
 
 
