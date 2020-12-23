@@ -13,15 +13,15 @@
     <td width="17%" align="center">4. Build Software for PS Subsystems</td>
 </tr>
 <tr>
-    <td width="17%" align="center"><a href="5-debugging-with-vitis-debugger.md">5. Building Linux Applications for PS</a></td>
-    <td width="16%" align="center"><a href="6-boot-and-configuration.md">6. Debugging Standalone Applications</a></td>
-    <td width="17%" align="center"><a href="7-system-design-examples.md">7. Debugging Linux Applications</a></td>
-    <td width="17%" align="center"><a href="6-boot-and-configuration.md">8. Boot and Configuration</a></td>    
+    <td width="17%" align="center"><a href="5-build-linux-sw-for-ps.md">5. Building Linux Applications for PS</a></td>
+    <td width="16%" align="center"><a href="6-debugging-with-vitis-debugger.md">6. Debugging Standalone Applications</a></td>
+    <td width="17%" align="center"><a href="7-debugging-linux-app.md">7. Debugging Linux Applications</a></td>
+    <td width="17%" align="center"><a href="8-boot-and-configuration.md">8. Boot and Configuration</a></td>    
   </tr>
 </table>
 
 - [Build Standalone Software for PS Subsystems](#build-standalone-software-for-ps-subsystems)
-  - [Creating a Platform Using Vitis IDE](#creating-a-platform-using-vitis-ide)
+  - [Creating a Platform Project Using Vitis IDE](#creating-a-platform-project-using-vitis-ide)
   - [Example Project 1: Running the "Hello World" Application from Arm Cortex-A53](#example-project-1-running-the-hello-world-application-from-arm-cortex-a53)
     - [Board Setup](#board-setup)
     - [Connect Serial Port](#connect-serial-port)
@@ -49,25 +49,22 @@
 This chapter lists the steps to configure and build software for PS
 subsystems. 
 
-In previous chapter, [Zynq UltraScale+ MPSoC Processing System
-Configuration](3-system-configuration.md), you created and exported the hardware
+In previous chapter, [Zynq UltraScale+ MPSoC Processing System Configuration](3-system-configuration.md), you created and exported the hardware
 design from Vivado. The exported XSA file contains the hardware
 handoff, the processing system initialization (psu_init),
-and the PL bitstream. In this chapter, you will import the XSA to the Vitis™ IDE 
-and PetaLinux to configure software for the processing system.
+and the PL bitstream. In this chapter, you will import the XSA to the Vitis™ IDE to configure software for the processing system.
 
 You will use the Vitis IDE to perform the following tasks:
 
 1. Create a Platform project for the hardware XSA. First Stage Boot Loader (FSBL) and PMU firmware for PMU (platform management unit) will be created as boot components in this platform project.
 
-2. Create bare-metal applications for APU and RPU.
+2. Create bare-metal applications for APU.
 
-3. Create a Linux application.
+3. Create a system project for APU and RPU.
 
-## Creating a Platform Using Vitis IDE
+## Creating a Platform Project Using Vitis IDE
 
-The main processing units in the processing system in Zynq UltraScale+
-are listed below.
+The main processing units in the processing system in Zynq UltraScale+ are listed below.
 
 - **Application Processing Unit:** Quad-core Arm® Cortex™-A53 MPCore Processors.
 - **Real Time Processing Unit:** Dual-core Arm Cortex™-R5F MPCore Processors.
@@ -76,7 +73,7 @@ are listed below.
 
 The platform project reads in hardware info from XSA file and contains the runtime environment for the above processing units. Application software can link against the libraries generated in the platform project. 
 
-Here are the steps of creating a platform project.
+Here are the steps of creating a platform project with a standalone domain for Arm Cortex-A53.
 
 1. Launch the Vitis IDE 
 
@@ -120,22 +117,12 @@ Here are the steps of creating a platform project.
 
     ![Generated platform files](./media/image23.png)
 
-10. Default FSBL and PMU firmware comes with the platform project and
-     psu_cortexa53_0 domain also added to the platform. We can add
-     multiple domains to platform and we can also create FSBL like any
-     other application.
+   - There is a standalone domain in the platform under psu_cortexa53_0 processor. New applications for Cortex-A53 can link against it.
+   - Dault domains for FSBL and PMU firmware comes with the platform project when **Generate Boot Components** are selected during application or platform project creation. 
+   - Users are free to add and remove domains in the platform project.
+   - Users can customize the domain configurations. 
 
-<!-- TODO: remove these libraries because they are not used in the following tutorial. -->
-11. **Optional**: To add the following libraries by modifying the standalone
-     on psu_cortexa53_0 domain, follow these steps:
-
-    a.  Double-click the **standalone on psu_cortexa53_0** BSP.
-
-    b.  Click **Modify BSP Settings**.
-
-    c.  On the Overview page, select the xilffs, xilpm, xilsecure libraries.
-
-12. Now build the hardware by right-clicking the platform, then
+10.  Now build the hardware by right-clicking the platform, then
      selecting **Build Project**.
 
     ![Build Project](./media/image24.jpeg)
