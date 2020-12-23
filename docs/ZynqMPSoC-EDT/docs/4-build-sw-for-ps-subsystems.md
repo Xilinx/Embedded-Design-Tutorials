@@ -348,7 +348,6 @@ Cortex-A53 application and Cortex-R5F application will be organized in one syste
    ```
 
    - The **hello_a53.elf** file is generated in the **hello_a53 → Debug folder**.
-     ![](./media/image35.png)
 
 ### Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU
 
