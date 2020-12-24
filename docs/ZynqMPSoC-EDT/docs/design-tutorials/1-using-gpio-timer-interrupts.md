@@ -1,4 +1,4 @@
-## Design Example 1: Using GPIOs, Timers, and Interrupts
+# Design Example 1: Using GPIOs, Timers, and Interrupts
 
  The Zynq ZCU102 UltraScale+ Evaluation Board comes with a few user
  configurable Switches and LEDs. This design example makes use of
@@ -19,7 +19,7 @@
      time interval. The system is configured such that the APU Linux
      Application and RPU Bare-metal Application run simultaneously.
 
-### Configuring Hardware
+## Configuring Hardware
 
  The first step in this design is to configure the PS and PL sections.
  This can be done in Vivado IP integrator. You start with adding the
@@ -28,56 +28,74 @@
 
 1. If the Vivado Design Suite is already open, start from the block diagram shown in and jump to step 4.
 
-2. Open the Vivado Project that you created:
+2. Open the Vivado Project that you created in Introduction tutorial step 3:
 
     `C:/edt/edt_zcu102/edt_zcu102.xpr`
 
-3. In the Flow Navigator, under IP integrator, click **Open Block Design** and select `edt_zcu102.bd`.
+3. Save the project as design_example_1
+
+    - Click File -> Project -> Save As 
+    - Input project name **design_example_1**
+    - Uncheck **Include run results**
+    - Click **OK**
+    
+    ![](media/vivado_save_project_as.png)
+
+4. In the Flow Navigator, under IP integrator, click **Open Block Design** and select `edt_zcu102.bd`.
 
     ![](./media/image96.png)
 
-4. Right-click in the block diagram and select **Add IP** from the IP catalog.
+### Adding the AXI Timer and AXI GPIO IP
 
-#### Adding and Configuring IPs
+1. Adding the AXI Timer IP
 
-1. In the catalog, select **AXI Timer**.
+    - Right-click in the block diagram and select **Add IP** from the IP catalog.
+
+    - In the catalog, select **AXI Timer**.
 
     The IP Details information displays, as shown in the following figure.
 
     ![](./media/image97.jpeg)
 
-2. Double-click the **AXI Timer** IP to add it to the design.
+    - Double-click the **AXI Timer** IP to add it to the design.
 
-3. Double-click the **AXI Timer** IP again to configure the IP, as
+2. Review **AXI Timer** configurations
+
+    - Double-click the **AXI Timer** IP block to configure the IP, as
      shown in following figure.
 
     ![](./media/image98.png)
 
-4. Click **OK**.
+    - Click **OK** to close the window.
 
-5. Again, right-click in the block diagram and select **Add IP**.
+3. Adding the **AXI GPIO** IP
 
-6. Search for "AXI GPIO" and double-click the **AXI GPIO** IP to add it to the design.
+    - right-click in the block diagram and select **Add IP**.
+    Search for "AXI GPIO" and double-click the **AXI GPIO** IP to add it to the design.
 
-7. Repeat step 5 and step 6 to add another instance of AXI GPIO IP.
+4. Adding the second **AXI GPIO** IP
 
-8. Double-click **axi_gpio_0** and select **Push button 5bits** from the GPIO Board Interface drop- down list.
+    - Copy the **axi_gpio_0** IP by typing **Ctrl+C**
+    - Paste it by typing **Ctrl+V**
+    - You can see axi_gpio_1 is created.
+
+5. Configure axi_gpio_0 for push buttons
+
+    - Double-click **axi_gpio_0** to open its configurations
+    - Select **Push button 5bits** from the Board Interface drop-down list on **GPIO** row.
 
     ![](./media/image99.png)
 
-9. Navigate to the IP Configuration and de-select the **Enable Dual Channel** option.
+    - Click **OK**
 
-10. Click **OK** to configure the AXI_GPIO for Push buttons.
+6. Configure **axi_gpio_1** for PL LEDs
 
-11. Double-click **axi_gpio_1**.
-
-12. Configure axi_gpio_1 for PL LEDs by selecting led_8bits from the  GPIO Board Interface drop-down list, as shown in the following figure.
+    - Double-click **axi_gpio_1** to open its configurations
+    - Select **led_8bits** from the Board Interface drop-down list on **GPIO** row.
 
     ![](./media/image100.png)
 
-13. Navigate to the IP Configuration and de-select the **Enable Dual Channel** option.
-
-14. Click **OK** to configure the AXI_GPIO for LED.
+    - Click **OK**.
 
 #### Connecting IP Blocks to Create a Complete System
 
