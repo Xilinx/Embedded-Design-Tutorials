@@ -10,7 +10,7 @@
     <td width="17%" align="center"><a href="../README.md">1. Introduction</a></td>
     <td width="16%" align="center"><a href="2-getting-started.md">2. Getting Started</a></td>
     <td width="17%" align="center"><a href="3-system-configuration.md">3. Zynq UltraScale+ MPSoC System Configuration</a></td>
-    <td width="17%" align="center">4. Build Software for PS Subsystems</td>
+    <td width="17%" align="center"><a href="4-build-sw-for-ps-subsystems.md">4. Build Software for PS Subsystems</a></td>
 </tr>
 <tr>
     <td width="17%" align="center">5. Building Linux Applications for PS</td>
@@ -20,117 +20,73 @@
   </tr>
 </table>
 
-## Example Project 3: Create Linux Images using PetaLinux
+# Build Linux Applications for PS
 
- The earlier example highlighted creation of the bootloader images and
- bare-metal applications for APU, RPU, and PMU using the Vitis IDE. In
- this example, you will configure and build Linux Operating System
+The earlier example highlighted creation of the bootloader images and
+bare-metal applications for APU, RPU, and PMU using the Vitis IDE. In
+this chapter, we will introduce how to develop Linux applications.
+
+## Example Project 3: Create Linux Images and Applications using PetaLinux
+
+In this example, you will configure and build Linux Operating System
  Platform for Arm Cortex-A53 core based APU on Zynq UltraScale+. You
  can configure and build Linux images using the PetaLinux tool flow,
- along with the board-specific BSP.
+ along with the board-specific BSP. Linux application will be developed in Vitis IDE.
 
- >**IMPORTANT!**
-    >1.  This example needs a Linux Host
-     machine. *PetaLinux Tools Documentation: Reference Guide* ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf))
+ **IMPORTANT!**
+
+> 1. This example needs a Linux Host machine with PetaLinux installed. Please refer to PetaLinux Tools Documentation: Reference Guide* ([UG1144][1])
  for information about dependencies for PetaLinux 2020.2.
-    >1.  This example uses the ZCU102 PetaLinux BSP to create a PetaLinux
-     project. Ensure that you have downloaded the ZCU102 BSP for
-     PetaLinux as instructed in [PetaLinux Tools](#petalinux-tools-1).
+ 
+>2.  This example uses the [ZCU102 PetaLinux BSP][3] to create a PetaLinux
+    project. Ensure that you have downloaded the ZCU102 BSP for
+    PetaLinux as instructed in [PetaLinux Tools download page][2].
+
+[1]: https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf
+[2]: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html
+[3]: https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu102-v2020.2-final.bsp
 
 1. Create a PetaLinux project using the following command:
 
-    This creates a PetaLinux project directory, for example,
-    xilinx-zcu102-2020.2.
+    ```bash
+    petalinux-create -t project -s <path to the xilinx-zcu102-v2020.1-
+final.bsp>
+    ```
 
-    >***Note*:** xilinx-zcu102-v2020.2-final.bsp is the PetaLinux BSP for
-    ZCU102 Production Silicon Rev1.0 Board. Use
-    xilinx-zcu102-ZU9-ES2-Rev1.0-v2020.2-final.bsp, if you are using ES2
-    Silicon on Rev 1.0 board.
+    Note: xilinx-zcu102-v2020.1-final.bsp is the PetaLinux BSP for ZCU102 Production Silicon Rev1.0 Board.
 
-2. Change to the PetaLinux project directory using the following
-     command:
+    This creates a PetaLinux project directory, xilinx-zcu102-2020.2.
 
-    `$ cd xilinx-zcu102-2020.2`
-
-    The ZCU102 PetaLinux-BSP is the default ZCU102 Linux BSP. For this
-    example, you reconfigure the PetaLinux Project based on theZynq
+2. Reconfigure the project with edt_zcu102_wrapper.xsa
+   
+   - The created PetaLinux project uses default hardware setup in ZCU102 Linux BSP. For this example, we will reconfigure the PetaLinux Project based on the Zynq
     UltraScale+ hardware platform that you configured using Vivado Design
     Suite in [Zynq UltraScale+ MPSoC Processing System Configuration](3-system-configuration.md).
+   
+   - Copy the hardware platform edt_zcu102_wrapper.xsa to the Linux Host machine.
 
-3. Copy the hardware platform edt_zcu102_wrapper.xsa to the Linux Host
-     machine.
+   - Reconfigure the project using the following command:
 
-4. Reconfigure the project using the following command:
+   ```bash
+   cd xilinx-zcu102-2020.2
+   petalinux-config --get-hw-description=<path containing
+edt_zcu102_wrapper.xsa>
+   ```
 
-    This command opens the PetaLinux Configuration window. If required,
-    make changes in the configuration. For this example, the default
-    settings from the BSP are sufficient to generate required boot images.
-
-    The following steps will verify if PetaLinux is configured to create
-    Linux and boot images for SD Boot.
-
-5. Select Subsystem AUTO Hardware Settings.
-
-6. Under Advanced Bootable Images Storage Settings submenu, do the
-     following:
-
-    a.  Select **boot image settings**.
-
-    b.  Select **Image Storage Media**.
-
-    c.  Select **primary sd** as the boot device.
-
-7. Under the Advanced Bootable Images Storage Settings submenu, do the
-     following:
-
-    a.  Select **kernel image settings**.
-
-    b.  Select **Image Storage Media**.
-
-    c.  Select **primary sd** as the storage device.
-
-8. Under Subsystem AUTO Hardware Settings, select **Memory Settings**
-     and set the System Memory Size to `0x6FFFFFFF`.
-
-9. Return to the main menu. In Image Packaging Configuration, set the
-     root file system type to INITRAMFS.
-
-10. Save the configuration settings and exit the Configuration wizard.
-
-11. Wait until PetaLinux reconfigures the project.
-
-    The following steps will build the Linux images, verify them, and
-    generate the boot image.
-
-12. Modify the device tree to disable Heartbeat LED and SW19 push button
-     from the device tree, so that the RPU R5-0 can use the PS LED and
-     the SW19 switch for other designs in this tutorial. To do so, add
-     the following to the `system-user.dtsi` file:
+    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate required boot images. If you'd like to skip the configuration window and keep default settings, you can run the following command.
 
     ```
-    /include/ "system-conf.dtsi"
-    / {
-        gpio-keys { 
-            sw19 {
-                status = "disabled";
-            };
-        };
-    };
-    
-    &uart1 {
-        status = "disabled";
-    };
-    ````
+    petalinux-config --get-hw-description=<path containing
+edt_zcu102_wrapper.xsa> --silentconfig
+    ```
+3.  Build the PetaLinux project
 
-    The `system-user.dtsi` is located at
-    `<PetaLinux-project>/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi`.
-
-13. In `<PetaLinux-project>`, build the Linux images using the following
+    - In `<PetaLinux-project>`, build the Linux images using the following
      command:
 
     `$ petalinux-build`
 
-14. After the above statement executes successfully, verify the images
+4.  After the above statement executes successfully, verify the images
      and the timestamp in the images directory in the PetaLinux project
      folder using the following commands:
 
@@ -139,7 +95,7 @@
     $ ls -al
     ```
 
-15. Generate the Boot image using the following command:
+5.  Generate the Boot image using the following command:
 
     `$ petalinux-package --boot --fsbl zynqmp_fsbl.elf --u-boot`
 
@@ -191,89 +147,7 @@
 8. Turn on the ZCU102 Board using SW1, and wait until Linux loads on
      the board.
 
-### Create Linux Images Using PetaLinux for QSPI Flash
 
- The earlier example highlighted creation of the Linux Images and Boot
- images to boot from an SD card. This section explains the
- configuration of PetaLinux to generate Linux images for QSPI flash.
- For more information about the dependencies for PetaLinux 2020.2, see
- the *PetaLinux Tools Documentation: Reference Guide*
- ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
-
-1. Before starting this example, create a backup of the boot images
-     created for SD card setup using the following commands:
-
-    ``` shell
-    $ cd <Petalinux-project-path>/xilinx-zcu102-2020.2/images/linux/
-    $ mkdir sd_boot
-    $ cp image.ub sd_boot/
-    $ cp u-boot.elf sd_boot/
-    $ cp BOOT.BIN sd_boot/
-    ```
-
-2. Change the directory to the PetaLinux Project root directory:
-
-    `$ cd \<Petalinux-project-path\/xilinx-zcu102-2020.2`
-
-3. Launch the top level system configuration menu:
-
-    `$ petalinux-config`
-
-    The Configuration wizard opens.
-
-4. Select Subsystem AUTO Hardware Settings.
-
-5. Under the Advanced bootable images storage Settings, do the
-     following.
-
-    a.  Select **boot image settings**.
-
-    b.  Select **image storage media**.
-
-    c.  Select **primary flash** as the boot device.
-
-6. Under the Advanced bootable images storage Settings submenu, do the
-     following:
-
-    a.  Select **kernel image settings**.
-
-    b.  Select **image storage media**.
-
-    c.  Select **primary flash** as the storage device.
-
-7. One level above, that is, under Subsystem AUTO Hardware Settings, do
-     the following:
-
-    a.  Select **Flash Settings** and notice the entries listed in the
-         partition table.
-
-    >***Note*:** Some memory (0x1E00000 + 0x40000) is set aside for initial
-    Boot partitions and U-Boot settings. These values can be modified on
-    need basis.
-
-    b.  Based on this, the offset for Linux Images is calculated as
-        0x1E40000 in QSPI Flash device. This will be used in [Boot and Configuration](6-boot-and-configuration.md), while creating Boot image
-        for QSPI Boot-mode.
-
-    The following steps will set the Linux System Memory Size to about
-    1.79 GB.
-
-8. Under Subsystem AUTO Hardware Settings, do the following:
-
-    a.  Select **Memory Settings**.
-
-    b.  Set **System Memory Size** to `0x6FFFFFFF`.
-
-9. Save the configuration settings and exit the Configuration wizard.
-
-10. Rebuild using the `petalinux-build` command.
-
-11. Take a backup of u-boot.elf and the other images. These will be used
-     in [Boot and Configuration](6-boot-and-configuration.md).
-
- ***Note*:** For more information, refer to the *PetaLinux Tools
- Documentation: Reference Guide*
- ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
 
  In this chapter, you learned how to configure and compile software
  blocks for Zynq UltraScale+ devices using Xilinx tools. You will use

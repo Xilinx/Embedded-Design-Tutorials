@@ -30,6 +30,8 @@
   - [Boot Sequence for SD-Boot](#boot-sequence-for-sd-boot)
     - [Running the Image on the ZCU102 Board](#running-the-image-on-the-zcu102-board)
   - [Boot Sequence for QSPI Boot Mode](#boot-sequence-for-qspi-boot-mode)
+    - [Create Linux Images Using PetaLinux for QSPI Flash](#create-linux-images-using-petalinux-for-qspi-flash)
+    - [Bootimage Setup in Vitis](#bootimage-setup-in-vitis)
     - [Running the Image in QSPI Boot Mode on ZCU102 Board](#running-the-image-in-qspi-boot-mode-on-zcu102-board)
       - [Set Up the ZCU102 Board](#set-up-the-zcu102-board)
   - [Boot Sequence for QSPI-Boot Mode Using JTAG](#boot-sequence-for-qspi-boot-mode-using-jtag)
@@ -418,9 +420,91 @@ This chapter shows integration of components to create a Zynq&reg;
  configured using the Create Boot Image wizard in the Vitis IDE. This
  can be done by doing the following steps.
 
- >***Note*:** This section assumes that you have created PetaLinux
- Images for QSPI Boot mode by following steps from [Create Linux Images
- Using PetaLinux for QSPI Flash](4-build-sw-for-ps-subsystems.md#create-linux-images-using-petalinux-for-qspi-flash).
+### Create Linux Images Using PetaLinux for QSPI Flash
+
+ The earlier example highlighted creation of the Linux Images and Boot
+ images to boot from an SD card. This section explains the
+ configuration of PetaLinux to generate Linux images for QSPI flash.
+ For more information about the dependencies for PetaLinux 2020.2, see
+ the *PetaLinux Tools Documentation: Reference Guide*
+ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
+
+1. Before starting this example, create a backup of the boot images
+     created for SD card setup using the following commands:
+
+    ``` shell
+    $ cd <Petalinux-project-path>/xilinx-zcu102-2020.2/images/linux/
+    $ mkdir sd_boot
+    $ cp image.ub sd_boot/
+    $ cp u-boot.elf sd_boot/
+    $ cp BOOT.BIN sd_boot/
+    ```
+
+2. Change the directory to the PetaLinux Project root directory:
+
+    `$ cd \<Petalinux-project-path\/xilinx-zcu102-2020.2`
+
+3. Launch the top level system configuration menu:
+
+    `$ petalinux-config`
+
+    The Configuration wizard opens.
+
+4. Select Subsystem AUTO Hardware Settings.
+
+5. Under the Advanced bootable images storage Settings, do the
+     following.
+
+    a.  Select **boot image settings**.
+
+    b.  Select **image storage media**.
+
+    c.  Select **primary flash** as the boot device.
+
+6. Under the Advanced bootable images storage Settings submenu, do the
+     following:
+
+    a.  Select **kernel image settings**.
+
+    b.  Select **image storage media**.
+
+    c.  Select **primary flash** as the storage device.
+
+7. One level above, that is, under Subsystem AUTO Hardware Settings, do
+     the following:
+
+    a.  Select **Flash Settings** and notice the entries listed in the
+         partition table.
+
+    >***Note*:** Some memory (0x1E00000 + 0x40000) is set aside for initial
+    Boot partitions and U-Boot settings. These values can be modified on
+    need basis.
+
+    b.  Based on this, the offset for Linux Images is calculated as
+        0x1E40000 in QSPI Flash device. This will be used in [Boot and Configuration](6-boot-and-configuration.md), while creating Boot image
+        for QSPI Boot-mode.
+
+    The following steps will set the Linux System Memory Size to about
+    1.79 GB.
+
+8. Under Subsystem AUTO Hardware Settings, do the following:
+
+    a.  Select **Memory Settings**.
+
+    b.  Set **System Memory Size** to `0x6FFFFFFF`.
+
+9. Save the configuration settings and exit the Configuration wizard.
+
+10. Rebuild using the `petalinux-build` command.
+
+11. Take a backup of u-boot.elf and the other images. These will be used
+     in [Boot and Configuration](6-boot-and-configuration.md).
+
+ ***Note*:** For more information, refer to the *PetaLinux Tools
+ Documentation: Reference Guide*
+ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
+
+### Bootimage Setup in Vitis
 
 1. If the Vitis IDE is not already running, start it and set the
      workspace as indicated in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md).
