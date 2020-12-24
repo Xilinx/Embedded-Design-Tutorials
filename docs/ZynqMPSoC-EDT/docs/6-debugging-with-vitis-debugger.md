@@ -117,10 +117,9 @@ The Vitis debugger provides the following debug capabilities:
  After you create the Hello World application, work through the
  following example to debug the software using the Vitis debugger.
 
-1. Follow the steps in [Example Project: Running the "Hello World" Application from Arm Cortex-A53](4-build-sw-for-ps-subsystems.md#example-project-running-the-hello-world-application-from-arm-cortex-a53)
-     to set the target in JTAG mode and power ON.
+1. Connect JTAG cable, set boot mode to JTAG and Power ON. Please refer to the steps in [Example Project: Running the "Hello World" Application from Arm Cortex-A53](4-build-sw-for-ps-subsystems.md#example-project-running-the-hello-world-application-from-arm-cortex-a53).
 
-2. In the C/C++ Perspective, right-click the **test_a53 Project** and
+2. In the C/C++ Perspective, right-click the **hello_a53 Project** and
      select **Debug As→ Launch on Hardware→ Single Application Debug**.
 
     >***Note*:** The above step launches the Application Debugger in the
@@ -128,14 +127,20 @@ The Vitis debugger provides the following debug capabilities:
     can also create a Debug configuration which looks like the following
     figure.
 
-    ![](./media/image45.jpeg)
+    ![Debug Configurations](./media/vitis_single_app_debug_configurations.png)
+
+    >***Note***: The contents of Debug Configurations are identical to Run Configurations. The differences between Run and Debug is that Debug will stop at main() function by default.
 
     If the Confirm Perspective Switch popup window appears, click **Yes**.
     The Debug perspective opens.
 
     >***Note*:** If the Debug perspective window does not automatically
     open, select **Window→ Perspective → Open Perspective → Other**, then
-    select **Debug** in the Open Perspective wizard.
+    select **Debug** in the Open Perspective wizard. You can quickly switch between Design Perspective and Debug Perspective with buttons on upper right corner.
+
+    ![Switch between Vitis Perspectives](media/vitis_perspectives.png)
+
+    The Debug Perspective looks like this.
 
     ![](./media/image46.jpeg)
 
@@ -163,12 +168,12 @@ The Vitis debugger provides the following debug capabilities:
 
     >***Note*:** If the Breakpoints window is not visible, select **Window → Show View→ Breakpoints**.
 
-5. Select **Run → Step Into** to step into the `init_platform()` routine.
+5. Select **Run → Step Into (F5)** to step into the `init_platform()` routine.
 
     Program execution suspends at location `0000000000000d3c`. The call
     stack is now two levels deep.
 
-6. Select **Run → Resume** to continue running the program to the
+6. Select **Run → Resume (F8)** to continue running the program to the
      breakpoint.
 
     Program execution stops at the line of code that includes the printf
@@ -178,7 +183,7 @@ The Vitis debugger provides the following debug capabilities:
     >***Note*:** The execution address in your debugging window might
     differ if you modified the hello world source code in any way.
 
-7. Select **Run → Resume** to run the program to conclusion.
+7. Select **Run → Resume (F8)** to run the program to conclusion.
 
  When the program completes, the Debug window shows that the program is
  suspended in a routine called exit. This happens when you are running
@@ -211,24 +216,16 @@ The Vitis debugger provides the following debug capabilities:
 
 ### Set Up Target
 
-1. Connect a USB cable between USB-JTAG J2 connector on target and the
-     USB port on the host machine.
+4. Open XSCT Console
 
-2. Set the board in JTAG Boot mode, where SW6 is
-     set as shown in following figure.
-
-     ![](./media/image26.jpeg)
-
-3. Power on the Board using switch SW1.
-
-4. Open XSCT Console, click the **XSCT Console** button
-     ![](./media/image48.png) in the tool bar. Alternatively,
+    - click the **XSCT Console** button
+     ![](./media/image48.png) in the tool bar. 
+    - Alternatively,
      you can also open the XSCT console from **Xilinx → XSCT Console**.
 
-5. In the XSCT Console, connect to the target over JTAG using the
-     connect command:
+5. connect to the target over JTAG
 
-    `xsct% connect`
+    - In the XSCT Console, run `xsct% connect`
 
     The connect command returns the channel ID of the connection.
 
@@ -245,7 +242,7 @@ The Vitis debugger provides the following debug capabilities:
 
     The targets are listed as shown in the following figure.
 
-    ![](./media/image49.png)
+    ![XSCT - targets](./media/image49.png)
 
 7. Now select the PSU target. The Arm APU and RPU clusters are grouped
      under PSU. Select Cortex-A53\#0 as target using the following
@@ -257,14 +254,14 @@ The Vitis debugger provides the following debug capabilities:
     target highlighted with as asterisk (\*) mark. You can also use target
     number to select a target, as shown in the following figure.
 
-    ![](./media/image50.png)
+    ![XSCT - selected target](./media/image50.png)
 
 8.  The processor is now held in Reset. To clear the processor reset,
      use the following command:
 
     `rst -processor`
 
-9.  Load the FSBL on Cortex-A53 \#0. FSBL initializes the processing
+10. Load the FSBL on Cortex-A53 \#0. FSBL initializes the processing
      system of Zynq UltraScale+.
 
     ``` tcl
@@ -281,9 +278,7 @@ The Vitis debugger provides the following debug capabilities:
 
 ### Load the Application Using XSCT
 
-1. Download the testapp_r5 application on Arm Cortex-R5F Core 0.
-
-2. Check and select RPU Cortex-R5F Core 0 target ID.
+1. Check and select RPU Cortex-R5F Core 0 target ID.
 
     ```
     xsct% targets
@@ -303,14 +298,15 @@ The Vitis debugger provides the following debug capabilities:
  cores in the group (such as APU or RPU), of which the current target
  is a child. For example, when A53 \#0 is the current target, rst -
  cores clears resets on all the Cortex-A53 cores in APU.
- >
- >`xsct% dow {C:\edt\testapp_r5\Debug\testapp_r5.elf}`
- >or
- >`xsct% dow {C:/edt/testapp_r5/Debug/testapp_r5.elf}`
- >
- >At this point, you can see the sections from the ELF file downloaded
- sequentially. The XSCT prompt can be seen after successful download. Now, configure a serial terminal (Tera Term, Mini com, or the Serial
- Terminal interface for UART-1 USB-serial connection).
+ 
+ 2. Download the testapp_r5 application on Arm Cortex-R5F Core 0.
+
+    - Run `xsct% dow {C:\edt\testapp_r5\Debug\testapp_r5.elf}` or
+    `xsct% dow {C:/edt/testapp_r5/Debug/testapp_r5.elf}`
+
+    At this point, you can see the sections from the ELF file downloaded
+    sequentially. The XSCT prompt can be seen after successful download. Now, configure a serial terminal (Tera Term, Mini com, or the Serial
+    Terminal interface for UART-1 USB-serial connection).
 
 ### Serial Terminal Configuration
 
