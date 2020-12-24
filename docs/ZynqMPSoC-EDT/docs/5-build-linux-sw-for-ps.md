@@ -152,15 +152,19 @@ In this example, you will configure and build Linux Operating System
        - Name: **linux**
        - OS: **linux**
        - Keep other options as is and click **OK**
+   - Review the Linux domain configuration details
+
+   ![Linux domain configuration details](media/linux_domain_details.png)
+
    - Build the platform project by clicking the hammer icon
 
 2. Create a Linux application
 
    - Click menu **File -> New -> Application Project**
    - Click **Next** on welcome page.
-   - Select platform: **zcu102_edt**. Click Next.
-   - Input Application Project name: hello_linux
-       - Target processor: psu_cortexa53 SMP
+   - Select platform: **zcu102_edt**. Click **Next**.
+   - Input Application Project name: **hello_linux**
+       - Target processor: **psu_cortexa53 SMP**
    - Keep the default domain: **linux**
    - Keep empty of SYSROOT, rootfs and Kernel image and click **next**
    - Select template: Linux Hello World. Click **Finish**.
@@ -213,9 +217,12 @@ In this example, you will configure and build Linux Operating System
        - Debug type: Linux Application Debug
        - Connection: Linux Agent
    - Click **Run**
+
+   ![Vitis Linux Run Configurations](media/vitis_linux_run_configurations.png)
+
    - The console would print **Hello World**.
 
-    ![](media/linux_hello_world.png)
+    ![Linux Hello World run result](media/linux_hello_world.png)
 
 
 
