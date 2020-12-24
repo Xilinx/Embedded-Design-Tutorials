@@ -49,8 +49,7 @@ In this example, you will configure and build Linux Operating System
 1. Create a PetaLinux project using the following command:
 
     ```bash
-    petalinux-create -t project -s <path to the xilinx-zcu102-v2020.1-
-final.bsp>
+    petalinux-create -t project -s <path to the xilinx-zcu102-v2020.1-final.bsp>
     ```
 
     Note: xilinx-zcu102-v2020.1-final.bsp is the PetaLinux BSP for ZCU102 Production Silicon Rev1.0 Board.
@@ -69,52 +68,48 @@ final.bsp>
 
    ```bash
    cd xilinx-zcu102-2020.2
-   petalinux-config --get-hw-description=<path containing
-edt_zcu102_wrapper.xsa>
+   petalinux-config --get-hw-description=<path containing edt_zcu102_wrapper.xsa>
    ```
 
     This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate required boot images. If you'd like to skip the configuration window and keep default settings, you can run the following command.
 
     ```
-    petalinux-config --get-hw-description=<path containing
-edt_zcu102_wrapper.xsa> --silentconfig
+    petalinux-config --get-hw-description=<path containing edt_zcu102_wrapper.xsa> --silentconfig
     ```
 3.  Build the PetaLinux project
 
     - In `<PetaLinux-project>`, build the Linux images using the following
      command:
 
-    `$ petalinux-build`
+    `petalinux-build`
 
 4.  After the above statement executes successfully, verify the images
      and the timestamp in the images directory in the PetaLinux project
      folder using the following commands:
 
     ``` bash
-    $ cd images/linux/
-    $ ls -al
+    cd images/linux
+    ls -al
     ```
 
 5.  Generate the Boot image using the following command:
 
-    `$ petalinux-package --boot --fsbl zynqmp_fsbl.elf --u-boot`
+    `petalinux-package --boot --fsbl zynqmp_fsbl.elf --u-boot`
 
-    This creates a `BOOT.BIN` image file in the following directory:
-
-    `<petalinux-project>/images/linux/BOOT.BIN`
+    This creates a `BOOT.BIN` image file in **<petalinux-project>/images/linux/** directory.
 
     The logs indicate that the above command includes PMU_FW and ATF in
-    BOOT.BIN. You can also add `--pmufw <PMUFW_ELF>` and `--atf <ATF_ELF>` in the above command. Refer `$ petalinux-package --boot
-    --help` for more details.
+    BOOT.BIN. You can also add `--pmufw <PMUFW_ELF>` and `--atf <ATF_ELF>` in the above command. Refer `petalinux-package --boot --help` for more details.
 
-    >***Note*:** The option to add bitstream, that is `--fpga`, is missing
+    **Note**: The option to add bitstream, that is `--fpga`, is missing
     from the above command intentionally because so far the hardware
     configuration is based pnly on PS with no design in PL. If a bitstream
     is present in the design, `--fpga` can be added in the
     petalinux-package command as shown below:
-    >    ```
-    >    petalinux-package --boot --fsbl zynqmp_fsbl.elf --fpga system.bit --pmufw pmufw.elf --atf bl31.elf --u-boot u-boot.elf
-    >    ```
+    
+    ```
+    petalinux-package --boot --fsbl zynqmp_fsbl.elf --fpga system.bit --pmufw pmufw.elf --atf bl31.elf --u-boot u-boot.elf
+    ```
 
 ### Verify the Image on the ZCU102 Board
 
@@ -148,11 +143,6 @@ edt_zcu102_wrapper.xsa> --silentconfig
      the board.
 
 
-
- In this chapter, you learned how to configure and compile software
- blocks for Zynq UltraScale+ devices using Xilinx tools. You will use
- these images in [System Design Examples](7-system-design-examples.md) to
- create Boot images for a specific design example.
 
  Next, you will debug software for Zynq UltraScale+ devices using the
  Vitis IDE in [Debugging with the Vitis
