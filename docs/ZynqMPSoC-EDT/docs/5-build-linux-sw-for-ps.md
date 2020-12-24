@@ -231,4 +231,4 @@ In this example, you will configure and build Linux Operating System
 
  Next, you will debug software for Zynq UltraScale+ devices using the
  Vitis IDE in [Debugging with the Vitis
- Debugger](5-debugging-with-vitis-debugger.md).
+ Debugger](6-debugging-with-vitis-debugger.md).
