@@ -129,6 +129,9 @@ We will connect the IP blocks we instantiated above to the PS block.
 
     - Connect axi_timer_0.interrupt to zynq_ultra_ps_e_0.pl_ps_irq0[0:0]
     - We wil not use interrupt mode of AXI GPIO. 
+    - Review the final block diagram.
+
+    ![Final Block Diagram](media/design_example_1_block_diagram.png)
 
 4. Verify the address settings of IP cores
 
@@ -138,6 +141,8 @@ We will connect the IP blocks we instantiated above to the PS block.
      ![](./media/image104.png)
 
 ### Export the post-implementation hardware platform
+
+We will run implementation of the Vivado design and export the post-implementation design. The Vivado generated bitstream will be included in the XSA file. It can make the software tests and boot image generation steps easier in Vitis. Please note that Vitis IDE also accepts pre-synthesis XSA for application development. Bitstream is only needed for debugging PL designs.
 
 1. Validate the block diagram design
 
@@ -160,33 +165,28 @@ We will connect the IP blocks we instantiated above to the PS block.
 
     ![](./media/image106.png)
 
-3. Make sure you have an HDL top
+3. Make sure you have an HDL top file
 
     - Since this design is saved from introduction design, we have already done it.
 
 4. Run synthesis, implementation and bitstream generation
 
     - Click **Generate Bitstream**
-    - Vivado will pop up a message "There are no implementation results available. OK to launch synthesis and implemetation?"
+    - Vivado will pop up a message "There are no implementation results available. OK to launch synthesis and implementation?"
     - Click **Yes**
     - Review the Launch Runs dialogue, set proper number of jobs to run simultaneously, and click **OK**.
-    - Wait for Vivado to complete implementation
+    - Wait for Vivado to complete implementation. After it finishes, it will pop-up a Bitstream Generation Completed window. Click **Cancel** to close it.
 
     ![Vivado Launch Run Configuration](media/vivado_launch_run.png)
 
 5. Exporting Hardware Platform
 
     - Select menu **File→ Export → Export Hardware**. The Export Hardware Platform window opens.
-    - Select Platform Type is **Fixed** and click **Next**.
-
-7. In Output window, select **Include bitstream** click **Next**.
-
-8. In Files window, provide the XSA file
-     name and Export path and click **Finish**.
-
-      ![](./media/image20.jpeg)
-
-    The hardware platform file is generates in the specified path.
+    - Click **Next**
+    - Select **Include Bitstream** and click Next.
+    - Specify XSA file name and path. We keep default in this example. Click **Next**.
+    - Review the summary and click **Finish** to close the window.
+    - The hardware platform file is generates in the specified path.
 
 ### Configuring Software
 
