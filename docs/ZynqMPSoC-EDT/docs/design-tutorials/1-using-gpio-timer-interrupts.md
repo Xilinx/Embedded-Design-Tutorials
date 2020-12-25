@@ -79,7 +79,7 @@
     - Paste it by typing **Ctrl+V**
     - You can see axi_gpio_1 is created.
 
-5. Configure axi_gpio_0 for push buttons
+5. Configure **axi_gpio_0** for push buttons
 
     - Double-click **axi_gpio_0** to open its configurations
     - Select **Push button 5bits** from the Board Interface drop-down list on **GPIO** row.
@@ -97,128 +97,91 @@
 
     - Click **OK**.
 
-#### Connecting IP Blocks to Create a Complete System
+### Connecting IP Blocks to Create a Complete System
 
- Make the initial connections using Board presets. To do this, follow these steps:
+We will connect the IP blocks we instantiated above to the PS block.
 
-1. Double-click the Zynq UltraScale+ IP block, and select a PL-PS
-     interrupt as shown in the following figure (Ignore and move to the
-     next step, if this is selected by default).
+- Use PS HPM LPD AXI to control AXI interface of GPIO and Timer.
+- Connect Interrupt signals
 
-    ![](./media/image101.png)
+1. Enable PS AXI HPM LPD AXI Interface
 
-2. In PS-PL Configuration, expand PS-PL Interfaces and expand the
-     Master Interface.
+   - Double-click the **Zynq UltraScale+ MPSoC** IP block
+   - Select **PS-PL Configuration** tab
+   - Enable **AXI HPM0 LPD**, expand it, set the AXI HPM0 LPD Data Width drop-down to **128**-bit
+   - Click **OK** to close the window
+   - Check that **M_AXI_HPM0_LPD** interface shows up on MPSoC block.
 
-3. Expand AXI HPM0 LPD and set the AXI HPM0 LPD Data Width drop-down to
-     128-bit, as shown in the following figure.
+   ![AXI HPM LPD](./media/image102.png)
 
-    ![](./media/image102.png)
 
-4. Click **OK** to complete the configuration and return to the block
-     diagram.
+2. Connect the AXI interfaces
 
-5. In the diagram view, connect the interrupt port from axi_timer_0 to
-     pl_ps_irq\[0:0\].
+    - Click **Run Connection Automation**
+    - Check **All Automation**
+    - Go through each tab to review the planning connections
+    - Click **OK** to execute the automated connection
+    - Check the connection result
 
-6. Click **Run Connection Automation**. Do not click **Run Block Automation**.
+    ![Vivado Connection Automation Result](media/vivado_gpio_auto_connection.png)
 
-     ![](./media/image103.png)
+3. Connect the interrupt signals
 
-7. In the Run Connection Automation dialog box, click **All Automation**.
+    - Connect axi_timer_0.interrupt to zynq_ultra_ps_e_0.pl_ps_irq0[0:0]
+    - We wil not use interrupt mode of AXI GPIO. 
 
-8. Click **OK**.
+4. Verify the address settings of IP cores
 
-9. In the Address Editor view, verify
-     that the corresponding IPs are allocated the same Address Map, as
-     shown in the following figure. If not, set the offset address such
-     that they match the following figure.
+    - In the Address Editor view, verify
+     that the corresponding IPs are assigned with some addresses during connection automation. If they are not assigned, please click Assign All button to assign address for them.
 
      ![](./media/image104.png)
 
-10. Validate the design and generate the output files for this design,
-     as described in the following sections.
+### Export the post-implementation hardware platform
 
-#### Validating the Design and Generating Output
+1. Validate the block diagram design
 
-1. Return to the block diagram view and save the Block Design (press
-     **Ctrl + S**).
+    - Return to the block diagram view
+    - Save the Block Design (press **Ctrl + S**).
+    - Click the **Validate Design** botton on the block diagram tool bar. Alternatively, you can press the **F6** key.
 
-2. Right-click in the white space of the Block Diagram view and select
-     **Validate Design**. Alternatively, you can press the **F6** key.
+    It takes a while to validate the design. A message dialog box will pop up and states "Validation successful. There are no errors or critical warnings in this design." If it reports any errors or critical warnings, please review the previous steps and correct the errors.
 
-    A message dialog box opens and states "Validation successful. There
-    are no errors or critical warnings in this design."
+    - Click **OK** to close the message.
 
-3. Click **OK** to close the message.
+2. Generate output products
 
-4. In the Block Design view, click the **Sources** tab.
-
-5. Click **Hierarchy**.
-
-6. In the Block Diagram, Sources window, under Design Sources, expand edt_zcu102_wrapper.
-
-7. Right-click the top-level block diagram, titled **edt_zcu102_i :  edt_zcu102 (edt_zcu102.bd)** and select **Generate Output Products**.
-
-    The Generate Output Products dialog box opens, as shown in the
-    following figure.
-
-    ![](./media/image105.png)
-
-    >***Note*:** If you are running the Vivado Design Suite on a Linux host
-    machine, you might see additional options under Run Settings. In this
-    case, continue with the default settings.
-
-8. Click **Generate**.
-
-9. When the Generate Output Products process completes, click **OK**.
-
-10. In the Block Diagram Sources window, click the **IP Sources** tab.
+    - Click **Generate Block Design** in Flow Navigator panel.
+    - Click **Generate**
+    - When the Generate Output Products process completes, click **OK**.
+    - In the Block Diagram Sources window, click the **IP Sources** tab.
      Here you can see the output products that you just generated, as
      shown in the following figure.
 
     ![](./media/image106.png)
 
-#### Synthesizing the Design, Running Implementation, and Generating the Bitstream
+3. Make sure you have an HDL top
 
-1. You can now synthesize the design. In the Flow Navigator pane, under Synthesis, click **Run Synthesis**.
+    - Since this design is saved from introduction design, we have already done it.
 
-    ![](./media/image107.jpeg)
+4. Run synthesis, implementation and bitstream generation
 
-2. If Vivado prompts you to save your project before launching synthesis, click **Save**.
+    - Click **Generate Bitstream**
+    - Vivado will pop up a message "There are no implementation results available. OK to launch synthesis and implemetation?"
+    - Click **Yes**
+    - Review the Launch Runs dialogue, set proper number of jobs to run simultaneously, and click **OK**.
+    - Wait for Vivado to complete implementation
 
-    While synthesis is running, a status bar displays in the upper
-    right-hand window. This status bar spools for various reasons
-    throughout the design process. The status bar signifies that a process
-    is working in the background.
+    ![Vivado Launch Run Configuration](media/vivado_launch_run.png)
 
-    ![](./media/image108.jpeg)
+5. Exporting Hardware Platform
 
-    When synthesis completes, the Synthesis Completed dialog box opens.
+    - Select menu **File→ Export → Export Hardware**. The Export Hardware Platform window opens.
+    - Select Platform Type is **Fixed** and click **Next**.
 
-3. Select Run Implementation and click **OK**.
+7. In Output window, select **Include bitstream** click **Next**.
 
-    Again, notice that the status bar describes the process running in the
-    background. When implementation completes, the Implementation
-    Completed dialog box opens.
-
-4. Select Generate Bitstream and click **OK**.
-
-    When Bitstream Generation completes, the Bitstream Generation Completed dialog box opens.
-
-5. Click **Cancel** to close the window.
-
-6. After the Bitstream generation completes, export the hardware to the Vitis IDE.
-
-#### Exporting Hardware Platform
-
-1. In the Vivado Design Suite, select **File→ Export → Export Hardware**. The Export Hardware Platform window opens.
-
-2. Select Platform Type is **Fixed** and click **Next**.
-
-3. In Output window, select **Include bitstream** click **Next**.
-
-4. In Files window, provide the XSA file
+8. In Files window, provide the XSA file
      name and Export path and click **Finish**.
 
       ![](./media/image20.jpeg)
