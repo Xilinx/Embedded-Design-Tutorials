@@ -190,7 +190,7 @@ We will run implementation of the Vivado design and export the post-implementati
     - Review the summary and click **Finish** to close the window.
     - The hardware platform file is generates in the specified path.
 
-### Configuring Software
+## Configuring Software
 
  This use case has a bare-metal application running on an R5 core and a
  Linux Application running on APU Linux Target. Most of the software
@@ -222,23 +222,19 @@ We will run implementation of the Vivado design and export the post-implementati
  PL LEDs. The next set of steps show how to configure System software
  and build user applications for this design.
 
-#### Configure and Build Linux Using PetaLinux
+### Configure and Build Linux Using PetaLinux
 
 1. Create the Linux images using PetaLinux. The Linux images must be
      created in sync with the hardware configuration for this design.
      You will also need to configure PetaLinux to create images for SD
      boot.
 
-2. Repeat steps 2 to 13 as described in [Example Project: Create Linux Images using PetaLinux](4-build-sw-for-ps-subsystems.md#example-project-create-linux-images-using-petalinux) to update the device tree and build Linux images using PetaLinux. Alternatively, you can also use the Linux image files shared with this tutorial. The images for this section can be found in `<design_files/design>`.
+2. Repeat steps 2 to 13 as described in [Example Project: Create Linux Images using PetaLinux](4-build-sw-for-ps-subsystems.md#example-project-create-linux-images-using-petalinux) to update the device tree and build Linux images using PetaLinux. 
 
 3. Follow step 15 to verify the images. The next step is to create a Bare-metal Application targeted for Arm Cortex-R5F based RPU.
 
- >***Note*:** For this design example, you must import the application
- source files available in the Design Files ZIP file released with this
- tutorial. For information about locating these design files, see the
- [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial).
 
-#### Creating the Bare-Metal Application Project
+### Creating the Bare-Metal Application Project
 
 1. In the Vitis IDE, select **File → New → Application Project**. The
      New Project wizard opens.
@@ -282,7 +278,7 @@ We will run implementation of the Vivado design and export the post-implementati
  The Vitis IDE automatically builds the application and displays the
  status in the console window.
 
-#### Modifying the Linker Script
+### Modifying the Linker Script
 
 1. In the Project Explorer, expand the tmr_psled_r5 project.
 
@@ -346,7 +342,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 5. Build the domain to create Linux applications.
 
-#### Creating the Linux Application Project
+### Creating the Linux Application Project
 
 1. In the Vitis IDE, select **File→ New → Application Project**. The New Project wizard opens.
 
@@ -387,7 +383,7 @@ We will run implementation of the Vivado design and export the post-implementati
  reference to the pthread library. The next section shows how to add
  the pthread library.
 
-#### Modifying the Build Settings
+### Modifying the Build Settings
 
  This application makes use of Pthreads from the pthread library. Add
  the pthread library as follows:
@@ -405,7 +401,7 @@ We will run implementation of the Vivado design and export the post-implementati
 4. Right-click the application and select **Build** to build the
      application.
 
-#### Creating a Boot Image
+### Creating a Boot Image
 
  Now that all the individual images are ready, you will create the boot
  image to load all of these components on a Zynq UltraScale+ device.
@@ -438,9 +434,9 @@ We will run implementation of the Vivado design and export the post-implementati
     for ATF (EL-3, TrustZone) and U- Boot (EL-2) partitions. These
     settings can be ignored for other partitions.*
 
-#### Running the Image on a ZCU102 Board
+## Running the Image on a ZCU102 Board
 
-#### Prepare the SD Card
+### Prepare the SD Card
 
  Copy the images and executables on an SD card and load it in the SD
  card slot in the Board.
@@ -451,7 +447,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 2. Copy the Linux application, `ps_pl_linux_app.elf`, to the same SD card. The application can be found in `C:\edt\ps_pl_linux_app\Debug`.
 
-#### Target Setup
+### Target Setup
 
 1. Load the SD card into the ZCU102 board, in the J100 connector.
 
@@ -481,7 +477,7 @@ We will run implementation of the Vivado design and export the post-implementati
     application messages will appear on the COM port with the UART-1
     terminal.
 
-#### Power ON Target and Run Applications
+### Power ON Target and Run Applications
 
 1. Turn on the ZCU102 Board using SW1, and wait until Linux loads on the board.
 
@@ -495,7 +491,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
     ![](./media/image113.png)
 
-##### Running Linux Applications
+### Running Linux Applications
 
  After Linux is up on the ZCU102 system, log in to the Linux target
  with login: root and password: root. The Linux target is now ready for
@@ -509,7 +505,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
     >***Note*:** Mount the SD card manually if you fail to find SD card
     contents in this location:`# mount /dev/mmcblk0p1 /media/`. Copy the
-    application to `/tmp`. `# cp /media/ ps_pl_linux_app.elf /tmp`.
+    application to `/tmp`. `# cp /media/ps_pl_linux_app.elf /tmp`.
 
 2. Run the application.
 
