@@ -133,6 +133,8 @@ We will connect the IP blocks we instantiated above to the PS block.
 
     ![Final Block Diagram](media/design_example_1_block_diagram.png)
 
+    >Note: If you have multiple interrupt signals to connect to PS, you can concat them to a bus with a `concat` block. You can add `concat` from **Add IP**.
+
 4. Verify the address settings of IP cores
 
     - In the Address Editor view, verify
