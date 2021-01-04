@@ -40,16 +40,16 @@
 
   {# JAVASCRIPTS #}
   {%- block scripts %}
-      <script type="text/javascript" src="{{ pathto('_static/js/jquery.min.js', 1) }}"></script>
+      <script type="text/javascript" src="{{ pathto('_static/js/jquery.min.js', 1) }}"></script>	
 	  <script type="text/javascript" src="{{ pathto('_static/js/gtm.js', 1) }}"></script>
   <script type="text/javascript" src="{{ pathto('_static/js/modernizr.min.js', 1) }}"></script>
     <script type="text/javascript" src="{{ pathto('_static/js/d3dd8c60ed.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/js/common-ui-all.min.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/js/header-footer.min.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/js/jquery-ui.min.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/js/CoveoJsSearch.Lazy.min.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/js/linkid.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/js/Searchbox.min.js', 1) }}"></script>
+    <script type="text/javascript" src="{{ pathto('_static/js/common-ui-all.min.js', 1) }}"></script>		
+    <script type="text/javascript" src="{{ pathto('_static/js/header-footer.min.js', 1) }}"></script>	
+    <script type="text/javascript" src="{{ pathto('_static/js/jquery-ui.min.js', 1) }}"></script>	
+    <script type="text/javascript" src="{{ pathto('_static/js/CoveoJsSearch.Lazy.min.js', 1) }}"></script>	
+    <script type="text/javascript" src="{{ pathto('_static/js/linkid.js', 1) }}"></script>		
+    <script type="text/javascript" src="{{ pathto('_static/js/Searchbox.min.js', 1) }}"></script>			
 
   {%- if not embedded %}
   {# XXX Sphinx 1.8.0 made this an external js-file, quick fix until we refactor the template to inherert more blocks directly from sphinx #}
@@ -151,7 +151,7 @@
 																<div class="navbar navbar-collapse collapse" id="xilinx-main-menu">
 																	<div class="mobile-search-container">
 																		<div id="headerSearchBox" class="headerSearch"
-																			data-component="header-search"
+																			data-component="header-search" 
 																			data-redirect-if-empty="false"
 																			data-coveo-access-token="xxa237d4dd-f0aa-47fc-9baa-af9121851b33"
 																			data-coveo-organization-id="xilinxcomprode2rjoqok">
@@ -213,23 +213,23 @@
 																	<ul class="nav navbar-nav nav-justified">
 																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
 																			<a href="https://www.xilinx.com/applications.html">
-																			Applications</a>
+																			Applications</a> 
 																		</li>
 																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
 																			<a href="https://www.xilinx.com/products/silicon-devices.html">
-																			Products</a>
+																			Products</a> 
 																		</li>
 																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
 																			<a href="https://developer.xilinx.com/">
-																			Developers</a>
+																			Developers</a> 
 																		</li>
 																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
 																			<a href="https://www.xilinx.com/support.html">
-																			Support</a>
+																			Support</a> 
 																		</li>
 																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
 																			<a href="https://www.xilinx.com/about/company-overview.html">
-																			About</a>
+																			About</a> 
 																		</li>
 																	</ul>
 																</div>
@@ -274,7 +274,7 @@
 															-->
 															<div class="search-container">
 																<div id="headerSearchBox" class="headerSearch"
-																	data-component="header-search"
+																	data-component="header-search" 
 																	data-redirect-if-empty="false"
 																	data-coveo-access-token="xxa237d4dd-f0aa-47fc-9baa-af9121851b33"
 																	data-coveo-organization-id="xilinxcomprode2rjoqok">
@@ -391,9 +391,9 @@
           {% endblock %}
         </div>
 
-      {% block navigation %}
+        {% block navigation %}
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-            {% block menu %}
+          {% block menu %}
             {#
               The singlehtml builder doesn't handle this toctree call when the
               toctree is empty. Skip building this for now.
@@ -406,9 +406,9 @@
             {% endif %}
             {% if global_toc %}
               {{ global_toc }}
-            {% else %} -->
+            {% else %}
               <!-- Local TOC -->
-             <div class="local-toc">{{ toc }}</div>
+              <div class="local-toc">{{ toc }}</div>
             {% endif %}
 			{% if versions %}
 				<h3>{{ _('Versions') }}</h3>
@@ -426,15 +426,7 @@
 				  {%- if show_on_github_url %}
 					<li class="toctree-l1"><a href="{{ show_on_github_url }}"
 						   rel="nofollow">{{ _('View on GitHub') }}</a></li>
-				  {%- endif %}
-				  {%- if edit_on_github_url %}
-					<li class="toctree-l1"><a href="{{ edit_on_github_url }}"
-						   rel="nofollow">{{ _('Edit on GitHub') }}</a></li>
-				  {%- endif %}
-				    {%- if feedback_on_github_url %}
-                    <li><a href="{{ feedback_on_github_url }}"
-                            rel="nofollow">{{ _('Submit Feedback') }}</a></li>
-                    {%- endif %}
+				  {%- endif %}						
 				</ul>
 			{%- endif %}
           {% endblock %}
@@ -478,8 +470,8 @@
         </div>
       {%- endblock %}
       </div>
-
-
+	  
+	  
 	  <!-- Sphinx Page Footer block -->
   {% if (theme_prev_next_buttons_location == 'bottom' or theme_prev_next_buttons_location == 'both') and (next or prev) %}
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
@@ -515,8 +507,7 @@
     {%- endif %}
 
     </p>
-	<br>
-  </div>
+  </div>	  
       </div>
     </section>
 
@@ -533,9 +524,9 @@
     jQuery(function() { Search.loadIndex("searchindex.js"); });
   </script>
 
-  <script type="text/javascript" id="searchindexloader"></script>
-
-
+  <script type="text/javascript" id="searchindexloader"></script>     	    
+	    
+	    
   {# Do not conflict with RTD insertion of analytics script #}
   {% if not READTHEDOCS %}
     {% if theme_analytics_id %}
@@ -552,9 +543,9 @@
 
     {% endif %}
   {% endif %}
+  
 
-
-
+  
   <!--  Xilinx template footer block -->
 							</div>
 						</div>
@@ -565,16 +556,6 @@
 						<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 ">
 							<div class="footer parbase aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16">
 								<noindex>
-                  <!-- make footer fixed - NileshP -->
-                  <style>
-                        .footer {
-                        position: fixed;
-                        left: 0;
-                        bottom: 0;
-                        width: 100%;
-                        }
-                  </style>
-                  <!-- make footer fixed NileshP-->
 									<footer>
 										<div class="aem-Grid aem-Grid--16">
 											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
@@ -674,7 +655,7 @@
 			  _.templateSettings.evaluate = /\{\{([^-=][\S\s]+?)\}\}/g;
 			  _.templateSettings.escape = /\{\{-([^=][\S\s]+?)\}\}/g;
 			}
-
+			
 			underscoreSetup();
 		</script>
 	</body>

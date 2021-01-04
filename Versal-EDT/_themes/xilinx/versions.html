@@ -1,3 +1,13 @@
+{% if versions %}
+<h3>{{ _('Versions') }}</h3>
+<ul>
+  {%- for item in versions %}
+  <li><a href="{{ item.url }}">{{ item.name }}</a></li>
+  {%- endfor %}
+</ul>
+{% endif %}
+
+
 {% if READTHEDOCS %}
 {# Add rst-badge after rst-versions for small badge style. #}
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
