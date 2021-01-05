@@ -437,19 +437,19 @@
 <h1>System Design Example for High-Speed Debug Port with SmartLynq+ Module<a class="headerlink" href="#system-design-example-for-high-speed-debug-port-with-smartlynq-module" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>This chapter demonstrates how to build a system based on Versal devices that utilizes both the SmartLynq+ module and High-Speed Debug Port (HSDP). It also demonstrates the steps to set up the SmartLynq+ module and download a Linux image using either JTAG or the HSDP.</p>
+<p>This chapter demonstrates how to build a Versal™-based system that utilizes both the SmartLynq+ module and the High-Speed Debug Port (HSDP). You will also learn to set up the SmartLynq+ module and download a Linux image using either JTAG or the HSDP.</p>
 <blockquote>
 <div><p><strong>Important:</strong> <em>This tutorial requires a SmartLynq+ module, a VCK190 or VMK180 evaluation board, and a Linux host machine.</em></p>
 </div></blockquote>
 </div>
 <div class="section" id="design-example-enabling-the-hsdp">
 <h2>Design Example: Enabling the HSDP<a class="headerlink" href="#design-example-enabling-the-hsdp" title="Permalink to this headline">¶</a></h2>
-<p>This section starts with the VCK190 or VMK180 project that you built in the preceding chapter (or, the pre-built project in the design package <code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/smartlynq_plus/vck190/design_files/vck190_edt_versal_hsdp.xpr.zip</span></code>). You will modify the project to include HSDP support.</p>
+<p>To enable the HSDP, start with the VCK190 or VMK180 project that you built in the preceding chapter (or, the pre-built project provided in the design package <code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/smartlynq_plus/vck190/design_files/vck190_edt_versal_hsdp.xpr.zip</span></code>) and modify the project to include HSDP support.</p>
 <div class="section" id="modifying-the-design-to-enable-the-hsdp">
 <h3>Modifying the Design to Enable the HSDP<a class="headerlink" href="#modifying-the-design-to-enable-the-hsdp" title="Permalink to this headline">¶</a></h3>
-<p>This design uses the project built in <a class="reference external" href="./5-system-design-example.html">System Design Example using Scalar Engine and Adaptable Engine</a> and enables the HSDP interface. You can do this using the Vivado IP integrator.</p>
+<p>This design uses the project built in <a class="reference external" href="#5-system-design-example">System Design Example using Scalar Engine and Adaptable Engine</a> and enables the HSDP interface. You can do this using the Vivado IP integrator.</p>
 <ol>
-<li><p>Open the Vivado project you created in <a class="reference external" href="./5-system-design-example.html">Chapter 5: System Design Example using Scalar Engine and Adaptable Engine</a>.</p>
+<li><p>Open the Vivado project you created in <a class="reference external" href="#5-system-design-example">Chapter 5: System Design Example using Scalar Engine and Adaptable Engine</a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">C:/edt/edt_versal/edt_versal.xpr</span></code></p>
 </li>
 <li><p>In the Flow Navigator, under <strong>IP Integrator</strong>, click <strong>Open Block Design</strong>.</p>
@@ -467,11 +467,11 @@
 <li><p><strong>GT Refclk Freq (MHz)</strong> to <strong>156.25</strong></p></li>
 </ul>
 <blockquote>
-<div><p><strong><em>Note</em>:</strong> Line rate will be fixed at <strong>10.0 Gb/s</strong>.</p>
+<div><p><strong><em>Note</em>:</strong> Line rate is fixed at 10.0 Gb/s.</p>
 </div></blockquote>
 </li>
-<li><p>Click <strong>OK</strong> to save the changes. Two ports are created on the CIPS IP <code class="docutils literal notranslate"><span class="pre">gt_refclk1</span></code> and <code class="docutils literal notranslate"><span class="pre">HSDP1_GT</span></code>.</p></li>
-<li><p>In the <strong>IP Integrator</strong> canvas, right-click on <code class="docutils literal notranslate"><span class="pre">gt_refclk1</span></code> and select <strong>Make External</strong>. Do the same for <strong>HSDP1_GT</strong>.</p>
+<li><p>Click <strong>OK</strong> to save the changes. Two ports, <code class="docutils literal notranslate"><span class="pre">gt_refclk1</span></code> and <code class="docutils literal notranslate"><span class="pre">HSDP1_GT</span></code>, are created on the CIPS IP.</p></li>
+<li><p>On the <strong>IP Integrator</strong> page, right-click <code class="docutils literal notranslate"><span class="pre">gt_refclk1</span></code> and select <strong>Make External</strong>. Do the same for <strong>HSDP1_GT</strong>.</p>
 <p><img alt="../_images/ch6-image4.png" src="../_images/ch6-image4.png" /></p>
 <p><img alt="../_images/ch6-image5.png" src="../_images/ch6-image5.png" /></p>
 </li>
@@ -480,24 +480,21 @@
 </div>
 <div class="section" id="synthesizing-implementing-and-generating-the-device-image">
 <h3>Synthesizing, Implementing, and Generating the Device Image<a class="headerlink" href="#synthesizing-implementing-and-generating-the-device-image" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>In the Flow Navigator, under <strong>Programming and Debug</strong>, click <strong>Generate Device Image</strong> to launch implementation.</p></li>
+<ol>
+<li><p>In the Flow Navigator, under <strong>Programming and Debug</strong>, click <strong>Generate Device Image</strong> to launch implementation.</p>
+<p>When the device image generation completes, the Device Image Generation Completed dialog box opens.</p>
+<p><img alt="../_images/ch6-image9.png" src="../_images/ch6-image9.png" /></p>
+</li>
 </ol>
-<blockquote>
-<div><p><strong><em>Note</em>:</strong> When the device image generation completes, the device image generation completed dialog box opens.</p>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>![](./media/ch6-image9.png)
-</pre></div>
-</div>
 </div>
 <div class="section" id="exporting-hardware-xsa">
 <h3>Exporting Hardware (XSA)<a class="headerlink" href="#exporting-hardware-xsa" title="Permalink to this headline">¶</a></h3>
 <ol>
-<li><p>From the Vivado tool-bar, select <strong>File → Export → Export Hardware</strong>. The Export Hardware Dialog Box will open.</p>
+<li><p>Select <strong>File → Export → Export Hardware</strong> from the Vivado toolbar. The Export Hardware dialog box opens.</p>
 <p><img alt="../_images/ch6-image10.png" src="../_images/ch6-image10.png" /></p>
 </li>
-<li><p>Choose <strong>Fixed</strong> and click <strong>Next</strong>.</p></li>
-<li><p>Choose <strong>Include Device Image</strong> and click <strong>Next</strong>.</p></li>
+<li><p>Choose <strong>Fixed</strong>, then click <strong>Next</strong>.</p></li>
+<li><p>Choose <strong>Include Device Image</strong>, then click <strong>Next</strong>.</p></li>
 <li><p>Provide the name for your exported file (example: <code class="docutils literal notranslate"><span class="pre">edt_versal_wrapper_with_hsdp</span></code>). Click <strong>Next</strong>.</p></li>
 <li><p>Click <strong>Finish</strong>.</p></li>
 </ol>
@@ -505,18 +502,18 @@
 </div>
 <div class="section" id="creating-the-hsdp-enabled-linux-image-using-petalinux">
 <h2>Creating the HSDP-enabled Linux Image Using PetaLinux<a class="headerlink" href="#creating-the-hsdp-enabled-linux-image-using-petalinux" title="Permalink to this headline">¶</a></h2>
-<p>This example re-builds the PetaLinux project using the HSDP enabled XSA that was built in the preceding step. The assumption is that the PetaLinux project has been created as per the instructions in <a class="reference external" href="./5-system-design-example.html">System Design Example using Scalar Engine and Adaptable Engine</a>.</p>
+<p>This example rebuilds the PetaLinux project using the HSDP-enabled XSA that was built in the preceding step. The assumption is that the PetaLinux project has been created as per the instructions in <a class="reference external" href="#5-system-design-example">System Design Example using Scalar Engine and Adaptable Engine</a>.</p>
 <blockquote>
-<div><p><strong>Important:</strong> If you are building this tutorial without having created a PetaLinux project in the preceding chapter, you can follow steps 1 through 12 in the <a class="reference external" href="./5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> section to create a new PetaLinux project.</p>
+<div><p><strong>Important:</strong> If you are building this tutorial without having created a PetaLinux project in the preceding chapter, follow steps 1 through 12 in the <a class="reference external" href="./5-system-design-example.html#example-project-creating-Linux-images-using-PetaLinux">Example Project: Creating Linux Images Using PetaLinux</a> section to create a new PetaLinux project.</p>
 </div></blockquote>
 <p>This example needs a Linux host machine. Refer to the <a class="reference external" href="https://www.xilinx.com/member/versal_tools_ea.html#embedded">PetaLinux Tools Documentation Reference Guide (UG1144)</a> for information on dependencies and installation procedure for the PetaLinux tool.</p>
 <ol>
-<li><p>Change to the PetaLinux project directory that was created in <a class="reference external" href="./5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> using the following command.</p>
+<li><p>Change to the PetaLinux project directory that was created in <a class="reference external" href="./5-system-design-example.html#example-project-creating-Linux-images-using-PetaLinux">Example Project: Creating Linux Images Using PetaLinux</a> using the following command.</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">led_example</span></code></p>
 </li>
 <li><p>Copy the new hardware platform project XSA to the Linux host machine one directory above the PetaLinux build root.</p>
 <blockquote>
-<div><p><strong><em>Note</em>:</strong> Ensure you are using the updated the XSA file which you generated in the prior step.</p>
+<div><p><strong><em>Note</em>:</strong> Make sure that you are using the updated the XSA file which you generated in the prior step.</p>
 </div></blockquote>
 </li>
 <li><p>Reconfigure the BSP using the following commands.</p>
@@ -525,23 +522,23 @@
 </div>
 </li>
 <li><p>Build the Linux images using the following command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ PetaLinux-build
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ petalinux-build
 </pre></div>
 </div>
 </li>
 <li><p>Once the build completes, package the boot images with the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ PetaLinux-package --force --boot --atf --u-boot
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ petalinux-package --force --boot --atf --u-boot
 </pre></div>
 </div>
 <blockquote>
-<div><p><strong><em>Note</em>:</strong> The packaged Linux boot images are placed in the <code class="docutils literal notranslate"><span class="pre">&lt;PetaLinux-project&gt;/images/Linux/</span></code> directory in the PetaLinux build root.  Make a note of this directory location as it will be used in the next steps. If you intend to use a different machine than the one that was used to build PetaLinux (for example, a Windows Based PC) to download the Linux boot images using SmartLynq+, the contents of this directory should be transferred to that machine before proceeding to the next steps.</p>
+<div><p><strong><em>Note</em>:</strong> The packaged Linux boot images are placed in the <code class="docutils literal notranslate"><span class="pre">&lt;PetaLinux-project&gt;/images/Linux/</span></code> directory in the PetaLinux build root. Make a note of this directory location as it will be used in the following steps. If you intend to use a different machine than the one that was used to build PetaLinux (for example, a Windows Based PC) to download the Linux boot images using SmartLynq+, the contents of this directory should be transferred to that machine before proceeding with this tutorial.</p>
 </div></blockquote>
 </li>
 </ol>
 </div>
 <div class="section" id="setting-up-the-smartlynq-module">
 <h2>Setting Up the SmartLynq+ Module<a class="headerlink" href="#setting-up-the-smartlynq-module" title="Permalink to this headline">¶</a></h2>
-<p>Once the Linux images have been built and packaged, they can be loaded onto the VCK190 or VMK180 board using either JTAG or HSDP. This section demonstrates the basic steps required to set up the SmartLynq+ module for connectivity using HSDP.</p>
+<p>Once the Linux images have been built and packaged, they can be loaded onto the VCK190 or VMK180 board using either JTAG or HSDP. To set up the SmartLynq+ module for connectivity using HSDP, follow these steps:</p>
 <ol>
 <li><p>Connect the USB-C cable between the VCK190 USB-C connector and the SmartLynq+ module.</p>
 <p><img alt="../_images/ch6-slp1.png" src="../_images/ch6-slp1.png" /></p>
@@ -552,27 +549,27 @@
 <li><p><strong>Using USB:</strong> Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.</p></li>
 </ul>
 </li>
-<li><p>Connect the SmartLynq+’s provided power adapter to the SmartLynq+ and power on the VCK190/VMK180 board.</p></li>
-<li><p>Once the SmartLynq+ finishes booting up an IP address will appear on the screen under either <code class="docutils literal notranslate"><span class="pre">eth0</span></code> or <code class="docutils literal notranslate"><span class="pre">usb0</span></code>.  Make note of this IP address as it will be the IP address used to connect to the SmartLynq+ in both the Ethernet and USB use case.</p>
+<li><p>Connect the power adapter to the SmartLynq+ and power on the VCK190/VMK180 board.</p></li>
+<li><p>Once the SmartLynq+ finishes booting up, an IP address appears on the screen under either <code class="docutils literal notranslate"><span class="pre">eth0</span></code> or <code class="docutils literal notranslate"><span class="pre">usb0</span></code>. Make note of this IP address as this is the IP address used to connect to the SmartLynq+ in both the Ethernet and USB use case.</p>
 <p><img alt="../_images/ch6-image23.jpg" src="../_images/ch6-image23.jpg" /></p>
 <blockquote>
-<div><p><strong><em>Note</em>:</strong> If using Ethernet, the SmartLynq+ will acquire an IP address from a DHCP server found on the network.  If using USB the USB port will have a fixed IP of <code class="docutils literal notranslate"><span class="pre">10.0.0.2</span></code>.</p>
+<div><p><strong><em>Note</em>:</strong> If using Ethernet, the SmartLynq+ acquires an IP address from a DHCP server found on the network. If using USB, the USB port has a fixed IP address of <code class="docutils literal notranslate"><span class="pre">10.0.0.2</span></code>.</p>
 </div></blockquote>
 </li>
 <li><p>Copy the Linux download scripts from the design package <code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/smartlynq_plus/xsdb</span></code>.</p></li>
 </ol>
 <div class="section" id="using-the-smartlynq-as-a-serial-terminal">
 <h3>Using the SmartLynq+ as a Serial Terminal<a class="headerlink" href="#using-the-smartlynq-as-a-serial-terminal" title="Permalink to this headline">¶</a></h3>
-<p>The SmartLynq+ can also be used as a serial terminal to remotely view UART output from the VCK190. This feature can be useful when physical access to the remote setup is not available. The SmartLynq+ module has the minicom application pre-installed, which can be used to connect directly to the UART on the VCK190.</p>
+<p>The SmartLynq+ can also be used as a serial terminal to remotely view the UART output from the VCK190. This feature is useful when physical access to the remote setup is not available. The SmartLynq+ module has the minicom application pre-installed, which can be used to connect directly to the UART on the VCK190.</p>
 <ol>
-<li><p>Using an SSH client such as <code class="docutils literal notranslate"><span class="pre">PuTTY</span></code> on Windows or <code class="docutils literal notranslate"><span class="pre">ssh</span></code> on Unix based systems, connect using SSH to the IP address shown on the SmartLynq+ display.</p>
+<li><p>Using an SSH client such as <code class="docutils literal notranslate"><span class="pre">PuTTY</span></code> on Windows or <code class="docutils literal notranslate"><span class="pre">ssh</span></code> on Unix-based systems, connect using SSH to the IP address shown on the SmartLynq+ display.</p>
 <ul class="simple">
 <li><p>Username: <code class="docutils literal notranslate"><span class="pre">xilinx</span></code></p></li>
 <li><p>Password: <code class="docutils literal notranslate"><span class="pre">xilinx</span></code></p></li>
 </ul>
-<p>For example, if your SmartLynq+ displays IP address <code class="docutils literal notranslate"><span class="pre">192.168.0.10</span></code>, you should issue the following command: <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">xilinx&#64;192.168.0.10</span></code>.</p>
+<p>For example, if your SmartLynq+ displays an IP address <code class="docutils literal notranslate"><span class="pre">192.168.0.10</span></code>, you should issue the following command: <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">xilinx&#64;192.168.0.10</span></code>.</p>
 </li>
-<li><p>By default, the minicom application will use hardware flow control. To successfully connect to the UART on Xilinx boards, hardware flow control should be disabled as it is not used on the VCK190 UART.  This can be done by entering the minicom setup mode by issuing <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">minicom</span> <span class="pre">-s</span></code> and disabling the feature or by issuing the following command as root to modify the minicom default configuration:</p>
+<li><p>By default, the minicom application uses the hardware flow control. To successfully connect to the UART on Xilinx boards, hardware flow control should be disabled as it is not used on the VCK190 UART. To do this, enter the minicom setup mode by issuing <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">minicom</span> <span class="pre">-s</span></code> and disabling the feature. Alternatively, issue the following command as root to modify the minicom default configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;pu rtscts No&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">minicom</span><span class="o">/</span><span class="n">minirc</span><span class="o">.</span><span class="n">dfl</span>
 </pre></div>
 </div>
@@ -590,34 +587,36 @@
 <div class="section" id="booting-linux-images-over-jtag-or-hsdp">
 <h3>Booting Linux Images over JTAG or HSDP<a class="headerlink" href="#booting-linux-images-over-jtag-or-hsdp" title="Permalink to this headline">¶</a></h3>
 <p>SmartLynq+ can be used to download Linux images directly to the VCK190/VMK180 without using an SD Card. Linux images can be loaded using JTAG or HSDP.</p>
-<p>The design package included with this tutorial contains a script that will download the Linux images created in the prior steps using the SmartLynq+ Module. The script can use either JTAG or HSDP.</p>
+<p>The design package included with this tutorial contains a script that downloads the Linux images created in the prior steps using the SmartLynq+ module. The script can use either JTAG or HSDP.</p>
 <ol>
 <li><p>On the machine with access to the SmartLynq+ module, open the Vivado tcl shell.</p>
 <p><img alt="../_images/ch6-image24.png" src="../_images/ch6-image24.png" /></p>
 </li>
-<li><p>Change the working directory to the PetaLinux build root if working on the machine used to build PetaLinux, or the location where the <code class="docutils literal notranslate"><span class="pre">images/Linux</span></code> directory was transferred to the local machine in the preceding steps.</p></li>
-<li><p>At the Vivado tcl shell, issue the following to download the images using HSDP:</p>
+<li><p>Change the working directory to the PetaLinux build root, if working on the machine used to build PetaLinux, or change to the location where the <code class="docutils literal notranslate"><span class="pre">images/Linux</span></code> directory was transferred to the local machine in the preceding steps.</p></li>
+<li><p>At the Vivado tcl shell, issue the following command to download the images using HSDP:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsdb</span> <span class="n">Linux_download</span><span class="o">.</span><span class="n">tcl</span> <span class="o">&lt;</span><span class="n">smartlynq</span><span class="o">+</span> <span class="n">ip</span><span class="o">&gt;</span> <span class="n">images</span><span class="o">/</span><span class="n">Linux</span> <span class="n">HSDP</span>
 </pre></div>
 </div>
-<p>This will first load <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> using JTAG after which an HSDP link will be auto-negotiated and the rest of the boot images will be loaded using HSDP, offering a substantial speed increase compared to JTAG.</p>
+<p>This loads <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> using JTAG, following which an HSDP link is auto-negotiated and the rest of the boot images are loaded using HSDP. This increases the speed substantially compared to JTAG.</p>
 <p><img alt="../_images/ch6-image16.png" src="../_images/ch6-image16.png" /></p>
 <blockquote>
-<div><p><strong><em>Note</em>:</strong> It is also possible to download the Linux images using JTAG by changing the scripts last argument to <code class="docutils literal notranslate"><span class="pre">FTDI-JTAG</span></code> <code class="docutils literal notranslate"><span class="pre">xsdb</span> <span class="pre">Linux-download</span> <span class="pre">&lt;smartlynq+</span> <span class="pre">ip&gt;</span> <span class="pre">images/Linux</span> <span class="pre">FTDI-JTAG</span></code>. This will use JTAG to program all of the Linux boot images.  Take note of the difference in download speed when using HSDP.</p>
+<div><p><strong><em>Note</em>:</strong> You can also download Linux images using JTAG by changing the last argument of the script to <code class="docutils literal notranslate"><span class="pre">FTDI-JTAG</span></code> as shown: <code class="docutils literal notranslate"><span class="pre">xsdb</span> <span class="pre">Linux-download</span> <span class="pre">&lt;smartlynq+</span> <span class="pre">ip&gt;</span> <span class="pre">images/Linux</span> <span class="pre">FTDI-JTAG</span></code>. This uses the JTAG to program all of the Linux boot images. Note the difference in download speed when using HSDP.</p>
 </div></blockquote>
 </li>
-<li><p>Returning to the terminal opened in the prior section, Versal boot messages can be viewed from the VCK190 UART:
-<img alt="../_images/ch6-image17.png" src="../_images/ch6-image17.png" /></p></li>
-<li><p>Once Linux has completed booting using either JTAG or HSDP, you will be presented with the following login screen:
-<img alt="../_images/ch6-image18.png" src="../_images/ch6-image18.png" /></p></li>
+<li><p>Versal boot messages can be viewed from the VCK190 UART on the terminal opened in the preceding section:</p>
+<p><img alt="../_images/ch6-image17.png" src="../_images/ch6-image17.png" /></p>
+</li>
+<li><p>Once Linux has completed booting using either JTAG or HSDP, you will be presented with the following login screen:</p>
+<p><img alt="../_images/ch6-image18.png" src="../_images/ch6-image18.png" /></p>
+</li>
 </ol>
 </div>
 </div>
 <div class="section" id="useful-links">
 <h2>Useful Links<a class="headerlink" href="#useful-links" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>For more information on using PL hardware debug cores such as the AXIS-ILA, AXIS-VIO, PCIe Debugger, and/or DDRMC Calibration Interfaces refer to the <a class="reference external" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug908-vivado-programming-debugging.pdf">UG908: Vivado Design Suite User Guide Programming and Debugging</a>.</p></li>
-<li><p>For more information on the SmartLynq+ Module, refer to <a class="reference external" href="#">SmartLynq+ Module User Guide</a>.</p></li>
+<li><p>For more information on using PL hardware debug cores such as the AXIS-ILA, AXIS-VIO, PCIe™ Debugger, and/or DDRMC Calibration Interfaces refer to the <a class="reference external" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug908-vivado-programming-debugging.pdf">UG908: Vivado Design Suite User Guide Programming and Debugging</a>.</p></li>
+<li><p>For more information on the SmartLynq+ Module, refer to <a class="reference external" href="https://www.xilinx.com/support/documentation/boards_and_kits/smartlynq/ug1258-smartlynq-cable.pdf">SmartLynq+ Module User Guide</a>.</p></li>
 </ul>
 </div>
 <div class="section" id="summary">
@@ -656,7 +655,7 @@
   <div role="contentinfo" class="copyright">
     <p class="footerinfo">
       <span class="lastupdated">
-        Last updated on December 17, 2020.
+        Last updated on January 04, 2021.
       </span>
 
     </p>
