@@ -49,10 +49,10 @@ In this example, you will configure and build Linux Operating System
 1. Create a PetaLinux project using the following command:
 
     ```bash
-    petalinux-create -t project -s <path to the xilinx-zcu102-v2020.1-final.bsp>
+    petalinux-create -t project -s <path to the xilinx-zcu102-v2020.2-final.bsp>
     ```
 
-    Note: xilinx-zcu102-v2020.1-final.bsp is the PetaLinux BSP for ZCU102 Production Silicon Rev1.0 Board.
+    Note: xilinx-zcu102-v2020.2-final.bsp is the PetaLinux BSP for ZCU102 Production Silicon Rev1.0 Board.
 
     This creates a PetaLinux project directory, xilinx-zcu102-2020.2.
 
