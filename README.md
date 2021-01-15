@@ -1,5 +1,5 @@
 <p align="right">
-            Read this page in other languages:<a href="docs-jp/readme.md">日本語</a>    
+            Read this page in other languages:<a href="docs-jp/README.md">日本語</a>    
 </p>
 
 <table style="width:100%"><table style="width:100%">
