@@ -189,12 +189,7 @@
  tool when software programming is not required. It is also a part of
  the Vitis IDE installation. Various Vivado Design Suite editions can
  be used for embedded system development. In this guide, the System
- Edition installed with the Vitis IDE is used. The Vivado Design Suite
- editions are shown in the following figure.
-
- *Figure 1:* **Vivado Design Suite Editions**
-
-![](./media/image5.png)
+ Edition installed with the Vitis IDE is used. 
 
 ### PetaLinux Tools
 
