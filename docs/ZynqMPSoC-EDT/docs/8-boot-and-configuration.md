@@ -23,15 +23,16 @@
 - [Boot and Configuration](#boot-and-configuration)
   - [System Software](#system-software)
     - [First Stage Boot Loader](#first-stage-boot-loader)
-    - [Platform Management Unit Firmware](#platform-management-unit-firmware)
+    - [Platform Management Unit Firmware (PMUFW)](#platform-management-unit-firmware-pmufw)
     - [U-Boot](#u-boot)
-    - [Arm Trusted Firmware](#arm-trusted-firmware)
-  - [Linux on APU and Bare-Metal on RPU](#linux-on-apu-and-bare-metal-on-rpu)
+    - [Arm Trusted Firmware (ATF)](#arm-trusted-firmware-atf)
+    - [Linux on APU](#linux-on-apu)
+    - [Bare-Metal on RPU](#bare-metal-on-rpu)
   - [Boot Sequence for SD-Boot](#boot-sequence-for-sd-boot)
     - [Running the Image on the ZCU102 Board](#running-the-image-on-the-zcu102-board)
   - [Boot Sequence for QSPI Boot Mode](#boot-sequence-for-qspi-boot-mode)
     - [Create Linux Images Using PetaLinux for QSPI Flash](#create-linux-images-using-petalinux-for-qspi-flash)
-    - [Bootimage Setup in Vitis](#bootimage-setup-in-vitis)
+    - [Boot image Setup in Vitis](#boot-image-setup-in-vitis)
     - [Running the Image in QSPI Boot Mode on ZCU102 Board](#running-the-image-in-qspi-boot-mode-on-zcu102-board)
       - [Set Up the ZCU102 Board](#set-up-the-zcu102-board)
   - [Boot Sequence for QSPI-Boot Mode Using JTAG](#boot-sequence-for-qspi-boot-mode-using-jtag)
@@ -50,60 +51,58 @@
 
 # Boot and Configuration
 
-This chapter shows integration of components to create a Zynq&reg;
- UltraScale+&trade; system. The purpose of this chapter is to understand how
+This chapter shows how to integrate software and hardware components generated in previous steps to create a Zynq&reg;
+ UltraScale+&trade; boot image. After reading this chapter, you will understand how
  to integrate and load boot loaders, bare-metal applications (for
- APU/RPU), and Linux Operating System for a Zynq UltraScale+ system.
+ APU/RPU), and Linux Operating System for a Zynq UltraScale+ system in different boot requirements: QSPI, SD card, JTAG, etc.
 
  The following important points are covered in this chapter:
 
--  System Software: FSBL, U-Boot, Arm&reg; trusted firmware (ATF)
-
--  Application Processing Unit (APU): Configure SMP Linux for APU
-
--   Real-time Processing Unit (RPU): Configure Bare-metal for RPU in
-     Lock-step
-
+- System Software: FSBL, PMU Firmware, U-Boot, Arm&reg; trusted firmware (ATF)
+- Application Processing Unit (APU): Configure SMP Linux for APU
+- Real-time Processing Unit (RPU): Configure Bare-metal for RPU in Lock-step
 - Create Boot Image for the following boot sequence:
 
   1. APU
-
   2. RPU Lock-step
 
 -  Create and load Secure Boot Image
 
  >***Note*:** For more information on RPU Lock-step, see *Zynq
- UltraScale+ Device Technical Reference Manual* ([UG1085](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides%3Bd%3Dug1085-zynq-ultrascale-trm.pdf)).
+ UltraScale+ Device Technical Reference Manual* ([UG1085](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug1085-zynq-ultrascale-trm.pdf)).
 
- This boot sequence also includes loading the PMU Firmware for the
- Platform Management Unit (PMU). The Vitis IDE and PetaLinux can be
- used to create boot images to fulfill different boot requirements.
- While [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md)
- focused only on creating software blocks for each processing unit in
+ While previous sections focused only on creating software blocks for each processing unit in
  the PS, this chapter explains how these blocks can be loaded as a part
  of a bigger system.
 
- To create a boot image, use the Create Boot Image wizard (Bootgen
- command line tool). The principle function of the Create Boot Image
+ To create a boot image, we can use the Create Boot Image wizard in Vitis IDE, or the Bootgen
+ command line tool. (Create Boot Image wizard calls the bootgen tool as well.) The principle function of the Create Boot Image
  wizard or Bootgen is to integrate the partitions (hardware-bitstream
- and software) and allow you to specify the security options in the
- design. It can also create cryptographic keys. Functionally, Bootgen
- uses a Bootgen Image Format (BIF) file as an input, and generates a
- single file image in binary BIN or MCS format. Bootgen outputs a
- single file image which is loaded into NVM (QSPI, SD Card). The
- Bootgen GUI facilitates the creation of the BIF input file.
+ and software) in a proper format. It allows you to specify the security options. It can also create cryptographic keys. 
+ 
+ Functionally, Bootgen uses a BIF (Bootgen Image Format) file as an input, and generates a
+ single file image in binary BIN or MCS format. It can be used to program Non-volatile memories (QSPI, SD Card). 
+ The Bootgen GUI facilitates the creation of the BIF input file.
 
+<!--TODO: decouple this page with Design Example 1-->
  This chapter makes use of a processing system block. [Design Example 1: Using GPIOs, Timers, and Interrupts](7-system-design-examples.md#design-example-1-using-gpios-timers-and-interrupts)
  covers boot image which will include the PS partitions used in this
  chapter and a bitstream targeted for PL fabric.
 
 ## System Software
 
+<!--TODO: These introductions should be more concise. 
+    User needs to understand what are they and their loading order.
+    It should be introduced in a UG.
+    But UG1137 currently doesn't provide these details in one chapter. It's not easy to refer to.
+    Keep it as is for now. Optimize later.
+-->
+
  The following system software blocks cover most of the Boot and
  Configuration for this chapter. For detailed boot flow and various
  Boot sequences, refer to the "System Boot and Configuration" chapter
  in the *Zynq UltraScale+ MPSoC: Software Developers Guide*
- ([UG1137](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1137-zynq-ultrascale-mpsoc-swdev.pdf)).
+ ([UG1137](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1137-zynq-ultrascale-mpsoc-swdev.pdf)).
 
 ### First Stage Boot Loader
 
@@ -124,7 +123,7 @@ This chapter shows integration of components to create a Zynq&reg;
  and hands off to RPU Cortex-R5F in Lockstep mode, and similarly loads
  U-Boot to be executed by APU Cortex-A53 Core-0. For more information,
  see the *Zynq UltraScale+ MPSoC: Software Developers Guide*
- ([UG1137](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1137-zynq-ultrascale-mpsoc-swdev.pdf)).
+ ([UG1137](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1137-zynq-ultrascale-mpsoc-swdev.pdf)).
 
  For this chapter, you can use the FSBL executable that you created in
  [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). In FSBL application, the
@@ -134,7 +133,7 @@ This chapter shows integration of components to create a Zynq&reg;
  the DDR initialization is done in FSBL, memory attributes for DDR
  region is changed to "Memory" so that it is cacheable.
 
-### Platform Management Unit Firmware
+### Platform Management Unit Firmware (PMUFW)
 
  The platform management unit (PMU) and the configuration security unit
  manage and perform the multi-staged booting process. The PMU primarily
@@ -143,7 +142,7 @@ This chapter shows integration of components to create a Zynq&reg;
  wake-up. The Vitis IDE provides PMU Firmware that can be built to run
  on the PMU. For more details on the Platform Management and PMU
  Firmware, see the *Zynq UltraScale+ MPSoC: Software Developers Guide*
- ([UG1137](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1137-zynq-ultrascale-mpsoc-swdev.pdf)).
+ ([UG1137](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1137-zynq-ultrascale-mpsoc-swdev.pdf)).
 
  The PMU Firmware can be loaded in the following ways:
 
@@ -153,8 +152,7 @@ This chapter shows integration of components to create a Zynq&reg;
 
 3. Loading PMU Firmware in JTAG boot mode, as described in [Boot Sequence for QSPI-Boot Mode Using JTAG](#boot-sequence-for-qspi-boot-mode-using-jtag).
 
- For more information, see the [PMU Firmware Xilinx
- Wiki](http://www.wiki.xilinx.com/PMU%2BFirmware).
+ For more information, see the [PMU Firmware Xilinx Wiki](http://www.wiki.xilinx.com/PMU%2BFirmware).
 
 ### U-Boot
 
@@ -168,11 +166,9 @@ This chapter shows integration of components to create a Zynq&reg;
 
  U-Boot can be configured and built using the PetaLinux tool flow. For
  this example, you can use the U-Boot image that you created in
- [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md) or from the
- design files shared with this document. See [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial) for information about
- downloading the design files for this tutorial.
+ [Build Linux Software for PS Subsystems](5-build-linux-sw-for-ps.md).
 
-### Arm Trusted Firmware
+### Arm Trusted Firmware (ATF)
 
  The Arm Trusted Firmware (ATF) is a transparent bare-metal application
  layer executed in Exception Level 3 (EL3) on APU. The ATF includes a
@@ -199,39 +195,30 @@ This chapter shows integration of components to create a Zynq&reg;
  For more details on ATF, refer to the "Arm Trusted Firmware" section
  in the "Security" chapter of the *Zynq UltraScale+ MPSoC: Software
  Developers Guide*
- ([UG1137](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1137-zynq-ultrascale-mpsoc-swdev.pdf)).
+ ([UG1137](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1137-zynq-ultrascale-mpsoc-swdev.pdf)).
 
-## Linux on APU and Bare-Metal on RPU
+### Linux on APU
 
- Now that the system software is configured, create Linux Images using
- PetaLinux tool flow. You already created the PetaLinux images in
- [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). For this
- example, the PetaLinux is configured to build images for SD-boot. This
- is the default boot setting in PetaLinux.
+You already created the PetaLinux images in [Build Software for PS Subsystems](5-build-linux-sw-for-ps.md). 
+For this example, the PetaLinux is configured to build images for SD-boot with initramfs root filesystem. 
+This is the default boot setting in PetaLinux.
 
- The images can be found in the `$<PetaLinux_Project>/images/linux/` directory. For loading Linux on APU, the following images will be used from PetaLinux:
+The images can be found in the `$<PetaLinux_Project>/images/linux/` directory. For loading Linux on APU, the following images will be used from PetaLinux:
 
 - ATF - `bl31.elf`
-
 - U-Boot - `u-boot.elf`
-
 -  Linux images - `image.ub`, which contains:
+    - Kernel image `Image`
+    - Device tree blob `system.dtb`
+    - Root file system `rootfs.cpio.gz.u-boot`
 
-    - Kernel image
+### Bare-Metal on RPU
 
-    - Device Tree `system.dtb`
+In addition to Linux on APU, this example also loads a bare-metal
+Application on RPU Cortex- R5F in Lockstep mode.
 
-    - File system `rootfs.cpio.gz.u-boot`
-
- In addition to Linux on APU, this example also loads a bare-metal
- Application on RPU Cortex- R5F in Lockstep mode.
-
- For this example, refer the testapp_r5 application that you created in
- [Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU](4-build-sw-for-ps-subsystems.md#create-custom-bare-metal-application-for-arm-cortex-r5-based-rpu).
-
- Alternatively, you can also find the testapp_r5.elf executable in the
- design files that accompany this tutorial. See [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial) for information about
- downloading the design files for this tutorial.
+For this example, refer the testapp_r5 application that you created in
+[Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU](4-build-sw-for-ps-subsystems.md#create-custom-bare-metal-application-for-arm-cortex-r5-based-rpu).
 
 ## Boot Sequence for SD-Boot
 
@@ -240,7 +227,9 @@ This chapter shows integration of components to create a Zynq&reg;
  using the Create Boot Image wizard in the Vitis IDE, using the
  following steps:
 
-1. In the Vitis IDE, select **Xilinx → Create Boot Image**.
+1. Launch Create Boot Image wizard in Vitis IDE.
+
+   - In the Vitis IDE, select **Xilinx → Create Boot Image**.
 
 2. Select all the partitions referred in earlier sections in this
      chapter, and set them as shown in the following figure.
@@ -427,7 +416,7 @@ This chapter shows integration of components to create a Zynq&reg;
  configuration of PetaLinux to generate Linux images for QSPI flash.
  For more information about the dependencies for PetaLinux 2020.2, see
  the *PetaLinux Tools Documentation: Reference Guide*
- ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
+ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)).
 
 1. Before starting this example, create a backup of the boot images
      created for SD card setup using the following commands:
@@ -502,9 +491,9 @@ This chapter shows integration of components to create a Zynq&reg;
 
  ***Note*:** For more information, refer to the *PetaLinux Tools
  Documentation: Reference Guide*
- ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
+ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)).
 
-### Bootimage Setup in Vitis
+### Boot image Setup in Vitis
 
 1. If the Vitis IDE is not already running, start it and set the
      workspace as indicated in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md).
@@ -517,8 +506,7 @@ This chapter shows integration of components to create a Zynq&reg;
 
 5. Ensure that the Output format is set to BIN.
 
-6. In the Basic page, browse to and
-     select the **Output BIF** file path and output path.
+6. In the Basic page, browse to and select the **Output BIF** file path and output path.
 
      ![](./media/image64.png)
 
@@ -674,7 +662,7 @@ This chapter shows integration of components to create a Zynq&reg;
  Firmware for PMU as witnessed in the earlier section. For more details
  on PMU Firmware, refer to the "Platform Management" chapter in the
  *Zynq UltraScale+ MPSoC: Software Developers Guide*
- ([UG1137](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1137-zynq-ultrascale-mpsoc-swdev.pdf)).
+ ([UG1137](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1137-zynq-ultrascale-mpsoc-swdev.pdf)).
 
 ### Running the Image in QSPI Boot Mode on ZCU102 Board
 
