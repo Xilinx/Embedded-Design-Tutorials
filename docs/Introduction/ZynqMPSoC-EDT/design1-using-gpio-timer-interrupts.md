@@ -419,7 +419,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 5. Add the partitions as shown in the following figure.
 
-    >***Note*:** For detailed steps on how to add partitions, see [Boot Sequence for SD-Boot](6-boot-and-configuration.md#boot-sequence-for-sd-boot).
+    >***Note*:** For detailed steps on how to add partitions, see [Boot Sequence for SD-Boot](8-boot-and-configuration.md#boot-sequence-for-sd-boot).
 
     ![](./media/image112.png)
 

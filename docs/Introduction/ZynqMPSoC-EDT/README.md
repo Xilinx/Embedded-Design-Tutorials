@@ -46,13 +46,13 @@
  on the Linux host machine to execute the Linux portions of this document.
 
  [Zynq UltraScale+ MPSoC Processing System
- Configuration](./docs/3-system-configuration.md) describes the creation of a system with the
+ Configuration](3-system-configuration.md) describes the creation of a system with the
  Zynq UltraScale+ MPSoC Processing System (PS) and the creation of a
  hardware platform for Zynq UltraScale+ MPSoC. This chapter is an
  introduction to the hardware and software tools using a simple design
  as the example.
 
- [Build Software for PS Subsystems](./docs/4-build-sw-for-ps-subsystems.md) describes
+ [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md) describes
  the steps to configure and build software for processing blocks in
  processing system, including application processing unit (APU),
  real-time processing unit (RPU). Steps to create bare metal
@@ -60,21 +60,21 @@
  and conducting a review of boot components in hardware platform is
  also included.
 
- [Debugging with the Vitis Debugger](./docs/5-debugging-with-vitis-debugger.md) provides an
+ [Debugging with the Vitis Debugger](6-debugging-with-vitis-debugger.md) provides an
  introduction to debugging software using the debug features of the
  Vitis IDE. This chapter uses the previous design and runs the software
  bare metal (without an OS) to demonstrate the debugging process. This
  chapter also lists the debug configurations for Zynq UltraScale+
  MPSoC.
 
- [Boot and Configuration](./docs/6-boot-and-configuration.md) shows integration of
+ [Boot and Configuration](8-boot-and-configuration.md) shows integration of
  components to configure and create boot images for a Zynq UltraScale+
  system. The purpose of this chapter is to understand how to integrate
  and load boot loaders.
 
- [System Design Examples](./docs/7-system-design-examples.md) highlights how you
+ [System Design Examples](design1-using-gpio-timer-interrupts.md) highlights how you
  can use the software blocks you configured in [Build
- Software for PS Subsystems](./docs/4-build-sw-for-ps-subsystems.md) to create a Zynq UltraScale+ system.
+ Software for PS Subsystems](4-build-sw-for-ps-subsystems.md) to create a Zynq UltraScale+ system.
 
 ## Example Project
 
@@ -172,7 +172,7 @@
  For more information about the Vitis unified software platform, see
  *Vitis Unified Software Platform Documentation: Embedded Software
  Development*
- ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1400-vitis-embedded.pdf)).
+ ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1400-vitis-embedded.pdf)).
 
  Other components include:
 
@@ -200,7 +200,7 @@
 
  For more information, see the *PetaLinux Tools Documentation:
  Reference Guide*
- ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
+ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)).
 
  The PetaLinux tools design hub provides information and links to
  documentation specific to PetaLinux tools. For more information, see
@@ -230,10 +230,10 @@
 
  For more information on the embedded design process, refer to the
  *Vivado Design Suite Tutorial: Embedded Processor Hardware Design*
- ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug940-vivado-tutorial-embedded-design.pdf)).
+ ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug940-vivado-tutorial-embedded-design.pdf)).
 
  For more information about the Zynq UltraScale+ Processing System,
  refer to the *Zynq UltraScale + MPSoC Processing System LogiCORE IP Product Guide*
- ([PG201](https://www.xilinx.com/cgi-bin/docs/ipdoc?c=zynq_ultra_ps_e%3Bv%3Dlatest%3Bd%3Dpg201-zynq-ultrascale-plus-processing-system.pdf)).
+ ([PG201](https://www.xilinx.com/cgi-bin/docs/ipdoc?c=zynq_ultra_ps_e;v=latest;d=pg201-zynq-ultrascale-plus-processing-system.pdf)).
 
  © Copyright 2017-2020 Xilinx, Inc.

@@ -31,7 +31,7 @@ In this example, you will configure and build Linux Operating System
     project. Ensure that you have downloaded the ZCU102 BSP for
     PetaLinux as instructed in [PetaLinux Tools download page][2].
 
-[1]: https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf
+[1]: https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf
 [2]: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html
 [3]: https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu102-v2020.2-final.bsp
 

@@ -342,7 +342,7 @@ Cortex-A53 application and Cortex-R5F application will be organized in one syste
 
  In this session, you will create a bare-metal application for
  Arm Cortex-R5F based RPU. You will need to import
- the application source files available in the [ref_files](../ref_files/system_project_example) directory.
+ the application source files available in the [ref_files](ref_files/system_project_example) directory.
 
 1. Create an empty bare-metal application for Cortex-R5F Core 0 in hello_system system project
 

@@ -141,7 +141,7 @@ This chapter shows how to integrate software and hardware components generated i
 
 3. Loading PMU Firmware in JTAG boot mode, as described in [Boot Sequence for QSPI-Boot Mode Using JTAG](#boot-sequence-for-qspi-boot-mode-using-jtag).
 
- For more information, see the [PMU Firmware Xilinx Wiki](http://www.wiki.xilinx.com/PMU%2BFirmware).
+ For more information, see the [PMU Firmware Xilinx Wiki](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841724/PMU+Firmware).
 
 ### U-Boot
 
