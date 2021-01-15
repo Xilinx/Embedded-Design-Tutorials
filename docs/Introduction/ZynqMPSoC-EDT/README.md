@@ -8,9 +8,9 @@
   </tr>
   <tr>
     <td width="17%" align="center">1. Introduction</td>
-    <td width="16%" align="center"><a href="./docs/2-getting-started.md">2. Getting Started</a></td>
-    <td width="17%" align="center"><a href="./docs/3-system-configuration.md">3. Zynq UltraScale+ MPSoC System Configuration</a></td>
-    <td width="17%" align="center"><a href="./docs/4-build-sw-for-ps-subsystems.md">4. Build Software for PS Subsystems</a></td>
+    <td width="16%" align="center"><a href="2-getting-started.md">2. Getting Started</a></td>
+    <td width="17%" align="center"><a href="3-system-configuration.md">3. Zynq UltraScale+ MPSoC System Configuration</a></td>
+    <td width="17%" align="center"><a href="4-build-sw-for-ps-subsystems.md">4. Build Software for PS Subsystems</a></td>
 </tr>
 <tr>
     <td width="17%" align="center"><a href="5-build-linux-sw-for-ps.md">5. Building Linux Applications for PS</a></td>

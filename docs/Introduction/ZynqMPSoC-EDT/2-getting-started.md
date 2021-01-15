@@ -6,18 +6,7 @@
 </th>
 
   </tr>
-  <tr>
-    <td width="17%" align="center"><a href="../README.md">1. Introduction</a></td>
-    <td width="16%" align="center">2. Getting Started</td>
-    <td width="17%" align="center"><a href="3-system-configuration.md">3. Zynq UltraScale+ MPSoC System Configuration</a></td>
-    <td width="17%" align="center"><a href="4-build-sw-for-ps-subsystems.md">4. Build Standalone Software for PS Subsystems</a></td>
-</tr>
-<tr>
-    <td width="17%" align="center"><a href="5-build-linux-sw-for-ps.md">5. Building Linux Applications for PS</a></td>
-    <td width="16%" align="center"><a href="6-debugging-with-vitis-debugger.md">6. Debugging Standalone Applications</a></td>
-    <td width="17%" align="center"><a href="7-debugging-linux-app.md">7. Debugging Linux Applications</a></td>
-    <td width="17%" align="center"><a href="8-boot-and-configuration.md">8. Boot and Configuration</a></td>    
-  </tr>
+
 </table>
 
 - [Getting Started](#getting-started)
