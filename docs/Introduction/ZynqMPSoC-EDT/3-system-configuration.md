@@ -11,12 +11,14 @@
 
 - [Zynq UltraScale+ MPSoC Processing System Configuration](#zynq-ultrascale-mpsoc-processing-system-configuration)
   - [Zynq UltraScale+ System Configuration](#zynq-ultrascale-system-configuration)
-  - [Example Project: Creating a New Embedded Project with Zynq UltraScale+ MPSoC](#example-project-creating-a-new-embedded-project-with-zynq-ultrascale-mpsoc)
+  - [Example Project 1: Creating a New Embedded Project with Zynq UltraScale+ MPSoC](#example-project-1-creating-a-new-embedded-project-with-zynq-ultrascale-mpsoc)
+    - [Design Input and Output files](#design-input-and-output-files)
     - [Starting Your Design](#starting-your-design)
     - [Creating a Block Design Project](#creating-a-block-design-project)
     - [Managing the Zynq UltraScale+ Processing System in Vivado](#managing-the-zynq-ultrascale-processing-system-in-vivado)
     - [Validating the Design and Connecting Ports](#validating-the-design-and-connecting-ports)
-    - [Exporting Hardware Platform](#exporting-hardware-platform)
+    - [Exporting Hardware](#exporting-hardware)
+    - [Example Summary](#example-summary)
 
 # Zynq UltraScale+ MPSoC Processing System Configuration
 
@@ -44,10 +46,19 @@
  through creating a simple PS-based design that does not require a
  bitstream.
 
-## Example Project: Creating a New Embedded Project with Zynq UltraScale+ MPSoC
+## Example Project 1: Creating a New Embedded Project with Zynq UltraScale+ MPSoC
 
- For this example, you will launch the Vivado Design Suite and create a
- project with an embedded processor system as the top level.
+For this example, you will launch the Vivado Design Suite and create a project with an embedded processor system as the top level.
+
+### Design Input and Output files
+
+This example design requires no input files. We will create the Vivado design from scratch. The design includes the Processing System module of MPSoC. We will not add any PL IPs in this example design, thus this design won't need to run through implementation and bitstream generation.
+
+The output of this example design is the hardware configuration XSA. We will use it for further software development.
+
+- Input: N/A
+- Output: edt_zcu102_wrapper.xsa
+
 
 ### Starting Your Design
 
@@ -244,7 +255,7 @@
 
     ![Generated output products](./media/image19.png)
 
-### Exporting Hardware Platform
+### Exporting Hardware
 
 To write a hardware platform using the GUI, follow these steps:
 
@@ -259,6 +270,12 @@ To write a hardware platform using the GUI, follow these steps:
 
      ![Files window for Export Hardware](./media/image20.png)
 
-5. Click **Finish** to generate the hardware platform file in the specified path.
+5. Click **Finish** to generate the hardware platform file in the specified path. It will be the input file of next examples.
+
+### Example Summary
+
+In this example, we created a Vivado design with Processing System of MPSoC and configured it for ZCU102 board. We exported the hardware XSA file for next software development example projects. [Please go to next chapter](./4-build-sw-for-ps-subsystems.md) to learn how to develop software based on the hardware we created in this example.
+
+
 
 © Copyright 2017-2020 Xilinx, Inc.
