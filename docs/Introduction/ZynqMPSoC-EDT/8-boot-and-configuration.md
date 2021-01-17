@@ -80,13 +80,6 @@ This chapter shows how to integrate software and hardware components generated i
 
 ## System Software
 
-<!--TODO: These introductions should be more concise. 
-    User needs to understand what are they and their loading order.
-    It should be introduced in a UG.
-    But UG1137 currently doesn't provide these details in one chapter. It's not easy to refer to.
-    Keep it as is for now. Optimize later.
--->
-
  The following system software blocks cover most of the Boot and
  Configuration for this chapter. For detailed boot flow and various
  Boot sequences, refer to the "System Boot and Configuration" chapter
@@ -459,11 +452,9 @@ For this example, refer the testapp_r5 application that you created in
     need basis.
 
     b.  Based on this, the offset for Linux Images is calculated as
-        0x1E40000 in QSPI Flash device. This will be used in [Boot and Configuration](6-boot-and-configuration.md), while creating Boot image
-        for QSPI Boot-mode.
+        0x1E40000 in QSPI Flash device. This will be used while creating Boot image for QSPI Boot-mode.
 
-    The following steps will set the Linux System Memory Size to about
-    1.79 GB.
+    The following steps will set the Linux System Memory Size to about 1.79 GB.
 
 8. Under Subsystem AUTO Hardware Settings, do the following:
 
@@ -475,8 +466,7 @@ For this example, refer the testapp_r5 application that you created in
 
 10. Rebuild using the `petalinux-build` command.
 
-11. Take a backup of u-boot.elf and the other images. These will be used
-     in [Boot and Configuration](6-boot-and-configuration.md).
+11. Take a backup of u-boot.elf and the other images. These will be used when creating boot images.
 
  ***Note*:** For more information, refer to the *PetaLinux Tools
  Documentation: Reference Guide*
@@ -1080,7 +1070,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 5. Power ON the board.
 
  The following steps will load the boot images via USB using DFU
- utility, which can be found in `VITIS\2019.1\tps\lnx64\dfu-util-0.9`.
+ utility, which can be found in `Vitis\2020.2\tps\lnx64\dfu-util-0.9`.
 
  Alternatively you can also install DFU utility on the Linux using
  Package Manager supported by Linux Distribution.
@@ -1094,30 +1084,32 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
     The USB device should be enumerated with VendorId: ProductId which is
     `03fd:0050`. You should see something like the following message:
 
-    ```Found DFU: [03fd:0050] ver=0100, devnum=30, cfg=1, intf=0, alt=0,
+    ```
+    Found DFU: [03fd:0050] ver=0100, devnum=30, cfg=1, intf=0, alt=0,
     name="Xilinx DFU Downloader", serial="2A49876D9CC1AA4"
     ```
 
     >***Note*:** If you do not see the 'Found DFU' message, verify the
     connection and retry.
 
-2. Now download the BOOT.bin that was created in [Creating Boot Images
-     for USB Boot](#creating-boot-images-for-usb-boot).
+2. Now download the BOOT.bin that was created in [Creating Boot Images for USB Boot](#creating-boot-images-for-usb-boot).
 
-    `$ sudo dfu-util -d 03fd:0050 -D <USB_Boot_Image_Path>/Boot.bin`
+    ```
+    $ sudo dfu-util -d 03fd:0050 -D <USB_Boot_Image_Path>/Boot.bin
+    ```
 
     Verify from Serial Terminal if the FSBL is loaded successfully.
 
 3. Now download the usb_boot.bin. Before this, start another terminal
      session for UART-1 serial console.
 
-    `$ sudo dfu-util -d 03fd:0050 -D <USB_Boot_Image_Path>/usb_boot.bin`
+    ```
+    $ sudo dfu-util -d 03fd:0050 -D <USB_Boot_Image_Path>/usb_boot.bin
+    ```
 
     Check UART 0 terminal and wait until U-Boot loads.
 
-4. On U-Boot prompt, type **Enter** to terminate autoboot. Verify from
-     the UART1 console that the R5 application is also loaded
-     successfully.
+4. On U-Boot prompt, type **Enter** to terminate autoboot. Verify from the UART1 console that the R5 application is also loaded   successfully.
 
 5. Run the following commands to setup the dfu environment in the
      U-Boot command line:
@@ -1132,12 +1124,16 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
 6. In U-Boot console start DFU_RAM to enable downloading Linux Images
 
-    `U-boot\ run dfu_ram`
+    ```
+    U-boot\ run dfu_ram
+    ```
 
 7. Download the Linux image Image.ub using the following command from
      the host machine terminal:
 
-    `$ sudo dfu-util -d 03fd:0300 -D <PetaLinux_project>/images/linux/image.ub -a 0`
+    ```
+    $ sudo dfu-util -d 03fd:0300 -D <PetaLinux_project>/images/linux/image.ub -a 0
+    ```
 
 8. Now execute **CTRL+C** on U-Boot console to stop dfu_ram.
 
@@ -1161,7 +1157,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
     `> dfu-util.exe -l`
 
-    >***Note*:** `dfu-util.exe` can be found in `<VITIS_Installation_path>\VITIS\2020.1\tps\Win64\dfu-util-0.9\dfu-util.exe`
+    >***Note*:** `dfu-util.exe` can be found in `<VITIS_Installation_path>\VITIS\2020.2\tps\Win64\dfu-util-0.9\dfu-util.exe`
 
 3. The USB device should be enumerated with VendorId: ProductId which
      is `03fd:0050`.
