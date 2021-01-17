@@ -11,7 +11,7 @@
 
 - [Zynq UltraScale+ MPSoC Processing System Configuration](#zynq-ultrascale-mpsoc-processing-system-configuration)
   - [Zynq UltraScale+ System Configuration](#zynq-ultrascale-system-configuration)
-  - [Example Project 1: Creating a New Embedded Project with Zynq UltraScale+ MPSoC](#example-project-1-creating-a-new-embedded-project-with-zynq-ultrascale-mpsoc)
+  - [Example 1: Creating a New Embedded Project with Zynq UltraScale+ MPSoC](#example-1-creating-a-new-embedded-project-with-zynq-ultrascale-mpsoc)
     - [Design Input and Output files](#design-input-and-output-files)
     - [Starting Your Design](#starting-your-design)
     - [Creating a Block Design Project](#creating-a-block-design-project)
@@ -46,7 +46,7 @@
  through creating a simple PS-based design that does not require a
  bitstream.
 
-## Example Project 1: Creating a New Embedded Project with Zynq UltraScale+ MPSoC
+## Example 1: Creating a New Embedded Project with Zynq UltraScale+ MPSoC
 
 For this example, you will launch the Vivado Design Suite and create a project with an embedded processor system as the top level.
 

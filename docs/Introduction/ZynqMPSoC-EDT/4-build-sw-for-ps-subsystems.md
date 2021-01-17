@@ -10,8 +10,11 @@
 </table>
 
 - [Build Standalone Software for PS Subsystems](#build-standalone-software-for-ps-subsystems)
-  - [Creating a Platform Project Using Vitis IDE](#creating-a-platform-project-using-vitis-ide)
-  - [Example Project 1: Running the "Hello World" Application from Arm Cortex-A53](#example-project-1-running-the-hello-world-application-from-arm-cortex-a53)
+  - [Example 2: Creating a Platform Project Using Vitis IDE](#example-2-creating-a-platform-project-using-vitis-ide)
+    - [Example Input and Output Files](#example-input-and-output-files)
+    - [Create the Platform Project](#create-the-platform-project)
+  - [Example 3: Running the "Hello World" Application from Arm Cortex-A53](#example-3-running-the-hello-world-application-from-arm-cortex-a53)
+    - [Input and Output Files](#input-and-output-files)
     - [Board Setup](#board-setup)
     - [Connect Serial Port](#connect-serial-port)
     - [Create Hello World Application on ARM Cortex-A53](#create-hello-world-application-on-arm-cortex-a53)
@@ -22,7 +25,14 @@
     - [Domain](#domain)
     - [Board Support Package](#board-support-package)
     - [Standalone BSP](#standalone-bsp)
-  - [Example Project 2: Create a Bare-Metal System Application Project in the Vitis IDE](#example-project-2-create-a-bare-metal-system-application-project-in-the-vitis-ide)
+  - [Example 4: Running the "Hello World" Application from Arm Cortex-R5](#example-4-running-the-hello-world-application-from-arm-cortex-r5)
+    - [Input and Output Files](#input-and-output-files-1)
+    - [Creating a standalone BSP Domain for cortexr5_0](#creating-a-standalone-bsp-domain-for-cortexr5_0)
+      - [What Just Happened?](#what-just-happened-1)
+    - [Creating Hello World Application on ARM Cortex-R5F](#creating-hello-world-application-on-arm-cortex-r5f)
+    - [Run Hello World Application on ARM Cortex-R5F](#run-hello-world-application-on-arm-cortex-r5f)
+  - [Example 5: Create a Bare-Metal System Application Project in the Vitis IDE](#example-5-create-a-bare-metal-system-application-project-in-the-vitis-ide)
+    - [Input and Output Files](#input-and-output-files-2)
     - [Modify the Application Source Code of hello_a53](#modify-the-application-source-code-of-hello_a53)
     - [Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU](#create-custom-bare-metal-application-for-arm-cortex-r5-based-rpu)
     - [Modifying the Linker Script for testapp_r5](#modifying-the-linker-script-for-testapp_r5)
@@ -40,7 +50,7 @@ subsystems.
 In previous chapter, [Zynq UltraScale+ MPSoC Processing System Configuration](3-system-configuration.md), you created and exported the hardware
 design from Vivado. The exported XSA file contains the hardware
 handoff, the processing system initialization (psu_init),
-and the PL bitstream. In this chapter, you will import the XSA to the Vitis™ IDE to configure software for the processing system.
+and the PL bitstream (if hardware is exported as post-implementation). In this chapter, you will import the XSA to the Vitis™ IDE to configure software for the processing system.
 
 You will use the Vitis IDE to perform the following tasks:
 
@@ -50,7 +60,7 @@ You will use the Vitis IDE to perform the following tasks:
 
 3. Create a system project for APU and RPU.
 
-## Creating a Platform Project Using Vitis IDE
+## Example 2: Creating a Platform Project Using Vitis IDE
 
 The main processing units in the processing system in Zynq UltraScale+ are listed below.
 
@@ -60,6 +70,15 @@ The main processing units in the processing system in Zynq UltraScale+ are liste
 - **Platform Management Unit (PMU):** Xilinx MicroBlaze based platform management unit.
 
 The platform project reads in hardware info from XSA file and contains the runtime environment for the above processing units. Application software can link against the libraries generated in the platform project. 
+
+### Example Input and Output Files
+
+- Input: hardware handoff XSA file (edt_zcu102_wrapper.xsa)
+- Output: 
+  - Standalone BSP libraries for ARM Cortex-A53
+  - Boot components (FSBL: zynqmp.elf and PMUFW: pmufw.elf)
+
+### Create the Platform Project
 
 Here are the steps of creating a platform project with a standalone domain for Arm Cortex-A53.
 
@@ -118,14 +137,19 @@ Here are the steps of creating a platform project with a standalone domain for A
     The platform project is ready. You can create applications using this
     platform and test on zcu102 hardware.
 
-    > Note: The project build process will build the standlaone BSP, FSBL and PMUFW. FSBL and PMUFW has their own BSP. The build process will take some time.
+    > Note: The project build process will build the standalone BSP, FSBL and PMUFW. FSBL and PMUFW has their own BSP. The build process will take some time.
 
-## Example Project 1: Running the "Hello World" Application from Arm Cortex-A53
+## Example 3: Running the "Hello World" Application from Arm Cortex-A53
 
  In this example, you will learn how to manage the board settings, make
  cable connections, connect to the board through your PC, and run a
  simple hello world software application from Arm Cortex-A53 in JTAG
  mode using System Debugger in the Vitis IDE.
+
+### Input and Output Files
+
+- Input: standalone BSP libraries in the platform created by Example 2
+- Output: hello.elf for ARM Cortex-A53 
 
 ### Board Setup
 
@@ -251,12 +275,14 @@ Could you create a "Hello World" application for Arm Cortex-R5F and launch it th
 
 **Hints**:
 
-1. In the New Project Wizard, you need to select proper target processor.
+1. In the platform project, you will need to create a domain for ARM Cortex-R5 processor.
+2. In the New Project Wizard, you need to select proper target processor.
 
+We will explain the workflow in next example.
 
 ## Additional Information
 
-Here's some explantion of the terms we used above.
+Here's some explanation of the terms we used above.
 
 ### Domain
 
@@ -292,15 +318,123 @@ available domains for this application.
  profiling, abort, and exit. It is a single threaded semi-hosted
  environment.
 
-## Example Project 2: Create a Bare-Metal System Application Project in the Vitis IDE
+## Example 4: Running the "Hello World" Application from Arm Cortex-R5
 
-In this example, we will do update the hello_system project we created in Example Project 1
+In this example, you will learn how to run a simple hello world software application for the Arm Cortex-R5F processor in the JTAG mode using System Debugger in the Vitis IDE.
+
+The application for Cortex-R5F needs a domain for cortexr5_0. We will create it in the zcu102_edt platform and reuse it for the new application. We will create the Cortex-R5F application with the updated zcu102_edt platform.
+
+The hardware setup and serial console connection is the same as Example 2.  
+
+### Input and Output Files
+
+- Inputs: zcu102_edt platform with standalone domain on ARM Cortex-A53
+- Outputs: zcu102_edt platform with standalone domain on ARM Cortex-A53 and Cortex-R5F processors
+
+
+### Creating a standalone BSP Domain for cortexr5_0
+
+In this step, we will prepare for the next example design: running a Hello World application on Arm Cortex-R5. We will create a standalone BSP domain for cortexr5_0. Please follow these steps:
+
+1. Double-click `platform.spr`. The platform opens in the Explorer view.
+
+2. Click in the top-right corner to add a domain ![Add Icon](./media/image31.png).
+
+3. Create a domain with the following settings:
+
+    *Table 4:* **Settings to Create a New Domain**
+
+   |  System Properties                |  Setting or Command to Use      |
+   |-----------------------------------|---------------------------------|
+   | Name                              | standalone_r5                  |
+   | Display name                      | standalone_r5                  |
+   | OS                                | Standalone                      |
+   | Version                           | Standalone (7.3)                |
+   | Processor                         | psu_cortexr5_0                  |
+   | Supported Runtime                 | C/C++                           |
+   | Architecture                      | 32-bit                          |
+
+4.  The Vitis IDE creates a new domain and **standalone_r5** appears under
+     the **zcu102_edt** platform.
+
+#### What Just Happened?
+
+The edt_zcu102_wrapper platform is, by default, assigned the default domain for psu_cortexa53_0. We created a new domain for cortexr5_0 in this platform..
+
+
+### Creating Hello World Application on ARM Cortex-R5F
+
+1. Select **File→ New → Application Project**. The Create new
+     application project wizard welcome screen opens.
+
+2. Click **Next**.
+
+3. Use the information in the table below to make your selections in
+     the wizard screens.
+
+    *Table 3*: **New Application Project Settings for Standalone APU Application**
+
+     | Wizard Screen               | System Properties               | Settings                      |
+     |-----------------------------|---------------------------------|-------------------------------|
+     | Platform                    | Select platform from repository | zcu102_edt            |
+     | Application project details | Application project name        | hello_r5                      |
+     |                             | System project name             | hello_system               |
+     |                             | Target processor                | psu_cortexr5_0               |
+     | Domain                      | Domain                          | standalone_r5 |
+     | Templates                   | Available templates             | Hello World                   |
+
+    The Vitis IDE creates the **hello_r5_system** project in the Explorer view. **hello_r5** sits inside **hello_r5_system**.
+
+
+5. Select hello_r5_system and click hammer icon on the tool bar to build the system project.
+
+### Run Hello World Application on ARM Cortex-R5F
+
+1.  Right-click **hello_r5** and select **Run as → Run Configurations**.
+
+2.  Right-click **Xilinx Application Debugger** and click **New Configuration**.
+
+    The Vitis IDE creates the new run configuration, named
+    Debugger_hello_r5-Default. The configurations associated with
+    the application are pre-populated in the Main page of the launch
+    configurations.
+
+3.  Click the **Target Setup** page and review the settings.
+
+    This file is exported when you create the platform using the Vitis
+    IDE; it contains the initialization information for the processing
+    system.
+
+4.  Click **Run**.
+
+    ![](./media/image30.png)
+
+    "Hello World" appears on the serial
+    communication utility in Terminal 1, as shown in the following figure.
+
+    >***Note*:** There was no bitstream download required for the above
+    software application to be executed on the Zynq UltraScale+ evaluation
+    board. The Arm Cortex-R5F dual core is already present on the board.
+    Basic initialization of this system to run a simple application is
+    done by the device initialization Tcl script.
+
+## Example 5: Create a Bare-Metal System Application Project in the Vitis IDE
+
+Vitis IDE can organize application projects that need to run at the same time in one system project. It's useful in project organization and make debugging easier when ARM Cortex-A53 and ARM Cortex-R5F needs to run simultaneously.
+
+In this example, we will do update the hello_system project we created in Example 3
 
 - Modify the source code hello world application source code
 - Import prepared source codes for Arm Cortex-R5F
 - Adjust the linker script
 
-Cortex-A53 application and Cortex-R5F application will be organized in one system application. They can be launched simultaneously.
+### Input and Output Files
+
+- Input: 
+  - Platform: zcu102_edt with standalone domains for ARM Cortex-A53 and ARM Cortex-R5F
+  - Source code for ARM Cortex-R5F: [ref_files/example5/testapp_r5.c](./ref_files/example5/testapp_r5.c)
+- Output:
+  - System project hello_system that includes hello_a53 and testapp_r5 applications
 
 ### Modify the Application Source Code of hello_a53
 
@@ -340,9 +474,7 @@ Cortex-A53 application and Cortex-R5F application will be organized in one syste
 
 ### Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU
 
- In this session, you will create a bare-metal application for
- Arm Cortex-R5F based RPU. You will need to import
- the application source files available in the [ref_files](ref_files/system_project_example) directory.
+We will create a bare-metal application for Arm Cortex-R5F. The application source files are provided in ref_files/example5 directory. We will import it.
 
 1. Create an empty bare-metal application for Cortex-R5F Core 0 in hello_system system project
 
@@ -372,7 +504,7 @@ Cortex-A53 application and Cortex-R5F application will be organized in one syste
 
    - Right-click the **testapp_r5**, and select **Import Sources** to open the Import view.
 
-   - On the line of **From directory**, select **Browse** and navigate to the design files folder (ref_files/system_project_example).
+   - On the line of **From directory**, select **Browse** and navigate to the design files folder (ref_files/example5).
 
    - Click **OK**.
 
@@ -380,6 +512,7 @@ Cortex-A53 application and Cortex-R5F application will be organized in one syste
 
    - Click **Finish**.
 
+   <!--TODO: update screenshot-->
    ![Vitis import source files](./media/vitis_import_source.png)
 
 
