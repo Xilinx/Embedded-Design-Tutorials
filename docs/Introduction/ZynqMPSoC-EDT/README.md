@@ -36,9 +36,7 @@
  and conducting a review of boot components in hardware platform is
  also included.
 
-5. [Building Linux Applications for PS](./5-build-linux-sw-for-ps.md)
-
-6. [Debugging Standalone Applications](./6-debugging-with-vitis-debugger.md)
+5. [Debugging Standalone Applications](./6-debugging-with-vitis-debugger.md)
 
     This chapter provides an
  introduction to debugging software using the debug features of the
@@ -47,13 +45,15 @@
  chapter also lists the debug configurations for Zynq UltraScale+
  MPSoC.
 
-7. [Debugging Linux Applications](./7-debugging-linux-app.md)
+6. [Building and Debugging Linux Applications](./5-build-linux-sw-for-ps.md)
+   
+   This chapter creates a Linux image with PetaLinux and creates a hello world Linux application with Vitis IDE. It also showed how to debug Linux applications with Vitis IDE.
+ 
+7. [System Design Example: Using GPIO, Timer and Interrupts](./design1-using-gpio-timer-interrupts.md)
 
-8. [System Design Example: Using GPIO, Timer and Interrupts](./design1-using-gpio-timer-interrupts.md)
+    This chapter added some IPs in PL. It demonstrates how you can use the software blocks you configured in previous chapters to create a complex Zynq UltraScale+ system.
 
-    This chapter highlights how you can use the software blocks you configured in previous chapters to create a complex Zynq UltraScale+ system.
-
-9. [Boot and Configuration](./8-boot-and-configuration.md)
+8. [Boot and Configuration](./8-boot-and-configuration.md)
 
     This chapter shows integration of components to configure and create boot images for a Zynq UltraScale+ system. The purpose of this chapter is to understand how to integrate and load boot loaders.
 

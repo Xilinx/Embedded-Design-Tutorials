@@ -9,7 +9,7 @@
 
 </table>
 
-- [Build Linux Applications for PS](#build-linux-applications-for-ps)
+- [Build and Debug Linux Applications](#build-and-debug-linux-applications)
   - [Example 6: Create Linux Images and Applications using PetaLinux](#example-6-create-linux-images-and-applications-using-petalinux)
     - [Input and Output Files](#input-and-output-files)
     - [Create PetaLinux Image](#create-petalinux-image)
@@ -20,7 +20,7 @@
     - [Debug Linux Application from Vitis IDE](#debug-linux-application-from-vitis-ide)
   - [Summary](#summary)
 
-# Build Linux Applications for PS
+# Build and Debug Linux Applications
 
 The earlier examples highlighted creation of the bootloader images and bare-metal applications for APU, RPU, and PMU using the Vitis IDE. In this chapter, we will introduce how to develop Linux applications.
 

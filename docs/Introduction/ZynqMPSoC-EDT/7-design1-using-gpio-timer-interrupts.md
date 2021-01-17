@@ -1,23 +1,25 @@
+<p align="right">
+            Read this page in other languages:<a href="">日本語</a>    <table style="width:100%"><table style="width:100%">
+  <tr>
+
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+</th>
+
+  </tr>
+
+</table>
+
 # Design Example 1: Using GPIOs, Timers, and Interrupts
 
- The Zynq ZCU102 UltraScale+ Evaluation Board comes with a few user
- configurable Switches and LEDs. This design example makes use of
- bare-metal and Linux applications to toggle these LEDs, with the
- following details:
+The Zynq ZCU102 UltraScale+ Evaluation Board comes with a few user configurable Switches and LEDs. This design example makes use of bare-metal and Linux applications to toggle these LEDs, with the following details:
 
-- The Linux applications configure a set of PL LEDs to toggle using a
-     PS Dip Switch, and another set of PL LEDs to toggle using a PL Dip
-     Switch (SW17).
+- The Linux APU runs Linux, while the RPU R5-0 hosts another bare-metal application.
 
-- The Linux APU A-53 Core 0 hosts this Linux application, while the
-     RPU R5-0 hosts another bare-metal application.
+- The Linux applications configure a set of PL LEDs to toggle using a PS Dip Switch, and another set of PL LEDs to toggle using a PL Dip Switch (SW17).
 
-- The R5-Core 0 application uses an AXI Timer IP in Programmable logic
-     to toggle PS LED (DS50). The application is configured to toggle
-     the LED state every time the timer counter expires, and the Timer
-     in the PL is set to reset periodically after a user-configurable
-     time interval. The system is configured such that the APU Linux
-     Application and RPU Bare-metal Application run simultaneously.
+- The R5-Core 0 application uses an AXI Timer IP in Programmable logic to toggle PS LED (DS50). The application is configured to toggle the LED state every time the timer counter expires, and the Timer in the PL is set to reset periodically after a user-configurable time interval. 
+
+- The system is configured such that the APU Linux Application and RPU Bare-metal Application run simultaneously.
 
 ## Configuring Hardware
 
@@ -229,9 +231,9 @@ We will run implementation of the Vivado design and export the post-implementati
      You will also need to configure PetaLinux to create images for SD
      boot.
 
-2. Repeat steps 2 to 13 as described in [Example Project: Create Linux Images using PetaLinux](4-build-sw-for-ps-subsystems.md#example-project-create-linux-images-using-petalinux) to update the device tree and build Linux images using PetaLinux. 
+2. Repeat steps 2 to 4 as described in Example 6 - [Create PetaLinux Image](#create-petalinux-image) chapter to update the device tree and build Linux images using PetaLinux. 
 
-3. Follow step 15 to verify the images. The next step is to create a Bare-metal Application targeted for Arm Cortex-R5F based RPU.
+3. Follow instructions in [Verify the Image on the ZCU102 Board](#verify-the-image-on-the-zcu102-board) to verify the images. 
 
 
 ### Creating the Bare-Metal Application Project
@@ -267,11 +269,11 @@ We will run implementation of the Vivado design and export the post-implementati
 
 7. Click **Next**.
 
-8. Select **Browse** and navigate to the `design-files/design1` folder, which you saved earlier (see [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial)).
+8. Select **Browse** and navigate to the `ref_files/design1` folder.
 
 9. Click **OK**.
 
-10. Select and add the timer_psled_r5.c file.
+10. Select and add the **timer_psled_r5.c** file.
 
 11. Click **Finish**.
 
@@ -305,7 +307,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 6. Verify that the application is compiled and linked successfully and that thetmr_psled_r5.elf file was generated in the `tmr_psled_r5\Debug` folder.
 
-7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package](4-build-sw-for-ps-subsystems.md#modifying-the-board-support-package).
+7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package for testapp_r5](#modifying-the-board-support-package-for-testapp_r5).
 
 #### Creating the Linux Domain for Linux Applications
 
@@ -344,7 +346,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 ### Creating the Linux Application Project
 
-1. In the Vitis IDE, select **File→ New → Application Project**. The New Project wizard opens.
+1. In the Vitis IDE, select **File → New → Application Project**. The New Project wizard opens.
 
 2. Use the information in the table below to make your selections in the wizard.
 
@@ -365,7 +367,7 @@ We will run implementation of the Vivado design and export the post-implementati
     ps_pl_linux_app application project, which can be found in the Project
     Explorer view.
 
-4. In the Project Explorer view, expand the ps_pl_linux_app project.
+4. In the Project Explorer view, expand the **ps_pl_linux_app** project.
 
 5. Right-click the src directory, and select **Import** to open the Import view.
 
@@ -373,11 +375,11 @@ We will run implementation of the Vivado design and export the post-implementati
 
 7. Click **Next**.
 
-8. Select **Browse** and navigate to the design-files/design1 folder, which you saved earlier (see [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial)).
+8. Select **Browse** and navigate to the **ref_files/design1** folder.
 
 9. Click **OK**.
 
-10. Select and add the ps_pl_linux_app.c file.
+10. Select and add the **ps_pl_linux_app.c** file.
 
  >***Note*:** The application might fail to build because of a missing
  reference to the pthread library. The next section shows how to add
@@ -512,5 +514,11 @@ We will run implementation of the Vivado design and export the post-implementati
     `# /tmp/ps_pl_linux_app.elf`
 
     ![](./media/image114.png)
+
+## Summary
+
+In this design example, we created the hardware design in Vivado with Processing System and GPIO modules. The hardware is exported to XSA file. We imported the hardware to PetaLinux to update the device tree. The re-generated PetaLinux image can boot the board. We also imported the XSA to Vitis Software Platform to create the platform project and developed software for ARM Cortex-R5F. We finally created the boot image to include software binaries run on both APU and RPU to make the system perform as we planned.
+
+[Next chapter](./8-boot-and-configuration.md) will introduce more boot and configuration techniques.
 
 © Copyright 2017-2020 Xilinx, Inc.
