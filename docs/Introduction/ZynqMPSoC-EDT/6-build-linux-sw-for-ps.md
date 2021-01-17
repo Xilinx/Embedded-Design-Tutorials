@@ -9,6 +9,17 @@
 
 </table>
 
+- [Build Linux Applications for PS](#build-linux-applications-for-ps)
+  - [Example 6: Create Linux Images and Applications using PetaLinux](#example-6-create-linux-images-and-applications-using-petalinux)
+    - [Input and Output Files](#input-and-output-files)
+    - [Create PetaLinux Image](#create-petalinux-image)
+    - [Verify the Image on the ZCU102 Board](#verify-the-image-on-the-zcu102-board)
+    - [Create Linux Applications in Vitis IDE](#create-linux-applications-in-vitis-ide)
+    - [Prepare Linux Agent for Remote Connection](#prepare-linux-agent-for-remote-connection)
+    - [Run Linux Application from Vitis IDE](#run-linux-application-from-vitis-ide)
+    - [Debug Linux Application from Vitis IDE](#debug-linux-application-from-vitis-ide)
+  - [Summary](#summary)
+
 # Build Linux Applications for PS
 
 The earlier examples highlighted creation of the bootloader images and bare-metal applications for APU, RPU, and PMU using the Vitis IDE. In this chapter, we will introduce how to develop Linux applications.
@@ -41,6 +52,8 @@ In this example, you will configure and build Linux Operating System
 [1]: https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf
 [2]: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html
 [3]: https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu102-v2020.2-final.bsp
+
+### Create PetaLinux Image
 
 1. Create a PetaLinux project using the following command:
 
@@ -180,7 +193,11 @@ In this example, you will configure and build Linux Operating System
    - Select **hello_linux**
    - Click hammer button to build the application
 
-4. Prepare for running the Linux application on ZCU102
+### Prepare Linux Agent for Remote Connection
+
+Vitis IDE needs a channel to download the application to the running target. When the target runs Linux, it uses TCF Agent running on Linux. TCF Agent is added to the Linux rootfs from PetaLinux configuration by default. When Linux boots up, it launches TCF Agent automatically. Vitis IDE talks to TCF Agent on the board with Ethernet connection.
+
+1. Prepare for running the Linux application on ZCU102
 
     Vitis can download the Linux application to the board which runs Linux through network. We need to make sure the network between the host machine and the board links well.
 
@@ -194,7 +211,7 @@ In this example, you will configure and build Linux Operating System
        - If host and the board are connected through a router, they should be able to get IP address from the router. If the Ethernet cable is plugged in after the board boots up, you can get the IP address manually by this command `udhcpc eth0`. It will return the board IP address.
        - Ping each other to make sure the network is setup correctly.
 
-5. Setup Linux Agent in Vitis IDE
+2. Setup Linux Agent in Vitis IDE
 
    - Click the **target connections** icon on the tool bar. 
    - It can also be launched by menu **Window -> Show View...** -> search for target
@@ -211,9 +228,11 @@ In this example, you will configure and build Linux Operating System
 
    ![Vitis test connection success](media/vitis_test_connection_success.png)
 
-6. Run the Linux application
+### Run Linux Application from Vitis IDE
 
-   - Right click **hello_linux**, select **Run As -> Run Configuration**
+1. Run the Linux application
+
+   - Right click **hello_linux**, select **Run As -> Run Configurations**
    - Expand **Single Application Debug** and select **Debugger_hello_linux-Default**
    - Review the configurations
        - Debug type: Linux Application Debug
@@ -227,9 +246,45 @@ In this example, you will configure and build Linux Operating System
     ![Linux Hello World run result](media/linux_hello_world.png)
 
 
+2. Disconnect the connection
+   
+   - Click Terminate button on the tool bar or press Ctrl+F2
+   - Click Disconnect button on the tool bar 
+
+### Debug Linux Application from Vitis IDE
+
+Debugging Linux applications requires Linux Agent setup properly. Please refer to [Prepare Linux agent for Remote Connection](#prepare-linux-agent-for-remote-connection) for detailed steps.
 
 
+1. Debug the Linux application
 
- Next, you will debug software for Zynq UltraScale+ devices using the
- Vitis IDE in [Debugging with the Vitis
- Debugger](6-debugging-with-vitis-debugger.md).
+   - Right click **hello_linux**, select **Debug As -> Debug Configurations**
+   - Expand **Single Application Debug** and select **Debugger_hello_linux-Default**
+   - Review the configurations
+       - Debug type: Linux Application Debug
+       - Connection: Linux Agent
+   - Click **Debug**
+
+    The debug configuration has the identical options to the run configuration. The differences between debugging and running is that debugging will stop at `main()` function.
+
+2. Try the debugging features
+
+    Hello world is a simple application. It doesn't have much for you to debug. But you can try these to explore the Vitis Debugger
+
+    - Review tabs on the upper right corner: Variables, Breakpoints, Expressions, etc.
+    - Review call stack on the left
+    - The next line to execute has green background
+    - Step Over by clicking the icon on the tool bar or press F6 on keyboard. The printed string will be shown on the Console panel.
+
+    ![](./media/vitis_debugger_hello_linux.png)
+
+3. Disconnect the connection
+
+   - Click Terminate button on the tool bar or press Ctrl+F2
+   - Click Disconnect button on the tool bar 
+
+## Summary
+
+In this chapter, we showed how to create Linux boot image with PetaLinux, create simple Linux applications with Vitis IDE, run and debug through Vitis IDE.
+
+In next chapter, We will connect all points previously introduced and create a system design.

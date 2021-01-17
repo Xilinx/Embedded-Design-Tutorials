@@ -11,8 +11,8 @@
 
 - [Debugging Standalone Applications with the Vitis Debugger](#debugging-standalone-applications-with-the-vitis-debugger)
   - [Xilinx System Debugger](#xilinx-system-debugger)
-  - [Debugging Software Using the Vitis Debugger](#debugging-software-using-the-vitis-debugger)
-  - [Debugging Using XSCT](#debugging-using-xsct)
+  - [Example 7: Debugging Software Using the Vitis Debugger](#example-7-debugging-software-using-the-vitis-debugger)
+  - [Example 8: Debugging Using XSCT](#example-8-debugging-using-xsct)
     - [Set Up Target](#set-up-target)
     - [Load the Application Using XSCT](#load-the-application-using-xsct)
     - [Serial Terminal Configuration](#serial-terminal-configuration)
@@ -92,15 +92,13 @@ The Vitis debugger provides the following debug capabilities:
  the source. Similarly, debugging optimized binaries can also cause
  unexpected jumps in the execution trace.
 
-## Debugging Software Using the Vitis Debugger
+## Example 7: Debugging Software Using the Vitis Debugger
 
  In this example, you will walk through debugging a Hello World
  application.
 
  >***Note*:** If you did not create a Hello World application on APU or
- RPU, follow the steps in [Create
- Custom Bare-Metal Application for Arm Cortex-A53 based
- APU](4-build-sw-for-ps-subsystems.md#create-custom-bare-metal-application-for-arm-cortex-a53-based-apu)
+ RPU, follow the steps in [Create Custom Bare-Metal Application for Arm Cortex-A53 based APU](4-build-sw-for-ps-subsystems.md#create-custom-bare-metal-application-for-arm-cortex-a53-based-apu)
  to create a new hello world application.
 
  After you create the Hello World application, work through the
@@ -186,7 +184,7 @@ The Vitis debugger provides the following debug capabilities:
     >**TIP:** *You can use the Vitis debugger debugging shortcuts for
     step-into (F5), step-return (F7), step-over (F6), and resume (F8).*
 
-## Debugging Using XSCT
+## Example 8: Debugging Using XSCT
 
  You can use the previous steps to debug bare-metal applications
  running on RPU and PMU using Vitis Application Debugger GUI.
