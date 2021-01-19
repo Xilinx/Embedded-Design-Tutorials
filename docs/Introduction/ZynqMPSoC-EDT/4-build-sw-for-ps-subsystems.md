@@ -503,7 +503,7 @@ We will create a bare-metal application for Arm Cortex-R5F. The application sour
 
    - Right-click the **testapp_r5**, and select **Import Sources** to open the Import view.
 
-   - On the line of **From directory**, select **Browse** and navigate to the design files folder (ref_files/example5).
+   - On the line of **From directory**, select **Browse** and navigate to the design files folder ([ref_files/example5](ref_files/example5)).
 
    - Click **OK**.
 
@@ -511,7 +511,6 @@ We will create a bare-metal application for Arm Cortex-R5F. The application sour
 
    - Click **Finish**.
 
-   <!--TODO: update screenshot-->
    ![Vitis import source files](./media/vitis_import_source.png)
 
 

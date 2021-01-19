@@ -73,7 +73,6 @@ This chapter shows how to integrate software and hardware components generated i
  single file image in binary BIN or MCS format. It can be used to program Non-volatile memories (QSPI, SD Card). 
  The Bootgen GUI facilitates the creation of the BIF input file.
 
-<!--TODO: decouple this page with Design Example 1-->
  This chapter makes use of a processing system block. [Design Example 1: Using GPIOs, Timers, and Interrupts](./7-design1-using-gpio-timer-interrupts.md)
  covers boot image which will include the PS partitions used in this
  chapter and a bitstream targeted for PL fabric.
