@@ -244,8 +244,9 @@ The following are device level decisions affecting secure boot:
  This section starts by showing how to generate AES and RSA keys.
  Following key generation, systems using the advanced AES and RSA
  methods are developed and tested. Keys generated in this section are
- also included in the [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial), released with this
- tutorial.
+ also included in the ref_files directory.
+
+ <!--TODO: resolve keys in ref_files directory-->
 
  The methods used to develop AES functionality are provided in the
  following sections:
@@ -1167,7 +1168,7 @@ the_ROM_image:
 
 3. Set SW6 of the ZCU102 for SD boot mode (1=ON; 2,3,4=OFF).
 
-    ![](./media/image43.jpeg)
+    ![](../Introduction/MPSoc-EDT/media/image43.jpeg)
 
 4. Connect Serial terminals to ZCU102 (115200, 8 data bits, 1 stop bit,
      no parity).
