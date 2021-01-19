@@ -10,7 +10,7 @@
 </table>
 
 - [Build and Debug Linux Applications](#build-and-debug-linux-applications)
-  - [Example 6: Create Linux Images and Applications using PetaLinux](#example-6-create-linux-images-and-applications-using-petalinux)
+  - [Example 8: Create Linux Images and Applications using PetaLinux](#example-8-create-linux-images-and-applications-using-petalinux)
     - [Input and Output Files](#input-and-output-files)
     - [Create PetaLinux Image](#create-petalinux-image)
     - [Verify the Image on the ZCU102 Board](#verify-the-image-on-the-zcu102-board)
@@ -24,7 +24,7 @@
 
 The earlier examples highlighted creation of the bootloader images and bare-metal applications for APU, RPU, and PMU using the Vitis IDE. In this chapter, we will introduce how to develop Linux applications.
 
-## Example 6: Create Linux Images and Applications using PetaLinux
+## Example 8: Create Linux Images and Applications using PetaLinux
 
 In this example, you will configure and build Linux Operating System
  Platform for Arm Cortex-A53 core based APU on Zynq UltraScale+. You
@@ -287,4 +287,4 @@ Debugging Linux applications requires Linux Agent setup properly. Please refer t
 
 In this chapter, we showed how to create Linux boot image with PetaLinux, create simple Linux applications with Vitis IDE, run and debug through Vitis IDE.
 
-In next chapter, We will connect all points previously introduced and create a system design.
+In [next chapter](./7-design1-using-gpio-timer-interrupts.md), We will connect all points previously introduced and create a system design.

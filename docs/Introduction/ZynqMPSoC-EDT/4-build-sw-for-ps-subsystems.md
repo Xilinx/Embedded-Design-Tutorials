@@ -44,8 +44,7 @@
 
 # Build Standalone Software for PS Subsystems
 
-This chapter lists the steps to configure and build software for PS
-subsystems. 
+This chapter lists the steps to configure and build software for PS subsystems. 
 
 In previous chapter, [Zynq UltraScale+ MPSoC Processing System Configuration](3-system-configuration.md), you created and exported the hardware
 design from Vivado. The exported XSA file contains the hardware

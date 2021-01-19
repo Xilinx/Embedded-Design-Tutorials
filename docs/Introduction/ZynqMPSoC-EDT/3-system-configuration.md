@@ -9,7 +9,7 @@
 
 </table>
 
-- [Zynq UltraScale+ MPSoC Processing System Configuration](#zynq-ultrascale-mpsoc-processing-system-configuration)
+- [Zynq UltraScale+ MPSoC Processing System Configuration with Vivado](#zynq-ultrascale-mpsoc-processing-system-configuration-with-vivado)
   - [Zynq UltraScale+ System Configuration](#zynq-ultrascale-system-configuration)
   - [Example 1: Creating a New Embedded Project with Zynq UltraScale+ MPSoC](#example-1-creating-a-new-embedded-project-with-zynq-ultrascale-mpsoc)
     - [Design Input and Output files](#design-input-and-output-files)
@@ -20,7 +20,7 @@
     - [Exporting Hardware](#exporting-hardware)
     - [Example Summary](#example-summary)
 
-# Zynq UltraScale+ MPSoC Processing System Configuration
+# Zynq UltraScale+ MPSoC Processing System Configuration with Vivado
 
  This chapter demonstrates how to use the Vivado® Design Suite to
  develop an embedded system using the Zynq® UltraScale+™ MPSoC

@@ -11,8 +11,8 @@
 
 - [Debugging Standalone Applications with the Vitis Debugger](#debugging-standalone-applications-with-the-vitis-debugger)
   - [Xilinx System Debugger](#xilinx-system-debugger)
-  - [Example 7: Debugging Software Using the Vitis Debugger](#example-7-debugging-software-using-the-vitis-debugger)
-  - [Example 8: Debugging Using XSCT](#example-8-debugging-using-xsct)
+  - [Example 6: Debugging Software Using the Vitis Debugger](#example-6-debugging-software-using-the-vitis-debugger)
+  - [Example 7: Debugging Using XSCT](#example-7-debugging-using-xsct)
     - [Set Up Target](#set-up-target)
     - [Load the Application Using XSCT](#load-the-application-using-xsct)
     - [Serial Terminal Configuration](#serial-terminal-configuration)
@@ -92,7 +92,7 @@ The Vitis debugger provides the following debug capabilities:
  the source. Similarly, debugging optimized binaries can also cause
  unexpected jumps in the execution trace.
 
-## Example 7: Debugging Software Using the Vitis Debugger
+## Example 6: Debugging Software Using the Vitis Debugger
 
  In this example, you will walk through debugging a Hello World
  application.
@@ -184,7 +184,7 @@ The Vitis debugger provides the following debug capabilities:
     >**TIP:** *You can use the Vitis debugger debugging shortcuts for
     step-into (F5), step-return (F7), step-over (F6), and resume (F8).*
 
-## Example 8: Debugging Using XSCT
+## Example 7: Debugging Using XSCT
 
  You can use the previous steps to debug bare-metal applications
  running on RPU and PMU using Vitis Application Debugger GUI.

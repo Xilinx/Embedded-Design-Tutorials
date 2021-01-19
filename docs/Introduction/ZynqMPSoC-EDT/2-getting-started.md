@@ -137,14 +137,7 @@ Development, Installation Chapter*
 
 ### Tutorial Design Files
 
-1. Download the [reference design
-     files](https://www.xilinx.com/cgi-bin/docs/ctdoc?cid=0029d5d7-6dbc-498d-af43-0735c9abfdc4%3Bd%3Dug1209-embedded-design-tutorial.zip)
-     from the Xilinx website.
+Design files of this tutorial are provided in [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ref_files subdirectory.
 
-2. Extract the ZIP file contents into any write-accessible location.
-
- To view the contents of the ZIP file, download and extract the
- contents from the ZIP file to C:\\edt. The design files contain the
- XSA files, source code and prebuilt images for all the sections.
 
  © Copyright 2017-2020 Xilinx, Inc.

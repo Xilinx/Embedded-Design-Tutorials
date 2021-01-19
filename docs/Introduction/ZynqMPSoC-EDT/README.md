@@ -19,7 +19,7 @@
 
 2. [Getting Started](./2-getting-started.md)
 
-3. [Zynq UltraScale+ MPSoC System Configuration](./3-system-configuration.md)
+3. [Zynq UltraScale+ MPSoC System Configuration with Vivado](./3-system-configuration.md)
 
     This chapter describes the creation of a system with the
  Zynq UltraScale+ MPSoC Processing System (PS) and the creation of a
@@ -36,7 +36,7 @@
  and conducting a review of boot components in hardware platform is
  also included.
 
-5. [Debugging Standalone Applications](./6-debugging-with-vitis-debugger.md)
+5. [Debugging Standalone Applications](./5-debugging-with-vitis-debugger.md)
 
     This chapter provides an
  introduction to debugging software using the debug features of the
@@ -45,11 +45,11 @@
  chapter also lists the debug configurations for Zynq UltraScale+
  MPSoC.
 
-6. [Building and Debugging Linux Applications](./5-build-linux-sw-for-ps.md)
+6. [Building and Debugging Linux Applications](./6-build-linux-sw-for-ps.md)
    
    This chapter creates a Linux image with PetaLinux and creates a hello world Linux application with Vitis IDE. It also showed how to debug Linux applications with Vitis IDE.
  
-7. [System Design Example: Using GPIO, Timer and Interrupts](./design1-using-gpio-timer-interrupts.md)
+7. [System Design Example: Using GPIO, Timer and Interrupts](./7-design1-using-gpio-timer-interrupts.md)
 
     This chapter added some IPs in PL. It demonstrates how you can use the software blocks you configured in previous chapters to create a complex Zynq UltraScale+ system.
 

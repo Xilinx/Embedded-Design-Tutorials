@@ -74,7 +74,7 @@ This chapter shows how to integrate software and hardware components generated i
  The Bootgen GUI facilitates the creation of the BIF input file.
 
 <!--TODO: decouple this page with Design Example 1-->
- This chapter makes use of a processing system block. [Design Example 1: Using GPIOs, Timers, and Interrupts](7-system-design-examples.md#design-example-1-using-gpios-timers-and-interrupts)
+ This chapter makes use of a processing system block. [Design Example 1: Using GPIOs, Timers, and Interrupts](./7-design1-using-gpio-timer-interrupts.md)
  covers boot image which will include the PS partitions used in this
  chapter and a bitstream targeted for PL fabric.
 
@@ -148,7 +148,7 @@ This chapter shows how to integrate software and hardware components generated i
 
  U-Boot can be configured and built using the PetaLinux tool flow. For
  this example, you can use the U-Boot image that you created in
- [Build Linux Software for PS Subsystems](5-build-linux-sw-for-ps.md).
+ [Build Linux Software for PS Subsystems](./6-build-linux-sw-for-ps.md).
 
 ### Arm Trusted Firmware (ATF)
 
@@ -181,7 +181,7 @@ This chapter shows how to integrate software and hardware components generated i
 
 ### Linux on APU
 
-You already created the PetaLinux images in [Build Software for PS Subsystems](5-build-linux-sw-for-ps.md). 
+You already created the PetaLinux images in [Build Software for PS Subsystems](./6-build-linux-sw-for-ps.md). 
 For this example, the PetaLinux is configured to build images for SD-boot with initramfs root filesystem. 
 This is the default boot setting in PetaLinux.
 
@@ -254,8 +254,7 @@ For this example, refer the testapp_r5 application that you created in
     6. Add the ATF firmware `bl31.elf` partition.
 
         > ***Note*:** ATF Firmware (`bl31.elf`) can be found in `<PetaLinux
-            Project>/image/linux/`. Alternatively, you can also use `bl31.elf` from
-            [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial).
+            Project>/image/linux/`. 
 
         1. For this partition, select **datafile** as the partition type.
         2. Set the Destination Device as **PS**.
@@ -1015,7 +1014,7 @@ For this example, refer the testapp_r5 application that you created in
     };
     ```
 
-    The modified system-user.dtsi file can be found in `<Design Files>/usb_boot` released with the tutorial.
+    The modified system-user.dtsi file can be found in [ref_files/usb_boot](./ref_files/usb_boot/system-user.dtsi) released with the tutorial.
 
 2. Build PetaLinux with the following changes.
 
@@ -1023,7 +1022,7 @@ For this example, refer the testapp_r5 application that you created in
 
 The following steps describe how to create a `usb_boot.bin` comprising rest of the partitions.
 
->***Note*:** Copy the newly generated U-Boot to `C:\edt\usb_boot\`. The `u-boot.elf` is also available in [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial).
+>***Note*:** Copy the newly generated U-Boot to `C:\edt\usb_boot\`. 
 
 1. In the Vitis IDE, select **Xilinx → Create Boot Image**.
 
