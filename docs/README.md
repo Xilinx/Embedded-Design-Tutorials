@@ -13,6 +13,10 @@
  <tr>
  <td align="center"><a href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/Versal-EDT">Versal Adaptive Compute Acceleration Platform (UG1305)</a></td>
  <td>
-Provides an introduction for using the Xilinx&reg; Vivado&reg; Design Suite flow for a Versal&trade; VMK180/VCK190 evaluation board.</td></tr></table>
+Provides an introduction for using the Xilinx&reg; Vivado&reg; Design Suite flow for a Versal&trade; VMK180/VCK190 evaluation board.</td></tr> <tr>
+ <td align="center"><a href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/SPA-UG">Vitis Unified Software Platform User Guide: System Performance Analysis (UG1145)</a></td>
+ <td>
+ Describes the technical details of the performance analysis toolbox, as well as a methodology explaining its usefulness and depth.</td></tr>
+</table>
 
-<p align="center"><sup>Copyright&copy; 2019-2020 Xilinx</sup></p>
+<p align="center"><sup>Copyright&copy; 2019-2021 Xilinx</sup></p>
