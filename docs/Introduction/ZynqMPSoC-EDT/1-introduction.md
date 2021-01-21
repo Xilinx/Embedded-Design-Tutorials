@@ -112,7 +112,7 @@
  tool when software programming is not required. It is also a part of
  the Vitis IDE installation. Various Vivado Design Suite editions can
  be used for embedded system development. In this guide, the System
- Edition installed with the Vitis IDE is used. 
+ Edition installed with the Vitis IDE is used.
 
 ### PetaLinux Tools
 
@@ -159,4 +159,4 @@
  refer to the *Zynq UltraScale + MPSoC Processing System LogiCORE IP Product Guide*
  ([PG201](https://www.xilinx.com/cgi-bin/docs/ipdoc?c=zynq_ultra_ps_e;v=latest;d=pg201-zynq-ultrascale-plus-processing-system.pdf)).
 
- © Copyright 2017-2020 Xilinx, Inc.
+ © Copyright 2017-2021 Xilinx, Inc.
