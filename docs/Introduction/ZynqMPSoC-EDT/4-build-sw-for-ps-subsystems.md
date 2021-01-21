@@ -69,15 +69,15 @@ Here are the steps of creating a platform project with a standalone domain for A
 
 7. Select the preferred operating system, processor, and architecture.
 
-| Wizard Screen                   | Property        |
-|---------------------------------|-----------------|
-| Operating System                | Standalone      |
-| Processor                       | psu_cortexa53_0 |
-| Architecture                    | 64-bit          |
-| Generate Boot Components        | Keep it checked |
-| Target processor to create FSBL | psu_cortexa53_0 |
+  ![Create a new platform from XSA](./media/image22.png)
 
-    ![Create a new platform from XSA](./media/image22.png)
+  | Screen                   | Property        |
+  |---------------------------------|-----------------|
+  | Operating System                | Standalone      |
+  | Processor                       | psu_cortexa53_0 |
+  | Architecture                    | 64-bit          |
+  | Generate Boot Components        | Keep it checked |
+  | Target processor to create FSBL | psu_cortexa53_0 |
 
 8.  Click **Finish**.
 
@@ -97,10 +97,9 @@ Here are the steps of creating a platform project with a standalone domain for A
 
      ![](./media/image24.jpeg)
 
-    The platform project is ready. You can create applications using this
-    platform and test on zcu102 hardware.
+     The platform project is ready. You can create applications using this platform and test on zcu102 hardware.
 
-    > Note: The project build process will build the standalone BSP, FSBL and PMUFW. FSBL and PMUFW has their own BSP. The build process will take some time.
+     **NOTE:** The project build process will build the standalone BSP, FSBL and PMUFW. FSBL and PMUFW have their own BSP. The build process will take some time.
 
 ## Example 3: Running the "Hello World" Application from Arm Cortex-A53
 
