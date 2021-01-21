@@ -8,10 +8,10 @@
 
 ## How Zynq UltraScale+ Devices Offer a Single Chip Solution
 
- Zynq UltraScale+ MPSoC, the next generation Zynq device, is designed
+ Zynq® UltraScale+™ MPSoC, the next generation Zynq device, is designed
  with the idea of using the right engine for the right task. The Zynq
- UltraScale+ comes with a versatile Processing System (PS) integrated
- with a highly flexible and high-performance Programmable Logic (PL)
+ UltraScale+ MPSoC comes with a versatile processing system (PS) integrated
+ with a highly flexible and high-performance programmable logic (PL)
  section, all on a single system-on-a-chip (SoC). The Zynq UltraScale+
  MPSoC PS block includes engines such as the following:
 
@@ -24,13 +24,13 @@
 - Dedicated Platform Management Unit (PMU) and Configuration Security
     Unit (CSU)
 
-- List of high speed peripherals, including display port and SATA
+- List of high-speed peripherals, including display port and SATA
 
  >***Note*:** The Cortex-R5F processor is a Cortex-R5 processor that
  includes the optional Floating Point Unit (FPU) extension.
 
- The Programmable Logic section, in addition to the programmable logic
- cells, also comes integrated with a few high performance peripherals,
+ The programmable logic section, in addition to the programmable logic
+ cells, also comes integrated with a few high-performance peripherals,
  including the following:
 
 - Integrated block for PCI Express&reg;
@@ -48,7 +48,7 @@
  PS-PL interfaces.
 
  To simplify the design process for such sophisticated devices, Xilinx
- offers the Vivado&reg; Design Suite, Vitis software platform, and
+ offers the Vivado&reg; Design Suite, the Vitis™ unified software platform, and
  PetaLinux tools for Linux. This set of tools provides you with
  everything you need to simplify embedded system design for a device
  that merges an SoC with an FPGA. This combination of tools enables
@@ -66,41 +66,39 @@
  source standard. Xilinx has added many features for software
  developers, including the following features:
 
-- Feature-rich C/C++ code editor and compilation environment.
+- Feature-rich C/C++ code editor and compilation environment
 
-- Project management.
+- Project management
 
-- Application build configuration and automatic Makefile generation.
+- Application build configuration and automatic Makefile generation
 
-- Error navigation.
+- Error navigation
 
 - Integrated environment for seamless debugging and profiling of
      embedded targets.
 
-- Source code version control.
+- Source code version control
 
-- System-level performance analysis.
+- System-level performance analysis
 
-- Focused special tools to configure FPGAs.
+- Focused special tools to configure FPGAs
 
-- Bootable image creation.
+- Bootable image creation
 
-- Flash programming.
+- Flash programming
 
-- Script-based command-line tool (XSCT).
+- Script-based command-line tool (XSCT)
 
  For more information about the Vitis unified software platform, see
- *Vitis Unified Software Platform Documentation: Embedded Software
- Development*
+ _Vitis Unified Software Platform Documentation: Embedded Software
+ Development_
  ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1400-vitis-embedded.pdf)).
 
  Other components include:
 
 - Drivers and libraries for embedded software development
 
-- Linaro GCC compiler for C/C++ software development targeting the Arm
-     Cortex-A53 and Arm Cortex-R5F MPCore processors in the Zynq
-     UltraScale+ Processing System.
+- Linaro GCC toolchain for C/C++ software development targeting the Arm™ Cortex-A53 and Arm Cortex-R5F MPCore processors in the Zynq UltraScale+ processing system.
 
 ### Vivado Design Suite
 
@@ -118,9 +116,8 @@
  configuration, build, and deploy environment for Linux OS for the
  Xilinx Zynq devices, including Zynq UltraScale+ devices.
 
- For more information, see the *PetaLinux Tools Documentation:
- Reference Guide*
- ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)).
+ For more information, see the _PetaLinux Tools Documentation:
+ Reference Guide_ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)).
 
  The PetaLinux tools design hub provides information and links to
  documentation specific to PetaLinux tools. For more information, see
@@ -136,24 +133,24 @@
 
  You can accomplish all your hardware system development using the
  Vivado tools along with the IP integrator. This includes specifying
- the Zynq UltraScale+ Processing System, peripherals, and the
+ the Zynq UltraScale+ processing system, peripherals, and the
  interconnection of these components, along with their respective
  detailed configuration. The Vitis IDE can be used for software
- development, hardware acceleration, and platform development. It also
+ development, hardware acceleration, and platform development. It can also
  be used to debug software applications.
 
- The Zynq UltraScale+ Processing System (PS) can be booted and run
- without programming the FPGA (programmable logic or PL). However, to
+ The Zynq UltraScale+ PS can be booted and run
+ without programming the PL. However, to
  use any soft IP in the fabric, or to bond out PS peripherals using
  EMIO, you must program the PL using the Vitis IDE or the Vivado
  hardware manager.
 
- For more information on the embedded design process, refer to the
- *Vivado Design Suite Tutorial: Embedded Processor Hardware Design*
- ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug940-vivado-tutorial-embedded-design.pdf)).
+ For more information on the embedded design process, refer to the _Vivado Design Suite Tutorial: Embedded Processor Hardware Design_ ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug940-vivado-tutorial-embedded-design.pdf)).
 
- For more information about the Zynq UltraScale+ Processing System,
- refer to the *Zynq UltraScale + MPSoC Processing System LogiCORE IP Product Guide*
+ For more information about the Zynq UltraScale+ processing system,
+ refer to the _Zynq UltraScale + MPSoC Processing System LogiCORE IP Product Guide_
  ([PG201](https://www.xilinx.com/cgi-bin/docs/ipdoc?c=zynq_ultra_ps_e;v=latest;d=pg201-zynq-ultrascale-plus-processing-system.pdf)).
+
+ In the [next chapter](./2-getting-started.md), we will get started.
 
  © Copyright 2017-2021 Xilinx, Inc.

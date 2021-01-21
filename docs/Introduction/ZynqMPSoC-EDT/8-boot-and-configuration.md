@@ -1179,6 +1179,4 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
 
 
-
-
-© Copyright 2017-2020 Xilinx, Inc.
+© Copyright 2017-2021 Xilinx, Inc.

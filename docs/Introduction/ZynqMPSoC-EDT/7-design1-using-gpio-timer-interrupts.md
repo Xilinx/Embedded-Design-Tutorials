@@ -515,6 +515,6 @@ We will run implementation of the Vivado design and export the post-implementati
 
 In this design example, we created the hardware design in Vivado with Processing System and GPIO modules. The hardware is exported to XSA file. We imported the hardware to PetaLinux to update the device tree. The re-generated PetaLinux image can boot the board. We also imported the XSA to Vitis Software Platform to create the platform project and developed software for ARM Cortex-R5F. We finally created the boot image to include software binaries run on both APU and RPU to make the system perform as we planned.
 
-[Next chapter](./8-boot-and-configuration.md) will introduce more boot and configuration techniques.
+The [next chapter](./8-boot-and-configuration.md) introduces more boot and configuration techniques.
 
-© Copyright 2017-2020 Xilinx, Inc.
+© Copyright 2017-2021 Xilinx, Inc.

@@ -259,4 +259,6 @@ Debugging Linux applications requires Linux Agent setup properly. Please refer t
 
 In this chapter, we showed how to create Linux boot image with PetaLinux, create simple Linux applications with Vitis IDE, run and debug through Vitis IDE.
 
-In [next chapter](./7-design1-using-gpio-timer-interrupts.md), We will connect all points previously introduced and create a system design.
+In the [next chapter](./7-design1-using-gpio-timer-interrupts.md), we will connect all points previously introduced and create a system design.
+
+© Copyright 2017-2021 Xilinx, Inc.

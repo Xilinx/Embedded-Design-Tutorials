@@ -123,7 +123,8 @@ Development, Installation Chapter*
 
 ### Tutorial Design Files
 
-Design files of this tutorial are provided in [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ref_files subdirectory.
+Design files of this tutorial are provided in [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
 
+The [next chapter](./3-system-configuration.md) details the configuration of a Zynq UltraScale+ MPSoC PS with the Vivado IDE. 
 
- © Copyright 2017-2020 Xilinx, Inc.
+ © Copyright 2017-2021 Xilinx, Inc.

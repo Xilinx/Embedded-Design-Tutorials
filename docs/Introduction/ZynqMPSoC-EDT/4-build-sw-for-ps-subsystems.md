@@ -10,10 +10,10 @@
 
 This chapter lists the steps to configure and build software for PS subsystems.
 
-In previous chapter, [Zynq UltraScale+ MPSoC Processing System Configuration](3-system-configuration.md), you created and exported the hardware
+In the previous chapter, [Zynq UltraScale+ MPSoC Processing System Configuration](3-system-configuration.md), you created and exported the hardware
 design from Vivado. The exported XSA file contains the hardware
 handoff, the processing system initialization (psu_init),
-and the PL bitstream (if hardware is exported as post-implementation). In this chapter, you will import the XSA to the Vitis™ IDE to configure software for the processing system.
+and the PL bitstream (if hardware is exported as post-implementation). In this chapter, you will import the XSA to the Vitis™ IDE to generate software for the processing system.
 
 You will use the Vitis IDE to perform the following tasks:
 
@@ -85,7 +85,7 @@ Here are the steps of creating a platform project with a standalone domain for A
      that are generated are displayed in the explorer window as shown
      in the following figure.
 
-    ![Generated platform files](./media/image23.png)
+    ![](./media/image23.png)
 
    - There is a standalone domain in the platform under psu_cortexa53_0 processor. New applications for Cortex-A53 can link against it.
    - Dault domains for FSBL and PMU firmware comes with the platform project when **Generate Boot Components** are selected during application or platform project creation.
@@ -95,7 +95,7 @@ Here are the steps of creating a platform project with a standalone domain for A
 10.  Now build the hardware by right-clicking the platform, then
      selecting **Build Project**.
 
-    ![Build Project](./media/image24.jpeg)
+     ![](./media/image24.jpeg)
 
     The platform project is ready. You can create applications using this
     platform and test on zcu102 hardware.
@@ -611,7 +611,7 @@ To review the PMU firmware in the platform, follow these steps:
     zynqmp_pmufw software project if bootloader creation is enabled during platform creation.
 
 
+ In the [next chapter](./5-debugging-with-vitis-debugger.md), you will learn about debugging standalone applications with the Vitis Debugger.
 
 
-
-© Copyright 2017-2020 Xilinx, Inc.
+© Copyright 2017-2021 Xilinx, Inc.

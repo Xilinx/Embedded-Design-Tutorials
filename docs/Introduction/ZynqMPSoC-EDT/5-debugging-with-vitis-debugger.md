@@ -351,5 +351,7 @@ The Vitis debugger provides the following debug capabilities:
     UART-1 terminal.
 
 
+    The [next chapter](./6-build-linux-sw-for-ps.md) shows how to build and debug Linux applications.
+
 
  © Copyright 2017-2020 Xilinx, Inc.
