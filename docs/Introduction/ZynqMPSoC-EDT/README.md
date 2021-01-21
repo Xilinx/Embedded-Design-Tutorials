@@ -34,7 +34,7 @@
 
 5. [Debugging Standalone Applications with the Vitis Debugger](./5-debugging-with-vitis-debugger.md)
 
-  This chapter provides an introduction to debugging software using the debug features of the
+      This chapter provides an introduction to debugging software using the debug features of the
    Vitis IDE. This chapter uses the previous design and runs the software
    bare metal (without an OS) to demonstrate the debugging process. This
    chapter also lists the debug configurations for Zynq UltraScale+
