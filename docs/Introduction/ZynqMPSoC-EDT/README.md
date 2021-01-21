@@ -1,7 +1,3 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/readme.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
 <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
@@ -46,9 +42,9 @@
  MPSoC.
 
 6. [Building and Debugging Linux Applications](./6-build-linux-sw-for-ps.md)
-   
+
    This chapter creates a Linux image with PetaLinux and creates a hello world Linux application with Vitis IDE. It also showed how to debug Linux applications with Vitis IDE.
- 
+
 7. [System Design Example: Using GPIO, Timer and Interrupts](./7-design1-using-gpio-timer-interrupts.md)
 
     This chapter added some IPs in PL. It demonstrates how you can use the software blocks you configured in previous chapters to create a complex Zynq UltraScale+ system.
