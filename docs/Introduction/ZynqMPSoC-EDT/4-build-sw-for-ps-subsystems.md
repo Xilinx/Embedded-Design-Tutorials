@@ -1,55 +1,19 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/4-build-sw-for-ps-subsystems.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
   </tr>
 
 </table>
 
-- [Build Standalone Software for PS Subsystems](#build-standalone-software-for-ps-subsystems)
-  - [Example 2: Creating a Platform Project Using Vitis IDE](#example-2-creating-a-platform-project-using-vitis-ide)
-    - [Example Input and Output Files](#example-input-and-output-files)
-    - [Create the Platform Project](#create-the-platform-project)
-  - [Example 3: Running the "Hello World" Application from Arm Cortex-A53](#example-3-running-the-hello-world-application-from-arm-cortex-a53)
-    - [Input and Output Files](#input-and-output-files)
-    - [Board Setup](#board-setup)
-    - [Connect Serial Port](#connect-serial-port)
-    - [Create Hello World Application on ARM Cortex-A53](#create-hello-world-application-on-arm-cortex-a53)
-    - [Run Hello World on the Board](#run-hello-world-on-the-board)
-      - [What Just Happened?](#what-just-happened)
-      - [One Step Further](#one-step-further)
-  - [Additional Information](#additional-information)
-    - [Domain](#domain)
-    - [Board Support Package](#board-support-package)
-    - [Standalone BSP](#standalone-bsp)
-  - [Example 4: Running the "Hello World" Application from Arm Cortex-R5](#example-4-running-the-hello-world-application-from-arm-cortex-r5)
-    - [Input and Output Files](#input-and-output-files-1)
-    - [Creating a standalone BSP Domain for cortexr5_0](#creating-a-standalone-bsp-domain-for-cortexr5_0)
-      - [What Just Happened?](#what-just-happened-1)
-    - [Creating Hello World Application on ARM Cortex-R5F](#creating-hello-world-application-on-arm-cortex-r5f)
-    - [Run Hello World Application on ARM Cortex-R5F](#run-hello-world-application-on-arm-cortex-r5f)
-  - [Example 5: Create a Bare-Metal System Application Project in the Vitis IDE](#example-5-create-a-bare-metal-system-application-project-in-the-vitis-ide)
-    - [Input and Output Files](#input-and-output-files-2)
-    - [Modify the Application Source Code of hello_a53](#modify-the-application-source-code-of-hello_a53)
-    - [Create Custom Bare-Metal Application for Arm Cortex-R5 based RPU](#create-custom-bare-metal-application-for-arm-cortex-r5-based-rpu)
-    - [Modifying the Linker Script for testapp_r5](#modifying-the-linker-script-for-testapp_r5)
-    - [Modifying the Board Support Package for testapp_r5](#modifying-the-board-support-package-for-testapp_r5)
-    - [Run hello_system system project on hardware](#run-hello_system-system-project-on-hardware)
-  - [Reviewing Bootloader Projects in the Platform](#reviewing-bootloader-projects-in-the-platform)
-    - [Reviewing FSBL in Platform](#reviewing-fsbl-in-platform)
-    - [Reviewing PMU Firmware in Platform](#reviewing-pmu-firmware-in-platform)
 
 # Build Standalone Software for PS Subsystems
 
-This chapter lists the steps to configure and build software for PS subsystems. 
+This chapter lists the steps to configure and build software for PS subsystems.
 
-In previous chapter, [Zynq UltraScale+ MPSoC Processing System Configuration](3-system-configuration.md), you created and exported the hardware
+In the previous chapter, [Zynq UltraScale+ MPSoC Processing System Configuration](3-system-configuration.md), you created and exported the hardware
 design from Vivado. The exported XSA file contains the hardware
 handoff, the processing system initialization (psu_init),
-and the PL bitstream (if hardware is exported as post-implementation). In this chapter, you will import the XSA to the Vitis™ IDE to configure software for the processing system.
+and the PL bitstream (if hardware is exported as post-implementation). In this chapter, you will import the XSA to the Vitis™ IDE to generate software for the processing system.
 
 You will use the Vitis IDE to perform the following tasks:
 
@@ -68,12 +32,12 @@ The main processing units in the processing system in Zynq UltraScale+ are liste
 - **Graphics Processing Unit:** Arm Mali™ 400 MP2 GPU
 - **Platform Management Unit (PMU):** Xilinx MicroBlaze based platform management unit.
 
-The platform project reads in hardware info from XSA file and contains the runtime environment for the above processing units. Application software can link against the libraries generated in the platform project. 
+The platform project reads in hardware info from XSA file and contains the runtime environment for the above processing units. Application software can link against the libraries generated in the platform project.
 
 ### Example Input and Output Files
 
 - Input: hardware handoff XSA file (edt_zcu102_wrapper.xsa)
-- Output: 
+- Output:
   - Standalone BSP libraries for ARM Cortex-A53
   - Boot components (FSBL: zynqmp.elf and PMUFW: pmufw.elf)
 
@@ -81,7 +45,7 @@ The platform project reads in hardware info from XSA file and contains the runti
 
 Here are the steps of creating a platform project with a standalone domain for Arm Cortex-A53.
 
-1. Launch the Vitis IDE 
+1. Launch the Vitis IDE
 
    - From the open Vivado IDE, click Tools -> Launch Vitis IDE; or
    - Click the Windows start menu -> Xilinx Design Tools -> Xilinx Vitis 2020.2; or
@@ -97,7 +61,7 @@ Here are the steps of creating a platform project with a standalone domain for A
 
 4. In the Create New Platform page, enter the platform name `zcu102_edt` and click **Next**.
 
-5. In the Platform view, go with the default tab **Create from hardware specification (XSA)**. 
+5. In the Platform view, go with the default tab **Create from hardware specification (XSA)**.
 
    > Note: **Select a platform from repository** tab can be used when you have a pre-built platform and you'd like to copy it to local to modify it.
 
@@ -105,15 +69,15 @@ Here are the steps of creating a platform project with a standalone domain for A
 
 7. Select the preferred operating system, processor, and architecture.
 
-| Wizard Screen                   | Property        |
-|---------------------------------|-----------------|
-| Operating System                | Standalone      |
-| Processor                       | psu_cortexa53_0 |
-| Architecture                    | 64-bit          |
-| Generate Boot Components        | Keep it checked |
-| Target processor to create FSBL | psu_cortexa53_0 |
+  ![Create a new platform from XSA](./media/image22.png)
 
-    ![Create a new platform from XSA](./media/image22.png)
+  | Screen                   | Property        |
+  |---------------------------------|-----------------|
+  | Operating System                | Standalone      |
+  | Processor                       | psu_cortexa53_0 |
+  | Architecture                    | 64-bit          |
+  | Generate Boot Components        | Keep it checked |
+  | Target processor to create FSBL | psu_cortexa53_0 |
 
 8.  Click **Finish**.
 
@@ -121,22 +85,21 @@ Here are the steps of creating a platform project with a standalone domain for A
      that are generated are displayed in the explorer window as shown
      in the following figure.
 
-    ![Generated platform files](./media/image23.png)
+    ![](./media/image23.png)
 
    - There is a standalone domain in the platform under psu_cortexa53_0 processor. New applications for Cortex-A53 can link against it.
-   - Dault domains for FSBL and PMU firmware comes with the platform project when **Generate Boot Components** are selected during application or platform project creation. 
+   - Dault domains for FSBL and PMU firmware comes with the platform project when **Generate Boot Components** are selected during application or platform project creation.
    - Users are free to add and remove domains in the platform project.
-   - Users can customize the domain configurations. 
+   - Users can customize the domain configurations.
 
 10.  Now build the hardware by right-clicking the platform, then
      selecting **Build Project**.
 
-    ![Build Project](./media/image24.jpeg)
+     ![](./media/image24.jpeg)
 
-    The platform project is ready. You can create applications using this
-    platform and test on zcu102 hardware.
+     The platform project is ready. You can create applications using this platform and test on zcu102 hardware.
 
-    > Note: The project build process will build the standalone BSP, FSBL and PMUFW. FSBL and PMUFW has their own BSP. The build process will take some time.
+     **NOTE:** The project build process will build the standalone BSP, FSBL and PMUFW. FSBL and PMUFW have their own BSP. The build process will take some time.
 
 ## Example 3: Running the "Hello World" Application from Arm Cortex-A53
 
@@ -148,7 +111,7 @@ Here are the steps of creating a platform project with a standalone domain for A
 ### Input and Output Files
 
 - Input: standalone BSP libraries in the platform created by Example 2
-- Output: hello.elf for ARM Cortex-A53 
+- Output: hello.elf for ARM Cortex-A53
 
 ### Board Setup
 
@@ -170,8 +133,8 @@ Here are the steps of creating a platform project with a standalone domain for A
 ### Connect Serial Port
 
 1. Open your preferred serial communication utility for the COM port.
-     
-   **Note**: It can be any serial communication utilities in your system. The Vitis IDE provides a serial terminal utility. We will use it throughout the tutorial; 
+
+   **Note**: It can be any serial communication utilities in your system. The Vitis IDE provides a serial terminal utility. We will use it throughout the tutorial;
    select **Window→ Show View → Vitis Serial Terminal** in Vitis IDE to open it.
 
    **Note**: On Linux, you'll need root previliage to use UART.
@@ -224,7 +187,7 @@ To send the "Hello World" string to the UART0 peripheral, follow these steps:
     The Vitis IDE creates the **hello_a53_system** project in the Explorer view. **hello_a53** sits inside **hello_a53_system**.
 
 ### Run Hello World on the Board
-    
+
 1. Right-click the **hello_a53 application project** and select **Build** to build the application.
 
 2. Right-click **hello_a53** and select **Run as → Run Configurations**.
@@ -289,7 +252,7 @@ A domain can refer to the settings and files of a standalone BSP, a
 Linux OS, a third-party OS/BSP like FreeRTOS, or a component like the
 device tree generator.
 
-You can create multiple applications to run on the domain. 
+You can create multiple applications to run on the domain.
 A domain is tied to a single processor or a cluster of isomorphic processors (for example: A53_0 or A53) in the platform.
 
 ### Board Support Package
@@ -429,7 +392,7 @@ In this example, we will do update the hello_system project we created in Exampl
 
 ### Input and Output Files
 
-- Input: 
+- Input:
   - Platform: zcu102_edt with standalone domains for ARM Cortex-A53 and ARM Cortex-R5F
   - Source code for ARM Cortex-R5F: [ref_files/example5/testapp_r5.c](./ref_files/example5/testapp_r5.c)
 - Output:
@@ -638,7 +601,7 @@ To review the FSBL in platform, follow these steps:
 To review the PMU firmware in the platform, follow these steps:
 
 1. In the Explorer view, navigate to zynqmp_pmufw by expanding the
-     **zcu102_edt** platform to see the PMUFW source code. 
+     **zcu102_edt** platform to see the PMUFW source code.
 
 2. The zynqmp_pmufw software project contains the source code of PMU
      firmware for psu_pmu_0. Compile and run the firmware on psu_pmu_0.
@@ -647,7 +610,7 @@ To review the PMU firmware in the platform, follow these steps:
     zynqmp_pmufw software project if bootloader creation is enabled during platform creation.
 
 
+ In the [next chapter](./5-debugging-with-vitis-debugger.md), you will learn about debugging standalone applications with the Vitis Debugger.
 
 
-
-© Copyright 2017-2020 Xilinx, Inc.
+© Copyright 2017-2021 Xilinx, Inc.

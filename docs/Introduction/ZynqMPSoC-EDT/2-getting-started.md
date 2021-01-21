@@ -1,23 +1,9 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/2-getting-started.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
   </tr>
 
 </table>
-
-- [Getting Started](#getting-started)
-  - [Hardware Requirements](#hardware-requirements)
-  - [Installation Requirements](#installation-requirements)
-    - [Vitis Integrated Design Environment and Vivado Design Suite](#vitis-integrated-design-environment-and-vivado-design-suite)
-    - [PetaLinux Tools](#petalinux-tools)
-      - [Prerequisites](#prerequisites)
-      - [Extracting the PetaLinux Package](#extracting-the-petalinux-package)
-    - [Software Licensing](#software-licensing)
-    - [Tutorial Design Files](#tutorial-design-files)
 
 # Getting Started
 
@@ -64,7 +50,7 @@ confirm that you have the latest tools version.
 Vitis embedded software development supports the following operating systems:
 
 - RHEL/CentOS 7.4, 7.5, 7.6, 7.7, 7.8, 8.1, 8.2
-- Ubuntu 16.04.5, 16.04.6, 18.04.1, 18.04.2, 18.04.3, 18.04.4, 20.04 LTS 
+- Ubuntu 16.04.5, 16.04.6, 18.04.1, 18.04.2, 18.04.3, 18.04.4, 20.04 LTS
 - Amazon Linux 2 AL2 LTS
 - SUSE Enterprise Linux 12.4
 - Windows 10 64-bit Professional and Enterprise versions 1809, 1903, 1909, and 2004
@@ -137,7 +123,8 @@ Development, Installation Chapter*
 
 ### Tutorial Design Files
 
-Design files of this tutorial are provided in [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ref_files subdirectory.
+Design files of this tutorial are provided in [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
 
+The [next chapter](./3-system-configuration.md) details the configuration of a Zynq UltraScale+ MPSoC PS with the Vivado IDE. 
 
- © Copyright 2017-2020 Xilinx, Inc.
+ © Copyright 2017-2021 Xilinx, Inc.

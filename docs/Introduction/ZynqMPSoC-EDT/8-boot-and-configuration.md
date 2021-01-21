@@ -1,42 +1,9 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/6-boot-and-configuration.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
   </tr>
 
 </table>
-
-- [Boot and Configuration](#boot-and-configuration)
-  - [System Software](#system-software)
-    - [First Stage Boot Loader](#first-stage-boot-loader)
-    - [Platform Management Unit Firmware (PMUFW)](#platform-management-unit-firmware-pmufw)
-    - [U-Boot](#u-boot)
-    - [Arm Trusted Firmware (ATF)](#arm-trusted-firmware-atf)
-    - [Linux on APU](#linux-on-apu)
-    - [Bare-Metal on RPU](#bare-metal-on-rpu)
-  - [Boot Sequence for SD-Boot](#boot-sequence-for-sd-boot)
-    - [Running the Image on the ZCU102 Board](#running-the-image-on-the-zcu102-board)
-  - [Boot Sequence for QSPI Boot Mode](#boot-sequence-for-qspi-boot-mode)
-    - [Create Linux Images Using PetaLinux for QSPI Flash](#create-linux-images-using-petalinux-for-qspi-flash)
-    - [Boot image Setup in Vitis](#boot-image-setup-in-vitis)
-    - [Running the Image in QSPI Boot Mode on ZCU102 Board](#running-the-image-in-qspi-boot-mode-on-zcu102-board)
-      - [Set Up the ZCU102 Board](#set-up-the-zcu102-board)
-  - [Boot Sequence for QSPI-Boot Mode Using JTAG](#boot-sequence-for-qspi-boot-mode-using-jtag)
-    - [Setting Up the Target](#setting-up-the-target)
-    - [Load U-Boot Using XSCT/XSDB](#load-u-boot-using-xsctxsdb)
-    - [Load Boot.bin in DDR Using XSDB](#load-bootbin-in-ddr-using-xsdb)
-    - [Load the Boot.bin Image in QSPI Using U-Boot](#load-the-bootbin-image-in-qspi-using-u-boot)
-  - [Boot Sequence for USB Boot Mode](#boot-sequence-for-usb-boot-mode)
-    - [Configure FSBL to Enable USB Boot Mode](#configure-fsbl-to-enable-usb-boot-mode)
-      - [Create First Stage Boot Loader for USB Boot](#create-first-stage-boot-loader-for-usb-boot)
-    - [Creating Boot Images for USB Boot](#creating-boot-images-for-usb-boot)
-      - [Modifying PetaLinux U-Boot](#modifying-petalinux-u-boot)
-    - [Boot using USB Boot](#boot-using-usb-boot)
-      - [Boot Commands for Linux Host Machine](#boot-commands-for-linux-host-machine)
-      - [Boot Commands for Windows Host Machine](#boot-commands-for-windows-host-machine)
 
 # Boot and Configuration
 
@@ -67,10 +34,10 @@ This chapter shows how to integrate software and hardware components generated i
  To create a boot image, we can use the Create Boot Image wizard in Vitis IDE, or the Bootgen
  command line tool. (Create Boot Image wizard calls the bootgen tool as well.) The principle function of the Create Boot Image
  wizard or Bootgen is to integrate the partitions (hardware-bitstream
- and software) in a proper format. It allows you to specify the security options. It can also create cryptographic keys. 
- 
+ and software) in a proper format. It allows you to specify the security options. It can also create cryptographic keys.
+
  Functionally, Bootgen uses a BIF (Bootgen Image Format) file as an input, and generates a
- single file image in binary BIN or MCS format. It can be used to program Non-volatile memories (QSPI, SD Card). 
+ single file image in binary BIN or MCS format. It can be used to program Non-volatile memories (QSPI, SD Card).
  The Bootgen GUI facilitates the creation of the BIF input file.
 
  This chapter makes use of a processing system block. [Design Example 1: Using GPIOs, Timers, and Interrupts](./7-design1-using-gpio-timer-interrupts.md)
@@ -180,8 +147,8 @@ This chapter shows how to integrate software and hardware components generated i
 
 ### Linux on APU
 
-You already created the PetaLinux images in [Build Software for PS Subsystems](./6-build-linux-sw-for-ps.md). 
-For this example, the PetaLinux is configured to build images for SD-boot with initramfs root filesystem. 
+You already created the PetaLinux images in [Build Software for PS Subsystems](./6-build-linux-sw-for-ps.md).
+For this example, the PetaLinux is configured to build images for SD-boot with initramfs root filesystem.
 This is the default boot setting in PetaLinux.
 
 The images can be found in the `$<PetaLinux_Project>/images/linux/` directory. For loading Linux on APU, the following images will be used from PetaLinux:
@@ -253,7 +220,7 @@ For this example, refer the testapp_r5 application that you created in
     6. Add the ATF firmware `bl31.elf` partition.
 
         > ***Note*:** ATF Firmware (`bl31.elf`) can be found in `<PetaLinux
-            Project>/image/linux/`. 
+            Project>/image/linux/`.
 
         1. For this partition, select **datafile** as the partition type.
         2. Set the Destination Device as **PS**.
@@ -1021,7 +988,7 @@ For this example, refer the testapp_r5 application that you created in
 
 The following steps describe how to create a `usb_boot.bin` comprising rest of the partitions.
 
->***Note*:** Copy the newly generated U-Boot to `C:\edt\usb_boot\`. 
+>***Note*:** Copy the newly generated U-Boot to `C:\edt\usb_boot\`.
 
 1. In the Vitis IDE, select **Xilinx → Create Boot Image**.
 
@@ -1212,6 +1179,4 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
 
 
-
-
-© Copyright 2017-2020 Xilinx, Inc.
+© Copyright 2017-2021 Xilinx, Inc.

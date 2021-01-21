@@ -1,22 +1,9 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/5-debugging-with-vitis-debugger.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
   </tr>
 
 </table>
-
-- [Debugging Standalone Applications with the Vitis Debugger](#debugging-standalone-applications-with-the-vitis-debugger)
-  - [Xilinx System Debugger](#xilinx-system-debugger)
-  - [Example 6: Debugging Software Using the Vitis Debugger](#example-6-debugging-software-using-the-vitis-debugger)
-  - [Example 7: Debugging Using XSCT](#example-7-debugging-using-xsct)
-    - [Set Up Target](#set-up-target)
-    - [Load the Application Using XSCT](#load-the-application-using-xsct)
-    - [Serial Terminal Configuration](#serial-terminal-configuration)
-    - [Run and Debug Application Using XSCT](#run-and-debug-application-using-xsct)
 
 # Debugging Standalone Applications with the Vitis Debugger
 
@@ -206,7 +193,7 @@ The Vitis debugger provides the following debug capabilities:
 4. Open XSCT Console
 
     - click the **XSCT Console** button
-     ![](./media/image48.png) in the tool bar. 
+     ![](./media/image48.png) in the tool bar.
     - Alternatively,
      you can also open the XSCT console from **Xilinx → XSCT Console**.
 
@@ -285,7 +272,7 @@ The Vitis debugger provides the following debug capabilities:
  cores in the group (such as APU or RPU), of which the current target
  is a child. For example, when A53 \#0 is the current target, rst -
  cores clears resets on all the Cortex-A53 cores in APU.
- 
+
  2. Download the testapp_r5 application on Arm Cortex-R5F Core 0.
 
     - Run `xsct% dow {C:\edt\testapp_r5\Debug\testapp_r5.elf}` or
@@ -363,6 +350,8 @@ The Vitis debugger provides the following debug capabilities:
     At this point, you can see the Cortex-R5F application print message on
     UART-1 terminal.
 
+
+    The [next chapter](./6-build-linux-sw-for-ps.md) shows how to build and debug Linux applications.
 
 
  © Copyright 2017-2020 Xilinx, Inc.

@@ -1,8 +1,4 @@
-<p align="right">
-            Read this page in other languages:<a href="">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
   </tr>
@@ -17,7 +13,7 @@ The Zynq ZCU102 UltraScale+ Evaluation Board comes with a few user configurable 
 
 - The Linux applications configure a set of PL LEDs to toggle using a PS Dip Switch, and another set of PL LEDs to toggle using a PL Dip Switch (SW17).
 
-- The R5-Core 0 application uses an AXI Timer IP in Programmable logic to toggle PS LED (DS50). The application is configured to toggle the LED state every time the timer counter expires, and the Timer in the PL is set to reset periodically after a user-configurable time interval. 
+- The R5-Core 0 application uses an AXI Timer IP in Programmable logic to toggle PS LED (DS50). The application is configured to toggle the LED state every time the timer counter expires, and the Timer in the PL is set to reset periodically after a user-configurable time interval.
 
 - The system is configured such that the APU Linux Application and RPU Bare-metal Application run simultaneously.
 
@@ -36,11 +32,11 @@ The Zynq ZCU102 UltraScale+ Evaluation Board comes with a few user configurable 
 
 3. Save the project as design_example_1
 
-    - Click File -> Project -> Save As 
+    - Click File -> Project -> Save As
     - Input project name **design_example_1**
     - Uncheck **Include run results**
     - Click **OK**
-    
+
     ![](media/vivado_save_project_as.png)
 
 4. In the Flow Navigator, under IP integrator, click **Open Block Design** and select `edt_zcu102.bd`.
@@ -130,7 +126,7 @@ We will connect the IP blocks we instantiated above to the PS block.
 3. Connect the interrupt signals
 
     - Connect axi_timer_0.interrupt to zynq_ultra_ps_e_0.pl_ps_irq0[0:0]
-    - We wil not use interrupt mode of AXI GPIO. 
+    - We wil not use interrupt mode of AXI GPIO.
     - Review the final block diagram.
 
     ![Final Block Diagram](media/design_example_1_block_diagram.png)
@@ -231,9 +227,9 @@ We will run implementation of the Vivado design and export the post-implementati
      You will also need to configure PetaLinux to create images for SD
      boot.
 
-2. Repeat steps 2 to 4 as described in Example 6 - [Create PetaLinux Image](#create-petalinux-image) chapter to update the device tree and build Linux images using PetaLinux. 
+2. Repeat steps 2 to 4 as described in Example 6 - [Create PetaLinux Image](#create-petalinux-image) chapter to update the device tree and build Linux images using PetaLinux.
 
-3. Follow instructions in [Verify the Image on the ZCU102 Board](#verify-the-image-on-the-zcu102-board) to verify the images. 
+3. Follow instructions in [Verify the Image on the ZCU102 Board](#verify-the-image-on-the-zcu102-board) to verify the images.
 
 
 ### Creating the Bare-Metal Application Project
@@ -519,6 +515,6 @@ We will run implementation of the Vivado design and export the post-implementati
 
 In this design example, we created the hardware design in Vivado with Processing System and GPIO modules. The hardware is exported to XSA file. We imported the hardware to PetaLinux to update the device tree. The re-generated PetaLinux image can boot the board. We also imported the XSA to Vitis Software Platform to create the platform project and developed software for ARM Cortex-R5F. We finally created the boot image to include software binaries run on both APU and RPU to make the system perform as we planned.
 
-[Next chapter](./8-boot-and-configuration.md) will introduce more boot and configuration techniques.
+The [next chapter](./8-boot-and-configuration.md) introduces more boot and configuration techniques.
 
-© Copyright 2017-2020 Xilinx, Inc.
+© Copyright 2017-2021 Xilinx, Inc.

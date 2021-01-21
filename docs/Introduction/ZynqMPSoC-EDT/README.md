@@ -1,7 +1,3 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/readme.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
 <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
@@ -36,19 +32,18 @@
  and conducting a review of boot components in hardware platform is
  also included.
 
-5. [Debugging Standalone Applications](./5-debugging-with-vitis-debugger.md)
+5. [Debugging Standalone Applications with the Vitis Debugger](./5-debugging-with-vitis-debugger.md)
 
-    This chapter provides an
- introduction to debugging software using the debug features of the
+This chapter provides an introduction to debugging software using the debug features of the
  Vitis IDE. This chapter uses the previous design and runs the software
  bare metal (without an OS) to demonstrate the debugging process. This
  chapter also lists the debug configurations for Zynq UltraScale+
  MPSoC.
 
 6. [Building and Debugging Linux Applications](./6-build-linux-sw-for-ps.md)
-   
-   This chapter creates a Linux image with PetaLinux and creates a hello world Linux application with Vitis IDE. It also showed how to debug Linux applications with Vitis IDE.
- 
+
+   This chapter creates a Linux image with PetaLinux and creates a hello world Linux application with Vitis IDE. It also shows how to debug Linux applications with the Vitis IDE.
+
 7. [System Design Example: Using GPIO, Timer and Interrupts](./7-design1-using-gpio-timer-interrupts.md)
 
     This chapter added some IPs in PL. It demonstrates how you can use the software blocks you configured in previous chapters to create a complex Zynq UltraScale+ system.
@@ -69,7 +64,7 @@ complete the learning and then moves on to another topic.
 
 The examples in this document were created using Xilinx tools running
 on Windows 10, 64-bit operating system, and PetaLinux on Linux 64-bit
-operating system. Other versions of the tools running on other Window
+operating system. Other versions of the tools running on other Windows
 installations might provide varied results. These examples focus on
 introducing you to the following aspects of embedded design.
 
@@ -77,4 +72,5 @@ introducing you to the following aspects of embedded design.
  Linux on the hardware is specific to 2020.2, which must be installed
  on the Linux host machine to execute the Linux portions of this document.
 
-© Copyright 2017-2020 Xilinx, Inc.
+
+© Copyright 2017-2021 Xilinx, Inc.

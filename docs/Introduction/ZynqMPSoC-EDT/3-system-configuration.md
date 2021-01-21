@@ -1,24 +1,9 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/3-system-configuration.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zync UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
 </th>
 
   </tr>
 
 </table>
-
-- [Zynq UltraScale+ MPSoC Processing System Configuration with Vivado](#zynq-ultrascale-mpsoc-processing-system-configuration-with-vivado)
-  - [Zynq UltraScale+ System Configuration](#zynq-ultrascale-system-configuration)
-  - [Example 1: Creating a New Embedded Project with Zynq UltraScale+ MPSoC](#example-1-creating-a-new-embedded-project-with-zynq-ultrascale-mpsoc)
-    - [Design Input and Output files](#design-input-and-output-files)
-    - [Starting Your Design](#starting-your-design)
-    - [Creating a Block Design Project](#creating-a-block-design-project)
-    - [Managing the Zynq UltraScale+ Processing System in Vivado](#managing-the-zynq-ultrascale-processing-system-in-vivado)
-    - [Validating the Design and Connecting Ports](#validating-the-design-and-connecting-ports)
-    - [Exporting Hardware](#exporting-hardware)
-    - [Example Summary](#example-summary)
 
 # Zynq UltraScale+ MPSoC Processing System Configuration with Vivado
 
@@ -72,7 +57,7 @@ The output of this example design is the hardware configuration XSA. We will use
 
     *Table 1:* **New Project Wizard Options**
 
-| Wizard Screen       | System Property                               | Setting or  Command to Use                          |
+| Screen       | System Property                               | Setting or  Command to Use                          |
 |---------------------|-----------------------------------------------|-----------------------------------------------------|
 | Project Name        | Project name                                  | **edt_zcu102**                                      |
 |                     | Project Location                              | **C:/edt**                                          |
@@ -84,7 +69,7 @@ The output of this example design is the hardware configuration XSA. We will use
 |                     | Display Name                                  | Select **Zynq UltraScale+ ZCU102 Evaluation Board** |
 | New Project Summary | Project Summary                               | Review the project summary                          |
 
-1. Click **Finish**. The New Project wizard closes and the project you just created opens in the Vivado design tool.
+4. Click **Finish**. The New Project wizard closes and the project you just created opens in the Vivado design tool.
 
 ### Creating a Block Design Project
 
@@ -260,7 +245,7 @@ The output of this example design is the hardware configuration XSA. We will use
 To write a hardware platform using the GUI, follow these steps:
 
 1. Select **File→ Export → Export Hardware** in the Vivado Design
-     Suite. The Export Hardware Platform window opens. 
+     Suite. The Export Hardware Platform window opens.
 
 2. Click **Next**.
 
@@ -274,8 +259,8 @@ To write a hardware platform using the GUI, follow these steps:
 
 ### Example Summary
 
-In this example, we created a Vivado design with Processing System of MPSoC and configured it for ZCU102 board. We exported the hardware XSA file for next software development example projects. [Please go to next chapter](./4-build-sw-for-ps-subsystems.md) to learn how to develop software based on the hardware we created in this example.
+In this example, we created a Vivado design with Processing System of MPSoC and configured it for ZCU102 board. We exported the hardware XSA file for next software development example projects.
 
+In the [next chapter](./4-build-sw-for-ps-subsystems.md), you will learn how to develop software based on the hardware created in this example.
 
-
-© Copyright 2017-2020 Xilinx, Inc.
+© Copyright 2017-2021 Xilinx, Inc.
