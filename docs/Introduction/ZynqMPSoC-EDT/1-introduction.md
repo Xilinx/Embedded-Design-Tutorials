@@ -91,14 +91,13 @@
 
  For more information about the Vitis unified software platform, see
  _Vitis Unified Software Platform Documentation: Embedded Software
- Development_
- ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1400-vitis-embedded.pdf)).
+ Development_ ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1400-vitis-embedded.pdf)).
 
  Other components include:
 
 - Drivers and libraries for embedded software development
 
-- Linaro GCC toolchain for C/C++ software development targeting the Arm™ Cortex-A53 and Arm Cortex-R5F MPCore processors in the Zynq UltraScale+ processing system.
+- Linaro GCC toolchain for C/C++ software development targeting the Arm Cortex-A53 and Arm Cortex-R5F MPCore processors in the Zynq UltraScale+ processing system.
 
 ### Vivado Design Suite
 
@@ -139,8 +138,7 @@
  development, hardware acceleration, and platform development. It can also
  be used to debug software applications.
 
- The Zynq UltraScale+ PS can be booted and run
- without programming the PL. However, to
+ The Zynq UltraScale+ PS can be booted and run without programming the PL. However, to
  use any soft IP in the fabric, or to bond out PS peripherals using
  EMIO, you must program the PL using the Vitis IDE or the Vivado
  hardware manager.

@@ -37,12 +37,12 @@ For this example, you will launch the Vivado Design Suite and create a project w
 
 ### Design Input and Output files
 
-This example design requires no input files. We will create the Vivado design from scratch. The design includes the Processing System module of MPSoC. We will not add any PL IPs in this example design, thus this design won't need to run through implementation and bitstream generation.
+This example design requires no input files. We will create the Vivado design from scratch. The design includes the processing system module of the MPSoC. No PL IPs will be added in this example design, so this design does not need to run through implementation and bitstream generation.
 
-The output of this example design is the hardware configuration XSA. We will use it for further software development.
+The output of this example design is the hardware configuration XSA. It will be used for further software development.
 
 - Input: N/A
-- Output: edt_zcu102_wrapper.xsa
+- Output: ``edt_zcu102_wrapper.xsa``
 
 
 ### Starting Your Design
@@ -54,8 +54,6 @@ The output of this example design is the hardware configuration XSA. We will use
 
 3. Use the information in the following table to make selections in
      each of the wizard screens.
-
-    *Table 1:* **New Project Wizard Options**
 
 | Screen       | System Property                               | Setting or  Command to Use                          |
 |---------------------|-----------------------------------------------|-----------------------------------------------------|
@@ -73,7 +71,7 @@ The output of this example design is the hardware configuration XSA. We will use
 
 ### Creating a Block Design Project
 
- You will now use the IP integrator to create a Block Design project.
+ You will now use the IP integrator to create a block design project.
 
 1. In the Flow Navigator pane, expand IP integrator and click **Create
      Block Design**.
@@ -84,9 +82,7 @@ The output of this example design is the hardware configuration XSA. We will use
 
 2. Use the following information to make selections in the Create Block Design wizard.
 
-	*Table 2:* **Setting in Create Block Design Wizard**
-
-   |  Wizard Screen      | System Property     |  Setting or Command to Use      |
+   |  Screen      | System Property     |  Setting or Command to Use      |
    |---------------------|---------------------|---------------------------------|
    |  Create Block Design|  Design Name        |  edt_zcu102         |
    |                      |  Directory          |  `<Local to Project>`         |
@@ -94,16 +90,15 @@ The output of this example design is the hardware configuration XSA. We will use
 
 3. Click **OK**.
 
-	 The Diagram view opens with a message that states that this design is
-	 empty. To get started, you will next add some IP from the catalog.
+	 The Diagram view opens with a message stating that this design is
+	 empty. The next step is to add some IP from the catalog.
 
 4. Click **Add IP**
      ![](./media/image8.png).
 
-5. In the search box, type zynq to find the Zynq device IP.
+5. In the search box, type ``zynq`` to find the Zynq device IP.
 
-6. Double-click the **Zynq UltraScale+ MPSoC IP** to add it to the
-     Block Design.
+6. Double-click the **Zynq UltraScale+ MPSoC IP** to add it to the block design.
 
  The Zynq UltraScale+ MPSoC processing system IP block appears in the
  Diagram view, as shown in the following figure.
@@ -112,7 +107,7 @@ The output of this example design is the hardware configuration XSA. We will use
 
 ### Managing the Zynq UltraScale+ Processing System in Vivado
 
- Now that you have added the processor system for the Zynq MPSoC to the
+ Now that you have added the processing system for the Zynq MPSoC to the
  design, you can begin managing the available options.
 
 1. Double-click the **Zynq UltraScale+ Processing System** block in the
@@ -124,8 +119,7 @@ The output of this example design is the hardware configuration XSA. We will use
 
     ![](./media/image10.jpeg)
 
-2. Click **Cancel** to exit the view
-     without making changes to the design.
+2. Click **Cancel** to exit the view without making changes to the design.
 
     >**TIP:** *In the Block Diagram window, notice the message stating that
     designer assistance is available, as shown in the following figure.
@@ -134,8 +128,7 @@ The output of this example design is the hardware configuration XSA. We will use
 
     ![](./media/image12.png)
 
-3. You will now use a preset template created for the ZCU102 board.
-     Click the **Run Block Automation** link.
+3. You will now use a preset template created for the ZCU102 board. Click the **Run Block Automation** link.
 
     The Run Block Automation view opens.
 
@@ -157,7 +150,7 @@ The output of this example design is the hardware configuration XSA. We will use
 
     ![](./media/image13.jpeg)
 
-6. In the block diagram, click one of the green I/O Peripherals, as
+6. In the block diagram, click one of the green I/O peripherals, as
      shown in the previous figure. The I/O Configuration view opens for
      the selected peripheral.
 
@@ -172,12 +165,12 @@ The output of this example design is the hardware configuration XSA. We will use
 8. In PS-PL Configuration, expand **PS-PL Interfaces** and expand the
      **Master Interface**.
 
-    For this example, because there is no design in PL, you can disable
-    the PS-PL interface. In this case, AXI HPM0 FPD and AXI HPM1 FPD
-    Master Interfaces can be disabled.
+    For this example, because there is no design in the PL, you can disable
+    the PS-PL interface. In this case, the AXI HPM0 FPD and AXI HPM1 FPD
+    master interfaces can be disabled.
 
 9. Deselect **AXI HPM0 FPD** and **AXI HPM1 FPD**. The PS-PL
-     configuration looks like following figure.
+     configuration looks like the following figure.
 
     ![](./media/image15.png)
 
@@ -189,7 +182,7 @@ The output of this example design is the hardware configuration XSA. We will use
  Use the following steps to validate the design:
 
 1. Right-click in the white space of the Block Diagram view and select
-     **Validate Design**. Alternatively, you can press the F6 key.
+     **Validate Design**. Alternatively, you can press the **F6** key.
 
     A message dialog box that states "Validation successful. There are no
     errors or critical warnings in this design" opens.
@@ -227,7 +220,7 @@ The output of this example design is the hardware configuration XSA. We will use
 
 9.  Select Synthesis Options to **Global** and click **Generate**.
 
-    This step builds all required output products for the selected source.
+    This step builds all the required output products for the selected source.
     For example, constraints do not need to be manually created for the IP
     processor system. The Vivado tools automatically generate the XDC file
     for the processor subsystem when **Generate Output Products** is selected.
@@ -257,11 +250,11 @@ To write a hardware platform using the GUI, follow these steps:
 
 5. Click **Finish** to generate the hardware platform file in the specified path. It will be the input file of next examples.
 
-Note: In most cases, we export pre-synthesis XSA for embedded platforms because a full implementation will run in v++ link phase. Post-implementation can be used for DFX platforms.
+Note: In most cases, we export pre-synthesis XSA for embedded platforms because a full implementation will run in the Vitis compiler (``v++``) link phase. Post-implementation, this can be used for DFX platforms.
 
 ### Example Summary
 
-In this example, we created a Vivado design with Processing System of MPSoC and configured it for ZCU102 board. We exported the hardware XSA file for next software development example projects.
+In this example, you created a Vivado design with an MPSoC processing system and configured it for the ZCU102 board. You exported the hardware XSA file for future software development example projects.
 
 In the [next chapter](./4-build-sw-for-ps-subsystems.md), you will learn how to develop software based on the hardware created in this example.
 
