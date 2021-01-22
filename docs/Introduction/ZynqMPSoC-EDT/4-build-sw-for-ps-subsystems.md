@@ -550,13 +550,18 @@ We will create a bare-metal application for Arm Cortex-R5F. The application sour
 
    - Connect power and USB cables for UART and JTAG
    - Set boot mode to JTAG boot mode
-   - Open Serial console
    - Power on
+
+2. Connect serial console for UART-0 and UART-1
+
+   - We can use [MobaXterm](https://mobaxterm.mobatek.net/) utility to connect multiple UART ports.
+   - Open USB UART Interface-0 for UART-0 for APU
+   - Open USB UART Interface-1 for UART-1 for RPU
 
 2. Run hello_system on hardware
 
    - Right click **hello_system** in Explorer window, select **Run As -> Launch Hardware**
-   - Message from Vitis Serial window shows prints from APU and RPU
+   - Message from MobaXterm shows prints from APU and RPU
 
    ![System Project Prints on Serial window](media/system_project_print.png)
 
@@ -569,6 +574,7 @@ Vitis uses JTAG to control the board and did the following tasks.
 - Enable RPU in split mode
 - Download elf to Cortex-A53_0 and Cortex-R5F_0. Put processors in suspend mode
 - Run applications on both processors
+- The application on APU prints on UART-0 and the application on RPU prints on UART-1
 
 You can view the detailed steps by right clicking hello_system, select **Run As -> Run Configurations** and view the Target Setup tab.
 

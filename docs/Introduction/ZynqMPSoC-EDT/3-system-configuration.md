@@ -257,6 +257,8 @@ To write a hardware platform using the GUI, follow these steps:
 
 5. Click **Finish** to generate the hardware platform file in the specified path. It will be the input file of next examples.
 
+Note: In most cases, we export pre-synthesis XSA for embedded platforms because a full implementation will run in v++ link phase. Post-implementation can be used for DFX platforms.
+
 ### Example Summary
 
 In this example, we created a Vivado design with Processing System of MPSoC and configured it for ZCU102 board. We exported the hardware XSA file for next software development example projects.
