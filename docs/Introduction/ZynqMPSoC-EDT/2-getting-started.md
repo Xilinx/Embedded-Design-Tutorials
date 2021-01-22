@@ -10,7 +10,7 @@
 
 ## Hardware Requirements
 
- This tutorial targets the Zynq UltraScale+ ZCU102 evaluation board.
+ This tutorial targets the Zynq® UltraScale+™ ZCU102 evaluation board.
  The examples in this tutorial were tested using the ZCU102 Rev 1
  board. To use this guide, you need the following hardware items, which
  are included with the evaluation board:
@@ -38,8 +38,8 @@
 
 ### Vitis Integrated Design Environment and Vivado Design Suite
 
-Ensure that you have the Vitis 2020.2 software development platform
-installed. The Vitis IDE is a Xilinx unified tool which comes with all
+Ensure that you have the Vitis™ 2020.2 unified software development platform
+installed. The Vitis software platform comes with all
 the hardware and software as a package. If you install the Vitis IDE,
 you will automatically get both the Vivado Design Suite and the Vitis
 IDE. You do not have to make any extra selections in the installer.
@@ -56,9 +56,7 @@ Vitis embedded software development supports the following operating systems:
 - Windows 10 64-bit Professional and Enterprise versions 1809, 1903, 1909, and 2004
 
 For more information on installing the Vitis Software Development Platform, refer to
-the *Vitis Unified Software Platform Documentation: Embedded Software
-Development, Installation Chapter*
-([UG1400](https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/vitis_embedded_installation.html#tlp1602134446371)).
+the Installation section of [UG1400](https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/vitis_embedded_installation.html#tlp1602134446371).
 
 ### PetaLinux Tools
 
@@ -84,8 +82,8 @@ Development, Installation Chapter*
 
 - Add common system packages and libraries to the workstation or
      virtual machine. For more information, see the Installation
-     Requirements from the *PetaLinux Tools Documentation: Reference
-     Guide*
+     Requirements from the _PetaLinux Tools Documentation: Reference
+     Guide_
      ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;d=ug1144-petalinux-tools-reference-guide.pdf)).
 
 #### Prerequisites
@@ -105,9 +103,8 @@ Development, Installation Chapter*
  For example, to install PetaLinux tools under
  `/opt/pkg/petalinux/2020.2`:
 
- For more information, see *PetaLinux Tools Documentation: Reference
- Guide*
- ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)).
+ For more information, see the _PetaLinux Tools Documentation: Reference
+ Guide_ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)).
 
 ### Software Licensing
 
@@ -117,14 +114,14 @@ Development, Installation Chapter*
  you through the process of obtaining a license and ensuring that the
  license can be used with the tools installed. If you do not need the
  full version of the software, you can use an evaluation license. For
- installation instructions and information, see the *Vivado Design
- Suite User Guide: Release Notes, Installation, and Licensing*
+ installation instructions and information, see the _Vivado Design
+ Suite User Guide: Release Notes, Installation, and Licensing_
  ([UG973](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;t=vivado+install+guide)).
 
 ### Tutorial Design Files
 
-Design files of this tutorial are provided in [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
+The reference design files for this tutorial are provided in the [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
 
-The [next chapter](./3-system-configuration.md) details the configuration of a Zynq UltraScale+ MPSoC PS with the Vivado IDE. 
+The [next chapter](./3-system-configuration.md) details the configuration of a Zynq UltraScale+ MPSoC PS with the Vivado IDE.
 
  © Copyright 2017-2021 Xilinx, Inc.

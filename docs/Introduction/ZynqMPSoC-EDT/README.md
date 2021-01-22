@@ -23,7 +23,7 @@
  introduction to the hardware and software tools using a simple design
  as the example.
 
-4. [Build Software for PS Subsystems](./4-build-sw-for-ps-subsystems.md)
+4. [Building Software for PS Subsystems](./4-build-sw-for-ps-subsystems.md)
 
     This chapter describes the steps to configure and build software for processing blocks in the
  processing system, including application processing unit (APU),
