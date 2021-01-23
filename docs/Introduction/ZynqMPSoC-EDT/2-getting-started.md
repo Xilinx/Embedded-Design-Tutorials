@@ -29,10 +29,10 @@
 - Ethernet cable to connect target board with host machine
 
 - Monitor with DisplayPort (DP) capability and at least 1080P
-    resolution.
+    resolution
 
-- DP cable to connect the Display output from ZCU102 Board to a DP
-    monitor.
+- DP cable to connect the display output from ZCU102 board to a DP
+    monitor
 
 ## Installation Requirements
 

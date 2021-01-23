@@ -118,11 +118,6 @@
  For more information, see the _PetaLinux Tools Documentation:
  Reference Guide_ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)).
 
- The PetaLinux tools design hub provides information and links to
- documentation specific to PetaLinux tools. For more information, see
- [Documentation Navigator and Design
- Hubs](#documentation-navigator-and-design-hubs).
-
 ## How the Xilinx Design Tools Expedite the Design
 
  You can use the Vivado Design Suite tools to add design sources to
