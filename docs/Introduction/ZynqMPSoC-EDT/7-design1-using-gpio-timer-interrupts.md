@@ -205,9 +205,9 @@ We will run implementation of the Vivado design and export the post-implementati
      You will also need to configure PetaLinux to create images for SD
      boot.
 
-2. Repeat steps 2 to 4 as described in [Create PetaLinux Image](6-build-linux-sw-for-ps.md#creating-a-petalinux-image) to update the device tree and build Linux images using PetaLinux.
+2. Repeat steps 2 to 4 as described in [Creating a PetaLinux Image](6-build-linux-sw-for-ps.md#creating-a-petalinux-image) to update the device tree and build Linux images using PetaLinux.
 
-3. Follow instructions in [Verify the Image on the ZCU102 Board](#verify-the-image-on-the-zcu102-board) to verify the images.
+3. Follow instructions in [Verifying the Image on the ZCU102 Board](6-build-linux-sw-for-ps.md#verifying-the-image-on-the-zcu102-board) to verify the images.
 
 
 ### Creating the Bare-Metal Application Project
@@ -218,9 +218,8 @@ We will run implementation of the Vivado design and export the post-implementati
 2. Use the information in the table below to make your selections in
      the wizard.
 
-    *Table 12:* **Settings to Create Timer-Based RPU Application Project**
 
-   |  Wizard Screen      |     System Properties          |  Settings      |
+   |  Screen      |     System Properties          |  Settings      |
    |---------------------|--------------------------------|----------------|
    |  Platform           |  Select platform from repository   |  edt_zcu102_wrapper |
    |  Application project details       |  Application project name       |  tmr_psled_r5       |
@@ -239,7 +238,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 5. Right-click the **src** directory, and select **Import** to open the Import dialog box.
 
-6. Expand General in the Import dialog box and select File System.
+6. Expand General in the Import dialog box and select **File System**.
 
 7. Click **Next**.
 
@@ -251,8 +250,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 11. Click **Finish**.
 
- The Vitis IDE automatically builds the application and displays the
- status in the console window.
+ The Vitis IDE automatically builds the application and displays the status in the console window.
 
 ### Modifying the Linker Script
 
@@ -260,14 +258,12 @@ We will run implementation of the Vivado design and export the post-implementati
 
 2. In the `src` directory, double-click `lscript.ld` to open the linker script for this project.
 
-3. In the linker script in Available Memory Regions, modify following  attributes for psu_r5_ddr_0\_MEM_0:
+3. In the linker script in Available Memory Regions, modify the following attributes for psu_r5_ddr_0\_MEM_0:
 
     Base Address: `0x70000000`
     Size: `0x10000000`
 
-    The following figure shows the linker
-    script modification. The following figure is for representation only.
-    Actual memory regions might vary in case of isolation settings.
+    The following figure shows the linker script modification. The following figure is for representation only. Actual memory regions might vary in case of isolation settings.
 
     ![](./media/image36.png)
 
@@ -275,18 +271,17 @@ We will run implementation of the Vivado design and export the post-implementati
     application resides above `0x70000000` base address in the DDR, and
     occupies no more than 256 MB of size.
 
-4. Type **Ctrl + S** to save the changes.
+4. Type **Ctrl+S** to save the changes.
 
 5. Right-click the **tmr_psled_r5** project and select **Build Project**.
 
-6. Verify that the application is compiled and linked successfully and that thetmr_psled_r5.elf file was generated in the `tmr_psled_r5\Debug` folder.
+6. Verify that the application is compiled and linked successfully and that the ``thetmr_psled_r5.elf`` file is generated in the `tmr_psled_r5\Debug` folder.
 
-7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package for testapp_r5](#modifying-the-board-support-package-for-testapp_r5).
+7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package for testapp_r5](#4-build-sw-for-ps-subsystems.md#modifying-the-board-support-package-for-testapp_r5).
 
 #### Creating the Linux Domain for Linux Applications
 
- To create a Linux domain for generating Linux applications, follow
- these steps:
+ To create a Linux domain for generating Linux applications, follow these steps:
 
 1. In the Explorer view of the Vitis IDE, expand the edt_zcu102_wrapper platform project.
 
@@ -294,7 +289,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 2. Double-click **platform.spr** in the Explorer view to open the platform explorer.
 
-3. Click ![](./media/image31.png) in the top-right corner to add the domain.
+3. Click ![](./media/image31.png) in the top right hand corner to add the domain.
 
 4. When the new domain window opens, enter the following details:
 
@@ -310,11 +305,11 @@ We will run implementation of the Vivado design and export the post-implementati
 
     - Architecture: 64-bit
 
-    - Bif file: Provide a sample bif file
+    - Bif file: Provide a sample bif file.
 
-    - Boot Component Directory: Create a boot directory and provide the path
+    - Boot Component Directory: Create a boot directory and provide the path.
 
-    - Linux Image Directory: Provide the same boot directory path
+    - Linux Image Directory: Provide the same boot directory path.
 
 5. Build the domain to create Linux applications.
 
@@ -324,9 +319,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 2. Use the information in the table below to make your selections in the wizard.
 
-    *Table 13:* **Settings to Create New Linux Application Project**
-
-   |  Wizard Screen      |  System Properties          |  Settings       |
+   |  Screen      |  System Properties          |  Settings       |
    |---------------------|-----------------------------|-----------------|
    |  Platform           |  Select platform from repository   |  edt_zcu102_wrapper |
    |  Application project details       |  Application  project name       |  ps_pl_linux_app    |
@@ -343,7 +336,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 4. In the Project Explorer view, expand the **ps_pl_linux_app** project.
 
-5. Right-click the src directory, and select **Import** to open the Import view.
+5. Right-click the ``src`` directory, and select **Import** to open the Import view.
 
 6. Expand General in the Import dialog box and select **File System**.
 
@@ -355,13 +348,13 @@ We will run implementation of the Vivado design and export the post-implementati
 
 10. Select and add the **ps_pl_linux_app.c** file.
 
- >***Note*:** The application might fail to build because of a missing
+ >**Note:** The application might fail to build because of a missing
  reference to the pthread library. The next section shows how to add
  the pthread library.
 
 ### Modifying the Build Settings
 
- This application makes use of Pthreads from the pthread library. Add
+ This application makes use of pthreads from the pthread library. Add
  the pthread library as follows:
 
 1. Right-click **ps_pl_linux_app**, and click **C/C++ Build Settings**.
@@ -374,16 +367,12 @@ We will run implementation of the Vivado design and export the post-implementati
 
 3. Click **OK** in both the windows.
 
-4. Right-click the application and select **Build** to build the
-     application.
+4. Right-click the application and select **Build** to build the application.
 
 ### Creating a Boot Image
 
  Now that all the individual images are ready, you will create the boot
- image to load all of these components on a Zynq UltraScale+ device.
- This can be done using the Create Boot Image wizard in the Vitis IDE,
- using the following steps. This example creates a Boot Image BOOT.bin
- in C:\\edt\\design1.
+ image to load all of these components on a Zynq UltraScale+ device. This can be done using the Create Boot Image wizard in the Vitis IDE by performing the following steps. This example creates a boot image ``BOOT.bin`` in ``C:\\edt\\design1``.
 
 1. Launch the Vitis IDE, if it is not already running.
 
@@ -395,31 +384,27 @@ We will run implementation of the Vivado design and export the post-implementati
 
 5. Add the partitions as shown in the following figure.
 
-    >***Note*:** For detailed steps on how to add partitions, see [Boot Sequence for SD-Boot](8-boot-and-configuration.md#boot-sequence-for-sd-boot).
+    >**Note:** For detailed steps on how to add partitions, see [Boot Sequence for SD-Boot](8-boot-and-configuration.md#boot-sequence-for-sd-boot).
 
     ![](./media/image112.png)
 
-    >***Note*:** This Boot image requires PL bitstream
-    `edt_zcu102_wrapper.bit` (Partition Type - Datafile, Destination Device - PL). The bitstream partition needs to be added right after the
-    bootloader while you create the boot image. Also note that the R5
-    application `tmr_psled_r5.elf` is added as partition in this boot image.
+    >**Note:** This boot image requires PL bitstream `edt_zcu102_wrapper.bit` (Partition Type - Datafile, Destination Device - PL). The bitstream partition needs to be added right after the bootloader while you create the boot image. The R5 application `tmr_psled_r5.elf` is added as partition in this boot image.
 
 6. After adding all the partitions, click **Create Image**.
 
-    >**IMPORTANT!** *Ensure that you have set the correct exception levels
-    for ATF (EL-3, TrustZone) and U- Boot (EL-2) partitions. These
-    settings can be ignored for other partitions.*
+    >**IMPORTANT!:** Ensure that you have set the correct exception levels
+    for ATF (EL-3, TrustZone) and U-Boot (EL-2) partitions. These
+    settings can be ignored for other partitions.
 
 ## Running the Image on a ZCU102 Board
 
-### Prepare the SD Card
+### Preparing the SD Card
 
- Copy the images and executables on an SD card and load it in the SD
- card slot in the Board.
+ Copy the images and executables onto an SD card and load it into the SD card slot in the board.
 
-1. Copy files BOOT.bin and image.ub to an SD card.
+1. Copy the ``BOOT.bin`` and ``image.ub`` files to an SD card.
 
-    >***Note*:** BOOT.bin is located in `C:\edt\design1`.
+    >**Note:** ``BOOT.bin`` is located in `C:\edt\design1`.
 
 2. Copy the Linux application, `ps_pl_linux_app.elf`, to the same SD card. The application can be found in `C:\edt\ps_pl_linux_app\Debug`.
 
@@ -427,61 +412,47 @@ We will run implementation of the Vivado design and export the post-implementati
 
 1. Load the SD card into the ZCU102 board, in the J100 connector.
 
-2. Connect the USB-UART on the Board to the Host machine.
+2. Connect the USB-UART on the board to the host machine.
 
 3. Connect the Micro USB cable into the ZCU102 Board Micro USB port J83, and the other end into an open USB port on the host machine.
 
-4. Configure the Board to Boot in SD-Boot mode by setting switch SW6 as shown in the following figure.
+4. Configure the board to boot in SD boot mode by setting switch SW6 as shown in the following figure.
 
     ![](./media/image43.jpeg)
 
-5. Connect 12V Power to the ZCU102 6-Pin Molex connector.
+5. Connect 12V power to the ZCU102 6-Pin Molex connector.
 
-6. Start a terminal session, using Tera Term or Minicom depending on the host machine being used, as well as the COM port and baud rate for your system, as shown in .
+6. Start a terminal session, using Tera Term or Minicom depending on the host machine being used, as well as the COM port and Baud rate for your system.
 
-7. For port settings, verify the COM port in the device manager.
+7. For port settings, verify the COM port in the device manager. There are four USB-UART interfaces exposed by the ZCU102 board.
 
-    There are four USB-UART interfaces exposed by the ZCU102 Board.
+8. Select the COM port associated with the interface with the lowest number. In this case, for UART-0, select the COM port with interface-0.
 
-8. Select the COM Port associated with the interface with the lowest
-     number. In this case, for UART-0, select the COM port with
-     interface-0.
+9. Similarly, for UART-1, select the COM port with interface-1. Remember that the R5 BSP has been configured to use UART-1, so R5 application messages will appear on the COM port with the UART-1 terminal.
 
-9. Similarly, for UART-1, select COM port with interface-1.
+### Power On Target and Run Applications
 
-    Remember that the R5 BSP has been configured to use UART-1, and so R5
-    application messages will appear on the COM port with the UART-1
-    terminal.
+1. Turn on the ZCU102 board using SW1, and wait until Linux loads on the board.
 
-### Power ON Target and Run Applications
+    You can see the initial boot sequence messages on your terminal screen
+    representing UART-0. The terminal screen configured for UART-1
+    also prints a message. This is the print message from the R5
+    bare-metal application running on the RPU, configured to use the UART-1
+    interface. This application is loaded by the FSBL onto the RPU.
 
-1. Turn on the ZCU102 Board using SW1, and wait until Linux loads on the board.
-
-    You can see the initial Boot sequence messages on your Terminal Screen
-    representing UART-0. Also, the terminal screen configured for UART-1
-    also prints a message. This is the print message from the R-5
-    bare-metal Application running on RPU, configured to use UART-1
-    interface. This application is loaded by the FSBL onto RPU.
-
-2. Now that this application is running, notice the PS LED being toggled by the application, and follow the instructions in the application terminal.
+2. Now that this application is running, notice the PS LED is being toggled by the application, and follow the instructions in the application terminal.
 
     ![](./media/image113.png)
 
 ### Running Linux Applications
 
- After Linux is up on the ZCU102 system, log in to the Linux target
- with login: root and password: root. The Linux target is now ready for
- running applications.
+ After Linux is up on the ZCU102 system, log into the Linux target with login: root and password: root. The Linux target is now ready to run applications. Run the Linux application by performing the following steps.
 
- Run the Linux application using following steps:
-
-1. Copy the application from SD card mount point to /tmp
+1. Copy the application from the SD card mount point to ``/tmp``:
 
     `# cp /run/media/mmcblk0p1/ps_pl_linux_app.elf /tmp`
 
-    >***Note*:** Mount the SD card manually if you fail to find SD card
-    contents in this location:`# mount /dev/mmcblk0p1 /media/`. Copy the
-    application to `/tmp`. `# cp /media/ps_pl_linux_app.elf /tmp`.
+    >**Note:** Mount the SD card manually if you fail to find SD card contents in this location:`# mount /dev/mmcblk0p1 /media/`. Copy the application to `/tmp`. `# cp /media/ps_pl_linux_app.elf /tmp`.
 
 2. Run the application.
 
@@ -491,7 +462,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 ## Summary
 
-In this design example, we created the hardware design in Vivado with Processing System and GPIO modules. The hardware is exported to XSA file. We imported the hardware to PetaLinux to update the device tree. The re-generated PetaLinux image can boot the board. We also imported the XSA to Vitis Software Platform to create the platform project and developed software for ARM Cortex-R5F. We finally created the boot image to include software binaries run on both APU and RPU to make the system perform as we planned.
+In this design example, you created the hardware design in Vivado with processing system and GPIO modules. The hardware was exported to an XSA file. You imported the hardware to PetaLinux to update the device tree. The regenerated PetaLinux image can boot the board. You also imported the XSA to the Vitis software platform to create the platform project and developed software for Arm Cortex-R5F. You finally created the boot image to include software binaries to run on both the APU and RPU to make the system perform as planned.
 
 The [next chapter](./8-boot-and-configuration.md) introduces more boot and configuration techniques.
 
