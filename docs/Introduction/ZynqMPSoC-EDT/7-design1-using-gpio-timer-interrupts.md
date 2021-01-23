@@ -7,35 +7,32 @@
 
 # Design Example 1: Using GPIOs, Timers, and Interrupts
 
-The Zynq ZCU102 UltraScale+ Evaluation Board comes with a few user configurable Switches and LEDs. This design example makes use of bare-metal and Linux applications to toggle these LEDs, with the following details:
+The Zynq&reg; UltraScale+&trade; MPSoC ZCU102 evaluation board comes with a few configurable switches and LEDs. This design example makes use of bare-metal and Linux applications to toggle these LEDs, with the following details:
 
 - The Linux APU runs Linux, while the RPU R5-0 hosts another bare-metal application.
 
 - The Linux applications configure a set of PL LEDs to toggle using a PS Dip Switch, and another set of PL LEDs to toggle using a PL Dip Switch (SW17).
 
-- The R5-Core 0 application uses an AXI Timer IP in Programmable logic to toggle PS LED (DS50). The application is configured to toggle the LED state every time the timer counter expires, and the Timer in the PL is set to reset periodically after a user-configurable time interval.
+- The R5-Core 0 application uses an AXI Timer IP in the programmable logic to toggle PS LED (DS50). The application is configured to toggle the LED state every time the timer counter expires, and the timer in the PL is set to reset periodically after a configurable time interval.
 
-- The system is configured such that the APU Linux Application and RPU Bare-metal Application run simultaneously.
+- The system is configured so that the APU Linux application and RPU bare-metal application run simultaneously.
 
 ## Configuring Hardware
 
- The first step in this design is to configure the PS and PL sections.
- This can be done in Vivado IP integrator. You start with adding the
- required IPs from the Vivado IP catalog and then connect the
- components to blocks in the PS subsystem.
+ The first step in this design is to configure the PS and PL sections. This can be done in Vivado&reg; IP integrator. Start with adding the required IPs from the Vivado IP catalog, and then connect the components to blocks in the PS subsystem.
 
 1. If the Vivado Design Suite is already open, start from the block diagram shown in and jump to step 4.
 
-2. Open the Vivado Project that you created in Introduction tutorial step 3:
+2. Open the Vivado project that you created in the introduction tutorial:
 
     `C:/edt/edt_zcu102/edt_zcu102.xpr`
 
-3. Save the project as design_example_1
+3. Save the project as ``design_example_1``:
 
-    - Click File -> Project -> Save As
-    - Input project name **design_example_1**
-    - Uncheck **Include run results**
-    - Click **OK**
+    - Click **File → Project → Save As**.
+    - Input project name **design_example_1**.
+    - Deselect **Include run results**.
+    - Click **OK**.
 
     ![](media/vivado_save_project_as.png)
 
@@ -45,19 +42,17 @@ The Zynq ZCU102 UltraScale+ Evaluation Board comes with a few user configurable 
 
 ### Adding the AXI Timer and AXI GPIO IP
 
-1. Adding the AXI Timer IP
+1. Adding the AXI Timer IP:
 
     - Right-click in the block diagram and select **Add IP** from the IP catalog.
 
-    - In the catalog, select **AXI Timer**.
-
-    The IP Details information displays, as shown in the following figure.
+    - In the catalog, select **AXI Timer**. The IP Details information displays, as shown in the following figure.
 
     ![](./media/image97.jpeg)
 
     - Double-click the **AXI Timer** IP to add it to the design.
 
-2. Review **AXI Timer** configurations
+2. Review the **AXI Timer** configurations:
 
     - Double-click the **AXI Timer** IP block to configure the IP, as
      shown in following figure.
@@ -66,168 +61,151 @@ The Zynq ZCU102 UltraScale+ Evaluation Board comes with a few user configurable 
 
     - Click **OK** to close the window.
 
-3. Adding the **AXI GPIO** IP
+3. Add the **AXI GPIO** IP:
 
-    - right-click in the block diagram and select **Add IP**.
-    Search for "AXI GPIO" and double-click the **AXI GPIO** IP to add it to the design.
+    - Right-click in the block diagram and select **Add IP**.
+    - Search for "AXI GPIO" and double-click the **AXI GPIO** IP to add it to the design.
 
-4. Adding the second **AXI GPIO** IP
+4. Add the second **AXI GPIO** IP:
 
-    - Copy the **axi_gpio_0** IP by typing **Ctrl+C**
-    - Paste it by typing **Ctrl+V**
-    - You can see axi_gpio_1 is created.
+    - Copy the **axi_gpio_0** IP by typing **Ctrl+C**.
+    - Paste it by typing **Ctrl+V**.
+    - You can see that axi_gpio_1 is created.
 
-5. Configure **axi_gpio_0** for push buttons
+5. Configure **axi_gpio_0** for push buttons:
 
-    - Double-click **axi_gpio_0** to open its configurations
-    - Select **Push button 5bits** from the Board Interface drop-down list on **GPIO** row.
+    - Double-click **axi_gpio_0** to open its configurations.
+    - Select **Push button 5bits** from the Board Interface drop-down list on the GPIO row.
+    - Click **OK**.
 
     ![](./media/image99.png)
 
-    - Click **OK**
+6. Configure **axi_gpio_1** for PL LEDs:
 
-6. Configure **axi_gpio_1** for PL LEDs
-
-    - Double-click **axi_gpio_1** to open its configurations
-    - Select **led_8bits** from the Board Interface drop-down list on **GPIO** row.
+    - Double-click **axi_gpio_1** to open its configurations.
+    - Select **led_8bits** from the Board Interface drop-down list on the **GPIO** row.
+    - Click **OK**.
 
     ![](./media/image100.png)
 
-    - Click **OK**.
-
 ### Connecting IP Blocks to Create a Complete System
 
-We will connect the IP blocks we instantiated above to the PS block.
+The next step is to connect the IP blocks instantiated above to the PS block.
 
-- Use PS HPM LPD AXI to control AXI interface of GPIO and Timer.
-- Connect Interrupt signals
+- Use PS HPM LPD AXI to control the AXI interface of the GPIO and timer.
+- Connect interrupt signals.
 
-1. Enable PS AXI HPM LPD AXI Interface
+1. Enable the PS AXI HPM LPD AXI interface:
 
-   - Double-click the **Zynq UltraScale+ MPSoC** IP block
-   - Select **PS-PL Configuration** tab
-   - Enable **AXI HPM0 LPD**, expand it, set the AXI HPM0 LPD Data Width drop-down to **128**-bit
-   - Click **OK** to close the window
-   - Check that **M_AXI_HPM0_LPD** interface shows up on MPSoC block.
+   - Double-click the **Zynq UltraScale+ MPSoC** IP block.
+   - Select the **PS-PL Configuration** tab.
+   - Enable **AXI HPM0 LPD**, expand it, set the AXI HPM0 LPD Data Width drop-down to **128** bits.
+   - Click **OK** to close the window.
+   - Check that the M_AXI_HPM0_LPD interface shows up on the MPSoC block.
 
    ![AXI HPM LPD](./media/image102.png)
 
 
-2. Connect the AXI interfaces
+2. Connect the AXI interfaces:
 
-    - Click **Run Connection Automation**
-    - Check **All Automation**
-    - Go through each tab to review the planning connections
-    - Click **OK** to execute the automated connection
-    - Check the connection result
+    - Click **Run Connection Automation**.
+    - Check **All Automation**.
+    - Go through each tab to review the planning connections.
+    - Click **OK** to execute the automated connection.
+    - Check the connection result.
 
     ![Vivado Connection Automation Result](media/vivado_gpio_auto_connection.png)
 
-3. Connect the interrupt signals
+3. Connect the interrupt signals:
 
-    - Connect axi_timer_0.interrupt to zynq_ultra_ps_e_0.pl_ps_irq0[0:0]
-    - We wil not use interrupt mode of AXI GPIO.
+    - Connect axi_timer_0.interrupt to zynq_ultra_ps_e_0.pl_ps_irq0[0:0].
+    - The AXI GPIO interrupt mode will not be used.
     - Review the final block diagram.
 
     ![Final Block Diagram](media/design_example_1_block_diagram.png)
 
-    >Note: If you have multiple interrupt signals to connect to PS, you can concat them to a bus with a `concat` block. You can add `concat` from **Add IP**.
+    >**Note:** If you have multiple interrupt signals to connect to the PS, you can concatenate them to a bus with a `concat` block. You can add `concat` from **Add IP**.
 
-4. Verify the address settings of IP cores
+4. Verify the address settings of IP cores:
 
-    - In the Address Editor view, verify
-     that the corresponding IPs are assigned with some addresses during connection automation. If they are not assigned, please click Assign All button to assign address for them.
+    - In the Address Editor view, verify that the corresponding IPs are assigned addresses during connection automation. If they are not assigned, click the **Assign All** button to assign addresses for them.
 
      ![](./media/image104.png)
 
-### Export the post-implementation hardware platform
+### Exporting the Post-Implementation Hardware Platform
 
-We will run implementation of the Vivado design and export the post-implementation design. The Vivado generated bitstream will be included in the XSA file. It can make the software tests and boot image generation steps easier in Vitis. Please note that Vitis IDE also accepts pre-synthesis XSA for application development. Bitstream is only needed for debugging PL designs.
+We will run implementation of the Vivado design and export the post-implementation design. The Vivado generated bitstream will be included in the XSA file. It can make the software tests and boot image generation steps easier in the Vitis IDE. Note that the Vitis IDE also accepts pre-synthesis XSAs for application development. Bitstream is only required for debugging PL designs.
 
-1. Validate the block diagram design
+1. Validate the block diagram design:
 
-    - Return to the block diagram view
-    - Save the Block Design (press **Ctrl + S**).
-    - Click the **Validate Design** botton on the block diagram tool bar. Alternatively, you can press the **F6** key.
+    - Return to the block diagram view.
+    - Save the block design (press **Ctrl+S**).
+    - Click the **Validate Design** button on the block diagram toolbar. Alternatively, press the **F6** key.
 
-    It takes a while to validate the design. A message dialog box will pop up and states "Validation successful. There are no errors or critical warnings in this design." If it reports any errors or critical warnings, please review the previous steps and correct the errors.
+    It takes a while to validate the design. A message dialog box pops up and states "Validation successful. There are no errors or critical warnings in this design." If it reports any errors or critical warnings, review the previous steps and correct the errors.
 
     - Click **OK** to close the message.
 
-2. Generate output products
+2. Generate output products:
 
-    - Click **Generate Block Design** in Flow Navigator panel.
-    - Click **Generate**
+    - Click **Generate Block Design** in the Flow Navigator panel.
+    - Click **Generate**,
     - When the Generate Output Products process completes, click **OK**.
-    - In the Block Diagram Sources window, click the **IP Sources** tab.
-     Here you can see the output products that you just generated, as
-     shown in the following figure.
+    - In the Block Diagram Sources window, click the **IP Sources** tab. Here you can see the output products that you just generated, as shown in the following figure.
 
     ![](./media/image106.png)
 
-3. Make sure you have an HDL top file
+3. Make sure you have an HDL top file. Because this design is saved from the introduction design, we have already done it.
 
-    - Since this design is saved from introduction design, we have already done it.
+4. Run synthesis, implementation, and bitstream generation:
 
-4. Run synthesis, implementation and bitstream generation
-
-    - Click **Generate Bitstream**
-    - Vivado will pop up a message "There are no implementation results available. OK to launch synthesis and implementation?"
-    - Click **Yes**
-    - Review the Launch Runs dialogue, set proper number of jobs to run simultaneously, and click **OK**.
-    - Wait for Vivado to complete implementation. After it finishes, it will pop-up a Bitstream Generation Completed window. Click **Cancel** to close it.
+    - Click **Generate Bitstream**.
+    - Vivado will display a popup message saying "There are no implementation results available. OK to launch synthesis and implementation?".
+    - Click **Yes**.
+    - Review the Launch Runs dialogue, set the proper number of jobs to run simultaneously, and click **OK**.
+    - Wait for Vivado to complete implementation. After it finishes, a Bitstream Generation Completed message will pop up. Click **Cancel** to close it.
 
     ![Vivado Launch Run Configuration](media/vivado_launch_run.png)
 
-5. Exporting Hardware Platform
+5. Export the hardware platform:
 
-    - Select menu **File→ Export → Export Hardware**. The Export Hardware Platform window opens.
-    - Click **Next**
-    - Select **Include Bitstream** and click Next.
-    - Specify XSA file name and path. We keep default in this example. Click **Next**.
+    - Select **File → Export → Export Hardware**. The Export Hardware Platform window opens.
+    - Click **Next**.
+    - Select **Include Bitstream** and click **Next**.
+    - Specify the XSA file name and path. This is kept at default in this example. Click **Next**.
     - Review the summary and click **Finish** to close the window.
-    - The hardware platform file is generates in the specified path.
+    - The hardware platform file is generated in the specified path.
 
 ## Configuring Software
 
  This use case has a bare-metal application running on an R5 core and a
- Linux Application running on APU Linux Target. Most of the software
- blocks will remain the same as mentioned in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). The software for this
- design example requires additional drivers for components added in the
- PL Logic. For this reason, you will need to generate a new Bare-metal
- BSP in the Vitis IDE using the Hardware files generated for this
- design. Linux also requires the Linux BSP to be reconfigured in sync
+ Linux application running on an APU Linux target. Most of the software
+ blocks will remain the same as mentioned in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). The software for this design example requires additional drivers for components added in the PL. For this reason, you will need to generate a new bare-metal BSP in the Vitis IDE using the hardware files generated for this design. Linux also requires the Linux BSP to be reconfigured in sync
  with the new hardware platform file (XSA).
 
  Before you configure the software, first look at the application
  design scheme. The system has a bare-metal application on RPU, which
- starts with toggling the PS LEDs for a user configurable period. The
- LEDs are set to toggle in synchronization with PL AXI Timer running in
+ starts with toggling the PS LEDs for a configurable period. The
+ LEDs are set to toggle in synchronization with a PL AXI Timer running in
  the PL block. The application sets the AXI Timer in the generate mode
  and generates an interrupt every time the Timer count expires. The
  application is designed to toggle the PS LED state after handling the
  Timer interrupt. The application runs in an infinite while loop and
- sets the RPU in WFI mode after toggling the LEDs for the
- user-configured time period. This LED toggling sequence can be
- repeated again by getting the RPU out of WFI mode using an external
- interrupt. For this reason,
-
- the UART interrupt is also configured and enabled in the same
+ sets the RPU in WFI mode after toggling the LEDs for the configured time period. This LED toggling sequence can be repeated again by getting the RPU out of WFI mode using an external
+ interrupt. For this reason, the UART interrupt is also configured and enabled in the same
  application. While this application runs on the RPU, the Linux target
  also hosts another Linux application. The Linux application uses user
- Input from PS or PL switches to toggle PL LEDs. This Linux application
- also runs in an infinite while loop, waiting for user input to toggle
- PL LEDs. The next set of steps show how to configure System software
- and build user applications for this design.
+ input from the PS or PL switches to toggle PL LEDs. This Linux application
+ also runs in an infinite while loop, waiting for user input to toggle the PL LEDs. The next set of steps shows how to configure system software and build user applications for this design.
 
-### Configure and Build Linux Using PetaLinux
+### Configuring and Building Linux Using PetaLinux
 
 1. Create the Linux images using PetaLinux. The Linux images must be
      created in sync with the hardware configuration for this design.
      You will also need to configure PetaLinux to create images for SD
      boot.
 
-2. Repeat steps 2 to 4 as described in Example 6 - [Create PetaLinux Image](#create-petalinux-image) chapter to update the device tree and build Linux images using PetaLinux.
+2. Repeat steps 2 to 4 as described in [Create PetaLinux Image](6-build-linux-sw-for-ps.md#creating-a-petalinux-image) to update the device tree and build Linux images using PetaLinux.
 
 3. Follow instructions in [Verify the Image on the ZCU102 Board](#verify-the-image-on-the-zcu102-board) to verify the images.
 
