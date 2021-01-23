@@ -5,9 +5,9 @@
 
 </table>
 
-# Build and Debug Linux Applications
+# Building and Debugging Linux Applications
 
-The earlier examples highlighted the creation of the bootloader images and bare-metal applications for APU, RPU, and PMU using the Vitis™ IDE. In this chapter, we will introduce how to develop Linux applications.
+The earlier examples highlighted the creation of bootloader images and bare-metal applications for APU, RPU, and PMU using the Vitis™ IDE. In this chapter, we will introduce how to develop Linux applications.
 
 ## Example 8: Create Linux Images and Applications using PetaLinux
 
