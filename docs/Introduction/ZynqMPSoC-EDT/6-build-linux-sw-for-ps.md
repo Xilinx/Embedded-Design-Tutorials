@@ -116,7 +116,7 @@ In this example, you will configure and build a Linux operating system platform 
 
 5. Connect 12V power to the ZCU102 6-pin Molex connector.
 
-6. Start a serial terminal session using Tera Term or Minicom depending on the host machine being used. set the COM port and Baud rate for your system as shown in the following figure.
+6. Start a serial terminal session using Tera Term or Minicom depending on the host machine being used. set the COM port and baud rate for your system as shown in the following figure.
 
      ![Tera Term Connection](./media/image44.png)
 
