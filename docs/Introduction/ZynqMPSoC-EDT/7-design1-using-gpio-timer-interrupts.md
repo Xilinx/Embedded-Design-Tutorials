@@ -422,7 +422,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 5. Connect 12V power to the ZCU102 6-Pin Molex connector.
 
-6. Start a terminal session, using Tera Term or Minicom depending on the host machine being used, as well as the COM port and Baud rate for your system.
+6. Start a terminal session, using Tera Term or Minicom depending on the host machine being used, as well as the COM port and baud rate for your system.
 
 7. For port settings, verify the COM port in the device manager. There are four USB-UART interfaces exposed by the ZCU102 board.
 
