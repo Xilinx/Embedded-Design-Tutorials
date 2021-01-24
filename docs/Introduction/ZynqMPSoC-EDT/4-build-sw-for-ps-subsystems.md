@@ -147,7 +147,7 @@ The following steps show how to create a platform project with a standalone doma
 
     ![Windows Device Manager](./media/image29.png)
 
-    In the above example, use **COM5** for Interface-0 and Baud rate **115200**.
+    In the above example, use **COM5** for Interface-0 and baud rate **115200**.
 
 4. From the **Port** dropdown menu, select the port number for Interface-0 (**COM5** in this example).
 

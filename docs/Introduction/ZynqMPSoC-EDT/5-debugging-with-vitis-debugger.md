@@ -275,7 +275,7 @@ The Vitis debugger provides the following debug capabilities:
 ### Serial Terminal Configuration
 
 1. Start a terminal session using Tera Term or Minicom depending on the host machine being used. Set the
-     COM port and Baud rate as shown in following figure.
+     COM port and baud rate as shown in following figure.
 
     ![](./media/image44.png)
 

@@ -31,7 +31,7 @@
 - Monitor with DisplayPort (DP) capability and at least 1080P
     resolution
 
-- DP cable to connect the display output from ZCU102 board to a DP
+- DP cable to connect the display output from the ZCU102 board to a DP
     monitor
 
 ## Installation Requirements
