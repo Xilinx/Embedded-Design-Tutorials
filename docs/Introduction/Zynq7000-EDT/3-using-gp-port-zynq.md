@@ -12,10 +12,10 @@
 - [Using the GP Port in Zynq Devices](#using-the-gp-port-in-zynq-devices)
   - [Adding IP in PL to the Zynq SoC Processing System](#adding-ip-in-pl-to-the-zynq-soc-processing-system)
   - [Example 3: Validate Instantiated Fabric IP Functionality](#example-3-validate-instantiated-fabric-ip-functionality)
-  - [Working with the Vitis Software Platform](#working-with-the-vitis-software-platform)
-  - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
+    - [Update Vivado Design](#update-vivado-design)
+    - [Working with the Vitis Software Platform](#working-with-the-vitis-software-platform)
+    - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
     - [Application Software Steps](#application-software-steps)
-      - [Application Software Code](#application-software-code)
 
 # Using the GP Port in Zynq Devices
 
@@ -92,6 +92,8 @@ Zynq SoC Processing System</a>. You will make the following design changes:
         switch in the serial terminal again.
 
 ## Example 3: Validate Instantiated Fabric IP Functionality
+
+### Update Vivado Design
 
 In this example, you will add the AXI GPIO, AXI Timer, the interrupt
 instantiated in fabric, and the EMIO interface. You will then validate
@@ -263,70 +265,21 @@ the fabric additions.
     table below to make selections in each of the wizard screens.
     Click **Next** where necessary.
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Wizard Screen</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>System Property</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Command to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>Export Hardware Platform</td>
-    <td>Platform type</td>
-    <td>Fixed</td>
-    </tr>
-    <tr class="even">
-    <td>Output</td>
-    <td></td>
-    <td>Include bitstream</td>
-    </tr>
-    </tbody>
-    </table>
+|Wizard Screen|System Property|Setting or Command to Use|
+|--- |--- |--- |
+|Export Hardware Platform|Platform type|Fixed|
+|Output||Include bitstream|
+||Export to|Leave as C:/designs/edt_tutorial|
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Wizard Screen</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>System Property</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Command to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>Files</td>
-    <td>XSA file name</td>
-    <td>Leave as tutorial_bd_wrapper</td>
-    </tr>
-    <tr class="even">
-    <td></td>
-    <td><strong>Export to</strong></td>
-    <td>Leave as C:/designs/ edt_tutorial</td>
-    </tr>
-    </tbody>
-    </table>
 
     ***Note*:** If a pop-up appears saying the module is already exported,
     click **Yes**.
 
-34. Click **Finish** as shown in the following figure.
+1.  Click **Finish** as shown in the following figure.
 
     ![](./media/image51.jpeg)    
 
-## Working with the Vitis Software Platform
+### Working with the Vitis Software Platform
 
 Open the Vitis IDE and manually update the exported hardware from
 Vivado.
@@ -350,17 +303,13 @@ Vivado.
 
     ![](./media/image54.jpeg)
 
-5.  Open the helloworld.c file from the hello_world project created with
-    standalone PS in <a href="2-using-zynq.md">Using the
-    Zynq SoC Processing System</a> and modify the application software code.
+5.  Open the **helloworld.c** file from the hello_world project created with standalone PS in [Using the Zynq SoC Processing System](2-using-zynq.md) and modify the application software code.
 
 6.  Save the file and re-build the project.
 
-7.  Open the serial communication utility with baud rate set to
-    **115200**.
+7.  Open the serial communication utility with baud rate set to **115200**.
 
-    ***Note*:** This is the baud rate that the UART is programmed to on
-    Zynq devices.
+    ***Note*:** This is the baud rate that the UART is programmed to on Zynq devices.
 
 8.  Connect to the board. Because you have a bitstream for the PL fabric, you must download the bitstream.
 
@@ -392,7 +341,7 @@ Vivado.
 
     ![](./media/image57.png)
 
-## Standalone Application Software for the Design
+### Standalone Application Software for the Design
 
 The system you designed in this chapter requires application software
 for the execution on the board. This section describes the details
@@ -456,11 +405,5 @@ Application software is composed of the following steps:
     LED DS23, starts the timer, and tells the function to wait infinitely
     for the Timer interrupt to happen. After the Timer interrupt happens,
     LED DS23 switches ON and restarts execution.
-
-#### Application Software Code
-
-The Application software for the system is included in helloworld.c,
-which is available in the ZIP file that accompanies this guide. For
-more details, see [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 
 © Copyright 2015–2020 Xilinx, Inc.
