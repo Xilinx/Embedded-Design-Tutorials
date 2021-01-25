@@ -250,7 +250,7 @@ To write a hardware platform using the GUI, follow these steps:
 
 5. Click **Finish** to generate the hardware platform file in the specified path. It will be the input file of next examples.
 
-Note: In most cases, we export pre-synthesis XSA for embedded platforms because a full implementation will run in the Vitis compiler (``v++``) link phase. Post-implementation, this can be used for DFX platforms.
+    **Note:** In most cases, we export a pre-synthesis XSA for embedded platforms because a full implementation will run in the Vitis compiler (``v++``) link phase. Post-implementation, this can be used for DFX platforms.
 
 ### Example Summary
 

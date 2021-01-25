@@ -167,7 +167,7 @@ The Vitis IDE needs a channel to download the application to the running target.
    - Make sure the USB UART cable is still connected with the ZCU102 board. Turn on your serial console and connect to the UART port.
    - Connect an Ethernet cable between the host and the ZCU102 board.
        - It can be a direct connection from the host to the ZCU102 board.
-       - You can also connect the host and the ZCU102 board using a router: the host connects to the router, and the ZCU102 board connects to the router.
+       - You can also connect the host and the ZCU102 board using a router.
    - Power on the board and let Linux run on ZCU102 (see [Verifying the Image on the ZCU102 Board](#verify-the-image-on-the-zcu102-board)).
    - Set up a networking software environment.
        - If the host and the board are connected directly, run `ifconfig eth0 192.168.1.1` to setup an IP address on the board. Go to **Control Panel → Network and Internet → Network and Sharing Center**, and click **Change Adapter Settings**. Find your Ethernet adapter, then right-click and select **Properties**. Double-click **Internet Protocol Version 4 (TCP/IPv4)**, and select **Use the following IP address**. Input the IP address **192.168.1.2**. Click **OK**.

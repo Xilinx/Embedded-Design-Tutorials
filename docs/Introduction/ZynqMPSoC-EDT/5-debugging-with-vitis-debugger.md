@@ -115,7 +115,7 @@ The Vitis debugger provides the following debug capabilities:
 
     ![](./media/image46.jpeg)
 
-    >***Note*:** The addresses shown on this page might slightly differ
+    >**Note:** The addresses shown on this page might slightly differ
     from the addresses shown on your system.
 
     The processor is currently sitting at the beginning of `main()` with
@@ -123,7 +123,7 @@ The Vitis debugger provides the following debug capabilities:
     this information in the Disassembly view, which shows the
     assembly-level program execution also suspended at `0000000000000cf0`.
 
-    >***Note*:** If the Disassembly view is not visible, select **Window→ Show View→ Disassembly**.
+    >**Note:** If the Disassembly view is not visible, select **Window→ Show View→ Disassembly**.
 
 3. The helloworld.c window also shows execution suspended at the first
      executable line of C code. Select the **Registers** view to

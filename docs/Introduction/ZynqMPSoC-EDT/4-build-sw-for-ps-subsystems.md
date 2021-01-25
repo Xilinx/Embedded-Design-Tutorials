@@ -63,7 +63,7 @@ The following steps show how to create a platform project with a standalone doma
 
 5. In the Platform view, go with the default tab **Create from hardware specification (XSA)**.
 
-   > **Note:** **Select a platform from repository** tab can be used when you have a pre-built platform and you'd like to copy it to local to modify it.
+   > **Note:** Use the **Select a platform from repository** tab when you have a pre-built platform and you'd like to copy it to local to modify it.
 
 6. Click **Browse...** to select the XSA file exported from previous chapter.
 
@@ -87,19 +87,19 @@ The following steps show how to create a platform project with a standalone doma
 
     ![](./media/image23.png)
 
-   - There is a standalone domain in the platform under psu_cortexa53_0 processor. New applications for Cortex-A53 can link against it.
-   - Default domains for FSBL and PMU firmware come with the platform project when **Generate Boot Components** is selected during application or platform project creation.
-   - You are free to add and remove domains in the platform project.
-   - You can customize the domain configurations.
+       - There is a standalone domain in the platform under psu_cortexa53_0 processor. New applications for Cortex-A53 can link against it.
+       - Default domains for FSBL and PMU firmware come with the platform project when **Generate Boot Components** is selected during application or platform project creation.
+       - You are free to add and remove domains in the platform project.
+       - You can customize the domain configurations.
 
-10.  Now build the hardware by right-clicking the platform, then
+10.  Build the hardware by right-clicking the platform, then
      selecting **Build Project**.
 
      ![](./media/image24.jpeg)
 
      The platform project is ready. You can create applications using this platform and test on zcu102 hardware.
 
-     **NOTE:** The project build process builds the standalone BSP, FSBL, and PMUFW. FSBL and PMUFW have their own BSP. The build process takes some time.
+     **Note** The project build process builds the standalone BSP, FSBL, and PMUFW. FSBL and PMUFW have their own BSP. The build process takes some time.
 
 ## Example 3: Running the "Hello World" Application from Arm Cortex-A53
 
@@ -111,7 +111,7 @@ The following steps show how to create a platform project with a standalone doma
 ### Input and Output Files
 
 - Input: standalone BSP libraries in the platform created in the previous example
-- Output: hello.elf for ARM Cortex-A53
+- Output: ``hello.elf`` for Arm Cortex-A53
 
 ### Board Setup
 
@@ -275,8 +275,8 @@ The hardware setup and serial console connection is the same as in Example 2.
 
 ### Input and Output Files
 
-- Inputs:  zcu102_edt platform with standalone domain on Arm Cortex-A53
-- Outputs: zcu102_edt platform with standalone domain on Arm Cortex-A53 and Cortex-R5F processors
+- Input:  zcu102_edt platform with standalone domain on Arm Cortex-A53
+- Output: zcu102_edt platform with standalone domain on Arm Cortex-A53 and Cortex-R5F processors
 
 
 ### Creating a Standalone BSP Domain for cortexr5_0
@@ -326,7 +326,7 @@ The edt_zcu102_wrapper platform is, by default, assigned the default domain for 
 
     The Vitis IDE creates the **hello_r5_system** project in the Explorer view. **hello_r5** sits inside **hello_r5_system**.
 
-5. Select hello_r5_system and click the hammer icon in the toolbar to build the system project.
+5. Select **hello_r5_system** and click the hammer icon in the toolbar to build the system project.
 
 ### Running the "Hello World" Application on Arm Cortex-R5F
 
@@ -563,7 +563,7 @@ To review the FSBL in the platform, follow these steps:
 
 4. The zynqmp_fsbl domain is created automatically if bootloader creation is enabled during platform creation.
 
-### Reviewing PMU Firmware in Platform
+### Reviewing the PMU Firmware in the Platform
 
 To review the PMU firmware in the platform, follow these steps:
 
