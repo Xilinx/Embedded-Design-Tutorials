@@ -81,7 +81,7 @@ the Vitis software platform, refer to the following documentation:
 
 -   *Vitis Unified Software Platform Documentation: Embedded Software
     Development*
-    ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bd%3Dug1400-vitis-embedded.pdf))
+    ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1400-vitis-embedded.pdf))
 
 -   *System Performance Analysis of an SoC*
     ([XAPP1219](https://www.xilinx.com/support/documentation/application_notes/xapp1219-system-performance-modeling.pdf))

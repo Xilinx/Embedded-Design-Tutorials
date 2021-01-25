@@ -234,7 +234,7 @@ the fabric additions.
 
     ***Note*:** For additional information about creating other design
     constraints, refer to the *Vivado Design Suite User Guide: Using
-    Constraints* ([UG903](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bd%3Dug903-vivado-using-constraints.pdf)).
+    Constraints* ([UG903](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug903-vivado-using-constraints.pdf)).
 
 31. In the Flow Navigator, under Program and Debug, select **Generate
     Bitstream**.

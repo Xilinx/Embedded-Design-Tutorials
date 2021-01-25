@@ -170,7 +170,7 @@ enabled when required.
 
 Detailed information on enabling these components in the *PetaLinux
 Tools Documentation: Reference Guide*
-([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)),
+([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)),
 section \"Debugging Applications with TCF Agent.\"
 
 ### Booting Linux Using JTAG Mode
@@ -284,7 +284,7 @@ section \"Debugging Applications with TCF Agent.\"
 
     After booting completes, \# prompt appears on the serial terminal.
 
-13. At the root\@xilinx-zc702-2020.1:\~\# prompt, make sure that the
+13. At the root\@xilinx-zc702-2020.2:\~\# prompt, make sure that the
     board Ethernet connection is configured:
 
     a.  Check the IP address of the board by typing the following
@@ -297,8 +297,8 @@ section \"Debugging Applications with TCF Agent.\"
     b.  If inetaddr and netmask values do not exist, you can assign them using the following commands:
 
         ```
-        root@xilinx-zc702-2020.1:~# ifconfig eth0 inet 192.168.1.10
-        root@xilinx-zc702-2020.1:~# ifconfig eth0 netmask 255.255.255.0
+        root@xilinx-zc702-2020.2:~# ifconfig eth0 inet 192.168.1.10
+        root@xilinx-zc702-2020.2:~# ifconfig eth0 netmask 255.255.255.0
         ```
 
         **IMPORTANT!** *If the target and host are connected back-to-back, you
@@ -517,7 +517,7 @@ This example project covers the following steps:
 
         ***Note*:** For more information, refer to the *PetaLinux Tools
         Documentation: Reference Guide*
-        ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
+        ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
 
 4.  Program QSPI flash with the Boot Image Using JTAG and U-Boot
     Command.
@@ -767,7 +767,7 @@ saying Flash Operation Successful.
 3.  Switch on the board power.
 
     A Linux booting message appears on the serial terminal. After booting
-    finishes, the root\@xilinx-zc702-2020_1:\~\# prompt appears. Enter the
+    finishes, the root\@xilinx-zc702-2020_2:\~\# prompt appears. Enter the
     login and password as root when prompted.
 
 4.  Check the Board IP address connectivity as described in [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode).

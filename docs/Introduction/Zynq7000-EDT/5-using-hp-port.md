@@ -700,7 +700,7 @@ Platform](6-linux-booting-debug.md).
 
     After booting completes, \# prompt appears on the serial terminal.
 
-13. At the root\@Xilinx-ZC702-2020.1:\~\# prompt, make sure that the
+13. At the root\@Xilinx-ZC702-2020.2:\~\# prompt, make sure that the
     board Ethernet connection is configured:
 
     a.  Check the IP address of the board by typing the following
@@ -714,8 +714,8 @@ Platform](6-linux-booting-debug.md).
         using the following commands:
 
         ```
-        root@Xilinx-ZC702-2020.1:~# ifconfig eth0 inet 192.168.1.10
-        root@Xilinx-ZC702-2020.1:~# ifconfig eth0 netmask 255.255.255.0
+        root@Xilinx-ZC702-2020.2:~# ifconfig eth0 inet 192.168.1.10
+        root@Xilinx-ZC702-2020.2:~# ifconfig eth0 netmask 255.255.255.0
         ```
 
 14. Confirm that the IP address settings on the Windows machine are set

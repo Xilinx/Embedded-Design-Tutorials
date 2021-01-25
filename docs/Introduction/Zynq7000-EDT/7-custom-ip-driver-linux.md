@@ -604,7 +604,7 @@ Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
     location:
 
     ```
-    <petalinux-build_directory>/build/tmp/sysroots-components/zc702_zynq7/blink/lib/modules/5.4.0-xilinx-v2020.1/extra/blink.ko
+    <petalinux-build_directory>/build/tmp/sysroots-components/zc702_zynq7/blink/lib/modules/5.4.0-xilinx-v2020.2/extra/blink.ko
     ```
 
 6.  You can install the driver using the modprobe command, which will be
@@ -812,11 +812,11 @@ a Windows machine.
 16. In the serial terminal, type cd Apps at the Zynq\prompt to open
     the /Apps directory.
 
-17. Go to the Apps directory at the root\@xilinx-zc702-2020_1: Linux
+17. Go to the Apps directory at the root\@xilinx-zc702-2020_2: Linux
     prompt, and type chmod 777 linux_blinkled_app.elf to change the
     linux_blinkled_app.elf file mode to executable mode.
 
-18. At the root\@xilinx-zc702-2020_1: prompt, type
+18. At the root\@xilinx-zc702-2020_2: prompt, type
     ./linux_blinkled_app.elf to execute the application.
 
 19. Follow the instruction printed on the serial terminal to run the

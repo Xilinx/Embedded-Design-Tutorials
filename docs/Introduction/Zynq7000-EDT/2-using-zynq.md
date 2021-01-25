@@ -62,7 +62,7 @@ project with an embedded processor system as the top level.
 
 ### Starting Your Design
 
-1.  Start the 2020.1 Vivado Design Suite.
+1.  Start the 2020.2 Vivado Design Suite.
 
 2.  In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
 
@@ -251,7 +251,7 @@ design, you can begin managing the available options.
 
     Note that Cross Trigger In and Cross Trigger Out are disabled. For a
     detailed tutorial with information about cross trigger set-up, refer
-    to the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bd%3Dug940-vivado-tutorial-embedded-design.pdf)).
+    to the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug940-vivado-tutorial-embedded-design.pdf)).
 
 6.  Click **OK** to accept the default processor system options and make
     default pin connections.
@@ -453,7 +453,7 @@ application for your hardware platform.
 ### Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado
 
 1.  Launch the Vitis IDE by using the desktop shortcut or by
-    double-clicking the C:\\Xilinx\\Vitis\\2020.1\\bin\\vitis.bat file. The Eclipse Launcher view opens.
+    double-clicking the C:\\Xilinx\\Vitis\\2020.2\\bin\\vitis.bat file. The Eclipse Launcher view opens.
 
 2.  Select the workspace location as C:\\designs\\workspace or any given    location path. The tool creates the workspace folder if it is not already   created.
 

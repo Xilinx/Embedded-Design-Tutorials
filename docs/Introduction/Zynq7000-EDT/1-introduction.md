@@ -56,7 +56,7 @@ The Vitis software platform is used for software development, and can be install
 
 The Zynq SoC Processing System (PS) can be booted and made to run without programming the FPGA (programmable logic or PL). However, in order to use any soft IP in the fabric, or to bond out PS peripherals using EMIO, programming of the PL is required. You can program the PL in the Vitis software platform.
 
-For more information on the embedded design process, see the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bd%3Dug940-vivado-tutorial-embedded-design.pdf)).
+For more information on the embedded design process, see the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug940-vivado-tutorial-embedded-design.pdf)).
 
 ## What You Need to Set Up Before Starting
 
@@ -84,10 +84,10 @@ This tutorial targets the Zynq ZC702 Rev 1.0 evaluation board, and can also be u
 #### Vitis Software Platform and Vivado Design Suite
 
 Ensure that you have both the Vitis software platform and the Vivado Design Suite installed. Visit the [Xilinx Support Page](https://www.xilinx.com/support/download.html) to ensure that you download the latest software version. To install the Vitis software platform, follow the instructions in the Installation section of the
-*Vitis Unified Software Platform Documentation: Embedded Software Development* ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bd%3Dug1400-vitis-embedded.pdf)). When you install the Vitis software platform, the Vivado Design Suite
+*Vitis Unified Software Platform Documentation: Embedded Software Development* ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1400-vitis-embedded.pdf)). When you install the Vitis software platform, the Vivado Design Suite
 is installed automatically.
 
-To install Vivado by itself, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* ([UG973](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bt%3Dvivado%2Binstall%2Bguide)).
+To install Vivado by itself, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* ([UG973](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bt%3Dvivado%2Binstall%2Bguide)).
 
 ![](./media/image6.jpeg)
 
@@ -108,15 +108,15 @@ This can use either a dedicated Linux host system or a virtual machine running o
 
 When you install PetaLinux Tools on your system of choice, you must do the following:
 
--   Download PetaLinux software (version 2020.1) from the Xilinx
+-   Download PetaLinux software (version 2020.2) from the Xilinx
     Website.
 
--   Install the PetaLinux (version 2020.1) release package.
+-   Install the PetaLinux (version 2020.2) release package.
 
 -   Add common system packages and libraries to the workstation or
     virtual machine. For more details, see the Installation
     Requirements from the *PetaLinux Tools Documentation: Reference
-    Guide* ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf))
+    Guide* ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf))
     .
 
 ###### Prerequisites
@@ -133,12 +133,12 @@ By default, the installer installs the package as a subdirectory within the curr
 
 ***Note*:** Ensure that the PetaLinux installation path is kept short. The PetaLinux build will fail if the path exceeds 255 characters.
 
-`bash\./petalinux-v2020.1-final-installer.run`
+`bash\./petalinux-v2020.2-final-installer.run`
 
-PetaLinux is installed in the petalinux-v2020.1-final directory, directly underneath the working directory of this command. If the installer is placed in the home directory /home/user, PetaLinux is installed in /home/user/petalinux-v2020.1-final.
+PetaLinux is installed in the petalinux-v2020.2-final directory, directly underneath the working directory of this command. If the installer is placed in the home directory /home/user, PetaLinux is installed in /home/user/petalinux-v2020.2-final.
 
-Refer to <a href="./docs/6-linux-booting-debug.md">Linux Booting and Debug in the Vitis Software Platform</a> for additional information about the PetaLinux environment setup, project creation, and project usage examples. A detailed guide on PetaLinux Installation and usage can be found in the *PetaLinux Tools Documentation: Reference Guide* ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
+Refer to <a href="./docs/6-linux-booting-debug.md">Linux Booting and Debug in the Vitis Software Platform</a> for additional information about the PetaLinux environment setup, project creation, and project usage examples. A detailed guide on PetaLinux Installation and usage can be found in the *PetaLinux Tools Documentation: Reference Guide* ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
 
 #### Software Licensing
 
-Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license.For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* ([UG973](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.1%3Bt%3Dvivado%2Binstall%2Bguide)).
+Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license.For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* ([UG973](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bt%3Dvivado%2Binstall%2Bguide)).
