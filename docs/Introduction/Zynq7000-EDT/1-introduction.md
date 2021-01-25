@@ -142,3 +142,9 @@ Refer to <a href="./docs/6-linux-booting-debug.md">Linux Booting and Debug in th
 #### Software Licensing
 
 Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license.For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* ([UG973](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bt%3Dvivado%2Binstall%2Bguide)).
+
+## Design Files for this Tutorial
+
+The reference design files for this tutorial are provided in the [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
+
+Design files contain the source code for all the sections.

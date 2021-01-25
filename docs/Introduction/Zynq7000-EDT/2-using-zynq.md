@@ -9,32 +9,25 @@
 </table>
 
 - [Using the Zynq SoC Processing System](#using-the-zynq-soc-processing-system)
-  - [Design Files for this Tutorial](#design-files-for-this-tutorial)
   - [Embedded System Configuration](#embedded-system-configuration)
-  - [Example Project: Creating a New Embedded Project with Zynq SoC](#example-project-creating-a-new-embedded-project-with-zynq-soc)
+  - [Example 1: Creating a New Embedded Project with Zynq SoC](#example-1-creating-a-new-embedded-project-with-zynq-soc)
     - [Starting Your Design](#starting-your-design)
     - [Creating an Embedded Processor Project](#creating-an-embedded-processor-project)
     - [Managing the Zynq7 Processing System in Vivado](#managing-the-zynq7-processing-system-in-vivado)
     - [Validating the Design and Connecting Ports](#validating-the-design-and-connecting-ports)
     - [Synthesizing the Design, Running Implementation, and Generating the Bitstream](#synthesizing-the-design-running-implementation-and-generating-the-bitstream)
     - [Exporting a Hardware Platform](#exporting-a-hardware-platform)
-      - [What Just Happened?](#what-just-happened)
-      - [What's Next?](#whats-next)
-    - [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado)
-      - [What Just Happened?](#what-just-happened-1)
-  - [Example Project: Running the \"Hello World\" Application](#example-project-running-the-hello-world-application)
-    - [What Just Happened?](#what-just-happened-2)
+  - [Example 2: Creating and Running a "Hello World" Application](#example-2-creating-and-running-a-hello-world-application)
+    - [Setup the board](#setup-the-board)
+    - [Creating a Vitis Platform Project](#creating-a-vitis-platform-project)
+    - [Create the Hello World application](#create-the-hello-world-application)
+    - [Run the Hello World Application on ZC702 board](#run-the-hello-world-application-on-zc702-board)
   - [Additional Information](#additional-information)
     - [Domain or Board Support Package](#domain-or-board-support-package)
     - [Standalone OS](#standalone-os)
 
 # Using the Zynq SoC Processing System
 
-## Design Files for this Tutorial
-
-The ZIP file associated with this document contains the design files for the tutorial. You can download this file from <a href="https://www.xilinx.com/cgi-bin/docs/ctdoc?cid=584abf8e-7c05-471e-ab16-6135205cfbd9;d=ug1165-zynq-embedded-design-tutorial.zip">this link</a>.
-
-Design files contain the HDF files for each section, and the source code and pre-built images forall the sections.
 
 Now that you have been introduced to the Xilinx&reg; Vivado&reg; Design Suite, you will begin looking at how to use it to develop an embedded system using the Zynq&reg;-7000 SoC processing system (PS).
 
@@ -55,87 +48,33 @@ design requirements, no bitstream is required. This chapter guides you
 through creating a simple PS-based design that does not require a
 bitstream.
 
-## Example Project: Creating a New Embedded Project with Zynq SoC
+## Example 1: Creating a New Embedded Project with Zynq SoC
 
 For this example, you will launch the Vivado Design Suite and create a
 project with an embedded processor system as the top level.
 
 ### Starting Your Design
 
-1.  Start the 2020.2 Vivado Design Suite.
+1.  Start the Vivado Design Suite.
 
 2.  In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
 
 3.  Use the information in the table below to make selections in each of the wizard screens.
 
-<table>
-<thead>
-<tr class="header">
-<th><blockquote>
-<p><strong>Screen</strong></p>
-</blockquote></th>
-<th><blockquote>
-<p><strong>System Property</strong></p>
-</blockquote></th>
-<th><blockquote>
-<p><strong>Setting or Command to Use</strong></p>
-</blockquote></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Project Name</td>
-<td>Project name</td>
-<td>edt_tutorial</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Project Location</td>
-<td>C:/designs</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Create Project Subdirectory</td>
-<td>Leave this checked</td>
-</tr>
-<tr class="even">
-<td>Project Type</td>
-<td>Specify the type of sources for your design. You can start with RTL or a synthesized EDIF.</td>
-<td><strong>RTL Project</strong></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><strong>Do not specify sources at this time</strong></p>
-<p>check box</p></td>
-<td>Leave this unchecked.</td>
-</tr>
-<tr class="even">
-<td>Add Sources</td>
-<td>Do not make any changes to this page.</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Add Constraints</td>
-<td>Do not make any changes to this page.</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Default Part</td>
-<td>Select</td>
-<td><strong>Boards</strong></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Board</td>
-<td><strong>ZYNQ-7 ZC702 Evaluation Board</strong></td>
-</tr>
-<tr class="even">
-<td>New Project Summary</td>
-<td>Project Summary</td>
-<td>Review the project summary.</td>
-</tr>
-</tbody>
-</table>
+    | Screen              | System Property                                                                            | Setting or Command to Use     |
+    | ------------------- | ------------------------------------------------------------------------------------------ | ----------------------------- |
+    | Project Name        | Project name                                                                               | edt_tutorial                  |
+    |                     | Project Location                                                                           | C:/designs                    |
+    |                     | Create Project Subdirectory                                                                | Leave this checked            |
+    |                     | Project is an extensible Vitis platform                                                    | Leave this unchecked          |
+    | Project Type        | Specify the type of sources for your design. You can start with RTL or a synthesized EDIF. | RTL Project                   |
+    |                     | Do not specify sources at this time                                                        |                               |
+    | check box           | Leave this unchecked.                                                                      |                               |
+    | Add Sources         | Do not make any changes to this page.                                                      |                               |
+    | Add Constraints     | Do not make any changes to this page.                                                      |                               |
+    | Default Part        | Select                                                                                     | Boards                        |
+    |                     | Board                                                                                      | ZYNQ-7 ZC702 Evaluation Board |
+    | New Project Summary | Project Summary                                                                            | Review the project summary.   |
 
 4.  Click **Finish**. The New Project wizard closes and the project you just created opens in the Vivado design tool.
 
@@ -145,63 +84,35 @@ Perform the following steps to create an embedded processor project.
 
 1. In the Flow Navigator, under **IP Integrator**, click **Create Block Design**.  
 
-  ![](./media/image7.png)
+   ![](./media/image7.png)
 
-The Create Block Design dialog box opens.
+   The Create Block Design dialog box opens.
 
 2.  Use the following information to make selections in the Create Block
     Design dialog box.
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Screen</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>System Property</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Command to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>Create Block Design</td>
-    <td>Design name</td>
-    <td>tutorial_bd</td>
-    </tr>
-    <tr class="even">
-    <td></td>
-    <td>Directory</td>
-    <td>&lt;Local to Project&gt;</td>
-    </tr>
-    <tr class="odd">
-    <td></td>
-    <td>Specify source set</td>
-    <td><strong>Design Sources</strong></td>
-    </tr>
-    </tbody>
-    </table>
+    | Screen              | System Property    | Setting or Command to Use |
+    | ------------------- | ------------------ | ------------------------- |
+    | Create Block Design | Design name        | tutorial_bd               |
+    |                     | Directory          | <Local to Project>        |
+    |                     | Specify source set | Design Sources            |
+
 
 3.  Click **OK**.
 
-The Diagram window opens with a message that states that this design
-is empty. To get started, you will next add some IP from the catalog.
+    The Diagram window opens with a message that states that this design
+    is empty. To get started, you will next add some IP from the catalog.
 
-4.  Click the **Add IP** button.
+4.  Click the **Add IP** button. ![Add IP Button](./media/image8.png)
 
-  ![](./media/image8.png)
-
-5.  In the search box, type zynq to find the Zynq device IP options.
+5.  In the search box, type **zynq** to find the Zynq device IP options.
 
 6.  Double-click the **ZYNQ7 Processing System** IP to add it to the
     block design.
 
     ![](./media/image9.png)
 
-The Zynq SoC processing system IP block appears in the Diagram view, as shown in the following figure.
+    The Zynq SoC processing system IP block appears in the Diagram view, as shown in the following figure.
 
 ### Managing the Zynq7 Processing System in Vivado
 
@@ -251,14 +162,14 @@ design, you can begin managing the available options.
 
     Note that Cross Trigger In and Cross Trigger Out are disabled. For a
     detailed tutorial with information about cross trigger set-up, refer
-    to the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug940-vivado-tutorial-embedded-design.pdf)).
+    to the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;d=ug940-vivado-tutorial-embedded-design.pdf)).
 
 6.  Click **OK** to accept the default processor system options and make
     default pin connections.
 
 ### Validating the Design and Connecting Ports
 
-Now, validate the design.
+Now, let's validate the design.
 
 1.  Right-click in the white space of the Diagram window and select
     **Validate Design**. Alternatively, you can press the F6 key.
@@ -292,25 +203,17 @@ Now, validate the design.
 
 9.  Click **Hierarchy**.
 
-10. Under **Design Sources**, right-click **tutorial_bd** and select
-    **Create HDL Wrapper**.
-
-    ![](./media/image16.png)
+10. Under **Design Sources**, right-click **tutorial_bd** and select **Create HDL Wrapper**.
 
     The Create HDL Wrapper view opens. You will use this view to create an HDL wrapper file for the processor subsystem.
 
-    **TIP:** *The HDL wrapper is a top-level entity required by the design
-    tools.*
+    **TIP:** *The HDL wrapper is a top-level entity required by the design tools.*
 
-11. Select **Let Vivado manage wrapper and auto-update** and click
-    **OK**.
+11. Select **Let Vivado manage wrapper and auto-update** and click **OK**.
 
-12. In the Sources window, under Design Sources, expand
-    **tutorial_bd_wrapper**.
+12. In the Sources window, under Design Sources, expand **tutorial_bd_wrapper**.
 
-13. Right-click the top-level block diagram, titled **tutorial_bd_i :
-    tutorial_bd (tutorial_bd.bd)** and select **Generate Output
-    Products**.
+13. Right-click the top-level block diagram, titled **tutorial_bd_i: tutorial_bd (tutorial_bd.bd)** and select **Generate Output Products**.
 
     The Generate Output Products view opens, as shown in the following figure.
 
@@ -374,83 +277,64 @@ Now, validate the design.
 2.  Use the information in the following table to make selections in
     each of the wizard screens. Click **Next** wherever necessary.
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Wizard Screen</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>System Property</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Command to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td><blockquote>
-    <p>Export Hardware Platform</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Platform type</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Fixed</p>
-    </blockquote></td>
-    </tr>
-    <tr class="even">
-    <td><blockquote>
-    <p>Output</p>
-    </blockquote></td>
-    <td></td>
-    <td><blockquote>
-    <p>Pre-synthesis</p>
-    </blockquote></td>
-    </tr>
-    <tr class="odd">
-    <td><blockquote>
-    <p>Files</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>XSA file name</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Leave as tutorial_bd_wrapper</p>
-    </blockquote></td>
-    </tr>
-    <tr class="even">
-    <td></td>
-    <td><blockquote>
-    <p>Export to</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Leave as C:/designs/ edt_tutorial</p>
-    </blockquote></td>
-    </tr>
-    </tbody>
-    </table>
+   | Wizard Screen            | System Property | Setting or Command to Use         |
+   | ------------------------ | --------------- | --------------------------------- |
+   | Export Hardware Platform | Platform type   | Fixed                             |
+   | Output                   |                 | Pre-synthesis                     |
+   | Files                    | XSA file name   | Leave as tutorial_bd_wrapper      |
+   |                          | Export to       | Leave as C:/designs/ edt_tutorial |
 
 3.  Click **Finish**.
 
-  ![](./media/image22.png)
+    **TIP**: *The hardware is exported in a ZIP file (project wrapper.xsa).*
 
-    **TIP:** *The hardware is exported in a ZIP file (\<project
-    wrapper\>.xsa).*
-
-#### What Just Happened?
+**What Just Happened?**
 
 Vivado has exported the hardware design to the hardware specification
 file (XSA).
 
-#### What's Next?
+**What's Next?**
 
 Now you can start developing the software for your project using the
 Vitis software platform. The next sections help you create a software
 application for your hardware platform.
 
-### Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado
+
+
+## Example 2: Creating and Running a "Hello World" Application
+
+In this example, you will learn how to manage the board settings, make
+cable connections, connect to the board through your PC, and run a
+simple "Hello World" software application in JTAG mode using System
+Debugger in the Vitis IDE.
+
+### Setup the board ###
+
+1.  Connect the power cable to the board.
+
+2.  Connect a USB Micro cable between the Windows Host machine and the
+    Target board with the following SW10 switch settings:
+
+    -   Bit-1 is 0
+
+    -   Bit-2 is 1
+
+***Note*:** 0 = switch is open. 1 = switch is closed.
+
+3.  Connect a USB cable to connector **J17** on the target board with
+    the Windows Host machine. This is used for USB to serial transfer.
+
+4.  Power on the ZC702 board using the switch indicated in the figure below.
+
+    ![](./media/image31.png)    
+
+    **IMPORTANT!** *Ensure that jumpers J27 and J28 are placed on the side
+    farther from the SD card slot and change the SW16 switch setting as
+    shown in the following figure.*
+
+    ![](./media/image32.jpeg)
+
+### Creating a Vitis Platform Project
 
 1.  Launch the Vitis IDE by using the desktop shortcut or by
     double-clicking the C:\\Xilinx\\Vitis\\2020.2\\bin\\vitis.bat file. The Eclipse Launcher view opens.
@@ -499,9 +383,8 @@ application for your hardware platform.
 
     ![](./media/image30.jpeg)   
 
-10. Close the Vitis IDE using the **File → Exit**.
 
-#### What Just Happened?
+**What Just Happened?**
 
 Using the Vitis IDE, you have created a platform project and exported
 the XSA file to the workspace in C:\\designs\\workspace. The export
@@ -511,62 +394,9 @@ project, and the generated Xilinx platform definition file
 (hw_platform.xpfm) can be used as a platform for the applications that
 you create in the Vitis IDE.
 
-## Example Project: Running the \"Hello World\" Application
+### Create the Hello World application
 
-In this example, you will learn how to manage the board settings, make
-cable connections, connect to the board through your PC, and run a
-simple \"Hello World\" software application in JTAG mode using System
-Debugger in the Vitis IDE.
 
-***Note*:** If you already set up the board, skip to step 5.
-
-1.  Connect the power cable to the board.
-
-2.  Connect a USB Micro cable between the Windows Host machine and the
-    Target board with the following SW10 switch settings:
-
-    -   Bit-1 is 0
-
-    -   Bit-2 is 1
-
-***Note*:** 0 = switch is open. 1 = switch is closed.
-
-3.  Connect a USB cable to connector **J17** on the target board with
-    the Windows Host machine. This is used for USB to serial transfer.
-
-4.  Power on the ZC702 board using the switch indicated in the figure below.
-
-    ![](./media/image31.png)    
-
-    **IMPORTANT!** *Ensure that jumpers J27 and J28 are placed on the side
-    farther from the SD card slot and change the SW16 switch setting as
-    shown in the following figure.*
-
-    ![](./media/image32.jpeg)
-
-5.  Open the Vitis software platform and set the workspace path to your
-    project file, which in this example is C:\\designs\\workspace.
-
-    Alternatively, you can open the Vitis software platform with a default
-    workspace and later switch it to the correct workspace by selecting
-    **File→ Switch Workspace** and then selecting the workspace.
-
-6.  Open a serial communication utility
-    for the COM port assigned on your system. The Vitis software
-    platform provides a serial terminal utility, which will be used
-    throughout the tutorial. To open this utility, select **Window →
-    Show view**, and in the Show View dialog box, select **Terminal**
-    under the Terminal folder and click **Open**.
-
-    ![](./media/image33.png)    
-
-7.  Click the **Launch Terminal** button to open the Launch Terminal view.
-
-    Select **Serial Terminal** for Choose Terminal, add terminal settings,
-    and click **OK**. The following figure shows the standard
-    configuration for the Zynq SoC processing system.
-
-    ![](./media/image35.png)
 
 8.  Select **File → New → Application Project**.
 
@@ -645,20 +475,39 @@ Debugger in the Vitis IDE.
 10. Right-click on the **hello_world** standalone application and select
     **Build Project** to generate the hello_world.elf binary file.
 
-11. Right-click **hello_world** and select **Run as → Run
+### Run the Hello World Application on ZC702 board
+
+1.  Open a serial communication utility
+    for the COM port assigned on your system. The Vitis software
+    platform provides a serial terminal utility, which will be used
+    throughout the tutorial. To open this utility, select **Window →
+    Show view**, and in the Show View dialog box, select **Terminal**
+    under the Terminal folder and click **Open**.
+
+    ![](./media/image33.png)    
+
+2.  Click the **Launch Terminal** button to open the Launch Terminal view.
+
+    Select **Serial Terminal** for Choose Terminal, add terminal settings,
+    and click **OK**. The following figure shows the standard
+    configuration for the Zynq SoC processing system.
+
+    ![](./media/image35.png)
+
+3. Right-click **hello_world** and select **Run as → Run
     Configurations**.
 
-12. Right-click **Single Application Debug** and click **New
+4. Right-click **Single Application Debug** and click **New
     Configuration**. The Vitis software platform creates the new run
     configuration, named Debugger_hello_world-Default.
 
     The configurations associated with the application are pre-populated
     in the Main tab of the Run Configurations dialog box.
 
-13. Click the **Target Setup** page and review the settings. The default
+5. Click the **Target Setup** page and review the settings. The default
     choice is the Tcl script.
 
-14. Click **Run**.
+6. Click **Run**.
 
     \"Hello World\" appears on the serial communication utility in the
     Terminal view, as shown in the following figure.
@@ -671,7 +520,7 @@ Debugger in the Vitis IDE.
     initialization of this system to run a simple application is done by
     the device initialization Tcl script.
 
-### What Just Happened?
+**What Just Happened?**
 
 The application software sent the \"Hello World\" string to the UART1
 peripheral of the PS section.

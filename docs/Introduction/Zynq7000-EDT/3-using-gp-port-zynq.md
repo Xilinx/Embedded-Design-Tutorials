@@ -11,7 +11,7 @@
 
 - [Using the GP Port in Zynq Devices](#using-the-gp-port-in-zynq-devices)
   - [Adding IP in PL to the Zynq SoC Processing System](#adding-ip-in-pl-to-the-zynq-soc-processing-system)
-  - [Example Project: Validate Instantiated Fabric IP Functionality](#example-project-validate-instantiated-fabric-ip-functionality)
+  - [Example 3: Validate Instantiated Fabric IP Functionality](#example-3-validate-instantiated-fabric-ip-functionality)
   - [Working with the Vitis Software Platform](#working-with-the-vitis-software-platform)
   - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
     - [Application Software Steps](#application-software-steps)
@@ -91,7 +91,7 @@ Zynq SoC Processing System</a>. You will make the following design changes:
         starts again and waits for you to select the push button
         switch in the serial terminal again.
 
-## Example Project: Validate Instantiated Fabric IP Functionality
+## Example 3: Validate Instantiated Fabric IP Functionality
 
 In this example, you will add the AXI GPIO, AXI Timer, the interrupt
 instantiated in fabric, and the EMIO interface. You will then validate

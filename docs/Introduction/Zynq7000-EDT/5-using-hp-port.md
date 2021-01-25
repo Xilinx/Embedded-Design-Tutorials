@@ -11,7 +11,7 @@
 
 - [Using the HP Slave Port with AXI CDMA IP](#using-the-hp-slave-port-with-axi-cdma-ip)
   - [Integrating AXI CDMA with the Zynq SoC PS HP Slave Port](#integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port)
-  - [Example Project: Integrating AXI CDMA with the PS HP Slave Port](#example-project-integrating-axi-cdma-with-the-ps-hp-slave-port)
+  - [Example 4: Integrating AXI CDMA with the PS HP Slave Port](#example-4-integrating-axi-cdma-with-the-ps-hp-slave-port)
     - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
       - [Application Software Flow](#application-software-flow)
     - [Running the Standalone CDMA Application Using the Vitis Software Platform](#running-the-standalone-cdma-application-using-the-vitis-software-platform)
@@ -106,11 +106,11 @@ comparison result on the serial terminal.
 If the data transfer status is an error, it displays the error status
 on the serial terminal and stops execution.
 
-## Example Project: Integrating AXI CDMA with the PS HP Slave Port
+## Example 4: Integrating AXI CDMA with the PS HP Slave Port
 
 1.  Start with one of the following:
 
-    -   Use the system you created in [Example Project: Validate Instantiated Fabric IP Functionality](3-using-gp-port-zynq.md#example-project-validate-instantiated-fabric-ip-functionality).
+    -   Use the system you created in [Example 3: Validate Instantiated Fabric IP Functionality](3-using-gp-port-zynq.md#example-3-validate-instantiated-fabric-ip-functionality).
 
     -   Create a new project as described in [Creating an Embedded Processor Project](2-using-zynq.md#creating-an-embedded-processor-project).
 
