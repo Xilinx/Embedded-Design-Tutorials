@@ -398,81 +398,26 @@ you create in the Vitis IDE.
 
 
 
-8.  Select **File → New → Application Project**.
+1.  Select **File → New → Application Project**.
 
     The New Application Project wizard opens. Enable the option **Skip
     welcome page next time** and click **Next**.
 
-9.  Use the information in the following table to make your selections
+2.  Use the information in the following table to make your selections
     in the wizard screens.
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Wizard Screen</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>System Properties</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Command to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td><blockquote>
-    <p>Platform</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Select a platform from repository</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Click <strong>hw_platform [custom]</strong>. The path should be C:\designs\workspace\hw_platform</p>
-    <p>\export\hw_platform\hw_platform.xpfm.</p>
-    </blockquote></td>
-    </tr>
-    <tr class="even">
-    <td><blockquote>
-    <p>Application Project Details</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Application project name</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Enter hello_world</p>
-    </blockquote></td>
-    </tr>
-    <tr class="odd">
-    <td><blockquote>
-    <p>Domain</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Select a domain</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Click <strong>standalone on ps7_cortex9_0</strong>.</p>
-    </blockquote></td>
-    </tr>
-    <tr class="even">
-    <td><blockquote>
-    <p>Templates</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Available Templates</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Hello World</p>
-    </blockquote></td>
-    </tr>
-    </tbody>
-    </table>
+   | Wizard Screen                         | System Properties                 | Setting or Command to Use                                                       |
+   | ------------------------------------- | --------------------------------- | ------------------------------------------------------------------------------- |
+   | Platform                              | Select a platform from repository | Click hw_platform [custom]. The path should be C:\designs\workspace\hw_platform |
+   | \export\hw_platform\hw_platform.xpfm. |
+   | Application Project Details           | Application project name          | Enter hello_world                                                               |
+   | Domain                                | Select a domain                   | Click standalone on ps7_cortex9_0.                                              |
+   | Templates                             | Available Templates               | Hello World                                                                     |
 
     The Vitis software platform creates the hello_world application
     project in the Explorer view.
 
-10. Right-click on the **hello_world** standalone application and select
+3. Right-click on the **hello_world** standalone application and select
     **Build Project** to generate the hello_world.elf binary file.
 
 ### Run the Hello World Application on ZC702 board
