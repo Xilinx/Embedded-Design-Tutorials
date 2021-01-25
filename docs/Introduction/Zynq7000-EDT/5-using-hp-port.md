@@ -11,12 +11,12 @@
 
 - [Using the HP Slave Port with AXI CDMA IP](#using-the-hp-slave-port-with-axi-cdma-ip)
   - [Integrating AXI CDMA with the Zynq SoC PS HP Slave Port](#integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port)
-  - [Example 4: Integrating AXI CDMA with the PS HP Slave Port](#example-4-integrating-axi-cdma-with-the-ps-hp-slave-port)
+  - [Example 5: Integrating AXI CDMA with the PS HP Slave Port](#example-5-integrating-axi-cdma-with-the-ps-hp-slave-port)
     - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
-      - [Application Software Flow](#application-software-flow)
+    - [Application Software Flow](#application-software-flow)
     - [Running the Standalone CDMA Application Using the Vitis Software Platform](#running-the-standalone-cdma-application-using-the-vitis-software-platform)
   - [Linux OS Based Application Software for the CDMA System](#linux-os-based-application-software-for-the-cdma-system)
-    - [Application Software Creation Steps](#application-software-creation-steps)
+    - [Example 6: Linux Application Software Creation](#example-6-linux-application-software-creation)
   - [Running Linux CDMA Application Using the Vitis Software Platform](#running-linux-cdma-application-using-the-vitis-software-platform)
     - [Booting Linux on the Target Board](#booting-linux-on-the-target-board)
     - [Linux Domain Creation for Linux Applications](#linux-domain-creation-for-linux-applications)
@@ -106,7 +106,7 @@ comparison result on the serial terminal.
 If the data transfer status is an error, it displays the error status
 on the serial terminal and stops execution.
 
-## Example 4: Integrating AXI CDMA with the PS HP Slave Port
+## Example 5: Integrating AXI CDMA with the PS HP Slave Port
 
 1.  Start with one of the following:
 
@@ -319,7 +319,7 @@ DMA transfer and compares the source buffer with the destination
 buffer. Finally, it prints the comparison result in the serial
 terminal and stops running.
 
-#### Application Software Flow
+### Application Software Flow
 
 The application software does the following:
 
@@ -499,7 +499,7 @@ makes the DMA register setting to initiate DMA transfer to the
 destination. After the DMA transfer, the application reads the status
 of the transfer and displays the result on the serial terminal.
 
-### Application Software Creation Steps
+### Example 6: Linux Application Software Creation
 
 Application software creation is composed of the following steps:
 
@@ -561,21 +561,15 @@ Application software creation is composed of the following steps:
 ## Running Linux CDMA Application Using the Vitis Software Platform
 
 Detailed steps on running Linux on the target board are outlined in
-[Linux Booting and Debug in the Vitis
-Software Platform](6-linux-booting-debug.md). If you are not comfortable running
-Linux, run through the [Linux Booting and Debug in the
-Vitis Software Platform](6-linux-booting-debug.md) examples prior to running this
-example. Running a Linux OS based application is composed of the
-following steps:
+[Linux Booting and Debug in the Vitis Software Platform](6-linux-booting-debug.md). If you are not comfortable running
+Linux, run through the [Linux Booting and Debug in the Vitis Software Platform](6-linux-booting-debug.md) examples prior to running this
+example. Running a Linux OS based application is composed of the following steps:
 
 1.  [Booting Linux on the Target Board](#booting-linux-on-the-target-board)
 
-2.  [Linux Domain Creation for Linux
-    Applications](#linux-domain-creation-for-linux-applications)
+2.  [Linux Domain Creation for Linux Applications](#linux-domain-creation-for-linux-applications)
 
-3.  [Building an Application and Running it on the Target Board Using
-    the Vitis Software
-    Platform](#building-an-application-and-running-it-on-the-target-board-using-the-vitis-software-platform)
+3.  [Building an Application and Running it on the Target Board Using the Vitis Software Platform](#building-an-application-and-running-it-on-the-target-board-using-the-vitis-software-platform)
 
 ### Booting Linux on the Target Board
 
@@ -663,16 +657,13 @@ Platform](6-linux-booting-debug.md).
         4 xc7z020
         ```
 
-    d.  Type dow \<tutorial_download_path\>/zynq_fsbl.elf to download
-        PetaLinux FSBL.
+    d.  Type dow \<tutorial_download_path\>/zynq_fsbl.elf to download PetaLinux FSBL.
 
-    e.  Type con to start execution of FSBL and then type stop to stop
-        it.
+    e.  Type con to start execution of FSBL and then type stop to stop it.
 
         ![](./media/image70.jpeg)
 
-    f.  Type dow \<tutorial_download_path\>/u-boot.elf to download PetaLinux
-        U- Boot.elf.
+    f.  Type dow \<tutorial_download_path\>/u-boot.elf to download PetaLinux U- Boot.elf.
 
     g.  Type con to start execution of U-Boot.  On the serial terminal, the autoboot countdown message appears:
 
@@ -808,53 +799,15 @@ b.  Create one BIF file as below.
 2.  Use the information in the table below to make your selections in
     the wizard screens.
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Wizard Screen</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>System Property</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Command to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>Platform</td>
-    <td>Select a platform from repository</td>
-    <td>Click <strong>hw_platform [custom]</strong>.</td>
-    </tr>
-    <tr class="even">
-    <td>Application Project Details</td>
-    <td>Application project name</td>
-    <td>Enter linux_cdma_app</td>
-    </tr>
-    <tr class="odd">
-    <td></td>
-    <td>Select target processor for the Application project</td>
-    <td>Select <strong>ps7_cortexa9 SMP</strong>.</td>
-    </tr>
-    <tr class="even">
-    <td>DomainDomain</td>
-    <td>Select a domain</td>
-    <td>Click linux_application_domain</td>
-    </tr>
-    <tr class="odd">
-    <td></td>
-    <td>Application settings</td>
-    <td>If known, enter the sysroot, root FS, and kernal image paths. Otherwise, leave these options blank.</td>
-    </tr>
-    <tr class="even">
-    <td>Templates</td>
-    <td>Available Templates</td>
-    <td>Linux Empty Application</td>
-    </tr>
-    </tbody>
-    </table>
+   | Wizard Screen               | System Property                                     | Setting or Command to Use                                                                           |
+   | --------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+   | Platform                    | Select a platform from repository                   | Click hw_platform [custom].                                                                         |
+   | Application Project Details | Application project name                            | Enter linux_cdma_app                                                                                |
+   |                             | Select target processor for the Application project | Select ps7_cortexa9 SMP.                                                                            |
+   | DomainDomain                | Select a domain                                     | Click linux_application_domain                                                                      |
+   |                             | Application settings                                | If known, enter the sysroot, root FS, and kernel image paths. Otherwise, leave these options blank. |
+   | Templates                   | Available Templates                                 | Linux Empty Application                                                                             |
+
 
 3.  Click **Finish**.
 

@@ -11,7 +11,7 @@
 
 - [Debugging with the Vitis Software Platform](#debugging-with-the-vitis-software-platform)
   - [Xilinx System Debugger](#xilinx-system-debugger)
-  - [Debugging Software Using the Vitis Software Platform](#debugging-software-using-the-vitis-software-platform)
+  - [Example 4: Debugging Software Using the Vitis Software Platform](#example-4-debugging-software-using-the-vitis-software-platform)
 
 # Debugging with the Vitis Software Platform
 
@@ -93,7 +93,7 @@ will be out of step because the debug information is tied directly to
 the source. Similarly, debugging optimized binaries can also cause
 unexpected jumps in the execution trace.
 
-## Debugging Software Using the Vitis Software Platform
+## Example 4: Debugging Software Using the Vitis Software Platform
 
 In this example, you will walk through debugging a Hello World
 application.

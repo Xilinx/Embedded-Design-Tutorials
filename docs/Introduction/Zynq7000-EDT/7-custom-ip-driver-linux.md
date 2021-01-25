@@ -15,6 +15,7 @@
     - [Example Project: Creating Peripheral IP](#example-project-creating-peripheral-ip)
   - [Integrating Peripheral IP with PS GP Master Port](#integrating-peripheral-ip-with-ps-gp-master-port)
     - [Connecting an AXI4-Lite Compliant Custom Slave IP](#connecting-an-axi4-lite-compliant-custom-slave-ip)
+  - [Linux-Based Device Driver Development](#linux-based-device-driver-development)
     - [Example Project: Device Driver Development](#example-project-device-driver-development)
   - [Loading Module into Running Kernel and Application Execution](#loading-module-into-running-kernel-and-application-execution)
     - [Loading Module into Kernel Memory](#loading-module-into-kernel-memory)
@@ -100,45 +101,16 @@ following figure.
 
 The block diagram includes the following configuration register:
 
-  Register Name      Control Register
-  ------------------ ------------------------
-  Relative Address   0x0000_0000
-  Width              1 bit
-  Access Type        Read/Write
-  Description        Start/Stop the Counter
+  | Register Name    | Control Register       |
+  | ---------------- | ---------------------- |
+  | Relative Address | 0x0000_0000            |
+  | Width            | 1 bit                  |
+  | Access Type      | Read/Write             |
+  | Description      | Start/Stop the Counter |
 
-  <table>
-  <thead>
-  <tr class="header">
-  <th><blockquote>
-  <p><strong>Field Name</strong></p>
-  </blockquote></th>
-  <th><blockquote>
-  <p><strong>Bits</strong></p>
-  </blockquote></th>
-  <th><blockquote>
-  <p><strong>Type</strong></p>
-  </blockquote></th>
-  <th><blockquote>
-  <p><strong>Reset Value</strong></p>
-  </blockquote></th>
-  <th><blockquote>
-  <p><strong>Description</strong></p>
-  </blockquote></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr class="odd">
-  <td>Control Bit</td>
-  <td>0</td>
-  <td>R/W</td>
-  <td>0x0</td>
-  <td><blockquote>
-  <p>1 : Start Counter 2 : Stop Counter</p>
-  </blockquote></td>
-  </tr>
-  </tbody>
-  </table>
+ | Field Name  | Bits | Type | Reset Value | Description                        |
+ | ----------- | ---- | ---- | ----------- | ---------------------------------- |
+ | Control Bit | 0    | R/W  | 0x0         | 1 : Start Counter 2 : Stop Counter |
 
 ### Example Project: Creating Peripheral IP
 
@@ -147,65 +119,24 @@ peripheral IP.
 
 1.  Create a new project as described in [Example Project: Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-project-creating-a-new-embedded-project-with-zynq-soc).
 
-2.  With the Vivado design open, select **Tools → Create and Package New
-    IP**. Click **Next** to continue.
+2.  With the Vivado design open, select **Tools → Create and Package New IP**. Click **Next** to continue.
 
 3.  Select **Create a new AXI4 peripheral** and then click **Next**.
 
 4.  Fill in the peripheral details as follows:
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Wizard Screen</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>System Property</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Comment to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>Peripheral Details</td>
-    <td>Name</td>
-    <td>Blink</td>
-    </tr>
-    <tr class="even">
-    <td></td>
-    <td>Version</td>
-    <td>1.0</td>
-    </tr>
-    <tr class="odd">
-    <td></td>
-    <td>Display name</td>
-    <td>Blink_v1.0</td>
-    </tr>
-    <tr class="even">
-    <td></td>
-    <td>Description</td>
-    <td>My new AXI IP</td>
-    </tr>
-    <tr class="odd">
-    <td></td>
-    <td>IP location</td>
-    <td>C:/designs/ip_repro</td>
-    </tr>
-    <tr class="even">
-    <td></td>
-    <td>Overwrite existing</td>
-    <td>unchecked</td>
-    </tr>
-    </tbody>
-    </table>
+   | Wizard Screen      | System Property    | Setting or Comment to Use |
+   | ------------------ | ------------------ | ------------------------- |
+   | Peripheral Details | Name               | Blink                     |
+   |                    | Version            | 1.0                       |
+   |                    | Display name       | Blink_v1.0                |
+   |                    | Description        | My new AXI IP             |
+   |                    | IP location        | C:/designs/ip_repro       |
+   |                    | Overwrite existing | unchecked                 |
 
 5.  Click **Next**.
 
-6.  In the Add Interfaces page, accept the default settings and click
-    **Next**.
+6.  In the Add Interfaces page, accept the default settings and click **Next**.
 
 7.  In the Create Peripheral page, select **Edit IP** and then click **Finish**. Upon completion of the new IP generation process, the Package IP window opens (see the following figure).
 
@@ -326,10 +257,9 @@ peripheral IP.
       // User logic ends
       ```
 
-16. Save and close blink_v1_0\_S00_AXI.v.
+16. Save and close **blink_v1_0_S00_AXI.v**.
 
-17. Open the **Package IP - blink** page. Under **Packaging Steps**,
-    select **Ports and Interfaces**.
+17. Open the **Package IP - blink** page. Under **Packaging Steps**, select **Ports and Interfaces**.
 
 18. Click the **Merge Changes from Ports and Interfaces Wizard** link.
 
@@ -420,63 +350,13 @@ Peripheral IP](#example-project-creating-peripheral-ip).
 
 10. Edit the led port settings as follows:
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Port Name</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>I/O Std</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Package Pin</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>Leds[3]</td>
-    <td>LVCMOS25</td>
-    <td><blockquote>
-    <p>P17</p>
-    </blockquote></td>
-    </tr>
-    <tr class="even">
-    <td><blockquote>
-    <p>Leds[2]</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>LVCMOS25</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>P18</p>
-    </blockquote></td>
-    </tr>
-    <tr class="odd">
-    <td><blockquote>
-    <p>Leds[1]</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>LVCMOS25</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>W10</p>
-    </blockquote></td>
-    </tr>
-    <tr class="even">
-    <td><blockquote>
-    <p>Leds[0]</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>LVCMOS25</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>V7</p>
-    </blockquote></td>
-    </tr>
-    </tbody>
-    </table>
+    | Port Name | I/O Std  | Package Pin |
+    | --------- | -------- | ----------- |
+    | Leds[3]   | LVCMOS25 | P17         |
+    | Leds[2]   | LVCMOS25 | P18         |
+    | Leds[1]   | LVCMOS25 | W10         |
+    | Leds[0]   | LVCMOS25 | V7          |
+
 
     The following figure shows the completed led port settings in the I/O
     Ports window.
@@ -499,7 +379,7 @@ Peripheral IP](#example-project-creating-peripheral-ip).
 **Pre-synthesis** on the **Output** page of the **Export Hardware
 Platform** wizard.
 
-##Linux-Based Device Driver Development
+## Linux-Based Device Driver Development
 
 Modules in Linux are pieces of code that can be loaded and unloaded
 into the kernel on demand. A piece of code that you add in this way is
@@ -557,8 +437,7 @@ following steps are required:
 1.  Set the toolchain path in your Linux Workstation.
 
 2.  Download the kernel source code and compile it. For downloading and
-    compilation, refer to the steps mentioned in the <a href="http://wiki.xilinx.com/zynq-linux">Xilinx Zynq Linux
-    Wiki Page</a>.
+    compilation, refer to the steps mentioned in the [Xilinx Zynq Linux Wiki Page](http://wiki.xilinx.com/zynq-linux).
 
 ### Example Project: Device Driver Development
 
@@ -664,54 +543,14 @@ a Windows machine.
 
 4.  Use the information in the table below to make your selections in
     the wizard screens.
-
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Wizard Screen</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>System Property</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Command to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>Platform</td>
-    <td>Select a platform from repository</td>
-    <td>Click <strong>hw_platform [custom]</strong>.</td>
-    </tr>
-    <tr class="even">
-    <td>Application Project Details</td>
-    <td>Application project name</td>
-    <td>Enter linux_blinkled_app</td>
-    </tr>
-    <tr class="odd">
-    <td></td>
-    <td>Select target processor for the Application project</td>
-    <td>Select <strong>ps7_cortexa9 SMP</strong>.</td>
-    </tr>
-    <tr class="even">
-    <td>Domain</td>
-    <td>Select a domain</td>
-    <td>Click <strong>linux_application_domain</strong>.</td>
-    </tr>
-    <tr class="odd">
-    <td></td>
-    <td>Application settings</td>
-    <td>If known, enter the sysroot, root FS, and kernel image paths. Otherwise, leave these options blank.</td>
-    </tr>
-    <tr class="even">
-    <td>Templates</td>
-    <td>Available Templates</td>
-    <td>Linux Empty Application</td>
-    </tr>
-    </tbody>
-    </table>
+    | Wizard Screen               | System Property                                     | Setting or Command to Use                                                                           |
+    | --------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+    | Platform                    | Select a platform from repository                   | Click hw_platform [custom].                                                                         |
+    | Application Project Details | Application project name                            | Enter linux_blinkled_app                                                                            |
+    |                             | Select target processor for the Application project | Select ps7_cortexa9 SMP.                                                                            |
+    | Domain                      | Select a domain                                     | Click linux_application_domain.                                                                     |
+    |                             | Application settings                                | If known, enter the sysroot, root FS, and kernel image paths. Otherwise, leave these options blank. |
+    | Templates                   | Available Templates                                 | Linux Empty Application                                                                             |
 
 5.  Click **Finish**. The New Application Project wizard closes and the Vitis software platform creates the linux_blinkled_app project under the Explorer view.
 
