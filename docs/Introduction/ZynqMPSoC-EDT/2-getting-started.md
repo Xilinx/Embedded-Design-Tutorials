@@ -21,7 +21,7 @@
 
 - USB Type-A to USB Micro cable (for UART communications)
 
-- USB Micro cable for programming and debugging via USB-Micro JTAG
+- USB micro cable for programming and debugging via USB-Micro JTAG
      connection
 
 - SD-MMC flash card for Linux booting
@@ -75,7 +75,7 @@ the Installation section of [UG1400](https://www.xilinx.com/html_docs/xilinx2020
  When you install PetaLinux tools on your system of choice, you must do
  the following:
 
-- Download PetaLinux 2020.2 software from the Xilinx website.
+- Download the [PetaLinux 2020.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html) software from the Xilinx website.
 
 - Download the ZCU102 PetaLinux BSP (ZCU102 BSP (prod-silicon)) from
      the 2020.2 downloads page.

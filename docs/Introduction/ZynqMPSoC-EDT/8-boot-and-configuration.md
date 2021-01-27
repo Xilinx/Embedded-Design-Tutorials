@@ -245,13 +245,13 @@ You can see that the terminal screen configured for UART-1 also prints a message
 
 The bare-metal application has been modified to include the UART interrupt example. This application now is now in a waiting for interrupt (WFI) state until user input is detected from the keyboard at the UART-1 terminal.
 
-    ![](./media/image61.png)
+![](./media/image61.png)
 
 Meanwhile, the boot sequence continues on the APU and the images loaded can be understood from the messages appearing on the UART-0 terminal. The messages are highlighted in the following figure.
 
 The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 APU in SMP mode. The terminal messages indicate when the U-Boot loads the kernel image. When the kernel starts up, a user interface prompt is shown in the target Linux OS. The kernel loading and starting sequence can be seen in the following figure.
 
-    ![](./media/image63.png)
+![](./media/image63.png)
 
 ## Boot Sequence for QSPI Boot Mode
 
@@ -792,8 +792,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
     `$ sudo dfu-util -l`
 
-    The USB device should be enumerated with VendorId: ProductId, which is
-    `03fd:0050`. You should see something like the following message:
+    The USB device should be enumerated with the vendor and product ID (`03fd:0050`). You should see something like the following message:
 
     ```
     Found DFU: [03fd:0050] ver=0100, devnum=30, cfg=1, intf=0, alt=0,
@@ -863,9 +862,9 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
     >**Note:** `dfu-util.exe` can be found in `<VITIS_Installation_path>\VITIS\2020.2\tps\Win64\dfu-util-0.9\dfu-util.exe`.
 
-3. The USB device should be enumerated with ``VendorId: ProductId``, which is `03fd:0050`.
+3. The USB device should be enumerated with the vendor and product ID (`03fd:0050`).
 
-    >**Note:** If you do not see the message starting with "Found DFU...", download and install the Zadig software. Open the software and click **Options** and select **List all devices**. Select device **Xilinx Dfu Downloader** and click **Install driver**.
+    >**Note:** If you do not see the message starting with "Found DFU...", download and install the [Zadig](https://zadig.akeo.ie/) software. Open the software and click **Options** and select **List all devices**. Select device **Xilinx Dfu Downloader** and click **Install driver**.
 
 4. Download the **boot.bin** that was created in [Creating Boot Images for USB Boot](#creating-boot-images-for-usb-boot).
 

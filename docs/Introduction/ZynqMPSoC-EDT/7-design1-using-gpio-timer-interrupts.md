@@ -11,7 +11,7 @@ The Zynq&reg; UltraScale+&trade; MPSoC ZCU102 evaluation board comes with a few 
 
 - The Linux APU runs Linux, while the RPU R5-0 hosts another bare-metal application.
 
-- The Linux applications configure a set of PL LEDs to toggle using a PS Dip Switch, and another set of PL LEDs to toggle using a PL Dip Switch (SW17).
+- The Linux applications configure a set of PL LEDs to toggle using a PS dip switch, and another set of PL LEDs to toggle using a PL Dip Switch (SW17).
 
 - The R5-Core 0 application uses an AXI Timer IP in the programmable logic to toggle PS LED (DS50). The application is configured to toggle the LED state every time the timer counter expires, and the timer in the PL is set to reset periodically after a configurable time interval.
 
@@ -380,9 +380,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 3. Select **Xilinx → Create Boot Image**.
 
-4. See the following figure for settings in the Create Boot Image wizard.
-
-5. Add the partitions as shown in the following figure.
+4. In the Create Boot Image wizard, add the settings and partitions as shown in the following figure.
 
     >**Note:** For detailed steps on how to add partitions, see [Boot Sequence for SD-Boot](8-boot-and-configuration.md#boot-sequence-for-sd-boot).
 
@@ -390,7 +388,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
     >**Note:** This boot image requires PL bitstream `edt_zcu102_wrapper.bit` (Partition Type - Datafile, Destination Device - PL). The bitstream partition needs to be added right after the bootloader while you create the boot image. The R5 application `tmr_psled_r5.elf` is added as partition in this boot image.
 
-6. After adding all the partitions, click **Create Image**.
+5. After adding all the partitions, click **Create Image**.
 
     >**IMPORTANT!:** Ensure that you have set the correct exception levels
     for ATF (EL-3, TrustZone) and U-Boot (EL-2) partitions. These
