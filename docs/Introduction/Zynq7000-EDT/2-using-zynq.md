@@ -332,21 +332,22 @@ you create in the Vitis IDE.
 2.  Use the information in the following table to make your selections
     in the wizard screens.
 
-   | Wizard Screen                     | System Properties                             | Setting or Command to Use                  |
-   | --------------------------------- | --------------------------------------------- | ------------------------------------------ |
-   | Platform                          | Select a platform from repository             | Click zc702_edt [custom]                   |
-   | Application Project Details       | Application project name                      | Enter hello_world                          |
-   |                                   | System project name                           | keep hello_world_system                    |
-   |                                   | Target Processor                              | keep ps7_cortexa9_0 selected               |
-   |                                   | Show all processors in hardware specification | keep unchecked                             |
-   | Domain                            | Select a domain                               | Keep standalone on ps7_cortex9_0 selected. |
-   | Templates                         | Available Templates                           | Hello World                                |
+    | Wizard Screen                     | System Properties                             | Setting or Command to Use                  |
+    | --------------------------------- | --------------------------------------------- | ------------------------------------------ |
+    | Platform                          | Select a platform from repository             | Click zc702_edt [custom]                   |
+    | Application Project Details       | Application project name                      | Enter hello_world                          |
+    |                                   | System project name                           | keep hello_world_system                    |
+    |                                   | Target Processor                              | keep ps7_cortexa9_0 selected               |
+    |                                   | Show all processors in hardware specification | keep unchecked                             |
+    | Domain                            | Select a domain                               | Keep standalone on ps7_cortex9_0 selected. |
+    | Templates                         | Available Templates                           | Hello World                                |
+
+    - Click **Finish**. The Vitis software platform creates the hello_world application project and hello_world_system project in the Explorer view.
 
     While entering application project name, Vitis IDE will populate system project name automatically with <application name> + "_system" style. You're free to update the system project name.
 
     By default the New Application Wizard only shows the processors used by the domains in the platform. If you'd like to create new platform during the application creation process, you can enable "Show all processors in hardware specification". 
 
-    - Click **Finish**. The Vitis software platform creates the hello_world application project and hello_world_system project in the Explorer view.
 
 3. Right-click on the **hello_world** standalone application and select **Build Project** to generate the hello_world.elf binary file.
 
