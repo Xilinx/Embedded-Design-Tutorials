@@ -178,10 +178,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 ## Configuring Software
 
- This use case has a bare-metal application running on an R5 core and a
- Linux application running on an APU Linux target. Most of the software
- blocks will remain the same as mentioned in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). The software for this design example requires additional drivers for components added in the PL. For this reason, you will need to generate a new bare-metal BSP in the Vitis IDE using the hardware files generated for this design. Linux also requires the Linux BSP to be reconfigured in sync
- with the new hardware platform file (XSA).
+This use case has a bare-metal application running on an R5 core and a Linux application running on an APU Linux target. Most of the software blocks will remain the same as mentioned in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). The software for this design example requires additional drivers for components added in the PL. For this reason, you will need to generate a new bare-metal BSP in the Vitis IDE using the hardware files generated for this design. Linux also requires the Linux BSP to be reconfigured in sync with the new hardware platform file (XSA).
 
  Before you configure the software, first look at the application
  design scheme. The system has a bare-metal application on RPU, which
@@ -219,14 +216,14 @@ We will run implementation of the Vivado design and export the post-implementati
      the wizard.
 
 
-   |  Screen      |     System Properties          |  Settings      |
-   |---------------------|--------------------------------|----------------|
-   |  Platform           |  Select platform from repository   |  edt_zcu102_wrapper |
-   |  Application project details       |  Application project name       |  tmr_psled_r5       |
-   |                      |  System project  name   |   tmr_psled_r5_system                  |
-   |                      |  Target processor   |  psu_cortexr5_0     |
-   |  Domain             |  Domain             |  psu_cortexr5_0     |
-   |  Templates          |  Available templates         |  Empty Application  |
+   | Screen                      | System Properties               | Settings            |
+   | --------------------------- | ------------------------------- | ------------------- |
+   | Platform                    | Select platform from repository | edt_zcu102_wrapper  |
+   | Application project details | Application project name        | tmr_psled_r5        |
+   |                             | System project  name            | tmr_psled_r5_system |
+   |                             | Target processor                | psu_cortexr5_0      |
+   | Domain                      | Domain                          | psu_cortexr5_0      |
+   | Templates                   | Available templates             | Empty Application   |
 
 3. Click **Finish**.
 
@@ -299,7 +296,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
     - OS: Linux
 
-    - Processor: psu_cortexa53_0
+    - Processor: psu_cortexa53
 
     - Supported runtimes: C/C++
 
@@ -311,7 +308,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
     - Linux Image Directory: Provide the same boot directory path.
 
-5. Build the domain to create Linux applications.
+5. Build the platform to make the domain change take effects.
 
 ### Creating the Linux Application Project
 
@@ -319,14 +316,16 @@ We will run implementation of the Vivado design and export the post-implementati
 
 2. Use the information in the table below to make your selections in the wizard.
 
-   |  Screen      |  System Properties          |  Settings       |
-   |---------------------|-----------------------------|-----------------|
-   |  Platform           |  Select platform from repository   |  edt_zcu102_wrapper |
-   |  Application project details       |  Application  project name       |  ps_pl_linux_app    |
-   |                      |  System project name    |  ps_pl_linux_app_system                 |
-   |                      |  Target processor   |  psu_cortexa53 SMP  |
-   |  Domain             |  Domain             |  Linux_Domain        |
-   |  Templates          |  Available templates         |  Linux Empty Application        |
+   | Screen                      | System Properties               | Settings                |
+   | --------------------------- | ------------------------------- | ----------------------- |
+   | Platform                    | Select platform from repository | edt_zcu102_wrapper      |
+   | Application project details | Application  project name       | ps_pl_linux_app         |
+   |                             | System project name             | ps_pl_linux_app_system  |
+   |                             | Target processor                | psu_cortexa53 SMP       |
+   | Domain                      | Domain                          | Linux_Domain            |
+   | Templates                   | Available templates             | Linux Empty Application |
+
+    Since we have already created the Linux domain on psu_cortexa53, it shows up in the target processor list. If you'd like to create the domain during application creation process, you need to check "Show all processors in the hardware specification" to let the wizard show all processors. By default, it only shows the processors that have been used by the domains in the platform.
 
 3. Click **Finish**.
 
