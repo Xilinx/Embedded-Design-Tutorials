@@ -4,7 +4,9 @@
     </td>
  </tr>
  </table>
-
+ <p align="right">
+ <a>English</a> | <a href="../docs-cn/README.md">简体中文</a>
+ </p>
  <table style="width:100%">
  <tr>
  <td width="50%" align="center"><b>Tutorial</b></td>
