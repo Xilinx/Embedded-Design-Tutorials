@@ -38,7 +38,7 @@ The NoC IP core helps configure the DDR memory and data path across the DDR memo
 #### Starting Your Design
 
 1. Start the Vivado® Design Suite.
-1. In the Tcl Console, type the following command to enable ES1 boards:
+2. In the Tcl Console, type the following command to enable ES1 boards:
 
    ```
    enable_beta_device
@@ -49,26 +49,26 @@ The NoC IP core helps configure the DDR memory and data path across the DDR memo
 1. In the Vivado Quick Start page, click **Create Project** to open the
      New Project wizard.
 
-1. Use the following information in the table to make selections in
+2. Use the following information in the table to make selections in
      each of the wizard screens.
 
- *Table 1:* **System Property Settings**
+	*Table 1:* **System Property Settings**
 
-  |Wizard Screen System | System Property                                | Setting or Command to Use                |
-  |:--------------------|:-----------------------------------------------|:--------------------------|
-  | Project Name        | Project Name                                   | edt_versal                               |
-  |                     | Project Location                               | C:/edt                                   |
-  |                     | Create Project Subdirectory                    | Leave this checked                       |
-  | Project Type        | Specify the type of project to create. You can start with RTL or a synthesized EDIF | RTL Project    |
-  |                     | Do not specify sources at this time check box  | Leave this unchecked                     |
-  |                     | Project is an extensible Vitis platform checkbox| Leave this unchecked                    |
-  | Add Sources         | Do not make any changes to this screen         |                                          |
-  | Add Constraints     | Do not make any changes to this screen         |                                          |
-  | Default Part       | Select                                         | **Boards**                               |
-  |                     | Display Name                                   | Versal VMK180/VCK190 Evaluation Platform |
-  | Project Summary     | Project Summary                                | Review the project summary               |
+   |Wizard Screen System | System Property                                | Setting or Command to Use                |
+   |:--------------------|:-----------------------------------------------|:----------------------------------------------------------|
+   | Project Name        | Project Name                                   | edt_versal                               |
+   |                     | Project Location                               | C:/edt                                   |
+   |                     | Create Project Subdirectory                    | Leave this checked                       |
+   | Project Type        | Specify the type of project to create. You can start with RTL or a synthesized EDIF | RTL Project    |
+   |                     | Do not specify sources at this time check box  | Leave this unchecked                     |
+   |                     | Project is an extensible Vitis platform checkbox| Leave this unchecked                    |
+   | Add Sources         | Do not make any changes to this screen         |                                          |
+   | Add Constraints     | Do not make any changes to this screen         |                                          |
+   | Default Part       | Select                                         | **Boards**                               |
+   |                     | Display Name                                   | Versal VMK180/VCK190 Evaluation Platform |
+   | Project Summary     | Project Summary                                | Review the project summary               |
 
-2. Click **Finish**. The New Project wizard closes and the project you
+4. Click **Finish**. The New Project wizard closes and the project you
      just created opens in the Vivado design tool.
 
 >**NOTE:**  Check the version number while choosing a board. For ES1

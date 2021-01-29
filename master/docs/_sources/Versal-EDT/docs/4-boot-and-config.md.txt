@@ -82,9 +82,7 @@
      cd bootimages/
      ```
 
-3. Copy the sd_boot.bif file present within the
-     `<design-package>/standalone/helloworld_images_cips_only` or
-     `<design-package>/standalone/helloworld_images_cips_ddr`
+3. Copy the sd_boot.bif file present within the `<design-package>/<board-name>/standalone/<cips or cips_noc>/<apu or rpu>/` directory
      directory, the PDI file present within `<Vitis platform project>/hw/<.pdi-file>`, and the application elf files present within the `<Vitis application-project>/Debug` folder to the folder created in step 2.
 
    >***Note*:** If needed, open the `sd_boot.bif` file in a text editor of
@@ -110,9 +108,9 @@
 
     - For Linux images, navigate to the `<plnx-proj-root>/images/linux` and copy `BOOT.BIN`, `image.ub`, and `boot.scr` to the SD card.
 
-    >***Note*:** You can either boot the VCK190 board using the
+    >***Note*:** You can either boot the VCK190/VMK180 board using the
     ready-to-test images as part of the released package path,
-    `<design-package>/GPIO/bootimages`, or refer to [Example Project:
+    `<design-package>/<vck190 or vmk180>/linux/bootimages`, or refer to [Example Project:
     Creating Linux Images Using
     PetaLinux](#example-project-creating-linux-images-using-petalinux) to
     build your own set of Linux images using the PetaLinux tool.
@@ -160,7 +158,7 @@
 
 ![QSPI-boot-halfform-factor-module](./media/image54.jpeg)
 
->***Note*:** For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 board using the ready-to-test images as part of the released package path, `<designpackage>/GPIO/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
+>***Note*:** For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190/VMK180 board using the ready-to-test images as part of the released package path, `<design-package>/<vck190 or vmk180>/linux/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
 
  You need to flash the images to the daughter card, using the following
  steps:
