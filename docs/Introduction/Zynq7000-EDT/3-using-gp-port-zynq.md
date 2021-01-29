@@ -12,7 +12,8 @@
 - [Using the GP Port in Zynq Devices](#using-the-gp-port-in-zynq-devices)
   - [Adding IP in PL to the Zynq SoC Processing System](#adding-ip-in-pl-to-the-zynq-soc-processing-system)
   - [Example 3: Validate Instantiated Fabric IP Functionality](#example-3-validate-instantiated-fabric-ip-functionality)
-    - [Update Vivado Design](#update-vivado-design)
+    - [Update Vivado Design Diagram](#update-vivado-design-diagram)
+    - [Assign Location Constraints to External Pins](#assign-location-constraints-to-external-pins)
     - [Working with the Vitis Software Platform](#working-with-the-vitis-software-platform)
     - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
     - [Application Software Steps](#application-software-steps)
@@ -32,13 +33,8 @@ In this chapter, you will create a design with:
 -   Zynq SoC PS GPIO pin connected to the fabric (PL) side pin using the
     EMIO interface
 
-The flow of this chapter is similar to that in <a href="2-using-zynq.md">Using the
-Zynq SoC Processing System</a> and uses the Zynq device as a
-base hardware design. It is assumed that you understand the concepts
-discussed in <a href="2-using-zynq.md">Using the
-Zynq SoC Processing System</a> regarding adding the Zynq device into a Vivado IP
-integrator block diagram design. If you skipped that chapter, you
-might want to look at it because we will continually refer to it throughout this chapter.
+The flow of this chapter is similar to that in [Using the Zynq SoC Processing System](2-using-zynq.md) and uses the Zynq device as a
+base hardware design. It is assumed that you understand the concepts discussed in [Using the Zynq SoC Processing System](./2-using-zynq.md) regarding adding the Zynq device into a Vivado IP integrator block diagram design. If you skipped that chapter, you might want to look at it because we will continually refer to it throughout this chapter.
 
 ## Adding IP in PL to the Zynq SoC Processing System
 
@@ -53,23 +49,17 @@ of the AXI GPIO, AXI Timer with interrupt instantiated in fabric, and
 PS section GPIO with EMIO interface. The block diagram for the system
 is as shown in the following figure.
 
-![](./media/image38.jpeg)
+![Target design block diagram](./media/image38.jpeg)
 
-You can use the system created in <a href="2-using-zynq.md">Using the
-Zynq SoC Processing System</a> and continue after [Creating an Embedded Processor Project](2-using-zynq.md#creating-an-embedded-processor-project).
+You can use the system created in [Using the Zynq SoC Processing System](2-using-zynq.md) and continue with the following examples.
 
-In the examples in this chapter, we will expand on the design in <a href="2-using-zynq.md">Using the
-Zynq SoC Processing System</a>. You will make the following design changes:
+In the examples in this chapter, we will expand on the design with the following design changes:
 
--   The fabric-side AXI GPIO is assigned a 1-bit channel width and is
-    connected to the SW5 push- button switch on the ZC702 board.
+-   The fabric-side AXI GPIO is assigned a 1-bit channel width and is connected to the **SW5** push-button switch on the ZC702 board.
 
--   The PS GPIO ports are modified to include a 1-bit interface that
-    routes a fabric pin (via the EMIO interface) to the SW7
-    push-button switch on the board.
+-   The PS GPIO ports are modified to include a 1-bit interface that routes a fabric pin (via the EMIO interface) to the **SW7** push-button switch on the board.
 
--   In the PS section, another 1-bit GPIO is connected to the DS23 LED
-    on the board, which is on the MIO port.
+-   In the PS section, another 1-bit GPIO is connected to the **DS23** LED on the board, which is on the MIO port.
 
 -   The AXI timer interrupt is connected from fabric to the PS section
     interrupt controller. The timer starts when you press any of the
@@ -80,113 +70,96 @@ Zynq SoC Processing System</a>. You will make the following design changes:
     application software code. The code will function as follows:
 
     -   A message appears in the serial terminal and asks you to select
-        the push button switch to use on the board (either SW7 or
-        SW5).
+        the push button switch to use on the board (either **SW7** or
+        **SW5**).
 
     -   When the appropriate button is pressed, the timer automatically
-        starts, switches LED DS23 OFF, and waits for the timer
+        starts, switches LED **DS23** OFF, and waits for the timer
         interrupt to happen.
 
-    -   After the timer interrupt, LED DS23 switches ON and execution
+    -   After the timer interrupt, LED **DS23** switches ON and execution
         starts again and waits for you to select the push button
         switch in the serial terminal again.
 
+<!--TODO: It needs a better chapter name-->
 ## Example 3: Validate Instantiated Fabric IP Functionality
 
-### Update Vivado Design
+### Update Vivado Design Diagram
 
 In this example, you will add the AXI GPIO, AXI Timer, the interrupt
 instantiated in fabric, and the EMIO interface. You will then validate
 the fabric additions.
 
-1.  Open the Vivado&reg; Design Suite.
+1.  Open the Vivado design created in Example 1
 
-2.  Under the Recent Projects column, click the **edt_zc702** design
-    that you created in <a href="2-using-zynq.md">Using the
-    Zynq SoC Processing System</a>.
+    - Launch Vivado&reg; IDE.
+    - Under the Recent Projects column, click the **edt_zc702** design that you created in [Using the Zynq SoC Processing System](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc).
+    - In Flow Navigator window, click **Open Block Design** under **IP Integrator**.
 
-3.  Under **IP Integrator**, click **Open Block Design**.
+2.  Add AXI GPIO and AXI Timer
 
-4.  In the Diagram window, right-click in the blank space and select
-    **Add IP**.
+    - In the Diagram window, right-click in the blank space and select **Add IP**.
+    - In the search box, type AXI GPIO and double-click the **AXI GPIO** IP to add it to the block design. The AXI GPIO IP block appears in the Diagram window.
+    - In the Diagram window, right-click in the blank space and select **Add IP**.
+    - In the search box, type AXI Timer and double-click the **AXI Timer** IP to add it to the block design. The AXI Timer IP block appears in the Diagram view.
 
-5.  In the search box, type AXI GPIO and double-click the **AXI GPIO**
-    IP to add it to the block design. The AXI GPIO IP block appears in
-    the Diagram window.
+3. Enable EMIO GPIO of ZYNQ7 processing system
 
-6.  In the Diagram window, right-click in the blank space and select
-    **Add IP**.
-
-7.  In the search box, type AXI Timer and double-click the **AXI Timer**
-    IP to add it to the block design. The AXI Timer IP block appears
-    in the Diagram view.
-
-8.  You must also edit the EMIO configuration of the ZYNQ7 SoC
-    processing system and enable interrupts. Right-click the **ZYNQ7
-    Processing System** IP block and select **Customize Block**.
-
-    ***Note*:** You can also double-click the IP block to customize.
+    - Double-click the **ZYNQ7 Processing System** IP block.
 
     The Re-customize IP dialog box opens, as shown in the following figure.
 
-    ![](./media/image39.jpeg)
+    ![Recustomize ZYNQ7 PS 5.5](./media/image39.jpeg)
 
-9.  Click **MIO Configuration**.
+    - Click **MIO Configuration**.
+    - Expand **I/O Peripherals→ GPIO** and enable the **EMIO GPIO (Width)** check box.
+    - Change the **EMIO GPIO (Width)** to **1**.
 
-10. Expand **I/O Peripherals→ GPIO** and select the **EMIO GPIO
-    (Width)** check box.
+4. Enable Interrupt of ZYNQ7 processing system
 
-11. Change the EMIO GPIO (Width) to **1**.
+    - Navigate to **Interrupts → Fabric Interrupts → PL-PS Interrupt Ports**.
+    - Check the **Fabric Interrupts** box to enable PL to PS interrupts.
+    - Check **IRQ_F2P[15:0]** to enable general interrupts. The CoreN_nFIQ signals are used for Fast Interrupt.
+    - Click **OK** to accept the changes to the ZYNQ7 Processing System IP. The diagram looks like the following figure.
 
-12. Navigate to Interrupts→ Fabric Interrupts→ PL-PS Interrupt Ports.
+    ![BD with Timer and GPIO](./media/image40.png)
 
-13. Check the **Fabric Interrupts** box and also check
-    **IRQ_F2P\[15:0\]** to enable PL-PS interrupts in the IP core.
+5. Connect the PL IPs
 
-14. Click **OK** to accept the changes to the ZYNQ7 Processing System
-    IP. The diagram looks like the following figure.
+    - Click the **Run Connection Automation** link at the top of the page to automate the connection process for the newly added IP blocks.
+    - In the Run Connection Automation dialog box, select the check box next to **All Automation**, as shown in the following figure.
 
-    ![](./media/image40.png)
+    ![Connection Automation](./media/image41.png)    
 
-15. Click the **Run Connection Automation** link at the top of the page
-    to automate the connection process for the newly added IP blocks.
-
-16. In the Run Connection Automation dialog box, select the check box next to **All Automation**, as shown in the following figure.
-
-    ![](./media/image41.jpeg)    
-
-17. Click **OK**.
+    - Click **OK**.
 
     Upon completion, the updated diagram looks like the following figure.
 
-    ![](./media/image42.png)
+    ![Connected](./media/image42.png)
 
-18. Right-click the **AXI GPIO** IP block and select **Customize
-    Block**.
+6. Customize **AXI GPIO** IP block
 
-    ***Note*:** You can also double-click the IP block to make
-    customizations.
-
-19. Under the **Board** page, make sure that both **GPIO** and **GPIO2**
+    - Double click the **AXI GPIO** IP block to customize it.
+    - Under the **Board** page, make sure that both **GPIO** and **GPIO2**
     are set to **Custom**.
-
-20. Select the **IP Configuration** page. In the GPIO section, change
+    - Select the **IP Configuration** page. In the GPIO section, change
     the **GPIO Width** to **1** because you only need one GPIO port.
     Also ensure that **All Inputs** and **All Outputs** are both
     unchecked.
+    - Click **OK** to accept the changes.
 
-21. Click **OK** to accept the changes.
+7. Connect interrupt signals
 
-22. Notice that the Interrupt port is not automatically connected to the
-    AXI Timer IP Core. In the Block Diagram view, locate the
-    IRQ_F2P\[0:0\] port on the ZYNQ7 Processing System.
-
-23. Scroll your mouse over the connector port until the pencil button
-    appears, then click the **IRQ_F2P\[0:0\]** port and drag to the
-    **interrupt** output port on the AXI Timer IP core to make a
+    - Notice that the Interrupt port is not automatically connected to the
+    AXI Timer IP Core. In the Block Diagram view, locate the IRQ_F2P[0:0] port on the ZYNQ7 Processing System.
+    - Scroll your mouse over the connector port until the pencil button
+    appears, then click the **IRQ_F2P[0:0]** port and drag to the
+    **interrupt** output port on the **axi_timer_0** to make a
     connection between the two ports.
 
-24. Notice that the ZYNQ7 Processing System GPIO_0 port is not
+8. Make PS GPIO port external
+
+    - Notice that the ZYNQ7 Processing System **GPIO_0** port is not
     connected. Right-click the **GPIO_0** output port on the **ZYNQ7 Processing System** and select **Make External**.
 
     The pins are external but do not have the needed constraints for our
@@ -194,95 +167,85 @@ the fabric additions.
     follow the steps below. These steps can be used for any manual pin
     placements.
 
-25. Click **Open Elaborated Design** under RTL Analysis in the Flow
+### Assign Location Constraints to External Pins
+
+1.  Click **Open Elaborated Design** under RTL Analysis in the Flow
     Navigator view.
 
-    ![](./media/image43.jpeg)
+    ![Open Elaborated Design](./media/image43.png)
 
-26. When the Elaborate Design message box opens, as shown in the following figure, click **OK**.
-
-    ![](./media/image44.jpeg)    
+    - Click **OK** for the pop up message.
 
     **TIP:** *The design might take a few minutes to elaborate. If you
     want to do something else in Vivado while the design elaborates, you
     can click the **Background** button to have Vivado continue running
     the process in the background.*
 
-27. Select **I/O Planning** from the drop-down menu, as shown in the following figure, to display the **I/O Ports** window.
+2.  Select **I/O Planning** from the drop-down menu, as shown in the following figure, to display the **I/O Ports** window.
 
-    ![](./media/image45.jpeg)    
+    ![IO Planning Drop Down menu](./media/image45.jpeg)    
 
-28. Under the I/O Ports window at the bottom of the Vivado window (as
-    seen in the following figure), expand the **GPIO_0\_0_18048** and
-    **gpio_sw_18048** ports to check the site (pin) map.
+3.  Under the I/O Ports window at the bottom of the Vivado window (as
+    seen in the following figure), expand the **GPIO_0_0_<Num>** and
+    **gpio_sw_<Num>** ports to check the site (pin) map.
 
-    ![](./media/image47.jpeg)
+    ![](./media/image47.png)
 
-29. Find **GPIO_0\_0_tri_io\[0\]** and set the following properties,
+4.  Find **GPIO_0_0_tri_io[0]** and set the following properties,
     shown in the following figure:
 
     -   Package Pin = F19
-
     -   I/O Std = LVCMOS25
 
-30. Find **gpio_sw_tri_io\[0\]** and set the following properties, shown
+5.  Find **gpio_sw_tri_io[0]** and set the following properties, shown
     in the following figure:
 
     -   Package Pin = G19
-
     -   I/O Std = LVCMOS25
 
-    ![](./media/image48.png)
+    ![Pin Assigned](./media/image48.png)
 
     ***Note*:** For additional information about creating other design
     constraints, refer to the *Vivado Design Suite User Guide: Using
-    Constraints* ([UG903](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug903-vivado-using-constraints.pdf)).
+    Constraints* ([UG903](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;d=ug903-vivado-using-constraints.pdf)).
 
-31. In the Flow Navigator, under Program and Debug, select **Generate
-    Bitstream**.
+6.  In the Flow Navigator, under Program and Debug, select **Generate Bitstream**.
 
-    The Save Project view opens. Make sure the **Elaborated Design -
-    constrs_1** check box is selected and click **Save**.
-
-    A message might appear that states that synthesis is out of date. If
-    this happens, click **Yes**.
-
-32. The Save Constraints dialog box appears (shown in the following
-    figure). Provide a file name (GPIO_Constraints) and click **OK**.
-    If the Synthesis is Out-of-date dialog box opens, click **Yes** to
-    rerun synthesis. The Launch Runs dialog box opens. Click **OK** to
-    launch synthesis.
-
-    ![](./media/image49.png)
+    - The Save Constraints window opens. 
+    - Input a file name, such as **constraints**.
+    - Keep File Type = XDC and File Location = <Local to Project>.
+    - Click OK.
+    - Click OK to launch synthesis, implementation first.
+    - In the Launch Runs window, keep Launch runs on local host and click **OK**.
 
     A constraints file is created and saved under the **Constraints**
     folder on the **Hierarchy** view of the **Sources** window.
 
-    ![](./media/image50.jpeg)
+    ![](./media/image50.png)
 
-33. After bitstream generation completes, export the hardware using
-    **File→ Export → Export Hardware**. Use the information in the
+    - After bitstream generation completes, click cancel in the pop-up window.
+    
+7. Export the hardware using **File→ Export → Export Hardware**. Use the information in the
     table below to make selections in each of the wizard screens.
     Click **Next** where necessary.
 
-| Wizard Screen            | System Property | Setting or Command to Use        |
-| ------------------------ | --------------- | -------------------------------- |
-| Export Hardware Platform | Platform type   | Fixed                            |
-| Output                   |                 | Include bitstream                |
-|                          | Export to       | Leave as C:/edt/edt_zc702 |
+    | Wizard Screen            | System Property | Setting or Command to Use    |
+    | ------------------------ | --------------- | ---------------------------- |
+    | Export Hardware Platform |                 |                              |
+    | Output                   |                 | Select **Include bitstream** |
+    | Files                    | XSA Filename    | Leave as system_wrapper      |
+    |                          | Export to       | Leave as C:/edt/edt_zc702    |
 
+    ***Note*:** If a pop-up appears saying the module is already exported, click **Yes** to overwrite the file.
 
-    ***Note*:** If a pop-up appears saying the module is already exported,
-    click **Yes**.
+    - Click **Finish**.
 
-1.  Click **Finish** as shown in the following figure.
-
-    ![](./media/image51.jpeg)    
+    The exported file is located at C:/edt/edt_zc702/system_wrapper.xsa.
+ 
 
 ### Working with the Vitis Software Platform
 
-Open the Vitis IDE and manually update the exported hardware from
-Vivado.
+Open the Vitis IDE and manually update the exported hardware from Vivado.
 
 1.  In the Explorer view, right-click on the **hw_platform** platform
     project and click on the **Update Hardware Specification** option
