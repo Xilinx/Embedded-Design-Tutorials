@@ -37,7 +37,7 @@ Embedded Design Tutorials
      - Board
      - Description
 	 
-   * - `Versal ACAP Embedded Design Tutorial (UG1305) <https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/Versal-EDT/README.html>`__
+   * - `Versal ACAP Embedded Design Tutorial (UG1305) <https://xilinx.github.io/Embedded-Design-Tutorials/Versal-EDT/README.html>`__
      - Versal VMK180/VCK190
      - Provides an introduction for using the Xilinx® Vivado® Design Suite flow and the Vitis™ unified software platform for embedded development on a Versal™ VMK180/VCK190 evaluation board.
 
