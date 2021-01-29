@@ -1,0 +1,68 @@
+.. 
+   
+
+.. meta::
+   :keywords: embedded, tutorials, core, development, versal-acap
+   :description: Learn how to use the Xilinx® Vivado® Design Suite flow for a VMK180/VCK190 evaluation board.
+   :xlnxdocumentclass: Document
+   :xlnxdocumenttype: Tutorials
+   
+
+   
+
+Embedded Design Tutorials
+=========================
+
+
+.. toctree::
+   :maxdepth: 5
+   :caption: Versal ACAP Embedded Design Tutorial
+   :hidden:
+
+   ../Versal-EDT/README
+   ../Versal-EDT/docs/1-getting-started
+   ../Versal-EDT/docs/2-cips-noc-ip-config
+   ../Versal-EDT/docs/3-debugging
+   ../Versal-EDT/docs/4-boot-and-config
+   ../Versal-EDT/docs/5-system-design-example
+   ../Versal-EDT/docs/6-system-design-example-HSDP
+   ../Versal-EDT/docs/A-creating-plm
+   
+
+.. list-table:: 
+   :widths: 30 20 50
+   :header-rows: 1
+   
+   * - Tutorial
+     - Board
+     - Description
+	 
+   * - `Versal ACAP Embedded Design Tutorial (UG1305) <https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/Versal-EDT/README.html>`__
+     - Versal VMK180/VCK190
+     - Provides an introduction for using the Xilinx® Vivado® Design Suite flow and the Vitis™ unified software platform for embedded development on a Versal™ VMK180/VCK190 evaluation board.
+
+   * - Zynq UltraScale+ MPSoC Embedded Design Tutorial (UG1209)
+     - ZCU102 Rev 1.0/1.1
+     - Provides an introduction to using the Xilinx Vivado Design Suite flow and the Vitis unified software platform for embedded development on a Zynq UltraScale+ MPSoC device. **Note:** This document is not yet available on GitHub. See the latest version `here <https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1209-embedded-design-tutorial.pdf>`__.
+
+   * - Zynq-7000 Embedded Design Tutorial (UG1165)
+     - ZC702 Rev 1.0
+     - Provides an introduction to using the Xilinx Vivado Design Suite flow and the Vitis unified software platform for embedded development on a Zynq-7000 SoC device. **Note:** This document is not yet available on GitHub. See the latest version `here <https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1165-zynq-embedded-design-tutorial.pdf>`__.
+                 
+ 
+ 
+
+.. _Versions:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Versions
+   :hidden:
+
+
+   Master <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master>
+      
+	 
+
+
+   
