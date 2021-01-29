@@ -66,9 +66,9 @@ The workflow is made up of the following components:
     Executable and Linkable Format (ELF) file compiled for debugging.
     The debug ELF file contains additional debug information for the
     debugger to make direct associations between the source code and
-    the binaries generated from that original source. To manage the
+    the binaries generated from that original source. To choose a build configuration, click the drop down menu of the hammer icon on the tool bar and select Debug or Release. To manage the
     build configurations, right-click the software application and
-    select **Build Configurations → Manage**.
+    select **C/C++ Build Settings**, Choose the configuration in the drop down menu, then change the build settings for it.
 
 -   **Debug Configuration:** To launch the debug session, you must
     create a debug configuration in the Vitis software platform. This
@@ -83,7 +83,7 @@ The workflow is made up of the following components:
     control the execution of your program by setting breakpoints,
     suspending launched programs, stepping through your code, and
     examining the contents of variables. To view the Debug
-    perspective, select **Window → Open Perspective → Debug**.
+    perspective, select **Window → Open Perspective → Debug**. You can also quickly switch the perspective from the Design or Debug buttons on the upper-right corner of the Vitis IDE.
 
 You can repeat the cycle of modifying the code, building the
 executable, and debugging the program in the Vitis software platform.
@@ -95,15 +95,7 @@ unexpected jumps in the execution trace.
 
 ## Example 4: Debugging Software Using the Vitis Software Platform
 
-In this example, you will walk through debugging a Hello World
-application.
-
-If you modified the Hello World application in the prior chapter, you
-will need to create a new Hello World application prior to debugging.
-Follow the steps in [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado) to create a new Hello World application.
-
-After you create the Hello World application, work through below
-example to debug the software using the Vitis software platform.
+In this example, you will walk through debugging a Hello World application created in [Example 2](./2-using-zynq.md).
 
 1.  In the C/C++ perspective, right-click the Hello_world project and
     select **Debug As→ Debug Configurations**.
@@ -111,7 +103,7 @@ example to debug the software using the Vitis software platform.
     In Target Setup tab, fill the Hardware Platform field with the one
     exported by the Vivado&reg; Design Suite, and click the **Debug** button.
 
-    ![](./media/image58.jpeg)
+    ![](./media/image58.png)
 
     The Debug perspective opens.
 
@@ -119,18 +111,17 @@ example to debug the software using the Vitis software platform.
     open, select **Window → Open perspective** and select **Debug** in the
     Open Perspective dialog box.
 
+    <!--TODO: update image-->
     ![](./media/image59.jpeg)
 
     ***Note*:** The addresses shown on this page might slightly differ
     from the addresses shown on your system.
 
-    The processor is currently sitting at the beginning of main() with
-    program execution suspended at line 0x0010058c. You can confirm this
+    The processor is currently sitting at the beginning of `main()`. You can confirm this
     information in the Disassembly view, which shows the assembly-level
-    program execution also suspended at 0x0010058c.
+    program execution also suspended at the same address.
 
-    ***Note*:** If the Disassembly view is not visible, select **Window →
-    Show view**, select **Disassembly** under **Debug**, and click **Open**.
+    ***Note*:** If the Disassembly view is not visible, select **Window → Show view**, select **Disassembly** under **Debug**, and click **Open**.
 
 2.  The helloworld.c window also shows execution suspended at the first
     executable line of C code. Select the Registers view to confirm
@@ -140,24 +131,21 @@ example to debug the software using the Vitis software platform.
     Show view→ Debug→ Registers**.
 
 3.  Double-click in the margin of the helloworld.c window next to the
-    line of code that reads init_platform() and print(). This sets the
-    breakpoints at init_platform() and print(). To confirm the
+    line of code that reads `init_platform()` and `print()`. This sets the
+    breakpoints at `init_platform()` and `print()`. To confirm the
     breakpoints, review the Breakpoints view.
 
-    ***Note*:** If the Breakpoints view is not visible, select **Window→
-    Show view→ Debug→ Breakpoints**.
+    ***Note*:** If the Breakpoints view is not visible, select **Window → Show view → Debug → Breakpoints**.
 
 4.  Select **Run → Step Into** to step into the init_platform() routine.
 
-    Program execution suspends at location 0x001005fc. The call stack is
-    now two levels deep.
+    Program executes one step. The call stack is now two levels deep.
 
 5.  Select **Run → Resume** to continue running the program to the
     breakpoint.
 
     Program execution stops at the line of code that includes the print
-    command. The Disassembly and Debug views both show program execution
-    stopped at 0x00100590.
+    command. 
 
     ***Note*:** The execution address in your debugging window might
     differ if you modified the hello world source code in any way.
@@ -171,10 +159,7 @@ example to debug the software using the Vitis software platform.
 
 7.  Rerun your code several times. Experiment with single-stepping, examining memory, breakpoints, modifying code, and adding print statements. Try adding and moving views.
 
-    ![](./media/image60.png)    
-
-    **TIP:** *You can use Vitis tool debugging shortcuts for step-into
-    (F5), step-return (F7), step-over (F6), and resume (F8).*
+    **TIP:** *You can use Vitis tool debugging shortcuts for step-into (F5), step-over (F6), step-return (F7),and resume (F8).*
 
 8.  Exit the Vitis software platform.
 
