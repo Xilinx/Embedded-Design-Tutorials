@@ -14,9 +14,9 @@
   - [Example 3: Validate Instantiated Fabric IP Functionality](#example-3-validate-instantiated-fabric-ip-functionality)
     - [Update Vivado Design Diagram](#update-vivado-design-diagram)
     - [Assign Location Constraints to External Pins](#assign-location-constraints-to-external-pins)
-    - [Working with the Vitis Software Platform](#working-with-the-vitis-software-platform)
-    - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
-    - [Application Software Steps](#application-software-steps)
+    - [Update Hardware in the Vitis Software Platform](#update-hardware-in-the-vitis-software-platform)
+    - [Test the PL IP with prepared software](#test-the-pl-ip-with-prepared-software)
+    - [Standalone Application Software Details](#standalone-application-software-details)
 
 # Using the GP Port in Zynq Devices
 
@@ -243,68 +243,102 @@ the fabric additions.
     The exported file is located at C:/edt/edt_zc702/system_wrapper.xsa.
  
 
-### Working with the Vitis Software Platform
+### Update Hardware in the Vitis Software Platform
 
 Open the Vitis IDE and manually update the exported hardware from Vivado.
 
-1.  In the Explorer view, right-click on the **hw_platform** platform
+1.  In the Explorer view, right-click on the **zc702_edt** platform
     project and click on the **Update Hardware Specification** option
     as shown in the following figure.
 
-    ![](./media/image52.png)
+    ![Update Hardware Specification](./media/image52.png)
 
-2.  In the Update Hardware Specification view, browse for the exported XSA file (C:/edt/edt_zc702/system_wrapper.xsa) from Vitis and click **OK**. A view opens stating that the hardware specification for the platform project has been updated, as shown in the following figure. Click **OK**.
+2.  In the Update Hardware Specification view, browse for the exported XSA file (C:/edt/edt_zc702/system_wrapper.xsa) from Vitis and click **OK**. 
 
-    ![](./media/image53.jpeg)    
+    - A view opens stating that the hardware specification for the platform project has been updated. Click **OK** to close it.
 
-3.  Rebuild the out-of-date platform project. Right-click the
-    **hw_platform** project. Select **Clean Project** followed by
-    **Build Project**.
+3.  Rebuild the out-of-date platform project. 
 
-4.  After the hw_platform project build completes, the hw_platform.xpfm
-    file is generated, as shown in the following figure.
+    - Right-click the **zc702_edt** project, select **Clean Project** followed by **Build Project**.
 
-    ![](./media/image54.jpeg)
+    After the zc702_edt project build completes, the zc702_edt.xpfm
+    file is generated.
 
-5.  Open the **helloworld.c** file from the hello_world project created with standalone PS in [Using the Zynq SoC Processing System](2-using-zynq.md) and modify the application software code.
+### Test the PL IP with prepared software
 
-6.  Save the file and re-build the project.
+1. Create a new standalone application for ARM Cortex-A9
 
-7.  Open the serial communication utility with baud rate set to **115200**.
+    - Select **File → New → Application Project**.
+
+    The New Application Project wizard opens. Use the information in the following table to make your selections in the wizard screens.
+
+    | Wizard Screen                     | System Properties                             | Setting or Command to Use                  |
+    | --------------------------------- | --------------------------------------------- | ------------------------------------------ |
+    | Platform                          | Select a platform from repository             | Click zc702_edt [custom]                   |
+    | Application Project Details       | Application project name                      | Enter hello_pl                          |
+    |                                   | System project name                           | keep hello_pl_system                    |
+    |                                   | Target Processor                              | keep ps7_cortexa9_0 selected               |
+    |                                   | Show all processors in hardware specification | keep unchecked                             |
+    | Domain                            | Select a domain                               | Keep standalone on ps7_cortex9_0 selected. |
+    | Templates                         | Available Templates                           | Hello World                                |
+
+    - Click **Finish**. The Vitis software platform creates the hello_world application project and hello_world_system project in the Explorer view.
+
+2. Import the provided source file to hello_pl project
+
+    - Right click **hello_pl** project and select **Import Sources**
+    - Click Browse in the pop-up Import Sources window
+    - Point to **ref_files/example3** directory of this repository
+    - Select **hello_pl.c**
+    - Click **Finish**
+
+3. Remove helloworld.c in src directory
+
+    - Right click **helloworld.c** in src directory
+    - Select **Delete**
+
+4. Build the hello_pl project.
+   - Right click hello_pl project
+   - Select Build project
+
+    hello_pl.elf will be generated. Now let's test the newly created hardware and software on board.
+
+5.  Connect the USB cable for JTAG and serial.
+
+6.  Open the serial communication utility with baud rate set to **115200**.
 
     ***Note*:** This is the baud rate that the UART is programmed to on Zynq devices.
 
-8.  Connect to the board. Because you have a bitstream for the PL fabric, you must download the bitstream.
+7.  Program PL.
 
-9.  Select **Xilinx → Program FPGA**. The Program FPGA view opens.
+    - Select **Xilinx → Program Device**. The Program Device view opens.
     Browse for the bitstream exported from Vivado.
 
-    ![](./media/image55.png)
+    ![Program Device](./media/image55.png)
 
-10. Click **Program** to download the bitstream and program the PL
+    - Click **Program** to download the bitstream and program the PL
     fabric. When the FPGA programming is done, progress information
     pop up opens and shows the status as FPGA configuration complete.
 
-11. Run the project similar to the steps in
-    [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado).
+8.  Run the project similar to the steps in [example 2](./2-using-zynq.md#run-the-hello-world-application-on-zc702-board).
 
-    If steps 9 and 10 fail, open the **Run Configurations** view,
-    browse for the bitstream file exported by Vivado, and then click
-    the **Run** button as shown in following figure. With this step,
-    the FPGA is programmed and the application runs.
+    - Right click hello_pl, select **Run as -> Launch on Hardware**
 
-    ![](./media/image56.jpeg)    
+    If the running fails, open the **RUn as -> Run Configurations** view, double check the Target Setup configuration with the following screenshot, update the settings and click Run.
 
-12. In the system, the AXI GPIO pin is connected to push button **SW5**
+    ![Run Configuration](./media/image56.png)    
+
+9.  In the system, the AXI GPIO pin is connected to push button **SW5**
     on the board, and the PS section GPIO pin is connected to push
     button **SW7** on the board via an EMIO interface.
 
-13. Follow the instructions printed on the serial terminal to run the
+10. Follow the instructions printed on the serial terminal to run the
     application. See the following figure for serial output logs.
 
+    <!--TODO: update image-->
     ![](./media/image57.png)
 
-### Standalone Application Software for the Design
+### Standalone Application Software Details
 
 The system you designed in this chapter requires application software
 for the execution on the board. This section describes the details
@@ -316,8 +350,6 @@ settings for all peripherals connected in the system. It also has a
 selection procedure for the execution of the different use cases, such
 as AXI GPIO and PS GPIO using EMIO interface. You can select different
 use cases by following the instruction on the serial terminal.
-
-### Application Software Steps
 
 Application software is composed of the following steps:
 
