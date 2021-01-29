@@ -101,7 +101,7 @@ the fabric additions.
 
 1.  Open the Vivado&reg; Design Suite.
 
-2.  Under the Recent Projects column, click the **edt_tutorial** design
+2.  Under the Recent Projects column, click the **edt_zc702** design
     that you created in <a href="2-using-zynq.md">Using the
     Zynq SoC Processing System</a>.
 
@@ -265,11 +265,11 @@ the fabric additions.
     table below to make selections in each of the wizard screens.
     Click **Next** where necessary.
 
-|Wizard Screen|System Property|Setting or Command to Use|
-|--- |--- |--- |
-|Export Hardware Platform|Platform type|Fixed|
-|Output||Include bitstream|
-||Export to|Leave as C:/designs/edt_tutorial|
+| Wizard Screen            | System Property | Setting or Command to Use        |
+| ------------------------ | --------------- | -------------------------------- |
+| Export Hardware Platform | Platform type   | Fixed                            |
+| Output                   |                 | Include bitstream                |
+|                          | Export to       | Leave as C:/edt/edt_zc702 |
 
 
     ***Note*:** If a pop-up appears saying the module is already exported,
@@ -290,7 +290,7 @@ Vivado.
 
     ![](./media/image52.png)
 
-2.  In the Update Hardware Specification view, browse for the exported XSA file (C:/designs/edt_tutorial/tutorial_bd_wrapper.xsa) from Vitis and click **OK**. A view opens stating that the hardware specification for the platform project has been updated, as shown in the following figure. Click **OK**.
+2.  In the Update Hardware Specification view, browse for the exported XSA file (C:/edt/edt_zc702/system_wrapper.xsa) from Vitis and click **OK**. A view opens stating that the hardware specification for the platform project has been updated, as shown in the following figure. Click **OK**.
 
     ![](./media/image53.jpeg)    
 

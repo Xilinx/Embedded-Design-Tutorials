@@ -114,7 +114,7 @@ on the serial terminal and stops execution.
 
     -   Create a new project as described in [Creating an Embedded Processor Project](2-using-zynq.md#creating-an-embedded-processor-project).
 
-2.  Open the Vivado&reg; design from [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md) called **edt_tutorial** and from the IP integrator click **Open Block Design**.
+2.  Open the Vivado&reg; design from [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md) called **edt_zc702** and from the IP integrator click **Open Block Design**.
 
 3.  In the Diagram window, right-click in the blank space and select
     **Add IP**.
