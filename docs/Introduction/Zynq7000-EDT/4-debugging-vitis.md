@@ -125,10 +125,9 @@ In this example, you will walk through debugging a Hello World application creat
 
 2.  The helloworld.c window also shows execution suspended at the first
     executable line of C code. Select the Registers view to confirm
-    that the program counter, pc register, contains 0x0010058c.
+    that the program counter, i.e. the pc register.
 
-    ***Note*:** If the Registers view is not visible, select **Window→
-    Show view→ Debug→ Registers**.
+    ***Note*:** If the Registers view is not visible, select **Window → Show view→ Debug→ Registers**.
 
 3.  Double-click in the margin of the helloworld.c window next to the
     line of code that reads `init_platform()` and `print()`. This sets the
