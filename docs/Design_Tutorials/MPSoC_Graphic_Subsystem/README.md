@@ -118,7 +118,7 @@
 
 ### Enable GPU Libraries and Other Packages in RootFS
 
- In this section, you will use the PetaLinux rootfs configuration
+ In this section, you will use the PetaLinux RootFS configuration
  wizard to add the Mali GPU libraries. PetaLinux is shipped with Mali
  GPU libraries and device drivers for the Mali GPU. By default, the Mali
  driver is enabled in the kernel tree, but Mali user libraries need to
@@ -126,7 +126,7 @@
  addition to this, you will use the same wizard to include the X Window
  System libraries.
 
-1. Open the PetaLinux rootfs Configuration wizard:
+1. Open the PetaLinux RootFS Configuration wizard:
 
     `$ petalinux-config -c rootfs`
 
@@ -153,7 +153,7 @@
 
     `User Packages \-\--\ \[\*\]tricube`
 
-5. After enabling all the packages, save the config file and exit the rootfs configuration settings.
+5. After enabling all the packages, save the config file and exit the RootFS configuration settings.
 
 6. Build the Linux images using the following command:
 
