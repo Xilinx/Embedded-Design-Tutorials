@@ -315,6 +315,7 @@ The application software does the following:
     that the hw_server application started, or if it has started and
     is running, you see tcfchan#, as shown in the following figure.
 
+    <!--TODO: update image-->
     ![](./media/image65.jpeg)
 
 4.  In the Vitis software platform, select **File → New → Application
@@ -328,7 +329,7 @@ The application software does the following:
 | Platform                    | Select a platform from repository | Click hw_platform [custom] with the path as </br>C:\designs\workspace\hw_platform\export\hw_platform\hw_platform.xpfm |
 | Application Project Details | Application project name          | Enter cdma_app                                                                                                        |
 | Domain                      | Select a domain                   | Click standalone on ps7_cortex9_0.                                                                                    |
-| Templates                   | Available Templates               | Empty Application                                                                                                 |
+| Templates                   | Available Templates               | Empty Application                                                                                                     |
 
 
 6.  Click **Finish**.
@@ -538,11 +539,11 @@ Platform](6-linux-booting-debug.md).
 
 10. At the XSCT prompt, do the following:
 
-    a.  Type connect to connect with the PS section.
+    -  Type connect to connect with the PS section.
 
-    b.  Type targets to get the list of target processors.
+    -  Type targets to get the list of target processors.
 
-    c.  Type targets 2 to select the processor CPU1.
+    -  Type targets 2 to select the processor CPU1.
 
         ```
         xsct% targets
@@ -558,34 +559,35 @@ Platform](6-linux-booting-debug.md).
         4 xc7z020
         ```
 
-    d.  Type dow <tutorial_download_path>/zynq_fsbl.elf to download PetaLinux FSBL.
+    -  Type dow <tutorial_download_path>/zynq_fsbl.elf to download PetaLinux FSBL.
 
-    e.  Type con to start execution of FSBL and then type stop to stop it.
+    -  Type con to start execution of FSBL and then type stop to stop it.
 
         ![](./media/image70.jpeg)
 
-    f.  Type dow <tutorial_download_path>/u-boot.elf to download PetaLinux U- Boot.elf.
+    -  Type dow <tutorial_download_path>/u-boot.elf to download PetaLinux U- Boot.elf.
 
-    g.  Type con to start execution of U-Boot.  On the serial terminal, the autoboot countdown message appears:
+    -  Type con to start execution of U-Boot.  On the serial terminal, the autoboot countdown message appears:
 
-      	``Hit any key to stop autoboot: 3``
+      	```
+        Hit any key to stop autoboot: 3
+        ```
 
-    h.  Press **Enter**.
+    -  Press **Enter**.
 
         Automatic booting from U-Boot stops and a command prompt appears on
         the serial terminal.
 
         ![](./media/image71.jpeg)
 
-    i.  At the XSCT Prompt, type stop. The U-Boot execution stops.
+    -  At the XSCT Prompt, type stop. The U-Boot execution stops.
 
-    j.  Type dow -data <tutorial_download_path>/image.ub 0x30000000 to
+    -  Type dow -data <tutorial_download_path>/image.ub 0x30000000 to
         download the Linux Kernel image at location 0x3000000.
 
-    k.  Type con to start executing U-Boot.
+    -  Type con to start executing U-Boot.
 
-11. At the command prompt of the serial terminal, type bootm 0x30000000.
-    The Linux OS boots.
+11. At the command prompt of the serial terminal, type **bootm 0x30000000**. Press Enter. The Linux OS boots.
 
 12. If required, provide the Zynq login as **root** and the password as
     **root** on the serial terminal to complete booting the processor.
@@ -595,14 +597,14 @@ Platform](6-linux-booting-debug.md).
 13. At the root@Xilinx-ZC702-2020.2:~# prompt, make sure that the
     board Ethernet connection is configured:
 
-    a.  Check the IP address of the board by typing the following
+    -  Check the IP address of the board by typing the following
         command at the Zynq prompt: ``ifconfig eth0``.
 
     This command displays all the details of the currently active
     interface. In the message that displays, the inet addr value denotes
     the IP address that is assigned to the Zynq SoC board.
 
-    b.  If inet addr and netmask values do not exist, you can assign them
+    -  If inet addr and netmask values do not exist, you can assign them
         using the following commands:
 
         ```
@@ -614,14 +616,14 @@ Platform](6-linux-booting-debug.md).
     up to match the board settings. Adjust the local area connection
     properties by opening your network connections.
 
-    a.  Right-click the local area connection that is linked to the
+    -  Right-click the local area connection that is linked to the
         XC702 board and select Properties.
 
-    b.  In the Local Area Connection Properties dialog box, select
+    -  In the Local Area Connection Properties dialog box, select
         **Internet Protocol Version 4 (TCP/IPv4)** from the item list and
         select **Properties**.
 
-    c.  Select **Use the following IP address** and set the following
+    -  Select **Use the following IP address** and set the following
         values:
 
         ```
@@ -629,7 +631,7 @@ Platform](6-linux-booting-debug.md).
         Subnet mask: 255.255.255.0
         ```
 
-    d.  Click **OK** to accept the values.
+    -  Click **OK** to accept the values.
 
 15. In the Windows machine command prompt, check the connection with the
     board by typing ping followed by the board IP address. The ping response displays in a loop.
@@ -664,27 +666,25 @@ are given below:
 4.  When the New Domain dialog box opens, enter the details as given
     below:
 
-    -   **Name:** linux_domain
+    | Option             | Value                    |
+    | ------------------ | ------------------------ |
+    | Name               | linux_domain             |
+    | Display Name       | linux_application_domain |
+    | OS                 | Linux                    |
+    | Processor          | ps7_cortexa9             |
+    | Supported Runtimes | C/C++                    |
 
-    -   **Display Name:** linux_application_domain
+    - Select **Use pre-built software components**
 
-    -   **OS:** Linux
-
-    -   **Processor:** ps7_cortexa9
-
-    -   ###### Supported Runtimes: C/C++
-
-Select **Use pre-built software components**, then under this:
-
-a.  Create one boot directory in the C:\designs folder, then copy the
+    - Create one boot directory in the C:\designs folder, then copy the
     boot components into it (FSBL, PMUFW from the Vitis software
     platform, ATF, u-boot.elf and image.ub from PetaLinux).
 
-b.  Create one BIF file as below.
+    - Create one BIF file as below.
 
     ![](./media/image74.png)   
 
-5.  Click **OK** to finish and observe
+    - Click **OK** to finish and observe
     that the Linux domain has been added to the hw_platform as shown
     below.
 
