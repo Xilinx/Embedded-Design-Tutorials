@@ -12,12 +12,13 @@
 - [Using the HP Slave Port with AXI CDMA IP](#using-the-hp-slave-port-with-axi-cdma-ip)
   - [Integrating AXI CDMA with the Zynq SoC PS HP Slave Port](#integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port)
   - [Example 5: Integrating AXI CDMA with the PS HP Slave Port](#example-5-integrating-axi-cdma-with-the-ps-hp-slave-port)
+    - [Update the Vivado Design](#update-the-vivado-design)
     - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
     - [Application Software Flow](#application-software-flow)
     - [Running the Standalone CDMA Application Using the Vitis Software Platform](#running-the-standalone-cdma-application-using-the-vitis-software-platform)
   - [Linux OS Based Application Software for the CDMA System](#linux-os-based-application-software-for-the-cdma-system)
     - [Example 6: Linux Application Software Creation](#example-6-linux-application-software-creation)
-  - [Running Linux CDMA Application Using the Vitis Software Platform](#running-linux-cdma-application-using-the-vitis-software-platform)
+  - [Example 6: Running Linux CDMA Application Using the Vitis Software Platform](#example-6-running-linux-cdma-application-using-the-vitis-software-platform)
     - [Booting Linux on the Target Board](#booting-linux-on-the-target-board)
     - [Linux Domain Creation for Linux Applications](#linux-domain-creation-for-linux-applications)
     - [Building an Application and Running it on the Target Board Using the Vitis Software Platform](#building-an-application-and-running-it-on-the-target-board-using-the-vitis-software-platform)
@@ -108,6 +109,8 @@ on the serial terminal and stops execution.
 
 ## Example 5: Integrating AXI CDMA with the PS HP Slave Port
 
+### Update the Vivado Design
+
 1.  Start with the system you created in [Example 3: Adding Peripheral PL IP](3-using-gp-port-zynq.md##example-3-adding-peripheral-pl-ip).
 
     - Open the Vivado&reg; design from [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md) 
@@ -136,28 +139,32 @@ on the serial terminal and stops execution.
     port on the Concat IP core to make a connection between the two
     ports.
 
-1.  Click the interrupt port on the AXI Timer IP core and drag to the
-    In0[0:0] input port on the Concat IP core to make a connection
+    - Click the interrupt port on the AXI Timer IP core and drag to the
+    **In0[0:0]** input port on the Concat IP core to make a connection
     between the two ports.
 
-2.  Click the cdma_introut port on the AXI CDMA IP core and drag to the
-    In1[0:0] input port on the Concat IP core to make a connection
+    - Click the **cdma_introut** port on the AXI CDMA IP core and drag to the
+    **In1[0:0]** input port on the Concat IP core to make a connection
     between the two ports.
 
-3.  Right-click the **ZYNQ7 Processing System** core and select
+5. Customize PS to enable AXI HP0 Interface
+
+    - Right-click the **ZYNQ7 Processing System** core and select
     **Customize Block**.
 
-4.  Select **PS-PL Configuration** and expand the **HP Slave AXI
+    - Select **PS-PL Configuration** and expand the **HP Slave AXI
     Interface**.
 
-5.  Select the check box for **S AXI HP0 interface** and for **S AXI HP2
+    - Select the check box for **S AXI HP0 interface** and for **S AXI HP2
     interface**.
 
-6.  Click **OK** to accept the changes.
+   - Click **OK** to accept the changes.
 
-7.  Right-click the **AXI CDMA IP** core and select **Customize Block**.
+6. Customize CDMA IP
 
-8.  Set the block settings in the Re-customize IP wizard page as
+   - Right-click the **AXI CDMA IP** core and select **Customize Block**.
+
+   - Set the block settings in the Re-customize IP wizard page as
     follows:
 
     | System Property                 | Setting or Command to Use |
@@ -172,12 +179,14 @@ on the serial terminal and stops execution.
     | Address Width                   | 32                        |
 
 
-9.  Click **OK** to accept the changes.
+    - Click **OK** to accept the changes.
 
-10. Click the **Run Connection Automation** link in the Diagram window
+7. Connect the blocks
+
+   - Click the **Run Connection Automation** link in the Diagram window
     to automate the remaining connections.
 
-11. In the Run Connection Automation dialog box make sure the **All
+   - In the Run Connection Automation dialog box make sure the **All
     Automation** box is checked, then click **OK** to accept the
     default connections. The finished diagram should look like the
     following figure.
@@ -189,45 +198,42 @@ on the serial terminal and stops execution.
 
     ![](./media/image62.png)
 
-12. Select the **Address Editor** window.
+8. Assign Address
+
+   - Select the **Address Editor** window.
 
     ![](./media/image63.png)    
 
-13. In the Address Editor window, expand **axi_cdma_0 →
+    - In the Address Editor window, expand **axi_cdma_0 →
     axi_cdma_0/Data**. Right-click **HP2_DDR_LOWOCM** and select **Unassign**.
 
-22. In the Range column for **S_AXI_HP0**, select **256M**.
+    - In the Range column for **S_AXI_HP0**, select **256M**.
 
-23. Under Offset Address for **S_AXI_HP0**, set a value of
+    - Under Offset Address for **S_AXI_HP0**, set a value of
     **0x2000_0000**.
 
-24. In the Address Editor window, expand **axi_cdma_0 → axi_cdma_0/Data→
-    Unassigned**. Right- click on **HP2_DDR_LOWOCM** and select
-    **Assign**.
+    - In the Address Editor window, expand **axi_cdma_0 → axi_cdma_0/Data → Unassigned**. Right- click on **HP2_DDR_LOWOCM** and select **Assign**.
 
-25. In the Range column for **S_AXI_HP2**, select **256M**.
+    - In the Range column for **S_AXI_HP2**, select **256M**.
 
-26. Under Offset Address for **S_AXI_HP2**, set a value of
-    **0x3000_0000**.
+    - Under Offset Address for **S_AXI_HP2**, set a value of **0x3000_0000**.
 
     ![](./media/image64.jpeg)
 
-27. In the Flow Navigator, select **Generate Bitstream** under PROGRAM
-    AND DEBUG. The Save Project dialog box opens.
+9. Generate Bitstream
 
-28. Ensure that the **Block Design - tutorial_bd** check box is
-    selected, then click **Save**.
+   - In the Flow Navigator, select **Generate Bitstream** under **PROGRAM AND DEBUG**. The Save Project dialog box opens.
 
-29. A message might appear that states synthesis is out of date. If it
-    does, click **Yes**.
+    - Ensure that the **Block Design - system** check box is selected, then click **Save**.
 
-30. After the bitstream generation completes, export the hardware and
+    - A message might appear that states synthesis is out of date. If it does, click **Yes**.
+
+    - After the bitstream generation completes, export the hardware and
     launch the Vitis unified software platform as described in
-    [Exporting a Hardware Platform](2-using-zynq.md#exporting-a-hardware-platform).
+    [Exporting a Hardware Platform](2-using-zynq.md#exporting-hardware).
 
     ***Note*:** Make sure to select **Include bitstream** instead of the
-    **Pre-synthesis** on the Output page of the for Export Hardware
-    Platform wizard.
+    **Pre-synthesis** on the Output page of the for Export Hardware Platform wizard.
 
 ### Standalone Application Software for the Design
 
@@ -235,7 +241,7 @@ The CDMA-based system that you designed in this chapter requires
 application software to execute on the board. This section describes
 the details about the CDMA-based Standalone application software.
 
-The main() function in the application software is the entry point for
+The `main()` function in the application software is the entry point for
 the execution. It initializes the source memory buffer with the
 specified test pattern and clears the destination memory buffer by
 writing all zeroes.
@@ -322,7 +328,7 @@ The application software does the following:
 | Platform                    | Select a platform from repository | Click hw_platform [custom] with the path as </br>C:\designs\workspace\hw_platform\export\hw_platform\hw_platform.xpfm |
 | Application Project Details | Application project name          | Enter cdma_app                                                                                                        |
 | Domain                      | Select a domain                   | Click standalone on ps7_cortex9_0.                                                                                    |
-| Templates                   | Available Templates               | ~~Empty~~ Application                                                                                                 |
+| Templates                   | Available Templates               | Empty Application                                                                                                 |
 
 
 6.  Click **Finish**.
@@ -352,7 +358,7 @@ The application software does the following:
 
 12. Make sure that the hardware board is set up and turned on.
 
-    ***Note*:** Refer to [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado)
+    ***Note*:** Refer to [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-vitis-platform-project)
     for information about setting up the board.
 
 13. Select **Xilinx → Program FPGA** to open the Program FPGA dialog
@@ -361,9 +367,7 @@ The application software does the following:
 14. Click **Program** to download the bitstream and program the PL
     fabric.
 
-15. Run the project similar to the steps in [Creating a Platform Project
-    in the Vitis Software Platform with an XSA from
-    Vivado](#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado).
+15. Run the project similar to the steps in [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-vitis-platform-project).
 
 16. Check the status of the CDMA transfer in the serial terminal. If the
     transfer is successful, the message "DMA Transfer is Successful"
@@ -373,23 +377,23 @@ The application software does the following:
 ## Linux OS Based Application Software for the CDMA System
 
 In this section, you will create a Linux-based application software
-for CDMA using the mmap() system call provided by Linux and run it on
+for CDMA using the `mmap()` system call provided by Linux and run it on
 the hardware to check the functionality of the CDMA IP.
 
-The mmap() system call is used to map specified kernel memory area to
+The `mmap()` system call is used to map specified kernel memory area to
 the User layer, so that you can read or write on it depending on the
 attribute provided during the memory mapping.
 
 
 ![](./media/image66.png)
 
-***Note*:** Details about the mmap() system call is beyond the scope of this guide.
+***Note*:** Details about the `mmap()` system call is beyond the scope of this guide.
 
 **CAUTION!** *Use of the mmap() call might crash the kernel if it
 accesses, by mistake, some restricted area or shared resources of the
 kernel.*
 
-The main() function in the application software is the entry point for
+The `main()` function in the application software is the entry point for
 the execution. It initializes the source array with the specified test
 pattern and clears the destination array. Then it copies the source
 array contents to the DDR memory starting at location 0x20000000 and
@@ -456,11 +460,10 @@ Application software creation is composed of the following steps:
     Successful" displays. Otherwise, the serial terminal displays an
     error message.
 
-## Running Linux CDMA Application Using the Vitis Software Platform
+## Example 6: Running Linux CDMA Application Using the Vitis Software Platform
 
-Detailed steps on running Linux on the target board are outlined in
-[Linux Booting and Debug in the Vitis Software Platform](6-linux-booting-debug.md). If you are not comfortable running
-Linux, run through the [Linux Booting and Debug in the Vitis Software Platform](6-linux-booting-debug.md) examples prior to running this
+Detailed steps on running Linux on the target board are outlined in[Linux Booting and Debug in the Vitis Software Platform](6-linux-booting-debug.md). 
+If you are not comfortable running Linux, run through the [Linux Booting and Debug in the Vitis Software Platform](6-linux-booting-debug.md) examples prior to running this
 example. Running a Linux OS based application is composed of the following steps:
 
 1.  [Booting Linux on the Target Board](#booting-linux-on-the-target-board)
