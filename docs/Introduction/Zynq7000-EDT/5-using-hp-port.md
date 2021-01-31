@@ -747,27 +747,27 @@ are given below:
 10. In the Target Connection Details dialog box, apply the settings
     below:
 
-    a.  Specify a name in the **Target Name** field. For the purposes of
+    - Specify a name in the **Target Name** field. For the purposes of
         this exercise, use CDMALinux.
 
-    b.  In the **Host** field, enter the target board IP address.
+    - In the **Host** field, enter the target board IP address.
 
     To determine the target board IP address, type ifconfig eth0 at the
     Zynq\prompt in the serial terminal. The terminal displays the target
     IP address that is assigned to the board.
 
-    c.  In the **Port** field, type 1534.
+    - In the **Port** field, type 1534.
 
 11. Click **OK** to create the connection.
 
 12. As shown in the following figure, on the **Application** tab, enter
     application data settings for the following:
 
-    a.  Project Name: linux_cdma_app
+    - Project Name: linux_cdma_app
 
-    b.  Local File Path: Debug/linux_cdma_app.elf
+    - Local File Path: Debug/linux_cdma_app.elf
 
-    c.  Remote File Path: /tmp/cdma.elf
+    - Remote File Path: /tmp/cdma.elf
 
     ![](./media/image77.jpeg)
 
