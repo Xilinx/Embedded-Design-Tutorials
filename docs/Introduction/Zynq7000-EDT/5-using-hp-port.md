@@ -44,7 +44,7 @@ performance (HP) AXI slave interface ports that connect the
 programmable logic (PL) to asynchronous FIFO interface (AFI) blocks in
 the processing system (PS). The HP Ports enable a high throughput data
 path between AXI masters in programmable logic and the processing
-system\'s memory system (DDR and on- chip memory). HP slave ports are
+system's memory system (DDR and on- chip memory). HP slave ports are
 configurable to 64 bit or 32 bit interfaces.
 
 In this section, you will create a design using AXI CDMA intellectual
@@ -108,146 +108,76 @@ on the serial terminal and stops execution.
 
 ## Example 5: Integrating AXI CDMA with the PS HP Slave Port
 
-1.  Start with one of the following:
+1.  Start with the system you created in [Example 3: Adding Peripheral PL IP](3-using-gp-port-zynq.md##example-3-adding-peripheral-pl-ip).
 
-    -   Use the system you created in [Example 3: Validate Instantiated Fabric IP Functionality](3-using-gp-port-zynq.md#example-3-validate-instantiated-fabric-ip-functionality).
+    - Open the Vivado&reg; design from [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md) 
+    - Open the block design from Flow Navigator **Open Block Design**.
 
-    -   Create a new project as described in [Creating an Embedded Processor Project](2-using-zynq.md#creating-an-embedded-processor-project).
+2.  Adding Central DMA IP
 
-2.  Open the Vivado&reg; design from [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md) called **edt_zc702** and from the IP integrator click **Open Block Design**.
+    - In the Diagram window, right-click in the blank space and select **Add IP**.
 
-3.  In the Diagram window, right-click in the blank space and select
-    **Add IP**.
-
-4.  In the search box, type CDMA and double-click the **AXI Central
-    Direct Memory Access** IP to add it to the Block Design. The AXI
+    - In the search box, type CDMA and double-click the **AXI Central Direct Memory Access** IP to add it to the Block Design. The AXI
     Central Direct Memory Access IP block appears in the Diagram view.
 
-5.  In the Diagram window, right-click in the blank space and select
-    **Add IP**.
+4.  Adding Contact IP to concatenate the interrupt signals
 
-6.  In the search box type concat and double-click the **Concat** IP to
+    - In the Diagram window, right-click in the blank space and select **Add IP**.
+
+    - In the search box type concat and double-click the **Concat** IP to
     add it to the Block Design. The Concat IP block appears in the
     Diagram window. This block is used to concatenate the two
     interrupt signals if you are using the prior design with the AXI
     Timer.
 
-7.  Right-click the net from the interrupt port to the IRQ_F2P\[0:0\]
-    port and select **Delete**.
+    - Right-click the net from the interrupt port to the **IRQ_F2P[0:0]** port and select **Delete**.
 
-8.  Click the IRQ_F2P\[0:0\] port and drag to the dout\[1:0\] output
+    - Click the IRQ_F2P[0:0] port and drag to the dout[1:0] output
     port on the Concat IP core to make a connection between the two
     ports.
 
-9.  Click the interrupt port on the AXI Timer IP core and drag to the
-    In0\[0:0\] input port on the Concat IP core to make a connection
+1.  Click the interrupt port on the AXI Timer IP core and drag to the
+    In0[0:0] input port on the Concat IP core to make a connection
     between the two ports.
 
-10. Click the cdma_introut port on the AXI CDMA IP core and drag to the
-    In1\[0:0\] input port on the Concat IP core to make a connection
+2.  Click the cdma_introut port on the AXI CDMA IP core and drag to the
+    In1[0:0] input port on the Concat IP core to make a connection
     between the two ports.
 
-11. Right-click the **ZYNQ7 Processing System** core and select
+3.  Right-click the **ZYNQ7 Processing System** core and select
     **Customize Block**.
 
-12. Select **PS-PL Configuration** and expand the **HP Slave AXI
+4.  Select **PS-PL Configuration** and expand the **HP Slave AXI
     Interface**.
 
-13. Select the check box for **S AXI HP0 interface** and for **S AXI HP2
+5.  Select the check box for **S AXI HP0 interface** and for **S AXI HP2
     interface**.
 
-14. Click **OK** to accept the changes.
+6.  Click **OK** to accept the changes.
 
-15. Right-click the **AXI CDMA IP** core and select **Customize Block**.
+7.  Right-click the **AXI CDMA IP** core and select **Customize Block**.
 
-16. Set the block settings in the Re-customize IP wizard page as
+8.  Set the block settings in the Re-customize IP wizard page as
     follows:
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>System Property</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Command to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td><blockquote>
-    <p>Enable Scatter Gather</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Unchecked</p>
-    </blockquote></td>
-    </tr>
-    <tr class="even">
-    <td><blockquote>
-    <p>Disable 4K Boundary Checks</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Unchecked</p>
-    </blockquote></td>
-    </tr>
-    <tr class="odd">
-    <td><blockquote>
-    <p>Allow Unaligned Transfers</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Unchecked</p>
-    </blockquote></td>
-    </tr>
-    <tr class="even">
-    <td><blockquote>
-    <p>Write/Read Data Width</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>1024</p>
-    </blockquote></td>
-    </tr>
-    <tr class="odd">
-    <td><blockquote>
-    <p>Write/Read Burst Size</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>32</p>
-    </blockquote></td>
-    </tr>
-    <tr class="even">
-    <td><blockquote>
-    <p>Enable Asynchronous Mode (Auto)</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Unchecked</p>
-    </blockquote></td>
-    </tr>
-    <tr class="odd">
-    <td><blockquote>
-    <p>Enable CDMA Store and Forward</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Unchecked</p>
-    </blockquote></td>
-    </tr>
-    <tr class="even">
-    <td><blockquote>
-    <p>Address Width</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>32</p>
-    </blockquote></td>
-    </tr>
-    </tbody>
-    </table>
+    | System Property                 | Setting or Command to Use |
+    | ------------------------------- | ------------------------- |
+    | Enable Scatter Gather           | Unchecked                 |
+    | Disable 4K Boundary Checks      | Unchecked                 |
+    | Allow Unaligned Transfers       | Unchecked                 |
+    | Write/Read Data Width           | 1024                      |
+    | Write/Read Burst Size           | 32                        |
+    | Enable Asynchronous Mode (Auto) | Unchecked                 |
+    | Enable CDMA Store and Forward   | Unchecked                 |
+    | Address Width                   | 32                        |
 
-17. Click **OK** to accept the changes.
 
-18. Click the **Run Connection Automation** link in the Diagram window
+9.  Click **OK** to accept the changes.
+
+10. Click the **Run Connection Automation** link in the Diagram window
     to automate the remaining connections.
 
-19. In the Run Connection Automation dialog box make sure the **All
+11. In the Run Connection Automation dialog box make sure the **All
     Automation** box is checked, then click **OK** to accept the
     default connections. The finished diagram should look like the
     following figure.
@@ -259,11 +189,11 @@ on the serial terminal and stops execution.
 
     ![](./media/image62.png)
 
-20. Select the **Address Editor** window.
+12. Select the **Address Editor** window.
 
     ![](./media/image63.png)    
 
-21. In the Address Editor window, expand **axi_cdma_0 →
+13. In the Address Editor window, expand **axi_cdma_0 →
     axi_cdma_0/Data**. Right-click **HP2_DDR_LOWOCM** and select **Unassign**.
 
 22. In the Range column for **S_AXI_HP0**, select **256M**.
@@ -377,7 +307,7 @@ The application software does the following:
 
 3.  In the XSCT Console view, type Connect. A message appears, stating
     that the hw_server application started, or if it has started and
-    is running, you see tcfchan\#, as shown in the following figure.
+    is running, you see tcfchan#, as shown in the following figure.
 
     ![](./media/image65.jpeg)
 
@@ -387,45 +317,13 @@ The application software does the following:
 5.  Use the information in the table below to make your selections in
     the wizard screens.
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Wizard Screen</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>System Property</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Command to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>Platform</td>
-    <td>Select a platform from repository</td>
-    <td><p>Click <strong>hw_platform [custom]</strong> with the path as</p>
-    <p>C:\designs\workspace\hw_platform\export</p>
-    <p>\hw_platform\hw_platform.xpfm</p></td>
-    </tr>
-    <tr class="even">
-    <td>Application Project Details</td>
-    <td>Application project name</td>
-    <td>Enter cdma_app</td>
-    </tr>
-    <tr class="odd">
-    <td>Domain</td>
-    <td>Select a domain</td>
-    <td>Click <strong>standalone on ps7_cortex9_0</strong>.</td>
-    </tr>
-    <tr class="even">
-    <td>Templates</td>
-    <td>Available Templates</td>
-    <td>Empty Application</td>
-    </tr>
-    </tbody>
-    </table>
+| Wizard Screen               | System Property                   | Setting or Command to Use                                                                                             |
+| --------------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Platform                    | Select a platform from repository | Click hw_platform [custom] with the path as </br>C:\designs\workspace\hw_platform\export\hw_platform\hw_platform.xpfm |
+| Application Project Details | Application project name          | Enter cdma_app                                                                                                        |
+| Domain                      | Select a domain                   | Click standalone on ps7_cortex9_0.                                                                                    |
+| Templates                   | Available Templates               | ~~Empty~~ Application                                                                                                 |
+
 
 6.  Click **Finish**.
 
@@ -468,7 +366,7 @@ The application software does the following:
     Vivado](#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado).
 
 16. Check the status of the CDMA transfer in the serial terminal. If the
-    transfer is successful, the message \"DMA Transfer is Successful\"
+    transfer is successful, the message "DMA Transfer is Successful"
     displays. Otherwise, the serial terminal displays an error
     message.
 
@@ -554,8 +452,8 @@ Application software creation is composed of the following steps:
 12. Compare the source array with the destination array.
 
 13. Display the comparison result in the serial terminal. If the
-    comparison is successful, the message \"DATA Transfer is
-    Successful\" displays. Otherwise, the serial terminal displays an
+    comparison is successful, the message "DATA Transfer is
+    Successful" displays. Otherwise, the serial terminal displays an
     error message.
 
 ## Running Linux CDMA Application Using the Vitis Software Platform
@@ -657,13 +555,13 @@ Platform](6-linux-booting-debug.md).
         4 xc7z020
         ```
 
-    d.  Type dow \<tutorial_download_path\>/zynq_fsbl.elf to download PetaLinux FSBL.
+    d.  Type dow <tutorial_download_path>/zynq_fsbl.elf to download PetaLinux FSBL.
 
     e.  Type con to start execution of FSBL and then type stop to stop it.
 
         ![](./media/image70.jpeg)
 
-    f.  Type dow \<tutorial_download_path\>/u-boot.elf to download PetaLinux U- Boot.elf.
+    f.  Type dow <tutorial_download_path>/u-boot.elf to download PetaLinux U- Boot.elf.
 
     g.  Type con to start execution of U-Boot.  On the serial terminal, the autoboot countdown message appears:
 
@@ -678,7 +576,7 @@ Platform](6-linux-booting-debug.md).
 
     i.  At the XSCT Prompt, type stop. The U-Boot execution stops.
 
-    j.  Type dow -data \<tutorial_download_path\>/image.ub 0x30000000 to
+    j.  Type dow -data <tutorial_download_path>/image.ub 0x30000000 to
         download the Linux Kernel image at location 0x3000000.
 
     k.  Type con to start executing U-Boot.
@@ -689,9 +587,9 @@ Platform](6-linux-booting-debug.md).
 12. If required, provide the Zynq login as **root** and the password as
     **root** on the serial terminal to complete booting the processor.
 
-    After booting completes, \# prompt appears on the serial terminal.
+    After booting completes, # prompt appears on the serial terminal.
 
-13. At the root\@Xilinx-ZC702-2020.2:\~\# prompt, make sure that the
+13. At the root@Xilinx-ZC702-2020.2:~# prompt, make sure that the
     board Ethernet connection is configured:
 
     a.  Check the IP address of the board by typing the following
@@ -775,7 +673,7 @@ are given below:
 
 Select **Use pre-built software components**, then under this:
 
-a.  Create one boot directory in the C:\\designs folder, then copy the
+a.  Create one boot directory in the C:\designs folder, then copy the
     boot components into it (FSBL, PMUFW from the Vitis software
     platform, ATF, u-boot.elf and image.ub from PetaLinux).
 
