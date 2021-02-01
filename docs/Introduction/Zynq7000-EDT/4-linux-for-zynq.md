@@ -58,9 +58,9 @@ In this example, you will configure and build a Linux operating system platform 
    petalinux-config --get-hw-description=<path containing system_wrapper.xsa>
    ```
 
-    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images.
+    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images. Select **Exit** and press **Enter** to exit the configuration window.
 
-    If you would prefer to skip the configuration window and keep the default settings, run the following command:
+    If you would prefer to skip the configuration window and keep the default settings, run the following command instead:
 
     ```
     petalinux-config --get-hw-description=<path containing system_wrapper.xsa> --silentconfig
@@ -83,10 +83,13 @@ In this example, you will configure and build a Linux operating system platform 
     ls -al
     ```
 
+    - `boot.scr` is for U-Boot to load the kernel and rootfs during boot time
+    - `image.ub` contains kernel image, device tree and rootfs.
+
 4.  Generate the boot image using the following command:
 
     ```bash
-    petalinux-package --boot --fsbl fsbl.elf --u-boot
+    petalinux-package --boot --fsbl zynq_fsbl.elf --u-boot
     ```
 
     This creates a ``BOOT.BIN`` image file in the ``<petalinux-project>/images/linux/`` directory.
@@ -97,96 +100,43 @@ In this example, you will configure and build a Linux operating system platform 
     ``petalinux-package`` command as shown below:
 
     ```bash
-    petalinux-package --boot --fsbl fsbl.elf --fpga system.bit --u-boot u-boot.elf
+    petalinux-package --boot --fsbl zynq_fsbl.elf --fpga system.bit --u-boot u-boot.elf
     ```
 
     Refer to `petalinux-package --boot --help` for more details about the boot image package command.
 
 
-<!--TODO merge it-->
 ### Booting Linux on the Target Board
 
 You will now boot Linux on the Zynq-7000 SoC ZC702 target board using
 JTAG mode.
 
-***Note*:** Additional boot options will be explained in [Linux Booting and Debug in the Software
-Platform](6-linux-booting-debug.md).
+***Note*:** Additional boot options will be explained in [Linux Booting and Debug in the Software Platform](6-linux-booting-debug.md).
 
-1.  Check the following Board Connection and Setting for Linux booting
-    using JTAG mode:
+1. Copy the `BOOT.BIN`, `image.ub`, and `boot.scr` files to the SD card. 
 
-    a.  Ensure that the settings of Jumpers J27 and J28 are set as
-        described in [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado).
+2. Setup the board as described in [Example 2](./2-using-zynq.md#setup-the-board)
 
-    b.  Ensure that the SW16 switch is set as shown in the following
-        figure.
+3. Change boot mode to SD boot
 
-    c.  Connect an Ethernet cable from the Zynq SoC board to your
-        network.
+    - Change **SW16[5:1]** to **01100** 
 
-    d.  Connect the Windows Host machine to your network.
+    ![SD Boot Mode Setup for SW16](media/image89.jpeg)
 
-    e.  Connect the power cable to the board.
+4.  Make sure Ethernet Jumper J30 and J43 as shown in the following figure.
 
-        ![](./media/image67.jpeg)
+    ![Ethernet Jumper](./media/image69.jpeg)    
 
-2.  Connect a micro USB cable between the Windows host machine and the
-    target board with the following SW10 switch settings, as shown in
-    [Booting Linux on the Target Board](6-linux-booting-debug.md#booting-linux-on-the-target-board).
-
-    -   Bit-1 is 0
-
-    -   Bit-2 is 1
-
-    ***Note*:** 0 = switch is open. 1 = switch is closed. The correct JTAG
-    mode has to be selected, according to the user interface. The JTAG
-    mode is controlled by switch SW10 on the ZC702 and SW4 on the ZC706.
-
-    ![](./media/image68.jpeg)
-
-3.  Connect a USB cable to connector J17 on the target board with the
-    Windows Host machine. This is used for USB to serial transfer.
-
-4.  Change Ethernet Jumper J30 and J43 as shown in the following figure.
-
-    ![](./media/image69.jpeg)    
-
-5.  Power on the target board.
-
-6.  Launch the Vitis software platform and open the same workspace you
+5.  Launch the Vitis software platform and open the same workspace you
     used in [Using the Zynq SoC Processing System](2-using-zynq.md) and [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md).
 
-7.  If the serial terminal is not open, connect the serial communication
+6.  If the serial terminal is not open, connect the serial communication
     utility with the baud rate set to **115200**.
 
     ***Note*:** This is the baud rate that the UART is programmed to on
     Zynq devices.
 
-
-
-### Verifying the Image on the ZC702 Board
-
- To verify the image, follow these steps:
-
-1. Copy the `BOOT.BIN`, `image.ub`, and `boot.scr` files to the SD card. Here, `boot.scr` is read by U-Boot to load the kernel and rootfs.
-
-2. Load the SD card into the zc702 board, in the J100 connector.
-<!--TODO: update SW number for SD Boot-->
-3. Configure the board to boot in SD boot mode by setting switch SW6 as
-     shown in the following figure.
-
-    ![](./media/image43.jpeg)
-
-5. Connect 12V power to the zc702 6-pin Molex connector.
-
-6. Start a serial terminal session using Tera Term or Minicom depending on the host machine being used. set the COM port and baud rate for your system as shown in the following figure.
-
-     ![Tera Term Connection](./media/image44.png)
-
-7. For port settings, verify the COM port in the device manager and select the COM port with interface-0.
-
-8. Turn on the ZC702 board using SW1, and wait until Linux loads on the board.
-
+7.  Power on the target board.
 
 ## Example 5: Creating Hello World Application for Linux in Vitis IDE
 

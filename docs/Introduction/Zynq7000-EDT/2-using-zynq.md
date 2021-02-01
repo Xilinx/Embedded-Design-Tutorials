@@ -257,6 +257,8 @@ Debugger in the Vitis IDE.
       -   Bit-1 is 0
       -   Bit-2 is 1
 
+    ![JTAG Select SW10](./media/image68.jpeg)
+
 ***Note*:** 0 = switch is open. 1 = switch is closed.
 
 4.  Setup JTAG boot mode using the switch indicated in the figure below.
