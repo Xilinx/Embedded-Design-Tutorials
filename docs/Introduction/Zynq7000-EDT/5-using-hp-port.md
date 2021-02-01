@@ -11,17 +11,17 @@
 
 - [Using the HP Slave Port with AXI CDMA IP](#using-the-hp-slave-port-with-axi-cdma-ip)
   - [Integrating AXI CDMA with the Zynq SoC PS HP Slave Port](#integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port)
-  - [Example 5: Integrating AXI CDMA with the PS HP Slave Port](#example-5-integrating-axi-cdma-with-the-ps-hp-slave-port)
+  - [Example 6: Integrating AXI CDMA with the PS HP Slave Port](#example-6-integrating-axi-cdma-with-the-ps-hp-slave-port)
     - [Input and Output Files](#input-and-output-files)
     - [Update the Vivado Design](#update-the-vivado-design)
     - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
     - [Application Software Flow](#application-software-flow)
     - [Running the Standalone CDMA Application Using the Vitis Software Platform](#running-the-standalone-cdma-application-using-the-vitis-software-platform)
   - [Linux OS Based Application Software for the CDMA System](#linux-os-based-application-software-for-the-cdma-system)
-    - [Example 6: Linux Application Software Creation](#example-6-linux-application-software-creation)
-  - [Example 6: Running Linux CDMA Application Using the Vitis Software Platform](#example-6-running-linux-cdma-application-using-the-vitis-software-platform)
+  - [Example 7: Linux Application Software for AXI CDMA](#example-7-linux-application-software-for-axi-cdma)
+    - [Linux Application Software for AXI CDMA](#linux-application-software-for-axi-cdma)
+    - [Running Linux CDMA Application Using the Vitis Software Platform](#running-linux-cdma-application-using-the-vitis-software-platform)
     - [Booting Linux on the Target Board](#booting-linux-on-the-target-board)
-    - [Linux Domain Creation for Linux Applications](#linux-domain-creation-for-linux-applications)
     - [Building an Application and Running it on the Target Board Using the Vitis Software Platform](#building-an-application-and-running-it-on-the-target-board-using-the-vitis-software-platform)
 
 
@@ -108,12 +108,12 @@ comparison result on the serial terminal.
 If the data transfer status is an error, it displays the error status
 on the serial terminal and stops execution.
 
-## Example 5: Integrating AXI CDMA with the PS HP Slave Port
+## Example 6: Integrating AXI CDMA with the PS HP Slave Port
 
 ### Input and Output Files
 
 - Input Files
-  - Vivado design from Example 3
+  - Vivado design from Example 4
   - Vitis workspace
 - Output Files
   - Updated Vivado Design and exported hardware handoff system_wrapper.xsa
@@ -121,7 +121,7 @@ on the serial terminal and stops execution.
 
 ### Update the Vivado Design
 
-1.  Start with the system you created in [Example 3: Adding Peripheral PL IP](3-using-gp-port-zynq.md##example-3-adding-peripheral-pl-ip).
+1.  Start with the system you created in [Example 4: Adding Peripheral PL IP](3-using-gp-port-zynq.md##example-3-adding-peripheral-pl-ip).
 
     - Open the Vivado&reg; design from [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md) 
     - Open the block design from Flow Navigator **Open Block Design**.
@@ -412,7 +412,9 @@ makes the DMA register setting to initiate DMA transfer to the
 destination. After the DMA transfer, the application reads the status
 of the transfer and displays the result on the serial terminal.
 
-### Example 6: Linux Application Software Creation
+## Example 7: Linux Application Software for AXI CDMA
+
+### Linux Application Software for AXI CDMA
 
 Application software creation is composed of the following steps:
 
@@ -471,7 +473,7 @@ Application software creation is composed of the following steps:
     Successful" displays. Otherwise, the serial terminal displays an
     error message.
 
-## Example 6: Running Linux CDMA Application Using the Vitis Software Platform
+### Running Linux CDMA Application Using the Vitis Software Platform
 
 Detailed steps on running Linux on the target board are outlined in[Linux Booting and Debug in the Vitis Software Platform](6-linux-booting-debug.md). 
 If you are not comfortable running Linux, run through the [Linux Booting and Debug in the Vitis Software Platform](6-linux-booting-debug.md) examples prior to running this
@@ -484,7 +486,7 @@ example. Running a Linux OS based application is composed of the following steps
 3.  [Building an Application and Running it on the Target Board Using the Vitis Software Platform](#building-an-application-and-running-it-on-the-target-board-using-the-vitis-software-platform)
 
 ### Booting Linux on the Target Board
-
+<!--TODO: reduce steps here. Refer to Example 3-->
 You will now boot Linux on the Zynq-7000 SoC ZC702 target board using
 JTAG mode.
 
@@ -657,50 +659,6 @@ Platform](6-linux-booting-debug.md).
     Linux booting completes on the target board and the connection between
     the host machine and the target board is complete.
 
-### Linux Domain Creation for Linux Applications
-
-Now that Linux is running on the board, you can create a Linux domain
-followed by a Linux application. The steps to create a Linux domain
-are given below:
-
-1.  Go to the Explorer view in the Vitis software platform and expand
-    the **hw_platform** platform project.
-
-2.  Open the hardware by double clicking **platform.spr**.
-
-3.  The platform view opens. Click the **+** button in the right corner
-    to add a domain, as shown in the following figure.
-
-    ![](./media/image73.jpeg)
-
-4.  When the New Domain dialog box opens, enter the details as given
-    below:
-
-    | Option             | Value                    |
-    | ------------------ | ------------------------ |
-    | Name               | linux_domain             |
-    | Display Name       | linux_application_domain |
-    | OS                 | Linux                    |
-    | Processor          | ps7_cortexa9             |
-    | Supported Runtimes | C/C++                    |
-
-    - Select **Use pre-built software components**
-
-    - Create one boot directory in the C:\designs folder, then copy the
-    boot components into it (FSBL, PMUFW from the Vitis software
-    platform, ATF, u-boot.elf and image.ub from PetaLinux).
-
-    - Create one BIF file as below.
-
-    ![](./media/image74.png)   
-
-    - Click **OK** to finish and observe
-    that the Linux domain has been added to the hw_platform as shown
-    below.
-
-    ![](./media/image75.jpeg)    
-
-    Now you are ready with Linux domain to create Linux applications.
 
 ### Building an Application and Running it on the Target Board Using the Vitis Software Platform
 

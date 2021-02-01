@@ -11,15 +11,15 @@
 
 - [Linux Booting and Debug in the Vitis Software Platform](#linux-booting-and-debug-in-the-vitis-software-platform)
   - [Requirements](#requirements)
-  - [Example 7: Booting Linux on a Zynq SoC Board](#example-7-booting-linux-on-a-zynq-soc-board)
+  - [Example 8: Booting Linux on a Zynq SoC Board](#example-8-booting-linux-on-a-zynq-soc-board)
     - [Boot Methods](#boot-methods)
-      - [*Master Boot Method*](#master-boot-method)
-      - [*Slave Boot Method*](#slave-boot-method)
+      - [Master Boot Method](#master-boot-method)
+      - [Slave Boot Method](#slave-boot-method)
     - [Booting Linux from JTAG](#booting-linux-from-jtag)
     - [Preparing the PetaLinux Build for Debugging](#preparing-the-petalinux-build-for-debugging)
     - [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode)
     - [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform)
-    - [Example Project: Booting Linux from QSPI Flash](#example-project-booting-linux-from-qspi-flash)
+    - [Example 9: Booting Linux from QSPI Flash](#example-9-booting-linux-from-qspi-flash)
       - [Create the First Stage Boot Loader Executable File](#create-the-first-stage-boot-loader-executable-file)
       - [*Make a Linux Bootable Image for QSPI Flash*](#make-a-linux-bootable-image-for-qspi-flash)
       - [*Program QSPI Flash with the Boot Image Using JTAG*](#program-qspi-flash-with-the-boot-image-using-jtag)
@@ -85,7 +85,7 @@ accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#des
 
 -   **fsbl.elf:** FSBL image used to create BOOT.BIN image.
 
-## Example 7: Booting Linux on a Zynq SoC Board
+## Example 8: Booting Linux on a Zynq SoC Board
 
 This section covers the flow for booting Linux on the target board
 using the precompiled images that you downloaded in
@@ -103,7 +103,7 @@ The following boot methods are available:
 
 -   Slave Boot Method
 
-#### *Master Boot Method*
+#### Master Boot Method
 
 In the master boot method, different kinds of non-volatile memories
 such as QSPI, NAND, NOR flash, and SD cards are used to store boot
@@ -133,7 +133,7 @@ The U-Boot loads and starts the execution of the kernel image, the
 root file system, and the device tree from non-volatile RAM to DDR. It
 finishes booting Linux on the target platform.
 
-#### *Slave Boot Method*
+#### Slave Boot Method
 
 JTAG can only be used in slave boot mode. An external host computer
 acts as the master to load the boot image into the OCM using a JTAG
@@ -348,53 +348,15 @@ from the Windows host machine.
 3.  Use the information in the following table to make your selections
     in the wizard screens.
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Wizard Screen</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>System Property</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Command to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>Platform</td>
-    <td>Select a platform from repository</td>
-    <td>Click <strong>hw_platform [custom]</strong>.</td>
-    </tr>
-    <tr class="even">
-    <td>Application Project Details</td>
-    <td>Application project name</td>
-    <td>Enter HelloLinux</td>
-    </tr>
-    <tr class="odd">
-    <td></td>
-    <td>Select target processor for the Application project</td>
-    <td>Select <strong>ps7_cort exa9 SMP</strong>.</td>
-    </tr>
-    <tr class="even">
-    <td>Domain</td>
-    <td>Select a domain</td>
-    <td>Click <strong>linux_application_domain</strong>.</td>
-    </tr>
-    <tr class="odd">
-    <td></td>
-    <td>Application settings</td>
-    <td>If known, enter the sysroot, root FS, and kernel image paths. Otherwise, leave these options blank.</td>
-    </tr>
-    <tr class="even">
-    <td>Templates</td>
-    <td>Available Templates</td>
-    <td>Linux Hello World</td>
-    </tr>
-    </tbody>
-    </table>
+   | Wizard Screen               | System Property                                     | Setting or Command to Use                                                                           |
+   | --------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+   | Platform                    | Select a platform from repository                   | Click hw_platform [custom].                                                                         |
+   | Application Project Details | Application project name                            | Enter HelloLinux                                                                                    |
+   |                             | Select target processor for the Application project | Select ps7_cortexa9 SMP.                                                                            |
+   | Domain                      | Select a domain                                     | Click linux_application_domain.                                                                     |
+   |                             | Application settings                                | If known, enter the sysroot, root FS, and kernel image paths. Otherwise, leave these options blank. |
+   | Templates                   | Available Templates                                 | Linux Hello World                                                                                   |
+
 
 4.  Click **Finish**.
 
@@ -462,7 +424,7 @@ from the Windows host machine.
 11. After you finish debugging the Linux application, close the Vitis
     IDE.
 
-### Example Project: Booting Linux from QSPI Flash
+### Example 9: Booting Linux from QSPI Flash
 
 This example project covers the following steps:
 
@@ -541,84 +503,20 @@ This example project covers the following steps:
 5.  Use the information the following table to make your selections in
     the wizard screens.
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Wizard Screen</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>System Property</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Command to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td><blockquote>
-    <p>Platform</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Select a platform from repository</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Click <strong>hw_platform [custom]</strong>.</p>
-    </blockquote></td>
-    </tr>
-    <tr class="even">
-    <td><blockquote>
-    <p>Application Project Details</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Application project name</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Enter fsbl</p>
-    </blockquote></td>
-    </tr>
-    <tr class="odd">
-    <td></td>
-    <td><blockquote>
-    <p>Select target processor for the Application project</p>
-    </blockquote></td>
-    <td><blockquote>
-    <p>Select <strong>ps7_cortexa9_0</strong>.</p>
-    </blockquote></td>
-    </tr>
-    </tbody>
-    </table>
+   | Wizard Screen               | System Property                                     | Setting or Command to Use   |
+   | --------------------------- | --------------------------------------------------- | --------------------------- |
+   | Platform                    | Select a platform from repository                   | Click hw_platform [custom]. |
+   | Application Project Details | Application project name                            | Enter fsbl                  |
+   |                             | Select target processor for the Application project | Select ps7_cortexa9_0.      |
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th><blockquote>
-    <p><strong>Wizard Screen</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>System Property</strong></p>
-    </blockquote></th>
-    <th><blockquote>
-    <p><strong>Setting or Command to Use</strong></p>
-    </blockquote></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>Domain</td>
-    <td>Select a domain</td>
-    <td>Click <strong>standalone on ps7_cortexa9_0</strong>.</td>
-    </tr>
-    <tr class="even">
-    <td>Templates</td>
-    <td>Available Templates</td>
-    <td>Zynq FSBL</td>
-    </tr>
-    </tbody>
-    </table>
 
-6.  Click **Finish**. If a pop up message comes up that states \"This
+    | Wizard Screen | System Property     | Setting or Command to Use           |
+    | ------------- | ------------------- | ----------------------------------- |
+    | Domain        | Select a domain     | Click standalone on ps7_cortexa9_0. |
+    | Templates     | Available Templates | Zynq FSBL                           |
+
+
+1.  Click **Finish**. If a pop up message comes up that states \"This
     application required xilffs library in Board Support Package\",
     add the xilffs library to the BSP and then and repeat the above
     steps to create an FSBL standalone application.
