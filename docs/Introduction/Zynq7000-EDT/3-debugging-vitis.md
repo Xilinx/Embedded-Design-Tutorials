@@ -101,7 +101,7 @@ In this example, you will walk through debugging a Hello World application creat
 
 ### Input and Output Files
 
-- Input files: Vitis workspace
+- Input files: Vitis workspace from Example 2
 - Output files: N/A
 
 ### Debug standalone application in Vitis IDE
@@ -120,8 +120,7 @@ In this example, you will walk through debugging a Hello World application creat
     open, select **Window → Open perspective** and select **Debug** in the
     Open Perspective dialog box.
 
-    <!--TODO: update image-->
-    ![](./media/image59.jpeg)
+    ![](./media/image59.png)
 
     ***Note*:** The addresses shown on this page might slightly differ
     from the addresses shown on your system.
@@ -169,6 +168,6 @@ In this example, you will walk through debugging a Hello World application creat
 
     **TIP:** *You can use Vitis tool debugging shortcuts for step-into (F5), step-over (F6), step-return (F7),and resume (F8).*
 
-8.  Exit the Vitis software platform.
+8.  Click Disconnect button on the tool bar to disconnect to the board, or exit the Vitis software platform directly.
 
 © Copyright 2015–2020 Xilinx, Inc.

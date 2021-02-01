@@ -9,9 +9,9 @@
 
 </table>
 
-# Building and Debugging Linux Applications for ZYNQ-7
+# Building and Debugging Linux Applications for ZYNQ-7000
 
-The earlier examples highlighted the creation of bare-metal applications. This chapter demonstrates how to develop Linux applications.
+The earlier examples highlighted the creation of standalone applications. This chapter demonstrates how to develop Linux applications.
 
 ## Example 4: Creating Linux Images
 
