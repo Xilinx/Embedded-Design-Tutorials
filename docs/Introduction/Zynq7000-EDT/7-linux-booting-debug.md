@@ -10,55 +10,37 @@
 </table>
 
 - [Linux Boot Image Configuration](#linux-boot-image-configuration)
-    - [Boot Methods](#boot-methods)
-      - [Master Boot Method](#master-boot-method)
-      - [Slave Boot Method](#slave-boot-method)
+  - [Boot Methods](#boot-methods)
+    - [Master Boot Method](#master-boot-method)
+    - [Slave Boot Method](#slave-boot-method)
     - [Booting Linux from JTAG](#booting-linux-from-jtag)
-  - [Requirements](#requirements)
-  - [Example 9: Booting Linux on a Zynq SoC Board](#example-9-booting-linux-on-a-zynq-soc-board)
-    - [Preparing the PetaLinux Build for Debugging](#preparing-the-petalinux-build-for-debugging)
-    - [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode)
-    - [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform)
+  - [Example Requirements](#example-requirements)
+  - [Example 9: Booting Linux with JTAG](#example-9-booting-linux-with-jtag)
+    - [Input and Output Files](#input-and-output-files)
+    - [Booting Linux in JTAG Mode](#booting-linux-in-jtag-mode)
   - [Example 10: Booting Linux from QSPI Flash](#example-10-booting-linux-from-qspi-flash)
-    - [Create the First Stage Boot Loader Executable File](#create-the-first-stage-boot-loader-executable-file)
-    - [*Make a Linux Bootable Image for QSPI Flash*](#make-a-linux-bootable-image-for-qspi-flash)
-    - [Program QSPI Flash with the Boot Image Using JTAG](#program-qspi-flash-with-the-boot-image-using-jtag)
+    - [Input and Output Files](#input-and-output-files-1)
+    - [Configure PetaLinux for Booting from QSPI](#configure-petalinux-for-booting-from-qspi)
+    - [Make a Linux Bootable Image for QSPI Flash](#make-a-linux-bootable-image-for-qspi-flash)
     - [Program QSPI Flash with the Flash Programming Tool](#program-qspi-flash-with-the-flash-programming-tool)
+    - [(Optional) Program QSPI Flash with the Boot Image Using JTAG](#optional-program-qspi-flash-with-the-boot-image-using-jtag)
     - [Booting Linux from QSPI Flash](#booting-linux-from-qspi-flash)
-    - [Booting Linux from the SD Card](#booting-linux-from-the-sd-card)
 
 # Linux Boot Image Configuration
 
-In previous chapters, we used SD Boot mode for all examples for Linux. Sometimes we need to change boot source or use JTAG to do debugging. 
-This chapter describes the steps to configure and build the Linux OS
-for a Zynq&reg;-7000 SoC board with different boot methods. It also provides
-information about downloading images precompiled by Linux on the
-target memory using a JTAG interface.
+In previous chapters, we used SD Boot mode for all examples for Linux. SD Boot is easy to use for development. Sometimes we need to change boot source to QSPI Flash for its reliability and anti-vibration. In the board bring-up development phase, since the peripherals may not be available yet, boot with JTAG is a common technique.
+ 
+This chapter describes the detailed steps of use cases mentioned above.
 
-The later part of this chapter covers programming the following
-non-volatile memory with the precompiled images, which are used for
-automatic Linux booting after switching on the board:
+## Boot Methods
 
--   On-board QSPI Flash
-
--   SD card
-
-This chapter also describes using the remote debugging feature in the
-Xilinx&reg; Vitis unified software platform to debug Linux applications
-running on the target board. The Vitis software platform runs on the
-Windows host machine. For application debugging, the platform
-establishes an Ethernet connection to the target board that is already
-running the Linux OS.
-
-### Boot Methods
-
-The following boot methods are available:
+The following boot methods are available for ZYNQ-7000 devices:
 
 -   Master Boot Method
 
 -   Slave Boot Method
 
-#### Master Boot Method
+### Master Boot Method
 
 In the master boot method, different kinds of non-volatile memories
 such as QSPI, NAND, NOR flash, and SD cards are used to store boot
@@ -88,10 +70,10 @@ The U-Boot loads and starts the execution of the kernel image, the
 root file system, and the device tree from non-volatile RAM to DDR. It
 finishes booting Linux on the target platform.
 
-#### Slave Boot Method
+### Slave Boot Method
 
 JTAG can only be used in slave boot mode. An external host computer
-acts as the master to load the boot image into the OCM using a JTAG
+acts as the master to load the boot components into the OCM, DDR or FPGA using a JTAG
 connection.
 
 ***Note*:** The PS CPU remains in idle mode while the boot image
@@ -109,8 +91,8 @@ boot Linux on the target platform.
 
  ![](./media/X24074-Page-1.png)
 
-
-## Requirements
+<!--TODO: This chapter may be not necessary-->
+## Example Requirements
 
 In this chapter, the target platform refers to a Zynq SoC board. The
 host platform refers to a Windows machine that is running the Vivado&reg;
@@ -146,37 +128,22 @@ accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#des
 
 -   **fsbl.elf:** FSBL image used to create BOOT.BIN image.
 
-## Example 9: Booting Linux on a Zynq SoC Board
+## Example 9: Booting Linux with JTAG
 
 This section covers the flow for booting Linux on the target board
-using the precompiled images that you downloaded in
-[Requirements](#requirements).
+using the pre-compiled images with JTAG.
 
-***Note*:** The compilations of the different images like Kernel
-image, U-Boot, Device tree, and root file system is beyond the scope
-of this guide.
+### Input and Output Files
+
+- Input Files: files generated by PetaLinux in Example 4 or Example 5
+  - zynq_fsbl.elf
+  - u-boot.elf
+  - Image.ub
+- Output Files: N/A
+
+### Booting Linux in JTAG Mode
 
 
-
-### Preparing the PetaLinux Build for Debugging
-
-To debug Linux applications (using tcf-agent), you must manually
-enable tcf-agent in PetaLinux RootFS.
-
-Ensure that dropbear-openssh-sftp server is disabled in PetaLinux
-RootFS.
-
-***Note*:** The Vitis debugger supports Linux Application Debug using
-tcf-agent (TCF - Target Communication Framework). TCF agent is
-provided as a part of PetaLinux roofts packages, but needs to be
-enabled when required.
-
-Detailed information on enabling these components in the *PetaLinux
-Tools Documentation: Reference Guide*
-([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)),
-section \"Debugging Applications with TCF Agent.\"
-
-### Booting Linux Using JTAG Mode
 
 1.  Check the following board connections and settings for Linux booting
     using JTAG mode:
@@ -189,6 +156,8 @@ section \"Debugging Applications with TCF Agent.\"
     b.  Ensure that the SW16 switch is set as shown in the following
         figure.
 
+        ![JTAG Boot Mode](./media/image67.jpeg)   
+
     c.  Connect an Ethernet cable from the Zynq-7000 SoC board to your
         network or directly to your host machine.
 
@@ -196,10 +165,10 @@ section \"Debugging Applications with TCF Agent.\"
 
     e.  Connect the power cable to the board.
 
-        ![](./media/image67.jpeg)        
+             
 
-2.  Connect a USB Micro cable between the Windows host machine and the
-    target board with the following SW10 switch settings, as shown in
+2.  Connect a Micro USB cable between the Windows host machine and the
+    target board JTAG port with the following **SW10** switch settings, as shown in
     the following figure.
 
     -   Bit-1 is 0
@@ -221,9 +190,7 @@ section \"Debugging Applications with TCF Agent.\"
 
 5.  Power on the target board.
 
-6.  Launch the Vitis software platform and open same workspace you used
-    in [Using the Zynq SoC Processing System](2-using-zynq.md)
-    and [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md).
+6.  Launch Vitis IDE with any workspace.
 
 7.  If the serial terminal is not open, connect the serial communication
     utility with the baud rate set to **115200**.
@@ -234,398 +201,200 @@ section \"Debugging Applications with TCF Agent.\"
 8.  Download the bitstream by selecting **Xilinx → Program FPGA**, then
     clicking **Program**.
 
-9.  Open the Xilinx System Debugger (XSCT) tool by selecting **Xilinx →
-    XSCT Console**.
+9.  Open the Xilinx System Debugger (XSCT) tool by selecting **Xilinx → XSCT Console**.
 
 10. At the XSCT prompt, do the following:
 
-    a.  Type connect to connect with the PS section.
+    - Run `connect` to connect with the PS section.
 
-    b.  Type targets to get the list of target processors.
+    - Run `targets` to get the list of target processors.
 
-    c.  Type ta 2 to select the processor CPU1.
+    - Run `ta 2` to select the processor CPU1.
 
-        ```
-        xsct% targets
-        1 APU
-        2 Arm Cortex-A9 MPCore #0 (Running)
-        3 Arm Cortex-A9 MPCore #1 (Running)
-        4 xc7z020
-        xsct% ta 2
-        xsct% targets
-        1 APU
-        2* Arm Cortex-A9 MPCore #0 (Running)
-        3 Arm Cortex-A9 MPCore #1 (Running)
-        4 xc7z02022
-        ```
+    ```
+    xsct% targets
+    1 APU
+    2 Arm Cortex-A9 MPCore #0 (Running)
+    3 Arm Cortex-A9 MPCore #1 (Running)
+    4 xc7z020
+    xsct% ta 2
+    xsct% targets
+    1 APU
+    2* Arm Cortex-A9 MPCore #0 (Running)
+    3 Arm Cortex-A9 MPCore #1 (Running)
+    4 xc7z02022
+    ```
 
-    d.  Type dow \<tutorial_download_path\>zynq_fsbl.elf to download
+    - Run `dow zynq_fsbl.elf` to download
         PetaLinux FSBL.
 
-    e.  Type con to start execution of FSBL and then type stop to stop
+    - Run `con` to start execution of FSBL and then run `stop` to stop
         it.
 
-    f.  Type dow \<tutorial_download_path\>/u-boot.elf to download
+    - Run `dow u-boot.elf` to download
         PetaLinux U- Boot.elf.
 
-    g.  Type con to start execution of U-Boot. On the serial terminal, the autoboot countdown message appears: ``Hit any key to stop autoboot: 3``.
+    - Run con to start execution of U-Boot. On the serial terminal, the autoboot countdown message appears: ``Hit any key to stop autoboot: 3``.
 
-    h.  Press Enter.Automatic booting from U-Boot stops and a command prompt appears on the serial terminal.
+    - Press **Enter**. Automatic booting from U-Boot stops and a command prompt appears on the serial terminal.
 
-    i.  At the XSCT Prompt, type stop. The U-Boot execution stops.
+    - At the XSCT Prompt, run `stop`. The U-Boot execution stops.
 
-    j.  Type dow -data image.ub 0x30000000 to download the Linux Kernel
-        image at location \<tutorial_download_path\>/image.ub.
+    - Run `dow -data image.ub 0x30000000` to download the Linux Kernel
+        image.
 
-    k.  Type con to start executing U-Boot.
+    - Run `con` to start executing U-Boot.
 
-11. At the command prompt of the serial terminal, type bootm 0x30000000.
+11. At the command prompt of the serial terminal, run `bootm 0x30000000`.
     The Linux OS boots.
 
 12. If required, provide the Zynq login as root and the password as root
     on the serial terminal to complete booting the processor.
 
-    After booting completes, \# prompt appears on the serial terminal.
+    After booting completes, `#` prompt appears on the serial terminal.
 
-13. At the root\@xilinx-zc702-2020.2:\~\# prompt, make sure that the
+13. At the `root@xilinx-zc702-2020.2:~#` prompt, make sure that the
     board Ethernet connection is configured:
 
-    a.  Check the IP address of the board by typing the following
+    - Check the IP address of the board by typing the following
         command at the Zynq prompt: ``ifconfig eth0``.
 
         This command displays all the details of the currently active
         interface. In the message that displays, the inet addr value denotes
         the IP address that is assigned to the Zynq SoC board.
 
-    b.  If inetaddr and netmask values do not exist, you can assign them using the following commands:
+    - If inetaddr and netmask values do not exist, you can assign them using the following commands:
 
-        ```
-        root@xilinx-zc702-2020.2:~# ifconfig eth0 inet 192.168.1.10
-        root@xilinx-zc702-2020.2:~# ifconfig eth0 netmask 255.255.255.0
-        ```
+    ```
+    root@xilinx-zc702-2020.2:~# ifconfig eth0 inet 192.168.1.10
+    root@xilinx-zc702-2020.2:~# ifconfig eth0 netmask 255.255.255.0
+    ```
 
-        **IMPORTANT!** *If the target and host are connected back-to-back, you
-        must set up the IP address. If the target and host are connected over
-        a LAN , DHCP will get the IP address for the target; use the ifconfig
-        eth0 to display the IP address.*
+    **IMPORTANT!** *If the target and host are connected back-to-back, you
+    must set up the IP address. If the target and host are connected over
+    a LAN , DHCP will get the IP address for the target; use the ifconfig
+    eth0 to display the IP address.*
 
-        ![](./media/image31.png)
+    ![Important](./media/image31.png)
 
-        Next, confirm that the IP address settings on the Windows machine match the board settings. Adjust the local area connection properties by opening your network connections.
+14. confirm that the IP address settings on the Windows machine match the board settings. Adjust the local area connection properties by opening your network connections.
 
-          i.  Right-click the local area connection that is linked to the XC702
-              board and select Properties.
+    - Right-click the local area connection that is linked to the XC702
+        board and select Properties.
 
-          ii. With the Local Area Connection properties window open, select
-              **Internet Protocol Version 4 (TCP/IPv4)** from the item list and
-              select **Properties**.
+    - With the Local Area Connection properties window open, select
+        **Internet Protocol Version 4 (TCP/IPv4)** from the item list and
+        select **Properties**.
 
-          iii. Select **Use the following IP address** and set the values as
-               follows (also shown in the following figure):
+    - Select **Use the following IP address** and set the values as
+        follows (also shown in the following figure):
 
-               -   IP address: 192.168.1.11 (target and host must be in the same
-                   subnet if connected back- to-back)
+        -   IP address: 192.168.1.11 (target and host must be in the same
+            subnet if connected back- to-back)
 
-               -   Subnet mask: 255.255.255.0
+        -   Subnet mask: 255.255.255.0
 
-              ![](./media/image79.png)
+        ![Windows IP Address](./media/image79.png)
 
-    c.  Click **OK** to accept the values and close the window.
+    - Click **OK** to accept the values and close the window.
 
-14. In the Windows machine command prompt, check the connection with the
+15. In the Windows machine command prompt, check the connection with the
     board by typing ping followed by the board IP address. The ping response displays in a loop. This response means that the connection between the Windows host machine and the target board is established.
 
-15. Press **Ctrl+C** to stop displaying the ping response on windows
+16. Press **Ctrl+C** to stop displaying the ping response on windows
     host machine command prompt. Linux booting completes on the target board and the connection between the host machine and the target board is complete. The next example design describes using the Vitis software platform to debug the Linux application.
-
-### Example Design: Debugging the Linux Application Using the Vitis Software Platform
-
-In this section, you will create a default Linux Hello World
-application and practice the steps for debugging the Linux application
-from the Windows host machine.
-
-1.  Open the Vitis software platform.
-
-2.  Select **File → New → Application Project**. The New Application
-    Project wizard opens.
-
-3.  Use the information in the following table to make your selections
-    in the wizard screens.
-
-| Wizard Screen               | System Property                                     | Setting or Command to Use                                                                           |
-| --------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| Platform                    | Select a platform from repository                   | Click zc702_edt [custom].                                                                         |
-| Domain                      | Select a domain                                     | Click linux_application_domain.                                                                     |
-| Application Project Details | Application project name                            | Enter HelloLinux                                                                                    |
-|                             | Application settings                                | If known, enter the sysroot, root FS, and kernel image paths. Otherwise, leave these options blank. |
-| Templates                   | Available Templates                                 | Linux Hello World                                                                                   |
-|                             | Select target processor for the Application project | Select ps7_cortexa9 SMP.                                                                            |
-
-
-4.  Click **Finish**.
-
-    The New Application Project wizard closes and the Vitis software
-    platform creates the HelloLinux project under the Explorer view. Build
-    the application project either by clicking the hammer button or by
-    right-clicking on the linux_cdma_app project and selecting **Build
-    Project**. Binary file linux_cdma_app.elf gets generated.
-
-5.  Right-click **HelloLinux** and select **Debug as→ Debug
-    Configurations** to open the Debug Configurations dialog box.
-
-6.  Select **Linux Application Debug** as the **Debug Type**, as shown in the following figure.
-
-    ![](./media/image80.jpeg)    
-
-7.  In the Main tab, Connection field, click **New**.
-
-8.  In the Target Connection Details dialog box (shown in the following
-    figure):
-
-    a.  Specify the **Target Name** of your choice.
-
-    b.  In the **Host** field, use the target IP address.
-
-    c.  In the **Port** field, specify 1534.
-
-        ![](./media/image81.png)
-
-9.  Set the application configuration details, as described below (and
-    shown in the following figure).
-
-    a.  Select the **Application** tab.
-
-    b.  Set the **Remote File Path**, for example /tmp/hellolinux.elf, and click **Apply**.
-
-    ![](./media/image82.jpeg)        
-
-10. Click **Debug**. The Debug perspective opens.
-
-    From this you can:
-
-    -   Observe that execution stopped at the main() function.
-
-    -   See disassembly points to the address.
-
-    -   Setup break points by right clicking the function on the left side
-        of the editor pane (showing the helloworld.c).
-
-    -   Once a breakpoint is set, it appears in the break point list. You
-        can observe and modify register contents. Notice that the PC
-        register address in the **Breakpoint** view and the address shown
-        in the **Disassembly** view are the same (see the following
-        figure).
-
-    -   Use **step-into** (F5), **step-return** (F7), **step-over** (F6),
-        **Resume** (F8) and **continue debugging** outlined in green in the following figure.
-
-        ![](./media/image84.png)
-
-        **TIP:** *The Linux application output
-        displays in the Vitis software platform console, not the Terminal
-        window used for running Linux.*
-
-11. After you finish debugging the Linux application, close the Vitis
-    IDE.
 
 ## Example 10: Booting Linux from QSPI Flash
 
-This example project covers the following steps:
+In this example, we will make a linux boot image for QSPI Flash.
 
-1.  Create the First Stage Boot Loader Executable File.
+### Input and Output Files
 
-2.  Make a Linux-bootable image for QSPI flash.
+- Input Files: PetaLinux project in Example 4 or Example 5
+  - zynq_fsbl.elf
+  - u-boot.elf
+  - FPGA bit file: system.bit in PetaLinux image directory or system_wrapper.bit in Vivado directory
+  - image.ub
+- Output Files: BOOT.BIN binary to write to QSPI Flash
 
-    ![](./media/image85.png)
+### Configure PetaLinux for Booting from QSPI
 
-    PetaLinux must be configured for QSPI
-    flash boot mode and rebuilt. By default, the Boot option is SD boot.
+PetaLinux must be configured for QSPI flash boot mode and rebuilt. By default, the Boot option is SD boot. After changing the configuration, the generated u-boot will load image from QSPI Flash instead of SD card.
 
-    **TIP:** *The ZIP file that accompanies this document contains the
-    prebuilt images. If you prefer, you can use these and skip to either*
-    [*Booting Linux from QSPI Flash*](#booting-linux-from-qspi-flash) *or
-    [Booting Linux from the SD Card](#booting-linux-from-the-sd-card), as
-    appropriate to your design.*
+1.  Change to the root directory of your PetaLinux project:
 
-3.  Run the following steps on a Linux machine to change the boot mode
-    to QSPI flash.
+    ```bash
+    $ cd <plnx-proj-root>
+    ```
 
-    a.  Change to the root directory of your PetaLinux project:
+2.  Launch the top-level system configuration menu:
 
-        ``\$ cd \<plnx-proj-root\>``
+    ```bash
+    $ petalinux-config
+    ```
 
-    b.  Launch the top-level system configuration menu:
+3.  Select **Subsystem AUTO Hardware Settings**.
 
-        ``\$ petalinux-config``
+4.  Select **Advanced Bootable Images Storage Settings**.
 
-    c.  Select Subsystem AUTO Hardware Settings.
+    - Select **boot image settings**.
 
-    d.  Select Advanced Bootable Images Storage Settings.
+    - Select **Image Storage Media**.
+    
+    - Select boot device as **primary flash**.
 
-        i.  Select **boot image settings**.
+5.  Under the **Advanced Bootable Images Storage Settings** sub-menu:
 
-        ii. Select **Image Storage Media**.
+    - Select **kernel image settings**.
 
-        iii. Select boot device as **primary flash**.
+    - Select **Image Storage Media**.
 
-    e.  Under the **Advanced Bootable Images Storage Settings** sub-menu:
+    - Select the storage device as **primary flash**.
 
-        i.  Select **kernel image settings**.
+6.  Save the configuration settings and exit the configuration wizard.
 
-        ii. Select **Image Storage Media**.
+7.  Rebuild PetaLinux project
 
-        iii. Select the storage device as **primary flash**.
+    - Run `petalinux-build` command.
 
-    f.  Save the configuration settings and exit the configuration wizard.
-
-    g.  Rebuild using the petalinux-build command.
-
-        ***Note*:** For more information, refer to the *PetaLinux Tools
-        Documentation: Reference Guide*
-        ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
-
-4.  Program QSPI flash with the Boot Image Using JTAG and U-Boot
-    Command.
-
-5.  Boot Linux from QSPI flash.
-
-### Create the First Stage Boot Loader Executable File
-
-1.  Open the Vitis software platform.
-
-2.  Check that the Target Communication Frame (TCF) (hw_server.exe)
-    agent is running on your Windows machine. If it is not, in the
-    Vitis software platform, select **Xilinx → XSCT Console**.
-
-3.  In the XSCT Console view, type Connect. A message appears, stating that the hw_server application started, or, if it is already running, you will see tcfchan\#, as shown in the following figure.
-
-    ![](./media/image65.jpeg)    
-
-4.  In the Vitis software platform, select **File → New → Application
-    Project**. The New Application Project wizard opens.
-
-5.  Use the information the following table to make your selections in
-    the wizard screens.
-
-   | Wizard Screen               | System Property                                     | Setting or Command to Use   |
-   | --------------------------- | --------------------------------------------------- | --------------------------- |
-   | Platform                    | Select a platform from repository                   | Click zc702_edt [custom]. |
-   | Application Project Details | Application project name                            | Enter fsbl                  |
-   |                             | Select target processor for the Application project | Select ps7_cortexa9_0.      |
+    ***Note*:** For more information, refer to the *PetaLinux Tools
+    Documentation: Reference Guide*
+    ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
 
 
-    | Wizard Screen | System Property     | Setting or Command to Use           |
-    | ------------- | ------------------- | ----------------------------------- |
-    | Domain        | Select a domain     | Click standalone on ps7_cortexa9_0. |
-    | Templates     | Available Templates | Zynq FSBL                           |
+### Make a Linux Bootable Image for QSPI Flash
 
-
-1.  Click **Finish**. If a pop up message comes up that states \"This
-    application required xilffs library in Board Support Package\",
-    add the xilffs library to the BSP and then and repeat the above
-    steps to create an FSBL standalone application.
-
-    The New Application Project wizard closes. The Vitis software platform
-    creates the fsbl application project under the Explorer view. For
-    generating fsbl.elf build the project by right-clicking on the FSBL
-    project and selecting **Build Project**.
-
-### *Make a Linux Bootable Image for QSPI Flash*
-
-1.  In the Vitis software platform, select **Xilinx → Create Boot Image** to open the Create Boot Image wizard.
+1.  In the Vitis IDE, select **Xilinx → Create Boot Image** to open the Create Boot Image wizard.
 
     ![](./media/image86.jpeg)    
 
 2.  From the **Architecture** drop-down list, select **Zynq**.
 
-3.  Click **Browse** next to the **Output BIF file path** field, and
-    navigate to your output.bif file.
+3.  Specify the output BIF location.
 
-4.  Click **Browse** next to the **Output path** field, and navigate to
-    your BOOT.bin file.
+    - Click **Browse** next to the **Output BIF file path** field
+    - Navigate to your output.bif path.
 
-    ***Note*:** The QSPI Boot file, BOOT.bin, is available in the ZIP file
-    that accompanies this guide. See [Design Files for This
-    Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+4.  Specify the output image path
+
+    - Click **Browse** next to the **Output path** field, and navigate to
+    your output BOOT.bin location.
 
 5.  Click **Add** to add the following boot image partitions:
 
-    -   fsbl.elf (bootloader).
+    -   fsbl.elf (bootloader)
 
-    ***Note*:** You can find fsbl.elf in \<project dir\>/fsbl/Debug.
-    Alternatively, you can use fsbl.elf from the file you downloaded in
-    [Requirements](#requirements).
+    -   Add Bitstream file system_wrapper.bit.
 
-      -   Add Bitstream file tutorial_bd_wrapper.bit.
+    -   Add U-Boot image u-boot.elf.
 
-      -   Add U-Boot image u-boot.elf.
-
-      -   Add the PetaLinux output image, image.ub, and provide the offset
+    -   Add the PetaLinux output image, image.ub, and provide the offset
           0x520000 (image.ub: PetaLinux image consists of kernel image,
           device tree blob and minimal rootfs).
 
 6.  Click **Create Image** to create the BOOT.bin file in the specified
     output path folder.
 
-### Program QSPI Flash with the Boot Image Using JTAG
-
-You can program QSPI Flash with the boot image using JTAG.
-
-1.  Power on the ZC702 Board.
-
-2.  If a serial terminal is not already open, connect the serial
-    terminal with the baud rate set to 115200.
-
-    ***Note*:** This is the baud rate that the UART is programmed to on
-    Zynq devices.
-
-3.  Select **Xilinx → XSCT Console** to open the XSCT tool.
-
-4.  From the XSCT prompt, do the following:
-
-    a.  Type connect to connect with the PS section.
-
-    b.  Type targets to get the list of target processors.
-
-    c.  Type ta 2 to select the processor CPU1.
-
-    d.  Type dow fsbl.elf to download the FSBL image.
-
-    e.  Type con and then stop.
-
-    f.  Type dow u-boot.elf to download the Linux U-Boot.
-
-    g.  Type dow -data BOOT.bin 0x08000000 to download the Linux
-        bootable image to the target memory at location 0x08000000.
-
-        You just downloaded the binary executable to DDR memory. You can
-        download the binary executable to any address in DDR memory.
-
-    h.  Type con to start execution of U-Boot. U-Boot begins booting. On the serial terminal, the autoboot countdown message appears:
-
-        ``Hit any key to stop autoboot: 3``
-
-5.  Press Enter. Automatic booting from U-Boot stops and the U-Boot command prompt appears on the serial terminal.
-
-6.  Do the following steps to program U-Boot with the bootable image:
-
-    a.  At the prompt, type sf probe 0 0 0 to select the QSPI Flash.
-
-    b.  Type sf erase 0 0x01000000 to erase the Flash data.This command completely erases 16 MB of on-board QSPI Flash memory.
-
-    c.  Type sf write 0x08000000 0 0xffffff to write the boot image on the
-    QSPI Flash.
-
-    Note that you already copied the bootable image at DDR location
-    0x08000000. This command copied the data, of the size equivalent to
-    the bootable image size, from DDR to QSPI location 0x0.
-
-    For this example, because you have 16 MB of Flash memory, you copied
-    16 MB of data. You can change the argument to adjust the bootable
-    image size.
-
-7.  Power off the board and follow the booting steps described in the
-    following section.
 
 ### Program QSPI Flash with the Flash Programming Tool
 
@@ -644,7 +413,7 @@ Zynq devices.
 
 4.  Select the BOOT.bin file to flash and select **Program** (see the following figure).
 
-      ![](./media/image87.png)    
+    ![Program Flash Tool](./media/image87.png)    
 
 On successful programming, a message appears in the console window
 saying Flash Operation Successful.
@@ -653,6 +422,66 @@ saying Flash Operation Successful.
     from QSPI Flash](#booting-linux-from-qspi-flash) or [Booting Linux
     from the SD Card](#booting-linux-from-the-sd-card), as appropriate
     to your design.
+
+### (Optional) Program QSPI Flash with the Boot Image Using JTAG
+
+This is an alternative way for programming QSPI Flash with the Flash Programming Tool. You can program QSPI Flash using JTAG and u-boot. This method provides more control to user becuase u-boot is programmable. For example, you can extend this method to use Ethernet, rather than JTAG, to send BOOT.bin to the ZC702 DDR memory so that the program process can be faster. Here are the basic steps using JTAG.
+
+1.  Power on the ZC702 Board.
+
+2.  If a serial terminal is not already open, connect the serial
+    terminal with the baud rate set to 115200.
+
+    ***Note*:** This is the baud rate that the UART is programmed to on
+    Zynq devices.
+
+3.  Select **Xilinx → XSCT Console** to open the XSCT tool.
+
+4.  From the XSCT prompt, do the following:
+
+    - Run `connect` to connect with the PS section.
+
+    - Run `targets` to get the list of target processors.
+
+    - Run `ta 2` to select the processor CPU1.
+
+    - Run `dow fsbl.elf` to download the FSBL image.
+
+    - Run `con` and then run `stop` to use FSBL to initialize the ZYNQ-7000 device.
+
+    - Run `dow u-boot.elf` to download the Linux U-Boot.
+
+    - Run `dow -data BOOT.bin 0x08000000` to download the Linux
+        bootable image to the target memory at location 0x08000000.
+
+        You just downloaded the binary executable to DDR memory. You can
+        download the binary executable to any address in DDR memory.
+
+    - Type `con` to start execution of U-Boot. U-Boot begins booting. On the serial terminal, the autoboot countdown message appears:
+
+        ``Hit any key to stop autoboot: 3``
+
+5.  Press **Enter**. Automatic booting from U-Boot stops and the U-Boot command prompt appears on the serial terminal.
+
+6.  Do the following steps to use U-Boot to program the bootable image to QSPI Flash in the serial console:
+
+    -  At the prompt, run `sf probe 0 0 0` to select the QSPI Flash.
+
+    - Run `sf erase 0 0x01000000` to erase the Flash data.This command completely erases 16 MB of on-board QSPI Flash memory.
+
+    - Run `sf write 0x08000000 0 0xffffff` to write the boot image on the
+    QSPI Flash.
+
+    Note that you already copied the bootable image at DDR location
+    0x08000000. This command copied the data, of the size equivalent to
+    the bootable image size, from DDR to QSPI location 0x0.
+
+    For this example, because you have 16 MB of Flash memory, you copied
+    16 MB of data. You can change the argument to adjust the bootable
+    image size.
+
+7.  Power off the board and follow the booting steps described in the
+    following section.
 
 ### Booting Linux from QSPI Flash
 
@@ -668,56 +497,14 @@ saying Flash Operation Successful.
 3.  Switch on the board power.
 
     A Linux booting message appears on the serial terminal. After booting
-    finishes, the root\@xilinx-zc702-2020_2:\~\# prompt appears. Enter the
+    finishes, the `root@xilinx-zc702-2020_2:~#` prompt appears. Enter the
     login and password as root when prompted.
 
 4.  Check the Board IP address connectivity as described in [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode).
 
     For Linux Application creation and debugging, refer to [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform).
 
-### Booting Linux from the SD Card
 
-1.  Change the SW16 switch setting as shown in the following figure.
 
-    ![](./media/image89.jpeg)
-
-2.  Make the board settings as described in [Booting Linux Using JTAG
-    Mode](#booting-linux-using-jtag-mode).
-
-3.  Create a first stage bootloader (FSBL) for your design as described
-    in [Create the First Stage Boot Loader Executable
-    File](#create-the-first-stage-boot-loader-executable-file).
-
-    ***Note*:** If you do not need to change the default FSBL image, you
-    can use the fsbl.elf file that you downloaded as part of the ZIP file
-    for this guide. See [Design Files for This
-    Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
-
-4.  In the Vitis IDE, select **Xilinx → Create Boot Image** to open the
-    Create Boot Image wizard.
-
-5.  Add fsbl.elf, bit file (if any), and u-boot.elf.
-
-6.  Provide the output folder path in the Output folder field.
-
-7.  Click **Create Image**. The Vitis software platform generates the
-    BOOT.bin file in the specified folder.
-
-    ![](./media/image90.jpeg)
-
-8.  Copy BOOT.bin and image.ub to the SD card.
-
-    ![](./media/image91.png)    
-
-    **IMPORTANT!** *Do not change the file names. U-Boot searches for
-    these file names in the SD card while booting the system.*
-
-9.  Turn on the power to the board and check the messages on the Serial
-    terminal. The `root@plnx_arm:~#` prompt appears after Linux booting is complete on the target board.
-
-10. Set the board IP address and check the connectivity as described in
-    [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode).
-
-For Linux application creation and debugging, see [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform).
 
 © Copyright 2015–2020 Xilinx, Inc.
