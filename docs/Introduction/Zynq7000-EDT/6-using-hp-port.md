@@ -14,9 +14,10 @@
   - [Example 7: Integrating AXI CDMA with the PS HP Slave Port](#example-7-integrating-axi-cdma-with-the-ps-hp-slave-port)
     - [Input and Output Files](#input-and-output-files)
     - [Update the Vivado Design](#update-the-vivado-design)
-    - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
-    - [Application Software Flow](#application-software-flow)
-    - [Running the Standalone CDMA Application Using the Vitis Software Platform](#running-the-standalone-cdma-application-using-the-vitis-software-platform)
+    - [Designing Standalone Application Software for the Design](#designing-standalone-application-software-for-the-design)
+    - [Application Software Programming Model](#application-software-programming-model)
+    - [Creating the Standalone CDMA Application](#creating-the-standalone-cdma-application)
+    - [Running CDMA app on ZC702](#running-cdma-app-on-zc702)
   - [Linux OS Based Application Software for the CDMA System](#linux-os-based-application-software-for-the-cdma-system)
   - [Example 8: Linux Application Software for AXI CDMA](#example-8-linux-application-software-for-axi-cdma)
     - [Linux Application Software for AXI CDMA](#linux-application-software-for-axi-cdma)
@@ -237,14 +238,14 @@ on the serial terminal and stops execution.
 
     - A message might appear that states synthesis is out of date. If it does, click **Yes**.
 
-    - After the bitstream generation completes, export the hardware and
-    launch the Vitis unified software platform as described in
-    [Exporting a Hardware Platform](2-using-zynq.md#exporting-hardware).
+9. Export the hardware after the bitstream generation completes.
+
+    - Click File -> Export -> Export Hardware
 
     ***Note*:** Make sure to select **Include bitstream** instead of the
     **Pre-synthesis** on the Output page of the for Export Hardware Platform wizard.
 
-### Standalone Application Software for the Design
+### Designing Standalone Application Software for the Design
 
 The CDMA-based system that you designed in this chapter requires
 application software to execute on the board. This section describes
@@ -264,9 +265,9 @@ DMA transfer and compares the source buffer with the destination
 buffer. Finally, it prints the comparison result in the serial
 terminal and stops running.
 
-### Application Software Flow
+### Application Software Programming Model
 
-The application software does the following:
+The application software does the following tasks:
 
 1.  Initializes the source buffer with the specified test pattern. The
     source buffer location ranges from 0x20000000 to 0x2fffffff.
@@ -312,25 +313,19 @@ The application software does the following:
     If the transfer status displays an error, the software prints the
     error status in the serial terminal and stops running.
 
-### Running the Standalone CDMA Application Using the Vitis Software Platform
+### Creating the Standalone CDMA Application
 
-1.  Open the Vitis software platform.
+1.  Launch the Vitis software platform and open the workspace we worked on before.
 
-2.  Check that the Target Communication Frame (TCF) (hw_server.exe)
-    agent is running on your Windows machine. If it is not running in
-    theVitis software platform, select **Xilinx → XSCT Console**.
+2. Update hardware specification
 
-3.  In the XSCT Console view, type Connect. A message appears, stating
-    that the hw_server application started, or if it has started and
-    is running, you see tcfchan#, as shown in the following figure.
+    - Right click the **zc702_edt** platform, select **Update Hardware Specification**
+    - Confirm the path and click **OK**.
+    - Build the platform by clicking the hammer button on the tool bar.
 
-    <!--TODO: update image-->
-    ![](./media/image65.jpeg)
+3.  Select **File → New → Application Project**. The New Application Project wizard opens.
 
-4.  In the Vitis software platform, select **File → New → Application
-    Project**. The New Application Project wizard opens.
-
-5.  Use the information in the table below to make your selections in
+    - Use the information in the table below to make your selections in
     the wizard screens.
 
 | Wizard Screen               | System Property                   | Setting or Command to Use                                                                                             |
@@ -341,48 +336,59 @@ The application software does the following:
 | Templates                   | Available Templates               | Empty Application                                                                                                     |
 
 
-1.  Click **Finish**.
+    -  Click **Finish**.
 
-    The New Application Project wizard closes and the Vitis software
-    platform creates the cdma_app application project under the Explorer view.
+        The New Application Project wizard closes and the Vitis software
+        platform creates the cdma_app application project under the Explorer view.
 
-2.  In the Explorer view, expand the **cdma_app** project, right-click
+4.  In the Explorer view, expand the **cdma_app** project, right-click
     the **src** directory, and select **Import Sources** to open the Import Sources dialog box.
 
-3.  In the **Import Sources** dialog box, click the **Browse** button
+5.  In the **Import Sources** dialog box, click the **Browse** button
     next to the **From directory** field and specify the design files
-    folder you saved earlier (see [Design Files for This
-    Tutorial](2-using-zynq.md#design-files-for-this-tutorial)).
+    folder to [ref_files/example7](ref_files/example7).
 
-4.  Select the cdma_app.c file and click **Finish**.
+6.  Select the **cdma_app.c** file and click **Finish**.
 
-5.  Build the cdma application project either by clicking the hammer
+7.  Build the cdma application project either by clicking the hammer
     button or by right-clicking on the **cdma_app** project and
     selecting **Build Project**.
 
-6.  Open the serial communication utility with baud rate set to
+### Running CDMA app on ZC702
+
+1.  Open the serial communication utility with baud rate set to
     **115200**.
 
     ***Note*:** This is the baud rate that the UART is programmed to on
     Zynq devices.
 
-7.  Make sure that the hardware board is set up and turned on.
+2.  Make sure that the boot mode of the board is set to JTAG and power on.
 
-    ***Note*:** Refer to [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-vitis-platform-project)
+    ***Note*:** Refer to [Board Setup in Example 2](2-using-zynq.md)
     for information about setting up the board.
 
-8.  Select **Xilinx → Program FPGA** to open the Program FPGA dialog
-    box. The dialog box shows the bitstream path.
+3.  Run the project.
 
-9.  Click **Program** to download the bitstream and program the PL
-    fabric.
+    - Right click cdma_app and select **Run as -> Run on Hardware**
 
-10. Run the project similar to the steps in [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-vitis-platform-project).
-
-11. Check the status of the CDMA transfer in the serial terminal. If the
+4.  Check the status of the CDMA transfer in the serial terminal. If the
     transfer is successful, the message "DMA Transfer is Successful"
     displays. Otherwise, the serial terminal displays an error
     message.
+
+    Expected result on Serial Console
+
+    ```
+    --- Entering main() ---
+    Start Transfer
+
+    --- Transfer Done ---
+    Start Transfer
+
+    --- Transfer Done ---
+    XAxiCdma_Interrupt: Passed
+    DMA Transfer is Successful
+    ```
 
 
 ## Linux OS Based Application Software for the CDMA System
