@@ -246,26 +246,27 @@ Debugger in the Vitis IDE.
 
 1.  Connect the power cable to the board.
 
-2.  Connect a USB Micro cable between the Windows Host machine and the
-    Target board with the following SW10 switch settings:
+2.  Connect the USB UART cable to J17
 
-    -   Bit-1 is 0
-    -   Bit-2 is 1
+3.  Connect the USB JTAG cable
+    
+    - Connect a Micro USB cable between the host machine and the
+    ZC702 target board U23. Note: Don't use J1 by mistake. 
+    - Make sure **SW10** switch settings for JTAG selection to choose USB JTAG:
+
+      -   Bit-1 is 0
+      -   Bit-2 is 1
 
 ***Note*:** 0 = switch is open. 1 = switch is closed.
 
-3.  Connect a USB cable to connector **J17** on the target board with
-    the Windows Host machine. This is used for USB to serial transfer.
+4.  Setup JTAG boot mode using the switch indicated in the figure below.
 
-4.  Power on the ZC702 board using the switch indicated in the figure below.
+    - Ensure that jumpers **J27** and **J28** are placed on the side farther from the SD card slot.
+    - change the **SW16** switch setting as shown in the following figure.
 
-    ![](./media/image31.png)    
+    ![JTAG Boot Setup](./media/image32.jpeg)
 
-    **IMPORTANT!** *Ensure that jumpers J27 and J28 are placed on the side
-    farther from the SD card slot and change the SW16 switch setting as
-    shown in the following figure.*
-
-    ![](./media/image32.jpeg)
+5. Power on the ZC702 board.
 
 ### Creating a Vitis Platform Project
 
@@ -356,7 +357,7 @@ you create in the Vitis IDE.
 
     - Click **Finish**. The Vitis software platform creates the hello_world application project and hello_world_system project in the Explorer view.
 
-    While entering application project name, Vitis IDE will populate system project name automatically with <application name> + "_system" style. You're free to update the system project name.
+    While entering application project name, Vitis IDE will populate system project name automatically with *<application name> + "_system"* style. You're free to update the system project name.
 
     By default the New Application Wizard only shows the processors used by the domains in the platform. If you'd like to create new platform during the application creation process, you can enable "Show all processors in hardware specification". 
 
@@ -374,16 +375,15 @@ you create in the Vitis IDE.
     - Select **Vitis Serial Terminal**
     - Click **Open**.
 
-    ![](./media/image33.png)    
+    ![Open Vitis Serial Terminal](./media/image33.png)    
 
 2.  Click the **Add** button in Vitis Serial Terminal to connect to a serial terminal.
 
-    - Select the port.
+    - Select the port from drop down menu.
     - Keep Advanced Settings as is.
-    - Click OK 
+    - Click **OK** 
 
-    <!--TODO: update image-->
-    ![](./media/image35.png)
+    ![Connect UART](./media/image35.png)
 
 3. Right-click **hello_world** and select **Run as → Run Configurations**.
 
@@ -398,8 +398,7 @@ you create in the Vitis IDE.
 
     "Hello World" appears on the Vitis Serial Terminal, as shown in the following figure.
 
-    <!--TODO: update image-->
-    ![](./media/image36.jpeg)
+    ![Terminal Print Result](./media/image36.png)
 
     ***Note*:** There was no bitstream download required for the above
     software application to be executed on the Zynq SoC evaluation board.
