@@ -10,18 +10,18 @@
 </table>
 
 - [Creating Custom IP and Device Driver for Linux](#creating-custom-ip-and-device-driver-for-linux)
-  - [Requirements](#requirements)
   - [Creating Peripheral IP](#creating-peripheral-ip)
-    - [Example Project: Creating Peripheral IP](#example-project-creating-peripheral-ip)
-  - [Integrating Peripheral IP with PS GP Master Port](#integrating-peripheral-ip-with-ps-gp-master-port)
+  - [Example 11: Creating Peripheral IP](#example-11-creating-peripheral-ip)
+    - [Creating Peripheral IP](#creating-peripheral-ip-1)
+    - [Integrating Peripheral IP with PS GP Master Port](#integrating-peripheral-ip-with-ps-gp-master-port)
     - [Connecting an AXI4-Lite Compliant Custom Slave IP](#connecting-an-axi4-lite-compliant-custom-slave-ip)
   - [Linux-Based Device Driver Development](#linux-based-device-driver-development)
-    - [Example Project: Device Driver Development](#example-project-device-driver-development)
+  - [Example 12: Device Driver Development](#example-12-device-driver-development)
   - [Loading Module into Running Kernel and Application Execution](#loading-module-into-running-kernel-and-application-execution)
     - [Loading Module into Kernel Memory](#loading-module-into-kernel-memory)
     - [Application Software](#application-software)
-    - [Example Project: Loading a Module into Kernel and Executing the Application](#example-project-loading-a-module-into-kernel-and-executing-the-application)
-      - [*Booting Linux on the Target Board*](#booting-linux-on-the-target-board)
+  - [Example 13: Loading a Module into Kernel and Executing the Application](#example-13-loading-a-module-into-kernel-and-executing-the-application)
+      - [Booting Linux on the Target Board](#booting-linux-on-the-target-board)
       - [Loading Modules and Executing Applications](#loading-modules-and-executing-applications)
 
 # Creating Custom IP and Device Driver for Linux
@@ -36,54 +36,7 @@ that can be dynamically loaded onto the running kernel.
 You will also develop Linux-based application software for the system
 to execute on the Zynq SoC ZC702 board.
 
-## Requirements
-
-In this chapter, the target platform points to a ZC702 board. The host
-platform points a Windows machine that is running the Vivado&reg; Design
-Suite tools.
-
-The requirements for Linux-based device driver development and kernel
-compilation are as follows:
-
--   Linux-based workstation. The workstation is used to build the kernel
-    and the device driver for the IP.
-
--   An Eclipse-based integrated development environment (IDE) that
-    incorporates the GNU Toolchain for cross development for target
-    architectures.
-
--   Kernel source code and build environment. Refer to the <a href="http://wiki.xilinx.com/zynq-linux">Xilinx Zynq
-    Linux Wiki Page</a>, which
-    provides details about the Linux kernel specific to Zynq SoC
-    FPGAs. You can download the Kernel Source files and also get the
-    information for building a Linux kernel for the Zynq SoC FPGA.
-
-***Note*:** You can download kernel source files and u-boot source
-files from the <a href="https://github.com/xilinx">Xilinx GitHub website</a>.
-
--   Device driver software file (blink.c) and the corresponding header
-    file (blink.h). These files are available in the ZIP file that
-    accompanies this guide. See [Design Files for This
-    Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
-
--   Application software (linux_blinkled_apps.c) and corresponding
-    header file (blink.h). These files are available in the ZIP file
-    that accompanies this guide. See [Design Files for This
-    Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
-
--   If you want to skip the kernel and
-    device driver compilation, use the already compiled images that
-    are required for this section. These images are available in the
-    ZIP file that accompanies this guide. See [Design Files for This
-    Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
-
-    ![](./media/image92.png)    
-
-**CAUTION!** *You must build Peripheral IP loadable kernel module
-(LKM) as part of the same kernel build process that generates the base
-kernel image. If you want to skip kernel or LKM Build process, use the
-precompiled images for both kernel and LKM module for this section
-provided in the ZIP file that accompanies this guide.
+**IMPORTANG**: You will need to rebuilt the Linux kernel. So a Linux host machine to run PetaLinux is required.
 
 ## Creating Peripheral IP
 
@@ -97,22 +50,24 @@ It includes a 28-bit counter. The 4 MSB bits of the counter drive the
 4 output ports of the peripheral IP. The block diagram is shown in the
 following figure.
 
-![](./media/image93.jpeg)
+![Custom IP Structure](./media/image93.jpeg)
 
 The block diagram includes the following configuration register:
 
-  | Register Name    | Control Register       |
-  | ---------------- | ---------------------- |
-  | Relative Address | 0x0000_0000            |
-  | Width            | 1 bit                  |
-  | Access Type      | Read/Write             |
-  | Description      | Start/Stop the Counter |
+| Register Name    | Control Register       |
+| ---------------- | ---------------------- |
+| Relative Address | 0x0000_0000            |
+| Width            | 1 bit                  |
+| Access Type      | Read/Write             |
+| Description      | Start/Stop the Counter |
 
  | Field Name  | Bits | Type | Reset Value | Description                        |
  | ----------- | ---- | ---- | ----------- | ---------------------------------- |
  | Control Bit | 0    | R/W  | 0x0         | 1 : Start Counter 2 : Stop Counter |
 
-### Example Project: Creating Peripheral IP
+## Example 11: Creating Peripheral IP
+
+### Creating Peripheral IP
 
 In this section, you will create an AXI4-Lite compliant slave
 peripheral IP.
@@ -282,7 +237,7 @@ through is very simple with the example Verilog included in the IP
 creation process. For more information, refer to the GitHub Zynq
 Cookbook: How to Run BFM Simulation <a href="https://github.com/imrickysu/ZYNQ-Cookbook/wiki/How-to-run-BFM-simulation">web page</a>.
 
-## Integrating Peripheral IP with PS GP Master Port
+### Integrating Peripheral IP with PS GP Master Port
 
 Now, you will create a system for the ZC702 board by instantiating the
 peripheral IP as a slave in the Zynq SoC programmable logic (PL)
@@ -439,7 +394,7 @@ following steps are required:
 2.  Download the kernel source code and compile it. For downloading and
     compilation, refer to the steps mentioned in the [Xilinx Zynq Linux Wiki Page](http://wiki.xilinx.com/zynq-linux).
 
-### Example Project: Device Driver Development
+## Example 12: Device Driver Development
 
 You will use a Linux workstation for this example project. The device
 driver software is provided in the LKM folder of the ZIP file that
@@ -522,9 +477,9 @@ If you select the start option on the serial terminal, all four LEDs
 start blinking. If you select the stop option, all four LEDs stop
 blinking and retain the previous state.
 
-### Example Project: Loading a Module into Kernel and Executing the Application
+## Example 13: Loading a Module into Kernel and Executing the Application
 
-#### *Booting Linux on the Target Board*
+#### Booting Linux on the Target Board
 
 Boot Linux on the Zynq SoC ZC702 target board, as described in
 [Booting Linux on a Zynq SoC Board](6-linux-booting-debug.md#booting-linux-on-a-zynq-soc-board).
