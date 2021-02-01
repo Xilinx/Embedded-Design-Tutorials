@@ -113,7 +113,7 @@ on the serial terminal and stops execution.
 ### Input and Output Files
 
 - Input Files
-  - Vivado design from Example 3
+  - Vivado design from Example 6
   - Vitis workspace
 - Output Files
   - Updated Vivado Design and exported hardware handoff system_wrapper.xsa
@@ -121,9 +121,9 @@ on the serial terminal and stops execution.
 
 ### Update the Vivado Design
 
-1.  Start with the system you created in [Example 3: Adding Peripheral PL IP](3-using-gp-port-zynq.md##example-3-adding-peripheral-pl-ip).
+1.  Start with the system you created in [Example 6: Adding Peripheral PL IP](5-using-gp-port-zynq.md#example-6-adding-peripheral-pl-ip).
 
-    - Open the Vivado&reg; design from [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md) 
+    - Open the Vivado&reg; design from [Example 6](5-using-gp-port-zynq.md#example-6-adding-peripheral-pl-ip) 
     - Open the block design from Flow Navigator **Open Block Design**.
 
 2.  Adding Central DMA IP
@@ -133,7 +133,7 @@ on the serial terminal and stops execution.
     - In the search box, type CDMA and double-click the **AXI Central Direct Memory Access** IP to add it to the Block Design. The AXI
     Central Direct Memory Access IP block appears in the Diagram view.
 
-4.  Adding Contact IP to concatenate the interrupt signals
+3.  Adding **Contact** IP to concatenate the interrupt signals
 
     - In the Diagram window, right-click in the blank space and select **Add IP**.
 
@@ -146,7 +146,7 @@ on the serial terminal and stops execution.
     - Right-click the net from the interrupt port to the **IRQ_F2P[0:0]** port and select **Delete**.
 
     - Click the **IRQ_F2P[0:0]** port and drag to the **dout[1:0]** output
-    port on the Concat IP core to make a connection between the two
+    port on the **Concat** IP core to make a connection between the two
     ports.
 
     - Click the interrupt port on the AXI Timer IP core and drag to the
@@ -157,20 +157,18 @@ on the serial terminal and stops execution.
     **In1[0:0]** input port on the Concat IP core to make a connection
     between the two ports.
 
-5. Customize PS to enable AXI HP0 Interface
+4. Customize PS to enable **AXI HP0** and **AXI HP2** Interface
 
     - Right-click the **ZYNQ7 Processing System** core and select
     **Customize Block**.
 
-    - Select **PS-PL Configuration** and expand the **HP Slave AXI
-    Interface**.
+    - Select **PS-PL Configuration** and expand the **HP Slave AXI Interface**.
 
-    - Select the check box for **S AXI HP0 interface** and for **S AXI HP2
-    interface**.
+    - Select the check box for **S AXI HP0 interface** and for **S AXI HP2 interface**.
 
    - Click **OK** to accept the changes.
 
-6. Customize CDMA IP
+5. Customize CDMA IP
 
    - Right-click the **AXI CDMA IP** core and select **Customize Block**.
 
@@ -188,10 +186,9 @@ on the serial terminal and stops execution.
     | Enable CDMA Store and Forward   | Unchecked                 |
     | Address Width                   | 32                        |
 
-
     - Click **OK** to accept the changes.
 
-7. Connect the blocks
+6. Connect the blocks
 
    - Click the **Run Connection Automation** link in the Diagram window
     to automate the remaining connections.
@@ -201,14 +198,16 @@ on the serial terminal and stops execution.
     default connections. The finished diagram should look like the
     following figure.
 
+    ![block diagram](./media/image62.png)
+
     ***Note*:** You might receive a critical warning message regarding
     forcibly mapping a net into a conflicting address. Address the error
     by manually updating the memory mapped address in the next steps.
     Click **OK** if you see the error message.
 
-    ![](./media/image62.png)
+7. Assign Address Manually
 
-8. Assign Address
+    In most cases Vivado connection automation can setup address correctly. In the current use case, it is confused by our physical connection because HP0 and HP2 now covers the same address range. We need to resolve this issue by making the address range of these two ports not overlapping. 
 
    - Select the **Address Editor** window.
 
@@ -228,9 +227,9 @@ on the serial terminal and stops execution.
 
     - Under Offset Address for **S_AXI_HP2**, set a value of **0x3000_0000**.
 
-    ![](./media/image64.jpeg)
+    ![Final Address Settings](./media/image64.png)
 
-9. Generate Bitstream
+8. Generate Bitstream
 
    - In the Flow Navigator, select **Generate Bitstream** under **PROGRAM AND DEBUG**. The Save Project dialog box opens.
 
