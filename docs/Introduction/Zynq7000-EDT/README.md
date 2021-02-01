@@ -33,7 +33,6 @@ The examples in this document were created using the Xilinx tools running on Win
 5. Using the HP Slave Port with AXI CDMA IP
 6. Linux Booting and Debug in the Vitis Software Platform
 7. Creating Custom IP and Device Driver for Linux
-8. Software Profiling Using the Vitis Software Platform
 
 ## Example Project
 
