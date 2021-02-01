@@ -12,6 +12,7 @@
 - [Using the HP Slave Port with AXI CDMA IP](#using-the-hp-slave-port-with-axi-cdma-ip)
   - [Integrating AXI CDMA with the Zynq SoC PS HP Slave Port](#integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port)
   - [Example 5: Integrating AXI CDMA with the PS HP Slave Port](#example-5-integrating-axi-cdma-with-the-ps-hp-slave-port)
+    - [Input and Output Files](#input-and-output-files)
     - [Update the Vivado Design](#update-the-vivado-design)
     - [Standalone Application Software for the Design](#standalone-application-software-for-the-design)
     - [Application Software Flow](#application-software-flow)
@@ -108,6 +109,15 @@ If the data transfer status is an error, it displays the error status
 on the serial terminal and stops execution.
 
 ## Example 5: Integrating AXI CDMA with the PS HP Slave Port
+
+### Input and Output Files
+
+- Input Files
+  - Vivado design from Example 3
+  - Vitis workspace
+- Output Files
+  - Updated Vivado Design and exported hardware handoff system_wrapper.xsa
+  - cdma_app.elf to control and test the AXI CDMA IP
 
 ### Update the Vivado Design
 
@@ -725,8 +735,7 @@ are given below:
     example application file and click **Finish**.
 
     ***Note*:** The example application software file is available in the
-    ZIP file that accompanies this guide. See [Design Files for This
-    Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+    ZIP file that accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 
 6.  Build the application project either by clicking the hammer button
     or by right-clicking on the linux_cdma_app project and selecting

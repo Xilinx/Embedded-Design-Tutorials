@@ -12,6 +12,8 @@
 - [Debugging with the Vitis Software Platform](#debugging-with-the-vitis-software-platform)
   - [Xilinx System Debugger](#xilinx-system-debugger)
   - [Example 4: Debugging Software Using the Vitis Software Platform](#example-4-debugging-software-using-the-vitis-software-platform)
+    - [Input and Output Files](#input-and-output-files)
+    - [Debug standalone application in Vitis IDE](#debug-standalone-application-in-vitis-ide)
 
 # Debugging with the Vitis Software Platform
 
@@ -95,7 +97,14 @@ unexpected jumps in the execution trace.
 
 ## Example 4: Debugging Software Using the Vitis Software Platform
 
-In this example, you will walk through debugging a Hello World application created in [Example 2](./2-using-zynq.md).
+In this example, you will walk through debugging a Hello World application created in [Example 2](./2-using-zynq.md#example-2-creating-and-running-a-hello-world-application).
+
+### Input and Output Files
+
+- Input files: Vitis workspace
+- Output files: N/A
+
+### Debug standalone application in Vitis IDE
 
 1.  In the C/C++ perspective, right-click the Hello_world project and
     select **Debug As→ Debug Configurations**.

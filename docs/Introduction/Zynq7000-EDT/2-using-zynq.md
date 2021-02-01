@@ -11,6 +11,7 @@
 - [Using the Zynq SoC Processing System](#using-the-zynq-soc-processing-system)
   - [Embedded System Configuration](#embedded-system-configuration)
   - [Example 1: Creating a New Embedded Project with Zynq SoC](#example-1-creating-a-new-embedded-project-with-zynq-soc)
+    - [Input and Output Files](#input-and-output-files)
     - [Creating Your Hardware Design](#creating-your-hardware-design)
     - [Creating an Embedded Processor Block Diagram](#creating-an-embedded-processor-block-diagram)
     - [Configuring the Zynq7 Processing System with Presets in Vivado](#configuring-the-zynq7-processing-system-with-presets-in-vivado)
@@ -19,6 +20,7 @@
     - [Generate Block Design](#generate-block-design)
     - [Exporting Hardware](#exporting-hardware)
   - [Example 2: Creating and Running a "Hello World" Application](#example-2-creating-and-running-a-hello-world-application)
+    - [Input and Output Files](#input-and-output-files-1)
     - [Setup the board](#setup-the-board)
     - [Creating a Vitis Platform Project](#creating-a-vitis-platform-project)
     - [Create the Hello World application](#create-the-hello-world-application)
@@ -49,6 +51,11 @@ bitstream.
 ## Example 1: Creating a New Embedded Project with Zynq SoC
 
 For this example, you will launch the Vivado Design Suite and create a project with an embedded processor system as the top level.
+
+### Input and Output Files
+
+- Input Files: Not required
+- Output Files: Vivado hardware handoff file system_wrapper.xsa
 
 ### Creating Your Hardware Design
 
@@ -230,6 +237,11 @@ cable connections, connect to the board through your PC, and run a
 simple "Hello World" software application in JTAG mode using System
 Debugger in the Vitis IDE.
 
+### Input and Output Files
+
+- Input Files: system_wrapper.xsa
+- Output Files: hello_world.elf
+
 ### Setup the board ###
 
 1.  Connect the power cable to the board.
@@ -294,7 +306,7 @@ Debugger in the Vitis IDE.
     ![](./media/image27.png)
 
 7.  In the **Explorer** view, expand **export → zc702_edt** to find the
-    exported Hardware Specification file, system_wrapper.xsa
+    exported Hardware Specification file, **system_wrapper.xsa**
     (under the hw folder), and the top-level platform XML file,
     zc702_edt.xpfm. Double-click on the XSA file to see the address
     map for the entire processing system, as shown in the following
