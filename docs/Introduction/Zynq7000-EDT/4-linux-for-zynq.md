@@ -125,10 +125,12 @@ JTAG mode.
 
 4.  Make sure Ethernet Jumper J30 and J43 as shown in the following figure.
 
-    ![Ethernet Jumper](./media/image69.jpeg)    
+    ![Ethernet Jumper](./media/image69.jpeg)
+
+    Ethernet is optional in this example. It's required in Example 5.    
 
 5.  Launch the Vitis software platform and open the same workspace you
-    used in [Using the Zynq SoC Processing System](2-using-zynq.md) and [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md).
+    used in [Example 2](2-using-zynq.md) and [Example 3](3-using-gp-port-zynq.md).
 
 6.  If the serial terminal is not open, connect the serial communication
     utility with the baud rate set to **115200**.
@@ -138,10 +140,12 @@ JTAG mode.
 
 7.  Power on the target board.
 
+8.  Linux login prompt will appear. Use user name `root` and password `root` to login.
+
 ## Example 5: Creating Hello World Application for Linux in Vitis IDE
 
-<!--Merge with the next chapter-->
-### Linux Domain Creation for Linux Applications
+
+### Creating Linux Domain
 
 Now that Linux is running on the board, you can create a Linux domain
 followed by a Linux application. The steps to create a Linux domain
@@ -150,65 +154,54 @@ are given below:
 1.  Go to the Explorer view in the Vitis software platform and expand
     the **zc702_edt** platform project.
 
-2.  Open the hardware by double clicking **platform.spr**.
+2.  Open the platform by double clicking **platform.spr**.
 
 3.  The platform view opens. Click the **+** button in the right corner
     to add a domain, as shown in the following figure.
 
-    ![](./media/image73.jpeg)
+    ![platform.spr](./media/image73.png)
 
 4.  When the New Domain dialog box opens, enter the details as given
     below:
 
-    | Option             | Value                    |
-    | ------------------ | ------------------------ |
-    | Name               | linux_domain             |
-    | Display Name       | linux_application_domain |
-    | OS                 | Linux                    |
-    | Processor          | ps7_cortexa9             |
-    | Supported Runtimes | C/C++                    |
+    | Option                    | Value        |
+    | ------------------------- | ------------ |
+    | Name                      | linux_domain |
+    | Display Name              | linux_domain |
+    | OS                        | Linux        |
+    | Processor                 | ps7_cortexa9 |
+    | Supported Runtimes        | C/C++        |
+    | Architecture              | 32-bit       |
+    | Bif file                  | Keep blank   |
+    | Boot Components Directory | Keep blank   |
+    | Linux image directory     | Keep blank   |
 
-    - Select **Use pre-built software components**
-
-    - Create one boot directory in the C:\designs folder, then copy the
-    boot components into it (FSBL, PMUFW from the Vitis software
-    platform, ATF, u-boot.elf and image.ub from PetaLinux).
-
-    - Create one BIF file as below.
-
-    ![](./media/image74.png)   
+    ![Creating Linux domain](media/image74.png)
 
     - Click **OK** to finish and observe
     that the Linux domain has been added to the zc702_edt as shown
     below.
 
-    ![](./media/image75.jpeg)    
+    ![Updated platform domains](./media/image75.png) 
+
+    **Note**: If we fill in Bif file, Boot Components Directory and Linux image directory options, Vitis can help to generate sd_card.img when we build the system project in Linux host OS. It will be helpful if we use ext4 root file system. In our examples, since we use initramfs, it only requires copying files to FAT32 partition into the SD card. So we won't use this feature.
+
+5. Build the platform
+
+    - Click the hammer button on the tool bar to build the platform.
 
     Now you are ready with Linux domain to create Linux applications.
 
 
 ### Creating Linux Applications in the Vitis IDE
 
-1. Create a Linux domain:
-
-   - Double-click **platform.spr** in the zc702_edt platform to open platform configurations.
-   - Click the **+** button to add a domain.
-   - Input the following domain parameters:
-       - Name: **linux**
-       - OS: **linux**
-       - Keep the other options as-is and click **OK**.
-   - Review the Linux domain configuration details.
-   - Build the platform project by clicking the hammer icon.
-
-   ![Linux domain configuration details](media/linux_domain_details.png)
-
-2. Create a Linux application:
+1. Create a Linux application:
 
    - Click **File → New → Application Project**.
    - Click **Next** on the welcome page.
    - Select platform: **zc702_edt**. Click **Next**.
-   - Enter the application project name, **hello_linux**, and the target processor, **psu_cortexa53 SMP**.
-   - Keep the default domain: **linux**.
+   - Enter the application project name, **hello_linux**, and the target processor, **psu_cortexa9 SMP**.
+   - Keep the default domain: **linux_domain**.
    - Keep the SYSROOT, rootfs, and kernel image empty, and click **Next**.
    - Select the **Linux Hello World** template. Click **Finish**.
 
@@ -216,7 +209,7 @@ are given below:
 
    **Note:** If you input a rootfs and kernel image, Vitis can help to generate the ``SD_card.img`` when building the Linux system project.
 
-3. Build the hello_linux application.
+2. Build the **hello_linux** application.
 
    - Select **hello_linux**.
    - Click the hammer button to build the application.
@@ -259,13 +252,15 @@ The Vitis IDE needs a channel to download the application to the running target.
 1. Run the Linux application:
 
    - Right-click **hello_linux**, and select **Run As → Run Configurations**.
-   - Expand **Single Application Debug** and select **Debugger_hello_linux-Default**.
+   - Expand **Single Application Debug** and select **Debugger_hello_linux-Default**. If it doesn't exist, click the **New Launch Configuration** button or double click **Single Application Debug** to create a new launch configuration for hello_linux.
    - Review the configurations:
        - Debug type: **Linux Application Debug**
        - Connection: **Linux Agent**
    - Click **Run**.
 
    ![Vitis Linux Run Configurations](media/vitis_linux_run_configurations.png)
+
+   ![Application Tab](./media/vitis_linux_run_configurations_applications.png)
 
    - The console should print **Hello World**.
 
@@ -301,7 +296,7 @@ Debugging Linux applications requires the Linux agent to be set up properly. Ref
     - The next line to execute has a green background.
     - Step over by clicking the icon on the toolbar or pressing **F6** on the keyboard. The printed string will be shown on the Console panel.
 
-    ![](./media/vitis_debugger_hello_linux.png)
+    ![Debug window](./media/vitis_debugger_hello_linux_zynq.png)
 
 3. Disconnect the connection:
 
@@ -322,6 +317,5 @@ In this chapter, you learned how to:
 - Create simple Linux applications with the Vitis IDE.
 - Run and debug using the Vitis IDE.
 
-In the [next chapter](./7-design1-using-gpio-timer-interrupts.md), we will connect all points previously introduced and create a system design.
 
 © Copyright 2017-2021 Xilinx, Inc.
