@@ -238,5 +238,5 @@
     made of multi-colored triangles.
 
     ![](./media/image118.jpeg)
-
-© Copyright 2017-2020 Xilinx, Inc.
+    
+© Copyright 2017-2021 Xilinx, Inc.

@@ -1,27 +1,19 @@
 ## Secure Boot Sequence
 
- The secure boot functionality in Zynq UltraScale+ MPSoC allows you to
- support confidentiality, integrity, and authentication of partitions.
+ The secure boot functionality in Zynq® UltraScale+™ MPSoC allows you to
+ support the confidentiality, integrity, and authentication of partitions.
  Secure boot is accomplished by combining the Hardware Root of Trust
- (HROT) capabilities of the Zynq UltraScale+ device with the option of
- encrypting all boot partitions. The HROT is based on the RSA-4096
+ (HRoT) capabilities of the Zynq UltraScale+ device with the option of
+ encrypting all boot partitions. The HRoT is based on the RSA-4096
  asymmetric algorithm with SHA-3/384, which is hardware accelerated.
- Confidentiality is provided using 256-bit Advanced Encryption Standard Galois Counter Mode (AES-GCM). This section focuses on how to use
- and implement the following:
+ Confidentiality is provided using 256-bit Advanced Encryption Standard Galois Counter Mode (AES-GCM). This section focuses on how to use and implement the following:
 
-- Hardware Root of Trust with Key Revocation
+- Hardware Root of Trust with key revocation
+- Partition encryption with differential power analysis (DPA) countermeasures
+- Black key storage using the physically unclonable function (PUF)
 
-- Partition Encryption with Differential Power Analysis (DPA)
-     Countermeasures
-
-- Black Key Storage using the Physically Unclonable Function (PUF)
-
- The section [Secure Boot System Design
- Decisions](#secure-boot-system-design-decisions) outlines high level
- secure boot decisions which should be made early in design
- development. The [Hardware Root of Trust](#hardware-root-of-trust)
- section discusses the use of a Root of Trust (RoT) in boot. The [Boot Image Confidentiality and DPA](#boot-image-confidentiality-and-dpa)
- section discusses methods to use AES encryption.
+ The section [Secure Boot System Design Decisions](#secure-boot-system-design-decisions) outlines high-level secure boot decisions which should be made early in design
+ development. The [Hardware Root of Trust](#hardware-root-of-trust) section discusses the use of a Root of Trust (RoT) in boot. The [Boot Image Confidentiality and DPA](#boot-image- confidentiality-and-dpa) section discusses methods to use AES encryption.
 
  The [Boot Image Confidentiality and DPA](#boot-image-confidentiality-and-dpa) section discusses the use of
  the operational key and key rolling techniques as countermeasures to a
@@ -1297,3 +1289,5 @@ blocks = 1728(*)]C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.elf
     `bootgen_utility --bin BOOT.bin --out myfile --arch zynqmp`
 
 3. Look for "BH" in myfile.
+
+© Copyright 2017-2021 Xilinx, Inc.

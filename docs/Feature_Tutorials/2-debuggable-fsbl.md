@@ -160,3 +160,5 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
 
  You can either debug the FSBL like any other standalone application (as shown in [Debugging Using XSCT](#debugging-using-xsct), or debug FSBL as a part of a Boot
  image by using the 'Attach to running target' mode of System Debugger.
+
+© Copyright 2017-2021 Xilinx, Inc.
