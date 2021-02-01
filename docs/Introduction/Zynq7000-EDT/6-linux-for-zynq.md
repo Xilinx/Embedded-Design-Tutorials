@@ -9,11 +9,11 @@
 
 </table>
 
-# Building and Debugging Linux Applications
+# Building and Debugging Linux Applications for ZYNQ-7
 
-The earlier examples highlighted the creation of bootloader images and bare-metal applications for APU, RPU, and PMU using the Vitis™ IDE. This chapter demonstrates how to develop Linux applications.
+The earlier examples highlighted the creation of bare-metal applications. This chapter demonstrates how to develop Linux applications.
 
-## Example 3: Creating Linux Images and Applications using PetaLinux
+## Example 6: Creating Linux Images
 
 In this example, you will configure and build a Linux operating system platform for an Arm™ Cortex-A9 core based APU on a Zynq® 7000. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.
 
@@ -126,6 +126,8 @@ In this example, you will configure and build a Linux operating system platform 
 
 8. Turn on the ZC702 board using SW1, and wait until Linux loads on the board.
 
+
+## Example 7: Creating Hello World Application for Linux in Vitis IDE
 
 <!--Merge with the next chapter-->
 ### Linux Domain Creation for Linux Applications
@@ -366,3 +368,368 @@ Platform](6-linux-booting-debug.md).
 
     ***Note*:** This is the baud rate that the UART is programmed to on
     Zynq devices.
+
+
+
+## Linux OS Based Application Software for the CDMA System
+
+In this section, you will create a Linux-based application software
+for CDMA using the `mmap()` system call provided by Linux and run it on
+the hardware to check the functionality of the CDMA IP.
+
+The `mmap()` system call is used to map specified kernel memory area to
+the User layer, so that you can read or write on it depending on the
+attribute provided during the memory mapping.
+
+
+![](./media/image66.png)
+
+***Note*:** Details about the `mmap()` system call is beyond the scope of this guide.
+
+**CAUTION!** *Use of the mmap() call might crash the kernel if it
+accesses, by mistake, some restricted area or shared resources of the
+kernel.*
+
+The `main()` function in the application software is the entry point for
+the execution. It initializes the source array with the specified test
+pattern and clears the destination array. Then it copies the source
+array contents to the DDR memory starting at location 0x20000000 and
+makes the DMA register setting to initiate DMA transfer to the
+destination. After the DMA transfer, the application reads the status
+of the transfer and displays the result on the serial terminal.
+
+
+
+
+## Example 8: Linux Application Software for AXI CDMA
+
+
+
+### Linux Application Software for AXI CDMA
+
+Application software creation is composed of the following steps:
+
+1.  Initialize the whole source array, which is in the User layer with
+    value 0xa5a5a5a5.
+
+2.  Clear the whole destination buffer, which is in the User layer, by
+    writing all zeroes.
+
+3.  Map the kernel memory location starting from 0x20000000 to the User
+    layer with writing permission using mmap() system calls.By doing so, you can write to the specified kernel memory.
+
+4.  Copy the source array contents to the mapped kernel memory.
+
+5.  Un-map the kernel memory from the User layer.
+
+6.  Map the AXI CDMA register memory location to the User layer with
+    reading and writing permission using the mmap() system call. Make
+    the following CDMA register settings from the User layer:
+
+    a.  Reset DMA to stop any previous communication.
+
+    b.  Enable interrupt to get the status of the DMA transfer.
+
+    c.  Set the CDMA in simple mode.
+
+    d.  Verify that the CDMA is idle.
+
+    e.  Set the source buffer starting location, 0x20000000, to the CDMA
+        register.
+
+    f.  Set the destination buffer starting location, 0x30000000, to the
+        CDMA register.
+
+    g.  Set the number of bytes to be transferred in the CDMA register.
+        Writing to this register starts the DMA transfer.
+
+7.  Continuously read the DMA transfer status until the transfer
+    finishes.
+
+8.  After CDMA transfer finishes, un-map the CDMA register memory for
+    editing from the User layer using the mmap() system call.
+
+9.  Map the kernel memory location starting from 0x30000000 to the User
+    layer with reading and writing permissions.
+
+10. Copy the kernel memory contents starting from 0x30000000 to the User
+    layer destination array.
+
+11. Un-map the kernel memory from the User layer.
+
+12. Compare the source array with the destination array.
+
+13. Display the comparison result in the serial terminal. If the
+    comparison is successful, the message "DATA Transfer is
+    Successful" displays. Otherwise, the serial terminal displays an
+    error message.
+
+### Running Linux CDMA Application Using the Vitis Software Platform
+
+Detailed steps on running Linux on the target board are outlined in[Linux Booting and Debug in the Vitis Software Platform](6-linux-booting-debug.md). 
+If you are not comfortable running Linux, run through the [Linux Booting and Debug in the Vitis Software Platform](6-linux-booting-debug.md) examples prior to running this
+example. Running a Linux OS based application is composed of the following steps:
+
+1.  [Booting Linux on the Target Board](#booting-linux-on-the-target-board)
+
+2.  [Linux Domain Creation for Linux Applications](#linux-domain-creation-for-linux-applications)
+
+3.  [Building an Application and Running it on the Target Board Using the Vitis Software Platform](#building-an-application-and-running-it-on-the-target-board-using-the-vitis-software-platform)
+
+### Booting Linux on the Target Board
+<!--TODO: reduce steps here. Refer to Example 3-->
+You will now boot Linux on the Zynq-7000 SoC ZC702 target board using
+JTAG mode.
+
+***Note*:** Additional boot options will be explained in [Linux Booting and Debug in the Software
+Platform](6-linux-booting-debug.md).
+
+1.  Check the following Board Connection and Setting for Linux booting
+    using JTAG mode:
+
+    a.  Ensure that the settings of Jumpers J27 and J28 are set as
+        described in [Creating a Platform Project in the Vitis Software Platform with an XSA from Vivado](2-using-zynq.md#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado).
+
+    b.  Ensure that the SW16 switch is set as shown in the following
+        figure.
+
+    c.  Connect an Ethernet cable from the Zynq SoC board to your
+        network.
+
+    d.  Connect the Windows Host machine to your network.
+
+    e.  Connect the power cable to the board.
+
+        ![](./media/image67.jpeg)
+
+2.  Connect a micro USB cable between the Windows host machine and the
+    target board with the following SW10 switch settings, as shown in
+    [Booting Linux on the Target Board](6-linux-booting-debug.md#booting-linux-on-the-target-board).
+
+    -   Bit-1 is 0
+
+    -   Bit-2 is 1
+
+    ***Note*:** 0 = switch is open. 1 = switch is closed. The correct JTAG
+    mode has to be selected, according to the user interface. The JTAG
+    mode is controlled by switch SW10 on the ZC702 and SW4 on the ZC706.
+
+    ![](./media/image68.jpeg)
+
+3.  Connect a USB cable to connector J17 on the target board with the
+    Windows Host machine. This is used for USB to serial transfer.
+
+4.  Change Ethernet Jumper J30 and J43 as shown in the following figure.
+
+    ![](./media/image69.jpeg)    
+
+5.  Power on the target board.
+
+6.  Launch the Vitis software platform and open the same workspace you
+    used in [Using the Zynq SoC Processing System](2-using-zynq.md) and [Using the GP Port in Zynq Devices](3-using-gp-port-zynq.md).
+
+7.  If the serial terminal is not open, connect the serial communication
+    utility with the baud rate set to **115200**.
+
+    ***Note*:** This is the baud rate that the UART is programmed to on
+    Zynq devices.
+
+8.  Select **Xilinx → Program FPGA**, then click **Program** to download
+    the bitstream.
+
+9.  Open the Xilinx System Debugger (XSCT) tool by selecting **Xilinx →
+    XSCT Console**.
+
+10. At the XSCT prompt, do the following:
+
+    -  Type connect to connect with the PS section.
+
+    -  Type targets to get the list of target processors.
+
+    -  Type targets 2 to select the processor CPU1.
+
+        ```
+        xsct% targets
+        1 APU
+        2 Arm Cortex-A9 MPCore #0 (Running)
+        3 Arm Cortex-A9 MPCore #1 (Running)
+        4 xc7z020
+        xsct% targets 2
+        xsct% targets
+        1 APU
+        2* Arm Cortex-A9 MPCore #0 (Running)
+        3 Arm Cortex-A9 MPCore #1 (Running)
+        4 xc7z020
+        ```
+
+    -  Type dow <tutorial_download_path>/zynq_fsbl.elf to download PetaLinux FSBL.
+
+    -  Type con to start execution of FSBL and then type stop to stop it.
+
+        ![](./media/image70.jpeg)
+
+    -  Type dow <tutorial_download_path>/u-boot.elf to download PetaLinux U- Boot.elf.
+
+    -  Type con to start execution of U-Boot.  On the serial terminal, the autoboot countdown message appears:
+
+      	```
+        Hit any key to stop autoboot: 3
+        ```
+
+    -  Press **Enter**.
+
+        Automatic booting from U-Boot stops and a command prompt appears on
+        the serial terminal.
+
+        ![](./media/image71.jpeg)
+
+    -  At the XSCT Prompt, type stop. The U-Boot execution stops.
+
+    -  Type dow -data <tutorial_download_path>/image.ub 0x30000000 to
+        download the Linux Kernel image at location 0x3000000.
+
+    -  Type con to start executing U-Boot.
+
+11. At the command prompt of the serial terminal, type **bootm 0x30000000**. Press Enter. The Linux OS boots.
+
+12. If required, provide the Zynq login as **root** and the password as
+    **root** on the serial terminal to complete booting the processor.
+
+    After booting completes, # prompt appears on the serial terminal.
+
+13. At the root@Xilinx-ZC702-2020.2:~# prompt, make sure that the
+    board Ethernet connection is configured:
+
+    -  Check the IP address of the board by typing the following
+        command at the Zynq prompt: ``ifconfig eth0``.
+
+    This command displays all the details of the currently active
+    interface. In the message that displays, the inet addr value denotes
+    the IP address that is assigned to the Zynq SoC board.
+
+    -  If inet addr and netmask values do not exist, you can assign them
+        using the following commands:
+
+        ```
+        root@Xilinx-ZC702-2020.2:~# ifconfig eth0 inet 192.168.1.10
+        root@Xilinx-ZC702-2020.2:~# ifconfig eth0 netmask 255.255.255.0
+        ```
+
+14. Confirm that the IP address settings on the Windows machine are set
+    up to match the board settings. Adjust the local area connection
+    properties by opening your network connections.
+
+    -  Right-click the local area connection that is linked to the
+        XC702 board and select Properties.
+
+    -  In the Local Area Connection Properties dialog box, select
+        **Internet Protocol Version 4 (TCP/IPv4)** from the item list and
+        select **Properties**.
+
+    -  Select **Use the following IP address** and set the following
+        values:
+
+        ```
+        IP address: 192.168.1.11
+        Subnet mask: 255.255.255.0
+        ```
+
+    -  Click **OK** to accept the values.
+
+15. In the Windows machine command prompt, check the connection with the
+    board by typing ping followed by the board IP address. The ping response displays in a loop.
+
+    This response means that the connection between the Windows host
+    machine and the target board is established.
+
+16. Press **Ctrl+C** to stop displaying the ping response on the Windows
+    host machine command prompt.
+
+    ![](./media/image72.jpeg)
+
+    Linux booting completes on the target board and the connection between
+    the host machine and the target board is complete.
+
+
+### Building an Application and Running it on the Target Board Using the Vitis Software Platform
+
+1.  Now that Linux is running on the board, create a Linux application
+    to use the CDMA. Select File → New → Application Project.
+
+2.  Use the information in the table below to make your selections in
+    the wizard screens.
+
+   | Wizard Screen               | System Property                                     | Setting or Command to Use                                                                           |
+   | --------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+   | Platform                    | Select a platform from repository                   | Click hw_platform [custom].                                                                         |
+   | Application Project Details | Application project name                            | Enter linux_cdma_app                                                                                |
+   |                             | Select target processor for the Application project | Select ps7_cortexa9 SMP.                                                                            |
+   | DomainDomain                | Select a domain                                     | Click linux_application_domain                                                                      |
+   |                             | Application settings                                | If known, enter the sysroot, root FS, and kernel image paths. Otherwise, leave these options blank. |
+   | Templates                   | Available Templates                                 | Linux Empty Application                                                                             |
+
+
+3.  Click **Finish**.
+
+    The New Application Project wizard closes and the Vitis software
+    platform creates the linux_cdma_app project under the Explorer view.
+
+4.  In the Explorer view, expand linux_cdma_app project, right-click the
+    **src** directory, and select **Import Sources** to open the
+    Import Sources dialog box.
+
+5.  In the **Import Sources** dialog box, click the **Browse** button
+    next to the **File system** field and specify the design files
+    directory already downloaded. Select the **linux_cdma_app.c**
+    example application file and click **Finish**.
+
+    ***Note*:** The example application software file is available in the
+    ZIP file that accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+
+6.  Build the application project either by clicking the hammer button
+    or by right-clicking on the linux_cdma_app project and selecting
+    **Build Project**. The binary file linux_cdma_app.elf is
+    generated.
+
+7.  Right-click linux_cdma_app and select **Run As → Run
+    Configurations** to open the Run Configurations dialog box, shown
+    in the following figure.
+
+8.  Right-click **Xilinx C/C++ application (Application Debugger)** and select **New**.
+
+    ![](./media/image76.jpeg)    
+
+9.  Click **New** button next to the Connection to open the Target
+    Connection Details dialog box.
+
+10. In the Target Connection Details dialog box, apply the settings
+    below:
+
+    - Specify a name in the **Target Name** field. For the purposes of
+        this exercise, use CDMALinux.
+
+    - In the **Host** field, enter the target board IP address.
+
+    To determine the target board IP address, type ifconfig eth0 at the
+    Zynq\prompt in the serial terminal. The terminal displays the target
+    IP address that is assigned to the board.
+
+    - In the **Port** field, type 1534.
+
+11. Click **OK** to create the connection.
+
+12. As shown in the following figure, on the **Application** tab, enter
+    application data settings for the following:
+
+    - Project Name: linux_cdma_app
+
+    - Local File Path: Debug/linux_cdma_app.elf
+
+    - Remote File Path: /tmp/cdma.elf
+
+    ![](./media/image77.jpeg)
+
+13. Click **Run**. The application executes, and the message DATA
+    Transfer is Successful appears in the console window, as shown in the following figure.
+
+    ![](./media/image78.jpeg)

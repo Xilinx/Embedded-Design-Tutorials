@@ -133,7 +133,7 @@ By default, the installer installs the package as a subdirectory within the curr
 
 ***Note*:** Ensure that the PetaLinux installation path is kept short. The PetaLinux build will fail if the path exceeds 255 characters.
 
-`bash\./petalinux-v2020.2-final-installer.run`
+`bash ./petalinux-v2020.2-final-installer.run`
 
 PetaLinux is installed in the petalinux-v2020.2-final directory, directly underneath the working directory of this command. If the installer is placed in the home directory /home/user, PetaLinux is installed in /home/user/petalinux-v2020.2-final.
 

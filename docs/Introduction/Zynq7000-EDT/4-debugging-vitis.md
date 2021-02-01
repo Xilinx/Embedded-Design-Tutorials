@@ -11,7 +11,7 @@
 
 - [Debugging with the Vitis Software Platform](#debugging-with-the-vitis-software-platform)
   - [Xilinx System Debugger](#xilinx-system-debugger)
-  - [Example 5: Debugging Standalone Software Using the Vitis Software Platform](#example-5-debugging-standalone-software-using-the-vitis-software-platform)
+  - [Example 4: Debugging Standalone Software Using the Vitis Software Platform](#example-4-debugging-standalone-software-using-the-vitis-software-platform)
     - [Input and Output Files](#input-and-output-files)
     - [Debug standalone application in Vitis IDE](#debug-standalone-application-in-vitis-ide)
 
@@ -95,7 +95,7 @@ will be out of step because the debug information is tied directly to
 the source. Similarly, debugging optimized binaries can also cause
 unexpected jumps in the execution trace.
 
-## Example 5: Debugging Standalone Software Using the Vitis Software Platform
+## Example 4: Debugging Standalone Software Using the Vitis Software Platform
 
 In this example, you will walk through debugging a Hello World application created in [Example 2](./2-using-zynq.md#example-2-creating-and-running-a-hello-world-application).
 

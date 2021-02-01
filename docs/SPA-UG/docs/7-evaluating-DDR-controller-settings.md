@@ -17,7 +17,7 @@
  system settings early in the boot process. For more information, see
  the "DDR Memory Controller" chapter of the *Zynq-7000 SoC Technical
  Reference Manual*
- ([UG585](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides%3Bd%3Dug585-Zynq-7000-TRM.pdf)).
+ ([UG585](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf)).
 
  *Figure 25:* Block Diagram of Zynq-7000 SoC DDR Controller
 
@@ -68,7 +68,7 @@
  settings that can impact performance. The functionality of these
  settings is described in depth in the *Zynq-7000 SoC Technical
  Reference Manual*
- ([UG585](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides%3Bd%3Dug585-Zynq-7000-TRM.pdf)).
+ ([UG585](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf)).
 
 ## Default DDRC Settings
 

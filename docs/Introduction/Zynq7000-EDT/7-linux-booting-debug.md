@@ -9,28 +9,29 @@
 
 </table>
 
-- [Linux Booting and Debug in the Vitis Software Platform](#linux-booting-and-debug-in-the-vitis-software-platform)
-  - [Requirements](#requirements)
-  - [Example 8: Booting Linux on a Zynq SoC Board](#example-8-booting-linux-on-a-zynq-soc-board)
+- [Linux Boot Image Configuration](#linux-boot-image-configuration)
     - [Boot Methods](#boot-methods)
       - [Master Boot Method](#master-boot-method)
       - [Slave Boot Method](#slave-boot-method)
     - [Booting Linux from JTAG](#booting-linux-from-jtag)
+  - [Requirements](#requirements)
+  - [Example 8: Booting Linux on a Zynq SoC Board](#example-8-booting-linux-on-a-zynq-soc-board)
     - [Preparing the PetaLinux Build for Debugging](#preparing-the-petalinux-build-for-debugging)
     - [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode)
     - [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform)
-    - [Example 9: Booting Linux from QSPI Flash](#example-9-booting-linux-from-qspi-flash)
-      - [Create the First Stage Boot Loader Executable File](#create-the-first-stage-boot-loader-executable-file)
-      - [*Make a Linux Bootable Image for QSPI Flash*](#make-a-linux-bootable-image-for-qspi-flash)
-      - [*Program QSPI Flash with the Boot Image Using JTAG*](#program-qspi-flash-with-the-boot-image-using-jtag)
-      - [Program QSPI Flash with the Flash Programming Tool](#program-qspi-flash-with-the-flash-programming-tool)
-      - [*Booting Linux from QSPI Flash*](#booting-linux-from-qspi-flash)
-      - [Booting Linux from the SD Card](#booting-linux-from-the-sd-card)
+  - [Example 9: Booting Linux from QSPI Flash](#example-9-booting-linux-from-qspi-flash)
+    - [Create the First Stage Boot Loader Executable File](#create-the-first-stage-boot-loader-executable-file)
+    - [*Make a Linux Bootable Image for QSPI Flash*](#make-a-linux-bootable-image-for-qspi-flash)
+    - [Program QSPI Flash with the Boot Image Using JTAG](#program-qspi-flash-with-the-boot-image-using-jtag)
+    - [Program QSPI Flash with the Flash Programming Tool](#program-qspi-flash-with-the-flash-programming-tool)
+    - [Booting Linux from QSPI Flash](#booting-linux-from-qspi-flash)
+    - [Booting Linux from the SD Card](#booting-linux-from-the-sd-card)
 
-# Linux Booting and Debug in the Vitis Software Platform
+# Linux Boot Image Configuration
 
+In previous chapters, we used SD Boot mode for all examples for Linux. Sometimes we need to change boot source or use JTAG to do debugging. 
 This chapter describes the steps to configure and build the Linux OS
-for a Zynq&reg;-7000 SoC board with PetaLinux Tools. It also provides
+for a Zynq&reg;-7000 SoC board with different boot methods. It also provides
 information about downloading images precompiled by Linux on the
 target memory using a JTAG interface.
 
@@ -48,6 +49,66 @@ running on the target board. The Vitis software platform runs on the
 Windows host machine. For application debugging, the platform
 establishes an Ethernet connection to the target board that is already
 running the Linux OS.
+
+### Boot Methods
+
+The following boot methods are available:
+
+-   Master Boot Method
+
+-   Slave Boot Method
+
+#### Master Boot Method
+
+In the master boot method, different kinds of non-volatile memories
+such as QSPI, NAND, NOR flash, and SD cards are used to store boot
+images. In this method, the CPU loads and executes the external boot
+images from non-volatile memory into the Processor System (PS). The
+master boot method is further divided into Secure and Non Secure
+modes. Refer to the *Zynq-7000 SoC Technical Reference Manual*
+([UG585](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf)) for more detail.
+
+The boot process is initiated by one of the Arm&reg; Cortex&trade;-A9 CPUs in
+the processing system (PS) and it executes on-chip ROM code. The
+on-chip ROM code is responsible for loading the first stage boot
+loader (FSBL). The FSBL does the following:
+
+-   Configures the FPGA with the hardware bitstream (if it exists)
+
+-   Configures the MIO interface
+
+-   Initializes the DDR controller
+
+-   Initializes the clock PLL
+
+-   Loads and executes the Linux U-Boot image from non-volatile memory
+    to DDR
+
+The U-Boot loads and starts the execution of the kernel image, the
+root file system, and the device tree from non-volatile RAM to DDR. It
+finishes booting Linux on the target platform.
+
+#### Slave Boot Method
+
+JTAG can only be used in slave boot mode. An external host computer
+acts as the master to load the boot image into the OCM using a JTAG
+connection.
+
+***Note*:** The PS CPU remains in idle mode while the boot image
+loads. The slave boot method is always a non-secure mode of booting.
+
+In JTAG boot mode, the CPU enters halt mode immediately after it
+disables access to all security related items and enables the JTAG
+port. You must download the boot images into the DDR memory before
+restarting the CPU for execution.
+
+### Booting Linux from JTAG
+
+The flow chart in the following figure describes the process used to
+boot Linux on the target platform.
+
+ ![](./media/X24074-Page-1.png)
+
 
 ## Requirements
 
@@ -95,64 +156,7 @@ using the precompiled images that you downloaded in
 image, U-Boot, Device tree, and root file system is beyond the scope
 of this guide.
 
-### Boot Methods
 
-The following boot methods are available:
-
--   Master Boot Method
-
--   Slave Boot Method
-
-#### Master Boot Method
-
-In the master boot method, different kinds of non-volatile memories
-such as QSPI, NAND, NOR flash, and SD cards are used to store boot
-images. In this method, the CPU loads and executes the external boot
-images from non-volatile memory into the Processor System (PS). The
-master boot method is further divided into Secure and Non Secure
-modes. Refer to the *Zynq-7000 SoC Technical Reference Manual*
-([UG585](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides%3Bd%3Dug585-Zynq-7000-TRM.pdf)) for more detail.
-
-The boot process is initiated by one of the Arm&reg; Cortex&trade;-A9 CPUs in
-the processing system (PS) and it executes on-chip ROM code. The
-on-chip ROM code is responsible for loading the first stage boot
-loader (FSBL). The FSBL does the following:
-
--   Configures the FPGA with the hardware bitstream (if it exists)
-
--   Configures the MIO interface
-
--   Initializes the DDR controller
-
--   Initializes the clock PLL
-
--   Loads and executes the Linux U-Boot image from non-volatile memory
-    to DDR
-
-The U-Boot loads and starts the execution of the kernel image, the
-root file system, and the device tree from non-volatile RAM to DDR. It
-finishes booting Linux on the target platform.
-
-#### Slave Boot Method
-
-JTAG can only be used in slave boot mode. An external host computer
-acts as the master to load the boot image into the OCM using a JTAG
-connection.
-
-***Note*:** The PS CPU remains in idle mode while the boot image
-loads. The slave boot method is always a non-secure mode of booting.
-
-In JTAG boot mode, the CPU enters halt mode immediately after it
-disables access to all security related items and enables the JTAG
-port. You must download the boot images into the DDR memory before
-restarting the CPU for execution.
-
-### Booting Linux from JTAG
-
-The flow chart in the following figure describes the process used to
-boot Linux on the target platform.
-
- ![](./media/X24074-Page-1.png)
 
 ### Preparing the PetaLinux Build for Debugging
 
@@ -424,7 +428,7 @@ from the Windows host machine.
 11. After you finish debugging the Linux application, close the Vitis
     IDE.
 
-### Example 9: Booting Linux from QSPI Flash
+## Example 9: Booting Linux from QSPI Flash
 
 This example project covers the following steps:
 
@@ -485,7 +489,7 @@ This example project covers the following steps:
 
 5.  Boot Linux from QSPI flash.
 
-#### Create the First Stage Boot Loader Executable File
+### Create the First Stage Boot Loader Executable File
 
 1.  Open the Vitis software platform.
 
@@ -526,7 +530,7 @@ This example project covers the following steps:
     generating fsbl.elf build the project by right-clicking on the FSBL
     project and selecting **Build Project**.
 
-#### *Make a Linux Bootable Image for QSPI Flash*
+### *Make a Linux Bootable Image for QSPI Flash*
 
 1.  In the Vitis software platform, select **Xilinx → Create Boot Image** to open the Create Boot Image wizard.
 
@@ -563,7 +567,7 @@ This example project covers the following steps:
 6.  Click **Create Image** to create the BOOT.bin file in the specified
     output path folder.
 
-#### *Program QSPI Flash with the Boot Image Using JTAG*
+### Program QSPI Flash with the Boot Image Using JTAG
 
 You can program QSPI Flash with the boot image using JTAG.
 
@@ -623,7 +627,7 @@ You can program QSPI Flash with the boot image using JTAG.
 7.  Power off the board and follow the booting steps described in the
     following section.
 
-#### Program QSPI Flash with the Flash Programming Tool
+### Program QSPI Flash with the Flash Programming Tool
 
 Following the steps below, you can program QSPI Flash with the flash
 programming tool in the Vitis software platform:
@@ -650,7 +654,7 @@ saying Flash Operation Successful.
     from the SD Card](#booting-linux-from-the-sd-card), as appropriate
     to your design.
 
-#### *Booting Linux from QSPI Flash*
+### Booting Linux from QSPI Flash
 
 1.  After you program the QSPI Flash, set the SW16 switch on your board as shown in the following figure.
 
@@ -671,7 +675,7 @@ saying Flash Operation Successful.
 
     For Linux Application creation and debugging, refer to [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform).
 
-#### Booting Linux from the SD Card
+### Booting Linux from the SD Card
 
 1.  Change the SW16 switch setting as shown in the following figure.
 
@@ -709,7 +713,7 @@ saying Flash Operation Successful.
     these file names in the SD card while booting the system.*
 
 9.  Turn on the power to the board and check the messages on the Serial
-    terminal. The root\@plnx_arm:\~\# prompt appears after Linux booting is complete on the target board.
+    terminal. The `root@plnx_arm:~#` prompt appears after Linux booting is complete on the target board.
 
 10. Set the board IP address and check the connectivity as described in
     [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode).
