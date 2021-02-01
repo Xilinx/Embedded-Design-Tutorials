@@ -17,7 +17,7 @@
     - [Assign Location Constraints to External Pins](#assign-location-constraints-to-external-pins)
     - [Update Hardware in the Vitis Software Platform](#update-hardware-in-the-vitis-software-platform)
     - [Test the PL IP with prepared software](#test-the-pl-ip-with-prepared-software)
-    - [Standalone Application Software Details](#standalone-application-software-details)
+    - [Hello_PL Standalone Software Details](#hello_pl-standalone-software-details)
 
 # Using the GP Port in Zynq Devices
 
@@ -315,20 +315,13 @@ Open the Vitis IDE and manually update the exported hardware from Vivado.
 
 5.  Connect the USB cable for JTAG and serial.
 
-6.  Open the serial communication utility with baud rate set to **115200**.
+6.  Open your preferred serial communication utility with baud rate set to **115200**. In this example, we used MobaXterm.
 
     ***Note*:** This is the baud rate that the UART is programmed to on Zynq devices.
 
-7.  Program PL.
+7. Change boot mode back to JTAG mode (like [example 2](./2-using-zynq.md#setup-the-board))
 
-    - Select **Xilinx → Program Device**. The Program Device view opens.
-    Browse for the bitstream exported from Vivado.
-
-    ![Program Device](./media/image55.png)
-
-    - Click **Program** to download the bitstream and program the PL
-    fabric. When the FPGA programming is done, progress information
-    pop up opens and shows the status as FPGA configuration complete.
+    - Set **SW16** to 00000.
 
 8.  Run the project similar to the steps in [example 2](./2-using-zynq.md#run-the-hello-world-application-on-zc702-board).
 
@@ -336,25 +329,28 @@ Open the Vitis IDE and manually update the exported hardware from Vivado.
 
     If the running fails, open the **RUn as -> Run Configurations** view, double check the Target Setup configuration with the following screenshot, update the settings and click Run.
 
-    ![Run Configuration](./media/image56.png)    
+    ![Run Configuration](./media/image56.png)
 
-9.  In the system, the AXI GPIO pin is connected to push button **SW5**
+    Since we updated the hardware specification with the XSA that includes post-implementation bitstream, the run configuration set Bitstream file automatically. If your XSA file doesn't contain bitstream, you can click browse button to point to your bitstream. You can also remove Bitstream File option to blank but use menu **Xilinx → Program Device** to program bitstream before launching the application manually.
+
+    ![Program Device](./media/image55.png)
+
+8.  In the system, the AXI GPIO pin is connected to push button **SW5**
     on the board, and the PS section GPIO pin is connected to push
     button **SW7** on the board via an EMIO interface.
 
-10. Follow the instructions printed on the serial terminal to run the
+9.  Follow the instructions printed on the serial terminal to run the
     application. See the following figure for serial output logs.
 
-    <!--TODO: update image-->
-    ![](./media/image57.png)
+    ![UART prints](./media/image57.png)
 
-### Standalone Application Software Details
+### Hello_PL Standalone Software Details
 
 The system you designed in this chapter requires application software
 for the execution on the board. This section describes the details
 about the application software.
 
-The main() function in the application software is the entry point for
+The `main()` function in the application software is the entry point for
 the execution. This function includes initialization and the required
 settings for all peripherals connected in the system. It also has a
 selection procedure for the execution of the different use cases, such
@@ -397,7 +393,7 @@ Application software is composed of the following steps:
     physically connected to the **SW7** push button switch.
 
 10. Initialize Snoop control unit Global Interrupt controller. Also,
-    register Timer interrupt routine to interrupt ID \'91\', register
+    register Timer interrupt routine to interrupt ID **91**, register
     the exceptional handler, and enable the interrupt.
 
 11. Execute a sequence in the loop to select between AXI GPIO or PS GPIO
