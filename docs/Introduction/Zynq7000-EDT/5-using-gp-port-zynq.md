@@ -11,7 +11,7 @@
 
 - [Using the GP Port in Zynq Devices](#using-the-gp-port-in-zynq-devices)
   - [Adding IP in PL to the Zynq SoC Processing System](#adding-ip-in-pl-to-the-zynq-soc-processing-system)
-  - [Example 3: Adding Peripheral PL IP](#example-3-adding-peripheral-pl-ip)
+  - [Example 6: Adding Peripheral PL IP](#example-6-adding-peripheral-pl-ip)
     - [Input and Output Files](#input-and-output-files)
     - [Update Vivado Design Diagram](#update-vivado-design-diagram)
     - [Assign Location Constraints to External Pins](#assign-location-constraints-to-external-pins)
@@ -83,7 +83,7 @@ In the examples in this chapter, we will expand on the design with the following
         switch in the serial terminal again.
 
 <!--TODO: It needs a better chapter name-->
-## Example 3: Adding Peripheral PL IP
+## Example 6: Adding Peripheral PL IP
 
 ### Input and Output Files
 

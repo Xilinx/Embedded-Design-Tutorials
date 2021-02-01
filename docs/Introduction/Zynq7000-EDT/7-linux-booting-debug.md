@@ -15,11 +15,11 @@
       - [Slave Boot Method](#slave-boot-method)
     - [Booting Linux from JTAG](#booting-linux-from-jtag)
   - [Requirements](#requirements)
-  - [Example 8: Booting Linux on a Zynq SoC Board](#example-8-booting-linux-on-a-zynq-soc-board)
+  - [Example 9: Booting Linux on a Zynq SoC Board](#example-9-booting-linux-on-a-zynq-soc-board)
     - [Preparing the PetaLinux Build for Debugging](#preparing-the-petalinux-build-for-debugging)
     - [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode)
     - [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform)
-  - [Example 9: Booting Linux from QSPI Flash](#example-9-booting-linux-from-qspi-flash)
+  - [Example 10: Booting Linux from QSPI Flash](#example-10-booting-linux-from-qspi-flash)
     - [Create the First Stage Boot Loader Executable File](#create-the-first-stage-boot-loader-executable-file)
     - [*Make a Linux Bootable Image for QSPI Flash*](#make-a-linux-bootable-image-for-qspi-flash)
     - [Program QSPI Flash with the Boot Image Using JTAG](#program-qspi-flash-with-the-boot-image-using-jtag)
@@ -146,7 +146,7 @@ accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#des
 
 -   **fsbl.elf:** FSBL image used to create BOOT.BIN image.
 
-## Example 8: Booting Linux on a Zynq SoC Board
+## Example 9: Booting Linux on a Zynq SoC Board
 
 This section covers the flow for booting Linux on the target board
 using the precompiled images that you downloaded in
@@ -352,14 +352,14 @@ from the Windows host machine.
 3.  Use the information in the following table to make your selections
     in the wizard screens.
 
-   | Wizard Screen               | System Property                                     | Setting or Command to Use                                                                           |
-   | --------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-   | Platform                    | Select a platform from repository                   | Click hw_platform [custom].                                                                         |
-   | Application Project Details | Application project name                            | Enter HelloLinux                                                                                    |
-   |                             | Select target processor for the Application project | Select ps7_cortexa9 SMP.                                                                            |
-   | Domain                      | Select a domain                                     | Click linux_application_domain.                                                                     |
-   |                             | Application settings                                | If known, enter the sysroot, root FS, and kernel image paths. Otherwise, leave these options blank. |
-   | Templates                   | Available Templates                                 | Linux Hello World                                                                                   |
+| Wizard Screen               | System Property                                     | Setting or Command to Use                                                                           |
+| --------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Platform                    | Select a platform from repository                   | Click zc702_edt [custom].                                                                         |
+| Domain                      | Select a domain                                     | Click linux_application_domain.                                                                     |
+| Application Project Details | Application project name                            | Enter HelloLinux                                                                                    |
+|                             | Application settings                                | If known, enter the sysroot, root FS, and kernel image paths. Otherwise, leave these options blank. |
+| Templates                   | Available Templates                                 | Linux Hello World                                                                                   |
+|                             | Select target processor for the Application project | Select ps7_cortexa9 SMP.                                                                            |
 
 
 4.  Click **Finish**.
@@ -428,7 +428,7 @@ from the Windows host machine.
 11. After you finish debugging the Linux application, close the Vitis
     IDE.
 
-## Example 9: Booting Linux from QSPI Flash
+## Example 10: Booting Linux from QSPI Flash
 
 This example project covers the following steps:
 
@@ -509,7 +509,7 @@ This example project covers the following steps:
 
    | Wizard Screen               | System Property                                     | Setting or Command to Use   |
    | --------------------------- | --------------------------------------------------- | --------------------------- |
-   | Platform                    | Select a platform from repository                   | Click hw_platform [custom]. |
+   | Platform                    | Select a platform from repository                   | Click zc702_edt [custom]. |
    | Application Project Details | Application project name                            | Enter fsbl                  |
    |                             | Select target processor for the Application project | Select ps7_cortexa9_0.      |
 

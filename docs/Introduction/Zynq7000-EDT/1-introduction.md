@@ -2,7 +2,7 @@
 
 ## Additional Documentation
 
-### *Vivado Design Suite, System Edition*
+### Vivado Design Suite, System Edition
 
 Xilinx offers a broad range of development system tools, collectively
 called the Vivado Design Suite. Various Vivado Design Suite editions
@@ -12,7 +12,7 @@ the following figure.
 
 ![](./media/image5.png)
 
-### *Other Vivado Components*
+### Other Vivado Components
 
 Other Vivado components include:
 
@@ -22,7 +22,7 @@ Other Vivado components include:
 
 -   Sample projects
 
-## *Vitis Unified Software Platform*
+## Vitis Unified Software Platform
 
 The Vitis software platform includes the Vivado Design Suite, and
 works with hardware designs created in Vivado. The Vitis unified
@@ -33,14 +33,14 @@ the Eclipse open source. For more information about the Eclipse
 development environment, see
 [http://www.eclipse.org](http://www.eclipse.org/).
 
-## *PetaLinux Tools*
+## PetaLinux Tools
 
 The PetaLinux Tools offer everything necessary to customize, build, and deploy embedded Linux solutions on Xilinx processing systems. For more information, see the [Embedded Design Tools](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html) web page.
 
 The PetaLinux Tools design hub provides information and links to documentation specific to the PetaLinux Tools. For more information, see [Embedded Design Hub - PetaLinux Tools](https://www.xilinx.com/cgi-bin/docs/ndoc?t=design%2Bhubs%3Bd%3Ddh0016-petalinux-tools-hub.html).
 
-How Zynq Devices Simplify Embedded Processor Design
----------------------------------------------------
+**How Zynq Devices Simplify Embedded Processor Design**
+
 
 Embedded systems are complex. Hardware and software portions of an embedded design are projects in themselves. Merging the two design components so that they function as one system creates additional challenges. Add an FPGA design project to the mix, and your design has the potential to become complicated.
 
@@ -60,7 +60,7 @@ For more information on the embedded design process, see the *Vivado Design Suit
 
 ## What You Need to Set Up Before Starting
 
-Before discussing the tools in depth, you should make sure they are installed properly and your environments match those required for the \"Example Project\" sections of this guide.
+Before discussing the tools in depth, you should make sure they are installed properly and your environments match those required for the "Example Project" sections of this guide.
 
 ### Hardware Requirements for this Guide
 
