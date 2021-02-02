@@ -431,7 +431,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">C:/edt/edt_versal/edt_versal.xpr</span></code></p>
 </li>
 <li><p>在 Flow Navigator 中的 <strong>IP integrator</strong> 下，单击“<strong>打开块设计 (Open Block Design)</strong>”。</p>
-<p><img alt="_images/image51.png" src="../../../_images/image51.png" /></p>
+<p><img alt="_images/image51.png" src="../../_images/image51.png" /></p>
 </li>
 <li><p>右键单击模块框图，然后选择“<strong>添加 IP (Add IP)</strong>”。</p></li>
 </ol>
@@ -441,12 +441,12 @@
 <ol>
 <li><p>双击 Versal™ ACAP CIPS IP 核。</p></li>
 <li><p>单击“<strong>PS-PMC → PL-PS 接口 (PS-PMC → PL-PS Interfaces)</strong>”。</p>
-<p><img alt="_images/image60.png" src="../../../_images/image60.png" /></p>
+<p><img alt="_images/image60.png" src="../../_images/image60.png" /></p>
 </li>
 <li><p>启用 M_AXI_FPD 接口，将“PL 复位数 (Number of PL Resets)”设置为 1，如下图所示。</p></li>
 <li><p>单击“<strong>时钟配置 (Clock Configuration)</strong>”，然后单击“输出时钟 (Output Clocks)”选项卡。</p></li>
 <li><p>展开“PMC 域时钟 (PMC Domain Clocks)”。然后展开“PL 架构时钟 (PL Fabric Clocks)”。按下图所示，配置 PL0_REF_CLK 时钟：</p>
-<p><img alt="_images/image61.jpeg" src="../../../_images/image61.jpeg" /></p>
+<p><img alt="_images/image61.jpeg" src="../../_images/image61.jpeg" /></p>
 </li>
 <li><p>单击“<strong>OK</strong>”以完成配置并返回至模块框图。</p></li>
 </ol>
@@ -458,19 +458,19 @@
 <li><p>右键单击模块框图，然后从 IP 目录中选择“<strong>添加 IP (Add IP)</strong>”。</p></li>
 <li><p>搜索 AXI GPIO，然后双击“<strong>AXI GPIO IP</strong>”以将其添加到您的设计中。</p></li>
 <li><p>将另一个 AXI GPIO IP 实例添加到设计中。</p></li>
-<li><p>单击“块设计 (Block Design)”视图中的“<strong>运行自动连接 (Run Connection Automation)</strong>”。<img alt="_images/image62.png" src="../../../_images/image62.png" /></p>
+<li><p>单击“块设计 (Block Design)”视图中的“<strong>运行自动连接 (Run Connection Automation)</strong>”。<img alt="_images/image62.png" src="../../_images/image62.png" /></p>
 <p>这样会打开“Run Connection Automation”对话框。</p>
 </li>
 <li><p>在“Run Connection Automation”对话框中，选择“全部自动化 (All Automation)”复选框。</p>
-<p><img alt="_images/image63.png" src="../../../_images/image63.png" /></p>
+<p><img alt="_images/image63.png" src="../../_images/image63.png" /></p>
 <p>这样即可选中自动操作 AXI GPIO IP 的所有端口。</p>
 </li>
 <li><p>单击 axi_gpio_0 的“<strong>GPIO</strong>”，然后将“选择开发板器件接口 (Select Board Part Interface)”设置为“<strong>定制 (Custom)</strong>”，如下所示。</p>
-<p><img alt="_images/image64.png" src="../../../_images/image64.png" /></p>
+<p><img alt="_images/image64.png" src="../../_images/image64.png" /></p>
 </li>
 <li><p>采用与 axi_gpio_1 的 GPIO 相同的设置。</p></li>
 <li><p>单击 axi_gpio_0 的“<strong>S_AXI</strong>”。按下图所示设置配置：</p>
-<p><img alt="_images/image65.jpeg" src="../../../_images/image65.jpeg" /></p>
+<p><img alt="_images/image65.jpeg" src="../../_images/image65.jpeg" /></p>
 </li>
 <li><p>采用与 axi_gpio_1 的 S_AXI 相同的配置。此配置将设置如下连接：</p>
 <ul class="simple">
@@ -483,17 +483,17 @@
 <li><p>单击“<strong>确定 (OK)</strong>”。</p></li>
 <li><p>单击“Block Design”窗口中的“<strong>Run Connection Automation</strong>”，然后选中“All Automation”复选框。</p></li>
 <li><p>单击“<strong>ext_reset_in</strong>”并配置设置，如下所示。</p>
-<p><img alt="_images/image66.jpeg" src="../../../_images/image66.jpeg" /></p>
+<p><img alt="_images/image66.jpeg" src="../../_images/image66.jpeg" /></p>
 <p>这样即可将处理器系统复位 IP 的 <code class="docutils literal notranslate"><span class="pre">ext_reset_in</span></code> 连接到 CIPS 的 pl_resetn。</p>
 </li>
 <li><p>单击“<strong>确定 (OK)</strong>”。</p></li>
 <li><p>断开 SmartConnect IP 的 <code class="docutils literal notranslate"><span class="pre">aresetn</span></code> 与处理器系统复位 IP 的 <code class="docutils literal notranslate"><span class="pre">peripheral_aresetn</span></code> 之间的连接。</p></li>
 <li><p>将 SmartConnect IP 的 <code class="docutils literal notranslate"><span class="pre">aresetn</span></code> 连接到处理器系统复位 IP 的 <code class="docutils literal notranslate"><span class="pre">interconnect_aresetn</span></code>。</p>
-<p><img alt="_images/image67.jpeg" src="../../../_images/image67.jpeg" /></p>
+<p><img alt="_images/image67.jpeg" src="../../_images/image67.jpeg" /></p>
 </li>
 <li><p>双击 axi_gpio_0 IP 以将其打开。</p></li>
 <li><p>转至“IP 配置 (IP Configuration)”选项卡并按下图所示配置设置。</p>
-<p><img alt="_images/image68.png" src="../../../_images/image68.png" /></p>
+<p><img alt="_images/image68.png" src="../../_images/image68.png" /></p>
 </li>
 <li><p>采用与 axi_gpio_1 相同的设置。</p></li>
 <li><p>再添加 4 个 slice IP 实例。</p></li>
@@ -502,14 +502,14 @@
 <li><p>同样，将 axi_gpio_1 的输出管脚 gpio_io_0 连接到 slice 2 和 slice 3。</p></li>
 <li><p>将 slice IP 的输出设置为“外部 (External)”。</p></li>
 <li><p>按下图所示配置每个 slice IP。</p>
-<p><img alt="_images/image69.png" src="../../../_images/image69.png" /></p>
-<p><img alt="_images/image70.png" src="../../../_images/image70.png" /></p>
-<p><img alt="_images/image71.png" src="../../../_images/image71.png" /></p>
-<p><img alt="_images/image72.png" src="../../../_images/image72.png" /></p>
+<p><img alt="_images/image69.png" src="../../_images/image69.png" /></p>
+<p><img alt="_images/image70.png" src="../../_images/image70.png" /></p>
+<p><img alt="_images/image71.png" src="../../_images/image71.png" /></p>
+<p><img alt="_images/image72.png" src="../../_images/image72.png" /></p>
 </li>
 </ol>
 <p>总体块设计如下图所示：</p>
-<p><img alt="_images/image73.jpeg" src="../../../_images/image73.jpeg" /></p>
+<p><img alt="_images/image73.jpeg" src="../../_images/image73.jpeg" /></p>
 </div>
 <div class="section" id="id4">
 <h4>验证设计并生成输出<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
@@ -518,7 +518,7 @@
 <li><p>返回“Block Design”视图并保存块设计（按 <strong>Ctrl+S</strong> 键）。</p></li>
 <li><p>右键单击“Block Diagram”视图中的空白区域，并选择“<strong>验证设计 (Validate Design)</strong>”。或者，您可按 <strong>F6</strong> 键。</p>
 <p>这样会打开含以下消息的对话框：</p>
-<p><img alt="validation_message" src="../../../_images/validation_message.PNG" /></p>
+<p><img alt="validation_message" src="../../_images/validation_message.PNG" /></p>
 </li>
 <li><p>单击“<strong>OK</strong>”以关闭此消息。</p></li>
 <li><p>单击“<strong>Sources</strong>”窗口。</p>
@@ -537,12 +537,12 @@
 <li><p>单击“<strong>层级 (Hierarchy)</strong>”。</p></li>
 <li><p>在“Sources”窗口中的“设计源代码 (Design Sources)”下，展开“<strong>edt_versal_wrapper</strong>”。</p></li>
 <li><p>右键单击顶层块设计 edt_versal_i : edt_versal (<code class="docutils literal notranslate"><span class="pre">edt_versal.bd</span></code>) 并选择“<strong>Generate Output Products</strong>”。</p>
-<p><img alt="_images/image151.png" src="../../../_images/image151.png" /></p>
+<p><img alt="_images/image151.png" src="../../_images/image151.png" /></p>
 </li>
 <li><p>单击“<strong>生成 (Generate)</strong>”。</p></li>
 <li><p>当“Generate Output Products”进程完成后，请单击“<strong>OK</strong>”。</p></li>
 <li><p>在“Sources”窗口中，单击“<strong>IP Sources</strong>”视图。您可在此处查看刚生成的输出文件，如下图所示。</p>
-<p><img alt="_images/image74.png" src="../../../_images/image74.png" /></p>
+<p><img alt="_images/image74.png" src="../../_images/image74.png" /></p>
 </li>
 </ol>
 </div>
@@ -563,7 +563,7 @@
 </div></blockquote>
 <ol>
 <li><p>转至“<strong>Flow Navigator → Synthesis</strong>”，然后单击“<strong>Run Synthesis</strong>”。</p>
-<p><img alt="_images/image17.png" src="../../../_images/image17.png" /></p>
+<p><img alt="_images/image17.png" src="../../_images/image17.png" /></p>
 </li>
 <li><p>如果 Vivado® 提示您在启动综合前保存工程，请单击“<strong>保存 (Save)</strong>”。</p>
 <p>运行综合时，在右上角窗口中会显示其状态栏。在整个设计进程中，此状态栏会因各种原因而呈现假脱机状态。此状态栏表示进程正在后台运行。当综合完成后，会打开“综合已完成 (Synthesis Completed)”对话框。</p>
@@ -599,7 +599,7 @@
 <ol>
 <li><p>启动 Vitis IDE 并创建新的工作空间，例如，<code class="docutils literal notranslate"><span class="pre">c:/edt/freertos</span></code>。</p></li>
 <li><p>选择“<strong>文件 (File) → 新建 (New) → 应用工程 (Application Project)</strong>”。这样会打开“<strong>新建应用工程 (Creating a New Application Project)</strong>”Wizard。如果这是首次启动 Vitis™ IDE，那么您可在“欢迎使用 (Welcome)”屏幕上选择“<strong>创建应用工程 (Create Application Project)</strong>”，如下图所示。</p>
-<p><img alt="_images/image75.jpeg" src="../../../_images/image75.jpeg" /></p>
+<p><img alt="_images/image75.jpeg" src="../../_images/image75.jpeg" /></p>
  <div class="note">
   <div class="title">注意</div>或者，您也可以选中&ldquo;下次跳过欢迎屏幕 (Skip welcome page next time)&rdquo;，这样即可每次启动时跳过欢迎页面。</div></li>
 <li><p>在 Vitis IDE 中，每个应用工程均由 4 个部分组成：目标平台、系统工程、域和模板。要在 Vitis IDE 中创建新应用工程，请遵循以下步骤：</p>
@@ -690,7 +690,7 @@
 </table><p>执行完上述步骤后，Vitis 软件平台就会为平台工程 (<strong>vck190_platform</strong>) 和系统工程 (<strong>freertos_gpio_test_system</strong>) 创建开发板支持封装，其中包含名为 <strong>freertos_gpio_test</strong> 的应用工程，位于“Explorer”视图下。</p>
 <ol>
 <li><p>右键单击位于 <code class="docutils literal notranslate"><span class="pre">src/</span></code> 下的 <code class="docutils literal notranslate"><span class="pre">freertos_hello_world.c</span></code> 文件，并将 <code class="docutils literal notranslate"><span class="pre">freertos_hello_world.c</span></code> 文件重命名为 <code class="docutils literal notranslate"><span class="pre">freertos_gpio_test.c</span></code>。将 <code class="docutils literal notranslate"><span class="pre">freertos_gpio_test.c</span></code> 文件从 FreeRTOS 工程路径复制到位于 <code class="docutils literal notranslate"><span class="pre">src/</span></code> 下的 <code class="docutils literal notranslate"><span class="pre">freertos_gpio_test.c</span></code>。</p></li>
-<li><p>右键单击 <strong>vck190_platform</strong> 并选择“<strong>Build Project</strong>”。或者，也可以单击 <img alt="_images/image77.jpeg" src="../../../_images/image77.jpeg" />。</p>
+<li><p>右键单击 <strong>vck190_platform</strong> 并选择“<strong>Build Project</strong>”。或者，也可以单击 <img alt="_images/image77.jpeg" src="../../_images/image77.jpeg" />。</p>
  <div class="note">
   <div class="title">注意</div>如果无法看到 Project Explorer，请单击左侧面板上的复原图标，然后执行此步骤。</div></li>
 </ol>
@@ -743,10 +743,10 @@ $cp &lt;design-package&gt;/vck190/linux/design_files/device_tree/system-user.dts
 </div></blockquote>
 </li>
 <li><p>浏览至“<strong>器件驱动 (Device drivers) → GPIO 支持 (GPIO Support)</strong>”，并按 <strong>Y</strong> 键将其启用。按 <strong>Enter</strong> 键并按 <strong>Y</strong> 键，启用“调试 GPIO 调用 (Debug GPIO calls)”和 <code class="docutils literal notranslate"><span class="pre">/sys/class/gpio/...</span> <span class="pre">(sysfs</span> <span class="pre">interface)</span></code> 条目，如下图所示。</p>
-<p><img alt="_images/image79.jpeg" src="../../../_images/image79.jpeg" /></p>
+<p><img alt="_images/image79.jpeg" src="../../_images/image79.jpeg" /></p>
 </li>
 <li><p>浏览至“<strong>存储器映射 GPIO 驱动 (Memory mapped GPIO drivers)</strong>”，并按 <strong>Y</strong> 键，启用“赛灵思 GPIO 支持 (Xilinx GPIO support)”和“赛灵思 Zynq GPIO 支持 (Xilinx Zynq GPIO support)”，如下图所示。</p>
-<p><img alt="_images/image80.jpeg" src="../../../_images/image80.jpeg" /></p>
+<p><img alt="_images/image80.jpeg" src="../../_images/image80.jpeg" /></p>
 </li>
 <li><p>单击“<strong>Save</strong>”保存以上配置，然后单击“<strong>Exit</strong>”选项以退出“Configuration”Wizard。</p></li>
 <li><p>使用以下命令构建 Linux 镜像。</p>

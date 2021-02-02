@@ -532,7 +532,7 @@
 <p>要创建嵌入式处理器工程，请执行以下操作：</p>
 <ol>
 <li><p>在 Flow Navigator 中的 IP integrator 下，单击“<strong>创建块设计 (Create Block Design)</strong>”。</p>
-<p><img alt="_images/image5.png" src="../../../_images/image5.png" /></p>
+<p><img alt="_images/image5.png" src="../../_images/image5.png" /></p>
 <p>这样即可打开“Create Block Design”Wizard。</p>
 </li>
 <li><p>在“Create Block Design”Wizard 中使用以下信息选择相应的选项。</p>
@@ -568,9 +568,9 @@
 <li><p>单击“<strong>确定 (OK)</strong>”。</p>
 <p>这样会打开“框图 (Diagram)”窗口视图，并显示消息称此设计为空。首先，添加来自 IP 目录的 IP。</p>
 </li>
-<li><p>单击“<strong>添加 IP (Add IP)</strong>”按钮 <img alt="_images/image6.png" src="../../../_images/image6.png" />。</p></li>
+<li><p>单击“<strong>添加 IP (Add IP)</strong>”按钮 <img alt="_images/image6.png" src="../../_images/image6.png" />。</p></li>
 <li><p>在搜索框中，输入 CIPS 以查找 Control, Interfaces and Processing System。</p></li>
-<li><p>双击“<strong>Control, Interface &amp; Processing System IP</strong>”以将其添加到块设计中。CIPS IP 核会显示在“Diagram”视图中，如下图所示：<br /><img alt="_images/image7.png" src="../../../_images/image7.png" /></p></li>
+<li><p>双击“<strong>Control, Interface &amp; Processing System IP</strong>”以将其添加到块设计中。CIPS IP 核会显示在“Diagram”视图中，如下图所示：<br /><img alt="_images/image7.png" src="../../_images/image7.png" /></p></li>
 </ol>
 </div>
 <div class="section" id="vivado-design-suite-versal-acap-cips-ip">
@@ -579,18 +579,18 @@
 <ol>
 <li><p>双击“模块框图 (Block Diagram)”窗口中的 versal_cips_0。</p></li>
 <li><p>在“开发板 (Board)”选项卡中选择“<strong>cips fixed io</strong>”，如下图所示。</p>
-<p><img alt="cips-fixed-io-selection" src="../../../_images/cips-fixed-io.png" /></p>
+<p><img alt="cips-fixed-io-selection" src="../../_images/cips-fixed-io.png" /></p>
 </li>
 <li><p>单击“OK”。默认情况下，CIPS 中未启用任何控件或接口。应用开发板预设即可在 CIPS 上启用相应外设，在开发板上这些外设的 MIO 管脚均已连接。</p></li>
 <li><p>双击“模块框图 (Block Diagram)”窗口中的 versal_cips_0。这样会打开“重新自定义 IP (Re-customize IP)”对话框，如下图所示。</p>
-<p><img alt="_images/image9.jpeg" src="../../../_images/image9.jpeg" /></p>
+<p><img alt="_images/image9.jpeg" src="../../_images/image9.jpeg" /></p>
 </li>
 <li><p>展开“<strong>PS-PMC</strong>”下拉菜单。单击“<strong>IO 配置 (IO Configuration)</strong>”，如下图所示。这样会打开“IO Configuration”对话框。</p>
 <p>I/O Configuration 会启用处理器系统中的外设，并允许为关联的 MIO 选择管脚分配。外设配置如下图所示：</p>
 <blockquote>
 <div><p><strong>注意</strong>：块自动化设置 (Block Automation) 不会显式运行。当“开发板接口 (Board interface)”从“定制 (Custom)”更改为“cips fixed io”时，会将其禁用。</p>
 </div></blockquote>
-<p><img alt="_images/Recustomize-IP.PNG" src="../../../_images/Recustomize-IP.PNG" /></p>
+<p><img alt="_images/Recustomize-IP.PNG" src="../../_images/Recustomize-IP.PNG" /></p>
 </li>
 <li><p>单击“<strong>OK</strong>”以关闭 CIPS GUI。</p></li>
 </ol>
@@ -601,10 +601,10 @@
 <ol>
 <li><p>右键单击“Block Diagram”视图中的空白区域并选择“<strong>验证设计 (Validate Design)</strong>”。</p>
 <p>或者，您可按 <strong>F6</strong> 键。这样会显示如下消息对话框：</p>
-<p><img alt="validation_message" src="../../../_images/validation_message.PNG" /></p>
+<p><img alt="validation_message" src="../../_images/validation_message.PNG" /></p>
 </li>
 <li><p>在“Block Design”视图中，单击“<strong>源代码 (Sources)</strong>”选项卡。</p>
-<p><img alt="_images/image13.png" src="../../../_images/image13.png" /></p>
+<p><img alt="_images/image13.png" src="../../_images/image13.png" /></p>
 </li>
 <li><p>单击“<strong>层级 (Hierarchy)</strong>”。</p></li>
 <li><p>在“设计源代码 (Design Sources)”下，右键单击 <strong>edt_versal</strong> 并选择“<strong>创建 HDL 封装器 (Create HDL Wrapper)</strong>”。</p>
@@ -617,7 +617,7 @@
 <li><p>在“块设计源代码 (Block Design Sources)”窗口中的“Design Sources”下，展开 <strong>edt_versal_wrapper</strong>。</p></li>
 <li><p>右键单击标题为 edt_versal_i: edt_versal 的顶层模块框图 (edt_versal.bd) 并选择“<strong>生成输出文件 (Generate Output Products)</strong>”。</p>
 <p>这样会打开“Generate Output Products”对话框，如下图所示。</p>
-<p><img alt="_images/image15.png" src="../../../_images/image15.png" /></p>
+<p><img alt="_images/image15.png" src="../../_images/image15.png" /></p>
 <blockquote>
 <div><p><strong>注意</strong>：如果在 Windows 上运行 Vivado® Design Suite，则“运行设置 (Run Settings)”下的选项可能与此处所示选项不同。在此情况下，请使用默认设置继续执行操作。</p>
 </div></blockquote>
@@ -627,7 +627,7 @@
 </li>
 <li><p>当“Generate Output Products”进程完成后，请单击“<strong>OK</strong>”。单击底部窗口的“设计运行 (Design Runs)”选项卡，以查看“OOC 模块运行/综合/实现运行 (OOC Module Runs/Synthesis/Implementation runs)”。</p></li>
 <li><p>在“Block Design Sources”窗口中，单击“<strong>IP 源代码 (IP Sources)</strong>”选项卡。您可在此处查看刚生成的输出文件，如下图所示。</p>
-<p><img alt="_images/image16.png" src="../../../_images/image16.png" /></p>
+<p><img alt="_images/image16.png" src="../../_images/image16.png" /></p>
 </li>
 </ol>
 </div>
@@ -648,7 +648,7 @@
 </div></blockquote>
 <ol>
 <li><p>转至“<strong>Flow Navigator → 综合 (Synthesis)</strong>”、单击“<strong>运行综合 (Run Synthesis)</strong>”，然后单击“<strong>OK</strong>”。</p>
-<p><img alt="_images/image17.png" src="../../../_images/image17.png" /></p>
+<p><img alt="_images/image17.png" src="../../_images/image17.png" /></p>
 </li>
 <li><p>如果 Vivado® 提示您在启动综合前保存工程，请单击“<strong>保存 (Save)</strong>”。</p>
 <p>运行综合时，在右上角窗口中会显示其状态栏。在整个设计进程中，此状态栏会因各种原因而呈现假脱机状态。此状态栏表示进程正在后台运行。当综合完成后，会打开“综合已完成 (Synthesis Completed)”对话框。</p>
@@ -686,10 +686,10 @@
 <blockquote>
 <div><p><strong>注意</strong>：请确保 SW1 开关设置为 JTAG 启动模式，如下图所示。</p>
 </div></blockquote>
-<p><img alt="_images/image19.jpeg" src="../../../_images/image19.jpeg" /></p>
+<p><img alt="_images/image19.jpeg" src="../../_images/image19.jpeg" /></p>
 </li>
 <li><p>使用电源开关给 VMK180/VCK190 评估板上电，如下图所示。</p>
-<p><img alt="_images/image20.png" src="../../../_images/image20.png" /></p>
+<p><img alt="_images/image20.png" src="../../_images/image20.png" /></p>
 <blockquote>
 <div><p><strong>注意</strong>：如果 Vitis 软件平台已运行，请跳转到步骤 6。</p>
 </div></blockquote>
@@ -698,12 +698,12 @@
 <p>或者，您可打开含默认工作空间的 Vitis 软件平台，稍后再通过如下方式来将其切换至正确的工作空间：选择“<strong>文件 (File) → 切换工作空间 (Switch Workspace)</strong>”，然后选择工作空间。</p>
 </li>
 <li><p>打开对应系统上分配的 COM 端口的串行通信实用工具。Vitis 软件平台提供了 1 个串行终端实用工具，在本教程中均使用此工具，选择“<strong>窗口 (Window) → 显示视图 (Show View) → 赛灵思 (Xilinx) → Vitis 串口终端 (Vitis Serial Terminal)</strong>”即可将其打开。</p>
-<p><img alt="_images/image21.jpeg" src="../../../_images/image21.jpeg" /></p>
+<p><img alt="_images/image21.jpeg" src="../../_images/image21.jpeg" /></p>
 </li>
-<li><p>单击 Vitis 终端上下文中的“<strong>连接到串口 (Connect to a serial port)</strong>”按钮 <img alt="_images/image22.png" src="../../../_images/image22.png" /> 以设置串行配置并连接此端口。</p></li>
+<li><p>单击 Vitis 终端上下文中的“<strong>连接到串口 (Connect to a serial port)</strong>”按钮 <img alt="_images/image22.png" src="../../_images/image22.png" /> 以设置串行配置并连接此端口。</p></li>
 <li><p>在 Windows 器件管理器中验证此端口的详细信息。</p>
 <p>UART-0 终端对应于含“Interface-0”的 Com-Port。对于此示例，默认已设置 UART-0 终端，因此对于 Com-Port，请选择含 interface-0 的端口。下图显示了 Versal™ ACAP 处理器系统的标准配置。</p>
-<p><img alt="_images/image23.png" src="../../../_images/image23.png" /></p>
+<p><img alt="_images/image23.png" src="../../_images/image23.png" /></p>
 </li>
 </ol>
 <blockquote>
@@ -714,11 +714,11 @@
 <p>以下步骤演示了为 Arm Cortex-A72 上的 OCM 创建 Hello World 应用的步骤。</p>
 <ol>
 <li><p>选择“<strong>文件 (File) → 新建 (New) → 应用工程 (Application Project)</strong>”。这样会打开“新建应用工程 (Creating a New Application Project)”Wizard。如果这是首次启动 Vitis IDE，那么您可在“欢迎使用 (Welcome)”屏幕上选择“创建应用工程 (Create Application Project)”，如下图所示。</p>
-<p><img alt="_images/image24.png" src="../../../_images/image24.png" /></p>
+<p><img alt="_images/image24.png" src="../../_images/image24.png" /></p>
 <blockquote>
 <div><p><strong>注意</strong>：或者，您也可以选中“下次跳过欢迎屏幕 (Skip welcome page next time)”，这样即可每次启动时跳过欢迎页面。</p>
 </div></blockquote>
-<p><img alt="_images/image25.jpeg" src="../../../_images/image25.jpeg" /></p>
+<p><img alt="_images/image25.jpeg" src="../../_images/image25.jpeg" /></p>
 </li>
 <li><p>根据以下信息在 Wizard 屏幕中选择相应的选项。</p>
 <p>表 3：<strong>系统属性设置</strong></p>
@@ -801,9 +801,9 @@
 </tbody>
 </table><p>执行完上述步骤后，Vitis 软件平台就会为平台工程 (vck190_platform) 和系统工程 (helloworld_system) 创建开发板支持封装，其中包含名为 helloworld_a72 的应用工程，位于“Explorer”视图下。</p>
 <ol>
-<li><p>右键单击 <strong>vck190_platform</strong> 并选择“<strong>Build Project</strong>”。或者，也可以单击 <img alt="_images/image26.png" src="../../../_images/image26.png" />。</p>
+<li><p>右键单击 <strong>vck190_platform</strong> 并选择“<strong>Build Project</strong>”。或者，也可以单击 <img alt="_images/image26.png" src="../../_images/image26.png" />。</p>
 <blockquote>
-<div><p><strong>注意</strong>：如果无法看到 Project Explorer，请单击左侧面板上的复原图标 <img alt="_images/image27.png" src="../../../_images/image27.png" /> 然后执行步骤 3。</p>
+<div><p><strong>注意</strong>：如果无法看到 Project Explorer，请单击左侧面板上的复原图标 <img alt="_images/image27.png" src="../../_images/image27.png" /> 然后执行步骤 3。</p>
 </div></blockquote>
 </li>
 </ol>
@@ -818,9 +818,9 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Successfully ran Hello World application from APU</span><span class="se">\n\r</span><span class="s2">&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p><img alt="_images/image28.png" src="../../../_images/image28.png" /></p>
+<p><img alt="_images/image28.png" src="../../_images/image28.png" /></p>
 </li>
-<li><p>单击 <img alt="_images/image29.png" src="../../../_images/image29.png" /> 以构建该工程。</p></li>
+<li><p>单击 <img alt="_images/image29.png" src="../../_images/image29.png" /> 以构建该工程。</p></li>
 </ol>
 </div>
 </div>
@@ -829,7 +829,7 @@
 <p>以下步骤演示了为 Arm Cortex-R5F 上的 TCM 创建裸机 Hello World 应用的过程。此应用需链接至域。创建应用工程前，请确保目标域软件环境可用。如果此环境不可用，请使用以下步骤将所需的域添加到您的平台中。</p>
 <ol>
 <li><p>双击“Vitis Explorer”视图中的 platform.spr 文件。（在此示例中，即 <strong>vck190_platform → platform.spr</strong>）</p></li>
-<li><p>单击主视图中的 <img alt="_images/image30.png" src="../../../_images/image30.png" /> 按钮。</p></li>
+<li><p>单击主视图中的 <img alt="_images/image30.png" src="../../_images/image30.png" /> 按钮。</p></li>
 <li><p>根据以下信息在“域 (Domain)”Wizard 屏幕中选择相应的选项。</p>
 <p>表 4：<strong>新建域设置</strong></p>
 </li>
@@ -880,7 +880,7 @@
 <div><p><strong>注意</strong>：此时您会注意到在“Explorer”视图中的平台旁出现了“过期 (Out-of-date)”修饰器。</p>
 </div></blockquote>
 </li>
-<li><p>单击 <img alt="_images/image261.png" src="../../../_images/image261.png" /> 图标以构建平台。“Explorer”视图会在平台工程内显示生成的镜像文件。</p></li>
+<li><p>单击 <img alt="_images/image261.png" src="../../_images/image261.png" /> 图标以构建平台。“Explorer”视图会在平台工程内显示生成的镜像文件。</p></li>
 </ol>
 </div>
 <div class="section" id="arm-cortex-r5f">
@@ -965,7 +965,7 @@
 <div><p><strong>注意</strong>：这样即可在现有系统工程 helloworld_system 内生成独立应用 helloworld_r5。</p>
 </div></blockquote>
 <ol class="simple">
-<li><p>右键单击 <strong>vck190_platform</strong> 并选择“<strong>Build Project</strong>”。或者，您也可以单击 <img alt="_images/image29.png" src="../../../_images/image29.png" /> 以构建工程。</p></li>
+<li><p>右键单击 <strong>vck190_platform</strong> 并选择“<strong>Build Project</strong>”。或者，您也可以单击 <img alt="_images/image29.png" src="../../_images/image29.png" /> 以构建工程。</p></li>
 </ol>
 <div class="section" id="helloworld-r5">
 <h5>修改 helloworld_r5 应用源代码<a class="headerlink" href="#helloworld-r5" title="Permalink to this headline">¶</a></h5>
@@ -976,9 +976,9 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Successfully ran Hello World application from RPU</span><span class="se">\n\r</span><span class="s2">&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p><img alt="_images/image31.png" src="../../../_images/image31.png" /></p>
+<p><img alt="_images/image31.png" src="../../_images/image31.png" /></p>
 </li>
-<li><p>单击 <img alt="_images/image29.png" src="../../../_images/image29.png" /> 以构建该工程。</p></li>
+<li><p>单击 <img alt="_images/image29.png" src="../../_images/image29.png" /> 以构建该工程。</p></li>
 </ol>
 </div>
 <div class="section" id="id7">
@@ -995,18 +995,18 @@
 </li>
 <li><p>在 <code class="docutils literal notranslate"><span class="pre">src</span></code> 目录中，删除默认 <code class="docutils literal notranslate"><span class="pre">lscript.ld</span></code> 文件。</p></li>
 <li><p>右键单击 <strong>helloworld_r5</strong> 并单击“<strong>生成连接器脚本 (Generate Linker Script)</strong>”。或者，您也可以选择“<strong>Xilinx → Generate Linker Script</strong>”。</p>
-<p><img alt="_images/image32.png" src="../../../_images/image32.png" /></p>
+<p><img alt="_images/image32.png" src="../../_images/image32.png" /></p>
 <blockquote>
 <div><p><strong>注意</strong>：在“Generate Linker Script”对话框中，左侧为只读，但“按如下方式修改工程构建设置 (Modify project build settings as follows)”字段中的“输出脚本名称 (Output Script name)”和工程构建设置除外。在右侧，有 2 个用于选择存储器分配方式的选项：“基本信息 (Basic)”选项卡或“高级 (Advanced)”选项卡。这 2 个选项执行的任务是相同的；但“Basic”选项卡粒度较低，将所有类型的数据都作为“数据”来处理，并将所有类型的指令都作为“代码”来处理。这通常足以完成大部分任务。使用“Advanced”选项卡可将软件块精准分配到各种类型的存储器中。</p>
 </div></blockquote>
 </li>
 <li><p>针对“Basic”选项卡下的 3 个部分，在其下拉菜单中选择 <strong>psv_r5_0_atcm_MEM_0</strong>，然后单击“<strong>生成 (Generate)</strong>”。</p>
-<p><img alt="_images/image33.png" src="../../../_images/image33.png" /></p>
+<p><img alt="_images/image33.png" src="../../_images/image33.png" /></p>
 <blockquote>
 <div><p><strong>注意</strong>：这样将在应用工程的 src 文件夹中生成新的连接器脚本 (<code class="docutils literal notranslate"><span class="pre">lscript.ld</span></code>)。</p>
 </div></blockquote>
 </li>
-<li><p>右键单击 <strong>helloworld _system</strong>，然后选择“<strong>构建工程 (Build Project)</strong>”，或者单击 <img alt="_images/image261.png" src="../../../_images/image261.png" />。这样即可在 helloworld_r5 工程的 Debug 文件夹内生成工程的 elf 文件。</p></li>
+<li><p>右键单击 <strong>helloworld _system</strong>，然后选择“<strong>构建工程 (Build Project)</strong>”，或者单击 <img alt="_images/image261.png" src="../../_images/image261.png" />。这样即可在 helloworld_r5 工程的 Debug 文件夹内生成工程的 elf 文件。</p></li>
 </ol>
 </div>
 </div>
@@ -1048,7 +1048,7 @@
 <blockquote>
 <div><p><strong>注意</strong>：如果存在现有启动配置，则会显示 1 个对话框，询问您是否要终止此流程。单击“<strong>Yes</strong>”。这样会在终端上显示以下日志。</p>
 </div></blockquote>
-<p><img alt="_images/image34.png" src="../../../_images/image34.png" /></p>
+<p><img alt="_images/image34.png" src="../../_images/image34.png" /></p>
 </li>
 </ol>
 </div>
@@ -1100,7 +1100,7 @@
 <blockquote>
 <div><p><strong>注意</strong>：如果存在现有运行配置，则会显示 1 个对话框，询问您是否要终止此流程。单击“<strong>Yes</strong>”。这样会在终端上显示以下日志。</p>
 </div></blockquote>
-<p><img alt="_images/image35.png" src="../../../_images/image35.png" /></p>
+<p><img alt="_images/image35.png" src="../../_images/image35.png" /></p>
 </li>
 </ol>
 <blockquote>
@@ -1153,7 +1153,7 @@
 <blockquote>
 <div><p><strong>注意</strong>：如果存在现有运行配置，则会显示 1 个对话框，询问您是否要终止此流程。单击“<strong>Yes</strong>”。这样会在终端上显示以下日志。</p>
 </div></blockquote>
-<p><img alt="_images/image36.png" src="../../../_images/image36.png" /></p>
+<p><img alt="_images/image36.png" src="../../_images/image36.png" /></p>
 </div>
 </div>
 </div>
@@ -1178,13 +1178,13 @@
 <li><p>按 <strong>Enter</strong> 键。</p></li>
 <li><p>打开 AXI NoC IP。</p></li>
 <li><p>在“开发板 (Boards)”选项卡中，按下图所示配置设置，然后单击“<strong>OK</strong>”。</p>
-<p><img alt="axi-noc-ip-board" src="../../../_images/axi-noc-ip-board.png" /></p>
+<p><img alt="axi-noc-ip-board" src="../../_images/axi-noc-ip-board.png" /></p>
 </li>
 <li><p>单击设计中的 <strong>sys_clk_0_0</strong> 管脚。</p></li>
 <li><p>在“外部接口属性 (External Interface Properties)”窗口中，选择“<strong>属性 (Properties) → 配置 (CONFIG) → FREQ_HZ</strong>”，将频率更改为 200 MHz。</p>
-<p><img alt="external-interface" src="../../../_images/external-interface.png" /></p>
+<p><img alt="external-interface" src="../../_images/external-interface.png" /></p>
 <p>这样即可添加 AXI NoC IP 以供 DDR 访问。</p>
-<p><img alt="_images/image38.jpeg" src="../../../_images/image38.jpeg" /></p>
+<p><img alt="_images/image38.jpeg" src="../../_images/image38.jpeg" /></p>
 </li>
 </ol>
 </div>
@@ -1193,13 +1193,13 @@
 <p>要验证设计并生成输出，请执行以下步骤：</p>
 <ol>
 <li><p>右键单击“Diagram”窗口的空白区域，并选择“<strong>Validate Design</strong>”。或者，您可按 <strong>F6</strong> 键。这样会打开含以下消息的对话框：</p>
-<p><img alt="validation-message" src="../../../_images/validation_message1.PNG" /></p>
+<p><img alt="validation-message" src="../../_images/validation_message1.PNG" /></p>
 </li>
 <li><p>单击“<strong>OK</strong>”以关闭此消息。</p></li>
 <li><p>在“块设计源代码 (Block Design Sources)”窗口中的“Design Sources”下，展开 <strong>edt_versal_wrapper</strong>。</p></li>
 <li><p>右键单击标题为 edt_versal_i: edt_versal 的顶层模块框图 (<code class="docutils literal notranslate"><span class="pre">edt_versal.bd</span></code>) 并选择“<strong>Generate Output Products</strong>”。</p>
 <p>这样会打开“Generate Output Products”对话框，如下图所示。</p>
-<p><img alt="_images/image151.png" src="../../../_images/image151.png" /></p>
+<p><img alt="_images/image151.png" src="../../_images/image151.png" /></p>
 <blockquote>
 <div><p><strong>注意</strong>：如果在 Windows 上运行 Vivado Design Suite，则“Run Settings”下的选项可能与此处所示选项不同。在此情况下，请使用默认设置继续执行操作。</p>
 </div></blockquote>
@@ -1209,7 +1209,7 @@
 </li>
 <li><p>当“Generate Output Products”进程完成后，请单击“<strong>OK</strong>”。单击底部窗口的“<strong>设计运行 (Design Runs)</strong>”选项卡，以查看“OOC Module Runs/Synthesis/Implementation runs”。</p></li>
 <li><p>在“Sources”窗口中，单击“<strong>IP Sources</strong>”视图。您可在此处查看刚生成的输出文件，如下图所示。</p>
-<p><img alt="_images/image39.png" src="../../../_images/image39.png" /></p>
+<p><img alt="_images/image39.png" src="../../_images/image39.png" /></p>
 </li>
 </ol>
 </div>
@@ -1230,7 +1230,7 @@
 </div></blockquote>
 <ol>
 <li><p>转至“<strong>Flow Navigator → Synthesis</strong>”，然后单击“<strong>Run Synthesis</strong>”。</p>
-<p><img alt="_images/image17.png" src="../../../_images/image17.png" /></p>
+<p><img alt="_images/image17.png" src="../../_images/image17.png" /></p>
 </li>
 <li><p>如果 Vivado® 提示您在启动综合前保存工程，请单击“<strong>保存 (Save)</strong>”。</p>
 <p>运行综合时，在右上角窗口中会显示其状态栏。在整个设计进程中，此状态栏会因各种原因而呈现假脱机状态。此状态栏表示进程正在后台运行。当综合完成后，会打开“综合已完成 (Synthesis Completed)”对话框。</p>
@@ -1269,10 +1269,10 @@
 </div></blockquote>
 </li>
 <li><p>为 Arm Cortex-A72 上运行的应用创建裸机 Hello World 系统工程，并按<a class="reference external" href="#%E4%B8%BA-arm-cortex-a72-%E4%B8%8A%E7%9A%84-ocm-%E5%88%9B%E5%BB%BA-hello-world-%E5%BA%94%E7%94%A8">为 Arm Cortex-A72 上的 OCM 创建 Hello World 应用</a>的步骤 1 到 3 和<a class="reference external" href="#%E4%BF%AE%E6%94%B9-helloworld_a72-%E5%BA%94%E7%94%A8%E6%BA%90%E4%BB%A3%E7%A0%81">修改 helloworld_a72 应用源代码</a>中的步骤 1 到 3 中所述，修改此应用的源代码。</p></li>
-<li><p>右键单击 <strong>helloworld _system</strong> 并选择“<strong>Build Project</strong>”，或者单击 <img alt="_images/image29.png" src="../../../_images/image29.png" /> 以在应用工程的 Debug 文件夹中生成项目 elf 文件。</p></li>
+<li><p>右键单击 <strong>helloworld _system</strong> 并选择“<strong>Build Project</strong>”，或者单击 <img alt="_images/image29.png" src="../../_images/image29.png" /> 以在应用工程的 Debug 文件夹中生成项目 elf 文件。</p></li>
 <li><p>按<a class="reference external" href="#%E5%9C%A8%E5%B9%B3%E5%8F%B0%E5%B7%A5%E7%A8%8B%E4%B8%AD%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%9A%84-rpu-%E5%9F%9F">在平台工程中添加新的 RPU 域</a>的步骤 2 中所述，为平台创建另一个 RPU 域。</p></li>
 <li><p>在现有系统工程内创建在 Arm Cortex-R5F 上运行的裸机 Hello World 应用（在步骤 2 中构建），并按<a class="reference external" href="#%E4%B8%BA-arm-cortex-r5f-%E5%88%9B%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%BA%94%E7%94%A8%E5%B7%A5%E7%A8%8B">为 Arm Cortex-R5F 创建独立应用工程</a>的步骤 1 到 3 和<a class="reference external" href="#%E4%BF%AE%E6%94%B9-helloworld_r5-%E5%BA%94%E7%94%A8%E6%BA%90%E4%BB%A3%E7%A0%81">修改 helloworld_r5 应用源代码</a>的步骤 1 到 3 中所述，修改此应用的源代码。</p></li>
-<li><p>右键单击 <strong>helloworld _system</strong> 并选择“Build Project”，或者单击 <img alt="_images/image29.png" src="../../../_images/image29.png" /> 以在应用工程的 Debug 文件夹中生成项目 elf 文件。</p></li>
+<li><p>右键单击 <strong>helloworld _system</strong> 并选择“Build Project”，或者单击 <img alt="_images/image29.png" src="../../_images/image29.png" /> 以在应用工程的 Debug 文件夹中生成项目 elf 文件。</p></li>
 </ol>
 <p>请参阅<a class="reference external" href="#%E5%9C%A8-vitis-%E8%BD%AF%E4%BB%B6%E5%B9%B3%E5%8F%B0%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95%E5%99%A8%E4%BB%A5-jtag-%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E5%BA%94%E7%94%A8">在 Vitis 软件平台中使用系统调试器以 JTAG 模式运行应用</a>以了解如何在 Vitis 软件平台中使用系统调试器以 JTAG 模式运行以上构建的应用，并参阅<a class="reference external" href="./4-boot-and-config.md#%E4%B8%BA%E7%8B%AC%E7%AB%8B%E5%BA%94%E7%94%A8%E7%94%9F%E6%88%90%E5%90%AF%E5%8A%A8%E9%95%9C%E5%83%8F">为独立应用生成启动镜像</a>以了解如何为独立应用生成启动镜像。</p>
 <p>© 2020 年赛灵思公司版权所有。</p>

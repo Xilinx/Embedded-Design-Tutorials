@@ -446,7 +446,7 @@
 <p>Vitis 软件平台不支持为 Versal 架构自动创建启动镜像。要生成可启动镜像，请使用 Bootgen，它是包含在 Vitis 软件平台封装内的命令行实用工具。Bootgen 的主要功能是用于集成可启动镜像的各分区。Bootgen 使用 Bootgen 镜像格式 (BIF) 文件作为输入，并以二进制 BIN 或 PDI 格式生成单一文件镜像。它可输出单一文件镜像，此文件镜像可加载到非易失性存储器 (NVM)（QSPI 或 SD 卡）中。请使用以下步骤生成 PDI/BIN 文件：</p>
 <ol>
 <li><p>如果尚未打开“XSCT Console”视图，请在 Vitis IDE 中单击“<strong>窗口 (Window) → 显示视图 (Show View)</strong>”打开此视图。在“Show View”Wizard 的搜索栏中输入 <code class="docutils literal notranslate"><span class="pre">xsct</span> <span class="pre">console</span></code>。单击“<strong>Open</strong>”打开控制台。</p>
-<p><img alt="_images/image49.png" src="../../../_images/image49.png" /></p>
+<p><img alt="_images/image49.png" src="../../_images/image49.png" /></p>
 </li>
 <li><p>创建文件夹，在“XSCT Console”中输入以下命令以便在该文件夹中生成启动镜像：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">bootimages</span>
@@ -462,7 +462,7 @@
 <li><p>在“XSCT Console”视图中运行以下命令。</p>
 <p><code class="docutils literal notranslate"><span class="pre">bootgen</span> <span class="pre">-image</span> <span class="pre">&lt;bif</span> <span class="pre">filename&gt;.bif</span> <span class="pre">-arch</span> <span class="pre">versal</span> <span class="pre">-o</span> <span class="pre">BOOT.BIN</span></code></p>
 <p>在“XSCT Console”视图中会显示以下日志。</p>
-<p><img alt="_images/image51.jpeg" src="../../../_images/image51.jpeg" /></p>
+<p><img alt="_images/image51.jpeg" src="../../_images/image51.jpeg" /></p>
 </li>
 </ol>
 </div>
@@ -482,18 +482,18 @@
 <li><p>将 SD 卡加载到 VMK180/VCK190 评估板上的 J302 连接器中。</p></li>
 <li><p>将 Micro USB 线一端连接到 VMK180/VCK190 评估板上的 Micro USB 端口 (J207)，并将另一端连接到主机上打开的 USB 端口中。</p></li>
 <li><p>按下图所示设置 SW1 开关，以将评估板配置为以 SD 启动模式来启动。</p>
-<p><img alt="_images/image52.png" src="../../../_images/image52.png" /></p>
+<p><img alt="_images/image52.png" src="../../_images/image52.png" /></p>
 </li>
 <li><p>将 12V 电源连接到 VMK180/VCK190 6 针 Molex 连接器。</p></li>
 <li><p>根据所用主机使用 Tera Term 或 Minicom 启动终端会话。为系统设置 COM 端口和波特率，如下图所示。</p>
-<p><img alt="_images/image46.png" src="../../../_images/image46.png" /></p>
+<p><img alt="_images/image46.png" src="../../_images/image46.png" /></p>
 </li>
 <li><p>对于端口设置，请验证器件管理器中的 COM 端口并选择含 interface-0 的 com 端口。</p></li>
 <li><p>使用电源开关 (SW13) 开启 VMK180/VCK190 评估板电源。</p>
 <blockquote>
 <div><p><strong>注意</strong>：对于独立镜像，在终端上会显示相应的日志。对于 Linux 镜像，在终端上启动顺序执行完成后，您可使用 user: root 和 pw: root 登录。随后，在终端上运行 gpiotest。这样您将看到如下图所示的日志。</p>
 </div></blockquote>
-<p><img alt="_images/led_example_console_prints.PNG" src="../../../_images/led_example_console_prints.PNG" /></p>
+<p><img alt="_images/led_example_console_prints.PNG" src="../../_images/led_example_console_prints.PNG" /></p>
 </li>
 </ol>
 </div>
@@ -501,7 +501,7 @@
 <h2>QSPI 启动模式的启动顺序<a class="headerlink" href="#qspi" title="Permalink to this headline">¶</a></h2>
 <p>本节旨在演示 QSPI 启动模式的启动顺序。对此，您需要按下图所示方式连接 QSPI 子卡（器件编号 X_EBM-01，REV_A01）：</p>
 <p>图 2：<strong>VCK190 上的子卡</strong></p>
-<p><img alt="QSPI-boot-halfform-factor-module" src="../../../_images/image54.jpeg" /></p>
+<p><img alt="QSPI-boot-halfform-factor-module" src="../../_images/image54.jpeg" /></p>
 <blockquote>
 <div><p><strong>注意</strong>：对于独立应用，请将 boot.bin 复制到 SD 卡。对于 Linux 镜像，您可使用发布的封装路径中所含现成测试镜像 <code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/&lt;vck190</span> <span class="pre">or</span> <span class="pre">vmk180&gt;/linux/bootimages</span></code> 来启动 VCK190/VMK180 评估板，或者，还可参阅<a class="reference external" href="./5-system-design-example.md#%E5%B7%A5%E7%A8%8B%E7%A4%BA%E4%BE%8B%E4%BD%BF%E7%94%A8-petalinux-%E5%88%9B%E5%BB%BA-linux-%E9%95%9C%E5%83%8F">工程示例：使用 PetaLinux 创建 Linux 镜像</a>，使用 PetaLinux 工具构建您自己的 Linux 镜像集合。</p>
 </div></blockquote>
@@ -509,10 +509,10 @@
 <ol>
 <li><p>请在子卡断电情况下安装子卡。</p></li>
 <li><p>将启动模式开关 SW1 设置为 ON-OFF-OFF-OFF，如下图所示。</p>
-<p><img alt="_images/image55.jpeg" src="../../../_images/image55.jpeg" /></p>
+<p><img alt="_images/image55.jpeg" src="../../_images/image55.jpeg" /></p>
 </li>
 <li><p>将 SD 卡插入开发板上的 SD 卡槽中，如下所示：</p>
-<p><img alt="_images/image56.jpeg" src="../../../_images/image56.jpeg" /></p>
+<p><img alt="_images/image56.jpeg" src="../../_images/image56.jpeg" /></p>
 </li>
 <li><p>给开发板上电。在 U-Boot 阶段，出现“Hit any key to stop autoboot:”消息时，请按任意键，然后运行以下命令以将镜像刷写到 QSPI 子卡上：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sf probe 0 0 0
@@ -527,7 +527,7 @@ sf write 0x80000 0x7F80000 0x999
 </div>
 </li>
 <li><p>刷写完镜像后，关闭板上电源开关，将启动模式管脚设置更改为 QSPI 模式，即 ON-OFF-ON-ON，如下所示：</p>
-<p><img alt="_images/image52.png" src="../../../_images/image52.png" /></p>
+<p><img alt="_images/image52.png" src="../../_images/image52.png" /></p>
 </li>
 <li><p>重新给开发板上电。这样，开发板即可使用 QSPI 闪存中的镜像完成启动。</p></li>
 </ol>

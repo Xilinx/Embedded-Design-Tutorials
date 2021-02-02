@@ -435,11 +435,11 @@
 <p><code class="docutils literal notranslate"><span class="pre">C:/edt/edt_versal/edt_versal.xpr</span></code></p>
 </li>
 <li><p>在 Flow Navigator 中的 <strong>IP integrator</strong> 下，单击“<strong>打开块设计 (Open Block Design)</strong>”。</p>
-<p><img alt="_images/image51.png" src="../../../_images/image51.png" /></p>
+<p><img alt="_images/image51.png" src="../../_images/image51.png" /></p>
 </li>
-<li><p>双击 Versal ACAP CIPS IP 核，然后单击“<strong>调试 (Debug) → 调试配置 (Debug Configuration)</strong>”。<img alt="_images/ch6-image1.png" src="../../../_images/ch6-image1.png" /></p></li>
+<li><p>双击 Versal ACAP CIPS IP 核，然后单击“<strong>调试 (Debug) → 调试配置 (Debug Configuration)</strong>”。<img alt="_images/ch6-image1.png" src="../../_images/ch6-image1.png" /></p></li>
 <li><p>在“<strong>高速调试端口 (High-Speed Debug Port (HSDP))</strong>”下，选择“<strong>AURORA</strong>”作为“<strong>往来调试包控制器的路径 (Pathway to/from Debug Packet Controller (DPC))</strong>”。</p>
-<p><img alt="_images/ch6-image2.png" src="../../../_images/ch6-image2.png" /></p>
+<p><img alt="_images/ch6-image2.png" src="../../_images/ch6-image2.png" /></p>
 </li>
 <li><p>设置以下选项：</p>
 <ul class="simple">
@@ -453,8 +453,8 @@
 </li>
 <li><p>单击“<strong>确定 (OK)</strong>”保存更改。这样会在 CIPS IP 上创建 2 个端口：<code class="docutils literal notranslate"><span class="pre">gt_refclk1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">HSDP1_GT</span></code>。</p></li>
 <li><p>在“<strong>IP Integrator</strong>”页面上右键单击 <code class="docutils literal notranslate"><span class="pre">gt_refclk1</span></code> 并选择“<strong>设为外部端口 (Make External)</strong>”。对 <strong>HSDP1_GT</strong> 执行相同的操作。</p>
-<p><img alt="_images/ch6-image4.png" src="../../../_images/ch6-image4.png" /></p>
-<p><img alt="_images/ch6-image5.png" src="../../../_images/ch6-image5.png" /></p>
+<p><img alt="_images/ch6-image4.png" src="../../_images/ch6-image4.png" /></p>
+<p><img alt="_images/ch6-image5.png" src="../../_images/ch6-image5.png" /></p>
 </li>
 <li><p>单击“<strong>验证设计 (Validate Design)</strong>”，然后单击“<strong>保存 (Save)</strong>”。</p></li>
 </ol>
@@ -464,7 +464,7 @@
 <ol>
 <li><p>在 Flow Navigator 中的“<strong>编程和调试 (Programming and Debug)</strong>”下，单击“<strong>生成器件镜像 (Generate Device Image)</strong>”以启动实现。</p>
 <p>当完成器件镜像生成后，会显示“器件镜像生成已完成 (Device Image Generation Completed)”对话框。</p>
-<p><img alt="_images/ch6-image9.png" src="../../../_images/ch6-image9.png" /></p>
+<p><img alt="_images/ch6-image9.png" src="../../_images/ch6-image9.png" /></p>
 </li>
 </ol>
 </div>
@@ -472,7 +472,7 @@
 <h3>导出硬件 (XSA)<a class="headerlink" href="#xsa" title="Permalink to this headline">¶</a></h3>
 <ol>
 <li><p>从 Vivado 工具栏中选择“<strong>文件 (File) → 导出 (Export) → 导出硬件 (Export Hardware)</strong>”。这样会打开“导出硬件 (Export Hardware)”对话框。</p>
-<p><img alt="_images/ch6-image10.png" src="../../../_images/ch6-image10.png" /></p>
+<p><img alt="_images/ch6-image10.png" src="../../_images/ch6-image10.png" /></p>
 </li>
 <li><p>选择“<strong>固定 (Fixed)</strong>”，然后单击“<strong>下一步 (Next)</strong>”。</p></li>
 <li><p>选择“<strong>包含器件镜像 (Include Device Image)</strong>”，然后单击“<strong>下一步 (Next)</strong>”。</p></li>
@@ -522,7 +522,7 @@
 <p>构建并封装 Linux 镜像后，即可使用 JTAG 或 HSDP 将这些镜像加载到 VCK190 或 VMK180评估板上。要设置 SmartLynq+ 模块以便使用 HSDP 建立链接，请遵循下列步骤：</p>
 <ol>
 <li><p>使用 USB-C 线来连接 VCK190 USB-C 连接器与 SmartLynq+ 模块。</p>
-<p><img alt="_images/ch6-slp1.png" src="../../../_images/ch6-slp1.png" /></p>
+<p><img alt="_images/ch6-slp1.png" src="../../_images/ch6-slp1.png" /></p>
 </li>
 <li><p>将 SmartLynq+ 连接至以太网或 USB。</p>
 <ul class="simple">
@@ -532,7 +532,7 @@
 </li>
 <li><p>将电源适配器连接到 SmartLynq+，并对 VCK190/VMK180 开发板上电。</p></li>
 <li><p>当 SmartLynq+ 完成启动后，会在屏幕上的 <code class="docutils literal notranslate"><span class="pre">eth0</span></code> 或 <code class="docutils literal notranslate"><span class="pre">usb0</span></code> 下显示 IP 地址。请记录此 IP 地址，因为在使用以太网和使用 USB 的情况下都将使用此 IP 地址连接到 SmartLynq+。</p>
-<p><img alt="_images/ch6-image23.jpg" src="../../../_images/ch6-image23.jpg" /></p>
+<p><img alt="_images/ch6-image23.jpg" src="../../_images/ch6-image23.jpg" /></p>
 <blockquote>
 <div><p><strong>注意</strong>：如果使用以太网，那么 SmartLynq+ 会从网络上找到的 DHCP 服务器获取 IP 地址。如果使用 USB，那么 USB 端口采用固定 IP 地址：<code class="docutils literal notranslate"><span class="pre">10.0.0.2</span></code>。</p>
 </div></blockquote>
@@ -561,7 +561,7 @@
 </div>
 </li>
 <li><p>使该终端保持打开状态，继续下一章。</p>
-<p><img alt="_images/ch6-image15.png" src="../../../_images/ch6-image15.png" /></p>
+<p><img alt="_images/ch6-image15.png" src="../../_images/ch6-image15.png" /></p>
 </li>
 </ol>
 </div>
@@ -571,7 +571,7 @@
 <p>通过使用本教程随附的设计包中所含脚本，即可使用 SmartLynq+ 模块来下载先前步骤中创建的 Linux 镜像。此脚本可使用 JTAG 或 HSDP。</p>
 <ol>
 <li><p>在可访问 SmartLynq+ 模块的机器上，打开 Vivado tcl shell。</p>
-<p><img alt="_images/ch6-image24.png" src="../../../_images/ch6-image24.png" /></p>
+<p><img alt="_images/ch6-image24.png" src="../../_images/ch6-image24.png" /></p>
 </li>
 <li><p>如果在用于构建 PetaLinux 的机器上工作，请将工作目录切换至 PetaLinux 构建根目录，或者切换至先前步骤中已传输至本地机器的 <code class="docutils literal notranslate"><span class="pre">images/Linux</span></code> 目录所在的位置。</p></li>
 <li><p>在 Vivado tcl shell 中，发出以下命令使用 HSDP 下载镜像：</p>
@@ -579,16 +579,16 @@
 </pre></div>
 </div>
 <p>这样即可使用 JTAG 加载 <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code>，然后将自动协商 HSDP 链接，并使用 HSDP 加载其余启动镜像。这比使用 JTAG 要快得多。</p>
-<p><img alt="_images/ch6-image16.png" src="../../../_images/ch6-image16.png" /></p>
+<p><img alt="_images/ch6-image16.png" src="../../_images/ch6-image16.png" /></p>
 <blockquote>
 <div><p><strong>注意</strong>：您也可以通过将此脚本的最后一个实参更改为 <code class="docutils literal notranslate"><span class="pre">FTDI-JTAG</span></code> 来使用 JTAG 下载 Linux 镜像，如下图所示：<code class="docutils literal notranslate"><span class="pre">xsdb</span> <span class="pre">Linux-download</span> <span class="pre">&lt;smartlynq+</span> <span class="pre">ip&gt;</span> <span class="pre">images/Linux</span> <span class="pre">FTDI-JTAG</span></code>。这样即可使用 JTAG 对所有 Linux 启动镜像进行编程。请注意此操作与使用 HSDP 下载时的速度差异。</p>
 </div></blockquote>
 </li>
 <li><p>在上一章中打开的终端上，可通过 VCK190 UART 查看 Versal 启动消息：</p>
-<p><img alt="_images/ch6-image17.png" src="../../../_images/ch6-image17.png" /></p>
+<p><img alt="_images/ch6-image17.png" src="../../_images/ch6-image17.png" /></p>
 </li>
 <li><p>使用 JTAG 或 HSDP 完成 Linux 启动后，将显示以下登录屏幕：</p>
-<p><img alt="_images/ch6-image18.png" src="../../../_images/ch6-image18.png" /></p>
+<p><img alt="_images/ch6-image18.png" src="../../_images/ch6-image18.png" /></p>
 </li>
 </ol>
 </div>

@@ -435,7 +435,7 @@
 <p>调试器支持通过单应用调试和 GNU 调试器 (GDB) 来进行调试。赛灵思自定义系统调试器衍生自开源工具并与 Vitis 软件平台集成。</p>
 <p>赛灵思系统调试器使用赛灵思 hw_server 作为底层调试引擎。Vitis 软件平台可将每项用户界面操作转换为一连串目标通信框架 (TCF) 命令。随后，它会对系统调试器的输出进行处理，以显示所调试的程序的当前状态。它可使用赛灵思 hw_server 与硬件上的处理器进行通信。调试工作流程如下图所示。</p>
 <p>图 1：<strong>系统调试器流程</strong></p>
-<p><img alt="_images/quz1567060977342_LowRes.png" src="../../../_images/quz1567060977342_LowRes.png" /></p>
+<p><img alt="_images/quz1567060977342_LowRes.png" src="../../_images/quz1567060977342_LowRes.png" /></p>
 <p>调试工作流程由以下几个部分组成。</p>
 <ul class="simple">
 <li><p><strong>可执行 ELF 文件</strong>：要调试应用，您必须使用专为调试而编译的 elf 文件。调试用 elf 文件包含额外调试信息，以供调试器在源代码与该源代码所生成的二进制文件之间建立直接关联。要管理构建配置，请右键单击软件应用并选择“<strong>构建配置 (Build Configurations) → 管理 (Manage)</strong>”。</p></li>
@@ -455,11 +455,11 @@
 <ol>
 <li><p>右键单击应用，然后单击“<strong>构建工程 (Build Project)</strong>”以构建应用。</p></li>
 <li><p>右键单击应用工程并选择“<strong>调试方式 (Debug As) → 在硬件上启动（单应用调试）(Launch on Hardware (Single Application Debug))</strong>”，如下图所示。</p>
-<p><img alt="_images/image40.jpeg" src="../../../_images/image40.jpeg" /></p>
+<p><img alt="_images/image40.jpeg" src="../../_images/image40.jpeg" /></p>
 <blockquote>
 <div><p><strong>注意</strong>：“Debug”透视图也可通过选择“<strong>窗口 (Window) → 调试透视图 (Debug Perspective)</strong>”来启动。</p>
 </div></blockquote>
-<p><img alt="_images/image41.jpeg" src="../../../_images/image41.jpeg" /></p>
+<p><img alt="_images/image41.jpeg" src="../../_images/image41.jpeg" /></p>
 <p><strong>注意</strong>：此页面中所示地址可能与您的系统上所示地址略有不同。</p>
 <p>处理器当前置于 main() 方法开头，且程序执行暂挂于行 0x00000000fffc0cf0。您可在“反汇编 (Disassembly)”视图中确认此信息，在此视图中显示汇编级程序执行同样暂挂于 0x00000000fffc0cf0。</p>
 <p><strong>注意</strong>：如果“<strong>Disassembly</strong>”视图未显示，请选择“<strong>窗口 (Window) → 反汇编 (Disassembly)</strong>”。</p>
@@ -501,11 +501,11 @@
 <ol>
 <li><p>在目标上的 USB-JTAG 连接器与主机上的 USB 端口之间使用 USB 线进行连接。</p></li>
 <li><p>在“JTAG 启动 (JTAG Boot)”模式下设置开发板，其中 SW1 设置如下图所示。</p>
-<p><img alt="_images/image43.jpeg" src="../../../_images/image43.jpeg" /></p>
+<p><img alt="_images/image43.jpeg" src="../../_images/image43.jpeg" /></p>
 </li>
 <li><p>使用电源开关 SW13 给开发板上电。</p></li>
 <li><p>单击 Vitis 软件平台工具栏中的“<strong>XSCT 控制台 (XSCT Console)</strong>”按钮，以打开“XSCT Console”视图。或者，也可依次单击“<strong>Xilinx → XSCT Console</strong>”以打开“XSCT Console”视图。</p>
-<p><img alt="_images/image44.jpeg" src="../../../_images/image44.jpeg" /></p>
+<p><img alt="_images/image44.jpeg" src="../../_images/image44.jpeg" /></p>
 </li>
 <li><p>在“<strong>XSCT Console</strong>”视图中，使用 connect 命令通过 JTAG 连接至目标：</p>
 <p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">connect</span></code></p>
@@ -529,7 +529,7 @@
 <div><p><strong>注意</strong>：对于非交互式使用（例如，脚本编制），可使用 -filter 选项来选择目标，以代替按 ID 选择目标。</p>
 </div></blockquote>
 <p>下图中列出了目标。</p>
-<p><img alt="_images/image45.png" src="../../../_images/image45.png" /></p>
+<p><img alt="_images/image45.png" src="../../_images/image45.png" /></p>
 </li>
 <li><p>现在，请在 Arm® Cortex-R5F 核 0 上下载 hello_world_r5 应用。</p></li>
 <li><p>选择 RPU Cortex™-R5F 核 0 目标 ID。</p>
@@ -552,7 +552,7 @@
 <h3>串口终端配置<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ol>
 <li><p>根据所用主机使用 Tera Term 或 Minicom 启动终端会话，COM 端口和波特率如下图所示。</p>
-<p><img alt="_images/image46.png" src="../../../_images/image46.png" /></p>
+<p><img alt="_images/image46.png" src="../../_images/image46.png" /></p>
 </li>
 <li><p>对于端口设置，请验证器件管理器中的 COM 端口。VCK190 评估板提供了 3 个公开的 USB UART 接口。请选择与编号最低的接口关联的 COM 端口。在此例中，对于 UART-0，请选择含 interface-0 的 com-port。</p></li>
 </ol>
@@ -582,9 +582,9 @@ xsct% bt
 </pre></div>
 </div>
 <p>您可使用 <code class="docutils literal notranslate"><span class="pre">help</span></code> 命令来查找其它选项。</p>
-<p><img alt="_images/image47.png" src="../../../_images/image47.png" />}</p>
+<p><img alt="_images/image47.png" src="../../_images/image47.png" />}</p>
 <p>您可使用 <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">running</span></code> 命令获取可用于利用 XSCT 运行或调试应用的选项列表。</p>
-<p><img alt="_images/image48.png" src="../../../_images/image48.png" /></p>
+<p><img alt="_images/image48.png" src="../../_images/image48.png" /></p>
 </li>
 <li><p>现在，您可运行代码。</p>
 <p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">con</span></code></p>
