@@ -331,7 +331,11 @@
               
             
             
-              <p class="caption"><span class="caption-text">Versal ACAP Embedded Design Tutorial</span></p>
+              <p class="caption"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Versal ACAP Embedded Design Tutorial</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-getting-started.html">Getting Started</a></li>
@@ -447,9 +451,9 @@
 <p>To enable the HSDP, start with the VCK190 or VMK180 project that you built in the preceding chapter (or, the pre-built project provided in the design package <code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/smartlynq_plus/vck190/design_files/vck190_edt_versal_hsdp.xpr.zip</span></code>) and modify the project to include HSDP support.</p>
 <div class="section" id="modifying-the-design-to-enable-the-hsdp">
 <h3>Modifying the Design to Enable the HSDP<a class="headerlink" href="#modifying-the-design-to-enable-the-hsdp" title="Permalink to this headline">¶</a></h3>
-<p>This design uses the project built in <a class="reference external" href="#5-system-design-example">System Design Example using Scalar Engine and Adaptable Engine</a> and enables the HSDP interface. You can do this using the Vivado IP integrator.</p>
+<p>This design uses the project built in <a class="reference external" href="../docs/6-system-design-example-HSDP.html">System Design Example using Scalar Engine and Adaptable Engine</a> and enables the HSDP interface. You can do this using the Vivado IP integrator.</p>
 <ol>
-<li><p>Open the Vivado project you created in <a class="reference external" href="#5-system-design-example">Chapter 5: System Design Example using Scalar Engine and Adaptable Engine</a>.</p>
+<li><p>Open the Vivado project you created in <a class="reference external" href="../docs/5-system-design-example.html">Chapter 5: System Design Example using Scalar Engine and Adaptable Engine</a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">C:/edt/edt_versal/edt_versal.xpr</span></code></p>
 </li>
 <li><p>In the Flow Navigator, under <strong>IP Integrator</strong>, click <strong>Open Block Design</strong>.</p>
@@ -502,13 +506,13 @@
 </div>
 <div class="section" id="creating-the-hsdp-enabled-linux-image-using-petalinux">
 <h2>Creating the HSDP-enabled Linux Image Using PetaLinux<a class="headerlink" href="#creating-the-hsdp-enabled-linux-image-using-petalinux" title="Permalink to this headline">¶</a></h2>
-<p>This example rebuilds the PetaLinux project using the HSDP-enabled XSA that was built in the preceding step. The assumption is that the PetaLinux project has been created as per the instructions in <a class="reference external" href="#5-system-design-example">System Design Example using Scalar Engine and Adaptable Engine</a>.</p>
+<p>This example rebuilds the PetaLinux project using the HSDP-enabled XSA that was built in the preceding step. The assumption is that the PetaLinux project has been created as per the instructions in <a class="reference external" href="../docs/5-system-design-example.html">System Design Example using Scalar Engine and Adaptable Engine</a>.</p>
 <blockquote>
-<div><p><strong>Important:</strong> If you are building this tutorial without having created a PetaLinux project in the preceding chapter, follow steps 1 through 12 in the <a class="reference external" href="./5-system-design-example.html#example-project-creating-Linux-images-using-PetaLinux">Example Project: Creating Linux Images Using PetaLinux</a> section to create a new PetaLinux project.</p>
+<div><p><strong>Important:</strong> If you are building this tutorial without having created a PetaLinux project in the preceding chapter, follow steps 1 through 12 in the <a class="reference external" href="../docs/5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> section to create a new PetaLinux project.</p>
 </div></blockquote>
 <p>This example needs a Linux host machine. Refer to the <a class="reference external" href="https://www.xilinx.com/member/versal_tools_ea.html#embedded">PetaLinux Tools Documentation Reference Guide (UG1144)</a> for information on dependencies and installation procedure for the PetaLinux tool.</p>
 <ol>
-<li><p>Change to the PetaLinux project directory that was created in <a class="reference external" href="./5-system-design-example.html#example-project-creating-Linux-images-using-PetaLinux">Example Project: Creating Linux Images Using PetaLinux</a> using the following command.</p>
+<li><p>Change to the PetaLinux project directory that was created in <a class="reference external" href="../docs/5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> using the following command.</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">led_example</span></code></p>
 </li>
 <li><p>Copy the new hardware platform project XSA to the Linux host machine one directory above the PetaLinux build root.</p>
@@ -655,7 +659,7 @@
   <div role="contentinfo" class="copyright">
     <p class="footerinfo">
       <span class="lastupdated">
-        Last updated on January 29, 2021.
+        Last updated on February 02, 2021.
       </span>
 
     </p>
