@@ -389,4 +389,6 @@ This is an alternative way for programming QSPI Flash with the Flash Programming
     For Linux Application creation and debugging, refer to [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform).
 
 
+See the [next chapter](./8-custom-ip-driver-linux.md) for creating custom IP and device drivers for Linux.
+
 © Copyright 2015–2021 Xilinx, Inc.

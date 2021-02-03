@@ -6,7 +6,6 @@
 
 # Using the Zynq SoC Processing System
 
-
 Now that you have been introduced to the Xilinx&reg; Vivado&reg; Design Suite, you will begin looking at how to use it to develop an embedded system using the Zynq&reg;-7000 SoC processing system (PS).
 
 The Zynq SoC consists of Arm&reg; Cortex&trade;-A9 cores, many hard intellectual property components (IPs), and programmable logic (PL). This offering can be used in two ways:
@@ -82,7 +81,7 @@ Perform the following steps to create an embedded processor project.
 
     ![ZYNQ7 in block diagram](./media/image9.png)
 
-### Configuring the Zynq7 Processing System with Presets in Vivado
+### Configuring the Zynq-7000 Processing System with Presets in Vivado
 
 In the Block Diagram window, notice the message stating that Designer assistance is available, as shown in the following figure.
 
@@ -217,7 +216,7 @@ Debugger in the Vitis IDE.
 - Input Files: system_wrapper.xsa
 - Output Files: hello_world.elf
 
-### Setup the board ###
+### Setting Up the Board
 
 1.  Connect the power cable to the board.
 
@@ -416,5 +415,8 @@ threaded semi-hosted environment.
 top of the standalone OS. The domain/BSP that your software
 application targets is selected during the New Platform Project
 creation process.*
+
+Learn how to debug using the Vitis software platform in the [next chapter](./3-debugging-vitis.md).
+
 
 © Copyright 2015–2021 Xilinx, Inc.

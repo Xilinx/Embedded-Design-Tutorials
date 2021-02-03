@@ -196,7 +196,7 @@ int PsUartSetup(INTC *IntcInstPtr, XUartPs *UartInstPtr,
 	}
 
 	/*
-	 * Setup the handlers for the UART that will be called from the
+	 * Set up the handlers for the UART that will be called from the
 	 * interrupt context when data has been sent and received, specify
 	 * a pointer to the UART driver instance as the callback reference
 	 * so the handlers are able to access the instance data

@@ -5,7 +5,7 @@
 
 </table>
 
-# Creating Custom IP and Device Driver for Linux
+# Creating Custom IP and Device Drivers for Linux
 
 In this chapter, you will create an intellectual property (IP) using
 the Create and Package New IP wizard. You will also design a system to
@@ -373,7 +373,7 @@ following steps are required:
 1.  Set the toolchain path in your Linux Workstation.
 
 2.  Download the kernel source code and compile it. For downloading and
-    compilation, refer to the steps mentioned in the [Xilinx Zynq Linux Wiki Page](http://wiki.xilinx.com/zynq-linux).
+    compilation, refer to the steps mentioned in the [Xilinx Zynq Linux Wiki Page](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841961/Zynq+Linux).
 
 ## Example 12: Device Driver Development
 
@@ -463,7 +463,7 @@ blinking and retain the previous state.
 #### Booting Linux on the Target Board
 
 Boot Linux on the Zynq SoC ZC702 target board, as described in
-[Booting Linux on a Zynq SoC Board](6-linux-booting-debug.md#booting-linux-on-a-zynq-soc-board).
+[Booting Linux on a Zynq SoC Board](7-linux-booting-debug.md#booting-linux-on-a-zynq-soc-board).
 
 #### Loading Modules and Executing Applications
 
@@ -605,5 +605,5 @@ a Windows machine.
 
 20. After you finish debugging the Linux application, close the Vitis
     software platform.
-    
+
 © Copyright 2015–2021 Xilinx, Inc.

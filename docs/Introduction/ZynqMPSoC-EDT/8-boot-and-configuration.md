@@ -820,7 +820,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
 4. On the U-Boot prompt, press **Enter** to terminate autoboot. Verify from the UART1 console that the R5 application has also loaded successfully.
 
-5. Run the following commands to setup the DFU environment in the U-Boot command line:
+5. Run the following commands to set up the DFU environment in the U-Boot command line:
 
     ```
     $ setenv loadaddr 0x10000000
@@ -880,7 +880,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
     >**Note:** At this point, use the Zadig utility to install drivers for the "USB download gadget" with device ID 03fd:0300. Without this, the Zadig software does not show "Xilinx DFU Downloader" after booting U-Boot on the target.
 
-8. Run the following commands to setup the DFU environment in the U-Boot command line:
+8. Run the following commands to set up the DFU environment in the U-Boot command line:
 
     ```
     $ setenv loadaddr 0x10000000

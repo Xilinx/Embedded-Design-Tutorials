@@ -341,12 +341,8 @@ The Debug view also shows the file, function, and the line information
 of the breakpoint hit. A thread label includes the name of a CPU core,
 if the thread is currently running on a core.
 
-You can perform source-level debugging, such as stepping in, stepping
-out, and watching variables, stack trace, and registers.
-
-You can also perform process/thread level debugging, including inserting
-breakpoints, stepping in, stepping out, watching variables, stack trace, and so
-on.
+You can perform source-level debugging, such as step-into, step-out, and watching variables, stack trace, and registers. You can also perform process/thread level debugging, including inserting
+breakpoints, step-into, step-out, watching variables, stack trace, and so on.
 
 **Note:** One limitation with this process is that the target side
 path for a binary file does not include a mount point path. For

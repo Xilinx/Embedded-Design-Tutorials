@@ -354,7 +354,7 @@ int TmrControllerSetup(INTC* IntcInstancePtr,
 	}
 
 	/*
-	 * Setup the handler for the timer counter that will be called from the
+	 * Set up the handler for the timer counter that will be called from the
 	 * interrupt context when the timer expires, specify a pointer to the
 	 * timer counter driver instance as the callback reference so the handler
 	 * is able to access the instance data
@@ -639,7 +639,7 @@ int UartPsSetup(INTC *IntcInstPtr, XUartPs *UartInstPtr,
 	}
 
 	/*
-	 * Setup the handlers for the UART that will be called from the
+	 * Set up the handlers for the UART that will be called from the
 	 * interrupt context when data has been sent and received, specify
 	 * a pointer to the UART driver instance as the callback reference
 	 * so the handlers are able to access the instance data

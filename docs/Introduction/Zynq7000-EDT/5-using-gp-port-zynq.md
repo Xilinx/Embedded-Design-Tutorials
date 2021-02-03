@@ -393,4 +393,8 @@ Application software is composed of the following steps:
     for the Timer interrupt to happen. After the Timer interrupt happens,
     LED DS23 switches ON and restarts execution.
 
+
+See the [next chapter](./6-using-hp-port.md) for information about using the HP slave port with AXI CDMA IP.
+
+
 © Copyright 2015–2021 Xilinx, Inc.

@@ -111,7 +111,7 @@ JTAG mode.
 
 1. Copy the `BOOT.BIN`, `image.ub`, and `boot.scr` files to the SD card. 
 
-2. Set up the board as described in [Example 2](./2-using-zynq.md#setup-the-board)
+2. Set up the board as described in [Setting Up the Board](./2-using-zynq.md#setting-up-the-board).
 
 3. Change the boot mode to SD boot.
 
@@ -126,19 +126,19 @@ JTAG mode.
     Ethernet is optional in this example. It is required in Example 5.    
 
 5.  Launch the Vitis software platform and open the same workspace you
-    used in [Example 2](2-using-zynq.md) and [Example 3](3-using-gp-port-zynq.md).
+    used in [Using the Zynq SoC Processing System](2-using-zynq.md).
 
 6.  If the serial terminal is not open, connect the serial communication
     utility with the baud rate set to **115200**.
 
-    ***Note*:** This is the baud rate that the UART is programmed to on
+    **Note:** This is the baud rate that the UART is programmed to on
     Zynq devices.
 
 7.  Power on the target board.
 
-8.  Linux login prompt will appear. Use user name `root` and password `root` to login.
+8.  The Linux login prompt will appear. Use user name `root` and password `root` to log in.
 
-## Example 5: Creating Hello World Application for Linux in Vitis IDE
+## Example 5: Creating a Hello World Application for Linux in Vitis IDE
 
 
 ### Creating Linux Domain
@@ -214,15 +214,15 @@ are given below:
 
 The Vitis IDE needs a channel to download the application to the running target. When the target runs Linux, it uses TCF Agent running on Linux. TCF Agent is added to the Linux rootfs from the PetaLinux configuration by default. When Linux boots up, it launches TCF Agent automatically. The Vitis IDE talks to TCF Agent on the board using an Ethernet connection.
 
-1. Prepare for running the Linux application on the zc702 board. Vitis can download the Linux application to the board, which runs Linux through a network connection. It is important to ensure that the connection between the host machine and the board works well.
+1. Prepare for running the Linux application on the ZC702 board. Vitis can download the Linux application to the board, which runs Linux through a network connection. It is important to ensure that the connection between the host machine and the board works well.
 
-   - Make sure the USB UART cable is still connected with the zc702 board. Turn on your serial console and connect to the UART port.
-   - Connect an Ethernet cable between the host and the zc702 board.
-       - It can be a direct connection from the host to the zc702 board.
-       - You can also connect the host and the zc702 board using a router.
-   - Power on the board and let Linux run on zc702 (see [Verifying the Image on the zc702 Board](#verify-the-image-on-the-zc702-board)).
+   - Make sure the USB UART cable is still connected with the ZC702 board. Turn on your serial console and connect to the UART port.
+   - Connect an Ethernet cable between the host and the ZC702 board.
+       - It can be a direct connection from the host to the ZC702 board.
+       - You can also connect the host and the ZC702 board using a router.
+   - Power on the board and let Linux run on ZC702 (see [Verifying the Image on the ZC702 Board](#verify-the-image-on-the-zc702-board)).
    - Set up a networking software environment.
-       - If the host and the board are connected directly, run `ifconfig eth0 192.168.1.1` to setup an IP address on the board. Go to **Control Panel → Network and Internet → Network and Sharing Center**, and click **Change Adapter Settings**. Find your Ethernet adapter, then right-click and select **Properties**. Double-click **Internet Protocol Version 4 (TCP/IPv4)**, and select **Use the following IP address**. Input the IP address **192.168.1.2**. Click **OK**.
+       - If the host and the board are connected directly, run `ifconfig eth0 192.168.1.1` to set up an IP address on the board. Go to **Control Panel → Network and Internet → Network and Sharing Center**, and click **Change Adapter Settings**. Find your Ethernet adapter, then right-click and select **Properties**. Double-click **Internet Protocol Version 4 (TCP/IPv4)**, and select **Use the following IP address**. Input the IP address **192.168.1.2**. Click **OK**.
        - If the host and the board are connected through a router, they should be able to get an IP address from the router. If the Ethernet cable is plugged in after the board boots up, you can get the IP address manually by running the `udhcpc eth0` command, which returns the board IP address.
        - Have the host and the zc702 board ping each other to make sure the network is set up correctly.
 
@@ -296,13 +296,8 @@ Debugging Linux applications requires the Linux agent to be set up properly. Ref
 
 3. Disconnect the connection:
 
-   - Click the **Terminate button** on the toolbar or press **Ctrl+F2**.
+   - Click the **Terminate** button on the toolbar or press **Ctrl+F2**.
    - Click the **Disconnect** button on the toolbar.
-
-
-
-
-
 
 
 ## Summary
@@ -312,5 +307,7 @@ In this chapter, you learned how to:
 - Create a Linux boot image with PetaLinux.
 - Create simple Linux applications with the Vitis IDE.
 - Run and debug using the Vitis IDE.
+
+See the [next chapter](./5-using-gp-port-zynq.md) to learn how to use the GP port in Zynq devices.
 
 © Copyright 2015–2021 Xilinx, Inc.

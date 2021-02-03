@@ -369,4 +369,6 @@ The application software does the following tasks:
     DMA Transfer is Successful
     ```
 
+See the [next chapter](./7-linux-booting-debug.md) for Linux boot image configuration.
+
 © Copyright 2015–2021 Xilinx, Inc.

@@ -8,7 +8,12 @@
 
 # Introduction
 
-## Additional Documentation
+## How Zynq Devices Simplify Embedded Processor Design
+
+Embedded systems are complex. Hardware and software portions of an embedded design are projects in themselves. Merging the two design components so that they function as one system creates additional challenges. Add an FPGA design project to the mix, and your design has the potential to become complicated.
+
+The Zynq SoC solution reduces this complexity by offering an Arm&reg; Cortex&trade;-A9 dual core, along with programmable logic, all within a single SoC. To simplify the design process, Xilinx offers the Vivado Design Suite and the Vitis software platform. This set of tools provides you with everything you need to simplify embedded system design for a device that merges an SoC with an FPGA. This combination of tools offers hardware and software application design, debugging capability, code execution, and transfer of the design onto actual boards for verification and validation.
+
 
 ### Vivado Design Suite, System Edition
 
@@ -47,13 +52,8 @@ The PetaLinux tools offer everything necessary to customize, build, and deploy e
 
 The PetaLinux Tools design hub provides information and links to documentation specific to the PetaLinux Tools. For more information, see [Embedded Design Hub - PetaLinux Tools](https://www.xilinx.com/cgi-bin/docs/ndoc?t=design%2Bhubs%3Bd%3Ddh0016-petalinux-tools-hub.html).
 
-## How Zynq Devices Simplify Embedded Processor Design
 
-Embedded systems are complex. Hardware and software portions of an embedded design are projects in themselves. Merging the two design components so that they function as one system creates additional challenges. Add an FPGA design project to the mix, and your design has the potential to become complicated.
-
-The Zynq SoC solution reduces this complexity by offering an Arm&reg; Cortex&trade;-A9 dual core, along with programmable logic, all within a single SoC. To simplify the design process, Xilinx offers the Vivado Design Suite and the Vitis software platform. This set of tools provides you with everything you need to simplify embedded system design for a device that merges an SoC with an FPGA. This combination of tools offers hardware and software application design, debugging capability, code execution, and transfer of the design onto actual boards for verification and validation.
-
-## How the Vivado Tools Expedite the Design Process
+## How the Xilinx Design Tools Expedite the Design Process
 
 You can use the Vivado Design Suite tools to add design sources to your hardware. These include the IP integrator, which simplifies the process of adding IP to your existing project and creating connections for ports (such as clock and reset).
 
@@ -65,9 +65,7 @@ The Zynq SoC Processing System (PS) can be booted and made to run without progra
 
 For more information on the embedded design process, see the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug940-vivado-tutorial-embedded-design.pdf)).
 
-## What You Need to Set Up Before Starting
-
-Before discussing the tools in depth, you should make sure they are installed properly and your environments match those required for the "Example Project" sections of this guide.
+## Getting Started
 
 ### Hardware Requirements for this Guide
 
@@ -138,13 +136,13 @@ When you install PetaLinux Tools on your system of choice, you must do the follo
 
 By default, the installer installs the package as a subdirectory within the current directory. Alternatively, you can specify an installation path. Run the downloaded PetaLinux installer.
 
-***Note*:** Ensure that the PetaLinux installation path is kept short. The PetaLinux build will fail if the path exceeds 255 characters.
+**Note:** Ensure that the PetaLinux installation path is kept short. The PetaLinux build will fail if the path exceeds 255 characters.
 
 `bash ./petalinux-v2020.2-final-installer.run`
 
 PetaLinux is installed in the petalinux-v2020.2-final directory, directly underneath the working directory of this command. If the installer is placed in the home directory /home/user, PetaLinux is installed in /home/user/petalinux-v2020.2-final.
 
-Refer to <a href="./docs/6-linux-booting-debug.md">Linux Booting and Debug in the Vitis Software Platform</a> for additional information about the PetaLinux environment setup, project creation, and project usage examples. A detailed guide on PetaLinux Installation and usage can be found in the *PetaLinux Tools Documentation: Reference Guide* ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
+Refer to [Linux Booting and Debug in the Vitis Software Platform](./7-linux-booting-debug.md) for additional information about the PetaLinux environment setup, project creation, and project usage examples. A detailed guide on PetaLinux Installation and usage can be found in the *PetaLinux Tools Documentation: Reference Guide* ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
 
 #### Software Licensing
 
@@ -155,5 +153,7 @@ Xilinx software uses FLEXnet licensing. When the software is first run, it perfo
 The reference design files for this tutorial are provided in the [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
 
 Design files contain the source code for all the sections.
+
+Work through the first examples in the [next chapter](./2-using-zynq.md).
 
 © Copyright 2015–2021 Xilinx, Inc.
