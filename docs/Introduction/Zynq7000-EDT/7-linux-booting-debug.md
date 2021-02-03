@@ -20,14 +20,14 @@
   - [Example 10: Booting Linux from QSPI Flash](#example-10-booting-linux-from-qspi-flash)
     - [Input and Output Files](#input-and-output-files-1)
     - [Configure PetaLinux for Booting from QSPI](#configure-petalinux-for-booting-from-qspi)
-    - [Make a Linux Bootable Image for QSPI Flash](#make-a-linux-bootable-image-for-qspi-flash)
+    - [Make a Linux Bootable Image for QSPI Flash With Vitis](#make-a-linux-bootable-image-for-qspi-flash-with-vitis)
     - [Program QSPI Flash with the Flash Programming Tool](#program-qspi-flash-with-the-flash-programming-tool)
     - [(Optional) Program QSPI Flash with the Boot Image Using JTAG](#optional-program-qspi-flash-with-the-boot-image-using-jtag)
     - [Booting Linux from QSPI Flash](#booting-linux-from-qspi-flash)
 
 # Linux Boot Image Configuration
 
-In previous chapters, we used SD Boot mode for all examples for Linux. SD Boot is easy to use for development. Sometimes we need to change boot source to QSPI Flash for its reliability and anti-vibration. In the board bring-up development phase, since the peripherals may not be available yet, boot with JTAG is a common technique.
+In previous chapters, we used SD Boot mode for all examples for Linux. SD Boot is easy to use for development. Sometimes we need to change boot source to QSPI Flash for its reliability and anti-vibration. In the board bring-up development phase, since the peripherals may not be available yet, boot with JTAG is a common technique for debugging.
  
 This chapter describes the detailed steps of use cases mentioned above.
 
@@ -110,22 +110,18 @@ using the pre-compiled images with JTAG.
 1.  Check the following board connections and settings for Linux booting
     using JTAG mode:
 
-    a.  Ensure that the settings of Jumpers J27 and J28 are set as
-        described in [Creating a Platform Project in the Vitis
-        Software Platform with an XSA from
-        Vivado](2-using-zynq.md#creating-a-platform-project-in-the-vitis-software-platform-with-an-xsa-from-vivado).
+    - Ensure that the settings of Jumpers J27 and J28 are set as described in [Example 2 - Board Setup](2-using-zynq.md#setup-the-boardo).
 
-    b.  Ensure that the SW16 switch is set as shown in the following
-        figure.
+    - Ensure that the SW16 switch is set to 00000, as shown in the following figure.
 
         ![JTAG Boot Mode](./media/image67.jpeg)   
 
-    c.  Connect an Ethernet cable from the Zynq-7000 SoC board to your
+    - Connect an Ethernet cable from the Zynq-7000 SoC board to your
         network or directly to your host machine.
 
-    d.  Connect the Windows Host machine to your network.
+    - Connect the Windows Host machine to your network.
 
-    e.  Connect the power cable to the board.
+    - Connect the power cable to the board.
 
              
 
@@ -210,62 +206,6 @@ using the pre-compiled images with JTAG.
 11. At the command prompt of the serial terminal, run `bootm 0x30000000`.
     The Linux OS boots.
 
-12. If required, provide the Zynq login as root and the password as root
-    on the serial terminal to complete booting the processor.
-
-    After booting completes, `#` prompt appears on the serial terminal.
-
-13. At the `root@xilinx-zc702-2020.2:~#` prompt, make sure that the
-    board Ethernet connection is configured:
-
-    - Check the IP address of the board by typing the following
-        command at the Zynq prompt: ``ifconfig eth0``.
-
-        This command displays all the details of the currently active
-        interface. In the message that displays, the inet addr value denotes
-        the IP address that is assigned to the Zynq SoC board.
-
-    - If inetaddr and netmask values do not exist, you can assign them using the following commands:
-
-    ```
-    root@xilinx-zc702-2020.2:~# ifconfig eth0 inet 192.168.1.10
-    root@xilinx-zc702-2020.2:~# ifconfig eth0 netmask 255.255.255.0
-    ```
-
-    **IMPORTANT!** *If the target and host are connected back-to-back, you
-    must set up the IP address. If the target and host are connected over
-    a LAN , DHCP will get the IP address for the target; use the ifconfig
-    eth0 to display the IP address.*
-
-    ![Important](./media/image31.png)
-
-14. confirm that the IP address settings on the Windows machine match the board settings. Adjust the local area connection properties by opening your network connections.
-
-    - Right-click the local area connection that is linked to the XC702
-        board and select Properties.
-
-    - With the Local Area Connection properties window open, select
-        **Internet Protocol Version 4 (TCP/IPv4)** from the item list and
-        select **Properties**.
-
-    - Select **Use the following IP address** and set the values as
-        follows (also shown in the following figure):
-
-        -   IP address: 192.168.1.11 (target and host must be in the same
-            subnet if connected back- to-back)
-
-        -   Subnet mask: 255.255.255.0
-
-        ![Windows IP Address](./media/image79.png)
-
-    - Click **OK** to accept the values and close the window.
-
-15. In the Windows machine command prompt, check the connection with the
-    board by typing ping followed by the board IP address. The ping response displays in a loop. This response means that the connection between the Windows host machine and the target board is established.
-
-16. Press **Ctrl+C** to stop displaying the ping response on windows
-    host machine command prompt. Linux booting completes on the target board and the connection between the host machine and the target board is complete. The next example design describes using the Vitis software platform to debug the Linux application.
-
 ## Example 10: Booting Linux from QSPI Flash
 
 In this example, we will make a linux boot image for QSPI Flash.
@@ -319,12 +259,13 @@ PetaLinux must be configured for QSPI flash boot mode and rebuilt. By default, t
 
     - Run `petalinux-build` command.
 
+    PetaLinux will generate the new u-boot and boot.scr.
+
     ***Note*:** For more information, refer to the *PetaLinux Tools
     Documentation: Reference Guide*
     ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
 
-
-### Make a Linux Bootable Image for QSPI Flash
+### Make a Linux Bootable Image for QSPI Flash With Vitis
 
 1.  In the Vitis IDE, select **Xilinx → Create Boot Image** to open the Create Boot Image wizard.
 
