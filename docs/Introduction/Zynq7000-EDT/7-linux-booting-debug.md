@@ -1,7 +1,3 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/6-linux-booting-debug.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
 <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
 </th>
 
@@ -9,25 +5,6 @@
 
 </table>
 
-- [Linux Boot Image Configuration](#linux-boot-image-configuration)
-  - [Boot Methods](#boot-methods)
-    - [Master Boot Method](#master-boot-method)
-    - [Slave Boot Method](#slave-boot-method)
-    - [Booting Linux from JTAG](#booting-linux-from-jtag)
-  - [Example 9: Booting Linux with JTAG](#example-9-booting-linux-with-jtag)
-    - [Input and Output Files](#input-and-output-files)
-    - [Booting Linux in JTAG Mode](#booting-linux-in-jtag-mode)
-  - [Example 10: Booting Linux from QSPI Flash](#example-10-booting-linux-from-qspi-flash)
-    - [Input and Output Files](#input-and-output-files-1)
-    - [Configure PetaLinux for Booting from QSPI](#configure-petalinux-for-booting-from-qspi)
-    - [Reduce Root File System Size](#reduce-root-file-system-size)
-    - [Changing boot.scr for image.ub Offset Address and Size](#changing-bootscr-for-imageub-offset-address-and-size)
-    - [Build the PetaLinux Image](#build-the-petalinux-image)
-    - [Make a Linux Bootable Image for QSPI Flash with PetaLinux](#make-a-linux-bootable-image-for-qspi-flash-with-petalinux)
-    - [Make a Linux Bootable Image for QSPI Flash With Vitis](#make-a-linux-bootable-image-for-qspi-flash-with-vitis)
-    - [Program QSPI Flash with the Flash Programming Tool](#program-qspi-flash-with-the-flash-programming-tool)
-    - [(Optional) Program QSPI Flash with the Boot Image Using JTAG](#optional-program-qspi-flash-with-the-boot-image-using-jtag)
-    - [Booting Linux from QSPI Flash](#booting-linux-from-qspi-flash)
 
 # Linux Boot Image Configuration
 
@@ -508,6 +485,4 @@ This is an alternative way for programming QSPI Flash with the Flash Programming
     For Linux Application creation and debugging, refer to [Example Design: Debugging the Linux Application Using the Vitis Software Platform](#example-design-debugging-the-linux-application-using-the-vitis-software-platform).
 
 
-
-
-© Copyright 2015–2020 Xilinx, Inc.
+© Copyright 2015–2021 Xilinx, Inc.

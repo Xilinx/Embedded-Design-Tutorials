@@ -1,19 +1,3 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/8-sw-profiling.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
-</th>
-
-  </tr>
-
-</table>
-
-- [Software Profiling Using the Vitis Software Platform](#software-profiling-using-the-vitis-software-platform)
-  - [Profiling an Application in the Vitis Software Platform with System Debugger](#profiling-an-application-in-the-vitis-software-platform-with-system-debugger)
-  - [Additional Design Support Options](#additional-design-support-options)
-    - [The System Performance Analysis (SPA) Toolbox](#the-system-performance-analysis-spa-toolbox)
-
 # Software Profiling Using the Vitis Software Platform
 
 In this chapter, you will enable profiling features for the standalone
@@ -86,4 +70,4 @@ the Vitis software platform, refer to the following documentation:
 -   *System Performance Analysis of an SoC*
     ([XAPP1219](https://www.xilinx.com/support/documentation/application_notes/xapp1219-system-performance-modeling.pdf))
 
-    © Copyright 2015–2020 Xilinx, Inc.
+    © Copyright 2015–2021 Xilinx, Inc.
