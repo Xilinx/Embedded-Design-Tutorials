@@ -1,3 +1,11 @@
+
+<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
+</th>
+
+  </tr>
+
+</table>
+
 # Introduction
 
 ## Additional Documentation
@@ -5,7 +13,7 @@
 ### Vivado Design Suite, System Edition
 
 Xilinx offers a broad range of development system tools, collectively
-called the Vivado Design Suite. Various Vivado Design Suite editions
+called the Vivado&reg; Design Suite. Various Vivado Design Suite editions
 can be used for embedded system development. In this guide, you will
 use the System Edition. The Vivado Design Suite editions are shown in
 the following figure.
@@ -16,7 +24,7 @@ the following figure.
 
 Other Vivado components include:
 
--   Embedded/Soft IP for the Xilinx embedded processors
+-   Embedded/soft IP for Xilinx embedded processors
 
 -   Documentation
 
@@ -24,7 +32,7 @@ Other Vivado components include:
 
 ## Vitis Unified Software Platform
 
-The Vitis software platform includes the Vivado Design Suite, and
+The Vitis&trade; software platform includes the Vivado Design Suite, and
 works with hardware designs created in Vivado. The Vitis unified
 software platform is an integrated development environment (IDE) for
 the development of embedded software applications targeted towards
@@ -35,12 +43,11 @@ development environment, see
 
 ## PetaLinux Tools
 
-The PetaLinux Tools offer everything necessary to customize, build, and deploy embedded Linux solutions on Xilinx processing systems. For more information, see the [Embedded Design Tools](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html) web page.
+The PetaLinux tools offer everything necessary to customize, build, and deploy embedded Linux solutions on Xilinx processing systems. For more information, see the [Embedded Design Tools](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html) web page.
 
 The PetaLinux Tools design hub provides information and links to documentation specific to the PetaLinux Tools. For more information, see [Embedded Design Hub - PetaLinux Tools](https://www.xilinx.com/cgi-bin/docs/ndoc?t=design%2Bhubs%3Bd%3Ddh0016-petalinux-tools-hub.html).
 
-**How Zynq Devices Simplify Embedded Processor Design**
-
+## How Zynq Devices Simplify Embedded Processor Design
 
 Embedded systems are complex. Hardware and software portions of an embedded design are projects in themselves. Merging the two design components so that they function as one system creates additional challenges. Add an FPGA design project to the mix, and your design has the potential to become complicated.
 
@@ -148,3 +155,5 @@ Xilinx software uses FLEXnet licensing. When the software is first run, it perfo
 The reference design files for this tutorial are provided in the [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
 
 Design files contain the source code for all the sections.
+
+© Copyright 2015–2021 Xilinx, Inc.

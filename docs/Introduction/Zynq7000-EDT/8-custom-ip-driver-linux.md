@@ -1,28 +1,9 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/7-custom-ip-driver-linux.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
 <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
 </th>
 
   </tr>
 
 </table>
-
-- [Creating Custom IP and Device Driver for Linux](#creating-custom-ip-and-device-driver-for-linux)
-  - [Creating Peripheral IP](#creating-peripheral-ip)
-  - [Example 11: Creating Peripheral IP](#example-11-creating-peripheral-ip)
-    - [Creating Peripheral IP](#creating-peripheral-ip-1)
-    - [Integrating Peripheral IP with PS GP Master Port](#integrating-peripheral-ip-with-ps-gp-master-port)
-    - [Connecting an AXI4-Lite Compliant Custom Slave IP](#connecting-an-axi4-lite-compliant-custom-slave-ip)
-  - [Linux-Based Device Driver Development](#linux-based-device-driver-development)
-  - [Example 12: Device Driver Development](#example-12-device-driver-development)
-  - [Loading Module into Running Kernel and Application Execution](#loading-module-into-running-kernel-and-application-execution)
-    - [Loading Module into Kernel Memory](#loading-module-into-kernel-memory)
-    - [Application Software](#application-software)
-  - [Example 13: Loading a Module into Kernel and Executing the Application](#example-13-loading-a-module-into-kernel-and-executing-the-application)
-      - [Booting Linux on the Target Board](#booting-linux-on-the-target-board)
-      - [Loading Modules and Executing Applications](#loading-modules-and-executing-applications)
 
 # Creating Custom IP and Device Driver for Linux
 
@@ -624,5 +605,5 @@ a Windows machine.
 
 20. After you finish debugging the Linux application, close the Vitis
     software platform.
-
-  © Copyright 2015–2020 Xilinx, Inc.
+    
+© Copyright 2015–2021 Xilinx, Inc.

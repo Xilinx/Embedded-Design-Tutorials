@@ -1,24 +1,9 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/5-using-hp-port.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
 <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
 </th>
 
   </tr>
 
 </table>
-
-- [Using the HP Slave Port with AXI CDMA IP](#using-the-hp-slave-port-with-axi-cdma-ip)
-  - [Integrating AXI CDMA with the Zynq SoC PS HP Slave Port](#integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port)
-  - [Example 7: Integrating AXI CDMA with the PS HP Slave Port](#example-7-integrating-axi-cdma-with-the-ps-hp-slave-port)
-    - [Input and Output Files](#input-and-output-files)
-    - [Update the Vivado Design](#update-the-vivado-design)
-    - [Designing Standalone Application Software for the Design](#designing-standalone-application-software-for-the-design)
-    - [Application Software Programming Model](#application-software-programming-model)
-    - [Creating the Standalone CDMA Application](#creating-the-standalone-cdma-application)
-    - [Running CDMA app on ZC702](#running-cdma-app-on-zc702)
-
 
 # Using the HP Slave Port with AXI CDMA IP
 
@@ -384,9 +369,4 @@ The application software does the following tasks:
     DMA Transfer is Successful
     ```
 
-
-
-
-
-
-    © Copyright 2015–2020 Xilinx, Inc.
+© Copyright 2015–2021 Xilinx, Inc.

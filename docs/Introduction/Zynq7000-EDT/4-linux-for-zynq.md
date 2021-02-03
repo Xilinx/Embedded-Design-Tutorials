@@ -1,7 +1,3 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/4-debugging-vitis.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
 <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
 </th>
 
@@ -9,13 +5,13 @@
 
 </table>
 
-# Building and Debugging Linux Applications for ZYNQ-7000
+# Building and Debugging Linux Applications for Zynq-7000 SoCs
 
 The earlier examples highlighted the creation of standalone applications. This chapter demonstrates how to develop Linux applications.
 
 ## Example 4: Creating Linux Images
 
-In this example, you will configure and build a Linux operating system platform for an Arm™ Cortex-A9 core based APU on a Zynq® 7000. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.
+In this example, you will configure and build a Linux operating system platform for an Arm™ Cortex-A9 core based APU on a Zynq® 7000 device. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.
 
 ### Input and Output Files
 
@@ -111,23 +107,23 @@ In this example, you will configure and build a Linux operating system platform 
 You will now boot Linux on the Zynq-7000 SoC ZC702 target board using
 JTAG mode.
 
-***Note*:** Additional boot options will be explained in [Linux Booting and Debug in the Software Platform](6-linux-booting-debug.md).
+**Note:** Additional boot options are explained in [Linux Booting and Debug in the Software Platform](./7-linux-booting-debug.md).
 
 1. Copy the `BOOT.BIN`, `image.ub`, and `boot.scr` files to the SD card. 
 
-2. Setup the board as described in [Example 2](./2-using-zynq.md#setup-the-board)
+2. Set up the board as described in [Example 2](./2-using-zynq.md#setup-the-board)
 
-3. Change boot mode to SD boot
+3. Change the boot mode to SD boot.
 
     - Change **SW16[5:1]** to **01100** 
 
     ![SD Boot Mode Setup for SW16](media/image89.jpeg)
 
-4.  Make sure Ethernet Jumper J30 and J43 as shown in the following figure.
+4.  Make sure Ethernet Jumper J30 and J43 are as shown in the following figure.
 
     ![Ethernet Jumper](./media/image69.jpeg)
 
-    Ethernet is optional in this example. It's required in Example 5.    
+    Ethernet is optional in this example. It is required in Example 5.    
 
 5.  Launch the Vitis software platform and open the same workspace you
     used in [Example 2](2-using-zynq.md) and [Example 3](3-using-gp-port-zynq.md).
@@ -317,5 +313,4 @@ In this chapter, you learned how to:
 - Create simple Linux applications with the Vitis IDE.
 - Run and debug using the Vitis IDE.
 
-
-© Copyright 2017-2021 Xilinx, Inc.
+© Copyright 2015–2021 Xilinx, Inc.

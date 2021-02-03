@@ -1,23 +1,9 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/3-using-gp-port-zynq.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
 <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
 </th>
 
   </tr>
 
 </table>
-
-- [Using the GP Port in Zynq Devices](#using-the-gp-port-in-zynq-devices)
-  - [Adding IP in PL to the Zynq SoC Processing System](#adding-ip-in-pl-to-the-zynq-soc-processing-system)
-  - [Example 6: Adding Peripheral PL IP](#example-6-adding-peripheral-pl-ip)
-    - [Input and Output Files](#input-and-output-files)
-    - [Update Vivado Design Diagram](#update-vivado-design-diagram)
-    - [Assign Location Constraints to External Pins](#assign-location-constraints-to-external-pins)
-    - [Update Hardware in the Vitis Software Platform](#update-hardware-in-the-vitis-software-platform)
-    - [Test the PL IP with prepared software](#test-the-pl-ip-with-prepared-software)
-    - [Hello_PL Standalone Software Details](#hello_pl-standalone-software-details)
 
 # Using the GP Port in Zynq Devices
 
@@ -407,4 +393,4 @@ Application software is composed of the following steps:
     for the Timer interrupt to happen. After the Timer interrupt happens,
     LED DS23 switches ON and restarts execution.
 
-© Copyright 2015–2020 Xilinx, Inc.
+© Copyright 2015–2021 Xilinx, Inc.

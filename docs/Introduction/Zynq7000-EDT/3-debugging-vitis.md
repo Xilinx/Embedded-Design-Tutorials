@@ -1,19 +1,9 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/4-debugging-vitis.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
 <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
 </th>
 
   </tr>
 
 </table>
-
-- [Debugging with the Vitis Software Platform](#debugging-with-the-vitis-software-platform)
-  - [Xilinx System Debugger](#xilinx-system-debugger)
-  - [Example 3: Debugging Standalone Software Using the Vitis Software Platform](#example-3-debugging-standalone-software-using-the-vitis-software-platform)
-    - [Input and Output Files](#input-and-output-files)
-    - [Debug standalone application in Vitis IDE](#debug-standalone-application-in-vitis-ide)
 
 # Debugging with the Vitis Software Platform
 
@@ -170,4 +160,4 @@ In this example, you will walk through debugging a Hello World application creat
 
 8.  Click Disconnect button on the tool bar to disconnect to the board, or exit the Vitis software platform directly.
 
-© Copyright 2015–2020 Xilinx, Inc.
+© Copyright 2015–2021 Xilinx, Inc.

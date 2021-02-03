@@ -1,33 +1,8 @@
-<p align="right">
-            Read this page in other languages:<a href="../docs-jp/using-zynq.md">日本語</a>    <table style="width:100%"><table style="width:100%">
-  <tr>
-
 <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
 </th>
 
   </tr>
 </table>
-
-- [Using the Zynq SoC Processing System](#using-the-zynq-soc-processing-system)
-  - [Embedded System Configuration](#embedded-system-configuration)
-  - [Example 1: Creating a New Embedded Project with Zynq SoC](#example-1-creating-a-new-embedded-project-with-zynq-soc)
-    - [Input and Output Files](#input-and-output-files)
-    - [Creating Your Hardware Design](#creating-your-hardware-design)
-    - [Creating an Embedded Processor Block Diagram](#creating-an-embedded-processor-block-diagram)
-    - [Configuring the Zynq7 Processing System with Presets in Vivado](#configuring-the-zynq7-processing-system-with-presets-in-vivado)
-    - [Validating the Design and Connecting Ports](#validating-the-design-and-connecting-ports)
-    - [Create HDL Wrapper for the Block Diagram](#create-hdl-wrapper-for-the-block-diagram)
-    - [Generate Block Design](#generate-block-design)
-    - [Exporting Hardware](#exporting-hardware)
-  - [Example 2: Creating and Running a "Hello World" Application](#example-2-creating-and-running-a-hello-world-application)
-    - [Input and Output Files](#input-and-output-files-1)
-    - [Setup the board](#setup-the-board)
-    - [Creating a Vitis Platform Project](#creating-a-vitis-platform-project)
-    - [Create the Hello World application](#create-the-hello-world-application)
-    - [Run the Hello World Application on ZC702 board](#run-the-hello-world-application-on-zc702-board)
-  - [Additional Information](#additional-information)
-    - [Domain or Board Support Package](#domain-or-board-support-package)
-    - [Standalone OS](#standalone-os)
 
 # Using the Zynq SoC Processing System
 
@@ -442,4 +417,4 @@ top of the standalone OS. The domain/BSP that your software
 application targets is selected during the New Platform Project
 creation process.*
 
-© Copyright 2015–2020 Xilinx, Inc.
+© Copyright 2015–2021 Xilinx, Inc.
