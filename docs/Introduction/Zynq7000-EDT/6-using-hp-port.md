@@ -307,7 +307,7 @@ The application software does the following tasks:
     - Use the information in the table below to make your selections in
     the wizard screens.
 
-| Wizard Screen               | System Property                   | Setting or Command to Use                                                                                             |
+| Screen               | System Property                   | Setting or Command to Use                                                                                             |
 | --------------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | Platform                    | Select a platform from repository | Click zc702_edt [custom] |
 | Application Project Details | Application project name          | Enter cdma_app                                                                                                        |

@@ -56,13 +56,13 @@ int SetUpInterruptSystem(XScuGic *XScuGicInstancePtr)
 {
 /*
 * Connect the interrupt controller interrupt handler to the hardware
-* interrupt handling logic in the ARM processor.
+* interrupt handling logic in the Arm processor.
 */
 Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
 (Xil_ExceptionHandler) XScuGic_InterruptHandler,
 XScuGicInstancePtr);
 /*
-* Enable interrupts in the ARM
+* Enable interrupts in the Arm
 */
 Xil_ExceptionEnable();
 return XST_SUCCESS;

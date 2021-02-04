@@ -61,7 +61,7 @@ peripheral IP.
 
 4.  Fill in the peripheral details as follows:
 
-   | Wizard Screen      | System Property    | Setting or Comment to Use |
+   | Screen      | System Property    | Setting or Comment to Use |
    | ------------------ | ------------------ | ------------------------- |
    | Peripheral Details | Name               | Blink                     |
    |                    | Version            | 1.0                       |
@@ -479,7 +479,7 @@ a Windows machine.
 
 4.  Use the information in the table below to make your selections in
     the wizard screens.
-    | Wizard Screen               | System Property                                     | Setting or Command to Use                                                                           |
+    | Screen               | System Property                                     | Setting or Command to Use                                                                           |
     | --------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
     | Platform                    | Select a platform from repository                   | Click hw_platform [custom].                                                                         |
     | Application Project Details | Application project name                            | Enter linux_blinkled_app                                                                            |
