@@ -62,7 +62,6 @@ In the examples in this chapter, we will expand on the design with the following
         starts again and waits for you to select the push button
         switch in the serial terminal again.
 
-<!--TODO: It needs a better chapter name-->
 ## Example 6: Adding Peripheral PL IP
 
 ### Input and Output Files
@@ -334,7 +333,7 @@ selection procedure for the execution of the different use cases, such
 as AXI GPIO and PS GPIO using EMIO interface. You can select different
 use cases by following the instructions on the serial terminal.
 
-Application software is composed of the following steps:
+The application software is programmed to accomplish the following steps:
 
 1.  Initialize the AXI GPIO module.
 
@@ -368,7 +367,7 @@ Application software is composed of the following steps:
 9.  Set PS Section GPIO channel number 2, pin number 0, to an input pin,
     which is mapped to PL side pin using the EMIO interface, and is physically connected to the **SW7** push button switch.
 
-10. Initialize the snoop control unit global interrupt controller. Also, register the timer interrupt routine to interrupt ID **91**, register the exceptional handler, and enable the interrupt.
+10. Initialize the snoop control unit global interrupt controller. Register the timer interrupt routine to interrupt ID **91**, register the exceptional handler, and enable the interrupt.
 
 11. Execute a sequence in the loop to select between the AXI GPIO or PS GPIO
     use case using the serial terminal.

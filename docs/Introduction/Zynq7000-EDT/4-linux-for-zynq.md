@@ -16,7 +16,7 @@ In this example, you will configure and build a Linux operating system platform 
 ### Input and Output Files
 
 - Input:
-  - Hardware XSA (``system_wrapper.xsa`` generated in Example 1)
+  - Hardware XSA (``system_wrapper.xsa`` generated in [Example 1](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc))
   - [PetaLinux ZC702 BSP](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html)
 
 - Output:
@@ -138,7 +138,7 @@ JTAG mode.
 
 8.  The Linux login prompt will appear. Use user name `root` and password `root` to log in.
 
-## Example 5: Creating a Hello World Application for Linux in Vitis IDE
+## Example 5: Creating a Hello World Application for Linux in the Vitis IDE
 
 
 ### Creating Linux Domain

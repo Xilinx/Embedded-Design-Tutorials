@@ -117,8 +117,7 @@ In this example, you will walk through debugging the "Hello World" application c
     **Note:** If the Disassembly view is not visible, select **Window → Show view**, select **Disassembly** under **Debug**, and click **Open**.
 
 2.  The helloworld.c window also shows execution suspended at the first
-    executable line of C code. Select the Registers view to confirm
-    that the program counter (pc), contains ``0x0010058``.
+    executable line of C code.
 
     **Note:** If the Registers view is not visible, select **Window → Show view → Debug→ Registers**.
 
@@ -131,7 +130,7 @@ In this example, you will walk through debugging the "Hello World" application c
 
 4.  Select **Run → Step Into** to step into the ``init_platform()`` routine.
 
-    Program executes one step. The call stack is now two levels deep.
+    The program executes one step. The call stack is now two levels deep.
 
 5.  Select **Run → Resume** to continue running the program to the
     breakpoint.

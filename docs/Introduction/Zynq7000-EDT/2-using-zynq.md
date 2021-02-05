@@ -114,7 +114,7 @@ Now, let's validate the design.
 
 2.  Connect the ``M_AXI_GP0_ACLK`` signal to PS generated PL clock signal.
 
-    - The PS can generate four clock signals with ``FCLK_CLK<number>``. It means clock for fabric. The clock frequency can be adjusted in PS block settings.
+    - The PS can generate four clock signals with ``FCLK_CLK<number>``. These are the clocks for the PL fabric. The clock frequency can be adjusted in PS block settings.
     - In the Diagram window of the ZYNQ7 Processing System block, locate the **M_AXI_GP0_ACLK** port. Hover your mouse over the connector port until the pencil button appears.
     - Click the **M_AXI_GP0_ACLK** port and drag to the **FCLK_CLK0** port to make a connection between the two ports.
 
