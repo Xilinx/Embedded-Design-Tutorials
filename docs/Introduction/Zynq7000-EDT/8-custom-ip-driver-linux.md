@@ -236,10 +236,9 @@ start or stop blinking.
 ### Connecting an AXI4-Lite Compliant Custom Slave IP
 
 In this section, you will connect the AXI4-Lite compliant custom slave
-peripheral IP that you created in [Example Project: Creating
-Peripheral IP](#example-project-creating-peripheral-ip).
+peripheral IP that you created in [Creating Peripheral IP](#creating-peripheral-ip).
 
-1.  Open the Vivado project you previously created in [Example Project: Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-project-creating-a-new-embedded-project-with-zynq-soc).
+1.  Open the Vivado project you previously created in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#creating-a-new-embedded-project-with-zynq-soc).
 
 2.  Add the custom IP to the existing design. Right-click the Diagram view and select **Add IP**.
 
@@ -330,23 +329,19 @@ Programming Guide</a>.
 
 In this section you are going to develop a peripheral IP device driver as an LKM, which is dynamically loadable onto the running kernel. You must build the peripheral IP LKM as part of the same kernel build process that generates the base kernel image.
 
-**Note:** If you do not want to compile the device driver, you can skip the example in this section and jump to [Loading the Module into a Running Kernel and Application Execution](#loading-the-module-into-a-running-kernel-and-application-execution). In that section, you can use the kernel image, which contains ``blink.ko`` (``image.ub`` in the shared ZIP files). See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+**Note:** If you do not want to compile the device driver, you can skip the example in this section and jump to [Loading a Module into the Kernel and Application Execution](#example-13-loading-a-module-into-the-kernel-and-executing-the-application). In that section, you can use the kernel image, which contains ``blink.ko`` (``image.ub`` in the shared ZIP files). See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 
-For kernel compilation and device driver development, you must use the
-Linux workstation. Before you start developing the device driver, the
-following steps are required:
+For kernel compilation and device driver development, you must use the Linux workstation. Before you start developing the device driver, the following steps are required:
 
-1.  Set the toolchain path in your Linux Workstation.
+1.  Set the toolchain path in your Linux workstation.
 
-2.  Download the kernel source code and compile it. For downloading and
-    compilation, refer to the steps mentioned in the [Xilinx Zynq Linux Wiki Page](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841961/Zynq+Linux).
+2.  Download the kernel source code and compile it. For downloading and compilation, refer to the steps mentioned in the [Xilinx Zynq Linux Wiki Page](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841961/Zynq+Linux).
 
 ## Example 12: Device Driver Development
 
 You will use a Linux workstation for this example project. The device
 driver software is provided in the LKM folder of the ZIP file that
-accompanies this guide. See [Design Files for This
-Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 
 1.  Under the PetaLinux project directory, use the command below to
     create your module:
@@ -367,56 +362,54 @@ Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
     petalinux-create -t modules \--name blink \--enable
     ```
 
-    The default driver creation includes a Makefile, C-file, and readme
-    files. In our exercise, PetaLinux creates blink.c, Makefile, and
-    README files. It also contains bit bake recipe blink.bb.
+    The default driver creation includes a Makefile, C-file, and README
+    files. In this exercise, PetaLinux creates ``blink.c``, a Makefile, and
+    README files. It also contains the bit bake recipe ``blink.bb``.
 
-2.  Change the C-file (driver file) and the make file as per your
+2.  Change the C-file (driver file) and the Makefile as per your
     driver.
 
-3.  Take the LKM folder (reference files) and copy blink.c and blink.h
+3.  Take the LKM folder (reference files) and copy ``blink.c`` and ``blink.h``
     into this directory.
 
-4.  Open blink.bb recipe and add blink.h entry in SRC_URI.
+4.  Open the ``blink.bb`` recipe and add a ``blink.h`` entry in ``SRC_URI``.
 
 5.  Run the command ``petalinux-build``.
 
-    After successful compilation the .ko file is created in the following
+    After successful compilation the ``.ko`` file is created in the following
     location:
 
     ```
     <petalinux-build_directory>/build/tmp/sysroots-components/zc702_zynq7/blink/lib/modules/5.4.0-xilinx-v2020.2/extra/blink.ko
     ```
 
-6.  You can install the driver using the modprobe command, which will be
+6.  You can install the driver using the ``modprobe`` command, which will be
     explained in further detail in the next section.
 
-## Loading the Module into Running Kernel and Application Execution
+## Loading the Module into a Kernel and Application Execution
 
 In this section you will boot Linux onto the Zynq SoC Board and load
-the peripheral IP as a LKM onto it. You will develop the application
-for the system and execute it onto the hardware
+the peripheral IP as an LKM onto it. You will develop the application
+for the system and execute it onto the hardware.
 
-### Loading Module into Kernel Memory
+### Loading the Module into Kernel Memory
 
-The basic programs for inserting LKMs are modprobe. The modprobe
-command makes an init_module system call to load the LKM into kernel
-memory. The init_module system call invokes the LKM initialization
-routine immediately after it loads the LKM. As part of its
-initialization routine, insmod passes to the address of the subroutine
-to init_module.
+The ``modprobe`` command makes an ``init_module`` system call to load the LKM into the kernel
+memory. The ``init_module`` system call invokes the LKM initialization routine immediately after it loads the LKM. As part of its
+initialization routine, ``insmod`` passes to the address of the subroutine
+to ``init_module``.
 
-In the peripheral IP device driver, you already set up init_module to
+In the peripheral IP device driver, you already set up ``init_module`` to
 call a kernel function that registers the subroutines. It calls the
-kernel's register_chrdev subroutine, passing the major and minor
+kernel's ``register_chrdev`` subroutine, passing the major and minor
 number of the devices it intends to drive and the address of its own
-\"open\" routine among the arguments. The subroutine register_chrdev
+\"open\" routine among the arguments. The subroutine ``register_chrdev``
 specifies in base kernel tables that when the kernel wants to open
 that particular device, it should call the open routine in your LKM.
 
 ### Application Software
 
-The main() function in the application software is the entry point for
+The ``main()`` function in the application software is the entry point for
 the execution. It opens the device file for the peripheral IP and then
 waits for the user selection on the serial terminal.
 
@@ -424,27 +417,24 @@ If you select the start option on the serial terminal, all four LEDs
 start blinking. If you select the stop option, all four LEDs stop
 blinking and retain the previous state.
 
-## Example 13: Loading a Module into Kernel and Executing the Application
+## Example 13: Loading a Module into a Kernel and Executing the Application
 
 #### Booting Linux on the Target Board
 
-Boot Linux on the Zynq SoC ZC702 target board, as described in
-[Booting Linux on a Zynq SoC Board](7-linux-booting-debug.md#booting-linux-on-a-zynq-soc-board).
+Boot Linux on the Zynq SoC ZC702 target board, as described in [Booting Linux on a Zynq SoC Board](7-linux-booting-debug.md#booting-linux-on-a-zynq-soc-board).
 
 #### Loading Modules and Executing Applications
 
-In this section, you will use the Vitis software platform installed on
-a Windows machine.
+In this section, you will use the Vitis software platform installed on a Windows machine.
 
 1.  Open the Vitis software platform. You must run the Target Communication Frame (TCF) agent on the host machine.
 
 2.  In the XSCT Console view, type ``connect`` to connect to the Xilinx Software Command-Line Tool (XSCT).
 
-3.  In the Vitis software platform, select **File → New → Application
-    Project** to open the New Application Project wizard.
+3.  In the Vitis software platform, select **File → New → Application Project** to open the New Application Project wizard.
 
-4.  Use the information in the table below to make your selections in
-    the wizard screens.
+4.  Use the information in the table below to make your selections in the wizard screens.
+   
     | Screen               | System Property                                     | Setting or Command to Use                                                                           |
     | --------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
     | Platform                    | Select a platform from repository                   | Click hw_platform [custom].                                                                         |
@@ -456,38 +446,31 @@ a Windows machine.
 
 5.  Click **Finish**. The New Application Project wizard closes and the Vitis software platform creates the linux_blinkled_app project under the Explorer view.
 
-6.  In the Explorer view, expand the **linux_blinkled_app** project,
-    right-click the **src** directory, and select **Import**. The Import Sources view opens.
+6.  In the Explorer view, expand the **linux_blinkled_app** project, right-click the **src** directory, and select **Import**. The Import Sources view opens.
 
-7.  Browse for LKM_App folder and select linux_blinkled_app.c and
-    blink.h files.
+7.  Browse for the ``LKM_App`` folder and select the ``linux_blinkled_app.c`` and ``blink.h`` files.
 
-    ***Note*:** The application software file name for the system is
-    linux_blinkled_app.c and the header file name is blink.h. These files
+    **Note:** The application software file name for the system is
+    ``linux_blinkled_app.c`` and the header file name is ``blink.h``. These files
     are available in the LKM folder of the ZIP file that accompanies this
-    guide. See [Design Files for This
-    Tutorial](2-using-zynq.md#design-files-for-this-tutorial). Add the
-    linux_blinkled_app.c and blink.h files.
+    guide. See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial). Add the
+    ``linux_blinkled_app.c`` and ``blink.h`` files.
 
 8.  Click **Finish**.
 
-    Right-click on linux_blinkled_app project and select **Build Project**
-    to generate linux_blinkled_app.elf file in binary folders. Check the
-    console window for the status of this action.
+    Right-click on the **linux_blinkled_app** project and select **Build Project**
+    to generate ``linux_blinkled_app.elf`` file in binary folders. Check the
+    Console window for the status of this action.
 
 9.  Connect the board.
 
-10. Because you have a bitstream for the PL fabric, you must download
-    the bitstream. Select **Xilinx → Program FPGA**. The Program FPGA view opens. It displays the bitstream exported from Vivado.
+10. Because you have a bitstream for the PL fabric, you must download the bitstream. Select **Xilinx → Program FPGA**. The Program FPGA view opens. It displays the bitstream exported from Vivado.
 
-11. Click **Program** to download the bitstream and program the PL
-    fabric.
+11. Click **Program** to download the bitstream and program the PL fabric.
 
-12. Follow the steps described in [Linux Booting and Debug in
-    the Vitis Software Platform](6-linux-booting-debug.md) to load the Linux image
-    and start it.
+12. Follow the steps described in [Linux Booting and Debug in the Vitis Software Platform](./7-linux-booting-debug.md) to load the Linux image and start it.
 
-    After the kernel boots successfully, in a serial terminal, navigate to /lib/modules/\<kernel-version\>/extra and run the command:
+    After the kernel boots successfully, in a serial terminal, navigate to ``/lib/modules/\<kernel-version\>/extra`` and run the command:
 
     ``modprobe blink.ko``
 
@@ -508,7 +491,7 @@ a Windows machine.
 
 13. Create a device node. Run the ``mknod`` command and select the the string from the printed message.
 
-    For example, the command **mknod /dev/blink_Dev c 244 0** creates the /dev/blink_Dev node.
+    For example, the command ``mknod /dev/blink_Dev c 244 0`` creates the ``/dev/blink_Dev`` node.
 
 14. Select **Window → Open perspective → Remote System Explorer** and click **Open**. The Vitis software platform opens the Remote
     Systems Explorer perspective.
