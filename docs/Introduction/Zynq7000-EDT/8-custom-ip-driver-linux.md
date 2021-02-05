@@ -17,7 +17,7 @@ that can be dynamically loaded onto the running kernel.
 You will also develop Linux-based application software for the system
 to execute on the Zynq SoC ZC702 board.
 
-**IMPORTANG**: You will need to rebuilt the Linux kernel. So a Linux host machine to run PetaLinux is required.
+**IMPORTANT**: You will need to rebuild the Linux kernel: a Linux host machine to run PetaLinux is required.
 
 ## Creating Peripheral IP
 
@@ -26,9 +26,9 @@ peripheral IP framework using the Create and Package New IP wizard.
 You will also add functionality and port assignments to the peripheral
 IP framework.
 
-The Peripheral IP you will create is an AXI4-Lite compliant slave IP.
-It includes a 28-bit counter. The 4 MSB bits of the counter drive the
-4 output ports of the peripheral IP. The block diagram is shown in the
+The peripheral IP you will create is an AXI4-Lite compliant slave IP.
+It includes a 28-bit counter. The four most significant bits of the counter drive the
+four output ports of the peripheral IP. The block diagram is shown in the
 following figure.
 
 ![Custom IP Structure](./media/image93.jpeg)
@@ -50,10 +50,9 @@ The block diagram includes the following configuration register:
 
 ### Creating Peripheral IP
 
-In this section, you will create an AXI4-Lite compliant slave
-peripheral IP.
+In this section, you will create an AXI4-Lite compliant slave peripheral IP.
 
-1.  Create a new project as described in [Example Project: Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-project-creating-a-new-embedded-project-with-zynq-soc).
+1.  Create a new project as described in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-project-creating-a-new-embedded-project-with-zynq-soc).
 
 2.  With the Vivado design open, select **Tools → Create and Package New IP**. Click **Next** to continue.
 
@@ -79,11 +78,8 @@ peripheral IP.
     ![](./media/image94.png)
 
 8.  In the Hierarchy view of the **Sources** window, right-click
-    **blink_v1_0** under the Design Sources folder and select **Open
-    File**. We will need to add Verilog code that creates output ports
-    to map to the external LEDs on the ZC702 board. Navigate to the
-    line ``//Users to add ports here`` and add ``output wire \[3:0\] leds``
-    below this line, as shown in the following example:
+    **blink_v1_0** under the Design Sources folder and select **Open File**. You need to add Verilog code that creates output ports
+    to map to the external LEDs on the ZC702 board. Navigate to the line ``//Users to add ports here`` and add ``output wire \[3:0\] leds``below this line, as shown in the following example:
 
     ```
     //Users to add ports here
@@ -91,8 +87,7 @@ peripheral IP.
     //User ports ends
     ```
 
-9.  Find the instance instantiation to the AXI bus interface and add
-    .leds(leds) as shown in the following example to map the port
+9.  Find the instantiation to the AXI bus interface and add ``.leds(leds)``, as shown in the following example, to map the port
     connections:
 
     ```
@@ -101,13 +96,13 @@ peripheral IP.
       );
     ```
 
-10. Save and close blink_v1_0.v.
+10. Save and close ``blink_v1_0.v``.
 
-11. Under **Sources→ Hierarchy → Design Sources→ blink_v1_0**, right-click blink_v1_0\_S00_AXI_inst - blink_v1_0\_S00_AXI and select Open File.
+11. Under **Sources → Hierarchy → Design Sources→ blink_v1_0**, right-click **blink_v1_0\_S00_AXI_inst - blink_v1_0\_S00_AXI** and select **Open File**.
 
     Next, you will need to add Verilog code that creates output ports to
     map to the external LEDs on the ZC702 board and also create the logic
-    code to blink the LEDs when Register 0 is written to.
+    code to blink the LEDs when register 0 is written to.
 
 12. Navigate to the line ``//Users to add ports here`` and add ``output wire \[3:0\] leds`` below this line, as shown in the example below:
 
@@ -133,8 +128,7 @@ peripheral IP.
       reg axi_rvalid;
     ```
 
-    After this section , you will now add a custom register, which you
-    will use as a counter. Add the following code:
+    After this section, add a custom register, which you will use as a counter. Add the following code:
 
     ```
     // add 28-bit register to use as counter
@@ -162,10 +156,7 @@ peripheral IP.
       assign leds = count[27:24];
     ```
 
-15. Toward the bottom of the file, find the section that states add user
-    logic here. Add the following code, which will increment count
-    while the slv_reg0 is set to 0x1. If the register is not set, the
-    counter does not increment.
+15. Toward the bottom of the file, find the section that states ``Add user logic here``. Add the following code, which will increment the count while the slv_reg0 is set to 0x1. If the register is not set, the counter will not increment.
 
     ```
     // Add user logic here
@@ -205,24 +196,21 @@ peripheral IP.
 
     ![](./media/image96.png)
 
-20. Under Packaging Steps, select **Review and Package**. At the bottom
-    of the Review and Package page, click **Re-Package IP**.
+20. Under Packaging Steps, select **Review and Package**. At the bottom of the Review and Package page, click **Re-Package IP**.
 
-    The view that opens states that packaging is complete and asks if you
-    would like to close the project.
+    The view that opens states that packaging is complete and asks if you would like to close the project.
 
 21. Click **Yes**.
 
-***Note*:** The custom core creation process that we have worked
+**Note:** The custom core creation process that you have worked
 through is very simple with the example Verilog included in the IP
-creation process. For more information, refer to the GitHub Zynq
-Cookbook: How to Run BFM Simulation <a href="https://github.com/imrickysu/ZYNQ-Cookbook/wiki/How-to-run-BFM-simulation">web page</a>.
+creation process. For more information, refer to the _GitHub Zynq Cookbook: How to Run BFM Simulation_ <a href="https://github.com/imrickysu/ZYNQ-Cookbook/wiki/How-to-run-BFM-simulation">web page</a>.
 
 ### Integrating Peripheral IP with PS GP Master Port
 
-Now, you will create a system for the ZC702 board by instantiating the
+You will now create a system for the ZC702 board by instantiating the
 peripheral IP as a slave in the Zynq SoC programmable logic (PL)
-section. You will then connect it with the PS processor through the
+section. You will then connect it with the processor through the
 processing system (PS) general purpose (GP) master port. The block
 diagram for the system is shown in the following figure.
 
@@ -230,12 +218,10 @@ diagram for the system is shown in the following figure.
 
 This system covers the following connections:
 
--   Peripheral IP connected to PS General Purpose master port 0
-    (M_AXI_GP0). This connection is used by the PS CPU to configure
-    Peripheral IP register configurations.
+-   Peripheral IP connected to PS general purpose master port 0
+    (``M_AXI_GP0``). This connection is used by the PS CPU to configure peripheral IP register configurations.
 
--   Four output ports of Peripheral IP connected to DS15, DS16, DS17,
-    and DS18 on-board LEDs.
+-   Four output ports for peripheral IP connected to DS15, DS16, DS17, and DS18 on-board LEDs.
 
 In this system, when you run application code, a message appears on
 the serial terminal and asks you to choose the option to make the LEDs
@@ -249,42 +235,33 @@ start or stop blinking.
 
 ### Connecting an AXI4-Lite Compliant Custom Slave IP
 
-In this section, you will connect an AXI4-Lite compliant custom slave
+In this section, you will connect the AXI4-Lite compliant custom slave
 peripheral IP that you created in [Example Project: Creating
 Peripheral IP](#example-project-creating-peripheral-ip).
 
-1.  Open the Vivado project you previously created in [Example Project:
-    Creating a New Embedded Project with Zynq
-    SoC](2-using-zynq.md#example-project-creating-a-new-embedded-project-with-zynq-soc).
+1.  Open the Vivado project you previously created in [Example Project: Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-project-creating-a-new-embedded-project-with-zynq-soc).
 
-2.  Add the custom IP to the existing design. Right-click the Diagram
-    view and select **Add IP**.
+2.  Add the custom IP to the existing design. Right-click the Diagram view and select **Add IP**.
 
-3.  Type blink into the search view. Blink_v1.0 appears. Double-click
-    the IP to add it to the design.
+3.  Type "blink" into the search view. Blink_v1.0 appears. Double-click the IP to add it to the design.
 
-4.  Click **Run Connection Automation** to make automatic port
-    connections.
+4.  Click **Run Connection Automation** to make automatic port connections.
 
-5.  With the **All Automation** box checked by default, click **OK** to
-    make the connections. Your new IP is automatically connected but
-    the leds output port is unconnected.
+5.  With the **All Automation** box checked by default, click **OK** to make the connections. Your new IP is automatically connected, but the ``leds`` output port is disconnected.
 
 6.  Right-click the **leds** port and select **Make External**.
 
     ![](./media/image98.jpeg)    
 
-7.  In the Flow Navigator view, navigate to **RTL Analysis** and select
-    **Open Elaborated Design**.
+7.  In the Flow Navigator view, navigate to **RTL Analysis** and select **Open Elaborated Design**.
 
 8.  Click **OK**.
 
-9.  After the elaborated design opens, click the **I/O Ports** window
-    and expand **All ports→ led_0**.
+9.  After the elaborated design opens, click the **I/O Ports** window and expand **All ports → led_0**.
 
     ![](./media/image99.png)
 
-10. Edit the led port settings as follows:
+10. Edit the ``leds`` port settings as follows:
 
     | Port Name | I/O Std  | Package Pin |
     | --------- | -------- | ----------- |
@@ -294,25 +271,19 @@ Peripheral IP](#example-project-creating-peripheral-ip).
     | Leds[0]   | LVCMOS25 | V7          |
 
 
-    The following figure shows the completed led port settings in the I/O
-    Ports window.
+    The following figure shows the completed ``leds`` port settings in the I/O Ports window.
 
     ![](./media/image100.png)
 
 11. Select **Generate Bitstream**.
 
-12. The Save Project view opens. Ensure that the check box is selected
-    and then click **Save**.
+12. The Save Project view opens. Ensure that the check box is selected and then click **Save**.
 
-13. If a message appears stating that Synthesis is Out-of-date, click
-    **Yes**.
+13. If a message appears stating that synthesis is Out-of-date, click **Yes**.
 
-14. After the bitstream generation completes, export the hardware and
-    launch the Vitis unified software platform as described in
-    [Exporting a Hardware Platform](2-using-zynq.md#exporting-a-hardware-platform).
+14. After the bitstream generation completes, export the hardware and launch the Vitis unified software platform as described in [Exporting a Hardware Platform](2-using-zynq.md#exporting-a-hardware-platform).
 
-***Note*:** Make sure to select **Include bitstream** instead of
-**Pre-synthesis** on the **Output** page of the **Export Hardware
+**Note:** Make sure to select **Include bitstream** instead of **Pre-synthesis** on the **Output** page of the **Export Hardware
 Platform** wizard.
 
 ## Linux-Based Device Driver Development
@@ -333,7 +304,7 @@ LKMs typically are one of the following things:
     hardware without having to know any details of how the hardware
     works.
 
--   **Filesystem drivers:** A filesystem driver interprets the contents
+-   **File system drivers:** A file system driver interprets the contents
     of a file system as files and directories.
 
 -   **System calls:** User space programs use system calls to get
@@ -346,9 +317,9 @@ so device files provide input/output control (ioctl) to send and
 receive data to and from hardware. Each device can have its own ioctl
 commands, which can be of the following types:
 
--   read ioctl. These send information from a process to the kernel.
+-   **read ioctl:** These commands send information from a process to the kernel.
 
--   write ioctl. These return information to a process.
+-   **write ioctl:** These commands return information to a process.
 
 -   Both read and write ioctl.
 
@@ -357,14 +328,9 @@ commands, which can be of the following types:
 For more details about LKM, refer to the <a href="http://tldp.org/LDP/lkmpg/2.6/html/index.html">Linux Kernel Module
 Programming Guide</a>.
 
-In this section you are going to develop a peripheral IP Device driver
-as a LKM, which is dynamically loadable onto the running Kernel. You
-must build peripheral IP LKM as part of the same kernel build process
-that generates the base kernel image.
+In this section you are going to develop a peripheral IP device driver as an LKM, which is dynamically loadable onto the running kernel. You must build the peripheral IP LKM as part of the same kernel build process that generates the base kernel image.
 
-***Note*:** If you do not want to compile the device driver, you can
-skip the example of this section and jump to [Loading Module into
-Running Kernel and Application Execution](#loading-module-into-running-kernel-and-application-execution). In that section, you can use the kernel image, which contains blink.ko (image.ub in the shared ZIP files). See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+**Note:** If you do not want to compile the device driver, you can skip the example in this section and jump to [Loading the Module into a Running Kernel and Application Execution](#loading-the-module-into-a-running-kernel-and-application-execution). In that section, you can use the kernel image, which contains ``blink.ko`` (``image.ub`` in the shared ZIP files). See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 
 For kernel compilation and device driver development, you must use the
 Linux workstation. Before you start developing the device driver, the
@@ -425,7 +391,7 @@ Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 6.  You can install the driver using the modprobe command, which will be
     explained in further detail in the next section.
 
-## Loading Module into Running Kernel and Application Execution
+## Loading the Module into Running Kernel and Application Execution
 
 In this section you will boot Linux onto the Zynq SoC Board and load
 the peripheral IP as a LKM onto it. You will develop the application
@@ -534,21 +500,17 @@ a Windows machine.
     Registration is a success the major device number is 244.
     ```
 
-    If you want to talk to the device driver, create a device file by
-    running the following command:
+    If you want to talk to the device driver, create a device file by running the following command:
 
     ``mknod /dev/blink_Dev c 244 0``
 
-    The device file name is important, because the ioctl program assumes
-    that is the file you will use.
+    The device file name is important, because the ioctl program assumes that is the file you will use.
 
-13. Create a device node. Run the mknod command and select the the
-    string from the printed message.
+13. Create a device node. Run the ``mknod`` command and select the the string from the printed message.
 
     For example, the command **mknod /dev/blink_Dev c 244 0** creates the /dev/blink_Dev node.
 
-14. Select **Window→ Open perspective → Remote System Explorer** and
-    click **Open**. The Vitis software platform opens the Remote
+14. Select **Window → Open perspective → Remote System Explorer** and click **Open**. The Vitis software platform opens the Remote
     Systems Explorer perspective.
 
 15. In the Remote Systems view, do the following:
@@ -558,17 +520,15 @@ a Windows machine.
 
     b.  Select the **SSH Only** and click **Next**.
 
-    c.  In the Host name field, type the target board IP. To determine the target IP, type ifconfig eth0 at the Zynq prompt in the serial terminal. The target IP assigned to the board displays.
+    c.  In the Host name field, type the target board IP. To determine the target IP, type "ifconfig eth0" at the Zynq prompt in the serial terminal. The target IP assigned to the board displays.
 
-    d.  Set the connection name as blink and type a description.
+    d.  Set the connection name as **blink** and type a description.
 
     e.  Click **Finish** to create the connection.
 
-    f.  Expand **blink → sftp Files→ Root**. The Enter Password wizard
-        opens.
+    f.  Expand **blink → sftp Files → Root**. The Enter Password wizard opens.
 
-    g.  Enter the User ID and Password (**root/root**); select the **Save
-        user ID** and **Save password** options.
+    g.  Enter the user ID and password (**root/root**). Select the **Save user ID** and **Save password** options.
 
     h.  Click **OK**.
 
@@ -576,23 +536,20 @@ a Windows machine.
         established the connection between the Windows host machine and the
         target board.
 
-    i.  Right-click the **/** in the path name and create a new directory;
-        name it Apps.
+    i.  Right-click the **/** in the path name and create a new directory; name it "Apps".
 
-    j.  Using the Remote System explorer perspective, copy the
-        linux_blinkled_app.elf file from the \<project-dir\>
-        linux_blinkled_app/Debug folder and paste it into the /Apps
-        directory under **blink connection**.
+    j.  Using the Remote System Explorer perspective, copy the ``linux_blinkled_app.elf`` file from the \<project-dir\>
+        ``linux_blinkled_app/Debug`` folder and paste it into the ``/Apps`` directory under **blink connection**.
 
-16. In the serial terminal, type cd Apps at the Zynq\prompt to open
-    the /Apps directory.
+16. In the serial terminal, type ``cd Apps`` at the ``Zynq\prompt`` to open
+    the ``/Apps`` directory.
 
-17. Go to the Apps directory at the root\@xilinx-zc702-2020_2: Linux
-    prompt, and type chmod 777 linux_blinkled_app.elf to change the
-    linux_blinkled_app.elf file mode to executable mode.
+17. Go to the ``Apps`` directory at the ``root\@xilinx-zc702-2020_2: Linux``
+    prompt, and type ``chmod 777 linux_blinkled_app.elf`` to change the
+    ``linux_blinkled_app.elf`` file mode to executable mode.
 
-18. At the root\@xilinx-zc702-2020_2: prompt, type
-    ./linux_blinkled_app.elf to execute the application.
+18. At the ``root\@xilinx-zc702-2020_2:`` prompt, type
+    ``./linux_blinkled_app.elf`` to execute the application.
 
 19. Follow the instruction printed on the serial terminal to run the
     application. The application asks you to enter 1 or 0 as input.
