@@ -329,7 +329,7 @@ Programming Guide</a>.
 
 In this section you are going to develop a peripheral IP device driver as an LKM, which is dynamically loadable onto the running kernel. You must build the peripheral IP LKM as part of the same kernel build process that generates the base kernel image.
 
-**Note:** If you do not want to compile the device driver, you can skip the example in this section and jump to [Loading a Module into the Kernel and Application Execution](#example-13-loading-a-module-into-the-kernel-and-executing-the-application). In that section, you can use the kernel image, which contains ``blink.ko`` (``image.ub`` in the shared ZIP files). See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+**Note:** If you do not want to compile the device driver, you can skip the example in this section and jump to [Loading a Module into the Kernel and Application Execution](#example-13-loading-the-module-into-a-kernel-and-application-execution). In that section, you can use the kernel image, which contains ``blink.ko`` (``image.ub`` in the shared ZIP files). See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 
 For kernel compilation and device driver development, you must use the Linux workstation. Before you start developing the device driver, the following steps are required:
 
@@ -386,7 +386,7 @@ accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#des
 6.  You can install the driver using the ``modprobe`` command, which will be
     explained in further detail in the next section.
 
-## Loading the Module into a Kernel and Application Execution
+## Example 13: Loading the Module into a Kernel and Application Execution
 
 In this section you will boot Linux onto the Zynq SoC Board and load
 the peripheral IP as an LKM onto it. You will develop the application
