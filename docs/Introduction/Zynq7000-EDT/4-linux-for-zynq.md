@@ -109,13 +109,13 @@ JTAG mode.
 
 **Note:** Additional boot options are explained in [Linux Booting and Debug in the Software Platform](./7-linux-booting-debug.md).
 
-1. Copy the `BOOT.BIN`, `image.ub`, and `boot.scr` files to the SD card. 
+1. Copy the `BOOT.BIN`, `image.ub`, and `boot.scr` files to the SD card.
 
 2. Set up the board as described in [Setting Up the Board](./2-using-zynq.md#setting-up-the-board).
 
 3. Change the boot mode to SD boot.
 
-    - Change **SW16[5:1]** to **01100** 
+    - Change **SW16[5:1]** to **01100**
 
     ![SD Boot Mode Setup for SW16](media/image89.jpeg)
 
@@ -174,19 +174,17 @@ are given below:
 
     ![Creating Linux domain](media/image74.png)
 
-    - Click **OK** to finish and observe
-    that the Linux domain has been added to the zc702_edt as shown
-    below.
+    - Click **OK** to finish, and observe that the Linux domain has been added to the zc702_edt as shown below.
 
-    ![Updated platform domains](./media/image75.png) 
+    ![Updated platform domains](./media/image75.png)
 
-    **Note**: If we fill in Bif file, Boot Components Directory and Linux image directory options, Vitis can help to generate sd_card.img when we build the system project in Linux host OS. It will be helpful if we use ext4 root file system. In our examples, since we use initramfs, it only requires copying files to FAT32 partition into the SD card. So we won't use this feature.
+    **Note**: If you fill in the Bif File, Boot Components Directory, and Linux Image Directory options, Vitis can help to generate ``sd_card.img`` when you build the system project in the Linux host OS. In this case, it is helpful to use the ``ext4`` root file system. In the examples in this tutorial, which use ``initramfs``, it is only required to copy files to the FAT32 partition into the SD card, so this feature will not be used.
 
-5. Build the platform
+5. Build the platform:
 
     - Click the hammer button on the tool bar to build the platform.
 
-    Now you are ready with Linux domain to create Linux applications.
+    Now you have a Linux domain and are ready to create Linux applications.
 
 
 ### Creating Linux Applications in the Vitis IDE

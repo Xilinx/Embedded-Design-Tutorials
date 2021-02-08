@@ -94,7 +94,7 @@ In the Block Diagram window, notice the message stating that Designer assistance
     detailed tutorial with information about cross trigger set-up, refer
     to the _Vivado Design Suite Tutorial: Embedded Processor Hardware Design_ ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;d=ug940-vivado-tutorial-embedded-design.pdf)).
 
-2.  Click **OK** to accept the default processor system options and make default pin connections. 
+2.  Click **OK** to accept the default processor system options and make default pin connections.
 
     The automation result looks like this. It configures PS properties inside the block and connects fixed IO and DDR pins.
 
@@ -120,7 +120,7 @@ Now, let's validate the design.
 
     ![](./media/image15.png)
 
-3.  Validate the design again to ensure there are no other errors. 
+3.  Validate the design again to ensure there are no other errors.
 
     - Right-click in the white space of the Diagram window and select **Validate Design**.
 
@@ -155,7 +155,7 @@ Now, let's validate the design.
 
 2.  Change the Synthesis Options to **Global**.
 
-    **Note:**  If the synthesis option is **Global**, only wrapper files are generated during the block design generation phase, and the design will be synthesized as a whole at the synthesis stage. If the synthesis option is **Out of context per IP** or **Out of context per Block design**, the wrapper of the IP or block design will be generated and synthesized during block design generation, and the generated netlists will be combined together at the synthesis stage. 
+    **Note:**  If the synthesis option is **Global**, only wrapper files are generated during the block design generation phase, and the design will be synthesized as a whole at the synthesis stage. If the synthesis option is **Out of context per IP** or **Out of context per Block design**, the wrapper of the IP or block design will be generated and synthesized during block design generation, and the generated netlists will be combined together at the synthesis stage.
 
 3.  Click **Generate**.
 
@@ -221,8 +221,8 @@ Debugger in the Vitis IDE.
 2.  Connect the USB UART cable to J17.
 
 3.  Connect the USB JTAG cable:
-    
-    - Connect a micro USB cable between the host machine and the ZC702 target board U23. Be careful not to use J1 by mistake. 
+
+    - Connect a micro USB cable between the host machine and the ZC702 target board U23. Be careful not to use J1 by mistake.
     - Make sure that the **SW10** switch settings for JTAG selection are set to choose USB JTAG:
 
       -   Bit-1 is 0
@@ -249,13 +249,13 @@ Debugger in the Vitis IDE.
     - On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Xilinx Vitis 2020.2**.
     - On Linux, run `source <Vitis Installation Directory>/settings64.sh` to set up the environment and run `vitis &`.
 
-2. Select the workspace location as **C:/edt/edt_zc702_workspace** or any given location path. 
+2. Select the workspace location as **C:/edt/edt_zc702_workspace** or any given location path.
 
     - Vitis will create the workspace folder if it is not already created.
 
     ![Vitis IDE Launcher](./media/image23.png)
 
-    - Click **Launch**. The Vitis IDE opens. 
+    - Click **Launch**. The Vitis IDE opens.
 
 3. Review the Welcome page and close it.
 
@@ -267,10 +267,10 @@ Debugger in the Vitis IDE.
 
     ![Platform Project Name](./media/image25.png)
 
-5.  In the **Platform** page, you see the **Create a new platform from hardware (XSA)** tab by default. Under **Hardware Specification**, click **browse** to specify the XSA file **C:\edt\edt_zc702\system_wrapper.xsa**, and click **OK**. 
+5.  In the **Platform** page, you see the **Create a new platform from hardware (XSA)** tab by default. Under **Hardware Specification**, click **browse** to specify the XSA file **C:\edt\edt_zc702\system_wrapper.xsa**, and click **OK**.
 
-    - When the XSA file is selected, the Software Specification fields are updated so that the operating system is **standalone** and the processor is **ps7_cortexa9_0**. 
-    - Keep the **Generate boot components** option selected, as shown in the following figure. 
+    - When the XSA file is selected, the Software Specification fields are updated so that the operating system is **standalone** and the processor is **ps7_cortexa9_0**.
+    - Keep the **Generate boot components** option selected, as shown in the following figure.
     - Click **Finish**.
 
     ![Select XSA](./media/image26.png)    
@@ -288,7 +288,7 @@ Debugger in the Vitis IDE.
 
     ![Build Project](./media/image29.png)
 
-9.  As the project builds, you can see the output in the Console window. 
+9.  As the project builds, you can see the output in the Console window.
 
     The build process takes some time because it is not only building the standalone BSP, but also boot components such as FSBL.
 
@@ -327,16 +327,16 @@ you create in the Vitis IDE.
 
     While entering the application project name, the Vitis IDE populates the system project name automatically with *<application name> + "_system"*. You are free to update the system project name if you wish.
 
-    By default, the New Application Wizard only shows the processors used by the domains in the platform. If you want to create a new platform during the application creation process, enable the **Show all processors in hardware specification** option. 
+    By default, the New Application Wizard only shows the processors used by the domains in the platform. If you want to create a new platform during the application creation process, enable the **Show all processors in hardware specification** option.
 
 3. Right-click the **hello_world** standalone application and select **Build Project** to generate the ``hello_world.elf`` binary file.
 
 ### Running the Hello World Application on a ZC702 Board
 
-1.  Open a serial communication utility for the COM port assigned on your system. 
+1.  Open a serial communication utility for the COM port assigned on your system.
 
     The Vitis software platform provides a serial terminal utility will be used throughout the tutorial. You can also use your preferred serial terminal application.
-    
+
     - To open this utility, select **Window → Show view**.
     - In the Show View dialog box, type **terminal** in the search box.
     - Select **Vitis Serial Terminal**.
@@ -348,7 +348,7 @@ you create in the Vitis IDE.
 
     - Select the port from the dropdown menu.
     - Keep the Advanced Settings as-is.
-    - Click **OK** 
+    - Click **OK**
 
     ![Connect UART](./media/image35.png)
 
@@ -399,8 +399,6 @@ processor in the platform.
 Standalone is a simple, low-level software layer. It provides access to basic processor features such as caches, interrupts, and exceptions, as well as the basic processor features of a hosted environment. These basic features include
 standard input/output, profiling, abort, and exit. It is a single
 threaded semi-hosted environment.
-
-![](./media/image37.png)
 
 **IMPORTANT!** The application you ran in this chapter was created on
 top of the standalone OS. The domain/BSP that your software
