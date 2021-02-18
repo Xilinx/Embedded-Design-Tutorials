@@ -26,12 +26,12 @@ The next four chapters provide an overview of the SPA toolbox:
 - [Chapter 1: Introduction](docs/1-introduction.md) outlines system performance and defines why it is important.
 - [Chapter 2: System Performance Modeling Project](docs/2-system-performance-modeling-project.md) describes the contents of the SPM project.
 - [Chapter 3: Monitor Framework](docs/3-monitor-framework.md) defines the monitoring infrastructure used by the Vitis software platform tool.
-- [Chapter 4: Getting Started with SPM](4-getting-started0with-SPM.md) provides the necessary steps to get up and running with the SPM design.
+- [Chapter 4: Getting Started with SPM](4-getting-started-with-SPM.md) provides the necessary steps to get up and running with the SPM design.
 
 The next set of chapters provides in-depth exploration into using the SPM design:
 
 - [Chapter 5: Evaluating Software Performance](docs/5-evaluating-software-performance.md) begins by running a software executable that comes with the SPM project.
-- [Chapter 6: Evaluating High-Performance Ports](docs/6-evaluating-high-performancce-ports.md) then introduces traffic on the High- Performance (HP) ports while running the same software.
+- [Chapter 6: Evaluating High-Performance Ports](docs/6-evaluating-high-performance-ports.md) then introduces traffic on the High- Performance (HP) ports while running the same software.
 - [Chapter 7: Evaluating DDR Controller Settings](docs/7-evaluating-DDR-controller-settings.md) describes how to change DDR controller (DDRC) settings and analyze their impact on the HP port traffic.
 - [Chapter 8: Evaluating Memory Hierarchy and the ACP](docs/8-evaluating-memory-hierarchy-ACP.md) evaluates bandwidth and latency from the memory hierarchy, and then introduces traffic on the Accelerator Coherency Port (ACP) to investigate its impact on that performance.
 - [Chapter 9: Working with a Custom Target](docs/9-working-with-custom-target.md) defines some steps and requirements to instrumenting and monitoring your design.
