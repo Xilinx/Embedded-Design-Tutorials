@@ -12,9 +12,9 @@ To enable the HSDP, start with the VCK190 or VMK180 project that you built in th
 
 ### Modifying the Design to Enable the HSDP
 
-This design uses the project built in [System Design Example using Scalar Engine and Adaptable Engine](#5-system-design-example.md) and enables the HSDP interface. You can do this using the Vivado IP integrator.
+This design uses the project built in [System Design Example using Scalar Engine and Adaptable Engine](../Versal-EDT/docs/5-system-design-example.md) and enables the HSDP interface. You can do this using the Vivado&trade; IP integrator.
 
-1. Open the Vivado project you created in [Chapter 5: System Design Example using Scalar Engine and Adaptable Engine](#5-system-design-example.md).
+1. Open the Vivado project you created in [Chapter 5: System Design Example using Scalar Engine and Adaptable Engine](../Versal-EDT/docs/5-system-design-example.md).
 
     `C:/edt/edt_versal/edt_versal.xpr`
 
@@ -38,7 +38,7 @@ This design uses the project built in [System Design Example using Scalar Engine
 
 6. Click **OK** to save the changes. Two ports, `gt_refclk1` and `HSDP1_GT`, are created on the CIPS IP.
 
-7. On the **IP Integrator** page, right-click `gt_refclk1` and select **Make External**. Do the same for **HSDP1\_GT**.
+7. On the **IP Integrator** page, right-click `gt_refclk1` and select **Make External**. Do the same for **HSDP1_GT**.
 
     ![](./media/ch6-image4.png)
 
@@ -70,13 +70,13 @@ This design uses the project built in [System Design Example using Scalar Engine
 
 ## Creating the HSDP-enabled Linux Image Using PetaLinux
 
-This example rebuilds the PetaLinux project using the HSDP-enabled XSA that was built in the preceding step. The assumption is that the PetaLinux project has been created as per the instructions in [System Design Example using Scalar Engine and Adaptable Engine](#5-system-design-example.md).
+This example rebuilds the PetaLinux project using the HSDP-enabled XSA that was built in the preceding step. The assumption is that the PetaLinux project has been created as per the instructions in [System Design Example using Scalar Engine and Adaptable Engine](../Versal-EDT/docs/5-system-design-example.md).
 
-> **Important:** If you are building this tutorial without having created a PetaLinux project in the preceding chapter, follow steps 1 through 12 in the [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-Linux-images-using-PetaLinux) section to create a new PetaLinux project.
+> **Important:** If you are building this tutorial without having created a PetaLinux project in the preceding chapter, follow steps 1 through 12 in the [Example Project: Creating Linux Images Using PetaLinux](../Versal-EDT/docs/5-system-design-example.md#example-project-creating-Linux-images-using-petalinux) section to create a new PetaLinux project.
 
-This example needs a Linux host machine. Refer to the [PetaLinux Tools Documentation Reference Guide (UG1144)](https://www.xilinx.com/member/versal_tools_ea.html#embedded) for information on dependencies and installation procedure for the PetaLinux tool.
+This example needs a Linux host machine. Refer to the [PetaLinux Tools Documentation Reference Guide (UG1144)](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf) for information on dependencies and installation procedure for the PetaLinux tool.
 
-1. Change to the PetaLinux project directory that was created in [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-Linux-images-using-PetaLinux) using the following command.
+1. Change to the PetaLinux project directory that was created in [Example Project: Creating Linux Images Using PetaLinux](../Versal-EDT/docs/5-system-design-example.md#example-project-creating-Linux-images-using-petalinux) using the following command.
 
     `$ cd led_example`
 
@@ -87,7 +87,7 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
 1. Reconfigure the BSP using the following commands.
 
     ```
-    petalinux-config --get-hw-description=<path till the directory containing the respective xsa file>
+    $ petalinux-config --get-hw-description=<path till the directory containing the respective xsa file>
     ```
 
 1. Build the Linux images using the following command.
@@ -100,7 +100,7 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
 
     ```
     $ petalinux-package --force --boot --atf --u-boot
-    ``` 
+    ```
 
     > ***Note*:** The packaged Linux boot images are placed in the `<PetaLinux-project>/images/Linux/` directory in the PetaLinux build root. Make a note of this directory location as it will be used in the following steps. If you intend to use a different machine than the one that was used to build PetaLinux (for example, a Windows Based PC) to download the Linux boot images using SmartLynq+, the contents of this directory should be transferred to that machine before proceeding with this tutorial.
 
@@ -195,5 +195,3 @@ The design package included with this tutorial contains a script that downloads 
 ## Summary
 
 In this section you have built a design that uses the HSDP, connected the SmartLynq+ module, configured the SmartLynq+ for remote UART access, and used the HSDP to download Linux images onto your board.
-
- © Copyright 2020 Xilinx, Inc.

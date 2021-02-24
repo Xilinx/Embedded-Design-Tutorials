@@ -1,14 +1,10 @@
 # Appendix: Creating the PLM
 
-Following are the steps to create a platform loader and manager (PLM)
- elf file in the Vitis™ software platform. In Versal™ devices, the PLM
- executes in the PMC, and is used to bootstrap the APU and RPU.
+Following are the steps to create a platform loader and manager (PLM) elf file in the Vitis&trade; software platform. In Versal&trade; devices, the PLM executes in the PMC, and is used to bootstrap the APU and RPU.
 
-1. Select **File → New → Application Project**. The New Application
-     Project wizard opens.
+1. Select **File → New → Application Project**. The New Application Project wizard opens.
 
-2. Use the following information in the table to make your selections
-     in the wizard screens.
+2. Use the following information in the table to make your selections in the wizard screens.
 
     *Table 10:* **System Property Settings**
 
@@ -28,12 +24,4 @@ Following are the steps to create a platform loader and manager (PLM)
    |                      | Architecture        	    | 32-bit               |
    | Templates            | Available Templates 	    | Versal PLM           |
 
- The Vitis&trade; software platform creates the plm application project and
- edt_versal_wrapper platform under the Explorer view. Right-click the
- platform project and select **Build Project**. After building the
- platform project, right-click the plm_system project and click on
- **Build Project**. This generates the plm.elf file within the Debug
- folder of the application project. After building the project, build
- the platform as well.
-
- © Copyright 2020 Xilinx, Inc.
+ The Vitis software platform creates the PLM application project and edt_versal_wrapper platform under the Explorer view. Right-click the platform project and select **Build Project**. After building the platform project, right-click the plm_system project and click on **Build Project**. This generates the `plm.elf` file within the Debug folder of the application project. After building the project, build the platform as well.
