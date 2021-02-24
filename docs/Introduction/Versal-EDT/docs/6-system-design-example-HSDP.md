@@ -12,9 +12,9 @@ To enable the HSDP, start with the VCK190 or VMK180 project that you built in th
 
 ### Modifying the Design to Enable the HSDP
 
-This design uses the project built in [System Design Example using Scalar Engine and Adaptable Engine](../Versal-EDT/docs/5-system-design-example.md) and enables the HSDP interface. You can do this using the Vivado&trade; IP integrator.
+This design uses the project built in [System Design Example using Scalar Engine and Adaptable Engine](../docs/5-system-design-example.md) and enables the HSDP interface. You can do this using the Vivado&trade; IP integrator.
 
-1. Open the Vivado project you created in [Chapter 5: System Design Example using Scalar Engine and Adaptable Engine](../Versal-EDT/docs/5-system-design-example.md).
+1. Open the Vivado project you created in [System Design Example using Scalar Engine and Adaptable Engine](../docs/5-system-design-example.md).
 
     `C:/edt/edt_versal/edt_versal.xpr`
 
@@ -70,13 +70,13 @@ This design uses the project built in [System Design Example using Scalar Engine
 
 ## Creating the HSDP-enabled Linux Image Using PetaLinux
 
-This example rebuilds the PetaLinux project using the HSDP-enabled XSA that was built in the preceding step. The assumption is that the PetaLinux project has been created as per the instructions in [System Design Example using Scalar Engine and Adaptable Engine](../Versal-EDT/docs/5-system-design-example.md).
+This example rebuilds the PetaLinux project using the HSDP-enabled XSA that was built in the preceding step. The assumption is that the PetaLinux project has been created as per the instructions in [System Design Example using Scalar Engine and Adaptable Engine](../docs/5-system-design-example.md).
 
-> **Important:** If you are building this tutorial without having created a PetaLinux project in the preceding chapter, follow steps 1 through 12 in the [Example Project: Creating Linux Images Using PetaLinux](../Versal-EDT/docs/5-system-design-example.md#example-project-creating-Linux-images-using-petalinux) section to create a new PetaLinux project.
+> **Important:** If you are building this tutorial without having created a PetaLinux project in the preceding chapter, follow steps 1 through 12 in the [Example Project: Creating Linux Images Using PetaLinux](../docs/5-system-design-example.md#example-project-creating-Linux-images-using-petalinux) section to create a new PetaLinux project.
 
 This example needs a Linux host machine. Refer to the [PetaLinux Tools Documentation Reference Guide (UG1144)](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf) for information on dependencies and installation procedure for the PetaLinux tool.
 
-1. Change to the PetaLinux project directory that was created in [Example Project: Creating Linux Images Using PetaLinux](../Versal-EDT/docs/5-system-design-example.md#example-project-creating-Linux-images-using-petalinux) using the following command.
+1. Change to the PetaLinux project directory that was created in [Example Project: Creating Linux Images Using PetaLinux](../docs/5-system-design-example.md#example-project-creating-Linux-images-using-petalinux) using the following command.
 
     `$ cd led_example`
 
