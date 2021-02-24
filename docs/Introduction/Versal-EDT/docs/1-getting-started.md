@@ -70,8 +70,4 @@ Xilinx software uses FLEXnet licensing. When the software is first run, it perfo
 
 #### Tutorial Design Files
 
-1. Download the [reference design files](https://www.xilinx.com/cgi-bin/docs/ctdoc?cid=12516610-29d7-4627-bd77-dbfaa3a50ef0;d=ug1305-versal-embedded-tutorial.zip) from the Xilinx website.
-
-2. Extract the ZIP file contents into any write-accessible location.
-
-     To view the contents of the ZIP file, download and extract the contents from the ZIP file to `C:\edt`. The design files contain the XSA files, source code and prebuilt images for all the sections.
+The reference design files for this tutorial are provided in the [ref_files](../ref_files) directory.

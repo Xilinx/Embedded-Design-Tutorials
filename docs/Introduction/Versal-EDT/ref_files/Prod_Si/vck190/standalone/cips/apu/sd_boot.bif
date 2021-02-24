@@ -1,0 +1,11 @@
+all:
+{
+    image
+    {
+        { type = bootimage, file = edt_versal_wrapper_rtos.pdi }
+    }
+    image
+    {
+        { core=a72-0, file = a72_ocm.elf }
+    }
+} 
