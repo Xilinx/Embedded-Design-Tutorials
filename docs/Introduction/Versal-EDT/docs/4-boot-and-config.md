@@ -8,7 +8,7 @@ The purpose of this chapter is to show how to integrate and load boot loaders, b
 
 - Boot sequences for SD-boot, and QSPI and OSPI boot modes.
 
-You can achieve these configurations using the Vitis&trade; software platform and the PetaLinux tool flow. While [Versal ACAP CIPS and NoC (DDR) IP Core Configuration](../Versal-EDT/docs/2-cips-noc-ip-config.md) focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a bigger system.
+You can achieve these configurations using the Vitis&trade; software platform and the PetaLinux tool flow. While [Versal ACAP CIPS and NoC (DDR) IP Core Configuration](../docs/2-cips-noc-ip-config.md) focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a bigger system.
 
 ## System Software
 
