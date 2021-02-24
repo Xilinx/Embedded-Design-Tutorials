@@ -63,7 +63,7 @@ The Vitis software platform does not support automatic boot image creation for V
 
     - For Linux images, navigate to the `<plnx-proj-root>/images/linux` and copy `BOOT.BIN`, `image.ub`, and `boot.scr` to the SD card.
 
-    >***Note*:** You can either boot the VCK190/VMK180 board using the   ready-to-test images as part of the released package path, `<design-package>/<vck190 or vmk180>/linux/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](../Versal-EDT/docs/5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
+    >***Note*:** You can either boot the VCK190/VMK180 board using the   ready-to-test images as part of the released package path, `<design-package>/<vck190 or vmk180>/linux/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](../docs/5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
 
 2. Load the SD card into the VMK180/VCK190 board, in the J302 connector.
 
