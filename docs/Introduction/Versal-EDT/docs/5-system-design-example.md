@@ -14,7 +14,7 @@ The first step in this design is to configure the PS and PL sections. You can do
 
 >***Note*:** If the Vivado Design Suite is open already, jump to step 3.
 
-1. Open the Vivado project you created in [Chapter 2: Versal ACAP CIPS and NoC (DDR) IP Core Configuration](../Versal-EDT/docs/2-cips-noc-ip-config.md).
+1. Open the Vivado project you created in [Versal ACAP CIPS and NoC (DDR) IP Core Configuration](../docs/2-cips-noc-ip-config.md).
 
     `C:/edt/edt_versal/edt_versal.xpr`
 
