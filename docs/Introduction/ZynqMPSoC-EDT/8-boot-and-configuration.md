@@ -1,10 +1,3 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
-</th>
-
-  </tr>
-
-</table>
-
 # Boot and Configuration
 
 This chapter shows how to integrate the software and hardware components generated in the previous steps to create a Zynq&reg; UltraScale+&trade; boot image. After reading this chapter, you will understand how to integrate and load boot loaders, bare-metal applications (for APU/RPU), and the Linux OS for a Zynq UltraScale+ system in different boot requirements: QSPI, SD card, JTAG, and so on.
