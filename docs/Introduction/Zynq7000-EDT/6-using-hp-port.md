@@ -1,10 +1,3 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
-</th>
-
-  </tr>
-
-</table>
-
 # Using the HP Slave Port with AXI CDMA IP
 
 In this chapter, you will instantiate AXI CDMA IP in fabric and
