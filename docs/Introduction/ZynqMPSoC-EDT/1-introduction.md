@@ -1,12 +1,4 @@
-
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
-</th>
-
-  </tr>
-
-</table>
-
-## How Zynq UltraScale+ Devices Offer a Single Chip Solution
+# How Zynq UltraScale+ Devices Offer a Single Chip Solution
 
  Zynq® UltraScale+™ MPSoC, the next generation Zynq device, is designed
  with the idea of using the right engine for the right task. The Zynq
@@ -56,7 +48,7 @@
  and transfer of the design onto actual boards for verification and
  validation.
 
-### Vitis Integrated Design Environment
+## Vitis Integrated Design Environment
 
  The Vitis unified software platform is an integrated development
  environment (IDE) for the development of embedded software
@@ -99,7 +91,7 @@
 
 - Linaro GCC toolchain for C/C++ software development targeting the Arm Cortex-A53 and Arm Cortex-R5F MPCore processors in the Zynq UltraScale+ processing system.
 
-### Vivado Design Suite
+## Vivado Design Suite
 
  The Vivado Design Suite offers a broad range of development system
  tools for FPGA implementation. It can be installed as a standalone
@@ -108,7 +100,7 @@
  be used for embedded system development. In this guide, the System
  Edition installed with the Vitis IDE is used.
 
-### PetaLinux Tools
+## PetaLinux Tools
 
  The PetaLinux toolset is an embedded Linux system development kit. It
  offers a multi-faceted Linux tool flow, which enables complete
