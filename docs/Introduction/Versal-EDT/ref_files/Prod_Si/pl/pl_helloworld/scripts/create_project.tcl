@@ -1,6 +1,6 @@
 # global variables
 set ::platform "edt"
-set ::silicon "e-S-es1"
+set ::silicon "e-S"
 
 # local variables
 set project_dir "project"
@@ -12,12 +12,8 @@ set design_name "${::platform}_versal"
 puts "INFO: Target part selected: '$part'"
 
 # set up project
-set_param board.repoPaths ./board_files
 create_project $design_name $project_dir -part $part -force
-#set_property BOARD_PART xilinx.com:tenzing_es_se1:part0:1.0 [current_project]
-#set_property BOARD_PART xilinx.com:vck190_es:part0:1.0 [current_project]
-#set_property board_part xilinx.com:zcu111:part0:1.1 [current_project]
-set_property BOARD_PART xilinx.com:vck190_es:part0:1.0 [current_project]
+set_property BOARD_PART xilinx.com:vck190:part0:2.0 [current_project]
 
 # set up IP repo
 #set_property ip_repo_paths $ip_dir [current_fileset]

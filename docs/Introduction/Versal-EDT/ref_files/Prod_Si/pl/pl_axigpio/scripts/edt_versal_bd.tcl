@@ -43,8 +43,8 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
-   create_project project_1 myproj -part xcvc1902-vsva2197-2MP-e-S-es1
-   set_property BOARD_PART xilinx.com:vck190_es:part0:1.0 [current_project]
+   create_project project_1 myproj -part xcvc1902-vsva2197-2MP-e-S
+   set_property BOARD_PART xilinx.com:vck190:part0:2.0 [current_project]
 }
 
 
@@ -344,13 +344,86 @@ proc create_root_design { parentCell } {
   # Create instance: versal_cips_0, and set properties
   set versal_cips_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:versal_cips:2.1 versal_cips_0 ]
   set_property -dict [ list \
+   CONFIG.CPM_AUX0_REF_CTRL_ACT_FREQMHZ {899.999939} \
+   CONFIG.CPM_AUX1_REF_CTRL_ACT_FREQMHZ {899.999939} \
+   CONFIG.CPM_CORE_REF_CTRL_ACT_FREQMHZ {899.999939} \
+   CONFIG.CPM_DBG_REF_CTRL_ACT_FREQMHZ {299.999969} \
+   CONFIG.CPM_LSBUS_REF_CTRL_ACT_FREQMHZ {149.999985} \
+   CONFIG.PMC_CRP_CFU_REF_CTRL_ACT_FREQMHZ {394.444427} \
+   CONFIG.PMC_CRP_HSM0_REF_CTRL_ACT_FREQMHZ {32.870369} \
+   CONFIG.PMC_CRP_HSM1_REF_CTRL_ACT_FREQMHZ {131.481476} \
+   CONFIG.PMC_CRP_I2C_REF_CTRL_ACT_FREQMHZ {99.999992} \
+   CONFIG.PMC_CRP_I2C_REF_CTRL_DIVISOR0 {10} \
+   CONFIG.PMC_CRP_I2C_REF_CTRL_SRCSEL {NPLL} \
+   CONFIG.PMC_CRP_LSBUS_REF_CTRL_ACT_FREQMHZ {147.916656} \
+   CONFIG.PMC_CRP_NOC_REF_CTRL_ACT_FREQMHZ {999.999939} \
+   CONFIG.PMC_CRP_NPI_REF_CTRL_ACT_FREQMHZ {295.833313} \
+   CONFIG.PMC_CRP_PL0_REF_CTRL_ACT_FREQMHZ {333.333313} \
+   CONFIG.PMC_CRP_PPLL_CTRL_FBDIV {71} \
+   CONFIG.PMC_CRP_QSPI_REF_CTRL_ACT_FREQMHZ {295.833313} \
+   CONFIG.PMC_CRP_SDIO1_REF_CTRL_ACT_FREQMHZ {199.999985} \
+   CONFIG.PMC_CRP_SDIO1_REF_CTRL_DIVISOR0 {5} \
+   CONFIG.PMC_CRP_SDIO1_REF_CTRL_SRCSEL {NPLL} \
+   CONFIG.PMC_CRP_SD_DLL_REF_CTRL_ACT_FREQMHZ {1183.333252} \
+   CONFIG.PMC_CRP_SYSMON_REF_CTRL_ACT_FREQMHZ {295.833313} \
+   CONFIG.PMC_CRP_SYSMON_REF_CTRL_FREQMHZ {295.833313} \
    CONFIG.PMC_GPIO0_MIO_PERIPHERAL_ENABLE {1} \
    CONFIG.PMC_GPIO1_MIO_PERIPHERAL_ENABLE {1} \
    CONFIG.PMC_I2CPMC_PERIPHERAL_ENABLE {1} \
    CONFIG.PMC_I2CPMC_PERIPHERAL_IO {PMC_MIO 46 .. 47} \
+   CONFIG.PMC_MIO_0_DIRECTION {out} \
+   CONFIG.PMC_MIO_0_SCHMITT {1} \
+   CONFIG.PMC_MIO_10_DIRECTION {inout} \
+   CONFIG.PMC_MIO_11_DIRECTION {inout} \
+   CONFIG.PMC_MIO_12_DIRECTION {out} \
+   CONFIG.PMC_MIO_12_SCHMITT {1} \
+   CONFIG.PMC_MIO_13_DIRECTION {out} \
+   CONFIG.PMC_MIO_13_SCHMITT {1} \
+   CONFIG.PMC_MIO_14_DIRECTION {inout} \
+   CONFIG.PMC_MIO_15_DIRECTION {inout} \
+   CONFIG.PMC_MIO_16_DIRECTION {inout} \
+   CONFIG.PMC_MIO_17_DIRECTION {inout} \
+   CONFIG.PMC_MIO_19_DIRECTION {inout} \
+   CONFIG.PMC_MIO_1_DIRECTION {inout} \
+   CONFIG.PMC_MIO_20_DIRECTION {inout} \
+   CONFIG.PMC_MIO_21_DIRECTION {inout} \
+   CONFIG.PMC_MIO_22_DIRECTION {inout} \
+   CONFIG.PMC_MIO_24_DIRECTION {out} \
+   CONFIG.PMC_MIO_24_SCHMITT {1} \
+   CONFIG.PMC_MIO_26_DIRECTION {inout} \
+   CONFIG.PMC_MIO_27_DIRECTION {inout} \
+   CONFIG.PMC_MIO_29_DIRECTION {inout} \
+   CONFIG.PMC_MIO_2_DIRECTION {inout} \
+   CONFIG.PMC_MIO_30_DIRECTION {inout} \
+   CONFIG.PMC_MIO_31_DIRECTION {inout} \
+   CONFIG.PMC_MIO_32_DIRECTION {inout} \
+   CONFIG.PMC_MIO_33_DIRECTION {inout} \
+   CONFIG.PMC_MIO_34_DIRECTION {inout} \
+   CONFIG.PMC_MIO_35_DIRECTION {inout} \
+   CONFIG.PMC_MIO_36_DIRECTION {inout} \
    CONFIG.PMC_MIO_37_DIRECTION {out} \
    CONFIG.PMC_MIO_37_OUTPUT_DATA {high} \
    CONFIG.PMC_MIO_37_USAGE {GPIO} \
+   CONFIG.PMC_MIO_3_DIRECTION {inout} \
+   CONFIG.PMC_MIO_40_DIRECTION {out} \
+   CONFIG.PMC_MIO_40_SCHMITT {1} \
+   CONFIG.PMC_MIO_43_DIRECTION {out} \
+   CONFIG.PMC_MIO_43_SCHMITT {1} \
+   CONFIG.PMC_MIO_44_DIRECTION {inout} \
+   CONFIG.PMC_MIO_45_DIRECTION {inout} \
+   CONFIG.PMC_MIO_46_DIRECTION {inout} \
+   CONFIG.PMC_MIO_47_DIRECTION {inout} \
+   CONFIG.PMC_MIO_4_DIRECTION {inout} \
+   CONFIG.PMC_MIO_51_DIRECTION {out} \
+   CONFIG.PMC_MIO_51_SCHMITT {1} \
+   CONFIG.PMC_MIO_5_DIRECTION {out} \
+   CONFIG.PMC_MIO_5_SCHMITT {1} \
+   CONFIG.PMC_MIO_6_DIRECTION {out} \
+   CONFIG.PMC_MIO_6_SCHMITT {1} \
+   CONFIG.PMC_MIO_7_DIRECTION {out} \
+   CONFIG.PMC_MIO_7_SCHMITT {1} \
+   CONFIG.PMC_MIO_8_DIRECTION {inout} \
+   CONFIG.PMC_MIO_9_DIRECTION {inout} \
    CONFIG.PMC_MIO_TREE_PERIPHERALS { \
      0#Enet 0 \
      0#Enet 0 \
@@ -396,6 +469,44 @@ proc create_root_design { parentCell } {
    CONFIG.PS_BOARD_INTERFACE {cips_fixed_io} \
    CONFIG.PS_CAN1_PERIPHERAL_ENABLE {1} \
    CONFIG.PS_CAN1_PERIPHERAL_IO {PMC_MIO 40 .. 41} \
+   CONFIG.PS_CRF_ACPU_CTRL_ACT_FREQMHZ {1350.000000} \
+   CONFIG.PS_CRF_DBG_FPD_CTRL_ACT_FREQMHZ {394.444427} \
+   CONFIG.PS_CRF_FPD_LSBUS_CTRL_ACT_FREQMHZ {150.000000} \
+   CONFIG.PS_CRF_FPD_LSBUS_CTRL_DIVISOR0 {9} \
+   CONFIG.PS_CRF_FPD_LSBUS_CTRL_SRCSEL {APLL} \
+   CONFIG.PS_CRF_FPD_TOP_SWITCH_CTRL_ACT_FREQMHZ {775.000000} \
+   CONFIG.PS_CRL_CAN1_REF_CTRL_ACT_FREQMHZ {99.999992} \
+   CONFIG.PS_CRL_CAN1_REF_CTRL_DIVISOR0 {10} \
+   CONFIG.PS_CRL_CAN1_REF_CTRL_SRCSEL {NPLL} \
+   CONFIG.PS_CRL_CPM_TOPSW_REF_CTRL_ACT_FREQMHZ {775.000000} \
+   CONFIG.PS_CRL_CPM_TOPSW_REF_CTRL_FREQMHZ {775} \
+   CONFIG.PS_CRL_CPU_R5_CTRL_ACT_FREQMHZ {591.666626} \
+   CONFIG.PS_CRL_DBG_LPD_CTRL_ACT_FREQMHZ {394.444427} \
+   CONFIG.PS_CRL_DBG_TSTMP_CTRL_ACT_FREQMHZ {394.444427} \
+   CONFIG.PS_CRL_GEM0_REF_CTRL_ACT_FREQMHZ {124.999992} \
+   CONFIG.PS_CRL_GEM0_REF_CTRL_DIVISOR0 {8} \
+   CONFIG.PS_CRL_GEM1_REF_CTRL_ACT_FREQMHZ {124.999992} \
+   CONFIG.PS_CRL_GEM1_REF_CTRL_DIVISOR0 {8} \
+   CONFIG.PS_CRL_GEM_TSU_REF_CTRL_ACT_FREQMHZ {249.999985} \
+   CONFIG.PS_CRL_GEM_TSU_REF_CTRL_DIVISOR0 {4} \
+   CONFIG.PS_CRL_I2C1_REF_CTRL_ACT_FREQMHZ {99.999992} \
+   CONFIG.PS_CRL_I2C1_REF_CTRL_DIVISOR0 {10} \
+   CONFIG.PS_CRL_I2C1_REF_CTRL_SRCSEL {NPLL} \
+   CONFIG.PS_CRL_IOU_SWITCH_CTRL_ACT_FREQMHZ {249.999985} \
+   CONFIG.PS_CRL_LPD_LSBUS_CTRL_ACT_FREQMHZ {147.916656} \
+   CONFIG.PS_CRL_LPD_LSBUS_CTRL_DIVISOR0 {8} \
+   CONFIG.PS_CRL_LPD_LSBUS_CTRL_SRCSEL {PPLL} \
+   CONFIG.PS_CRL_LPD_TOP_SWITCH_CTRL_ACT_FREQMHZ {591.666626} \
+   CONFIG.PS_CRL_PSM_REF_CTRL_ACT_FREQMHZ {394.444427} \
+   CONFIG.PS_CRL_TIMESTAMP_REF_CTRL_ACT_FREQMHZ {99.999992} \
+   CONFIG.PS_CRL_TIMESTAMP_REF_CTRL_DIVISOR0 {10} \
+   CONFIG.PS_CRL_TIMESTAMP_REF_CTRL_SRCSEL {NPLL} \
+   CONFIG.PS_CRL_UART0_REF_CTRL_ACT_FREQMHZ {99.999992} \
+   CONFIG.PS_CRL_UART0_REF_CTRL_DIVISOR0 {10} \
+   CONFIG.PS_CRL_UART0_REF_CTRL_SRCSEL {NPLL} \
+   CONFIG.PS_CRL_USB0_BUS_REF_CTRL_ACT_FREQMHZ {19.999998} \
+   CONFIG.PS_CRL_USB0_BUS_REF_CTRL_DIVISOR0 {50} \
+   CONFIG.PS_CRL_USB0_BUS_REF_CTRL_SRCSEL {NPLL} \
    CONFIG.PS_CRL_USB3_DUAL_REF_CTRL_FREQMHZ {100} \
    CONFIG.PS_ENET0_GRP_MDIO_ENABLE {1} \
    CONFIG.PS_ENET0_GRP_MDIO_IO {PS_MIO 24 .. 25} \
@@ -412,15 +523,43 @@ proc create_root_design { parentCell } {
    CONFIG.PS_GEN_IPI_6_ENABLE {1} \
    CONFIG.PS_I2C1_PERIPHERAL_ENABLE {1} \
    CONFIG.PS_I2C1_PERIPHERAL_IO {PMC_MIO 44 .. 45} \
+   CONFIG.PS_MIO_0_DIRECTION {out} \
+   CONFIG.PS_MIO_0_SCHMITT {1} \
+   CONFIG.PS_MIO_12_DIRECTION {out} \
+   CONFIG.PS_MIO_12_SCHMITT {1} \
+   CONFIG.PS_MIO_13_DIRECTION {out} \
+   CONFIG.PS_MIO_13_SCHMITT {1} \
+   CONFIG.PS_MIO_14_DIRECTION {out} \
+   CONFIG.PS_MIO_14_SCHMITT {1} \
+   CONFIG.PS_MIO_15_DIRECTION {out} \
+   CONFIG.PS_MIO_15_SCHMITT {1} \
+   CONFIG.PS_MIO_16_DIRECTION {out} \
+   CONFIG.PS_MIO_16_SCHMITT {1} \
+   CONFIG.PS_MIO_17_DIRECTION {out} \
+   CONFIG.PS_MIO_17_SCHMITT {1} \
    CONFIG.PS_MIO_19_PULL {disable} \
+   CONFIG.PS_MIO_1_DIRECTION {out} \
+   CONFIG.PS_MIO_1_SCHMITT {1} \
    CONFIG.PS_MIO_21_PULL {disable} \
+   CONFIG.PS_MIO_24_DIRECTION {out} \
+   CONFIG.PS_MIO_24_SCHMITT {1} \
+   CONFIG.PS_MIO_25_DIRECTION {inout} \
+   CONFIG.PS_MIO_2_DIRECTION {out} \
+   CONFIG.PS_MIO_2_SCHMITT {1} \
+   CONFIG.PS_MIO_3_DIRECTION {out} \
+   CONFIG.PS_MIO_3_SCHMITT {1} \
+   CONFIG.PS_MIO_4_DIRECTION {out} \
+   CONFIG.PS_MIO_4_SCHMITT {1} \
+   CONFIG.PS_MIO_5_DIRECTION {out} \
+   CONFIG.PS_MIO_5_SCHMITT {1} \
    CONFIG.PS_MIO_7_PULL {disable} \
    CONFIG.PS_MIO_9_PULL {disable} \
-   CONFIG.PS_M_AXI_GP0_DATA_WIDTH {32} \
    CONFIG.PS_NUM_FABRIC_RESETS {1} \
    CONFIG.PS_PCIE_RESET_ENABLE {1} \
    CONFIG.PS_PMC_CONFIG_APPLIED {1} \
    CONFIG.PS_TTC0_PERIPHERAL_ENABLE {1} \
+   CONFIG.PS_TTC0_REF_CTRL_ACT_FREQMHZ {147.916656} \
+   CONFIG.PS_TTC0_REF_CTRL_FREQMHZ {147.916656} \
    CONFIG.PS_UART0_PERIPHERAL_ENABLE {1} \
    CONFIG.PS_UART0_PERIPHERAL_IO {PMC_MIO 42 .. 43} \
    CONFIG.PS_USB3_PERIPHERAL_ENABLE {1} \
@@ -436,7 +575,10 @@ proc create_root_design { parentCell } {
   # Create instance: xlslice_0, and set properties
   set xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0 ]
   set_property -dict [ list \
+   CONFIG.DIN_FROM {0} \
+   CONFIG.DIN_TO {0} \
    CONFIG.DIN_WIDTH {2} \
+   CONFIG.DOUT_WIDTH {1} \
  ] $xlslice_0
 
   # Create instance: xlslice_1, and set properties
@@ -489,10 +631,10 @@ proc create_root_design { parentCell } {
   connect_bd_net -net versal_cips_0_pl0_ref_clk [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_smc/aclk] [get_bd_pins rst_versal_cips_0_333M/slowest_sync_clk] [get_bd_pins versal_cips_0/m_axi_fpd_aclk] [get_bd_pins versal_cips_0/pl0_ref_clk]
   connect_bd_net -net versal_cips_0_pl0_resetn [get_bd_pins rst_versal_cips_0_333M/ext_reset_in] [get_bd_pins versal_cips_0/pl0_resetn]
   connect_bd_net -net versal_cips_0_pmc_axi_noc_axi0_clk [get_bd_pins axi_noc_0/aclk0] [get_bd_pins versal_cips_0/pmc_axi_noc_axi0_clk]
-  connect_bd_net -net xlslice_0_Dout [get_bd_ports Dout_0] [get_bd_pins xlslice_0/Dout]
-  connect_bd_net -net xlslice_1_Dout [get_bd_ports Dout_1] [get_bd_pins xlslice_1/Dout]
-  connect_bd_net -net xlslice_2_Dout [get_bd_ports Dout_2] [get_bd_pins xlslice_2/Dout]
-  connect_bd_net -net xlslice_3_Dout [get_bd_ports Dout_3] [get_bd_pins xlslice_3/Dout]
+  connect_bd_net -net xlslice_0_Dout [get_bd_ports Dout_3] [get_bd_pins xlslice_0/Dout]
+  connect_bd_net -net xlslice_1_Dout [get_bd_ports Dout_0] [get_bd_pins xlslice_1/Dout]
+  connect_bd_net -net xlslice_2_Dout [get_bd_ports Dout_1] [get_bd_pins xlslice_2/Dout]
+  connect_bd_net -net xlslice_3_Dout [get_bd_ports Dout_2] [get_bd_pins xlslice_3/Dout]
 
   # Create address segments
   assign_bd_address -offset 0xA4000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/Data1] [get_bd_addr_segs axi_gpio_0/S_AXI/Reg] -force
