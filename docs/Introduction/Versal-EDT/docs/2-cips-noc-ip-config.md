@@ -15,7 +15,7 @@ The NoC IP core helps configure the DDR memory and data path across the DDR memo
 
 ## Prerequisites
 
-To create and run the hello world applications discussed in this chapter, you will need to install the Vitis&trade; unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1400-vitis-embedded.pdf)).
+To create and run the Hello World applications discussed in this chapter, you will need to install the Vitis&trade; unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1400-vitis-embedded.pdf)).
 
 ## CIPS IP Core Configuration
 
@@ -216,7 +216,7 @@ Follow these steps to generate a device image for the design.
 
 ### Running a Bare-Metal Hello World Application
 
-In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your system, and run a hello world software application from Arm Cortex-A72 on On-chip-memory (OCM) and Arm Cortex- R5F on Tightly-coupled-memory (TCM) on the Vitis software platform.
+In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your system, and run a Hello World software application from Arm Cortex-A72 on On-chip-memory (OCM) and Arm Cortex- R5F on Tightly-coupled-memory (TCM) on the Vitis software platform.
 
 The following steps demonstrate the procedure to make the required cable connections, connect the board through your system, and launch the Vitis software platform.
 
@@ -254,7 +254,7 @@ The following steps demonstrate the procedure to make the required cable connect
 
 #### Creating a Hello World Application for the Arm Cortex-A72 on OCM
 
-The following steps demonstrate the procedure to create a Hello World Application from Arm Cortex-A72 on OCM.
+The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM.
 
 1. Select **File→ New → Application Project**. Creating a New Application Project wizard opens. If this is the first time the Vitis IDE has been launched, you can select Create Application Project on the Welcome screen as shown in the following figure.
 
@@ -305,7 +305,7 @@ The following steps demonstrate the procedure to create a Hello World Applicatio
 
 #### Adding a New RPU Domain to the Platform Project
 
-The following steps demonstrate the procedure to create a bare-metal Hello World Application for the Arm Cortex-R5F on TCM. The application needs to be linked to a domain. Before creating the application project, make sure that the target domain software environment is available. If not, add the required domain to your platform using the following steps.
+The following steps demonstrate the procedure to create a bare-metal Hello World application for the Arm Cortex-R5F on TCM. The application needs to be linked to a domain. Before creating the application project, make sure that the target domain software environment is available. If not, add the required domain to your platform using the following steps.
 
 1. Double-click the `platform.spr` file in the Vitis Explorer view. (In this example, **vck190_platform → platform.spr**).
 
@@ -332,7 +332,7 @@ The following steps demonstrate the procedure to create a bare-metal Hello World
 
 #### Creating the Standalone Application Project for the Arm Cortex-R5F
 
-The following steps demonstrate the procedure to create a Hello World Application from Arm Cortex-R5F.
+The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-R5F.
 
 1. Select **File → New → Application Project**. Creating a New Application Project wizard opens. If this is the first time the Vitis IDE has been launched, you can select Create Application Project on the Welcome screen.
 
@@ -602,7 +602,7 @@ Follow these steps to generate a device image for the design.
 
 ### Running a Bare-Metal Hello World Application on DDR Memory
 
-In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a hello world software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Xilinx Vitis software platform.
+In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Xilinx Vitis software platform.
 
 You will create a new Vitis project, similar to the one in [Running a Bare-Metal Hello World Application](#running-a-bare-metal-hello-world-application), except that it will use the default linker scripts, which will reference the DDR memory.
 

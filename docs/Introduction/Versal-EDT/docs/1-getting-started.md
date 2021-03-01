@@ -4,9 +4,9 @@ Ensure that the required tools are installed properly and your environments matc
 
 ## Hardware Requirements
 
-This tutorial targets the Versal&trade; ACAP VCK190 and VMK 180 evaluation boards. The examples in this tutorial were tested using the VCK190 ES1 board. To use this guide, you need the following hardware items, which are included with the evaluation board:
+This tutorial targets the Versal&trade; ACAP VCK190 and VMK180 evaluation boards. The examples in this tutorial were tested using the VCK190 ES1 board. To use this guide, you need the following hardware items, which are included with the evaluation board:
 
-- VCK 190/VMK 180 ES1/Production board
+- VCK190/VMK180 ES1/Production board
 - AC power adapter (12 VDC)
 - USB Type-A to USB Micro cable (for UART communications)
 - USB Micro cable for programming and debugging via USB-Micro JTAG connection
@@ -18,7 +18,7 @@ This tutorial targets the Versal&trade; ACAP VCK190 and VMK 180 evaluation board
 
 ### Vitis Integrated Design Environment and Vivado Design Suite
 
-Ensure that you have the Vitis&trade; 2020.2 software development platform installed. The Vitis IDE is a Xilinx unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado&reg; Design Suite and the Vitis IDE. You do not have to make any extra selections in the installer.
+Ensure that you have the Vitis&trade; 2020.2 software development platform installed. The Vitis IDE is a Xilinx unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado&reg; Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
 
  >***Note*:** Visit <https://www.xilinx.com/support/download.html> to confirm that you have the latest tools version.
 
