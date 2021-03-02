@@ -209,7 +209,7 @@ The Vitis IDE needs a channel to download the application to the running target.
 
 ### Debugging a Linux Application from the Vitis IDE
 
-Debugging Linux applications requires the Linux agent to be set up properly. Refer to [Preparing the Linux Agent for Remote Connection](#prepare-linux-agent-for-remote-connection) for detailed steps.
+Debugging Linux applications requires the Linux agent to be set up properly. Refer to [Preparing the Linux Agent for Remote Connection](#preparing-the-linux-agent-for-remote-connection) for detailed steps.
 
 1. Debug the Linux application:
 
