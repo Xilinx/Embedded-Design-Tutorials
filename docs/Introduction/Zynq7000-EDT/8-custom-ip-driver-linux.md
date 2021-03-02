@@ -231,7 +231,7 @@ start or stop blinking.
 In this section, you will connect the AXI4-Lite compliant custom slave
 peripheral IP that you created in [Creating Peripheral IP](#creating-peripheral-ip).
 
-1.  Open the Vivado project you previously created in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#creating-a-new-embedded-project-with-zynq-soc).
+1.  Open the Vivado project you previously created in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc).
 
 2.  Add the custom IP to the existing design. Right-click the Diagram view and select **Add IP**.
 
