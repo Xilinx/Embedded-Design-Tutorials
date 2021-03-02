@@ -432,7 +432,7 @@ This is an alternative way for programming QSPI Flash with the flash programming
     finishes, the `root@xilinx-zc702-2020_2:~#` prompt appears. Enter the
     login and password as root when prompted.
 
-4.  Check the board IP address connectivity as described in [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode).
+4.  Check the board IP address connectivity as described in [Booting Linux in JTAG Mode](#booting-linux-in-jtag-mode).
 
 See the [next chapter](./8-custom-ip-driver-linux.md) for creating custom IP and device drivers for Linux.
 
