@@ -140,7 +140,7 @@ Xilinx software uses FLEXnet licensing. When the software is first run, it perfo
 
 ## Design Files for this Tutorial
 
-The reference design files for this tutorial are provided in the [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
+The reference design files for this tutorial are provided in the [ref_files](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT/ref_files) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
 
 Design files contain the source code for all the sections.
 
