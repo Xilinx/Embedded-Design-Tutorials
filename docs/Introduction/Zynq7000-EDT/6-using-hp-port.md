@@ -307,7 +307,7 @@ The application software does the following tasks:
 
 2.  In the Import Sources dialog box, click the **Browse** button
     next to the **From directory** field and specify the design files
-    folder to [ref_files/example7](ref_files/example7).
+    folder to [ref_files/example7](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT/ref_files/example7).
 
 3.  Select the **cdma_app.c** file and click **Finish**.
 
