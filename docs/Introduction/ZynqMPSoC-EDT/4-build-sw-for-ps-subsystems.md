@@ -430,7 +430,7 @@ You will now create a bare-metal application for Arm Cortex-R5F. The application
 
    - Right-click the **testapp_r5** and select **Import Sources** to open the Import view.
 
-   - In the **From directory** field, select **Browse** and navigate to the design files folder ([ref_files/example5](ref_files/example5)).
+   - In the **From directory** field, select **Browse** and navigate to the design files folder ([ref_files/example5](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/example5)).
 
    - Click **OK**.
 
