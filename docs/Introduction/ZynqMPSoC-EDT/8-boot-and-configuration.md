@@ -375,8 +375,7 @@ The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 AP
 
     6. Click **Add** to add the R5 bare-metal executable.
 
-        1. Add the R5 executable and enable it in lockstep mode, as shown
-            in the following image.
+        1. Add the R5 executable and enable it in lockstep mode, as shown in the following image.
 
         2. Click **OK**.
 
@@ -414,9 +413,6 @@ The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 AP
         3. Enter `0xF00000` as the offset.
 
         4. Leave Exception Level and TrustZone unselected.
-
-        **Note:** See [Creating Linux Images Using PetaLinux for QSPI Flash](4-build-sw-for-ps-subsystems.md#creating-linux-images-using-petalinux-for-qspi-flash), to
-        understand the offset value.
 
    9. Click **Add** to add the `boot.scr` script file.
 
