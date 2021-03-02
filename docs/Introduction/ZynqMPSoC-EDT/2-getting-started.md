@@ -113,7 +113,7 @@ the Installation section of [UG1400](https://www.xilinx.com/html_docs/xilinx2020
 
 ### Tutorial Design Files
 
-The reference design files for this tutorial are provided in the [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
+The reference design files for this tutorial are provided in the [ref_files](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
 
 The [next chapter](./3-system-configuration.md) details the configuration of a Zynq UltraScale+ MPSoC PS with the Vivado IDE.
 
