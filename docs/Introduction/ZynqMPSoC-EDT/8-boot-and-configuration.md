@@ -731,7 +731,7 @@ The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 AP
     };
     ```
 
-    The modified ``system-user.dtsi`` file can be found in [ref_files/usb_boot](./ref_files/usb_boot/system-user.dtsi) released with this tutorial.
+    The modified ``system-user.dtsi`` file can be found in [ref_files/usb_boot](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/usb_boot) released with this tutorial.
 
 2. Build PetaLinux with the following changes:
 
