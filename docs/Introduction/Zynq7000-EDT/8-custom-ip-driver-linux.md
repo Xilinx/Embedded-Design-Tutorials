@@ -45,7 +45,7 @@ The block diagram includes the following configuration register:
 
 In this section, you will create an AXI4-Lite compliant slave peripheral IP.
 
-1.  Create a new project as described in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-project-creating-a-new-embedded-project-with-zynq-soc).
+1.  Create a new project as described in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc).
 
 2.  With the Vivado design open, select **Tools → Create and Package New IP**. Click **Next** to continue.
 
