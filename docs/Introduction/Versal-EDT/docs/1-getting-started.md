@@ -70,4 +70,4 @@ Xilinx software uses FLEXnet licensing. When the software is first run, it perfo
 
 #### Tutorial Design Files
 
-The reference design files for this tutorial are provided in the [ref_files](../ref_files) directory.
+The reference design files for this tutorial are provided in the [ref_files](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Versal-EDT/ref_files) directory.

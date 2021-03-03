@@ -1,6 +1,5 @@
 # Getting Started
 
-
 ## Hardware Requirements
 
  This tutorial targets the Zynq® UltraScale+™ ZCU102 evaluation board.
