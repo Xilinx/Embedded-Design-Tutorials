@@ -114,12 +114,12 @@ Once the Linux images have been built and packaged, they can be loaded onto the 
 
 1. Connect the SmartLynq+ to either Ethernet or USB.
 
-    * **Using Ethernet:** Connect an Ethernet cable between Ethernet port on the SmartLynq+ and your local area network.
-    * **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
-
-    >***Note*:** Connect the Ethernet cable to the target device before booting the board.
+    *  **Using Ethernet:** Connect an Ethernet cable between Ethernet port on the SmartLynq+ and your local area network.
+    *  **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
 
 2. Connect the power adapter to the SmartLynq+ and power on the VCK190/VMK180 board.
+
+    >***Note*:** Connect the Ethernet cable to the target device before booting the board.
 
 3. Once the SmartLynq+ finishes booting up, an IP address appears on the screen under either `eth0` or `usb0`. Make note of this IP address as this is the IP address used to connect to the SmartLynq+ in both the Ethernet and USB use case.
 
