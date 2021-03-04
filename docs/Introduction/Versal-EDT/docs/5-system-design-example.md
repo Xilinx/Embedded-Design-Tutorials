@@ -239,41 +239,34 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
 
 3. There are four components of an application project in the Vitis IDE: a target platform, a system project, a domain and a template.To create a new application project in the Vitis IDE, follow these steps:
 
-   1. A target platform is composed of a base hardware design and the meta-data used in attaching accelerators to declared interfaces. Choose a platform or create a platform project from the XSA that you exported from the Vivado Design Suite.
+    1. A target platform is composed of a base hardware design and the meta-data used in attaching accelerators to declared interfaces. Choose a platform or create a platform project from the XSA that you exported from the Vivado Design Suite.
+    2. Put the application project in a system project, and associate it with a processor.
+    3. The domain defines the processor and operating system used for running the host program on the target platform.
+    4. Choose a template for the application, to quick start development. Use the following information to make your selections in the wizard screens.
 
-   2. Put the application project in a system project, and associate it with a processor.
+    *Table 9:* **Wizard Information**
 
-   3. The domain defines the processor and operating system used for running the host program on the target platform.
-
-   4. Choose a template for the application, to quick start development. Use the following information to make your selections in the wizard screens.
-
-      *Table 9:* **Wizard Information**
-
-        |  Wizard Screen  |  System Properties        |  Setting or Command to Use  |
-        |-----------------|---------------------------|----------------------------------------|
-        | Platform        | Create a new platform from hardware (XSA)        | Click Browse to add your XSA file  |
-        |                      |  Platform Name      |  vck190_platform    |
-        | Application Project Detail       |  Application project name       |  freertos_gpio_test |
-        |                      |  Select a system project   |  +Create New        |
-        |                      |  System project name       |  freertos_gpio_test_system              |
-        |                      |  Processor                 |  psv_cortexr5_0     |
-        |  Domain              |  Select a domain           |  +Create New        |
-        |                      |  Name                      |  The default name assigned  |
-        |                      |  Display Name              |  The default name assigned  |
-        |                      |  Operating System          |  freertos10_xilinx  |
-        |                      |  Processor                 |  psv_cortexr5_0     |
-        |  Templates           |  Available                 |  Freertos Hello     |
-        |                      |  Templates                 |  world              |
-
-        The Vitis software platform creates the board support package for the       Platform project (**vck190_platform**) and the system project        (**freertos_gpio_test_system**) containing an application project
-        named **freertos_gpio_test** under the Explorer view after performing
-        the preceding steps.
+   |  Wizard Screen  |  System Properties        |  Setting or Command to Use  |
+   |:----------------|:--------------------------|:----------------------------|
+   | Platform        | Create a new platform from hardware (XSA)        | Click Browse to add your XSA file  |
+   |                  |  Platform Name            |  vck190_platform    |
+   | Application Project Detail       |  Application project name       |  freertos_gpio_test |
+   |                 |  Select a system project   |  +Create New        |
+   |                 |  System project name       |  freertos_gpio_test_system              |
+   |                 |  Processor                 |  psv_cortexr5_0     |
+   |   Dom            |  Select a domain           |  +Create New        |
+   |                 |  Name                      |  The default name assigned  |
+   |                 |  Display Name              |  The default name assigned  |
+   |                 |  Operating System          |  freertos10_xilinx  |
+   |                 |  Processor                 |  psv_cortexr5_0     |
+   |  Templates      |  Available                 |  Freertos Hello     |
+   |                 |  Templates                 |  world              |
+ 
+ The Vitis software platform creates the board support package for the Platform project (**vck190_platform**) and the system project (**freertos_gpio_test_system**) containing an application project named **freertos_gpio_test** under the Explorer view after performing the preceding steps.
 
 4. Right click the `freertos_hello_world.c` file under `src/` and rename the `freertos_hello_world.c` file to `freertos_gpio_test.c`. Copy the `freertos_gpio_test.c` file from the FreeRTOS project path, `<design-package>/vck190/freertos/` to `freertos_gpio_test.c` under `src/`.
-
 5. Right-click **freertos_gpio_test_system** and select **Build Project**. Alternatively, you can click ![build-icon](./media/image77.jpeg).
-
-    >***Note*:** If you cannot see the project explorer, click the restore icon on the left panel and then perform this step.
+   >***Note*:** If you cannot see the project explorer, click the restore icon on the left panel and then perform this step.
 
 For building the Linux images and incorporating the FreeRTOS elf into the image, see [Example Project: Creating Linux Images Using PetaLinux](#example-project-creating-linux-images-using-petalinux).
 
@@ -395,3 +388,10 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
     This creates a `BOOT.BIN` image file in the `<petalinux-project>/images/linux/` directory.
 
 >***Note*:** To run the images using SD boot mode, see [Boot Sequence for SD-Boot Mode](./4-boot-and-config.md#boot-sequence-for-sd-boot-mode).
+
+© Copyright 2020-2021 Xilinx, Inc.
+
+*Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).*
+
+*Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.*
+

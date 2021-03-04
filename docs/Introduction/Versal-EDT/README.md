@@ -48,3 +48,10 @@ platform and developing the application code using the embedded CPU. Also covers
   * [Boot and Configuration](../Versal-EDT/docs/4-boot-and-config.md)
   * [Example Project: FreeRTOS GPIO Application Project With RPU](../Versal-EDT/docs/5-system-design-example.md#example-project-freertos-gpio-application-project-with-rpu)
   * [Example Project: Creating Linux Images Using PetaLinux](../Versal-EDT/docs/5-system-design-example.md#example-project-creating-linux-images-using-petalinux)
+  
+ © Copyright 2020-2021 Xilinx, Inc.
+
+*Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).*
+
+*Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.*
+
