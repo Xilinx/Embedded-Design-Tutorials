@@ -1,10 +1,3 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
-</th>
-
-  </tr>
-
-</table>
-
 # Design Example 1: Using GPIOs, Timers, and Interrupts
 
 The Zynq&reg; UltraScale+&trade; MPSoC ZCU102 evaluation board comes with a few configurable switches and LEDs. This design example makes use of bare-metal and Linux applications to toggle these LEDs, with the following details:
@@ -274,7 +267,7 @@ This use case has a bare-metal application running on an R5 core and a Linux app
 
 6. Verify that the application is compiled and linked successfully and that the ``thetmr_psled_r5.elf`` file is generated in the `tmr_psled_r5\Debug` folder.
 
-7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package for testapp_r5](#4-build-sw-for-ps-subsystems.md#modifying-the-board-support-package-for-testapp_r5).
+7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package for testapp-r5](#4-build-sw-for-ps-subsystems.md#modifying-the-board-support-package-for-testapp_r5).
 
 #### Creating the Linux Domain for Linux Applications
 

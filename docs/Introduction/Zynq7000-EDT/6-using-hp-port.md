@@ -1,10 +1,3 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
-</th>
-
-  </tr>
-
-</table>
-
 # Using the HP Slave Port with AXI CDMA IP
 
 In this chapter, you will instantiate AXI CDMA IP in fabric and
@@ -314,7 +307,7 @@ The application software does the following tasks:
 
 2.  In the Import Sources dialog box, click the **Browse** button
     next to the **From directory** field and specify the design files
-    folder to [ref_files/example7](ref_files/example7).
+    folder to [ref_files/example7](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT/ref_files/example7).
 
 3.  Select the **cdma_app.c** file and click **Finish**.
 

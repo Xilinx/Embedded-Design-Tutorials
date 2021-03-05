@@ -1,10 +1,3 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
-</th>
-
-  </tr>
-
-</table>
-
 # Boot and Configuration
 
 This chapter shows how to integrate the software and hardware components generated in the previous steps to create a Zynq&reg; UltraScale+&trade; boot image. After reading this chapter, you will understand how to integrate and load boot loaders, bare-metal applications (for APU/RPU), and the Linux OS for a Zynq UltraScale+ system in different boot requirements: QSPI, SD card, JTAG, and so on.
@@ -382,8 +375,7 @@ The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 AP
 
     6. Click **Add** to add the R5 bare-metal executable.
 
-        1. Add the R5 executable and enable it in lockstep mode, as shown
-            in the following image.
+        1. Add the R5 executable and enable it in lockstep mode, as shown in the following image.
 
         2. Click **OK**.
 
@@ -421,9 +413,6 @@ The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 AP
         3. Enter `0xF00000` as the offset.
 
         4. Leave Exception Level and TrustZone unselected.
-
-        **Note:** See [Creating Linux Images Using PetaLinux for QSPI Flash](4-build-sw-for-ps-subsystems.md#creating-linux-images-using-petalinux-for-qspi-flash), to
-        understand the offset value.
 
    9. Click **Add** to add the `boot.scr` script file.
 
@@ -742,7 +731,7 @@ The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 AP
     };
     ```
 
-    The modified ``system-user.dtsi`` file can be found in [ref_files/usb_boot](./ref_files/usb_boot/system-user.dtsi) released with this tutorial.
+    The modified ``system-user.dtsi`` file can be found in [ref_files/usb_boot](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/usb_boot) released with this tutorial.
 
 2. Build PetaLinux with the following changes:
 

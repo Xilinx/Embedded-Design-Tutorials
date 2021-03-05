@@ -1,10 +1,3 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
-</th>
-
-  </tr>
-
-</table>
-
 # Debugging Standalone Applications with the Vitis Debugger
 
 This chapter describes debug possibilities with the design flow you
@@ -85,13 +78,13 @@ The Vitis debugger provides the following debug capabilities:
  application.
 
  >**Note:** If you did not create a "Hello World" application on the APU or
- RPU, follow the steps in [Create Custom Bare-Metal Application for Arm Cortex-A53 based APU](4-build-sw-for-ps-subsystems.md#create-custom-bare-metal-application-for-arm-cortex-a53-based-apu)
+ RPU, follow the steps in [Create Custom Bare-Metal Application for Arm Cortex-A53 based APU](4-build-sw-for-ps-subsystems.md#creating-a-custom-bare-metal-application-for-an-arm-cortex-a53-based-apu)
  to create a new "Hello World" application.
 
  After you create the "Hello World" application, work through the
  following example to debug the software using the Vitis debugger.
 
-1. Connect the JTAG cable, set the boot mode to JTAG, and power on the board. Refer to the steps in [Example Project: Running the "Hello World" Application from Arm Cortex-A53](4-build-sw-for-ps-subsystems.md#example-project-running-the-hello-world-application-from-arm-cortex-a53).
+1. Connect the JTAG cable, set the boot mode to JTAG, and power on the board. Refer to the steps in [Example 3: Running the "Hello World" Application from Arm Cortex-A53](4-build-sw-for-ps-subsystems.md#example-3-running-the-hello-world-application-from-arm-cortex-a53).
 
 2. In the C/C++ Perspective, right-click the **hello_a53 Project** and select **Debug As→ Launch on Hardware → Single Application Debug**.
 

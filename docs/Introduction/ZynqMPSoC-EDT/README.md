@@ -1,10 +1,6 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
-</th>
+# Introduction
 
-  </tr>
-</table>
-
- This document provides an introduction to using the Vivado&reg; Design
+This document provides an introduction to using the Vivado&reg; Design
  Suite flow for the Xilinx&reg; Zynq&reg; UltraScale+&trade; MPSoC ZCU102 Rev 1.0 and
  Rev 1.1 evaluation boards. The tool used is the Vitis&trade; unified
  software platform.

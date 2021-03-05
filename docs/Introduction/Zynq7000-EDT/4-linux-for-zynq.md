@@ -1,10 +1,3 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
-</th>
-
-  </tr>
-
-</table>
-
 # Building and Debugging Linux Applications for Zynq-7000 SoCs
 
 The earlier examples highlighted the creation of standalone applications. This chapter demonstrates how to develop Linux applications.
@@ -218,7 +211,7 @@ The Vitis IDE needs a channel to download the application to the running target.
    - Connect an Ethernet cable between the host and the ZC702 board.
        - It can be a direct connection from the host to the ZC702 board.
        - You can also connect the host and the ZC702 board using a router.
-   - Power on the board and let Linux run on ZC702 (see [Verifying the Image on the ZC702 Board](#verify-the-image-on-the-zc702-board)).
+   - Power on the board and let Linux run on ZC702 (see [Verifying the Image on the ZC702 Board](#verifying-the-image-on-the-zc702-board)).
    - Set up a networking software environment.
        - If the host and the board are connected directly, run `ifconfig eth0 192.168.1.1` to set up an IP address on the board. Go to **Control Panel → Network and Internet → Network and Sharing Center**, and click **Change Adapter Settings**. Find your Ethernet adapter, then right-click and select **Properties**. Double-click **Internet Protocol Version 4 (TCP/IPv4)**, and select **Use the following IP address**. Input the IP address **192.168.1.2**. Click **OK**.
        - If the host and the board are connected through a router, they should be able to get an IP address from the router. If the Ethernet cable is plugged in after the board boots up, you can get the IP address manually by running the `udhcpc eth0` command, which returns the board IP address.
@@ -268,7 +261,7 @@ The Vitis IDE needs a channel to download the application to the running target.
 
 ### Debugging a Linux Application from the Vitis IDE
 
-Debugging Linux applications requires the Linux agent to be set up properly. Refer to [Preparing the Linux Agent for Remote Connection](#prepare-linux-agent-for-remote-connection) for detailed steps.
+Debugging Linux applications requires the Linux agent to be set up properly. Refer to [Preparing the Linux Agent for Remote Connection](#preparing-the-linux-agent-for-remote-connection) for detailed steps.
 
 1. Debug the Linux application:
 

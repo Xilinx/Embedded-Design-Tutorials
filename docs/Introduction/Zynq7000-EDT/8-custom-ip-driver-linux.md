@@ -1,10 +1,3 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
-</th>
-
-  </tr>
-
-</table>
-
 # Creating Custom IP and Device Drivers for Linux
 
 In this chapter, you will create an intellectual property (IP) using
@@ -52,7 +45,7 @@ The block diagram includes the following configuration register:
 
 In this section, you will create an AXI4-Lite compliant slave peripheral IP.
 
-1.  Create a new project as described in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-project-creating-a-new-embedded-project-with-zynq-soc).
+1.  Create a new project as described in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc).
 
 2.  With the Vivado design open, select **Tools → Create and Package New IP**. Click **Next** to continue.
 
@@ -238,7 +231,7 @@ start or stop blinking.
 In this section, you will connect the AXI4-Lite compliant custom slave
 peripheral IP that you created in [Creating Peripheral IP](#creating-peripheral-ip).
 
-1.  Open the Vivado project you previously created in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#creating-a-new-embedded-project-with-zynq-soc).
+1.  Open the Vivado project you previously created in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc).
 
 2.  Add the custom IP to the existing design. Right-click the Diagram view and select **Add IP**.
 

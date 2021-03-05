@@ -1,11 +1,3 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
-</th>
-
-  </tr>
-
-</table>
-
-
 # Building Standalone Software for PS Subsystems
 
 This chapter lists the steps to configure and build software for PS subsystems.
@@ -371,7 +363,7 @@ In this example, you will update the hello_system project created in Example 3:
 
 - Input:
   - Platform: zcu102_edt with standalone domains for Arm Cortex-A53 and Arm Cortex-R5F
-  - Source code for ARM Cortex-R5F: [ref_files/example5/testapp_r5.c](./ref_files/example5/testapp_r5.c)
+  - Source code for Arm Cortex-R5F: [ref_files/example5/testapp_r5.c](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/example5)
 - Output:
   - System project hello_system that includes hello_a53 and testapp_r5 applications
 
@@ -438,7 +430,7 @@ You will now create a bare-metal application for Arm Cortex-R5F. The application
 
    - Right-click the **testapp_r5** and select **Import Sources** to open the Import view.
 
-   - In the **From directory** field, select **Browse** and navigate to the design files folder ([ref_files/example5](ref_files/example5)).
+   - In the **From directory** field, select **Browse** and navigate to the design files folder ([ref_files/example5](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/example5)).
 
    - Click **OK**.
 

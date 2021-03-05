@@ -1,11 +1,3 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
-</th>
-
-  </tr>
-
-</table>
-
-
 # Linux Boot Image Configuration
 
 In previous chapters, you used SD boot mode for all Linux examples. SD boot mode is easy to use for development. Sometimes it is necessary to change the boot source to QSPI Flash for its reliability and anti-vibration. In the board bring-up development phase, because the peripherals might not be available yet, boot with JTAG is a common technique for debugging. This chapter describes the detailed steps of these use cases.
@@ -440,7 +432,7 @@ This is an alternative way for programming QSPI Flash with the flash programming
     finishes, the `root@xilinx-zc702-2020_2:~#` prompt appears. Enter the
     login and password as root when prompted.
 
-4.  Check the board IP address connectivity as described in [Booting Linux Using JTAG Mode](#booting-linux-using-jtag-mode).
+4.  Check the board IP address connectivity as described in [Booting Linux in JTAG Mode](#booting-linux-in-jtag-mode).
 
 See the [next chapter](./8-custom-ip-driver-linux.md) for creating custom IP and device drivers for Linux.
 

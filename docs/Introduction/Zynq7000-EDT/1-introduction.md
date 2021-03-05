@@ -1,12 +1,4 @@
-
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq-7000 SoC Embedded Design Tutorial 2020.2 (UG1165)</h1>
-</th>
-
-  </tr>
-
-</table>
-
-# Introduction
+# Getting Started
 
 ## How Zynq Devices Simplify Embedded Processor Design
 
@@ -65,9 +57,7 @@ The Zynq SoC Processing System (PS) can be booted and made to run without progra
 
 For more information on the embedded design process, see the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug940-vivado-tutorial-embedded-design.pdf)).
 
-## Getting Started
-
-### Hardware Requirements for this Guide
+## Hardware Requirements for this Guide
 
 This tutorial targets the Zynq ZC702 Rev 1.0 evaluation board, and can also be used for Rev 1.0 boards. To use this guide, you need the following hardware items, which are included with the evaluation board:
 
@@ -84,9 +74,9 @@ This tutorial targets the Zynq ZC702 Rev 1.0 evaluation board, and can also be u
 
 -   Ethernet cable to connect target board with host machine
 
-### Installation Requirements
+## Installation Requirements
 
-#### Vitis Software Platform and Vivado Design Suite
+### Vitis Software Platform and Vivado Design Suite
 
 Ensure that you have both the Vitis software platform and the Vivado Design Suite installed. Visit the [Xilinx Support Page](https://www.xilinx.com/support/download.html) to ensure that you download the latest software version. To install the Vitis software platform, follow the instructions in the Installation section of the
 *Vitis Unified Software Platform Documentation: Embedded Software Development* ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1400-vitis-embedded.pdf)). When you install the Vitis software platform, the Vivado Design Suite
@@ -96,7 +86,7 @@ To install Vivado by itself, see the *Vivado Design Suite User Guide: Release No
 
 ![](./media/image6.jpeg)
 
-#### PetaLinux Tools
+### PetaLinux Tools
 
 The PetaLinux tool offers a full Linux distribution building system which includes the Linux OS as well as a complete configuration, build, and deploy environment for Xilinx silicon.
 
@@ -124,7 +114,7 @@ When you install PetaLinux Tools on your system of choice, you must do the follo
     Guide* ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf))
     .
 
-###### Prerequisites
+##### Prerequisites
 
 -   8 GB RAM (recommended minimum for Xilinx tools)
 
@@ -132,7 +122,7 @@ When you install PetaLinux Tools on your system of choice, you must do the follo
 
 -   100 GB free HDD space
 
-###### Extract the PetaLinux Package
+##### Extract the PetaLinux Package
 
 By default, the installer installs the package as a subdirectory within the current directory. Alternatively, you can specify an installation path. Run the downloaded PetaLinux installer.
 
@@ -144,13 +134,13 @@ PetaLinux is installed in the petalinux-v2020.2-final directory, directly undern
 
 Refer to [Linux Booting and Debug in the Vitis Software Platform](./7-linux-booting-debug.md) for additional information about the PetaLinux environment setup, project creation, and project usage examples. A detailed guide on PetaLinux Installation and usage can be found in the *PetaLinux Tools Documentation: Reference Guide* ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)).
 
-#### Software Licensing
+### Software Licensing
 
 Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license.For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* ([UG973](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bt%3Dvivado%2Binstall%2Bguide)).
 
 ## Design Files for this Tutorial
 
-The reference design files for this tutorial are provided in the [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
+The reference design files for this tutorial are provided in the [ref_files](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT/ref_files) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
 
 Design files contain the source code for all the sections.
 
