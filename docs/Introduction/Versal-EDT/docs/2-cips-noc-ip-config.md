@@ -1,43 +1,33 @@
 # Versal ACAP CIPS and NoC (DDR) IP Core Configuration
 
-The Versal ACAP CIPS IP core allows you to configure the processing system and the PMC block including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.
+The Versal&trade; ACAP CIPS IP core allows you to configure the processing system and the PMC block including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.
 
 This chapter describes how to perform the following tasks:
 
-- Creating a Vivado&reg; project for the Versal&trade; ACAP  to select the appropriate boot devices and peripherals by configuring the CIPS IP core.
+- Creating a Vivado&reg; project for the Versal ACAP  to select the appropriate boot devices and peripherals by configuring the CIPS IP core.
 - Creating and running a Hello World software application on the On-chip-memory (OCM) of Arm&reg; Cortex&trade;-A72.
-- Creating and running a Hello World software application on the Tightly-coupled-memory (TCM) of Arm Cortex- R5F.
+- Creating and running a Hello World software application on the Tightly-coupled-memory (TCM) of Arm Cortex-R5F.
   
 The NoC IP core helps configure the DDR memory and data path across the DDR memory and processing engines in the system (Scalar Engines, Adaptable Engines, and AI Engines).
 
 - Creating and running a Hello World software application on Arm Cortex-A72 using DDR as memory.
 - Creating and running a Hello World software application on Arm Cortex-R5F using DDR as memory.
 
-### Prerequisites
+## Prerequisites
 
- To create and run the hello world applications discussed in this
- chapter, you will need to install the Vitis™ unified software
- platform. For installation procedures, see *Vitis Unified Software
- Platform Documentation: Embedded Software Development*
- ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1400-vitis-embedded.pdf)).
+To create and run the Hello World applications discussed in this chapter, you will need to install the Vitis&trade; unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* ([UG1400](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1400-vitis-embedded.pdf)).
 
 ## CIPS IP Core Configuration
 
- Creating a Versal ACAP system design involves configuring the CIPS IP
- core to select the appropriate boot devices and peripherals. To start
- with, if the CIPS IP core peripherals and available multiplexed I/O
- (MIO) connections meet the requirements, no PL component is required.
- This chapter guides you through creating a simple CIPS IP core based
- design.
+Creating a Versal ACAP system design involves configuring the CIPS IP core to select the appropriate boot devices and peripherals. To start with, if the CIPS IP core peripherals and available multiplexed I/O (MIO) connections meet the requirements, no PL component is required. This chapter guides you through creating a simple CIPS IP core based design.
 
 ### Creating a New Embedded Project with the Versal ACAP
 
- For this example, launch the Vivado® Design Suite and create a project
- with an embedded processor system as the top level.
+For this example, launch the Vivado Design Suite and create a project with an embedded processor system as the top level.
 
 #### Starting Your Design
 
-1. Start the Vivado® Design Suite.
+1. Start the Vivado Design Suite.
 2. In the Tcl Console, type the following command to enable ES1 boards:
 
    ```
@@ -46,11 +36,9 @@ The NoC IP core helps configure the DDR memory and data path across the DDR memo
 
     Press **Enter**.
 
-1. In the Vivado Quick Start page, click **Create Project** to open the
-     New Project wizard.
+3. In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
 
-2. Use the following information in the table to make selections in
-     each of the wizard screens.
+4. Use the following information in the table to make selections in each of the wizard screens.
 
 	*Table 1:* **System Property Settings**
 
@@ -68,13 +56,9 @@ The NoC IP core helps configure the DDR memory and data path across the DDR memo
    |                     | Display Name                                   | Versal VMK180/VCK190 Evaluation Platform |
    | Project Summary     | Project Summary                                | Review the project summary               |
 
-4. Click **Finish**. The New Project wizard closes and the project you
-     just created opens in the Vivado design tool.
+5. Click **Finish**. The New Project wizard closes and the project you just created opens in the Vivado design tool.
 
->**NOTE:**  Check the version number while choosing a board. For ES1
- silicon, the board version is 1.0 and for production silicon, the
- board version is 2.0. Select the version based on the silicon on the
- board.
+>***Note*:**  Check the version number while choosing a board. For ES1 silicon, the board version is 1.1 and for production silicon, the board version is 2.0. Select the version based on the silicon on the board.
 
 #### Creating an Embedded Processor Project
 
@@ -86,8 +70,7 @@ To create an embedded processor project:
 
     The Create Block Design wizard opens.
 
-2. Use the following information to make selections in the Create Block
-     Design wizard.
+2. Use the following information to make selections in the Create Block Design wizard.
 
 	*Table 2*: **System Property Settings**
 
@@ -99,17 +82,14 @@ To create an embedded processor project:
 
 3. Click **OK**.
 
-    The diagram window view opens with a message that states that this
-    design is empty. To get started, add an IP from the IP catalog.
+    The diagram window view opens with a message that states that this design is empty. To get started, add an IP from the IP catalog.
 
 4. Click the **Add IP** button ![](media/image6.png).
 
 5. In the search box, type CIPS to find the Control, Interfaces and Processing System.
 
-6. Double-click the **Control, Interface
-     & Processing System IP** to add it to the block design. The CIPS
-     IP core appears in the diagram view, as shown in the following
-     figure:
+6. Double-click the **Control, Interface & Processing System IP** to add it to the block design. The CIPS IP core appears in the diagram view, as shown in the following figure:
+
      ![](media/image7.png)
 
 #### Managing the Versal ACAP CIPS IP Core in the Vivado Design Suite
@@ -122,22 +102,19 @@ Now that you have added the processor system for Versal&trade; ACAP to the desig
 
     ![cips-fixed-io-selection](./media/cips-fixed-io.png)
 
-3. Click OK.
-By default, the CIPS does not have any control or interfaces enabled. Applying the board
-preset enables those peripherals on the CIPS that have board connections to their MIO pins.
+3. Click **OK**.
+
+    By default, the CIPS does not have any control or interfaces enabled. Applying the board preset enables those peripherals on the CIPS that have board connections to their MIO pins.
 
 4. Double-click versal_cips_0 in the Block Diagram window. The Re-customize IP dialog box opens, as shown in the following figure.
 
     ![](media/image9.jpeg)
 
-5. Expand the **PS-PMC** drop-down menu. Click **IO Configuration** as
-     shown in the following figure. The IO Configuration dialog box
-     opens.
+5. Expand the **PS-PMC** drop-down menu. Click **IO Configuration** as shown in the following figure. The IO Configuration dialog box opens.
 
-    I/O Configuration enables peripherals in the processing system and
-    allows selecting pin assignments for the associated MIO. The peripherals are configured as shown in the following figure:
+    I/O Configuration enables peripherals in the processing system and allows selecting pin assignments for the associated MIO. The peripherals are configured as shown in the following figure:
 
-    >***Notes*:** Block Automation is not explicitly run. It is disabled when the Board interface is changed to cips fixed io from Custom.
+    >***Note*:** Block Automation is not explicitly run. It is disabled when the Board interface is changed to cips fixed io from Custom.
 
     ![](./media/Recustomize-IP.PNG)
 
@@ -145,14 +122,11 @@ preset enables those peripherals on the CIPS that have board connections to thei
 
 #### Validating the Design and Generating the Output
 
- To validate the design and to generate the output products, follow
- these steps:
+To validate the design and to generate the output products, follow these steps:
 
-1. Right-click in the white space of the Block Diagram view and select
-     **Validate Design**.
+1. Right-click in the white space of the Block Diagram view and select **Validate Design**.
 
-    Alternatively, you can press the **F6** key. A message dialog box
-    opens as shown below:
+    Alternatively, you can press the **F6** key. A message dialog box opens as shown below:
 
     ![validation_message](./media/validation_message.PNG)
 
@@ -164,47 +138,27 @@ preset enables those peripherals on the CIPS that have board connections to thei
 
 4. Under Design Sources, right-click **edt_versal** and select **Create HDL Wrapper**.
 
-    The Create HDL Wrapper dialog box
-    opens. Use this dialog box to create an HDL wrapper file for the
-    processor subsystem.
+    The Create HDL Wrapper dialog box opens. Use this dialog box to create an HDL wrapper file for the processor subsystem.
 
-    >**TIP:** The HDL wrapper is a top-level entity required by the design
-    tools.
+    >**TIP:** The HDL wrapper is a top-level entity required by the design tools.
 
-5. Select **Let Vivado manage wrapper and auto-update** and click
-     **OK**.
+5. Select **Let Vivado manage wrapper and auto-update** and click **OK**.
 
-6. In the Block Design Sources window, under Design Sources, expand
-     **edt_versal_wrapper**.
+6. In the Block Design Sources window, under Design Sources, expand   **edt_versal_wrapper**.
 
-7. Right-click the top-level block diagram, titled edt_versal_i:
-     edt_versal (edt_versal.bd) and select **Generate Output
-     Products**.
+7. Right-click the top-level block diagram, titled edt_versal_i: edt_versal (edt_versal.bd) and select **Generate Output Products**.
 
-    The Generate Output Products dialog box opens, as shown in the
-    following figure.
+    The Generate Output Products dialog box opens, as shown in the following figure.
 
     ![](media/image15.png)
 
-    >**Note:** If you are running the Vivado&reg; Design Suite on a Windows
-    machine, you might see different options under Run Settings. In this
-    case, continue with the default settings.
+    >***Note*:** If you are running the Vivado&reg; Design Suite on a Windows machine, you might see different options under Run Settings. In this case, continue with the default settings.
 
 8. Click **Generate**.
 
-    This step builds all required output products for the selected source.
-    For example, you do not need to manually create constraints for the IP
-    processor system. The Vivado tools automatically generate the XDC file
-    for the processor sub-system when you select **Generate Output
-    Products**.
+    This step builds all required output products for the selected source. For example, you do not need to manually create constraints for the IP processor system. The Vivado tools automatically generate the XDC file for the processor sub-system when you select **Generate Output Products**.
 
-9. When the Generate Output Products process completes, click **OK**.
-     Click the Design Runs tab on the bottom window to see OOC Module
-     Runs/Synthesis/Implementation runs.
-
-10. In the Block Design Sources window, click the **IP Sources** tab.
-    Here you can see the output products that you just generated, as
-    shown in the following figure.
+10. In the Block Design Sources window, click the **IP Sources** tab. Here you can see the output products that you just generated, as shown in the following figure.
 
     ![](media/image16.png)
 
@@ -224,35 +178,23 @@ Follow these steps to generate a device image for the design.
 
 5. Export hardware after you generate the Device Image.
 
->**Note:** The following steps are optional and you can skip these
-    and go to the [Exporting Hardware](#exporting-hardware) section. These
-    steps provide the detailed flow for generating the device image by
-    running synthesis and implementation before generating device image.
-    If you need to understand the flow of generating the device image, follow
-    the steps provided below.
+    >***Note*:** The following steps are optional and you can skip these and go to the [Exporting Hardware](#exporting-hardware) section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow of generating the device image, follow the steps provided below.
 
 6. Go to **Flow Navigator→ Synthesis**, click **Run Synthesis** and click **OK**.
 
     ![](media/image17.png)
 
-7. If Vivado® prompts you to save your project before launching
-    synthesis, click **Save**.
+7. If Vivado prompts you to save your project before launching synthesis, click **Save**.
 
-    While synthesis is running, a status bar is displayed in the upper
-    right-hand window. This status bar spools for various reasons
-    throughout the design process. The status bar signifies that a process
-    is working in the background. When synthesis is complete, the
-    Synthesis Completed dialog box opens.
+    While synthesis is running, a status bar is displayed in the upper right-hand window. This status bar spools for various reasons throughout the design process. The status bar signifies that a process is working in the background. When synthesis is complete, the Synthesis Completed dialog box opens.
 
 8. Select **Run Implementation** and click **OK**.
 
-    When implementation completes, the Implementation Completed dialog box
-    opens.
+    When implementation completes, the Implementation Completed dialog box opens.
 
 9. Select **Generate Device Image** and click **OK**.
 
-    When Device Image Generation completes, the Device Image Generation
-    Completed dialog box opens.
+    When Device Image Generation completes, the Device Image Generation Completed dialog box opens.
 
 10. Click **Cancel** to close the window.
 
@@ -261,56 +203,42 @@ Follow these steps to generate a device image for the design.
 #### Exporting Hardware
 
 1. From the Vivado toolbar, select **File → Export→ Export Hardware**.
+
     The Export Hardware dialog box opens.
 
 2. Choose **Include device image** and click **Next**.
 
-3. Provide a name for your exported file (or use the default provided) and choose the location.
-    Click **Next**.
+3. Provide a name for your exported file (or use the default provided) and choose the location. Click **Next**.
 
-    A warning message appears if a Hardware Module has already been
-    exported. Click **Yes** to overwrite the existing XSA file, if the
-    overwrite message is displayed.
+    A warning message appears if a Hardware Module has already been exported. Click **Yes** to overwrite the existing XSA file, if the overwrite message is displayed.
 
 4. Click **Finish**.
 
 ### Running a Bare-Metal Hello World Application
 
-In this example, you will learn how to manage the board settings, make
-cable connections, connect to the board through your system, and run a
-hello world software application from Arm Cortex-A72 on On-chip-memory
-(OCM) and Arm Cortex- R5F on Tightly-coupled-memory (TCM) in the Xilinx
-Vitis software platform.
+In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your system, and run a Hello World software application from Arm Cortex-A72 on On-chip-memory (OCM) and Arm Cortex- R5F on Tightly-coupled-memory (TCM) on the Vitis software platform.
 
-The following steps demonstrate the procedure to make the required
-cable connections, connect the board through your system, and launch
-the Vitis software platform.
+The following steps demonstrate the procedure to make the required cable connections, connect the board through your system, and launch the Vitis software platform.
 
 1. Connect the power cable to the board.
 
-2. Connect a USB Micro cable between the Windows host machine and USB JTAG connector on the target board. This cable is used for USB to
-     serial transfer.
+2. Connect a USB Micro cable between the Windows host machine and USB JTAG connector on the target board. This cable is used for USB to serial transfer.
 
-    >**NOTE:** Ensure that the SW1 switch is set to JTAG boot mode as shown in the following figure.
+    >***Note*:** Ensure that the SW1 switch is set to JTAG boot mode as shown in the following figure.
 
     ![](media/image19.jpeg)
 
-3. Power on the VMK180/VCK190 board using the
-     power switch as shown in the following figure.
+3. Power on the VMK180/VCK190 board using the power switch as shown in the following figure.
 
     ![](media/image20.png)
-    >**Note:** If the Vitis software platform is already running, jump to
-    step 6.
+
+    >***Note*:** If the Vitis software platform is already running, jump to step 6.
 
 4. Launch the Vitis software platform by selecting **Tools → Launch Vitis IDE from Vivado** and set the workspace path, which in this example is `C:\edt\edt_vck190`.
 
-    Alternatively, you can open the Vitis software platform with a default
-    workspace and later switch it to the correct workspace by selecting **File → Switch Workspace** and then selecting the workspace.
+    Alternatively, you can open the Vitis software platform with a default workspace and later switch it to the correct workspace by selecting **File → Switch Workspace** and then selecting the workspace.
 
-5. Open a serial communication utility for the COM port assigned on your system.
-     The Vitis software platform provides a serial terminal utility, which is used
-     throughout the tutorial; select **Window → Show View → Xilinx →
-     Vitis Serial Terminal** to open it.
+5. Open a serial communication utility for the COM port assigned on your system. The Vitis software platform provides a serial terminal utility, which is used throughout the tutorial; select **Window → Show View → Xilinx → Vitis Serial Terminal** to open it.
 
      ![](media/image21.jpeg)
 
@@ -318,38 +246,23 @@ the Vitis software platform.
 
 7. Verify the port details in the Windows device manager.
 
-    UART-0 terminal corresponds to Com-Port with Interface-0. For this
-    example, UART-0 terminal is set by default, so for the Com-Port,
-    select the port with interface-0. The following figure shows the
-    standard configuration for the Versal™ ACAP processing system.
+    UART-0 terminal corresponds to Com-Port with Interface-0. For this example, UART-0 terminal is set by default, so for the Com-Port, select the port with interface-0. The following figure shows the standard configuration for the Versal ACAP processing system.
 
     ![](media/image23.png)
 
- >**Note:** You can use external terminal Serial Port Consoles like
- Tera Term or Putty. You can find the relevant COM port information
- from the Device Manager menu in Control Panel.
+ >***Note*:** You can use external terminal Serial Port Consoles like Tera Term or Putty. You can find the relevant COM port information from the Device Manager menu in Control Panel.
 
 #### Creating a Hello World Application for the Arm Cortex-A72 on OCM
 
- The following steps demonstrate the procedure to create a Hello World
- Application from Arm Cortex-A72 on OCM.
+The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM.
 
-1. Select **File→ New → Application Project**. Creating a New
-Application Project wizard opens. If this is the first time the
-Vitis IDE has been launched, you can select Create Application
-Project on the Welcome screen as shown in the following figure.
+1. Select **File→ New → Application Project**. Creating a New Application Project wizard opens. If this is the first time the Vitis IDE has been launched, you can select Create Application Project on the Welcome screen as shown in the following figure.
 
-    ![](media/image24.png)
+    >***Note*:** Optionally, you can check the box next to "Skip welcome page next time" to skip seeing the welcome page every time.
 
-    >**Note:** Optionally, you can check the box next to \"Skip welcome
-    page next time\" to skip seeing the welcome page every time.
+2. Use the following information to make your selections in the wizard screens.
 
-    ![](media/image25.jpeg)
-
-2. Use the following information to make your selections in the wizard
-     screens.
-
-	*Table 3:* **System Property Settings**
+    *Table 3:* **System Property Settings**
 
    |  Wizard Screen       |  System Properties         |  Setting or Command to Use            |
    |----------------------|----------------------------|---------------------------------------|
@@ -367,25 +280,17 @@ Project on the Welcome screen as shown in the following figure.
    |                      | Architecture         | 64-bit
    | Templates            | Available Templates  | Hello World          |
 
-    The Vitis software platform creates the board support package for the
-    Platform project (vck190_platform) and the system project
-    (helloworld_system) containing an application project named
-    helloworld_a72 under the Explorer view after performing the above
-    steps.
+    The Vitis software platform creates the board support package for the Platform project (vck190_platform) and the system project (helloworld_system) containing an application project named helloworld_a72 under the Explorer view after performing the above steps.
 
-3. Right-click **vck190_platform** and select **Build Project**.
-     Alternatively, you can also click
-     ![](media/image26.png).
+3. Right-click **vck190_platform** and select **Build Project**. Alternatively, you can also click ![](media/image26.png).
 
-    >**Note:** If you cannot see the project explorer, click the restore
-    icon ![](media/image27.png) on the left panel and then follow step 3.
+    >***Note*:** If you cannot see the project explorer, click the restore icon ![](media/image27.png) on the left panel and then follow step 3.
 
 ##### Modifying the helloworld_a72 Application Source Code
 
 1. Double-click **helloworld_a72**, then double-click **src** and select **helloworld.c**.
 
-    This opens the `helloworld.c` source file for the helloworld_a72
-    application.
+    This opens the `helloworld.c` source file for the helloworld_a72 application.
 
 2. Modify the arguments in the print commands:
 
@@ -400,24 +305,17 @@ Project on the Welcome screen as shown in the following figure.
 
 #### Adding a New RPU Domain to the Platform Project
 
- The following steps demonstrate the procedure to create a bare-metal
- Hello World Application for the Arm Cortex-R5F on TCM. The application
- needs to be linked to a domain. Before creating the application
- project, make sure that the target domain software environment is
- available. If not, add the required domain to your platform using the
- following steps.
+The following steps demonstrate the procedure to create a bare-metal Hello World application for the Arm Cortex-R5F on TCM. The application needs to be linked to a domain. Before creating the application project, make sure that the target domain software environment is available. If not, add the required domain to your platform using the following steps.
 
-1. Double-click the platform.spr file in the Vitis Explorer view.
-     (In this example, **vck190_platform → platform.spr**)
+1. Double-click the `platform.spr` file in the Vitis Explorer view. (In this example, **vck190_platform → platform.spr**).
 
 2. Click the ![](./media/image30.png) button in the Main view.
 
-3. Use the following information to make your selections in the Domain
-     wizard screen.
+3. Use the following information to make your selections in the Domain wizard screen.
 
 	*Table 4:* **New  Domain Settings**  
 
-   |  **Wizard Screen**   |        Fields       |  Setting or Command to Use      |
+   |  Wizard Screen   |        Fields       |  Setting or Command to Use      |
    |----------------------|-------------------- |---------------------|
    |  Domain              |  Name               |  r5_domain          |
    |                      |  Display Name       |  autogenerated      |
@@ -428,27 +326,19 @@ Project on the Welcome screen as shown in the following figure.
 
 4. Click **OK**. The newly generated r5_domain is configured.
 
-    >**Note:** At this point, you will notice an Out-of-date decorator
-    next to the platform in the Explorer view.
+    >***Note*:** At this point, you will notice an Out-of-date decorator next to the platform in the Explorer view.
 
-5. Click the ![](./media/image26.png) icon to build the platform. The
-     Explorer view shows the generated image files in the platform
-     project.
+5. Click the ![](./media/image26.png) icon to build the platform. The Explorer view shows the generated image files in the platform project.
 
 #### Creating the Standalone Application Project for the Arm Cortex-R5F
 
-The following steps demonstrate the procedure to create a Hello World Application from Arm Cortex-R5F.
+The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-R5F.
 
-1. Select **File → New → Application Project**. Creating a New
-     Application Project wizard opens. If this is the first time the
-     Vitis IDE has been launched, you can select Create Application
-     Project on the Welcome screen.
+1. Select **File → New → Application Project**. Creating a New Application Project wizard opens. If this is the first time the Vitis IDE has been launched, you can select Create Application Project on the Welcome screen.
 
-    >**Note:** Optionally, you can check the box next to \"Skip welcome
-    page next time\" to skip seeing the welcome page every time.
+    >***Note*:** Optionally, you can check the box next to "Skip welcome page next time" to skip seeing the welcome page every time.
 
-2. Use the following information to make your selections in the wizard
-     screens.
+2. Use the following information to make your selections in the wizard screens.
 
 	*Table 5:* **System Property Settings**
 
@@ -466,17 +356,13 @@ The following steps demonstrate the procedure to create a Hello World Applicatio
    |                      | Processor            | psv_cortexr5_0       |
    | Templates            | Available Templates  | Hello World          |
 
-    >**Note:** The standalone application helloworld_r5 is generated
-    within the existing system project helloworld_system.
+    >***Note*:** The standalone application helloworld_r5 is generated within the existing system project helloworld_system.
 
-3. Right-click **vck190_platform** and select **Build Project**.
-     Alternatively, you can also click
-     ![](./media/image29.png) to build the project.
+3. Right-click **vck190_platform** and select **Build Project**. Alternatively, you can also click ![](./media/image29.png) to build the project.
 
 ##### Modifying the helloworld_r5 Application Source Code
 
-1. Expand **helloworld_r5** and double-click **src** and select **helloworld.c** to open
-     the `helloworld.c` source file for the helloworld_r5 application.
+1. Expand **helloworld_r5** and double-click **src** and select **helloworld.c** to open the `helloworld.c` source file for the helloworld_r5 application.
 
 2. Modify the arguments in the print commands:
 
@@ -491,69 +377,41 @@ The following steps demonstrate the procedure to create a Hello World Applicatio
 
 ##### Modifying the Application Linker Script for the Application Project helloworld_r5
 
-The following steps demonstrate the procedure to modify the
-application linker script for the application project helloworld_r5.
+The following steps demonstrate the procedure to modify the application linker script for the application project helloworld_r5.
 
->**Note:** The Vitis software platform provides a linker script
- generator to simplify the task of creating a linker script for GCC.
- The linker script generator GUI examines the target hardware platform
- and determines the available memory sections. The only action required
- by you is to assign the different code and data sections in the ELF
- file to different memory regions.
+>***Note*:** The Vitis software platform provides a linker script generator to simplify the task of creating a linker script for GCC. The linker script generator GUI examines the target hardware platform and determines the available memory sections. The only action required by you is to assign the different code and data sections in the ELF file to different memory regions.
 
-1. Select the application project (helloworld_r5) in the Vitis Explorer
-     view.
+1. Select the application project (helloworld_r5) in the Vitis Explorer view.
 
-    >**Note:** The linker will use the DDR memory if it exists on the platform, otherwise it will default to the on-chip memory (OCM).
+    >***Note*:** The linker will use the DDR memory if it exists on the platform, otherwise it will default to the on-chip memory (OCM).
 
 2. In the `src` directory, delete the default `lscript.ld` file.
 
-3. Right-click **helloworld_r5** and click **Generate Linker Script**.
-     Alternatively, you can select **Xilinx → Generate Linker Script**.
+3. Right-click **helloworld_r5** and click **Generate Linker Script**. Alternatively, you can select **Xilinx → Generate Linker Script**.
 
     ![](./media/image32.png)
 
-    >**Note:** In the Generate linker script dialog box, the left side is
-    read-only, except for the Output Script name and project build
-    settings in the Modify project build settings as follows field. On the
-    right side, you have two choices of how to allocate memory: The Basic
-    tab or the Advanced tab. Both perform the same tasks; however, the
-    Basic tab is less granular and treats all types of data as "data" and
-    all types of instructions as "code." This is often sufficient to
-    accomplish most tasks. Use the Advanced tab for precise allocation of
-    software blocks into various types of memory.
+    >***Note*:** In the Generate linker script dialog box, the left side is read-only, except for the Output Script name and project build settings in the Modify project build settings as follows field. On the right side, you have two choices of how to allocate memory: The Basic tab or the Advanced tab. Both perform the same tasks; however, the Basic tab is less granular and treats all types of data as "data" and all types of instructions as "code." This is often sufficient to accomplish most tasks. Use the Advanced tab for precise allocation of software blocks into various types of memory.
 
-4. Under the Basic tab, select **psv_r5_0\_atcm_MEM_0** in the
-     drop-down menu for all the three sections and then click
-     **Generate**.
+4. Under the Basic tab, select **psv_r5_0\_atcm_MEM_0** in the drop-down menu for all the three sections and then click **Generate**.
 
     ![](./media/image33.png)
 
-    >**Note:** A new linker script (`lscript.ld`) will be generated in the
-    src folder within the application project.
+    >***Note*:** A new linker script (`lscript.ld`) will be generated in the src folder within the application project.
 
-5. Right-click **helloworld \_system** and select **Build Project** or
-     click ![](./media/image26.png). This generates the project elf
-     files within the Debug folder of the helloworld_r5 project.
+5. Right-click **helloworld \_system** and select **Build Project** or click ![](./media/image26.png). This generates the project elf files within the Debug folder of the helloworld_r5 project.
 
 ### Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform
 
- To run an application, you must create a 'Run configuration' that
- captures the settings for executing the application. You can either
- create a Run configuration for the whole system project or independent
- applications.
+To run an application, you must create a 'Run configuration' that captures the settings for executing the application. You can either create a Run configuration for the whole system project or independent applications.
 
 #### Creating a Run Configuration for the System Project
 
-1. Right-click on the system project **helloworld_system** and select
-     **Run As → Run Configurations**. The Run configuration dialog box
-     opens.
+1. Right-click on the system project **helloworld_system** and select **Run As → Run Configurations**. The Run configuration dialog box opens.
 
 2. Double-click **System Project Debug** to create a Run Configuration.
 
-    The Vitis software platform creates a new run configuration with the
-    name: SystemDebugger_helloworld_system. For the remaining options,
-    refer the following table.
+    The Vitis software platform creates a new run configuration with the name: SystemDebugger_helloworld_system. For the remaining options, refer the following table.
 
 	*Table 6:* **Create, Manage, and Run Configurations Settings**
 
@@ -562,31 +420,23 @@ application linker script for the application project helloworld_r5.
    |  Main               |  Project            |  helloworld_system  |
    |                  |  Target → Hardware Server |  Attach to the running target (local). If not already added, add using the New button. |
 
-3.  Click **Run**.
+3. Click **Run**.
 
-    >**Note:** If there is an existing launch configuration, a dialog box
-    appears asking whether you want to terminate the process. Click
-    **Yes**. The following logs are displayed on the terminal.
+    >***Note*:** If there is an existing launch configuration, a dialog box appears asking whether you want to terminate the process. Click **Yes**. The following logs are displayed on the terminal.
 
     ![](./media/image34.png)
 
 #### Creating a Run Configuration for a Single Application within a System Project
 
- You can create a run configuration for a single application within a
- system project in two ways:
+You can create a run configuration for a single application within a system project in two ways:
 
 ##### Method I
 
-1. Right-click on the system project **helloworld_system** and select
-     **Run As → Run Configurations**. The Run configuration dialog box
-     opens.
+1. Right-click on the system project **helloworld_system** and select **Run As → Run Configurations**. The Run configuration dialog box opens.
 
 2. Double-click **System Project Debug** to create a run configuration.
 
-    The Vitis software platform creates a new run configuration with the
-    name: SystemDebugger_helloworld_system_1. Rename this to
-    SystemDebugger_helloworld_system_A72. For the remaining options, refer
-    the following table.
+    The Vitis software platform creates a new run configuration with the name: SystemDebugger_helloworld_system_1. Rename this to SystemDebugger_helloworld_system_A72. For the remaining options, refer to the following table.
 
 	*Table 7:* **Create, Manage, and Run Configurations Settings**
 
@@ -601,30 +451,19 @@ application linker script for the application project helloworld_r5.
 
 3. Click **Run**.
 
-    >**Note:** If there is an existing run configuration, a dialog box
-    appears asking whether you want to terminate the process. Click
-    **Yes**. The following logs are displayed on the terminal.
+    >***Note*:** If there is an existing run configuration, a dialog box appears asking whether you want to terminate the process. Click **Yes**. The following logs are displayed on the terminal.
 
     ![](./media/image35.png)
 
- >**Note:** Both the APU and RPU applications print on the same
- console as both applications are using UART0 for these applications.
- The application software sends the hello world strings for both APU and RPU to the UART0 peripheral
- of the PS section. From UART0, the hello world strings goes
- byte-by-byte to the serial terminal application running on the host
- machine, which displays it as a string.
+>***Note*:** Both the APU and RPU applications print on the same console as both applications are using UART0 for these applications. The application software sends the hello world strings for both APU and RPU to the UART0 peripheral of the PS section. From UART0, the hello world strings goes byte-by-byte to the serial terminal application running on the host machine, which displays it as a string.
 
 ##### Method II
 
-1. Right-click on the application project hello_world_r5 and select
-     **Run As → Run Configurations**. The Run configuration dialog box
-     opens.
+1. Right-click on the application project hello_world_r5 and select **Run As → Run Configurations**. The Run configuration dialog box opens.
 
 2. Double-click **Single Project Debug** to create a run configuration.
 
-    The Vitis software platform creates a new run configuration with the
-    name: Debugger_helloworld_r5-Default. For the remaining options, refer
-    the following table.
+    The Vitis software platform creates a new run configuration with the name: Debugger_helloworld_r5-Default. For the remaining options, refer to the following table.
 
 	*Table 8:*  **Create, Manage, and Run Configurations Settings**
 
@@ -634,38 +473,28 @@ application linker script for the application project helloworld_r5.
    |              |  Connection          |  Connect to the board. If connected already, select the connection here.     |
    |              |  Project             |  helloworld_r5      |
    |              |  Configuration       |  Debug              |
-   
-3.  Click **Apply**.
 
-4.  Click **Run**.
+3. Click **Apply**.
 
- >**Note:** If there is an existing run configuration, a dialog box
- appears asking whether you want to terminate the process. Click
- **Yes**. The following logs are displayed on the terminal.
+4. Click **Run**.
 
- ![](./media/image36.png)
+    >***Note*:** If there is an existing run configuration, a dialog box appears asking whether you want to terminate the process. Click **Yes**. The following logs are displayed on the terminal.
+
+    ![](./media/image36.png)
 
 ## NoC (and DDR) IP Core Configuration
 
- This section describes the NoC (and DDR) configuration and related
- connections required for use with the CIPS configured earlier in this
- chapter. The Versal™ ACAP CIPS IP core allows you to configure two
- superscalar, multi-core Arm® Cortex™-A72 based APUs, two Arm
- Cortex™-R5F RPUs, a platform management controller (PMC), and a CCIX
- PCIe® module (CPM). The NoC IP core allows configuring the NoC and
- enabling the DDR memory controllers.
+This section describes the NoC (and DDR) configuration and related connections required for use with the CIPS configured earlier in this chapter. The Versal ACAP CIPS IP core allows you to configure two superscalar, multi-core Arm Cortex-A72 based APUs, two Arm Cortex-R5F RPUs, a platform management controller (PMC), and a CCIX PCIe&reg; module (CPM). The NoC IP core allows configuring the NoC and enabling the DDR memory controllers.
 
 ### Configuring the NoC IP Core in an Existing Project
 
- For this example, launch the Vivado&reg; Design Suite and project with
- basic CIPS configuration done as shown in [Example Project: Creating a New Embedded Project with the Versal ACAP](./2-cips-noc-ip-config.md#creating-a-new-embedded-project-with-the-versal-acap).
+For this example, launch the Vivado Design Suite and project with basic CIPS configuration done as shown in [Example Project: Creating a New Embedded Project with the Versal ACAP](./2-cips-noc-ip-config.md#creating-a-new-embedded-project-with-the-versal-acap).
 
 #### Configuring Your Design
 
 To configure your design, follow these steps:
 
-1. Open the design created in [Example Project: Creating a New Embedded Project with the Versal ACAP](./2-cips-noc-ip-config.md#creating-a-new-embedded-project-with-the-versal-acap),
-     `edt_versal.xpr`.
+1. Open the design created in [Example Project: Creating a New Embedded Project with the Versal ACAP](./2-cips-noc-ip-config.md#creating-a-new-embedded-project-with-the-versal-acap), `edt_versal.xpr`.
 
 2. Open the block design `edt_versal.bd`.
 3. Go to the Tcl Console in the Vivado Design Suite and type the following command:
@@ -688,49 +517,36 @@ To configure your design, follow these steps:
 
     This adds the AXI NoC IP for DDR access.
 
-    ![](./media/image38.jpeg)
+    ![](./media/image38.png)
 
 #### Validating the Design and Generating the Output
 
 To validate the design and generate the output, follow these steps:
 
-1. Right-click in the white space of the Diagram window and select
-     **Validate Design**. Alternatively, you can press the **F6** key.
-     A dialog box with the following message opens:
+1. Right-click in the white space of the Diagram window and select **Validate Design**. Alternatively, you can press the **F6** key. A dialog box with the following message opens:
 
     ![validation-message](media/validation_message.PNG)
 
 2. Click **OK** to close the message.
 
-3. In the Block Design Sources window, under Design Sources, expand
-     **edt_versal_wrapper**.
+3. In the Block Design Sources window, under Design Sources, expand **edt_versal_wrapper**.
 
-4. Right-click the top-level block diagram, titled edt_versal_i:
-     edt_versal (`edt_versal.bd`) and select **Generate Output
-     Products**.
+4. Right-click the top-level block diagram, titled edt_versal_i: edt_versal (`edt_versal.bd`) and select **Generate Output Products**.
 
-    The Generate Output Products dialog box opens, as shown in the
-    following figure.
+    The Generate Output Products dialog box opens, as shown in the following figure.
 
     ![](./media/image15.png)
 
-    >**Note:** If you are running the Vivado Design Suite on a Windows
-    machine, you might see different options under Run Settings. In this
-    case, continue with the default settings.
+    >***Note*:** If you are running the Vivado Design Suite on a Windows machine, you might see different options under Run Settings. In this case, continue with the default settings.
 
 5. Click **Generate**.
 
-    This step builds all required output products for the selected source.
-    For example, you do not need to manually create constraints for the IP
-    processor system. The Vivado tools automatically generate the XDC file
+    This step builds all required output products for the selected source. For example, you do not need to manually create constraints for the IP processor system. The Vivado tools automatically generate the XDC file
     for the processor sub-system when you select **Generate Output Products**.
 
-6. When the Generate Output Products process completes, click **OK**.
-    Click the **Design Runs** window on the bottom window to see OOC Module Runs/Synthesis/Implementation runs.
+6. When the Generate Output Products process completes, click **OK**. Click the **Design Runs** window on the bottom window to see OOC Module Runs/Synthesis/Implementation runs.
 
-7. In the Sources window, click the **IP Sources** view. Here you can
-     see the output products that you just generated, as shown in the
-     following figure.
+7. In the Sources window, click the **IP Sources** view. Here you can see the output products that you just generated, as shown in the following figure.
 
     ![](./media/image39.png)
 
@@ -750,37 +566,25 @@ Follow these steps to generate a device image for the design.
 
 5. Export hardware after you generate the Device Image and click **OK**.
 
->**Note:** The following steps are optional and you can skip these
-    and go to the [Exporting Hardware](#exporting-hardware) section. These
-    steps provide the detailed flow for generating the device image by
-    running synthesis and implementation before generating device image.
-    If you need to understand the flow of generating the device image, follow
-    the steps provided below.
+    >***Note*:** The following steps are optional and you can skip these and go to the [Exporting Hardware](#exporting-hardware) section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow of generating the device image, follow the steps provided below.
 
-5. Go to **Flow Navigator→ Synthesis** and click **Run Synthesis**.
+6. Go to **Flow Navigator→ Synthesis** and click **Run Synthesis**.
 
     ![](media/image17.png)
 
-6. If Vivado® prompts you to save your project before launching
-    synthesis, click **Save**.
+7. If Vivado prompts you to save your project before launching synthesis, click **Save**.
 
-    While synthesis is running, a status bar is displayed in the upper
-    right-hand window. This status bar spools for various reasons
-    throughout the design process. The status bar signifies that a process
-    is working in the background. When synthesis is complete, the
-    Synthesis Completed dialog box opens.
+    While synthesis is running, a status bar is displayed in the upper right-hand window. This status bar spools for various reasons throughout the design process. The status bar signifies that a process is working in the background. When synthesis is complete, the Synthesis Completed dialog box opens.
 
-7. Select **Run Implementation** and click **OK**.
+8. Select **Run Implementation** and click **OK**.
 
-    When implementation completes, the Implementation Completed dialog box
-    opens.
+    When implementation completes, the Implementation Completed dialog box opens.
 
-8. Select **Generate Device Image** and click **OK**.
+9. Select **Generate Device Image** and click **OK**.
 
-    When Device Image Generation completes, the Device Image Generation
-    Completed dialog box opens.
+    When Device Image Generation completes, the Device Image Generation Completed dialog box opens.
 
-9.  Click **Cancel** to close the window.
+10. Click **Cancel** to close the window.
 
     Export hardware, after you generate Device Image.
 
@@ -792,51 +596,34 @@ Follow these steps to generate a device image for the design.
 
 3. Provide a name for your exported file (or use the default provided) and choose the location. Click **Next**.
 
-    A warning message appears if a hardware module has already been
-    exported. Click **Yes** to overwrite the existing XSA file, if the
-    overwrite message is displayed.
+    A warning message appears if a hardware module has already been exported. Click **Yes** to overwrite the existing XSA file, if the overwrite message is displayed.
 
 4. Click **Finish**.
 
 ### Running a Bare-Metal Hello World Application on DDR Memory
 
- In this example, you will learn how to manage the board settings, make
- cable connections, connect to the board through your PC, and run a
- hello world software application from Arm Cortex-A72 and Arm
- Cortex-R5F on DDR memory in the Xilinx Vitis software platform.
+In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Xilinx Vitis software platform.
 
- You will create a new Vitis project, similar to the one in [Running a Bare-Metal Hello World Application](#running-a-bare-metal-hello-world-application), except that it will use the default linker
- scripts, which will reference the DDR memory.
+You will create a new Vitis project, similar to the one in [Running a Bare-Metal Hello World Application](#running-a-bare-metal-hello-world-application), except that it will use the default linker scripts, which will reference the DDR memory.
 
-1. Manage board settings, make cable connections, and connect to the
-     board through your system and launch the Vitis software platform
-     as discussed in steps 1 through 7 in [Running a Bare-Metal Hello World Application](#running-a-bare-metal-hello-world-application).
+1. Manage board settings, make cable connections, and connect to the board through your system and launch the Vitis software platform as discussed in steps 1 through 7 in [Running a Bare-Metal Hello World Application](#running-a-bare-metal-hello-world-application).
 
-    >***Note*:** A new Vitis workspace needs to be created for this. Do not
-    use the workspace created in [Running a Bare-Metal Hello World Application](#running-a-bare-metal-hello-world-application).
+    >***Note*:** A new Vitis workspace needs to be created for this. Do not use the workspace created in [Running a Bare-Metal Hello World Application](#running-a-bare-metal-hello-world-application).
 
-2. Create a bare-metal Hello World system project with application
-     running on Arm Cortex-A72 and modify its source code as discussed
-     in steps 1 through 3 of [Creating a Hello World Application for the Arm Cortex-A72 on OCM](#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm)
-     and steps 1 through 3 of [Modifying the helloworld_a72 Application Source Code](#modifying-the-helloworld_a72-application-source-code).
+2. Create a bare-metal Hello World system project with application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 through 3 of [Creating a Hello World Application for the Arm Cortex-A72 on OCM](#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm) and steps 1 through 3 of [Modifying the helloworld_a72 Application Source Code](#modifying-the-helloworld_a72-application-source-code).
 
 3. Right-click **helloworld \_system** and select **Build Project** or click ![](./media/image29.png) to generate the project elf files within the Debug folder of the application project.
 
-4. Create an additional RPU domain for your platform (created in
-     Step 2) as discussed in [Adding a New RPU Domain to the Platform Project](#adding-a-new-rpu-domain-to-the-platform-project).
+4. Create an additional RPU domain for your platform (created in Step 2) as discussed in [Adding a New RPU Domain to the Platform Project](#adding-a-new-rpu-domain-to-the-platform-project).
 
-5. Create a bare-metal Hello World application running on Arm
-     Cortex-R5F within the existing system project (built in Step 2)
-     and modify its source code as discussed in steps 1 through 3 of
-     [Creating the Standalone Application Project for the Arm Cortex-R5F](#creating-the-standalone-application-project-for-the-arm-cortex-r5f)
-     and steps 1 through 3 of [Modifying the helloworld_r5 Application Source Code](#modifying-the-helloworld_r5-application-source-code).
+5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (built in Step 2) and modify its source code as discussed in steps 1 through 3 of [Creating the Standalone Application Project for the Arm Cortex-R5F](#creating-the-standalone-application-project-for-the-arm-cortex-r5f) and steps 1 through 3 of [Modifying the helloworld_r5 Application Source Code](#modifying-the-helloworld_r5-application-source-code).
 
-6. Right-click **helloworld \_system** and select Build Project or
-     click ![](./media/image29.png) to generate the project elf files
-     within the Debug folder of the application project.
+6. Right-click **helloworld \_system** and select Build Project or click ![](./media/image29.png) to generate the project elf files within the Debug folder of the application project.
 
- Refer to [Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform](#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform) for running the applications built above in JTAG mode using system
- debugger in the Vitis software platform and to [Generating Boot Image for Standalone Application](#generating-boot-image-for-standalone-application) for
- generating boot images for standalone applications.
+Refer to [Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform](#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform) for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to [Generating Boot Image for Standalone Application](#generating-boot-image-for-standalone-application) for generating boot images for standalone applications.
 
-  © Copyright 2020 Xilinx, Inc.
+© Copyright 2020-2021 Xilinx, Inc.
+
+*Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).*
+
+*Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.*
