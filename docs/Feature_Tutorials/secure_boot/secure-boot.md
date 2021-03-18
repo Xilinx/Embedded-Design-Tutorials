@@ -141,6 +141,9 @@ The following are device level decisions affecting secure boot:
  BBRAM and eFUSE are also available in the Vitis™ IDE. One such example
  is discussed in [Practical Methods in Secure Boot](#practical-methods-in-secure-boot).
 
+**Note:** It is recommended that you generate your own keys for fielded systems and then provide those keys to the development tools.
+Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for details.
+
 #### DPA Protections
 
  Key rolling is used for DPA resistance. Key rolling and black key
@@ -243,7 +246,7 @@ The following are device level decisions affecting secure boot:
  After implementing AES and RSA cryptography in secure boot, a boot
  test is done. The system loads successfully and displays the FSBL
  messages on the terminal. These messages indicate the cryptographic
- operations performed on each partition. [Debugging Problems with Secure Boot](8-debugging-problems-with-secure-boot.md) provides the steps it is necessary to follow if the secure boot test fails.
+ operations performed on each partition. [Debugging Problems with Secure Boot](#debugging-problems-with-secure-boot) provides the steps it is necessary to follow if the secure boot test fails.
 
 #### Sample Design Overview
 
@@ -352,6 +355,9 @@ The following are device level decisions affecting secure boot:
     `bootgen -p zu9eg -arch zynqmp -generate_keys auth pem -image key_generation.bif`
 
 8. Verify that the files `psk0.pem` and `ssk0.pem` are generated at the location specified in the BIF file (`c:\edt\secure_boot_sd\keys`).
+
+**Note:** 2020.3 (and previous) Bootgen fails to replace the old authentication key files with new authentication key files generated using the ``-generate_keys`` option. It is recommended that you check the existence and permissions of the target key files before generation. Refer to AR [76125](https://www.xilinx.com/support/answers/76125.html) for details.
+
 
 ##### Generating SHA3 of Public Key in an RSA Private/Public Key Pair
 
