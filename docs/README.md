@@ -7,7 +7,7 @@
  </tr>
  </table>
 
-Xilinx and its Ecosystem Partners deliver embedded tools and runtime environments designed to enable you to efficiently and quickly move from concept to release. We provide you with all the components needed to create your embedded system using Xilinx Zynq® SoC and Zync UltraScale+ MPSoC devices, MicroBlaze™ processor cores, and Arm Cortex-M1/M3 micro controllers including open source operating systems and bare metal drivers, multiple runtimes and Multi-OS environments, sophisticated Integrated Development Environments, and compilers, debuggers, and profiling tools.
+Xilinx and its Ecosystem Partners deliver embedded tools and runtime environments designed to enable you to efficiently and quickly move from concept to release. We provide you with all the components needed to create your embedded system using Xilinx&reg; Zynq&reg; SoC and Zynq UltraScale+&trade; MPSoC devices, MicroBlaze&trade; processor cores, and Arm&reg; Cortex&reg;-M1/M3 micro controllers including open source operating systems and bare metal drivers, multiple runtimes and Multi-OS environments, sophisticated Integrated Development Environments, and compilers, debuggers, and profiling tools.
 
 <img src="https://www.xilinx.com/products/design-tools/embedded-software/_jcr_content/root/imageTabParsys/childParsys-overview/xilinximage_6596.img.jpg/1568395614025.jpg"></a>
 
