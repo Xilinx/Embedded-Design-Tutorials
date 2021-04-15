@@ -5,13 +5,17 @@ There are a number of monitoring capabilities that evaluate software performance
 ## Software Performance Monitoring
 
 To illustrate these performance monitoring capabilities, the BEEBS benchmark program (see [System Performance Modeling Project](2-system-performance-modeling-project.md)) was run on a ZC702 target board and performance results were captured in the Vitis™ IDE. There was no traffic driven from the PL, so this is a software only test. Note that if you would like to re-create these results, the software application selection is
-shown in [Getting Started with SPM](4-getting-started-with-SPM.md), and the PL traffic is shown in [ATG Configuration](4-getting-started-with-SPM.md#atg-configuration). Although the results shown here are for the BEEBS benchmarks, these exact same metrics can also be obtained for a program provided to or compiled by the Vitis IDE.
+shown in [Getting Started with SPM](4-getting-started-with-SPM.md), and the PL traffic is shown in [ATG Configuration](../docs/4-getting-started-with-SPM.md#atg-configuration). Although the results shown here are for the BEEBS benchmarks, these exact same metrics can also be obtained for a program provided to or compiled by the Vitis IDE.
 
-There are 24 total tests performed -- each of the eight benchmarks listed in [Table 1: BEEBS Benchmarks Provided in ](#_bookmark9) is run on the three different data array sizes (that is, 4 KB, 64 KB, and 1024 KB). Because a sleep time of 1s was inserted between each test, the CPU utilization gives a clear view of when these benchmarks were run. The following figure helps orient the timeline for the results. The three data sizes were run from smallest to largest within each benchmark, which can be seen in the value and length of the utilization of CPU0. It took approximately 45s to run BEEBs benchmark without any traffic.
+There are 24 total tests performed -- each of the eight benchmarks listed in [Table 1: BEEBS Benchmarks Provided in ](../docs/2-system-performance-modeling-project.md#table1) is run on the three different data array sizes (that is, 4 KB, 64 KB, and 1024 KB). Because a sleep time of 1s was inserted between each test, the CPU utilization gives a clear view of when these benchmarks were run. The following figure helps orient the timeline for the results. The three data sizes were run from smallest to largest within each benchmark, which can be seen in the value and length of the utilization of CPU0. It took approximately 45s to run BEEBs benchmark without any traffic.
+
+<div id="fig13">
 
 *Figure 13:* **CPU Utilization Labeled with BEEBS Benchmarks**
 
 ![](./media/image13.jpeg)
+
+<div>
 
 The following figure shows four different graphs displayed by the Vitis IDE in the PS Performance panel: CPU Utilization (%), CPU Instructions Per Cycle, L1 Data Cache Access, and L1 Data Cache Miss Rate (%).
 
@@ -23,17 +27,21 @@ While CPU utilization helps determine when benchmarks were run, the most insight
 
 Taking this analysis one step further, the graphs in the following figure provide information on data locality; that is, where the processor retrieves and writes data as it performs the specified algorithms. A low L1 data cache miss rate means that a significant amount of data is stored and accessed from that respective cache. A high L1 miss rate coupled with high values in CPU write or read stall cycles per instruction means that much of the data is coming from DDR. As expected, an understanding of the software application aids in the analysis. For example, the two long periods of high L1 miss rate and CPU read stall cycles shown in the following figure are when the floating-point and integer matrix multiplier algorithms are operating on the 512 x 512 (256K words = 1024 KB) two-dimensional or 2-D data array.
 
+<div id="fig15">
+
 *Figure 15:* **Performance Analysis of BEEBS Benchmarks - L1 Data Cache, Stall Cycles Per Instruction**
 
 ![](./media/image15.jpeg)
 
-To refine the performance of an application, one option to consider using is to enable/disable the L2 data cache prefetch. This is specified with bit 28 of reg15_prefetch_ctrl (absolute address 0xF8F02F60). If this data prefetching is enabled, then the adjacent cache line will also be automatically fetched. While the results shown in [Figure 14: Performance Analysis of BEEBS Benchmarks - CPU Utilization, IPC, L1 Data Cache](#figure-14-performance-analysis-of-beebs-benchmarks---cpu-utilization-ipc-l1-data-cache) and [Figure 15: Performance Analysis of BEEBS Benchmarks - L1 Data Cache, Stall Cycles Per ](#figure-15-performance-analysis-of-beebs-benchmarks---l1-data-cache-stall-cycles-per-instruction) were generated with prefetch enabled, the BEEBS benchmarks were also run with prefetch disabled. The integer matrix multiplication saw the largest impact on software run-time with a decrease of 9.0%. While this prefetch option can improve the performance of some applications, it can lower the performance of others. It is recommended to verify run-times of your application with and without this prefetch option.
+</div>
+
+To refine the performance of an application, one option to consider using is to enable/disable the L2 data cache prefetch. This is specified with bit 28 of reg15_prefetch_ctrl (absolute address 0xF8F02F60). If this data prefetching is enabled, then the adjacent cache line will also be automatically fetched. While the results shown in Figure 14 and Figure 15 were generated with prefetch enabled, the BEEBS benchmarks were also run with prefetch disabled. The integer matrix multiplication saw the largest impact on software run-time with a decrease of 9.0%. While this prefetch option can improve the performance of some applications, it can lower the performance of others. It is recommended to verify run-times of your application with and without this prefetch option.
 
  *Figure 16:* **Run-Time Results of Software in BEEBS Benchmark Suite**
 
 ![](./media/image16.png)
 
-As mentioned above, a helpful measurement of overall software performance is the run-time of different portions of the application. The previous figure shows a summary of run times for the eight BEEBS benchmarks as run on the three different data array sizes (see [Instrumenting Hardware](10-end-to-end-performance-analysis.md#instrumenting-hardware) on how these run-times were calculated and captured). The Y-axis on the left side of the previous figure shows the full range of values, while the Y-axis on the right side zooms in on the lowest range for clarity. As expected, the run-times increase with larger array sizes. However, the amount of increase varies across the different benchmarks tested. This is because there are a number of different factors that can impact run-time, including the amount of data, data locality, and algorithmic dependencies on data size. As far as data locality, the 4 KB, 64 KB, and 1024 KB data arrays fit into the L1 data cache, L2 data cache, and DDR, respectively.
+As mentioned above, a helpful measurement of overall software performance is the run-time of different portions of the application. The previous figure shows a summary of run times for the eight BEEBS benchmarks as run on the three different data array sizes (see [Instrumenting Hardware](../docs/9-using-spa-with-custom-target.md#instrumenting-hardware) on how these run-times were calculated and captured). The Y-axis on the left side of the previous figure shows the full range of values, while the Y-axis on the right side zooms in on the lowest range for clarity. As expected, the run-times increase with larger array sizes. However, the amount of increase varies across the different benchmarks tested. This is because there are a number of different factors that can impact run-time, including the amount of data, data locality, and algorithmic dependencies on data size. As far as data locality, the 4 KB, 64 KB, and 1024 KB data arrays fit into the L1 data cache, L2 data cache, and DDR, respectively.
 
 On the Zynq UltraScale+ MPSoC, the ZCU102 SPM project shows a similar result. The only difference difference is that the BEEBS benchmark does not use an interrupt between two tests, so the CPU utilization shows 100% all across the test time. However, you can see the same pattern of L1 data cache miss rate and CPU Read Stall Cycles per Instruction.
 
@@ -43,7 +51,7 @@ For more information on assessing the performance of the memory hierarchy, see [
 
 ## Visualizing Performance Improvements
 
-As shown in [Figure 16: Run-Time Results of Software in BEEBS Benchmark Suite](#figure-16-run-time-results-of-software-in-beebs-benchmark-suite) the longest run- times are clearly the matrix multiplications,especially for the largest array size. What if these run- times need to be improved? How would the performance analysis features in the Vitis IDE help measure and visualize any code optimizations or improvements?
+As shown in the previous figure, the longest run- times are clearly the matrix multiplications,especially for the largest array size. What if these run- times need to be improved? How would the performance analysis features in the Vitis IDE help measure and visualize any code optimizations or improvements?
 
 The sample code below shows two different C/C++ implementations for floating-point matrix multiplication. The original and traditional implementation is the `Multiply_Old()` function, whereas a newer implementation is contained in `Multiply_New()`. While the newer implementation appears to be more complicated, it takes advantage of the 32 byte cache lines. See [What Every Programmer Should Know About Memory](http://www.cs.bgu.ac.il/%7Eos142/wiki.files/drepper-2007.pdf) by Ulrich Drepper. The original and modified C/C++ software for floating-point matrix multiplication is as follows:
 
@@ -141,7 +149,7 @@ The BEEBS benchmark software was re-compiled and re-run using the new implementa
 </tbody>
 </table>
 
-The following figure shows the L1 data cache graphs and CPU stall cycles per instruction reported in the PS Performance panel. In contrast to [Figure 15: Performance Analysis of BEEBS Benchmarks - L1 Data Cache, Stall Cycles Per Instruction](#figure-15-performance-analysis-of-beebs-benchmarks---l1-data-cache-stall-cycles-per-instruction), it becomes clear that the bottlenecks of the code -- the floating-point and integer matrix multiplications -- have been dramatically improved. The long periods of low IPC, high L1 data cache miss rate, and high CPU read stall cycles toward the end of the capture have been shortened and improved considerably.
+The following figure shows the L1 data cache graphs and CPU stall cycles per instruction reported in the PS Performance panel. In contrast to [Figure 15: Performance Analysis of BEEBS Benchmarks - L1 Data Cache, Stall Cycles Per Instruction](#fig15), it becomes clear that the bottlenecks of the code-- the floating-point and integer matrix multiplications-- have been dramatically improved. The long periods of low IPC, high L1 data cache miss rate, and high CPU read stall cycles toward the end of the capture have been shortened and improved considerably.
 
 *Figure 17:* **Performance Analysis of BEEBS Benchmarks with Improved Matrix Multipliers**
 

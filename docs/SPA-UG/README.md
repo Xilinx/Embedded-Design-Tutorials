@@ -26,7 +26,7 @@ The next set of chapters provides in-depth exploration into using the SPM design
 - [Chapter 9: Using SPA with a Custom Target](docs/9-using-spa-with-custom-target.md) defines some steps and requirements to instrumenting and monitoring your design.
 - [Chapter 10: End-To-End Performance Analysis](docs/10-end-to-end-performance-analysis.md) describes the full cycle of performance analysis.
 
-Finally, the key performance recommendations mentioned throughout this guide are summarized in [Appendix A: Performance Checklist](../docs/A-performance-checklist.md).
+Finally, the key performance recommendations mentioned throughout this guide are summarized in [Appendix A: Performance Checklist](docs/A-performance-checklist.md).
 
 ## Requirements
 

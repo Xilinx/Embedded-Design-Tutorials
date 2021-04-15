@@ -23,9 +23,13 @@ The predefined SPM project can be automatically loaded into the workspace with t
 
 The following figure shows the software application setup for the SPM.
 
+<div id="fig9">
+
 *Figure 9:* **Application Setup in the Vitis IDE Configuration Wizard**
 
 ![](./media/image8.png)
+
+</div>
 
 By default, the software run in this configuration is the executable `beebs_benchmarks.elf`, an excellent starting application because it contains significant amounts of data processing and memory accesses
 (see [System Performance Modeling Project](2-system-performance-modeling-project.md)).
@@ -40,7 +44,7 @@ The Vitis IDE enables you to specify traffic scenarios for configuring the ATGs.
 
 ![](./media/image9.png)
 
-In the fixed bitstream of SPM (see [SPM Software](2-system-performance-modeling-project.md#spm-software) for more details), one ATG is attached to every High Performance (HP) port and the Accelerator Coherency Port (ACP) -- all interfaces between the PL and the PS. Memory access patterns are modeled by the ATGs issuing AXI transactions with various lengths, frequencies, and memory addresses onto each port. Different combinations of read/write traffic patterns across all four HP and the ACP ports can be specified. This ATG Configuration table includes the following:
+In the fixed bitstream of SPM (see [SPM Software](../docs/2-system-performance-modeling-project.md#spm-software) for more details), one ATG is attached to every High Performance (HP) port and the Accelerator Coherency Port (ACP) -- all interfaces between the PL and the PS. Memory access patterns are modeled by the ATGs issuing AXI transactions with various lengths, frequencies, and memory addresses onto each port. Different combinations of read/write traffic patterns across all four HP and the ACP ports can be specified. This ATG Configuration table includes the following:
 
 - **Port Location:** The ATG that is being configured (in SPM, the names are self-explanatory).
 
@@ -62,9 +66,13 @@ In the fixed bitstream of SPM (see [SPM Software](2-system-performance-modeling-
 
 After editing your configuration, you can start a performance analysis session by clicking **Debug** in the Edit Configuration dialog box. The Vitis IDE opens the Performance Analysis perspective.
 
+<div id="fig11">
+
  *Figure 11:* **Performance Analysis Perspective in the Vitis IDE**
 
 ![](./media/image10.jpeg)
+
+</div>
 
 The previous figure shows the Eclipse perspective, which provides a dashboard of performance results. There are five important panels to introduce:
 
@@ -72,20 +80,24 @@ The previous figure shows the Eclipse perspective, which provides a dashboard of
 
 - **PS Performance Counters:** PS (Arm) metrics listed in a tabular format.
 
-- **APM Performance Graphs:** Plots showing the APM performance metrics listed in [Table 3: Profile Counters per AXI Interface in AXI Performance Monitor](#_bookmark14) using these graphs.
+- **APM Performance Graphs:** Plots showing the APM performance metrics listed in [Table 3: Profile Counters per AXI Interface in AXI Performance Monitor](../docs/3-monitor-framework.md#table3) using these graphs.
 
-- **APM Performance Counters:** Plots showing the APM performance metrics listed in [Table 3: Profile Counters per AXI Interface in AXI Performance Monitor](#_bookmark14) in a tabular format.
+- **APM Performance Counters:** Plots showing the APM performance metrics listed in [Table 3: Profile Counters per AXI Interface in AXI Performance Monitor](../docs/3-monitor-framework.md#table3) in a tabular format.
 
 - **MicroBlaze™ Performance Graphs:** Various plots showing the MicroBlaze performance metrics on a shared timeline. This is not used by SPM and therefore not covered in this guide.
 
 - **MicroBlaze Performance Counters:** A table summarizing MicroBlaze performance metrics. This is not used by SPM and therefore not covered in this guide.
 
+<div id="fig12">
+
  *Figure 12:* **Terminal Settings to View Transcript in the Vitis IDE**
 
 ![](./media/image11.jpeg)
 
+</div>
+
 This guide uses various results that are output by the target applications and viewed in the Terminal 1 panel in the Vitis IDE. These results include software run-times, achieved bandwidths, and average latencies. If you would like to re-create these results and/or run your own, you must connect a USB cable (Type-A to USB Mini-B) between the UART on the ZC702 board and a USB port on your host machine.
 
-[Figure 12: Terminal Settings to View Transcript in the Vitis IDE](#figure-12-terminal-settings-to-view-transcript-in-the-vitis-ide) shows the terminal settings required to view this UART transcript in the Vitis IDE. To view this pop-up menu, click on the Connect button ![](./media/image12.png) as shown in the upper-right of [Figure 11: Performance Analysis Perspective in the Vitis IDE](#figure-11-performance-analysis-perspective-in-the-vitis-ide)
+[Figure 12: Terminal Settings to View Transcript in the Vitis IDE](#fig12) shows the terminal settings required to view this UART transcript in the Vitis IDE. To view this pop-up menu, click on the Connect button ![](./media/image12.png) as shown in the upper-right of [Figure 11: Performance Analysis Perspective in the Vitis IDE](#fig11)
 
 > ***Note*:** Your port may be different than COM5, but all other settings are valid.
