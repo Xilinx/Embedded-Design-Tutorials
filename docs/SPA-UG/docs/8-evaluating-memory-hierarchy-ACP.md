@@ -6,11 +6,13 @@ The System Performance Modeling (SPM) design can be used to evaluate the perform
 
 To begin the evaluation, the SPM design can be used to assess a baseline performance using software only. An application to use for this evaluation is the memory stride benchmarks program, one of the pre-compiled executables that comes with the SPM project.
 
-The following figure shows how this was defined in the Vitis™ IDE using the memory stride software executable (see [SPM Software](10-end-to-end-performance-analysis.md#spm-software)). This software was instrumented to calculate bandwidth and average latency (see [Instrumenting Software](10-end-to-end-performance-analysis.md#instrumenting-software)).
+The following figure shows how this was defined in the Vitis™ IDE using the memory stride software executable (see [SPM Software](../docs/2-system-performance-modeling-project.md#spm-software)). This software was instrumented to calculate bandwidth and average latency (see [Instrumenting Software](../docs/9-using-spa-with-custom-target.md#instrumenting-software)).
 
  *Figure 33:* **Application Setup using Memory Stride Software**
 
 ![](./media/image32.jpeg)
+
+<div id="table7">
 
 *Table 7:* **Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)**
 
@@ -179,6 +181,10 @@ The following figure shows how this was defined in the Vitis™ IDE using the me
 </tbody>
 </table>
 
+</div>
+
+<div id="table8">
+
 *Table 8:* **Software-Only Latency Results for Memory Stride Benchmarks (in nsec)**
 
 <table>
@@ -224,11 +230,13 @@ The following figure shows how this was defined in the Vitis™ IDE using the me
 </tbody>
 </table>
 
-Using no traffic in the Programmable Logic (PL), bandwidth results (in MB/sec) for the software- only tests are listed in [Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)](#_bookmark47), while latency results (in nsec) are shown in [Table 8: Software-Only Latency Results for Memory Stride Benchmarks (in nsec)](#_bookmark48). Three different working set sizes were used to specifically test the bandwidth of different stages of the memory hierarchy: 4 KB, 64 KB, and 1024 KB. These are the three sizes used by the pre-compiled memory stride executable in the SPM project. The locality of these data arrays is known based on their size and the fact that there is little else in the heap used by the program.
+</div>
+
+Using no traffic in the Programmable Logic (PL), bandwidth results (in MB/sec) for the software- only tests are listed in [Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)](#table7), while latency results (in nsec) are shown in [Table 8: Software-Only Latency Results for Memory Stride Benchmarks (in nsec)](#table8). Three different working set sizes were used to specifically test the bandwidth of different stages of the memory hierarchy: 4 KB, 64 KB, and 1024 KB. These are the three sizes used by the pre-compiled memory stride executable in the SPM project. The locality of these data arrays is known based on their size and the fact that there is little else in the heap used by the program.
 
 Within a working set size, the highest bandwidths are achieved by the linear bandwidth tests as they can take advantage of the 32-byte cache lines. Operations such as copy and read/write are generally slower because they involve a mix of read and write operations. Among the three different set sizes, the 4 KB array sustains the highest bandwidth while the 1024 KB array sustains the lowest bandwidth.
 
-There are 36 total tests performed, as the 12 benchmarks listed in [Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)](#_bookmark47) and [Table 8: Software-Only Latency Results for Memory Stride Benchmarks (in nsec)](#_bookmark48) are each run on the three different data array sizes. Since a sleep time of one second was inserted between each test, the CPU utilization gives a clear view of when these benchmarks were run. The following figure helps orient the timeline for the results. The three data sizes were run from smallest to largest within each benchmark, which can be seen in the value and length of the utilization of CPU0.
+There are 36 total tests performed, as the 12 benchmarks listed in [Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)](#table7) and [Table 8: Software-Only Latency Results for Memory Stride Benchmarks (in nsec)](#table8) are each run on the three different data array sizes. Since a sleep time of one second was inserted between each test, the CPU utilization gives a clear view of when these benchmarks were run. The following figure helps orient the timeline for the results. The three data sizes were run from smallest to largest within each benchmark, which can be seen in the value and length of the utilization of CPU0.
 
  *Figure 34:* **PS Performance Graphs for Memory Stride Benchmarks**
 
@@ -255,7 +263,7 @@ The previous figure shows the memory bandwidth achieved by CPU0 during the memor
 
 ## Shared L2 Cache
 
-Now that baseline performance measurements have been made between the CPUs and the memories, traffic can be added on the Accelerator Coherency Port (ACP) to analyze its effects on system performance. The memory stride software (see [SPM Software](./2-system-performance-modeling-project.md#spm-software)) was run again on CPU0; however, this time traffic was added to the ACP. Since the L2 cache is shared by the CPUs and the ACP, there is expected to be some contention to occur at that memory.
+Now that baseline performance measurements have been made between the CPUs and the memories, traffic can be added on the Accelerator Coherency Port (ACP) to analyze its effects on system performance. The memory stride software (see [SPM Software](../docs/2-system-performance-modeling-project.md#spm-software)) was run again on CPU0; however, this time traffic was added to the ACP. Since the L2 cache is shared by the CPUs and the ACP, there is expected to be some contention to occur at that memory.
 
 The following figure shows the ATG configuration that models the initial traffic on the ACP. It specifies random addressing within a 4 KB region and utilizes the memory path through the L2 cache to the DDR. The first value for Tranx Interval is 100 clock cycles, which configures the ATGs to request a throughput of 128 MB/sec at 100 MHz. Keeping every other setting constant, the values for Tranx Interval were decreased, thus increasing the requested throughputs. The values used for this transaction interval include: 100, 50, 30, 25, 20, and, 17. These intervals lead to request throughputs of 128, 256, 426, 512, 640, and 752 MB/s.
 

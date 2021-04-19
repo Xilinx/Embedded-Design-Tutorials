@@ -4,7 +4,7 @@ A great benefit provided by System Performance Modeling (SPM) is to perform what
 
 You can configure the SPM design to model specific traffic scenarios while running a software application in the PS. You can then use PL master performance metrics, such as throughput and latency, to verify that the desired system performance can be sustained in such an environment. This process can be repeated multiple times using different traffic scenarios.
 
-One critical shared resource on the device is the DDR controller. This resource is shared by APUs, RPUs if they are on the MPSoC, the High-Performance (HP or HPM) ports, the Accelerator Coherency Port (ACP) ports, and other masters via the central interconnect (see [Evaluating DDR Controller Settings](./7-evaluating-DDR-controller-settings.md) for more details). Because of this sharing, it is important to understand the available DDR bandwidth.
+One critical shared resource on the device is the DDR controller. This resource is shared by APUs, RPUs if they are on the MPSoC, the High-Performance (HP or HPM) ports, the Accelerator Coherency Port (ACP) ports, and other masters via the central interconnect (see [Evaluating DDR Controller Settings](../docs/7-evaluating-DDR-controller-settings.md) for more details). Because of this sharing, it is important to understand the available DDR bandwidth.
 
 You can calculate the total theoretical bandwidth of the DDR using the following equation:
 
@@ -30,15 +30,15 @@ While this is the maximum bandwidth achievable by this memory, the actual DDR ut
 
 <!-- A general case -->
 
-The software application used was the BEEBS benchmark program described in [SPM Software](./2-system-performance-modeling-project.md#spm-software). See [Figure 9: Application Setup in the Vitis IDE Configuration Wizard](#figure-9-application-setup-in-the-vitis-ide-configuration-wizard), which shows how this can be specified in the Vitis IDE. In this scenario, traffic on the four High Performance (HP) ports was injected into the system, and software and hardware performance metrics are measured in the Vitis IDE. This models a system that is performing complex algorithms in software while simultaneously processing HD video streams in the PL. Rather than design a system that implements this processing, you can instead model the performance using SPM. You can quickly verify that your desired performance is achieved before beginning your design.
+The software application used was the BEEBS benchmark program described in [SPM Software](../docs/2-system-performance-modeling-project.md#spm-software). See [Figure 9: Application Setup in the Vitis IDE Configuration Wizard](../docs/4-getting-started-with-SPM.md#fig9), which shows how this can be specified in the Vitis IDE. In this scenario, traffic on the four High Performance (HP) ports was injected into the system, and software and hardware performance metrics are measured in the Vitis IDE. This models a system that is performing complex algorithms in software while simultaneously processing HD video streams in the PL. Rather than design a system that implements this processing, you can instead model the performance using SPM. You can quickly verify that your desired performance is achieved before beginning your design.
 
-The following figure shows the first traffic scenario used (see [Getting Started with SPM](./4-getting-started-with-SPM.md) for a description of this traffic specification). This scenario models four uncompressed 1080p/60 (that is, 1080 lines, progressive, and 60 frames/s) HD video streams. Two streams are being read from the DDR on ports HP0 and HP2, while two are being written on ports HP1 and HP3. For all of these modeled video streams, the Tranx Interval was chosen to request 376 MB/s, the estimated throughput of the uncompressed RGB 4:4:4 video.
+The following figure shows the first traffic scenario used (see [Getting Started with SPM](../docs/4-getting-started-with-SPM.md) for a description of this traffic specification). This scenario models four uncompressed 1080p/60 (that is, 1080 lines, progressive, and 60 frames/s) HD video streams. Two streams are being read from the DDR on ports HP0 and HP2, while two are being written on ports HP1 and HP3. For all of these modeled video streams, the Tranx Interval was chosen to request 376 MB/s, the estimated throughput of the uncompressed RGB 4:4:4 video.
 
  *Figure 18:* **ATG Traffic Configuration Modeling HD Video Streams on HP Ports**
 
 ![](./media/image18.jpeg)
 
-This HD video traffic was run on a ZC702 board. As shown in the following figure, all four HP ports were able to sustain the requested throughput of 376 MB/s. The high throughput was even achieved while the BEEBS benchmarks were running on CPU0. The total bandwidth used by the four HP ports was 1510 MB/s, or 35% of the available bandwidth of the DDR. Thus, the Zynq-7000 SoC device was capable of achieving these throughput requirements. However, due to arbitration and scheduling in the DDR controller, some contention was introduced, impacting the performance of the software application (see [Figure 24: Relative Run-Times of BEEBS Benchmarks with Varying HP Port Traffic (Data Array Size: 1024 KB](#figure-24-relative-run-times-of-beebs-benchmarks-with-varying-hp-port-traffic-data-array-size-1024-kb) for a summary).
+This HD video traffic was run on a ZC702 board. As shown in the following figure, all four HP ports were able to sustain the requested throughput of 376 MB/s. The high throughput was even achieved while the BEEBS benchmarks were running on CPU0. The total bandwidth used by the four HP ports was 1510 MB/s, or 35% of the available bandwidth of the DDR. Thus, the Zynq-7000 SoC device was capable of achieving these throughput requirements. However, due to arbitration and scheduling in the DDR controller, some contention was introduced, impacting the performance of the software application (see [Figure 24: Relative Run-Times of BEEBS Benchmarks with Varying HP Port Traffic (Data Array Size: 1024 KB](#fig24) for a summary).
 
 Most benchmarks had minimal impact on their run-time; however, the benchmarks that have a high number of memory accesses were impacted the most. The worst case was the integer matrix multiplication, which had a run-time increase of 14.0%.
 
@@ -54,19 +54,27 @@ In this example, SPM helps to show whether the throughput requirement from PL ca
 
 The traffic modeling concept described in [HD Video Traffic](#example-hd-video-traffic-on-zynq-7000) can be extended. You can run the same BEEBS benchmarks but with a different traffic scenario on the HP ports.
 
-The following figure shows traffic that executes a stress test to see how high-bandwidth traffic can affect performance. All four HP ports request 512 MB/s for both read and write traffic using incremental addressing to the DDR. The total duration was set to 80 seconds to ensure that the traffic duration coincided with the entire length of the BEEBS benchmark application. [Figure 13: CPU Utilization Labeled with BEEBS Benchmarks](#figure-13-cpu-utilization-labeled-with-beebs-benchmarks) helps orient the timeline for the results.
+The following figure shows traffic that executes a stress test to see how high-bandwidth traffic can affect performance. All four HP ports request 512 MB/s for both read and write traffic using incremental addressing to the DDR. The total duration was set to 80 seconds to ensure that the traffic duration coincided with the entire length of the BEEBS benchmark application. [Figure 13: CPU Utilization Labeled with BEEBS Benchmarks](../docs/5-evaluating-software-performance.md#fig13) helps orient the timeline for the results.
+
+<div id="fig20">
 
  *Figure 20:* **ATG Traffic Configuration Modeling High-Bandwidth Traffic on HP Ports**
 
 ![](./media/image20.png)
 
+</div>
+
 The total throughput requested by HP masters is 8 x 512 = 4096 MB/s, or 95.9% of the theoretical maximum throughput of the DDR. Because the traffic contains both write and read requests, the DDR controller is further stressed because it needs to arbitrate between not just multiple requestors but also different types of requests. Therefore, consider this a stress test of the achievable DDR bandwidth. While this traffic represents a worst-case scenario, it is important to perform to visualize the backpressure that occurs when more bandwidth is requested than what the memory can provide.
+
+<div id="fig21">
 
  *Figure 21:* **Summary of Performance Results from Modeling High-Bandwidth Traffic on HP Ports**
 
 ![](./media/image21.png)
 
-Using the SPM design in the Vitis IDE, this type of stress test can be easily performed. The BEEBS benchmark application was run on CPU0 while the ATGs are configured by the Vitis IDE to run the requested traffic shown in [Figure 20: ATG Traffic Configuration Modeling High-Bandwidth Traffic on HP Ports](#figure-20-atg-traffic-configuration-modeling-high-bandwidth-traffic-on-hp-ports). A summary of the performance results from this traffic scenario is shown in [Figure 21: Summary of Performance Results from Modeling High-Bandwidth Traffic on HP Ports](#figure-21-summary-of-performance-results-from-modeling-high-bandwidth-traffic-on-hp-ports). As expected, the requested throughput of 512 MB/s per HP port is not achieved; however, a very high total throughput is indeed achieved. The total read/write bandwidth allocated to the HP ports can be calculated as follows:
+</div>
+
+Using the SPM design in the Vitis IDE, this type of stress test can be easily performed. The BEEBS benchmark application was run on CPU0 while the ATGs are configured by the Vitis IDE to run the requested traffic shown in Figure 20: ATG Traffic Configuration Modeling High-Bandwidth Traffic on HP Ports. A summary of the performance results from this traffic scenario is shown in Figure 21: Summary of Performance Results from Modeling High-Bandwidth Traffic on HP Ports. As expected, the requested throughput of 512 MB/s per HP port is not achieved; however, a very high total throughput is indeed achieved. The total read/write bandwidth allocated to the HP ports can be calculated as follows:
 
  `Total bandwidth=448.1 + 448.1 + 448.0 + 448.0 + 365.6 + 365.0 + 365.5 + 365.5 = 3254.4 MB/s`
 
@@ -86,11 +94,15 @@ The read throughput and latency of the HP ports show a more noticeable drop in p
 
 You can also use the Trace Tooltip button to report performance metric values at a specific point in time. When the tooltip is shown, you can move it to any point in time on any graph, and it will display the specified metric values. This is very helpful in pinpointing the performance at precise points in time.
 
-The impact of increased HP traffic can be seen in the software performance. A useful metric of this performance is run time. Using the instrumentation (see [Instrumenting Hardware](./10-end-to-end-performance-analysis.md#instrumenting-hardware)) that was added to the BEEBS software, the following figure shows the relative run times of the eight benchmarks using the 1024 KB data array size. The run time of each benchmark with no traffic was normalized to 1.0. Because this large array requires accesses to the DDR, any increase in software run time would be attributed to the DDR saturation. The matrix multiplications experience the largest increases in software run times. The Cyclic Redundancy Check (CRC) algorithm also has a noticeable impact on run time, most likely due to the increased memory reads of the data array as well as the CRC polynomial table. All other benchmarks see minimal impact on performance, even with the high-throughput traffic on all four HP ports.
+The impact of increased HP traffic can be seen in the software performance. A useful metric of this performance is run time. Using the instrumentation (see [Instrumenting Hardware](../docs/9-using-spa-with-custom-target.md#instrumenting-hardware)) that was added to the BEEBS software, the following figure shows the relative run times of the eight benchmarks using the 1024 KB data array size. The run time of each benchmark with no traffic was normalized to 1.0. Because this large array requires accesses to the DDR, any increase in software run time would be attributed to the DDR saturation. The matrix multiplications experience the largest increases in software run times. The Cyclic Redundancy Check (CRC) algorithm also has a noticeable impact on run time, most likely due to the increased memory reads of the data array as well as the CRC polynomial table. All other benchmarks see minimal impact on performance, even with the high-throughput traffic on all four HP ports.
+
+<div id="fig24">
 
  *Figure 24:* **Relative Run-Times of BEEBS Benchmarks with Varying HP Port Traffic (Data Array Size: 1024 KB)**
 
 ![](./media/image24.png)
+
+</div>
 
 ## Example: HD Video Traffic on Zynq-7000 Devices
 

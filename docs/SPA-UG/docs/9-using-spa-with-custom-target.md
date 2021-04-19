@@ -22,7 +22,7 @@ The Vitis IDE performance analysis can make use of the PS built-in APM (blocks i
 
 ![](./media/vivado_apm.png)
 
-The previous figure shows how an instance of an APM appears in a Vivado® Design Suite IP integrator block diagram, as well as its configuration panel. The following steps give an example of adding an IP, connecting it, and configuring it. For more information about the Vivado IP Integrator, see the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* [UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug940-vivado-tutorial-embedded-design.pdf) and *Zynq UltraScale+ MPSoC Embedded Design Tutorial* [UG1209](https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/ZynqMPSoC-EDT/README.html).
+The previous figure shows how an instance of an APM appears in a Vivado® Design Suite IP integrator block diagram, as well as its configuration panel. The following steps give an example of adding an IP, connecting it, and configuring it. For more information about the Vivado IP Integrator, see the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* [UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug940-vivado-tutorial-embedded-design.pdf) and *Zynq UltraScale+ MPSoC Embedded Design Tutorial* [UG1209](https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/Introduction/ZynqMPSoC-EDT/README.html).
 
 1. Add the APM IP to your Vivado design:
 

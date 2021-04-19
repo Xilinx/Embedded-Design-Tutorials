@@ -59,7 +59,7 @@ instead a starting point for things to look out for and possible "gotchas" that 
      under the configuration of the Processing System 7 (PS7) IP block.
      Note that these settings can be used to re-allocate bandwidth from
      the DDR based on the desired needs of your system. Refer to
-     [Chapter 7: Evaluating DDR Controller Settings](#chapter-7) to see
+     [Evaluating DDR Controller Settings](../docs/7-evaluating-DDR-controller-settings.md) to see
      how this is done as well as how it might affect the DDR bandwidth
      of the CPUs and the HP ports.
 

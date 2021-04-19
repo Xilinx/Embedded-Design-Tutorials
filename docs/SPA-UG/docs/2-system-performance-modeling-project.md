@@ -8,7 +8,7 @@
 
 - **Performance Evaluation:** Model the traffic of a design. Once the target platform is understood, specifics of a design can be entered as traffic scenarios, and SPM can be used to evaluate architectural options.
 
-- **Performance Validation:** Instrument the final design and confirm results with the initial model. The same monitoring used in the SPM design can also be added to your design (see [Instrumenting Hardware](#instrumenting-hardware)), providing a validation of the modeled performance results.
+- **Performance Validation:** Instrument the final design and confirm results with the initial model. The same monitoring used in the SPM design can also be added to your design (see [Instrumenting Hardware](./9-using-spa-with-custom-target.md#instrumenting-hardware)), providing a validation of the modeled performance results.
 
 *Figure 5:* **SPM Project Files in the Vitis IDE**
 
@@ -16,7 +16,7 @@
 
 The previous figure lists the files contained in the predefined SPM project. It contains predefined traffic configurations (atgconfigs), performance monitor configurations (apmconfigs), pre-compiled software executables (executables), and multiple system definition files. The system definition files include Processing System initialization files, the bitstream for predefined PL design and the tcl file that can recreate the design.
 
-# SPM Software
+## SPM Software
 
 The SPM project contains two pre-compiled software executables:
 
@@ -28,7 +28,8 @@ The SPM project contains two pre-compiled software executables:
 
 ### BEEBS Benchmarks
 
-The BEEBS program comprises a sequence of eight diverse benchmarks. As shown in the following table, this suite contains algorithms originally contained as part of various well-known benchmark suites such as MiBench, WCET, and DSPstone. These benchmarks were chosen to test embedded systems and be portable to standalone or bare-metal targets. For more information about the BEEBS benchmark suite, refer to [BEEBS: Open Benchmarks for Energy Measurements on Embedded Platforms](http://dblp.uni-trier.de/db/journals/corr/corr1308.html#PallisterHB13).
+The BEEBS program comprises a sequence of eight diverse benchmarks. As shown in the following table, this suite contains algorithms originally contained as part of various well-known benchmark suites such as MiBench, WCET, and DSPstone. These benchmarks were chosen to test embedded systems and be portable to standalone or bare-metal targets. For more information about the BEEBS benchmark suite, refer to [BEEBS: Open Benchmarks for Energy Measurements on Embedded Platforms](http://dblp.uni-trier.de/db/journals/corr/corr1308.md#PallisterHB13).
+<div id="table1">
 
  *Table 1:* **BEEBS Benchmarks Provided in Pre-Compiled Program**
 
@@ -41,6 +42,8 @@ The BEEBS program comprises a sequence of eight diverse benchmarks. As shown in 
 | 2-D FIR filter           | DSPstone    | Common in image filtering          |
 | Floating-point matrix multiplication   | WCET        | Multiplication of two square matrices   |
 | Integer matrix multiplication          | WCET        | Multiplication of two square matrices   |
+
+</div>
 
  The BEEBS benchmark suite was modified in four important ways:
 
@@ -58,7 +61,7 @@ The BEEBS program comprises a sequence of eight diverse benchmarks. As shown in 
 
     - 1024 KB (2-D array: 512 x 512) -- fits into the DDR SDRAM
 
-- **Instrumented:** Run-times of these benchmarks were calculated based on instrumentation added to the code before and after every benchmark. See [Instrumenting Hardware](#instrumenting-hardware) for more details. Note that the run-times are reported in the transcript delivered over the UART (Terminal 1 panel in the Vitis IDE) and read manually.
+- **Instrumented:** Run-times of these benchmarks were calculated based on instrumentation added to the code before and after every benchmark. See [Instrumenting Hardware](../docs/9-using-spa-with-custom-target.md#instrumenting-hardware) for more details. Note that the run-times are reported in the transcript delivered over the UART (Terminal 1 panel in the Vitis IDE) and read manually.
 
 #### Memory Stride Benchmarks
 
@@ -78,22 +81,26 @@ Similar to BEEBS, the memory stride benchmarks are contained in a single executa
 
 The memory stride program is also instrumented; however, the transcript reports the achieved throughput and latencies of each test.
 
+<div id="table2">
+
 *Table 2:* **Memory Stride Provided in Pre-Compiled Program** 
 
-|  Test Type           |  Pattern Type          |  Operation Type |
-|----------------------|----------------------|---------------------|
-|  Bandwidth           |  Linear             |  Read               |
-|                      |                      |  Write              |
-|                      |                      |  Copy               |
-|                      |                      |  Read/Write         |
-|                      |  Random (Pre-Computed)            |  Read               |
-|                      |                      |  Write              |
-|                      |                      |  Copy               |
-|                      |  Random (Real-Time) |  Read               |
-|                      |                      |  Write              |
-|                      |                      |  Copy               |
-|  Latency            |  Linear             |  Read               |
-|                      |  Random (Pre-Computed)             |  Read               |
+|  Test Type           |  Pattern Type          |  Operation Type     |
+|----------------------|------------------------|---------------------|
+|  Bandwidth           |  Linear                |  Read               |
+|                      |                        |  Write              |
+|                      |                        |  Copy               |
+|                      |                        |  Read/Write         |
+|                      |  Random (Pre-Computed) |  Read               |
+|                      |                        |  Write              |
+|                      |                        |  Copy               |
+|                      |  Random (Real-Time)    |  Read               |
+|                      |                        |  Write              |
+|                      |                        |  Copy               |
+|  Latency             |  Linear                |  Read               |
+|                      |  Random (Pre-Computed) |  Read               |
+
+</div>
 
 > ***Note*:** ZCU102 SPM project doesn't include this memory stride benchmark executable.
 
@@ -111,11 +118,11 @@ Zynq-7000 SoC. It is a highly-configurable design involving five AXI traffic gen
 
 ### AXI Traffic Generator
 
-The ATG is an intelligent traffic generator configured to exhibit specific AXI traffic behavior. The command queue for each ATG is filled during initialization, and these commands are executed upon the application of a start bit. Separate queues with depth of 256 commands are included for write and read traffic. The ATG also has a loop mode where the traffic in the command queue is continuous, iterating over the traffic in the queue until a stop bit has been applied. In the Vitis IDE, this has been simplified to a Traffic Duration (sec) value. The traffic specification for the ATGs is described in [Chapter 4: Getting Started with SPM](4-getting-started-with-SPM.md).
+The ATG is an intelligent traffic generator configured to exhibit specific AXI traffic behavior. The command queue for each ATG is filled during initialization, and these commands are executed upon the application of a start bit. Separate queues with depth of 256 commands are included for write and read traffic. The ATG also has a loop mode where the traffic in the command queue is continuous, iterating over the traffic in the queue until a stop bit has been applied. In the Vitis IDE, this has been simplified to a Traffic Duration (sec) value. The traffic specification for the ATGs is described in [Getting Started with SPM](4-getting-started-with-SPM.md).
 
 ### AXI Performance Monitor
 
-The APM is a core designed to measure the real-time performance of every connected AXI interface. In the SPM design, these interfaces include the outputs of the five ATGs. The APM is configured in Profile mode, providing an event count module that includes six profile counters per ATG. These six counters are designed to monitor average throughput and latency for all write and read channels on the connected AXI interfaces. See [Chapter 3: Monitor Framework](3-monitor-framework.md) to understand how these metrics are calculated.
+The APM is a core designed to measure the real-time performance of every connected AXI interface. In the SPM design, these interfaces include the outputs of the five ATGs. The APM is configured in Profile mode, providing an event count module that includes six profile counters per ATG. These six counters are designed to monitor average throughput and latency for all write and read channels on the connected AXI interfaces. See [Monitor Framework](3-monitor-framework.md) to understand how these metrics are calculated.
 
 ### Performance Monitor Units
 
