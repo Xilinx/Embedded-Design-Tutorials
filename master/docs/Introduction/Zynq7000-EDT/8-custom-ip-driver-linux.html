@@ -56,6 +56,7 @@
   <link rel="stylesheet" href="../../_static/css/pro.min.css" media="all" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="About this Guide" href="../../SPA-UG/README.html" />
     <link rel="prev" title="Linux Boot Image Configuration" href="7-linux-booting-debug.html" /> 
 	</head>
 	<body>
@@ -333,7 +334,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Versal ACAP Embedded Design Tutorial</span></p>
+<p class="caption"><span class="caption-text">Versal ACAP</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/docs/1-getting-started.html">Getting Started</a></li>
@@ -344,7 +345,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/docs/6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port with SmartLynq+ Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/docs/A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/1-introduction.html">How Zynq UltraScale+ Devices Offer a Single Chip Solution</a></li>
@@ -356,7 +357,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/7-design1-using-gpio-timer-interrupts.html">Design Example 1: Using GPIOs, Timers, and Interrupts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/8-boot-and-configuration.html">Boot and Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq-7000 EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq-7000 Devices</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-introduction.html">Getting Started</a></li>
@@ -388,6 +389,21 @@
 </li>
 </ul>
 </li>
+</ul>
+<p class="caption"><span class="caption-text">Vitis Performance Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/README.html">About this Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/1-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/2-system-performance-modeling-project.html">System Performance Modeling Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/3-monitor-framework.html">Monitor Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/4-getting-started-with-SPM.html">Getting Started with SPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/5-evaluating-software-performance.html">Evaluating Software Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/6-evaluating-high-performance-ports.html">Evaluating High-Performance Ports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/7-evaluating-DDR-controller-settings.html">Evaluating DDR Controller Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/8-evaluating-memory-hierarchy-ACP.html">Evaluating Memory Hierarchy and the ACP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/9-using-spa-with-custom-target.html">Using SPA with a Custom Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/10-end-to-end-performance-analysis.html">End-To-End Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/A-performance-checklist.html">Performance Checklist</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
@@ -968,11 +984,7 @@ Connection wizard.</p>
 <p>f.  Expand <strong>blink → sftp Files → Root</strong>. The Enter Password wizard opens.</p>
 <p>g.  Enter the user ID and password (<strong>root/root</strong>). Select the <strong>Save user ID</strong> and <strong>Save password</strong> options.</p>
 <p>h.  Click <strong>OK</strong>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">window</span> <span class="n">displays</span> <span class="n">the</span> <span class="n">root</span> <span class="n">directory</span> <span class="n">content</span><span class="p">,</span> <span class="n">because</span> <span class="n">you</span> <span class="n">previously</span>
-<span class="n">established</span> <span class="n">the</span> <span class="n">connection</span> <span class="n">between</span> <span class="n">the</span> <span class="n">Windows</span> <span class="n">host</span> <span class="n">machine</span> <span class="ow">and</span> <span class="n">the</span>
-<span class="n">target</span> <span class="n">board</span><span class="o">.</span>
-</pre></div>
-</div>
+<pre>The window displays the root directory content, because you previously established the connection between the Windows host machine and the target board.</pre>
 <p>i.  Right-click the <strong>/</strong> in the path name and create a new directory; name it “Apps”.</p>
 <p>j.  Using the Remote System Explorer perspective, copy the <code class="docutils literal notranslate"><span class="pre">linux_blinkled_app.elf</span></code> file from the &lt;project-dir&gt;
 <code class="docutils literal notranslate"><span class="pre">linux_blinkled_app/Debug</span></code> folder and paste it into the <code class="docutils literal notranslate"><span class="pre">/Apps</span></code> directory under <strong>blink connection</strong>.</p>
@@ -1019,6 +1031,8 @@ software platform.</p></li>
 	  <!-- Sphinx Page Footer block -->
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../SPA-UG/README.html" class="btn btn-neutral float-right" title="About this Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="7-linux-booting-debug.html" class="btn btn-neutral float-left" title="Linux Boot Image Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

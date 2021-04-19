@@ -55,7 +55,9 @@
   <link rel="stylesheet" href="../../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/pro.min.css" media="all" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Getting Started with SPM" href="4-getting-started-with-SPM.html" />
+    <link rel="prev" title="System Performance Modeling Project" href="2-system-performance-modeling-project.html" /> 
 	</head>
 	<body>
 		<div class="xilinx-bs3"/>
@@ -332,7 +334,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Versal ACAP Embedded Design Tutorial</span></p>
+<p class="caption"><span class="caption-text">Versal ACAP</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/1-getting-started.html">Getting Started</a></li>
@@ -343,7 +345,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port with SmartLynq+ Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/1-introduction.html">How Zynq UltraScale+ Devices Offer a Single Chip Solution</a></li>
@@ -355,7 +357,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/7-design1-using-gpio-timer-interrupts.html">Design Example 1: Using GPIOs, Timers, and Interrupts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/8-boot-and-configuration.html">Boot and Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq-7000 EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq-7000 Devices</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/1-introduction.html">Getting Started</a></li>
@@ -366,6 +368,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/6-using-hp-port.html">Using the HP Slave Port with AXI CDMA IP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/7-linux-booting-debug.html">Linux Boot Image Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/8-custom-ip-driver-linux.html">Creating Custom IP and Device Drivers for Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vitis Performance Analysis</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../README.html">About this Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-system-performance-modeling-project.html">System Performance Modeling Project</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Monitor Framework</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pl-profile-counters">PL Profile Counters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ps-profile-counters">PS Profile Counters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#host-target-communication">Host-Target Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4-getting-started-with-SPM.html">Getting Started with SPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-evaluating-software-performance.html">Evaluating Software Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-evaluating-high-performance-ports.html">Evaluating High-Performance Ports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-evaluating-DDR-controller-settings.html">Evaluating DDR Controller Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-evaluating-memory-hierarchy-ACP.html">Evaluating Memory Hierarchy and the ACP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-using-spa-with-custom-target.html">Using SPA with a Custom Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-end-to-end-performance-analysis.html">End-To-End Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A-performance-checklist.html">Performance Checklist</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
@@ -443,16 +465,13 @@
             
   <div class="section" id="monitor-framework">
 <h1>Monitor Framework<a class="headerlink" href="#monitor-framework" title="Permalink to this headline">¶</a></h1>
-<p>The performance analysis toolbox in the Vitis™ IDE offers a set of
-system-level performance measurements. For a design that targets the
-Zynq®-7000 SoC, this includes performance metrics from both the
-Programmable Logic (PL) and the Processing System (PS).</p>
+<p>The performance analysis toolbox in the Vitis™ IDE offers a set of system-level performance measurements. For a design that targets SoCs, this includes performance metrics from both the Programmable Logic (PL) and the Processing System (PS).</p>
 <p>The PL performance metrics include the following:</p>
 <ul class="simple">
 <li><p><strong>(Write/Read) Transactions:</strong> Number of AXI transactions</p></li>
 <li><p><strong>(Write/Read) Throughput:</strong> Write or read bandwidth in MB/s</p></li>
-<li><p><strong>Average (Write/Read) Latency:</strong> Average write or read latency of
-AXI transactions The PS performance metrics include the following:</p></li>
+<li><p><strong>Average (Write/Read) Latency:</strong> Average write or read latency of AXI transactions The PS performance metrics include the following:</p>
+<ul>
 <li><p><strong>CPU Utilization (%):</strong> Percentage of non-idling CPU clock cycles</p></li>
 <li><p><strong>CPU Instructions Per Cycle (IPC) :</strong> Estimated number of executed
 instructions per cycle</p></li>
@@ -462,36 +481,14 @@ accesses and the miss rate</p></li>
 of stall cycles per instruction due to memory writes (write) and
 data cache refills (read)</p></li>
 </ul>
-<p>This mix of performance metrics is gathered from different parts of
-the target and combined into a common timeline and display, enabling
-system-level performance analysis. In order to gather and display
-these metrics, the Vitis IDE includes a monitor framework that
-accesses various profile counters across a target system, as well as a
-host-target communication framework to perform the sampling and
-offloading of these counters.</p>
-<p>The metadata required by the Vitis IDE to perform this monitoring is
-exported by Vivado® Design Suite and read by the Vitis IDE when a
-Hardware Platform Specification project is created. While this
-export/import procedure has already been performed for the System
-Performance Modeling (SPM) project, it can also be executed on your
-design (see Instrumenting Hardware). In other words, all of the
-monitoring and analysis described herein is available and applicable
-to the SPM design as well as your design. This extension is addressed
-in <a class="reference external" href="#chapter-10">End-To-End Performance Analysis</a>.</p>
+</li>
+</ul>
+<p>This mix of performance metrics is gathered from different parts of the target and combined into a common timeline and display, enabling system-level performance analysis. In order to gather and display these metrics, the Vitis IDE includes a monitor framework that accesses various profile counters across a target system, as well as a host-target communication framework to perform the sampling and offloading of these counters.</p>
+<p>The metadata required by the Vitis IDE to perform this monitoring is exported by Vivado® Design Suite and read by the Vitis IDE when a Hardware Platform Specification project is created. While this export/import procedure has already been performed for the System Performance Modeling (SPM) project, it can also be executed on your design (see Instrumenting Hardware). In other words, all of the monitoring and analysis described herein is available and applicable to the SPM design as well as your design. This extension is addressed in <a class="reference internal" href="10-end-to-end-performance-analysis.html"><span class="doc">End-To-End Performance Analysis</span></a>.</p>
 <div class="section" id="pl-profile-counters">
 <h2>PL Profile Counters<a class="headerlink" href="#pl-profile-counters" title="Permalink to this headline">¶</a></h2>
-<p>An AXI Performance Monitor (APM) inserted into a design provides the
-PL profile counters (see Instrumenting Hardware for information about
-how to do this insertion for your design). There are six counters per
-connected AXI interface. The following table lists how these counters
-are used. Note that these are incrementing up-counters that capture a
-running total of bytes transferred, total latency, and the number of
-completed AXI transactions, respectively. As shown in the following
-table, the difference of these counters between successive samples
-(signified by Δ) is used in the calculations of average throughput and
-latency across a given Sample Interval. The Vitis IDE uses a default
-sample interval of approximately 50 ms.</p>
-<p><em>Table 3:</em> <strong>Profile Counters per AXI Interface in AXI Performance Monitor</strong></p>
+<p>An AXI Performance Monitor (APM) inserted into a design provides the PL profile counters (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.html#instrumenting-hardware">Instrumenting Hardware</a> for information about how to do this insertion for your design). There are six counters per connected AXI interface. The following table lists how these counters are used. Note that these are incrementing up-counters that capture a running total of bytes transferred, total latency, and the number of completed AXI transactions, respectively. As shown in the following table, the difference of these counters between successive samples (signified by Δ) is used in the calculations of average throughput and latency across a given Sample Interval. The Vitis IDE uses a default sample interval of approximately 50 ms.</p>
+<div id="table3"><p><em>Table 3:</em> <strong>Profile Counters per AXI Interface in AXI Performance Monitor</strong></p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -506,11 +503,11 @@ sample interval of approximately 50 ms.</p>
 </tr>
 <tr>
 <td>Write Latency Count</td>
-<td>Average Write Latency = (∆(Write Latency Count))/(∆(Write</td>
+<td>Average Write Latency = (∆(Write Latency Count))/(∆(Write Transaction Count))</td>
 </tr>
 <tr>
 <td>Write Transaction Count</td>
-<td></td>
+<td>Use equation above</td>
 </tr>
 <tr>
 <td>Read Byte Count</td>
@@ -522,42 +519,25 @@ sample interval of approximately 50 ms.</p>
 </tr>
 <tr>
 <td>Read Transaction Count</td>
-<td></td>
+<td>Use equation above</td>
 </tr>
 </tbody>
-</table><p>Because there are many events that constitute an AXI transaction, it
-is important to understand the events that the Vitis IDE captures and
-how latency is calculated. The following figure shows a timing diagram
-of an example AXI read transaction, including address, data, and
-control signals.</p>
-<p><em>Figure 7:</em> Example AXI Transaction Timeline Showing Read Latency Used in the Vitis IDE</p>
+</table></div><p>Because there are many events that constitute an AXI transaction, it is important to understand the events that the Vitis IDE captures and how latency is calculated. The following figure shows a timing diagram of an example AXI read transaction, including address, data, and control signals.</p>
+<p><em>Figure 7:</em> <strong>Example AXI Transaction Timeline Showing Read Latency Used in the Vitis IDE</strong></p>
 <p><img alt="../../_images/image5.jpeg" src="../../_images/image5.jpeg" /></p>
-<p>The start event used by the Vitis IDE is Address Accept (ARVALID=1 and
-ARREADY=1), while the end event is Last Data (RLAST=1 and RVALID=1 and
-RREADY=1). The difference between these two events within a common
-transaction is deemed the Transaction Latency.</p>
+<p>The start event used by the Vitis IDE is Address Accept (ARVALID=1 and ARREADY=1), while the end event is Last Data (RLAST=1 and RVALID=1 and RREADY=1). The difference between these two events within a common transaction is deemed the Transaction Latency.</p>
 <blockquote>
 <div><p><strong><em>Note</em>:</strong> The APM does not support:</p>
 <ul class="simple">
-<li><p>More than 32 out-standing transactions. Where the transactions can
-be initialization of more than 32 addresses before the first data
-block initiation (or) transfer/acceptance of 32 data blocks before
-first address.</p></li>
-<li><p>Interleaved transactions. Where the transactions can be address
-initialization of new data transaction before finishing the
-current data transaction (before getting wlast/rlast).</p></li>
+<li><p>More than 32 out-standing transactions. Where the transactions can be initialization of more than 32 addresses before the first data block initiation (or) transfer/acceptance of 32 data blocks before first address.</p></li>
+<li><p>Interleaved transactions. Where the transactions can be address initialization of new data transaction before finishing the current data transaction (before getting wlast/rlast).</p></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="ps-profile-counters">
 <h2>PS Profile Counters<a class="headerlink" href="#ps-profile-counters" title="Permalink to this headline">¶</a></h2>
-<p>The PS profile counters comprise the Arm Performance Monitor Unit
-(PMU) included with each Cortex-A9 CPU. The following table shows how
-the six counters in each PMU are automatically configured by the Vitis
-IDE, as well as the performance metric equations they provide for each
-CPU. As shown later in this guide, these are the metrics that are
-directly graphed in the Vitis IDE.</p>
-<p><em>Table 4:</em> <strong>Profile Counters used in Arm Performance Monitor Unit</strong></p>
+<p>The PS profile counters comprise the Arm Performance Monitor Unit (PMU) included with each Cortex-A9 CPU. The following table shows how the six counters in each PMU are automatically configured by the Vitis IDE, as well as the performance metric equations they provide for each CPU. As shown later in this guide, these are the metrics that are directly graphed in the Vitis IDE.</p>
+<div id="table4"><p><em>Table 4:</em> <strong>Profile Counters used in Arm Performance Monitor Unit</strong></p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -605,25 +585,11 @@ directly graphed in the Vitis IDE.</p>
 <td>Write Stall Cycles Per Instruction = (∆(MEM_WRITE_STALL))/(∆(INST_R ENAME))</td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 <div class="section" id="host-target-communication">
 <h2>Host-Target Communication<a class="headerlink" href="#host-target-communication" title="Permalink to this headline">¶</a></h2>
-<hr class="docutils" />
-<p>Now that you appreciate the profile counters and how they are
-processed and displayed in the SPA toolbox, it is also important to
-understand how those counters are sampled and transferred from the
-target to the host machine.</p>
-<div class="section" id="figure-8-host-target-communication-infrastructure">
-<h3><em>Figure 8:</em> Host-Target Communication Infrastructure<a class="headerlink" href="#figure-8-host-target-communication-infrastructure" title="Permalink to this headline">¶</a></h3>
-<p><img alt="../../_images/image62.jpeg" src="../../_images/image62.jpeg" /></p>
-<p>The previous figure shows the host-target communication infrastructure
-used by the Vitis IDE. The Vitis IDE tool itself runs on a host
-machine and includes a hardware server using the Target Communication
-Framework (TCF). TCF can efficiently communicate with the target over
-the JTAG programming cable. This TCF-based hardware server controls
-and samples the profile counters listed in <a class="reference external" href="#_bookmark9">Table 1: BEEBS Benchmarks Provided in Pre-Compiled Program Table</a> and <a class="reference external" href="#_bookmark10">Table 2: Memory Stride Benchmarks Provided in Pre-Compiled Program</a> in the least intrusive manner possible. The APM
-and PMU counters are read using memory-mapped access via the Zynq-7000 SoC central interconnect. The counter values are then processed as described previously and displayed in the Vitis IDE.</p>
-</div>
+<p>Now that you appreciate the profile counters and how they are processed and displayed in the SPA toolbox, it is also important to understand how those counters are sampled and transferred from the target to the host machine.</p>
+<p>The Vitis IDE tool itself runs on a host machine and includes a hardware server using the Target Communication Framework (TCF). TCF can efficiently communicate with the target over the JTAG programming cable. This TCF-based hardware server controls and samples the profile counters listed in <a class="reference external" href="../docs/2-system-performance-modeling-project.html#table1">Table 1: BEEBS Benchmarks Provided in Pre-Compiled Program Table</a> and <a class="reference external" href="../docs/2-system-performance-modeling-project.html#table2">Table 2: Memory Stride Benchmarks Provided in Pre-Compiled Program</a> in the least intrusive manner possible. The APM and PMU counters are read using memory-mapped access via the Zynq-7000 SoC central interconnect. The counter values are then processed as described previously and displayed in the Vitis IDE.</p>
 </div>
 </div>
 
@@ -640,6 +606,15 @@ and PMU counters are read using memory-mapped access via the Zynq-7000 SoC centr
 	  
 	  
 	  <!-- Sphinx Page Footer block -->
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="4-getting-started-with-SPM.html" class="btn btn-neutral float-right" title="Getting Started with SPM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="2-system-performance-modeling-project.html" class="btn btn-neutral float-left" title="System Performance Modeling Project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

@@ -332,7 +332,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Versal ACAP Embedded Design Tutorial</span></p>
+<p class="caption"><span class="caption-text">Versal ACAP</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/1-getting-started.html">Getting Started</a></li>
@@ -343,7 +343,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port with SmartLynq+ Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/1-introduction.html">How Zynq UltraScale+ Devices Offer a Single Chip Solution</a></li>
@@ -355,7 +355,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/7-design1-using-gpio-timer-interrupts.html">Design Example 1: Using GPIOs, Timers, and Interrupts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/8-boot-and-configuration.html">Boot and Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq-7000 EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq-7000 Devices</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/1-introduction.html">Getting Started</a></li>
@@ -366,6 +366,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/6-using-hp-port.html">Using the HP Slave Port with AXI CDMA IP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/7-linux-booting-debug.html">Linux Boot Image Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/8-custom-ip-driver-linux.html">Creating Custom IP and Device Drivers for Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vitis Performance Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/README.html">About this Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/1-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/2-system-performance-modeling-project.html">System Performance Modeling Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/3-monitor-framework.html">Monitor Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/4-getting-started-with-SPM.html">Getting Started with SPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/5-evaluating-software-performance.html">Evaluating Software Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/6-evaluating-high-performance-ports.html">Evaluating High-Performance Ports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/7-evaluating-DDR-controller-settings.html">Evaluating DDR Controller Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/8-evaluating-memory-hierarchy-ACP.html">Evaluating Memory Hierarchy and the ACP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/9-using-spa-with-custom-target.html">Using SPA with a Custom Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/10-end-to-end-performance-analysis.html">End-To-End Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/A-performance-checklist.html">Performance Checklist</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
@@ -587,6 +602,8 @@ section. To maintain Boot image confidentiality, encrypted boot images
 can be created using Bootgen. Software examples to program keys to
 BBRAM and eFUSE are also available in the Vitis™ IDE. One such example
 is discussed in <a class="reference external" href="#practical-methods-in-secure-boot">Practical Methods in Secure Boot</a>.</p>
+<p><strong>Note:</strong> It is recommended that you generate your own keys for fielded systems and then provide those keys to the development tools.
+Refer to AR <a class="reference external" href="https://www.xilinx.com/support/answers/76171.html">76171</a> for details.</p>
 </div>
 <div class="section" id="dpa-protections">
 <h3>DPA Protections<a class="headerlink" href="#dpa-protections" title="Permalink to this headline">¶</a></h3>
@@ -676,7 +693,7 @@ specify security attributes.</p>
 <p>After implementing AES and RSA cryptography in secure boot, a boot
 test is done. The system loads successfully and displays the FSBL
 messages on the terminal. These messages indicate the cryptographic
-operations performed on each partition. <a class="reference external" href="8-debugging-problems-with-secure-boot">Debugging Problems with Secure Boot</a> provides the steps it is necessary to follow if the secure boot test fails.</p>
+operations performed on each partition. <a class="reference external" href="#debugging-problems-with-secure-boot">Debugging Problems with Secure Boot</a> provides the steps it is necessary to follow if the secure boot test fails.</p>
 <div class="section" id="sample-design-overview">
 <h3>Sample Design Overview<a class="headerlink" href="#sample-design-overview" title="Permalink to this headline">¶</a></h3>
 <p>The sample design demonstrates loading various types of images into
@@ -825,6 +842,7 @@ steps.</p>
 </li>
 <li><p>Verify that the files <code class="docutils literal notranslate"><span class="pre">psk0.pem</span></code> and <code class="docutils literal notranslate"><span class="pre">ssk0.pem</span></code> are generated at the location specified in the BIF file (<code class="docutils literal notranslate"><span class="pre">c:\edt\secure_boot_sd\keys</span></code>).</p></li>
 </ol>
+<p><strong>Note:</strong> 2020.3 (and previous) Bootgen fails to replace the old authentication key files with new authentication key files generated using the <code class="docutils literal notranslate"><span class="pre">-generate_keys</span></code> option. It is recommended that you check the existence and permissions of the target key files before generation. Refer to AR <a class="reference external" href="https://www.xilinx.com/support/answers/76125.html">76125</a> for details.</p>
 <div class="section" id="generating-sha3-of-public-key-in-an-rsa-private-public-key-pair">
 <h4>Generating SHA3 of Public Key in an RSA Private/Public Key Pair<a class="headerlink" href="#generating-sha3-of-public-key-in-an-rsa-private-public-key-pair" title="Permalink to this headline">¶</a></h4>
 <p>The following steps are required only for RSA authentication in eFUSE mode, and can be skipped for RSA authentication in boot header mode. The 384 bits from <code class="docutils literal notranslate"><span class="pre">sha3.txt</span></code> can be programmed to eFUSE for RSA authentication in eFUSE mode. For more information, see <em>Programming BBRAM and eFUSEs</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf">XAPP1319</a>).</p>
@@ -1313,7 +1331,7 @@ terminal.</p></li>
 </ol>
 </li>
 <li><p>Click <strong>Create image</strong>.</p>
-<p><img alt="Feature_Tutorials\secure_boot\./media/image93.png" src="Feature_Tutorials\secure_boot\./media/image93.png" /></p>
+<p><img alt="Feature_Tutorials/secure_boot/media/image93.png" src="Feature_Tutorials/secure_boot/media/image93.png" /></p>
 </li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">design_bh_bkey_keyrolling.bif</span></code> file should look similar to the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">arch</span> <span class="o">=</span> <span class="n">zynqmp</span><span class="p">;</span> <span class="n">split</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span> <span class="nb">format</span> <span class="o">=</span> <span class="n">BIN</span><span class="p">;</span> <span class="n">key_part_name</span> <span class="o">=</span> <span class="n">zcu9eg</span>
@@ -1405,19 +1423,19 @@ terminal.</p></li>
 <li><p>Copy the BOOT.bin image, the <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> file generated in PetaLinux, and the <code class="docutils literal notranslate"><span class="pre">ps_pl_linux_app.elf</span></code> file.</p></li>
 <li><p>Insert the SD card into the ZCU102.</p></li>
 <li><p>Set SW6 of the ZCU102 for SD boot mode (1=ON; 2,3,4=OFF).</p>
-<p><img alt="Feature_Tutorials\secure_boot\../Introduction/MPSoc-EDT/media/image43.jpeg" src="Feature_Tutorials\secure_boot\../Introduction/MPSoc-EDT/media/image43.jpeg" /></p>
+<p><img alt="Feature_Tutorials/Introduction/MPSoc-EDT/media/image43.jpeg" src="Feature_Tutorials/Introduction/MPSoc-EDT/media/image43.jpeg" /></p>
 </li>
 <li><p>Connect Serial terminals to ZCU102 (115200, eight data bits, one stop bit, no parity).</p></li>
 <li><p>Power on the ZCU102.</p></li>
 <li><p>When the terminal reaches the U-Boot <code class="docutils literal notranslate"><span class="pre">ZynqMP\</span></code> prompt, type <code class="docutils literal notranslate"><span class="pre">bootm</span> <span class="pre">0x2000000</span></code>.</p>
-<p><img alt="Feature_Tutorials\secure_boot\./media/image94.png" src="Feature_Tutorials\secure_boot\./media/image94.png" /></p>
+<p><img alt="Feature_Tutorials/secure_boot/media/image94.png" src="Feature_Tutorials/secure_boot/media/image94.png" /></p>
 </li>
 <li><p>Log into Linux using the following credentials:</p>
 <p>Login: root;
 Password: root</p>
 <p>Run the Linux application as described in <a class="reference external" href="7-system-design-examples.md#design-example-1-using-gpios-timers-and-interrupts">Design Example 1: Using
 GPIOs, Timers, and Interrupts</a>.</p>
-<p><img alt="Feature_Tutorials\secure_boot\./media/image95.png" src="Feature_Tutorials\secure_boot\./media/image95.png" /></p>
+<p><img alt="Feature_Tutorials/secure_boot/media/image95.png" src="Feature_Tutorials/secure_boot/media/image95.png" /></p>
 </li>
 </ol>
 </div>

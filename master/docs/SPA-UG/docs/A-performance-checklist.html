@@ -55,7 +55,8 @@
   <link rel="stylesheet" href="../../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/pro.min.css" media="all" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="End-To-End Performance Analysis" href="10-end-to-end-performance-analysis.html" /> 
 	</head>
 	<body>
 		<div class="xilinx-bs3"/>
@@ -332,7 +333,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Versal ACAP Embedded Design Tutorial</span></p>
+<p class="caption"><span class="caption-text">Versal ACAP</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/1-getting-started.html">Getting Started</a></li>
@@ -343,7 +344,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port with SmartLynq+ Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/1-introduction.html">How Zynq UltraScale+ Devices Offer a Single Chip Solution</a></li>
@@ -355,7 +356,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/7-design1-using-gpio-timer-interrupts.html">Design Example 1: Using GPIOs, Timers, and Interrupts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/8-boot-and-configuration.html">Boot and Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq-7000 EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq-7000 Devices</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/1-introduction.html">Getting Started</a></li>
@@ -366,6 +367,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/6-using-hp-port.html">Using the HP Slave Port with AXI CDMA IP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/7-linux-booting-debug.html">Linux Boot Image Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/8-custom-ip-driver-linux.html">Creating Custom IP and Device Drivers for Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vitis Performance Analysis</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../README.html">About this Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-system-performance-modeling-project.html">System Performance Modeling Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-monitor-framework.html">Monitor Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-getting-started-with-SPM.html">Getting Started with SPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-evaluating-software-performance.html">Evaluating Software Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-evaluating-high-performance-ports.html">Evaluating High-Performance Ports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-evaluating-DDR-controller-settings.html">Evaluating DDR Controller Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-evaluating-memory-hierarchy-ACP.html">Evaluating Memory Hierarchy and the ACP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-using-spa-with-custom-target.html">Using SPA with a Custom Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-end-to-end-performance-analysis.html">End-To-End Performance Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Performance Checklist</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
@@ -443,13 +459,8 @@
             
   <div class="section" id="performance-checklist">
 <h1>Performance Checklist<a class="headerlink" href="#performance-checklist" title="Permalink to this headline">¶</a></h1>
-<p>The goal of this appendix is to provide you with a checklist of items
-to consider when evaluating the performance of your Zynq®-7000 SoC
-design. This should by no means be considered an exhaustive list, but
-instead a starting point for things to look out for and possible
-“gotchas” that are not easy to find. The Vitis™ IDE can also be a
-helpful tool in evaluating your system performance, and some of its
-features and benefits are also highlighted here.</p>
+<p>The goal of this appendix is to provide you with a checklist of items to consider when evaluating the performance of your Zynq®-7000 SoC design. This should by no means be considered an exhaustive list, but
+instead a starting point for things to look out for and possible “gotchas” that are not easy to find. The Vitis™ IDE can also be a helpful tool in evaluating your system performance, and some of its features and benefits are also highlighted here.</p>
 <ul class="simple">
 <li><p><strong>Use SPM:</strong> SPM is ideal for investigating system performance
 without any reliance on prior hardware design work or knowledge.
@@ -500,7 +511,7 @@ in the Vitis IDE (SPM design only) or in Vivado® Design Suite
 under the configuration of the Processing System 7 (PS7) IP block.
 Note that these settings can be used to re-allocate bandwidth from
 the DDR based on the desired needs of your system. Refer to
-<a class="reference external" href="#chapter-7">Chapter 7: Evaluating DDR Controller Settings</a> to see
+<a class="reference internal" href="7-evaluating-DDR-controller-settings.html"><span class="doc">Evaluating DDR Controller Settings</span></a> to see
 how this is done as well as how it might affect the DDR bandwidth
 of the CPUs and the HP ports.</p></li>
 <li><p><strong>Use the Zynq-7000 SoC On-Chip Memory:</strong> The OCM is a 256 KB memory
@@ -539,6 +550,13 @@ across multiple DDRC ports).</p></li>
 	  
 	  
 	  <!-- Sphinx Page Footer block -->
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="10-end-to-end-performance-analysis.html" class="btn btn-neutral float-left" title="End-To-End Performance Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

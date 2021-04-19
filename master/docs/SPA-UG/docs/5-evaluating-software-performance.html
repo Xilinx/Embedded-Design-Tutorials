@@ -55,7 +55,9 @@
   <link rel="stylesheet" href="../../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/pro.min.css" media="all" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Evaluating High-Performance Ports" href="6-evaluating-high-performance-ports.html" />
+    <link rel="prev" title="Getting Started with SPM" href="4-getting-started-with-SPM.html" /> 
 	</head>
 	<body>
 		<div class="xilinx-bs3"/>
@@ -332,7 +334,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Versal ACAP Embedded Design Tutorial</span></p>
+<p class="caption"><span class="caption-text">Versal ACAP</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/1-getting-started.html">Getting Started</a></li>
@@ -343,7 +345,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port with SmartLynq+ Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/1-introduction.html">How Zynq UltraScale+ Devices Offer a Single Chip Solution</a></li>
@@ -355,7 +357,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/7-design1-using-gpio-timer-interrupts.html">Design Example 1: Using GPIOs, Timers, and Interrupts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/8-boot-and-configuration.html">Boot and Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq-7000 EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq-7000 Devices</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/1-introduction.html">Getting Started</a></li>
@@ -366,6 +368,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/6-using-hp-port.html">Using the HP Slave Port with AXI CDMA IP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/7-linux-booting-debug.html">Linux Boot Image Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/8-custom-ip-driver-linux.html">Creating Custom IP and Device Drivers for Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vitis Performance Analysis</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../README.html">About this Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-system-performance-modeling-project.html">System Performance Modeling Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-monitor-framework.html">Monitor Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-getting-started-with-SPM.html">Getting Started with SPM</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Evaluating Software Performance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#software-performance-monitoring">Software Performance Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualizing-performance-improvements">Visualizing Performance Improvements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6-evaluating-high-performance-ports.html">Evaluating High-Performance Ports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-evaluating-DDR-controller-settings.html">Evaluating DDR Controller Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-evaluating-memory-hierarchy-ACP.html">Evaluating Memory Hierarchy and the ACP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-using-spa-with-custom-target.html">Using SPA with a Custom Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-end-to-end-performance-analysis.html">End-To-End Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A-performance-checklist.html">Performance Checklist</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
@@ -443,288 +464,138 @@
             
   <div class="section" id="evaluating-software-performance">
 <h1>Evaluating Software Performance<a class="headerlink" href="#evaluating-software-performance" title="Permalink to this headline">¶</a></h1>
-<p>There are a number of monitoring capabilities that evaluate software
-performance on a Zynq®-7000 SoC. These capabilities can inform you about the efficiency
-of your application and provide visualizations for you to better
-understand and optimize your software.</p>
-<div class="section" id="performance-monitoring">
-<h2>Performance Monitoring<a class="headerlink" href="#performance-monitoring" title="Permalink to this headline">¶</a></h2>
-<p>To illustrate these performance monitoring capabilities, the BEEBS
-benchmark program (see <a class="reference external" href="#chapter-2">Chapter 2: System Performance Modeling Project</a>) was run on a ZC702 target board and performance
-results were captured in the Vitis™ IDE. There was no traffic driven
-from the PL, so this is a software only test. Note that if you would
-like to re-create these results, the software application selection is
-shown in <a class="reference external" href="#_bookmark17">Chapter 4: Getting Started with SPM</a>, and the
-PL traffic is shown in <a class="reference external" href="#atg-configuration">ATG Configuration</a>.
-Although the results shown here are for the BEEBS benchmarks, these
-exact same metrics can also be obtained for a program provided to or
-compiled by the Vitis IDE.</p>
-<p>There are 24 total tests performed – each of the eight benchmarks
-listed in <a class="reference external" href="#_bookmark9">Table 1: BEEBS Benchmarks Provided in </a> is run on the three different data array sizes (that is, 4 KB, 64 KB, and 1024 KB). Because a sleep time
-of 1s was inserted between each test, the CPU utilization gives a
-clear view of when these benchmarks were run. The following figure
-helps orient the timeline for the results. The three data sizes were
-run from smallest to largest within each benchmark, which can be seen
-in the value and length of the utilization of CPU0. It took
-approximately 45s to run BEEBs benchmark without any traffic.</p>
-<p><em>Figure 13:</em> CPU Utilization Labeled with BEEBS Benchmarks</p>
+<p>There are a number of monitoring capabilities that evaluate software performance on a Zynq®-7000 SoC. These capabilities can inform you about the efficiency of your application and provide visualizations for you to better understand and optimize your software.</p>
+<div class="section" id="software-performance-monitoring">
+<h2>Software Performance Monitoring<a class="headerlink" href="#software-performance-monitoring" title="Permalink to this headline">¶</a></h2>
+<p>To illustrate these performance monitoring capabilities, the BEEBS benchmark program (see <a class="reference internal" href="2-system-performance-modeling-project.html"><span class="doc">System Performance Modeling Project</span></a>) was run on a ZC702 target board and performance results were captured in the Vitis™ IDE. There was no traffic driven from the PL, so this is a software only test. Note that if you would like to re-create these results, the software application selection is
+shown in <a class="reference internal" href="4-getting-started-with-SPM.html"><span class="doc">Getting Started with SPM</span></a>, and the PL traffic is shown in <a class="reference external" href="../docs/4-getting-started-with-SPM.html#atg-configuration">ATG Configuration</a>. Although the results shown here are for the BEEBS benchmarks, these exact same metrics can also be obtained for a program provided to or compiled by the Vitis IDE.</p>
+<p>There are 24 total tests performed – each of the eight benchmarks listed in <a class="reference external" href="../docs/2-system-performance-modeling-project.html#table1">Table 1: BEEBS Benchmarks Provided in </a> is run on the three different data array sizes (that is, 4 KB, 64 KB, and 1024 KB). Because a sleep time of 1s was inserted between each test, the CPU utilization gives a clear view of when these benchmarks were run. The following figure helps orient the timeline for the results. The three data sizes were run from smallest to largest within each benchmark, which can be seen in the value and length of the utilization of CPU0. It took approximately 45s to run BEEBs benchmark without any traffic.</p>
+<div id="fig13"><p><em>Figure 13:</em> <strong>CPU Utilization Labeled with BEEBS Benchmarks</strong></p>
 <p><img alt="../../_images/image131.jpeg" src="../../_images/image131.jpeg" /></p>
-<p>The following figure shows four different graphs displayed by the
-Vitis IDE in the PS Performance panel: CPU Utilization (%), CPU
-Instructions Per Cycle, L1 Data Cache Access, and L1 Data Cache Miss
-Rate (%).</p>
-<p><em>Figure 14:</em> Performance Analysis of BEEBS Benchmarks - CPU Utilization, IPC, L1 Data Cache</p>
+<div><p>The following figure shows four different graphs displayed by the Vitis IDE in the PS Performance panel: CPU Utilization (%), CPU Instructions Per Cycle, L1 Data Cache Access, and L1 Data Cache Miss Rate (%).</p>
+<p><em>Figure 14:</em> <strong>Performance Analysis of BEEBS Benchmarks - CPU Utilization, IPC, L1 Data Cache</strong></p>
 <p><img alt="../../_images/image14.jpeg" src="../../_images/image14.jpeg" /></p>
-<p>While CPU utilization helps determine when benchmarks were run, the
-most insightful analysis is achieved when multiple graphs are
-considered. For these particular tests, the significant analysis comes
-from the Instructions Per Cycle (IPC) and the L1 data cache graphs.
-IPC is a well-known metric to illustrate how software interacts with
-its environment, particularly the memory hierarchy. See Computer
-Organization &amp; Design: The Hardware/Software Interface by David A.
-Patterson and John L. Hennessy. This fact becomes evident in the
-previous figure as the value of IPC follows very closely the L1 data
-cache accesses. Also, during the memory-intensive matrix multipliers,
-the lowest values of IPC correspond with the highest values of L1 data
-cache miss rates. If IPC is a measure of software efficiency, then it
-is clear from the previous figure that the lowest efficiency is during
-long periods of memory-intensive computation. While sometimes this is
-unavoidable, it is clear that IPC provides a good metric for this
-interaction with the memory hierarchy.</p>
-<p>Taking this analysis one step further, the graphs in the following
-figure provide information on data locality; that is, where the
-processor retrieves and writes data as it performs the specified
-algorithms. A low L1 data cache miss rate means that a significant
-amount of data is stored and accessed from that respective cache. A
-high L1 miss rate coupled with high values in CPU write or read stall
-cycles per instruction means that much of the data is coming from DDR.
-As expected, an understanding of the software application aids in the
-analysis. For example, the two long periods of high L1 miss rate and
-CPU read stall cycles shown in the following figure are when the
-floating-point and integer matrix multiplier algorithms are operating
-on the 512 x 512 (256K words = 1024 KB) two-dimensional or 2-D data
-array.</p>
-<p><em>Figure 15:</em> Performance Analysis of BEEBS Benchmarks - L1 Data Cache, Stall Cycles Per Instruction</p>
+<p>While CPU utilization helps determine when benchmarks were run, the most insightful analysis is achieved when multiple graphs are considered. For these particular tests, the significant analysis comes from the Instructions Per Cycle (IPC) and the L1 data cache graphs. IPC is a well-known metric to illustrate how software interacts with its environment, particularly the memory hierarchy. See Computer Organization &amp; Design: The Hardware/Software Interface by David A. Patterson and John L. Hennessy. This fact becomes evident in the previous figure as the value of IPC follows very closely the L1 data cache accesses. Also, during the memory-intensive matrix multipliers, the lowest values of IPC correspond with the highest values of L1 data cache miss rates. If IPC is a measure of software efficiency, then it is clear from the previous figure that the lowest efficiency is during long periods of memory-intensive computation. While sometimes this is unavoidable, it is clear that IPC provides a good metric for this interaction with the memory hierarchy.</p>
+<p>Taking this analysis one step further, the graphs in the following figure provide information on data locality; that is, where the processor retrieves and writes data as it performs the specified algorithms. A low L1 data cache miss rate means that a significant amount of data is stored and accessed from that respective cache. A high L1 miss rate coupled with high values in CPU write or read stall cycles per instruction means that much of the data is coming from DDR. As expected, an understanding of the software application aids in the analysis. For example, the two long periods of high L1 miss rate and CPU read stall cycles shown in the following figure are when the floating-point and integer matrix multiplier algorithms are operating on the 512 x 512 (256K words = 1024 KB) two-dimensional or 2-D data array.</p>
+<div id="fig15"><p><em>Figure 15:</em> <strong>Performance Analysis of BEEBS Benchmarks - L1 Data Cache, Stall Cycles Per Instruction</strong></p>
 <p><img alt="../../_images/image15.jpeg" src="../../_images/image15.jpeg" /></p>
-<p>To refine the performance of an application, one option to consider
-using is to enable/disable the L2 data cache prefetch. This is
-specified with bit 28 of reg15_prefetch_ctrl (absolute address
-0xF8F02F60). If this data prefetching is enabled, then the adjacent
-cache line will also be automatically fetched. While the results shown
-in <a class="reference external" href="#figure-14-performance-analysis-of-beebs-benchmarks---cpu-utilization-ipc-l1-data-cache">Figure 14: Performance Analysis of BEEBS Benchmarks - CPU Utilization, IPC, L1 Data Cache</a>
-and <a class="reference external" href="#figure-15-performance-analysis-of-beebs-benchmarks---l1-data-cache-stall-cycles-per-instruction">Figure 15: Performance Analysis of BEEBS Benchmarks - L1 Data Cache, Stall Cycles Per </a> were generated with prefetch enabled, the BEEBS benchmarks were also
-run with prefetch disabled. The integer matrix multiplication saw the
-largest impact on software run-time with a decrease of 9.0%. While
-this prefetch option can improve the performance of some applications,
-it can lower the performance of others. It is recommended to verify
-run-times of your application with and without this prefetch option.</p>
-<p><em>Figure 16:</em> Run-Time Results of Software in BEEBS Benchmark Suite</p>
+</div><p>To refine the performance of an application, one option to consider using is to enable/disable the L2 data cache prefetch. This is specified with bit 28 of reg15_prefetch_ctrl (absolute address 0xF8F02F60). If this data prefetching is enabled, then the adjacent cache line will also be automatically fetched. While the results shown in Figure 14 and Figure 15 were generated with prefetch enabled, the BEEBS benchmarks were also run with prefetch disabled. The integer matrix multiplication saw the largest impact on software run-time with a decrease of 9.0%. While this prefetch option can improve the performance of some applications, it can lower the performance of others. It is recommended to verify run-times of your application with and without this prefetch option.</p>
+<p><em>Figure 16:</em> <strong>Run-Time Results of Software in BEEBS Benchmark Suite</strong></p>
 <p><img alt="../../_images/image161.png" src="../../_images/image161.png" /></p>
-<p>As mentioned above, a helpful measurement of overall software
-performance is the run-time of different portions of the application.
-The previous figure shows a summary of run times for the eight BEEBS
-benchmarks as run on the three different data array sizes (see
-<a class="reference external" href="#instrumenting-hardware">Instrumenting Hardware</a> on how these run-times were
-calculated and captured). The Y-axis on the left side of the previous
-figure shows the full range of values, while the Y-axis on the right
-side zooms in on the lowest range for clarity. As expected, the
-run-times increase with larger array sizes. However, the amount of
-increase varies across the different benchmarks tested. This is
-because there are a number of different factors that can impact
-run-time, including the amount of data, data locality, and algorithmic
-dependencies on data size. As far as data locality, the 4 KB, 64 KB,
-and 1024 KB data arrays fit into the L1 data cache, L2 data cache, and
-DDR, respectively.</p>
-<p>For more information on assessing the performance of the memory
-hierarchy, see <a class="reference external" href="#chapter-8">Chapter 8: Evaluating Memory Hierarchy and the ACP</a>.</p>
+<p>As mentioned above, a helpful measurement of overall software performance is the run-time of different portions of the application. The previous figure shows a summary of run times for the eight BEEBS benchmarks as run on the three different data array sizes (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.html#instrumenting-hardware">Instrumenting Hardware</a> on how these run-times were calculated and captured). The Y-axis on the left side of the previous figure shows the full range of values, while the Y-axis on the right side zooms in on the lowest range for clarity. As expected, the run-times increase with larger array sizes. However, the amount of increase varies across the different benchmarks tested. This is because there are a number of different factors that can impact run-time, including the amount of data, data locality, and algorithmic dependencies on data size. As far as data locality, the 4 KB, 64 KB, and 1024 KB data arrays fit into the L1 data cache, L2 data cache, and DDR, respectively.</p>
+<p>On the Zynq UltraScale+ MPSoC, the ZCU102 SPM project shows a similar result. The only difference difference is that the BEEBS benchmark does not use an interrupt between two tests, so the CPU utilization shows 100% all across the test time. However, you can see the same pattern of L1 data cache miss rate and CPU Read Stall Cycles per Instruction.</p>
+<p><img alt="../../_images/spm_zcu102_swonly.png" src="../../_images/spm_zcu102_swonly.png" /></p>
+<p>For more information on assessing the performance of the memory hierarchy, see <a class="reference internal" href="8-evaluating-memory-hierarchy-ACP.html"><span class="doc">Evaluating Memory Hierarchy and the ACP</span></a>.</p>
 </div>
 <div class="section" id="visualizing-performance-improvements">
 <h2>Visualizing Performance Improvements<a class="headerlink" href="#visualizing-performance-improvements" title="Permalink to this headline">¶</a></h2>
-<p>As shown in <a class="reference external" href="#figure-16-run-time-results-of-software-in-beebs-benchmark-suite">Figure 16: Run-Time Results of Software in BEEBS Benchmark Suite</a>
-the longest run- times are clearly the matrix
-multiplications,especially for the largest array size. What if these
-run- times need to be improved? How would the performance analysis
-features in the Vitis IDE help measure and visualize any code
-optimizations or improvements?</p>
-<p>The sample code below shows two different C/C++ implementations for
-floating-point matrix multiplication. The original and traditional
-implementation is the <code class="docutils literal notranslate"><span class="pre">Multiply_Old()</span></code> function, whereas a newer
-implementation is contained in <code class="docutils literal notranslate"><span class="pre">Multiply_New()</span></code>. While the newer
-implementation appears to be more complicated, it takes advantage of
-the 32 byte cache lines. See <a class="reference external" href="http://www.cs.bgu.ac.il/%7Eos142/wiki.files/drepper-2007.pdf">What Every Programmer Should Know About Memory</a>
-by Ulrich Drepper. The original and modified C/C++ software for
-floating-point matrix multiplication is as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define CLS 32</span>
-<span class="c1">#define SM	(CLS / sizeof (float))</span>
-<span class="o">/*</span> <span class="n">Original</span> <span class="n">method</span> <span class="n">of</span> <span class="n">calculating</span> <span class="n">floating</span><span class="o">-</span><span class="n">point</span> <span class="n">matrix</span> <span class="n">multiplication</span> <span class="o">*/</span> 
-<span class="n">void</span> <span class="n">Multiply_Old</span><span class="p">(</span><span class="nb">float</span> <span class="o">**</span><span class="n">A</span><span class="p">,</span> <span class="nb">float</span> <span class="o">**</span><span class="n">B</span><span class="p">,</span> <span class="nb">float</span> <span class="o">**</span><span class="n">Res</span><span class="p">,</span> <span class="n">long</span> <span class="n">dim</span><span class="p">)</span>
+<p>As shown in the previous figure, the longest run- times are clearly the matrix multiplications,especially for the largest array size. What if these run- times need to be improved? How would the performance analysis features in the Vitis IDE help measure and visualize any code optimizations or improvements?</p>
+<p>The sample code below shows two different C/C++ implementations for floating-point matrix multiplication. The original and traditional implementation is the <code class="docutils literal notranslate"><span class="pre">Multiply_Old()</span></code> function, whereas a newer implementation is contained in <code class="docutils literal notranslate"><span class="pre">Multiply_New()</span></code>. While the newer implementation appears to be more complicated, it takes advantage of the 32 byte cache lines. See <a class="reference external" href="http://www.cs.bgu.ac.il/%7Eos142/wiki.files/drepper-2007.pdf">What Every Programmer Should Know About Memory</a> by Ulrich Drepper. The original and modified C/C++ software for floating-point matrix multiplication is as follows:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#define CLS 32</span>
+<span class="cp">#define SM	(CLS / sizeof (float))</span>
+<span class="cm">/* Original method of calculating floating-point matrix multiplication */</span> 
+<span class="kt">void</span> <span class="nf">Multiply_Old</span><span class="p">(</span><span class="kt">float</span> <span class="o">**</span><span class="n">A</span><span class="p">,</span> <span class="kt">float</span> <span class="o">**</span><span class="n">B</span><span class="p">,</span> <span class="kt">float</span> <span class="o">**</span><span class="n">Res</span><span class="p">,</span> <span class="kt">long</span> <span class="n">dim</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dim</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dim</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">dim</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">dim</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
             <span class="p">{</span>
-                <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">Index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">Index</span> <span class="o">&lt;</span> <span class="n">dim</span><span class="p">;</span> <span class="n">Index</span><span class="o">++</span><span class="p">)</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">Index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">Index</span> <span class="o">&lt;</span> <span class="n">dim</span><span class="p">;</span> <span class="n">Index</span><span class="o">++</span><span class="p">)</span>
                 <span class="p">{</span>
                     <span class="n">Res</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">Index</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">Index</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="o">/*</span> <span class="n">Modified</span> <span class="n">method</span> <span class="n">of</span> <span class="n">calculating</span> <span class="n">floating</span><span class="o">-</span><span class="n">point</span> <span class="n">matrix</span> <span class="n">multiplication</span> <span class="o">*/</span> 
-<span class="n">void</span> <span class="n">Multiply_New</span><span class="p">(</span><span class="nb">float</span> <span class="o">**</span><span class="n">A</span><span class="p">,</span> <span class="nb">float</span> <span class="o">**</span><span class="n">B</span><span class="p">,</span> <span class="nb">float</span> <span class="o">**</span><span class="n">Res</span><span class="p">,</span> <span class="n">long</span> <span class="n">dim</span><span class="p">)</span>
+<span class="cm">/* Modified method of calculating floating-point matrix multiplication */</span> 
+<span class="kt">void</span> <span class="nf">Multiply_New</span><span class="p">(</span><span class="kt">float</span> <span class="o">**</span><span class="n">A</span><span class="p">,</span> <span class="kt">float</span> <span class="o">**</span><span class="n">B</span><span class="p">,</span> <span class="kt">float</span> <span class="o">**</span><span class="n">Res</span><span class="p">,</span> <span class="kt">long</span> <span class="n">dim</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dim</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="n">SM</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dim</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="n">SM</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">dim</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="n">SM</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">dim</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="n">SM</span><span class="p">)</span>
             <span class="p">{</span>
-                <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">dim</span><span class="p">;</span> <span class="n">k</span> <span class="o">+=</span> <span class="n">SM</span><span class="p">)</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">dim</span><span class="p">;</span> <span class="n">k</span> <span class="o">+=</span> <span class="n">SM</span><span class="p">)</span>
                 <span class="p">{</span>
-                    <span class="nb">float</span> <span class="o">*</span><span class="n">rres</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Res</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span> <span class="nb">float</span> <span class="o">*</span><span class="n">rmul1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">];</span>
-                    <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i2</span> <span class="o">&lt;</span> <span class="n">SM</span><span class="p">;</span> <span class="o">++</span><span class="n">i2</span><span class="p">,</span> <span class="n">rres</span> <span class="o">+=</span> <span class="n">dim</span><span class="p">,</span> <span class="n">rmul1</span> <span class="o">+=</span> <span class="n">dim</span><span class="p">)</span>
+                    <span class="kt">float</span> <span class="o">*</span><span class="n">rres</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Res</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span> <span class="kt">float</span> <span class="o">*</span><span class="n">rmul1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">];</span>
+                    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i2</span> <span class="o">&lt;</span> <span class="n">SM</span><span class="p">;</span> <span class="o">++</span><span class="n">i2</span><span class="p">,</span> <span class="n">rres</span> <span class="o">+=</span> <span class="n">dim</span><span class="p">,</span> <span class="n">rmul1</span> <span class="o">+=</span> <span class="n">dim</span><span class="p">)</span>
                     <span class="p">{</span>
-                        <span class="nb">float</span> <span class="o">*</span><span class="n">rmul2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
-                        <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">k2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k2</span> <span class="o">&lt;</span> <span class="n">SM</span><span class="p">;</span> <span class="o">++</span><span class="n">k2</span><span class="p">,</span> <span class="n">rmul2</span> <span class="o">+=</span> <span class="n">dim</span><span class="p">)</span>
+                        <span class="kt">float</span> <span class="o">*</span><span class="n">rmul2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+                        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k2</span> <span class="o">&lt;</span> <span class="n">SM</span><span class="p">;</span> <span class="o">++</span><span class="n">k2</span><span class="p">,</span> <span class="n">rmul2</span> <span class="o">+=</span> <span class="n">dim</span><span class="p">)</span>
                         <span class="p">{</span>
-                            <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">j2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j2</span> <span class="o">&lt;</span> <span class="n">SM</span><span class="p">;</span> <span class="o">++</span><span class="n">j2</span><span class="p">)</span>
+                            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j2</span> <span class="o">&lt;</span> <span class="n">SM</span><span class="p">;</span> <span class="o">++</span><span class="n">j2</span><span class="p">)</span>
                             <span class="p">{</span>
                                 <span class="n">rres</span><span class="p">[</span><span class="n">j2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">rmul1</span><span class="p">[</span><span class="n">k2</span><span class="p">]</span> <span class="o">*</span> <span class="n">rmul2</span><span class="p">[</span><span class="n">j2</span><span class="p">];</span>
 </pre></div>
 </div>
-<p>The BEEBS benchmark software was re-compiled and re-run using the new
-implementations for both floating-point and integer matrix
-multiplications. The following table lists a summary of the
-performance metrics reported for CPU0 in the APU Performance Summary
-panel in the Vitis IDE. Even though only two of the eight benchmarks
-were modified, there was a noticeable difference in the reported
-metrics. The average IPC value increased by 34.9%, while there was a
-substantial drop in L1 data cache miss rate. The read stall cycles
-also decreased dramatically, revealing the reduction in clock cycles
-when the CPU is waiting on a data cache refill.</p>
+<p>The BEEBS benchmark software was re-compiled and re-run using the new implementations for both floating-point and integer matrix multiplications. The following table lists a summary of the performance metrics reported for CPU0 in the APU Performance Summary panel in the Vitis IDE. Even though only two of the eight benchmarks were modified, there was a noticeable difference in the reported metrics. The average IPC value increased by 34.9%, while there was a substantial drop in L1 data cache miss rate. The read stall cycles also decreased dramatically, revealing the reduction in clock cycles when the CPU is waiting on a data cache refill.</p>
 <p><em>Table 5:</em> <strong>CPU0 Performance Summary with Original and Modified Matrix Multipliers</strong></p>
 <table>
 <thead>
-<tr class="header">
+<tr>
+<th rowspan="2">Performance Metric</th>
+<th colspan="3">CPU0 Performance Summary</th>
+</tr>
+<tr>
+<th>Original</th>
+<th>Modified</th>
+<th>Changes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td rowspan="2"><strong>Performance Metric</strong>
-</td>
-<td colspan="3"><strong>CPU0 Performance Summary</strong>
-</td>
-</tr>
-<tr><td><strong>Original</strong>
-</td>
-<td><strong>Modified</strong></td>
-<td><strong>Changes</strong>
-</td>
-</tr>
-<tr >
 <td>CPU Utilization (%)</td>
-<td>
-<p>100.00</p>
-</td>
-<td>
-<p>100.00</p>
-</td>
-<td>
-<p>≈</p>
-</td>
+<td>100.00</td>
+<td>100.00</td>
+<td><p>≈</p></td>
 </tr>
 <tr>
 <td>CPU Instructions Per Cycle</td>
-<td>
-<p>0.43</p>
-</td>
-<td>
-<p>0.58</p>
-</td>
-<td>
-<p>↑</p>
+<td><p>0.43</p></td>
+<td><p>0.58</p></td>
+<td><p>↑</p>
 </td>
 </tr>
-<tr >
+<tr>
 <td>L1 Data Cache Miss Rate (%)</td>
-<td>
-<p>8.24</p>
-</td>
-<td>
-<p>0.64</p>
-</td>
-<td>
-<p>↓↓</p>
-</td>
+<td><p>8.24</p></td>
+<td><p>0.64</p></td>
+<td><p>↓↓</p></td>
 </tr>
 <tr>
 <td>L1 Data Cache Accesses</td>
-<td>
-<p>3484.33M</p>
-</td>
-<td>3653.48M</td>
-<td>
-<p>≈</p>
-</td>
+<td><p>3484.33M</p></td>
+<td>3653.48M</td><td>
+<p>≈</p></td>
 </tr>
 <tr >
 <td>CPU Write Stall Cycles Per Instruction</td>
-<td>
-<p>0.00</p>
-</td>
-<td>
-<p>0.00</p>
-</td>
-<td>
-<p>≈</p>
-</td>
+<td><p>0.00</p></td>
+<td><p>0.00</p></td>
+<td><p>≈</p></td>
 </tr>
 <tr>
-<td>
-<p>CPU Read Stall Cycles Per Instruction</p>
-</td>
-<td>
-<p>0.79</p>
-</td>
-<td>
-<p>0.05</p>
-</td>
-<td>
-<p>↓↓</p>
-</td>
+<td><p>CPU Read Stall Cycles Per Instruction</p></td>
+<td><p>0.79</p></td>
+<td><p>0.05</p></td>
+<td><p>↓↓</p></td>
 </tr>
 </tbody>
-</table><p>The following figure shows the L1 data cache graphs and CPU stall
-cycles per instruction reported in the PS Performance panel. In
-contrast to <a class="reference external" href="#figure-15-performance-analysis-of-beebs-benchmarks---l1-data-cache-stall-cycles-per-instruction">Figure 15: Performance Analysis of BEEBS Benchmarks - L1 Data Cache, Stall Cycles Per Instruction</a>, it becomes clear that the bottlenecks of the code – the
-floating-point and integer matrix multiplications – have been
-dramatically improved. The long periods of low IPC, high L1 data cache
-miss rate, and high CPU read stall cycles toward the end of the
-capture have been shortened and improved considerably.</p>
-<p><em>Figure 17:</em> Performance Analysis of BEEBS Benchmarks with Improved Matrix Multipliers</p>
+</table><p>The following figure shows the L1 data cache graphs and CPU stall cycles per instruction reported in the PS Performance panel. In contrast to <a class="reference external" href="#fig15">Figure 15: Performance Analysis of BEEBS Benchmarks - L1 Data Cache, Stall Cycles Per Instruction</a>, it becomes clear that the bottlenecks of the code– the floating-point and integer matrix multiplications– have been dramatically improved. The long periods of low IPC, high L1 data cache miss rate, and high CPU read stall cycles toward the end of the capture have been shortened and improved considerably.</p>
+<p><em>Figure 17:</em> <strong>Performance Analysis of BEEBS Benchmarks with Improved Matrix Multipliers</strong></p>
 <p><img alt="../../_images/image17.jpeg" src="../../_images/image17.jpeg" /></p>
-<p>This is confirmed with software run times. A summary of the measured
-run-times is also listed in the following table. The run-times of the
-floating-point and integer matrix multiplications were reduced to
-22.8% and 17.0% of their original run-times, respectively.</p>
+<p>This is confirmed with software run times. A summary of the measured run-times is also listed in the following table. The run-times of the floating-point and integer matrix multiplications were reduced to 22.8% and 17.0% of their original run-times, respectively.</p>
 <p><em>Table 6:</em> <strong>Summary of Software Run-Times for Original and Modified Matrix Multipliers</strong></p>
 <table>
 <thead>
-<tr class="header">
+<th rowspan="2">Benchmark</th>
+<th colspan="2">Software Run-Times (ms)</th>
+</tr>
+<tr>
+<th>Original</th>
+<th>Modified</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td rowspan="2"><p><strong>Benchmark</strong></p>
-</td>
-<td colspan="2"><p><strong>Software Run-Times (ms)</strong></p>
-</td>
-</tr>
-<tr class="even"><td>
-<p><strong>Original</strong></p>
-</td>
-<td>
-<p><strong>Modified</strong></p>
-</td>
-</tr>
 <tr class="odd">
 <td>Floating-point matrix multiplication</td>
 <td>
@@ -778,6 +649,15 @@ floating-point and integer matrix multiplications were reduced to
 	  
 	  
 	  <!-- Sphinx Page Footer block -->
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="6-evaluating-high-performance-ports.html" class="btn btn-neutral float-right" title="Evaluating High-Performance Ports" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="4-getting-started-with-SPM.html" class="btn btn-neutral float-left" title="Getting Started with SPM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

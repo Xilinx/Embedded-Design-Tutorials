@@ -1,12 +1,7 @@
 # Performance Checklist
 
- The goal of this appendix is to provide you with a checklist of items
- to consider when evaluating the performance of your Zynq®-7000 SoC
- design. This should by no means be considered an exhaustive list, but
- instead a starting point for things to look out for and possible
- "gotchas" that are not easy to find. The Vitis™ IDE can also be a
- helpful tool in evaluating your system performance, and some of its
- features and benefits are also highlighted here.
+The goal of this appendix is to provide you with a checklist of items to consider when evaluating the performance of your Zynq®-7000 SoC design. This should by no means be considered an exhaustive list, but
+instead a starting point for things to look out for and possible "gotchas" that are not easy to find. The Vitis™ IDE can also be a helpful tool in evaluating your system performance, and some of its features and benefits are also highlighted here.
 
 - **Use SPM:** SPM is ideal for investigating system performance
      without any reliance on prior hardware design work or knowledge.
@@ -64,7 +59,7 @@
      under the configuration of the Processing System 7 (PS7) IP block.
      Note that these settings can be used to re-allocate bandwidth from
      the DDR based on the desired needs of your system. Refer to
-     [Chapter 7: Evaluating DDR Controller Settings](#chapter-7) to see
+     [Evaluating DDR Controller Settings](../docs/7-evaluating-DDR-controller-settings.md) to see
      how this is done as well as how it might affect the DDR bandwidth
      of the CPUs and the HP ports.
 

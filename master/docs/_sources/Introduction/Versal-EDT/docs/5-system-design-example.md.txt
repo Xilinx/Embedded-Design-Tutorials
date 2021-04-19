@@ -278,7 +278,7 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
 
 >**Important:** *This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180).*
 >
->- If you are using the VCK190 board, download the `xilinx-vck190-v2020.2-final.bsp` file from <https://www.xilinx.com/member/vck190_headstart.html>.
+>- If you are using the VCK190 board, download the `xilinx-vck190-es1-v2020.2-final.bsp` file from <https://www.xilinx.com/member/vck190_headstart.html>.
 >
 > - If you are using the VMK180 board, download the VMK180 PetaLinux 2020.2 BSP (xilinx- vmk180-v2020.2-final.bsp) from <https://www.xilinx.com/member/vmk180_headstart.html>.
 

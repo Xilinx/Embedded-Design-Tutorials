@@ -55,7 +55,9 @@
   <link rel="stylesheet" href="../../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/pro.min.css" media="all" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="End-To-End Performance Analysis" href="10-end-to-end-performance-analysis.html" />
+    <link rel="prev" title="Evaluating Memory Hierarchy and the ACP" href="8-evaluating-memory-hierarchy-ACP.html" /> 
 	</head>
 	<body>
 		<div class="xilinx-bs3"/>
@@ -332,7 +334,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Versal ACAP Embedded Design Tutorial</span></p>
+<p class="caption"><span class="caption-text">Versal ACAP</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/1-getting-started.html">Getting Started</a></li>
@@ -343,7 +345,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port with SmartLynq+ Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/1-introduction.html">How Zynq UltraScale+ Devices Offer a Single Chip Solution</a></li>
@@ -355,7 +357,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/7-design1-using-gpio-timer-interrupts.html">Design Example 1: Using GPIOs, Timers, and Interrupts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/8-boot-and-configuration.html">Boot and Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq-7000 EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq-7000 Devices</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/1-introduction.html">Getting Started</a></li>
@@ -367,6 +369,31 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/7-linux-booting-debug.html">Linux Boot Image Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/8-custom-ip-driver-linux.html">Creating Custom IP and Device Drivers for Linux</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Vitis Performance Analysis</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../README.html">About this Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-system-performance-modeling-project.html">System Performance Modeling Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-monitor-framework.html">Monitor Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-getting-started-with-SPM.html">Getting Started with SPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-evaluating-software-performance.html">Evaluating Software Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-evaluating-high-performance-ports.html">Evaluating High-Performance Ports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-evaluating-DDR-controller-settings.html">Evaluating DDR Controller Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-evaluating-memory-hierarchy-ACP.html">Evaluating Memory Hierarchy and the ACP</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using SPA with a Custom Target</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#instrumenting-hardware">Instrumenting Hardware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instantiate-apm-ip">Instantiate APM IP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instantiate-axi-traffic-generator-ip">Instantiate AXI Traffic Generator IP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-to-vitis-ide">Export to Vitis IDE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#instrumenting-software">Instrumenting Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#monitoring-a-custom-target">Monitoring a Custom Target</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="10-end-to-end-performance-analysis.html">End-To-End Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A-performance-checklist.html">Performance Checklist</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master">Master</a></li>
@@ -376,7 +403,7 @@
 			
 			<p class="caption"><span class="caption-text">This Page</span></p>
 				<ul class="current">
-				  <li class="toctree-l1"><a href="../../_sources/SPA-UG/docs/9-working-with-custom-target.md.txt"
+				  <li class="toctree-l1"><a href="../../_sources/SPA-UG/docs/9-using-spa-with-custom-target.md.txt"
 						rel="nofollow">Show Source</a></li>						
 				</ul>
           
@@ -422,13 +449,13 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Working with a Custom Target</li>
+      <li>Using SPA with a Custom Target</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/SPA-UG/docs/9-working-with-custom-target.md.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/SPA-UG/docs/9-using-spa-with-custom-target.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -441,148 +468,185 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="working-with-a-custom-target">
-<h1>Working with a Custom Target<a class="headerlink" href="#working-with-a-custom-target" title="Permalink to this headline">¶</a></h1>
-<p>Working with a Custom Target</p>
-<p>To use the Vitis™ IDE system performance analysis toolbox with your
-design, there are three important items to be aware of: instrumenting
-your software, instrumenting your hardware, and monitoring a live,
-custom target within the Vitis IDE.</p>
+  <div class="section" id="using-spa-with-a-custom-target">
+<h1>Using SPA with a Custom Target<a class="headerlink" href="#using-spa-with-a-custom-target" title="Permalink to this headline">¶</a></h1>
+<p>To use the Vitis™ IDE system performance analysis toolbox with your design, there are three important items to be aware of:</p>
+<ul class="simple">
+<li><p>Instrumenting your hardware</p></li>
+<li><p>Instrumenting your software</p></li>
+<li><p>Monitoring a live, custom target within the Vitis IDE.</p></li>
+</ul>
+<div class="section" id="instrumenting-hardware">
+<h2>Instrumenting Hardware<a class="headerlink" href="#instrumenting-hardware" title="Permalink to this headline">¶</a></h2>
+<p>As long as your design include the AXI Performance Monitor (APM) IP, you can make use of the Vitis IDE performance analysis features to visualize the AXI performance. The Vitis IDE performance analysis can also make use of AXI Traffic Generator IP in your system, if it is configured and connected properly. So, you can create hardware designs similar to the pre-built SPM projects.</p>
+<div class="section" id="instantiate-apm-ip">
+<h3>Instantiate APM IP<a class="headerlink" href="#instantiate-apm-ip" title="Permalink to this headline">¶</a></h3>
+<p>The Zynq UltraScale+ MPSoC has some hardened APM IP blocks in the PS. They can be used to monitor the AXI performance for DDR, CCI, OCM and LPD. Check the yellow blocks in the following diagram.</p>
+<p><img alt="../../_images/X21026-060818.png" src="../../_images/X21026-060818.png" /></p>
+<p>The Vitis IDE performance analysis can make use of the PS built-in APM (blocks in yellow in the diagram above) as well as user-instantiated APM IPs in the PL. You can instantiate the APM in PL to monitor the performance of AXI interfaces between PS and PL for Zynq-7000 devices and Zynq UltraScale+ MPSoCs.</p>
+<p><em>Figure 44:</em> <strong>AXI Performance Monitor</strong></p>
+<p><img alt="../../_images/vivado_apm.png" src="../../_images/vivado_apm.png" /></p>
+<p>The previous figure shows how an instance of an APM appears in a Vivado® Design Suite IP integrator block diagram, as well as its configuration panel. The following steps give an example of adding an IP, connecting it, and configuring it. For more information about the Vivado IP Integrator, see the <em>Vivado Design Suite Tutorial: Embedded Processor Hardware Design</em> <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd=ug940-vivado-tutorial-embedded-design.pdf">UG940</a> and <em>Zynq UltraScale+ MPSoC Embedded Design Tutorial</em> <a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/Introduction/ZynqMPSoC-EDT/README.html">UG1209</a>.</p>
+<ol class="simple">
+<li><p>Add the APM IP to your Vivado design:</p>
+<ul class="simple">
+<li><p>In the IP integrator block diagram, click the <strong>Add IP</strong> button.</p></li>
+<li><p>Search for <strong>AXI Performance Monitor</strong> and double-click it.</p></li>
+</ul>
+</li>
+<li><p>Customize the APM IP.</p>
+<ul class="simple">
+<li><p>Double-click the APM to open the Re-customize IP dialog box. In this dialog box, set the following:</p>
+<ul>
+<li><p>Set <strong>APM Mode</strong> to <strong>Profile</strong>.</p></li>
+<li><p>Set the <strong>Number of Monitor interfaces</strong> to the number of interfaces you want to monitor. For this example, choose <strong>5</strong>.</p></li>
+<li><p>Click <strong>OK</strong> to close the window.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Connect the APM to your design:</p>
+<ul class="simple">
+<li><p>Connect <strong>S_AXI</strong> to the General Purpose AXI Interface on the Processing System (via AXI interconnect). You can use this interface to read and write APM registers from PS.</p></li>
+<li><p>Connect <strong>s_axi_aclk</strong> and <strong>s_axi_aresetn</strong> to the clock and reset associated with <strong>S_AXI</strong> above.</p></li>
+<li><p>Connect the <strong>SLOT_x_AXI</strong> ports (where x=0…4) to any AXI interfaces you want to monitor, such as S_AXI_HPx, and ACP on Zynq-7000 devices, and S_AXI_HPx, S_AXI_HPCx, or S_AXI_ACE on Zynq UltraScale+ MPSoCs.</p></li>
+<li><p>Connect all inputs <strong>slot_x_axi_aclk</strong> and <strong>slot_x_axi_aresetn</strong> to the appropriate clocks and resets. They are used for the monitor AXI interfaces.</p></li>
+<li><p>Connect <strong>core_aclk</strong> and <strong>core_aresetn</strong> to the clock/reset with the highest clock frequency.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="instantiate-axi-traffic-generator-ip">
+<h3>Instantiate AXI Traffic Generator IP<a class="headerlink" href="#instantiate-axi-traffic-generator-ip" title="Permalink to this headline">¶</a></h3>
+<p>If you have not implemented your traffic IP during the system performance evaluation, you can use the AXI Traffic Generator to mimic its throughput to test the system performance. The AXI Traffic Generator is optional to SPA.</p>
+<p>Follow these steps to add, configure, and connect the ATG IP to your Vivado design.</p>
+<ol>
+<li><p>Add ATG IP to your Vivado design:</p>
+<ul class="simple">
+<li><p>In the IP integrator block diagram, click the <strong>Add IP</strong> button.</p></li>
+<li><p>Search for <strong>AXI Traffic Generator</strong> and double-click it.</p></li>
+</ul>
+</li>
+<li><p>Customize the ATG IP</p>
+<blockquote>
+<div><p><strong><em>Note</em>:</strong> You can use most of the default ATG settings. Note that the master interface of the ATG should match the width of the AXI interface test.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Double-click the ATG to open the Re-customize IP dialog box. In this dialog box, set the following:</p>
+<ul>
+<li><p>Set <strong>Data Width</strong> of <strong>Master Interface</strong> section to the AXI interface width you want to test. For this example, set it to <strong>128</strong>. Change the settings accordingly if the AXI interface you want to monitor has some special settings.</p></li>
+<li><p>Click <strong>OK</strong> to close the window.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Connect the ATG IP to your design by doing the following:</p>
+<ul class="simple">
+<li><p>Connect <strong>S_AXI</strong> to the General Purpose AXI Interface on the PS (via AXI interconnect). You can use this interface to read and write APM registers from PS.</p></li>
+<li><p>Connect <strong>s_axi_aclk</strong> and <strong>s_axi_aresetn</strong> to the clock and reset associated with <strong>S_AXI</strong> above.</p></li>
+<li><p>Connect the <strong>M_AXI</strong> ports to any AXI interfaces you want to test, such as S_AXI_HPx, and ACP on Zynq-7000 devices and S_AXI_HPx_FPD, S_AXI_HPCx, or S_AXI_ACE on Zynq UltraScale+ MPSoCs (through AXI Interconnect or AXI SmartConnect).</p></li>
+<li><p>Connect <strong>irq_out</strong> to the PL-PS IRQ input of PS. You can connect it through a Concat IP, if there are multiple interrupt inputs to the PS.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="export-to-vitis-ide">
+<h3>Export to Vitis IDE<a class="headerlink" href="#export-to-vitis-ide" title="Permalink to this headline">¶</a></h3>
+<p>To configure the Vitis IDE to read the hardware design, generate a platform, and read the APM and ATG related information, follow these steps:</p>
+<ul class="simple">
+<li><p>In the Flow Navigator pane, click <strong>Generate Bitstream</strong>.</p></li>
+<li><p>After the bitstream is generated, export the design using the <strong>File → Export→ Export Hardware → Include bitstream</strong>.</p></li>
+<li><p>Select the name and path to save this XSA.</p></li>
+<li><p>After exporting the design, launch the Vitis IDE by selecting <strong>Tools → Launch Vitis IDE</strong>.</p></li>
+</ul>
+<p>The following up steps in Vitis IDE are described in <a class="reference external" href="#monitoring-a-custom-target">Monitoring a Custom Target</a> Chapter.</p>
+</div>
+</div>
 <div class="section" id="instrumenting-software">
 <h2>Instrumenting Software<a class="headerlink" href="#instrumenting-software" title="Permalink to this headline">¶</a></h2>
-<p>Software run-times, bandwidth, and average latency can be calculated
-using straightforward instrumentation available in the standalone BSP
-defined in the xtime_l.h header. Before and after every benchmark, a
-call to XTime_GetTime() was inserted. The difference between these two
-XTime values was converted to seconds (or ms) using the
-COUNTS_PER_SECOND value provided in xtime_l.h. Since the amount of
-data sent during any given benchmark is known, you can also calculate
-the achieved bandwidth and average latency during that particular
-benchmark.</p>
+<p>The processing system of Zynq-7000 devices and Zynq UltraScale+ MPSoCs have built-in modules to monitor the characteristics like processor utilization, CPU instructions per cycle, L1 cache miss rate, L1 data cache access per ms, CPU write stall cycle per instruction, and CPU read stall cycle per instructions. They are reported during live monitoring with any PS applications.</p>
+<p>Monitoring function runtime, throughput, and latency are metrics to measure the software performance. They can be calculated using straightforward instrumentation available in the standalone BSP defined in the <strong>xtime_l.h</strong> header.</p>
+<p>Insert a call to <code class="docutils literal notranslate"><span class="pre">XTime_GetTime()</span></code> before and after every benchmark. The difference between these two XTime values can be converted to seconds (or ms) using the <strong>COUNTS_PER_SECOND</strong> value provided in <code class="docutils literal notranslate"><span class="pre">xtime_l.h</span></code>. As the amount of data sent during any given benchmark is known, you can also calculate the achieved bandwidth and average latency during that particular benchmark.</p>
 <p>Following is a sample instrumented C/C++ software code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdlib.h&gt; </span>
-<span class="c1">#include &lt;stdio.h&gt; </span>
-<span class="c1">#include &lt;unistd.h&gt;</span>
-<span class="c1">#include &quot;xtime_l.h&quot;	// XTime_GetTime()</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="c1"> </span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> </span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;xtime_l.h&quot;</span><span class="c1">	// XTime_GetTime()</span><span class="cp"></span>
 
-<span class="o">//</span> <span class="n">Macros</span>
-<span class="c1">#define TIMEDIFF(t1,t2)	(t2 - t1)</span>
-<span class="c1">#define MILLISECONDS(t) (1000.0 * t / COUNTS_PER_SECOND)</span>
+<span class="c1">// Macros</span>
+<span class="cp">#define TIMEDIFF(t1,t2)	(t2 - t1)</span>
+<span class="cp">#define MILLISECONDS(t) (1000.0 * t / COUNTS_PER_SECOND)</span>
 
-<span class="o">//</span> <span class="n">Globals</span>
+<span class="c1">// Globals</span>
 <span class="n">XTime</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">;</span>
 
-<span class="o">//</span> <span class="n">Start</span> <span class="n">a</span> <span class="n">test</span> <span class="n">void</span> <span class="n">startTest</span><span class="p">()</span> 
+<span class="c1">// Start a test </span>
+<span class="kt">void</span> <span class="nf">startTest</span><span class="p">()</span> 
 <span class="p">{</span> 
-   <span class="n">XTime_GetTime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">start</span><span class="p">);</span>
+    <span class="n">XTime_GetTime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">start</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="o">//</span> <span class="n">End</span> <span class="n">a</span> <span class="n">test</span> <span class="n">void</span> <span class="n">endTest</span><span class="p">()</span> 
+<span class="c1">// End a test </span>
+<span class="kt">void</span> <span class="nf">endTest</span><span class="p">()</span> 
 <span class="p">{</span> 
-   <span class="n">XTime_GetTime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">end</span><span class="p">);</span>
-   <span class="n">double</span> <span class="n">time_curr</span> <span class="o">=</span> <span class="n">TIMEDIFF</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span> <span class="n">double</span> <span class="n">msec</span> <span class="o">=</span> <span class="n">MILLISECONDS</span><span class="p">(</span><span class="n">time_curr</span><span class="p">);</span> <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Run-time = </span><span class="si">%.2f</span><span class="s2"> msec...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">msec</span><span class="p">);</span>
+    <span class="n">XTime_GetTime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">end</span><span class="p">);</span>
+    <span class="kt">double</span> <span class="n">time_curr</span> <span class="o">=</span> <span class="n">TIMEDIFF</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span> 
+    <span class="kt">double</span> <span class="n">msec</span> <span class="o">=</span> <span class="n">MILLISECONDS</span><span class="p">(</span><span class="n">time_curr</span><span class="p">);</span> 
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Run-time = %.2f msec...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">msec</span><span class="p">);</span>
 
-   <span class="o">//</span> <span class="n">Achieved</span> <span class="n">Bandwidth</span> <span class="o">=</span> <span class="p">(</span><span class="n">total</span> <span class="nb">bytes</span> <span class="n">transferred</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">msec</span><span class="p">)</span>
-   <span class="o">//</span> <span class="n">Average</span> <span class="n">Latency</span> <span class="o">=</span> <span class="p">(</span><span class="n">msec</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">total</span> <span class="n">memory</span> <span class="n">accesses</span><span class="p">)</span>
+    <span class="c1">// Achieved Bandwidth = (total bytes transferred) / (msec)</span>
+    <span class="c1">// Average Latency = (msec) / (total memory accesses)</span>
+<span class="p">}</span>
+ 
+<span class="c1">// Dummy test</span>
+<span class="kt">void</span> <span class="nf">runSomething</span><span class="p">(</span><span class="kt">int</span> <span class="n">time</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="n">sleep</span><span class="p">(</span><span class="n">time</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="o">//</span> <span class="n">Dummy</span> <span class="n">test</span>
-<span class="n">void</span> <span class="n">runSomething</span><span class="p">(</span><span class="nb">int</span> <span class="n">time</span><span class="p">)</span> 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> 
 <span class="p">{</span> 
-   <span class="n">sleep</span><span class="p">(</span><span class="n">time</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span> 
-<span class="p">{</span> 
-   <span class="n">startTest</span><span class="p">();</span> <span class="n">runSomething</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">endTest</span><span class="p">();</span>
-   <span class="n">startTest</span><span class="p">();</span> <span class="n">runSomething</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="n">endTest</span><span class="p">();</span>
-   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">startTest</span><span class="p">();</span> <span class="n">runSomething</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">endTest</span><span class="p">();</span>
+    <span class="n">startTest</span><span class="p">();</span> <span class="n">runSomething</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="n">endTest</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="instrumenting-hardware">
-<h2>Instrumenting Hardware<a class="headerlink" href="#instrumenting-hardware" title="Permalink to this headline">¶</a></h2>
-<p>If you would like to use the performance analysis features in the
-Vitis IDE, you will need to include an AXI Performance Monitor (APM)
-in your programmable logic (PL) design. Note that an APM was already
-included in the System Performance Modeling (SPM) fixed bitstream
-design (see <a class="reference external" href="#spm-software">SPM Software</a>).</p>
-<p><em>Figure 44:</em> AXI Performance Monitor – Instance and Customization</p>
-<p><img alt="../../_images/image432.jpeg" src="../../_images/image432.jpeg" /></p>
-<p>The previous figure shows how an instance of an APM appears in a
-Vivado® Design Suite IP integrator block diagram, as well as its
-configuration panel. To add this in Vivado IP integrator, perform the
-following steps to instrument your PL design with an APM:</p>
-<ol>
-<li><p>In the IP integrator block diagram, click the <strong>Add IP</strong> button.</p></li>
-<li><p>Search for “AXI Performance Monitor” and double-click it.</p></li>
-<li><p>Double-click the APM to open the Re-customize IP dialog box. In this
-dialog box, set the following:</p>
-<p>a.  Check <strong>Profile</strong> under <strong>APM Mode</strong>.</p>
-<p>b.  Set the <strong>Number of Monitor interfaces</strong> to <strong>5</strong>.</p>
-</li>
-<li><p>Connect the APM to your design by doing the following:</p>
-<p>a.  Connect S_AXI to either GP0 or GP1 on the Zynq®-7000 Processing
-System (via AXI interconnect).</p>
-<p>b.  Connect the SLOT_x_AXI ports (where x=0…4) to HP0, HP1, HP2,
-HP3, and ACP. If any of those interfaces are not used in your
-design, then leave the corresponding slot unconnected.</p>
-<p>c.  Connect s_axi_aclk and s_axi_aresetn to the clock and reset
-associated with GP0/GP1.</p>
-<p>d.  Connect all inputs slot_x_axi_aclk and slot_x_axi_aresetn to
-the appropriate clocks and resets.</p>
-<p>e.  Connect core_aclk and core_aresetn to the clock/reset with the
-highest clock frequency.</p>
-</li>
-<li><p>Generate the bitstream for this design. In the Flow Navigator pane,
-click <strong>Generate Bitstream</strong>.</p></li>
-<li><p>After the bitstream is generated, export the design using the <strong>File → Export→ Export Hardware→ Fixed → Include bitstream</strong>.</p></li>
-<li><p>Select the name and path to save this XSA.</p></li>
-<li><p>After exporting the design, launch the Vitis IDE by selecting <strong>Tools → Launch Vitis IDE</strong>.</p></li>
-</ol>
+<p>The software run time calculation is controlled by the application itself. The Vitis IDE would show a PS-related performance matrix from the <strong>Performance Analysis</strong> perspective. Check the steps in <a class="reference external" href="#monitoring-a-custom-target">Monitoring a Custom Target</a> to configure this. Function level software runtime can also be checked by profiling tools. Profiling is beyond the scope of this document. See the <em>Vitis Unified Platform Embedded Software Development Guide</em> <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/profileanalyze.html">UG1400</a> for more details.</p>
 </div>
 <div class="section" id="monitoring-a-custom-target">
 <h2>Monitoring a Custom Target<a class="headerlink" href="#monitoring-a-custom-target" title="Permalink to this headline">¶</a></h2>
-<p>The Vitis IDE provides the capability to monitor a running target,
-similar to what is described in <a class="reference external" href="#chapter-10">Chapter 10: End-To-End Performance Analysis</a>. There are two techniques and both are applicable regardless of the target operating system. The difference
-is whether a Hardware Platform Specification is imported into the
-Vitis IDE. This is a hardware design created by Vivado tools and then
-imported into the Vitis IDE as a project.</p>
-<p>If your design is defined in Vivado, then it is recommended to create
-a hardware platform specification based on that design. You can then
-do performance analysis based on that specification. The steps to use
-this path are as follows:</p>
+<p>The Vitis IDE provides the capability to monitor a running target, as well as controlling the ATG IP in the hardware design.</p>
+<p>Prepare a platform project before running the performance analysis because the Vitis IDE must be able to understand your hardware setup. For more details about creating a platform project, see the <em>Vitis Unified Platform Embedded Software Development Guide</em> <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/profileanalyze.html">UG1400</a>.</p>
 <ol class="simple">
-<li><p>Select <strong>Run → Debug Configurations</strong>.</p></li>
-<li><p>Double-click <strong>Single Application Debug Configuration</strong>.</p></li>
-<li><p>Select Performance Analysis in the configuration as shown in the following figure.</p></li>
-<li><p>Provide the XSA that was created using Vivado tools in the hardware platform tab.</p></li>
-<li><p>Set the performance analysis and ATG configuration, if required.</p></li>
-<li><p>Click <strong>Run</strong> to see the performance analysis</p></li>
+<li><p>Select <strong>File -&gt; New -&gt; Platform Project</strong></p></li>
+<li><p>Click <strong>Next</strong> in the welcome window.</p></li>
+<li><p>Select the exported <strong>XSA</strong> from the Vivado IDE. Keep default settings of software specification and click <strong>Finish</strong>.</p></li>
+<li><p>Click the hammer button to build the platform.</p></li>
 </ol>
-<p><em>Figure 45:</em> Target Setup in Debug Configuration (Using Imported Hardware Platform Specification)</p>
-<p><img alt="../../_images/image441.jpeg" src="../../_images/image441.jpeg" /></p>
-<p>The previous figure shows the target setup used in <a class="reference external" href="#chapter-10">Chapter 10: End-To-End Performance Analysis</a> to
-connect to and monitor the Zynq-7000 SoC Base Targeted Reference
-Design (TRD). Note that all check boxes are unchecked. Because the TRD
-uses an SD card boot, the system is already reset and configured.</p>
-<p>If you cannot create a hardware platform specification, you can still
-do performance analysis in the Vitis IDE. The steps to use this path
-are as follows:</p>
+<p>If you need to instrument software, you have to create a software application project with the source code you created. If you don’t need to evaluate software performance, you can create a hello world application instead to create a hello_world application as a stub to create the Run Configurations with Performance Analysis functions.</p>
+<p>The steps to use performance monitor and ATG in Vitis IDE are as follows:</p>
 <ol>
-<li><p>Select <strong>Run → Debug Configurations</strong> to create a performance analysis configuration.</p></li>
-<li><p>Select <strong>Single Application Debug Configuration</strong>.</p></li>
-<li><p>Set Debug Type to <strong>Attach to running target</strong>.</p></li>
-<li><p>Select the Performance Analysis check box.</p></li>
-<li><p>Set PS Processor Frequency (MHz) to the PS clock frequency used in your design.</p></li>
-<li><p>If you have an APM in your design, do the following:</p>
-<p>a.  Select <strong>Enable APM Counters</strong>.</p>
-<p>b.  Set APM Frequency (MHz) to the frequency of the clock connected
-to s_axi_aclk on the APM core in your design.</p>
-<p>c.  Set APM Base Address to the base address of the APM in your
-design.</p>
+<li><p>Right-click the software application project and select <strong>Run As → Run Configurations</strong>.</p>
+<p><em>Figure 45:</em> <strong>Target Setup in Debug Configuration (Using Imported Hardware Platform Specification)</strong></p>
+<p><img alt="../../_images/vitis_run_configuration.png" src="../../_images/vitis_run_configuration.png" /></p>
 </li>
-<li><p>Click <strong>Debug</strong> to open the Performance Analysis perspective.</p></li>
+<li><p>Create the configuration by double-clicking <strong>Single Application Debug</strong>.</p></li>
+<li><p>Enable <strong>Performance Analysis</strong> in the configuration as shown in the following figure.</p></li>
+<li><p>Set the <strong>Performance Analysis Configuration</strong> and <strong>ATG Configuration</strong>, if required.</p>
+<ul>
+<li><p>Enable or disable APM by clicking <strong>Edit</strong> of Performance Analysis Configuration</p></li>
+<li><p>Enable or disable your custom APM by clicking <strong>Edit</strong> button of Configure APM.</p>
+<p><img alt="../../_images/vitis_performance_analysis_configuration.png" src="../../_images/vitis_performance_analysis_configuration.png" /></p>
+<p>The APM instance name will show in the following list.</p>
+<p><img alt="../../_images/vitis_apm.png" src="../../_images/vitis_apm.png" /></p>
+</li>
+<li><p>Set up the ATG by clicking <strong>Edit</strong> on the ATG Configuration</p>
+<p><img alt="../../_images/vitis_atg_configuration.png" src="../../_images/vitis_atg_configuration.png" /></p>
+</li>
+</ul>
+</li>
+<li><p>Click <strong>Run</strong> to launch the run and see the performance analysis.</p></li>
 </ol>
 </div>
 </div>
@@ -600,6 +664,15 @@ design.</p>
 	  
 	  
 	  <!-- Sphinx Page Footer block -->
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="10-end-to-end-performance-analysis.html" class="btn btn-neutral float-right" title="End-To-End Performance Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="8-evaluating-memory-hierarchy-ACP.html" class="btn btn-neutral float-left" title="Evaluating Memory Hierarchy and the ACP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

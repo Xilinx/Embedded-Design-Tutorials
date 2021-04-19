@@ -23,7 +23,7 @@ Embedded Design Tutorials
    
 .. toctree::
    :maxdepth: 3
-   :caption: Versal ACAP Embedded Design Tutorial
+   :caption: Versal ACAP
    :hidden:
 
    ../Introduction/Versal-EDT/README
@@ -39,7 +39,7 @@ Embedded Design Tutorials
 
 .. toctree::
    :maxdepth: 3
-   :caption: Zynq UltraScale+ MPSoC EDT
+   :caption: Zynq UltraScale+ MPSoC
    :hidden:
 
    ../Introduction/ZynqMPSoC-EDT/README
@@ -56,7 +56,7 @@ Embedded Design Tutorials
 
 .. toctree::
    :maxdepth: 3
-   :caption: Zynq-7000 EDT
+   :caption: Zynq-7000 Devices
    :hidden:
 
    ../Introduction/Zynq7000-EDT/README
@@ -69,9 +69,24 @@ Embedded Design Tutorials
    ../Introduction/Zynq7000-EDT/7-linux-booting-debug
    ../Introduction/Zynq7000-EDT/8-custom-ip-driver-linux
 
-   
 
-   
+.. toctree::
+   :maxdepth: 3
+   :caption: Vitis Performance Analysis
+   :hidden:
+
+   ../SPA-UG/README
+   ../SPA-UG/docs/1-introduction
+   ../SPA-UG/docs/2-system-performance-modeling-project
+   ../SPA-UG/docs/3-monitor-framework
+   ../SPA-UG/docs/4-getting-started-with-SPM
+   ../SPA-UG/docs/5-evaluating-software-performance
+   ../SPA-UG/docs/6-evaluating-high-performance-ports
+   ../SPA-UG/docs/7-evaluating-DDR-controller-settings
+   ../SPA-UG/docs/8-evaluating-memory-hierarchy-ACP
+   ../SPA-UG/docs/9-using-spa-with-custom-target
+   ../SPA-UG/docs/10-end-to-end-performance-analysis
+   ../SPA-UG/docs/A-performance-checklist
 
 .. list-table:: 
    :widths: 10 3 15
@@ -81,17 +96,21 @@ Embedded Design Tutorials
      - Board
      - Description
 	 
-   * - `Versal ACAP Embedded Design Tutorial (UG1305) <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Versal-EDT>`__
+   * - `Versal ACAP Embedded Design Tutorial (UG1305) <https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/Introduction/Versal-EDT/README.html>`__
      - Versal VMK180/VCK190
      - Provides an introduction for using the Xilinx® Vivado® Design Suite flow and the Vitis™ unified software platform for embedded development on a Versal™ VMK180/VCK190 evaluation board.
 
-   * - `Zynq UltraScale+ MPSoC Embedded Design Tutorial (UG1209) <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT>`__
+   * - `Zynq UltraScale+ MPSoC Embedded Design Tutorial (UG1209) <https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/Introduction/ZynqMPSoC-EDT/README.html>`__
      - ZCU102 Rev 1.0/1.1
      - Provides an introduction to using the Xilinx Vivado Design Suite flow and the Vitis unified software platform for embedded development on a Zynq UltraScale+ MPSoC device. 
 
-   * - `Zynq-7000 Embedded Design Tutorial (UG1165) <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT>`__
+   * - `Zynq-7000 Embedded Design Tutorial (UG1165) <https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/Introduction/Zynq7000-EDT/README.html>`__
      - ZC702 Rev 1.0
      - Provides an introduction to using the Xilinx Vivado Design Suite flow and the Vitis unified software platform for embedded development on a Zynq-7000 SoC device. 
+
+   * - `Vitis Software Platform User Guide: Performance Analysis (UG1145) <https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/SPA-UG/README.html>`__
+     - ZC702 Rev 1.0, ZCU102 Rev 1.0/1.1
+     - Describes the performance analysis toolbox which can be used for early exploration of hardware and software systems.
                  
  
  

@@ -55,7 +55,9 @@
   <link rel="stylesheet" href="../../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/pro.min.css" media="all" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using SPA with a Custom Target" href="9-using-spa-with-custom-target.html" />
+    <link rel="prev" title="Evaluating DDR Controller Settings" href="7-evaluating-DDR-controller-settings.html" /> 
 	</head>
 	<body>
 		<div class="xilinx-bs3"/>
@@ -332,7 +334,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Versal ACAP Embedded Design Tutorial</span></p>
+<p class="caption"><span class="caption-text">Versal ACAP</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/1-getting-started.html">Getting Started</a></li>
@@ -343,7 +345,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port with SmartLynq+ Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/docs/A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/1-introduction.html">How Zynq UltraScale+ Devices Offer a Single Chip Solution</a></li>
@@ -355,7 +357,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/7-design1-using-gpio-timer-interrupts.html">Design Example 1: Using GPIOs, Timers, and Interrupts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/8-boot-and-configuration.html">Boot and Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq-7000 EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq-7000 Devices</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/1-introduction.html">Getting Started</a></li>
@@ -366,6 +368,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/6-using-hp-port.html">Using the HP Slave Port with AXI CDMA IP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/7-linux-booting-debug.html">Linux Boot Image Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/8-custom-ip-driver-linux.html">Creating Custom IP and Device Drivers for Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vitis Performance Analysis</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../README.html">About this Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-system-performance-modeling-project.html">System Performance Modeling Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-monitor-framework.html">Monitor Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-getting-started-with-SPM.html">Getting Started with SPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-evaluating-software-performance.html">Evaluating Software Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-evaluating-high-performance-ports.html">Evaluating High-Performance Ports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-evaluating-DDR-controller-settings.html">Evaluating DDR Controller Settings</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Evaluating Memory Hierarchy and the ACP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#assess-memory-performance">Assess Memory Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-size-and-locality">Data Size and Locality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shared-l2-cache">Shared L2 Cache</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="9-using-spa-with-custom-target.html">Using SPA with a Custom Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-end-to-end-performance-analysis.html">End-To-End Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A-performance-checklist.html">Performance Checklist</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
@@ -443,27 +465,14 @@
             
   <div class="section" id="evaluating-memory-hierarchy-and-the-acp">
 <h1>Evaluating Memory Hierarchy and the ACP<a class="headerlink" href="#evaluating-memory-hierarchy-and-the-acp" title="Permalink to this headline">¶</a></h1>
-<p>The System Performance Modeling (SPM) design can be used to evaluate
-the performance effects of the Zynq®-7000 SoC cache. You can assess
-baseline performance using software only, and then you can evaluate
-the effects of traffic on the Accelerator Coherency Port (ACP). While
-running software only can produce fairly predictable memory
-performance, introducing other traffic activity into the system may
-lead to less intuitive results. Specifically, CPU and ACP traffic have
-the potential to impact each other at the shared L2 cache. The SPM
-design allows you to do this analysis very easily.</p>
+<p>The System Performance Modeling (SPM) design can be used to evaluate the performance effects of the Zynq®-7000 SoC cache. You can assess baseline performance using software only, and then you can evaluate the effects of traffic on the Accelerator Coherency Port (ACP). While running software only can produce fairly predictable memory performance, introducing other traffic activity into the system may lead to less intuitive results. Specifically, CPU and ACP traffic have the potential to impact each other at the shared L2 cache. The SPM design allows you to do this analysis very easily.</p>
 <div class="section" id="assess-memory-performance">
 <h2>Assess Memory Performance<a class="headerlink" href="#assess-memory-performance" title="Permalink to this headline">¶</a></h2>
-<p>To begin the evaluation, the SPM design can be used to assess a
-baseline performance using software only. An application to use for
-this evaluation is the memory stride benchmarks program, one of the
-pre-compiled executables that comes with the SPM project.</p>
-<p>The following figure shows how this was defined in the Vitis™ IDE
-using the memory stride software executable (see <a class="reference external" href="#spm-software">SPM Software</a>). This software was instrumented to calculate
-bandwidth and average latency (see <a class="reference external" href="#instrumenting-software">Instrumenting Software</a>).</p>
-<p><em>Figure 33:</em> Application Setup using Memory Stride Software</p>
+<p>To begin the evaluation, the SPM design can be used to assess a baseline performance using software only. An application to use for this evaluation is the memory stride benchmarks program, one of the pre-compiled executables that comes with the SPM project.</p>
+<p>The following figure shows how this was defined in the Vitis™ IDE using the memory stride software executable (see <a class="reference external" href="../docs/2-system-performance-modeling-project.html#spm-software">SPM Software</a>). This software was instrumented to calculate bandwidth and average latency (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.html#instrumenting-software">Instrumenting Software</a>).</p>
+<p><em>Figure 33:</em> <strong>Application Setup using Memory Stride Software</strong></p>
 <p><img alt="../../_images/image321.jpeg" src="../../_images/image321.jpeg" /></p>
-<p><em>Table 7:</em> <strong>Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</strong></p>
+<div id="table7"><p><em>Table 7:</em> <strong>Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</strong></p>
 <table>
 <thead>
 <tr>
@@ -627,7 +636,7 @@ bandwidth and average latency (see <a class="reference external" href="#instrume
 </td>
 </tr>
 </tbody>
-</table><p><em>Table 8:</em> <strong>Software-Only Latency Results for Memory Stride Benchmarks (in nsec)</strong></p>
+</table></div><div id="table8"><p><em>Table 8:</em> <strong>Software-Only Latency Results for Memory Stride Benchmarks (in nsec)</strong></p>
 <table>
 <thead>
 <tr>
@@ -669,149 +678,51 @@ bandwidth and average latency (see <a class="reference external" href="#instrume
 </td>
 </tr>
 </tbody>
-</table><p>Using no traffic in the Programmable Logic (PL), bandwidth results (in
-MB/sec) for the software- only tests are listed in <a class="reference external" href="#_bookmark47">Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</a>, while latency
-results (in nsec) are shown in <a class="reference external" href="#_bookmark48">Table 8: Software-Only Latency Results for Memory Stride Benchmarks (in nsec)</a>. Three different working set sizes were used to
-specifically test the bandwidth of different stages of the memory
-hierarchy: 4 KB, 64 KB, and 1024 KB. These are the three sizes used by
-the pre-compiled memory stride executable in the SPM project. The
-locality of these data arrays is known based on their size and the
-fact that there is little else in the heap used by the program.</p>
-<p>Within a working set size, the highest bandwidths are achieved by the
-linear bandwidth tests as they can take advantage of the 32-byte cache
-lines. Operations such as copy and read/write are generally slower
-because they involve a mix of read and write operations. Among the
-three different set sizes, the 4 KB array sustains the highest
-bandwidth while the 1024 KB array sustains the lowest bandwidth.</p>
-<p>There are 36 total tests performed, as the 12 benchmarks listed in
-<a class="reference external" href="#_bookmark47">Table 7: Software-Only Bandwidth Results for Memory
-Stride Benchmarks (in MB/sec)</a> and <a class="reference external" href="#_bookmark48">Table 8: Software-Only Latency Results for Memory Stride Benchmarks (in nsec)</a> are each run on the three
-different data array sizes. Since a sleep time of one second was
-inserted between each test, the CPU utilization gives a clear view of
-when these benchmarks were run. The following figure helps orient the
-timeline for the results. The three data sizes were run from smallest
-to largest within each benchmark, which can be seen in the value and
-length of the utilization of CPU0.</p>
-<p><em>Figure 34:</em> PS Performance Graphs for Memory Stride Benchmarks</p>
+</table></div><p>Using no traffic in the Programmable Logic (PL), bandwidth results (in MB/sec) for the software- only tests are listed in <a class="reference external" href="#table7">Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</a>, while latency results (in nsec) are shown in <a class="reference external" href="#table8">Table 8: Software-Only Latency Results for Memory Stride Benchmarks (in nsec)</a>. Three different working set sizes were used to specifically test the bandwidth of different stages of the memory hierarchy: 4 KB, 64 KB, and 1024 KB. These are the three sizes used by the pre-compiled memory stride executable in the SPM project. The locality of these data arrays is known based on their size and the fact that there is little else in the heap used by the program.</p>
+<p>Within a working set size, the highest bandwidths are achieved by the linear bandwidth tests as they can take advantage of the 32-byte cache lines. Operations such as copy and read/write are generally slower because they involve a mix of read and write operations. Among the three different set sizes, the 4 KB array sustains the highest bandwidth while the 1024 KB array sustains the lowest bandwidth.</p>
+<p>There are 36 total tests performed, as the 12 benchmarks listed in <a class="reference external" href="#table7">Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</a> and <a class="reference external" href="#table8">Table 8: Software-Only Latency Results for Memory Stride Benchmarks (in nsec)</a> are each run on the three different data array sizes. Since a sleep time of one second was inserted between each test, the CPU utilization gives a clear view of when these benchmarks were run. The following figure helps orient the timeline for the results. The three data sizes were run from smallest to largest within each benchmark, which can be seen in the value and length of the utilization of CPU0.</p>
+<p><em>Figure 34:</em> <strong>PS Performance Graphs for Memory Stride Benchmarks</strong></p>
 <p><img alt="../../_images/image33.jpeg" src="../../_images/image33.jpeg" /></p>
-<p>The previous figure also shows three other graphs reported in the PS
-Performance panel, including: L1 Data Cache Miss Rate, and CPU
-Write/Read Stall Cycles Per Instruction. While the periodic nature of
-the memory stride benchmarks is reflected in these graphs, these three
-graphs can also provide information as to where the data is being
-retrieved. Every third benchmark has a L1 data cache miss rate of 0% -
-that was when the 4 KB working set size was used. The other two set
-sizes do not fit in the L1 data cache and, therefore, have at or near
-100% miss rates.</p>
-<p>The software impact of these cache misses can be seen in the Stall
-Cycles Per Instruction. A higher number of stall cycles means the
-processor is spending more cycles waiting for either a memory write
-(write) or a data cache refill (read). This would, in turn, lower the
-effective bandwidth of that benchmark. An example is the Linear
-Bandwidth – Copy benchmark which was performed between approximately
-10-11s. The high number of CPU write/read stall cycles per instruction
-during this time shows why it sustains one of the lowest bandwidths of
-all memory stride benchmarks (33.23 MB/s; see <a class="reference external" href="#_bookmark47">Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</a>.</p>
+<p>The previous figure also shows three other graphs reported in the PS Performance panel, including: L1 Data Cache Miss Rate, and CPU Write/Read Stall Cycles Per Instruction. While the periodic nature of
+the memory stride benchmarks is reflected in these graphs, these three graphs can also provide information as to where the data is being retrieved. Every third benchmark has a L1 data cache miss rate of 0% - that was when the 4 KB working set size was used. The other two set sizes do not fit in the L1 data cache and, therefore, have at or near 100% miss rates.</p>
+<p>The software impact of these cache misses can be seen in the Stall Cycles Per Instruction. A higher number of stall cycles means the processor is spending more cycles waiting for either a memory write (write) or a data cache refill (read). This would, in turn, lower the effective bandwidth of that benchmark. An example is the Linear Bandwidth – Copy benchmark which was performed between approximately 10-11s. The high number of CPU write/read stall cycles per instruction during this time shows why it sustains one of the lowest bandwidths of all memory stride benchmarks (33.23 MB/s; see <a class="reference external" href="#_bookmark47">Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</a>.</p>
 </div>
 <div class="section" id="data-size-and-locality">
 <h2>Data Size and Locality<a class="headerlink" href="#data-size-and-locality" title="Permalink to this headline">¶</a></h2>
-<p>To better visualize the performance of the memory hierarchy, the
-working set size used in the memory stride tests was swept across a
-range of values between 1 KB and 4096 KB. This enables a clear view of
-how data size and locality can affect the bandwidth and latency
-achieved by the CPU.</p>
-<p><em>Figure 35:</em> CPU Memory Bandwidth Achieved During Memory Stride Tests</p>
+<p>To better visualize the performance of the memory hierarchy, the working set size used in the memory stride tests was swept across a range of values between 1 KB and 4096 KB. This enables a clear view of how data size and locality can affect the bandwidth and latency achieved by the CPU.</p>
+<p><em>Figure 35:</em> <strong>CPU Memory Bandwidth Achieved During Memory Stride Tests</strong></p>
 <p><img alt="../../_images/image34.jpeg" src="../../_images/image34.jpeg" /></p>
-<p>The previous figure shows the memory bandwidth achieved by CPU0 during
-the memory stride tests. For clarity, the random bandwidth (real-time)
-tests are not shown in the graph. As the working set size increases,
-there are noticeable transitions at the L1 and L2 data cache
-boundaries as the working set size no longer fits into the previous
-cache. The following figure shows similar transition points for the
-average memory access latency achieved by CPU0 during the memory
-stride tests. However, while the bandwidth decreases with an
-increasing working set size, the latency noticeably increases.</p>
-<p><em>Figure 36:</em> CPU Memory Access Latency Achieved During Memory Stride Tests</p>
+<p>The previous figure shows the memory bandwidth achieved by CPU0 during the memory stride tests. For clarity, the random bandwidth (real-time) tests are not shown in the graph. As the working set size increases, there are noticeable transitions at the L1 and L2 data cache boundaries as the working set size no longer fits into the previous cache. The following figure shows similar transition points for the average memory access latency achieved by CPU0 during the memory stride tests. However, while the bandwidth decreases with an increasing working set size, the latency noticeably increases.</p>
+<p><em>Figure 36:</em> <strong>CPU Memory Access Latency Achieved During Memory Stride Tests</strong></p>
 <p><img alt="../../_images/image352.png" src="../../_images/image352.png" /></p>
 </div>
 <div class="section" id="shared-l2-cache">
 <h2>Shared L2 Cache<a class="headerlink" href="#shared-l2-cache" title="Permalink to this headline">¶</a></h2>
-<p>Now that baseline performance measurements have been made between the
-CPUs and the memories, traffic can be added on the Accelerator
-Coherency Port (ACP) to analyze its effects on system performance. The
-memory stride software (see <a class="reference external" href="#spm-software">SPM Software</a>) was run
-again on CPU0; however, this time traffic was added to the ACP. Since
-the L2 cache is shared by the CPUs and the ACP, there is expected to
-be some contention to occur at that memory.</p>
-<p>The following figure shows the ATG configuration that models the
-initial traffic on the ACP. It specifies random addressing within a 4
-KB region and utilizes the memory path through the L2 cache to the
-DDR. The first value for Tranx Interval is 100 clock cycles, which
-configures the ATGs to request a throughput of 128 MB/sec at 100 MHz.
-Keeping every other setting constant, the values for Tranx Interval
-were decreased, thus increasing the requested throughputs. The values
-used for this transaction interval include: 100, 50, 30, 25, 20, and, 17. These intervals lead to request throughputs of 128, 256, 426, 512, 640, and 752 MB/s.</p>
+<p>Now that baseline performance measurements have been made between the CPUs and the memories, traffic can be added on the Accelerator Coherency Port (ACP) to analyze its effects on system performance. The memory stride software (see <a class="reference external" href="../docs/2-system-performance-modeling-project.html#spm-software">SPM Software</a>) was run again on CPU0; however, this time traffic was added to the ACP. Since the L2 cache is shared by the CPUs and the ACP, there is expected to be some contention to occur at that memory.</p>
+<p>The following figure shows the ATG configuration that models the initial traffic on the ACP. It specifies random addressing within a 4 KB region and utilizes the memory path through the L2 cache to the DDR. The first value for Tranx Interval is 100 clock cycles, which configures the ATGs to request a throughput of 128 MB/sec at 100 MHz. Keeping every other setting constant, the values for Tranx Interval were decreased, thus increasing the requested throughputs. The values used for this transaction interval include: 100, 50, 30, 25, 20, and, 17. These intervals lead to request throughputs of 128, 256, 426, 512, 640, and 752 MB/s.</p>
 <p><em>Figure 37:</em> <strong>ATG Configuration Modeling Traffic on ACP</strong></p>
 <p><img alt="../../_images/image36.jpeg" src="../../_images/image36.jpeg" /></p>
-<p>This traffic scenario enables an exploration of bandwidth tradeoffs
-between the CPUs and the ACP. Note that this models the case where the
-CPU and ACP are not using a shared memory space. Similarly to the DDR,
-the L2 data cache allocates its bandwidth based on scheduling. If the
-combined bandwidth is higher than what the L2 cache can support, then
-contention in the form of backpressure is introduced.</p>
-<p><em>Figure 38:</em> Performance Summary for Memory Stride and No ACP Traffic</p>
+<p>This traffic scenario enables an exploration of bandwidth tradeoffs between the CPUs and the ACP. Note that this models the case where the CPU and ACP are not using a shared memory space. Similarly to the DDR, the L2 data cache allocates its bandwidth based on scheduling. If the combined bandwidth is higher than what the L2 cache can support, then contention in the form of backpressure is introduced.</p>
+<p><em>Figure 38:</em> <strong>Performance Summary for Memory Stride and No ACP Traffic</strong></p>
 <p><img alt="../../_images/image37.jpeg" src="../../_images/image37.jpeg" /></p>
-<p>The previous figure shows the performance summary table in the Vitis
-IDE after running memory stride with no ACP traffic, while the
-following figure shows the same summary table with memory stride
-running plus read/write traffic on the ACP requesting 752 MB/sec
-(Tranx Interval of 17). These are the two bounds of the test, and the
-differences are noticeable. While the ACP traffic is clearly evident
-in the following figure, the CPU statistics are generally very
-similar.</p>
-<p><em>Figure 39:</em> Performance Summary for Memory Stride and ACP Traffic Requesting 752 MB/sec</p>
+<p>The previous figure shows the performance summary table in the Vitis IDE after running memory stride with no ACP traffic, while the following figure shows the same summary table with memory stride running plus read/write traffic on the ACP requesting 752 MB/sec (Tranx Interval of 17). These are the two bounds of the test, and the differences are noticeable. While the ACP traffic is clearly evident in the following figure, the CPU statistics are generally very similar.</p>
+<p><em>Figure 39:</em> <strong>Performance Summary for Memory Stride and ACP Traffic Requesting 752 MB/sec</strong></p>
 <p><img alt="../../_images/image382.jpeg" src="../../_images/image382.jpeg" /></p>
-<p>One difference is in the CPU Write Stall Cycles Per Instruction and
-the CPU Read Stall Cycles Per Instruction. While these values are 2.79
-and 4.29 with no ACP traffic, they increase to 3.35 and 5.64,
-respectively, with high-bandwidth ACP traffic. High values for these
-two metrics means the CPU is stalling often on memory writes and data
-cache refills. The reason for the increase in these values is the
-contention at the L2 cache, since the ACP traffic is consuming a
-significant amount of L2 cache bandwidth.</p>
-<p>The following figure shows how the write and read performance on the
-ACP is affected by this contention. There is minimal impact on the ACP
-write performance, with only slight increases in latency during the
-various software benchmarks. However, the average read latency is
-clearly affected by the memory stride software activity, showing a
-periodicity reflecting the sequence of benchmarks. The ACP throughput
-is also affected, dropping to a worst-case value of approximately 640
-MB/s. While the requested bandwidth of 752 MB/s is perhaps
-unrealistically high and persistent for a typical design, it does
-provide a stress test of the system.</p>
-<p><em>Figure 40:</em> ACP Performance Results in the Vitis IDE Showing Impact on Latency</p>
+<p>One difference is in the CPU Write Stall Cycles Per Instruction and the CPU Read Stall Cycles Per Instruction. While these values are 2.79 and 4.29 with no ACP traffic, they increase to 3.35 and 5.64, respectively, with high-bandwidth ACP traffic. High values for these two metrics means the CPU is stalling often on memory writes and data cache refills. The reason for the increase in these values is the contention at the L2 cache, since the ACP traffic is consuming a significant amount of L2 cache bandwidth.</p>
+<p>The following figure shows how the write and read performance on the ACP is affected by this contention. There is minimal impact on the ACP write performance, with only slight increases in latency during the
+various software benchmarks. However, the average read latency is clearly affected by the memory stride software activity, showing a periodicity reflecting the sequence of benchmarks. The ACP throughput is also affected, dropping to a worst-case value of approximately 640 MB/s. While the requested bandwidth of 752 MB/s is perhaps unrealistically high and persistent for a typical design, it does provide a stress test of the system.</p>
+<p><em>Figure 40:</em> <strong>ACP Performance Results in the Vitis IDE Showing Impact on Latency</strong></p>
 <p><img alt="../../_images/image391.jpeg" src="../../_images/image391.jpeg" /></p>
-<p>As the requested ACP bandwidth was swept in value, the sustained CPU
-bandwidth was also recorded. The following figure shows the bandwidth
-achieved by CPU0 with memory stride using a working set size of 4 KB.</p>
-<p><em>Figure 41:</em> Performance Achieved by CPU0 vs. ACP Bandwidth (Set Size = 4 KB)</p>
+<p>As the requested ACP bandwidth was swept in value, the sustained CPU bandwidth was also recorded. The following figure shows the bandwidth achieved by CPU0 with memory stride using a working set size of 4 KB.</p>
+<p><em>Figure 41:</em> <strong>Performance Achieved by CPU0 vs. ACP Bandwidth (Set Size = 4 KB)</strong></p>
 <p><img alt="../../_images/image402.png" src="../../_images/image402.png" /></p>
-<p>The following figure shows the CPU0 bandwidth when memory stride
-operated on the 64 KB set size.</p>
-<p><em>Figure 42:</em> Performance Achieved by CPU0 vs. ACP Bandwidth (Set Size = 64 KB)</p>
+<p>The following figure shows the CPU0 bandwidth when memory stride operated on the 64 KB set size.</p>
+<p><em>Figure 42:</em> <strong>Performance Achieved by CPU0 vs. ACP Bandwidth (Set Size = 64 KB)</strong></p>
 <p><img alt="../../_images/image412.png" src="../../_images/image412.png" /></p>
-<p>The following figure shows the bandwidth when memory stride used the
-1024 KB set size. Due to their set sizes, these results are assumed to
-be good measurements of achieved bandwidth from the L1 data cache, the
-L2 data cache, and the DDR, respectively.</p>
-<p><em>Figure 43:</em> Performance Achieved by CPU0 vs. ACP Bandwidth (Set Size = 1024 KB)</p>
+<p>The following figure shows the bandwidth when memory stride used the 1024 KB set size. Due to their set sizes, these results are assumed to be good measurements of achieved bandwidth from the L1 data cache, the L2 data cache, and the DDR, respectively.</p>
+<p><em>Figure 43:</em> <strong>Performance Achieved by CPU0 vs. ACP Bandwidth (Set Size = 1024 KB)</strong></p>
 <p><img alt="../../_images/image422.png" src="../../_images/image422.png" /></p>
-<p>When running the memory stride software with a working set size of 4
-KB, the CPU bandwidth was unaffected by the traffic on the ACP. When
-using set sizes of 64 KB and 1024 KB, the ACP traffic does have a
-measurable impact on the CPU bandwidth. The largest decrease in CPU0
-bandwidth was 14.6% for the Linear Bandwidth - Copy benchmark
-operating on a set size of 64 KB.</p>
+<p>When running the memory stride software with a working set size of 4 KB, the CPU bandwidth was unaffected by the traffic on the ACP. When using set sizes of 64 KB and 1024 KB, the ACP traffic does have a measurable impact on the CPU bandwidth. The largest decrease in CPU0 bandwidth was 14.6% for the Linear Bandwidth - Copy benchmark operating on a set size of 64 KB.</p>
 </div>
 </div>
 
@@ -828,6 +739,15 @@ operating on a set size of 64 KB.</p>
 	  
 	  
 	  <!-- Sphinx Page Footer block -->
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="9-using-spa-with-custom-target.html" class="btn btn-neutral float-right" title="Using SPA with a Custom Target" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="7-evaluating-DDR-controller-settings.html" class="btn btn-neutral float-left" title="Evaluating DDR Controller Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

@@ -334,7 +334,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Versal ACAP Embedded Design Tutorial</span></p>
+<p class="caption"><span class="caption-text">Versal ACAP</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/docs/1-getting-started.html">Getting Started</a></li>
@@ -345,7 +345,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/docs/6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port with SmartLynq+ Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/docs/A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-introduction.html">How Zynq UltraScale+ Devices Offer a Single Chip Solution</a></li>
@@ -370,7 +370,7 @@
 <li class="toctree-l1"><a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html">Design Example 1: Using GPIOs, Timers, and Interrupts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8-boot-and-configuration.html">Boot and Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq-7000 EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq-7000 Devices</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/1-introduction.html">Getting Started</a></li>
@@ -381,6 +381,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/6-using-hp-port.html">Using the HP Slave Port with AXI CDMA IP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/7-linux-booting-debug.html">Linux Boot Image Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/8-custom-ip-driver-linux.html">Creating Custom IP and Device Drivers for Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vitis Performance Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/README.html">About this Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/1-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/2-system-performance-modeling-project.html">System Performance Modeling Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/3-monitor-framework.html">Monitor Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/4-getting-started-with-SPM.html">Getting Started with SPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/5-evaluating-software-performance.html">Evaluating Software Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/6-evaluating-high-performance-ports.html">Evaluating High-Performance Ports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/7-evaluating-DDR-controller-settings.html">Evaluating DDR Controller Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/8-evaluating-memory-hierarchy-ACP.html">Evaluating Memory Hierarchy and the ACP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/9-using-spa-with-custom-target.html">Using SPA with a Custom Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/10-end-to-end-performance-analysis.html">End-To-End Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/A-performance-checklist.html">Performance Checklist</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
@@ -567,7 +582,7 @@ shown in the following figure.</p>
 <h3>Creating Linux Applications in the Vitis IDE<a class="headerlink" href="#creating-linux-applications-in-the-vitis-ide" title="Permalink to this headline">¶</a></h3>
 <ol>
 <li><p>Create a Linux domain:</p>
-<ul class="simple">
+<ol class="simple">
 <li><p>Double-click <strong>platform.spr</strong> in the zcu102_edt platform to open platform configurations.</p></li>
 <li><p>Click the <strong>+</strong> button to add a domain.</p></li>
 <li><p>Input the following domain parameters:</p>
@@ -579,11 +594,11 @@ shown in the following figure.</p>
 </li>
 <li><p>Review the Linux domain configuration details.</p></li>
 <li><p>Build the platform project by clicking the hammer icon.</p></li>
-</ul>
+</ol>
 <p><img alt="Linux domain configuration details" src="../../_images/linux_domain_details.png" /></p>
 </li>
 <li><p>Create a Linux application:</p>
-<ul class="simple">
+<ol class="simple">
 <li><p>Click <strong>File → New → Application Project</strong>.</p></li>
 <li><p>Click <strong>Next</strong> on the welcome page.</p></li>
 <li><p>Select platform: <strong>zcu102_edt</strong>. Click <strong>Next</strong>.</p></li>
@@ -591,15 +606,15 @@ shown in the following figure.</p>
 <li><p>Keep the default domain: <strong>linux</strong>.</p></li>
 <li><p>Keep the SYSROOT, rootfs, and kernel image empty, and click <strong>Next</strong>.</p></li>
 <li><p>Select the <strong>Linux Hello World</strong> template. Click <strong>Finish</strong>.</p></li>
-</ul>
+</ol>
 <p><strong>Note:</strong> If you input an extracted SYSROOT directory, Vitis can find include files and libraries in SYSROOT. SYSROOT is generated by the PetaLinux project <code class="docutils literal notranslate"><span class="pre">petalinux-build</span> <span class="pre">--sdk</span></code>. Refer to the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) for more information about SYSROOT generation.</p>
 <p><strong>Note:</strong> If you input a rootfs and kernel image, Vitis can help to generate the <code class="docutils literal notranslate"><span class="pre">SD_card.img</span></code> when building the Linux system project.</p>
 </li>
 <li><p>Build the hello_linux application.</p>
-<ul class="simple">
+<ol class="simple">
 <li><p>Select <strong>hello_linux</strong>.</p></li>
 <li><p>Click the hammer button to build the application.</p></li>
-</ul>
+</ol>
 </li>
 </ol>
 </div>
@@ -649,7 +664,7 @@ shown in the following figure.</p>
 <h3>Running the Linux Application from the Vitis IDE<a class="headerlink" href="#running-the-linux-application-from-the-vitis-ide" title="Permalink to this headline">¶</a></h3>
 <ol>
 <li><p>Run the Linux application:</p>
-<ul class="simple">
+<ol class="simple">
 <li><p>Right-click <strong>hello_linux</strong>, and select <strong>Run As → Run Configurations</strong>.</p></li>
 <li><p>Expand <strong>Single Application Debug</strong> and select <strong>Debugger_hello_linux-Default</strong>.</p></li>
 <li><p>Review the configurations:</p>
@@ -659,18 +674,17 @@ shown in the following figure.</p>
 </ul>
 </li>
 <li><p>Click <strong>Run</strong>.</p></li>
-</ul>
 <p><img alt="Vitis Linux Run Configurations" src="../../_images/vitis_linux_run_configurations1.png" /></p>
-<ul class="simple">
-<li><p>The console should print <strong>Hello World</strong>.</p></li>
-</ul>
+
+<p>The console should print <strong>Hello World</strong>.</p>
+
 <p><img alt="Linux Hello World run result" src="../../_images/linux_hello_world1.png" /></p>
 </li>
 <li><p>Disconnect the connection:</p>
-<ul class="simple">
+<ol class="simple">
 <li><p>Click the <strong>Terminate</strong> button on the toolbar or press <strong>Ctrl+F2</strong>.</p></li>
 <li><p>Click the <strong>Disconnect</strong> button on the toolbar.</p></li>
-</ul>
+</ol>
 </li>
 </ol>
 </div>
@@ -679,7 +693,7 @@ shown in the following figure.</p>
 <p>Debugging Linux applications requires the Linux agent to be set up properly. Refer to <a class="reference external" href="#preparing-the-linux-agent-for-remote-connection">Preparing the Linux Agent for Remote Connection</a> for detailed steps.</p>
 <ol>
 <li><p>Debug the Linux application:</p>
-<ul class="simple">
+<ol class="simple">
 <li><p>Right-click <strong>hello_linux</strong>, then select <strong>Debug As → Debug Configurations</strong>.</p></li>
 <li><p>Expand <strong>Single Application Debug</strong> and select <strong>Debugger_hello_linux-Default</strong>.</p></li>
 <li><p>Review the configurations:</p>
@@ -689,7 +703,7 @@ shown in the following figure.</p>
 </ul>
 </li>
 <li><p>Click <strong>Debug</strong>.</p></li>
-</ul>
+</ol>
 <p>The debug configuration has identical options to the run configuration. The difference between debugging and running is that debugging stops at the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function.</p>
 </li>
 <li><p>Try the debugging features:</p>

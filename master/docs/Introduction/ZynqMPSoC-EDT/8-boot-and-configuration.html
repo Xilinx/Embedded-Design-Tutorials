@@ -334,7 +334,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Versal ACAP Embedded Design Tutorial</span></p>
+<p class="caption"><span class="caption-text">Versal ACAP</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/docs/1-getting-started.html">Getting Started</a></li>
@@ -345,7 +345,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/docs/6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port with SmartLynq+ Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/docs/A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq UltraScale+ MPSoC</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-introduction.html">How Zynq UltraScale+ Devices Offer a Single Chip Solution</a></li>
@@ -404,7 +404,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Zynq-7000 EDT</span></p>
+<p class="caption"><span class="caption-text">Zynq-7000 Devices</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/README.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/1-introduction.html">Getting Started</a></li>
@@ -415,6 +415,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/6-using-hp-port.html">Using the HP Slave Port with AXI CDMA IP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/7-linux-booting-debug.html">Linux Boot Image Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/8-custom-ip-driver-linux.html">Creating Custom IP and Device Drivers for Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vitis Performance Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/README.html">About this Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/1-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/2-system-performance-modeling-project.html">System Performance Modeling Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/3-monitor-framework.html">Monitor Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/4-getting-started-with-SPM.html">Getting Started with SPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/5-evaluating-software-performance.html">Evaluating Software Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/6-evaluating-high-performance-ports.html">Evaluating High-Performance Ports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/7-evaluating-DDR-controller-settings.html">Evaluating DDR Controller Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/8-evaluating-memory-hierarchy-ACP.html">Evaluating Memory Hierarchy and the ACP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/9-using-spa-with-custom-target.html">Using SPA with a Custom Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/10-end-to-end-performance-analysis.html">End-To-End Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/docs/A-performance-checklist.html">Performance Checklist</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
@@ -606,14 +621,12 @@ and PMU firmware.</p>
 <li><p>In the Create Boot Image wizard, click <strong>Add</strong> to open the Add Partition view.</p></li>
 <li><p>In the Add Partition view, click <strong>Browse</strong> to select the FSBL executable.</p></li>
 <li><p>For FSBL, ensure that the partition type is selected as boot loader and the correct destination CPU is selected by the tool. The tool is configured to make this selection based on the FSBL executable.</p></li>
-</ol>
 <blockquote>
 <div><p><strong>Note:</strong> Ignore the Exception Level drop down, because FSBL is set to
 EL3 by default. Also, leave the TrustZone setting unselected for this
 example.</p>
 </div></blockquote>
 <p><img alt="../../_images/image561.png" src="../../_images/image561.png" /></p>
-<ol class="simple">
 <li><p>Click <strong>OK</strong> to select FSBL and go back to Create Boot Image wizard.</p></li>
 </ol>
 </li>
@@ -982,16 +995,13 @@ be seen in the following figure.</p>
 <li><p>Download the U-Boot application on Cortex-A53 #0 using the following commands.</p>
 <ol class="simple">
 <li><p>By default, JTAG security gates are enabled. Disable the security gates for DAP, PL TAP, and PMU (this makes the PMU MB target visible to the debugger).</p></li>
-</ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">targets</span> <span class="o">-</span><span class="nb">set</span> <span class="o">-</span><span class="nb">filter</span> <span class="p">{</span><span class="n">name</span> <span class="o">=~</span> <span class="s2">&quot;PSU&quot;</span><span class="p">}</span>
 <span class="n">xsct</span><span class="o">%</span> <span class="n">mwr</span> <span class="mh">0xffca0038</span> <span class="mh">0x1ff</span>
 <span class="n">xsct</span><span class="o">%</span> <span class="n">targets</span>
 </pre></div>
 </div>
-<ol class="simple">
 <li><p>Verify if the PMU MB target is listed under the PMU device. Now, load and run the PMU firmware.</p></li>
 <li><p>Reset APU Cortex-A53 Core 0 to load and run FSBL.</p></li>
-</ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">targets</span> <span class="o">-</span><span class="nb">set</span> <span class="o">-</span><span class="nb">filter</span> <span class="p">{</span><span class="n">name</span> <span class="o">=~</span> <span class="s2">&quot;Cortex-A53 #0&quot;</span><span class="p">}</span>
 <span class="n">xsct</span><span class="o">%</span> <span class="n">rst</span> <span class="o">-</span><span class="n">processor</span>
 </pre></div>
@@ -1005,21 +1015,14 @@ core.</p>
 <div><p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">rst</span> <span class="pre">-cores</span></code> command clears the resets on all the processor cores in the
 group (that is, the APU or RPU) of which the current target is a child. For example, when A53 #0 is the current target, <code class="docutils literal notranslate"><span class="pre">rst</span> <span class="pre">-cores</span></code> clears resets on all the Cortex-A53 cores in the APU.</p>
 </div></blockquote>
-<ol class="simple">
 <li><p>Load and run FSBL.</p></li>
-</ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">dow</span> <span class="p">{</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">fsbl_a53</span>\<span class="n">Debug</span>\<span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span><span class="p">}</span>
 <span class="n">xsct</span><span class="o">%</span> <span class="n">con</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Verify the FSBL messages on the Serial Terminal and stop FSBL after a couple of
-seconds.</p></li>
-</ol>
+<li><p>Verify the FSBL messages on the Serial Terminal and stop FSBL after a couple of seconds.</p></li>
 <p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">stop</span></code></p>
-<ol class="simple">
 <li><p>Load and run the ATF.</p></li>
-</ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">dow</span> <span class="p">{</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">qspi_boot</span>\<span class="n">bl31</span><span class="o">.</span><span class="n">elf</span><span class="p">}</span>
 <span class="n">xsct</span><span class="o">%</span> <span class="n">con</span>
 <span class="n">xsct</span><span class="o">%</span> <span class="n">stop</span>
@@ -1152,22 +1155,20 @@ figure.</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;PetaLinux-project&gt;/project-spec/meta-user/recipes-bsp/device-tree/</span> <span class="pre">files/system-user.dtsi</span></code>.</p>
 <ol>
 <li><p>Add the following to the <code class="docutils literal notranslate"><span class="pre">system-user.dtsi</span></code> file so that it looks like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">include</span><span class="o">/</span> <span class="s2">&quot;system-conf.dtsi&quot;</span>
-<span class="o">/</span> <span class="p">{</span>
-<span class="n">gpio</span><span class="o">-</span><span class="n">keys</span> <span class="p">{</span> <span class="n">sw19</span> <span class="p">{</span>
-<span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;disabled&quot;</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="p">};</span>
-<span class="p">};</span>
-<span class="o">&amp;</span><span class="n">uart1</span>
-<span class="p">{</span>
-<span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;disabled&quot;</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="o">&amp;</span><span class="n">dwc3_0</span> <span class="p">{</span>
-<span class="n">dr_mode</span> <span class="o">=</span> <span class="s2">&quot;peripheral&quot;</span><span class="p">;</span> <span class="n">maximum</span><span class="o">-</span><span class="n">speed</span> <span class="o">=</span> <span class="s2">&quot;super-speed&quot;</span><span class="p">;</span>
-<span class="p">};</span>
-</pre></div>
-</div>
+<pre>/include/ "system-conf.dtsi"
+/ {
+gpio-keys { sw19 {
+status = "disabled";
+};
+};
+};
+&uart1
+{
+status = "disabled";
+};
+&dwc3_0 {
+dr_mode = "peripheral"; maximum-speed = "super-speed";
+};</pre>
 <p>The modified <code class="docutils literal notranslate"><span class="pre">system-user.dtsi</span></code> file can be found in <a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/usb_boot">ref_files/usb_boot</a> released with this tutorial.</p>
 </li>
 <li><p>Build PetaLinux with the following changes:</p>
