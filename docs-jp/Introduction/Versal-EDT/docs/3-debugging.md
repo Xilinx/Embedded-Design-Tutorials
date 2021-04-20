@@ -46,7 +46,7 @@ Vitis ソフトウェア プラットフォームで、コードの修正、実�
 
 この例では、Hello World アプリケーションのデバッグについて説明します。
 
-APU または RPU で Hello World アプリケーションを作成しなかった場合は、[「ベアメタル Hello World アプリケーションの実行」](./2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application)または[「DDR メモリでのベアメタル Hello World アプリケーションの実行」](./2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application-on-ddr-memory)の手順に従ってください。
+APU または RPU で Hello World アプリケーションを作成しなかった場合は、[「ベアメタル Hello World アプリケーションの実行」](./2-cips-noc-ip-config.md#ベアメタル-hello-world-アプリケーションの実行)または[「DDR メモリでのベアメタル Hello World アプリケーションの実行」](./2-cips-noc-ip-config.md#ddr-メモリでのベアメタル-hello-world-アプリケーションの実行)の手順に従ってください。
 
 hello world アプリケーションを作成したら、Vitis ソフトウェア プラットフォームで次の例を実行してソフトウェアをデバッグします。
 

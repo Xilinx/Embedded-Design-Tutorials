@@ -4,7 +4,7 @@
 
 > **注記:** このチュートリアルでのハードウェア上で Linux をブートする各手順は、2020.2 リリースの PetaLinux ツールに固有のものです。PetaLinux ツールは Linux ホスト マシンにインストールしないと、このガイドの Linux 部分の演習を実行できません。
 
-> **重要:** *VCK190/VMK180 評価キットには、Silicon Labs CP210x VCP USB-UART Bridge. が含まれます。これらのドライバーは必ずインストールしている必要があります。詳細は、『Silicon Labs CP210x USB-to-UART Installation Guide』 ([UG1033](https://japan.xilinx.com/cgi-bin/docs/bkdoc?k=install;v=latest;d=ug1033-cp210x-usb-uart-install.pdf)) を参照してください。*
+> **重要:** VCK190/VMK180 評価キットには、Silicon Labs CP210x VCP USB-UART Bridge. が含まれます。これらのドライバーは必ずインストールしている必要があります。詳細は、『Silicon Labs CP210x USB-to-UART Installation Guide』 ([UG1033](https://japan.xilinx.com/cgi-bin/docs/bkdoc?k=install;v=latest;d=ug1033-cp210x-usb-uart-install.pdf)) を参照してください。
 
 このガイドのサンプル プロジェクトは、64 ビットの Windows 10 オペレーティング システムで実行するザイリンクス ツール、Vitis ソフトウェア プラットフォームおよび 64 ビットの Linux オペレーティング システムで実行する PetaLinux を使用して作成されています。ほかの Windows インストールで別バージョンのツールを実行した場合、結果が異なることがあります。サンプル プロジェクトは、エンベデッド デザインの次の項目について紹介することに重点を置いています。
 
@@ -14,9 +14,9 @@
 
 - **[ブートおよびコンフィギュレーション](../Versal-EDT/docs/4-boot-and-config.md):** Versal ACAP のブートイメージを設定および作成するためのコンポーネントの統合を示します。この章の主旨は、ブートローダーを統合およびロードする方法を理解することです。
 
-- **[スカラー型エンジンと適応型エンジンを使用したシステム デザイン例](../Versal-EDT/docs/5-system-design-example.md)：** 使用可能なツールとサポートされるソフトウェア ブロックを使用して、Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで PL AXI GPIO を使用してエンベデッド デザインを作成する方法について説明します。また、Versal デバイス上で Arm Cortex-A72 コア ベースの APU 用の Linux オペレーティング システムをコンフィギュレーションしてビルドする手順についても説明します。
+- **[スカラー型エンジンと適応型エンジンを使用したシステム デザイン例](../Versal-EDT/docs/5-system-design-example.md): ** 使用可能なツールとサポートされるソフトウェア ブロックを使用して、Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで PL AXI GPIO を使用してエンベデッド デザインを作成する方法について説明します。また、Versal デバイス上で Arm Cortex-A72 コア ベースの APU 用の Linux オペレーティング システムをコンフィギュレーションしてビルドする手順についても説明します。
 
-- **[SmartLynq+ モジュールを使用した高速デバッグ ポート (HSDP) のシステム デザイン例](../Versal-EDT/docs/6-system-design-example-HSDP.md)：** 高速デバッグ ポート (HSDP) を使用して Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで HSDP を利用し、Linux イメージのダウンロードに SmartLynq+ モジュールを使用するエンベデッド デザインを作成する方法について説明します。
+- **[SmartLynq+ モジュールを使用した高速デバッグ ポート (HSDP) のシステム デザイン例](../Versal-EDT/docs/6-system-design-example-HSDP.md): ** 高速デバッグ ポート (HSDP) を使用して Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで HSDP を利用し、Linux イメージのダウンロードに SmartLynq+ モジュールを使用するエンベデッド デザインを作成する方法について説明します。
 
 このデザイン チュートリアルでは、ザイリンクスの提供する多数のファイルを使用する必要があります。これらは、ザイリンクス ウェブサイトからダウンロードできる ZIP ファイルに含まれます  （[はじめに](../Versal-EDT/docs/1-getting-started.md)を参照）。このチュートリアルでは ZIP ファイルの内容が `C:\edt` に抽出されていることを前提にしています。
 

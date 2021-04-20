@@ -72,11 +72,11 @@ HSDP をイネーブルにするには、前の章で構築した VCK190 また�
 
 この例では、前の手順でビルドした HSDP がイネーブルになった XSA を使用して PetaLinux プロジェクトを再構築します。PetaLinux プロジェクトは、[「スカラー型エンジンと適応型エンジンを使用したシステム デザイン例」](../docs/5-system-design-example.md)に従って作成されたことを前提としています。
 
-> **重要:** 前の章で PetaLinux プロジェクトを作成せずにこのチュートリアルを実行する場合は、[「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」](../docs/5-system-design-example.md#example-project-creating-Linux-images-using-petalinux)の手順 1 ～ 12 に従って、新しい PetaLinux プロジェクトを作成します。
+> **重要:** 前の章で PetaLinux プロジェクトを作成せずにこのチュートリアルを実行する場合は、[「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」](./5-system-design-example.md#サンプル-プロジェクト-petalinux-を使用した-linux-イメージの作成)の手順 1 ～ 12 に従って、新しい PetaLinux プロジェクトを作成します。
 
 このサンプル プロジェクトには、Linux ホスト マシンが必要です。PetaLinux ツールの依存関係とインストール手順については、『etaLinux ツールの資料: リファレンス ガイド』 ([UG1144](https://japan.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)) を参照してください。
 
-1. 次のコマンドを使用して、[「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」](../docs/5-system-design-example.md#example-project-creating-Linux-images-using-petalinux)で作成した PetaLinux プロジェクト ディレクトリに移動します。
+1. 次のコマンドを使用して、[「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」](./5-system-design-example.md#サンプル-プロジェクト-petalinux-を使用した-linux-イメージの作成)で作成した PetaLinux プロジェクト ディレクトリに移動します。
 
    `$ cd led_example`
 

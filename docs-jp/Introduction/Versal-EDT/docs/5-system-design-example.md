@@ -189,7 +189,7 @@ IP アドレスを追加および設定する手順は、次のとおりです�
 
 5. デバイス イメージを生成したら、ハードウェアをエクスポートします。
 
-   > **注記:** 次の手順はオプションなので、省略して[「ハードウェアのエクスポート」](#exporting-hardware) セクションに進むこともできます。これらの手順を実行すると、デバイス イメージを生成する前に合成およびインプリメンテーションを実行するので、デバイス イメージ生成の詳細なフローがわかるようになります。デバイス イメージの生成フローを理解する必要がある場合は、次の手順を実行します。
+   > **注記:** 次の手順はオプションなので、省略して[「ハードウェアのエクスポート」](#ハードウェアのエクスポート) セクションに進むこともできます。これらの手順を実行すると、デバイス イメージを生成する前に合成およびインプリメンテーションを実行するので、デバイス イメージ生成の詳細なフローがわかるようになります。デバイス イメージの生成フローを理解する必要がある場合は、次の手順を実行します。
 
 6. Flow Navigator で **\[Synthesis]** をクリックし、**\[Run Synthesis]** をクリックします。
 
@@ -270,7 +270,7 @@ Vitis ソフトウェア プラットフォームは、上記の手順を実行�
 5. **freertos_gpio_test_system** を右クリックし、**\[Build Project]** をクリックします。または、![build-icon](./media/image77.jpeg) をクリックします。
    > **注記:** [Project Explorer] ビューが表示されない場合は、左側のパネルの復元アイコンをクリックし、この手順を実行します。
 
-Linux イメージをビルドし、FreeRTOS ELF をイメージに組み込む方法については、[「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」](#example-project-creating-linux-images-using-petalinux)を参照してください。
+Linux イメージをビルドし、FreeRTOS ELF をイメージに組み込む方法については、[「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」](#サンプル-プロジェクト-petalinux-を使用した-linux-イメージの作成)を参照してください。
 
 ## サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成
 
@@ -278,7 +278,7 @@ Linux イメージをビルドし、FreeRTOS ELF をイメージに組み込む�
 
 このサンプル プロジェクトには、Linux ホスト マシンが必要です。PetaLinux ツールの依存関係とインストール手順については、『etaLinux ツールの資料: リファレンス ガイド』 ([UG1144](https://japan.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)) を参照してください。
 
-> **重要:** この例では、VCK190 PetaLinux BSP を使用して PetaLinux プロジェクトを作成します。*PetaLinux (VCK190/VMK180) に該当する BSP がダウンロードされていることを確認します。*
+> **重要:** この例では、VCK190 PetaLinux BSP を使用して PetaLinux プロジェクトを作成します。PetaLinux (VCK190/VMK180) に該当する BSP がダウンロードされていることを確認します。
 >
 > - VCK190 ボードを使用する場合は、<https://japan.xilinx.com/member/vck190_headstart.html> から `xilinx-vck190-es1-v2020.2-final.bsp` ファイルをダウンロードします。
 >
@@ -308,7 +308,7 @@ Linux イメージをビルドし、FreeRTOS ELF をイメージに組み込む�
 
 5. ハードウェア プラットフォーム プロジェクトの XSA を Linux ホスト マシンにコピーします。
 
-   > **注記：** VMK180 ボードの場合は、[「デザイン例: AXI GPIO の使用」](#design-example-using-axi-gpio)で生成した XSA ファイルを使用します。
+   > **注記：** VMK180 ボードの場合は、[「デザイン例: AXI GPIO の使用」](#デザイン例-axi-gpio-の使用)で生成した XSA ファイルを使用します。
 
 6. 次のコマンドを実行して BSP を再設定します。
 
