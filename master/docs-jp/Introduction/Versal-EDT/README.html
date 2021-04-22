@@ -564,8 +564,8 @@
 <li><p><strong><a class="reference internal" href="docs/2-cips-noc-ip-config.html"><span class="doc">Versal™ ACAP CIPS おうよび NoC (DDR) IP コアの設定</span></a>:</strong> Versal™ ACAP CIPS (Control, Interfaces, and Processing System) IP コアと NoC を使用してデザインを作成し、 Arm® Cortex™-A72 および Cortex™-R5F プロセッサ上で単純な Hello World アプリケーションを実行する方法について説明します。この章では、簡単なデザインを例として使用し、ハードウェアおよびソフトウェア ツールの概要を説明します。</p></li>
 <li><p><strong><a class="reference internal" href="docs/3-debugging.html"><span class="doc">Vitis ソフトウェア プラットフォームを使用したデバッグ</span></a>:</strong> ザイリンクス Vitis ソフトウェア プラットフォームのデバッグ機能を紹介します。この章では、前のデザインを使用してソフトウェアをベアメタル (OS なし) で実行して、Vitis IDE のデバッグ機能を示します。また、Versal ACAP のデバッグ コンフィギュレーションもリストします。</p></li>
 <li><p><strong><a class="reference internal" href="docs/4-boot-and-config.html"><span class="doc">ブートおよびコンフィギュレーション</span></a>:</strong> Versal ACAP のブートイメージを設定および作成するためのコンポーネントの統合を示します。この章の主旨は、ブートローダーを統合およびロードする方法を理解することです。</p></li>
-<li><p>**<a class="reference internal" href="docs/5-system-design-example.html"><span class="doc">スカラー型エンジンと適応型エンジンを使用したシステム デザイン例</span></a>: ** 使用可能なツールとサポートされるソフトウェア ブロックを使用して、Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで PL AXI GPIO を使用してエンベデッド デザインを作成する方法について説明します。また、Versal デバイス上で Arm Cortex-A72 コア ベースの APU 用の Linux オペレーティング システムをコンフィギュレーションしてビルドする手順についても説明します。</p></li>
-<li><p>**<a class="reference internal" href="docs/6-system-design-example-HSDP.html"><span class="doc">SmartLynq+ モジュールを使用した高速デバッグ ポート (HSDP) のシステム デザイン例</span></a>: ** 高速デバッグ ポート (HSDP) を使用して Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで HSDP を利用し、Linux イメージのダウンロードに SmartLynq+ モジュールを使用するエンベデッド デザインを作成する方法について説明します。</p></li>
+<li><p><a class="reference internal" href="docs/5-system-design-example.html"><span class="doc">スカラー型エンジンと適応型エンジンを使用したシステム デザイン例</span></a>: 使用可能なツールとサポートされるソフトウェア ブロックを使用して、Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで PL AXI GPIO を使用してエンベデッド デザインを作成する方法について説明します。また、Versal デバイス上で Arm Cortex-A72 コア ベースの APU 用の Linux オペレーティング システムをコンフィギュレーションしてビルドする手順についても説明します。</p></li>
+<li><p><a class="reference internal" href="docs/6-system-design-example-HSDP.html"><span class="doc">SmartLynq+ モジュールを使用した高速デバッグ ポート (HSDP) のシステム デザイン例</span></a>: 高速デバッグ ポート (HSDP) を使用して Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで HSDP を利用し、Linux イメージのダウンロードに SmartLynq+ モジュールを使用するエンベデッド デザインを作成する方法について説明します。</p></li>
 </ul>
 <p>このデザイン チュートリアルでは、ザイリンクスの提供する多数のファイルを使用する必要があります。これらは、ザイリンクス ウェブサイトからダウンロードできる ZIP ファイルに含まれます  （<a class="reference internal" href="docs/1-getting-started.html"><span class="doc">はじめに</span></a>を参照）。このチュートリアルでは ZIP ファイルの内容が <code class="docutils literal notranslate"><span class="pre">C:\edt</span></code> に抽出されていることを前提にしています。</p>
 <div class="section" id="id2">
@@ -574,29 +574,29 @@
 <ul class="simple">
 <li><p><strong>システムおよびソリューション プランニング</strong>: システム レベルのコンポーネント、パフォーマンス、I/O、およびデータ転送要件を特定します。ソリューションの PS、PL 、および AI エンジンへのアプリケーション マッピングも含みます。</p>
 <ul>
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.md#configuring-the-noc-ip-core-in-an-existing-project">既存のプロジェクトでの NoC IP コアの設定</a></p></li>
+<li><p><a class="reference external" href="docs/2-cips-noc-ip-config.html#既存のプロジェクトでの-noc-ip-コアの設定">既存のプロジェクトでの NoC IP コアの設定</a></p></li>
 <li><p><a class="reference internal" href="docs/5-system-design-example.html"><span class="doc">スカラー型エンジンと適応型エンジンを使用したシステム デザイン例</span></a></p></li>
 </ul>
 </li>
 <li><p><strong>エンベデッド ソフトウェア開発</strong>: ハードウェア プラットフォームからソフトウェア プラットフォームを作成し、エンベデッド CPU を使用してアプリケーションを開発します。XRT および Graph API についても説明します。</p>
 <ul>
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application">ベアメタルの Hello World アプリケーションの実行</a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.md#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform">Vitis ソフトウェア プラットフォームでのシステム デバッガーを使用した JTAG モードでのアプリケーションの実行</a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application-on-ddr-memory">DDR メモリでのベアメタル Hello World アプリケーションの実行</a></p></li>
+<li><p><a class="reference external" href="docs/2-cips-noc-ip-config.html#ベアメタル-hello-world-アプリケーションの実行">ベアメタルの Hello World アプリケーションの実行</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.html#vitis-ソフトウェア-プラットフォームでのシステム-デバッガーを使用した-jtag-モードでのアプリケーションの実行">Vitis ソフトウェア プラットフォームでのシステム デバッガーを使用した JTAG モードでのアプリケーションの実行</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.html#ddr-メモリでのベアメタル-hello-world-アプリケーションの実行">DDR メモリでのベアメタル Hello World アプリケーションの実行</a></p></li>
 </ul>
 </li>
 <li><p><strong>ハードウェア、IP、およびプラットフォーム開発</strong>: ハードウェア プラットフォーム用の PL IP ブロックの作成、PL カーネルの作成、サブシステムの論理シミュレーション、および Vivado のタイミング、リソース使用、消費電力クロージャの評価を実行します。システム統合用のハードウェア プラットフォームの開発も含まれます。この資料では、次のトピックがこの設計プロセスに関連します。</p>
 <ul>
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.md#cips-ip-core-configuration">CIPS IP コアの設定</a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.md#noc-and-ddr-ip-core-configuration">NoC (および DDR) IP コアの設定</a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.md#design-example-using-axi-gpio">デザイン例: AXI GPIO の使用</a></p></li>
+<li><p><a class="reference external" href="docs/2-cips-noc-ip-config.html#cips-ip-コアの設定">CIPS IP コアの設定</a></p></li>
+<li><p><a class="reference external" href="docs/2-cips-noc-ip-config.html#noc-および-ddr-ip-コアの設定">NoC (および DDR) IP コアの設定</a></p></li>
+<li><p><a class="reference external" href="docs/5-system-design-example.html#デザイン例-axi-gpio-の使用">デザイン例: AXI GPIO の使用</a></p></li>
 </ul>
 </li>
 <li><p><strong>システム統合および検証</strong>: タイミング、リソース使用量、消費電力クロージャを含むシステムの機能的なパフォーマンスを統合して検証します。この資料では、次のトピックがこの設計プロセスに関連します。</p>
 <ul>
 <li><p><a class="reference internal" href="docs/4-boot-and-config.html"><span class="doc">ブートおよびコンフィギュレーション</span></a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.md#example-project-freertos-gpio-application-project-with-rpu">サンプル プロジェクト: RPU を使用した FreeRTOS GPIO アプリケーション プロジェクト</a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.md#example-project-creating-linux-images-using-petalinux">サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成</a></p></li>
+<li><p><a class="reference external" href="docs/5-system-design-example.html#サンプル-プロジェクト-rpu-を使用した-freertos-gpio-アプリケーション-プロジェクト">サンプル プロジェクト: RPU を使用した FreeRTOS GPIO アプリケーション プロジェクト</a></p></li>
+<li><p><a class="reference external" href="docs/5-system-design-example.html#サンプル-プロジェクト-petalinux-を使用した-linux-イメージの作成">サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成</a></p></li>
 </ul>
 </li>
 </ul>
