@@ -490,11 +490,11 @@
 <h2>PetaLinux を使用した HSDP がイネーブルになった Linux イメージの作成<a class="headerlink" href="#petalinux-hsdp-linux" title="Permalink to this headline">¶</a></h2>
 <p>この例では、前の手順でビルドした HSDP がイネーブルになった XSA を使用して PetaLinux プロジェクトを再構築します。PetaLinux プロジェクトは、<a class="reference internal" href="5-system-design-example.html"><span class="doc">「スカラー型エンジンと適応型エンジンを使用したシステム デザイン例」</span></a>に従って作成されたことを前提としています。</p>
 <blockquote>
-<div><p><strong>重要:</strong> 前の章で PetaLinux プロジェクトを作成せずにこのチュートリアルを実行する場合は、<a class="reference external" href="./5-system-design-example.md#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB-%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88-petalinux-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F-linux-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%81%AE%E4%BD%9C%E6%88%90">「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」</a>の手順 1 ～ 12 に従って、新しい PetaLinux プロジェクトを作成します。</p>
+<div><p><strong>重要:</strong> 前の章で PetaLinux プロジェクトを作成せずにこのチュートリアルを実行する場合は、<a class="reference external" href="./5-system-design-example.html#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB-%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88-petalinux-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F-linux-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%81%AE%E4%BD%9C%E6%88%90">「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」</a>の手順 1 ～ 12 に従って、新しい PetaLinux プロジェクトを作成します。</p>
 </div></blockquote>
 <p>このサンプル プロジェクトには、Linux ホスト マシンが必要です。PetaLinux ツールの依存関係とインストール手順については、『etaLinux ツールの資料: リファレンス ガイド』 (<a class="reference external" href="https://japan.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) を参照してください。</p>
 <ol>
-<li><p>次のコマンドを使用して、<a class="reference external" href="./5-system-design-example.md#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB-%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88-petalinux-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F-linux-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%81%AE%E4%BD%9C%E6%88%90">「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」</a>で作成した PetaLinux プロジェクト ディレクトリに移動します。</p>
+<li><p>次のコマンドを使用して、<a class="reference external" href="./5-system-design-example.html#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB-%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88-petalinux-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F-linux-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%81%AE%E4%BD%9C%E6%88%90">「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」</a>で作成した PetaLinux プロジェクト ディレクトリに移動します。</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">led_example</span></code></p>
 </li>
 <li><p>新しいハードウェア プラットフォーム プロジェクトの XSA を、PetaLinux ビルド ルートの 1 つ上のディレクトリにある Linux ホスト マシンにコピーします。</p>
