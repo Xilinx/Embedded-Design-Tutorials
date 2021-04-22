@@ -14,9 +14,9 @@
 
 - **[ブートおよびコンフィギュレーション](../Versal-EDT/docs/4-boot-and-config.md):** Versal ACAP のブートイメージを設定および作成するためのコンポーネントの統合を示します。この章の主旨は、ブートローダーを統合およびロードする方法を理解することです。
 
-- **[スカラー型エンジンと適応型エンジンを使用したシステム デザイン例](../Versal-EDT/docs/5-system-design-example.md): ** 使用可能なツールとサポートされるソフトウェア ブロックを使用して、Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで PL AXI GPIO を使用してエンベデッド デザインを作成する方法について説明します。また、Versal デバイス上で Arm Cortex-A72 コア ベースの APU 用の Linux オペレーティング システムをコンフィギュレーションしてビルドする手順についても説明します。
+- **[スカラー型エンジンと適応型エンジンを使用したシステム デザイン例](../Versal-EDT/docs/5-system-design-example.md):** 使用可能なツールとサポートされるソフトウェア ブロックを使用して、Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで PL AXI GPIO を使用してエンベデッド デザインを作成する方法について説明します。また、Versal デバイス上で Arm Cortex-A72 コア ベースの APU 用の Linux オペレーティング システムをコンフィギュレーションしてビルドする手順についても説明します。
 
-- **[SmartLynq+ モジュールを使用した高速デバッグ ポート (HSDP) のシステム デザイン例](../Versal-EDT/docs/6-system-design-example-HSDP.md): ** 高速デバッグ ポート (HSDP) を使用して Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで HSDP を利用し、Linux イメージのダウンロードに SmartLynq+ モジュールを使用するエンベデッド デザインを作成する方法について説明します。
+- **[SmartLynq+ モジュールを使用した高速デバッグ ポート (HSDP) のシステム デザイン例](../Versal-EDT/docs/6-system-design-example-HSDP.md):** 高速デバッグ ポート (HSDP) を使用して Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで HSDP を利用し、Linux イメージのダウンロードに SmartLynq+ モジュールを使用するエンベデッド デザインを作成する方法について説明します。
 
 このデザイン チュートリアルでは、ザイリンクスの提供する多数のファイルを使用する必要があります。これらは、ザイリンクス ウェブサイトからダウンロードできる ZIP ファイルに含まれます  （[はじめに](../Versal-EDT/docs/1-getting-started.md)を参照）。このチュートリアルでは ZIP ファイルの内容が `C:\edt` に抽出されていることを前提にしています。
 
@@ -26,26 +26,26 @@
 
 * **システムおよびソリューション プランニング**: システム レベルのコンポーネント、パフォーマンス、I/O、およびデータ転送要件を特定します。ソリューションの PS、PL 、および AI エンジンへのアプリケーション マッピングも含みます。
 
-  * [既存のプロジェクトでの NoC IP コアの設定](../Versal-EDT/docs/2-cips-noc-ip-config.md#configuring-the-noc-ip-core-in-an-existing-project)
+  * [既存のプロジェクトでの NoC IP コアの設定](../Versal-EDT/docs/2-cips-noc-ip-config.md#既存のプロジェクトでの-noc-ip-コアの設定)
   * [スカラー型エンジンと適応型エンジンを使用したシステム デザイン例](../Versal-EDT/docs/5-system-design-example.md)
 
 * **エンベデッド ソフトウェア開発**: ハードウェア プラットフォームからソフトウェア プラットフォームを作成し、エンベデッド CPU を使用してアプリケーションを開発します。XRT および Graph API についても説明します。
 
-  * [ベアメタルの Hello World アプリケーションの実行](../Versal-EDT/docs/2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application)
-  * [Vitis ソフトウェア プラットフォームでのシステム デバッガーを使用した JTAG モードでのアプリケーションの実行](../Versal-EDT/docs/2-cips-noc-ip-config.md#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform)
-  * [DDR メモリでのベアメタル Hello World アプリケーションの実行](../Versal-EDT/docs/2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application-on-ddr-memory)
+  * [ベアメタルの Hello World アプリケーションの実行](../Versal-EDT/docs/2-cips-noc-ip-config.md#ベアメタル-hello-world-アプリケーションの実行)
+  * [Vitis ソフトウェア プラットフォームでのシステム デバッガーを使用した JTAG モードでのアプリケーションの実行](../Versal-EDT/docs/2-cips-noc-ip-config.md#ソフトウェア-プラットフォームでのシステム-デバッガーを使用した-jtag-モードでのアプリケーションの実行)
+  * [DDR メモリでのベアメタル Hello World アプリケーションの実行](../Versal-EDT/docs/2-cips-noc-ip-config.md#ddr-メモリでのベアメタル-hello-world-アプリケーションの実行)
 
 * **ハードウェア、IP、およびプラットフォーム開発**: ハードウェア プラットフォーム用の PL IP ブロックの作成、PL カーネルの作成、サブシステムの論理シミュレーション、および Vivado のタイミング、リソース使用、消費電力クロージャの評価を実行します。システム統合用のハードウェア プラットフォームの開発も含まれます。この資料では、次のトピックがこの設計プロセスに関連します。
 
-  * [CIPS IP コアの設定](../Versal-EDT/docs/2-cips-noc-ip-config.md#cips-ip-core-configuration)
-  * [NoC (および DDR) IP コアの設定](../Versal-EDT/docs/2-cips-noc-ip-config.md#noc-and-ddr-ip-core-configuration)
-  * [デザイン例: AXI GPIO の使用](../Versal-EDT/docs/5-system-design-example.md#design-example-using-axi-gpio)
+  * [CIPS IP コアの設定](../Versal-EDT/docs/2-cips-noc-ip-config.md#cips-ip-コアの設定)
+  * [NoC (および DDR) IP コアの設定](../Versal-EDT/docs/2-cips-noc-ip-config.md#noc-および-ddr-ip-コアの設定)
+  * [デザイン例: AXI GPIO の使用](../Versal-EDT/docs/5-system-design-example.md#デザイン例-axi-gpio-の使用)
 
 * **システム統合および検証**: タイミング、リソース使用量、消費電力クロージャを含むシステムの機能的なパフォーマンスを統合して検証します。この資料では、次のトピックがこの設計プロセスに関連します。
 
   * [ブートおよびコンフィギュレーション](../Versal-EDT/docs/4-boot-and-config.md)
-  * [サンプル プロジェクト: RPU を使用した FreeRTOS GPIO アプリケーション プロジェクト](../Versal-EDT/docs/5-system-design-example.md#example-project-freertos-gpio-application-project-with-rpu)
-  * [サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成](../Versal-EDT/docs/5-system-design-example.md#example-project-creating-linux-images-using-petalinux)
+  * [サンプル プロジェクト: RPU を使用した FreeRTOS GPIO アプリケーション プロジェクト](../Versal-EDT/docs/5-system-design-example.md#サンプル-プロジェクト-rpu-を使用した-freertos-gpio-アプリケーション-プロジェクト)
+  * [サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成](../Versal-EDT/docs/5-system-design-example.md#サンプル-プロジェクト-petalinux-を使用した-linux-イメージの作成)
 
 © Copyright 2020-2021 Xilinx, Inc.
 
