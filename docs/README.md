@@ -1,7 +1,7 @@
 <p align="right"><a href="../docs-cn/README.md">简体中文</a> | <a href="../docs-jp/README.md">日本語</a></p>
 <table width="100%" class="sphinxhide">
   <tr width="100%">
-    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/2eca4112ef16a9ce62617fa54a982a59363f292b/xilinx-header-logo.svg" width="30%"/><h1>Embedded Design Documentation</h1>
+    <td align="center"><img src="https://github.com/Xilinx/Image-Collateral/blob/main/xilinx-logo_30percent.png?raw=true" width="30%"/><h1>Embedded Design Documentation</h1>
     </td>
  </tr>
  </table>
