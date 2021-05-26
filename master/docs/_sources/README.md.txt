@@ -1,8 +1,8 @@
-<p align="right"><a>English</a> | <a href="../docs-cn/README.md">简体中文</a></p>
+﻿<p align="right"><a>English</a> | <a href="../docs-cn/README.md">简体中文</a></p>
 
 <table width="100%" class="sphinxhide">
   <tr width="100%">
-    <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Embedded Design Documentation</h1>
+    <td align="center"><img src="https://github.com/Xilinx/Image-Collateral/blob/main/xilinx-logo.png?raw=true" width="30%"/><h1>Embedded Design Documentation</h1>
     </td>
  </tr>
  </table>
