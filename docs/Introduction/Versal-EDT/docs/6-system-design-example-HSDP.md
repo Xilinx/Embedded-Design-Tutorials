@@ -102,7 +102,7 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
     $ petalinux-package --force --boot --atf --u-boot
     ```
 
-    > ***Note*:** The packaged Linux boot images are placed in the `<PetaLinux-project>/images/Linux/` directory in the PetaLinux build root. Make a note of this directory location as it will be used in the following steps. If you intend to use a different machine than the one that was used to build PetaLinux (for example, a Windows Based PC) to download the Linux boot images using SmartLynq+, the contents of this directory should be transferred to that machine before proceeding with this tutorial.
+    > ***Note*:** The packaged Linux boot images are placed in the `<petaLinux-project>/images/Linux/` directory in the PetaLinux build root. Make a note of this directory location as it will be used in the following steps. If you intend to use a different machine than the one that was used to build PetaLinux (for example, a Windows Based PC) to download the Linux boot images using SmartLynq+, the contents of this directory should be transferred to that machine before proceeding with this tutorial.
 
 ## Setting Up the SmartLynq+ Module
 
