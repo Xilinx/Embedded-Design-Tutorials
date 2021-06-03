@@ -22,7 +22,7 @@ This design uses the project built in [System Design Example using Scalar Engine
 
     ![](./media/image5.png)
 
-3. Double-click the Versal ACAP CIPS IP core and click **Debug → Debug Configuration**.
+3. Double-click the Versal ACAP CIPS IP core to recustomize the IP.  Click the **Next** button and click on the blue box labeled **PS PMC** to customize the Processing System (PS) and the Platform Management Controller (PMC).  On the left pane, select  click **Debug** then click on the **HSDP** tab.
     ![](./media/ch6-image1.png)
 
 4. Under **High-Speed Debug Port (HSDP)**, select **AURORA** as the **Pathway to/from Debug Packet Controller (DPC)**.
@@ -171,7 +171,7 @@ The design package included with this tutorial contains a script that downloads 
 3. At the Vivado tcl shell, issue the following command to download the images using HSDP:
 
     ```
-    xsdb Linux_download.tcl <smartlynq+ ip> images/Linux HSDP
+    xsdb linux_download.tcl <smartlynq+ ip> images/Linux HSDP
     ```
 
     This loads `BOOT.BIN` using JTAG, following which an HSDP link is auto-negotiated and the rest of the boot images are loaded using HSDP. This increases the speed substantially compared to JTAG.
