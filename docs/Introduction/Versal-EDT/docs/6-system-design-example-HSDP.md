@@ -23,6 +23,7 @@ This design uses the project built in [System Design Example using Scalar Engine
     ![](./media/image5.png)
 
 3. Double-click the Versal ACAP CIPS IP core to recustomize the IP.  Click the **Next** button and click on the blue box labeled **PS PMC** to customize the Processing System (PS) and the Platform Management Controller (PMC).  On the left pane, select  click **Debug** then click on the **HSDP** tab.
+
     ![](./media/ch6-image1.png)
 
 4. Under **High-Speed Debug Port (HSDP)**, select **AURORA** as the **Pathway to/from Debug Packet Controller (DPC)**.
