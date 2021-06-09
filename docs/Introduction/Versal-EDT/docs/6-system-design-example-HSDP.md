@@ -167,19 +167,19 @@ The design package included with this tutorial contains a script that downloads 
 
     ![](./media/ch6-image24.png)
 
-2. Change the working directory to the PetaLinux build root, if working on the machine used to build PetaLinux, or change to the location where the `images/Linux` directory was transferred to the local machine in the preceding steps.
+2. Change the working directory to the PetaLinux build root, if working on the machine used to build PetaLinux, or change to the location where the `images/linux` directory was transferred to the local machine in the preceding steps.
 
 3. At the Vivado tcl shell, issue the following command to download the images using HSDP:
 
     ```
-    xsdb linux_download.tcl <smartlynq+ ip> images/Linux HSDP
+    xsdb linux_download.tcl <smartlynq+ ip> images/linux HSDP
     ```
 
     This loads `BOOT.BIN` using JTAG, following which an HSDP link is auto-negotiated and the rest of the boot images are loaded using HSDP. This increases the speed substantially compared to JTAG.
 
     ![](./media/ch6-image16.png)
 
-    > ***Note*:** You can also download Linux images using JTAG by changing the last argument of the script to `FTDI-JTAG` as shown: `xsdb Linux-download <smartlynq+ ip> images/Linux FTDI-JTAG`. This uses the JTAG to program all of the Linux boot images. Note the difference in download speed when using HSDP.
+    > ***Note*:** You can also download Linux images using JTAG by changing the last argument of the script to `FTDI-JTAG` as shown: `xsdb linux-download <smartlynq+ ip> images/linux FTDI-JTAG`. This uses the JTAG to program all of the Linux boot images. Note the difference in download speed when using HSDP.
 
 4. Versal boot messages can be viewed from the VCK190 UART on the terminal opened in the preceding section:
 

@@ -40,11 +40,26 @@ if {($commPath eq "PC4-JTAG") || ($commPath eq "FTDI-JTAG")} {
 # Download image files
 puts "Downloading linux images"
 set start_time [clock microseconds]
-mwr -force -bin -file "$imagesPath/Image" 0x80000 4378240
+
+## For maximum performance, use mwr with exact byte size specified.
+## For versatility, comment mwr command out and use 'dow' in each of these commands.
+
+# Download Linux Image
+mwr -size b -force -bin -file "$imagesPath/Image" 0x200000 21180928
+#dow -data -force "$imagesPath/Image" 0x200000
+
 after 2000
-mwr -force -bin -file "$imagesPath/rootfs.cpio.gz.u-boot" 0x4000000 9378001
+
+# Download RootFS
+mwr -size b -force -bin -file "$imagesPath/rootfs.cpio.gz.u-boot" 0x4000000 52811673
+#dow -data -force "$imagesPath/rootfs.cpio.gz.u-boot" 0x4000000 
+
 after 2000
-mwr -force -bin -file "$imagesPath/boot.scr" 0x20000000 502
+
+# Download boot.scr
+mwr -size b -force -bin -file "$imagesPath/boot.scr" 0x20000000 2594
+#dow -data -force "$imagesPath/boot.scr" 0x20000000
+
 set end_time [clock microseconds]
 after 2000
 # Resume Versal processors
