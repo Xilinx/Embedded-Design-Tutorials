@@ -8,7 +8,7 @@ This chapter demonstrates how to build a Versal&trade;-based system that utilize
 
 ## Design Example: Enabling the HSDP
 
-To enable the HSDP, start with the VCK190 or VMK180 project that you built in the preceding chapter (or, the pre-built project provided in the design package `<design-package>/smartlynq_plus/vck190/design_files/vck190_edt_versal_hsdp.xpr.zip`) and modify the project to include HSDP support.
+To enable the HSDP, start with the VCK190 or VMK180 project that you built in the preceding chapter and modify the project to include HSDP support.  It is also possible to start this chapter standalone by sourcing the included block design Tcl to create the HSDP capable design.  See `ref_files/Prod_Si/smartlynq_plus/bd_tcl`.
 
 ### Modifying the Design to Enable the HSDP
 
