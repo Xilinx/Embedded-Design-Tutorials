@@ -8,7 +8,7 @@ This chapter demonstrates how to build a Versal&trade;-based system that utilize
 
 ## Design Example: Enabling the HSDP
 
-To enable the HSDP, start with the VCK190 or VMK180 project that you built in the preceding chapter (or, the pre-built project provided in the design package `<design-package>/smartlynq_plus/vck190/design_files/vck190_edt_versal_hsdp.xpr.zip`) and modify the project to include HSDP support.
+To enable the HSDP, start with the VCK190 or VMK180 project that you built in the preceding chapter and modify the project to include HSDP support.  It is also possible to start this chapter standalone by sourcing the included block design Tcl to create the HSDP capable design.  See `ref_files/Prod_Si/smartlynq_plus/bd_tcl`.
 
 ### Modifying the Design to Enable the HSDP
 
@@ -22,7 +22,8 @@ This design uses the project built in [System Design Example using Scalar Engine
 
     ![](./media/image5.png)
 
-3. Double-click the Versal ACAP CIPS IP core and click **Debug → Debug Configuration**.
+3. Double-click the Versal ACAP CIPS IP core to recustomize the IP.  Click the **Next** button and click on the blue box labeled **PS PMC** to customize the Processing System (PS) and the Platform Management Controller (PMC).  On the left pane, select  click **Debug** then click on the **HSDP** tab.
+
     ![](./media/ch6-image1.png)
 
 4. Under **High-Speed Debug Port (HSDP)**, select **AURORA** as the **Pathway to/from Debug Packet Controller (DPC)**.
@@ -102,7 +103,7 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
     $ petalinux-package --force --boot --atf --u-boot
     ```
 
-    > ***Note*:** The packaged Linux boot images are placed in the `<PetaLinux-project>/images/Linux/` directory in the PetaLinux build root. Make a note of this directory location as it will be used in the following steps. If you intend to use a different machine than the one that was used to build PetaLinux (for example, a Windows Based PC) to download the Linux boot images using SmartLynq+, the contents of this directory should be transferred to that machine before proceeding with this tutorial.
+    > ***Note*:** The packaged Linux boot images are placed in the `<petaLinux-project>/images/Linux/` directory in the PetaLinux build root. Make a note of this directory location as it will be used in the following steps. If you intend to use a different machine than the one that was used to build PetaLinux (for example, a Windows Based PC) to download the Linux boot images using SmartLynq+, the contents of this directory should be transferred to that machine before proceeding with this tutorial.
 
 ## Setting Up the SmartLynq+ Module
 
@@ -166,19 +167,19 @@ The design package included with this tutorial contains a script that downloads 
 
     ![](./media/ch6-image24.png)
 
-2. Change the working directory to the PetaLinux build root, if working on the machine used to build PetaLinux, or change to the location where the `images/Linux` directory was transferred to the local machine in the preceding steps.
+2. Change the working directory to the PetaLinux build root, if working on the machine used to build PetaLinux, or change to the location where the `images/linux` directory was transferred to the local machine in the preceding steps.
 
 3. At the Vivado tcl shell, issue the following command to download the images using HSDP:
 
     ```
-    xsdb Linux_download.tcl <smartlynq+ ip> images/Linux HSDP
+    xsdb linux_download.tcl <smartlynq+ ip> images/linux HSDP
     ```
 
     This loads `BOOT.BIN` using JTAG, following which an HSDP link is auto-negotiated and the rest of the boot images are loaded using HSDP. This increases the speed substantially compared to JTAG.
 
     ![](./media/ch6-image16.png)
 
-    > ***Note*:** You can also download Linux images using JTAG by changing the last argument of the script to `FTDI-JTAG` as shown: `xsdb Linux-download <smartlynq+ ip> images/Linux FTDI-JTAG`. This uses the JTAG to program all of the Linux boot images. Note the difference in download speed when using HSDP.
+    > ***Note*:** You can also download Linux images using JTAG by changing the last argument of the script to `FTDI-JTAG` as shown: `xsdb linux-download <smartlynq+ ip> images/linux FTDI-JTAG`. This uses the JTAG to program all of the Linux boot images. Note the difference in download speed when using HSDP.
 
 4. Versal boot messages can be viewed from the VCK190 UART on the terminal opened in the preceding section:
 
