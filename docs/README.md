@@ -52,4 +52,17 @@ Provides an introduction for using the Xilinx Vivado Design Suite flow for using
  Describes the technical details of the performance analysis toolbox, as well as a methodology explaining its usefulness and depth.</td></tr>
  </table>
 
+ # Debugging Guides
+
+ <table style="width:100%">
+<tr>
+<td align="center"><b>Guide</b></td>
+<td align="center"><b>Description</b></td>
+</tr>
+<tr>
+ <td align="center"><a href="Vitis-Embedded-Software-Debugging/README.md">Vitis Embedded Software Debugging Guide</a></td>
+ <td>
+ This guide provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help.</td></tr>
+ </table>
+
 <p align="center"><sup>Copyright&copy; 2019-2021 Xilinx</sup></p>
