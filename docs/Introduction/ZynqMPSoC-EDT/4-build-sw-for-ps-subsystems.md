@@ -346,8 +346,8 @@ The edt_zcu102_wrapper platform is, by default, assigned the default domain for 
 
     If you view the XSCT console, it shows the XSCT command history as shown in the following example:
 
-    ```
-   Downloading Program -- C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
+      ```
+      Downloading Program -- C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
       section, .vectors: 0x00000000 - 0x00000637
       section, .text: 0x00100000 - 0x00101947
       section, .init: 0x00101948 - 0x00101953
@@ -364,12 +364,12 @@ The edt_zcu102_wrapper platform is, by default, assigned the default domain for 
       section, .heap: 0x0010256c - 0x0010456f
       section, .stack: 0x00104570 - 0x00107d6f
 
-   0%    0MB   0.0MB/s  ??:?? ETA
-   100%    0MB   0.2MB/s  00:00    
+      0%    0MB   0.0MB/s  ??:?? ETA
+      100%    0MB   0.2MB/s  00:00    
 
-   Setting PC to Program Start Address 0x0000003c
-   Successfully downloaded C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
-    ``` 
+      Setting PC to Program Start Address 0x0000003c
+      Successfully downloaded C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
+      ``` 
 
     More debugging techniques are explored in the [next chapter](./5-debugging-with-vitis-debugger.md).
 
