@@ -61,7 +61,7 @@ installations might provide varied results. These examples focus on
 introducing you to the following aspects of embedded design.
 
  >**Note**: The sequence mentioned in the tutorial steps for booting
- Linux on the hardware is specific to 2020.2, which must be installed
+ Linux on the hardware is specific to 2021.1, which must be installed
  on the Linux host machine to execute the Linux portions of this document.
 
 

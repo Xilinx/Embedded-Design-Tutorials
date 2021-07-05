@@ -158,21 +158,18 @@ The output of this example design is the hardware configuration XSA. It will be 
 8. In PS-PL Configuration, expand **PS-PL Interfaces** and expand the
      **Master Interface**.
 
-    For this example, because there is no design in the PL, you can disable
-    the PS-PL interface. In this case, the AXI HPM0 FPD and AXI HPM1 FPD
-    master interfaces can be disabled.
+    The PS-PL AXI Master interface enables AXI HPM0 FPD and AXI HPM1 FPD in the default board setup. For this example, we will start with a design with only PS but no PL logic. So we can disable the PS-PL interfaces.
 
-9. Deselect **AXI HPM0 FPD** and **AXI HPM1 FPD**. The PS-PL
-     configuration looks like the following figure.
+9. Deselect **AXI HPM0 FPD** and **AXI HPM1 FPD**. The PS-PL configuration looks like the following figure.
 
     ![](./media/image15.png)
 
 10. Click **OK** to close the Re-customize IP wizard.
 
 
-### Validating the Design and Connecting Ports
+### Validating the Design, Creating Wrapper and Generating Block Design
 
- Use the following steps to validate the design:
+Block design provides all the IP configuration and block connection information. Vivado can validate the block design before running synthesize and implementation. This can help saving time if the design has errors. After validation, user needs to generate the source files from the block design so that synthesizer can consume and process. We also need to generate a wrapper for the block design because Vivado requires the design top to be an HDL file. 
 
 1. Right-click in the white space of the Block Diagram view and select
      **Validate Design**. Alternatively, you can press the **F6** key.
@@ -186,8 +183,7 @@ The output of this example design is the hardware configuration XSA. It will be 
 
 4. Click **Hierarchy**.
 
-5. Under Design Sources, right-click **edt_zcu102** and select **Create
-     HDL Wrapper**.
+5. Under Design Sources, right-click **edt_zcu102** and select **Create HDL Wrapper**.
 
     The Create HDL Wrapper dialog box
     opens. Use this dialog box to create a HDL wrapper file for the
@@ -213,14 +209,16 @@ The output of this example design is the hardware configuration XSA. It will be 
 
 9.  Select Synthesis Options to **Global** and click **Generate**.
 
-    This step builds all the required output products for the selected source.
+    This step generates all the required output products for the selected source.
     For example, constraints do not need to be manually created for the IP
     processor system. The Vivado tools automatically generate the XDC file
     for the processor subsystem when **Generate Output Products** is selected.
 
+    If you select **Out of Context Per IP**, Vivado will run synthesis for each IP during the generation. It will take longer time than **Global**.
+
 10. When the Generate Output Products process completes, click **OK**.
 
-11. In the Block Diagram Sources window, click the IP Sources page. Here
+11. In the **Block Diagram Sources** window, click the **IP Sources** tab. Here
      you can see the output products that you just generated, as shown
      in the following figure.
 
@@ -243,7 +241,9 @@ To write a hardware platform using the GUI, follow these steps:
 
 5. Click **Finish** to generate the hardware platform file in the specified path. It will be the input file of next examples.
 
-    **Note:** In most cases, we export a pre-synthesis XSA for embedded platforms because a full implementation will run in the Vitis compiler (``v++``) link phase. Post-implementation, this can be used for DFX platforms.
+    **Note:** The differences between pre-synthesis XSA and post-implementation XSA for embedded designs are whether the bitstream is included in the XSA. When running applications in Vitis IDE, it can configure the bitstream to hardware before running the application. If there is bitstream in the XSA file, Vitis will use it by default. If bitstream is not available, or if user wish to use another bitstream file, user can specify the bitstream path in the Vitis IDE. 
+
+    For this example, we don't have PL logic, so we use pre-synthesis XSA.
 
 ### Example Summary
 
