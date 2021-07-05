@@ -255,13 +255,13 @@ The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 AP
  The earlier example highlighted creation of the Linux Images and Boot
  images to boot from an SD card. This section explains the
  configuration of PetaLinux to generate Linux images for QSPI flash.
- For more information about the dependencies for PetaLinux 2020.2, see
+ For more information about the dependencies for PetaLinux 2021.1, see
  the _PetaLinux Tools Documentation: Reference Guide_ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)).
 
 1. Before starting this example, create a backup of the boot images created for SD card setup using the following commands:
 
     ``` shell
-    $ cd <Petalinux-project-path>/xilinx-zcu102-2020.2/images/linux/
+    $ cd <Petalinux-project-path>/xilinx-zcu102-2021.1/images/linux/
     $ mkdir sd_boot
     $ cp image.ub sd_boot/
     $ cp u-boot.elf sd_boot/
@@ -270,7 +270,7 @@ The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 AP
 
 2. Change the directory to the PetaLinux project root directory:
 
-    `$ cd \<Petalinux-project-path\/xilinx-zcu102-2020.2`
+    `$ cd \<Petalinux-project-path\/xilinx-zcu102-2021.1`
 
 3. Launch the top-level system configuration menu:
 
@@ -771,7 +771,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
 5. Power on the board.
 
- The following steps load the boot images via USB using the DFU utility, which can be found at `Vitis\2020.2\tps\lnx64\dfu-util-0.9`.
+ The following steps load the boot images via USB using the DFU utility, which can be found at `Vitis\2021.1\tps\lnx64\dfu-util-0.9`.
 
  Alternatively, you can install the DFU utility on Linux using the Package Manager supported by Linux Distribution.
 
@@ -849,7 +849,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
     `> dfu-util.exe -l`
 
-    >**Note:** `dfu-util.exe` can be found in `<VITIS_Installation_path>\VITIS\2020.2\tps\Win64\dfu-util-0.9\dfu-util.exe`.
+    >**Note:** `dfu-util.exe` can be found in `<VITIS_Installation_path>\VITIS\2021.1\tps\Win64\dfu-util-0.9\dfu-util.exe`.
 
 3. The USB device should be enumerated with the vendor and product ID (`03fd:0050`).
 
