@@ -97,8 +97,7 @@ The following steps show how to create a platform project with a standalone doma
 
 ## Example 3: Running the "Hello World" Application from Arm Cortex-A53
 
- In this example, we will create a hello world application based on the platform created in the previous example. You will learn how to manage the board settings, make
- cable connections, connect to the board through your PC, and run a simple "Hello World" software application from Arm Cortex-A53 in JTAG mode using the System Debugger in the Vitis IDE.
+ In this example, you will create a "Hello World" application based on the platform created in the previous example. You will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a simple "Hello World" software application from an Arm Cortex-A53 processor in JTAG mode using the System Debugger in the Vitis IDE.
 
 ### Input and Output Files
 
@@ -343,9 +342,9 @@ The edt_zcu102_wrapper platform is, by default, assigned the default domain for 
 
     ![](./media/image30_2.png)
 
-    Since the hello world application for Cortex-A53 and Cortex-R5 are identical, we can't differentiate them from the print contents. But you can find the details in the **Debug Perspective**.
+    Because the "Hello World" applications for Cortex-A53 and Cortex-R5 are identical, they cannot be differentiated based on the print contents, but you can view the details in the **Debug Perspective**.
 
-    Check XSCT Console, it shows the XSCT command history like
+    If you view the XSCT console, it shows the XSCT command history as shown in the following example:
 
     ```
    Downloading Program -- C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
@@ -372,7 +371,7 @@ The edt_zcu102_wrapper platform is, by default, assigned the default domain for 
    Successfully downloaded C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
     ``` 
 
-    We will discuss more debugging techniques in next chapter.
+    More debugging techniques are explored in the [next chapter](./5-debugging-with-vitis-debugger.md).
 
     >**Note:** No bitstream download is required for the above
     software application to be executed on the Zynq UltraScale+ evaluation
@@ -380,16 +379,15 @@ The edt_zcu102_wrapper platform is, by default, assigned the default domain for 
     Basic initialization of this system to run a simple application is
     accomplished by the FSBL application.
 
-## Example 5: Use System Project to Manage Multiple Applications in the Vitis IDE
+## Example 5: Using System Project to Manage Multiple Applications in the Vitis IDE
 
-The Vitis IDE can organize application projects that need to run at the same time in one system project. This can come in useful in project organization and makes debugging easier when the Arm Cortex-A53, Arm Cortex-R5F or MicroBlaze soft processor need to run simultaneously.
+The Vitis IDE can organize application projects that need to run at the same time in one system project. This can be useful in project organization and can make debugging easier when the Arm Cortex-A53, Arm Cortex-R5F, or MicroBlaze soft processors need to run simultaneously.
 
-In this example, you will create a hello_system project:
+In this example, you will create a `hello_system` project that contains the "Hello World" application for Arm Cortex-A53 and Cortex-R5F and you will achieve the following:
 
-- It contains hello world application for ARM Cortex-A53 and Cortex-R5F.
-- Modify the "Hello World" application source code
-- Import prepared source codes for Arm Cortex-R5F
-- Adjust the linker script
+- Modify the "Hello World" application source code.
+- Import prepared source codes for Arm Cortex-R5F.
+- Adjust the linker script.
 
 ### Input and Output Files
 
@@ -399,9 +397,9 @@ In this example, you will create a hello_system project:
 - Output:
   - System project hello_system that includes hello_a53 and testapp_r5 applications
 
-### Create hello_system System Project
+### Creating the hello_system System Project
 
-Use the same steps as Example 3, but create the system project with name **hello_system**.
+Use the same steps as [Example 3](#example-3-running-the-hello-world-application-from-arm-cortex-a53), but this time create the system project with name `hello_system`.
 
 1. Select **File → New → Application Project**. The Create New Application Project wizard welcome screen opens.
 
@@ -419,7 +417,8 @@ Use the same steps as Example 3, but create the system project with name **hello
 | Domain                      | Domain                          | standalone on psu_cortexa53_0 |
 | Templates                   | Available templates             | Hello World                   |
 
-    Note: application projects in one workspace cannot have the same name even if they belongs to different system projects because they store flat in the workspace directory.
+
+   **Note:** Application projects in one workspace cannot have the same name even if they belong to different system projects, because they store flat in the workspace directory.
 
 ### Modifying the hello_sys_a53 Application Source Code
 
@@ -504,7 +503,7 @@ You will now create a bare-metal application for Arm Cortex-R5F. The application
 
 ### Modifying the Linker Script for testapp_r5
 
-When two applications needs to run at the same time, they cannot use resources in conflict. They should not use the memory space from each other. They should use their own peripherals, or share peripherals by time. In this step, we assign their memory space by updating the linker scripts.
+When two applications needs to run at the same time, they cannot use resources in conflict. They should not each other's memory space. They should use their own peripherals, or share peripherals by time. In this step, memory space is assigned by updating the linker scripts.
 
 1. In the Explorer view, expand the **testapp_r5 project**.
 
@@ -601,7 +600,7 @@ You can view the detailed steps by right-clicking **hello_system**, selecting **
 
 ## Reviewing Bootloader Projects in the Platform
 
-Platform creates boot components by default. We have used the generated FSBL to initialize the running environment before launching hello world applications. We can review their settings and modify the configuration if required.
+The platform creates boot components by default. The generated FSBL has been used to initialize the running environment before launching "Hello World" applications. You can review their settings and modify the configuration if required.
 
 ### Reviewing FSBL in the Platform
 

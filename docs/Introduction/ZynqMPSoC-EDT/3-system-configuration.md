@@ -158,7 +158,7 @@ The output of this example design is the hardware configuration XSA. It will be 
 8. In PS-PL Configuration, expand **PS-PL Interfaces** and expand the
      **Master Interface**.
 
-    The PS-PL AXI Master interface enables AXI HPM0 FPD and AXI HPM1 FPD in the default board setup. For this example, we will start with a design with only PS but no PL logic. So we can disable the PS-PL interfaces.
+    The PS-PL AXI Master interface enables AXI HPM0 FPD and AXI HPM1 FPD in the default board setup. For this example, you start with a design with only PS logic (no PL), so the PS-PL interfaces can be disabled.
 
 9. Deselect **AXI HPM0 FPD** and **AXI HPM1 FPD**. The PS-PL configuration looks like the following figure.
 
@@ -167,9 +167,9 @@ The output of this example design is the hardware configuration XSA. It will be 
 10. Click **OK** to close the Re-customize IP wizard.
 
 
-### Validating the Design, Creating Wrapper and Generating Block Design
+### Validating the Design, Creating the Wrapper, and Generating the Block Design
 
-Block design provides all the IP configuration and block connection information. Vivado can validate the block design before running synthesize and implementation. This can help saving time if the design has errors. After validation, user needs to generate the source files from the block design so that synthesizer can consume and process. We also need to generate a wrapper for the block design because Vivado requires the design top to be an HDL file. 
+The block design provides all the IP configuration and block connection information. Vivado can validate the block design before running synthesis and implementation. This can help save time if the design has errors. After validation, generate the source files from the block design so that the synthesizer can consume and process them. You also need to generate a wrapper for the block design because Vivado requires the design top to be an HDL file. 
 
 1. Right-click in the white space of the Block Diagram view and select
      **Validate Design**. Alternatively, you can press the **F6** key.
@@ -214,11 +214,11 @@ Block design provides all the IP configuration and block connection information.
     processor system. The Vivado tools automatically generate the XDC file
     for the processor subsystem when **Generate Output Products** is selected.
 
-    If you select **Out of Context Per IP**, Vivado will run synthesis for each IP during the generation. It will take longer time than **Global**.
+    If you select **Out of Context Per IP**, Vivado runs synthesis for each IP during the generation. This takes longer than the Global option.
 
 10. When the Generate Output Products process completes, click **OK**.
 
-11. In the **Block Diagram Sources** window, click the **IP Sources** tab. Here
+11. In the Block Diagram Sources window, click the **IP Sources** tab. Here
      you can see the output products that you just generated, as shown
      in the following figure.
 
@@ -241,9 +241,9 @@ To write a hardware platform using the GUI, follow these steps:
 
 5. Click **Finish** to generate the hardware platform file in the specified path. It will be the input file of next examples.
 
-    **Note:** The differences between pre-synthesis XSA and post-implementation XSA for embedded designs are whether the bitstream is included in the XSA. When running applications in Vitis IDE, it can configure the bitstream to hardware before running the application. If there is bitstream in the XSA file, Vitis will use it by default. If bitstream is not available, or if user wish to use another bitstream file, user can specify the bitstream path in the Vitis IDE. 
+    **Note:** The difference between the pre-synthesis XSA and the post-implementation XSA for embedded designs is whether the bitstream is included. If you are running applications in the Vitis IDE, you can configure the bitstream to hardware before running the application. If there is a bitstream in the XSA file, the Vitis IDE uses it by default. If a bitstream is not available, or if you wish to use another bitstream file, specify the bitstream path in the Vitis IDE. 
 
-    For this example, we don't have PL logic, so we use pre-synthesis XSA.
+    For this example, we do not have programmable logic, so the pre-synthesis XSA is used.
 
 ### Example Summary
 

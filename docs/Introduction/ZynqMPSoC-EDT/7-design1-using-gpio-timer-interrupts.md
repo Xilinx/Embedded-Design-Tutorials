@@ -92,13 +92,13 @@ The next step is to connect the IP blocks instantiated above to the PS block.
 
    - Double-click the **Zynq UltraScale+ MPSoC** IP block.
    - Select the **PS-PL Configuration** tab.
-   - Enable **AXI HPM0 LPD**, expand it, set the AXI HPM0 LPD Data Width drop-down to **32** bits.
+   - Enable **AXI HPM0 LPD**, expand it, and set the AXI HPM0 LPD Data Width drop-down to **32** bits.
    - Click **OK** to close the window.
    - Check that the M_AXI_HPM0_LPD interface shows up on the MPSoC block.
 
    ![AXI HPM LPD](./media/image102.png)
 
-   > Note: 32-bit AXI is good for accessing control registers of general IPs. 128-bit AXI is good for data transferring.
+   >**Note:** 32-bit AXI is useful for accessing the control registers of general IPs. 128-bit AXI is useful for data transfer.
 
 
 2. Connect the AXI interfaces:
@@ -127,7 +127,7 @@ The next step is to connect the IP blocks instantiated above to the PS block.
 
      ![](./media/image104.png)
 
-     >**Note:** Connection Automation will assign address automatically. If you connect IP manually, you also need to assign its address.
+     >**Note:** Connection automation assigns addresses automatically. If you connect IP manually, you also need to assign its address.
 
 ### Exporting the Post-Implementation Hardware Platform
 
@@ -157,7 +157,7 @@ We will run implementation of the Vivado design and export the post-implementati
 4. Run synthesis, implementation, and bitstream generation:
 
     - Click **Generate Bitstream**.
-    - Vivado displays a popup message saying `There are no implementation results available. OK to launch synthesis and implementation?`. Click **Yes**.
+    - Vivado displays a popup message saying "There are no implementation results available. OK to launch synthesis and implementation?". Click **Yes**.
     - Review the **Launch Runs** dialogue, set the proper number of jobs to run simultaneously, and click **OK**.
     - Wait for Vivado to complete implementation. After it finishes, a Bitstream Generation Completed message will pop up. Click **Cancel** to close it.
 
@@ -204,32 +204,30 @@ This use case has a bare-metal application running on an R5 core and a Linux app
 
 3. Follow instructions in [Verifying the Image on the ZCU102 Board](6-build-linux-sw-for-ps.md#verifying-the-image-on-the-zcu102-board) to verify the images.
 
-Make sure you have the following files for creating the Linux domain
+Make sure you have the following files for creating the Linux domain:
 
-- fsbl.elf
-- pmufw.elf
-- bl31.elf
-- rootfs.ext4
-- Image
-- system.dtb
+    - fsbl.elf
+    - pmufw.elf
+    - bl31.elf
+    - rootfs.ext4
+    - Image
+    - system.dtb
 
 ### Creating the Bare-Metal Application Project
 
-1. Launch Vitis and use a new workspace **C:\edt\design_example_1** for this project
+1. Launch Vitis and use a new workspace **C:\edt\design_example_1** for this project.
 
-2. In the Vitis IDE, select **File → New → Application Project**. The
-     New Project wizard opens.
+2. In the Vitis IDE, select **File → New → Application Project**. The New Project wizard opens.
 
-3. Use the information in the table below to make your selections in
-     the wizard.
+3. Use the information in the table below to make your selections in the wizard.
 
 
    | Screen                      | System Properties                   | Settings                   |
    | --------------------------- | ----------------------------------- | -------------------------- |
    | Platform                    | Create a New Platform from Hardware | **edt_zcu102_wrapper.xsa** |
    |                             | Generate Boot Components            | **uncheck**                |
-   | Application project details | Application project name            | **tmr_psled_r5**           |
-   |                             | System project  name                | tmr_psled_r5_system        |
+   | Application Project Details | Application project name            | **tmr_psled_r5**           |
+   |                             | System project name                | tmr_psled_r5_system        |
    |                             | Target processor                    | **psu_cortexr5_0**         |
    | Domain                      | Domain                              | **psu_cortexr5_0**         |
    | Templates                   | Available templates                 | Empty Application(C)       |
