@@ -1,17 +1,10 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
-</th>
-
-  </tr>
-
-</table>
-
 # Design Example 1: Using GPIOs, Timers, and Interrupts
 
 The Zynq&reg; UltraScale+&trade; MPSoC ZCU102 evaluation board comes with a few configurable switches and LEDs. This design example makes use of bare-metal and Linux applications to toggle these LEDs, with the following details:
 
 - The Linux APU runs Linux, while the RPU R5-0 hosts another bare-metal application.
 
-- The Linux applications configure a set of PL LEDs to toggle using a PS Dip Switch, and another set of PL LEDs to toggle using a PL Dip Switch (SW17).
+- The Linux applications configure a set of PL LEDs to toggle using a PS dip switch, and another set of PL LEDs to toggle using a PL Dip Switch (SW17).
 
 - The R5-Core 0 application uses an AXI Timer IP in the programmable logic to toggle PS LED (DS50). The application is configured to toggle the LED state every time the timer counter expires, and the timer in the PL is set to reset periodically after a configurable time interval.
 
@@ -178,10 +171,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 ## Configuring Software
 
- This use case has a bare-metal application running on an R5 core and a
- Linux application running on an APU Linux target. Most of the software
- blocks will remain the same as mentioned in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). The software for this design example requires additional drivers for components added in the PL. For this reason, you will need to generate a new bare-metal BSP in the Vitis IDE using the hardware files generated for this design. Linux also requires the Linux BSP to be reconfigured in sync
- with the new hardware platform file (XSA).
+This use case has a bare-metal application running on an R5 core and a Linux application running on an APU Linux target. Most of the software blocks will remain the same as mentioned in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). The software for this design example requires additional drivers for components added in the PL. For this reason, you will need to generate a new bare-metal BSP in the Vitis IDE using the hardware files generated for this design. Linux also requires the Linux BSP to be reconfigured in sync with the new hardware platform file (XSA).
 
  Before you configure the software, first look at the application
  design scheme. The system has a bare-metal application on RPU, which
@@ -219,14 +209,14 @@ We will run implementation of the Vivado design and export the post-implementati
      the wizard.
 
 
-   |  Screen      |     System Properties          |  Settings      |
-   |---------------------|--------------------------------|----------------|
-   |  Platform           |  Select platform from repository   |  edt_zcu102_wrapper |
-   |  Application project details       |  Application project name       |  tmr_psled_r5       |
-   |                      |  System project  name   |   tmr_psled_r5_system                  |
-   |                      |  Target processor   |  psu_cortexr5_0     |
-   |  Domain             |  Domain             |  psu_cortexr5_0     |
-   |  Templates          |  Available templates         |  Empty Application  |
+   | Screen                      | System Properties               | Settings            |
+   | --------------------------- | ------------------------------- | ------------------- |
+   | Platform                    | Select platform from repository | edt_zcu102_wrapper  |
+   | Application project details | Application project name        | tmr_psled_r5        |
+   |                             | System project  name            | tmr_psled_r5_system |
+   |                             | Target processor                | psu_cortexr5_0      |
+   | Domain                      | Domain                          | psu_cortexr5_0      |
+   | Templates                   | Available templates             | Empty Application   |
 
 3. Click **Finish**.
 
@@ -277,7 +267,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 6. Verify that the application is compiled and linked successfully and that the ``thetmr_psled_r5.elf`` file is generated in the `tmr_psled_r5\Debug` folder.
 
-7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package for testapp_r5](#4-build-sw-for-ps-subsystems.md#modifying-the-board-support-package-for-testapp_r5).
+7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package for testapp-r5](#4-build-sw-for-ps-subsystems.md#modifying-the-board-support-package-for-testapp_r5).
 
 #### Creating the Linux Domain for Linux Applications
 
@@ -299,7 +289,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
     - OS: Linux
 
-    - Processor: psu_cortexa53_0
+    - Processor: psu_cortexa53
 
     - Supported runtimes: C/C++
 
@@ -311,7 +301,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
     - Linux Image Directory: Provide the same boot directory path.
 
-5. Build the domain to create Linux applications.
+5. Build the platform to make the domain change take effects.
 
 ### Creating the Linux Application Project
 
@@ -319,14 +309,16 @@ We will run implementation of the Vivado design and export the post-implementati
 
 2. Use the information in the table below to make your selections in the wizard.
 
-   |  Screen      |  System Properties          |  Settings       |
-   |---------------------|-----------------------------|-----------------|
-   |  Platform           |  Select platform from repository   |  edt_zcu102_wrapper |
-   |  Application project details       |  Application  project name       |  ps_pl_linux_app    |
-   |                      |  System project name    |  ps_pl_linux_app_system                 |
-   |                      |  Target processor   |  psu_cortexa53 SMP  |
-   |  Domain             |  Domain             |  Linux_Domain        |
-   |  Templates          |  Available templates         |  Linux Empty Application        |
+   | Screen                      | System Properties               | Settings                |
+   | --------------------------- | ------------------------------- | ----------------------- |
+   | Platform                    | Select platform from repository | edt_zcu102_wrapper      |
+   | Application project details | Application  project name       | ps_pl_linux_app         |
+   |                             | System project name             | ps_pl_linux_app_system  |
+   |                             | Target processor                | psu_cortexa53 SMP       |
+   | Domain                      | Domain                          | Linux_Domain            |
+   | Templates                   | Available templates             | Linux Empty Application |
+
+    Since we have already created the Linux domain on psu_cortexa53, it shows up in the target processor list. If you'd like to create the domain during application creation process, you need to check "Show all processors in the hardware specification" to let the wizard show all processors. By default, it only shows the processors that have been used by the domains in the platform.
 
 3. Click **Finish**.
 
@@ -380,9 +372,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
 3. Select **Xilinx → Create Boot Image**.
 
-4. See the following figure for settings in the Create Boot Image wizard.
-
-5. Add the partitions as shown in the following figure.
+4. In the Create Boot Image wizard, add the settings and partitions as shown in the following figure.
 
     >**Note:** For detailed steps on how to add partitions, see [Boot Sequence for SD-Boot](8-boot-and-configuration.md#boot-sequence-for-sd-boot).
 
@@ -390,7 +380,7 @@ We will run implementation of the Vivado design and export the post-implementati
 
     >**Note:** This boot image requires PL bitstream `edt_zcu102_wrapper.bit` (Partition Type - Datafile, Destination Device - PL). The bitstream partition needs to be added right after the bootloader while you create the boot image. The R5 application `tmr_psled_r5.elf` is added as partition in this boot image.
 
-6. After adding all the partitions, click **Create Image**.
+5. After adding all the partitions, click **Create Image**.
 
     >**IMPORTANT!:** Ensure that you have set the correct exception levels
     for ATF (EL-3, TrustZone) and U-Boot (EL-2) partitions. These
@@ -467,3 +457,9 @@ In this design example, you created the hardware design in Vivado with processin
 The [next chapter](./8-boot-and-configuration.md) introduces more boot and configuration techniques.
 
 © Copyright 2017-2021 Xilinx, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.

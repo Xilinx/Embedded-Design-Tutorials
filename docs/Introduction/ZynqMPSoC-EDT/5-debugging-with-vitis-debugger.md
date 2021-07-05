@@ -1,10 +1,3 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
-</th>
-
-  </tr>
-
-</table>
-
 # Debugging Standalone Applications with the Vitis Debugger
 
 This chapter describes debug possibilities with the design flow you
@@ -85,13 +78,13 @@ The Vitis debugger provides the following debug capabilities:
  application.
 
  >**Note:** If you did not create a "Hello World" application on the APU or
- RPU, follow the steps in [Create Custom Bare-Metal Application for Arm Cortex-A53 based APU](4-build-sw-for-ps-subsystems.md#create-custom-bare-metal-application-for-arm-cortex-a53-based-apu)
+ RPU, follow the steps in [Create Custom Bare-Metal Application for Arm Cortex-A53 based APU](4-build-sw-for-ps-subsystems.md#creating-a-custom-bare-metal-application-for-an-arm-cortex-a53-based-apu)
  to create a new "Hello World" application.
 
  After you create the "Hello World" application, work through the
  following example to debug the software using the Vitis debugger.
 
-1. Connect the JTAG cable, set the boot mode to JTAG, and power on the board. Refer to the steps in [Example Project: Running the "Hello World" Application from Arm Cortex-A53](4-build-sw-for-ps-subsystems.md#example-project-running-the-hello-world-application-from-arm-cortex-a53).
+1. Connect the JTAG cable, set the boot mode to JTAG, and power on the board. Refer to the steps in [Example 3: Running the "Hello World" Application from Arm Cortex-A53](4-build-sw-for-ps-subsystems.md#example-3-running-the-hello-world-application-from-arm-cortex-a53).
 
 2. In the C/C++ Perspective, right-click the **hello_a53 Project** and select **Debug As→ Launch on Hardware → Single Application Debug**.
 
@@ -115,7 +108,7 @@ The Vitis debugger provides the following debug capabilities:
 
     ![](./media/image46.jpeg)
 
-    >***Note*:** The addresses shown on this page might slightly differ
+    >**Note:** The addresses shown on this page might slightly differ
     from the addresses shown on your system.
 
     The processor is currently sitting at the beginning of `main()` with
@@ -123,7 +116,7 @@ The Vitis debugger provides the following debug capabilities:
     this information in the Disassembly view, which shows the
     assembly-level program execution also suspended at `0000000000000cf0`.
 
-    >***Note*:** If the Disassembly view is not visible, select **Window→ Show View→ Disassembly**.
+    >**Note:** If the Disassembly view is not visible, select **Window→ Show View→ Disassembly**.
 
 3. The helloworld.c window also shows execution suspended at the first
      executable line of C code. Select the **Registers** view to
@@ -344,3 +337,9 @@ The Vitis debugger provides the following debug capabilities:
 
 
  © Copyright 2017-2020 Xilinx, Inc.
+
+ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.

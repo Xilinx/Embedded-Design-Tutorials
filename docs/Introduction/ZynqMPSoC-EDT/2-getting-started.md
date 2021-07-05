@@ -1,12 +1,4 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
-</th>
-
-  </tr>
-
-</table>
-
 # Getting Started
-
 
 ## Hardware Requirements
 
@@ -21,7 +13,7 @@
 
 - USB Type-A to USB Micro cable (for UART communications)
 
-- USB Micro cable for programming and debugging via USB-Micro JTAG
+- USB micro cable for programming and debugging via USB-Micro JTAG
      connection
 
 - SD-MMC flash card for Linux booting
@@ -75,7 +67,7 @@ the Installation section of [UG1400](https://www.xilinx.com/html_docs/xilinx2020
  When you install PetaLinux tools on your system of choice, you must do
  the following:
 
-- Download PetaLinux 2020.2 software from the Xilinx website.
+- Download the [PetaLinux 2020.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html) software from the Xilinx website.
 
 - Download the ZCU102 PetaLinux BSP (ZCU102 BSP (prod-silicon)) from
      the 2020.2 downloads page.
@@ -120,8 +112,14 @@ the Installation section of [UG1400](https://www.xilinx.com/html_docs/xilinx2020
 
 ### Tutorial Design Files
 
-The reference design files for this tutorial are provided in the [ref_files](./ref_files/) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
+The reference design files for this tutorial are provided in the [ref_files](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
 
 The [next chapter](./3-system-configuration.md) details the configuration of a Zynq UltraScale+ MPSoC PS with the Vivado IDE.
 
  © Copyright 2017-2021 Xilinx, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.

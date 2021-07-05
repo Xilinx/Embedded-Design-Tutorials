@@ -1,10 +1,3 @@
-<th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial 2020.2 (UG1209)</h1>
-</th>
-
-  </tr>
-
-</table>
-
 # Boot and Configuration
 
 This chapter shows how to integrate the software and hardware components generated in the previous steps to create a Zynq&reg; UltraScale+&trade; boot image. After reading this chapter, you will understand how to integrate and load boot loaders, bare-metal applications (for APU/RPU), and the Linux OS for a Zynq UltraScale+ system in different boot requirements: QSPI, SD card, JTAG, and so on.
@@ -245,13 +238,13 @@ You can see that the terminal screen configured for UART-1 also prints a message
 
 The bare-metal application has been modified to include the UART interrupt example. This application now is now in a waiting for interrupt (WFI) state until user input is detected from the keyboard at the UART-1 terminal.
 
-    ![](./media/image61.png)
+![](./media/image61.png)
 
 Meanwhile, the boot sequence continues on the APU and the images loaded can be understood from the messages appearing on the UART-0 terminal. The messages are highlighted in the following figure.
 
 The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 APU in SMP mode. The terminal messages indicate when the U-Boot loads the kernel image. When the kernel starts up, a user interface prompt is shown in the target Linux OS. The kernel loading and starting sequence can be seen in the following figure.
 
-    ![](./media/image63.png)
+![](./media/image63.png)
 
 ## Boot Sequence for QSPI Boot Mode
 
@@ -382,8 +375,7 @@ The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 AP
 
     6. Click **Add** to add the R5 bare-metal executable.
 
-        1. Add the R5 executable and enable it in lockstep mode, as shown
-            in the following image.
+        1. Add the R5 executable and enable it in lockstep mode, as shown in the following image.
 
         2. Click **OK**.
 
@@ -421,9 +413,6 @@ The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 AP
         3. Enter `0xF00000` as the offset.
 
         4. Leave Exception Level and TrustZone unselected.
-
-        **Note:** See [Creating Linux Images Using PetaLinux for QSPI Flash](4-build-sw-for-ps-subsystems.md#creating-linux-images-using-petalinux-for-qspi-flash), to
-        understand the offset value.
 
    9. Click **Add** to add the `boot.scr` script file.
 
@@ -742,7 +731,7 @@ The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 AP
     };
     ```
 
-    The modified ``system-user.dtsi`` file can be found in [ref_files/usb_boot](./ref_files/usb_boot/system-user.dtsi) released with this tutorial.
+    The modified ``system-user.dtsi`` file can be found in [ref_files/usb_boot](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/usb_boot) released with this tutorial.
 
 2. Build PetaLinux with the following changes:
 
@@ -792,8 +781,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
     `$ sudo dfu-util -l`
 
-    The USB device should be enumerated with VendorId: ProductId, which is
-    `03fd:0050`. You should see something like the following message:
+    The USB device should be enumerated with the vendor and product ID (`03fd:0050`). You should see something like the following message:
 
     ```
     Found DFU: [03fd:0050] ver=0100, devnum=30, cfg=1, intf=0, alt=0,
@@ -821,7 +809,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
 4. On the U-Boot prompt, press **Enter** to terminate autoboot. Verify from the UART1 console that the R5 application has also loaded successfully.
 
-5. Run the following commands to setup the DFU environment in the U-Boot command line:
+5. Run the following commands to set up the DFU environment in the U-Boot command line:
 
     ```
     $ setenv loadaddr 0x10000000
@@ -863,9 +851,9 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
     >**Note:** `dfu-util.exe` can be found in `<VITIS_Installation_path>\VITIS\2020.2\tps\Win64\dfu-util-0.9\dfu-util.exe`.
 
-3. The USB device should be enumerated with ``VendorId: ProductId``, which is `03fd:0050`.
+3. The USB device should be enumerated with the vendor and product ID (`03fd:0050`).
 
-    >**Note:** If you do not see the message starting with "Found DFU...", download and install the Zadig software. Open the software and click **Options** and select **List all devices**. Select device **Xilinx Dfu Downloader** and click **Install driver**.
+    >**Note:** If you do not see the message starting with "Found DFU...", download and install the [Zadig](https://zadig.akeo.ie/) software. Open the software and click **Options** and select **List all devices**. Select device **Xilinx Dfu Downloader** and click **Install driver**.
 
 4. Download the **boot.bin** that was created in [Creating Boot Images for USB Boot](#creating-boot-images-for-usb-boot).
 
@@ -881,7 +869,7 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
     >**Note:** At this point, use the Zadig utility to install drivers for the "USB download gadget" with device ID 03fd:0300. Without this, the Zadig software does not show "Xilinx DFU Downloader" after booting U-Boot on the target.
 
-8. Run the following commands to setup the DFU environment in the U-Boot command line:
+8. Run the following commands to set up the DFU environment in the U-Boot command line:
 
     ```
     $ setenv loadaddr 0x10000000
@@ -907,3 +895,9 @@ The following steps describe how to create a `usb_boot.bin` comprising rest of t
 
 
 © Copyright 2017-2021 Xilinx, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
