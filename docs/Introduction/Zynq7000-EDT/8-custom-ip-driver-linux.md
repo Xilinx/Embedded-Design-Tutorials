@@ -489,7 +489,7 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 13. Create a device node. Run the ``mknod`` command and select the the string from the printed message.
 
-    For example, the command ``mknod /dev/blink_Dev c 244 0`` creates the ``/dev/blink_Dev`` node.
+    For example, the command ``mknod /dev/blink_Dev c 244 0`` creates the **/dev/blink_Dev** node.
 
 14. Select **Window → Open perspective → Remote System Explorer** and click **Open**. The Vitis software platform opens the Remote
     Systems Explorer perspective.
@@ -519,14 +519,11 @@ In this section, you will use the Vitis software platform installed on a Windows
 
     i.  Right-click the **/** in the path name and create a new directory; name it "Apps".
 
-    j.  Using the Remote System Explorer perspective, copy the **linux_blinkled_app.elf** file from the \<project-dir\>
-        **linux_blinkled_app/Debug** folder and paste it into the **/Apps** directory under **blink connection**.
+    j.  Using the Remote System Explorer perspective, copy the **linux_blinkled_app.elf** file from the **<project-dir>/linux_blinkled_app/Debug** folder and paste it into the **/Apps** directory under **blink connection**.
 
-16. In the serial terminal, type ``cd Apps`` at the ``Zynq\prompt`` to open
-    the **/Apps** directory.
+16. In the serial terminal, type ``cd Apps`` to open the **/Apps** directory.
 
-17. Go to the **Apps** directory. Type `chmod 777 linux_blinkled_app.elf` to change the
-    ``linux_blinkled_app.elf`` file mode to executable mode.
+17. Go to the **Apps** directory. Type `chmod 777 linux_blinkled_app.elf` to change the **linux_blinkled_app.elf** file mode to executable mode.
 
 18. At the prompt, type `./linux_blinkled_app.elf` to execute the application.
 
