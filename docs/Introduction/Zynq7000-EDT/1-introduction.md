@@ -1,6 +1,6 @@
 # Getting Started
 
-# How Zynq Devices Offer a Single Chip Solution
+## How Zynq Devices Offer a Single Chip Solution
 
 The Zynq SoC comes with a versatile processing system (PS) integrated with a highly flexible and high-performance programmable logic (PL) section, all on a single system-on-a-chip (SoC).
 

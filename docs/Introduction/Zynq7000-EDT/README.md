@@ -13,9 +13,16 @@ The examples in this document were created using the Xilinx tools running on Win
 7. [Linux Boot Image Configuration](./7-linux-booting-debug.md)
 8. [Creating Custom IP and Device Drivers for Linux](./8-custom-ip-driver-linux.md)
 
-## Example Project
+## Example Projects
 
 The best way to learn a tool is to use it. So, this guide provides opportunities for you to work with the tools under discussion. Specifications for sample projects are given in the example sections, along with an explanation of what is happening behind the scenes. Each chapter and examples is intended to showcase different aspects of embedded design. The example takes you through the entire flow to complete the learning and then moves on to another topic.
+
+## References
+
+When reading this tutorial and running the examples, you may find the following documents good to references.
+
+- [Vitis Embedded Software Development Flow Documentation](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/hly1569525384514.html)
+- [Vitis Embedded Software Debugging Guide](../../Vitis-Embedded-Software-Debugging/)
 
 ------
 
