@@ -490,7 +490,7 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 13. Create a device node. Run the ``mknod`` command and select the the string from the printed message.
 
-    For example, the command ``mknod /dev/blink_Dev c 244 0`` creates the **/dev/blink_Dev** node.
+    For example, the command ``mknod /dev/blink_Dev c 244 0`` creates the `/dev/blink_Dev` node.
 
 14. Select **Window → Open perspective → Remote System Explorer** and click **Open**. The Vitis software platform opens the Remote
     Systems Explorer perspective.
