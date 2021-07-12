@@ -469,7 +469,7 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 12. Follow the steps described in [Linux Booting and Debug in the Vitis Software Platform](./7-linux-booting-debug.md) to load the Linux image and start it.
 
-    After the kernel boots successfully, in a serial terminal, navigate to `/lib/modules/\<kernel-version\>/extr and run the command:
+    After the kernel boots successfully, in a serial terminal, navigate to `/lib/modules/\<kernel-version\>/extr` and run the command:
 
     ``modprobe blink.ko``
 
