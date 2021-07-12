@@ -12,21 +12,18 @@ In this example, you will configure and build a Linux operating system platform 
 ### Input and Output Files
 
 - Input:
-  - Hardware XSA (**system_wrapper.xsa** generated in [Example 1](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc))
-  - [PetaLinux ZC702 BSP][1]
+  - Hardware XSA (``system_wrapper.xsa`` generated in [Example 1](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc))
+  - [PetaLinux ZC702 BSP](https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2021.1-final.bsp)
 
 - Output:
-  - PetaLinux boot images (BOOT.BIN, image.ub)
+  - PetaLinux boot images (`BOOT.BIN`, `image.ub`)
   - PetaLinux application (hello_linux)
 
  **IMPORTANT!:**
 
 > 1. This example requires a Linux host machine with PetaLinux installed. Refer to the _PetaLinux Tools Documentation: Reference Guide_ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)) for information about dependencies for PetaLinux 2021.1.
 
-> 2. This example uses the [PetaLinux ZC702 BSP][1] to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the [PetaLinux Tools download page][2].
-
-[1]:https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2021.1-final.bsp
-[2]:https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html
+> 2. This example uses the [PetaLinux ZC702 BSP](https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2021.1-final.bsp) to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the [PetaLinux Tools download page](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html).
 
 
 ### Creating a PetaLinux Image
@@ -45,7 +42,7 @@ In this example, you will configure and build a Linux operating system platform 
 
    - The created PetaLinux project uses the default hardware setup in the ZC702 Linux BSP. In this example, you will reconfigure the PetaLinux project based on the Zynq design that you configured using the Vivado® Design Suite in [Example 1](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc).
 
-   - Copy the hardware platform **system_wrapper.xsa** to the Linux host machine.
+   - Copy the hardware platform ``system_wrapper.xsa`` to the Linux host machine.
 
    - Reconfigure the project using the following command:
 
@@ -79,8 +76,8 @@ In this example, you will configure and build a Linux operating system platform 
     ls -al
     ```
 
-    - **boot.scr** is the script that U-Boot reads during boot time to load the kernel and rootfs
-    - **image.ub** contains kernel image, device tree and rootfs.
+    - `boot.scr` is the script that U-Boot reads during boot time to load the kernel and rootfs
+    - `image.ub` contains kernel image, device tree and rootfs.
 
 4.  Generate the boot image using the following command:
 
@@ -88,7 +85,7 @@ In this example, you will configure and build a Linux operating system platform 
     petalinux-package --boot --fsbl zynq_fsbl.elf --u-boot
     ```
 
-    This creates a **BOOT.BIN** image file in the **<petalinux-project>/images/linux/** directory.
+    This creates a `BOOT.BIN` image file in the `<petalinux-project>/images/linux/` directory.
 
     **Note:** The option to add bitstream, `--fpga`, is missing
     from the above command intentionally because so far the hardware
@@ -140,11 +137,11 @@ JTAG mode.
 
 ## Example 5: Creating a Hello World Application for Linux in the Vitis IDE
 
-In this example, we will use the Vitis IDE to create a Linux application runs on the embedded Linux environment.
+In this example, you will use the Vitis IDE to create a Linux application that runs on the embedded Linux environment.
 
 ### Creating Linux Domain
-
-We first create a Linux domain in the Vitis IDE. The Linux domain contains the information that Linux application requires. 
+ 
+ First, create a Linux domain in the Vitis IDE. The Linux domain contains the information  required by the Linux application. 
 
 The steps to create a Linux domain are given below:
 
@@ -179,7 +176,7 @@ The steps to create a Linux domain are given below:
 
     ![Updated platform domains](./media/image75.png)
 
-    **Note**: If you fill in the Bif File, Boot Components Directory, and Linux Image Directory options, Vitis can help to generate **sd_card.img** when you build the system project in the Linux host OS. In this case, it is helpful to use the **ext4** root file system. In the examples in this tutorial, which use **initramfs**, it is only required to copy files to the FAT32 partition into the SD card, so this feature will not be used.
+    **Note**: If you fill in the Bif File, Boot Components Directory, and Linux Image Directory options, Vitis can help to generate `sd_card.img` when you build the system project in the Linux host OS. In this case, it is helpful to use the `ext4` root file system. In the examples in this tutorial, which use `initramfs`, it is only required to copy files to the FAT32 partition into the SD card, so this feature will not be used.
 
 5. Build the platform:
 
@@ -202,9 +199,9 @@ The steps to create a Linux domain are given below:
 
    **Note:** If you input an extracted SYSROOT directory, Vitis can find include files and libraries in SYSROOT. SYSROOT is generated by the PetaLinux project `petalinux-build --sdk`. Refer to the _PetaLinux Tools Documentation: Reference Guide_ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug1144-petalinux-tools-reference-guide.pdf)) for more information about SYSROOT generation.
 
-   **Note:** If you input a rootfs and kernel image, Vitis can help to generate the **SD_card.img** when building the Linux system project.
+   **Note:** If you input a rootfs and kernel image, Vitis can help to generate the `SD_card.img` when building the Linux system project.
 
-2. Build the **hello_linux** application.
+2. Build the hello_linux application.
 
    - Select **hello_linux**.
    - Click the hammer button to build the application.
@@ -307,7 +304,7 @@ In this chapter, you learned how to:
 - Create simple Linux applications with the Vitis IDE.
 - Run and debug using the Vitis IDE.
 
-Till now, all our development and debugging are all running on the processing system. In [next chapter](./5-using-gp-port-zynq.md), we will start to add components to PL (Programmable Logic). Let's see how to use the GP port in Zynq devices first.
+Up until now, all your development and debugging activities have been running on the processing system. In [next chapter](./5-using-gp-port-zynq.md), you will start to add components to the PL (programmable logic). First, you will see how to use the GP port in Zynq devices.
 
 ------
 

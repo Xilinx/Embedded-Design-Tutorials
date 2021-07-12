@@ -1,6 +1,6 @@
 # Debugging Standalone Applications with the Vitis Software Platform
 
-Although a simple "Hello World" application doesn't require much debugging, this chapter demonstrate the debugging setup and procedure in the Vitis IDE in [Example 3](#example-3-debugging-standalone-software-using-the-vitis-software-platform).
+Although a simple "Hello World" application does not require much debugging, this chapter demonstrates the debugging setup and procedure in the Vitis IDE in [Example 3](#example-3-debugging-standalone-software-using-the-vitis-software-platform).
 
 The Vitis software platform debugger provides the following debug capabilities:
 
@@ -14,7 +14,7 @@ The Vitis debugger enables you to see what is happening to a program while it ex
 
 The Vitis software platform supports debugging through Xilinx System Debugger and GNU Debugger (GDB).
 
-**Note:** The GDB flow is deprecated and may not be available in the future releases.
+**Note:** The GDB flow is deprecated and might not be available in the future releases.
 
 ## Xilinx System Debugger
 
@@ -123,7 +123,7 @@ In this example, you will walk through debugging the "Hello World" application c
 
 8.  Click Disconnect button on the tool bar to disconnect to the board, or exit the Vitis software platform directly.
 
-We have introduced the standalone software building and debugging. In the [next chapter](./4-linux-for-zynq.md), we can start working on Linux applications for Zynq-7000 SoCs.
+This chapter introduced standalone software building and debugging. In the [next chapter](./4-linux-for-zynq.md), you can start working on Linux applications for Zynq-7000 SoCs.
 
 ------
 

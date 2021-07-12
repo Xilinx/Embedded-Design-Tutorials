@@ -14,7 +14,7 @@ to execute on the Zynq SoC ZC702 board.
 
 - [Example 11](#example-11-creating-peripheral-ip): Creating Peripheral IP
 - [Example 12](#example-12-device-driver-development): Device Driver Development
-- [Example 13](#example-13-loading-the-module-into-a-kernel-and-application-execution): Loading the module into a Kernel and Executing Application
+- [Example 13](#example-13-loading-the-module-into-a-kernel-and-application-execution): Loading the Module into a Kernel and Executing the Application
 
 ## Creating Peripheral IP
 
@@ -326,7 +326,7 @@ Programming Guide</a>.
 
 In this section you are going to develop a peripheral IP device driver as an LKM, which is dynamically loadable onto the running kernel. You must build the peripheral IP LKM as part of the same kernel build process that generates the base kernel image.
 
-**Note:** If you do not want to compile the device driver, you can skip the example in this section and jump to [Loading a Module into the Kernel and Application Execution](#example-13-loading-the-module-into-a-kernel-and-application-execution). In that section, you can use the kernel image, which contains **blink.ko** (**image.ub** in the shared ZIP files). See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+**Note:** If you do not want to compile the device driver, you can skip the example in this section and jump to [Loading a Module into the Kernel and Application Execution](#example-13-loading-the-module-into-a-kernel-and-application-execution). In that section, you can use the kernel image, which contains `blink.ko` (`image.ub` in the shared ZIP files). See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 
 For kernel compilation and device driver development, you must use the Linux workstation. Before you start developing the device driver, the following steps are required:
 
@@ -360,8 +360,8 @@ accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#des
     ```
 
     The default driver creation includes a Makefile, C-file, and README
-    files. In this exercise, PetaLinux creates **blink.c**, a Makefile, and
-    README files. It also contains the bit bake recipe **blink.bb**.
+    files. In this exercise, PetaLinux creates `blink.c`, a Makefile, and
+    README files. It also contains the bit bake recipe `blink.bb`.
 
 2.  Change the C-file (driver file) and the Makefile as per your
     driver.
@@ -369,11 +369,11 @@ accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#des
 3.  Take the LKM folder (reference files) and copy **blink.c** and **blink.h**
     into this directory.
 
-4.  Open the **blink.bb** recipe and add a **blink.h** entry in ``SRC_URI``.
+4.  Open the **blink.bb** recipe and add a `blink.h` entry in ``SRC_URI``.
 
 5.  Run the command ``petalinux-build``.
 
-    After successful compilation the **.ko** file is created in the following
+    After successful compilation the `.ko` file is created in the following
     location:
 
     ```
@@ -449,15 +449,16 @@ In this section, you will use the Vitis software platform installed on a Windows
 7.  Browse for the **LKM_App** folder and select the **linux_blinkled_app.c** and **blink.h** files.
 
     **Note:** The application software file name for the system is
-    **linux_blinkled_app.c** and the header file name is **blink.h**. These files
+    `linux_blinkled_app.c` and the header file name is `blink.h`. These files
     are available in the LKM folder of the ZIP file that accompanies this
-    guide. See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial). Add the
-    **linux_blinkled_app.c** and **blink.h** files.
+    guide. See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial). 
+
+    Add the **linux_blinkled_app.c** and **blink.h** files.
 
 8.  Click **Finish**.
 
     Right-click on the **linux_blinkled_app** project and select **Build Project**
-    to generate **linux_blinkled_app.elf** file in binary folders. Check the
+    to generate the `linux_blinkled_app.elf` file in binary folders. Check the
     Console window for the status of this action.
 
 9.  Connect the board.
@@ -468,7 +469,7 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 12. Follow the steps described in [Linux Booting and Debug in the Vitis Software Platform](./7-linux-booting-debug.md) to load the Linux image and start it.
 
-    After the kernel boots successfully, in a serial terminal, navigate to **/lib/modules/\<kernel-version\>/extra** and run the command:
+    After the kernel boots successfully, in a serial terminal, navigate to `/lib/modules/\<kernel-version\>/extr and run the command:
 
     ``modprobe blink.ko``
 
@@ -521,9 +522,9 @@ In this section, you will use the Vitis software platform installed on a Windows
 
     j.  Using the Remote System Explorer perspective, copy the **linux_blinkled_app.elf** file from the **<project-dir>/linux_blinkled_app/Debug** folder and paste it into the **/Apps** directory under **blink connection**.
 
-16. In the serial terminal, type ``cd Apps`` to open the **/Apps** directory.
+16. In the serial terminal, type ``cd Apps`` to open the `/Apps` directory.
 
-17. Go to the **Apps** directory. Type `chmod 777 linux_blinkled_app.elf` to change the **linux_blinkled_app.elf** file mode to executable mode.
+17. Go to the **Apps** directory. Type `chmod 777 linux_blinkled_app.elf` to change the `linux_blinkled_app.elf` file mode to executable mode.
 
 18. At the prompt, type `./linux_blinkled_app.elf` to execute the application.
 

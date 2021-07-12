@@ -1,8 +1,8 @@
 # Introduction
 
-This document provides an introduction to using the Xilinx&reg; Vitis&reg; Software Platform for using the Zynq&reg;-7000 SoC device. The examples are targeted for the Xilinx ZC702 Rev 1.0 evaluation board and the tools used are the Vivado&reg; Design Suite, the Vitis&trade; unified software platform and PetaLinux.
+This document provides an introduction to using the Xilinx&reg; Vitis&trade; unified software platform with the Zynq&reg;-7000 SoC device. The examples are targeted for the Xilinx ZC702 rev 1.0 evaluation board and the tools used are the Vivado&reg; Design Suite, the Vitis software platform, and PetaLinux.
 
-The examples in this document were created using the Xilinx tools running on Windows 10, 64-bit operating system, and PetaLinux on Linux 64-bit operating system. These examples focus on introducing you to the following aspects of embedded design.
+The examples in this document were created using the Xilinx tools running on a Windows 10 64-bit operating system, and PetaLinux on Linux 64-bit operating system. These examples focus on introducing you to the following aspects of embedded design.
 
 1. [Getting Started](./1-introduction.md)
 2. [Using the Zynq SoC Processing System](./2-using-zynq.md)
@@ -15,7 +15,7 @@ The examples in this document were created using the Xilinx tools running on Win
 
 ## Example Projects
 
-The best way to learn a tool is to use it. So, this guide provides opportunities for you to work with the tools under discussion. Specifications for sample projects are given in the example sections, along with an explanation of what is happening behind the scenes. Each chapter and examples is intended to showcase different aspects of embedded design. The example takes you through the entire flow to complete the learning and then moves on to another topic.
+The best way to learn a tool is to use it. This guide provides opportunities for you to work with the tools under discussion. Specifications for sample projects are given in the example sections, along with an explanation of what is happening behind the scenes. Each chapter and examples is intended to showcase different aspects of embedded design. The example takes you through the entire flow to complete the learning and then moves on to another topic.
 
 ## References
 
