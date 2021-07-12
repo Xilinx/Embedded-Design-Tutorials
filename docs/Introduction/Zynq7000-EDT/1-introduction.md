@@ -2,7 +2,7 @@
 
 ## How Zynq Devices Offer a Single Chip Solution
 
-The Zynq SoC comes with a versatile processing system (PS) integrated with a highly flexible and high-performance programmable logic (PL) section, all on a single system-on-a-chip (SoC).
+The Zynq&reg;-7000 SoC comes with a versatile processing system (PS) integrated with a highly flexible and high-performance programmable logic (PL) section, all on a single system-on-a-chip (SoC).
 
 The PS and the PL in Zynq UltraScale+ devices can be tightly or loosely coupled with a variety of high-performance and high-bandwidth PS-PL interfaces.
 
@@ -22,20 +22,16 @@ The Vitis IDE and the utilities it provides can develop, debug and create deploy
 
 The Vitis installer also includes PetaLinux. PetaLinux can help to build the embedded Linux environment for Xilinx SoC.
 
-### Vivado&reg; Design Suite
+### Vivado Design Suite
 
-The Vivado Design Suite provides full features of Xilinx FPGA and SoC hardware design, including code editing, synthesis, implementation, simulation and binary generation. It also provides the PS configuration and initialization code generation features.
+The Vivado&reg; Design Suite provides full features of Xilinx FPGA and SoC hardware design, including code editing, synthesis, implementation, simulation and binary generation. It also provides PS configuration and initialization code generation features.
 
-Vivado Design Suite [editions][2] has several editions. The major differences between editions are supported [device architectures][3]. The board ZC702 that we use in the examples has a XC7Z020 device. It's supported by all Vivado editions. If you are using other devices, please check the [device architecture page][3] to choose your Vivado edition. 
-
-[2]:https://www.xilinx.com/products/design-tools/vivado/vivado-ml.html#licensing
-[3]:https://www.xilinx.com/products/design-tools/vivado/vivado-ml.html#architecture
+The Vivado Design Suite has several [editions](https://www.xilinx.com/products/design-tools/vivado/vivado-ml.html#licensing). The major differences between editions are supported [device architectures](https://www.xilinx.com/products/design-tools/vivado/vivado-ml.html#architecture). The ZC702 board used in the examples has a XC7Z020 device. It is supported by all Vivado editions. If you are using other devices, check the [device architecture page](https://www.xilinx.com/products/design-tools/vivado/vivado-ml.html#architecture) to choose your Vivado edition. 
 
 
-### Vitis IDE and XSCT (Xilinx Software Command Tool)
+### XSCT (Xilinx Software Command Tool)
 
-Vitis software platform provides an IDE (Integrated Design Environment) and a command line interface (XSCT) to help users to design and debug the embedded software application, and generate the deployment images.
-
+The Vitis software platform provides an IDE (integrated design environment) and a command line interface (XSCT) to help you design and debug embedded software applications and generate deployment images.
 
 
 ### PetaLinux Tools
@@ -63,8 +59,8 @@ This tutorial targets the Zynq ZC702 Rev 1.0 evaluation board, and can also be u
 
 -   The ZC702 evaluation board
 -   AC power adapter (12 VDC)
--   USB Type-A to USB Mini-B cable (for UART communications)
--   USB Type-A to USB Micro cable for programming and debugging via USB-Micro JTAG connection
+-   USB type-A to USB mini-B cable (for UART communications)
+-   USB type-A to USB micro cable for programming and debugging using a USB-micro JTAG connection
 -   SD-MMC flash card for Linux booting
 -   Ethernet cable to connect target board with host machine
 
@@ -72,14 +68,12 @@ This tutorial targets the Zynq ZC702 Rev 1.0 evaluation board, and can also be u
 
 ### Vitis Software Platform and Vivado Design Suite
 
-Visit the [Xilinx Download Center](https://www.xilinx.com/support/download.html) to download the Vitis Software Platform. This tutorial is verified with 2021.1. If you're using other Vitis versions, some features or screenshots may have some differences.
+Visit the [Xilinx Download Center](https://www.xilinx.com/support/download.html) to download the Vitis software platform. This tutorial is verified with 2021.1. If you are using other Vitis versions, some features or screenshots might differ.
 
-Vitis software platform supports Windows and Linux. To install the Vitis software platform, follow the instructions in the [Installation section][1] of the
+The Vitis software platform supports Windows and Linux. To install the Vitis software platform, follow the instructions in the [Installation section](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/vitis_embedded_installation.html#tlp1602134446371) of the
 *Vitis Unified Software Platform Documentation: Embedded Software Development* ([UG1400](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/hly1569525384514.html)). When you install the Vitis software platform, the Vivado Design Suite is installed automatically.
 
-You will use Vivado to do hardware design and Vitis to do standalone software application development and Linux application development.
-
-[1]:https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/vitis_embedded_installation.html#tlp1602134446371
+You will use Vivado for hardware design, and you will use Vitis for the development of both Linux applications and standalone software applicationss.
 
 ### PetaLinux Tools
 
@@ -87,13 +81,13 @@ The PetaLinux tool offers a full Linux distribution building system which includ
 
 Install the PetaLinux Tools to run through the embedded Linux portion of this tutorial.
 
-PetaLinux tools run under the Linux host system only. Please refer to the [PetaLinux Document UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf), chapter *Setting Up Your Environment* for the supported Operating System and the installation instructions. This can use either a dedicated Linux host system or a virtual machine running one of these Linux operating systems on your Windows development platform.
+PetaLinux tools run under the Linux host system only. Refer to the "Setting Up Your Environment" chapter in the _PetaLinux Tools Reference Guide_ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf)) for supported operating systems and installation instructions. You can use either a dedicated Linux host system or a virtual machine running one of these Linux operating systems on your Windows development platform.
 
 PetaLinux can be installed from its own installer or from Vitis installer.
 
 ### Software Licensing
 
-Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license.For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* ([UG973](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1%3Bt%3Dvivado%2Binstall%2Bguide)).
+Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the _Vivado Design Suite User Guide: Release Notes, Installation, and Licensing Guide_ ([UG973](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1%3Bt%3Dvivado%2Binstall%2Bguide)).
 
 ## Design Files for this Tutorial
 

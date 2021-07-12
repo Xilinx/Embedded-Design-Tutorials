@@ -5,9 +5,9 @@ The Zynq SoC consists of Arm&reg; Cortex&trade;-A9 cores, many hard intellectual
 -   The Zynq SoC PS can be used in a standalone mode, without attaching any additional fabric IP.
 -   IP cores can be instantiated in fabric and attached to the Zynq PS as a PS+PL combination.
 
-In this chapter, we will look at how to develop an embedded system with only the processing system (PS) of the Zynq&reg;-7000 SoC.
+This chapter looks at how to develop an embedded system with only the processing system (PS) of the Zynq&reg;-7000 SoC.
 
-Creation of a Zynq device system design involves configuring the PS to select the appropriate boot devices and peripherals. To start with, as long as the PS peripherals and available MIO connections meet the design requirements, no bitstream is required. This chapter guides you through creating a simple PS-based design that does not require a bitstream.
+The creation of a Zynq device system design involves configuring the PS to select the appropriate boot devices and peripherals. To start with, as long as the PS peripherals and available MIO connections meet the design requirements, no bitstream is required. This chapter guides you through creating a simple PS-based design that does not require a bitstream.
 
 - [Example 1](#example-1-creating-a-new-embedded-project-with-zynq-soc) uses Vivado to design the hardware project of this embedded system.
 - [Example 2](#example-2-creating-and-running-a-hello-world-application) designs a "Hello World" software application in the Vitis IDE based on the Example 1 hardware.
@@ -386,7 +386,7 @@ processor in the platform.
 
 ### Standalone OS
 
-Standalone is a simple, low-level software layer. It provides access to basic processor features such as caches, interrupts, and exceptions, as well as the basic processor features of a hosted environment. These basic features include standard input/output, profiling, abort, and exit. It is a single threaded semi-hosted environment.
+Standalone is a simple, low-level software layer. It provides access to basic processor features such as caches, interrupts, and exceptions, as well as the basic processor features of a hosted environment. These basic features include standard input/output, profiling, abort, and exit. It is a single-threaded semi-hosted environment.
 
 The application you ran in this chapter was created on top of the standalone OS. The domain/BSP that your software
 application targets is selected during the New Platform Project creation process.
