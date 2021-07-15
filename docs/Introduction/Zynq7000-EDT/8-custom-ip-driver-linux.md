@@ -12,6 +12,10 @@ to execute on the Zynq SoC ZC702 board.
 
 **IMPORTANT**: You will need to rebuild the Linux kernel: a Linux host machine to run PetaLinux is required.
 
+- [Example 11](#example-11-creating-peripheral-ip): Creating Peripheral IP
+- [Example 12](#example-12-device-driver-development): Device Driver Development
+- [Example 13](#example-13-loading-the-module-into-a-kernel-and-application-execution): Loading the Module into a Kernel and Executing the Application
+
 ## Creating Peripheral IP
 
 In this section, you will create an AXI4-Lite compliant slave
@@ -89,7 +93,7 @@ In this section, you will create an AXI4-Lite compliant slave peripheral IP.
       );
     ```
 
-10. Save and close ``blink_v1_0.v``.
+10. Save and close **blink_v1_0.v**.
 
 11. Under **Sources → Hierarchy → Design Sources→ blink_v1_0**, right-click **blink_v1_0\_S00_AXI_inst - blink_v1_0\_S00_AXI** and select **Open File**.
 
@@ -212,7 +216,7 @@ diagram for the system is shown in the following figure.
 This system covers the following connections:
 
 -   Peripheral IP connected to PS general purpose master port 0
-    (``M_AXI_GP0``). This connection is used by the PS CPU to configure peripheral IP register configurations.
+    (**M_AXI_GP0**). This connection is used by the PS CPU to configure peripheral IP register configurations.
 
 -   Four output ports for peripheral IP connected to DS15, DS16, DS17, and DS18 on-board LEDs.
 
@@ -239,7 +243,7 @@ peripheral IP that you created in [Creating Peripheral IP](#creating-peripheral-
 
 4.  Click **Run Connection Automation** to make automatic port connections.
 
-5.  With the **All Automation** box checked by default, click **OK** to make the connections. Your new IP is automatically connected, but the ``leds`` output port is disconnected.
+5.  With the **All Automation** box checked by default, click **OK** to make the connections. Your new IP is automatically connected, but the **leds** output port is disconnected.
 
 6.  Right-click the **leds** port and select **Make External**.
 
@@ -253,7 +257,7 @@ peripheral IP that you created in [Creating Peripheral IP](#creating-peripheral-
 
     ![](./media/image99.png)
 
-10. Edit the ``leds`` port settings as follows:
+10. Edit the **leds** port settings as follows:
 
     | Port Name | I/O Std  | Package Pin |
     | --------- | -------- | ----------- |
@@ -263,7 +267,7 @@ peripheral IP that you created in [Creating Peripheral IP](#creating-peripheral-
     | Leds[0]   | LVCMOS25 | V7          |
 
 
-    The following figure shows the completed ``leds`` port settings in the I/O Ports window.
+    The following figure shows the completed **leds** port settings in the I/O Ports window.
 
     ![](./media/image100.png)
 
@@ -322,7 +326,7 @@ Programming Guide</a>.
 
 In this section you are going to develop a peripheral IP device driver as an LKM, which is dynamically loadable onto the running kernel. You must build the peripheral IP LKM as part of the same kernel build process that generates the base kernel image.
 
-**Note:** If you do not want to compile the device driver, you can skip the example in this section and jump to [Loading a Module into the Kernel and Application Execution](#example-13-loading-the-module-into-a-kernel-and-application-execution). In that section, you can use the kernel image, which contains ``blink.ko`` (``image.ub`` in the shared ZIP files). See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+**Note:** If you do not want to compile the device driver, you can skip the example in this section and jump to [Loading a Module into the Kernel and Application Execution](#example-13-loading-the-module-into-a-kernel-and-application-execution). In that section, you can use the kernel image, which contains `blink.ko` (`image.ub` in the shared ZIP files). See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
 
 For kernel compilation and device driver development, you must use the Linux workstation. Before you start developing the device driver, the following steps are required:
 
@@ -356,32 +360,33 @@ accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#des
     ```
 
     The default driver creation includes a Makefile, C-file, and README
-    files. In this exercise, PetaLinux creates ``blink.c``, a Makefile, and
-    README files. It also contains the bit bake recipe ``blink.bb``.
+    files. In this exercise, PetaLinux creates `blink.c`, a Makefile, and
+    README files. It also contains the bit bake recipe `blink.bb`.
 
 2.  Change the C-file (driver file) and the Makefile as per your
     driver.
 
-3.  Take the LKM folder (reference files) and copy ``blink.c`` and ``blink.h``
+3.  Take the LKM folder (reference files) and copy **blink.c** and **blink.h**
     into this directory.
 
-4.  Open the ``blink.bb`` recipe and add a ``blink.h`` entry in ``SRC_URI``.
+4.  Open the **blink.bb** recipe and add a `blink.h` entry in ``SRC_URI``.
 
 5.  Run the command ``petalinux-build``.
 
-    After successful compilation the ``.ko`` file is created in the following
+    After successful compilation the `.ko` file is created in the following
     location:
 
     ```
-    <petalinux-build_directory>/build/tmp/sysroots-components/zc702_zynq7/blink/lib/modules/5.4.0-xilinx-v2020.2/extra/blink.ko
+    <petalinux-build_directory>/build/tmp/sysroots-components/zc702_zynq7/blink/lib/modules/5.4.0-xilinx-v2021.1/extra/blink.ko
     ```
 
 6.  You can install the driver using the ``modprobe`` command, which will be
     explained in further detail in the next section.
 
-## Example 13: Loading the Module into a Kernel and Application Execution
 
-In this section you will boot Linux onto the Zynq SoC Board and load
+## Example 13: Loading a Module into a Kernel and Executing the Application
+
+In this example, you will boot Linux onto the Zynq SoC Board and load
 the peripheral IP as an LKM onto it. You will develop the application
 for the system and execute it onto the hardware.
 
@@ -410,7 +415,7 @@ If you select the start option on the serial terminal, all four LEDs
 start blinking. If you select the stop option, all four LEDs stop
 blinking and retain the previous state.
 
-## Example 13: Loading a Module into a Kernel and Executing the Application
+### Example Steps
 
 #### Booting Linux on the Target Board
 
@@ -441,18 +446,19 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 6.  In the Explorer view, expand the **linux_blinkled_app** project, right-click the **src** directory, and select **Import**. The Import Sources view opens.
 
-7.  Browse for the ``LKM_App`` folder and select the ``linux_blinkled_app.c`` and ``blink.h`` files.
+7.  Browse for the **LKM_App** folder and select the **linux_blinkled_app.c** and **blink.h** files.
 
     **Note:** The application software file name for the system is
-    ``linux_blinkled_app.c`` and the header file name is ``blink.h``. These files
+    `linux_blinkled_app.c` and the header file name is `blink.h`. These files
     are available in the LKM folder of the ZIP file that accompanies this
-    guide. See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial). Add the
-    ``linux_blinkled_app.c`` and ``blink.h`` files.
+    guide. See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial). 
+
+    Add the **linux_blinkled_app.c** and **blink.h** files.
 
 8.  Click **Finish**.
 
     Right-click on the **linux_blinkled_app** project and select **Build Project**
-    to generate ``linux_blinkled_app.elf`` file in binary folders. Check the
+    to generate the `linux_blinkled_app.elf` file in binary folders. Check the
     Console window for the status of this action.
 
 9.  Connect the board.
@@ -463,7 +469,7 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 12. Follow the steps described in [Linux Booting and Debug in the Vitis Software Platform](./7-linux-booting-debug.md) to load the Linux image and start it.
 
-    After the kernel boots successfully, in a serial terminal, navigate to ``/lib/modules/\<kernel-version\>/extra`` and run the command:
+    After the kernel boots successfully, in a serial terminal, navigate to `/lib/modules/\<kernel-version\>/extr` and run the command:
 
     ``modprobe blink.ko``
 
@@ -484,7 +490,7 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 13. Create a device node. Run the ``mknod`` command and select the the string from the printed message.
 
-    For example, the command ``mknod /dev/blink_Dev c 244 0`` creates the ``/dev/blink_Dev`` node.
+    For example, the command ``mknod /dev/blink_Dev c 244 0`` creates the `/dev/blink_Dev` node.
 
 14. Select **Window → Open perspective → Remote System Explorer** and click **Open**. The Vitis software platform opens the Remote
     Systems Explorer perspective.
@@ -514,18 +520,13 @@ In this section, you will use the Vitis software platform installed on a Windows
 
     i.  Right-click the **/** in the path name and create a new directory; name it "Apps".
 
-    j.  Using the Remote System Explorer perspective, copy the ``linux_blinkled_app.elf`` file from the \<project-dir\>
-        ``linux_blinkled_app/Debug`` folder and paste it into the ``/Apps`` directory under **blink connection**.
+    j.  Using the Remote System Explorer perspective, copy the **linux_blinkled_app.elf** file from the **<project-dir>/linux_blinkled_app/Debug** folder and paste it into the **/Apps** directory under **blink connection**.
 
-16. In the serial terminal, type ``cd Apps`` at the ``Zynq\prompt`` to open
-    the ``/Apps`` directory.
+16. In the serial terminal, type ``cd Apps`` to open the `/Apps` directory.
 
-17. Go to the ``Apps`` directory at the ``root\@xilinx-zc702-2020_2: Linux``
-    prompt, and type ``chmod 777 linux_blinkled_app.elf`` to change the
-    ``linux_blinkled_app.elf`` file mode to executable mode.
+17. Go to the **Apps** directory. Type `chmod 777 linux_blinkled_app.elf` to change the `linux_blinkled_app.elf` file mode to executable mode.
 
-18. At the ``root\@xilinx-zc702-2020_2:`` prompt, type
-    ``./linux_blinkled_app.elf`` to execute the application.
+18. At the prompt, type `./linux_blinkled_app.elf` to execute the application.
 
 19. Follow the instruction printed on the serial terminal to run the
     application. The application asks you to enter 1 or 0 as input.
@@ -538,6 +539,8 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 20. After you finish debugging the Linux application, close the Vitis
     software platform.
+
+------
 
 © Copyright 2015–2021 Xilinx, Inc.
 

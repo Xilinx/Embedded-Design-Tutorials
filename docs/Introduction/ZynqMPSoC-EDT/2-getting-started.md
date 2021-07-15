@@ -30,7 +30,7 @@
 
 ### Vitis Integrated Design Environment and Vivado Design Suite
 
-Ensure that you have the Vitis™ 2020.2 unified software development platform
+Ensure that you have the Vitis™ 2021.1 unified software development platform
 installed. The Vitis software platform comes with all
 the hardware and software as a package. If you install the Vitis IDE,
 you will automatically get both the Vivado Design Suite and the Vitis
@@ -42,13 +42,14 @@ confirm that you have the latest tools version.
 Vitis embedded software development supports the following operating systems:
 
 - RHEL/CentOS 7.4, 7.5, 7.6, 7.7, 7.8, 8.1, 8.2
-- Ubuntu 16.04.5, 16.04.6, 18.04.1, 18.04.2, 18.04.3, 18.04.4, 20.04 LTS
+- RHEL 8.3
+- Ubuntu 16.04.5, 16.04.6, 18.04.1, 18.04.2, 18.04.3, 18.04.4, 20.04, 20.04.1 LTS
 - Amazon Linux 2 AL2 LTS
 - SUSE Enterprise Linux 12.4
 - Windows 10 64-bit Professional and Enterprise versions 1809, 1903, 1909, and 2004
 
 For more information on installing the Vitis Software Development Platform, refer to
-the Installation section of [UG1400](https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/vitis_embedded_installation.html#tlp1602134446371).
+the Installation section of [UG1400](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/vitis_embedded_installation.html#tlp1602134446371).
 
 ### PetaLinux Tools
 
@@ -67,22 +68,20 @@ the Installation section of [UG1400](https://www.xilinx.com/html_docs/xilinx2020
  When you install PetaLinux tools on your system of choice, you must do
  the following:
 
-- Download the [PetaLinux 2020.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html) software from the Xilinx website.
+- Download the [PetaLinux 2021.1](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html) software from the Xilinx website.
 
 - Download the ZCU102 PetaLinux BSP (ZCU102 BSP (prod-silicon)) from
-     the 2020.2 downloads page.
+     the 2021.1 downloads page.
 
 - Add common system packages and libraries to the workstation or
      virtual machine. For more information, see the Installation
      Requirements from the _PetaLinux Tools Documentation: Reference
      Guide_
-     ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;d=ug1144-petalinux-tools-reference-guide.pdf)).
+     ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug1144-petalinux-tools-reference-guide.pdf)).
 
 #### Prerequisites
 
-- 8 GB RAM (recommended minimum for Xilinx tools)
-
-- 2 GHz CPU clock or equivalent (minimum of eight cores)
+- 16 GB RAM (recommended minimum for Xilinx tools)
 
 - 100 GB free HDD space
 
@@ -93,7 +92,7 @@ the Installation section of [UG1400](https://www.xilinx.com/html_docs/xilinx2020
  Alternatively, an installation path may be specified.
 
  For example, to install PetaLinux tools under
- `/opt/pkg/petalinux/2020.2`:
+ `/opt/pkg/petalinux/2021.1`:
 
  For more information, see the _PetaLinux Tools Documentation: Reference
  Guide_ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)).

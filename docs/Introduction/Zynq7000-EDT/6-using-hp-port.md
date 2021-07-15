@@ -1,6 +1,6 @@
 # Using the HP Slave Port with AXI CDMA IP
 
-In this chapter, you will instantiate AXI CDMA IP in fabric and
+In this chapter, you will instantiate AXI CDM\A (Central DMA) IP in fabric and
 integrate it with the processing system high performance (HP) 64-bit
 slave port. In this system, a AXI CDMA instance acts as a master device to copy an
 array of the data from the source buffer location to the destination
@@ -32,17 +32,17 @@ following figure.
 This system covers the following connections:
 
 -   The AXI CDMA slave port is connected to the PS general purpose master
-    port 1 (``M_AXI_GP1``). It is used by the PS CPU to configure the AXI
+    port 1 (`M_AXI_GP1`). It is used by the PS CPU to configure the AXI
     CDMA register set for the data transfer and also to check the
     status.
 
 -   The AXI CDMA master port is connected to the PS high performance slave
-    port 0 (``S_AXI_HP0``). It is used by the AXI CDMA to read from the
+    port 0 (`S_AXI_HP0`). It is used by the AXI CDMA to read from the
     DDR system memory. It acts as the source buffer location for the
     CDMA during data transfer.
 
 -   The AXI CDMA master port is connected to the PS high performance slave
-    port 2 (``S_AXI_HP2``). It is used by the AXI CDMA to write the data
+    port 2 (`S_AXI_HP2`). It is used by the AXI CDMA to write the data
     to the DDR system memory. It acts as a destination buffer location
     for the CDMA during the Data transfer.
 
@@ -89,8 +89,8 @@ on the serial terminal and stops execution.
   - Vivado design from [Example 6](5-using-gp-port-zynq.md#example-6-adding-peripheral-pl-ip)
   - Vitis workspace
 - Output files:
-  - Updated Vivado design and exported hardware handoff ``system_wrapper.xsa``
-  - ``cdma_app.elf`` to control and test the AXI CDMA IP
+  - Updated Vivado design and exported hardware handoff `system_wrapper.xsa`
+  - `cdma_app.elf` to control and test the AXI CDMA IP
 
 ### Update the Vivado Design
 
@@ -351,7 +351,9 @@ The application software does the following tasks:
     DMA Transfer is Successful
     ```
 
-See the [next chapter](./7-linux-booting-debug.md) for Linux boot image configuration.
+Up until now, the examples you have been working with have all been developed and debugged in a lab environment. JTAG is required to configure and control the applications. How can you deploy applications to the board so that it can run the applications after booting by itself? See the [next chapter](./7-linux-booting-debug.md) for Linux boot image configuration.
+
+------
 
 © Copyright 2015–2021 Xilinx, Inc.
 

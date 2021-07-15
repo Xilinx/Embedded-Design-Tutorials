@@ -1,20 +1,16 @@
 # Using the Zynq SoC Processing System
 
-Now that you have been introduced to the Xilinx&reg; Vivado&reg; Design Suite, you can look at how to use it to develop an embedded system using the Zynq&reg;-7000 SoC processing system (PS).
-
 The Zynq SoC consists of Arm&reg; Cortex&trade;-A9 cores, many hard intellectual property components (IPs), and programmable logic (PL). This offering can be used in two ways:
 
 -   The Zynq SoC PS can be used in a standalone mode, without attaching any additional fabric IP.
 -   IP cores can be instantiated in fabric and attached to the Zynq PS as a PS+PL combination.
 
-## Embedded System Configuration
+This chapter looks at how to develop an embedded system with only the processing system (PS) of the Zynq&reg;-7000 SoC.
 
-Creation of a Zynq device system design involves configuring the PS to
-select the appropriate boot devices and peripherals. To start with, as
-long as the PS peripherals and available MIO connections meet the
-design requirements, no bitstream is required. This chapter guides you
-through creating a simple PS-based design that does not require a
-bitstream.
+The creation of a Zynq device system design involves configuring the PS to select the appropriate boot devices and peripherals. To start with, as long as the PS peripherals and available MIO connections meet the design requirements, no bitstream is required. This chapter guides you through creating a simple PS-based design that does not require a bitstream.
+
+- [Example 1](#example-1-creating-a-new-embedded-project-with-zynq-soc) uses Vivado to design the hardware project of this embedded system.
+- [Example 2](#example-2-creating-and-running-a-hello-world-application) designs a "Hello World" software application in the Vitis IDE based on the Example 1 hardware.
 
 ## Example 1: Creating a New Embedded Project with Zynq SoC
 
@@ -29,7 +25,7 @@ For this example, you will launch the Vivado Design Suite and create a project w
 
 1.  Start the Vivado Design Suite.
 
-    - On Windows 10, click the start menu and find **Xilinx Design Tools -> Vivado 2020.2**.
+    - On Windows 10, click the start menu and find **Xilinx Design Tools -> Vivado 2021.1**.
     - On Linux, run `source <Vivado installation path>/settings64.sh` to set up the environment and run ``vivado &`` to launch the Vivado IDE.
 
 2.  In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
@@ -86,7 +82,7 @@ In the Block Diagram window, notice the message stating that Designer assistance
 
     Note that Cross Trigger In and Cross Trigger Out are disabled. For a
     detailed tutorial with information about cross trigger set-up, refer
-    to the _Vivado Design Suite Tutorial: Embedded Processor Hardware Design_ ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;d=ug940-vivado-tutorial-embedded-design.pdf)).
+    to the _Vivado Design Suite Tutorial: Embedded Processor Hardware Design_ ([UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug940-vivado-tutorial-embedded-design.pdf)).
 
 2.  Click **OK** to accept the default processor system options and make default pin connections.
 
@@ -185,7 +181,7 @@ Two types of hardware can be exported from Vivado: pre-synthesis and post-implem
     ```
     write_hw_platform -fixed -force -file C:/edt/edt_zc702/system_wrapper.xsa
     INFO: [Vivado 12-4895] Creating Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa ...
-    INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2020.2/data\embeddedsw) loading 1 seconds
+    INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2021.1/data\embeddedsw) loading 1 seconds
     INFO: [Vivado 12-12467] The Hardware Platform can be used for Hardware
     INFO: [Vivado 12-4896] Successfully created Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa
     ```
@@ -240,7 +236,7 @@ Debugger in the Vitis IDE.
 1. Launch the Vitis IDE with any of the actions below:
 
     - From the Vivado IDE, select **Tools -> Launch Vitis IDE**.
-    - On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Xilinx Vitis 2020.2**.
+    - On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Xilinx Vitis 2021.1**.
     - On Linux, run `source <Vitis Installation Directory>/settings64.sh` to set up the environment and run `vitis &`.
 
 2. Select the workspace location as **C:/edt/edt_zc702_workspace** or any given location path.
@@ -390,17 +386,14 @@ processor in the platform.
 
 ### Standalone OS
 
-Standalone is a simple, low-level software layer. It provides access to basic processor features such as caches, interrupts, and exceptions, as well as the basic processor features of a hosted environment. These basic features include
-standard input/output, profiling, abort, and exit. It is a single
-threaded semi-hosted environment.
+Standalone is a simple, low-level software layer. It provides access to basic processor features such as caches, interrupts, and exceptions, as well as the basic processor features of a hosted environment. These basic features include standard input/output, profiling, abort, and exit. It is a single-threaded semi-hosted environment.
 
-**IMPORTANT!** The application you ran in this chapter was created on
-top of the standalone OS. The domain/BSP that your software
-application targets is selected during the New Platform Project
-creation process.
+The application you ran in this chapter was created on top of the standalone OS. The domain/BSP that your software
+application targets is selected during the New Platform Project creation process.
 
-Learn how to debug using the Vitis software platform in the [next chapter](./3-debugging-vitis.md).
+In the [next chapter](./3-debugging-vitis.md), we will learn how to debug software applications using the Vitis software platform.
 
+------
 
 © Copyright 2015–2021 Xilinx, Inc.
 

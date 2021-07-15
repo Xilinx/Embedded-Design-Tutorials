@@ -17,6 +17,8 @@ You will use the Vitis IDE to perform the following tasks:
 
 ## Example 2: Creating a Platform Project Using Vitis IDE
 
+In this example, we will create a platform project to extract the information from Vivado exported XSA.
+
 The main processing units in the Zynq UltraScale+ processing system are listed below:
 
 - **Application processing unit:** Quad-core Arm® Cortex™-A53 MPCore processors
@@ -40,8 +42,8 @@ The following steps show how to create a platform project with a standalone doma
 1. Launch the Vitis IDE:
 
    - From the open Vivado IDE, click **Tools → Launch Vitis IDE**; or
-   - From Windows Start menu, select **Xilinx Design Tools → Xilinx Vitis 2020.2**; or
-   - Double-click the `C:\Xilinx\Vitis\2020.2\bin\vitis.bat` file.
+   - From Windows Start menu, select **Xilinx Design Tools → Xilinx Vitis 2021.1**; or
+   - Double-click the `C:\Xilinx\Vitis\2021.1\bin\vitis.bat` file.
 
 2. Select the workspace `C\edt\edt_zcu102_workspace` and continue.
 
@@ -95,10 +97,7 @@ The following steps show how to create a platform project with a standalone doma
 
 ## Example 3: Running the "Hello World" Application from Arm Cortex-A53
 
- In this example, you will learn how to manage the board settings, make
- cable connections, connect to the board through your PC, and run a
- simple "Hello World" software application from Arm Cortex-A53 in JTAG
- mode using the System Debugger in the Vitis IDE.
+ In this example, you will create a "Hello World" application based on the platform created in the previous example. You will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a simple "Hello World" software application from an Arm Cortex-A53 processor in JTAG mode using the System Debugger in the Vitis IDE.
 
 ### Input and Output Files
 
@@ -164,7 +163,7 @@ To send the "Hello World" string to the UART0 peripheral, follow these steps:
      |-----------------------------|---------------------------------|-------------------------------|
      | Platform                    | Select platform from repository | zcu102_edt            |
      | Application project details | Application project name        | hello_a53                      |
-     |                             | System project name             | hello_system               |
+     |                             | System project name             | hello_a53_system               |
      |                             | Target processor                | psu_cortexa53_0               |
      | Domain                      | Domain                          | standalone on psu_cortexa53_0 |
      | Templates                   | Available templates             | Hello World                   |
@@ -311,7 +310,7 @@ The edt_zcu102_wrapper platform is, by default, assigned the default domain for 
      |-----------------------------|---------------------------------|-------------------------------|
      | Platform                    | Select platform from repository | zcu102_edt            |
      | Application project details | Application project name        | hello_r5                      |
-     |                             | System project name             | hello_system               |
+     |                             | System project name             | hello_r5_system               |
      |                             | Target processor                | psu_cortexr5_0               |
      | Domain                      | Domain                          | standalone_r5 |
      | Templates                   | Available templates             | Hello World                   |
@@ -339,25 +338,56 @@ The edt_zcu102_wrapper platform is, by default, assigned the default domain for 
 
 4.  Click **Run**.
 
-    ![](./media/image30.png)
-
     "Hello World" appears on the serial communication utility in Terminal 1, as shown in the following figure.
+
+    ![](./media/image30_2.png)
+
+    Because the "Hello World" applications for Cortex-A53 and Cortex-R5 are identical, they cannot be differentiated based on the print contents, but you can view the details in the **Debug Perspective**.
+
+    If you view the XSCT console, it shows the XSCT command history as shown in the following example:
+
+      ```
+      Downloading Program -- C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
+      section, .vectors: 0x00000000 - 0x00000637
+      section, .text: 0x00100000 - 0x00101947
+      section, .init: 0x00101948 - 0x00101953
+      section, .fini: 0x00101954 - 0x0010195f
+      section, .note.gnu.build-id: 0x00101960 - 0x00101983
+      section, .rodata: 0x00101988 - 0x00101f3c
+      section, .data: 0x00101f40 - 0x001023af
+      section, .bootdata: 0x001023b0 - 0x0010252f
+      section, .eh_frame: 0x00102530 - 0x00102533
+      section, .ARM.exidx: 0x00102534 - 0x0010253b
+      section, .init_array: 0x0010253c - 0x0010253f
+      section, .fini_array: 0x00102540 - 0x00102543
+      section, .bss: 0x00102544 - 0x0010256b
+      section, .heap: 0x0010256c - 0x0010456f
+      section, .stack: 0x00104570 - 0x00107d6f
+
+      0%    0MB   0.0MB/s  ??:?? ETA
+      100%    0MB   0.2MB/s  00:00    
+
+      Setting PC to Program Start Address 0x0000003c
+      Successfully downloaded C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
+      ``` 
+
+    More debugging techniques are explored in the [next chapter](./5-debugging-with-vitis-debugger.md).
 
     >**Note:** No bitstream download is required for the above
     software application to be executed on the Zynq UltraScale+ evaluation
     board. The Arm Cortex-R5F dual core is already present on the board.
     Basic initialization of this system to run a simple application is
-    accomplised by the device initialization Tcl script.
+    accomplished by the FSBL application.
 
-## Example 5: Create a Bare-Metal System Application Project in the Vitis IDE
+## Example 5: Using System Project to Manage Multiple Applications in the Vitis IDE
 
-The Vitis IDE can organize application projects that need to run at the same time in one system project. This can come in useful in project organization and makes debugging easier when the Arm Cortex-A53 and Arm Cortex-R5F need to run simultaneously.
+The Vitis IDE can organize application projects that need to run at the same time in one system project. This can be useful in project organization and can make debugging easier when the Arm Cortex-A53, Arm Cortex-R5F, or MicroBlaze soft processors need to run simultaneously.
 
-In this example, you will update the hello_system project created in Example 3:
+In this example, you will create a `hello_system` project that contains the "Hello World" application for Arm Cortex-A53 and Cortex-R5F and you will achieve the following:
 
-- Modify the "Hello World" application source code
-- Import prepared source codes for Arm Cortex-R5F
-- Adjust the linker script
+- Modify the "Hello World" application source code.
+- Import prepared source codes for Arm Cortex-R5F.
+- Adjust the linker script.
 
 ### Input and Output Files
 
@@ -367,11 +397,34 @@ In this example, you will update the hello_system project created in Example 3:
 - Output:
   - System project hello_system that includes hello_a53 and testapp_r5 applications
 
-### Modifying the hello_a53 Application Source Code
+### Creating the hello_system System Project
 
-1. Open the **helloworld.c** source file for the **hello_a53** application.
+Use the same steps as [Example 3](#example-3-running-the-hello-world-application-from-arm-cortex-a53), but this time create the system project with name `hello_system`.
 
-   - In the Explorer view, double-click **helloworld.c** in **hello_a53 → src**.
+1. Select **File → New → Application Project**. The Create New Application Project wizard welcome screen opens.
+
+2. Click **Next**.
+
+3. Use the information in the table below to make your selections in the wizard screens.
+
+
+| Screen               | System Properties               | Settings                      |
+|-----------------------------|---------------------------------|-------------------------------|
+| Platform                    | Select platform from repository | zcu102_edt            |
+| Application project details | Application project name        | **hello_sys_a53**                      |
+|                             | System project name             | **hello_system**               |
+|                             | Target processor                | psu_cortexa53_0               |
+| Domain                      | Domain                          | standalone on psu_cortexa53_0 |
+| Templates                   | Available templates             | Hello World                   |
+
+
+   **Note:** Application projects in one workspace cannot have the same name even if they belong to different system projects, because they store flat in the workspace directory.
+
+### Modifying the hello_sys_a53 Application Source Code
+
+1. Open the **helloworld.c** source file for the **hello_sys_a53** application.
+
+   - In the Explorer view, double-click **helloworld.c** in **hello_sys_a53 → src**.
 
 2. Modify the arguments in the print command, as shown below.
 
@@ -385,7 +438,7 @@ In this example, you will update the hello_system project created in Example 3:
 
 4. Build the hello_a53 application:
 
-   - Right-click the **hello_a53** application and select **Build Project**.
+   - Right-click the **hello_sys_a53** application and select **Build Project**.
    - Alternatively, it can be done by clicking the save button on the toolbar.
 
 5. Verify that the application is compiled and linked successfully:
@@ -393,33 +446,35 @@ In this example, you will update the hello_system project created in Example 3:
    - The console window report looks like the following:
 
    ```
-     'Invoking: ARM v8 Print Size'
-     aarch64-none-elf-size hello_a53.elf  |tee "hello_a53.elf.size"
-     text	   data	    bss	    dec	    hex	filename
-     30212	   2048	  20676	  52936	   cec8	hello_a53.elf
-    'Finished building: hello_a53.elf.size'
+      'Finished building target: hello_sys_a53.elf'
+      ' '
+      'Invoking: ARM v8 Print Size'
+      aarch64-none-elf-size hello_sys_a53.elf  |tee "hello_sys_a53.elf.size"
+         text	   data	    bss	    dec	    hex	filename
+      30212	   2048	  20676	  52936	   cec8	hello_sys_a53.elf
+      'Finished building: hello_sys_a53.elf.size'
    ```
 
-   - The **hello_a53.elf** file is generated in the **hello_a53 → Debug** folder.
+   - The **hello_sys_a53.elf** file is generated in the **hello_sys_a53 → Debug** folder.
 
-### Creating a Custom Bare-Metal Application for an Arm Cortex-R5 Based RPU
+### Creating a Custom Bare-Metal Application for an Arm Cortex-R5F Based RPU in the Same System Project
 
 You will now create a bare-metal application for Arm Cortex-R5F. The application source files are provided in the ``ref_files/example5`` directory. They will be imported in the next steps.
 
-1. Create an empty bare-metal application for Cortex-R5F Core 0 in the hello_system system project:
+1. Create an empty bare-metal application for Cortex-R5F Core 0 in the **hello_system** system project:
 
-   - In the Explorer View, select **hello_system**, right-click it, and select **New Application Project** to open the New Project wizard.
+   - In the Explorer View, select **hello_system**, right-click it, and select **Add Application Project** to open the New Project wizard.
 
    - Use the information in the following table to make your selections in the wizard.
 
      | Screen               | System Properties               | Settings           |
      |-----------------------------|---------------------------------|--------------------|
-     | Application project details | Application project name        | testapp_r5         |
+     | Application project details | Application project name        | **testapp_r5**         |
      |                             | System project name             | hello_system  |
-     |                             | Show all processors in hardware specification | check |
+     |                             | Show all processors in hardware specification | unchecked |
      |                             | Target processor                | psu_cortexr5_0     |
      | Domain                      | Domain                          | standalone_r5     |
-     | Templates                   | Available templates             | Empty application  |
+     | Templates                   | Available templates             | Empty application(C)  |
 
    - Click **Finish**. The New Project wizard closes and the Vitis IDE creates the testapp_r5
     application project in the hello_system system project.
@@ -430,11 +485,11 @@ You will now create a bare-metal application for Arm Cortex-R5F. The application
 
    - Right-click the **testapp_r5** and select **Import Sources** to open the Import view.
 
-   - In the **From directory** field, select **Browse** and navigate to the design files folder ([ref_files/example5](https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/example5)).
+   - In the **From directory** field, select **Browse** and navigate to the design files folder ([ref_files/example5](./ref_files/example5)).
 
    - Click **OK**.
 
-   - Select the **testapp.c file**.
+   - Select the **testapp.c** file.
 
    - Click **Finish**.
 
@@ -447,6 +502,8 @@ You will now create a bare-metal application for Arm Cortex-R5F. The application
    - The application configures the UART interrupt and sets the processor to WFI mode.
 
 ### Modifying the Linker Script for testapp_r5
+
+When two applications needs to run at the same time, they cannot use resources in conflict. They should not each other's memory space. They should use their own peripherals, or share peripherals by time. In this step, memory space is assigned by updating the linker scripts.
 
 1. In the Explorer view, expand the **testapp_r5 project**.
 
@@ -482,7 +539,7 @@ You will now create a bare-metal application for Arm Cortex-R5F. The application
  port for applications running on Cortex-A53 and Cortex-R5F cores. For
  this example, let Cortex-A53 use the UART 0 by default, and send and
  receive RPU serial data over UART 1. This requires a small
- modification in the ``r5_bsp`` file.
+ modification in the standalone_r5 bsp configuration.
 
 1. Open the platform details tab by double-clicking **zcu102_edt → platform.spr**.
 
@@ -542,6 +599,8 @@ You can view the detailed steps by right-clicking **hello_system**, selecting **
 ![Vitis Run Configurations](media/vitis_run_configurations.png)
 
 ## Reviewing Bootloader Projects in the Platform
+
+The platform creates boot components by default. The generated FSBL has been used to initialize the running environment before launching "Hello World" applications. You can review their settings and modify the configuration if required.
 
 ### Reviewing FSBL in the Platform
 
