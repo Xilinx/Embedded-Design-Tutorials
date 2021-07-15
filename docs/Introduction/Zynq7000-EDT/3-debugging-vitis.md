@@ -1,36 +1,20 @@
-# Debugging with the Vitis Software Platform
+# Debugging Standalone Applications with the Vitis Software Platform
 
-This chapter describes debug possibilities with the design flow you
-have already been working with. The first option is debugging with
-software using the Xilinx&reg; Vitis&trade; unified software platform.
+Although a simple "Hello World" application does not require much debugging, this chapter demonstrates the debugging setup and procedure in the Vitis IDE in [Example 3](#example-3-debugging-standalone-software-using-the-vitis-software-platform).
 
-The Vitis software platform debugger provides the following debug
-capabilities:
+The Vitis software platform debugger provides the following debug capabilities:
 
--   Debugging of programs on MicroBlaze&trade; and Arm Cortex&trade;-A9
-    processor architectures (heterogeneous multi-processor hardware
-    system debugging)
-
+-   Debugging of programs on MicroBlaze&trade; and Arm Cortex&trade;-A9 processor architectures (heterogeneous multi-processor hardware system debugging)
 -   Debugging of programs on hardware boards
-
 -   Debugging on remote hardware systems
+-   A feature-rich integrated design environment (IDE) to debug programs
+-   A Tool Command Language (Tcl) interface for running test scripts and automation
 
--   A feature-rich integrated design environment (IDE) to debug
-    programs
+The Vitis debugger enables you to see what is happening to a program while it executes. You can set breakpoints or watch points to stop the processor, step through program execution, view the program variables and stack, and view the contents of the memory in the system.
 
--   A Tool Command Language (Tcl) interface for running test
-    scripts and automation
+The Vitis software platform supports debugging through Xilinx System Debugger and GNU Debugger (GDB).
 
-The Vitis debugger enables you to see what is happening to a program
-while it executes. You can set breakpoints or watchpoints to stop the
-processor, step through program execution, view the program variables
-and stack, and view the contents of the memory in the system.
-
-The Vitis software platform supports debugging through Xilinx System
-Debugger and GNU Debugger (GDB).
-
-**Note:** The GDB flow is deprecated and will not be available for
-future devices.
+**Note:** The GDB flow is deprecated and might not be available in the future releases.
 
 ## Xilinx System Debugger
 
@@ -104,20 +88,15 @@ In this example, you will walk through debugging the "Hello World" application c
 
     **Note:** The addresses shown on this page might differ slightly from the addresses shown on your system.
 
-    The processor is currently sitting at the beginning of `main()`. You can confirm this
-    information in the Disassembly view, which shows the assembly-level program execution also suspended at the same address.
+    The processor is currently sitting at the beginning of `main()`. You can confirm this information in the Disassembly view, which shows the assembly-level program execution also suspended at the same address.
 
     **Note:** If the Disassembly view is not visible, select **Window → Show view**, select **Disassembly** under **Debug**, and click **Open**.
 
-2.  The helloworld.c window also shows execution suspended at the first
-    executable line of C code.
+2.  The helloworld.c window also shows execution suspended at the first executable line of C code.
 
     **Note:** If the Registers view is not visible, select **Window → Show view → Debug→ Registers**.
 
-3.  Double-click in the margin of the helloworld.c window next to the
-    line of code that reads `init_platform()` and `print()`. This sets the
-    breakpoints at `init_platform()` and `print()`. To confirm the
-    breakpoints, review the Breakpoints view.
+3.  Double-click in the margin of the helloworld.c window next to the line of code that reads `init_platform()` and `print()`. This sets the breakpoints at `init_platform()` and `print()`. To confirm the breakpoints, review the Breakpoints view.
 
     **Note:** If the Breakpoints view is not visible, select **Window → Show view → Debug → Breakpoints**.
 
@@ -125,29 +104,28 @@ In this example, you will walk through debugging the "Hello World" application c
 
     The program executes one step. The call stack is now two levels deep.
 
-5.  Select **Run → Resume** to continue running the program to the
-    breakpoint.
+5.  Select **Run → Resume** to continue running the program to the breakpoint.
 
-    Program execution stops at the line of code that includes the print
-    command. 
+    Program execution stops at the line of code that includes the print command. 
 
-    **Note:** The execution address in your debugging window might
-    differ if you modified the "Hello World" source code in any way.
+    **Note:** The execution address in your debugging window might differ if you modified the "Hello World" source code in any way.
 
 6.  Select **Run → Resume** to run the program to conclusion.
 
     When the program completes, the Terminal view shows the Hello World
     print and the Debug view shows that the program is suspended in a
-    routine called ``exit``. This happens when you are running under control
+    routine called `exit()`. This happens when you are running under control
     of the debugger.
 
 7.  Rerun your code several times. Experiment with single-stepping, examining memory, breakpoints, modifying code, and adding print statements. Try adding and moving views.
 
-    **TIP:** You can use Vitis tool debugging shortcuts for step-into (F5), step-over (F6), step-return (F7), and resume (F8).
+    **TIP:** You can use Vitis IDE debugging shortcuts for step-into (F5), step-over (F6), step-return (F7), and resume (F8).
 
 8.  Click Disconnect button on the tool bar to disconnect to the board, or exit the Vitis software platform directly.
 
-See the [next chapter](./4-linux-for-zynq.md) for building and debugging Linux applications for Zynq-7000 SoCs.
+This chapter introduced standalone software building and debugging. In the [next chapter](./4-linux-for-zynq.md), you can start working on Linux applications for Zynq-7000 SoCs.
+
+------
 
 © Copyright 2015–2021 Xilinx, Inc.
 

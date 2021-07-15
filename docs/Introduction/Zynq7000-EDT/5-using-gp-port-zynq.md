@@ -7,8 +7,7 @@ programmable logic (PL) available on it.
 
 In this chapter, you will create a design with:
 
--   An AXI GPIO and AXI Timer in the fabric (PL) with an interrupt from the fabric to the PS section
-
+-   An AXI GPIO block and AXI Timer block instantiated in the fabric (PL). The interrupt signals of AXI Timer will be connected to the PS.
 -   A Zynq SoC PS GPIO pin connected to the fabric (PL) side pin using the EMIO interface
 
 The flow of this chapter is similar to that in [Using the Zynq SoC Processing System](2-using-zynq.md) and uses the Zynq device as a
@@ -62,9 +61,10 @@ In the examples in this chapter, we will expand on the design with the following
 - Input Files: 
   - Vivado project from [Example 1](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc)
   - Vitis workspace in [Example 2](./2-using-zynq.md#example-2-creating-and-running-a-hello-world-application)
+
 - Output Files:
-  - Updated hardware handoff ``system_wrapper.xsa``
-  - ``hello_pl.elf``
+  - Updated hardware handoff `system_wrapper.xsa`
+  - `hello_pl.elf`
 
 ### Update Vivado Design Diagram
 
@@ -101,7 +101,7 @@ the fabric additions.
 
     - Navigate to **Interrupts → Fabric Interrupts → PL-PS Interrupt Ports**.
     - Check the **Fabric Interrupts** box to enable PL to PS interrupts.
-    - Check **IRQ_F2P[15:0]** to enable general interrupts. The ``CoreN_nFIQ`` signals are used for fast interrupt.
+    - Check **IRQ_F2P[15:0]** to enable general interrupts. The CoreN_nFIQ signals are used for fast interrupt.
     - Click **OK** to accept the changes to the ZYNQ7 Processing System IP. The diagram looks like the following figure.
 
     ![BD with Timer and GPIO](./media/image40.png)
@@ -131,7 +131,7 @@ the fabric additions.
 7. Connect interrupt signals:
 
     - Notice that the Interrupt port is not automatically connected to the
-    AXI Timer IP Core. In the Block Diagram view, locate the ``IRQ_F2P[0:0]`` port on the ZYNQ7 Processing System.
+    AXI Timer IP Core. In the Block Diagram view, locate the **IRQ_F2P[0:0]** port on the ZYNQ7 Processing System.
     - Scroll your mouse over the connector port until the pencil button
     appears, then click the **IRQ_F2P[0:0]** port and drag to the
     **interrupt** output port on the **axi_timer_0** to make a
@@ -139,7 +139,7 @@ the fabric additions.
 
 8. Make the PS GPIO port external:
 
-    - Notice that the ZYNQ7 Processing System ``GPIO_0`` port is not connected. Right-click the **GPIO_0** output port on the **ZYNQ7 Processing System** and select **Make External**.
+    - Notice that the ZYNQ7 Processing System GPIO_0 port is not connected. Right-click the **GPIO_0** output port on the **ZYNQ7 Processing System** and select **Make External**.
 
     The pins are external but do not have the required constraints for our
     board. To constrain your hardware pins to specific device locations,
@@ -186,7 +186,7 @@ the fabric additions.
 
     **Note:** For additional information about creating other design
     constraints, refer to the _Vivado Design Suite User Guide: Using
-    Constraints_ ([UG903](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;d=ug903-vivado-using-constraints.pdf)).
+    Constraints_ ([UG903](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug903-vivado-using-constraints.pdf)).
 
 6.  In the Flow Navigator, under Program and Debug, select **Generate Bitstream**.
 
@@ -219,7 +219,7 @@ the fabric additions.
 
     - Click **Finish**.
 
-    The exported file is located at ``C:/edt/edt_zc702/system_wrapper.xsa``.
+    The exported file is located at `C:/edt/edt_zc702/system_wrapper.xsa`.
  
 
 ### Updating Hardware in the Vitis Software Platform
@@ -232,7 +232,7 @@ Open the Vitis IDE and manually update the exported hardware from Vivado.
 
     ![Update Hardware Specification](./media/image52.png)
 
-2.  In the Update Hardware Specification view, browse for the exported XSA file (``C:/edt/edt_zc702/system_wrapper.xsa``) from Vitis and click **OK**. 
+2.  In the Update Hardware Specification view, browse for the exported XSA file (`C:/edt/edt_zc702/system_wrapper.xsa`) from Vitis and click **OK**. 
 
     - A view opens stating that the hardware specification for the platform project has been updated. Click **OK** to close it.
 
@@ -240,7 +240,7 @@ Open the Vitis IDE and manually update the exported hardware from Vivado.
 
     - Right-click the **zc702_edt** project, then select **Clean Project** followed by **Build Project**.
 
-    After the zc702_edt project build completes, the ``zc702_edt.xpfm`` file is generated.
+    After the zc702_edt project build completes, the `zc702_edt.xpfm` file is generated.
 
 ### Testing the PL IP with Prepared Software
 
@@ -270,7 +270,7 @@ Open the Vitis IDE and manually update the exported hardware from Vivado.
     - Select **hello_pl.c**.
     - Click **Finish**.
 
-3. Remove ``helloworld.c`` in the ``src`` directory:
+3. Remove `helloworld.c` in the `src` directory:
 
     - Right-click **helloworld.c** in the src directory.
     - Select **Delete**.
@@ -278,9 +278,9 @@ Open the Vitis IDE and manually update the exported hardware from Vivado.
 4. Build the hello_pl project:
 5. 
    - Right-click the **hello_pl** project.
-   - Select **Build project**.
+   - Select **Build Project**.
 
-    The ``hello_pl.elf`` file will be generated. The next step is to test the newly created hardware and software on the board.
+    The `hello_pl.elf` file will be generated. The next step is to test the newly created hardware and software on the board.
 
 6.  Connect the USB cable for JTAG and serial.
 
@@ -343,7 +343,7 @@ The application software is programmed to accomplish the following steps:
     callback switches on the LED **DS23** on the board and sets the
     interrupt flag.
 
-    The ``main()`` function uses the interrupt flag to halt execution, waits
+    The `main()` function uses the interrupt flag to halt execution, waits
     for timer interrupt to happen, and then restarts the execution.
 
 5.  Set the reset value of the timer, which is loaded to the timer
@@ -374,8 +374,9 @@ The application software is programmed to accomplish the following steps:
     LED DS23 switches ON and restarts execution.
 
 
-See the [next chapter](./6-using-hp-port.md) for information about using the HP slave port with AXI CDMA IP.
+See the [next chapter](./6-using-hp-port.md) for information about using the AXI HP (High Performance) slave port with the AXI Central DMA IP.
 
+------
 
 © Copyright 2015–2021 Xilinx, Inc.
 

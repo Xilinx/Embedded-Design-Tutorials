@@ -92,11 +92,13 @@ The next step is to connect the IP blocks instantiated above to the PS block.
 
    - Double-click the **Zynq UltraScale+ MPSoC** IP block.
    - Select the **PS-PL Configuration** tab.
-   - Enable **AXI HPM0 LPD**, expand it, set the AXI HPM0 LPD Data Width drop-down to **128** bits.
+   - Enable **AXI HPM0 LPD**, expand it, and set the AXI HPM0 LPD Data Width drop-down to **32** bits.
    - Click **OK** to close the window.
    - Check that the M_AXI_HPM0_LPD interface shows up on the MPSoC block.
 
    ![AXI HPM LPD](./media/image102.png)
+
+   >**Note:** 32-bit AXI is useful for accessing the control registers of general IPs. 128-bit AXI is useful for data transfer.
 
 
 2. Connect the AXI interfaces:
@@ -124,6 +126,8 @@ The next step is to connect the IP blocks instantiated above to the PS block.
     - In the Address Editor view, verify that the corresponding IPs are assigned addresses during connection automation. If they are not assigned, click the **Assign All** button to assign addresses for them.
 
      ![](./media/image104.png)
+
+     >**Note:** Connection automation assigns addresses automatically. If you connect IP manually, you also need to assign its address.
 
 ### Exporting the Post-Implementation Hardware Platform
 
@@ -153,25 +157,29 @@ We will run implementation of the Vivado design and export the post-implementati
 4. Run synthesis, implementation, and bitstream generation:
 
     - Click **Generate Bitstream**.
-    - Vivado will display a popup message saying "There are no implementation results available. OK to launch synthesis and implementation?".
-    - Click **Yes**.
-    - Review the Launch Runs dialogue, set the proper number of jobs to run simultaneously, and click **OK**.
+    - Vivado displays a popup message saying "There are no implementation results available. OK to launch synthesis and implementation?". Click **Yes**.
+    - Review the **Launch Runs** dialogue, set the proper number of jobs to run simultaneously, and click **OK**.
     - Wait for Vivado to complete implementation. After it finishes, a Bitstream Generation Completed message will pop up. Click **Cancel** to close it.
 
     ![Vivado Launch Run Configuration](media/vivado_launch_run.png)
 
-5. Export the hardware platform:
+5. Export the hardware design:
 
     - Select **File → Export → Export Hardware**. The Export Hardware Platform window opens.
     - Click **Next**.
     - Select **Include Bitstream** and click **Next**.
     - Specify the XSA file name and path. This is kept at default in this example. Click **Next**.
     - Review the summary and click **Finish** to close the window.
-    - The hardware platform file is generated in the specified path.
+    - The hardware platform XSA file is generated in the specified path.
 
 ## Configuring Software
 
 This use case has a bare-metal application running on an R5 core and a Linux application running on an APU Linux target. Most of the software blocks will remain the same as mentioned in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). The software for this design example requires additional drivers for components added in the PL. For this reason, you will need to generate a new bare-metal BSP in the Vitis IDE using the hardware files generated for this design. Linux also requires the Linux BSP to be reconfigured in sync with the new hardware platform file (XSA).
+
+| Processor   | Domain     | Application     |
+| ----------- | ---------- | --------------- |
+| Cortex-A53  | Linux      | ps_pl_linux_app |
+| Cortex-R5_0 | Standalone | tmr_psled_r5    |
 
  Before you configure the software, first look at the application
  design scheme. The system has a bare-metal application on RPU, which
@@ -190,55 +198,61 @@ This use case has a bare-metal application running on an R5 core and a Linux app
 
 ### Configuring and Building Linux Using PetaLinux
 
-1. Create the Linux images using PetaLinux. The Linux images must be
-     created in sync with the hardware configuration for this design.
-     You will also need to configure PetaLinux to create images for SD
-     boot.
+1. Create the Linux images using PetaLinux. The Linux images must be created in sync with the hardware configuration for this design. You will also need to configure PetaLinux to create images for SD boot.
 
 2. Repeat steps 2 to 4 as described in [Creating a PetaLinux Image](6-build-linux-sw-for-ps.md#creating-a-petalinux-image) to update the device tree and build Linux images using PetaLinux.
 
 3. Follow instructions in [Verifying the Image on the ZCU102 Board](6-build-linux-sw-for-ps.md#verifying-the-image-on-the-zcu102-board) to verify the images.
 
+Make sure you have the following files for creating the Linux domain:
+
+    - fsbl.elf
+    - pmufw.elf
+    - bl31.elf
+    - rootfs.ext4
+    - Image
+    - system.dtb
 
 ### Creating the Bare-Metal Application Project
 
-1. In the Vitis IDE, select **File → New → Application Project**. The
-     New Project wizard opens.
+1. Launch Vitis and use a new workspace **C:\edt\design_example_1** for this project.
 
-2. Use the information in the table below to make your selections in
-     the wizard.
+2. In the Vitis IDE, select **File → New → Application Project**. The New Project wizard opens.
+
+3. Use the information in the table below to make your selections in the wizard.
 
 
-   | Screen                      | System Properties               | Settings            |
-   | --------------------------- | ------------------------------- | ------------------- |
-   | Platform                    | Select platform from repository | edt_zcu102_wrapper  |
-   | Application project details | Application project name        | tmr_psled_r5        |
-   |                             | System project  name            | tmr_psled_r5_system |
-   |                             | Target processor                | psu_cortexr5_0      |
-   | Domain                      | Domain                          | psu_cortexr5_0      |
-   | Templates                   | Available templates             | Empty Application   |
+   | Screen                      | System Properties                   | Settings                   |
+   | --------------------------- | ----------------------------------- | -------------------------- |
+   | Platform                    | Create a New Platform from Hardware | **edt_zcu102_wrapper.xsa** |
+   |                             | Generate Boot Components            | **uncheck**                |
+   | Application Project Details | Application project name            | **tmr_psled_r5**           |
+   |                             | System project name                | tmr_psled_r5_system        |
+   |                             | Target processor                    | **psu_cortexr5_0**         |
+   | Domain                      | Domain                              | **psu_cortexr5_0**         |
+   | Templates                   | Available templates                 | Empty Application(C)       |
 
-3. Click **Finish**.
+4. Click **Finish**.
 
     The New Project wizard closes and the Vitis IDE creates the
     tmr_psled_r5 application project, which you can view in the Project
     Explorer.
 
-4. In the Project Explorer tab, expand the tmr_psled_r5 project.
+5. In the Project Explorer tab, expand the **tmr_psled_r5** project.
 
-5. Right-click the **src** directory, and select **Import** to open the Import dialog box.
+6. Right-click the **src** directory, and select **Import** to open the Import dialog box.
 
-6. Expand General in the Import dialog box and select **File System**.
+7. Expand General in the Import dialog box and select **File System**.
 
-7. Click **Next**.
+8. Click **Next**.
 
-8. Select **Browse** and navigate to the `ref_files/design1` folder.
+9. Select **Browse** and navigate to the `ref_files/design1` folder.
 
-9. Click **OK**.
+10. Click **OK**.
 
-10. Select and add the **timer_psled_r5.c** file.
+11. Select and add the **timer_psled_r5.c** file.
 
-11. Click **Finish**.
+12. Click **Finish**.
 
  The Vitis IDE automatically builds the application and displays the status in the console window.
 
@@ -248,7 +262,7 @@ This use case has a bare-metal application running on an R5 core and a Linux app
 
 2. In the `src` directory, double-click `lscript.ld` to open the linker script for this project.
 
-3. In the linker script in Available Memory Regions, modify the following attributes for psu_r5_ddr_0\_MEM_0:
+3. In the linker script in Available Memory Regions, modify the following attributes for **psu_r5_ddr_0_MEM_0**:
 
     Base Address: `0x70000000`
     Size: `0x10000000`
@@ -263,19 +277,18 @@ This use case has a bare-metal application running on an R5 core and a Linux app
 
 4. Type **Ctrl+S** to save the changes.
 
-5. Right-click the **tmr_psled_r5** project and select **Build Project**.
+5. Modify the BSP to configure UART with UART_1. For more information, see [Modifying the Board Support Package for testapp-r5](#4-build-sw-for-ps-subsystems.md#modifying-the-board-support-package-for-testapp_r5).
 
-6. Verify that the application is compiled and linked successfully and that the ``thetmr_psled_r5.elf`` file is generated in the `tmr_psled_r5\Debug` folder.
+6. Right-click the **tmr_psled_r5** project and select **Build Project**.
 
-7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package for testapp-r5](#4-build-sw-for-ps-subsystems.md#modifying-the-board-support-package-for-testapp_r5).
+7. Verify that the application is compiled and linked successfully and that the `tmr_psled_r5.elf` file is generated in the `tmr_psled_r5\Debug` folder.
 
-#### Creating the Linux Domain for Linux Applications
+
+### Creating the Linux Domain for Linux Applications
 
  To create a Linux domain for generating Linux applications, follow these steps:
 
 1. In the Explorer view of the Vitis IDE, expand the edt_zcu102_wrapper platform project.
-
-     ![](./media/image109.jpeg)
 
 2. Double-click **platform.spr** in the Explorer view to open the platform explorer.
 
@@ -328,7 +341,7 @@ This use case has a bare-metal application running on an R5 core and a Linux app
 
 4. In the Project Explorer view, expand the **ps_pl_linux_app** project.
 
-5. Right-click the ``src`` directory, and select **Import** to open the Import view.
+5. Right-click the `src` directory, and select **Import** to open the Import view.
 
 6. Expand General in the Import dialog box and select **File System**.
 

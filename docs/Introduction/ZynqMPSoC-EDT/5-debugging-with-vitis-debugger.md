@@ -336,7 +336,7 @@ The Vitis debugger provides the following debug capabilities:
     The [next chapter](./6-build-linux-sw-for-ps.md) shows how to build and debug Linux applications.
 
 
- © Copyright 2017-2020 Xilinx, Inc.
+ © Copyright 2017-2021 Xilinx, Inc.
 
  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 

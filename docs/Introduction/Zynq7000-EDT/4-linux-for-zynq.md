@@ -1,6 +1,9 @@
 # Building and Debugging Linux Applications for Zynq-7000 SoCs
 
-The earlier examples highlighted the creation of standalone applications. This chapter demonstrates how to develop Linux applications.
+This chapter demonstrates how to develop and debug Linux applications.
+
+- [Example 4](#example-4-creating-linux-images) introduces how to create a Linux image with PetaLinux.
+- [Example 5](#example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide) creates a Linux application in the Vitis IDE with the Linux image created in Example 4.
 
 ## Example 4: Creating Linux Images
 
@@ -10,31 +13,32 @@ In this example, you will configure and build a Linux operating system platform 
 
 - Input:
   - Hardware XSA (``system_wrapper.xsa`` generated in [Example 1](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc))
-  - [PetaLinux ZC702 BSP](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html)
+  - [PetaLinux ZC702 BSP](https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2021.1-final.bsp)
 
 - Output:
-  - PetaLinux boot images (``BOOT.BIN``, ``image.ub``)
+  - PetaLinux boot images (`BOOT.BIN`, `image.ub`)
   - PetaLinux application (hello_linux)
 
  **IMPORTANT!:**
 
-> 1. This example requires a Linux host machine with PetaLinux installed. Refer to the _PetaLinux Tools Documentation: Reference Guide_ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)) for information about dependencies for PetaLinux 2020.2.
+> 1. This example requires a Linux host machine with PetaLinux installed. Refer to the _PetaLinux Tools Documentation: Reference Guide_ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf)) for information about dependencies for PetaLinux 2021.1.
 
-> 2. This example uses the [PetaLinux ZC702 BSP](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html) to create a PetaLinux project. Ensure that you have downloaded the zc702 BSP for PetaLinux as instructed on the [PetaLinux Tools download page](https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2020.2-final.bsp).
+> 2. This example uses the [PetaLinux ZC702 BSP](https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2021.1-final.bsp) to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the [PetaLinux Tools download page](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html).
+
 
 ### Creating a PetaLinux Image
 
 1. Create a PetaLinux project using the following command:
 
     ```bash
-    petalinux-create -t project -s <path to the xilinx-zc702-v2020.2-final.bsp>
+    petalinux-create -t project -s <path to the xilinx-zc702-v2021.1-final.bsp>
     ```
 
-    **Note:** ``xilinx-zc702-v2020.2-final.bsp`` is the PetaLinux BSP for the zc702 Production Silicon Rev 1.0 Board.
+    **Note:** **xilinx-zc702-v2021.1-final.bsp** is the PetaLinux BSP for the zc702 Production Silicon Rev 1.0 Board.
 
-    This creates a PetaLinux project directory, ``xilinx-zc702-2020.2``.
+    This creates a PetaLinux project directory, **xilinx-zc702-2021.1**.
 
-2. Reconfigure the project with ``system_wrapper.xsa``:
+2. Reconfigure the project with **system_wrapper.xsa**:
 
    - The created PetaLinux project uses the default hardware setup in the ZC702 Linux BSP. In this example, you will reconfigure the PetaLinux project based on the Zynq design that you configured using the Vivado® Design Suite in [Example 1](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc).
 
@@ -43,21 +47,21 @@ In this example, you will configure and build a Linux operating system platform 
    - Reconfigure the project using the following command:
 
    ```bash
-   cd xilinx-zc702-2020.2
-   petalinux-config --get-hw-description=<path containing system_wrapper.xsa>
+   cd xilinx-zc702-2021.1
+   petalinux-config --get-hw-description=<path that contains system_wrapper.xsa>
    ```
 
     This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images. Select **Exit** and press **Enter** to exit the configuration window.
 
     If you would prefer to skip the configuration window and keep the default settings, run the following command instead:
 
-    ```
+    ```bash
     petalinux-config --get-hw-description=<path containing system_wrapper.xsa> --silentconfig
     ```
 
 3.  Build the PetaLinux project:
 
-    - In the `<PetaLinux-project>` directory, e.g. ``xilinx-zc702-2020.2``, build the Linux images using the following command:
+    - In the `<PetaLinux-project>` directory, e.g. `xilinx-zc702-2021.1`, build the Linux images using the following command:
 
     ```bash
     petalinux-build
@@ -72,7 +76,7 @@ In this example, you will configure and build a Linux operating system platform 
     ls -al
     ```
 
-    - `boot.scr` is for U-Boot to load the kernel and rootfs during boot time
+    - `boot.scr` is the script that U-Boot reads during boot time to load the kernel and rootfs
     - `image.ub` contains kernel image, device tree and rootfs.
 
 4.  Generate the boot image using the following command:
@@ -81,12 +85,12 @@ In this example, you will configure and build a Linux operating system platform 
     petalinux-package --boot --fsbl zynq_fsbl.elf --u-boot
     ```
 
-    This creates a ``BOOT.BIN`` image file in the ``<petalinux-project>/images/linux/`` directory.
+    This creates a `BOOT.BIN` image file in the `<petalinux-project>/images/linux/` directory.
 
     **Note:** The option to add bitstream, `--fpga`, is missing
     from the above command intentionally because so far the hardware
     configuration is based only on a PS with no design in the PL. If a bitstream is present in the design, `--fpga` can be added in the
-    ``petalinux-package`` command as shown below:
+    `petalinux-package` command as shown below:
 
     ```bash
     petalinux-package --boot --fsbl zynq_fsbl.elf --fpga system.bit --u-boot u-boot.elf
@@ -133,12 +137,13 @@ JTAG mode.
 
 ## Example 5: Creating a Hello World Application for Linux in the Vitis IDE
 
+In this example, you will use the Vitis IDE to create a Linux application that runs on the embedded Linux environment.
 
 ### Creating Linux Domain
+ 
+ First, create a Linux domain in the Vitis IDE. The Linux domain contains the information  required by the Linux application. 
 
-Now that Linux is running on the board, you can create a Linux domain
-followed by a Linux application. The steps to create a Linux domain
-are given below:
+The steps to create a Linux domain are given below:
 
 1.  Go to the Explorer view in the Vitis software platform and expand
     the **zc702_edt** platform project.
@@ -171,7 +176,7 @@ are given below:
 
     ![Updated platform domains](./media/image75.png)
 
-    **Note**: If you fill in the Bif File, Boot Components Directory, and Linux Image Directory options, Vitis can help to generate ``sd_card.img`` when you build the system project in the Linux host OS. In this case, it is helpful to use the ``ext4`` root file system. In the examples in this tutorial, which use ``initramfs``, it is only required to copy files to the FAT32 partition into the SD card, so this feature will not be used.
+    **Note**: If you fill in the Bif File, Boot Components Directory, and Linux Image Directory options, Vitis can help to generate `sd_card.img` when you build the system project in the Linux host OS. In this case, it is helpful to use the `ext4` root file system. In the examples in this tutorial, which use `initramfs`, it is only required to copy files to the FAT32 partition into the SD card, so this feature will not be used.
 
 5. Build the platform:
 
@@ -192,18 +197,18 @@ are given below:
    - Keep the SYSROOT, rootfs, and kernel image empty, and click **Next**.
    - Select the **Linux Hello World** template. Click **Finish**.
 
-   **Note:** If you input an extracted SYSROOT directory, Vitis can find include files and libraries in SYSROOT. SYSROOT is generated by the PetaLinux project `petalinux-build --sdk`. Refer to the _PetaLinux Tools Documentation: Reference Guide_ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;d=ug1144-petalinux-tools-reference-guide.pdf)) for more information about SYSROOT generation.
+   **Note:** If you input an extracted SYSROOT directory, Vitis can find include files and libraries in SYSROOT. SYSROOT is generated by the PetaLinux project `petalinux-build --sdk`. Refer to the _PetaLinux Tools Documentation: Reference Guide_ ([UG1144](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug1144-petalinux-tools-reference-guide.pdf)) for more information about SYSROOT generation.
 
-   **Note:** If you input a rootfs and kernel image, Vitis can help to generate the ``SD_card.img`` when building the Linux system project.
+   **Note:** If you input a rootfs and kernel image, Vitis can help to generate the `SD_card.img` when building the Linux system project.
 
-2. Build the **hello_linux** application.
+2. Build the hello_linux application.
 
    - Select **hello_linux**.
    - Click the hammer button to build the application.
 
 ### Preparing the Linux Agent for Remote Connection
 
-The Vitis IDE needs a channel to download the application to the running target. When the target runs Linux, it uses TCF Agent running on Linux. TCF Agent is added to the Linux rootfs from the PetaLinux configuration by default. When Linux boots up, it launches TCF Agent automatically. The Vitis IDE talks to TCF Agent on the board using an Ethernet connection.
+The Vitis IDE needs a channel to download the application to the running target for debugging. When the target runs Linux, it uses TCF Agent running on the target. TCF Agent is added to the Linux rootfs from the PetaLinux configuration by default. When Linux boots up, it launches TCF Agent automatically. The Vitis IDE talks to TCF Agent on the board using an Ethernet connection.
 
 1. Prepare for running the Linux application on the ZC702 board. Vitis can download the Linux application to the board, which runs Linux through a network connection. It is important to ensure that the connection between the host machine and the board works well.
 
@@ -299,7 +304,9 @@ In this chapter, you learned how to:
 - Create simple Linux applications with the Vitis IDE.
 - Run and debug using the Vitis IDE.
 
-See the [next chapter](./5-using-gp-port-zynq.md) to learn how to use the GP port in Zynq devices.
+Up until now, all your development and debugging activities have been running on the processing system. In [next chapter](./5-using-gp-port-zynq.md), you will start to add components to the PL (programmable logic). First, you will see how to use the GP port in Zynq devices.
+
+------
 
 © Copyright 2015–2021 Xilinx, Inc.
 
