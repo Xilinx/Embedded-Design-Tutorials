@@ -4,4 +4,4 @@
     </td>
  </tr>
 </table>
-The file name for this tutorial has changed. <a href="readme.rst">Click here</a> to access it.
+The file name for this tutorial has changed. <a href="README.rst">Click here</a> to access it.
