@@ -1,27 +1,30 @@
-## Secure Boot Sequence
+# Use Secure Boot Features to Protect Your Design
 
- The secure boot functionality in Zynq® UltraScale+™ MPSoC allows you to
+ The secure boot functionality in Xilinx devices allows you to
  support the confidentiality, integrity, and authentication of partitions.
- Secure boot is accomplished by combining the Hardware Root of Trust
- (HWRoT) capabilities of the Zynq UltraScale+ device with the option of
- encrypting all boot partitions. The HWRoT is based on the RSA-4096
+
+ Secure boot in Zynq UltraScale+ MPSoC is accomplished by combining the Hardware Root of Trust
+ (HWRoT) capabilities with the option of encrypting all boot partitions. The HWRoT is based on the RSA-4096
  asymmetric algorithm with SHA-3/384, which is hardware accelerated.
- Confidentiality is provided using 256-bit Advanced Encryption Standard Galois Counter Mode (AES-GCM). This section focuses on how to use and implement the following:
+ Confidentiality is provided using 256-bit Advanced Encryption Standard Galois Counter Mode (AES-GCM). 
+ 
+ This section focuses on how to use and implement the following:
 
 - Hardware Root of Trust with key revocation
 - Partition encryption with differential power analysis (DPA) countermeasures
 - Black key storage using the physically unclonable function (PUF)
 
- The section [Secure Boot System Design Decisions](#secure-boot-system-design-decisions) outlines high-level secure boot decisions which should be made early in design
- development. The [Hardware Root of Trust](#hardware-root-of-trust) section discusses the use of a Root of Trust (RoT) in boot. The [Boot Image Confidentiality and DPA](#boot-image- confidentiality-and-dpa) section discusses methods to use AES encryption.
+ The section [Secure Boot System Design Decisions](#secure-boot-system-design-decisions) outlines high-level secure boot decisions which should be made early in design development. 
+ 
+ The [Hardware Root of Trust](#hardware-root-of-trust) section discusses the use of a Root of Trust (RoT) in boot. 
 
  The [Boot Image Confidentiality and DPA](#boot-image-confidentiality-and-dpa) section discusses the use of the operational key and key rolling techniques as countermeasures to a DPA attack. Changing the AES key reduces the exposure of both the key and the data protected by the key.
 
  A red key is a key in unencrypted format. The [Black Key Storage](#black-key-storage) section provides a method for storing the AES key in encrypted, or black format. Black key storage uses the physically unclonable function (PUF) as a Key Encryption Key (KEK).
 
- The [Practical Methods in Secure Boot](#practical-methods-in-secure-boot) section provides steps to develop and test systems that use AES encryption and RSA authentication.
+ The [Example: Practical Methods in Secure Boot](#example-practical-methods-in-secure-boot) section provides steps to develop and test systems that use AES encryption and RSA authentication.
 
-### Secure Boot System Design Decisions
+## Secure Boot System Design Decisions
 
 The following are device level decisions affecting secure boot:
 
@@ -31,7 +34,7 @@ The following are device level decisions affecting secure boot:
 - Encryption and authentication requirements
 - Key provisioning
 
- The boot modes which support secure boot are quad serial peripheral interface (QSPI), SD, eMMC, USB Boot, and NAND. The AES key is stored in either eFUSEs (encrypted or unencrypted), battery backed random access memory (BBRAM) (unencrypted only), or in external NVM (encrypted only).
+ The boot modes which support secure boot are quad serial peripheral interface (QSPI), SD, eMMC, USB Boot, and NAND. The AES key is stored in either eFUSEs (encrypted or unencrypted), battery backed random access memory (BBRAM) (unencrypted only), or in external Non-Volatile Memory (NVM) (encrypted only).
 
  In Zynq UltraScale+ MPSoC devices, partitions can be encrypted and/or authenticated on a partition basis. Xilinx generally recommends that all partitions be RSA authenticated. Partitions that are open source (such as U-Boot and Linux) or that do not contain any proprietary or confidential information typically do not need to be encrypted. In systems in
  which there are multiple sources/suppliers of sensitive data and/or proprietary IP, encrypting the partitions using unique keys can be important.
@@ -41,16 +44,16 @@ The following are device level decisions affecting secure boot:
  The following table can be a good reference when deciding on features required to meet a specific secure system requirement. The following sections discuss the features in more detail.
 
 
-| System Consideration/          | Zynq UltraScale+ Feature  |
-|-----------------------------------|--------------------------------|
-|  Ensure that only the users software and hardware runs on the device      | HWRoT                         |
-|  Guarantee that the users software and hardware are not modified        | HWR                         |
-|  Ensure that an adversary cannot clone or reverse engineer software/hardware  | Boot Image Confidentiality    |
-|  Protect sensitive data and proprietary Intellectual Property (IP)       | Boot Image Confidentiality     |
-|  Ensure that Private Key (AES key) is protected against side channel attacks    | DPA Protections                |
-|  Private/Secret keys (AES key) is stored encrypted at rest | Black Key Storage              |
+| System Consideration                                                        | Zynq UltraScale+ Feature   |
+| --------------------------------------------------------------------------- | -------------------------- |
+| Ensure that only the users software and hardware runs on the device         | Hardware Root of Trust     |
+| Guarantee that the users software and hardware are not modified             | Hardware Root of Trust     |
+| Ensure that an adversary cannot clone or reverse engineer software/hardware | Boot Image Confidentiality |
+| Protect sensitive data and proprietary Intellectual Property (IP)           | Boot Image Confidentiality |
+| Ensure that Private Key (AES key) is protected against side channel attacks | DPA Protections            |
+| Private/Secret keys (AES key) is stored encrypted at rest                   | Black Key Storage          |
 
-#### Hardware Root of Trust
+### Hardware Root of Trust
 
  Roots of trust are security primitives for storage (RTS), integrity
  (RTI), verification (RTV), measurement (RTM), and reporting (RTR). RoT
@@ -58,7 +61,7 @@ The following are device level decisions affecting secure boot:
  over software RoTs because the HWRoT is immutable, has a smaller attack
  surface, and the behavior is more reliable.
 
- The HWRoT is based on the CSU, eFUSEs, BBRAM, and isolation elements.
+ The HWRoT is based on the CSU, eFUSEs, BBRAM (Battery-backed RAM), and isolation elements.
  The HWRoT is responsible for validating that the operating environment
  and configuration have not been modified. The RoT acts as an anchor
  for boot, so an adversary cannot insert malicious code before
@@ -71,7 +74,7 @@ The following are device level decisions affecting secure boot:
  developers do not create security components from scratch with limited
  testing.
 
-##### Data Integrity
+#### Data Integrity
 
  Data integrity is the absence of corruption of hardware, firmware, and
  software. Data integrity functions verify that an adversary has not
@@ -88,7 +91,7 @@ The following are device level decisions affecting secure boot:
  Mode (GCM) mode of AES. In the secure boot flow, partitions are first
  authenticated and then decrypted if necessary.
 
-##### Authentication
+#### Authentication
 
  The following figure shows RSA signing and verification of partitions.
  From a secure facility, the Bootgen tool signs partitions, using the
@@ -124,7 +127,7 @@ The following are device level decisions affecting secure boot:
  boot header authentication. The example BIF file for a fully secured
  system is included at the end of this section.
 
-#### Boot Image Confidentiality and DPA
+### Boot Image Confidentiality and DPA
 
  AES is used to ensure the confidentiality of sensitive data and IP. Zynq
  UltraScale+ uses AES Galois Counter Mode (GCM) and a 256 AES bit key. The principle AES enhancements provided by Zynq UltraScale+ are increased resistance to differential power analysis
@@ -139,12 +142,12 @@ The following are device level decisions affecting secure boot:
  section. To maintain Boot image confidentiality, encrypted boot images
  can be created using Bootgen. Software examples to program keys to
  BBRAM and eFUSE are also available in the Vitis™ IDE. One such example
- is discussed in [Practical Methods in Secure Boot](#practical-methods-in-secure-boot).
+ is discussed in [Example: Practical Methods in Secure Boot](#example-practical-methods-in-secure-boot).
 
 **Note:** It is recommended that you generate your own keys for fielded systems and then provide those keys to the development tools.
 Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for details.
 
-#### DPA Protections
+### DPA Protections
 
  Key rolling is used for DPA resistance. Key rolling and black key
  store can be used in the same design. In key rolling, software and
@@ -168,7 +171,7 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
  the 256-bit operational key. This limits the exposure of the device
  key to DPA attacks.
 
-#### Black Key Storage
+### Black Key Storage
 
  The PUF enables storing the AES key in encrypted (black) format. The
  black key can be stored either in eFUSEs or in the boot header. When
@@ -198,7 +201,7 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
  the [Secure Boot Sequence](#secure-boot-sequence) section demonstrates
  the PUF eFUSE mode.
 
-### Practical Methods in Secure Boot
+## Example: Practical Methods in Secure Boot
 
  This section outlines the steps to develop secure boot in a Zynq
  UltraScale+ system. Producing a secure embedded system is a two-step
@@ -212,7 +215,7 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
  This section starts by showing how to generate AES and RSA keys.
  Following key generation, systems using the advanced AES and RSA
  methods are developed and tested. Keys generated in this section are
- also included in the ref_files directory.
+ also included in the [ref_files/secure_boot_sd](./ref_files/secure_boot_sd) directory.
 
  <!--TODO: resolve keys in ref_files directory-->
 
@@ -237,27 +240,26 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
  simplest form, the BIF is a list of partitions to be loaded at boot.
  Security attributes are added to the BIF to specify cryptographic
  functionality. In most cases, the Bootgen GUI (Create Boot Image
- wizard) is used to generate the BIF file. In some cases, adding
+ wizard in the Vitis IDE) is used to generate the BIF file. In some cases, adding
  security attributes requires editing the Bootgen generated BIF file.
  In Create Boot Image Wizard in the Vitis IDE, after the Security tab
  is selected, the Authentication and Encryption tabs are used to
  specify security attributes.
 
  After implementing AES and RSA cryptography in secure boot, a boot
- test is done. The system loads successfully and displays the FSBL
+ test should be executed. The system loads successfully and displays the FSBL
  messages on the terminal. These messages indicate the cryptographic
- operations performed on each partition. [Debugging Problems with Secure Boot](#debugging-problems-with-secure-boot) provides the steps it is necessary to follow if the secure boot test fails.
+ operations performed on each partition. [Debugging Problems with Secure Boot](#debugging-problems-with-secure-boot) section provides the debugging steps. It is necessary to follow if the secure boot test fails.
 
-#### Sample Design Overview
+### Sample Design Overview
 
  The sample design demonstrates loading various types of images into
  the device. It includes loading a FSBL, PMU Firmware, U-Boot, Linux,
  RPU software and a PL configuration image. In this sample, all of
  these images are loaded by the FSBL which performs all authentication
- and decryption. This is not the only means of booting a system.
- However, it is the simple and secure method, as of 2019.1.
+ and decryption. This is not the only means of booting a system. However, it is the simple and secure method.
 
-(./media/sample-design.png)
+![](./media/sample-design.png)
 
  Different sections within the boot image have different levels of
  security and are loaded into different locations. The following table
@@ -265,24 +267,24 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
 
 **Final Boot Image with Secure Attributes**
 
-|  Binary     | RSA Authenticated |  AES Encrypted | Exception Level  | Loader        |
-|-------------|-------------|-------------|-------------|-------------|
-| FSBL        | Yes         | Yes         | EL3         | CSU ROM     |
-| PMU Firmware        | Yes         | Yes         | NA          | FSBL        |
-| PL Bitstream         | Yes         | Yes         | NA          | FSBL        |
-| Arm Trusted Firmware (ATF) | Yes         | No          | EL3         | FSBL        |
-| R5 Software | Yes         | Yes         | NA          | FSBL        |
-| U-Boot      | Yes         | No          | EL2         | FSBL        |
-| Linux       | Yes         | No          | EL1         | FSBL        |
+| Binary                     | RSA Authenticated | AES Encrypted | Exception Level | Loader  |
+| -------------------------- | ----------------- | ------------- | --------------- | ------- |
+| FSBL                       | Yes               | Yes           | EL3             | CSU ROM |
+| PMU Firmware               | Yes               | Yes           | NA              | FSBL    |
+| PL Bitstream               | Yes               | Yes           | NA              | FSBL    |
+| Arm Trusted Firmware (ATF) | Yes               | No            | EL3             | FSBL    |
+| R5 Software                | Yes               | Yes           | NA              | FSBL    |
+| U-Boot                     | Yes               | No            | EL2             | FSBL    |
+| Linux                      | Yes               | No            | EL1             | FSBL    |
 
->**Note:**
+> **Note:**
 >
->1. In a secure boot sequence, the PMU image is loaded by the FSBL. Using the bootROM/CSU to load the PMU firmware introduces a security weakness as the key/IV combination is used twice: first to decrypt the FSBL, and then again to decrypt the PMU image. This is not allowed for the secure systems.
+> 1. In a secure boot sequence, the PMU image is loaded by the FSBL. Using the bootROM/CSU to load the PMU firmware introduces a security weakness as the key/IV combination is used twice: first to decrypt the FSBL, and then again to decrypt the PMU image. This is not allowed for the secure systems.
 > 2. As of 2019.1, U-Boot does not perform a secure authenticated loading of Linux. Instead of U-Boot, FSBL loads the Linux images to a memory address and then uses U-Boot to jump to that memory address.
 
  This tutorial demonstrates assembling the binaries that are created
- using [System Design Examples](7-system-design-examples.md) in a boot image with all the security features enabled. This section also shows how a PL bitstream can be added as a
- part of the secure boot flow. Follow the information in this chapter until [Modifying the Build Settings](7-system-design-examples.md#modifying-the-build-settings) to create all the
+ using [MPSoC Design Example 1][1] in a boot image with all the security features enabled. This section also shows how a PL bitstream can be added as a
+ part of the secure boot flow. Follow the information in this chapter until [Modifying the Build Settings][2] to create all the
  necessary files and then switch back.
 
  Enabling the security features in boot image is done in two different
@@ -294,7 +296,7 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
  set of security features and reuses the keys from the first method for
  convenience.
 
-#### Generating Keys for Authentication
+### Generating Keys for Authentication
 
  There are multiple methods of generating keys. These include, but are
  not limited to, using Bootgen, customized key files, OpenSSL and
@@ -309,7 +311,7 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
  next section, building your boot image demonstrates how to create
  these BIF files using the Bootgen GUI (create Boot Image Wizard).
 
-#### Creating RSA Private/Public Key Pairs
+### Creating RSA Private/Public Key Pairs
 
  For this example, you will create the primary and secondary keys in
  the PEM format. The keys are generated using Bootgen command-line
@@ -320,77 +322,86 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
 
 1. Launch the shell from the Vitis IDE.
 
-2. Select **Xilinx → Vitis Shell**.
+    - **Xilinx → Vitis Shell**.
 
-3. Create a file named `key_generation.bif`.
+2. Create a file named **key_generation.bif**.
 
-    >**Note:** The `key_generation.bif` file will be used to create both
+    >**Note:** The **key_generation.bif** file will be used to create both
     the asymmetric keys in these steps and the symmetric keys in later
     steps.
 
     ```
     the_ROM_image:
     {
-    [pskfile]psk0.pem [sskfile]ssk0.pem
-    [auth_params]spk_id = 0; ppk_select = 0 [fsbl_config]a53_x64
-    [bootloader]fsbl_a53.elf [destination_cpu = pmu]pmufw.elf
+    [pskfile]psk0.pem 
+    [sskfile]ssk0.pem
+    [auth_params]spk_id = 0; ppk_select = 0 
+    [fsbl_config]a53_x64
+    [bootloader]fsbl_a53.elf 
+    [destination_cpu = pmu]pmufw.elf
     [destination_device = pl]edt_zcu102_wrapper.bit
     [destination_cpu = a53-0, exception_level = el-3, trustzone] bl31.elf
     [destination_cpu = r5-0]tmr_psled_r5.elf
-    [destination_cpu = a53-0, exception_level = el-2]u-boot.elf [load =
-    0x1000000, destination_cpu = a53-0]image.ub
+    [destination_cpu = a53-0, exception_level = el-2]u-boot.elf 
+    [load = 0x1000000, destination_cpu = a53-0]image.ub
     }
     ```
 
-4. Save the `key_generation.bif` file in the C:\edt\secure_boot_sd\keys directory.
+3. Save the `key_generation.bif` file in the C:\edt\secure_boot_sd\keys directory.
 
-5. Copy all of the ELF, BIF, and UB files built in [System Design Examples](7-system-design-examples.md) to `C:\edt\secure_boot_sd\keys directory`.
+4. Copy all of the ELF, BIF, and UB files built in [MPSoC Design Example 1][1] to `C:\edt\secure_boot_sd\keys directory`.
 
-6. Navigate to the folder containing the BIF file.
+   - bl31.elf
+   - edt_zcu102_wrapper.bit
+   - fsbl_a53.elf
+   - image.ub
+   - pmufw.elf
+   - tmr_psled_r5.elf
+   - u-boot.elf
+
+
+1. Navigate to the folder containing the BIF file.
 
     `cd C:\edt\secure_boot_sd\keys`
 
-7. Run the following command to generate the keys:
+2. Run the following command to generate the keys:
 
     `bootgen -p zu9eg -arch zynqmp -generate_keys auth pem -image key_generation.bif`
 
-8. Verify that the files `psk0.pem` and `ssk0.pem` are generated at the location specified in the BIF file (`c:\edt\secure_boot_sd\keys`).
+3. Verify that the files `psk0.pem` and `ssk0.pem` are generated at the location specified in the BIF file (`c:\edt\secure_boot_sd\keys`).
 
-**Note:** 2020.3 (and previous) Bootgen fails to replace the old authentication key files with new authentication key files generated using the ``-generate_keys`` option. It is recommended that you check the existence and permissions of the target key files before generation. Refer to AR [76125](https://www.xilinx.com/support/answers/76125.html) for details.
+**Note:** 2020.3 (and previous) Bootgen fails to replace the old authentication key files with new authentication key files generated using the `-generate_keys` option. It is recommended that you check the existence and permissions of the target key files before generation. Refer to AR [76125](https://www.xilinx.com/support/answers/76125.html) for details.
 
 
-##### Generating SHA3 of Public Key in an RSA Private/Public Key Pair
+#### Generating SHA3 of Public Key in an RSA Private/Public Key Pair
 
- The following steps are required only for RSA authentication in eFUSE mode, and can be skipped for RSA authentication in boot header mode. The 384 bits from ``sha3.txt`` can be programmed to eFUSE for RSA authentication in eFUSE mode. For more information, see _Programming BBRAM and eFUSEs_ ([XAPP1319](https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf)).
+ The following steps are required only for RSA authentication in eFUSE mode, and can be skipped for RSA authentication in boot header mode. The 384 bits from **sha3.txt** can be programmed to eFUSE for RSA authentication in eFUSE mode. For more information, see _Programming BBRAM and eFUSEs_ ([XAPP1319](https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf)).
 
 1. Perform the steps from the prior section.
 
-2. Now that the PEM files have been defined, add ``authentication = rsa`` attributes as shown below to `key_generation.bif`.
+2. Now that the PEM files have been defined, add `authentication = rsa` attributes as shown below to **key_generation.bif**.
 
     ```
     the_ROM_image:
     {
     [pskfile]psk0.pem [sskfile]ssk0.pem
     [auth_params]spk_id = 0; ppk_select = 0 [fsbl_config]a53_x64
-    [bootloader, authentication = rsa]fsbl_a53.elf [destination_cpu = pmu,
-    authentication = rsa]pmufw.elf
+    [bootloader, authentication = rsa]fsbl_a53.elf [destination_cpu = pmu,authentication = rsa]pmufw.elf
     [destination_device = pl, authentication = rsa]edt_zcu102_wrapper.bit
-    [destination_cpu = a53-0, exception_level = el-3, trustzone,
-    authentication = rsa]bl31.elf
+    [destination_cpu = a53-0, exception_level = el-3, trustzone,authentication = rsa]bl31.elf
     [destination_cpu = r5-0, authentication = rsa]tmr_psled_r5.elf
-    [destination_cpu = a53-0, exception_level = el-2, authentication = rsa]uboot.
-    elf
+    [destination_cpu = a53-0, exception_level = el-2, authentication = rsa]u-boot.elf
     [load = 0x1000000, destination_cpu = a53-0, authentication = rsa]image.ub
     }
     ```
 
-3. Use the ``bootgen`` command to calculate the hash of the PPK:
+3. Use the `bootgen` command to calculate the hash of the PPK:
 
     `bootgen -p zcu9eg -arch zynqmp -efuseppkbits ppk0_digest.txt -image key_generation.bif`
 
 4. Verify that the file `ppk0_digest.txt` is generated at the location specified (`c:\edt\secure_boot_sd\keys`).
 
-##### Additional RSA Private/Public Key Pairs
+#### Additional RSA Private/Public Key Pairs
 
  Follow the steps in this section to generate the secondary RSA private/public key
  pair required for key revocation, which requires the programming of eFUSE.
@@ -406,47 +417,47 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
     ```
     the_ROM_image:
     {
-    [pskfile]psk1.pem [sskfile]ssk1.pem
+    [pskfile]psk1.pem 
+    [sskfile]ssk1.pem
     [auth_params]spk_id = 1; ppk_select = 1 [fsbl_config]a53_x64
     [bootloader]fsbl_a53.elf [destination_cpu = pmu]pmufw.elf
     [destination_device = pl]edt_zcu102_wrapper.bit
     [destination_cpu = a53-0, exception_level = el-3, trustzone]bl31.elf
     [destination_cpu = r5-0]tmr_psled_r5.elf
-    [destination_cpu = a53-0, exception_level = el-2]u-boot.elf [load =
-    0x1000000, destination_cpu = a53-0]image.ub
+    [destination_cpu = a53-0, exception_level = el-2]u-boot.elf [load = 0x1000000, destination_cpu = a53-0]image.ub
     }
     ```
 
-2. Run the ``bootgen`` command to create the RSA private/public key pairs.
+2. Run the `bootgen` command to create the RSA private/public key pairs.
 
     `bootgen -p zu9eg -arch zynqmp -generate_keys auth pem -image key_generation_1.bif`
 
-3. Add ``authentication = rsa`` attributes to the `key_generation_1.bif` file. The BIF file will look like the following:
+3. Add `authentication = rsa` attributes to the **key_generation_1.bif** file. The BIF file will look like the following:
 
     ```
     the_ROM_image:
     {
-    [pskfile]psk1.pem [sskfile]ssk1.pem
-    [auth_params]spk_id = 1; ppk_select = 1 [fsbl_config]a53_x64
+    [pskfile]psk1.pem 
+    [sskfile]ssk1.pem
+    [auth_params]spk_id = 1; ppk_select = 1 
+    [fsbl_config]a53_x64
     [bootloader, authentication = rsa]fsbl_a53.elf
     [destination_cpu = pmu, authentication = rsa]pmufw.elf
     [destination_device = pl, authentication = rsa]edt_zcu102_wrapper.bit
-    [destination_cpu = a53-0, exception_level = el-3, trustzone,
-    authentication = rsa]bl31.elf
+    [destination_cpu = a53-0, exception_level = el-3, trustzone, authentication = rsa]bl31.elf
     [destination_cpu = r5-0, authentication = rsa]tmr_psled_r5.elf
-    [destination_cpu = a53-0, exception_level = el-2, authentication = rsa]uboot.
-    elf [load = 0x1000000, destination_cpu = a53-0, authentication =
-    rsa]image.ub
+    [destination_cpu = a53-0, exception_level = el-2, authentication = rsa]u-boot.elf 
+    [load = 0x1000000, destination_cpu = a53-0, authentication = rsa]image.ub
     }
     ```
 
-4. Run the ``bootgen`` command to generate the hash of the primary RSA public key.
+4. Run the `bootgen` command to generate the hash of the primary RSA public key.
 
     `bootgen -p zcu9eg -arch zynqmp -efuseppkbits ppk1_digest.txt -image key_generation_1.bif`
 
 5. Verify that the files `ppk1.pem`, `spk1.pem`, and `ppk1_digest.txt` are all generated at the location specified (`c:\edt\secure_boot\keys`).
 
-##### Enabling Boot Header Authentication
+#### Enabling Boot Header Authentication
 
  Boot header authentication is a mode of authentication that instructs
  the ROM to skip the checks of the eFUSE hashes for the PPKs, the
@@ -458,95 +469,98 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
  RSA_EN eFUSE to force the eFUSE checks and disable boot header
  authentication.
 
- Add the `bh_auth_enable` attribute to the ``[fsbl_config]`` line so that
+ Add the `bh_auth_enable` attribute to the `[fsbl_config]` line so that
  the BIF file appears as follows:
 
 ```
 the_ROM_image:
 {
-[pskfile]psk0.pem [sskfile]ssk0.pem
-[auth_params]spk_id = 0; ppk_select = 0 [fsbl_config]a53_x64,
-bh_auth_enable [bootloader, authentication = rsa]fsbl_a53.elf
-[destination_cpu = pmu, authentication = rsa]pmufw.elf [destination_device
-= pl, authentication = rsa]edt_zcu102_wrapper.bit
-[destination_cpu = a53-0, exception_level = el-3, trustzone, authentication
-= rsa]bl31.elf
+[pskfile]psk0.pem 
+[sskfile]ssk0.pem
+[auth_params]spk_id = 0; ppk_select = 0 
+[fsbl_config]a53_x64,bh_auth_enable 
+[bootloader, authentication = rsa]fsbl_a53.elf
+[destination_cpu = pmu, authentication = rsa]pmufw.elf 
+[destination_device = pl, authentication = rsa]edt_zcu102_wrapper.bit
+[destination_cpu = a53-0, exception_level = el-3, trustzone, authentication = rsa]bl31.elf
 [destination_cpu = r5-0, authentication = rsa]tmr_psled_r5.elf
-[destination_cpu = a53-0, exception_level = el-2, authentication = rsa]uboot.
-elf [load = 0x1000000, destination_cpu = a53-0, authentication =
-rsa]image.ub
+[destination_cpu = a53-0, exception_level = el-2, authentication = rsa]u-boot.elf 
+[load = 0x1000000, destination_cpu = a53-0, authentication = rsa]image.ub
 }
 ```
 
-#### Generating Keys for Confidentiality
+### Generating Keys for Confidentiality
 
  Image confidentiality is discussed in the [Boot Image Confidentiality and
  DPA](#boot-image-confidentiality-and-dpa) section. In this section you
  will modify the BIF file from the authentication section by adding
  the attributes required to enable image confidentiality, using the
- AES-256-GCM encryption algorithm. At the end, a ``bootgen`` command will
+ AES-256-GCM encryption algorithm. At the end, a `bootgen` command will
  be used to create all of the required AES-256 keys.
 
-##### Using AES Encryption
+#### Using AES Encryption
 
 1. Enable image confidentiality by specifying the key source for the
-     initial encryption key (``bbram_red_key`` for now) using the
-     ``[keysrc_encryption]`` `bbram_red_key` attribute.
+     initial encryption key (`bbram_red_key` for now) using the
+     `[keysrc_encryption]` `bbram_red_key` attribute.
 
-2. On several of the partitions, enable confidentiality by adding the ``encryption = aes`` attribute. Specify a unique key file for each partition. Having a unique key file for each partition allows each partition to use a unique set of keys which increases security strength by not reusing keys and reducing the amount of information encrypted on any one key. The `key_generation.bif` file should now look as follows:
+2. On several of the partitions, enable confidentiality by adding the `encryption = aes` attribute. Specify a unique key file for each partition. Having a unique key file for each partition allows each partition to use a unique set of keys which increases security strength by not reusing keys and reducing the amount of information encrypted on any one key. The `key_generation.bif` file should now look as follows:
 
-        ```
-        the_ROM_image:
-        {
-        [pskfile]psk0.pem [sskfile]ssk0.pem
-        [auth_params]spk_id = 0; ppk_select = 0 [keysrc_encryption]bbram_red_key
-        [fsbl_config]a53_x64, bh_auth_enable
-        [bootloader, authentication = rsa, encryption = aes, aeskeyfile = fsbl_a53.nky]fsbl_a53.elf
-        [destination_cpu = pmu, authentication = rsa, encryption = aes, aeskeyfile = pmufw.nky]pmufw.elf
-        [destination_device = pl, authentication = rsa, encryption = aes, aeskeyfile = edt_zcu102_wrapper.nky]edt_zcu102_wrapper.bit
-        [destination_cpu = a53-0, exception_level = el-3, trustzone, authentication = rsa]bl31.elf
-        [destination_cpu = r5-0, authentication = rsa, encryption = aes,aeskeyfile = tmr_psled_r5.nky]tmr_psled_r5.elf
-        [destination_cpu = a53-0, exception_level = el-2, authentication = rsa]uboot.elf
-        [load = 0x1000000, destination_cpu = a53-0, authentication = rsa]image.ub
-        }
-        ```
+```
+the_ROM_image:
+{
+[pskfile]psk0.pem 
+[sskfile]ssk0.pem
+[auth_params]spk_id = 0; ppk_select = 0 [keysrc_encryption]bbram_red_key
+[fsbl_config]a53_x64, bh_auth_enable
+[bootloader, authentication = rsa, encryption = aes, aeskeyfile = fsbl_a53.nky]fsbl_a53.elf
+[destination_cpu = pmu, authentication = rsa, encryption = aes, aeskeyfile = pmufw.nky]pmufw.elf
+[destination_device = pl, authentication = rsa, encryption = aes, aeskeyfile = edt_zcu102_wrapper.nky]edt_zcu102_wrapper.bit
+[destination_cpu = a53-0, exception_level = el-3, trustzone, authentication = rsa]bl31.elf
+[destination_cpu = r5-0, authentication = rsa, encryption = aes,aeskeyfile = tmr_psled_r5.nky]tmr_psled_r5.elf
+[destination_cpu = a53-0, exception_level = el-2, authentication = rsa]u-boot.elf
+[load = 0x1000000, destination_cpu = a53-0, authentication = rsa]image.ub
+}
+```
 
-##### Enabling DPA Protections
+#### Enabling DPA Protections
 
  This section provides the steps for using an operational key, and also demonstrates key
  rolling effective countermeasures against differential power analysis (DPA).
 
-##### Enable Use of an Operational Key
+#### Enable Use of an Operational Key
 
  Use of an operational key limits the amount of information encrypted
  using a device key. Enable use of the operational key by adding the
- ``opt_key`` attribute to the ``[fsbl_config]`` line of the BIF file. The
- ``key_generation.bif`` file should now appear as shown below:
+ `opt_key` attribute to the `[fsbl_config]` line of the BIF file. The
+ **key_generation.bif** file should now appear as shown below:
 
 ```the_ROM_image:
 {
-[pskfile]psk0.pem [sskfile]ssk0.pem
-[auth_params]spk_id = 0; ppk_select = 0 [keysrc_encryption]bbram_red_key
+[pskfile]psk0.pem 
+[sskfile]ssk0.pem
+[auth_params]spk_id = 0; ppk_select = 0 
+[keysrc_encryption]bbram_red_key
 [fsbl_config]a53_x64, bh_auth_enable, opt_key
 [bootloader, authentication = rsa, encryption = aes, aeskeyfile = fsbl_a53.nky]fsbl_a53.elf
 [destination_cpu = pmu, authentication = rsa, encryption = aes, aeskeyfile = pmufw.nky]pmufw.elf
 [destination_device = pl, authentication = rsa, encryption = aes, aeskeyfile = edt_zcu102_wrapper.nky]edt_zcu102_wrapper.bit
 [destination_cpu = a53-0, exception_level = el-3, trustzone, authentication = rsa]bl31.elf
 [destination_cpu = r5-0, authentication = rsa, encryption = aes, aeskeyfile = tmr_psled_r5.nky]tmr_psled_r5.elf
-[destination_cpu = a53-0, exception_level = el-2, authentication = rsa]uboot.elf
+[destination_cpu = a53-0, exception_level = el-2, authentication = rsa]u-boot.elf
 [load = 0x1000000, destination_cpu = a53-0, authentication = rsa]image.ub
 }
 ```
 
-##### Enabling Encryption Using Key Rolling
+#### Enabling Encryption Using Key Rolling
 
  Use of key rolling limits the amount of information encrypted using
  any of the other keys. Key rolling is enabled on a partition-by-partition basis using the blocks attribute in the BIF file. The blocks attribute allows you to specify the amount of information
- in bytes to encrypt with each key. For example, blocks=4096,1024(3),512(\*) would use the first key for 4096 bytes, the second through fourth keys for 1024 bytes, and all remaining keys
+ in bytes to encrypt with each key. For example, `blocks=4096,1024(3),512(*)` would use the first key for 4096 bytes, the second through fourth keys for 1024 bytes, and all remaining keys
  for 512 bytes. In this example, the block command will be used to limit the life of each key to 1728 bytes.
 
- Enable use of key rolling by adding the ``blocks`` attribute to each
- of the encrypted partitions. The ``key_generation.bif`` file should appear as shown below:
+ Enable use of key rolling by adding the `blocks` attribute to each
+ of the encrypted partitions. The **key_generation.bif** file should appear as shown below:
 
 ```
 the_ROM_image:
@@ -561,23 +575,23 @@ the_ROM_image:
 [destination_device = pl, authentication = rsa, encryption = aes,aeskeyfile = edt_zcu102_wrapper.nky, blocks = 1728(*)]edt_zcu102_wrapper.bit
 [destination_cpu = a53-0, exception_level = el-3, trustzone, authentication = rsa]bl31.elf
 [destination_cpu = r5-0, authentication = rsa, encryption = aes, aeskeyfile = tmr_psled_r5.nky, blocks = 1728(*)]tmr_psled_r5.elf
-[destination_cpu = a53-0, exception_level = el-2, authentication = rsa]uboot.elf
+[destination_cpu = a53-0, exception_level = el-2, authentication = rsa]u-boot.elf
 [load = 0x1000000, destination_cpu = a53-0, authentication = rsa]image.ub
 }
 ```
 
-##### Generating All of the AES Keys
+#### Generating All of the AES Keys
 
  When all the desired encryption features have been enabled, you can
  generate all key files by running Bootgen. Some of the source files
  (for example, ELF) contain multiple sections. These individual
  sections will be mapped to separate partitions, and each partition
  will have a unique key file. In this case, the key file will be
- appended with a ".1.". For example, if the `pmu_fw.elf` file contains
- multiple sections, both a `pmu_fw.nky` and a `pmu_fw.1.nky` file will be
+ appended with a ".1.". For example, if the `pmufw.elf` file contains
+ multiple sections, both a `pmufw.nky` and a `pmufw.1.nky` file will be
  generated.
 
-1. Create all of the necessary NKY files by running the ``bootgen`` command
+1. Create all of the necessary NKY files by running the `bootgen` command
      that creates the final `BOOT.bin` image.
 
     `bootgen -p zcu9eg -arch zynqmp -image key_generation.bif`
@@ -626,14 +640,14 @@ the_ROM_image:
 
 8. Edit xilskey_puf_registration.h as follows:
 
-    1. Change ``\#define XSK_PUF_INFO_ON_UART`` from ``FALSE`` to ``TRUE``.
+    1. Change `#define XSK_PUF_INFO_ON_UART` from `FALSE` to `TRUE`.
 
-    2. Ensure that ``\#define XSK_PUF_PROGRAM_EFUSE`` is set to ``FALSE``.
+    2. Ensure that `#define XSK_PUF_PROGRAM_EFUSE` is set to `FALSE`.
 
-    3. Set ``XSK_PUF_AES_KEY`` (256-bit key).
+    3. Set `XSK_PUF_AES_KEY` (256-bit key).
 
         The key must be entered in hex format and should be Key 0 from the
-        ``fsbl_a53.nky`` file that you generated in [Generating All of the AES Keys](#generating-all-of-the-aes-keys). You can find a sample key
+        `fsbl_a53.nky` file that you generated in [Generating All of the AES Keys](#generating-all-of-the-aes-keys). You can find a sample key
         below:
 
         ```
@@ -641,10 +655,9 @@ the_ROM_image:
         "68D58595279ED1481C674383583C1D98DA816202A57E7FE4F67859CB069CD510"
         ```
 
-        >**Note:** Do not copy this key. Refer to the ``fsbl_a53.nky`` file for
-        your key.
+        >**Note:** Do not copy this key. Refer to the **fsbl_a53.nky** file for your key.
 
-    4. Set the ``XSK_PUF_BLACK_KEY_IV``. The initialization vector IV is a 12-byte piece of data of your choice.
+    4. Set the `XSK_PUF_BLACK_KEY_IV`. The initialization vector IV is a 12-byte piece of data of your choice.
 
         `#define XSK_PUF_BLACK_KEY_IV \"E1757A6E6DD1CC9F733BED31\"`
 
@@ -694,15 +707,15 @@ the_ROM_image:
 
 24. The `puf_registration.log` file is used in [Using PUF in Boot Header Mode](#using-puf-in-boot-header-mode). Open `puf_registration.log` in a text editor.
 
-25. Save the PUF Syndrome data that starts after ``App PUF Syndrome data Start!!!`` and ends at ``PUF Syndrome data End!!!``, non-inclusive, to a file named `helperdata.txt`.
+25. Save the PUF Syndrome data that starts after `App PUF Syndrome data Start!!!` and ends at `PUF Syndrome data End!!!`, non-inclusive, to a file named `helperdata.txt`.
 
-26. Save the black key IV identified by ``App: Black Key IV`` to a file named `black_iv.txt`.
+26. Save the black key IV identified by `App: Black Key IV` to a file named **black_iv.txt**.
 
-27. Save the black key to a file named `black_key.txt`.
+27. Save the black key to a file named **black_key.txt**.
 
-28. The files `helperdata.txt`, `black_key.txt`, and `black_iv.txt` can be saved in `C:\edt\secure_boot_sd\keys`.
+28. The files **helperdata.txt**, **black_key.txt**, and **black_iv.txt** can be saved in **C:\edt\secure_boot_sd\keys**.
 
-##### Using PUF in Boot Header Mode
+#### Using PUF in Boot Header Mode
 
 The following steps describe the process to update the BIF file from the previous sections to include using the PUF in Boot Header mode. This section makes use of the syndrome data and black key created during PUF registration process.
 
@@ -724,27 +737,27 @@ The following steps describe the process to update the BIF file from the previou
     [destination_device = pl, authentication = rsa, encryption = aes, aeskeyfile = edt_zcu102_wrapper.nky, blocks = 1728(*)]edt_zcu102_wrapper.bit
     [destination_cpu = a53-0, exception_level = el-3, trustzone, authentication = rsa]bl31.elf
     [destination_cpu = r5-0, authentication = rsa, encryption = aes, aeskeyfile = tmr_psled_r5.nky, blocks =1728(*)]tmr_psled_r5.elf
-    [destination_cpu = a53-0, exception_level = el-2, authentication = rsa]uboot.elf
+    [destination_cpu = a53-0, exception_level = el-2, authentication = rsa]u-boot.elf
     [load = 0x1000000, destination_cpu = a53-0, authentication = rsa]image.ub
     }
     ```
 
-2. The above BIF file can be used for creating a final boot image using an AES key encrypted in the boot image header with the PUF KEK. This should be done using the following ``bootgen`` command:
+2. The above BIF file can be used for creating a final boot image using an AES key encrypted in the boot image header with the PUF KEK. This should be done using the following `bootgen` command:
 
     `bootgen -p zcu9eg -arch zynqmp -image key_generation.bif -w -o BOOT.bin`
 
- >**Note:** The above steps can also be executed with PUF in eFUSE mode. In this case, repeat the previous steps using the PUF in eFUSE mode. This requires enabling the programming of eFUSEs during PUF registration by setting the ``XSK_PUF_PROGRAM_EFUSE`` macro in the ``xilskey_puf_registration.h`` file used to build the PUF registration application. The BIF must also be modified to use the encryption key from eFUSE, and the helper data and black key files should be removed. PUF in eFUSE mode is not covered in this tutorial to avoid programming the eFUSEs on development or tutorial systems.
+ >**Note:** The above steps can also be executed with PUF in eFUSE mode. In this case, repeat the previous steps using the PUF in eFUSE mode. This requires enabling the programming of eFUSEs during PUF registration by setting the `XSK_PUF_PROGRAM_EFUSE` macro in the **xilskey_puf_registration.h** file used to build the PUF registration application. The BIF must also be modified to use the encryption key from eFUSE, and the helper data and black key files should be removed. PUF in eFUSE mode is not covered in this tutorial to avoid programming the eFUSEs on development or tutorial systems.
 
  ```
  [keysrc_encryption]efuse_blk_key
  [bh_key_iv]black_iv.txt
  ```
 
- ##### System Example Using the Vitis IDE Create Boot Image Wizard
+ ### System Example Using the Vitis IDE Create Boot Image Wizard
 
  The previous sections enabled the various security features (authentication, confidentiality, DPA protections, and black key storage) by hand editing the BIF file. This section performs the same operations, but uses the Bootgen Wizard as a starting point. The Bootgen Wizard creates a base BIF file, and then adds the additional security features that are not supported by the wizard using a text editor.
 
-1. Change directory to the ``bootgen_files`` directory.
+1. Change directory to the **bootgen_files** directory.
 
     `cd C:\edt\secure_boot_sd\bootgen_files`
 
@@ -761,7 +774,7 @@ The following steps describe the process to update the BIF file from the previou
     cp ../keys/black_key.txt.
     ```
 
-3. Click **Programs → Xilinx Design Tools → Vitis 2020.2 → Xilinx Vitis 2020.2** to launch the Vitis IDE.
+3. Click **Programs → Xilinx Design Tools → Vitis 2021.1 → Xilinx Vitis 2021.1** to launch the Vitis IDE.
 
 4. Click **Xilinx Tools → Create Boot Image** from the menu bar to launch the Create Boot Image wizard.
 
@@ -919,9 +932,10 @@ The following steps describe the process to update the BIF file from the previou
 
     h.  Click **OK**.
 
-        ![](./media/image91.png)
+    ![](./media/image91.png)
 
-18. Add the Linux image to the boot image.
+
+1.  Add the Linux image to the boot image.
 
     1. Click **Add**.
 
@@ -941,11 +955,11 @@ The following steps describe the process to update the BIF file from the previou
 
         ![](./media/image92.png)
 
-19. Click **Create image**.
+2.  Click **Create image**.
 
     ![](./media/image93.png)
 
-20. The `design_bh_bkey_keyrolling.bif` file should look similar to the following:
+3.  The `design_bh_bkey_keyrolling.bif` file should look similar to the following:
 
     ```
     //arch = zynqmp; split = false; format = BIN; key_part_name = zcu9eg
@@ -956,13 +970,11 @@ The following steps describe the process to update the BIF file from the previou
     [auth_params]spk_id = 0; ppk_select = 0
     [keysrc_encryption]efuse_red_key
     [fsbl_config]bh_auth_enable, opt_key
-    [bootloader, encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\fsbl_a53.nky]C:\edt\secure_boot_sd
-    \bootgen_files\fsbl_a53.elf
+    [bootloader, encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\fsbl_a53.nky]C:\edt\secure_boot_sd\bootgen_files\fsbl_a53.elf
     [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\pmufw.nky, destination_cpu = pmu]C:\edt\secure_boot_sd\bootgen_files\pmufw.elf
     [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\edt_zcu102_wrapper.nky, destination_device = pl]C:\edt\secure_boot_sd\bootgen_files\edt_zcu102_wrapper.bit
     [authentication = rsa, destination_cpu = a53-0, exception_level = el-3, trustzone]C:\edt\secure_boot_sd\bootgen_files\bl31.elf
-    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.nky, destination_cpu =
-    r5-0]C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.elf
+    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.nky, destination_cpu =r5-0]C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.elf
     [authentication = rsa, destination_cpu = a53-0, exception_level = el-2]C:\edt\secure_boot_sd\bootgen_files\u-boot.elf
     [authentication = rsa, load = 0x2000000, destination_cpu = a53-0]C:\edt\secure_boot_sd\bootgen_files\image.ub
     }
@@ -970,7 +982,7 @@ The following steps describe the process to update the BIF file from the previou
 
     **Note:** This BIF file is still missing several security features that are not supported by the Create Boot Image wizard. These are features are key rolling and black key store.
 
-21. Add black key store by changing the **keysrc_encryption** and adding the other additional items so that the BIF file looks like the following:
+4.  Add black key store by changing the **keysrc_encryption** and adding the other additional items so that the BIF file looks like the following:
 
     ```
     the_ROM_image:
@@ -983,21 +995,17 @@ The following steps describe the process to update the BIF file from the previou
     [bh_keyfile]black_key.txt
     [puf_file]helperdata.txt
     [fsbl_config]a53_x64, bh_auth_enable, opt_key,puf4kmode,shutter=0x0100005E,pufhd_bh
-    [bootloader, encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\fsbl_a53.nky]C:\edt\secure_boot_sd
-    \bootgen_files\fsbl_a53.elf
-    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\pmufw.nky, destination_cpu = pmu]C:\edt
-    \secure_boot_sd\bootgen_files\pmufw.elf
-    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\edt_zcu102_wrapper.nky, destination_device
-    = pl]C:\edt\secure_boot_sd\bootgen_files\edt_zcu102_wrapper.bit
+    [bootloader, encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\fsbl_a53.nky]C:\edt\secure_boot_sd\bootgen_files\fsbl_a53.elf
+    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\pmufw.nky, destination_cpu = pmu]C:\edt\secure_boot_sd\bootgen_files\pmufw.elf
+    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\edt_zcu102_wrapper.nky, destination_device= pl]C:\edt\secure_boot_sd\bootgen_files\edt_zcu102_wrapper.bit
     [authentication = rsa, destination_cpu = a53-0, exception_level = el-3, trustzone]C:\edt\secure_boot_sd\bootgen_files\bl31.elf
-    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.nky, destination_cpu =
-    r5-0]C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.elf
+    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.nky, destination_cpu = r5-0]C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.elf
     [authentication = rsa, destination_cpu = a53-0, exception_level = el-2]C:\edt\secure_boot_sd\bootgen_files\u-boot.elf
     [authentication = rsa, load = 0x2000000, destination_cpu = a53-0]C:\edt\secure_boot_sd\bootgen_files\image.ub
     }
     ```
 
-22. Enable key rolling by adding the block attributes to the encrypted partitions. The updated BIF file should now look like the following:
+5.  Enable key rolling by adding the block attributes to the encrypted partitions. The updated BIF file should now look like the following:
 
     ```
     //arch = zynqmp; split = false; format = BIN; key_part_name = zcu9eg
@@ -1011,75 +1019,75 @@ The following steps describe the process to update the BIF file from the previou
     [bh_keyfile]black_key.txt
     [puf_file]helperdata.txt
     [fsbl_config]a53_x64, bh_auth_enable, opt_key, puf4kmode,shutter=0x0100005E,pufhd_bh
-    [bootloader, encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\fsbl_a53.nky, blocks = 1728(*)]C:\edt
-    \secure_boot_sd\bootgen_files\fsbl_a53.elf
-    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\pmufw.nky, destination_cpu = pmu, blocks =
-    1728(*)]C:\edt\secure_boot_sd\bootgen_files\pmufw.elf
-    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\edt_zcu102_wrapper.nky, destination_device
-    = pl, blocks = 1728(*)]C:\edt\secure_boot_sd\bootgen_files
-    \edt_zcu102_wrapper.bit
+    [bootloader, encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\fsbl_a53.nky, blocks = 1728(*)]C:\edt  \secure_boot_sd\bootgen_files\fsbl_a53.elf
+    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\pmufw.nky, destination_cpu = pmu, blocks = 1728(*)]C:\edt\secure_boot_sd\bootgen_files\pmufw.elf
+    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\edt_zcu102_wrapper.nky, destination_device = pl, blocks = 1728(*)]C:\edt\secure_boot_sd\bootgen_files\edt_zcu102_wrapper.bit
     [authentication = rsa, destination_cpu = a53-0, exception_level = el-3, trustzone]C:\edt\secure_boot_sd\bootgen_files\bl31.elf
-    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.nky, destination_cpu = r5-0,
-    blocks = 1728(*)]C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.elf
+    [encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.nky, destination_cpu = r5-0, blocks = 1728(*)]C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.elf
     [authentication = rsa, destination_cpu = a53-0, exception_level = el-2]C:\edt\secure_boot_sd\bootgen_files\u-boot.elf
     [authentication = rsa, load = 0x2000000, destination_cpu = a53-0]C:\edt\secure_boot_sd\bootgen_files\image.ub
     }
     ```
 
-23. Generate the boot image by running the following command. Note that the `- encryption_dump` flag has been added. This flag causes the log file `aes_log.txt` to be created. The log file details all encryption operations that were used. This allows you to see which keys and IVs were used on which sections of the boot image.
+6.  Generate the boot image by running the following command. Note that the `- encryption_dump` flag has been added. This flag causes the log file `aes_log.txt` to be created. The log file details all encryption operations that were used. This allows you to see which keys and IVs were used on which sections of the boot image.
 
      `bootgen -p zcu9eg -arch zynqmp -image design_bh_bkey_keyrolling.bif -w -o BOOT.bin -encryption_dump`
 
 #### Booting the System Using a Secure Boot Image
 
-This section demonstrates how to use the ``BOOT.bin`` boot image created in prior sections to perform a secure boot using the ZCU102.
+This section demonstrates how to use the **BOOT.bin** boot image created in prior sections to perform a secure boot using the ZCU102.
 
-1. Copy the BOOT.bin image, the ``boot.scr`` file generated in PetaLinux, and the `ps_pl_linux_app.elf` file.
+1. Copy the BOOT.bin image, the **boot.scr** file generated in PetaLinux, and the **ps_pl_linux_app.elf** file.
 
 2. Insert the SD card into the ZCU102.
 
 3. Set SW6 of the ZCU102 for SD boot mode (1=ON; 2,3,4=OFF).
 
-    ![](../Introduction/MPSoc-EDT/media/image43.jpeg)
+    ![](./media/image43.jpeg)
 
 4. Connect Serial terminals to ZCU102 (115200, eight data bits, one stop bit, no parity).
 
 5. Power on the ZCU102.
 
-6. When the terminal reaches the U-Boot ``ZynqMP\`` prompt, type ``bootm 0x2000000``.
+6. When the terminal reaches the U-Boot `ZynqMP>` prompt, type `bootm 0x2000000`.
+
+    > Note: 0x2000000 is the address of image.ub
 
     ![](./media/image94.png)
 
+<!--Screenshot version: 2020.1-->
+
 7. Log into Linux using the following credentials:
 
+    ```
     Login: root;
     Password: root
+    ```
 
-    Run the Linux application as described in [Design Example 1: Using
-    GPIOs, Timers, and Interrupts](7-system-design-examples.md#design-example-1-using-gpios-timers-and-interrupts).
+    Run the Linux application as described in [Design Example 1: Using GPIOs, Timers, and Interrupts](7-system-design-examples.md#design-example-1-using-gpios-timers-and-interrupts).
+
 
     ![](./media/image95.png)
+
+<!--Screenshot version: 2020.1-->
 
 #### Running the Linux Application
 
  Use the following steps to run a Linux application:
 
-1. Copy the application from SD card mount point to `/tmp`.
+1. Copy the application from SD card mount point to **/tmp**.
 
-    `# cp /run/media/mmcblk0p1/ps_pl_linux_app.elf /tmp`
+    ```bash
+    mount /dev/mmcblk0p1 /media/
+    cp /media/ps_pl_linux_app.elf /tmp
+    ```
 
-    >**Note:** Mount the SD card manually if you fail to find SD card
-    contents in this location.
 
-    `# mount /dev/mmcblk0p1 /media/`
+2. Run the application.
 
-2. Copy the application to /tmp.
-
-    `# cp /media/ps_pl_linux_app.elf /tmp`
-
-3. Run the application.
-
-    `# /tmp/ps_pl_linux_app.elf`
+    ```bash
+    /tmp/ps_pl_linux_app.elf
+    ```
 
 #### Sample BIF for a Fielded System
 
@@ -1089,13 +1097,13 @@ This section demonstrates how to use the ``BOOT.bin`` boot image created in prio
 
 1. Change from PUF boot header mode to PUF eFUSE mode.
 
-    1. Change the ``keysrc_encryption`` attribute to ``efuse_blk_key``.
+    1. Change the `keysrc_encryption` attribute to `efuse_blk_key`.
 
-    2. Remove the ``bh_keyfile`` and ``puf_file`` lines.
+    2. Remove the `bh_keyfile` and `puf_file` lines.
 
-    3. Remove the ``puf4kmode`` and ``pufhd_bh`` attributes from the ``fsbl_config`` line.
+    3. Remove the `puf4kmode` and `pufhd_bh` attributes from the `fsbl_config` line.
 
-2. Change from boot header authentication to eFUSE authentication. Remove the ``bh_auth_enable`` attribute from the ``fsbl_config`` line.
+2. Change from boot header authentication to eFUSE authentication. Remove the `bh_auth_enable` attribute from the `fsbl_config` line.
 
 ```
 //arch = zynqmp; split = false; format = BIN; key_part_name = zcu9eg
@@ -1109,26 +1117,21 @@ the_ROM_image:
 [bh_keyfile]black_key.txt
 [puf_file]helperdata.txt
 [fsbl_config]a53_x64, bh_auth_enable, opt_key, puf4kmode,shutter=0x0100005E,pufhd_bh
-[bootloader, encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\fsbl_a53.nky, blocks = 1728(*)]C:\edt
-\secure_boot_sd\bootgen_files\fsbl_a53.elf
-[encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\pmufw.nky, destination_cpu = pmu, blocks =
-1728(*)]C:\edt\secure_boot_sd\bootgen_files\pmufw.elf
-[encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\edt_zcu102_wrapper.nky, destination_device
-= pl, blocks = 1728(*)]C:\edt\secure_boot_sd\bootgen_files
-\edt_zcu102_wrapper.bit
+[bootloader, encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\fsbl_a53.nky, blocks = 1728(*)]C:\edt\secure_boot_sd\bootgen_files\fsbl_a53.elf
+[encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\pmufw.nky, destination_cpu = pmu, blocks =1728(*)]C:\edt\secure_boot_sd\bootgen_files\pmufw.elf
+[encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\edt_zcu102_wrapper.nky, destination_device= pl, blocks = 1728(*)]C:\edt\secure_boot_sd\bootgen_files\edt_zcu102_wrapper.bit
 [authentication = rsa, destination_cpu = a53-0, exception_level = el-3,trustzone]C:\edt\secure_boot_sd\bootgen_files\bl31.elf
-[encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.nky, destination_cpu = r5-0,
-blocks = 1728(*)]C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.elf
+[encryption = aes, authentication = rsa, aeskeyfile = C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.nky, destination_cpu = r5-0,blocks = 1728(*)]C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.elf
 [authentication = rsa, destination_cpu = a53-0, exception_level = el-2]C:\edt\secure_boot_sd\bootgen_files\u-boot.elf
 [authentication = rsa, load = 0x2000000, destination_cpu = a53-0]C:\edt\secure_boot_sd\bootgen_files\image.ub
 }
 ```
 
-# Debugging Problems with Secure Boot
+## Debugging Problems with Secure Boot
 
 This appendix describes how to debug security failures. One procedure determines if PUF registration has been run on the device. A second procedure checks the value of the boot header in the boot image.
 
-## Determine if PUF Registration is Running
+### Determine if PUF Registration is Running
 
 The following steps can be used to verify if the PUF registration software has been run on the device:
 
@@ -1146,17 +1149,23 @@ The following steps can be used to verify if the PUF registration software has b
 
 3. This location contains the CHASH and AUX values. If non-zero, PUF registration software has been run on the device.
 
-## Read the Boot Image
+### Read the Boot Image
 
  You can use the Bootgen utility to verify the header values and the partition data used in the boot image.
 
-1. Change to the directory containing ``BOOT.bin``.
+1. Change to the directory containing **BOOT.bin**.
 
 2. From an XSCT prompt, run the following command.
 
     `bootgen_utility --bin BOOT.bin --out myfile --arch zynqmp`
 
-3. Look for "BH" in ``myfile``.
+3. Look for "BH" in **myfile**.
+
+<!--Links-->
+[1]: ./7-design1-using-gpio-timer-interrupts.md
+[2]: ./7-design1-using-gpio-timer-interrupts.md#modifying-the-build-settings
+
+------
 
 © Copyright 2017-2021 Xilinx, Inc.
 
