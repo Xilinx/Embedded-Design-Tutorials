@@ -1,12 +1,11 @@
 # Use Secure Boot Features to Protect Your Design
 
- The secure boot functionality in Xilinx devices allows you to
- support the confidentiality, integrity, and authentication of partitions.
+ The secure boot functionality in Xilinx™ devices allows you to support the confidentiality, integrity, and authentication of partitions.
 
- Secure boot in Zynq UltraScale+ MPSoC is accomplished by combining the Hardware Root of Trust
+
+ Secure boot in Zynq® UltraScale+™ MPSoCs is accomplished by combining the Hardware Root of Trust
  (HWRoT) capabilities with the option of encrypting all boot partitions. The HWRoT is based on the RSA-4096
- asymmetric algorithm with SHA-3/384, which is hardware accelerated.
- Confidentiality is provided using 256-bit Advanced Encryption Standard Galois Counter Mode (AES-GCM). 
+ asymmetric algorithm with SHA-3/384, which is hardware accelerated. Confidentiality is provided using 256-bit Advanced Encryption Standard Galois Counter Mode (AES-GCM). 
  
  This section focuses on how to use and implement the following:
 
@@ -61,7 +60,7 @@ The following are device level decisions affecting secure boot:
  over software RoTs because the HWRoT is immutable, has a smaller attack
  surface, and the behavior is more reliable.
 
- The HWRoT is based on the CSU, eFUSEs, BBRAM (Battery-backed RAM), and isolation elements.
+ The HWRoT is based on the CSU, eFUSEs, BBRAM (battery-backed RAM), and isolation elements.
  The HWRoT is responsible for validating that the operating environment
  and configuration have not been modified. The RoT acts as an anchor
  for boot, so an adversary cannot insert malicious code before
@@ -249,7 +248,7 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
  After implementing AES and RSA cryptography in secure boot, a boot
  test should be executed. The system loads successfully and displays the FSBL
  messages on the terminal. These messages indicate the cryptographic
- operations performed on each partition. [Debugging Problems with Secure Boot](#debugging-problems-with-secure-boot) section provides the debugging steps. It is necessary to follow if the secure boot test fails.
+ operations performed on each partition. The [Debugging Problems with Secure Boot](#debugging-problems-with-secure-boot) section provides the debugging steps to follow if the secure boot test fails.
 
 ### Sample Design Overview
 
@@ -283,8 +282,8 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
 > 2. As of 2019.1, U-Boot does not perform a secure authenticated loading of Linux. Instead of U-Boot, FSBL loads the Linux images to a memory address and then uses U-Boot to jump to that memory address.
 
  This tutorial demonstrates assembling the binaries that are created
- using [MPSoC Design Example 1][1] in a boot image with all the security features enabled. This section also shows how a PL bitstream can be added as a
- part of the secure boot flow. Follow the information in this chapter until [Modifying the Build Settings][2] to create all the
+ using [Design Example 1: Using GPIOs, Timers, and Interrupts](./7-design1-using-gpio-timer-interrupts.md) in a boot image with all the security features enabled. This section also shows how a PL bitstream can be added as a
+ part of the secure boot flow. Follow the information in this chapter until [Modifying the Build Settings](./7-design1-using-gpio-timer-interrupts.md#modifying-the-build-settings) to create all the
  necessary files and then switch back.
 
  Enabling the security features in boot image is done in two different
@@ -320,13 +319,11 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
  The following steps describe the process of creating the RSA
  private/public key pairs:
 
-1. Launch the shell from the Vitis IDE.
+1. Launch the shell from the Vitis IDE by clicking **Xilinx → Vitis Shell**.
 
-    - **Xilinx → Vitis Shell**.
+2. Create a file named `key_generation.bif`.
 
-2. Create a file named **key_generation.bif**.
-
-    >**Note:** The **key_generation.bif** file will be used to create both
+    >**Note:** The `key_generation.bif` file will be used to create both
     the asymmetric keys in these steps and the symmetric keys in later
     steps.
 
@@ -347,9 +344,9 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
     }
     ```
 
-3. Save the `key_generation.bif` file in the C:\edt\secure_boot_sd\keys directory.
+3. Save the `key_generation.bif` file in the `C:\edt\secure_boot_sd\keys` directory.
 
-4. Copy all of the ELF, BIF, and UB files built in [MPSoC Design Example 1][1] to `C:\edt\secure_boot_sd\keys directory`.
+4. Copy all of the ELF, BIF, and UB files built in [Design Example 1: Using GPIOs, Timers, and Interrupts](./7-design1-using-gpio-timer-interrupts.md) to `C:\edt\secure_boot_sd\keys directory`.
 
    - bl31.elf
    - edt_zcu102_wrapper.bit
@@ -375,11 +372,11 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
 
 #### Generating SHA3 of Public Key in an RSA Private/Public Key Pair
 
- The following steps are required only for RSA authentication in eFUSE mode, and can be skipped for RSA authentication in boot header mode. The 384 bits from **sha3.txt** can be programmed to eFUSE for RSA authentication in eFUSE mode. For more information, see _Programming BBRAM and eFUSEs_ ([XAPP1319](https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf)).
+ The following steps are required only for RSA authentication in eFUSE mode, and can be skipped for RSA authentication in boot header mode. The 384 bits from `sha3.txt` can be programmed to eFUSE for RSA authentication in eFUSE mode. For more information, see _Programming BBRAM and eFUSEs_ ([XAPP1319](https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf)).
 
 1. Perform the steps from the prior section.
 
-2. Now that the PEM files have been defined, add `authentication = rsa` attributes as shown below to **key_generation.bif**.
+2. Now that the PEM files have been defined, add `authentication = rsa` attributes as shown below to `key_generation.bif`.
 
     ```
     the_ROM_image:
@@ -432,7 +429,7 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
 
     `bootgen -p zu9eg -arch zynqmp -generate_keys auth pem -image key_generation_1.bif`
 
-3. Add `authentication = rsa` attributes to the **key_generation_1.bif** file. The BIF file will look like the following:
+3. Add `authentication = rsa` attributes to the `key_generation_1.bif` file. The BIF file will look like the following:
 
     ```
     the_ROM_image:
@@ -533,7 +530,7 @@ the_ROM_image:
  Use of an operational key limits the amount of information encrypted
  using a device key. Enable use of the operational key by adding the
  `opt_key` attribute to the `[fsbl_config]` line of the BIF file. The
- **key_generation.bif** file should now appear as shown below:
+ `key_generation.bif` file should now appear as shown below:
 
 ```the_ROM_image:
 {
@@ -560,7 +557,7 @@ the_ROM_image:
  for 512 bytes. In this example, the block command will be used to limit the life of each key to 1728 bytes.
 
  Enable use of key rolling by adding the `blocks` attribute to each
- of the encrypted partitions. The **key_generation.bif** file should appear as shown below:
+ of the encrypted partitions. The `key_generation.bif` file should appear as shown below:
 
 ```
 the_ROM_image:
@@ -709,11 +706,11 @@ the_ROM_image:
 
 25. Save the PUF Syndrome data that starts after `App PUF Syndrome data Start!!!` and ends at `PUF Syndrome data End!!!`, non-inclusive, to a file named `helperdata.txt`.
 
-26. Save the black key IV identified by `App: Black Key IV` to a file named **black_iv.txt**.
+26. Save the black key IV identified by `App: Black Key IV` to a file named `black_iv.txt`.
 
-27. Save the black key to a file named **black_key.txt**.
+27. Save the black key to a file named `black_key.txt`.
 
-28. The files **helperdata.txt**, **black_key.txt**, and **black_iv.txt** can be saved in **C:\edt\secure_boot_sd\keys**.
+28. The files `helperdata.txt`, `black_key.txt`, and `black_iv.txt` can be saved in `C:\edt\secure_boot_sd\keys`.
 
 #### Using PUF in Boot Header Mode
 
@@ -746,7 +743,7 @@ The following steps describe the process to update the BIF file from the previou
 
     `bootgen -p zcu9eg -arch zynqmp -image key_generation.bif -w -o BOOT.bin`
 
- >**Note:** The above steps can also be executed with PUF in eFUSE mode. In this case, repeat the previous steps using the PUF in eFUSE mode. This requires enabling the programming of eFUSEs during PUF registration by setting the `XSK_PUF_PROGRAM_EFUSE` macro in the **xilskey_puf_registration.h** file used to build the PUF registration application. The BIF must also be modified to use the encryption key from eFUSE, and the helper data and black key files should be removed. PUF in eFUSE mode is not covered in this tutorial to avoid programming the eFUSEs on development or tutorial systems.
+ >**Note:** The above steps can also be executed with PUF in eFUSE mode. In this case, repeat the previous steps using the PUF in eFUSE mode. This requires enabling the programming of eFUSEs during PUF registration by setting the `XSK_PUF_PROGRAM_EFUSE` macro in the `xilskey_puf_registration.h` file used to build the PUF registration application. The BIF must also be modified to use the encryption key from eFUSE, and the helper data and black key files should be removed. PUF in eFUSE mode is not covered in this tutorial to avoid programming the eFUSEs on development or tutorial systems.
 
  ```
  [keysrc_encryption]efuse_blk_key
@@ -757,7 +754,7 @@ The following steps describe the process to update the BIF file from the previou
 
  The previous sections enabled the various security features (authentication, confidentiality, DPA protections, and black key storage) by hand editing the BIF file. This section performs the same operations, but uses the Bootgen Wizard as a starting point. The Bootgen Wizard creates a base BIF file, and then adds the additional security features that are not supported by the wizard using a text editor.
 
-1. Change directory to the **bootgen_files** directory.
+1. Change directory to the `bootgen_files` directory.
 
     `cd C:\edt\secure_boot_sd\bootgen_files`
 
@@ -982,7 +979,7 @@ The following steps describe the process to update the BIF file from the previou
 
     **Note:** This BIF file is still missing several security features that are not supported by the Create Boot Image wizard. These are features are key rolling and black key store.
 
-4.  Add black key store by changing the **keysrc_encryption** and adding the other additional items so that the BIF file looks like the following:
+4.  Add black key store by changing the `keysrc_encryption` and adding the other additional items so that the BIF file looks like the following:
 
     ```
     the_ROM_image:
@@ -1035,9 +1032,9 @@ The following steps describe the process to update the BIF file from the previou
 
 #### Booting the System Using a Secure Boot Image
 
-This section demonstrates how to use the **BOOT.bin** boot image created in prior sections to perform a secure boot using the ZCU102.
+This section demonstrates how to use the `BOOT.bin` boot image created in prior sections to perform a secure boot using the ZCU102.
 
-1. Copy the BOOT.bin image, the **boot.scr** file generated in PetaLinux, and the **ps_pl_linux_app.elf** file.
+1. Copy the BOOT.bin image, the `boot.scr` file generated in PetaLinux, and the `ps_pl_linux_app.elf` file.
 
 2. Insert the SD card into the ZCU102.
 
@@ -1075,7 +1072,7 @@ This section demonstrates how to use the **BOOT.bin** boot image created in prio
 
  Use the following steps to run a Linux application:
 
-1. Copy the application from SD card mount point to **/tmp**.
+1. Copy the application from SD card mount point to `/tmp`.
 
     ```bash
     mount /dev/mmcblk0p1 /media/
@@ -1153,17 +1150,13 @@ The following steps can be used to verify if the PUF registration software has b
 
  You can use the Bootgen utility to verify the header values and the partition data used in the boot image.
 
-1. Change to the directory containing **BOOT.bin**.
+1. Change to the directory containing `BOOT.bin`.
 
 2. From an XSCT prompt, run the following command.
 
     `bootgen_utility --bin BOOT.bin --out myfile --arch zynqmp`
 
-3. Look for "BH" in **myfile**.
-
-<!--Links-->
-[1]: ./7-design1-using-gpio-timer-interrupts.md
-[2]: ./7-design1-using-gpio-timer-interrupts.md#modifying-the-build-settings
+3. Look for "BH" in `myfile`.
 
 ------
 
