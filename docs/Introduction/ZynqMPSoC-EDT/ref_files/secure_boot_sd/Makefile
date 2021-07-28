@@ -12,8 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.PHONY: all clean rsa_keygen
+# README
+# This script generates the ref_files and run through the command line steps for 9-secure-boot.md
+# Please make sure ../design1 binaries have been generated with its Makefile
 
+
+.PHONY: all clean rsa_keygen aes_keygen image_files
 
 IMAGE_FILES = keys/pmufw.elf keys/edt_zcu102_wrapper.bit keys/bl31.elf keys/tmr_psled_r5.elf keys/image.ub keys/fsbl_a53.elf keys/u-boot.elf
 RSA_KEY_FILES_PEM = keys/psk0.pem  keys/ssk0.pem 
@@ -104,6 +108,8 @@ the_ROM_image:
 }
 endef
 export AES_KEYGEN_BODY
+
+all: rsa_keygen aes_keygen
 
 rsa_keygen:$(RSA_KEY_FILES_PEM) $(RSA_KEY_FILES_SHA3) $(RSA1_KEY_FILES_PEM) $(RSA1_KEY_FILES_SHA3)
 aes_keygen: $(AES_KEY_FILES)

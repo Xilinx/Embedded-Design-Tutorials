@@ -216,8 +216,6 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
  methods are developed and tested. Keys generated in this section are
  also included in the [ref_files/secure_boot_sd](./ref_files/secure_boot_sd) directory.
 
- <!--TODO: resolve keys in ref_files directory-->
-
  The methods used to develop AES functionality are provided in the
  following sections:
 
@@ -285,6 +283,8 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
  using [Design Example 1: Using GPIOs, Timers, and Interrupts](./7-design1-using-gpio-timer-interrupts.md) in a boot image with all the security features enabled. This section also shows how a PL bitstream can be added as a
  part of the secure boot flow. Follow the information in this chapter until [Modifying the Build Settings](./7-design1-using-gpio-timer-interrupts.md#modifying-the-build-settings) to create all the
  necessary files and then switch back.
+
+> Note: If you haven't run MPSoC Design Example 1, you can [run the script](./7-design1-using-gpio-timer-interrupts.md#reference-design-automation) in its ref_files to generate the binaries with one `make all` command.
 
  Enabling the security features in boot image is done in two different
  methods. In the first method, the BIF file is manually created
