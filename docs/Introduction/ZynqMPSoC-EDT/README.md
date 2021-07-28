@@ -46,7 +46,7 @@ real-time processing unit (RPU). It also covers the creation of bare-metal
 
 9. [Secure Boot](./9-secure-boot.md)
 
-    This is an optional chapter that introduces the steps of building hardware root of trust and encryption for your design.
+    This is an optional chapter that introduces the steps to build the Hardware Root of Trust and encryption for your design.
 
 
 ## Example Project
