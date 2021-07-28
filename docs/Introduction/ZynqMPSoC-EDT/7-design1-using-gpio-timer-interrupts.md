@@ -465,7 +465,7 @@ Make sure you have the following files for creating the Linux domain:
 
 ## Reference Design Automation
 
-The [ref_design](./ref_design/design1) of this example provides not only source code for applications, but also Makefile to run through the design generation process. To generate the binaries, please run the following command
+The [ref_design](./ref_design/design1) for this example provides not only the source code for applications, but also a Makefile to run through the design generation process. To generate the binaries, run the following command:
 
 ```bash
 cd ref_files/design1

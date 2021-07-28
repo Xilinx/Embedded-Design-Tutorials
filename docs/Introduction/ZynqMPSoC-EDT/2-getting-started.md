@@ -114,7 +114,7 @@ the Installation section of [UG1400](https://www.xilinx.com/html_docs/xilinx2021
 The reference design files for this tutorial are provided in the [ref_files](./ref_files) directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific `ref_files` subdirectory.
 
 - If the examples are GUI based, the `ref_files` directory provides the source files for the examples.
-- If the examples can be run in script mode, the `ref_files` directory will contain the `Makefile` to help you run through the flow easily. Run `make` in this directory to run through the implementation flow.
+- If the examples can be run in script mode, the `ref_files` directory contains the Makefile to help you run through the flow easily. Run `make` in this directory to run through the implementation flow.
 
 ### Next Chapter
 

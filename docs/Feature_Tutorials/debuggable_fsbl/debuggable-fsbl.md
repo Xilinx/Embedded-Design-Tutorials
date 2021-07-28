@@ -1,12 +1,10 @@
-# Creating Debuggable First Stage Boot Loader
+# Creating a Debuggable First Stage Boot Loader
 
-First Stage Boot Loader (FSBL) can initialize the SoC device, load the required application or data to memory and launch applications on the target CPU core. One FSBL has been provided in the Vitis platform project, if you enabled creating boot components while creating the platform project, but you are free to create additional FSBL applications as general applications for further modification or debugging purposes.
+First Stage Boot Loader (FSBL) can initialize the SoC device, load the required application or data to memory, and launch applications on the target CPU core. An FSBL is provided in the Vitis platform project (if you enabled creating boot components while creating the platform project), but you are free to create additional FSBL applications as general applications for further modification or debugging purposes.
 
-## Enable Detailed Prints in FSBL
+## Enabling Detailed Prints in FSBL
 
-Sometimes you wish to understand more detailed info during the boot process, but you are not going to modify the FSBL source code. In this case, you can set FSBL to print more information, but you don't need to run FSBL in Vitis debugger.
-
-In this example, you will create an FSBL image targeted for Arm™ Cortex-A53 core 0, and update its properties to enable detailed print info.
+If you desire more detailed information during the boot process, but are not planning to modify the FSBL source code, you can set FSBL to print more information - but it is not necessary to run FSBL in Vitis debugger. In this example, you will create an FSBL image targeted for Arm™ Cortex-A53 core 0 and update its properties to enable detailed print info.
 
 1. Launch the Vitis IDE if it is not already open.
 
@@ -31,11 +29,10 @@ In this example, you will create an FSBL image targeted for Arm™ Cortex-A53 co
    |                             | Architecture                              | 64-bit                     |
    | Templates                   | Available templates                       | Zynq MP FSBL               |
 
-    > Note: We don't create boot components in this example to save build time. If the default FSBL is needed, please check **Generate Boot Components**. 
 
-5. Click **Finish**.
+    **Note:** To save build time, boot components are not created in this example. If the default FSBL is needed, check **Generate Boot Components**. 
 
-    The Vitis IDE creates the system project and the FSBL application.
+5. Click **Finish**. The Vitis IDE creates the system project and the FSBL application.
 
 By default, the FSBL is configured to show basic print messages. Next, you will modify the FSBL build settings to enable debug prints. For a list of the possible debug options for FSBL, refer to the `src/xfsbl_debug.h` file.
 
@@ -53,8 +50,7 @@ By default, the FSBL is configured to show basic print messages. Next, you will 
 #endif
 ```
 
-
-Medium level verbose printing is good for most designs. Enable `FSBL_DEBUG_INFO` by doing the following steps:
+Medium level verbose printing is good for most designs. Enable `FSBL_DEBUG_INFO` by performing the following steps:
 
 1. In the Explorer view, right-click the **fsbl_a53** application.
 
@@ -70,43 +66,34 @@ Medium level verbose printing is good for most designs. Enable `FSBL_DEBUG_INFO`
 
    ![](./media/image41.png)
 
-    The symbols settings are as shown in the following figure.
+    The symbol settings are as shown in the following figure.
 
     ![](./media/image42.png)
 
-6. Click **OK** to accept the changes and close the Settings view.
+6. Click **OK** to accept the changes and close the Settings view. Now that the symbol is defined, GCC will build the application with this symbol.
 
-    By defining the symbol, gcc will build the application with this symbol.
+## Stripping Out Unused Functions
 
-The FSBL application is capable of doing a lot of tasks. The tasks it executes are based on the user definition in header files. Some functions are not executed by default. GCC will include these functions into the compiled executable by default. Since FSBL runs on OCM, and OCM has only 128KB capacity, we need to strip out unused functions to make FSBL fit into OCM. Run the following instructions to update BSP compile settings to strip out unused functions:
+The FSBL application is capable of performing numerous tasks. The tasks it executes are based on the user definition in header files. Some functions are not executed by default. GCC includes these functions into the compiled executable by default. Because FSBL runs on OCM, and OCM only has a capacity of 128 KB, unused functions must be stripped out to make FSBL fit into OCM. Run the following instructions to update the BSP compile settings to strip out unused functions:
 
-1. Double click fsbl_a53.prj. 
-
-2. Click **Navigate to the BSP settings** button. 
-3. Click **Modify BSP Settings...** button.
+1. Double-click **fsbl_a53.prj**. 
+2. Click the **Navigate to the BSP settings** button. 
+3. Click the **Modify BSP Settings...** button.
 4. Under **Overview → Drivers → psu_cortexa53_0 → extra_compiler_flags**, edit **extra_compiler_flags** to append `-Os -flto -ffat-lto-objects`.
 
-Finally, let's build the project.
+## Building the Project
 
-1. Right-click the **fsbl_a53** application and select **Build Project**.
+Right-click the **fsbl_a53** application and select **Build Project**. The FSBL executable is now saved as ``fsbl_a53/debug/fsbl_a53.elf``. In this tutorial, the application name ``fsbl_a53`` is to identify that the FSBL is targeted for the APU (the Arm Cortex-A53 core).
 
-    The FSBL executable is now saved as ``fsbl_a53/debug/fsbl_a53.elf``.
-
-    In this tutorial, the application name ``fsbl_a53`` is to identify that
-    the FSBL is targeted for the APU (the Arm Cortex-A53 core).
-
-    >**Note:** If the system design demands, the FSBL can be targeted to run on the RPU.
+**Note:** If the system design demands, FSBL can be targeted to run on the RPU.
 
 ## Debugging FSBL Using the Vitis Debugger
 
-Sometimes you need to modify FSBL source code to add more custom features. To debug these features, you wish to run FSBL in Vitis debugger. This example guides you through the steps to run FSBL in Vitis debugger.
+Sometimes you need to modify FSBL source code to add more custom features. To debug these features, you need to run FSBL in Vitis debugger. This example guides you through the steps to run FSBL in Vitis debugger.
 
-The FSBL is built with size optimization and link time optimization flags, like `-Os` and LTO optimizations. These optimization reduces the memory footprint of FSBL but makes the debugging difficult. These optimizations need to be disabled for debugging FSBL.
+FSBL is built with size optimization and link time optimization flags (such as `-Os`). These optimizations reduce the memory footprint of FSBL but can make debugging difficult. Removing optimizations can lead to increased code size, which can result in FBSL build failure (because FSBL needs to run on the 128 KB OCM). Instead, these optimizations should be disabled for debugging purposes. To do this, some FSBL features should be disabled in the ``xfsbl_config.h`` file of the FSBL if they are not required.
 
-Removing optimization can lead to increased code size, resulting in failure to build the FSBL because FSBL needs to run on the 128KB OCM. To disable the optimization for debugging, some FSBL features need to be disabled in the ``xfsbl_config.h`` file of the FSBL if they are not required for the debugging purpose.
-
-
-### Create and Modify FSBL
+### Creating and Modifying FSBL
 
 1. Launch the Vitis IDE if it is not already open.
 
@@ -131,11 +118,9 @@ Removing optimization can lead to increased code size, resulting in failure to b
    |                             | Architecture                              | 64-bit                     |
    | Templates                   | Available templates                       | Zynq MP FSBL               |
 
-5. Click **Finish**.
+5. Click **Finish**. The Vitis IDE creates the system project and the FSBL application.
 
-    The Vitis IDE creates the system project and the FSBL application.
-
-Now disable Optimizations as shown below.
+### Disabling Optimizations
 
 1. In the Explorer view, right-click the **fsbl_debug** application.
 
@@ -147,20 +132,16 @@ Now disable Optimizations as shown below.
 
     ![](./media/image53.png)
 
-Similarly, the **fsbl_debug_bsp** needs to be modified.
 
-1.  Right-click **fsbl_debug_bsp** and select **Board Support Package Settings**.
+5.  Similarly, the **fsbl_debug_bsp** needs to be modified. Right-click **fsbl_debug_bsp** and select **Board Support Package Settings**.
 
-2.  Under **Overview → Drivers → psu_cortexa53_0 → extra_compiler_flags**, edit **extra_compiler_flags** to ensure **extra compiler** only has this value `-g -Wall -Wextra -Os` as shown below.
+6.  Under **Overview → Drivers → psu_cortexa53_0 → extra_compiler_flags**, edit **extra_compiler_flags** to ensure **extra compiler** only has this value `-g -Wall -Wextra -Os` as shown below.
 
     ![](./media/image54.png)
 
-3.  Click **OK**, to save these settings. BSP rebuilds automatically after this.
+7.  Click **OK** to save these settings. BSP rebuilds automatically after this.
 
-Remove unused functions to save code space.
-
-1.  Go to the **fsbl_debug→ src → fsbl_config.h file**. In the FSBL code
-     include the options and disable the following:
+8. The next step is to remove unused functions to save code space. Go to the **fsbl_debug→ src → fsbl_config.h file**. In the FSBL code, include the options and disable the following:
 
     - `#define FSBL_NAND_EXCLUDE_VAL (1U)`
 
@@ -172,7 +153,7 @@ Remove unused functions to save code space.
 
  At this point, FSBL is ready to be debugged.
 
- You can either debug the FSBL like any other standalone application, or debug FSBL as a part of a Boot image by using the **Attach to running target** mode of System Debugger.
+ You can either debug the FSBL like any other standalone application, or debug FSBL as a part of a boot image by using the **Attach to running target** mode in System Debugger.
 
 ------
 

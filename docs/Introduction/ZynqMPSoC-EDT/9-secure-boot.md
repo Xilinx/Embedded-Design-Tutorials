@@ -284,7 +284,7 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
  part of the secure boot flow. Follow the information in this chapter until [Modifying the Build Settings](./7-design1-using-gpio-timer-interrupts.md#modifying-the-build-settings) to create all the
  necessary files and then switch back.
 
-> Note: If you haven't run MPSoC Design Example 1, you can [run the script](./7-design1-using-gpio-timer-interrupts.md#reference-design-automation) in its ref_files to generate the binaries with one `make all` command.
+> **Note:** If you have not run MPSoC Design Example 1, you can [run the script](./7-design1-using-gpio-timer-interrupts.md#reference-design-automation) in the example's `ref_files` to generate the binaries with one `make all` command.
 
  Enabling the security features in boot image is done in two different
  methods. In the first method, the BIF file is manually created
