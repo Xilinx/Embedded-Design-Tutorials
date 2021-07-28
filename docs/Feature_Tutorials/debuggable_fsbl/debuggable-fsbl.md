@@ -1,51 +1,62 @@
-## Creating First Stage Boot Loader for Arm Cortex-A53-Based APU
+# Creating Debuggable First Stage Boot Loader
 
- FSBL can load the required application or data to memory and launch
- applications on the target CPU core. One FSBL has been provided in the
- platform project but you can create an additional FSBL application as
- a general application for further modification or debugging purposes.
+First Stage Boot Loader (FSBL) can initialize the SoC device, load the required application or data to memory and launch applications on the target CPU core. One FSBL has been provided in the Vitis platform project, if you enabled creating boot components while creating the platform project, but you are free to create additional FSBL applications as general applications for further modification or debugging purposes.
 
- In this example, you will create an FSBL image targeted for Arm™
- Cortex-A53 core 0.
+## Enable Detailed Prints in FSBL
+
+Sometimes you wish to understand more detailed info during the boot process, but you are not going to modify the FSBL source code. In this case, you can set FSBL to print more information, but you don't need to run FSBL in Vitis debugger.
+
+In this example, you will create an FSBL image targeted for Arm™ Cortex-A53 core 0, and update its properties to enable detailed print info.
 
 1. Launch the Vitis IDE if it is not already open.
 
-2. Set the workspace path based on the project you created in [Zynq UltraScale+ MPSoC Processing System Configuration](3-system-configuration.md). For example, `C:\\edt`.
+2. Set the Vitis workspace. For example, `C:\edt\fsbl_debug_info`.
 
-3. Select **File → New → Application Project**. The New Project dialog
-     box opens.
+3. Select **File → New → Application Project**. The New Project dialog box opens.
 
-    ![](./media/image38.jpeg)
+4. Use the information in the following table to make your selections in the New Project wizard:
 
-4. Use the information in the following table to make your selections
-     in the New Project wizard:
+   | Screen                      | System Properties                         | Settings                   |
+   | --------------------------- | ----------------------------------------- | -------------------------- |
+   | Platform                    | Create a new platform from hardware (XSA) |                            |
+   |                             | XSA File                                  | zcu102                     |
+   |                             | Platform Name                             | zcu102                     |
+   |                             | Generate boot components                  | Uncheck                      |
+   | Application project details | Application project name                  | fsbl_a53                   |
+   |                             | System project name                       | fsbl_a53_system            |
+   |                             | Target processor                          | psu_cortexa53_0            |
+   | Domain                      | Domain                                    | standalone_psu_cortexa53_0 |
+   |                             | Operating System                          | standalone                 |
+   |                             | Processor                                 | psu_cortexa53_0            |
+   |                             | Architecture                              | 64-bit                     |
+   | Templates                   | Available templates                       | Zynq MP FSBL               |
 
-   |  Screen       |  System Properties   |  Settings            |
-   |----------------------|----------------------|----------------------|
-   | Platform             | Select platform from repository | edt_zcu102_wrapper   |
-   | Application project details | Application project name | fsbl_a53             |
-   |                      | System project name  | fsbl_a53_system      |
-   |                      | Target processor     | psu_cortexa53_0      |
-   | Domain               | Domain               | standalone on        |
-   |                      |                      | psu_cortexa53_0      |
-   | Templates            | Available templates  | Zynq MP FSBL         |
+    > Note: We don't create boot components in this example to save build time. If the default FSBL is needed, please check **Generate Boot Components**. 
 
-5. In the Templates page, select **Zynq MP FSBL**.
-
-    ![](./media/image39.png)
-
-6. Click **Finish**.
+5. Click **Finish**.
 
     The Vitis IDE creates the system project and the FSBL application.
 
-    By default, the FSBL is configured to show basic print messages. Next,
-    you will modify the FSBL build settings to enable debug prints. For a
-    list of the possible debug options for FSBL, refer to the
-    ``fsbl_a53/src/xfsbl_debug.h`` file.
+By default, the FSBL is configured to show basic print messages. Next, you will modify the FSBL build settings to enable debug prints. For a list of the possible debug options for FSBL, refer to the `src/xfsbl_debug.h` file.
 
-For this example, enable FSBL_DEBUG_INFO by doing the following:
+```C
+#if defined (FSBL_DEBUG_DETAILED)
+#define XFsblDbgCurrentTypes ((DEBUG_DETAILED) | (DEBUG_INFO) | (DEBUG_GENERAL) | (DEBUG_PRINT_ALWAYS))
+#elif defined (FSBL_DEBUG_INFO)
+#define XFsblDbgCurrentTypes ((DEBUG_INFO) | (DEBUG_GENERAL) | (DEBUG_PRINT_ALWAYS))
+#elif defined (FSBL_DEBUG)
+#define XFsblDbgCurrentTypes ((DEBUG_GENERAL) | (DEBUG_PRINT_ALWAYS))
+#elif defined (FSBL_PRINT)
+#define XFsblDbgCurrentTypes (DEBUG_PRINT_ALWAYS)
+#else
+#define XFsblDbgCurrentTypes (0U)
+#endif
+```
 
-1. In the Explorer view, right-click the **fsbl_a53 application**.
+
+Medium level verbose printing is good for most designs. Enable `FSBL_DEBUG_INFO` by doing the following steps:
+
+1. In the Explorer view, right-click the **fsbl_a53** application.
 
 2. Click **C/C++ Build Settings**.
 
@@ -55,7 +66,7 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
 
    ![](./media/image40.png)
 
-5. Enter FSBL_DEBUG_INFO.
+5. Enter `FSBL_DEBUG_INFO`.
 
    ![](./media/image41.png)
 
@@ -65,63 +76,68 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
 
 6. Click **OK** to accept the changes and close the Settings view.
 
-7. Navigate to the BSP settings. Under **Overview → Drivers → psu_cortexa53_0 → extra_compiler_flags**, edit **extra_compiler_flags** to append -Os -flto -ffat-lto- objects.
+    By defining the symbol, gcc will build the application with this symbol.
 
-8. Right-click the **fsbl_a53** application and select **Build Project**.
+The FSBL application is capable of doing a lot of tasks. The tasks it executes are based on the user definition in header files. Some functions are not executed by default. GCC will include these functions into the compiled executable by default. Since FSBL runs on OCM, and OCM has only 128KB capacity, we need to strip out unused functions to make FSBL fit into OCM. Run the following instructions to update BSP compile settings to strip out unused functions:
 
-9. The FSBL executable is now saved as ``fsbl_a53/debug/fsbl_a53.elf``.
+1. Double click fsbl_a53.prj. 
+
+2. Click **Navigate to the BSP settings** button. 
+3. Click **Modify BSP Settings...** button.
+4. Under **Overview → Drivers → psu_cortexa53_0 → extra_compiler_flags**, edit **extra_compiler_flags** to append `-Os -flto -ffat-lto-objects`.
+
+Finally, let's build the project.
+
+1. Right-click the **fsbl_a53** application and select **Build Project**.
+
+    The FSBL executable is now saved as ``fsbl_a53/debug/fsbl_a53.elf``.
 
     In this tutorial, the application name ``fsbl_a53`` is to identify that
     the FSBL is targeted for the APU (the Arm Cortex-A53 core).
 
-    >**Note:** If the system design demands, the FSBL can be targeted to
-    run on the RPU.
+    >**Note:** If the system design demands, the FSBL can be targeted to run on the RPU.
 
 ## Debugging FSBL Using the Vitis Debugger
 
- The FSBL is built with size optimization and link time optimization flags, that is -Os and LTO optimizations by default in the Vitis debugger. This reduces the memory footprint of FSBL. This needs to be disabled for debugging FSBL.
+Sometimes you need to modify FSBL source code to add more custom features. To debug these features, you wish to run FSBL in Vitis debugger. This example guides you through the steps to run FSBL in Vitis debugger.
 
- Removing optimization can lead to increased code size, resulting in
- failure to build the FSBL. To disable the optimization (for
- debugging), some FSBL features that are not required need to be
- disabled in the ``xfsbl_config.h`` file of the FSBL.
+The FSBL is built with size optimization and link time optimization flags, like `-Os` and LTO optimizations. These optimization reduces the memory footprint of FSBL but makes the debugging difficult. These optimizations need to be disabled for debugging FSBL.
 
- Now, create a new FSBL for this section instead of modifying the FSBL
- created in the [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). This is to avoid disturbing the FSBL_a53 project, which will be used extensively in rest of the chapters in
- this tutorial.
+Removing optimization can lead to increased code size, resulting in failure to build the FSBL because FSBL needs to run on the 128KB OCM. To disable the optimization for debugging, some FSBL features need to be disabled in the ``xfsbl_config.h`` file of the FSBL if they are not required for the debugging purpose.
+
 
 ### Create and Modify FSBL
 
- Use the following steps to create an FSBL project.
+1. Launch the Vitis IDE if it is not already open.
 
-1. Launch the Vitis debugger if it is not already open.
+2. Set the Vitis workspace. For example, `C:\edt\fsbl_debuggable`.
 
-2. Set the Workspace path based on the project you created in [Build Software for PS Subsystems](4-build-sw-for-ps-subsystems.md). For example,
-     C:\edt.
+3. Select **File → New → Application Project**. The New Project dialog box opens.
 
-3. Select **File→ New → Application Project**. The New Project dialog
-     box opens.
+4. Use the information in the following table to make your selections in the New Project wizard:
 
-4. Use the information in the following table to make your selections
-     in the New Project dialog box.
-
-    *Table 8:* **Settings to Create FSBL_debug Project**
-
-   |  Wizard Screen        |  System Properties    |  Settings     |
-   |-----------------------|-----------------------|--------------------|
-   | Platform              | Select platform from repository | edt_zcu102_wrapper |
-   | Application project details  | Application project name  | fsbl_debug         |
-   |                       | System project name   | fsbl_debug_system  |
-   |                       | Target processor      | psu_cortexa53_0    |
-   | Domain                | Domain                | psu_cortexa53_0    |
-   | Templates             | Available templates   | Zynq MP FSBL       |
+   | Screen                      | System Properties                         | Settings                   |
+   | --------------------------- | ----------------------------------------- | -------------------------- |
+   | Platform                    | Create a new platform from hardware (XSA) |                            |
+   |                             | XSA File                                  | zcu102                     |
+   |                             | Platform Name                             | zcu102                     |
+   |                             | Generate boot components                  | Uncheck                      |
+   | Application project details | Application project name                  | fsbl_debug                   |
+   |                             | System project name                       | fsbl_debug_system            |
+   |                             | Target processor                          | psu_cortexa53_0            |
+   | Domain                      | Domain                                    | standalone_psu_cortexa53_0 |
+   |                             | Operating System                          | standalone                 |
+   |                             | Processor                                 | psu_cortexa53_0            |
+   |                             | Architecture                              | 64-bit                     |
+   | Templates                   | Available templates                       | Zynq MP FSBL               |
 
 5. Click **Finish**.
 
-    The Vitis debugger creates the System project and an FSBL application.
-    Now disable Optimizations as shown below.
+    The Vitis IDE creates the system project and the FSBL application.
 
-1. In the Explorer view, right-click the **fsbl_debug application**.
+Now disable Optimizations as shown below.
+
+1. In the Explorer view, right-click the **fsbl_debug** application.
 
 2. Click **C/C++ Build Settings**.
 
@@ -131,21 +147,19 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
 
     ![](./media/image53.png)
 
-    Similarly, the fsbl_debug_bsp needs to be modified to disable
-    optimization.
+Similarly, the **fsbl_debug_bsp** needs to be modified.
 
-5. Right-click **fsbl_debug_bsp** and select **Board Support Package
-     Settings**.
+1.  Right-click **fsbl_debug_bsp** and select **Board Support Package Settings**.
 
-6. Under **Overview → Drivers → psu_cortexa53_0 → extra_compiler_flags**, edit **extra_compiler_flags** to ensure
-     extra compiler has this value `-g -Wall -Wextra -Os` as shown below.
+2.  Under **Overview → Drivers → psu_cortexa53_0 → extra_compiler_flags**, edit **extra_compiler_flags** to ensure **extra compiler** only has this value `-g -Wall -Wextra -Os` as shown below.
 
     ![](./media/image54.png)
 
-7. Click **OK**, to save these settings. BSP rebuilds automatically
-     after this.
+3.  Click **OK**, to save these settings. BSP rebuilds automatically after this.
 
-8. Go to the **fsbl_debug→ src → fsbl_config.h file**. In the FSBL code
+Remove unused functions to save code space.
+
+1.  Go to the **fsbl_debug→ src → fsbl_config.h file**. In the FSBL code
      include the options and disable the following:
 
     - `#define FSBL_NAND_EXCLUDE_VAL (1U)`
@@ -158,8 +172,9 @@ For this example, enable FSBL_DEBUG_INFO by doing the following:
 
  At this point, FSBL is ready to be debugged.
 
- You can either debug the FSBL like any other standalone application (as shown in [Debugging Using XSCT](#debugging-using-xsct), or debug FSBL as a part of a Boot
- image by using the 'Attach to running target' mode of System Debugger.
+ You can either debug the FSBL like any other standalone application, or debug FSBL as a part of a Boot image by using the **Attach to running target** mode of System Debugger.
+
+------
 
 © Copyright 2017-2021 Xilinx, Inc.
 
