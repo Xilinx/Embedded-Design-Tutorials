@@ -157,7 +157,7 @@ using the pre-compiled images with JTAG.
 
     - Change working directory to `images/linux` in your PetaLinux project
 
-    > **Note:** On Windows, the XSCT shell regards the Windows path divider `\` as escape character. Use `/` or `\\` instead, or add curly braket `{}` for the Windows path name to make sure it is interpreted correctly.
+    > **Note:** On Windows, the XSCT shell regards the Windows path divider `\` as escape character. Use `/` or `\\` instead, or add curly brackets `{}` for the Windows path name to make sure it is interpreted correctly.
 
 
     - Run `dow zynq_fsbl.elf` to download
