@@ -155,6 +155,11 @@ using the pre-compiled images with JTAG.
 
     > **Note:** `ta` is a short command for `target`.  XSCT accepts short commands. Enter any numbers of the preceding characters of the XSCT commands. As long as there are no conflicts, they can be recognized by XSCT.
 
+    - Change the working directory to `images/linux` in your PetaLinux project.
+
+    > **Note:** On Windows, the XSCT shell regards the Windows path divider `\` as escape character. Use `/` or `\\` instead, or add curly brackets `{}` for the Windows path name to make sure it is interpreted correctly.
+
+
     - Run `dow zynq_fsbl.elf` to download
         PetaLinux FSBL.
 
