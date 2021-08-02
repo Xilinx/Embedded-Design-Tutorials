@@ -463,6 +463,15 @@ Make sure you have the following files for creating the Linux domain:
 
     ![](./media/image114.png)
 
+## Reference Design Automation
+
+The [ref_design](./ref_design/design1) for this example provides not only the source code for applications, but also a Makefile to run through the design generation process. To generate the binaries, run the following command:
+
+```bash
+cd ref_files/design1
+make all
+```
+
 ## Summary
 
 In this design example, you created the hardware design in Vivado with processing system and GPIO modules. The hardware was exported to an XSA file. You imported the hardware to PetaLinux to update the device tree. The regenerated PetaLinux image can boot the board. You also imported the XSA to the Vitis software platform to create the platform project and developed software for Arm Cortex-R5F. You finally created the boot image to include software binaries to run on both the APU and RPU to make the system perform as planned.
