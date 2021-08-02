@@ -10,9 +10,9 @@
 
  These tutorials showcase advanced features of the Vitis software platform that might be useful when working with embedded systems.
 
-1. [Creating a Debuggable First Stage Boot Loader](./debuggable-fsbl/debuggable-fsbl.md)
+- [Creating a Debuggable First Stage Boot Loader](./debuggable-fsbl/debuggable-fsbl.md)
 
-2. [Software Profiling Using the Vitis Software Platform](./sw-profiling/sw-profiling.md)
+- [Software Profiling Using the Vitis Software Platform](./sw-profiling/sw-profiling.md)
 
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
