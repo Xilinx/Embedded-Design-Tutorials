@@ -49,7 +49,7 @@ Provides an introduction for using the Xilinx Vivado Design Suite flow for using
 <tr>
  <td align="center"><a href="Feature_Tutorials/README.md">Advanced Feature Tutorials for Embedded Systems</a></td>
  <td>
- Showcases key features in the Vitis software platform using examples, including software profiling and creating a debuggable FSBL.</a></td></tr>
+ Showcases advanced features of the Vitis software platform, including examples to demonstrate software profiling and creating a debuggable FSBL.</a></td></tr>
  </table>
 
  # Debugging Guides

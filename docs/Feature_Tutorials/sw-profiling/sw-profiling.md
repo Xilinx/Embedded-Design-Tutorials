@@ -3,7 +3,7 @@
 In this chapter, you will enable profiling features for the standalone
 domain or board support package (BSP) and the application related to
 AXI CDMA, which you created in [Linux Booting
-and Debug in the Vitis Software Platform](6-linux-booting-debug.md).
+and Debug in the Vitis Software Platform](docs\Introduction\Zynq7000-EDT\7-linux-booting-debug.md).
 
 ## Profiling an Application in the Vitis Software Platform with System Debugger
 
