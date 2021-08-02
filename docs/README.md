@@ -14,7 +14,7 @@ For more information about available embedded tools available from Xilinx, see [
 
 This repository provides information about creating embedded designs. The following documents are available.
 
-# Tutorials
+# Introduction Tutorials
 
 The Embedded Design Tutorials provide an introduction to the embedded flow for Xilinx devices.
 
@@ -39,6 +39,32 @@ Provides an introduction for using the Xilinx Vivado Design Suite flow for using
 Provides an introduction for using the Xilinx Vivado Design Suite flow for using the Zynq-7000 SoC device.</td></tr>
 </table>
 
+# Feature Tutorials
+
+<table style="width:100%">
+<tr>
+<td align="center"><b>Guide</b></td>
+<td align="center"><b>Description</b></td>
+</tr>
+<tr>
+ <td align="center"><a href="Feature_Tutorials/README.md">Advanced Feature Tutorials for Embedded Systems</a></td>
+ <td>
+ Showcases key features in the Vitis software platform using examples, including software profiling and creating a debuggable FSBL.</a></td></tr>
+ </table>
+
+ # Debugging Guides
+
+ <table style="width:100%">
+<tr>
+<td align="center"><b>Guide</b></td>
+<td align="center"><b>Description</b></td>
+</tr>
+<tr>
+ <td align="center"><a href="Vitis-Embedded-Software-Debugging/README.md">Vitis Embedded Software Debugging Guide</a></td>
+ <td>
+ This guide provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help.</td></tr>
+ </table>
+
 # User Guides
 
 <table style="width:100%">
@@ -52,18 +78,7 @@ Provides an introduction for using the Xilinx Vivado Design Suite flow for using
  Describes the technical details of the performance analysis toolbox, as well as a methodology explaining its usefulness and depth.</td></tr>
  </table>
  
-  # Debugging Guides
 
- <table style="width:100%">
-<tr>
-<td align="center"><b>Guide</b></td>
-<td align="center"><b>Description</b></td>
-</tr>
-<tr>
- <td align="center"><a href="Vitis-Embedded-Software-Debugging/README.md">Vitis Embedded Software Debugging Guide</a></td>
- <td>
- This guide provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help.</td></tr>
- </table>
 
 
 <p align="center"><sup>Copyright&copy; 2019-2021 Xilinx</sup></p>
