@@ -76,9 +76,13 @@ Provides an introduction for using the Xilinx Vivado Design Suite flow for using
  <td align="center"><a href="SPA-UG/README.md">Vitis Unified Software Platform User Guide: System Performance Analysis</a></td>
  <td>
  Describes the technical details of the performance analysis toolbox, as well as a methodology explaining its usefulness and depth.</td></tr>
- </table>
+<tr>
+ <td align="center"><a href="Performance_Benchmark/Dhrystone/README.md">Versal Dhrystone Benchmark User Guide</a></td>
+ <td>
+ Provides step-by-step instructions for generating a reference design for the Dhrystone benchmark and building and running the Dhrystone application.</td></tr> </table>
  
 
 
-
+<br/>
+<hr/>
 <p align="center"><sup>Copyright&copy; 2019-2021 Xilinx</sup></p>
