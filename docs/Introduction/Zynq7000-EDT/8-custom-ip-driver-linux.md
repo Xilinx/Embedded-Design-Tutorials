@@ -321,8 +321,7 @@ commands, which can be of the following types:
 
 -   Neither read nor write ioctl.
 
-For more details about LKM, refer to the <a href="http://tldp.org/LDP/lkmpg/2.6/html/index.html">Linux Kernel Module
-Programming Guide</a>.
+For more details about LKM, refer to the <a href="https://sysprog21.github.io/lkmpg/">Linux Kernel Module Programming Guide</a>.
 
 In this section you are going to develop a peripheral IP device driver as an LKM, which is dynamically loadable onto the running kernel. You must build the peripheral IP LKM as part of the same kernel build process that generates the base kernel image.
 
