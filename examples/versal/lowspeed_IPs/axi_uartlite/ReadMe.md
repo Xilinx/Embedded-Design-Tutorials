@@ -62,33 +62,32 @@ Here you will place example validation that you've done that the customer can re
   ### Linux:
 
   Log:
-        *Please check available UARTs in the design using dmesg | grep tty*
+       /* Please check available UARTs in the design using dmesg | grep tty */
+       
+	root@xilinx-vck190-2021_2:~# dmesg | grep tty
+	[    0.000000] Kernel command line: console=ttyAMA0  earlycon=pl011,mmio32,0xFF000000,115200n8 clk_ignore_unused init_fatal_sh=1
+	[    2.647304] a4080000.serial: ttyUL1 at MMIO 0xa4080000 (irq = 41, base_baud = 0) is a uartlite
+	[    2.656174] a4090000.serial: ttyUL2 at MMIO 0xa4090000 (irq = 42, base_baud = 0) is a uartlite
+	[    2.665021] a40a0000.serial: ttyUL3 at MMIO 0xa40a0000 (irq = 43, base_baud = 0) is a uartlite
+	[    3.102121] ff000000.serial: ttyAMA0 at MMIO 0xff000000 (irq = 31, base_baud = 0) is a SBSA
+	[    3.110561] printk: console [ttyAMA0] enabled
+	[    3.128774] ff010000.serial: ttyAMA1 at MMIO 0xff010000 (irq = 32, base_baud = 0) is a SBSA
+	
+	 /*AXI-uart lite 2 & 3 are looped back in the design to prove the communication b/w controllers*/
+	root@xilinx-vck190-2021_2:~# cat /dev/ttyUL2 &
+	[1] 854
+	root@xilinx-vck190-2021_2:~# echo Hello_world > /dev/ttyUL3
+	Hello_world
 
-        vck_190_lowspeed_all login: root
-        Password:
-        root@vck_190_lowspeed_all:~# dmesg | grep tty
-        [ 0.000000] Kernel command line: console=ttyAMA0 earlycon=pl011,mmio32,0xFF000000,9600n8 clk_ignore_unused root=/dev/ram0 rw
-        [ 2.929867] a4070000.serial: ttyUL1 at MMIO 0xa4070000 (irq = 34, base_baud = 0) is a uartlite
-        [ 2.938718] a4080000.serial: ttyUL2 at MMIO 0xa4080000 (irq = 35, base_baud = 0) is a uartlite
-        [ 2.947563] a4090000.serial: ttyUL3 at MMIO 0xa4090000 (irq = 36, base_baud = 0) is a uartlite
-        [ 3.393395] ff000000.serial: ttyAMA0 at MMIO 0xff000000 (irq = 24, base_baud = 0) is a SBSA
-        [ 3.401826] printk: console [ttyAMA0] enabled
-        [ 3.419905] ff010000.serial: ttyAMA4 at MMIO 0xff010000 (irq = 25, base_baud = 0) is a SBSA
-        
-      /*AXI-uart lite 2 & 3 are looped back in the design to prove the communication b/w controllers*/
+	root@xilinx-vck190-2021_2:~# kill 854
+	root@xilinx-vck190-2021_2:~# cat /dev/ttyUL3 &
+	[2] 856
+	[1]   Terminated              cat /dev/ttyUL2
+	root@xilinx-vck190-2021_2:~# echo Hello_world > /dev/ttyUL2
+	Hello_world
 
-        root@vck_190_lowspeed_all:~# cat /dev/ttyUL2 &
-        [3] 925
-        [2] Terminated cat /dev/ttyAMA4
-        root@vck_190_lowspeed_all:~# echo Hello_world > /dev/ttyUL3
-        Hello_world
+	root@xilinx-vck190-2021_2:~#
 
-        root@vck_190_lowspeed_all:~# kill 925
-        root@vck_190_lowspeed_all:~# cat /dev/ttyUL3 &
-        [4] 926
-        [3] Terminated cat /dev/ttyUL2
-        root@vck_190_lowspeed_all:~# echo Hello_world > /dev/ttyUL2
-        Hello_world
 
 ### Vitis:
 
