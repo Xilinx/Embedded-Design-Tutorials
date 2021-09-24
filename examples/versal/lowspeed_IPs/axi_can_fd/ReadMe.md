@@ -62,12 +62,12 @@ Here you will place example validation that you've done that the customer can re
 
 After login to root run the follwoing commands to get bus information
 
-      	root@VCK_190_2021_1:~# /sys/class/net/can0/device/driver/
+	root@VCK_190_2021_1:~# /sys/class/net/can0/device/driver/
 	a4000000.can/   a4010000.can/   a4020000.can/   a4030000.canfd/ a4040000.canfd/ a4050000.canfd/ ff060000.can/   ff070000.can/
 	root@VCK_190_2021_1:~# ifconfig -a | grep can
-        can3 Link encap:UNSPEC HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  → a4040000.can/   ==> AXI-CANFD0
-        can4 Link encap:UNSPEC HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  → a4050000.can/   ==> AXI-CANFD1
-        can5 Link encap:UNSPEC HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  → a4060000.can/   ==> AXI-CANFD2
+	can3 Link encap:UNSPEC HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  → a4040000.can/   ==> AXI-CANFD0
+	can4 Link encap:UNSPEC HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  → a4050000.can/   ==> AXI-CANFD1
+	can5 Link encap:UNSPEC HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  → a4060000.can/   ==> AXI-CANFD2
 
  #### AXI-CANFD LOOP BACK
  
