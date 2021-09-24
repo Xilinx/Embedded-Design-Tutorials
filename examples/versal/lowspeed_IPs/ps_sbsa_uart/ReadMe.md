@@ -63,11 +63,7 @@ Here you will place example validation that you've done that the customer can re
 
 Log:
 
-        /*Please check available UARTs in the design using dmesg | grep tty*/
-
-       
-       
-       
+        /*Please check available UARTs in the design using dmesg | grep tty*/      
        
 	root@xilinx-vck190-2021_2:~# dmesg | grep tty
 	[    0.000000] Kernel command line: console=ttyAMA0  earlycon=pl011,mmio32,0xFF000000,115200n8 clk_ignore_unused init_fatal_sh=1
@@ -97,37 +93,7 @@ Log:
 	Hello_world
 	root@xilinx-vck190-2021_2:~#
 
-       
-       
-       
-       
-       vck_190_lowspeed_all login: root
-        Password:
-        root@vck_190_lowspeed_all:~# dmesg | grep tty
-        [ 0.000000] Kernel command line: console=ttyAMA0 earlycon=pl011,mmio32,0xFF000000,9600n8 clk_ignore_unused root=/dev/ram0 rw
-        [ 2.929867] a4070000.serial: ttyUL1 at MMIO 0xa4070000 (irq = 34, base_baud = 0) is a uartlite
-        [ 2.938718] a4080000.serial: ttyUL2 at MMIO 0xa4080000 (irq = 35, base_baud = 0) is a uartlite
-        [ 2.947563] a4090000.serial: ttyUL3 at MMIO 0xa4090000 (irq = 36, base_baud = 0) is a uartlite
-        [ 3.393395] ff000000.serial: ttyAMA0 at MMIO 0xff000000 (irq = 24, base_baud = 0) is a SBSA
-        [ 3.401826] printk: console [ttyAMA0] enabled
-        [ 3.419905] ff010000.serial: ttyAMA4 at MMIO 0xff010000 (irq = 25, base_baud = 0) is a SBSA
-        /*PS-SBSA Uart and AXI-uart lite are looped back in the design to prove the communication b/w different controllers*/
-
-	root@xilinx-vck190-2021_2:~# echo Hello_world > /dev/ttyAMA1
-	root@xilinx-vck190-2021_2:~# cat /dev/ttyUL1 &
-	[1] 853
-	root@xilinx-vck190-2021_2:~# echo Hello_world_from_ps > /dev/ttyAMA1
-	Hello_world_from_ps
-
-	root@xilinx-vck190-2021_2:~# kill 853
-	root@xilinx-vck190-2021_2:~# echo Hello_world_from_pl > /dev/ttyUL1
-	[1]+  Terminated              cat /dev/ttyUL1
-	root@xilinx-vck190-2021_2:~# cat /dev/ttyAMA1 &
-	[1] 855
-	root@xilinx-vck190-2021_2:~# echo Hello_world_from_pl > /dev/ttyUL1
-	Hello_world_from_pl
-
-	root@xilinx-vck190-2021_2:~#
+ 
 
 ### Vitis:
 
