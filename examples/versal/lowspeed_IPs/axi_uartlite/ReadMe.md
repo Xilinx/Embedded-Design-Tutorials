@@ -62,8 +62,8 @@ Here you will place example validation that you've done that the customer can re
   ### Linux:
 
   Log:
-       /* Please check available UARTs in the design using dmesg | grep tty */
-       
+  
+       /* Please check available UARTs in the design using dmesg | grep tty */    
 	root@xilinx-vck190-2021_2:~# dmesg | grep tty
 	[    0.000000] Kernel command line: console=ttyAMA0  earlycon=pl011,mmio32,0xFF000000,115200n8 clk_ignore_unused init_fatal_sh=1
 	[    2.647304] a4080000.serial: ttyUL1 at MMIO 0xa4080000 (irq = 41, base_baud = 0) is a uartlite
