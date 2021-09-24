@@ -157,216 +157,248 @@ After login to root run the follwoing commands to get bus information
 
   Log
 
-        root@vck_190_lowspeed:~# ip -d -s link show can6
-        9: can6: <NOARP,ECHO> mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10
-        link/can promiscuity 0 minmtu 0 maxmtu 0
-        can state STOPPED (berr-counter tx 0 rx 0) restart-ms 0
-        xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
-        xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
-        clock 49999999
-        re-started bus-errors arbit-lost error-warn error-pass bus-off
-        0 0 0 0 0 0 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-        RX: bytes packets errors dropped overrun mcast
-        0 0 0 0 0 0
-        TX: bytes packets errors dropped carrier collsns
-        0 0 0 0 0 0
-        root@vck_190_lowspeed:~# ip -d -s link show can7
-        10: can7: <NOARP,ECHO> mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10
-        link/can promiscuity 0 minmtu 0 maxmtu 0
-        can state STOPPED (berr-counter tx 0 rx 0) restart-ms 0
-        xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
-        xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
-        clock 49999999
-        re-started bus-errors arbit-lost error-warn error-pass bus-off
-        0 0 0 0 0 0 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-        RX: bytes packets errors dropped overrun mcast
-        0 0 0 0 0 0
-        TX: bytes packets errors dropped carrier collsns
-        0 0 0 0 0 0
-        root@vck_190_lowspeed:~# ip link set can6 type can bitrate 100000 dbitrate 4000000 fd on
-        [ 122.063396] xilinx_can ff060000.can can6: bitrate error 0.0%
-        [ 122.069081] xilinx_can ff060000.can can6: bitrate error 4.1%
-        root@vck_190_lowspeed:~# ip link set can7 type can bitrate 100000 dbitrate 4000000 fd on
-        [ 127.503357] xilinx_can ff070000.can can7: bitrate error 0.0%
-        [ 127.509034] xilinx_can ff070000.can can7: bitrate error 4.1%
-        root@vck_190_lowspeed:~# ifconfig can6 txqueuelen 1000
-        root@vck_190_lowspeed:~# ifconfig can7 txqueuelen 1000
-        root@vck_190_lowspeed:~# ip link set can0 up
-        [ 262.767249] xilinx_can a4010000.can can0: bit-timing not yet defined
-        RTNETLINK answers: Invalid argument
-        root@vck_190_lowspeed:~# ip link set can6 up
-        [ 267.279380] IPv6: ADDRCONF(NETDEV_CHANGE): can6: link becomes ready
-        root@vck_190_lowspeed:~# ip link set can7 up
-        [ 272.395372] IPv6: ADDRCONF(NETDEV_CHANGE): can7: link becomes ready
-        root@vck_190_lowspeed:~# cansend can6 123#1122334455
-        root@vck_190_lowspeed:~# ip -d -s link show can6
-        9: can6: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
-        link/can promiscuity 0 minmtu 0 maxmtu 0
-        can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
-        bitrate 99999 sample-point 0.872
-        tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
-        xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
-        dbitrate 4166666 dsample-point 0.750
-        dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
-        xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
-        clock 49999999
-        re-started bus-errors arbit-lost error-warn error-pass bus-off
-        0 0 0 0 0 0 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-        RX: bytes packets errors dropped overrun mcast
-        0 0 0 0 0 0
-        TX: bytes packets errors dropped carrier collsns
-        5 1 0 0 0 0
-        root@vck_190_lowspeed:~# ip -d -s link show can7
-        10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
-        link/can promiscuity 0 minmtu 0 maxmtu 0
-        can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
-        bitrate 99999 sample-point 0.872
-        tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
-        xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
-        dbitrate 4166666 dsample-point 0.750
-        dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
-        xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
-        clock 49999999
-        re-started bus-errors arbit-lost error-warn error-pass bus-off
-        0 0 0 0 0 0 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-        RX: bytes packets errors dropped overrun mcast
-        5 1 0 0 0 0
-        TX: bytes packets errors dropped carrier collsns
-        0 0 0 0 0 0
-        root@vck_190_lowspeed:~# cansend can6 12345678##9112233445566778899
-        root@vck_190_lowspeed:~# ip -d -s link show can6
-        9: can6: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
-        link/can promiscuity 0 minmtu 0 maxmtu 0
-        can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
-        bitrate 99999 sample-point 0.872
-        tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
-        xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
-        dbitrate 4166666 dsample-point 0.750
-        dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
-        xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
-        clock 49999999
-        re-started bus-errors arbit-lost error-warn error-pass bus-off
-        0 0 0 0 0 0 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-        RX: bytes packets errors dropped overrun mcast
-        0 0 0 0 0 0
-        TX: bytes packets errors dropped carrier collsns
-        17 2 0 0 0 0
-        root@vck_190_lowspeed:~# ip -d -s link show can7
-        10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
-        link/can promiscuity 0 minmtu 0 maxmtu 0
-        can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
-        bitrate 99999 sample-point 0.872
-        tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
-        xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
-        dbitrate 4166666 dsample-point 0.750
-        dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
-        xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
-        clock 49999999
-        re-started bus-errors arbit-lost error-warn error-pass bus-off
-        0 0 0 0 0 0 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-        RX: bytes packets errors dropped overrun mcast
-        17 2 0 0 0 0
-        TX: bytes packets errors dropped carrier collsns
-        0 0 0 0 0 0
-        root@vck_190_lowspeed:~# cansend can7 12345678##A112233445566778899AA
-        root@vck_190_lowspeed:~# ip -d -s link show can6
-        9: can6: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
-        link/can promiscuity 0 minmtu 0 maxmtu 0
-        can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
-        bitrate 99999 sample-point 0.872
-        tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
-        xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
-        dbitrate 4166666 dsample-point 0.750
-        dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
-        xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
-        clock 49999999
-        re-started bus-errors arbit-lost error-warn error-pass bus-off
-        0 0 0 0 0 0 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-        RX: bytes packets errors dropped overrun mcast
-        12 1 0 0 0 0
-        TX: bytes packets errors dropped carrier collsns
-        17 2 0 0 0 0
-        root@vck_190_lowspeed:~# ip -d -s link show can7
-        10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
-        link/can promiscuity 0 minmtu 0 maxmtu 0
-        can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
-        bitrate 99999 sample-point 0.872
-        tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
-        xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
-        dbitrate 4166666 dsample-point 0.750
-        dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
-        xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
-        clock 49999999
-        re-started bus-errors arbit-lost error-warn error-pass bus-off
-        0 0 0 0 0 0 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-        RX: bytes packets errors dropped overrun mcast
-        17 2 0 0 0 0
-        TX: bytes packets errors dropped carrier collsns
-        12 1 0 0 0 0
-        root@vck_190_lowspeed:~#
-        root@vck_190_lowspeed:~# ip link set can7 down
-        root@vck_190_lowspeed:~# ip link set can7 type can bitrate 100000 dbitrate 5000000 fd on
-        [ 625.567384] xilinx_can ff070000.can can7: bitrate error 0.0%
-        [ 625.573066] xilinx_can ff070000.can can7: bitrate error 0.0%
-        root@vck_190_lowspeed:~# ip link set can7 up
-        root@vck_190_lowspeed:~# ip -d -s link show can7
-        10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
-        link/can promiscuity 0 minmtu 0 maxmtu 0
-        can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
-        bitrate 99999 sample-point 0.872
-        tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
-        xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
-        dbitrate 4999999 dsample-point 0.600
-        dtq 40 dprop-seg 1 dphase-seg1 1 dphase-seg2 2 dsjw 1
-        xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
-        clock 49999999
-        re-started bus-errors arbit-lost error-warn error-pass bus-off
-        0 0 0 0 0 0 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-        RX: bytes packets errors dropped overrun mcast
-        17 2 0 0 0 0
-        TX: bytes packets errors dropped carrier collsns
-        12 1 0 0 0 0
-        root@vck_190_lowspeed:~# cansend can7 12345678##A112233445566778899AA
-        root@vck_190_lowspeed:~# ip -d -s link show can7
-        10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
-        link/can promiscuity 0 minmtu 0 maxmtu 0
-        can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
-        bitrate 99999 sample-point 0.872
-        tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
-        xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
-        dbitrate 4999999 dsample-point 0.600
-        dtq 40 dprop-seg 1 dphase-seg1 1 dphase-seg2 2 dsjw 1
-        xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
-        clock 49999999
-        re-started bus-errors arbit-lost error-warn error-pass bus-off
-        0 0 0 0 0 0 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-        RX: bytes packets errors dropped overrun mcast
-        17 2 0 0 0 0
-        TX: bytes packets errors dropped carrier collsns
-        24 2 0 0 0 0
-        root@vck_190_lowspeed:~# ip link set can7 down
-        root@vck_190_lowspeed:~# ip link set can7 type can bitrate 100000 dbitrate 6000000 fd on
-        [ 679.131430] xilinx_can ff070000.can can7: bitrate error 0.0%
-        [ 679.137113] xilinx_can ff070000.can can7: bitrate error 4.1%
-        root@vck_190_lowspeed:~# ip link set can7 up
-        root@vck_190_lowspeed:~# cansend can7 12345678##A112233445566778899AA
-        root@vck_190_lowspeed:~# ip -d -s link show can7
-        10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
-        link/can promiscuity 0 minmtu 0 maxmtu 0
-        can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
-        bitrate 99999 sample-point 0.872
-        tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
-        xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
-        dbitrate 6249999 dsample-point 0.750
-        dtq 40 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
-        xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
-        clock 49999999
-        re-started bus-errors arbit-lost error-warn error-pass bus-off
-        0 0 0 0 0 0 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-        RX: bytes packets errors dropped overrun mcast
-        17 2 0 0 0 0
-        TX: bytes packets errors dropped carrier collsns
-        36 3 0 0 0 0
+	root@VCK_190_2021_1:~# ip -d -s link show can6
+	9: can6: <NOARP,ECHO> mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can state STOPPED (berr-counter tx 0 rx 0) restart-ms 0
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    0          0        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    0          0        0       0       0       0
+	root@VCK_190_2021_1:~# ip -d -s link show can7
+	10: can7: <NOARP,ECHO> mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can state STOPPED (berr-counter tx 0 rx 0) restart-ms 0
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    0          0        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    0          0        0       0       0       0
+	root@VCK_190_2021_1:~# ip link set can6 type can bitrate 100000 dbitrate 4000000 fd on
+	[   50.280489] xilinx_can ff060000.can can6: bitrate error 0.0%
+	[   50.286182] xilinx_can ff060000.can can6: bitrate error 4.1%
+	root@VCK_190_2021_1:~# ip link set can7 type can bitrate 100000 dbitrate 4000000 fd on
+	[   57.592433] xilinx_can ff070000.can can7: bitrate error 0.0%
+	[   57.598117] xilinx_can ff070000.can can7: bitrate error 4.1%
+	root@VCK_190_2021_1:~# ifconfig can6 txqueuelen 1000
+	root@VCK_190_2021_1:~# ifconfig can7 txqueuelen 1000
+	root@VCK_190_2021_1:~# ip link set can6 up
+	[   92.992484] IPv6: ADDRCONF(NETDEV_CHANGE): can6: link becomes ready
+	root@VCK_190_2021_1:~# ip link set can7 up
+	[   98.712429] IPv6: ADDRCONF(NETDEV_CHANGE): can7: link becomes ready
+	root@VCK_190_2021_1:~# ip -d -s link show can6
+	9: can6: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
+		  bitrate 99999 sample-point 0.872
+		  tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  dbitrate 4166666 dsample-point 0.750
+		  dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    0          0        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    0          0        0       0       0       0
+	root@VCK_190_2021_1:~# ip -d -s link show can7
+	10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
+		  bitrate 99999 sample-point 0.872
+		  tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  dbitrate 4166666 dsample-point 0.750
+		  dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    0          0        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    0          0        0       0       0       0
+	root@VCK_190_2021_1:~# cansend can6 123#1122334455
+	root@VCK_190_2021_1:~# ip -d -s link show can6
+	9: can6: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
+		  bitrate 99999 sample-point 0.872
+		  tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  dbitrate 4166666 dsample-point 0.750
+		  dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    0          0        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    5          1        0       0       0       0
+	root@VCK_190_2021_1:~# ip -d -s link show can7
+	10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
+		  bitrate 99999 sample-point 0.872
+		  tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  dbitrate 4166666 dsample-point 0.750
+		  dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    5          1        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    0          0        0       0       0       0
+	root@VCK_190_2021_1:~# cansend can6 12345678##9112233445566778899
+	root@VCK_190_2021_1:~# ip -d -s link show can6
+	9: can6: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
+		  bitrate 99999 sample-point 0.872
+		  tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  dbitrate 4166666 dsample-point 0.750
+		  dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    0          0        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    17         2        0       0       0       0
+	root@VCK_190_2021_1:~# ip -d -s link show can7
+	10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
+		  bitrate 99999 sample-point 0.872
+		  tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  dbitrate 4166666 dsample-point 0.750
+		  dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    17         2        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    0          0        0       0       0       0
+	root@VCK_190_2021_1:~# cansend can7 12345678##A112233445566778899AA
+	root@VCK_190_2021_1:~# ip -d -s link show can6
+	9: can6: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
+		  bitrate 99999 sample-point 0.872
+		  tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  dbitrate 4166666 dsample-point 0.750
+		  dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    12         1        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    17         2        0       0       0       0
+	root@VCK_190_2021_1:~# ip -d -s link show can7
+	10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
+		  bitrate 99999 sample-point 0.872
+		  tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  dbitrate 4166666 dsample-point 0.750
+		  dtq 60 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    17         2        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    12         1        0       0       0       0
+	root@VCK_190_2021_1:~# ip link set can7 down
+	root@VCK_190_2021_1:~# ip link set can7 type can bitrate 100000 dbitrate 5000000 fd on
+	[  252.480508] xilinx_can ff070000.can can7: bitrate error 0.0%
+	[  252.486190] xilinx_can ff070000.can can7: bitrate error 0.0%
+	root@VCK_190_2021_1:~# ip link set can7 up
+	root@VCK_190_2021_1:~# ip -d -s link show can7
+	10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
+		  bitrate 99999 sample-point 0.872
+		  tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  dbitrate 4999999 dsample-point 0.600
+		  dtq 40 dprop-seg 1 dphase-seg1 1 dphase-seg2 2 dsjw 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    17         2        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    12         1        0       0       0       0
+	root@VCK_190_2021_1:~# cansend can7 12345678##A112233445566778899AA
+	root@VCK_190_2021_1:~#  ip -d -s link show can7
+	10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
+		  bitrate 99999 sample-point 0.872
+		  tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  dbitrate 4999999 dsample-point 0.600
+		  dtq 40 dprop-seg 1 dphase-seg1 1 dphase-seg2 2 dsjw 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    17         2        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    24         2        0       0       0       0
+	root@VCK_190_2021_1:~# ip link set can7 down
+	root@VCK_190_2021_1:~# ip link set can7 type can bitrate 100000 dbitrate 6000000 fd on
+	[  313.360387] xilinx_can ff070000.can can7: bitrate error 0.0%
+	[  313.366068] xilinx_can ff070000.can can7: bitrate error 4.1%
+	root@VCK_190_2021_1:~#  ip link set can7 up
+	root@VCK_190_2021_1:~# cansend can7 12345678##A112233445566778899AA
+	root@VCK_190_2021_1:~# ip -d -s link show can7
+	10: can7: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+	    link/can  promiscuity 0 minmtu 0 maxmtu 0
+	    can <FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0
+		  bitrate 99999 sample-point 0.872
+		  tq 80 prop-seg 54 phase-seg1 54 phase-seg2 16 sjw 1
+		  xilinx_can: tseg1 1..256 tseg2 1..128 sjw 1..128 brp 2..256 brp-inc 1
+		  dbitrate 6249999 dsample-point 0.750
+		  dtq 40 dprop-seg 1 dphase-seg1 1 dphase-seg2 1 dsjw 1
+		  xilinx_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 2..256 dbrp-inc 1
+		  clock 49999999
+		  re-started bus-errors arbit-lost error-warn error-pass bus-off
+		  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
+	    RX: bytes  packets  errors  dropped overrun mcast
+	    17         2        0       0       0       0
+	    TX: bytes  packets  errors  dropped carrier collsns
+	    36         3        0       0       0       0
+	root@VCK_190_2021_1:~#
+
   
 
 ### Vitis:
