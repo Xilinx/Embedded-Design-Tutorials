@@ -74,6 +74,8 @@ After login to root run the follwoing commands to get bus information
 a. TX and RX of the AXI CAN IP are shorted to prove the loopback externally user can enable loopback mode also through the register to prove loopback mode.
 
  Log:
+	
+	
 	root@VCK_190_2021_1:~# ip -d -s link show can0
 	2: can0: <NOARP,ECHO> mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10
 	    link/can  promiscuity 0 minmtu 0 maxmtu 0
