@@ -65,7 +65,43 @@ Log:
 
         /*Please check available UARTs in the design using dmesg | grep tty*/
 
-        vck_190_lowspeed_all login: root
+       
+       
+       
+       
+	root@xilinx-vck190-2021_2:~# dmesg | grep tty
+	[    0.000000] Kernel command line: console=ttyAMA0  earlycon=pl011,mmio32,0xFF000000,115200n8 clk_ignore_unused init_fatal_sh=1
+	[    2.588986] a4080000.serial: ttyUL1 at MMIO 0xa4080000 (irq = 41, base_baud = 0) is a uartlite
+	[    2.597851] a4090000.serial: ttyUL2 at MMIO 0xa4090000 (irq = 42, base_baud = 0) is a uartlite
+	[    2.606699] a40a0000.serial: ttyUL3 at MMIO 0xa40a0000 (irq = 43, base_baud = 0) is a uartlite
+	[    3.043735] ff000000.serial: ttyAMA0 at MMIO 0xff000000 (irq = 31, base_baud = 0) is a SBSA
+	[    3.052175] printk: console [ttyAMA0] enabled
+	[    3.070376] ff010000.serial: ttyAMA1 at MMIO 0xff010000 (irq = 32, base_baud = 0) is a SBSA
+	
+	/*PS-SBSA Uart and AXI-uart lite are looped back in the design to prove the communication b/w different controllers*/
+	root@xilinx-vck190-2021_2:~# cat /dev/ttyUL1 &
+	[1] 855
+	root@xilinx-vck190-2021_2:~# echo Hello_world > /dev/ttyAMA4
+	root@xilinx-vck190-2021_2:~# kill 855
+	root@xilinx-vck190-2021_2:~# cat /dev/ttyAMA4 &
+	[2] 856
+	[1]   Terminated              cat /dev/ttyUL1
+	Hello_world
+	root@xilinx-vck190-2021_2:~# echo Hello_world > /dev/ttyUL1
+	[2]+  Done                    cat /dev/ttyAMA4
+	root@xilinx-vck190-2021_2:~# kill 856
+	-sh: kill: (856) - No such process
+	
+	/*Self testing of console PS-SBSA UART0*/
+	root@xilinx-vck190-2021_2:~# echo Hello_world > /dev/ttyAMA0
+	Hello_world
+	root@xilinx-vck190-2021_2:~#
+
+       
+       
+       
+       
+       vck_190_lowspeed_all login: root
         Password:
         root@vck_190_lowspeed_all:~# dmesg | grep tty
         [ 0.000000] Kernel command line: console=ttyAMA0 earlycon=pl011,mmio32,0xFF000000,9600n8 clk_ignore_unused root=/dev/ram0 rw
@@ -77,24 +113,21 @@ Log:
         [ 3.419905] ff010000.serial: ttyAMA4 at MMIO 0xff010000 (irq = 25, base_baud = 0) is a SBSA
         /*PS-SBSA Uart and AXI-uart lite are looped back in the design to prove the communication b/w different controllers*/
 
-        root@vck_190_lowspeed_all:~# cat /dev/ttyUL1 &
-        [1] 911
-        root@vck_190_lowspeed_all:~# echo Hello_world > /dev/ttyAMA4
-        Hello_world
+	root@xilinx-vck190-2021_2:~# echo Hello_world > /dev/ttyAMA1
+	root@xilinx-vck190-2021_2:~# cat /dev/ttyUL1 &
+	[1] 853
+	root@xilinx-vck190-2021_2:~# echo Hello_world_from_ps > /dev/ttyAMA1
+	Hello_world_from_ps
 
-        root@vck_190_lowspeed_all:~# kill 911
-        root@vck_190_lowspeed_all:~# cat /dev/ttyAMA4 &
-        [2] 920
-        [1] Terminated cat /dev/ttyUL1
-        root@vck_190_lowspeed_all:~# echo Hello_world > /dev/ttyUL1
-        Hello_world
+	root@xilinx-vck190-2021_2:~# kill 853
+	root@xilinx-vck190-2021_2:~# echo Hello_world_from_pl > /dev/ttyUL1
+	[1]+  Terminated              cat /dev/ttyUL1
+	root@xilinx-vck190-2021_2:~# cat /dev/ttyAMA1 &
+	[1] 855
+	root@xilinx-vck190-2021_2:~# echo Hello_world_from_pl > /dev/ttyUL1
+	Hello_world_from_pl
 
-        root@vck_190_lowspeed_all:~# kill 920
-        /*Self testing of console PS-SBSA UART0*/
-
-        root@vck_190_lowspeed_all:~# echo Hello_world > /dev/ttyAMA0
-        Hello_world
-        root@vck_190_lowspeed_all:~#
+	root@xilinx-vck190-2021_2:~#
 
 ### Vitis:
 
