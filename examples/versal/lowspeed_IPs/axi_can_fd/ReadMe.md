@@ -541,9 +541,9 @@ Log:
 b. Normal mode
 Test case to prove normal mode of AXI CANFD IP with external loopback(CANFD1 and CANFD2 are connected to form CAN bus for testing)
 
+Log:
 
-
-[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
+	[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
 	[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
 	[4.180]PLM Initialization Time
 	[4.243]***********Boot PDI Load: Started***********
