@@ -456,42 +456,42 @@ Test case to prove loopback mode of PS-CANFD IP(CANFD0 is used for testing)
 
 Log:
 
-[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
-[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
-[4.180]PLM Initialization Time
-[4.243]***********Boot PDI Load: Started***********
-[4.320]Loading PDI from JTAG
-[4.381]Monolithic/Master Device
-[4.498]0.145 ms: PDI initialization time
-[4.572]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
-[4.658]---Loading Partition#: 0x1, Id: 0xC
-[35.998]****************************************
-[40.240]Xilinx Versal Platform Loader and Manager
-[44.652]Release 2021.1   Jul 26 2021  -  04:09:34
-[48.981]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-[53.393]BOOTMODE: 0x0, MULTIBOOT: 0x0
-[56.702]****************************************
-[60.985] 56.217 ms for Partition#: 0x1, Size: 2512 Bytes
-[65.867]---Loading Partition#: 0x2, Id: 0xB
-[70.238] 0.517 ms for Partition#: 0x2, Size: 48 Bytes
-[74.354]---Loading Partition#: 0x3, Id: 0xB
-[113.133] 34.926 ms for Partition#: 0x3, Size: 60592 Bytes
-[115.455]---Loading Partition#: 0x4, Id: 0xB
-[119.409] 0.019 ms for Partition#: 0x4, Size: 5968 Bytes
-[124.280]---Loading Partition#: 0x5, Id: 0xB
-[128.222] 0.007 ms for Partition#: 0x5, Size: 80 Bytes
-[132.996]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
-[138.278]---Loading Partition#: 0x6, Id: 0x3
-[1007.363] 865.146 ms for Partition#: 0x6, Size: 1272512 Bytes
-[1010.026]---Loading Partition#: 0x7, Id: 0x5
-[1297.397] 283.347 ms for Partition#: 0x7, Size: 441248 Bytes
-[1300.018]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
-[1305.155]---Loading Partition#: 0x8, Id: 0x8
-[1309.607] 0.429 ms for Partition#: 0x8, Size: 1104 Bytes
-[1314.220]***********Boot PDI Load: Done***********
-[1318.693]3770.922 ms: ROM Time
-[1321.456]Total PLM Boot Time
-Successfully ran XCanFd Interrupt Mode example
+	[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
+	[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
+	[4.180]PLM Initialization Time
+	[4.243]***********Boot PDI Load: Started***********
+	[4.320]Loading PDI from JTAG
+	[4.381]Monolithic/Master Device
+	[4.498]0.145 ms: PDI initialization time
+	[4.572]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+	[4.658]---Loading Partition#: 0x1, Id: 0xC
+	[35.998]****************************************
+	[40.240]Xilinx Versal Platform Loader and Manager
+	[44.652]Release 2021.1   Jul 26 2021  -  04:09:34
+	[48.981]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+	[53.393]BOOTMODE: 0x0, MULTIBOOT: 0x0
+	[56.702]****************************************
+	[60.985] 56.217 ms for Partition#: 0x1, Size: 2512 Bytes
+	[65.867]---Loading Partition#: 0x2, Id: 0xB
+	[70.238] 0.517 ms for Partition#: 0x2, Size: 48 Bytes
+	[74.354]---Loading Partition#: 0x3, Id: 0xB
+	[113.133] 34.926 ms for Partition#: 0x3, Size: 60592 Bytes
+	[115.455]---Loading Partition#: 0x4, Id: 0xB
+	[119.409] 0.019 ms for Partition#: 0x4, Size: 5968 Bytes
+	[124.280]---Loading Partition#: 0x5, Id: 0xB
+	[128.222] 0.007 ms for Partition#: 0x5, Size: 80 Bytes
+	[132.996]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+	[138.278]---Loading Partition#: 0x6, Id: 0x3
+	[1007.363] 865.146 ms for Partition#: 0x6, Size: 1272512 Bytes
+	[1010.026]---Loading Partition#: 0x7, Id: 0x5
+	[1297.397] 283.347 ms for Partition#: 0x7, Size: 441248 Bytes
+	[1300.018]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+	[1305.155]---Loading Partition#: 0x8, Id: 0x8
+	[1309.607] 0.429 ms for Partition#: 0x8, Size: 1104 Bytes
+	[1314.220]***********Boot PDI Load: Done***********
+	[1318.693]3770.922 ms: ROM Time
+	[1321.456]Total PLM Boot Time
+	Successfully ran XCanFd Interrupt Mode example
 
 
 
