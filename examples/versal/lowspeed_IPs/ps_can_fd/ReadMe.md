@@ -403,12 +403,104 @@ After login to root run the follwoing commands to get bus information
 
 ### Vitis:
 
-The bare-metal test cases are similar to AXI_CANFD requesting to refer the follwoing link https://gitenterprise.xilinx.com/Xilinx-Wiki-Projects/VCK190_LowSpeed_IPs/tree/master/axi_can_fd/software/vitis 
+#### PS-CANFD polled mode example
 
-With minimum changes in the examples user can use the same for PS-CANFD.
+a. Loop back mode
+Test case to prove loopback mode of PS-CANFD IP(CANFD0 is used for testing)
+
+Log:
+
+	[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
+	[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
+	[4.180]PLM Initialization Time
+	[4.243]***********Boot PDI Load: Started***********
+	[4.320]Loading PDI from JTAG
+	[4.381]Monolithic/Master Device
+	[4.499]0.146 ms: PDI initialization time
+	[4.573]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+	[4.659]---Loading Partition#: 0x1, Id: 0xC
+	[36.007]****************************************
+	[40.250]Xilinx Versal Platform Loader and Manager
+	[44.662]Release 2021.1   Jul 26 2021  -  04:09:34
+	[48.989]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+	[53.400]BOOTMODE: 0x0, MULTIBOOT: 0x0
+	[56.708]****************************************
+	[60.991] 56.222 ms for Partition#: 0x1, Size: 2512 Bytes
+	[65.873]---Loading Partition#: 0x2, Id: 0xB
+	[70.241] 0.517 ms for Partition#: 0x2, Size: 48 Bytes
+	[74.356]---Loading Partition#: 0x3, Id: 0xB
+	[116.671] 38.461 ms for Partition#: 0x3, Size: 60592 Bytes
+	[118.992]---Loading Partition#: 0x4, Id: 0xB
+	[122.947] 0.019 ms for Partition#: 0x4, Size: 5968 Bytes
+	[127.817]---Loading Partition#: 0x5, Id: 0xB
+	[131.760] 0.007 ms for Partition#: 0x5, Size: 80 Bytes
+	[136.534]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+	[141.818]---Loading Partition#: 0x6, Id: 0x3
+	[1012.008] 866.250 ms for Partition#: 0x6, Size: 1272512 Bytes
+	[1014.671]---Loading Partition#: 0x7, Id: 0x5
+	[1302.394] 283.696 ms for Partition#: 0x7, Size: 441248 Bytes
+	[1305.011]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+	[1310.147]---Loading Partition#: 0x8, Id: 0x8
+	[1314.596] 0.429 ms for Partition#: 0x8, Size: 1104 Bytes
+	[1319.207]***********Boot PDI Load: Done***********
+	[1323.676]3775.522 ms: ROM Time
+	[1326.440]Total PLM Boot Time
+	Successfully ran XCanFd Polled Mode example
+
+
+
+#### PS-CANFD Interrupt mode example
+
+a. Loop back mode
+Test case to prove loopback mode of PS-CANFD IP(CANFD0 is used for testing)
+
+Log:
+
+[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
+[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
+[4.180]PLM Initialization Time
+[4.243]***********Boot PDI Load: Started***********
+[4.320]Loading PDI from JTAG
+[4.381]Monolithic/Master Device
+[4.498]0.145 ms: PDI initialization time
+[4.572]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+[4.658]---Loading Partition#: 0x1, Id: 0xC
+[35.998]****************************************
+[40.240]Xilinx Versal Platform Loader and Manager
+[44.652]Release 2021.1   Jul 26 2021  -  04:09:34
+[48.981]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+[53.393]BOOTMODE: 0x0, MULTIBOOT: 0x0
+[56.702]****************************************
+[60.985] 56.217 ms for Partition#: 0x1, Size: 2512 Bytes
+[65.867]---Loading Partition#: 0x2, Id: 0xB
+[70.238] 0.517 ms for Partition#: 0x2, Size: 48 Bytes
+[74.354]---Loading Partition#: 0x3, Id: 0xB
+[113.133] 34.926 ms for Partition#: 0x3, Size: 60592 Bytes
+[115.455]---Loading Partition#: 0x4, Id: 0xB
+[119.409] 0.019 ms for Partition#: 0x4, Size: 5968 Bytes
+[124.280]---Loading Partition#: 0x5, Id: 0xB
+[128.222] 0.007 ms for Partition#: 0x5, Size: 80 Bytes
+[132.996]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+[138.278]---Loading Partition#: 0x6, Id: 0x3
+[1007.363] 865.146 ms for Partition#: 0x6, Size: 1272512 Bytes
+[1010.026]---Loading Partition#: 0x7, Id: 0x5
+[1297.397] 283.347 ms for Partition#: 0x7, Size: 441248 Bytes
+[1300.018]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+[1305.155]---Loading Partition#: 0x8, Id: 0x8
+[1309.607] 0.429 ms for Partition#: 0x8, Size: 1104 Bytes
+[1314.220]***********Boot PDI Load: Done***********
+[1318.693]3770.922 ms: ROM Time
+[1321.456]Total PLM Boot Time
+Successfully ran XCanFd Interrupt Mode example
+
+
 
 ## Known Issues
-In this section, list any known issues with the design, or any warning messages that might appear which can be safely ignored by the customer.
+
+The bare-metal test cases are similar to AXI_CANFD requesting to refer the follwoing link https://gitenterprise.xilinx.com/Xilinx-Wiki-Projects/VCK190_LowSpeed_IPs/tree/master/axi_can_fd/software/vitis 
+
+With minimum changes in the examples user can use the same for PS-CANFD Normal mode.
+
 
 Copyright 2020 Xilinx Inc.
 
