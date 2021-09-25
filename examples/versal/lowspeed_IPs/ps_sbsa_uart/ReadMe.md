@@ -101,42 +101,50 @@ Log:
 
 Log:
 
-        [6.521553]****************************************
-        [8.156987]Xilinx Versal Platform Loader and Manager
-        [12.765537]Release 2020.2 Nov 18 2020 - 14:54:52
-        [17.375037]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-        [22.070206]BOOTMODE: 0, MULTIBOOT: 0x0
-        [25.484662]****************************************
-        [30.032171] 25.688412 ms for PrtnNum: 1, Size: 2368 Bytes
-        [35.046365]-------Loading Prtn No: 0x2
-        [38.998809] 0.520703 ms for PrtnNum: 2, Size: 48 Bytes
-        [43.240281]-------Loading Prtn No: 0x3
-        [81.260568] 34.584671 ms for PrtnNum: 3, Size: 57168 Bytes
-        [83.579318]-------Loading Prtn No: 0x4
-        [87.019731] 0.012528 ms for PrtnNum: 4, Size: 2512 Bytes
-        [91.940490]-------Loading Prtn No: 0x5
-        [95.382971] 0.014315 ms for PrtnNum: 5, Size: 3424 Bytes
-        [100.302100]-------Loading Prtn No: 0x6
-        [103.823696] 0.007784 ms for PrtnNum: 6, Size: 80 Bytes
-        [108.712696]+++++++Loading Image No: 0x2, Name: pl_cfi, Id: 0x18700000
-        [114.804487]-------Loading Prtn No: 0x7
-        [988.681403] 870.358103 ms for PrtnNum: 7, Size: 1320080 Bytes
-        [991.344587]-------Loading Prtn No: 0x8
-        [1292.963709] 298.094487 ms for PrtnNum: 8, Size: 385488 Bytes
-        [1295.661446]+++++++Loading Image No: 0x3, Name: fpd, Id: 0x0420C003
-        [1301.610412]-------Loading Prtn No: 0x9
-        [1305.647225] 0.431234 ms for PrtnNum: 9, Size: 1008 Bytes
-        [1310.376468]***********Boot PDI Load: Done*************
-        [1315.295812]3518.971143 ms: ROM Time
-        [1318.610971]Total PLM Boot Time
-        abcdefghABCDEFGH012345677654321
-        UartPsv Interrupt Example self test pass
- 
-        Please enter 4 characters from console   // entered characters will not displayed here
+	[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
+	[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
+	[4.180]PLM Initialization Time
+	[4.243]***********Boot PDI Load: Started***********
+	[4.321]Loading PDI from JTAG
+	[4.382]Monolithic/Master Device
+	[4.499]0.146 ms: PDI initialization time
+	[4.573]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+	[4.659]---Loading Partition#: 0x1, Id: 0xC
+	[35.992]****************************************
+	[40.235]Xilinx Versal Platform Loader and Manager
+	[44.646]Release 2021.1   Jul 26 2021  -  04:09:34
+	[48.974]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+	[53.385]BOOTMODE: 0x0, MULTIBOOT: 0x0
+	[56.693]****************************************
+	[60.975] 56.206 ms for Partition#: 0x1, Size: 2512 Bytes
+	[65.855]---Loading Partition#: 0x2, Id: 0xB
+	[70.223] 0.517 ms for Partition#: 0x2, Size: 48 Bytes
+	[74.337]---Loading Partition#: 0x3, Id: 0xB
+	[114.779] 36.589 ms for Partition#: 0x3, Size: 60592 Bytes
+	[117.098]---Loading Partition#: 0x4, Id: 0xB
+	[121.049] 0.019 ms for Partition#: 0x4, Size: 5968 Bytes
+	[125.917]---Loading Partition#: 0x5, Id: 0xB
+	[129.858] 0.007 ms for Partition#: 0x5, Size: 80 Bytes
+	[134.628]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+	[139.908]---Loading Partition#: 0x6, Id: 0x3
+	[997.650] 853.804 ms for Partition#: 0x6, Size: 1272512 Bytes
+	[1000.229]---Loading Partition#: 0x7, Id: 0x5
+	[1288.889] 284.639 ms for Partition#: 0x7, Size: 441248 Bytes
+	[1291.507]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+	[1296.643]---Loading Partition#: 0x8, Id: 0x8
+	[1301.093] 0.429 ms for Partition#: 0x8, Size: 1104 Bytes
+	[1305.705]***********Boot PDI Load: Done***********
+	[1310.175]3761.786 ms: ROM Time
+	[1312.938]Total PLM Boot Time
+	abcdefghABCDEFGH012345677654321ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGH
+	Please enter 4 characters from console //Entered characters will not display
 
-        You have entered following 4 characters from console
-        abcd
-        Successfully ran UartPsv Interrupt Example Test
+
+	You have entered following 4 characters from console
+
+	1234
+	Successfully ran UartPsv Interrupt Example Test
+
 
 
 #### PS-SBSA UART example in polled mode 
