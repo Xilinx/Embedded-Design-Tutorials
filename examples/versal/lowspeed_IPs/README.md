@@ -50,7 +50,7 @@ Each design's README.md will provide:
    -**Known Issues** - Current known issues with the design and/or workarounds for these issues.
 # Note:
 
-Some of the examples are customized as per the test case from examples available in the VITIS.
+Some of the examples are customized as per the test case from bare-metal examples available in the VITIS.
    
 # Troubleshooting / Assistance
    If you find you are having difficulty bringing up one of the designs, or need some additional assistance, please reach out on the [Xilinx Community Forums](https://forums.xilinx.com/).
