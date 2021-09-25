@@ -98,35 +98,43 @@ Log:
 
 Log:
 
-        [5.574631]****************************************
-        [7.213081]Xilinx Versal Platform Loader and Manager
-        [11.831059]Release 2020.2 Nov 4 2020 - 15:31:40
-        [16.448650]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-        [21.150950]BOOTMODE: 0, MULTIBOOT: 0x0
-        [24.570546]****************************************
-        [29.124193] 24.789959 ms for PrtnNum: 1, Size: 2192 Bytes
-        [34.146662]-------Loading Prtn No: 0x2
-        [38.105690] 0.521653 ms for PrtnNum: 2, Size: 48 Bytes
-        [42.355475]-------Loading Prtn No: 0x3
-        [79.435778] 33.639068 ms for PrtnNum: 3, Size: 57136 Bytes
-        [81.759884]-------Loading Prtn No: 0x4
-        [85.207981] 0.012521 ms for PrtnNum: 4, Size: 2512 Bytes
-        [90.139684]-------Loading Prtn No: 0x5
-        [93.589337] 0.014309 ms for PrtnNum: 5, Size: 3424 Bytes
-        [98.518578]-------Loading Prtn No: 0x6
-        [101.962006] 0.007778 ms for PrtnNum: 6, Size: 80 Bytes
-        [106.862412]+++++++Loading Image No: 0x2, Name: pl_cfi, Id: 0x18700000
-        [112.968006]-------Loading Prtn No: 0x7
-        [636.258546] 519.763334 ms for PrtnNum: 7, Size: 767712 Bytes
-        [638.838621]-------Loading Prtn No: 0x8
-        [738.632818] 96.268565 ms for PrtnNum: 8, Size: 149936 Bytes
-        [741.161181]+++++++Loading Image No: 0x3, Name: fpd, Id: 0x0420C003
-        [747.027459]-------Loading Prtn No: 0x9
-        [750.713843] 0.163506 ms for PrtnNum: 9, Size: 1008 Bytes
-        [755.630196]***********Boot PDI Load: Done*************
-        [760.467921]3668.976818 ms: ROM Time
-        [763.700496]Total PLM Boot Time
-        Successfully ran AXI IIC eeprom Example
+	[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
+	[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
+	[4.180]PLM Initialization Time
+	[4.243]***********Boot PDI Load: Started***********
+	[4.321]Loading PDI from JTAG
+	[4.381]Monolithic/Master Device
+	[4.500]0.146 ms: PDI initialization time
+	[4.573]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+	[4.659]---Loading Partition#: 0x1, Id: 0xC
+	[35.985]****************************************
+	[40.227]Xilinx Versal Platform Loader and Manager
+	[44.638]Release 2021.1   Jul 26 2021  -  04:09:34
+	[48.965]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+	[53.376]BOOTMODE: 0x0, MULTIBOOT: 0x0
+	[56.685]****************************************
+	[60.966] 56.197 ms for Partition#: 0x1, Size: 2512 Bytes
+	[65.847]---Loading Partition#: 0x2, Id: 0xB
+	[70.215] 0.517 ms for Partition#: 0x2, Size: 48 Bytes
+	[74.331]---Loading Partition#: 0x3, Id: 0xB
+	[116.336] 38.152 ms for Partition#: 0x3, Size: 60592 Bytes
+	[118.657]---Loading Partition#: 0x4, Id: 0xB
+	[122.610] 0.019 ms for Partition#: 0x4, Size: 5968 Bytes
+	[127.479]---Loading Partition#: 0x5, Id: 0xB
+	[131.420] 0.007 ms for Partition#: 0x5, Size: 80 Bytes
+	[136.192]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+	[141.475]---Loading Partition#: 0x6, Id: 0x3
+	[1000.781] 855.366 ms for Partition#: 0x6, Size: 1272512 Bytes
+	[1003.442]---Loading Partition#: 0x7, Id: 0x5
+	[1290.549] 283.085 ms for Partition#: 0x7, Size: 441248 Bytes
+	[1293.165]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+	[1298.298]---Loading Partition#: 0x8, Id: 0x8
+	[1302.744] 0.429 ms for Partition#: 0x8, Size: 1104 Bytes
+	[1307.352]***********Boot PDI Load: Done***********
+	[1311.820]3772.590 ms: ROM Time
+	[1314.580]Total PLM Boot Time
+	Successfully ran AXI IIC eeprom Example
+
 
 ## Known Issues
 In this section, list any known issues with the design, or any warning messages that might appear which can be safely ignored by the customer.
