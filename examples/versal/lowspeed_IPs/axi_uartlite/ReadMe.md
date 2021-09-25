@@ -173,7 +173,8 @@ Log:
 
 
 ## Known Issues
-In this section, list any known issues with the design, or any warning messages that might appear which can be safely ignored by the customer.
+If we have more than one UARTLite serial ports in the design please configured the following parameter accordingly in kernel configuration.
+SERIAL_UARTLITE_NR_UARTS = [X] here 'X' --> Number of Uartlite serial ports in the design
 
 Copyright 2020 Xilinx Inc.
 
