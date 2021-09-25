@@ -397,35 +397,43 @@ Test case to prove loopback mode of AXI-CAN IP(CAN0 is used for testing)
 
  Log:
 
-        [7.395750]****************************************
-        [9.032756]Xilinx Versal Platform Loader and Manager
-        [13.646087]Release 2020.2 Nov 18 2020 - 14:54:52
-        [18.258771]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-        [22.957237]BOOTMODE: 0, MULTIBOOT: 0x0
-        [26.374321]****************************************
-        [30.923312] 26.579215 ms for PrtnNum: 1, Size: 2368 Bytes
-        [35.937571]-------Loading Prtn No: 0x2
-        [39.890250] 0.520909 ms for PrtnNum: 2, Size: 48 Bytes
-        [44.133159]-------Loading Prtn No: 0x3
-        [82.642556] 35.072659 ms for PrtnNum: 3, Size: 57168 Bytes
-        [84.963150]-------Loading Prtn No: 0x4
-        [88.406337] 0.012528 ms for PrtnNum: 4, Size: 2512 Bytes
-        [93.331012]-------Loading Prtn No: 0x5
-        [96.774862] 0.014315 ms for PrtnNum: 5, Size: 3424 Bytes
-        [101.697262]-------Loading Prtn No: 0x6
-        [105.221818] 0.007784 ms for PrtnNum: 6, Size: 80 Bytes
-        [110.117284]+++++++Loading Image No: 0x2, Name: pl_cfi, Id: 0x18700000
-        [116.217365]-------Loading Prtn No: 0x7
-        [1003.639300] 883.899128 ms for PrtnNum: 7, Size: 1320080 Bytes
-        [1006.388987]-------Loading Prtn No: 0x8
-        [1308.005034] 298.006250 ms for PrtnNum: 8, Size: 385488 Bytes
-        [1310.702518]+++++++Loading Image No: 0x3, Name: fpd, Id: 0x0420C003
-        [1316.649706]-------Loading Prtn No: 0x9
-        [1320.686062] 0.431231 ms for PrtnNum: 9, Size: 1008 Bytes
-        [1325.414806]***********Boot PDI Load: Done*************
-        [1330.333950]3521.266081 ms: ROM Time
-        [1333.649746]Total PLM Boot Time
-        Successfully ran Can Interrupt Example
+	[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
+	[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
+	[4.179]PLM Initialization Time
+	[4.242]***********Boot PDI Load: Started***********
+	[4.320]Loading PDI from JTAG
+	[4.381]Monolithic/Master Device
+	[4.500]0.147 ms: PDI initialization time
+	[4.573]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+	[4.659]---Loading Partition#: 0x1, Id: 0xC
+	[36.024]****************************************
+	[40.271]Xilinx Versal Platform Loader and Manager
+	[44.687]Release 2021.1   Jul 26 2021  -  04:09:34
+	[49.019]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+	[53.436]BOOTMODE: 0x0, MULTIBOOT: 0x0
+	[56.749]****************************************
+	[61.037] 56.268 ms for Partition#: 0x1, Size: 2512 Bytes
+	[65.924]---Loading Partition#: 0x2, Id: 0xB
+	[70.297] 0.518 ms for Partition#: 0x2, Size: 48 Bytes
+	[74.417]---Loading Partition#: 0x3, Id: 0xB
+	[114.462] 36.188 ms for Partition#: 0x3, Size: 60592 Bytes
+	[116.786]---Loading Partition#: 0x4, Id: 0xB
+	[120.744] 0.019 ms for Partition#: 0x4, Size: 5968 Bytes
+	[125.619]---Loading Partition#: 0x5, Id: 0xB
+	[129.567] 0.007 ms for Partition#: 0x5, Size: 80 Bytes
+	[134.345]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+	[139.636]---Loading Partition#: 0x6, Id: 0x3
+	[1009.127] 865.547 ms for Partition#: 0x6, Size: 1272512 Bytes
+	[1011.793]---Loading Partition#: 0x7, Id: 0x5
+	[1300.640] 284.819 ms for Partition#: 0x7, Size: 441248 Bytes
+	[1303.260]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+	[1308.400]---Loading Partition#: 0x8, Id: 0x8
+	[1312.854] 0.429 ms for Partition#: 0x8, Size: 1104 Bytes
+	[1317.471]***********Boot PDI Load: Done***********
+	[1321.943]3800.036 ms: ROM Time
+	[1324.709]Total PLM Boot Time
+	Successfully ran Can Interrupt Example
+
 
 b. Normal mode
 Test case to prove normal mode of AXI CAN IP with external loopback(CAN1 and CAN2 are connected to form CAN bus for testing)
