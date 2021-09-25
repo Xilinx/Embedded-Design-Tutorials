@@ -8,7 +8,7 @@
 *
 * @file xcanfd_intr_example.c
 *
-* Contains an example of how to use the XCan driver directly.  The example here
+* Contains an example of how to use the XCan driver directly.  The example here 
 * shows using the driver/device in interrupt mode.
 *
 * @note
