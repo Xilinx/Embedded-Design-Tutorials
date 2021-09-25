@@ -197,10 +197,9 @@ Log:
 	Successfully ran UartPsv Polling Example Test
 
         
-### Known issues
+## Known issues
 If we have more than one UARTLite serial ports in the design please configured the following parameter accordingly in kernel configuration.
-	SERIAL_UARTLITE_NR_UARTS = [X]
-	X --> Number of Uartlite serial ports
+	SERIAL_UARTLITE_NR_UARTS = [X]   here 'X' --> Number of Uartlite serial ports in the design
 
 Copyright 2020 Xilinx Inc.
 
