@@ -155,7 +155,7 @@ int main(void)
 *
 ******************************************************************************/
 int XCanPolledExample(u16 DeviceId)
-{
+{ 
 	int Status;
 
 	/*
