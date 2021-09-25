@@ -112,73 +112,89 @@ Log:
 
 Log:
 
-              0121]****************************************
-        [7.069187]Xilinx Versal Platform Loader and Manager
-        [11.686725]Release 2020.2 Nov 4 2020 - 15:31:40
-        [16.304371]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-        [21.006371]BOOTMODE: 0, MULTIBOOT: 0x0
-        [24.426696]****************************************
-        [28.981884] 24.647850 ms for PrtnNum: 1, Size: 2192 Bytes
-        [34.004462]-------Loading Prtn No: 0x2
-        [37.963734] 0.521859 ms for PrtnNum: 2, Size: 48 Bytes
-        [42.214453]-------Loading Prtn No: 0x3
-        [79.016190] 33.359462 ms for PrtnNum: 3, Size: 57136 Bytes
-        [81.339931]-------Loading Prtn No: 0x4
-        [84.788037] 0.012521 ms for PrtnNum: 4, Size: 2512 Bytes
-        [89.719068]-------Loading Prtn No: 0x5
-        [93.168540] 0.014309 ms for PrtnNum: 5, Size: 3424 Bytes
-        [98.097196]-------Loading Prtn No: 0x6
-        [101.539993] 0.007778 ms for PrtnNum: 6, Size: 80 Bytes
-        [106.440065]+++++++Loading Image No: 0x2, Name: pl_cfi, Id: 0x18700000
-        [112.545893]-------Loading Prtn No: 0x7
-        [636.093303] 520.020565 ms for PrtnNum: 7, Size: 767712 Bytes
-        [638.674965]-------Loading Prtn No: 0x8
-        [737.232784] 95.029318 ms for PrtnNum: 8, Size: 149936 Bytes
-        [739.762328]+++++++Loading Image No: 0x3, Name: fpd, Id: 0x0420C003
-        [745.632537]-------Loading Prtn No: 0x9
-        [749.322215] 0.163725 ms for PrtnNum: 9, Size: 1008 Bytes
-        [754.241087]***********Boot PDI Load: Done*************
-        [759.083046]3773.220896 ms: ROM Time
-        [762.318040]Total PLM Boot Time
-        IIC EEPROM Interrupt Example Test
-        Page size 64
-        Successfully ran IIC EEPROM Interrupt Example Test
+	[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
+	[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
+	[4.180]PLM Initialization Time
+	[4.243]***********Boot PDI Load: Started***********
+	[4.320]Loading PDI from JTAG
+	[4.381]Monolithic/Master Device
+	[4.500]0.146 ms: PDI initialization time
+	[4.574]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+	[4.659]---Loading Partition#: 0x1, Id: 0xC
+	[35.993]****************************************
+	[40.234]Xilinx Versal Platform Loader and Manager
+	[44.645]Release 2021.1   Jul 26 2021  -  04:09:34
+	[48.971]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+	[53.382]BOOTMODE: 0x0, MULTIBOOT: 0x0
+	[56.690]****************************************
+	[60.971] 56.201 ms for Partition#: 0x1, Size: 2512 Bytes
+	[65.851]---Loading Partition#: 0x2, Id: 0xB
+	[70.219] 0.517 ms for Partition#: 0x2, Size: 48 Bytes
+	[74.332]---Loading Partition#: 0x3, Id: 0xB
+	[115.209] 37.025 ms for Partition#: 0x3, Size: 60592 Bytes
+	[117.529]---Loading Partition#: 0x4, Id: 0xB
+	[121.482] 0.019 ms for Partition#: 0x4, Size: 5968 Bytes
+	[126.351]---Loading Partition#: 0x5, Id: 0xB
+	[130.294] 0.007 ms for Partition#: 0x5, Size: 80 Bytes
+	[135.068]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+	[140.352]---Loading Partition#: 0x6, Id: 0x3
+	[1003.971] 859.680 ms for Partition#: 0x6, Size: 1272512 Bytes
+	[1006.632]---Loading Partition#: 0x7, Id: 0x5
+	[1292.924] 282.270 ms for Partition#: 0x7, Size: 441248 Bytes
+	[1295.542]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+	[1300.676]---Loading Partition#: 0x8, Id: 0x8
+	[1305.123] 0.429 ms for Partition#: 0x8, Size: 1104 Bytes
+	[1309.733]***********Boot PDI Load: Done***********
+	[1314.202]3755.594 ms: ROM Time
+	[1316.965]Total PLM Boot Time
+	IIC EEPROM Interrupt Example Test
+	Page size 64
+	Successfully ran IIC EEPROM Interrupt Example Test
+
         
  #### PS-I2C polled mode example
 
 Log:
 
-        423700]****************************************
-        [7.062093]Xilinx Versal Platform Loader and Manager
-        [11.678637]Release 2020.2 Nov 4 2020 - 15:31:40
-        [16.296090]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-        [20.998587]BOOTMODE: 0, MULTIBOOT: 0x0
-        [24.419584]****************************************
-        [28.975918] 24.642096 ms for PrtnNum: 1, Size: 2192 Bytes
-        [33.998778]-------Loading Prtn No: 0x2
-        [37.958487] 0.521653 ms for PrtnNum: 2, Size: 48 Bytes
-        [42.209012]-------Loading Prtn No: 0x3
-        [79.468743] 33.816306 ms for PrtnNum: 3, Size: 57136 Bytes
-        [81.792931]-------Loading Prtn No: 0x4
-        [85.242909] 0.012521 ms for PrtnNum: 4, Size: 2512 Bytes
-        [90.178056]-------Loading Prtn No: 0x5
-        [93.629903] 0.014309 ms for PrtnNum: 5, Size: 3424 Bytes
-        [98.560812]-------Loading Prtn No: 0x6
-        [102.003750] 0.007778 ms for PrtnNum: 6, Size: 80 Bytes
-        [106.904553]+++++++Loading Image No: 0x2, Name: pl_cfi, Id: 0x18700000
-        [113.011981]-------Loading Prtn No: 0x7
-        [633.900000] 517.359431 ms for PrtnNum: 7, Size: 767712 Bytes
-        [636.480625]-------Loading Prtn No: 0x8
-        [736.175746] 96.168334 ms for PrtnNum: 8, Size: 149936 Bytes
-        [738.705150]+++++++Loading Image No: 0x3, Name: fpd, Id: 0x0420C003
-        [744.575471]-------Loading Prtn No: 0x9
-        [748.264493] 0.163596 ms for PrtnNum: 9, Size: 1008 Bytes
-        [753.184971]***********Boot PDI Load: Done*************
-        [758.027659]3718.868496 ms: ROM Time
-        [761.262900]Total PLM Boot Time
-        IIC EEPROM Polled Mode Example Test
-        Page size 64
-        Successfully ran IIC EEPROM Polled Mode Example Test
+	[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
+	[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
+	[4.180]PLM Initialization Time
+	[4.243]***********Boot PDI Load: Started***********
+	[4.320]Loading PDI from JTAG
+	[4.381]Monolithic/Master Device
+	[4.500]0.146 ms: PDI initialization time
+	[4.573]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+	[4.659]---Loading Partition#: 0x1, Id: 0xC
+	[35.989]****************************************
+	[40.230]Xilinx Versal Platform Loader and Manager
+	[44.641]Release 2021.1   Jul 26 2021  -  04:09:34
+	[48.966]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+	[53.376]BOOTMODE: 0x0, MULTIBOOT: 0x0
+	[56.683]****************************************
+	[60.964] 56.194 ms for Partition#: 0x1, Size: 2512 Bytes
+	[65.842]---Loading Partition#: 0x2, Id: 0xB
+	[70.208] 0.517 ms for Partition#: 0x2, Size: 48 Bytes
+	[74.321]---Loading Partition#: 0x3, Id: 0xB
+	[113.580] 35.407 ms for Partition#: 0x3, Size: 60592 Bytes
+	[115.900]---Loading Partition#: 0x4, Id: 0xB
+	[119.852] 0.019 ms for Partition#: 0x4, Size: 5968 Bytes
+	[124.719]---Loading Partition#: 0x5, Id: 0xB
+	[128.660] 0.007 ms for Partition#: 0x5, Size: 80 Bytes
+	[133.432]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+	[138.713]---Loading Partition#: 0x6, Id: 0x3
+	[1004.289] 861.639 ms for Partition#: 0x6, Size: 1272512 Bytes
+	[1006.950]---Loading Partition#: 0x7, Id: 0x5
+	[1294.365] 283.396 ms for Partition#: 0x7, Size: 441248 Bytes
+	[1296.983]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+	[1302.118]---Loading Partition#: 0x8, Id: 0x8
+	[1306.568] 0.429 ms for Partition#: 0x8, Size: 1104 Bytes
+	[1311.178]***********Boot PDI Load: Done***********
+	[1315.646]3801.696 ms: ROM Time
+	[1318.409]Total PLM Boot Time
+	IIC EEPROM Polled Mode Example Test
+	Page size 64
+	Successfully ran IIC EEPROM Polled Mode Example Test
+
 
 ## Known Issues
 In this section, list any known issues with the design, or any warning messages that might appear which can be safely ignored by the customer.
