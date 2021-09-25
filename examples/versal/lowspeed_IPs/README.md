@@ -1,4 +1,4 @@
-# VCK190_LowSpeed IP v2020.2
+# VCK190_LowSpeed IPs v2021.1
 
   This repository contains VCK190 design files for PS and PL based LowSpeed IPs.
 
