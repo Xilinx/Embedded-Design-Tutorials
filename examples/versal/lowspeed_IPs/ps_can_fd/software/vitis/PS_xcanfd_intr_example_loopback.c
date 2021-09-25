@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (C) 2015 - 2020 Xilinx, Inc.  All rights reserved.
+* Copyright (C) 2015 - 2021 Xilinx, Inc.  All rights reserved.
 * SPDX-License-Identifier: MIT
 ******************************************************************************/
 
@@ -8,7 +8,7 @@
 *
 * @file xcanfd_intr_example.c
 *
-* Contains an example of how to use the XCan driver directly.  The example here 
+* Contains an example of how to use the XCan driver directly.  The example here
 * shows using the driver/device in interrupt mode.
 *
 * @note
@@ -73,7 +73,7 @@
  * xparameters.h file. They are defined here such that a user can easily
  * change all the needed parameters in one place.
  */
-#define CANFD_DEVICE_ID		XPAR_PSV_CANFD_0_DEVICE_ID
+#define CANFD_DEVICE_ID		XPAR_VERSAL_CIPS_0_PSPMC_0_PSV_CANFD_0_DEVICE_ID
 
 #ifdef XPAR_INTC_0_DEVICE_ID
  #define INTC_DEVICE_ID		XPAR_INTC_0_DEVICE_ID
@@ -83,7 +83,7 @@
  #ifdef XPAR_CANFD_ISPS
   #define CAN_INTR_VEC_ID	XPAR_XCANPS_0_INTR
  #else
-  #define CAN_INTR_VEC_ID	XPAR_FABRIC_CANFD_0_VEC_ID
+  #define CAN_INTR_VEC_ID	XPAR_XCANPS_0_INTR
  #endif
 #endif /* XPAR_INTC_0_DEVICE_ID */
 
@@ -175,7 +175,6 @@ volatile static int SendDone;
 *
 * This function is the main function of the Can interrupt example.
 *
-* @param	None.
 *
 * @return
 *		- XST_SUCCESS if the example has completed successfully.
@@ -184,14 +183,14 @@ volatile static int SendDone;
 * @note		None.
 *
 *****************************************************************************/
-int main()
+int main(void)
 {
 	/* Run the Can interrupt example */
 	if (XCanFdIntrExample(CANFD_DEVICE_ID)) {
 		xil_printf("XCanFd Interrupt Mode example Failed\n\r");
 		return XST_FAILURE;
 	}
-	xil_printf("Successfully ran PS-XCanFd Interrupt Mode example\n\r");
+	xil_printf("Successfully ran XCanFd Interrupt Mode example\n\r");
 	return XST_SUCCESS;
 }
 
