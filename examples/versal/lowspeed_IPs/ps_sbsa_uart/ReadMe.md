@@ -137,7 +137,7 @@ Log:
 	[1310.175]3761.786 ms: ROM Time
 	[1312.938]Total PLM Boot Time
 	abcdefghABCDEFGH012345677654321ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGH
-	Please enter 4 characters from console //Entered characters will not display
+	Please enter 4 characters from console //Entered characters will not display here
 
 
 	You have entered following 4 characters from console
@@ -151,45 +151,56 @@ Log:
 
 Log:
 
-        .726068]****************************************
-        [7.363112]Xilinx Versal Platform Loader and Manager
-        [11.975159]Release 2020.2 Nov 18 2020 - 14:54:52
-        [16.588706]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-        [21.286606]BOOTMODE: 0, MULTIBOOT: 0x0
-        [24.703803]****************************************
-        [29.256021] 24.913312 ms for PrtnNum: 1, Size: 2368 Bytes
-        [34.275762]-------Loading Prtn No: 0x2
-        [38.233759] 0.521528 ms for PrtnNum: 2, Size: 48 Bytes
-        [42.481803]-------Loading Prtn No: 0x3
-        [79.713521] 33.791493 ms for PrtnNum: 3, Size: 57168 Bytes
-        [82.034971]-------Loading Prtn No: 0x4
-        [85.478731] 0.012528 ms for PrtnNum: 4, Size: 2512 Bytes
-        [90.405265]-------Loading Prtn No: 0x5
-        [93.853153] 0.014315 ms for PrtnNum: 5, Size: 3424 Bytes
-        [98.777487]-------Loading Prtn No: 0x6
-        [102.217231] 0.007784 ms for PrtnNum: 6, Size: 80 Bytes
-        [107.113090]+++++++Loading Image No: 0x2, Name: pl_cfi, Id: 0x18700000
-        [113.214287]-------Loading Prtn No: 0x7
-        [985.594128] 868.855156 ms for PrtnNum: 7, Size: 1320080 Bytes
-        [988.258303]-------Loading Prtn No: 0x8
-        [1253.612418] 261.829831 ms for PrtnNum: 8, Size: 385488 Bytes
-        [1256.308681]+++++++Loading Image No: 0x3, Name: fpd, Id: 0x0420C003
-        [1262.252134]-------Loading Prtn No: 0x9
-        [1266.019268] 0.163903 ms for PrtnNum: 9, Size: 1008 Bytes
-        [1271.014456]***********Boot PDI Load: Done*************
-        [1275.932087]3491.637081 ms: ROM Time
-        [1279.245915]Total PLM Boot Time
-        abcdefghABCDEFGH012345677654321
- 
-        UartPsv Polling Example self test pass
+       
+	[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
+	[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
+	[4.180]PLM Initialization Time
+	[4.243]***********Boot PDI Load: Started***********
+	[4.320]Loading PDI from JTAG
+	[4.381]Monolithic/Master Device
+	[4.500]0.146 ms: PDI initialization time
+	[4.574]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+	[4.659]---Loading Partition#: 0x1, Id: 0xC
+	[35.977]****************************************
+	[40.219]Xilinx Versal Platform Loader and Manager
+	[44.630]Release 2021.1   Jul 26 2021  -  04:09:34
+	[48.956]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+	[53.366]BOOTMODE: 0x0, MULTIBOOT: 0x0
+	[56.673]****************************************
+	[60.954] 56.185 ms for Partition#: 0x1, Size: 2512 Bytes
+	[65.832]---Loading Partition#: 0x2, Id: 0xB
+	[70.198] 0.517 ms for Partition#: 0x2, Size: 48 Bytes
+	[74.312]---Loading Partition#: 0x3, Id: 0xB
+	[114.340] 36.176 ms for Partition#: 0x3, Size: 60592 Bytes
+	[116.660]---Loading Partition#: 0x4, Id: 0xB
+	[120.613] 0.019 ms for Partition#: 0x4, Size: 5968 Bytes
+	[125.481]---Loading Partition#: 0x5, Id: 0xB
+	[129.422] 0.007 ms for Partition#: 0x5, Size: 80 Bytes
+	[134.195]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+	[139.476]---Loading Partition#: 0x6, Id: 0x3
+	[996.884] 853.470 ms for Partition#: 0x6, Size: 1272512 Bytes
+	[999.461]---Loading Partition#: 0x7, Id: 0x5
+	[1285.873] 282.478 ms for Partition#: 0x7, Size: 441248 Bytes
+	[1288.490]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+	[1293.621]---Loading Partition#: 0x8, Id: 0x8
+	[1298.068] 0.429 ms for Partition#: 0x8, Size: 1104 Bytes
+	[1302.675]***********Boot PDI Load: Done***********
+	[1307.139]3765.045 ms: ROM Time
+	[1309.900]Total PLM Boot Time
+	abcdefghABCDEFGH012345677654321ABCDEFGHIJ
+	UartPsv Polling Example self test pass
 
-        Please enter 4 characters from console  // entered characters will not displayed here
-        You have entered the following characters
-        ABCD
-        Successfully ran UartPsv Polling Example Test
+	Please enter 4 characters from console // Entered characters will not display here
+
+	You have entered the following characters
+	1234
+	Successfully ran UartPsv Polling Example Test
+
         
-## Known Issues
-In this section, list any known issues with the design, or any warning messages that might appear which can be safely ignored by the customer.
+### Known issues
+If we have more than one UARTLite serial ports in the design please configured the following parameter accordingly in kernel configuration.
+	SERIAL_UARTLITE_NR_UARTS = [X]
+	X --> Number of Uartlite serial ports
 
 Copyright 2020 Xilinx Inc.
 
