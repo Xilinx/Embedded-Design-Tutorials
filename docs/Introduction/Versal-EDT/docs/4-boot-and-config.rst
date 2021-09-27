@@ -79,6 +79,73 @@ The Vitis software platform does not support automatic boot image creation for V
 
    .. image:: ./media/image51.jpeg
 
+==================================================
+Loading Petalinux images on Versal Board using JTAG
+==================================================
+This section describes how to load Versal Petalinux images using JTAG mode on the Versal board. 
+
+1.	Build the Linux images using the command: `$petalinux-build`
+2.	Build the BOOT.BIN using the command: `$petalinux-package --boot --uboot`
+3.	Create the TCL script using `petalinux` command from the Versal Project directory: `$petalinux-boot --jtag --kernel --tcl versal.tcl`
+4.	Modify the generated *versal.tcl8 file as follows:
+   a.	Rename *ramdisk.cpio.gz* to *rootfs.cpio.gz.u-boot* as EDT uses the `rootfs` image.
+   b.	Add the following lines to load BOOT.BIN to DDR before the *con* command:
+
+  ..code-block:: 
+
+      “puts stderr "INFO: Loading image: /home/smusham/wrk/vck190/edt_versal_emmc/images/linux/BOOT.BIN at 0x70000000"
+      dow -data -force "/home/smusham/wrk/vck190/edt_versal_emmc/images/linux/BOOT.BIN" 0x70000000 after 2000“
+
+5.	Set the boot mode switch SW1 to ON-ON-ON-ON JTAG Boot mode, as shown in the following figure.
+
+   .. image:: ./media/jtag-boot-mode.png
+
+6. Configure the teraterm serial application with default serial settings **115200,n18** and open the teraterm console. 
+
+7.	In the XSCT console, connect to the target over JTAG using the connect command: `xsct% connect`
+
+   The connect command returns the channel ID of the connection.
+
+8.	Run the target command - `xsct% targets` - to list the available targets and to select a target using its ID. 
+The targets are assigned IDs as they are discovered on the JTAG chain, so the IDs can change from session to session.
+
+9.	Download the *versal.tcl* file which will load the BOOT.BIN, rootfs.cpio.gz.uboot, and boot.scr images on the DDR of the VCK190 board using the following commands:
+
+..code-block::
+
+   xsct% targets 1
+   xsct% rst
+   xsct > source versal.tcl
+
+10. After running the preceding commands, you can see the PLM and U-Boot boot logs on the serial console. For example:
+
+..code-block::
+
+
+   U-Boot 2021.01 (Sep 17 2021 - 11:19:26 +0000)
+
+   CPU:   Versal
+   Silicon: v2
+   Model: Xilinx Versal vck190 Eval board revA (EMMC)
+   DRAM:  8 GiB
+   EL Level:	EL2
+   MMC:   sdhci@f1040000: 1, sdhci@f1050000: 0
+   In:    serial@ff000000
+   Out:   serial@ff000000
+   Err:   serial@ff000000
+   Bootmode: JTAG_MODE
+   Net: ZYNQ GEM: ff0c0000, mdio bus ff0c0000, phyaddr 1, interface rgmii-id
+
+   Warning: ethernet@ff0c0000 (eth0) using random MAC address - 5e:47:01:44:d3:57
+   eth0: ethernet@ff0c0000
+   ZYNQ GEM: ff0d0000, mdio bus ff0c0000, phyaddr 2, interface rgmii-id
+
+   Warning: ethernet@ff0d0000 (eth1) using random MAC address - 6a:26:ad:16:af:8b
+   , eth1: ethernet@ff0d0000
+   Hit any key to stop autoboot:  5  4  3  2  0 
+   Versal>
+	
+
 ==============================
 Boot Sequence for SD-Boot Mode
 ==============================
@@ -132,35 +199,25 @@ You need to flash the images to the daughter card, using the following steps:
 
 1. With the card powered off, install the QSPI daughter card.
 
-2. Set the boot mode switch SW1 to ON-OFF-OFF-OFF to SD Boot mode as shown in the following figure.
-     
-   .. image:: ./media/sd_boot_mode.JPG
+2. Power on the board. Refer to section Loading Petalinux images on Veral Board using JTAG on how to load images on DDR over JTAG.
+3. At the U-Boot stage, when the message **Hit any key to stop autoboot:** appears, hit any key, then run the following commands to flash the images on the QSPI daughter
+card:
 
-3. Insert the SD card in the SD card slot on the board, as follows:
-
-   .. image:: ./media/image56.jpeg
-
-4. Power on the board. At the U-Boot stage, when the message **"Hit any key to stop autoboot:"** appears, hit any key, then run the following commands to flash the images on the QSPI daughter card:
 
    .. code-block::
 
-        sf probe 0 0 0
-        sf erase 0x0 0x10000000
-        fatload mmc 0 0x80000 BOOT.BIN
-        sf write 0x80000 0x0 <BOOT.BIN_filesize_in_hex>
-        fatload mmc 0 0x80000 Image
-        sf write 0x80000 0xF00000 <Image_filesize_in_hex>
-        fatload mmc 0 0x80000 rootfs.cpio.gz.u-boot
-        sf write 0x80000 0x2E00000 <rootfs.cpio.gz.u-boot_filesize_in_hex>
-        fatload mmc 0 0x80000 boot.scr
-        sf write 0x80000 0x7F80000  <boot.scr_filesize_in_hex>
+      sf probe 0 0 0
+      sf erase 0x0 0x10000000
+      sf write 0x70000000 0x0 <BOOT.BIN_filesize_in_hex>
+      sf write 0x00200000 0xF00000 <Image_filesize_in_hex>
+      sf write 0x04000000 0x2E00000 <rootfs.cpio.gz.u-boot_filesize_in_hex>
+      sf write 0x20000000 0x7F80000 <boot.scr_filesize_in_hex>
 
-
-5. After flashing the images, turn off the power switch on the board, and change the SW1 boot mode pin settings to QSPI boot mode, that is ON-OFF-ON-ON as follows:
+4. After flashing the images, turn off the power switch on the board, and change the SW1 boot mode pin settings to QSPI boot mode, that is ON-OFF-ON-ON as follows:
 
    .. image:: ./media/image52.png
 
-6. Power cycle the board. The board now boots up using the images in the QSPI flash.
+5. Power cycle the board. The board now boots up using the images in the QSPI flash.
 
 ================================
 Boot Sequence for OSPI Boot Mode
@@ -177,33 +234,23 @@ To flash the images to the daughter card, use the following steps:
 .. note:: The following steps use the SD boot mode initially to load an image to indirectly program the OSPI Flash.
 
 1. With the card powered off, install the OSPI daughter card.
-2. Set the boot mode switch SW1 to ON-OFF-OFF-OFF to SD boot mode as shown in the following figure.
-   
-   .. image:: ./media/sd_boot_mode.JPG
+2. Power on the board. Refer to section Loading Petalinux images on Veral Board using JTAG on  how to load images on DDR over JTAG.
+3. At the U-Boot stage, when the message **Hit any key to stop autoboot:** appears, hit any key, then run the following commands to flash the images on the OSPI daughter card:
 
-3. Insert the SD card in the SD card slot on the board, as follows:
-   
-   .. image:: ./media/image56.jpeg
-
-4. Power on the board. At the U-Boot stage, when the message **"Hit any key to stop autoboot:"** appears, hit any key, then run the following commands to flash the images on the OSPI daughter card:
 
    .. code-block::
 
-        sf probe 0 0 0
-        sf erase 0x0 0x10000000
-        fatload mmc 0 0x80000 BOOT.BIN
-        sf write 0x80000 0x0 <BOOT.BIN_filesize_in_hex>
-        fatload mmc 0 0x80000 Image
-        sf write 0x80000 0xF00000 <Image_filesize_in_hex>
-        fatload mmc 0 0x80000 rootfs.cpio.gz.u-boot
-        sf write 0x80000 0x2E00000 <rootfs.cpio.gz.u-bootfilesize_in_hex>
-        fatload mmc 0 0x80000 boot.scr
-        sf write 0x80000 0x7F80000  <boot.scr_filesize_in_hex>
+       sf probe 0 0 0
+       sf erase 0x0 0x10000000
+       sf write 0x70000000 0x0 <BOOT.BIN_filesize_in_hex>
+       sf write 0x00200000 0xF00000 <Image_filesize_in_hex>
+       sf write 0x70000000 0x2E00000 <rootfs.cpio.gz.u-bootfilesize_in_hex>
+       sf write 0x20000000 0x7F80000 <boot.scr_filesize_in_hex>
 
 
-5. After flashing the images, turn off the power switch on the board.
-6. Change the SW1 boot mode pin settings to OSPI boot mode, that is ON-OFF-OFF-OFF.
-7. Power cycle the board. The board now boots up using the images in the OSPI flash.
+4. After flashing the images, turn off the power switch on the board.
+5. Change the SW1 boot mode pin settings to OSPI boot mode, that is ON-OFF-OFF-OFF.
+6. Power cycle the board. The board now boots up using the images in the OSPI flash.
 
 .. note:: For VMK180 Production board, OSPI images are not provided as part of design package. Only VCK190 OSPI images are shared under design package.
 
@@ -319,58 +366,30 @@ To flash the Linux images to the eMMC Flash, use the following steps:
 
 1. With the card powered off, install the eMMC daughter card.
 
-2. Set the boot mode switch SW1 to ON-ON-ON-ON JTAG Boot mode, as shown in the following figure.
+2. Set the boot mode switch SW1 to ON-OFF-OFF-OFF JTAG Boot mode.
 
-   .. image:: ./media/vck190_jtag_boot_mode_sw1_settings.png
+3. Power on the board. Refer to section Loading Petalinux images on Veral Board using JTAG on  how to load images on DDR over JTAG.
 
-   This example uses the XSCT console to download a BOOT image file (BOOT.BIN). It uses the U-Boot console to load the Linux images to EMMC flash.
+4. At the U-Boot stage, when the message **Hit any key to stop autoboot:** appears, hit any key, then run the following commands to flash the images on the eMMC daughter 
+card:
 
-3. Ensure that the Ethernet cable is connected to the board. Setup dhcp and tftpb server on the host.
-
-4. Copy the Linux images BOOT.BIN, Image, `rootfs.cpio.gz.u-boot`, and `boot.scr` to the host tftp home directory. Also, ensure that the eMMC card is formatted with FAT32 filesystem as explained in the previous section, before copying the images from the U-Boot for the first time.
-
-5. In the XSCT console, connect to the target over JTAG using the connect command:
-
-   .. code-block::
-
-	 xsct% connect
-		
-   The connect command returns the channel ID of the connection.
-   
-6. Run the `targets` command to list the available targets. Select a target using its ID. The targets are assigned IDs as they are discovered on the JTAG chain, so the IDs can change from session to session.
-
-   .. code-block::
-
-		xsct% targets
-
-7. Download the BOOT.BIN on the VCK190 board using the following commands to get the U-Boot console.
-
-   .. code-block::
-   
-		xsct% targets 1
-		xsct% rst
-		xsct% device program BOOT.BIN
-
-   After executing this command, you can see the PLM and U-Boot boot logs on the serial console.
-
-8. At the U-Boot stage, when the message **"Hit any key to stop autoboot:"** appears, hit any key, then run the following commands to flash the images on the eMMC daughter card:
 
    .. code-block::
 	
-        fatls mmc 0  // to check emmc is formatted or not.
-        dhcp
-        tftpb 0x80000 BOOT.BIN
-        fatwrite mmc 0 0x80000 BOOT.BIN $filesize
-        tftpb 0x80000  Image
-        fatwrite mmc 0 0x80000 Image $filesize
-        tftpb 0x80000  rootfs.cpio.gz.u-boot
-        fatwrite mmc 0 0x80000 rootfs.cpio.gz.u-boot $filesize
-        tftpb 0x80000  boot.scr
-        fatwrite mmc 0 0x80000 boot.scr $filesize
+        
+         fatls mmc 0 // to check emmc is formatted or not.
+         fatwrite mmc 0 0x70000000 
+         BOOT.BIN <size in hex>
+         fatwrite mmc 0 0x00200000 
+         Image <size in hex>
+         fatwrite mmc 0 0x04000000 
+         rootfs.cpio.gz.u-boot <size in hex>
+         fatwrite mmc 0 0x20000000 
+         boot.scr <size in hex>
 
-9. After flashing the images, turn off the power switch on the board, and change the SW1 boot mode pin settings to eMMC boot mode, that is OFF-ON-ON-OFF.
+5. After flashing the images, turn off the power switch on the board, and change the SW1 boot mode pin settings to eMMC boot mode, that is OFF-ON-ON-OFF.
 
-10. Power cycle the board. The board now boots up using the images in the eMMC flash.
+6. Power cycle the board. The board now boots up using the images in the eMMC flash.
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
