@@ -1,12 +1,4 @@
 <p align="right"><a href="../docs-cn/README.md">简体中文</a> | <a href="../docs-jp/README.md">日本語</a></p>
-<table width="100%" class="sphinxhide">
-  <tr width="100%">
-    <td align="center"><img src="https://github.com/Xilinx/Image-Collateral/blob/main/xilinx-logo_30percent.png?raw=true"/><h1>Embedded Design Documentation</h1>
-    </td>
- </tr>
- </table>
- 
-<p align="right"><a href="../docs-cn/README.md">简体中文</a> | <a href="../docs-jp/README.md">日本語</a></p>
 <table width="100%">
  <tr width="100%">
     <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Embedded Design Documentation</h1>
