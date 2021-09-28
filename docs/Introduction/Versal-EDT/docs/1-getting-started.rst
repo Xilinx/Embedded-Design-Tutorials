@@ -79,7 +79,7 @@ Prerequisites
 Extracting the PetaLinux Package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-PetaLinux tools installation is straight-forward. Without any options, the PetaLinux tools are installed into the current working directory. Alternatively, an installation path may be specified.
+By default, the PetaLinux tools are installed into the current working directory. Alternatively, you can specify an installation path.
 
 For example, to install PetaLinux tools under `/opt/pkg/petalinux/<petalinux-version>`:
 
