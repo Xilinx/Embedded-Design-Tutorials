@@ -30,7 +30,7 @@ The first step in this design is to configure the PS and PL sections. You can do
 
 .. note:: If the Vivado Design Suite is open already, jump to step 3.
 
-1. Open the Vivado project you created in `Versal ACAP CIPS and NoC (DDR) IP Core Configuration <../docs/2-cips-noc-ip-config.rst>`__.
+1. Open the Vivado project you created in `Versal ACAP CIPS and NoC (DDR) IP Core Configuration <./docs/2-cips-noc-ip-config.rst>`__.
 
    `C:/edt/edt_versal/edt_versal.xpr`
 
@@ -356,25 +356,19 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
   
 4. Right-click the `freertos_hello_world.c` file under `src/` and delete the `freertos_hello_world.c` file. Copy the freertos source code files from the FreeRTOS project path, `<design-package>/ch5_system_design_example_source__files/rpu/` to the `src/` direcrtory.
 
-5. Configure the Vitis IDE to enable the XilPM library under the FreeRTOS Board Support Package. 
-
-   Navigate to `platform.spr` under vck190_platform project, and then select **Modify BSP** settings under Board support package, and enable the XilPM library by pressing <Y> option as shown in the figure.
-
-   .. image:: media/vitis_xilpm_enable.JPG
-
-6. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
+5. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
 
    Navigate to `platform.spr` under vck190_platform project, and then select **Modify BSP** settings under Board support package, and modify stdin and stdout to **axi_uarlite_0** by pressing <Y> option as shown in the figure.
 
    .. image:: media/vitis_uartlite_enable.JPG
 
-7. Click **<OK>** to save the above configuration and exit the configuration wizard.
+6. Click **<OK>** to save the above configuration and exit the configuration wizard.
    
-8. Right-click **freertos_gpio_test_system** and select **Build Project**. Alternatively, you can click |build|.
+7. Right-click **freertos_gpio_test_system** and select **Build Project**. Alternatively, you can click |build|.
 
    For building the Linux images and incorporating the FreeRTOS elf into the image, see `Example Project: Creating Linux Images Using PetaLinux <./5-system-design-example.rst#example-project-creating-linux-images-using-petalinux>`__.
 
-9. On PL AXI UART Serial Console, RPU debug logs will be printed as below:
+8. On PL AXI UART Serial Console, RPU debug logs will be printed as below:
 
    .. code-block::
    
@@ -396,13 +390,12 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 .. important:: 
 
-    This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180). 
+   This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180). 
     
-    - If you are using the VCK190 ES1  board, download the `xilinx-vck190-es1-v2021.1-final.bsp` file from `https://www.xilinx.com/member/vck190_headstart.html <https://www.xilinx.com/member/vck190_headstart.html>`__.
-    - If you are using the VCK190 production  board, download the `xilinx-vck190-v2021.1-final.bsp` file from `https://www.xilinx.com/member/vck190_headstart.html <https://www.xilinx.com/member/vck190_headstart.html`__>.
-    - If you are using the VMK180 ES1 board, download the VMK180 PetaLinux 2021.1 BSP (`xilinx-vmk180-es1-v2021.1-final.bsp`) from `https://www.xilinx.com/member/vmk180_headstart.html <https://www.xilinx.com/member/vmk180_headstart.html>`__.
-    - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2021.1 BSP (`xilinx-vmk180-v2021.1-final.bsp`) from `https://www.xilinx.com/member/vmk180_headstart.html <https://www.xilinx.com/member/vmk180_headstart.html>`__.
-    
+   - If you are using the VCK190 ES1 board, download the `xilinx-vck190-es1-v2021.2-final.bsp` file from `here <https://www.xilinx.com/member/vck190_headstart.html>`__.
+   - If you are using the VCK190 production board, download the `xilinx-vck190-v2021.2-final.bsp` file from `here <https://www.xilinx.com/member/vck190_headstart.html>`__.
+   - If you are using the VMK180 ES1 board, download the VMK180 PetaLinux 2021.12 BSP (`xilinx-vmk180-es1-v2021.2-final.bsp`) from `here <https://www.xilinx.com/member/vmk180_headstart.html>`__.
+   - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2021.2 BSP (`xilinx-vmk180-v2021.2-final.bsp`) from `here <https://www.xilinx.com/member/vmk180_headstart.html>`__.
 
 1. Copy the respective board's PetaLinux BSP to the current directory.
    
@@ -418,7 +411,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
    
         $ petalinux-create -t project -s xilinx-vck190-vxxyy.z-final.bsp -n led_example
 
-    .. note:: For VMK180 board, use `xilinx-vmk180-vxxyy.z-final.bsp` after the `-s` option in the command.
+   .. note:: For VMK180 board, use `xilinx-vmk180-vxxyy.z-final.bsp` after the `-s` option in the command.
 
 4. Change to the PetaLinux project directory using the following command.
 

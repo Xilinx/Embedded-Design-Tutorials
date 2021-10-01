@@ -407,7 +407,7 @@ The following steps demonstrate the procedure to create a bare-metal Hello World
    +------------------+------------------+----------------------------------------+
    |                  | OS               | standalone                             |
    +------------------+------------------+----------------------------------------+
-   |                  | Processor        | versal_cips_0_pspmc_0_psv_cortexr5_0  |
+   |                  | Processor        | versal_cips_0_pspmc_0_psv_cortexr5_0   |
    +------------------+------------------+----------------------------------------+
    |                  | Supported        | C/C++                                  |
    |                  | Runtimes         |                                        |

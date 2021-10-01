@@ -113,7 +113,7 @@ This section describes how to load Versal Petalinux images using JTAG mode on th
          “puts stderr "INFO: Loading image: /home/smusham/wrk/vck190/edt_versal_emmc/images/linux/BOOT.BIN at 0x70000000"
          dow -data -force "/home/smusham/wrk/vck190/edt_versal_emmc/images/linux/BOOT.BIN" 0x70000000 after 2000“
 
-5.	Set the boot mode switch SW1 to ON-ON-ON-ON JTAG boot mode, as shown in the following figure.
+5. Set the boot mode switch SW1 to ON-ON-ON-ON JTAG boot mode, as shown in the following figure.
 
    .. image:: ./media/jtag-boot-mode.png
 
@@ -394,7 +394,7 @@ To flash the Linux images to the eMMC Flash, use the following steps:
 
 2. Set the boot mode switch SW1 to ON-OFF-OFF-OFF JTAG Boot mode.
 
-3. Power on the board. Refer to `Loading Petalinux Images on a Versal Board using JTAG <#loading-petalinux-images-on-versal-board-using-jtag>`__ on how to load images on the DDR memory over JTAG.
+3. Power on the board. Refer to `Loading Petalinux Images on a Versal Board using JTAG <#loading-petalinux-images-on-a-versal-board-using-jtag>`__ on how to load images on the DDR memory over JTAG.
 
 4. At the U-Boot stage, when the message **Hit any key to stop autoboot:** appears, hit any key, then run the following commands to flash the images on the eMMC daughter card:
 
@@ -410,7 +410,7 @@ To flash the Linux images to the eMMC Flash, use the following steps:
          fatwrite mmc 0 0x20000000 
          boot.scr <size in hex>
 
-5. After flashing the images, turn off the power switch on the board, and change the SW1 boot mode pin settings to eMMC boot mode, that is OFF-ON-ON-OFF.
+5. After flashing the images, turn off the power switch on the board, and change the SW1 boot mode pin settings to eMMC boot mode, OFF-ON-ON-OFF.
 
 6. Power cycle the board. The board now boots up using the images in the eMMC flash.
 

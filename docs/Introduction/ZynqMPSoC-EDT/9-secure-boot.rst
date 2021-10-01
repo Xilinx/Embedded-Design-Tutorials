@@ -282,8 +282,8 @@ The following steps describe the process of creating the RSA private/public key 
 7. Verify that the files ``psk0.pem`` and ``ssk0.pem`` are generated at the location specified in the BIF file
    (``c:\edt\secure_boot_sd\keys``).
 
-.. note:: 2020.3 (and previous) Bootgen fails to replace the old authentication key files with new authentication key files generated
-using the ``-generate_keys`` option. It is recommended that you check the existence and permissions of the target key files before generation. Refer to AR `76125 <https://www.xilinx.com/support/answers/76125.html>`__ for details.
+.. note:: 2020.3 (and previous) Bootgen fails to replace the old authentication key files with new authentication key files generated using the ``-generate_keys`` option. It is recommended that you check the existence and permissions of the target key files before generation. Refer to AR `76125 <https://www.xilinx.com/support/answers/76125.html>`__ for details.
+
 
 Generating SHA3 of Public Key in an RSA Private/Public Key Pair
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -643,9 +643,8 @@ The following steps describe the process to update the BIF file from the previou
    
       bootgen -p zcu9eg -arch zynqmp -image key_generation.bif -w -o BOOT.bin``
 
-   .. note:: The above steps can also be executed with PUF in eFUSE mode. In this case, repeat the previous steps using the PUF in eFUSE
-   mode. This requires enabling the programming of eFUSEs during PUF registration by setting the ``XSK_PUF_PROGRAM_EFUSE`` macro in the ``xilskey_puf_registration.h`` file used to build the PUF registration application. The BIF must also be modified to use the encryption key from eFUSE, and the helper data and black key files should be removed. PUF in eFUSE mode is not covered in this tutorial to avoid programming the eFUSEs on development or tutorial systems.
-
+   .. note:: The above steps can also be executed with PUF in eFUSE mode. In this case, repeat the previous steps using the PUF in eFUSE mode. This requires enabling the programming of eFUSEs during PUF registration by setting the ``XSK_PUF_PROGRAM_EFUSE`` macro in the ``xilskey_puf_registration.h`` file used to build the PUF registration application. The BIF must also be modified to use the encryption key from eFUSE, and the helper data and black key files should be removed. PUF in eFUSE mode is not covered in this tutorial to avoid programming the eFUSEs on development or tutorial systems.
+      
    .. code::
 
       [keysrc_encryption]efuse_blk_key

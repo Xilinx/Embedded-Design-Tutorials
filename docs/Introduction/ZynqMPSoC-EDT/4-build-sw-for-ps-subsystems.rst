@@ -252,7 +252,7 @@ One Step Further
 
 Could you create a “Hello World” application for Arm Cortex-R5F and launch it though JTAG?
 
-..tips::
+.. tip::
 
    1. In the platform project, you will need to create a domain for the Arm Cortex-R5 processor.
    2. In the New Project Wizard, remember to select the proper target processor.

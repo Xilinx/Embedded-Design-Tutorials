@@ -283,7 +283,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
    .. code:: shell
    
       $ petalinux-config
-
+   
    The Configuration wizard opens.
 
 4. Select **Subsystem AUTO Hardware Settings**.
@@ -649,13 +649,13 @@ Load boot.bin in the DDR Memory Using XSDB
 
    .. code::
 
-      xsct% dow -data {C:\edt\qspi_boot\qspi_BOOT.bin} 0x2000000
+         xsct% dow -data {C:\edt\qspi_boot\qspi_BOOT.bin} 0x2000000
 
 2. Continue the U-Boot again, using the ``con`` command in XSDB.
 
    .. code::
    
-      xsct% con
+         xsct% con
 
 Loading the boot.bin Image in QSPI Using U-Boot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -852,13 +852,13 @@ Boot Commands for Linux Host Machine
 5. Run the following commands to set up the DFU environment in the U-Boot command line:
 
    .. code-block::
-   $ setenv loadaddr 0x10000000
+      
+         $ setenv loadaddr 0x10000000
          $ setenv kernel_addr 0x10000000
          $ setenv kernel_size 0x1e00000
          $ setenv dfu_ram_info "setenv dfu_alt_info image.ub ram $kernel_addr
          $kernel_size"
       
-
 6. In the U-Boot console, start DFU_RAM to enable downloading Linux images:
 
    .. code::

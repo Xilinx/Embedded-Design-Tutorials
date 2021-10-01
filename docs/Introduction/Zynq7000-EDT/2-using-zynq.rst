@@ -101,7 +101,7 @@ Perform the following steps to create an embedded processor project.
 
 2. Add the Zynq Processing System IP to the block diagram:
 
-   1. Click the **Add IP** button. |Add IP Button|
+   1. Click the **Add IP** button |Add-IP-Button|.
    2. In the search box, type **zynq** to find the Zynq device IP options.
    3. Double-click the **ZYNQ7 Processing System** IP to add it to the block design.
 
@@ -466,7 +466,7 @@ In the `next chapter <./3-debugging-vitis.rst>`__, we will learn how to debug so
 
 
 
-.. |Add IP Button| image:: 331683cbd2d0ba5666881c40ba9b9c7c4290affa.png
+.. |Add-IP-Button| image:: ./media/image8.png
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
