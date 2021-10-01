@@ -18,15 +18,9 @@
 #include "timers.h"
 /* Xilinx includes. */
 #include "xil_printf.h"
-//#include "xpm_nodeid.h"
 #include "xstatus.h"
 #include "xparameters.h"
-//#include "pm_api_sys.h"
 #include "sleep.h"
-//#include "xpm_defs.h"
-//#include "gic_setup.h"
-//#include "ipi.h"
-//#include "pm_init.h"
 
 
 #define DELAY_1_SECOND          1000UL
@@ -37,20 +31,11 @@ static void prvCntTask( void *pvParameters );
 /*-----------------------------------------------------------*/
 
 static TaskHandle_t xCntTask;
-//static XIpiPsu IpiInst;
 
 
 int main( void )
 {
 	int Status = 0;
-
-#if 0
-	Status = PmInit(NULL, &IpiInst);
-		if (XST_SUCCESS != Status) {
-			xil_printf("PmInit() failed with error: %d\r\n", Status);
-	//		goto done;
-	}
-#endif
 
 	xil_printf("Gpio Initialization started\r\n");
 
@@ -94,7 +79,7 @@ static void prvCntTask( void *pvParameters )
 		else
 			cnt_val++;
 
-		/* Delay for 2 second. */
+		/* Delay for 1 second. */
 		vTaskDelay(x1second);
 
 	}
