@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (C) 2002 - 2020 Xilinx, Inc.  All rights reserved.
+* Copyright (C) 2002 - 2021 Xilinx, Inc.  All rights reserved.
 * SPDX-License-Identifier: MIT
 ******************************************************************************/
 
@@ -54,12 +54,8 @@
  * change all the needed parameters in one place.
  */
 #ifndef TESTAPP_GEN
-/*
-#define UARTLITE_DEVICE_ID_1	  XPAR_UARTLITE_2_DEVICE_ID
-#define UARTLITE_DEVICE_ID_2	  XPAR_UARTLITE_3_DEVICE_ID
-*/
-#define UARTLITE_IRPT_INTR_1	  XPAR_FABRIC_AXI_UARTLITE_2_INTERRUPT_INTR
-#define UARTLITE_IRPT_INTR_2	  XPAR_FABRIC_AXI_UARTLITE_1_INTERRUPT_INTR
+#define UARTLITE_DEVICE_ID	  XPAR_UARTLITE_0_DEVICE_ID
+#define UARTLITE_IRPT_INTR	  XPAR_FABRIC_UARTLITE_0_VEC_ID
 
 #ifdef XPAR_INTC_0_DEVICE_ID
 #define INTC_DEVICE_ID		XPAR_INTC_0_DEVICE_ID
@@ -72,7 +68,7 @@
  * The following constant controls the length of the buffers to be sent
  * and received with the UartLite device.
  */
-#define TEST_BUFFER_SIZE		16
+#define TEST_BUFFER_SIZE		100
 
 
 /**************************** Type Definitions *******************************/
@@ -114,8 +110,8 @@ static void UartLiteDisableIntrSystem(INTC *IntrInstancePtr,
  * are initialized to zero each time the program runs.
  */
 #ifndef TESTAPP_GEN
-static INTC IntcInstance_1, IntcInstance_2;	/* The instance of the Interrupt Controller */
-static XUartLite UartLiteInst_1, UartLiteInst_2;  /* The instance of the UartLite Device */
+static INTC IntcInstance;	/* The instance of the Interrupt Controller */
+static XUartLite UartLiteInst;  /* The instance of the UartLite Device */
 #endif
 
 /*
@@ -127,13 +123,12 @@ static XUartLite UartLiteInst_1, UartLiteInst_2;  /* The instance of the UartLit
  * The following buffer is used in this example to send data  with the UartLite.
  */
 u8 SendBuffer[TEST_BUFFER_SIZE];
-u8 RecvBuffer[TEST_BUFFER_SIZE];
+
 /*
  * The following counter is used to determine when the entire buffer has
  * been sent.
  */
 static volatile int TotalSentCount;
-static volatile int TotalRecvCount;
 
 
 /******************************************************************************/
@@ -141,7 +136,6 @@ static volatile int TotalRecvCount;
 *
 * Main function to call the UartLite interrupt example.
 *
-* @param	None.
 *
 * @return	XST_SUCCESS if successful, else XST_FAILURE.
 *
@@ -157,36 +151,10 @@ int main(void)
 	 * Run the UartLite Interrupt example , specify the Device ID that is
 	 * generated in xparameters.h.
 	 */
-	Status = UartLiteIntrExample(&IntcInstance_1,
-				 &UartLiteInst_1,
-				 2,
-				 UARTLITE_IRPT_INTR_1);
-	Status = UartLiteIntrExample(&IntcInstance_2,
-				 &UartLiteInst_2,
-				 3,
-				 UARTLITE_IRPT_INTR_2);
-
-	for (int Index = 0; Index < TEST_BUFFER_SIZE; Index++) {
-			SendBuffer[Index] = Index;
-		}
-//	XUartLite_Recv(&UartLiteInst_2, RecvBuffer, TEST_BUFFER_SIZE);
-
-
-	TotalSentCount = XUartLite_Send(&UartLiteInst_1, SendBuffer, TEST_BUFFER_SIZE);
-
-	sleep(1);
-	TotalRecvCount = XUartLite_Recv(&UartLiteInst_2, RecvBuffer, TEST_BUFFER_SIZE);
-	while ((TotalSentCount != TotalRecvCount)) {
-	}
-
-	for (int Index = 0; Index < TEST_BUFFER_SIZE; Index++) {
-		if(SendBuffer[Index] != RecvBuffer[Index])
-		{
-			Status = XST_FAILURE;
-			break;
-		}
-	}
-
+	Status = UartLiteIntrExample(&IntcInstance,
+				 &UartLiteInst,
+				 UARTLITE_DEVICE_ID,
+				 UARTLITE_IRPT_INTR);
 	if (Status != XST_SUCCESS) {
 		xil_printf("Uartlite interrupt tapp Example Failed\r\n");
 		return XST_FAILURE;
@@ -280,26 +248,26 @@ int UartLiteIntrExample(INTC *IntcInstancePtr,
 	 */
 	XUartLite_EnableInterrupt(UartLiteInstPtr);
 
-/*
+	/*
 	 * Initialize the send buffer bytes with a pattern to send.
-
+	 */
 	for (Index = 0; Index < TEST_BUFFER_SIZE; Index++) {
 		SendBuffer[Index] = Index;
 	}
 
-
+	/*
 	 * Send the buffer using the UartLite.
-
+	 */
 	XUartLite_Send(UartLiteInstPtr, SendBuffer, TEST_BUFFER_SIZE);
 
-
+	/*
 	 * Wait for the entire buffer to be transmitted,  the function may get
 	 * locked up in this loop if the interrupts are not working correctly.
-
+	 */
 	while ((TotalSentCount != TEST_BUFFER_SIZE)) {
 	}
 
-	UartLiteDisableIntrSystem(IntcInstancePtr, UartLiteIntrId);*/
+	UartLiteDisableIntrSystem(IntcInstancePtr, UartLiteIntrId);
 
 	return XST_SUCCESS;
 }

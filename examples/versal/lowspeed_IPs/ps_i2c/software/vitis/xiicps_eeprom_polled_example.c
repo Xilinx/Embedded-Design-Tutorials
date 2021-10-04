@@ -660,7 +660,7 @@ static s32 IicPsSlaveMonitor(u16 Address, u16 DeviceId)
 			XIicPs_WriteReg(IicPtr->Config.BaseAddress,
 					(u32)XIICPS_ISR_OFFSET, IntrStatusReg);
 			return XST_SUCCESS;
-		}
+		} 
 	}
 	XIicPs_DisableSlaveMonitor(&IicInstance);
 	return XST_FAILURE;

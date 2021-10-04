@@ -73,7 +73,7 @@
  * xparameters.h file. They are defined here such that a user can easily
  * change all the needed parameters in one place.
  */
-#define CANFD_DEVICE_ID		XPAR_PSV_CANFD_0_DEVICE_ID
+//#define CANFD_DEVICE_ID		XPAR_PSV_CANFD_0_DEVICE_ID
 
 #ifdef XPAR_INTC_0_DEVICE_ID
  #define INTC_DEVICE_ID		XPAR_INTC_0_DEVICE_ID
@@ -187,11 +187,11 @@ volatile static int SendDone;
 int main()
 {
 	/* Run the Can interrupt example */
-	if (XCanFdIntrExample(CANFD_DEVICE_ID)) {
+	if (XCanFdIntrExample(0)) {
 		xil_printf("XCanFd Interrupt Mode example Failed\n\r");
 		return XST_FAILURE;
 	}
-	xil_printf("Successfully ran AXI-XCanFd Interrupt Mode example with external loopback\n\r");
+	xil_printf("Successfully ran PS-XCanFd Interrupt Mode example with external loopback\n\r");
 	return XST_SUCCESS;
 }
 
@@ -219,13 +219,13 @@ static int XCanFdIntrExample(u16 DeviceId)
 	XCanFd_Config *ConfigPtr_1, *ConfigPtr_2;
 
 	/* Initialize the XCan driver */
-	ConfigPtr_1 = XCanFd_LookupConfig(2); // AXI CANFD1 configuration
+	ConfigPtr_1 = XCanFd_LookupConfig(1); // AXI CANFD1 configuration
 	if (CanFdInstPtr_1 == NULL) {
 		return XST_FAILURE;
 	}
 
 	/* Initialize the XCan driver */
-	ConfigPtr_2 = XCanFd_LookupConfig(3); // AXI CANFD1 configuration
+	ConfigPtr_2 = XCanFd_LookupConfig(2); // AXI CANFD2 configuration
 	if (CanFdInstPtr_2 == NULL) {
 		return XST_FAILURE;
 	}
@@ -281,11 +281,11 @@ static int XCanFdIntrExample(u16 DeviceId)
 	LoopbackError = FALSE;
 
 	/* Connect to the interrupt controller */
-	Status = SetupInterruptSystem(CanFdInstPtr_1, XPAR_FABRIC_CANFD_2_VEC_ID);
+	Status = SetupInterruptSystem(CanFdInstPtr_1, XPAR_FABRIC_CANFD_1_VEC_ID);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
-	Status = SetupInterruptSystem(CanFdInstPtr_2, XPAR_FABRIC_CANFD_3_VEC_ID);
+	Status = SetupInterruptSystem(CanFdInstPtr_2, XPAR_FABRIC_CANFD_2_VEC_ID);
 		if (Status != XST_SUCCESS) {
 			return XST_FAILURE;
 		}

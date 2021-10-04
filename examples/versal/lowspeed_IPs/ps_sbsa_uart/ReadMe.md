@@ -63,38 +63,37 @@ Here you will place example validation that you've done that the customer can re
 
 Log:
 
-        /*Please check available UARTs in the design using dmesg | grep tty*/
+        /*Please check available UARTs in the design using dmesg | grep tty*/      
+       
+	root@xilinx-vck190-2021_2:~# dmesg | grep tty
+	[    0.000000] Kernel command line: console=ttyAMA0  earlycon=pl011,mmio32,0xFF000000,115200n8 clk_ignore_unused init_fatal_sh=1
+	[    2.588986] a4080000.serial: ttyUL1 at MMIO 0xa4080000 (irq = 41, base_baud = 0) is a uartlite
+	[    2.597851] a4090000.serial: ttyUL2 at MMIO 0xa4090000 (irq = 42, base_baud = 0) is a uartlite
+	[    2.606699] a40a0000.serial: ttyUL3 at MMIO 0xa40a0000 (irq = 43, base_baud = 0) is a uartlite
+	[    3.043735] ff000000.serial: ttyAMA0 at MMIO 0xff000000 (irq = 31, base_baud = 0) is a SBSA
+	[    3.052175] printk: console [ttyAMA0] enabled
+	[    3.070376] ff010000.serial: ttyAMA1 at MMIO 0xff010000 (irq = 32, base_baud = 0) is a SBSA
+	
+	/*PS-SBSA Uart and AXI-uart lite are looped back in the design to prove the communication b/w different controllers*/
+	root@xilinx-vck190-2021_2:~# cat /dev/ttyUL1 &
+	[1] 855
+	root@xilinx-vck190-2021_2:~# echo Hello_world > /dev/ttyAMA4
+	root@xilinx-vck190-2021_2:~# kill 855
+	root@xilinx-vck190-2021_2:~# cat /dev/ttyAMA4 &
+	[2] 856
+	[1]   Terminated              cat /dev/ttyUL1
+	Hello_world
+	root@xilinx-vck190-2021_2:~# echo Hello_world > /dev/ttyUL1
+	[2]+  Done                    cat /dev/ttyAMA4
+	root@xilinx-vck190-2021_2:~# kill 856
+	-sh: kill: (856) - No such process
+	
+	/*Self testing of console PS-SBSA UART0*/
+	root@xilinx-vck190-2021_2:~# echo Hello_world > /dev/ttyAMA0
+	Hello_world
+	root@xilinx-vck190-2021_2:~#
 
-        vck_190_lowspeed_all login: root
-        Password:
-        root@vck_190_lowspeed_all:~# dmesg | grep tty
-        [ 0.000000] Kernel command line: console=ttyAMA0 earlycon=pl011,mmio32,0xFF000000,9600n8 clk_ignore_unused root=/dev/ram0 rw
-        [ 2.929867] a4070000.serial: ttyUL1 at MMIO 0xa4070000 (irq = 34, base_baud = 0) is a uartlite
-        [ 2.938718] a4080000.serial: ttyUL2 at MMIO 0xa4080000 (irq = 35, base_baud = 0) is a uartlite
-        [ 2.947563] a4090000.serial: ttyUL3 at MMIO 0xa4090000 (irq = 36, base_baud = 0) is a uartlite
-        [ 3.393395] ff000000.serial: ttyAMA0 at MMIO 0xff000000 (irq = 24, base_baud = 0) is a SBSA
-        [ 3.401826] printk: console [ttyAMA0] enabled
-        [ 3.419905] ff010000.serial: ttyAMA4 at MMIO 0xff010000 (irq = 25, base_baud = 0) is a SBSA
-        /*PS-SBSA Uart and AXI-uart lite are looped back in the design to prove the communication b/w different controllers*/
-
-        root@vck_190_lowspeed_all:~# cat /dev/ttyUL1 &
-        [1] 911
-        root@vck_190_lowspeed_all:~# echo Hello_world > /dev/ttyAMA4
-        Hello_world
-
-        root@vck_190_lowspeed_all:~# kill 911
-        root@vck_190_lowspeed_all:~# cat /dev/ttyAMA4 &
-        [2] 920
-        [1] Terminated cat /dev/ttyUL1
-        root@vck_190_lowspeed_all:~# echo Hello_world > /dev/ttyUL1
-        Hello_world
-
-        root@vck_190_lowspeed_all:~# kill 920
-        /*Self testing of console PS-SBSA UART0*/
-
-        root@vck_190_lowspeed_all:~# echo Hello_world > /dev/ttyAMA0
-        Hello_world
-        root@vck_190_lowspeed_all:~#
+ 
 
 ### Vitis:
 
@@ -102,87 +101,105 @@ Log:
 
 Log:
 
-        [6.521553]****************************************
-        [8.156987]Xilinx Versal Platform Loader and Manager
-        [12.765537]Release 2020.2 Nov 18 2020 - 14:54:52
-        [17.375037]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-        [22.070206]BOOTMODE: 0, MULTIBOOT: 0x0
-        [25.484662]****************************************
-        [30.032171] 25.688412 ms for PrtnNum: 1, Size: 2368 Bytes
-        [35.046365]-------Loading Prtn No: 0x2
-        [38.998809] 0.520703 ms for PrtnNum: 2, Size: 48 Bytes
-        [43.240281]-------Loading Prtn No: 0x3
-        [81.260568] 34.584671 ms for PrtnNum: 3, Size: 57168 Bytes
-        [83.579318]-------Loading Prtn No: 0x4
-        [87.019731] 0.012528 ms for PrtnNum: 4, Size: 2512 Bytes
-        [91.940490]-------Loading Prtn No: 0x5
-        [95.382971] 0.014315 ms for PrtnNum: 5, Size: 3424 Bytes
-        [100.302100]-------Loading Prtn No: 0x6
-        [103.823696] 0.007784 ms for PrtnNum: 6, Size: 80 Bytes
-        [108.712696]+++++++Loading Image No: 0x2, Name: pl_cfi, Id: 0x18700000
-        [114.804487]-------Loading Prtn No: 0x7
-        [988.681403] 870.358103 ms for PrtnNum: 7, Size: 1320080 Bytes
-        [991.344587]-------Loading Prtn No: 0x8
-        [1292.963709] 298.094487 ms for PrtnNum: 8, Size: 385488 Bytes
-        [1295.661446]+++++++Loading Image No: 0x3, Name: fpd, Id: 0x0420C003
-        [1301.610412]-------Loading Prtn No: 0x9
-        [1305.647225] 0.431234 ms for PrtnNum: 9, Size: 1008 Bytes
-        [1310.376468]***********Boot PDI Load: Done*************
-        [1315.295812]3518.971143 ms: ROM Time
-        [1318.610971]Total PLM Boot Time
-        abcdefghABCDEFGH012345677654321
-        UartPsv Interrupt Example self test pass
- 
-        Please enter 4 characters from console   // entered characters will not displayed here
+	[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
+	[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
+	[4.180]PLM Initialization Time
+	[4.243]***********Boot PDI Load: Started***********
+	[4.321]Loading PDI from JTAG
+	[4.382]Monolithic/Master Device
+	[4.499]0.146 ms: PDI initialization time
+	[4.573]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+	[4.659]---Loading Partition#: 0x1, Id: 0xC
+	[35.992]****************************************
+	[40.235]Xilinx Versal Platform Loader and Manager
+	[44.646]Release 2021.1   Jul 26 2021  -  04:09:34
+	[48.974]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+	[53.385]BOOTMODE: 0x0, MULTIBOOT: 0x0
+	[56.693]****************************************
+	[60.975] 56.206 ms for Partition#: 0x1, Size: 2512 Bytes
+	[65.855]---Loading Partition#: 0x2, Id: 0xB
+	[70.223] 0.517 ms for Partition#: 0x2, Size: 48 Bytes
+	[74.337]---Loading Partition#: 0x3, Id: 0xB
+	[114.779] 36.589 ms for Partition#: 0x3, Size: 60592 Bytes
+	[117.098]---Loading Partition#: 0x4, Id: 0xB
+	[121.049] 0.019 ms for Partition#: 0x4, Size: 5968 Bytes
+	[125.917]---Loading Partition#: 0x5, Id: 0xB
+	[129.858] 0.007 ms for Partition#: 0x5, Size: 80 Bytes
+	[134.628]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+	[139.908]---Loading Partition#: 0x6, Id: 0x3
+	[997.650] 853.804 ms for Partition#: 0x6, Size: 1272512 Bytes
+	[1000.229]---Loading Partition#: 0x7, Id: 0x5
+	[1288.889] 284.639 ms for Partition#: 0x7, Size: 441248 Bytes
+	[1291.507]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+	[1296.643]---Loading Partition#: 0x8, Id: 0x8
+	[1301.093] 0.429 ms for Partition#: 0x8, Size: 1104 Bytes
+	[1305.705]***********Boot PDI Load: Done***********
+	[1310.175]3761.786 ms: ROM Time
+	[1312.938]Total PLM Boot Time
+	abcdefghABCDEFGH012345677654321ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGH
+	Please enter 4 characters from console //Entered characters will not display here
 
-        You have entered following 4 characters from console
-        abcd
-        Successfully ran UartPsv Interrupt Example Test
+
+	You have entered following 4 characters from console
+
+	1234
+	Successfully ran UartPsv Interrupt Example Test
+
 
 
 #### PS-SBSA UART example in polled mode 
 
 Log:
 
-        .726068]****************************************
-        [7.363112]Xilinx Versal Platform Loader and Manager
-        [11.975159]Release 2020.2 Nov 18 2020 - 14:54:52
-        [16.588706]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-        [21.286606]BOOTMODE: 0, MULTIBOOT: 0x0
-        [24.703803]****************************************
-        [29.256021] 24.913312 ms for PrtnNum: 1, Size: 2368 Bytes
-        [34.275762]-------Loading Prtn No: 0x2
-        [38.233759] 0.521528 ms for PrtnNum: 2, Size: 48 Bytes
-        [42.481803]-------Loading Prtn No: 0x3
-        [79.713521] 33.791493 ms for PrtnNum: 3, Size: 57168 Bytes
-        [82.034971]-------Loading Prtn No: 0x4
-        [85.478731] 0.012528 ms for PrtnNum: 4, Size: 2512 Bytes
-        [90.405265]-------Loading Prtn No: 0x5
-        [93.853153] 0.014315 ms for PrtnNum: 5, Size: 3424 Bytes
-        [98.777487]-------Loading Prtn No: 0x6
-        [102.217231] 0.007784 ms for PrtnNum: 6, Size: 80 Bytes
-        [107.113090]+++++++Loading Image No: 0x2, Name: pl_cfi, Id: 0x18700000
-        [113.214287]-------Loading Prtn No: 0x7
-        [985.594128] 868.855156 ms for PrtnNum: 7, Size: 1320080 Bytes
-        [988.258303]-------Loading Prtn No: 0x8
-        [1253.612418] 261.829831 ms for PrtnNum: 8, Size: 385488 Bytes
-        [1256.308681]+++++++Loading Image No: 0x3, Name: fpd, Id: 0x0420C003
-        [1262.252134]-------Loading Prtn No: 0x9
-        [1266.019268] 0.163903 ms for PrtnNum: 9, Size: 1008 Bytes
-        [1271.014456]***********Boot PDI Load: Done*************
-        [1275.932087]3491.637081 ms: ROM Time
-        [1279.245915]Total PLM Boot Time
-        abcdefghABCDEFGH012345677654321
- 
-        UartPsv Polling Example self test pass
+       
+	[0.010]PMC_GLOBAL_PMC_ERR1_STATUS: 0x0F000000
+	[0.081]PMC_GLOBAL_PMC_ERR2_STATUS: 0x01800000
+	[4.180]PLM Initialization Time
+	[4.243]***********Boot PDI Load: Started***********
+	[4.320]Loading PDI from JTAG
+	[4.381]Monolithic/Master Device
+	[4.500]0.146 ms: PDI initialization time
+	[4.574]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+	[4.659]---Loading Partition#: 0x1, Id: 0xC
+	[35.977]****************************************
+	[40.219]Xilinx Versal Platform Loader and Manager
+	[44.630]Release 2021.1   Jul 26 2021  -  04:09:34
+	[48.956]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+	[53.366]BOOTMODE: 0x0, MULTIBOOT: 0x0
+	[56.673]****************************************
+	[60.954] 56.185 ms for Partition#: 0x1, Size: 2512 Bytes
+	[65.832]---Loading Partition#: 0x2, Id: 0xB
+	[70.198] 0.517 ms for Partition#: 0x2, Size: 48 Bytes
+	[74.312]---Loading Partition#: 0x3, Id: 0xB
+	[114.340] 36.176 ms for Partition#: 0x3, Size: 60592 Bytes
+	[116.660]---Loading Partition#: 0x4, Id: 0xB
+	[120.613] 0.019 ms for Partition#: 0x4, Size: 5968 Bytes
+	[125.481]---Loading Partition#: 0x5, Id: 0xB
+	[129.422] 0.007 ms for Partition#: 0x5, Size: 80 Bytes
+	[134.195]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+	[139.476]---Loading Partition#: 0x6, Id: 0x3
+	[996.884] 853.470 ms for Partition#: 0x6, Size: 1272512 Bytes
+	[999.461]---Loading Partition#: 0x7, Id: 0x5
+	[1285.873] 282.478 ms for Partition#: 0x7, Size: 441248 Bytes
+	[1288.490]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+	[1293.621]---Loading Partition#: 0x8, Id: 0x8
+	[1298.068] 0.429 ms for Partition#: 0x8, Size: 1104 Bytes
+	[1302.675]***********Boot PDI Load: Done***********
+	[1307.139]3765.045 ms: ROM Time
+	[1309.900]Total PLM Boot Time
+	abcdefghABCDEFGH012345677654321ABCDEFGHIJ
+	UartPsv Polling Example self test pass
 
-        Please enter 4 characters from console  // entered characters will not displayed here
-        You have entered the following characters
-        ABCD
-        Successfully ran UartPsv Polling Example Test
+	Please enter 4 characters from console // Entered characters will not display here
+
+	You have entered the following characters
+	1234
+	Successfully ran UartPsv Polling Example Test
+
         
-## Known Issues
-In this section, list any known issues with the design, or any warning messages that might appear which can be safely ignored by the customer.
+## Known issues
+If we have more than one UARTLite serial ports in the design please configured the following parameter accordingly in kernel configuration.
+	SERIAL_UARTLITE_NR_UARTS = [X]   here 'X' --> Number of Uartlite serial ports in the design
 
 Copyright 2020 Xilinx Inc.
 

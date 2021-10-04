@@ -1,4 +1,4 @@
-# VCK190_LowSpeed IP v2020.2
+# VCK190_LowSpeed IPs v2021.1
 
   This repository contains VCK190 design files for PS and PL based LowSpeed IPs.
 
@@ -48,7 +48,9 @@ Each design's README.md will provide:
    -**Validation** - Setup and results of validation tests run against the design
 
    -**Known Issues** - Current known issues with the design and/or workarounds for these issues.
-   
+# Note:
+
+Some of the examples are customized as per the test case from bare-metal examples available in the VITIS.
    
 # Troubleshooting / Assistance
    If you find you are having difficulty bringing up one of the designs, or need some additional assistance, please reach out on the [Xilinx Community Forums](https://forums.xilinx.com/).

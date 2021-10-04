@@ -133,7 +133,7 @@
  #define INTC_HANDLER	XIntc_InterruptHandler
 #else
  #define INTC_DEVICE_ID		XPAR_SCUGIC_SINGLE_DEVICE_ID
- #define IIC_INTR_ID		XPAR_FABRIC_IIC_0_VEC_ID
+ #define IIC_INTR_ID		XPAR_FABRIC_AXI_IIC_0_IIC2INTC_IRPT_INTR
  #define INTC			 	XScuGic
  #define INTC_HANDLER		XScuGic_InterruptHandler
 #endif

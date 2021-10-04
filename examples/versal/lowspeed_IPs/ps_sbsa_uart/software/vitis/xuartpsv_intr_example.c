@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (C) 2017 - 2020 Xilinx, Inc.  All rights reserved.
+* Copyright (C) 2017 - 2021 Xilinx, Inc.  All rights reserved.
 * SPDX-License-Identifier: MIT
 ******************************************************************************/
 
@@ -62,7 +62,7 @@
  * The following constant controls the length of the buffers to be sent
  * and received with the UART,
  */
-#define TEST_BUFFER_SIZE	4
+#define TEST_BUFFER_SIZE	60
 
 
 /**************************** Type Definitions ******************************/
@@ -106,7 +106,6 @@ int TotalErrorCount;
 *
 * Main function to call the Uart interrupt example.
 *
-* @param	None
 *
 * @return	XST_SUCCESS if successful, XST_FAILURE if unsuccessful
 *
@@ -123,7 +122,7 @@ int main(void)
 	Status = UartPsvIntrExample(&InterruptController, &UartPsv,
 				UARTPSV_DEVICE_ID, UARTPSV_INT_IRQ_ID);
 	if (Status != XST_SUCCESS) {
-		xil_printf("\nUartPsv Interrupt Example Test Failed\r\n");
+		xil_printf("UartPsv Interrupt Example Test Failed\r\n");
 		return XST_FAILURE;
 	}
 
@@ -183,13 +182,12 @@ int UartPsvIntrExample(INTC *IntcInstPtr, XUartPsv *UartInstPtr,
 		return XST_FAILURE;
 	}
 
-
 	/* Check hardware build */
 	Status = XUartPsv_SelfTest(UartInstPtr);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
-	xil_printf("\nUartPsv Interrupt Example self test pass\r\n");
+
 	/*
 	 * Connect the UART to the interrupt subsystem such that interrupts
 	 * can occur. This function is application specific.
@@ -213,9 +211,9 @@ int UartPsvIntrExample(INTC *IntcInstPtr, XUartPsv *UartInstPtr,
 	 * interrupt and results in an over run at the Rx end.
 	 */
 
-	XUartPsv_SetRxFifoThreshold(UartInstPtr, XUARTPSV_UARTIFLS_RXIFLSEL_1_8);
+	XUartPsv_SetRxFifoThreshold(UartInstPtr, XUARTPSV_UARTIFLS_RXIFLSEL_1_4);
 
-	XUartPsv_SetTxFifoThreshold(UartInstPtr, XUARTPSV_UARTIFLS_TXIFLSEL_1_8);
+	XUartPsv_SetTxFifoThreshold(UartInstPtr, XUARTPSV_UARTIFLS_TXIFLSEL_1_2);
 	/*
 	 * Enable the interrupt of the UART so interrupts will occur, setup
 	 * a local loop back so data that is sent will be received.
@@ -228,6 +226,49 @@ int UartPsvIntrExample(INTC *IntcInstPtr, XUartPsv *UartInstPtr,
 
 	XUartPsv_SetInterruptMask(UartInstPtr, IntrMask);
 
+	XUartPsv_SetOperMode(UartInstPtr, XUARTPSV_OPER_MODE_LOCAL_LOOP);
+
+	/*
+	 * Initialize the send buffer bytes with a pattern and the
+	 * the receive buffer bytes to zero to allow the receive data to be
+	 * verified
+	 */
+	for (Index = 0; Index < TEST_BUFFER_SIZE; Index++) {
+
+		SendBuffer[Index] = (Index % 26) + 'A';
+
+		RecvBuffer[Index] = 0;
+	}
+
+	/*
+	 * Start receiving data before sending it since there is a loopback,
+	 * ignoring the number of bytes received as the return value since we
+	 * know it will be zero
+	 */
+	XUartPsv_Recv(UartInstPtr, RecvBuffer, TEST_BUFFER_SIZE);
+
+	/*
+	 * Send the buffer using the UART and ignore the number of bytes sent
+	 * as the return value since we are using it in interrupt mode.
+	 */
+	XUartPsv_Send(UartInstPtr, SendBuffer, TEST_BUFFER_SIZE);
+
+	/* Wait until all the data is received or any error occurs.
+	 * This can hang if interrupts are not working properly in the
+	 * background
+	 */
+	while ((TotalErrorCount == 0) && ((TotalSentCount != TEST_BUFFER_SIZE)
+			|| (TotalReceivedCount != TEST_BUFFER_SIZE)));
+
+
+	/* Verify the entire receive buffer was successfully received */
+	for (Index = 0; Index < TEST_BUFFER_SIZE; Index++) {
+		if (RecvBuffer[Index] != SendBuffer[Index]) {
+			BadByteCount++;
+		}
+	}
+
+	/* Set the UART in Normal Mode */
 	XUartPsv_SetOperMode(UartInstPtr, XUARTPSV_OPER_MODE_NORMAL);
 
 	/*
@@ -247,7 +288,7 @@ int UartPsvIntrExample(INTC *IntcInstPtr, XUartPsv *UartInstPtr,
 	 * ignoring the number of bytes received as the return value since we
 	 * know it will be zero
 	 */
-	TotalReceivedCount = XUartPsv_Recv(UartInstPtr, RecvBuffer, TEST_BUFFER_SIZE);
+	TotalReceivedCount = XUartPsv_Recv(UartInstPtr, RecvBuffer, 4);
 
 	/*
 	 * Send the buffer using the UART and ignore the number of bytes sent
@@ -259,10 +300,11 @@ int UartPsvIntrExample(INTC *IntcInstPtr, XUartPsv *UartInstPtr,
 	 * This can hang if interrupts are not working properly in the
 	 * background
 	 */
-	while ((TotalErrorCount == 0) && (TotalReceivedCount != TEST_BUFFER_SIZE));
+	while ((TotalErrorCount == 0) && (TotalReceivedCount != 4));
 
-	xil_printf("\nYou have entered following 4 characters from console\r\n");
-	XUartPsv_Send(UartInstPtr, RecvBuffer, TEST_BUFFER_SIZE);
+	xil_printf("\n\nYou have entered following 4 characters from console\r\n\n");
+	XUartPsv_Send(UartInstPtr, RecvBuffer, 4);
+
 
 	/* If any bytes were not correct, return an error */
 	if (BadByteCount != 0) {
