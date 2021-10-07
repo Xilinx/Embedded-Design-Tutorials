@@ -1,25 +1,18 @@
 ..
    Copyright 2000-2021 Xilinx, Inc.
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
        http://www.apache.org/licenses/LICENSE-2.0
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-
+   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 
 ****************************************************
 Versal ACAP CIPS and NoC (DDR) IP Core Configuration
 ****************************************************
 
-The Versal |trade| ACAP CIPS IP core allows you to configure the processing system and the PMC block including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.
+The Versal |trade| ACAP CIPS IP core allows you to configure the processing system and the PMC block, including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.
 
 This chapter describes how to perform the following tasks:
 
@@ -27,7 +20,7 @@ This chapter describes how to perform the following tasks:
 - Creating and running a Hello World software application on the On-chip-memory (OCM) of Arm |reg| Cortex |trade|-A72.
 - Creating and running a Hello World software application on the Tightly-coupled-memory (TCM) of Arm Cortex-R5F.
   
-The NoC IP core helps configure the DDR memory and data path across the DDR memory and processing engines in the system (Scalar Engines, Adaptable Engines, and AI Engines).
+The NoC IP core configures the DDR memory and data path across the DDR memory and processing engines in the system (Scalar Engines, Adaptable Engines, and AI Engines).
 
 - Creating and running a Hello World software application on Arm Cortex-A72 using DDR as memory.
 - Creating and running a Hello World software application on Arm Cortex-R5F using DDR as memory.
@@ -36,13 +29,13 @@ The NoC IP core helps configure the DDR memory and data path across the DDR memo
 Prerequisites
 =============
 
-To create and run the Hello World applications discussed in this chapter, you will need to install the Vitis |trade| unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug1400-vitis-embedded.pdf>`__).
+To create and run Hello World applications discussed in this chapter, install the Vitis |trade| unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug1400-vitis-embedded.pdf>`__).
 
 ==========================
 CIPS IP Core Configuration
 ==========================
 
-Creating a Versal ACAP system design involves configuring the CIPS IP core to select the appropriate boot devices and peripherals. To start with, if the CIPS IP core peripherals and available multiplexed I/O (MIO) connections meet the requirements, no PL component is required. This chapter guides you through creating a simple CIPS IP core based design.
+Creating a Versal ACAP system design involves configuring the CIPS IP core to select the appropriate boot devices and peripherals. To start with, if the CIPS IP core peripherals and available multiplexed I/O (MIO) connections meet the requirements, no PL component is required. This chapter guides you through creating a simple CIPS IP core-based design.
 
 Creating a New Embedded Project with the Versal ACAP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -110,7 +103,7 @@ Starting Your Design
 
 5. Click **Finish**. The New Project wizard closes and the project you just created opens in the Vivado design tool.
 
-   .. note:: Check the version number while choosing a board. For ES1 silicon, the board version is 1.3 and for production silicon, the board version is 2.2. Select the version based on the silicon on the board.
+   .. note:: Check the version number while choosing a board. For ES1 silicon, the board version is 1.3. For production silicon, the board version is 2.2. Select the version based on the silicon on the board.
 
 Creating an Embedded Processor Project
 --------------------------------------
@@ -221,7 +214,7 @@ To validate the design and to generate the output products, follow these steps:
 
 8. Click **Generate**.
 
-   This step builds all required output products for the selected source. For example, you do not need to manually create constraints for the IP processor system. The Vivado tools automatically generate the XDC file for the processor sub-system when you select **Generate Output Products**.
+   This step builds all the required output products for the selected source. You do not need to manually create constraints for the IP processor system. The Vivado Design Suite automatically generates the XDC file for the processor subsystem when you select **Generate Output Products**.
 
 9. In the Block Design Sources window, click the **IP Sources** tab. Here you can see the output products that you just generated, as shown in the following figure.
 
@@ -244,27 +237,27 @@ Follow these steps to generate a device image for the design.
 
 5. Export hardware after you generate the Device Image.
 
-   .. note:: The following steps are optional and you can skip these and go to the `Exporting Hardware <#exporting-hardware>`__ section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow of generating the device image, follow the steps provided below.
+.. note:: The following steps are optional and you can skip these and go to the `Exporting Hardware <#exporting-hardware>`__ section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating the device image. To understand the flow for generating the device image, follow these steps.
 
-6. Go to **Flow Navigator→ Synthesis**, click **Run Synthesis** and click **OK**.
+   1. Go to **Flow Navigator→ Synthesis**, click **Run Synthesis** and click **OK**.
 
-   .. image:: media/image17.png
+      .. image:: media/image17.png
 
-7. If Vivado prompts you to save your project before launching synthesis, click **Save**.
+   2. If Vivado prompts you to save your project before launching synthesis, click **Save**.
 
-   While synthesis is running, a status bar is displayed in the upper right-hand window. This status bar spools for various reasons throughout the design process. The status bar signifies that a process is working in the background. When synthesis is complete, the Synthesis Completed dialog box opens.
+      While synthesis is running, a status bar is displayed in the upper right-hand window. This status bar spools for various reasons throughout the design process. The status bar signifies that a process is working in the background. When synthesis is complete, the Synthesis Completed dialog box opens.
 
-8. Select **Run Implementation** and click **OK**.
+   3. Select **Run Implementation** and click **OK**.
 
-   When implementation completes, the Implementation Completed dialog box opens.
+      When implementation completes, the Implementation Completed dialog box opens.
 
-9. Select **Generate Device Image** and click **OK**.
+   4. Select **Generate Device Image** and click **OK**.
 
-   When Device Image Generation completes, the Device Image Generation Completed dialog box opens.
+      The Device Image Generation Completed dialog box opens.
 
-10. Click **Cancel** to close the window.
+   5. Click **Cancel** to close the window.
 
-    Export hardware after you generate the Device Image.
+      Export the hardware after you generate the device image.
 
 Exporting Hardware
 ------------------
@@ -306,11 +299,11 @@ The following steps demonstrate the procedure to make the required cable connect
 
    Alternatively, you can open the Vitis software platform with a default workspace and later switch it to the correct workspace by selecting **File → Switch Workspace** and then selecting the workspace.
 
-5. Open a serial communication utility for the COM port assigned on your system. The Vitis software platform provides a serial terminal utility, which is used throughout the tutorial; select **Window → Show View → Xilinx → Vitis Serial Terminal** to open it.
+5. Open a serial communication utility for the COM port assigned to your system. The Vitis software platform provides a serial terminal utility, which is used throughout the tutorial. Select **Window → Show View → Xilinx → Vitis Serial Terminal** to open it.
 
    .. image:: media/image21.jpeg
 
-6. Click **Connect to a serial port** button .. image:: media/image22.png) in the Vitis terminal context to set the serial configuration and connect it.
+6. Click the **Connect to a serial port** button in the Vitis terminal context to set the serial configuration and connect it.
 
 7. Verify the port details in the Windows device manager.
 
@@ -325,11 +318,11 @@ Creating a Hello World Application for the Arm Cortex-A72 on OCM
 
 The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM.
 
-1. Select **File→ New → Application Project**. Creating a New Application Project wizard opens. If this is the first time the Vitis IDE has been launched, you can select Create Application Project on the Welcome screen as shown in the following figure.
+1. Select **File→ New → Application Project**. Creating a New Application Project wizard opens. If this is the first time the Vitis IDE has been launched, you can select Create Application Project on the Welcome screen, as shown in the following figure.
 
    .. note:: Optionally, you can check the box next to "Skip welcome page next time" to skip seeing the welcome page every time.
 
-2. Use the following information to make your selections in the wizard screens.
+2. Use the following information to make your selections on the wizard screens.
 
    *Table 3:* **System Property Settings**
 
@@ -370,9 +363,9 @@ The following steps demonstrate the procedure to create a Hello World applicatio
 
    The Vitis software platform creates the board support package for the Platform project (vck190_platform) and the system project (helloworld_system) containing an application project named helloworld_a72 under the Explorer view after performing the above steps.
 
-3. Right-click **vck190_platform** and select **Build Project**. Alternatively, you can also click .. image:: media/image26.png).
+3. Right-click **vck190_platform** and select **Build Project**. Alternatively, you can also click |build|.
 
-   .. note:: If you cannot see the project explorer, click the restore icon .. image:: media/image27.png) on the left panel and then follow step 3.
+   .. note:: If you cannot see the project explorer, click the restore icon |restore| on the left panel, then follow step 3.
 
 Modifying the helloworld_a72 Application Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -414,7 +407,7 @@ The following steps demonstrate the procedure to create a bare-metal Hello World
    +------------------+------------------+----------------------------------------+
    |                  | OS               | standalone                             |
    +------------------+------------------+----------------------------------------+
-   |                  | Processor        | versal_cips_0_pspmc_0_psv_cortexr5_0  |
+   |                  | Processor        | versal_cips_0_pspmc_0_psv_cortexr5_0   |
    +------------------+------------------+----------------------------------------+
    |                  | Supported        | C/C++                                  |
    |                  | Runtimes         |                                        |
@@ -495,11 +488,11 @@ Modifying the Application Linker Script for the Application Project helloworld_r
 
 The following steps demonstrate the procedure to modify the application linker script for the application project helloworld_r5.
 
-.. note:: The Vitis software platform provides a linker script generator to simplify the task of creating a linker script for GCC. The linker script generator GUI examines the target hardware platform and determines the available memory sections. The only action required by you is to assign the different code and data sections in the ELF file to different memory regions.
+.. note:: The Vitis software platform provides a linker script generator to simplify the task of creating a linker script for GCC. The linker script generator GUI examines the target hardware platform and determines the available memory sections. All you need to do is assign the different code and data sections in the ELF file to different memory regions.
 
 1. Select the application project (helloworld_r5) in the Vitis Explorer view.
 
-   .. note:: The linker will use the DDR memory if it exists on the platform, otherwise it will default to the on-chip memory (OCM).
+   .. note:: The linker will use the DDR memory if it exists on the platform. Otherwise, it will default to the on-chip memory (OCM).
 
 2. In the `src` directory, delete the default `lscript.ld` file.
 
@@ -507,9 +500,9 @@ The following steps demonstrate the procedure to modify the application linker s
 
    .. image:: ./media/image32.png
 
-   .. note:: In the Generate linker script dialog box, the left side is read-only, except for the Output Script name and project build settings in the Modify project build settings as follows field. On the right side, you have two choices of how to allocate memory: The Basic tab or the Advanced tab. Both perform the same tasks; however, the Basic tab is less granular and treats all types of data as "data" and all types of instructions as "code." This is often sufficient to accomplish most tasks. Use the Advanced tab for precise allocation of software blocks into various types of memory.
+   .. note:: In the Generate linker script dialog box, the left side is read-only, except for the Output Script name and project build settings in the Modify project build settings as follows field. On the right side, you have two options to allocate memory: The Basic tab and the Advanced tab. Both perform the same tasks; however, the Basic tab is less granular and treats all types of data as "data" and all types of instructions as "code." This is often sufficient to accomplish most tasks. Use the Advanced tab for precise allocation of software blocks into various types of memory.
 
-4. Under the Basic tab, select **versal_cips_0_pspmc_0_psv_r5_0_atcm_MEM_0** in the drop-down menu for all the three sections and then click **Generate**.
+4. Under the Basic tab, select **versal_cips_0_pspmc_0_psv_r5_0_atcm_MEM_0** in the drop-down menu for all the three sections, then click **Generate**.
 
    .. image:: ./media/r5_atcm_capture.jpg
 
@@ -529,7 +522,7 @@ Creating a Run Configuration for the System Project
 
 2. Double-click **System Project Debug** to create a Run Configuration.
 
-   The Vitis software platform creates a new run configuration with the name: SystemDebugger_helloworld_system. For the remaining options, refer the following table.
+   The Vitis software platform creates a new run configuration with the name: SystemDebugger_helloworld_system. For the remaining options, refer to the following table.
 
    *Table 6:* **Create, Manage, and Run Configurations Settings**
 
@@ -593,7 +586,7 @@ Method I
 
    .. image:: ./media/APU_helloworld_log.png
 
-.. note:: Both the APU and RPU applications print on the same console as both applications are using UART0 for these applications. The application software sends the hello world strings for both APU and RPU to the UART0 peripheral of the PS section. From UART0, the hello world strings goes byte-by-byte to the serial terminal application running on the host machine, which displays it as a string.
+.. note:: Both the APU and RPU applications print on the same console as both applications are using UART0 for these applications. The application software sends the hello world strings for both APU and RPU to the UART0 peripheral of the PS section. From UART0, the hello world string goes byte-by-byte to the serial terminal application running on the host machine, which displays it as a string.
 
 Method II
 ^^^^^^^^^
@@ -637,7 +630,7 @@ This section describes the NoC (and DDR) configuration and related connections r
 Configuring the NoC IP Core in an Existing Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For this example, launch the Vivado Design Suite and project with basic CIPS configuration done as shown in `Example Project: Creating a New Embedded Project with the Versal ACAP <#creating-a-new-embedded-project-with-the-versal-acap>`__.
+For this example, launch the Vivado Design Suite and the project with basic CIPS configuration as shown in `Example Project: Creating a New Embedded Project with the Versal ACAP <#creating-a-new-embedded-project-with-the-versal-acap>`__.
 
 Configuring Your Design
 -----------------------
@@ -705,7 +698,7 @@ To validate the design and generate the output, follow these steps:
 
 5. Click **Generate**.
 
-   This step builds all required output products for the selected source. For example, you do not need to manually create constraints for the IP processor system. The Vivado tools automatically generate the XDC file for the processor sub-system when you select **Generate Output Products**.
+   This step builds all required output products for the selected source. You do not need to manually create constraints for the IP processor system. The Vivado Design Suite automatically generates the XDC file for the processor subsystem when you select **Generate Output Products**.
 
 6. When the Generate Output Products process completes, click **OK**. Click the **Design Runs** window on the bottom window to see OOC Module Runs/Synthesis/Implementation runs.
 
@@ -729,28 +722,28 @@ Follow these steps to generate a device image for the design.
 4. Click **Cancel** to close the window.
 
 5. Export hardware after you generate the Device Image and click **OK**.
+   
+.. note:: The following steps are optional and you can skip these and go to the `Exporting Hardware <#exporting-hardware>`__ section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. To understand the flow for generating the device image, follow the steps provided below.
 
-   .. note:: The following steps are optional and you can skip these and go to the `Exporting Hardware <#exporting-hardware>`__ section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow of generating the device image, follow the steps provided below.
+   1. Go to **Flow Navigator→ Synthesis** and click **Run Synthesis**.
 
-6. Go to **Flow Navigator→ Synthesis** and click **Run Synthesis**.
+      .. image:: media/image17.png
 
-   .. image:: media/image17.png
+   2. If Vivado prompts you to save your project before launching synthesis, click **Save**.
 
-7. If Vivado prompts you to save your project before launching synthesis, click **Save**.
+      While synthesis is running, a status bar is displayed in the upper right-hand window. This status bar spools for various reasons throughout the design process. The status bar signifies that a process is working in the background. When synthesis is complete, the Synthesis Completed dialog box opens.
 
-   While synthesis is running, a status bar is displayed in the upper right-hand window. This status bar spools for various reasons throughout the design process. The status bar signifies that a process is working in the background. When synthesis is complete, the Synthesis Completed dialog box opens.
+   3. Select **Run Implementation** and click **OK**.
 
-8. Select **Run Implementation** and click **OK**.
+      When implementation completes, the Implementation Completed dialog box opens.
 
-   When implementation completes, the Implementation Completed dialog box opens.
+   4. Select **Generate Device Image** and click **OK**.
 
-9. Select **Generate Device Image** and click **OK**.
+      When Device Image Generation completes, the Device Image Generation Completed dialog box opens.
 
-   When Device Image Generation completes, the Device Image Generation Completed dialog box opens.
+   5.  Click **Cancel** to close the window.
 
-10. Click **Cancel** to close the window.
-
-    Export hardware, after you generate Device Image.
+       Export hardware, after you generate Device Image.
 
 Exporting Hardware
 ------------------
@@ -777,15 +770,15 @@ You will create a new Vitis project, similar to the one in `Running a Bare-Metal
 
    .. note:: 
     
-       A new Vitis workspace needs to be created for this. Do not use the workspace created in `Running a Bare-Metal Hello World Application <#running-a-bare-metal-hello-world-application>`__.
+       Create a new Vitis workspace for this. Do not use the workspace created in `Running a Bare-Metal Hello World Application <#running-a-bare-metal-hello-world-application>`__.
 
-2. Create a bare-metal Hello World system project with application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 through 3 of `Creating a Hello World Application for the Arm Cortex-A72 on OCM <#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm>`__ and steps 1 through 3 of `Modifying the helloworld_a72 Application Source Code <#modifying-the-helloworld-a72-application-source-code>`__.
+2. Create a bare-metal Hello World system project with an application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 through 3 of `Creating a Hello World Application for the Arm Cortex-A72 on OCM <#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm>`__ and steps 1 through 3 of `Modifying the helloworld_a72 Application Source Code <#modifying-the-helloworld-a72-application-source-code>`__.
 
 3. Right-click **helloworld_system** and select **Build Project** or click |build| to generate the project elf files within the Debug folder of the application project.
         
 4. Create an additional RPU domain for your platform (created in Step 2) as discussed in `Adding a New RPU Domain to the Platform Project <#adding-a-new-rpu-domain-to-the-platform-project>`__.
         
-5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (built in Step 2) and modify its source code as discussed in steps 1 through 3 of `Creating the Standalone Application Project for the Arm Cortex-R5F <./2-cips-noc-ip-config.rst#creating-the-standalone-application-project-for-the-arm-cortex-r5f>`__ and steps 1 through 3 of `Modifying the helloworld_r5 Application Source Code <./2-cips-noc-ip-config.rst#modifying-the-helloworld-r5-application-source-code>`__.
+5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 through 3 of `Creating the Standalone Application Project for the Arm Cortex-R5F <./2-cips-noc-ip-config.rst#creating-the-standalone-application-project-for-the-arm-cortex-r5f>`__ and steps 1 through 3 of `Modifying the helloworld_r5 Application Source Code <./2-cips-noc-ip-config.rst#modifying-the-helloworld-r5-application-source-code>`__.
 
 6. Right-click **helloworld_system** and select Build Project or click |build| to generate the project elf files within the Debug folder of the application project.
 
@@ -843,6 +836,7 @@ This configures the design in eMMC boot mode.
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
 .. |add_ip| image:: media/image6.png
+.. |restore| image:: media/image27.png
 .. |validation_message| image:: ./media/validation_message.PNG
 .. |build| image:: ./media/image29.png
 .. |image30| image:: ./media/image30.png
