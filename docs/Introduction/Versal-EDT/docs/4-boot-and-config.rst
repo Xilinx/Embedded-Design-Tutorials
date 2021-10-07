@@ -42,7 +42,7 @@ U-Boot
 
 U-Boot acts as a secondary boot loader. After the PLM handoff, U-Boot loads Linux onto the Arm A72 APU and configures the rest of the peripherals in the processing system based on the board configuration. U-Boot can fetch images from various memory sources like eMMC, SATA, TFTP, SD, and QSPI. U-Boot can be configured and built using the PetaLinux tool flow.
 
-Arm Trusted Firmware
+Trusted Firmware-A
 ~~~~~~~~~~~~~~~~~~~~
 
 The Arm Trusted Firmware (ATF) is a transparent bare-metal application layer executed in Exception Level 3 (EL3) on the APU. The ATF includes a Secure Monitor layer for switching between the secure and the non-secure world. The Secure Monitor calls and implementation of Trusted Board Boot Requirements (TBBR) makes the ATF layer a mandatory requirement to load Linux on the APU on Versal ACAP. The PLM loads the ATF to be executed by the APU, which keeps running in EL3 awaiting a service request. The PLM also loads U-Boot into the DDR memory to be executed by the APU. The DDR memory loads the Linux OS in the SMP mode on the APU. The ATF (`bl31.elf`) is built, by default, in PetaLinux. You can find it in the PetaLinux project images directory.
@@ -268,7 +268,7 @@ To flash the images to the daughter card, use the following steps:
        sf probe 0 0 0
        sf erase 0x0 0x10000000
        sf write 0x70000000 0x0 <BOOT.BIN_filesize_in_hex>
-       sf write 0x00200000 0xF00000 <Image_filesize_in_hex>
+       sf write 0x00200000 0xF00000 <u-boot ${filesize}_in_hex>
        sf write 0x70000000 0x2E00000 <rootfs.cpio.gz.u-bootfilesize_in_hex>
        sf write 0x20000000 0x7F80000 <boot.scr_filesize_in_hex>
 

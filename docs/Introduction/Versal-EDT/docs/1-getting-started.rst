@@ -93,7 +93,7 @@ This can use either a dedicated Linux host system or a virtual machine running o
 
 When you install PetaLinux tools on your system of choice, you must do the following:
 
-- Download PetaLinux 2021.1 software from the Xilinx website.
+- Download PetaLinux 2021.2 software from the Xilinx website.
 
 - Download the respective BSP as described in `Example Project: Creating Linux Images Using PetaLinux <../docs/5-system-design-example.rst#example-project-creating-linux-images-using-petalinux>`__.
 
