@@ -189,17 +189,16 @@ To flash the images to the daughter card, use the following steps:
 
    .. code-block::
 
-        sf probe 0 0 0
-        sf erase 0x0 0x10000000
-        fatload mmc 0 0x80000 BOOT.BIN
-        sf write 0x80000 0x0 <BOOT.BIN_filesize_in_hex>
-        fatload mmc 0 0x80000 Image
-        sf write 0x80000 0xF00000 <Image_filesize_in_hex>
-        fatload mmc 0 0x80000 rootfs.cpio.gz.u-boot
-        sf write 0x80000 0x2E00000 <rootfs.cpio.gz.u-bootfilesize_in_hex>
-        fatload mmc 0 0x80000 boot.scr
-        sf write 0x80000 0x7F80000  <boot.scr_filesize_in_hex>
-
+         sf probe 0 0 0
+         sf erase 0x0 0x10000000
+         fatload mmc 0 0x80000 BOOT.BIN
+         sf write 0x80000 0x0 <BOOT.BIN_filesize_in_hex>
+         fatload mmc 0 0x80000 Image
+         sf write 0x80000 0xF00000 <Image_filesize_in_hex>
+         fatload mmc 0 0x80000 rootfs.cpio.gz.u-boot
+         sf write 0x80000 0x2E00000 <rootfs.cpio.gz.u-bootfilesize_in_hex>
+         fatload mmc 0 0x80000 boot.scr
+         sf write 0x80000 0x7F80000  <boot.scr_filesize_in_hex>
 
 5. After flashing the images, turn off the power switch on the board.
 6. Change the SW1 boot mode pin settings to OSPI boot mode, that is ON-OFF-OFF-OFF.
