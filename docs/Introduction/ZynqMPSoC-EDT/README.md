@@ -1,35 +1,15 @@
-######################################################
-Zynq UltraScale+ MPSoC Embedded Design Tutorial
-######################################################
-
-
-.. toctree::
-   :maxdepth: 3
-   :caption: Zynq-7000 Embedded Design Tutorial
-   :hidden:
-
-   Introduction <./1-introduction>
-   Getting Started <./2-getting-started>
-   Zynq UltraScale+ MPSoC System Configuration with Vivado <./3-system-configuration>
-   Building Software for PS Subsystems <./4-build-sw-for-ps-subsystems>
-   Debugging Standalone Applications with the Vitis Debugger <./5-debugging-with-vitis-debugger>
-   Building and Debugging Linux Applications <./6-build-linux-sw-for-ps>
-   System Design Example: Using GPIO, Timer and Interrupts <./7-design1-using-gpio-timer-interrupts>
-   Boot and Configuration <./8-boot-and-configuration>
-   Secure Boot <./9-secure-boot>
-
-
+# Introduction
 
 This document provides an introduction to using the Vivado&reg; Design
  Suite flow for the Xilinx&reg; Zynq&reg; UltraScale+&trade; MPSoC ZCU102 Rev 1.0 and
  Rev 1.1 evaluation boards. The tool used is the Vitis&trade; unified
  software platform.
 
-1. Introduction <./1-introduction>
+1. [Introduction](./1-introduction.md)
 
-2. Getting Started <./2-getting-started>
+2. [Getting Started](./2-getting-started.md)
 
-3. Zynq UltraScale+ MPSoC System Configuration with Vivado <./3-system-configuration>
+3. [Zynq UltraScale+ MPSoC System Configuration with Vivado](./3-system-configuration.md)
 
     This chapter describes the creation of a system with the
  Zynq UltraScale+ MPSoC Processing System (PS) and the creation of a
@@ -37,14 +17,14 @@ This document provides an introduction to using the Vivado&reg; Design
  introduction to the hardware and software tools using a simple design
  as the example.
 
-4. Building Software for PS Subsystems <./4-build-sw-for-ps-subsystems>
+4. [Building Software for PS Subsystems](./4-build-sw-for-ps-subsystems.md)
 
     This chapter describes the steps to configure and build software for processing blocks in the
  processing system, including the application processing unit (APU) and
 real-time processing unit (RPU). It also covers the creation of bare-metal
  applications targeting the APU and RPU and how to conduct a review of the boot components in a hardware platform.
 
-5. Debugging Standalone Applications with the Vitis Debugger <./5-debugging-with-vitis-debugger>
+5. [Debugging Standalone Applications with the Vitis Debugger](./5-debugging-with-vitis-debugger.md)
 
       This chapter provides an introduction to debugging software using the debug features of the
    Vitis IDE. This chapter uses the previous design and runs the software
@@ -52,19 +32,19 @@ real-time processing unit (RPU). It also covers the creation of bare-metal
    chapter also lists the debug configurations for Zynq UltraScale+
    MPSoC.
 
-6. Building and Debugging Linux Applications <./6-build-linux-sw-for-ps>
+6. [Building and Debugging Linux Applications](./6-build-linux-sw-for-ps.md)
 
    This chapter creates a Linux image with PetaLinux and creates a "Hello World" Linux application with the Vitis IDE. It also shows how to debug Linux applications with the Vitis IDE.
 
-7. System Design Example: Using GPIO, Timer and Interrupts <./7-design1-using-gpio-timer-interrupts>
+7. [System Design Example: Using GPIO, Timer and Interrupts](./7-design1-using-gpio-timer-interrupts.md)
 
     This chapter added some IPs in the PL. It demonstrates how you can use the software blocks you configured in previous chapters to create a complex Zynq UltraScale+ system.
 
-8. Boot and Configuration <./8-boot-and-configuration>
+8. [Boot and Configuration](./8-boot-and-configuration.md)
 
     This chapter shows the integration of components to configure and create boot images for a Zynq UltraScale+ system. The purpose of this chapter is to understand how to integrate and load boot loaders.
 
-9. Secure Boot <./9-secure-boot>
+9. [Secure Boot](./9-secure-boot.md)
 
     This is an optional chapter that introduces the steps to build the Hardware Root of Trust and encryption for your design.
 

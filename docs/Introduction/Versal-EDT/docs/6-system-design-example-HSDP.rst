@@ -21,7 +21,7 @@ System Design Example for High-Speed Debug Port with SmartLynq+ Module
 Introduction
 ============
 
-This chapter demonstrates how to build a Versal |trade|-based system that utilizes the SmartLynq+ module and the High-Speed Debug Port (HSDP). You will also learn to set up the SmartLynq+ module and download a Linux image using either JTAG or the HSDP.
+This chapter demonstrates how to build a Versal |trade|-based system that utilizes both the SmartLynq+ module and the High-Speed Debug Port (HSDP). You will also learn to set up the SmartLynq+ module and download a Linux image using either JTAG or the HSDP.
 
 .. important:: This tutorial requires a SmartLynq+ module, a VCK190 or VMK180 evaluation board, and a Linux host machine.
 
@@ -44,7 +44,7 @@ This design uses the project built in `System Design Example using Scalar Engine
 
    .. image:: ./media/image5.png
 
-3. Double-click the Versal ACAP CIPS IP core to recustomize the IP. Click the **Next** button and click on the blue box labeled **PS PMC** to customize the Processing System (PS) and the Platform Management Controller (PMC). On the left pane, select **Debug**, then click on the **HSDP** tab.
+3. Double-click the Versal ACAP CIPS IP core to recustomize the IP. Click the **Next** button and click on the blue box labeled **PS PMC** to customize the Processing System (PS) and the Platform Management Controller (PMC). On the left pane, select  click **Debug** then click on the **HSDP** tab.
    
    .. image:: ./media/ch6-image1.png
 
@@ -131,7 +131,7 @@ This example needs a Linux host machine. Refer to the *PetaLinux Tools Documenta
 
         $ petalinux-package --force --boot --atf --u-boot
 
-   .. note:: The packaged Linux boot images are located in the `<petaLinux-project>/images/Linux/` directory in the PetaLinux build root. Make a note of this directory location as it will be used in the following steps. If you intend to use a different machine than the one that was used to build PetaLinux (for example, a Windows Based PC) to download the Linux boot images using SmartLynq+, the contents of this directory should be transferred to that machine before proceeding with this tutorial.
+   .. note:: The packaged Linux boot images are placed in the `<petaLinux-project>/images/Linux/` directory in the PetaLinux build root. Make a note of this directory location as it will be used in the following steps. If you intend to use a different machine than the one that was used to build PetaLinux (for example, a Windows Based PC) to download the Linux boot images using SmartLynq+, the contents of this directory should be transferred to that machine before proceeding with this tutorial.
 
 ================================
 Setting Up the SmartLynq+ Module
