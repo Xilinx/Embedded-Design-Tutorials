@@ -50,26 +50,26 @@ Xilinx documentation is organized around a set of standard design processes to h
 
 * **System and Solution Planning**: Identifying the components, performance, I/O, and data transfer requirements at a system level. Includes application mapping for the solution to PS, PL, and AI Engine.
   
-  * `Configuring the NoC IP Core in an Existing Project <../Versal-EDT/docs/2-cips-noc-ip-config.rst#configuring-the-noc-ip-core-in-an-existing-project>`__
+  * `Configuring the NoC IP Core in an Existing Project <../Versal-EDT/docs/2-cips-noc-ip-config.html#configuring-the-noc-ip-core-in-an-existing-project>`__
   * `System Design Example using Scalar Engine and Adaptable Engine <../Versal-EDT/docs/5-system-design-example.rst>`__
 
 * **Embedded Software Development**: Creating the software platform from the hardware platform and developing the application code using the embedded CPU. Also covers XRT and Graph APIs.
 
-  * `Running a Bare-Metal Hello World Application <../Versal-EDT/docs/2-cips-noc-ip-config.rst#running-a-bare-metal-hello-world-application>`__
-  * `Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform <../Versal-EDT/docs/2-cips-noc-ip-config.rst#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform>`__
-  * `Running a Bare-Metal Hello World Application on DDR Memory <../Versal-EDT/docs/2-cips-noc-ip-config.rst#running-a-bare-metal-hello-world-application-on-ddr-memory>`__
+  * `Running a Bare-Metal Hello World Application <../Versal-EDT/docs/2-cips-noc-ip-config.html#running-a-bare-metal-hello-world-application>`__
+  * `Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform <../Versal-EDT/docs/2-cips-noc-ip-config.html#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform>`__
+  * `Running a Bare-Metal Hello World Application on DDR Memory <../Versal-EDT/docs/2-cips-noc-ip-config.html#running-a-bare-metal-hello-world-application-on-ddr-memory>`__
 
 * **Hardware, IP, and Platform Development**: Creating the PL IP blocks for the hardware platform, creating PL kernels, subsystem functional simulation, and evaluating the Vivado timing, resource use, and power closure. Also involves developing the hardware platform for system integration. Topics in this document that apply to this design process include:
   
-  * `CIPS IP Core Configuration <../Versal-EDT/docs/2-cips-noc-ip-config.rst#cips-ip-core-configuration>`__
-  * `NoC (and DDR) IP Core Configuration <../Versal-EDT/docs/2-cips-noc-ip-config.rst#noc-and-ddr-ip-core-configuration>`__
-  * `Design Example: Using AXI GPIO <../Versal-EDT/docs/5-system-design-example.rst#design-example-using-axi-gpio>`__
+  * `CIPS IP Core Configuration <../Versal-EDT/docs/2-cips-noc-ip-config.html#cips-ip-core-configuration>`__
+  * `NoC (and DDR) IP Core Configuration <../Versal-EDT/docs/2-cips-noc-ip-config.html#noc-and-ddr-ip-core-configuration>`__
+  * `Design Example: Using AXI GPIO <../Versal-EDT/docs/5-system-design-example.html#design-example-using-axi-gpio>`__
 
 * **System Integration and Validation**: Integrating and validating the system functional performance, including timing, resource use, and power closure. Topics in this document that apply to this design process include:
   
   * `Boot and Configuration <../Versal-EDT/docs/4-boot-and-config.rst>`__
-  * `Example Project: FreeRTOS GPIO Application Project With RPU <../Versal-EDT/docs/5-system-design-example.rst#example-project-freertos-axi-uartlite-application-project-with-rpu>`__
-  * `Example Project: Creating Linux Images Using PetaLinux <../Versal-EDT/docs/5-system-design-example.rst#example-project-creating-linux-images-using-petalinux>`__
+  * `Example Project: FreeRTOS GPIO Application Project With RPU <../Versal-EDT/docs/5-system-design-example.html#example-project-freertos-axi-uartlite-application-project-with-rpu>`__
+  * `Example Project: Creating Linux Images Using PetaLinux <../Versal-EDT/docs/5-system-design-example.html#example-project-creating-linux-images-using-petalinux>`__
 
 
 

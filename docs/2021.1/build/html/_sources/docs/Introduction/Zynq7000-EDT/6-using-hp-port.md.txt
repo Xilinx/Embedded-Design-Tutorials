@@ -86,7 +86,7 @@ on the serial terminal and stops execution.
 ### Input and Output Files
 
 - Input files:
-  - Vivado design from [Example 6](5-using-gp-port-zynq.md#example-6-adding-peripheral-pl-ip)
+  - Vivado design from [Example 6](5-using-gp-port-zynq.html#example-6-adding-peripheral-pl-ip)
   - Vitis workspace
 - Output files:
   - Updated Vivado design and exported hardware handoff `system_wrapper.xsa`
@@ -94,9 +94,9 @@ on the serial terminal and stops execution.
 
 ### Update the Vivado Design
 
-1.  Start with the system you created in [Example 6: Adding Peripheral PL IP](5-using-gp-port-zynq.md#example-6-adding-peripheral-pl-ip).
+1.  Start with the system you created in [Example 6: Adding Peripheral PL IP](5-using-gp-port-zynq.html#example-6-adding-peripheral-pl-ip).
 
-    - Open the Vivado&reg; design from [Example 6](5-using-gp-port-zynq.md#example-6-adding-peripheral-pl-ip).
+    - Open the Vivado&reg; design from [Example 6](5-using-gp-port-zynq.html#example-6-adding-peripheral-pl-ip).
     - Open the block design from Flow Navigator **Open Block Design**.
 
 2.  Add the CDMA IP:

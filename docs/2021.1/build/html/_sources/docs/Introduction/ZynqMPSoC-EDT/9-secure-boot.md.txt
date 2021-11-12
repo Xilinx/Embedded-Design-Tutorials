@@ -281,10 +281,10 @@ Refer to AR [76171](https://www.xilinx.com/support/answers/76171.html) for detai
 
  This tutorial demonstrates assembling the binaries that are created
  using [Design Example 1: Using GPIOs, Timers, and Interrupts](./7-design1-using-gpio-timer-interrupts.md) in a boot image with all the security features enabled. This section also shows how a PL bitstream can be added as a
- part of the secure boot flow. Follow the information in this chapter until [Modifying the Build Settings](./7-design1-using-gpio-timer-interrupts.md#modifying-the-build-settings) to create all the
+ part of the secure boot flow. Follow the information in this chapter until [Modifying the Build Settings](./7-design1-using-gpio-timer-interrupts.html#modifying-the-build-settings) to create all the
  necessary files and then switch back.
 
-> **Note:** If you have not run MPSoC Design Example 1, you can [run the script](./7-design1-using-gpio-timer-interrupts.md#reference-design-automation) in the example's `ref_files` to generate the binaries with one `make all` command.
+> **Note:** If you have not run MPSoC Design Example 1, you can [run the script](./7-design1-using-gpio-timer-interrupts.html#reference-design-automation) in the example's `ref_files` to generate the binaries with one `make all` command.
 
  Enabling the security features in boot image is done in two different
  methods. In the first method, the BIF file is manually created
@@ -1061,7 +1061,7 @@ This section demonstrates how to use the `BOOT.bin` boot image created in prior 
     Password: root
     ```
 
-    Run the Linux application as described in [Design Example 1: Using GPIOs, Timers, and Interrupts](7-system-design-examples.md#design-example-1-using-gpios-timers-and-interrupts).
+    Run the Linux application as described in [Design Example 1: Using GPIOs, Timers, and Interrupts](7-system-design-examples.html#design-example-1-using-gpios-timers-and-interrupts).
 
 
     ![](./media/image95.png)

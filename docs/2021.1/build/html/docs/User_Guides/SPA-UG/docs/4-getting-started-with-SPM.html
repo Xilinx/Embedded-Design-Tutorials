@@ -485,7 +485,7 @@
 <p>The Vitis IDE enables you to specify traffic scenarios for configuring the ATGs. The following figure shows the ATG Configuration tab, where this traffic can be specified.</p>
 <p><em>Figure 10:</em> <strong>ATG Configuration Setup in the Vitis IDE Configuration Wizard</strong></p>
 <p><img alt="../../../../_images/image97.png" src="../../../../_images/image97.png" /></p>
-<p>In the fixed bitstream of SPM (see <a class="reference external" href="../docs/2-system-performance-modeling-project.md#spm-software">SPM Software</a> for more details), one ATG is attached to every High Performance (HP) port and the Accelerator Coherency Port (ACP) – all interfaces between the PL and the PS. Memory access patterns are modeled by the ATGs issuing AXI transactions with various lengths, frequencies, and memory addresses onto each port. Different combinations of read/write traffic patterns across all four HP and the ACP ports can be specified. This ATG Configuration table includes the following:</p>
+<p>In the fixed bitstream of SPM (see <a class="reference external" href="../docs/2-system-performance-modeling-project.html#spm-software">SPM Software</a> for more details), one ATG is attached to every High Performance (HP) port and the Accelerator Coherency Port (ACP) – all interfaces between the PL and the PS. Memory access patterns are modeled by the ATGs issuing AXI transactions with various lengths, frequencies, and memory addresses onto each port. Different combinations of read/write traffic patterns across all four HP and the ACP ports can be specified. This ATG Configuration table includes the following:</p>
 <ul class="simple">
 <li><p><strong>Port Location:</strong> The ATG that is being configured (in SPM, the names are self-explanatory).</p></li>
 <li><p><strong>Template ID:</strong> Disable/enable the traffic defined on that row. When set to <strong>None</strong> no traffic is generated.</p></li>
@@ -506,8 +506,8 @@
 <ul class="simple">
 <li><p><strong>PS Performance Graphs:</strong> PS (Arm) metrics will be displayed using these graphs.</p></li>
 <li><p><strong>PS Performance Counters:</strong> PS (Arm) metrics listed in a tabular format.</p></li>
-<li><p><strong>APM Performance Graphs:</strong> Plots showing the APM performance metrics listed in <a class="reference external" href="../docs/3-monitor-framework.md#table3">Table 3: Profile Counters per AXI Interface in AXI Performance Monitor</a> using these graphs.</p></li>
-<li><p><strong>APM Performance Counters:</strong> Plots showing the APM performance metrics listed in <a class="reference external" href="../docs/3-monitor-framework.md#table3">Table 3: Profile Counters per AXI Interface in AXI Performance Monitor</a> in a tabular format.</p></li>
+<li><p><strong>APM Performance Graphs:</strong> Plots showing the APM performance metrics listed in <a class="reference external" href="../docs/3-monitor-framework.html#table3">Table 3: Profile Counters per AXI Interface in AXI Performance Monitor</a> using these graphs.</p></li>
+<li><p><strong>APM Performance Counters:</strong> Plots showing the APM performance metrics listed in <a class="reference external" href="../docs/3-monitor-framework.html#table3">Table 3: Profile Counters per AXI Interface in AXI Performance Monitor</a> in a tabular format.</p></li>
 <li><p><strong>MicroBlaze™ Performance Graphs:</strong> Various plots showing the MicroBlaze performance metrics on a shared timeline. This is not used by SPM and therefore not covered in this guide.</p></li>
 <li><p><strong>MicroBlaze Performance Counters:</strong> A table summarizing MicroBlaze performance metrics. This is not used by SPM and therefore not covered in this guide.</p></li>
 </ul>

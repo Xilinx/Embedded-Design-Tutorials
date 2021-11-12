@@ -379,7 +379,7 @@ The Vitis software platform creates the board support package for the Platform p
 
 8. Right-click **freertos_gpio_test_system** and select **Build Project**. Alternatively, you can click |build-icon|.
 
-For building the Linux images and incorporating the FreeRTOS elf into the image, see `Example Project: Creating Linux Images Using PetaLinux <./5-system-design-example.rst#example-project-creating-linux-images-using-petalinux>`__.
+For building the Linux images and incorporating the FreeRTOS elf into the image, see `Example Project: Creating Linux Images Using PetaLinux <./5-system-design-example.html#example-project-creating-linux-images-using-petalinux>`__.
 
 9. On PL AXI UART Serial Console, RPU debug logs will be printed as below:
 
@@ -558,7 +558,7 @@ Combining FreeRTOS and APU Images using a BIF File
 
     This creates a `BOOT.BIN` image file in the `<petalinux-project>/images/linux/` directory.
 
-.. note:: To run the images using SD boot mode, see `Boot Sequence for SD-Boot Mode <./4-boot-and-config.rst#boot-sequence-for-sd-boot-mode>`__.
+.. note:: To run the images using SD boot mode, see `Boot Sequence for SD-Boot Mode <./4-boot-and-config.html#boot-sequence-for-sd-boot-mode>`__.
 
 
 .. |build-icon|  image:: ./media/image29.png

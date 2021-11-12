@@ -1,0 +1,27 @@
+/include/ "system-conf.dtsi"
+/ {
+	aliases {
+        	/delete-property/ serial1;
+	};
+
+	chosen {
+                stdout-path = "serial0:115200n8";
+        };
+
+        memoryaxi_noc_0: memory@800000000 {
+                device_type = "memory";
+                reg = <0x0 0x00000000 0x0 0x7FE00000>, <0x00000008 0x00000000 0x00000001 0x80000000>;
+        };
+
+};
+
+&amba {
+        zyxclmm_drm {
+                compatible = "xlnx,zocl-versal";
+        };
+};
+
+&amba_pl {
+        /delete-node/ gpio@a4000000;
+	/delete-node/ serial@a4020000;
+};
