@@ -1,8 +1,8 @@
 ************************************************************************
 
 Vendor: Xilinx 
-Current readme.txt Version: 3.2
-Date Created: 29June2021
+Current readme.txt Version: 3.3
+Date Created: 28Oct2021
 
 Associated Filename: ug1305-embedded-design-tutorial.zip
 Associated Document: ug1305-Versal ACAP Embedded Design Tutorial
@@ -68,6 +68,8 @@ Date             Version      Revision Description
 23FEB2021	   3.1         UPDATED BOOTGEN.BIF AND FREERTOS BINARIES
 22JUNE2021	   3.2         UPDATED VCK190,VMK180 PRODUCTION SILICON BOARD FILES
 			       AND APPLICATION BINARIES FOR OSPI, EMMC
+28Oct2021	   3.3         UPDATED VCK190,VMK180 PRODUCTION SILICON BOARD FILES
+			       AND APPLICATION BINARIES for 2021.2 release
 ========================================================================
 
 
@@ -147,7 +149,7 @@ below:
  |        \Readme
  |        Contains steps to build Vivado project
  |	\pl_gpio_uart
- |	  Contains files to build Vivado project for GPIO application
+ |	  Contains files to build Vivado project for PL AXI GPIO and PL AXI UART application
  |	  \Readme
  |   	  Contains steps to build Vivado project
  |-- \Readme
@@ -156,7 +158,7 @@ below:
 3. INSTALLATION AND OPERATING INSTRUCTIONS 
 
 Hardware project creation and device image generation 
-	- Set vivado tool version to 2021.1
+	- Set vivado tool version to 2021.2
 	- Open Vivado tool
         - Browse to ug1305-embedded-design-tutorial folder. Go to the pl folder.Go to pl_helloworld/pl_gpio_uart folder.
 	- In the Tcl Console, type the following command

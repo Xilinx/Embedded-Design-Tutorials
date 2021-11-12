@@ -20,14 +20,13 @@ set script_folder [_tcl::get_script_folder]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2021.1
+set scripts_vivado_version 2021.2
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
    puts ""
-   catch {common::send_gid_msg -ssname BD::TCL -id 2041 -severity "ERROR" "This script was generated using Vivado <$scripts_vivado_version> and is being run in <$current_vivado_version> of Vivado. Please run the script in Vivado <$scripts_vivado_version> then open the design in Vivado <$current_vivado_version>. Upgrade the design by running \"Tools => Report => Report IP Status...\", then run write_bd_tcl to create an updated script."}
+   common::send_gid_msg -ssname BD::TCL -id 2040 -severity "WARNING" "This script was generated using Vivado <$scripts_vivado_version> without IP versions in the create_bd_cell commands, but is now being run in <$current_vivado_version> of Vivado. There may have been major IP version changes between Vivado <$scripts_vivado_version> and <$current_vivado_version>, which could impact the parameter settings of the IPs."
 
-   return 1
 }
 
 ################################################################
@@ -124,8 +123,8 @@ set bCheckIPsPassed 1
 set bCheckIPs 1
 if { $bCheckIPs == 1 } {
    set list_check_ips "\ 
-xilinx.com:ip:axi_noc:1.0\
-xilinx.com:ip:versal_cips:3.0\
+xilinx.com:ip:axi_noc:*\
+xilinx.com:ip:versal_cips:*\
 "
 
    set list_ips_missing ""
@@ -200,42 +199,23 @@ proc create_root_design { parentCell } {
   # Create ports
 
   # Create instance: axi_noc_0, and set properties
-  set axi_noc_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_noc:1.0 axi_noc_0 ]
+  set axi_noc_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_noc axi_noc_0 ]
   set_property -dict [ list \
    CONFIG.CH0_DDR4_0_BOARD_INTERFACE {ddr4_dimm1} \
    CONFIG.CONTROLLERTYPE {DDR4_SDRAM} \
-   CONFIG.LOGO_FILE {data/noc_mc.png} \
-   CONFIG.MC0_CONFIG_NUM {config17} \
-   CONFIG.MC1_CONFIG_NUM {config17} \
-   CONFIG.MC2_CONFIG_NUM {config17} \
-   CONFIG.MC3_CONFIG_NUM {config17} \
-   CONFIG.MC_BOARD_INTRF_EN {true} \
-   CONFIG.MC_CASLATENCY {22} \
    CONFIG.MC_CHAN_REGION1 {DDR_LOW1} \
    CONFIG.MC_COMPONENT_WIDTH {x8} \
-   CONFIG.MC_CONFIG_NUM {config17} \
    CONFIG.MC_DATAWIDTH {64} \
-   CONFIG.MC_DDR4_2T {Disable} \
    CONFIG.MC_EN_INTR_RESP {TRUE} \
-   CONFIG.MC_F1_TRCD {13750} \
-   CONFIG.MC_F1_TRCDMIN {13750} \
    CONFIG.MC_INPUTCLK0_PERIOD {5000} \
-   CONFIG.MC_INPUT_FREQUENCY0 {200.000} \
    CONFIG.MC_INTERLEAVE_SIZE {128} \
    CONFIG.MC_MEMORY_DEVICETYPE {UDIMMs} \
    CONFIG.MC_MEMORY_SPEEDGRADE {DDR4-3200AA(22-22-22)} \
    CONFIG.MC_NO_CHANNELS {Single} \
    CONFIG.MC_RANK {1} \
    CONFIG.MC_ROWADDRESSWIDTH {16} \
-   CONFIG.MC_SILICON_REVISION {NA} \
    CONFIG.MC_STACKHEIGHT {1} \
    CONFIG.MC_SYSTEM_CLOCK {Differential} \
-   CONFIG.MC_TRC {45750} \
-   CONFIG.MC_TRCD {13750} \
-   CONFIG.MC_TRCDMIN {13750} \
-   CONFIG.MC_TRCMIN {45750} \
-   CONFIG.MC_TRP {13750} \
-   CONFIG.MC_TRPMIN {13750} \
    CONFIG.NUM_CLKS {8} \
    CONFIG.NUM_MC {1} \
    CONFIG.NUM_MCP {4} \
@@ -331,55 +311,86 @@ proc create_root_design { parentCell } {
  ] [get_bd_pins /axi_noc_0/aclk7]
 
   # Create instance: versal_cips_0, and set properties
-  set versal_cips_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:versal_cips:3.0 versal_cips_0 ]
+  set versal_cips_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:versal_cips versal_cips_0 ]
   set_property -dict [ list \
-   CONFIG.CLOCK_MODE {Custom} \
-   CONFIG.DDR_MEMORY_MODE {Custom} \
+   CONFIG.DDR_MEMORY_MODE {Enable} \
    CONFIG.DEBUG_MODE {JTAG} \
    CONFIG.DESIGN_MODE {1} \
    CONFIG.IO_CONFIG_MODE {Custom} \
-   CONFIG.PS_BOARD_INTERFACE {Custom} \
-   CONFIG.PS_PL_CONNECTIVITY_MODE {Custom} \
-   CONFIG.PS_PMC_CONFIG {CLOCK_MODE Custom DDR_MEMORY_MODE Custom DEBUG_MODE JTAG DESIGN_MODE 1\
-IO_CONFIG_MODE Custom PCIE_APERTURES_DUAL_ENABLE 0 PCIE_APERTURES_SINGLE_ENABLE\
-0 PMC_CRP_PL0_REF_CTRL_FREQMHZ 334 PMC_GPIO0_MIO_PERIPHERAL {{ENABLE 1} {IO\
-{PMC_MIO 0 .. 25}}} PMC_GPIO1_MIO_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 26 ..\
-51}}} PMC_I2CPMC_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 46 .. 47}}} PMC_MIO37\
-{{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA high} {PULL\
-pullup} {SCHMITT 0} {SLEW slow} {USAGE GPIO}} PMC_OSPI_PERIPHERAL {{ENABLE 0}\
-{IO {PMC_MIO 0 .. 11}} {MODE Single}} PMC_QSPI_COHERENCY 0 PMC_QSPI_FBCLK\
-{{ENABLE 1} {IO {PMC_MIO 6}}} PMC_QSPI_PERIPHERAL_DATA_MODE x4\
-PMC_QSPI_PERIPHERAL_ENABLE 1 PMC_QSPI_PERIPHERAL_MODE {Dual Parallel}\
-PMC_REF_CLK_FREQMHZ 33.3333 PMC_SD1 {{CD_ENABLE 1} {CD_IO {PMC_MIO 28}}\
-{POW_ENABLE 1} {POW_IO {PMC_MIO 51}} {RESET_ENABLE 0} {RESET_IO {PMC_MIO 1}}\
-{WP_ENABLE 0} {WP_IO {PMC_MIO 1}}} PMC_SD1_COHERENCY 0\
-PMC_SD1_DATA_TRANSFER_MODE 8Bit PMC_SD1_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 26\
-.. 36}}} PMC_SD1_SLOT_TYPE {SD 3.0} PMC_USE_PMC_NOC_AXI0 1 PS_BOARD_INTERFACE\
-Custom PS_CAN1_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 40 .. 41}}} PS_ENET0_MDIO\
-{{ENABLE 1} {IO {PS_MIO 24 .. 25}}} PS_ENET0_PERIPHERAL {{ENABLE 1} {IO {PS_MIO\
-0 .. 11}}} PS_ENET1_PERIPHERAL {{ENABLE 1} {IO {PS_MIO 12 .. 23}}}\
-PS_GEN_IPI0_ENABLE 1 PS_GEN_IPI0_MASTER A72 PS_GEN_IPI1_ENABLE 1\
-PS_GEN_IPI1_MASTER R5_0 PS_GEN_IPI2_ENABLE 1 PS_GEN_IPI2_MASTER R5_1\
-PS_GEN_IPI3_ENABLE 1 PS_GEN_IPI4_ENABLE 1 PS_GEN_IPI5_ENABLE 1\
-PS_GEN_IPI6_ENABLE 1 PS_HSDP_EGRESS_TRAFFIC JTAG PS_HSDP_INGRESS_TRAFFIC JTAG\
-PS_HSDP_MODE None PS_I2C1_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 44 .. 45}}}\
-PS_MIO19 {{AUX_IO 0} {DIRECTION in} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default}\
-{PULL disable} {SCHMITT 0} {SLEW slow} {USAGE Reserved}} PS_MIO21 {{AUX_IO 0}\
-{DIRECTION in} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default} {PULL disable}\
-{SCHMITT 0} {SLEW slow} {USAGE Reserved}} PS_MIO7 {{AUX_IO 0} {DIRECTION in}\
-{DRIVE_STRENGTH 8mA} {OUTPUT_DATA default} {PULL disable} {SCHMITT 0} {SLEW\
-slow} {USAGE Reserved}} PS_MIO9 {{AUX_IO 0} {DIRECTION in} {DRIVE_STRENGTH 8mA}\
-{OUTPUT_DATA default} {PULL disable} {SCHMITT 0} {SLEW slow} {USAGE Reserved}}\
-PS_NUM_FABRIC_RESETS 0 PS_PCIE1_PERIPHERAL_ENABLE 0 PS_PCIE2_PERIPHERAL_ENABLE\
-0 PS_PCIE_RESET {{ENABLE 1} {IO {PMC_MIO 38 .. 39}}} PS_PL_CONNECTIVITY_MODE\
-Custom PS_TTC0_PERIPHERAL_ENABLE 1 PS_TTC1_PERIPHERAL_ENABLE 1\
-PS_TTC2_PERIPHERAL_ENABLE 1 PS_TTC3_PERIPHERAL_ENABLE 1 PS_UART0_PERIPHERAL\
-{{ENABLE 1} {IO {PMC_MIO 42 .. 43}}} PS_USB3_PERIPHERAL {{ENABLE 1} {IO\
-{PMC_MIO 13 .. 25}}} PS_USE_FPD_AXI_NOC0 1 PS_USE_FPD_AXI_NOC1 1\
-PS_USE_FPD_CCI_NOC 1 PS_USE_FPD_CCI_NOC0 1 PS_USE_M_AXI_FPD 0\
-PS_USE_NOC_LPD_AXI0 1 PS_USE_PMCPL_CLK0 0 PS_USE_PMCPL_CLK1 0 PS_USE_PMCPL_CLK2\
-0 PS_USE_PMCPL_CLK3 0 SMON_ALARMS Set_Alarms_On SMON_ENABLE_TEMP_AVERAGING 0\
-SMON_TEMP_AVERAGING_SAMPLES 8}\
+   CONFIG.PS_BOARD_INTERFACE {ps_pmc_fixed_io} \
+   CONFIG.PS_PMC_CONFIG {\
+     DDR_MEMORY_MODE {Connectivity to DDR via NOC}\
+     DEBUG_MODE {JTAG}\
+     DESIGN_MODE {1}\
+     IO_CONFIG_MODE {Custom}\
+     PMC_GPIO0_MIO_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 0 .. 25}}}\
+     PMC_GPIO1_MIO_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 26 .. 51}}}\
+     PMC_I2CPMC_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 46 .. 47}}}\
+     PMC_MIO37 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA high}\
+{PULL pullup} {SCHMITT 0} {SLEW slow} {USAGE GPIO}}\
+     PMC_OSPI_PERIPHERAL {{ENABLE 0} {IO {PMC_MIO 0 .. 11}} {MODE Single}}\
+     PMC_QSPI_COHERENCY {0}\
+     PMC_QSPI_FBCLK {{ENABLE 1} {IO {PMC_MIO 6}}}\
+     PMC_QSPI_PERIPHERAL_DATA_MODE {x4}\
+     PMC_QSPI_PERIPHERAL_ENABLE {1}\
+     PMC_QSPI_PERIPHERAL_MODE {Dual Parallel}\
+     PMC_REF_CLK_FREQMHZ {33.3333}\
+     PMC_SD1 {{CD_ENABLE 1} {CD_IO {PMC_MIO 28}} {POW_ENABLE 1} {POW_IO {PMC_MIO 51}}\
+{RESET_ENABLE 0} {RESET_IO {PMC_MIO 12}} {WP_ENABLE 0} {WP_IO {PMC_MIO\
+1}}}\
+     PMC_SD1_COHERENCY {0}\
+     PMC_SD1_DATA_TRANSFER_MODE {8Bit}\
+     PMC_SD1_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 26 .. 36}}}\
+     PMC_SD1_SLOT_TYPE {SD 3.0}\
+     PMC_USE_PMC_NOC_AXI0 {1}\
+     PS_BOARD_INTERFACE {ps_pmc_fixed_io}\
+     PS_CAN1_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 40 .. 41}}}\
+     PS_ENET0_MDIO {{ENABLE 1} {IO {PS_MIO 24 .. 25}}}\
+     PS_ENET0_PERIPHERAL {{ENABLE 1} {IO {PS_MIO 0 .. 11}}}\
+     PS_ENET1_PERIPHERAL {{ENABLE 1} {IO {PS_MIO 12 .. 23}}}\
+     PS_GEN_IPI0_ENABLE {1}\
+     PS_GEN_IPI0_MASTER {A72}\
+     PS_GEN_IPI1_ENABLE {1}\
+     PS_GEN_IPI1_MASTER {R5_0}\
+     PS_GEN_IPI2_ENABLE {1}\
+     PS_GEN_IPI2_MASTER {R5_1}\
+     PS_GEN_IPI3_ENABLE {1}\
+     PS_GEN_IPI4_ENABLE {1}\
+     PS_GEN_IPI5_ENABLE {1}\
+     PS_GEN_IPI6_ENABLE {1}\
+     PS_HSDP_EGRESS_TRAFFIC {JTAG}\
+     PS_HSDP_INGRESS_TRAFFIC {JTAG}\
+     PS_HSDP_MODE {None}\
+     PS_I2C1_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 44 .. 45}}}\
+     PS_MIO19 {{AUX_IO 0} {DIRECTION in} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default}\
+{PULL disable} {SCHMITT 0} {SLEW slow} {USAGE Reserved}}\
+     PS_MIO21 {{AUX_IO 0} {DIRECTION in} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default}\
+{PULL disable} {SCHMITT 0} {SLEW slow} {USAGE Reserved}}\
+     PS_MIO7 {{AUX_IO 0} {DIRECTION in} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default}\
+{PULL disable} {SCHMITT 0} {SLEW slow} {USAGE Reserved}}\
+     PS_MIO9 {{AUX_IO 0} {DIRECTION in} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default}\
+{PULL disable} {SCHMITT 0} {SLEW slow} {USAGE Reserved}}\
+     PS_NUM_FABRIC_RESETS {0}\
+     PS_PCIE_RESET {{ENABLE 1}}\
+     PS_TTC0_PERIPHERAL_ENABLE {1}\
+     PS_TTC1_PERIPHERAL_ENABLE {1}\
+     PS_TTC2_PERIPHERAL_ENABLE {1}\
+     PS_TTC3_PERIPHERAL_ENABLE {1}\
+     PS_UART0_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 42 .. 43}}}\
+     PS_USB3_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 13 .. 25}}}\
+     PS_USE_FPD_AXI_NOC0 {1}\
+     PS_USE_FPD_AXI_NOC1 {1}\
+     PS_USE_FPD_CCI_NOC {1}\
+     PS_USE_FPD_CCI_NOC0 {1}\
+     PS_USE_NOC_LPD_AXI0 {1}\
+     PS_USE_PMCPL_CLK0 {0}\
+     PS_USE_PMCPL_CLK1 {0}\
+     PS_USE_PMCPL_CLK2 {0}\
+     PS_USE_PMCPL_CLK3 {0}\
+     SMON_ALARMS {Set_Alarms_On}\
+     SMON_ENABLE_TEMP_AVERAGING {0}\
+     SMON_TEMP_AVERAGING_SAMPLES {0}\
+   } \
    CONFIG.PS_PMC_CONFIG_APPLIED {1} \
  ] $versal_cips_0
 

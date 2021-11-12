@@ -15,7 +15,7 @@
 ROOT_DIR=$(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 ABS_BUILD_PATH=$(ROOT_DIR)/build
 ABS_HW_PATH=$(ABS_BUILD_PATH)/vivado
-PETALINUX_PROJ_NAME = xilinx-zcu102
+PETALINUX_PROJ_NAME = xilinx-zcu102-2021.2
 
 PETALINUX_BSP=~/Downloads/xilinx-zcu102-v2021.1-final.bsp
 ABS_SW_PATH=$(ABS_BUILD_PATH)/$(PETALINUX_PROJ_NAME)

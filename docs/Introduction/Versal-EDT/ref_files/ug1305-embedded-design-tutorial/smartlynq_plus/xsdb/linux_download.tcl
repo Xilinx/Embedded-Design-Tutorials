@@ -45,20 +45,20 @@ set start_time [clock microseconds]
 ## For versatility, comment mwr command out and use 'dow' in each of these commands.
 
 # Download Linux Image
-mwr -size b -force -bin -file "$imagesPath/Image" 0x200000 21180928
-#dow -data -force "$imagesPath/Image" 0x200000
+#mwr -size b -force -bin -file "$imagesPath/Image" 0x200000 21180928
+dow -data -force "$imagesPath/Image" 0x200000
 
 after 2000
 
 # Download RootFS
-mwr -size b -force -bin -file "$imagesPath/rootfs.cpio.gz.u-boot" 0x4000000 52811673
-#dow -data -force "$imagesPath/rootfs.cpio.gz.u-boot" 0x4000000 
+#mwr -size b -force -bin -file "$imagesPath/rootfs.cpio.gz.u-boot" 0x4000000 52811673
+dow -data -force "$imagesPath/rootfs.cpio.gz.u-boot" 0x4000000 
 
 after 2000
 
 # Download boot.scr
-mwr -size b -force -bin -file "$imagesPath/boot.scr" 0x20000000 2594
-#dow -data -force "$imagesPath/boot.scr" 0x20000000
+#mwr -size b -force -bin -file "$imagesPath/boot.scr" 0x20000000 2594
+dow -data -force "$imagesPath/boot.scr" 0x20000000
 
 set end_time [clock microseconds]
 after 2000

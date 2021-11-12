@@ -7,10 +7,8 @@
 
        http://www.apache.org/licenses/LICENSE-2.0
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
+   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and
    limitations under the License.
 
 **********************************************************************
@@ -21,7 +19,7 @@ System Design Example for High-Speed Debug Port with SmartLynq+ Module
 Introduction
 ============
 
-This chapter demonstrates how to build a Versal |trade|-based system that utilizes both the SmartLynq+ module and the High-Speed Debug Port (HSDP). You will also learn to set up the SmartLynq+ module and download a Linux image using either JTAG or the HSDP.
+This chapter demonstrates how to build a Versal |reg|-based system that utilizes the SmartLynq+ module and the High-Speed Debug Port (HSDP). You will also learn to set up the SmartLynq+ module and download a Linux image using either JTAG or the HSDP.
 
 .. important:: This tutorial requires a SmartLynq+ module, a VCK190 or VMK180 evaluation board, and a Linux host machine.
 
@@ -34,9 +32,9 @@ To enable the HSDP, start with the VCK190 or VMK180 project that you built in th
 Modifying the Design to Enable the HSDP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This design uses the project built in `System Design Example using Scalar Engine and Adaptable Engine <../docs/5-system-design-example.rst>`__ and enables the HSDP interface. You can do this using the Vivado |trade| IP integrator.
+This design uses the project built in :doc:`../docs/5-system-design-example` and enables the HSDP interface. You can do this using the Vivado |trade| IP integrator.
 
-1. Open the Vivado project you created in `System Design Example using Scalar Engine and Adaptable Engine <../docs/5-system-design-example.rst>`__.
+1. Open the Vivado project you created in :doc:`../docs/5-system-design-example`.
 
    `C:/edt/edt_versal/edt_versal.xpr`
 
@@ -44,7 +42,7 @@ This design uses the project built in `System Design Example using Scalar Engine
 
    .. image:: ./media/image5.png
 
-3. Double-click the Versal ACAP CIPS IP core to recustomize the IP. Click the **Next** button and click on the blue box labeled **PS PMC** to customize the Processing System (PS) and the Platform Management Controller (PMC). On the left pane, select  click **Debug** then click on the **HSDP** tab.
+3. Double-click the Versal ACAP CIPS IP core to recustomize the IP. Click the **Next** button and click on the blue box labeled **PS PMC** to customize the Processing System (PS) and the Platform Management Controller (PMC). On the left pane, select **Debug**, then click on the **HSDP** tab.
    
    .. image:: ./media/ch6-image1.png
 
@@ -97,13 +95,13 @@ Exporting Hardware (XSA)
 Creating the HSDP-enabled Linux Image Using PetaLinux
 =====================================================
 
-This example rebuilds the PetaLinux project using the HSDP-enabled XSA that was built in the preceding step. The assumption is that the PetaLinux project has been created as per the instructions in `System Design Example using Scalar Engine and Adaptable Engine <../docs/5-system-design-example.rst>`__.
+This example rebuilds the PetaLinux project using the HSDP-enabled XSA that was built in the preceding step. The assumption is that the PetaLinux project has been created as per the instructions in :doc:`../docs/5-system-design-example`.
 
-.. important:: If you are building this tutorial without having created a PetaLinux project in the preceding chapter, follow steps 1 through 12 in the `Example Project: Creating Linux Images Using PetaLinux <../docs/5-system-design-example.rst#example-project-creating-Linux-images-using-petalinux>`__ section to create a new PetaLinux project.
+.. important:: If you are building this tutorial without having created a PetaLinux project in the preceding chapter, follow steps 1 through 12 in the :ref:`creating-Linux-images-using-petalinux` section to create a new PetaLinux project.
 
 This example needs a Linux host machine. Refer to the *PetaLinux Tools Documentation Reference Guide* `[UG1144] <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`__ for information on dependencies and installation procedure for the PetaLinux tool.
 
-1. Change to the PetaLinux project directory that was created in `Example Project: Creating Linux Images Using PetaLinux <../docs/5-system-design-example.rst#example-project-creating-Linux-images-using-petalinux>`__ using the following command.
+1. Change to the PetaLinux project directory that was created in :ref:`creating-Linux-images-using-petalinux` using the following command.
 
    .. code-block::
 
@@ -131,7 +129,7 @@ This example needs a Linux host machine. Refer to the *PetaLinux Tools Documenta
 
         $ petalinux-package --force --boot --atf --u-boot
 
-   .. note:: The packaged Linux boot images are placed in the `<petaLinux-project>/images/Linux/` directory in the PetaLinux build root. Make a note of this directory location as it will be used in the following steps. If you intend to use a different machine than the one that was used to build PetaLinux (for example, a Windows Based PC) to download the Linux boot images using SmartLynq+, the contents of this directory should be transferred to that machine before proceeding with this tutorial.
+   .. note:: The packaged Linux boot images are located in the ``<petaLinux-project>/images/Linux/`` directory in the PetaLinux build root. Make a note of this directory location as it will be used in the following steps. If you intend to use a different machine than the one that was used to build PetaLinux (for example, a Windows Based PC) to download the Linux boot images using SmartLynq+, the contents of this directory should be transferred to that machine before proceeding with this tutorial.
 
 ================================
 Setting Up the SmartLynq+ Module
@@ -145,8 +143,8 @@ Once the Linux images have been built and packaged, they can be loaded onto the 
 
 2. Connect the SmartLynq+ to either Ethernet or USB.
 
-    *  **Using Ethernet:** Connect an Ethernet cable between Ethernet port on the SmartLynq+ and your local area network.
-    *  **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
+   *  **Using Ethernet:** Connect an Ethernet cable between Ethernet port on the SmartLynq+ and your local area network.
+   *  **Using USB:** Connect the provided USB cable between the USB port on the SmartLynq+ and your PC.
 
 3. Connect the power adapter to the SmartLynq+ and power on the VCK190/VMK180 board.
 
@@ -158,7 +156,7 @@ Once the Linux images have been built and packaged, they can be loaded onto the 
 
    .. note:: If using Ethernet, the SmartLynq+ acquires an IP address from a DHCP server found on the network. If using USB, the USB port has a fixed IP address of `10.0.0.2`.
 
-5. Copy the Linux download scripts from the design package `<design-package>/smartlynq_plus/xsdb`.
+5. Copy the Linux download scripts from the design package ``<design-package>/smartlynq_plus/xsdb``.
 
 Using the SmartLynq+ as a Serial Terminal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -195,11 +193,11 @@ SmartLynq+ can be used to download Linux images directly to the VCK190/VMK180 wi
 
 The design package included with this tutorial contains a script that downloads the Linux images created in the prior steps using the SmartLynq+ module. The script can use either JTAG or HSDP.  
 
-1. On the machine with access to the SmartLynq+ module, open the Vivado tcl shell.
+1. On the machine with access to the SmartLynq+ module, open the Vivado Tcl shell.
 
    .. image:: ./media/ch6-image24.png
 
-2. Change the working directory to the PetaLinux build root, if working on the machine used to build PetaLinux, or change to the location where the `images/linux` directory was transferred to the local machine in the preceding steps.
+2. Change the working directory to the PetaLinux build root, if working on the machine used to build PetaLinux, or change to the location where the ``images/linux`` directory was transferred to the local machine in the preceding steps.
 
 3. At the Vivado tcl shell, issue the following command to download the images using HSDP:
 

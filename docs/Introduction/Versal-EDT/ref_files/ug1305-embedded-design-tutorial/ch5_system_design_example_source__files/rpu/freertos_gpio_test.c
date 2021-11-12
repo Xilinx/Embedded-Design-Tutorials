@@ -18,15 +18,15 @@
 #include "timers.h"
 /* Xilinx includes. */
 #include "xil_printf.h"
-#include "xpm_nodeid.h"
+//#include "xpm_nodeid.h"
 #include "xstatus.h"
 #include "xparameters.h"
-#include "pm_api_sys.h"
+//#include "pm_api_sys.h"
 #include "sleep.h"
-#include "xpm_defs.h"
-#include "gic_setup.h"
-#include "ipi.h"
-#include "pm_init.h"
+//#include "xpm_defs.h"
+//#include "gic_setup.h"
+//#include "ipi.h"
+//#include "pm_init.h"
 
 
 #define DELAY_1_SECOND          1000UL
@@ -37,14 +37,14 @@ static void prvCntTask( void *pvParameters );
 /*-----------------------------------------------------------*/
 
 static TaskHandle_t xCntTask;
-static XIpiPsu IpiInst;
+//static XIpiPsu IpiInst;
 
 
 int main( void )
 {
 	int Status = 0;
 
-#if 1
+#if 0
 	Status = PmInit(NULL, &IpiInst);
 		if (XST_SUCCESS != Status) {
 			xil_printf("PmInit() failed with error: %d\r\n", Status);
@@ -82,6 +82,7 @@ static void prvCntTask( void *pvParameters )
 
 	u32 cnt_val = 0;
 	const TickType_t x1second = pdMS_TO_TICKS( DELAY_1_SECOND );
+
 
 	for( ;; )
 	{

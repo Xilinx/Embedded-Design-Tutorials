@@ -1,25 +1,21 @@
 ..
    Copyright 2000-2021 Xilinx, Inc.
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
        http://www.apache.org/licenses/LICENSE-2.0
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 **************************************************************
 System Design Example using Scalar Engine and Adaptable Engine
 **************************************************************
 
-This chapter guides you through building a system based on Versal |trade| devices using available tools and supported software blocks. This chapter demonstrates how to use the Vivado |reg| tool to create an embedded design using PL AXI GPIO and PL AXI UART. It also demonstrates the steps to configure and build the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU on a Versal ACAP device.
+This chapter guides you through building a system based on Versal |reg| devices using available tools and supported software blocks. This chapter demonstrates how to use the Vivado |reg| tool to create an embedded design using PL AXI GPIO and PL AXI UART. It also describes how to configure and build the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU on a Versal ACAP device.
 
-Examples using the PetaLinux tool are also provided in this chapter.
+Examples using the PetaLinux tool are provided in this chapter.
+
+.. _using-axi-gpio:
 
 ==============================
 Design Example: Using AXI GPIO
@@ -36,7 +32,7 @@ The first step in this design is to configure the PS and PL sections. You can do
 
 .. note:: If the Vivado Design Suite is open already, jump to step 3.
 
-1. Open the Vivado project you created in `Versal ACAP CIPS and NoC (DDR) IP Core Configuration <../docs/2-cips-noc-ip-config.rst>`__.
+1. Open the Vivado project you created in :doc:`../docs/2-cips-noc-ip-config`.
 
    `C:/edt/edt_versal/edt_versal.xpr`
 
@@ -57,13 +53,13 @@ To connect IP blocks to create a system, follow these steps.
 
    .. image:: ./media/image60.png
 
-3. Enable the M_AXI_FPD interface, and set the **Number of PL Resets** to 1, as shown in the previous figure.
+3. Enable the M_AXI_FPD interface and set the **Number of PL Resets** to 1, as shown in the previous figure.
 
 4. Click **Clocking**, and then click on the Output Clocks tab.
 
 5. Expand PMC Domain Clocks. Then expand PL Fabric Clocks. Configure the PL0_REF_CLK to 300 MHz as shown in the following figure:
 
-   .. image::./media/image61.png
+   .. image:: ./media/image61.png
 
 6. Click **Finish** and **OK** to complete the configuration and return to the block diagram.
 
@@ -167,7 +163,7 @@ To add and configure IP addresses, follow these steps.
 
 29.	Double-click **axi_uartlite_0** to open the IP.
 
-30. In Board tab, set Board interface as shown below:
+30. In the Board tab, set Board interface as shown below:
 
     .. image:: media/board-interface.png
     
@@ -177,21 +173,21 @@ To add and configure IP addresses, follow these steps.
 
 32. Add **Clock Wizard IP**. Double-click to open the IP.
 
-33.	Go to Clocking Features tab and set the configuration as shown below:
+33. Go to Clocking Features tab and set the configuration as shown below:
 
     .. image:: media/clocking-features.png
 
-34. Make sure the Source option in Input Clock Information is set to Global buffer.
+34. Make sure the Source option in **Input Clock Information** is set to **Global buffer**.
     
-35.	Go to Output clocks tab and configure as follows:
+35. Go to Output clocks tab and configure as follows:
 
     .. image:: media/output-clocks-tab.png
 
-36.	Right-click `pl0_ref_clk` of CIPS and click **Disconnect Pin**.
+36. Right-click `pl0_ref_clk` of CIPS and click **Disconnect Pin**.
 
-37.	Connect the `pl0_ref_clk` from CIPS to input `clk_in1` of the Clocking wizard.
+37. Connect the `pl0_ref_clk` from CIPS to input `clk_in1` of the Clocking wizard.
 
-38.	Connect the output of clocking wizard to `slowest_sync_clock` of Processor System Reset IP.
+38. Connect the output of clocking wizard to `slowest_sync_clock` of Processor System Reset IP.
 
     This will help in avoiding timing failure. 
 
@@ -206,11 +202,17 @@ To validate the design and to generate the output product, follow these steps:
 
 1. Return to the block design view and save your block design (press **Ctrl+S**).
 
-2. Right-click the white space of the block diagram view, and select **Validate Design**. Alternatively, you can press the **F6** key.
+2. Right-click in the white space of the Block Diagram view and select **Validate Design**. Alternatively, you can press the F6 key. A message dialog box opens as shown below.
+   
+   The Vivado tool will prompt you to map the IPs in the design to an address. Click **Yes**.
 
-    A dialog box with the following message opens:
+   .. image:: media/assign-address.png
 
-    .. image:: ./media/validation_message.PNG
+   .. note:: The number of address segments may vary depending on the number of memory mapped IPs in the design.
+
+   Once the validation is complete, A message dialog box opens as shown below:
+
+   .. image:: media/validation_message.PNG
 
 3. Click **OK** to close the message.
 
@@ -263,27 +265,27 @@ Follow these steps to generate a device image for the design.
 
 5. Export hardware after you generate the Device Image.
 
-   .. note:: The following steps are optional and you can skip these and go to the [Exporting Hardware](#exporting-hardware) section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow of generating the device image, follow the steps provided below.
+.. note:: The following steps are optional and you can skip these and go to the `Exporting Hardware <#exporting-hardware>`__ section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.
 
-6. Go to **Flow Navigator→ Synthesis** and click **Run Synthesis**.
+   1. Go to **Flow Navigator→ Synthesis** and click **Run Synthesis**.
 
-   .. image:: media/image17.png
+      .. image:: media/image17.png
 
-7. If Vivado prompts you to save your project before launching synthesis, click **Save**.
+   2. If Vivado prompts you to save your project before launching synthesis, click **Save**.
 
-   While synthesis is running, a status bar is displayed in the upper right-hand window. This status bar spools for various reasons throughout the design process. The status bar signifies that a process is working in the background. When synthesis is complete, the Synthesis Completed dialog box opens.
+      While synthesis is running, a status bar is displayed in the upper right-hand window. This status bar spools for various reasons throughout the design process. The status bar signifies that a process is working in the background. When synthesis is complete, the Synthesis Completed dialog box opens.
 
-8. Select **Run Implementation** and click **OK**.
+   3. Select **Run Implementation** and click **OK**.
 
-   When implementation completes, the Implementation Completed dialog box opens.
+      When implementation completes, the Implementation Completed dialog box opens.
 
-9. Select **Generate Device Image** and click **OK**.
+   4. Select **Generate Device Image** and click **OK**.
 
-   When Device Image Generation completes, the Device Image Generation Completed dialog box opens.
+      When Device Image Generation completes, the Device Image Generation Completed dialog box opens.
 
-10. Click **Cancel** to close the window.
+   5.  Click **Cancel** to close the window.
 
-    Export hardware, after you generate Device Image.
+       Export hardware, after you generate Device Image.
 
 Exporting Hardware
 ------------------
@@ -298,6 +300,8 @@ Exporting Hardware
 
 4. Click **Finish**.
 
+.. _freertos-axi-uartlite-application-project:
+
 ====================================================================
 Example Project: FreeRTOS AXI UARTLITE Application Project with RPU
 ====================================================================
@@ -306,7 +310,7 @@ This section explains how to configure and build the FreeRTOS application for an
 
 The following steps demonstrate the procedure to create a FreeRTOS Application from Arm Cortex-R5F:
 
-1. Start the Vitis |trade| IDE and create a new workspace, for example, `c:/edt/freertos`.
+1. Start the Vitis |trade| IDE and create a new workspace, for example, ``c:/edt/freertos``.
    
 2. Select **File→ New → Application Project**. The **Creating a New Application Project** wizard opens. If this is the first time that you have launched the Vitis IDE, you can select **Create Application Project** on the Welcome screen as shown in the following figure.
 
@@ -314,74 +318,67 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
 
    .. note:: Optionally, you can check the box next to **Skip welcome page next time** to skip seeing the welcome page every time.
 
-3. There are four components of an application project in the Vitis IDE: a target platform, a system project, a domain and a template.To create a new application project in the Vitis IDE, follow these steps:
+3. There are four components of an application project in the Vitis IDE: a target platform, a system project, a domain and a template. To create a new application project in the Vitis IDE, follow these steps:
 
    1. A target platform is composed of a base hardware design and the meta-data used in attaching accelerators to declared interfaces. Choose a platform or create a platform project from the XSA that you exported from the Vivado Design Suite.
-   2. Put the application project in a system project, and associate it with a processor.
-   3. The domain defines the processor and operating system used for running the host program on the target platform.
-   4. Choose a template for the application, to quick start development. Use the following information to make your selections in the wizard screens.
+   2. 2. Put the application project in a system project, and associate it with a processor.
+   3. 1. The domain defines the processor and operating system used for running the host program on the target platform.
+   4. 1. Choose a template for the application, to quick start development. Use the following information to make your selections in the wizard screens.
 
-    *Table 9:* **Wizard Information**
+      *Table 9:* **Wizard Information**
 
-    +---------------+-------------------------+---------------------------+
-    | Wizard Screen | System Properties       | Setting or Command to Use |
-    +===============+=========================+===========================+
-    | Platform      | Create a new platform   | Click Browse to add your  |
-    |               | from hardware (XSA)     | XSA file                  |
-    +---------------+-------------------------+---------------------------+
-    |               | Platform Name           | vck190_platform           |
-    +---------------+-------------------------+---------------------------+
-    | Application   | Application project     | freertos_gpio_test        |
-    | Project       | name                    |                           |
-    | Detail        |                         |                           |
-    +---------------+-------------------------+---------------------------+
-    |               | Select a system project | +Create New               |
-    +---------------+-------------------------+---------------------------+
-    |               | System project name     | freertos_gpio_test_system |
-    +---------------+-------------------------+---------------------------+
-    |               | Processor               | versal_cips               |
-    |               |                         | _0_pspmc_0_psv_cortexr5_0 |
-    +---------------+-------------------------+---------------------------+
-    | Dom           | Select a domain         | +Create New               |
-    +---------------+-------------------------+---------------------------+
-    |               | Name                    | The default name assigned |
-    +---------------+-------------------------+---------------------------+
-    |               | Display Name            | The default name assigned |
-    +---------------+-------------------------+---------------------------+
-    |               | Operating System        | freertos10_xilinx         |
-    +---------------+-------------------------+---------------------------+
-    |               | Processor               | versal_cips               |
-    |               |                         | _0_pspmc_0_psv_cortexr5_0 |
-    +---------------+-------------------------+---------------------------+
-    | Templates     | Available               | Freertos Hello            |
-    +---------------+-------------------------+---------------------------+
-    |               | Templates               | world                     |
-    +---------------+-------------------------+---------------------------+
+      +---------------+-------------------------+---------------------------+
+      | Wizard Screen | System Properties       | Setting or Command to Use |
+      +===============+=========================+===========================+
+      | Platform      | Create a new platform   | Click Browse to add your  |
+      |               | from hardware (XSA)     | XSA file                  |
+      +---------------+-------------------------+---------------------------+
+      |               | Platform Name           | vck190_platform           |
+      +---------------+-------------------------+---------------------------+
+      | Application   | Application project     | freertos_gpio_test        |
+      | Project       | name                    |                           |
+      | Detail        |                         |                           |
+      +---------------+-------------------------+---------------------------+
+      |               | Select a system project | +Create New               |
+      +---------------+-------------------------+---------------------------+
+      |               | System project name     | freertos_gpio_test_system |
+      +---------------+-------------------------+---------------------------+
+      |               | Processor               | versal_cips               |
+      |               |                         | _0_pspmc_0_psv_cortexr5_0 |
+      +---------------+-------------------------+---------------------------+
+      | Dom           | Select a domain         | +Create New               |
+      +---------------+-------------------------+---------------------------+
+      |               | Name                    | The default name assigned |
+      +---------------+-------------------------+---------------------------+
+      |               | Display Name            | The default name assigned |
+      +---------------+-------------------------+---------------------------+
+      |               | Operating System        | freertos10_xilinx         |
+      +---------------+-------------------------+---------------------------+
+      |               | Processor               | versal_cips               |
+      |               |                         | _0_pspmc_0_psv_cortexr5_0 |
+      +---------------+-------------------------+---------------------------+
+      | Templates     | Available               | Freertos Hello            |
+      +---------------+-------------------------+---------------------------+
+      |               | Templates               | world                     |
+      +---------------+-------------------------+---------------------------+
  
-The Vitis software platform creates the board support package for the Platform project (**vck190_platform**) and the system project (**freertos_gpio_test_system**) containing an application project named **freertos_gpio_test** under the Explorer view after performing the preceding steps.
+   The Vitis software platform creates the board support package for the Platform project (**vck190_platform**) and the system project (**freertos_gpio_test_system**) containing an application project named **freertos_gpio_test** under the Explorer view after performing the preceding steps.
+  
+4. Right-click the `freertos_hello_world.c` file under `src/` and delete the `freertos_hello_world.c` file. Copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``src/`` direcrtory.
 
-4. Right-click the `freertos_hello_world.c` file under `src/` and delete the `freertos_hello_world.c` file. Copy the freertos source code files from the FreeRTOS project path,
-`<design-package>/ch5_system_design_example_source__files/rpu/` to the `src/` direcrtory.
-   
-5. Configure the Vitis IDE to enable the XilPM library under the FreeRTOS Board Support Package. 
-
-   Navigate to `platform.spr` under vck190_platform project, and then select **Modify BSP** settings under Board support package, and enable the XilPM library by pressing <Y> option as shown in the figure.
-
-   .. image:: media/vitis_xilpm_enable.JPG
-
-6. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
+5. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
 
    Navigate to `platform.spr` under vck190_platform project, and then select **Modify BSP** settings under Board support package, and modify stdin and stdout to **axi_uarlite_0** by pressing <Y> option as shown in the figure.
 
    .. image:: media/vitis_uartlite_enable.JPG
 
-7. Click **<OK>** to save the above configuration and exit the configuration wizard.
+6. Click **<OK>** to save the above configuration and exit the configuration wizard.
+   
+7. Right-click **freertos_gpio_test_system** and select **Build Project**. Alternatively, you can click |build|.
 
-8. Right-click **freertos_gpio_test_system** and select **Build Project**. Alternatively, you can click |build|.
+   For building the Linux images and incorporating the FreeRTOS elf into the image, see :ref:`creating-linux-images-using-petalinux`.
 
-For building the Linux images and incorporating the FreeRTOS elf into the image, see `Example Project: Creating Linux Images Using PetaLinux <./5-system-design-example.rst#example-project-creating-linux-images-using-petalinux>`__.
-
-9. On PL AXI UART Serial Console, RPU debug logs will be printed as below:
+8. On PL AXI UART Serial Console, RPU debug logs will be printed as below:
 
    .. code-block::
    
@@ -393,23 +390,24 @@ For building the Linux images and incorporating the FreeRTOS elf into the image,
       Counter 4
       Counter 5
 
+.. _creating-linux-images-using-petalinux:
+
 ======================================================
 Example Project: Creating Linux Images Using PetaLinux
 ======================================================
 
-This section explains how to  configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.
+This section explains how to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.
 
 This example needs a Linux host machine. Refer to the PetaLinux Tools Documentation Reference Guide `UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`__ for information on dependencies and installation procedure for the PetaLinux tool.
 
 .. important:: 
 
-    This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180). 
+   This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180). 
     
-    - If you are using the VCK190 ES1  board, download the `xilinx-vck190-es1-v2021.1-final.bsp` file from `https://www.xilinx.com/member/vck190_headstart.html <https://www.xilinx.com/member/vck190_headstart.html>`__.
-    - If you are using the VCK190 production  board, download the `xilinx-vck190-v2021.1-final.bsp` file from `https://www.xilinx.com/member/vck190_headstart.html <https://www.xilinx.com/member/vck190_headstart.html`__>.
-    - If you are using the VMK180 ES1 board, download the VMK180 PetaLinux 2021.1 BSP (`xilinx-vmk180-es1-v2021.1-final.bsp`) from `https://www.xilinx.com/member/vmk180_headstart.html <https://www.xilinx.com/member/vmk180_headstart.html>`__.
-    - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2021.1 BSP (`xilinx-vmk180-v2021.1-final.bsp`) from `https://www.xilinx.com/member/vmk180_headstart.html <https://www.xilinx.com/member/vmk180_headstart.html>`__.
-    
+   - If you are using the VCK190 ES1 board, download the `xilinx-vck190-es1-v2021.2-final.bsp` file from `here <https://www.xilinx.com/member/vck190_headstart.html>`__.
+   - If you are using the VCK190 production board, download the `xilinx-vck190-v2021.2-final.bsp` file from `here <https://www.xilinx.com/member/vck190_headstart.html>`__.
+   - If you are using the VMK180 ES1 board, download the VMK180 PetaLinux 2021.12 BSP (`xilinx-vmk180-es1-v2021.2-final.bsp`) from `here <https://www.xilinx.com/member/vmk180_headstart.html>`__.
+   - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2021.2 BSP (`xilinx-vmk180-v2021.2-final.bsp`) from `here <https://www.xilinx.com/member/vmk180_headstart.html>`__.
 
 1. Copy the respective board's PetaLinux BSP to the current directory.
    
@@ -425,7 +423,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
    
         $ petalinux-create -t project -s xilinx-vck190-vxxyy.z-final.bsp -n led_example
 
-    .. note:: For VMK180 board, use `xilinx-vmk180-vxxyy.z-final.bsp` after the `-s` option in the command.
+   .. note:: For VMK180 board, use `xilinx-vmk180-vxxyy.z-final.bsp` after the `-s` option in the command.
 
 4. Change to the PetaLinux project directory using the following command.
 
@@ -435,7 +433,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 5. Copy the hardware platform project XSA to the Linux host machine.
 
-   .. note:: For the VMK180 board, use the XSA file which you generated in the [Design Example: Using AXI GPIO](#design-example-using-axi-gpio).
+   .. note:: For the VMK180 board, use the XSA file that you generated in the `Design Example: Using AXI GPIO <#design-example-using-axi-gpio>`__.
 
 6. Reconfigure the BSP using the following commands.
 
@@ -453,7 +451,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
         $petalinux-create -t apps --template install --name gpiotest --enable
 
-9. Copy application files from `<design-package>/<vck190 or vmk180>/linux/bootimages` to the project using the following commands.
+9. Copy application files from ``<design-package>/<vck190 or vmk180>/linux/bootimages`` to the project using the following commands.
 
    .. code-block::
     
@@ -469,7 +467,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
     .. note:: This command opens the kernel configuration wizard for the PetaLinux project.
 
-11. Navigate to **Device drivers→ GPIO Support** and enable it by pressing the **<Y>** key. Press **Enter** and enable the Debug GPIO calls and `/sys/class/gpio/...(sysfs interface)` entries by pressing the **<Y>** key as shown in the following figure.
+11. Navigate to **Device drivers→ GPIO Support** and enable it by pressing the **<Y>** key. Press **Enter** and enable the Debug GPIO calls and ``/sys/class/gpio/...(sysfs interface)`` entries by pressing the **<Y>** key as shown in the following figure.
 
     .. image:: ./media/versal_2021_gpio_debug.png
 
@@ -501,19 +499,19 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 19. OSPI and eMMC boot modes will work only on VCK190/VMK180 REVB Production boards.
 
-20. For OSPI build, copy the below code to PLNX project bsp file `<plnxproj-root>/project-spec/meta-user/conf/petalinuxbsp.conf`.
+20. For OSPI build, copy the below code to PLNX project bsp file ``<plnxproj-root>/project-spec/meta-user/conf/petalinuxbsp.conf``.
 
-   .. code-block::
+    .. code-block::
    
-		  VCK190 Production board:
-		  YAML_DT_BOARD_FLAGS_vck190 = "{BOARD versal-vck190-reva-x-ebm-03-reva}"
-		  
-		  VMK180 Production board:
-		  YAML_DT_BOARD_FLAGS_vmk180 = "{BOARD versal-vmk180-reva-x-ebm-03-reva}"
+         VCK190 Production board:
+         YAML_DT_BOARD_FLAGS_vck190 = "{BOARD versal-vck190-reva-x-ebm-03-reva}"
+         
+         VMK180 Production board:
+         YAML_DT_BOARD_FLAGS_vmk180 = "{BOARD versal-vmk180-reva-x-ebm-03-reva}"
 
-21. For eMMC build, copy the below code to PLNX project bsp file `<plnxproj-root>/project-spec/meta-user/conf/petalinuxbsp.conf`.
+21. For eMMC build, copy the below code to PLNX project bsp file ``<plnxproj-root>/project-spec/meta-user/conf/petalinuxbsp.conf``.
 
-   .. code-block::
+    .. code-block::
    
 		  VCK190 Production board:
 		  YAML_DT_BOARD_FLAGS_vck190 = "{BOARD versal-vck190-reva-x-ebm-02-reva}"
@@ -532,19 +530,19 @@ Combining FreeRTOS and APU Images using a BIF File
 
 1. Open the XSCT console in your Vitis IDE workspace.
 
-2. Navigate to the `images/linux` directory of your PetaLinux project:
+2. Navigate to the ``images/linux`` directory of your PetaLinux project:
 
    .. code-block::
 
         $ cd <petalinux-project>/images/linux/
 
-3. Freertos elf file is supported only for QSPI/SD boot images. Copy the `freertos_gpio_test.elf` from `<design-package>/vck190/freertos/bootimages/freertos_gpio_test.elf` to the `images/linux` directory.
+3. Freertos elf file is supported only for QSPI/SD boot images. Copy the `freertos_gpio_test.elf` from ``<design-package>/vck190/freertos/bootimages/freertos_gpio_test.elf`` to the `images/linux` directory.
 
    .. code-block::
         
         $ cp <design-package>/vck190/ready_to_test/qspi_images/freertos/freertos_gpio_test.elf .
 
-4. Copy the `bootgen.bif` file from `<design-package>/` to the `images/linux` directory.
+4. Copy the `bootgen.bif` file from ``<design-package>/`` to the ``images/linux`` directory.
 
    .. code-block::
 
@@ -556,12 +554,13 @@ Combining FreeRTOS and APU Images using a BIF File
 
         $ bootgen -image bootgen.bif -arch versal -o BOOT.BIN -w
 
-    This creates a `BOOT.BIN` image file in the `<petalinux-project>/images/linux/` directory.
+   This creates a `BOOT.BIN` image file in the ``<petalinux-project>/images/linux/`` directory.
 
-.. note:: To run the images using SD boot mode, see `Boot Sequence for SD-Boot Mode <./4-boot-and-config.rst#boot-sequence-for-sd-boot-mode>`__.
+.. note:: To run the images using SD boot mode, see :ref:`boot-sequence-sd-boot-mode`.
 
 
-.. |build-icon|  image:: ./media/image29.png
+.. |build|  image:: ./media/image29.png
+
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
