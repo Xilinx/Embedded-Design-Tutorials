@@ -170,6 +170,14 @@ int main(void)
 
 	int Status;
 	int exit_flag;
+	Status = UartPsSetup(&InterruptController, &UartPs,
+				UART_DEVICE_ID, UART_INT_IRQ_ID);
+	if (Status != XST_SUCCESS) {
+		xil_printf("UART Interrupt application Failed\r\n");
+		return XST_FAILURE;
+	}
+	
+	
 	Status = PsGpioSetup(&PsGpio, GPIO_DEVICE_ID);
 
 	printf ("R5_App_started\n");
@@ -178,12 +186,7 @@ int main(void)
 			print(" PS GPIO INIT FAILED \n\r");
 			return XST_FAILURE;
 	}
-	Status = UartPsSetup(&InterruptController, &UartPs,
-				UART_DEVICE_ID, UART_INT_IRQ_ID);
-	if (Status != XST_SUCCESS) {
-		xil_printf("UART Interrupt application Failed\r\n");
-		return XST_FAILURE;
-	}
+	
 	Status = TmrControllerSetup(&InterruptController,
 				  &TimerCounterInst,
 				  TMRCTR_DEVICE_ID,
