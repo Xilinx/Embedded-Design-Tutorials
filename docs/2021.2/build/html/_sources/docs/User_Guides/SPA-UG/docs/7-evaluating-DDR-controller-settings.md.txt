@@ -36,9 +36,9 @@ These DDRC settings can also be modified in the Vivado® Design Suite. In a Viva
 
 ## Default DDRC Settings
 
-Baseline results were created by running HP only traffic using the default FSBL settings, as shown in the previous figure. The PL traffic was the high-bandwidth HP traffic shown in [Figure 20: ATG Traffic Configuration Modeling High-Bandwidth Traffic on HP Ports](../docs/6-evaluating-high-performance-ports.html#fig20); however, the traffic duration was set to 10s. Also, no software application was run. You can configure by modifying the Debug Configuration. Select the Application tab, and then uncheck the Download Applications check box.
+Baseline results were created by running HP only traffic using the default FSBL settings, as shown in the previous figure. The PL traffic was the high-bandwidth HP traffic shown in [Figure 20: ATG Traffic Configuration Modeling High-Bandwidth Traffic on HP Ports](../docs/6-evaluating-high-performance-ports.md#fig20); however, the traffic duration was set to 10s. Also, no software application was run. You can configure by modifying the Debug Configuration. Select the Application tab, and then uncheck the Download Applications check box.
 
-This traffic scenario was run on a ZC702 board, and the results can be seen in the following figure. Note that default DDRC settings were used because they have not been modified yet. The HP ports sustained a higher bandwidth than the previous results shown in [Figure 21: Summary of Performance Results from Modeling High-Bandwidth Traffic on HP Ports](../docs/6-evaluating-high-performance-ports.html#fig21) because there is no DDR traffic from the CPUs.
+This traffic scenario was run on a ZC702 board, and the results can be seen in the following figure. Note that default DDRC settings were used because they have not been modified yet. The HP ports sustained a higher bandwidth than the previous results shown in [Figure 21: Summary of Performance Results from Modeling High-Bandwidth Traffic on HP Ports](../docs/6-evaluating-high-performance-ports.md#fig21) because there is no DDR traffic from the CPUs.
 
  *Figure 27:* **HP Port Performance Using Default DDR Configuration Settings**
 
