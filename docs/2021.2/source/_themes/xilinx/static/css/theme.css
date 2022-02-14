@@ -301,7 +301,6 @@ big,small{
 .fa-ul{
   padding-left:0;
   margin-left:2.14286em;
-  list-style-type:none
 }
 .fa-ul>li{
   position:relative
@@ -3183,7 +3182,7 @@ input[type=checkbox][disabled],input[type=radio][disabled]{
   border:1px solid #e74c3c
 }
 .wy-inline-validate{
-  white-space:nowrap
+  white-space:pre
 }
 .wy-inline-validate .wy-input-context{
   padding:.5em .625em;
@@ -3322,7 +3321,6 @@ input[type=checkbox][disabled],input[type=radio][disabled]{
   color:#000;
   text-align:left;
   vertical-align:bottom;
-  white-space:nowrap
 }
 .rst-content table.docutils thead th,.rst-content table.field-list thead th,.wy-table thead th{
   /* font-weight:700;
@@ -3392,7 +3390,7 @@ input[type=checkbox][disabled],input[type=radio][disabled]{
   margin-bottom:0!important
 }
 .wy-table-responsive table td,.wy-table-responsive table th{
-  white-space:nowrap
+  white-space:auto
 }
 a{
   color:#2980b9;
@@ -4372,7 +4370,6 @@ footer p{
 .rst-content table.field-list .field-name{
   padding-right:10px;
   text-align:left;
-  white-space:nowrap
 }
 .rst-content table.field-list .field-body{
   text-align:left
