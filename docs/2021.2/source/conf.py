@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.abspath('docs'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Vitis™ Tutorials'
+project = 'Embedded Design Tutorials'
 copyright = '2019-2022, Xilinx, Inc.'
 author = 'Xilinx, Inc.'
 
