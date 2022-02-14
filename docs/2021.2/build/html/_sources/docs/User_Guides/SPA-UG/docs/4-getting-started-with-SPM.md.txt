@@ -44,7 +44,7 @@ The Vitis IDE enables you to specify traffic scenarios for configuring the ATGs.
 
 ![](./media/image9.png)
 
-In the fixed bitstream of SPM (see [SPM Software](../docs/2-system-performance-modeling-project.html#spm-software) for more details), one ATG is attached to every High Performance (HP) port and the Accelerator Coherency Port (ACP) -- all interfaces between the PL and the PS. Memory access patterns are modeled by the ATGs issuing AXI transactions with various lengths, frequencies, and memory addresses onto each port. Different combinations of read/write traffic patterns across all four HP and the ACP ports can be specified. This ATG Configuration table includes the following:
+In the fixed bitstream of SPM (see [SPM Software](../docs/2-system-performance-modeling-project.md#spm-software) for more details), one ATG is attached to every High Performance (HP) port and the Accelerator Coherency Port (ACP) -- all interfaces between the PL and the PS. Memory access patterns are modeled by the ATGs issuing AXI transactions with various lengths, frequencies, and memory addresses onto each port. Different combinations of read/write traffic patterns across all four HP and the ACP ports can be specified. This ATG Configuration table includes the following:
 
 - **Port Location:** The ATG that is being configured (in SPM, the names are self-explanatory).
 
@@ -80,9 +80,9 @@ The previous figure shows the Eclipse perspective, which provides a dashboard of
 
 - **PS Performance Counters:** PS (Arm) metrics listed in a tabular format.
 
-- **APM Performance Graphs:** Plots showing the APM performance metrics listed in [Table 3: Profile Counters per AXI Interface in AXI Performance Monitor](../docs/3-monitor-framework.html#table3) using these graphs.
+- **APM Performance Graphs:** Plots showing the APM performance metrics listed in [Table 3: Profile Counters per AXI Interface in AXI Performance Monitor](../docs/3-monitor-framework.md#table3) using these graphs.
 
-- **APM Performance Counters:** Plots showing the APM performance metrics listed in [Table 3: Profile Counters per AXI Interface in AXI Performance Monitor](../docs/3-monitor-framework.html#table3) in a tabular format.
+- **APM Performance Counters:** Plots showing the APM performance metrics listed in [Table 3: Profile Counters per AXI Interface in AXI Performance Monitor](../docs/3-monitor-framework.md#table3) in a tabular format.
 
 - **MicroBlaze™ Performance Graphs:** Various plots showing the MicroBlaze performance metrics on a shared timeline. This is not used by SPM and therefore not covered in this guide.
 
