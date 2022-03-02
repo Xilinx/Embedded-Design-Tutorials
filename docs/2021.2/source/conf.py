@@ -24,14 +24,14 @@ sys.path.insert(0, os.path.abspath('docs'))
 # -- Project information -----------------------------------------------------
 
 project = 'Embedded Design Tutorials'
-copyright = '2019-2021, Xilinx, Inc.'
+copyright = '2019-2022, Xilinx, Inc.'
 author = 'Xilinx, Inc.'
 
 # The short X.Y version
 version = '2021.2'
 # The full version, including alpha/beta/rc tags
 release = '2021.2'
-html_last_updated_fmt = 'October 27, 2021'
+html_last_updated_fmt = 'February 9, 2022'
 
 # -- General configuration ---------------------------------------------------
 
@@ -66,7 +66,7 @@ autosectionlabel_prefix_document = True
 
 
 # Configuration for rst2pdf
-pdf_documents = [('index', u'Vitis-Embedded-Tutorials', u'Vitis-Embedded-Tutorials', u'Xilinx, Inc.'),]
+pdf_documents = [('index', u'', u' GitHub Docs', u'Xilinx, Inc.'),]
   # index - master document
   # rst2pdf - name of the file that will be created
   # Sample rst2pdf doc - title of the pdf
@@ -74,8 +74,8 @@ pdf_documents = [('index', u'Vitis-Embedded-Tutorials', u'Vitis-Embedded-Tutoria
 
 
 # Configure 'Edit on GitHub' extension
-edit_on_github_project = 'Xilinx/Vitis-Embedded-Tutorials'
-edit_on_github_branch = 'master'
+edit_on_github_project = 'Xilinx/Vitis-Tutorials'
+edit_on_github_branch = '2021.2'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -154,7 +154,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Vitis-Embedded-Tutorials'
+htmlhelp_basename = 'Vitis-Tutorials'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -232,7 +232,7 @@ epub_exclude_files = ['search.html']
 
 
 rinoh_documents = [dict(doc='index',        # top-level file (index.rst)
-                        target='Vitis-Embedded-Tutorials')]   # output file (manual.pdf)
+                        target='xd000')]   # output file (xd000.pdf)
 
 
 

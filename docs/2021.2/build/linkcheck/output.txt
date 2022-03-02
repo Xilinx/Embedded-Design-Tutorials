@@ -1,0 +1,41 @@
+docs\User_Guides\SPA-UG\docs\3-monitor-framework.md:151: [broken] ../docs/2-system-performance-modeling-project.md#table1: 
+docs\User_Guides\SPA-UG\docs\3-monitor-framework.md:151: [broken] ../docs/2-system-performance-modeling-project.md#table2: 
+docs\User_Guides\SPA-UG\docs\4-getting-started-with-SPM.md:47: [broken] ../docs/2-system-performance-modeling-project.md#spm-software: 
+docs\User_Guides\SPA-UG\docs\5-evaluating-software-performance.md:7: [broken] ../docs/4-getting-started-with-SPM.md#atg-configuration: 
+docs\User_Guides\SPA-UG\docs\4-getting-started-with-SPM.md:83: [broken] ../docs/3-monitor-framework.md#table3: 
+docs\User_Guides\SPA-UG\docs\6-evaluating-high-performance-ports.md:33: [broken] ../docs/4-getting-started-with-SPM.md#fig9: 
+docs\User_Guides\SPA-UG\docs\7-evaluating-DDR-controller-settings.md:39: [broken] ../docs/6-evaluating-high-performance-ports.md#fig20: 
+docs\User_Guides\SPA-UG\docs\7-evaluating-DDR-controller-settings.md:41: [broken] ../docs/6-evaluating-high-performance-ports.md#fig21: 
+docs\User_Guides\SPA-UG\docs\6-evaluating-high-performance-ports.md:57: [broken] ../docs/5-evaluating-software-performance.md#fig13: 
+docs\User_Guides\SPA-UG\docs\2-system-performance-modeling-project.md:11: [broken] ./9-using-spa-with-custom-target.md#instrumenting-hardware: 
+docs\User_Guides\SPA-UG\docs\8-evaluating-memory-hierarchy-ACP.md:9: [broken] ../docs/9-using-spa-with-custom-target.md#instrumenting-software: 
+docs\User_Guides\SPA-UG\docs\10-end-to-end-performance-analysis.md:124: [broken] ../docs/9-using-spa-with-custom-target.md#instrumenting-hardware: 
+docs\Introduction\ZynqMPSoC-EDT\7-design1-using-gpio-timer-interrupts.rst:519: [broken] ./ref_design/design1: 
+docs\Introduction\Zynq7000-EDT\Zynq7000-EDT.rst:41: [broken] /../../../Vitis-Embedded-Software-Debugging/README: 
+docs\Vitis-Embedded-Software-Debugging\docs\4-advanced-debug-techniques\README.md:471: [broken] /docs/2-debugging-bare-metal-applications: 
+docs\Vitis-Embedded-Software-Debugging\docs\1-xilinx-debug-solution-overview\README.md:9: [broken] /docs/Vitis-Embedded-Software-Debugging/docs/2-debugging-bare-metal-applications: 
+docs\Vitis-Embedded-Software-Debugging\docs\1-xilinx-debug-solution-overview\README.md:13: [broken] /docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications: 
+docs\Vitis-Embedded-Software-Debugging\docs\1-xilinx-debug-solution-overview\README.md:17: [broken] /docs/Vitis-Embedded-Software-Debugging/docs/4-advanced-debug-techniques: 
+docs\Design_Tutorials\MPSoC_Graphic_Subsystem\README.md:91: [broken] 2-getting-started.md#design-files-for-this-tutorial: 
+docs\Vitis-Embedded-Software-Debugging\docs\1-xilinx-debug-solution-overview\README.md:21: [broken] /docs/Vitis-Embedded-Software-Debugging/docs/5-summary: 
+docs\Feature_Tutorials\sw-profiling\sw-profiling.md:3: [broken] docs%5CIntroduction%5CZynq7000-EDT%5C7-linux-booting-debug: 
+docs\Vitis-Embedded-Software-Debugging\docs\3-debugging-linux-applications\README.md:147: [redirected permanently] http://man7.org/linux/man-pages/man2/ptrace.2.html to https://man7.org/linux/man-pages/man2/ptrace.2.html
+docs\User_Guides\SPA-UG\docs\2-system-performance-modeling-project.md:31: [broken] http://dblp.uni-trier.de/db/journals/corr/corr1308.md#PallisterHB13: 404 Client Error: Not Found for url: https://dblp.uni-trier.de/db/journals/corr/corr1308.md
+docs\User_Guides\Performance_Benchmark\Dhrystone\README.md:395: [broken] http://forums.xilinx.com/: HTTPSConnectionPool(host='support.xilinx.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1129)')))
+docs\User_Guides\SPA-UG\docs\5-evaluating-software-performance.md:56: [redirected permanently] http://www.cs.bgu.ac.il/%7Eos142/wiki.files/drepper-2007.pdf to https://www.cs.bgu.ac.il/~os142/wiki.files/drepper-2007.pdf
+docs\Introduction\Versal-EDT\docs\1-getting-started.rst:102: [broken] https://support.xilinx.com/s/article/000032521: HTTPSConnectionPool(host='support.xilinx.com', port=443): Max retries exceeded with url: /s/article/000032521 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1129)')))
+docs\Vitis-Embedded-Software-Debugging\docs\3-debugging-linux-applications\README.md:72: [redirected with Found] https://www.xilinx.com/bin/public/openDownload?filename=sdk-2020.2.0.0.sh to https://xilinx-ax-dl.entitlenow.com/dl/ul/2020/12/17/R210414959/sdk-2020.2.0.0.sh/a86a499b53185c49722144f76f66432a/618D4B97?akdm=0&filename=sdk-2020.2.0.0.sh
+docs\Introduction\Zynq7000-EDT\4-linux-for-zynq.rst:30: [redirected with Found] https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2021.2-final.bsp to https://www.xilinx.com/vdesk/hangup.php3
+docs\Vitis-Embedded-Software-Debugging\docs\4-advanced-debug-techniques\README.md:17: [redirected with Found] https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu102-v2021.1-final.bsp to https://www.xilinx.com/vdesk/hangup.php3
+docs\Introduction\Versal-EDT\docs\5-system-design-example.rst:407: [redirected with Found] https://www.xilinx.com/member/vck190_headstart.html to https://www.xilinx.com/vdesk/hangup.php3
+docs\Introduction\ZynqMPSoC-EDT\6-build-linux-sw-for-ps.rst:37: [redirected with Found] https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu102-v2021.2-final.bsp to https://www.xilinx.com/vdesk/hangup.php3
+docs\Vitis-Embedded-Software-Debugging\docs\3-debugging-linux-applications\README.md:22: [redirected with Found] https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu104-v2021.1-final.bsp to https://www.xilinx.com/vdesk/hangup.php3
+docs\Introduction\Zynq7000-EDT\1-introduction.rst:43: [broken] https://www.xilinx.com/products/design-tools/vivado/vivado-ml.html#architecture: Anchor 'architecture' not found
+docs\Introduction\Zynq7000-EDT\1-introduction.rst:43: [broken] https://www.xilinx.com/products/design-tools/vivado/vivado-ml.html#licensing: Anchor 'licensing' not found
+docs\Introduction\ZynqMPSoC-EDT\9-secure-boot.rst:296: [broken] https://www.xilinx.com/support/answers/76125.html: HTTPSConnectionPool(host='support.xilinx.com', port=443): Max retries exceeded with url: /s/article/76125?language=en_US (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1129)')))
+docs\Introduction\ZynqMPSoC-EDT\9-secure-boot.rst:126: [broken] https://www.xilinx.com/support/answers/76171.html: HTTPSConnectionPool(host='support.xilinx.com', port=443): Max retries exceeded with url: /s/article/76171?language=en_US (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1129)')))
+docs\Introduction\Versal-EDT\docs\5-system-design-example.rst:409: [redirected with Found] https://www.xilinx.com/member/vmk180_headstart.html to https://www.xilinx.com/vdesk/hangup.php3
+docs\Vitis-Embedded-Software-Debugging\docs\2-debugging-bare-metal-applications\README.md:127: [broken] https://www.xilinx.com/support/documentation/sw_manuals/xilinx2021_1/oslib_rm.pdf#page=12: 'utf-8' codec can't decode byte 0xf9 in position 11: invalid start byte
+docs\Vitis-Embedded-Software-Debugging\docs\2-debugging-bare-metal-applications\README.md:41: [broken] https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf#G12.407191: 'utf-8' codec can't decode byte 0xf9 in position 11: invalid start byte
+docs\Vitis-Embedded-Software-Debugging\docs\2-debugging-bare-metal-applications\README.md:65: [broken] https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf#G15.435570: 'utf-8' codec can't decode byte 0xf9 in position 11: invalid start byte
+docs\User_Guides\SPA-UG\docs\9-using-spa-with-custom-target.md:25: [broken] https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/Introduction/ZynqMPSoC-EDT/README.html: 404 Client Error: Not Found for url: https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/Introduction/ZynqMPSoC-EDT/README.html

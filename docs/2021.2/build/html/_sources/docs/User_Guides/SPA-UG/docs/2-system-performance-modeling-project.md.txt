@@ -8,7 +8,7 @@
 
 - **Performance Evaluation:** Model the traffic of a design. Once the target platform is understood, specifics of a design can be entered as traffic scenarios, and SPM can be used to evaluate architectural options.
 
-- **Performance Validation:** Instrument the final design and confirm results with the initial model. The same monitoring used in the SPM design can also be added to your design (see [Instrumenting Hardware](./9-using-spa-with-custom-target.html#instrumenting-hardware)), providing a validation of the modeled performance results.
+- **Performance Validation:** Instrument the final design and confirm results with the initial model. The same monitoring used in the SPM design can also be added to your design (see [Instrumenting Hardware](./9-using-spa-with-custom-target.md#instrumenting-hardware)), providing a validation of the modeled performance results.
 
 *Figure 5:* **SPM Project Files in the Vitis IDE**
 
@@ -28,7 +28,7 @@ The SPM project contains two pre-compiled software executables:
 
 ### BEEBS Benchmarks
 
-The BEEBS program comprises a sequence of eight diverse benchmarks. As shown in the following table, this suite contains algorithms originally contained as part of various well-known benchmark suites such as MiBench, WCET, and DSPstone. These benchmarks were chosen to test embedded systems and be portable to standalone or bare-metal targets. For more information about the BEEBS benchmark suite, refer to [BEEBS: Open Benchmarks for Energy Measurements on Embedded Platforms](http://dblp.uni-trier.de/db/journals/corr/corr1308.html#PallisterHB13).
+The BEEBS program comprises a sequence of eight diverse benchmarks. As shown in the following table, this suite contains algorithms originally contained as part of various well-known benchmark suites such as MiBench, WCET, and DSPstone. These benchmarks were chosen to test embedded systems and be portable to standalone or bare-metal targets. For more information about the BEEBS benchmark suite, refer to [BEEBS: Open Benchmarks for Energy Measurements on Embedded Platforms](http://dblp.uni-trier.de/db/journals/corr/corr1308.md#PallisterHB13).
 <div id="table1">
 
  *Table 1:* **BEEBS Benchmarks Provided in Pre-Compiled Program**
@@ -61,7 +61,7 @@ The BEEBS program comprises a sequence of eight diverse benchmarks. As shown in 
 
     - 1024 KB (2-D array: 512 x 512) -- fits into the DDR SDRAM
 
-- **Instrumented:** Run-times of these benchmarks were calculated based on instrumentation added to the code before and after every benchmark. See [Instrumenting Hardware](../docs/9-using-spa-with-custom-target.html#instrumenting-hardware) for more details. Note that the run-times are reported in the transcript delivered over the UART (Terminal 1 panel in the Vitis IDE) and read manually.
+- **Instrumented:** Run-times of these benchmarks were calculated based on instrumentation added to the code before and after every benchmark. See [Instrumenting Hardware](../docs/9-using-spa-with-custom-target.md#instrumenting-hardware) for more details. Note that the run-times are reported in the transcript delivered over the UART (Terminal 1 panel in the Vitis IDE) and read manually.
 
 #### Memory Stride Benchmarks
 
