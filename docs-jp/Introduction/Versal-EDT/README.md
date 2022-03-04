@@ -4,4 +4,4 @@
     </td>
  </tr>
 </table>
-このチュートリアルのファイル名は変更されています。<a href="README.rst">ここをクリック</a>してアクセスしてください。
+このチュートリアルは、HTML 形式で提供されています。<a href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">ここをクリック</a>してアクセスしてください。
