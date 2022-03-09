@@ -64,7 +64,8 @@ Log:
 
 ![SS0_LINUX_LOG](https://user-images.githubusercontent.com/74894579/157438774-d6b97f18-0ad1-4b97-82f5-0f2d874960f5.JPG)
 
-
+ILA Scopshots:
+![SS0_LINUX](https://user-images.githubusercontent.com/74894579/157438969-fdcd67e1-0837-4a9b-be1f-8d6cb9a9d376.JPG)
 	
 ### Vitis:
 
@@ -111,8 +112,17 @@ Log:
 SPI EEPROM Polled Mode Example Test
 Successfully ran SPI EEPROM Polled Mode Example Test
 
+ILA Scopeshots:
+![SS0_BM](https://user-images.githubusercontent.com/74894579/157439090-aecb3ed8-153c-457c-b5d8-0c6d139b2399.JPG)
+
+## Note
+Since there is no slave device over the VCK190 card IOs are routed through EMIO b/w both the controllers to check the clock, ss, data over MOSI.
+Please find the corresponding ILA scope shots in the log.
+
+
 ## Known Issues
-In this section, list any known issues with the design, or any warning messages that might appear which can be safely ignored by the customer.
+In this section, list any known issues with the design, or any warning messages that might appear which can be safely ignored by the customer
+
 
 Copyright 2020 Xilinx Inc.
 
