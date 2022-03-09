@@ -68,51 +68,52 @@ ILA Scopshots:
 ![SS0_LINUX](https://user-images.githubusercontent.com/74894579/157438969-fdcd67e1-0837-4a9b-be1f-8d6cb9a9d376.JPG)
 
 	
-### Vitis:
+  ### Vitis:
 
        
  #### PS-SPI polled mode example
 
 Log:
 
-[0.015]****************************************
-[0.072]Xilinx Versal Platform Loader and Manager
-[0.130]Release 2021.2   Mar  7 2022  -  19:27:19
-[0.189]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-[0.255]BOOTMODE: 0x0, MULTIBOOT: 0x0
-[0.309]****************************************
-[0.518]Non Secure Boot
-[3.739]PLM Initialization Time
-[3.790]***********Boot PDI Load: Started***********
-[3.852]Loading PDI from SBI
-[3.900]Monolithic/Master Device
-[3.995]0.117 ms: PDI initialization time
-[4.054]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
-[4.122]---Loading Partition#: 0x1, Id: 0xC
-[53.639] 49.429 ms for Partition#: 0x1, Size: 2416 Bytes
-[58.465]---Loading Partition#: 0x2, Id: 0xB
-[62.818] 0.513 ms for Partition#: 0x2, Size: 48 Bytes
-[66.940]---Loading Partition#: 0x3, Id: 0xB
-[108.396] 37.613 ms for Partition#: 0x3, Size: 61312 Bytes
-[110.707]---Loading Partition#: 0x4, Id: 0xB
-[115.509] 0.875 ms for Partition#: 0x4, Size: 5968 Bytes
-[119.524]---Loading Partition#: 0x5, Id: 0xB
-[123.454] 0.004 ms for Partition#: 0x5, Size: 80 Bytes
-[128.224]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
-[133.511]---Loading Partition#: 0x6, Id: 0x3
-[1294.287] 1156.848 ms for Partition#: 0x6, Size: 910544 Bytes
-[1296.940]---Loading Partition#: 0x7, Id: 0x5
-[2599.145] 1298.192 ms for Partition#: 0x7, Size: 435840 Bytes
-[2601.831]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
-[2606.971]---Loading Partition#: 0x8, Id: 0x8
-[2611.384] 0.401 ms for Partition#: 0x8, Size: 1104 Bytes
-[2616.015]***********Boot PDI Load: Done***********
-[2620.483]8775.101 ms: ROM Time
-[2623.249]Total PLM Boot Time
-[11400.008]XPlm_KeepAliveTask ERROR: PSM is not alive
-[11401.904]PLM Error Status: 0x02080000
-SPI EEPROM Polled Mode Example Test
-Successfully ran SPI EEPROM Polled Mode Example Test
+	[0.015]****************************************
+	[0.072]Xilinx Versal Platform Loader and Manager
+	[0.130]Release 2021.2   Mar  7 2022  -  19:27:19
+	[0.189]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+	[0.255]BOOTMODE: 0x0, MULTIBOOT: 0x0
+	[0.309]****************************************
+	[0.518]Non Secure Boot
+	[3.739]PLM Initialization Time
+	[3.790]***********Boot PDI Load: Started***********
+	[3.852]Loading PDI from SBI
+	[3.900]Monolithic/Master Device
+	[3.995]0.117 ms: PDI initialization time
+	[4.054]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+	[4.122]---Loading Partition#: 0x1, Id: 0xC
+	[53.639] 49.429 ms for Partition#: 0x1, Size: 2416 Bytes
+	[58.465]---Loading Partition#: 0x2, Id: 0xB
+	[62.818] 0.513 ms for Partition#: 0x2, Size: 48 Bytes
+	[66.940]---Loading Partition#: 0x3, Id: 0xB
+	[108.396] 37.613 ms for Partition#: 0x3, Size: 61312 Bytes
+	[110.707]---Loading Partition#: 0x4, Id: 0xB
+	[115.509] 0.875 ms for Partition#: 0x4, Size: 5968 Bytes
+	[119.524]---Loading Partition#: 0x5, Id: 0xB
+	[123.454] 0.004 ms for Partition#: 0x5, Size: 80 Bytes
+	[128.224]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+	[133.511]---Loading Partition#: 0x6, Id: 0x3
+	[1294.287] 1156.848 ms for Partition#: 0x6, Size: 910544 Bytes
+	[1296.940]---Loading Partition#: 0x7, Id: 0x5
+	[2599.145] 1298.192 ms for Partition#: 0x7, Size: 435840 Bytes
+	[2601.831]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+	[2606.971]---Loading Partition#: 0x8, Id: 0x8
+	[2611.384] 0.401 ms for Partition#: 0x8, Size: 1104 Bytes
+	[2616.015]***********Boot PDI Load: Done***********
+	[2620.483]8775.101 ms: ROM Time
+	[2623.249]Total PLM Boot Time
+	[11400.008]XPlm_KeepAliveTask ERROR: PSM is not alive
+	[11401.904]PLM Error Status: 0x02080000
+	SPI EEPROM Polled Mode Example Test
+	Successfully ran SPI EEPROM Polled Mode Example Test
+
 
 ILA Scopeshots:
 ![SS0_BM](https://user-images.githubusercontent.com/74894579/157439090-aecb3ed8-153c-457c-b5d8-0c6d139b2399.JPG)
