@@ -66,6 +66,7 @@ Log:
 
 ILA Scopshots:
 ![SS0_LINUX](https://user-images.githubusercontent.com/74894579/157438969-fdcd67e1-0837-4a9b-be1f-8d6cb9a9d376.JPG)
+
 	
 ### Vitis:
 
@@ -73,6 +74,7 @@ ILA Scopshots:
  #### PS-SPI polled mode example
 
 Log:
+
 [0.015]****************************************
 [0.072]Xilinx Versal Platform Loader and Manager
 [0.130]Release 2021.2   Mar  7 2022  -  19:27:19
