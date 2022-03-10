@@ -1,0 +1,608 @@
+﻿
+
+
+<!DOCTYPE HTML><!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--> <!--[if gt IE 8]><!--><html class="no-js" lang="en" ><!--<![endif]--><head>
+		<meta charset="utf-8">
+		
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="description"/>
+		<meta name="keywords"/>
+		<meta property="og:title" content=""/>
+		<meta property="og:description"/><!-- favicon --><link rel="icon" type="image/vnd.microsoft.icon" href="../../../../_static/favicon.ico"/>
+		<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="../../../../_static/favicon.ico"/><!-- Fonts --><link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css"/><!-- OneTrust Cookies Consent Notice start for xilinx.github.io --><script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="37701bd4-e5c0-4ee3-9329-e7475d0b13a7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script><!-- OneTrust Cookies Consent Notice end for xilinx.github.io --> <!-- Google Tag Manager --><script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-5RHQV7');</script><!-- End Google Tag Manager --> <!-- Google Tag Manager --><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript><!-- End Google Tag Manager --><script type="text/javascript" src="../../../../_static/js/jquery.min.js"></script>
+	  <script type="text/javascript" src="../../../../_static/js/gtm.js"></script>
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/d3dd8c60ed.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/common-ui-all.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/CoveoJsSearch.Lazy.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/linkid.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/Searchbox.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/header-footer.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/common-ui-all.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/header-footer.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/pro.min.css" media="all" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="付録: PLM の作成" href="A-creating-plm.html" />
+    <link rel="prev" title="スカラー型エンジンと適応型エンジンを使用したシステム デザイン例" href="5-system-design-example.html" /> 
+	</head>
+	<body>
+		<div class="xilinx-bs3"/>
+		<div class="root responsivegrid">
+			<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 aem-Grid--large--16 aem-Grid--xlarge--16 aem-Grid--xxlarge--16 aem-Grid--xxxlarge--16 ">
+ <div class="xilinxExperienceFragments experiencefragment aem-GridColumn aem-GridColumn--default--12">
+
+    
+    
+
+    
+
+
+
+<div class="xf-content-height">
+    
+
+<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 ">
+    
+    <div class="header parbase aem-GridColumn aem-GridColumn--default--12"><noindex>
+	<header data-component="header" class="site-header">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid main-nav">
+				<div class="row">
+					<div class="navbar-column col-xs-4 col-sm-5">
+						<ul class="nav navbar-nav hidden-xs">
+							<li>
+									<button onclick="window.location.href=&#39;https://www.xilinx.com/applications.html&#39;;">Solutions</button>
+								</li>
+							<li>
+									<button onclick="window.location.href=&#39;https://www.xilinx.com/products/silicon-devices.html&#39;;">Products</button>
+								</li>
+							<li>
+									<button onclick="window.location.href=&#39;https://www.xilinx.com/about/company-overview.html&#39;;">Company</button>
+								</li>
+							</ul>
+							
+						<ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
+							<li>
+									<button data-target="#header-container-0" data-function="toggle">Solutions</button>
+								</li>
+							<li>
+									<button data-target="#header-container-1" data-function="toggle">Products</button>
+								</li>
+							<li>
+									<button data-target="#header-container-2" data-function="toggle">Company</button>
+								</li>
+							</ul>
+							
+						<div id="header-container-0" class="menu-container">
+								<div class="navbar-nav-container">
+									<ul class="nav navbar-nav">
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/applications.html&#39;;">Solutions</button>
+												</li>
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/products/silicon-devices.html&#39;;">Products</button>
+												</li>
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/about/company-overview.html&#39;;">Company</button>
+												</li>
+										</ul>
+									<button data-function="close-menu"><span class="fal fa-times" aria-hidden="true"></span></button>
+								</div>
+							</div>
+							<div id="header-container-1" class="menu-container">
+								<div class="navbar-nav-container">
+									<ul class="nav navbar-nav">
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/applications.html&#39;;">Solutions</button>
+												</li>
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/products/silicon-devices.html&#39;;">Products</button>
+												</li>
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/about/company-overview.html&#39;;">Company</button>
+												</li>
+										</ul>
+									<button data-function="close-menu"><span class="fal fa-times" aria-hidden="true"></span></button>
+								</div>
+							</div>
+							<div id="header-container-2" class="menu-container">
+								<div class="navbar-nav-container">
+									<ul class="nav navbar-nav">
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/applications.html&#39;;">Solutions</button>
+												</li>
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/products/silicon-devices.html&#39;;">Products</button>
+												</li>
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/about/company-overview.html&#39;;">Company</button>
+												</li>
+										</ul>
+									<button data-function="close-menu"><span class="fal fa-times" aria-hidden="true"></span></button>
+								</div>
+							</div>
+							</div>
+					<div class="logo-column col-xs-4 col-sm-2">
+						<div class="logo"><a target="_blank" href="https://japan.xilinx.com/"><img src="https://github.com/Xilinx/Image-Collateral/blob/main/xilinx-header-logo.svg?raw=true" title="Xilinx Inc"/> </a></div>
+					</div>
+
+				</div>
+			</div>
+			</nav></header></noindex></div>
+		
+	
+</div>
+
+    
+</div>
+</div>
+
+<div class="calloutBanner parbase aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16"><div class="callout-banner">Xilinx is now a part of <a target="_blank" href="https://www.amd.com/en/corporate/xilinx-acquisition">AMD</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Learn More</a></div>
+</div>
+				<div class="parsys aem-GridColumn--xxxlarge--none aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+						<div class="container-fluid">
+							<div class="row">
+							<div class="col-xs-12">
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" ><a href="../../../../index.html" class="icon icon-home" alt="Documentation Home">エンベデッド デザイン チュートリアル</a><div class="version">2021.2</div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+      
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption"><span class="caption-text">English</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/index.html">Master</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入門</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Versal-EDT.html">Versal ACAP エンベデッド デザイン チュートリアル</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-getting-started.html">入門</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-cips-noc-ip-config.html">Versal ACAP CIPS および NoC (DDR) IP コアの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-boot-and-config.html">ブートおよびコンフィギュレーション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-debugging.html">Vitis ソフトウェア プラットフォームを使用したデバッグ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-system-design-example.html">スカラー型エンジンと適応型エンジンを使用したシステム デザイン例</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SmartLynq+ モジュールを使用した高速デバッグ ポート (HSDP) のシステム デザイン例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">入門</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#design-example-enabling-the-hsdp">デザイン例: HSDP のイネーブル</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modifying-the-design-to-enable-the-hsdp">HSDP をイネーブルにするようにデザインを変更</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synthesizing-implementing-and-generating-the-device-image">デバイス イメージの合成、インプリメント、生成</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exporting-hardware-xsa">ハードウェア (XSA) のエクスポート</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-hsdp-enabled-linux-image-using-petalinux">PetaLinux を使用した HSDP がイネーブルになった Linux イメージの作成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-smartlynq-module">SmartLynq+ モジュールの設定</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-smartlynq-as-a-serial-terminal">SmartLynq+ をシリアル端末として使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booting-linux-images-over-jtag-or-hsdp">JTAG または HSDP を介した Linux イメージのブート</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#useful-links">役に立つリンク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">サマリ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="A-creating-plm.html">付録: PLM の作成</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC エンベデッド デザイン チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 エンベデッド デザイン チュートリアル</a></li>
+</ul>
+<p class="caption"><span class="caption-text">機能チュートリアル</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">FSBL (First Stage Boot Loader)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw-profiling/sw-profiling.html">システム デバッガーを使用したアプリケーションのプロファイル</a></li>
+</ul>
+<p class="caption"><span class="caption-text">設計チュートリアル</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">グラフィックおよび DisplayPort ベースのサブシステムのセットアップ例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">デバッグ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis エンベデッド ソフトウェア デバッグ ガイド (UG1515) 2021.1</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ユーザー ガイド</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/SPA-UG/SPA-UG.html">システム パフォーマンス解析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone のベンチマーク</a></li>
+</ul>
+<p class="caption"><span class="caption-text">以前のリリース</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://xilinx.github.io/Embedded-Design-Tutorials/docs-jp/2021.1/build/html/index.html">2021.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://xilinx.github.io/Embedded-Design-Tutorials/docs-jp/2020.2/build/html/index.html">2020.2</a></li>
+</ul>
+
+            
+			
+			<p class="caption"><span class="caption-text">このページ</span></p>
+				<ul class="current">
+				  <li class="toctree-l1"><a href="../../../../_sources/docs/Introduction/Versal-EDT/docs/6-system-design-example-HSDP.rst.txt"
+						rel="nofollow">ソースの表示</a></li>
+				</ul>
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation"><i data-toggle="wy-nav-top" class="fa fa-bars"></i> <a href="../../../../index.html">エンベデッド デザイン チュートリアル</a></nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../Versal-EDT.html">Versal ACAP エンベデッド デザイン チュートリアル</a> &raquo;</li>
+        
+      <li>SmartLynq+ モジュールを使用した高速デバッグ ポートのシステム デザイン例</li>
+    
+    
+      <li class="wy-breadcrumbs-aside"><a href="../../../../_sources/docs/Introduction/Versal-EDT/docs/6-system-design-example-HSDP.rst.txt" rel="nofollow">ページ ソースの表示</a></li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="system-design-example-for-high-speed-debug-port-with-smartlynq-module">
+<h1>SmartLynq+ モジュールを使用した高速デバッグ ポートのシステム デザイン例<a class="headerlink" href="#system-design-example-for-high-speed-debug-port-with-smartlynq-module" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>概要<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>この章では、SmartLynq+ モジュールと高速デバッグ ポート (HSDP) を利用する Versal® ベースのシステムをビルドする方法について説明します。また、 SmartLynq+ モジュールを設定し、JTAG または HSDP のいずれかを使用して Linux イメージをダウンロードする方法も学習します。</p>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>このチュートリアルには、SmartLynq+ モジュール、VCK190 または VMK180 評価ボード、および Linux ホスト コンピューターが必要です。</p>
+</div>
+</div>
+<div class="section" id="design-example-enabling-the-hsdp">
+<h2>デザイン例: HSDP のイネーブル<a class="headerlink" href="#design-example-enabling-the-hsdp" title="Permalink to this headline">¶</a></h2>
+<p>HSDP をイネーブルにするには、前の章で構築した VCK190 または VMK180 プロジェクトから開始し、HSDP サポートを含めるようにプロジェクトを変更します。また、HSDP 対応デザインを作成するために、含まれているブロック デザイン Tcl を実行する手順から、この章を始めることもできます。<cite>Prod_Si/smartlynq_plus/bd_tcl</cite> を参照してください。</p>
+<div class="section" id="modifying-the-design-to-enable-the-hsdp">
+<h3>HSDP をイネーブルにするようにデザインを変更<a class="headerlink" href="#modifying-the-design-to-enable-the-hsdp" title="Permalink to this headline">¶</a></h3>
+<p>このデザインでは、<a class="reference internal" href="5-system-design-example.html"><span class="doc">「スカラー型エンジンと適応型エンジンを使用したシステム デザイン例」</span></a>でビルドしたプロジェクトを使用し、HSDP インターフェイスをイネーブルにします。これには、Vivado™ IP インテグレーターを使用します。</p>
+<ol class="arabic">
+<li><p><a class="reference internal" href="5-system-design-example.html"><span class="doc">「スカラー型エンジンと適応型エンジンを使用したシステム デザイン例」</span></a>で作成した Vivado プロジェクトを開きます。</p>
+<p><cite>C:/edt/edt_versal/edt_versal.xpr</cite></p>
+</li>
+<li><p>Flow Navigator の <strong>[IP Integrator]</strong> → <strong>[Open Block Design]</strong> をクリックします。</p><img alt="../../../../_images/image5.png" src="../../../../_images/image5.png" /></li>
+<li><p>Versal ACAP CIPS IP コアをダブルクリックして、IP を再カスタマイズします。<strong>[Next]</strong> ボタンをクリックし、<strong>PS PMC</strong> というラベルの青いボックスをクリックして、プロセッシング システム (PS) およびプラットフォーム管理コントローラー (PMC) をカスタマイズします。左ペインで、<strong>[Debug]</strong> を選択し、<strong>[HSDP]</strong> タブをクリックします。</p><img alt="../../../../_images/ch6-image1.png" src="../../../../_images/ch6-image1.png" /></li>
+<li><p><strong>[High-Speed Debug Port (HSDP)]</strong> の下の <strong>[Pathway to/from Debug Packet Controller (DPC)]</strong> を <strong>[AURORA]</strong> にします。</p><img alt="../../../../_images/ch6-image2.png" src="../../../../_images/ch6-image2.png" /></li>
+<li><p><strong>[GT Selection]</strong> を <strong>[HSDP1 GT]</strong> に、<strong>[refclk Selection]</strong> を <strong>[REFCLK1]</strong> に、<strong>[GT Refclk Freq (MHz)]</strong> を <strong>[156.25]</strong> に設定します。</p>
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>ライン レートは 10.0 Gb/s に固定されます。</p>
+</div>
+</li>
+<li><p><strong>[OK]</strong> をクリックして変更を保存します。CIPS IP 上に 2 つのポート (<cite>gt_refclk1</cite> および <cite>HSDP1_GT</cite>) が作成されます。</p></li>
+<li><p><strong>[IP Integrator]</strong> ページで <cite>gt_refclk1</cite> を右クリックし、<strong>[Make External]</strong> をクリックします。<strong>HSDP1_GT</strong> も同じように設定します。</p><img alt="../../../../_images/ch6-image4.png" src="../../../../_images/ch6-image4.png" /> <img alt="../../../../_images/ch6-image5.png" src="../../../../_images/ch6-image5.png" /></li>
+<li><p><strong>[Validate Design]</strong> をクリックして <strong>[Save]</strong> をクリックします。</p></li>
+</ol>
+</div>
+<div class="section" id="synthesizing-implementing-and-generating-the-device-image">
+<h3>デバイス イメージの合成、インプリメント、生成<a class="headerlink" href="#synthesizing-implementing-and-generating-the-device-image" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>Flow Navigator で <strong>[Program and Debug]</strong> → <strong>[Generate Device Image]</strong> をクリックしてインプリメンテーションを開始します。</p>
+<p>デバイス イメージの生成が完了すると、[Device Image Generation Completed] ダイアログ ボックスが開きます。</p><img alt="../../../../_images/ch6-image9.png" src="../../../../_images/ch6-image9.png" /></li>
+</ol>
+</div>
+<div class="section" id="exporting-hardware-xsa">
+<h3>ハードウェア (XSA) のエクスポート<a class="headerlink" href="#exporting-hardware-xsa" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>Vivado ツールバーから <strong>[File]</strong> → <strong>[Export]</strong> → <strong>[Export Hardware]</strong> をクリックします。[Export Hardware] ダイアログ ボックスが開きます。</p><img alt="../../../../_images/ch6-image10.png" src="../../../../_images/ch6-image10.png" /></li>
+<li><p><strong>[Fixed]</strong> を選択して <strong>[Next]</strong> をクリックします。</p></li>
+<li><p><strong>[Include Device Image]</strong> を選択し、<strong>[Next]</strong> をクリックします。</p></li>
+<li><p>エクスポートするファイルの名前 (例: <cite>edt_versal_wrapper_with_hsdp</cite>) を指定します。<strong>[Next]</strong> をクリックします。</p></li>
+<li><p><strong>[Finish]</strong> をクリックします。</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="creating-the-hsdp-enabled-linux-image-using-petalinux">
+<h2>PetaLinux を使用した HSDP がイネーブルになった Linux イメージの作成<a class="headerlink" href="#creating-the-hsdp-enabled-linux-image-using-petalinux" title="Permalink to this headline">¶</a></h2>
+<p>この例では、前の手順でビルドした HSDP がイネーブルになった XSA を使用して PetaLinux プロジェクトを再構築します。PetaLinux プロジェクトは、<a class="reference internal" href="5-system-design-example.html"><span class="doc">「スカラー型エンジンと適応型エンジンを使用したシステム デザイン例」</span></a>に従って作成されたことを前提としています。</p>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>前の章で PetaLinux プロジェクトを作成せずにこのチュートリアルを実行する場合は、<a class="reference internal" href="5-system-design-example.html#creating-linux-images-using-petalinux"><span class="std std-ref">「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」</span></a>の手順 1 ～ 12 に従って、新しい PetaLinux プロジェクトを作成します。</p>
+</div>
+<p>このサンプル プロジェクトには、Linux ホスト マシンが必要です。PetaLinux ツールの依存関係とインストール手順については、『PetaLinux ツールの資料: リファレンス ガイド』 <a class="reference external" href="https://japan.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">[UG1144]</a> を参照してください。<em></em></p>
+<ol class="arabic">
+<li><p>次のコマンドを使用して、<a class="reference internal" href="5-system-design-example.html#creating-linux-images-using-petalinux"><span class="std std-ref">「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」</span></a>で作成した PetaLinux プロジェクト ディレクトリに移動します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd led_example</pre></div>
+</div>
+</li>
+<li><p>新しいハードウェア プラットフォーム プロジェクトの XSA を、PetaLinux ビルド ルートの 1 つ上のディレクトリにある Linux ホスト マシンにコピーします。</p>
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>前の手順で生成したアップデート済みの XSA ファイルを使用するようにしてください。</p>
+</div>
+</li>
+<li><p>次のコマンドを実行して BSP を再設定します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ petalinux-config --get-hw-description=&lt;path till the directory containing the respective xsa file&gt; </pre></div>
+</div>
+</li>
+<li><p>次のコマンドを使用して、Linux イメージをビルドします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ petalinux-build</pre></div>
+</div>
+</li>
+<li><p>ビルドが完了したら、次のコマンドを使用してブート イメージをパッケージにします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ petalinux-package --force --boot --atf --u-boot</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>パッケージされた Linux ブート イメージは、PetaLinux ビルド ルートの <code class="docutils literal notranslate"><span class="pre">&lt;petaLinux-project&gt;/images/Linux/</span></code> ディレクトリに含まれます。このディレクトリの場所は、次の手順で使用するため、メモしておいてください。PetaLinux のビルドに使用したマシン (Windows ベースの PC など) とは別のマシンを使用し、SmartLynq+ を使用して Linux ブート イメージをダウンロードする場合は、このチュートリアルに進む前に、このディレクトリの内容をそのマシンに移動しておく必要があります。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="setting-up-the-smartlynq-module">
+<h2>SmartLynq+ モジュールの設定<a class="headerlink" href="#setting-up-the-smartlynq-module" title="Permalink to this headline">¶</a></h2>
+<p>Linux イメージがビルドされてパッケージされたら、JTAG または HSDP のいずれかを使用して VCK190 または VMK180 ボードにロードできます。HSDP を使用して接続するように SmartLynq+ モジュールを設定する手順は、次のとおりです。</p>
+<ol class="arabic">
+<li><p>VCK190 USB-C コネクタと SmartLynq+ モジュールの間を USB-C ケーブルを使用して接続します。</p><img alt="../../../../_images/ch6-slp1.png" src="../../../../_images/ch6-slp1.png" /></li>
+<li><p>SmartLynq+ をイーサネットまたは USB のいずれかに接続します。</p>
+<ul class="simple">
+<li><p><strong>[Using Ethernet]:</strong> SmartLynq+ のイーサネット ポートとローカル エリア ネットワーク間をイーサネット ケーブルで接続します。</p></li>
+<li><p><strong>[Using USB]:</strong> SmartLynq+ の USB ポートと PC 間を提供されている USB ケーブルで接続します。</p></li>
+</ul>
+</li>
+<li><p>電源アダプターを SmartLynq+ に接続し、VCK190/VMK180 ボードの電源を入れます。</p>
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>ボードを起動する前に、イーサネット ケーブルをターゲット デバイスに接続してください。</p>
+</div>
+</li>
+<li><p>SmartLynq+ の起動が完了すると、<cite>eth0</cite> または <cite>usb0</cite> の下の画面に IP アドレスが表示されます。この IP アドレスは、イーサネットおよび USB の両方のユース ケースで SmartLynq+ への接続に使用される IP アドレスであるため、メモしておいてください。</p><img alt="../../../../_images/ch6-image23.jpg" src="../../../../_images/ch6-image23.jpg" /><div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>イーサネットを使用する場合、SmartLynq+ はネットワーク上で検出された DHCP サーバーから IP アドレスを取得します。USB を使用する場合、USB ポートの IP アドレスは <cite>10.0.0.2</cite> に固定されています。</p>
+</div>
+</li>
+<li><p>デザイン パッケージ (<code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/smartlynq_plus/xsdb</span></code>) から Linux ダウンロード スクリプトをコピーします。</p></li>
+</ol>
+<div class="section" id="using-the-smartlynq-as-a-serial-terminal">
+<h3>SmartLynq+ をシリアル端末として使用<a class="headerlink" href="#using-the-smartlynq-as-a-serial-terminal" title="Permalink to this headline">¶</a></h3>
+<p>SmartLynq+ は、VCK190 からの UART 出力をリモートで表示するためのシリアル端末としても使用できます。この機能は、リモート設定に物理的なアクセスができない場合に便利です。SmartLynq+ モジュールには、VCK190 上の UART に直接接続するために使用できる minicom アプリケーションが事前にインストールされています。</p>
+<ol class="arabic">
+<li><p><cite>PuTTY</cite> (Windows) や <cite>ssh</cite> (UNIX ベースのシステム) などの SSH クライアントを使用して、SmartLynq+ ディスプレイに表示される IP アドレスに接続します。</p>
+<ul class="simple">
+<li><p>ユーザー名: <cite>xilinx</cite></p></li>
+<li><p>パスワード: <cite>xilinx</cite></p></li>
+</ul>
+<p>たとえば、SmartLynq+ に IP アドレス <cite>192.168.0.10</cite> が表示された場合は、<cite>ssh xilinx@192.168.0.10</cite> コマンドを実行する必要があります。</p>
+</li>
+<li><p>デフォルトでは、minicom アプリケーションはハードウェア フロー制御を使用します。ザイリンクス ボード上の UART に正常に接続するには、ハードウェア フロー制御は VCK190 UART で使用されないので、ディスエーブルにする必要があります。このためには、<cite>sudo minicom -s</cite> を実行して機能をディスエーブルにして、minicom 設定モードにします。または、ルートとして次のコマンドを実行し、minicom のデフォルト設定を変更します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;pu rtscts No&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">minicom</span><span class="o">/</span><span class="n">minirc</span><span class="o">.</span><span class="n">dfl</span> </pre></div>
+</div>
+</li>
+<li><p>最後に、次を実行して VCK190/VMK180 シリアル端末出力に接続します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">minicom</span> <span class="o">--</span><span class="n">device</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB1</span> </pre></div>
+</div>
+</li>
+<li><p>この端末は開いたままにして、次のセクションに進みます。</p><img alt="../../../../_images/ch6-image15.png" src="../../../../_images/ch6-image15.png" /></li>
+</ol>
+</div>
+<div class="section" id="booting-linux-images-over-jtag-or-hsdp">
+<h3>JTAG または HSDP を介した Linux イメージのブート<a class="headerlink" href="#booting-linux-images-over-jtag-or-hsdp" title="Permalink to this headline">¶</a></h3>
+<p>SmartLynq+ を使用すると、SD カードを使用せずに Linux イメージを VCK190/VMK180 に直接ダウンロードできます。Linux イメージは JTAG または HSDP を使用して読み込むことができます。</p>
+<p>このチュートリアルに含まれるデザイン パッケージには、SmartLynq+ モジュールを使用して前のステップで作成した Linux イメージをダウンロードするスクリプトが含まれます。このスクリプトは、JTAG または HSDP のいずれかを使用できます。</p>
+<ol class="arabic">
+<li><p>SmartLynq+ モジュールにアクセスできるコンピューターで、Vivado Tcl シェルを開きます。</p><img alt="../../../../_images/ch6-image24.png" src="../../../../_images/ch6-image24.png" /></li>
+<li><p>PetaLinux のビルドに使用したコンピューターで作業している場合は、作業ディレクトリを PetaLinux ビルド ルートに変更するか、上記の手順で <code class="docutils literal notranslate"><span class="pre">images/linux</span></code> ディレクトリがローカル コンピューターに転送された場所に変更します。</p></li>
+<li><p>Vivado Tcl シェルで次のコマンドを実行し、HSDP を使用してイメージをダウンロードします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsdb</span> <span class="n">linux_download</span><span class="o">.</span><span class="n">tcl</span> <span class="o">&lt;</span><span class="n">smartlynq</span><span class="o">+</span> <span class="n">ip</span><span class="o">&gt;</span> <span class="n">images</span><span class="o">/</span><span class="n">linux</span> <span class="n">HSDP</span> </pre></div>
+</div>
+<p>これにより、JTAG を介して <cite>BOOT.BIN</cite> が読み込まれ、HSDP リンクがオート ネゴシエートされ、残りのブート イメージは HSDP を使用して読み込まれます。これにより、JTAG と比較して、速度がかなり速くなります。</p><img alt="../../../../_images/ch6-image16.png" src="../../../../_images/ch6-image16.png" /><div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>また、次のように、スクリプトの最後の引数を <cite>FTDI-JTAG</cite> に変更することで、Linux イメージを JTAG を介して、<cite>xsdb linux-download &lt;smartlynq+ip&gt; images/linux FTDI-jtag</cite> にダウンロードすることもできます。これは、JTAG を使用してすべての Linux ブート イメージをプログラムします。HSDP を使用する場合のダウンロード速度の違いに注意してください。</p>
+</div>
+</li>
+<li><p>Versal ブート メッセージは、前のセクションで開いた端末の VCK190 UART から表示できます。</p><img alt="../../../../_images/ch6-image17.png" src="../../../../_images/ch6-image17.png" /></li>
+<li><p>JTAG または HSDP のいずれかを使用した Linux の起動が完了すると、次のログイン画面が表示されます。</p><img alt="../../../../_images/ch6-image18.png" src="../../../../_images/ch6-image18.png" /></li>
+</ol>
+</div>
+</div>
+<div class="section" id="useful-links">
+<h2>役に立つリンク<a class="headerlink" href="#useful-links" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>AXA-ILA、AXA-VIO、PCIe™ デバッガー、DDRMC キャリブレーション インターフェイスなどの PL ハードウェア デバッグ コアの使用については『Vivado Design Suite ユーザー ガイド: プログラムおよびデバッグ』 <em></em> <a class="reference external" href="https://japan.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug908-vivado-programming-debugging.pdf">[UG908]</a> を参照してください。</p></li>
+<li><p>SmartLynq+ モジュールの詳細は、『SmartLynq+ モジュール ユーザー ガイド』 (<a class="reference external" href="https://japan.xilinx.com/support/documentation/boards_and_kits/smartlynq/ug1258-smartlynq-cable.pdf">UG1258</a>) を参照してください。</p></li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h2>サマリ<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>このセクションでは、HSDP を使用し、SmartLynq+ モジュールを接続し、リモート UART アクセス用に SmartLynq+ を設定し、HSDP を使用して Linux イメージをボードにダウンロードするデザインを作成しました。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer> <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template --> </footer>
+
+        </div>
+      </div><!-- Sphinx Page Footer block --><div class="rst-footer-buttons" role="navigation" aria-label="footer navigation"><a href="A-creating-plm.html" class="btn btn-neutral float-right" title="Appendix: Creating the PLM" accesskey="n" rel="next">次の手順 <span class="fa fa-arrow-circle-right"></span></a> <a href="5-system-design-example.html" class="btn btn-neutral float-left" title="System Design Example using Scalar Engine and Adaptable Engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 前の手順</a></div>
+  
+
+  <hr/>
+
+  <div role="contentinfo" class="copyright">
+    <p class="footerinfo"><span class="lastupdated">最終更新日: 2022 年 2 月 9 日: このページは最終更新日の英語版を翻訳したものです。最新版は、<a href="https://github.com/Xilinx/Embedded-Design-Tutorials">Github 英語版</a>を参照してください。</span></p><br></div>
+      </div>
+    </section>
+
+
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+   <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("searchindex.js"); });
+  </script>
+
+  <script type="text/javascript" id="searchindexloader"></script><!--  Xilinx template footer block --></div>
+						</div>
+					</div>
+				</div>
+				<div class="xilinxExperienceFragments experiencefragment aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16">
+					<div class="xf-content-height">
+						<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 ">
+							<div class="footer parbase aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16">
+								<noindex><!-- make footer fixed - NileshP --><style>.footer { position: fixed; left: 0; bottom: 0; width: 100%; }</style><!-- make footer fixed NileshP--><footer>
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+													<div class="row">
+														<div class="footerSocial parbase">
+														
+															<div class="col-md-push-6 col-lg-push-6 col-md-6 col-lg-6">
+																<div class="lang-select dropup hidden-md hidden-lg">
+		<button data-toggle="dropdown"> <span class="fas fa-globe" aria-hidden="true"></span> <span>English</span> <span class="far fa-angle-down" aria-hidden="true"></span> </button>
+	<ul class="dropdown-menu">
+		<li> <a target="_blank" href="https://japan.xilinx.com/" target="_self">日本語</a> </li>
+		<li> <a target="_blank" href="https://china.xilinx.com/" target="_self">简体中文</a> </li>
+		</ul>
+	</div>
+																<ul class="list-inline pull-right social-menu">
+																	<li> <a target="_blank" href="https://www.linkedin.com/company/xilinx"><span class="linkedin icon"></span> <span class="sr-only">Connect on LinkedIn</span></a> </li>
+																	<li> <a target="_blank" href="https://www.twitter.com/XilinxInc"><span class="twitter icon"></span> <span class="sr-only">Follow us on Twitter</span></a> </li>
+																	<li> <a target="_blank" href="https://www.facebook.com/XilinxInc"><span class="facebook icon"></span> <span class="sr-only">Connect on Facebook</span></a> </li>
+																	<li> <a target="_blank" href="https://www.youtube.com/XilinxInc"><span class="youtube icon"></span> <span class="sr-only">Watch us on YouTube</span></a> </li>
+																	<li> <a target="_blank" href="https://www.xilinx.com/registration/subscriber-signup.html"><span class="newsletter icon"></span> <span class="sr-only">Subscribe to Newsletter</span></a> </li>
+																</ul>
+																	<div class="lang-select dropup hidden-xs hidden-sm">
+	<button data-toggle="dropdown"> <span class="fas fa-globe" aria-hidden="true"></span> <span>English</span> <span class="far fa-angle-down" aria-hidden="true"></span> </button>
+	<ul class="dropdown-menu">
+		<li> <a target="_blank" href="https://japan.xilinx.com/" target="_self">日本語</a> </li>
+		<li> <a target="_blank" href="https://china.xilinx.com/" target="_self">简体中文</a> </li>
+		</ul>
+	</div>
+															</div>
+														</div>
+														<div class="col-md-pull-5 col-lg-pull-5 col-md-5 col-lg-5"> <span class="copyright">©2022 Advanced Micro Devices, Inc</span> </div>
+
+													</div>
+													                    <div class="movethisrowtoleft row">
+                        <div class="col-xs-24">
+                            <ul class="sub-menu">
+                                <li><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></li>
+                                <li><a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a></li>
+                                <li><a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a></li>
+                                <li><a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a></li>
+                                <li><a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a></li>
+                                <li><a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a></li>
+                                <li><a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a></li>
+								<li><a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a></li>
+                                <li><a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></li>
+                            </ul>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+									</footer>
+								</noindex>
+							</div>
+						</div>
+					</div>
+				</div>
+<div class="backToTop parbase aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16"><noindex><span data-component="backToTopButton" class="backToTopButton loaded"><ul>
+            <li><a href="https://www.author.xilinx.com/xx/rebrand/amd/en-amd-xilinx-header-footer.html#top" class="btn top"><span class="fas fa-angle-up" aria-hidden="true"></span></a></li>
+        </ul></span></noindex></div>
+			</div>
+		</div>
+
+
+		<script>window.CQ = window.CQ || {}</script>
+		<script src="https://static.cloud.coveo.com/searchui/v2.4382/js/CoveoJsSearch.Lazy.min.js"></script>
+		<script>
+			var underscoreSetup = function () {
+			  _.templateSettings.interpolate = /\{\{=([^-][\S\s]+?)\}\}/g;
+			  _.templateSettings.evaluate = /\{\{([^-=][\S\s]+?)\}\}/g;
+			  _.templateSettings.escape = /\{\{-([^=][\S\s]+?)\}\}/g;
+			}
+
+			underscoreSetup();
+		</script>
+	</body>
+</html>
