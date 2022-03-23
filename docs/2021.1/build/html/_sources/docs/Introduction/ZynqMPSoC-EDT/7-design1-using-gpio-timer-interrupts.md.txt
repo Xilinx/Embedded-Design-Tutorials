@@ -200,9 +200,9 @@ This use case has a bare-metal application running on an R5 core and a Linux app
 
 1. Create the Linux images using PetaLinux. The Linux images must be created in sync with the hardware configuration for this design. You will also need to configure PetaLinux to create images for SD boot.
 
-2. Repeat steps 2 to 4 as described in [Creating a PetaLinux Image](6-build-linux-sw-for-ps.html#creating-a-petalinux-image) to update the device tree and build Linux images using PetaLinux.
+2. Repeat steps 2 to 4 as described in [Creating a PetaLinux Image](6-build-linux-sw-for-ps.md#creating-a-petalinux-image) to update the device tree and build Linux images using PetaLinux.
 
-3. Follow instructions in [Verifying the Image on the ZCU102 Board](6-build-linux-sw-for-ps.html#verifying-the-image-on-the-zcu102-board) to verify the images.
+3. Follow instructions in [Verifying the Image on the ZCU102 Board](6-build-linux-sw-for-ps.md#verifying-the-image-on-the-zcu102-board) to verify the images.
 
 Make sure you have the following files for creating the Linux domain:
 
@@ -277,7 +277,7 @@ Make sure you have the following files for creating the Linux domain:
 
 4. Type **Ctrl+S** to save the changes.
 
-5. Modify the BSP to configure UART with UART_1. For more information, see [Modifying the Board Support Package for testapp-r5](#4-build-sw-for-ps-subsystems.html#modifying-the-board-support-package-for-testapp_r5).
+5. Modify the BSP to configure UART with UART_1. For more information, see [Modifying the Board Support Package for testapp-r5](#4-build-sw-for-ps-subsystems.md#modifying-the-board-support-package-for-testapp_r5).
 
 6. Right-click the **tmr_psled_r5** project and select **Build Project**.
 
@@ -387,7 +387,7 @@ Make sure you have the following files for creating the Linux domain:
 
 4. In the Create Boot Image wizard, add the settings and partitions as shown in the following figure.
 
-    >**Note:** For detailed steps on how to add partitions, see [Boot Sequence for SD-Boot](8-boot-and-configuration.html#boot-sequence-for-sd-boot).
+    >**Note:** For detailed steps on how to add partitions, see [Boot Sequence for SD-Boot](8-boot-and-configuration.md#boot-sequence-for-sd-boot).
 
     ![](./media/image112.png)
 

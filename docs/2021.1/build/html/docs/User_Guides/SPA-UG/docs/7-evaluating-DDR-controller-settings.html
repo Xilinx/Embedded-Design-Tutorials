@@ -1,4 +1,4 @@
-
+﻿
 
 
 <!DOCTYPE HTML>
@@ -476,8 +476,8 @@
 <p>These DDRC settings can also be modified in the Vivado® Design Suite. In a Vivado IP integrator based design, you can double-click on the Zynq-7000 Processing System IP block in the block diagram. A configuration dialog box opens, in which you can re-customize the IP. The DDR Controller settings are listed under DDR Configuration, and the specific options of interest are under Enable Advanced options. When that box is checked, you can view and modify settings such as read/write priority, high-priority read (HPR), and other important settings that can impact performance. The functionality of these settings is described in depth in the <em>Zynq-7000 SoC Technical Reference Manual</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides%3Bd=ug585-Zynq-7000-TRM.pdf">UG585</a>).</p>
 <div class="section" id="default-ddrc-settings">
 <h2>Default DDRC Settings<a class="headerlink" href="#default-ddrc-settings" title="Permalink to this headline">¶</a></h2>
-<p>Baseline results were created by running HP only traffic using the default FSBL settings, as shown in the previous figure. The PL traffic was the high-bandwidth HP traffic shown in <a class="reference external" href="../docs/6-evaluating-high-performance-ports.html#fig20">Figure 20: ATG Traffic Configuration Modeling High-Bandwidth Traffic on HP Ports</a>; however, the traffic duration was set to 10s. Also, no software application was run. You can configure by modifying the Debug Configuration. Select the Application tab, and then uncheck the Download Applications check box.</p>
-<p>This traffic scenario was run on a ZC702 board, and the results can be seen in the following figure. Note that default DDRC settings were used because they have not been modified yet. The HP ports sustained a higher bandwidth than the previous results shown in <a class="reference external" href="../docs/6-evaluating-high-performance-ports.html#fig21">Figure 21: Summary of Performance Results from Modeling High-Bandwidth Traffic on HP Ports</a> because there is no DDR traffic from the CPUs.</p>
+<p>Baseline results were created by running HP only traffic using the default FSBL settings, as shown in the previous figure. The PL traffic was the high-bandwidth HP traffic shown in <a class="reference external" href="../docs/6-evaluating-high-performance-ports.md#fig20">Figure 20: ATG Traffic Configuration Modeling High-Bandwidth Traffic on HP Ports</a>; however, the traffic duration was set to 10s. Also, no software application was run. You can configure by modifying the Debug Configuration. Select the Application tab, and then uncheck the Download Applications check box.</p>
+<p>This traffic scenario was run on a ZC702 board, and the results can be seen in the following figure. Note that default DDRC settings were used because they have not been modified yet. The HP ports sustained a higher bandwidth than the previous results shown in <a class="reference external" href="../docs/6-evaluating-high-performance-ports.md#fig21">Figure 21: Summary of Performance Results from Modeling High-Bandwidth Traffic on HP Ports</a> because there is no DDR traffic from the CPUs.</p>
 <p><em>Figure 27:</em> <strong>HP Port Performance Using Default DDR Configuration Settings</strong></p>
 <p><img alt="../../../../_images/image261.jpeg" src="../../../../_images/image261.jpeg" /></p>
 <p>The total DDR bandwidth is therefore the sum of the bandwidths measured on the HP ports, calculated as follows:</p>
@@ -644,7 +644,10 @@
                                   
                                   &copy; 2019-2021, Xilinx, Inc.
                               </span>
-															<ul class="list-inline sub-menu">
+															  <ul class="list-inline sub-menu">
+																<li>
+																	<a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a>
+																</li>
 																<li>
 																	<a href="https://www.xilinx.com/about/privacy-policy.html">Privacy</a>
 																</li>

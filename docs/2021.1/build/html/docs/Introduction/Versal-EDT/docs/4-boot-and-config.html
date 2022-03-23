@@ -1,4 +1,4 @@
-
+﻿
 
 
 <!DOCTYPE HTML>
@@ -465,7 +465,7 @@
 <li><p>Steps to generate boot image for standalone application.</p></li>
 <li><p>Boot sequences for SD-boot, and QSPI and OSPI boot modes.</p></li>
 </ul>
-<p>You can achieve these configurations using the Vitis™ software platform and the PetaLinux tool flow. While <a class="reference external" href="./2-cips-noc-ip-config.html">Versal ACAP CIPS and NoC (DDR) IP Core Configuration</a> focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a bigger system.</p>
+<p>You can achieve these configurations using the Vitis™ software platform and the PetaLinux tool flow. While <a class="reference external" href="./2-cips-noc-ip-config.rst">Versal ACAP CIPS and NoC (DDR) IP Core Configuration</a> focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a bigger system.</p>
 <div class="section" id="system-software">
 <h2>System Software<a class="headerlink" href="#system-software" title="Permalink to this headline">¶</a></h2>
 <p>The following system software blocks cover most of the boot and configuration for this chapter.</p>
@@ -521,7 +521,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You can either boot the VCK190/VMK180 board using the ready-to-test images as part of the released package path, <cite>&lt;design-package&gt;/&lt;vck190 or vmk180&gt;/ready_to_test/qspi_images/linux/</cite>, or refer to <a class="reference external" href="../docs/5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
+<p>You can either boot the VCK190/VMK180 board using the ready-to-test images as part of the released package path, <cite>&lt;design-package&gt;/&lt;vck190 or vmk180&gt;/ready_to_test/qspi_images/linux/</cite>, or refer to <a class="reference external" href="../docs/5-system-design-example.rst#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
 </div>
 </li>
 <li><p>Load the SD card into the VMK180/VCK190 board, in the J302 connector.</p></li>
@@ -550,7 +550,7 @@
 <img alt="../../../../_images/image54.jpeg" src="../../../../_images/image54.jpeg" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190/VMK180 board using the ready-to-test images as part of the released package path, <cite>&lt;design-package&gt;/&lt;vck190 or vmk180&gt;/ready_to_test/qspi_images/linux/</cite>, or refer to <a class="reference external" href="./5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
+<p>For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190/VMK180 board using the ready-to-test images as part of the released package path, <cite>&lt;design-package&gt;/&lt;vck190 or vmk180&gt;/ready_to_test/qspi_images/linux/</cite>, or refer to <a class="reference external" href="./5-system-design-example.rst#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
 </div>
 <p>You need to flash the images to the daughter card, using the following steps:
 .. note:: The following steps use the SD boot mode initially to load an image to indirectly program the QSPI Flash.</p>
@@ -588,7 +588,7 @@
 <img alt="../../../../_images/X-EBM-03_OSPI_Daughter_card.jpg" src="../../../../_images/X-EBM-03_OSPI_Daughter_card.jpg" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For standalone, copy the <cite>BOOT.BIN</cite> to the SD card. For Linux images, you can either boot the VCK190 or VMK180 board using the ready-to-test images as part of the released package path, <cite>&lt;design-package&gt;/&lt;vck190 or vmk180&gt;/ready_to_test/ospi_images/linux</cite>, or refer to <a class="reference external" href="./5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
+<p>For standalone, copy the <cite>BOOT.BIN</cite> to the SD card. For Linux images, you can either boot the VCK190 or VMK180 board using the ready-to-test images as part of the released package path, <cite>&lt;design-package&gt;/&lt;vck190 or vmk180&gt;/ready_to_test/ospi_images/linux</cite>, or refer to <a class="reference external" href="./5-system-design-example.rst#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
 </div>
 <p>To flash the images to the daughter card, use the following steps:</p>
 <div class="admonition note">
@@ -632,7 +632,7 @@
 <img alt="../../../../_images/X-EBM-02_emmc_Daughter_card.jpg" src="../../../../_images/X-EBM-02_emmc_Daughter_card.jpg" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 or vmk180 board using the ready-to-test images as part of the released package path, <cite>&lt;designpackage&gt;/&lt;vck190 or YAML_DT_BOARD_FLAGS_vmk180&gt;/ready_to_test/emmc_images/linux</cite>, or refer to <a class="reference external" href="./5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
+<p>For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 or vmk180 board using the ready-to-test images as part of the released package path, <cite>&lt;designpackage&gt;/&lt;vck190 or YAML_DT_BOARD_FLAGS_vmk180&gt;/ready_to_test/emmc_images/linux</cite>, or refer to <a class="reference external" href="./5-system-design-example.rst#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
 </div>
 <p>To format the eMMC flash  on Versal board for the first time, use the following steps:</p>
 <ol class="arabic">
@@ -894,7 +894,10 @@ fatwrite mmc 0 0x80000 boot.scr $filesize
                                   
                                   &copy; 2019-2021, Xilinx, Inc.
                               </span>
-															<ul class="list-inline sub-menu">
+															  <ul class="list-inline sub-menu">
+																<li>
+																	<a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a>
+																</li>
 																<li>
 																	<a href="https://www.xilinx.com/about/privacy-policy.html">Privacy</a>
 																</li>

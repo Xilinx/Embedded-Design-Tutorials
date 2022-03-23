@@ -64,7 +64,7 @@ When you install PetaLinux tools on your system of choice, you must do the follo
 
 - Download PetaLinux 2021.1 software from the Xilinx website.
 
-- Download the respective BSP as described in `Example Project: Creating Linux Images Using PetaLinux <../docs/5-system-design-example.html#example-project-creating-linux-images-using-petalinux>`__.
+- Download the respective BSP as described in `Example Project: Creating Linux Images Using PetaLinux <../docs/5-system-design-example.rst#example-project-creating-linux-images-using-petalinux>`__.
 
 - Add common system packages and libraries to the workstation or virtual machine. For more information, see the Installation Requirements from the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/support/documentation/sw_manuals/xilinx2021_1/ug1144-petalinux-tools-reference-guide.pdf>`__) and the `PetaLinux Release Notes 2021.1 <https://www.xilinx.com/support/answers/75775.html>`__.
 

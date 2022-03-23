@@ -1,4 +1,4 @@
-
+﻿
 
 
 <!DOCTYPE HTML>
@@ -459,7 +459,7 @@
 <div class="section" id="assess-memory-performance">
 <h2>Assess Memory Performance<a class="headerlink" href="#assess-memory-performance" title="Permalink to this headline">¶</a></h2>
 <p>To begin the evaluation, the SPM design can be used to assess a baseline performance using software only. An application to use for this evaluation is the memory stride benchmarks program, one of the pre-compiled executables that comes with the SPM project.</p>
-<p>The following figure shows how this was defined in the Vitis™ IDE using the memory stride software executable (see <a class="reference external" href="../docs/2-system-performance-modeling-project.html#spm-software">SPM Software</a>). This software was instrumented to calculate bandwidth and average latency (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.html#instrumenting-software">Instrumenting Software</a>).</p>
+<p>The following figure shows how this was defined in the Vitis™ IDE using the memory stride software executable (see <a class="reference external" href="../docs/2-system-performance-modeling-project.md#spm-software">SPM Software</a>). This software was instrumented to calculate bandwidth and average latency (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.md#instrumenting-software">Instrumenting Software</a>).</p>
 <p><em>Figure 33:</em> <strong>Application Setup using Memory Stride Software</strong></p>
 <p><img alt="../../../../_images/image321.jpeg" src="../../../../_images/image321.jpeg" /></p>
 <div id="table7"><p><em>Table 7:</em> <strong>Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</strong></p>
@@ -688,7 +688,7 @@ the memory stride benchmarks is reflected in these graphs, these three graphs ca
 </div>
 <div class="section" id="shared-l2-cache">
 <h2>Shared L2 Cache<a class="headerlink" href="#shared-l2-cache" title="Permalink to this headline">¶</a></h2>
-<p>Now that baseline performance measurements have been made between the CPUs and the memories, traffic can be added on the Accelerator Coherency Port (ACP) to analyze its effects on system performance. The memory stride software (see <a class="reference external" href="../docs/2-system-performance-modeling-project.html#spm-software">SPM Software</a>) was run again on CPU0; however, this time traffic was added to the ACP. Since the L2 cache is shared by the CPUs and the ACP, there is expected to be some contention to occur at that memory.</p>
+<p>Now that baseline performance measurements have been made between the CPUs and the memories, traffic can be added on the Accelerator Coherency Port (ACP) to analyze its effects on system performance. The memory stride software (see <a class="reference external" href="../docs/2-system-performance-modeling-project.md#spm-software">SPM Software</a>) was run again on CPU0; however, this time traffic was added to the ACP. Since the L2 cache is shared by the CPUs and the ACP, there is expected to be some contention to occur at that memory.</p>
 <p>The following figure shows the ATG configuration that models the initial traffic on the ACP. It specifies random addressing within a 4 KB region and utilizes the memory path through the L2 cache to the DDR. The first value for Tranx Interval is 100 clock cycles, which configures the ATGs to request a throughput of 128 MB/sec at 100 MHz. Keeping every other setting constant, the values for Tranx Interval were decreased, thus increasing the requested throughputs. The values used for this transaction interval include: 100, 50, 30, 25, 20, and, 17. These intervals lead to request throughputs of 128, 256, 426, 512, 640, and 752 MB/s.</p>
 <p><em>Figure 37:</em> <strong>ATG Configuration Modeling Traffic on ACP</strong></p>
 <p><img alt="../../../../_images/image36.jpeg" src="../../../../_images/image36.jpeg" /></p>
@@ -843,7 +843,10 @@ various software benchmarks. However, the average read latency is clearly affect
                                   
                                   &copy; 2019-2021, Xilinx, Inc.
                               </span>
-															<ul class="list-inline sub-menu">
+															  <ul class="list-inline sub-menu">
+																<li>
+																	<a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a>
+																</li>
 																<li>
 																	<a href="https://www.xilinx.com/about/privacy-policy.html">Privacy</a>
 																</li>

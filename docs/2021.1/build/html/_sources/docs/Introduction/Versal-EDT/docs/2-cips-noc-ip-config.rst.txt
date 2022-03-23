@@ -785,11 +785,11 @@ You will create a new Vitis project, similar to the one in `Running a Bare-Metal
         
 4. Create an additional RPU domain for your platform (created in Step 2) as discussed in `Adding a New RPU Domain to the Platform Project <#adding-a-new-rpu-domain-to-the-platform-project>`__.
         
-5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (built in Step 2) and modify its source code as discussed in steps 1 through 3 of `Creating the Standalone Application Project for the Arm Cortex-R5F <./2-cips-noc-ip-config.html#creating-the-standalone-application-project-for-the-arm-cortex-r5f>`__ and steps 1 through 3 of `Modifying the helloworld_r5 Application Source Code <./2-cips-noc-ip-config.html#modifying-the-helloworld-r5-application-source-code>`__.
+5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (built in Step 2) and modify its source code as discussed in steps 1 through 3 of `Creating the Standalone Application Project for the Arm Cortex-R5F <./2-cips-noc-ip-config.rst#creating-the-standalone-application-project-for-the-arm-cortex-r5f>`__ and steps 1 through 3 of `Modifying the helloworld_r5 Application Source Code <./2-cips-noc-ip-config.rst#modifying-the-helloworld-r5-application-source-code>`__.
 
 6. Right-click **helloworld_system** and select Build Project or click |build| to generate the project elf files within the Debug folder of the application project.
 
-Refer to `Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform <./2-cips-noc-ip-config.html#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform>`__ for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to `Generating Boot Image for Standalone Application <./4-boot-and-config.html#generating-boot-image-for-standalone-application>`__ for generating boot images for standalone applications.
+Refer to `Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform <./2-cips-noc-ip-config.rst#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform>`__ for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to `Generating Boot Image for Standalone Application <./4-boot-and-config.rst#generating-boot-image-for-standalone-application>`__ for generating boot images for standalone applications.
 
 ===============
 OSPI Boot Mode
@@ -799,7 +799,7 @@ To boot check the OSPI boot mode, follow these steps:
 
 .. note:: OSPI configuration is only supported for VCK190 rev B production boards.
 
-1. Open the design created in `Creating a New Embedded Project with the Versal ACAP <./2-cips-noc-ip-config.html#creating-a-new-embedded-project-with-the-versal-acap>`__ , edt_versal.xpr.
+1. Open the design created in `Creating a New Embedded Project with the Versal ACAP <./2-cips-noc-ip-config.rst#creating-a-new-embedded-project-with-the-versal-acap>`__ , edt_versal.xpr.
 
 2. Double-click the **Versal CIPS IP**.
 
@@ -821,7 +821,7 @@ eMMC Boot Mode
 
 To boot check the eMMC boot mode, follow these steps:
 
-1. Open the design created in `Creating a New Embedded Project with the Versal ACAP <./2-cips-noc-ip-config.html#creating-a-new-embedded-project-with-the-versal-acap>`__, edt_versal.xpr.
+1. Open the design created in `Creating a New Embedded Project with the Versal ACAP <./2-cips-noc-ip-config.rst#creating-a-new-embedded-project-with-the-versal-acap>`__, edt_versal.xpr.
 
 2. Double-click the **Versal CIPS IP**.
 
