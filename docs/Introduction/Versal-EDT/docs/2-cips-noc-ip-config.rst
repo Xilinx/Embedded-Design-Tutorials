@@ -29,7 +29,7 @@ The NoC IP core configures the DDR memory and data path across the DDR memory an
 Prerequisites
 =============
 
-To create and run Hello World applications discussed in this chapter, install the Vitis |trade| unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug1400-vitis-embedded.pdf>`__).
+To create and run Hello World applications discussed in this chapter, install the Vitis |trade| unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded>`__).
 
 .. _cips-ip-core-configuration:
 
@@ -203,23 +203,23 @@ To validate the design and to generate the output products, follow these steps:
 
    .. image:: media/validation_message.PNG
 
-2. Click **Hierarchy**.
-   
-3. Under Design Sources, right-click **edt_versal** and select **Create HDL Wrapper**.
+2. In the Block Design view, click **Sources** tab  
+
+3. Click **Hierarchy** and Expand Design Sources Folder, right-click **edt_versal** and select **Create HDL Wrapper**.
 
    The Create HDL Wrapper dialog box opens. Use this dialog box to create an HDL wrapper file for the processor subsystem.
 
    .. tip:: The HDL wrapper is a top-level entity required by the design tools.
-
+   
 4. Select **Let Vivado manage wrapper and auto-update** and click **OK**.
 
-5. In the Block Design Sources window, under Design Sources, expand   **edt_versal_wrapper**.
+5. In the Block Design Sources window, under Design Sources, expand edt_versal_wrapper.
 
-6. Right-click the top-level block diagram, titled edt_versal_i: edt_versal (edt_versal.bd) and select **Generate Output Products**.
+6. Right-click the top-level block diagram, titled edt_versal_i: edt_versal (edt_versal.bd) and select Generate Output Products.
 
    The Generate Output Products dialog box opens, as shown in the following figure.
 
-   .. image:: media/image15.png
+   .. image:: media/Generate_op_products_dial_box.png
 
    .. note:: If you are running the Vivado |reg| Design Suite on a Windows machine, you might see different options under Run Settings. In this case, continue with the default settings.
 
@@ -229,7 +229,7 @@ To validate the design and to generate the output products, follow these steps:
 
 8. In the Block Design Sources window, click the **IP Sources** tab. Here you can see the output products that you just generated, as shown in the following figure.
 
-   .. image:: media/image16.png
+   .. image:: media/ip-sources.png
 
 Synthesizing, Implementing, and Generating the Device Image
 -----------------------------------------------------------
@@ -390,7 +390,7 @@ Modifying the helloworld_a72 Application Source Code
 
    This opens the `helloworld.c` source file for the helloworld_a72 application.
 
-2. Modify the arguments in the print commands:
+2. Modify the code to add ``sleep(1)`` and arguments in the ``print`` commands as shown below:
 
    .. code-block::
 
@@ -398,7 +398,7 @@ Modifying the helloworld_a72 Application Source Code
         print("Hello World from APU\n\r");
         print("Successfully ran Hello World application from APU\n\r");
 
-   .. image:: media/image28.jpg
+   .. image:: media/image28.JPG
 
 3. Click |build| to build the project.
 
@@ -465,7 +465,7 @@ The following steps demonstrate the procedure to create a Hello World applicatio
    +----------------------+----------------------+----------------------------------------+
    |                      | System project name  | helloworld_system                      |
    +----------------------+----------------------+----------------------------------------+
-   |                      | Target processor     | versal_cips_0_pspmc_0_psv_cortexa72_0  |
+   |                      | Target processor     | versal_cips_0_pspmc_0_psv_cortexr5_0  |
    +----------------------+----------------------+----------------------------------------+
    | Domain               | Select a domain      | r5_domain                              |
    +----------------------+----------------------+----------------------------------------+
@@ -475,7 +475,7 @@ The following steps demonstrate the procedure to create a Hello World applicatio
    +----------------------+----------------------+----------------------------------------+
    |                      | Operating System     | standalone                             |
    +----------------------+----------------------+----------------------------------------+
-   |                      | Processor            | versal_cips_0_pspmc_0_psv_cortexa72_0  |
+   |                      | Processor            | versal_cips_0_pspmc_0_psv_cortexr5_0  |
    +----------------------+----------------------+----------------------------------------+
    | Templates            | Available Templates  | Hello World                            |
    +----------------------+----------------------+----------------------------------------+
@@ -496,7 +496,7 @@ Modifying the helloworld_r5 Application Source Code
         print("Hello World from RPU\n\r");
         print("Successfully ran Hello World application from RPU\n\r");
 
-   .. image:: ./media/image31.jpg
+   .. image:: ./media/image31.JPG
 
 3. Click |build| to build the project.
 
@@ -564,44 +564,45 @@ Creating a Run Configuration for the System Project
 
    .. code-block::
 
-      [0.015]****************************************
-      [0.072]Xilinx Versal Platform Loader and Manager
-      [0.130]Release 2021.2   Sep  5 2021  -  16:41:46
-      [0.190]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-      [0.256]BOOTMODE: 0x0, MULTIBOOT: 0x0
-      [0.309]****************************************
-      [1.539]Non Secure Boot
-      [4.769]PLM Initialization Time
-      [4.820]***********Boot PDI Load: Started***********
-      [4.882]Loading PDI from SBI
-      [4.931]Monolithic/Master Device
-      [5.026]0.117 ms: PDI initialization time
-      [5.084]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
-      [5.152]---Loading Partition#: 0x1, Id: 0xC
-      [55.043] 49.802 ms for Partition#: 0x1, Size: 2368 Bytes
-      [59.918]---Loading Partition#: 0x2, Id: 0xB
-      [64.300] 0.510 ms for Partition#: 0x2, Size: 48 Bytes
-      [68.461]---Loading Partition#: 0x3, Id: 0xB
-      [112.274] 39.941 ms for Partition#: 0x3, Size: 60464 Bytes
-      [114.603]---Loading Partition#: 0x4, Id: 0xB
-      [118.575] 0.016 ms for Partition#: 0x4, Size: 5968 Bytes
-      [123.490]---Loading Partition#: 0x5, Id: 0xB
-      [127.450] 0.004 ms for Partition#: 0x5, Size: 80 Bytes
-      [132.257]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
-      [137.586]---Loading Partition#: 0x6, Id: 0x3
-      [662.873] 521.328 ms for Partition#: 0x6, Size: 759264 Bytes
-      [665.374]---Loading Partition#: 0x7, Id: 0x5
-      [957.988] 288.656 ms for Partition#: 0x7, Size: 444000 Bytes
-      [960.522]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
-      [965.616]---Loading Partition#: 0x8, Id: 0x8
-      [969.969] 0.397 ms for Partition#: 0x8, Size: 1040 Bytes
-      [974.555]***********Boot PDI Load: Done***********
-      [978.973]3504.403 ms: ROM Time
-      [981.678]Total PLM Boot Time
-      Hello World
-      Successfully ran Hello World application from APU
-      Hello World
-      Successfully ran Hello World application from RPU
+		[0.015]****************************************
+		[0.070]Xilinx Versal Platform Loader and Manager
+		[0.126]Release 2022.1   Apr 21 2022  -  12:04:39
+		[0.184]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+		[0.247]BOOTMODE: 0x0, MULTIBOOT: 0x0
+		[0.299]****************************************
+		[0.527]Non Secure Boot
+		[3.406]PLM Initialization Time
+		[3.454]***********Boot PDI Load: Started***********
+		[3.514]Loading PDI from SBI
+		[3.560]Monolithic/Master Device
+		[3.651]0.113 ms: PDI initialization time
+		[3.707]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+		[3.774]---Loading Partition#: 0x1, Id: 0xC
+		[53.487] 49.630 ms for Partition#: 0x1, Size: 2960 Bytes
+		[58.306]---Loading Partition#: 0x2, Id: 0xB
+		[62.641] 0.505 ms for Partition#: 0x2, Size: 48 Bytes
+		[66.764]---Loading Partition#: 0x3, Id: 0xB
+		[108.496] 37.898 ms for Partition#: 0x3, Size: 59376 Bytes
+		[110.799]---Loading Partition#: 0x4, Id: 0xB
+		[114.721] 0.008 ms for Partition#: 0x4, Size: 1936 Bytes
+		[119.596]---Loading Partition#: 0x5, Id: 0xB
+		[123.521] 0.011 ms for Partition#: 0x5, Size: 3536 Bytes
+		[128.567]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+		[133.722]---Loading Partition#: 0x6, Id: 0x3
+		[639.838] 502.198 ms for Partition#: 0x6, Size: 759632 Bytes
+		[642.314]---Loading Partition#: 0x7, Id: 0x5
+		[1026.252] 380.021 ms for Partition#: 0x7, Size: 577856 Bytes
+		[1028.839]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+		[1033.972]---Loading Partition#: 0x8, Id: 0x8
+		[1038.375] 0.403 ms for Partition#: 0x8, Size: 1552 Bytes
+		[1042.990]***********Boot PDI Load: Done***********
+		[1047.448]3283.750 ms: ROM Time
+		[1050.212]Total PLM Boot Time
+		Hello World from APU
+		Successfully ran Hello World application from APU
+		Hello World from RPU
+		Successfully ran Hello World application from RPU
+
 
 Creating a Run Configuration for a Single Application within a System Project
 ------------------------------------------------------------------------------
@@ -644,43 +645,43 @@ Method I
 
    .. code-block::
 
-      [0.015]****************************************
-      [0.071]Xilinx Versal Platform Loader and Manager
-      [0.130]Release 2021.2   Oct 25 2021  -  04:39:13
-      [0.189]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-      [0.255]BOOTMODE: 0x0, MULTIBOOT: 0x0
-      [0.309]****************************************
-      [0.517]Non Secure Boot
-      [3.731]PLM Initialization Time
-      [3.782]***********Boot PDI Load: Started***********
-      [3.844]Loading PDI from SBI
-      [3.892]Monolithic/Master Device
-      [3.987]0.117 ms: PDI initialization time
-      [4.046]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
-      [4.114]---Loading Partition#: 0x1, Id: 0xC
-      [53.498] 49.296 ms for Partition#: 0x1, Size: 2384 Bytes
-      [58.310]---Loading Partition#: 0x2, Id: 0xB
-      [62.645] 0.505 ms for Partition#: 0x2, Size: 48 Bytes
-      [66.764]---Loading Partition#: 0x3, Id: 0xB
-      [103.214] 32.618 ms for Partition#: 0x3, Size: 61312 Bytes
-      [105.518]---Loading Partition#: 0x4, Id: 0xB
-      [110.047] 0.613 ms for Partition#: 0x4, Size: 5968 Bytes
-      [114.310]---Loading Partition#: 0x5, Id: 0xB
-      [118.228] 0.004 ms for Partition#: 0x5, Size: 80 Bytes
-      [122.984]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
-      [128.256]---Loading Partition#: 0x6, Id: 0x3
-      [650.405] 518.232 ms for Partition#: 0x6, Size: 759840 Bytes
-      [652.881]---Loading Partition#: 0x7, Id: 0x5
-      [953.328] 296.531 ms for Partition#: 0x7, Size: 444016 Bytes
-      [955.836]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
-      [960.876]---Loading Partition#: 0x8, Id: 0x8
-      [965.184] 0.393 ms for Partition#: 0x8, Size: 1040 Bytes
-      [969.722]***********Boot PDI Load: Done***********
-      [974.092]3681.202 ms: ROM Time
-      [976.768]Total PLM Boot Time
-      Hello World from APU
-      Successfully ran Hello World application from APU
-
+		[0.015]****************************************
+		[0.070]Xilinx Versal Platform Loader and Manager
+		[0.126]Release 2022.1   Apr 21 2022  -  12:04:39
+		[0.183]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+		[0.247]BOOTMODE: 0x0, MULTIBOOT: 0x0
+		[0.299]****************************************
+		[0.527]Non Secure Boot
+		[3.404]PLM Initialization Time
+		[3.452]***********Boot PDI Load: Started***********
+		[3.512]Loading PDI from SBI
+		[3.559]Monolithic/Master Device
+		[3.649]0.113 ms: PDI initialization time
+		[3.706]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+		[3.772]---Loading Partition#: 0x1, Id: 0xC
+		[53.571] 49.716 ms for Partition#: 0x1, Size: 2960 Bytes
+		[58.402]---Loading Partition#: 0x2, Id: 0xB
+		[62.748] 0.506 ms for Partition#: 0x2, Size: 48 Bytes
+		[66.880]---Loading Partition#: 0x3, Id: 0xB
+		[107.887] 37.165 ms for Partition#: 0x3, Size: 59376 Bytes
+		[110.195]---Loading Partition#: 0x4, Id: 0xB
+		[114.126] 0.008 ms for Partition#: 0x4, Size: 1936 Bytes
+		[119.012]---Loading Partition#: 0x5, Id: 0xB
+		[122.946] 0.011 ms for Partition#: 0x5, Size: 3536 Bytes
+		[128.004]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+		[133.169]---Loading Partition#: 0x6, Id: 0x3
+		[640.261] 503.167 ms for Partition#: 0x6, Size: 759632 Bytes
+		[642.740]---Loading Partition#: 0x7, Id: 0x5
+		[1025.311] 378.646 ms for Partition#: 0x7, Size: 577856 Bytes
+		[1027.903]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+		[1033.047]---Loading Partition#: 0x8, Id: 0x8
+		[1037.459] 0.403 ms for Partition#: 0x8, Size: 1552 Bytes
+		[1042.085]***********Boot PDI Load: Done***********
+		[1046.554]3348.594 ms: ROM Time
+		[1049.325]Total PLM Boot Time
+		Hello World from APU
+		Successfully ran Hello World application from APU
+	
 .. note:: Both the APU and RPU applications print on the same console as both applications are using UART0 for these applications. The application software sends the hello world strings for both APU and RPU to the UART0 peripheral of the PS section. From UART0, the hello world string goes byte-by-byte to the serial terminal application running on the host machine, which displays it as a string.
 
 Method II
@@ -688,7 +689,9 @@ Method II
 
 1. Right-click on the application project hello_world_r5 and select **Run As → Run Configurations**. The Run Configuration dialog box opens.
 
-2. Double-click **Single Project Debug** to create a run configuration.
+2. Verify if this should be "Single Application Debug".
+
+3. Double-click **Single Project Debug** to create a run configuration.
 
    The Vitis software platform creates a new run configuration with the name: Debugger_helloworld_r5-Default. For the remaining options, refer to the following table.
 
@@ -708,50 +711,50 @@ Method II
    |             | Configuration       | Debug                           |
    +-------------+---------------------+---------------------------------+
 
-3. Click **Apply**.
+4. Click **Apply**.
 
-4. Click **Run**.
+5. Click **Run**.
 
    .. note:: If there is an existing run configuration, a dialog box appears asking whether you want to terminate the process. Click **Yes**. The following logs are displayed on the terminal.
 
    .. code-block::
 
-      [0.015]****************************************
-      [0.071]Xilinx Versal Platform Loader and Manager
-      [0.130]Release 2021.2   Oct 25 2021  -  04:39:13
-      [0.189]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-      [0.255]BOOTMODE: 0x0, MULTIBOOT: 0x0
-      [0.309]****************************************
-      [0.517]Non Secure Boot
-      [3.731]PLM Initialization Time
-      [3.782]***********Boot PDI Load: Started***********
-      [3.844]Loading PDI from SBI
-      [3.892]Monolithic/Master Device
-      [3.987]0.117 ms: PDI initialization time
-      [4.046]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
-      [4.114]---Loading Partition#: 0x1, Id: 0xC
-      [53.498] 49.296 ms for Partition#: 0x1, Size: 2384 Bytes
-      [58.310]---Loading Partition#: 0x2, Id: 0xB
-      [62.645] 0.505 ms for Partition#: 0x2, Size: 48 Bytes
-      [66.764]---Loading Partition#: 0x3, Id: 0xB
-      [103.214] 32.618 ms for Partition#: 0x3, Size: 61312 Bytes
-      [105.518]---Loading Partition#: 0x4, Id: 0xB
-      [110.047] 0.613 ms for Partition#: 0x4, Size: 5968 Bytes
-      [114.310]---Loading Partition#: 0x5, Id: 0xB
-      [118.228] 0.004 ms for Partition#: 0x5, Size: 80 Bytes
-      [122.984]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
-      [128.256]---Loading Partition#: 0x6, Id: 0x3
-      [650.405] 518.232 ms for Partition#: 0x6, Size: 759840 Bytes
-      [652.881]---Loading Partition#: 0x7, Id: 0x5
-      [953.328] 296.531 ms for Partition#: 0x7, Size: 444016 Bytes
-      [955.836]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
-      [960.876]---Loading Partition#: 0x8, Id: 0x8
-      [965.184] 0.393 ms for Partition#: 0x8, Size: 1040 Bytes
-      [969.722]***********Boot PDI Load: Done***********
-      [974.092]3681.202 ms: ROM Time
-      [976.768]Total PLM Boot Time
-      Hello World from RPU
-      Successfully ran Hello World application from RPU
+		[0.015]****************************************
+		[0.070]Xilinx Versal Platform Loader and Manager
+		[0.126]Release 2022.1   Apr 21 2022  -  12:04:39
+		[0.183]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+		[0.247]BOOTMODE: 0x0, MULTIBOOT: 0x0
+		[0.299]****************************************
+		[0.527]Non Secure Boot
+		[3.404]PLM Initialization Time
+		[3.452]***********Boot PDI Load: Started***********
+		[3.512]Loading PDI from SBI
+		[3.559]Monolithic/Master Device
+		[3.649]0.113 ms: PDI initialization time
+		[3.706]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+		[3.772]---Loading Partition#: 0x1, Id: 0xC
+		[53.571] 49.716 ms for Partition#: 0x1, Size: 2960 Bytes
+		[58.402]---Loading Partition#: 0x2, Id: 0xB
+		[62.748] 0.506 ms for Partition#: 0x2, Size: 48 Bytes
+		[66.880]---Loading Partition#: 0x3, Id: 0xB
+		[107.887] 37.165 ms for Partition#: 0x3, Size: 59376 Bytes
+		[110.195]---Loading Partition#: 0x4, Id: 0xB
+		[114.126] 0.008 ms for Partition#: 0x4, Size: 1936 Bytes
+		[119.012]---Loading Partition#: 0x5, Id: 0xB
+		[122.946] 0.011 ms for Partition#: 0x5, Size: 3536 Bytes
+		[128.004]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
+		[133.169]---Loading Partition#: 0x6, Id: 0x3
+		[640.261] 503.167 ms for Partition#: 0x6, Size: 759632 Bytes
+		[642.740]---Loading Partition#: 0x7, Id: 0x5
+		[1025.311] 378.646 ms for Partition#: 0x7, Size: 577856 Bytes
+		[1027.903]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
+		[1033.047]---Loading Partition#: 0x8, Id: 0x8
+		[1037.459] 0.403 ms for Partition#: 0x8, Size: 1552 Bytes
+		[1042.085]***********Boot PDI Load: Done***********
+		[1046.554]3348.594 ms: ROM Time
+		[1049.325]Total PLM Boot Time
+		Hello World from RPU
+		Successfully ran Hello World application from RPU
 
 .. _noc-ip-core-configuration:
 
@@ -791,24 +794,26 @@ To configure your design, follow these steps:
    .. image:: media/noc-interface.png
       :width: 600
 
-8. Double-click the **NoC IP**. From the General Tab, set **Number of AXI Slav interfaces** and **AXI Clocks** to 8:
+8. Click **Finish** to complete and exit CIPS configuration.
+
+9. Double-click the **NoC IP**. From the General Tab, set **Number of AXI Slave interfaces** and **AXI Clocks** to 8:
 
    .. image:: media/noc-settings.png
       :width: 600
 
-9. From the Inputs tab, configure the following settings for S06 AXI and S07 AXI:
+10. From the Inputs tab, configure the following settings for S06 AXI and S07 AXI:
 
    .. image:: media/noc-axi.png
       :width: 600
 
-10. Configure the following settings from the Connectivity tab:
+11. Configure the following settings from the Connectivity tab:
 
     .. image:: media/noc-connectivity.png
       :width: 600
 
-11. Click **OK**.
+12. Click **OK**.
 
-12. Make connections between CIPS and NoC as shown below
+13. Make connections between CIPS and NoC as shown below
 
     .. image:: media/noc-ip-1.png
        :width: 600
@@ -843,7 +848,7 @@ To validate the design and generate the output, follow these steps:
 
    The Generate Output Products dialog box opens, as shown in the following figure.
 
-   .. image:: ./media/image15.png
+   .. image:: ./media/Generate_op_products_dial_box.png
 
    .. note:: If you are running the Vivado Design Suite on a Windows machine, you might see different options under Run Settings. In this case, continue with the default settings.
 
@@ -855,7 +860,7 @@ To validate the design and generate the output, follow these steps:
 
 7. In the Sources window, click the **IP Sources** view. Here you can see the output products that you just generated, as shown in the following figure.
 
-   .. image:: ./media/image39.png
+   .. image:: ./media/ip-sources-final.png
 
 Synthesizing, Implementing, and Generating the Device Image
 -----------------------------------------------------------
@@ -952,14 +957,19 @@ To boot check the OSPI boot mode, follow these steps:
 
 2. Double-click the **Versal CIPS IP**.
 
-3. Click **Next** and choose **PS PMC**.
-
-4. In the Boot Mode settings, click **OSPI** and check if the configurations are set as shown in the following figure:
+3. Under **Presets** Choose Board Interface as **ps pmc fixed io OSPI**. While doing so, click **Yes** if you get a Apply Preset pop-up.
 
    .. image:: ./media/ospi-boot1.png
       :width: 600
+	  
+4. Click **Next** and choose **PS PMC**.
 
-5. Click **Finish**.
+5. In the Boot Mode settings, click **OSPI** and check if the configurations are set as shown in the following figure:
+
+   .. image:: ./media/ospi-boot2.png
+      :width: 600
+
+6. Click **Finish**.
 
 This configures the design in OSPI boot mode.
 
@@ -967,7 +977,7 @@ This configures the design in OSPI boot mode.
 eMMC Boot Mode
 ================
 
-.. note:: Skip this section if you do not have the eMMC module, X-EBM-02-revA.
+.. note:: This section requires the X-EBM-02-revA eMMC module. Skip this section if you do not have this module.
 
 .. important:: eMMC configuration is only supported for VCK190/VMK180 rev B production boards.
 
@@ -977,16 +987,21 @@ To boot check the eMMC boot mode, follow these steps:
 
 2. Double-click the **Versal CIPS IP**.
 
-3. Click **Next** and choose **PS PMC**.
+3. Under **Presets** Choose Board Interface as **ps pmc fixed io eMMC**.  While doing so, click **Yes** if you get a Apply Preset pop-up.
+ 
+   .. image:: ./media/emmc-boot1.png
+      :width: 600 
 
-4. In the Boot Mode settings, click **SD1/eMMC** and check if the configurations are set as shown in the following figure:
+4. Click **Next** and choose **PS PMC**.
 
-   .. image:: ./media/emmc-sd1.png
+5. In the Boot Mode settings, click **SD1/eMMC** and check if the configurations are set as shown in the following figure:
+
+   .. image:: ./media/emmc-boot2.png
       :width: 600
    
-5. Click **Finish**.
+6. Click **Finish**.
 
-This configures the design in eMMC boot mode.
+   This configures the design in eMMC boot mode.
 
 
 

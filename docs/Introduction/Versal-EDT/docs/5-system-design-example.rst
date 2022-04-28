@@ -49,17 +49,17 @@ To connect IP blocks to create a system, follow these steps.
 
 1. Double-click the Versal ACAP CIPS IP core.
 
-2. Click **PS-PMC→ PL-PS Interfaces**.
+2. Click **PS-PMC→ PS-PL Interfaces**.
 
-   .. image:: ./media/image60.png
+3. Enable the M_AXI_FPD interface and set the **Number of PL Resets** to 1, as shown in the Image.
 
-3. Enable the M_AXI_FPD interface and set the **Number of PL Resets** to 1, as shown in the previous figure.
-
+   .. image:: ./media/PS_PL_Interfaces.png
+	
 4. Click **Clocking**, and then click on the Output Clocks tab.
 
 5. Expand PMC Domain Clocks. Then expand PL Fabric Clocks. Configure the PL0_REF_CLK to 300 MHz as shown in the following figure:
 
-   .. image:: ./media/image61.png
+   .. image:: ./media/clocking_ps_PMC.png
 
 6. Click **Finish** and **OK** to complete the configuration and return to the block diagram.
 
@@ -92,66 +92,64 @@ To add and configure IP addresses, follow these steps.
 
    .. image:: ./media/image64.jpg
 
-8. Make the same setting for the GPIO of `axi_gpio_1`.
+8. Click **S_AXI** of `axi_gpio_0`. Set the configurations as shown in the following figure:
 
-9. Click **S_AXI** of `axi_gpio_0`. Set the configurations as shown in the following figure:
+   .. image:: ./media/gpio_config0.png
+   
+9. Do Repeat previous step 7 and Step 8 for `axi_gpio_1`.
 
-   .. image:: ./media/image65.jpg
-
-10. Make the same setting for S_AXI of `axi_gpio_1`.
-
-11. Click **S_AXI** of `axi_uartlite_0`. Set the configurations as shown in the following figure:
+10. Click **S_AXI** of `axi_uartlite_0`. Set the configurations as shown in the following figure:
 
     .. image:: media/s-axi-uartlite.png
 
-12. This configuration sets the following connections:
+11. This configuration sets the following connections:
 
     - Connects the `S_AXI of AXI_GPIO` and AXI Uartlite to `M_AXI_FPD` of CIPS with SmartConnect as a bridge IP between CIPS and AXI GPIO IPs.
     - Enables the processor system reset IP.
     - Connects the `pl0_ref_clk` to the processor system reset, AXI GPIO, and the SmartConnect IP clocks.
     - Connects the reset of the SmartConnect and AXI GPIO to the `peripheral_aresetn` of the processor system reset IP.
 
-13. Click **UART** of `axi_uartlite_0`. Set the configurations as shown in the following figure:
+12. Click **UART** of `axi_uartlite_0`. Set the configurations as shown in the following figure:
 
     .. image:: media/uart.png
 
-14. Click **OK**.
+13. Click **OK**.
 
-15. Click **Run Connection Automation** in the block design window and select the All Automation check box.
+14. Click **Run Connection Automation** in the block design window and select the All Automation check box.
 
-16. Click **ext_reset_in** and configure the setting as shown below.
+15. Click **ext_reset_in** and configure the setting as shown below.
 
     .. image:: ./media/image66.jpg
 
     This connects the `ext_reset_in` of the processor system reset IP to the `pl_resetn` of the CIPS.
 
-17. Click **OK**.
+16. Click **OK**.
 
-18. Disconnect the `aresetn` of SmartConnect IP from `peripheral_aresetn` of processor system reset IP.
+17. Disconnect the `aresetn` of SmartConnect IP from `peripheral_aresetn` of processor system reset IP.
 
-19. Connect the `aresetn` of SmartConnect IP to `interconnect_aresetn` of processor system reset IP.
+18. Connect the `aresetn` of SmartConnect IP to `interconnect_aresetn` of processor system reset IP.
 
     .. image:: ./media/image67.jpeg
 
-20. Double-click the axi_gpio_0 IP to open it.
+19. Double-click the axi_gpio_0 IP to open it.
 
-21. Go to the IP Configuration tab and configure the settings as shown in the following figure.
+20. Go to the IP Configuration tab and configure the settings as shown in the following figure.
 
     .. image:: ./media/image68.png
 
-22. Make the same setting for axi_gpio_1.
+21. Make the same setting for axi_gpio_1.
 
-23. Add four more instances of Slice IP.
+22. Add four more instances of Slice IP.
 
-24. Delete the external pins of the AXI GPIO IP and expand the interfaces.
+23. Delete the external pins of the AXI GPIO IP and expand the interfaces.
 
-25. Connect the output pin gpio_io_0 of axi_gpio_0 to slice 0 and slice 1.
+24. Connect the output pin gpio_io_0 of axi_gpio_0 to slice 0 and slice 1.
 
-26. Similarly, connect the output pin gpio_io_0 of axi_gpio_1 to slice 2 and slice 3.
+25. Similarly, connect the output pin gpio_io_0 of axi_gpio_1 to slice 2 and slice 3.
 
-27. Make the output of Slice IP as External.
+26. Make the output of Slice IP as External.
 
-28. Configure each Slice IP as shown below.
+27. Configure each Slice IP as shown below.
 
     .. image:: ./media/image69.png
 
@@ -161,33 +159,33 @@ To add and configure IP addresses, follow these steps.
 
     .. image:: ./media/image72.png
 
-29.	Double-click **axi_uartlite_0** to open the IP.
+28.	Double-click **axi_uartlite_0** to open the IP.
 
-30. In the Board tab, set Board interface as shown below:
+29. In the Board tab, set Board interface as shown below:
 
     .. image:: media/board-interface.png
     
-31. Go to the IP Configuration tab and configure the settings as shown in the following figure.
+30. Go to the IP Configuration tab and configure the settings as shown in the following figure.
 
     .. image:: media/configure-ip-settings.png
 
-32. Add **Clock Wizard IP**. Double-click to open the IP.
+31. Add **Clock Wizard IP**. Double-click to open the IP.
 
-33. Go to Clocking Features tab and set the configuration as shown below:
+32. Go to Clocking Features tab and set the configuration as shown below:
 
     .. image:: media/clocking-features.png
 
-34. Make sure the Source option in **Input Clock Information** is set to **Global buffer**.
+33. Make sure the Source option in **Input Clock Information** is set to **Global buffer**.
     
-35. Go to Output clocks tab and configure as follows:
+34. Go to Output clocks tab and configure as follows:
 
     .. image:: media/output-clocks-tab.png
 
-36. Right-click `pl0_ref_clk` of CIPS and click **Disconnect Pin**.
+35. Right-click `pl0_ref_clk` of CIPS and click **Disconnect Pin**.
 
-37. Connect the `pl0_ref_clk` from CIPS to input `clk_in1` of the Clocking wizard.
+36. Connect the `pl0_ref_clk` from CIPS to input `clk_in1` of the Clocking wizard.
 
-38. Connect the output of clocking wizard to `slowest_sync_clock` of Processor System Reset IP.
+37. Connect the output of clocking wizard to `slowest_sync_clock` of Processor System Reset IP.
 
     This will help in avoiding timing failure. 
 
@@ -238,7 +236,7 @@ To validate the design and to generate the output product, follow these steps:
 
 7. Right-click the top-level block design, edt_versal_i : edt_versal (`edt_versal.bd`), and select **Generate Output Products**.
 
-   .. image:: ./media/image15.png
+   .. image:: ./media/GOP.png
 
 8. Click **Generate**.
 
@@ -246,7 +244,7 @@ To validate the design and to generate the output product, follow these steps:
 
 10. In the Sources window, click the **IP Sources** view. Here, you can see the output products that you just generated, as shown in the following figure.
 
-    .. image:: ./media/image74.png
+    .. image:: ./media/ip-sources-ch5-final.png
 
 Synthesizing, Implementing, and Generating the Device Image
 -----------------------------------------------------------
@@ -321,9 +319,9 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
 3. There are four components of an application project in the Vitis IDE: a target platform, a system project, a domain and a template. To create a new application project in the Vitis IDE, follow these steps:
 
    1. A target platform is composed of a base hardware design and the meta-data used in attaching accelerators to declared interfaces. Choose a platform or create a platform project from the XSA that you exported from the Vivado Design Suite.
-   2. 2. Put the application project in a system project, and associate it with a processor.
-   3. 1. The domain defines the processor and operating system used for running the host program on the target platform.
-   4. 1. Choose a template for the application, to quick start development. Use the following information to make your selections in the wizard screens.
+   2. Put the application project in a system project, and associate it with a processor.
+   3. The domain defines the processor and operating system used for running the host program on the target platform.
+   4. Choose a template for the application, to quick start development. Use the following information to make your selections in the wizard screens.
 
       *Table 9:* **Wizard Information**
 
@@ -357,14 +355,14 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
       |               | Processor               | versal_cips               |
       |               |                         | _0_pspmc_0_psv_cortexr5_0 |
       +---------------+-------------------------+---------------------------+
-      | Templates     | Available               | Freertos Hello            |
+      | Templates     | Available               | Empty      				|
       +---------------+-------------------------+---------------------------+
-      |               | Templates               | world                     |
+      |               | Templates               | Application (C)           |
       +---------------+-------------------------+---------------------------+
  
    The Vitis software platform creates the board support package for the Platform project (**vck190_platform**) and the system project (**freertos_gpio_test_system**) containing an application project named **freertos_gpio_test** under the Explorer view after performing the preceding steps.
   
-4. Right-click the `freertos_hello_world.c` file under `src/` and delete the `freertos_hello_world.c` file. Copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``src/`` direcrtory.
+4. Delete the source files under `src/` directory and Copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``src/`` direcrtory.
 
 5. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
 
@@ -404,10 +402,12 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
    This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180). 
     
-   - If you are using the VCK190 ES1 board, download the `xilinx-vck190-es1-v2021.2-final.bsp` file from `here <https://www.xilinx.com/member/vck190_headstart.html>`__.
-   - If you are using the VCK190 production board, download the `xilinx-vck190-v2021.2-final.bsp` file from `here <https://www.xilinx.com/member/vck190_headstart.html>`__.
-   - If you are using the VMK180 ES1 board, download the VMK180 PetaLinux 2021.12 BSP (`xilinx-vmk180-es1-v2021.2-final.bsp`) from `here <https://www.xilinx.com/member/vmk180_headstart.html>`__.
-   - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2021.2 BSP (`xilinx-vmk180-v2021.2-final.bsp`) from `here <https://www.xilinx.com/member/vmk180_headstart.html>`__.
+   - If you are using the VCK190 production board, download the VCK190 PetaLinux 2022.1 BSP for QSPI/SD (xilinx-vck190-v2022.1-final.bsp) from https://www.xilinx.com/member/vck190_headstart.html.
+   - If you are using the VCK190 production board, download the VCK190 PetaLinux 2022.1 BSP for OSPI (xilinx-vck190-ospi-v2022.1-final.bsp) from https://www.xilinx.com/member/vck190_headstart.html.
+   - If you are using the VCK190 production board, download the VCK190 PetaLinux 2022.1 BSP for eMMC (xilinx-vck190-emmc-v2022.1-final.bsp) from https://www.xilinx.com/member/vck190_headstart.html.
+   - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2022.1 BSP for QSPI/SD (xilinx-vmk180-v2022.1-final.bsp) from https://www.xilinx.com/member/vmk180_headstart.html.
+   - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2022.1 BSP for OSPI (xilinx-vmk180-ospi-v2022.1-final.bsp) from https://www.xilinx.com/member/vmk180_headstart.html.
+   - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2022.1 BSP for eMMC (xilinx-vmk180-emmc-v2022.1-final.bsp) from https://www.xilinx.com/member/vmk180_headstart.html.
 
 1. Copy the respective board's PetaLinux BSP to the current directory.
    
@@ -456,7 +456,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
    .. code-block::
     
         $cp <design-package>/ch5_system_design_example_source__files/apu/gpiotest_app/gpiotest/files/* <plnxproj-root>/project-spec/meta-user/recipes-apps/gpiotest/files/
-        $cp <design-package>/ch5_system_design_example_source__files/apu/gpiotest_app/gpiotest.bb <plnx-proj-root>/project-spec/meta-user/recipes-apps/gpiotest/gpiotest.bb
+        $cp <design-package>/ch5_system_design_example_source__files/apu/gpiotest_app/gpiotest/gpiotest.bb <plnx-proj-root>/project-spec/meta-user/recipes-apps/gpiotest/gpiotest.bb
         $cp <design-package>/ch5_system_design_example_source__files/apu/device_tree/system-user.dtsi <plnx-proj-root>/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
 
 10. Enable GPIO support within kernel configuration.
@@ -499,27 +499,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 19. OSPI and eMMC boot modes will work only on VCK190/VMK180 REVB Production boards.
 
-20. For OSPI build, copy the below code to PLNX project bsp file ``<plnxproj-root>/project-spec/meta-user/conf/petalinuxbsp.conf``.
-
-    .. code-block::
-   
-         VCK190 Production board:
-         YAML_DT_BOARD_FLAGS_vck190 = "{BOARD versal-vck190-reva-x-ebm-03-reva}"
-         
-         VMK180 Production board:
-         YAML_DT_BOARD_FLAGS_vmk180 = "{BOARD versal-vmk180-reva-x-ebm-03-reva}"
-
-21. For eMMC build, copy the below code to PLNX project bsp file ``<plnxproj-root>/project-spec/meta-user/conf/petalinuxbsp.conf``.
-
-    .. code-block::
-   
-		  VCK190 Production board:
-		  YAML_DT_BOARD_FLAGS_vck190 = "{BOARD versal-vck190-reva-x-ebm-02-reva}"
-		  
-		  VMK180 Production board:
-		  YAML_DT_BOARD_FLAGS_vmk180 = "{BOARD versal-vmk180-reva-x-ebm-02-reva}"
-
-22. Build the Linux images using the following command.
+20. Build the Linux images using the following command.
 
     .. code-block::
        

@@ -19,10 +19,10 @@ Versal ACAP Embedded Design Tutorial
 
 
 
-This document provides an introduction for using the Xilinx |reg| Vivado |reg| Design Suite flow for a VCK190/VMK180 evaluation board. The tools used are Vivado Design Suite and the Vitis |trade| unified software platform, version 2021.2. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* `[UG1400] <https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug1400-vitis-embedded.pdf>`__.
+This document provides an introduction for using the Xilinx |reg| Vivado |reg| Design Suite flow for a VCK190/VMK180 evaluation board. The tools used are Vivado Design Suite and the Vitis |trade| unified software platform, version 2022.1. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* `[UG1400] <https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug1400-vitis-embedded.pdf>`__.
 
 .. note:: 
-   In this tutorial, the instructions for booting Linux on the hardware is specific to the PetaLinux tools released for 2021.2, which must be installed on a Linux host machine for exercising the Linux portions of this document.
+   In this tutorial, the instructions for booting Linux on the hardware is specific to the PetaLinux tools released for 2022.1, which must be installed on a Linux host machine for exercising the Linux portions of this document.
 
 .. important:: 
    
@@ -48,7 +48,7 @@ This design tutorial requires use of a number of files provided by Xilinx. These
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
 
-© Copyright 2020-2021 Xilinx, Inc.
+© Copyright 2020-2022 Xilinx, Inc.
 
 *Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.*
 

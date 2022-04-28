@@ -48,7 +48,7 @@ The Trusted Firmware-A (ATF) is a transparent bare-metal application layer execu
 Generating Boot Image for Standalone Application
 ================================================
 
-The Vitis software platform does not support automatic boot image creation for Versal ACAP architecture. To generate a bootable image, use Bootgen, which is a command line utility and a part of the Vitis software platform package. The primary function of Bootgen is to integrate the various partitions of the bootable image. Bootgen uses a Bootgen Image Format (BIF) file as an input and generates a single file image in binary BIN or PDI format. It outputs a single file image which can be loaded into non-volatile memory (NVM) (QSPI or SD card). Use the following steps to generate a PDI/BIN file:
+The Vitis software platform supports boot image creation wizard for Versal ACAP. To generate a boot image PDI or ``Boot.bin``, you can either use Bootgen command line options or use the wizard in Vitis. This tutorial shows how to create Boot image using Bootgen, which is released as a part of the Vitis software platform package. The primary function of Bootgen is to integrate the various partitions of the bootable image. Bootgen uses a BIF file (Bootgen Image Format) as an input and generates a single file image in binary BIN or PDI format. It outputs a single file image which can be loaded into non-volatile memory (QSPI or SD card). Use the following steps to generate a PDI/BIN file:
 
 1. Open the XSCT Console view in the Vitis IDE, if not already open, by clicking on **Window → Show View**. Type `xsct console` within the search bar of the Show View wizard. Click **Open** to open the console.
 
@@ -103,7 +103,7 @@ This section describes how to load Versal Petalinux images using JTAG mode on th
       
       The ``versal.tcl`` file includes commands to select appropriate targets and download application files to required locations in the DDR memory.
 
-      .. image:: ./media/versal_tcl.jpg
+      .. image:: ./media/versal_tcl.JPG
  
 4. Modify the generated `versal.tcl` file as follows:
 
@@ -113,7 +113,8 @@ This section describes how to load Versal Petalinux images using JTAG mode on th
       .. code-block:: 
 
          puts stderr "INFO: Loading image: BOOT.BIN at 0x70000000" 
-         dow -data -force "BOOT.BIN" 0x70000000 after 2000“
+         dow -data -force "BOOT.BIN" 0x70000000
+	 after 2000
 
 5. Set the boot mode switch SW1 to ON-ON-ON-ON JTAG boot mode, as shown in the following figure.
 
@@ -150,26 +151,30 @@ This section describes how to load Versal Petalinux images using JTAG mode on th
 
     .. code-block::
 
-         U-Boot 2021.01 (Sep 17 2021 - 11:19:26 +0000)
+         U-Boot 2022.01 (Feb 16 2022 - 14:57:10 +0000)
 
-         CPU:   Versal
-         Silicon: v2
-         Model: Xilinx Versal vck190 Eval board revA (EMMC)
-         DRAM:  8 GiB
-         EL Level:	EL2
-         MMC:   sdhci@f1040000: 1, sdhci@f1050000: 0
-         In:    serial@ff000000
-         Out:   serial@ff000000
-         Err:   serial@ff000000
-         Bootmode: JTAG_MODE
-         Net: ZYNQ GEM: ff0c0000, mdio bus ff0c0000, phyaddr 1, interface rgmii-id
+	CPU:   Versal
+	Silicon: v2
+	Model: Xilinx Versal vck190 Eval board revA
+	DRAM:  8 GiB
+	EL Level:       EL2
+	MMC:   mmc@f1050000: 0
+	Loading Environment from nowhere... OK
+	In:    serial@ff000000
+	Out:   serial@ff000000
+	Err:   serial@ff000000
+	Bootmode: JTAG_MODE
+	Net:
+	ZYNQ GEM: ff0c0000, mdio bus ff0c0000, phyaddr 1, interface rgmii-id
+	zynq_gem ethernet@ff0c0000: Failed to read eth PHY id, err: -2
 
-         Warning: ethernet@ff0c0000 (eth0) using random MAC address - 5e:47:01:44:d3:57
-         eth0: ethernet@ff0c0000
-         ZYNQ GEM: ff0d0000, mdio bus ff0c0000, phyaddr 2, interface rgmii-id
+	Warning: ethernet@ff0c0000 (eth0) using random MAC address - fe:77:f4:77:5c:c7
+	eth0: ethernet@ff0c0000
+	ZYNQ GEM: ff0d0000, mdio bus ff0c0000, phyaddr 2, interface rgmii-id
+	zynq_gem ethernet@ff0d0000: Failed to read eth PHY id, err: -2
 
-         Warning: ethernet@ff0d0000 (eth1) using random MAC address - 6a:26:ad:16:af:8b
-         , eth1: ethernet@ff0d0000
+	Warning: ethernet@ff0d0000 (eth1) using random MAC address - c6:e7:dd:d5:b1:05
+	, eth1: ethernet@ff0d0000
          Hit any key to stop autoboot:  5  4  3  2  0 
          Versal>
 
@@ -369,7 +374,7 @@ To format the eMMC flash on the Versal ACAP board for the first time, use the fo
 
    .. code-block::
 	
-        root@xilinx-vmk180-2021_1:~# fdisk /dev/mmcblk0
+        xilinx-vck190-20221:~$ fdisk /dev/mmcblk0
         The number of cylinders for this disk is set to 233472.
         There is nothing wrong with that, but this is larger than 1024,
         and could in certain setups cause problems with:
@@ -410,7 +415,7 @@ To format the eMMC flash on the Versal ACAP board for the first time, use the fo
         Calling ioctl() to re-read partition table
         fdisk: WARNING: rereading partition table failed, kernel still uses old table: Device or resource busy
 
-        root@xilinx-vmk180-2021_1:~# mkfs.vfat -F 32 -n boot /dev/mmcblk0p1
+        xilinx-vck190-20221:~$ mkfs.vfat -F 32 -n boot /dev/mmcblk0p1
 
    eMMC flash is formatted with the FAT32 filesystem.
 

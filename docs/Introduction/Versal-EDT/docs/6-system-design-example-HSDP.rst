@@ -27,7 +27,7 @@ This chapter demonstrates how to build a Versal |reg|-based system that utilizes
 Design Example: Enabling the HSDP
 =================================
 
-To enable the HSDP, start with the VCK190 or VMK180 project that you built in the preceding chapter and modify the project to include HSDP support.  It is also possible to start this chapter standalone by sourcing the included block design Tcl to create the HSDP capable design. See `Prod_Si/smartlynq_plus/bd_tcl`.
+To enable the HSDP, start with the VCK190 or VMK180 project that you built in the preceding chapter and modify the project to include HSDP support.  It is also possible to start this chapter standalone by sourcing the included block design Tcl to create the HSDP capable design. See `pl_hsdp <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Versal-EDT/ref_files/ug1305-embedded-design-tutorial/vck190/pl/pl_hsdp>`__.
 
 Modifying the Design to Enable the HSDP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -223,7 +223,7 @@ The design package included with this tutorial contains a script that downloads 
 Useful Links
 ============
 
-* For more information on using PL hardware debug cores such as the AXIS-ILA, AXIS-VIO, PCIe |trade| Debugger, and/or DDRMC Calibration Interfaces refer to the *Vivado Design Suite User Guide Programming and Debugging* `[UG908] <https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug908-vivado-programming-debugging.pdf>`__.
+* For more information on using PL hardware debug cores such as the AXIS-ILA, AXIS-VIO, PCIe |trade| Debugger, and/or DDRMC Calibration Interfaces refer to the *Vivado Design Suite User Guide Programming and Debugging* `[UG908] <https://www.xilinx.com/support/documentation/sw_manuals/xilinx2022_1/ug908-vivado-programming-debugging.pdf>`__.
 
 * For more information on the SmartLynq+ Module, refer to `SmartLynq+ Module User Guide <https://www.xilinx.com/support/documentation/boards_and_kits/smartlynq/ug1258-smartlynq-cable.pdf>`__.
 

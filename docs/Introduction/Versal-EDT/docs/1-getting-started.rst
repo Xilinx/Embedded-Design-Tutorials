@@ -49,7 +49,7 @@ This tutorial targets the Versal |reg| ACAP VCK190 and VMK180 evaluation boards.
 
 The evaluation board kit includes:
 
-- VCK190/VMK180 ES1/Production board
+- VCK190/VMK180 Production board
 - AC power adapter (12 VDC)
 - USB Type-A to USB Micro cable (for UART communications)
 - USB Micro cable for programming and debugging via USB-Micro JTAG connection
@@ -65,7 +65,7 @@ Additional flash daughter cards:
 
 .. note:: 
 
-   - QSPI/SD were tested on VCK190/VMK180 ES1 boards.
+   - QSPI/SD were tested on VCK190/VMK180 Production boards.
    - OSPI/eMMC were tested on VCK190 and VMK180 RevB production boards.
    - OSPI and eMMC boot modes are only supported on the VCK190 and VMK180 RevB production boards.
 
@@ -80,7 +80,7 @@ Ensure that you have the Vitis |trade| 2021.2 software development platform inst
 
 .. note:: Visit `https://www.xilinx.com/support/download.html <https://www.xilinx.com/support/download.html>`__ to confirm that you have the latest tools version.
 
-For more information on installing the Vivado Design Suite, refer to the *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://www.xilinx.com/support/documentation/sw_manuals/xilinx2021_1/ug1400-vitis-embedded.pdf>`__).
+For more information on installing the Vivado Design Suite, refer to the *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded>`__).
 
 PetaLinux Tools
 ~~~~~~~~~~~~~~~
@@ -99,7 +99,7 @@ When you install PetaLinux tools on your system of choice, you must do the follo
 
 - Download the respective BSP as described in :ref:`creating-linux-images-using-petalinux`.
 
-- Add common system packages and libraries to the workstation or virtual machine. For more information, see the Installation Requirements from the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/support/documentation/sw_manuals/xilinx2021_1/ug1144-petalinux-tools-reference-guide.pdf>`__) and the `PetaLinux Release Notes <https://support.xilinx.com/s/article/000032521>`__.
+- Add common system packages and libraries to the workstation or virtual machine. For more information, see the Installation Requirements from the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1144-petalinux-tools-reference-guide>`__) and the `PetaLinux Release Notes <https://support.xilinx.com/s/article/000032521>`__.
 
 =============
 Prerequisites
@@ -123,21 +123,19 @@ For example, to install PetaLinux tools under ``/opt/pkg/petalinux/<petalinux-ve
 
 .. note:: Do not change the install directory permissions to CHMOD 775 as it might cause BitBake errors. This installs the PetaLinux tool into the ``/opt/pkg/petalinux/<petalinux-version>`` directory.
 
-For more information, see *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?d=xilinx2021_1/ug1144-petalinux-tools-reference-guide.pdf>`__).
+For more information, see *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1144-petalinux-tools-reference-guide>`__).
 
 ==================
 Software Licensing
 ==================
 
-Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* (`UG973 <https://www.xilinx.com/support/documentation/sw_manuals/xilinx2021_1/ug973-vivado-release-notes-install-license.pdf>`__).
+Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* (`UG973 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug973-vivado-release-notes-install-license>`__).
 
 =====================
 Tutorial Design Files
 =====================
 
 The reference design files for Production Silicon are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Versal-EDT/ref_files>`__ directory.
-
-Design files for ES1 are available on the lounge.
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
