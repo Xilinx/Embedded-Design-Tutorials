@@ -25,16 +25,16 @@ The Embedded Design Tutorials provide an introduction to the embedded flow for X
  <td align="center"><b>Description</b></td>
  </tr>
  <tr>
- <td align="center"><a href="Introduction/Versal-EDT/README.md">Versal Adaptive Compute Acceleration Platform</a></td>
+  <td align="center"><a href="Introduction/Versal-EDT/Versal-EDT.rst">Versal Adaptive Compute Acceleration Platform</a></td>
  <td>
  Versal&trade; ACAP devices</td><td>
 Provides an introduction for using the Xilinx&reg; Vivado&reg; Design Suite flow for a Versal&trade; VMK180/VCK190 evaluation board.</td></tr>
 <tr>
-<td align="center"><a href="Introduction/ZynqMPSoC-EDT/README.md">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></td>
+<td align="center"><a href="Introduction/ZynqMPSoC-EDT/ZynqMPSoC-EDT.rst">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></td>
 <td>Zynq&reg; UltraScale+&trade; MPSoC devices</td><td>
 Provides an introduction for using the Xilinx Vivado Design Suite flow for using the Zynq UltraScale+ MPSoC device.</td></tr>
 <tr>
-<td align="center"><a href="Introduction/Zynq7000-EDT/README.md">Zynq-7000 SoC Embedded Design Tutorial</a></td>
+<td align="center"><a href="Introduction/Zynq7000-EDT/Zynq7000-EDT.rst">Zynq-7000 SoC Embedded Design Tutorial</a></td>
 <td>Zynq-7000 SoC devices</td><td>
 Provides an introduction for using the Xilinx Vivado Design Suite flow for using the Zynq-7000 SoC device.</td></tr>
 </table>
