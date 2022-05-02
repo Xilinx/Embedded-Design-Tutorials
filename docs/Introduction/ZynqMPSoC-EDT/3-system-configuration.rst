@@ -1,5 +1,5 @@
 ..
-   Copyright 2015-2021 Xilinx, Inc.
+   Copyright 2015-2022 Xilinx, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
 
@@ -127,7 +127,7 @@ Now that you have added the processing system for the Zynq MPSoC to the design, 
 
    The Re-customize IP view opens, as shown in the following figure. Notice that by default, the processor system does not have any peripherals connected.
 
-   .. image:: ./media/image10.jpeg
+   .. image:: ./media/image10.png
 
 2. Click **Cancel** to exit the view without making changes to the design.
 

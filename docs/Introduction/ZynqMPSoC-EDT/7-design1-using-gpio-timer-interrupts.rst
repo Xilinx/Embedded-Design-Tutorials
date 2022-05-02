@@ -1,5 +1,5 @@
 ..
-   Copyright 2015-2021 Xilinx, Inc.
+   Copyright 2015-2022 Xilinx, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
 
@@ -52,9 +52,9 @@ Adding the AXI Timer and AXI GPIO IP
 1. Adding the AXI Timer IP:
 
    1. Right-click in the block diagram and select **Add IP** from the IP catalog.
-   2. In the catalog, select **AXI Timer**. The IP Details information displays, as shown in the following figure.
+   2. In the catalog, select **AXI Timer**.
 
-      .. image:: ./media/image97.jpeg
+      .. image:: ./media/axi_timer.png
 
    3. Double-click the **AXI Timer** IP to add it to the design.
 
