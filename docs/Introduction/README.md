@@ -13,4 +13,4 @@
 | [Zynq MPSoC Embedded Design Tutorial (UG1209)](./ZynqMPSoC-EDT)    | An introduction to using the Vivado Design Suite flow and the Vitis software platform with a Zynq® UltraScale+™ MPSoC. The examples are targeted for the Xilinx ZCU102 Rev 1.0 and Rev 1.1 evaluation boards. |
 
 
-<p align="center"><sup>Copyright&copy; 2019-2021 Xilinx</sup></p>
+<p align="center"><sup>Copyright&copy; 2019-2022 Xilinx</sup></p>
