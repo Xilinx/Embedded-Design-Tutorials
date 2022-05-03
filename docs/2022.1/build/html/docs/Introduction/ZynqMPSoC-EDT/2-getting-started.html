@@ -270,7 +270,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#installation-requirements">Installation Requirements</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#vitis-integrated-design-environment-and-vivado-design-suite">Vitis Integrated Design Environment and Vivado Design Suite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#petalinux-tools">PetaLinux Tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#software-licensing">Software Licensing</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tutorial-design-files">Tutorial Design Files</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#next-chapter">Next Chapter</a></li>
 </ul>
@@ -405,55 +404,20 @@ included with the evaluation board:</p>
 <h2>Installation Requirements<a class="headerlink" href="#installation-requirements" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="vitis-integrated-design-environment-and-vivado-design-suite">
 <h3>Vitis Integrated Design Environment and Vivado Design Suite<a class="headerlink" href="#vitis-integrated-design-environment-and-vivado-design-suite" title="Permalink to this headline">¶</a></h3>
-<p>Ensure that you have the Vitis™ 2021.2 unified software development platform installed. The Vitis software platform comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis IDE. You do not have to make any extra selections in the installer.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Visit <a class="reference external" href="https://www.xilinx.com/support/download.html">https://www.xilinx.com/support/download.html</a> to confirm that you have the latest tools version.</p>
-</div>
-<p>Vitis embedded software development supports the following operating systems:</p>
-<ul class="simple">
-<li><p>RHEL/CentOS 7.4, 7.5, 7.6, 7.7, 7.8, 8.1, 8.2</p></li>
-<li><p>RHEL 8.3</p></li>
-<li><p>Ubuntu 16.04.5, 16.04.6, 18.04.1, 18.04.2, 18.04.3, 18.04.4, 20.04, 20.04.1 LTS</p></li>
-<li><p>Amazon Linux 2 AL2 LTS</p></li>
-<li><p>SUSE Enterprise Linux 12.4</p></li>
-<li><p>Windows 10 64-bit Professional and Enterprise versions 1809, 1903, 1909, and 2004</p></li>
-</ul>
-<p>For more information on installing the Vitis Software Development Platform, refer to the Installation section of
-<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded">UG1400</a>.</p>
+<p>Ensure that you have the Vitis™ 2022.1 unified software development platform installed. The Vitis software platform comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis IDE. You do not have to make any extra selections in the installer.</p>
+<p>Visit this <a class="reference external" href="https://www.xilinx.com/support/download.html">web page</a> to download the required Vitis tool installer.</p>
+<p>Make sure your operating system is supported by the <a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Installation-Requirements">Vitis embedded software development flow</a>. For more information on installing the Vitis unified software platform, refer to the Installation section of the Vitis embedded software development flow documentation (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Installation">UG1400</a>).</p>
 </div>
 <div class="section" id="petalinux-tools">
 <h3>PetaLinux Tools<a class="headerlink" href="#petalinux-tools" title="Permalink to this headline">¶</a></h3>
-<p>Install the PetaLinux tools to run through the Linux portion of this tutorial. PetaLinux tools run under the Linux host system running one of the following:</p>
-<ul class="simple">
-<li><p>Red Hat Enterprise Workstation/Server 7.4, 7.5, 7.6, 7.7, 7.8 (64-bit)</p></li>
-<li><p>CentOS Workstation/Server 7.4, 7.5, 7.6, 7.7, 7.8 (64-bit)</p></li>
-<li><p>Ubuntu Linux Workstation/Server 16.04.5, 16.04.6, 18.04.1, 18.04.2, 18.04.3, 18.04.4(64-bit)</p></li>
-</ul>
+<p>Install the PetaLinux tools to run through the Linux portion of this tutorial. PetaLinux tools run under the Linux host system. The supported operation systems can be checked from the PetaLinux Tools Documentation: Reference Guide (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1144-petalinux-tools-reference-guide/Installation-Requirements">UG1144</a>).</p>
 <p>This can use either a dedicated Linux host system or a virtual machine running one of these Linux operating systems on your Windows development platform.</p>
 <p>When you install PetaLinux tools on your system of choice, you must do the following:</p>
 <ul class="simple">
-<li><p>Download the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">PetaLinux 2021.2</a> software from the Xilinx website.</p></li>
+<li><p>Download the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">PetaLinux</a> software from the Xilinx website.</p></li>
 <li><p>Download the ZCU102 PetaLinux BSP (ZCU102 BSP (prod-silicon)) from the downloads page.</p></li>
-<li><p>Add common system packages and libraries to the workstation or virtual machine. For more information, see the Installation Requirements from the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>).</p></li>
+<li><p>Read and follow the installation instructions in the PetaLinux Tools Documentation: Reference Guide (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1144-petalinux-tools-reference-guide/Setting-Up-Your-Environment">UG1144</a>).</p></li>
 </ul>
-<div class="section" id="prerequisites">
-<h4>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li><p>16 GB RAM (recommended minimum for Xilinx tools)</p></li>
-<li><p>100 GB free HDD space</p></li>
-</ul>
-</div>
-<div class="section" id="extracting-the-petalinux-package">
-<h4>Extracting the PetaLinux Package<a class="headerlink" href="#extracting-the-petalinux-package" title="Permalink to this headline">¶</a></h4>
-<p>PetaLinux tools installation is straight-forward. Without any options, the PetaLinux tools are installed into the current working directory. Alternatively, an installation path may be specified.</p>
-<p>For example, to install PetaLinux tools under <code class="docutils literal notranslate"><span class="pre">/opt/pkg/petalinux/2021.2</span></code>:</p>
-<p>For more information, see the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>).</p>
-</div>
-</div>
-<div class="section" id="software-licensing">
-<h3>Software Licensing<a class="headerlink" href="#software-licensing" title="Permalink to this headline">¶</a></h3>
-<p>Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the <em>Vivado Design Suite User Guide: Release Notes, Installation, and Licensing</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;t=vivado+install+guide">UG973</a>).</p>
 </div>
 <div class="section" id="tutorial-design-files">
 <h3>Tutorial Design Files<a class="headerlink" href="#tutorial-design-files" title="Permalink to this headline">¶</a></h3>

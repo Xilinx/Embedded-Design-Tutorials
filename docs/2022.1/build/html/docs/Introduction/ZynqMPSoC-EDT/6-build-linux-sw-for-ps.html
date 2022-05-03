@@ -412,8 +412,8 @@ BSP</a></p></li>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <ol class="arabic simple">
-<li><p>This example requires a Linux host machine with PetaLinux installed. Refer to the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) for information about dependencies for PetaLinux 2021.2.</p></li>
-<li><p>This example uses the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">ZCU102 PetaLinux BSP</a> to create a PetaLinux project. Ensure that you have downloaded the ZCU102 BSP for PetaLinux as instructed on the <a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu102-v2021.2-final.bsp">PetaLinux Tools download page</a>.</p></li>
+<li><p>This example requires a Linux host machine with PetaLinux installed. Refer to the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) for information about dependencies for PetaLinux.</p></li>
+<li><p>This example uses the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">ZCU102 PetaLinux BSP</a> to create a PetaLinux project. Ensure that you have downloaded the ZCU102 BSP for PetaLinux as instructed on the <a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu102-v2022.1-final.bsp">PetaLinux Tools download page</a>.</p></li>
 </ol>
 </div>
 </div>
@@ -421,14 +421,14 @@ BSP</a></p></li>
 <span id="id2"></span><h3>Creating a PetaLinux Image<a class="headerlink" href="#creating-a-petalinux-image" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>Create a PetaLinux project using the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-create -t project -s &lt;path to the xilinx-zcu102-v2021.2-final.bsp&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-create -t project -s &lt;path to the xilinx-zcu102-v2022.1-final.bsp&gt;
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">xilinx-zcu102-v2021.2-final.bsp</span></code> is the PetaLinux BSP for the ZCU102 Production Silicon Rev 1.0 Board.</p>
+<p><code class="docutils literal notranslate"><span class="pre">xilinx-zcu102-v2022.1-final.bsp</span></code> is the PetaLinux BSP for the ZCU102 Production Silicon Rev 1.0 Board.</p>
 </div>
-<p>This creates a PetaLinux project directory, <code class="docutils literal notranslate"><span class="pre">xilinx-zcu102-2021.2</span></code>.</p>
+<p>This creates a PetaLinux project directory, <code class="docutils literal notranslate"><span class="pre">xilinx-zcu102-2022.1</span></code>.</p>
 </li>
 <li><p>Reconfigure the project with <cite>edt_zcu102_wrapper.xsa</cite>:</p>
 <ul>
@@ -437,7 +437,7 @@ PetaLinux project based on the Zynq UltraScale+ hardware platform that you confi
 UltraScale+ MPSoC Processing System Configuration</span></a>.</p></li>
 <li><p>Copy the hardware platform <cite>edt_zcu102_wrapper.xsa</cite> to the Linux host machine.</p></li>
 <li><p>Reconfigure the project using the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> xilinx-zcu102-2021.2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> xilinx-zcu102-2022.1
 petalinux-config --get-hw-description<span class="o">=</span>&lt;path containing edt_zcu102_wrapper.xsa&gt;
 </pre></div>
 </div>
@@ -451,7 +451,7 @@ petalinux-config --get-hw-description<span class="o">=</span>&lt;path containing
 </li>
 <li><p>Build the PetaLinux project:</p>
 <ol class="arabic">
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">&lt;PetaLinux-project&gt;</span></code> directory, for example, <code class="docutils literal notranslate"><span class="pre">xilinx-zcu102-2021.2</span></code>, build the Linux images using the
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">&lt;PetaLinux-project&gt;</span></code> directory, for example, <code class="docutils literal notranslate"><span class="pre">xilinx-zcu102-2022.1</span></code>, build the Linux images using the
 following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-build
 </pre></div>

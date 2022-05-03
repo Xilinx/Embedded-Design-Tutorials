@@ -1,5 +1,5 @@
 ..
-   Copyright 2015-2021 Xilinx, Inc.
+   Copyright 2015-2022 Xilinx, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
 
@@ -70,7 +70,7 @@ The Vitis software platform is used for software development, and can be install
 
 The Zynq SoC Processing System (PS) can be booted and made to run without programming the FPGA (programmable logic or PL). However, in order to use any soft IP in the fabric, or to bond out PS peripherals using EMIO, programming of the PL is required. You can program the PL in the Vitis software platform.
 
-For more information on the embedded design process, see the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* (`UG940 <https://www.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2021_2/ug940-vivado-tutorial-embedded-design.pdf>`_).
+For more information on the embedded design process, see the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* (`UG940 <https://docs.xilinx.com/v/u/en-US/ug940-vivado-tutorial-embedded-design>`_).
 
 Hardware Requirements for this Guide
 ------------------------------------
@@ -91,7 +91,7 @@ Installation Requirements
 Vitis Software Platform and Vivado Design Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Visit the `Xilinx Download Center <https://www.xilinx.com/support/download.html>`_ to download the Vitis software platform. This tutorial is verified with 2021.2. If you are using other Vitis versions, some features or screenshots might differ.
+Visit the `Xilinx Download Center <https://www.xilinx.com/support/download.html>`_ to download the Vitis software platform. This tutorial is verified with 2022.1. If you are using other Vitis versions, some features or screenshots might differ.
 
 The Vitis software platform supports Windows and Linux. To install the Vitis software platform, follow the instructions in the `Installation section <https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Getting-Started-with-Vitis>`_ of the *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Getting-Started-with-Vitis>`_). When you install the Vitis software platform, the Vivado Design Suite is installed automatically.
 
@@ -104,7 +104,7 @@ The PetaLinux tool offers a full Linux distribution building system which includ
 
 Install the PetaLinux Tools to run through the embedded Linux portion of this tutorial.
 
-PetaLinux tools run under the Linux host system only. Refer to the “Setting Up Your Environment” chapter in the *PetaLinux Tools Reference Guide* (`UG1144 <https://www.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2021_2/ug1144-petalinux-tools-reference-guide.pdf>`_) for supported operating systems and installation instructions. You can use either a dedicated Linux host system or a virtual machine running one of these Linux operating systems on your Windows development platform.
+PetaLinux tools run under the Linux host system only. Refer to the “Setting Up Your Environment” chapter in the *PetaLinux Tools Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`_) for supported operating systems and installation instructions. You can use either a dedicated Linux host system or a virtual machine running one of these Linux operating systems on your Windows development platform.
 
 PetaLinux can be installed from its own installer or from Vitis installer.
 
@@ -113,7 +113,7 @@ Software Licensing
 
 Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the
 process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing Guide*
-(`UG973 <https://www.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2021_2/ug973-vivado-release-notes-install-license.pdf>`_).
+(`UG973 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug973-vivado-release-notes-install-license.pdf>`_).
 
 .. _design-files-for-this-tutorial:
 

@@ -1,5 +1,5 @@
 ..
-   Copyright 2015-2021 Xilinx, Inc.
+   Copyright 2015-2022 Xilinx, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
 
@@ -55,8 +55,8 @@ The following steps show how to create a platform project with a standalone doma
 1. Launch the Vitis IDE:
 
    -  From the open Vivado IDE, click **Tools → Launch Vitis IDE**; or
-   -  From Windows Start menu, select **Xilinx Design Tools → Xilinx Vitis 2021.2**; or
-   -  Double-click the ``C:\Xilinx\Vitis\2021.2\bin\vitis.bat`` file.
+   -  From Windows Start menu, select **Xilinx Design Tools → Xilinx Vitis 2022.1**; or
+   -  Double-click the ``C:\Xilinx\Vitis\2022.1\bin\vitis.bat`` file.
 
 2. Select the workspace ``C\edt\edt_zcu102_workspace`` and continue.
 
@@ -233,10 +233,18 @@ Running Hello World on the Board
 
 6. Click **Run**.
 
-   Hello World appears on the serial communication utility in Terminal
-   1, as shown in the following figure.
+   Hello World appears on the serial communication utility in Terminal 1.
 
-   .. image:: ./media/image30.png
+   .. code-block::
+
+      Xilinx Zynq MP First Stage Boot loader
+
+      Release 2022.1 <build time>
+      PMU-FW is not running, certain applications may not be supported.
+
+      Hello World
+
+      Successfully ran Hello World application
 
    .. note:: No bitstream download is required for the above software application to be executed on the Zynq UltraScale+ evaluation board. The Arm Cortex-A53 quad-core is already present in the processing system. Basic initialization of this system to run a simple application is accomplised by the device initialization Tcl script.
 

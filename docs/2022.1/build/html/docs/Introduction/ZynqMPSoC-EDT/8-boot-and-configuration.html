@@ -425,7 +425,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For more information on RPU lockstep, see the <em>Zynq UltraScale+ Device Technical Reference Manual</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug1085-zynq-ultrascale-trm.pdf">UG1085</a>).</p>
+<p>For more information on RPU lockstep, see the <em>Zynq UltraScale+ Device Technical Reference Manual</em> (<a class="reference external" href="https://docs.xilinx.com/v/u/en-US/ug1085-zynq-ultrascale-trm">UG1085</a>).</p>
 </div>
 <p>While previous sections focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a bigger system.</p>
 <p>To create a boot image, you can either use the Create Boot Image wizard in the Vitis IDE, or the Bootgen command line tool (the Create Boot Image wizard calls the Bootgen tool as well). The principle function of the Create Boot Image wizard or Bootgen is to integrate the partitions (hardware-bitstream and software) in the proper format. It allows you to specify security options. It can also create cryptographic keys.</p>
@@ -434,18 +434,18 @@
 <div class="section" id="system-software">
 <h2>System Software<a class="headerlink" href="#system-software" title="Permalink to this headline">¶</a></h2>
 <p>The following system software blocks cover most of the boot and configuration for this chapter. For detailed boot flow and various boot sequences, refer to the <em>System Boot and Configuration</em> chapter in the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em>
-(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1137-zynq-ultrascale-mpsoc-swdev.pdf">UG1137</a>).</p>
+(<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev">UG1137</a>).</p>
 <div class="section" id="first-stage-boot-loader">
 <h3>First Stage Boot Loader<a class="headerlink" href="#first-stage-boot-loader" title="Permalink to this headline">¶</a></h3>
 <p>In non-secure boot mode, the platform management unit (PMU) releases the reset of the configuration security unit, and enters the PMU server mode to monitor power. At this stage, the configuration security unit loads the first stage boot loader (FSBL) into on-chip memory (OCM). The FSBL can be run from either APU A53_0, RPU R5_0, or RPU R5_lockstep. In this example, the FSBL is targeted for APU Cortex™-A53 Core 0. The last 512 bytes of this region are used by FSBL to share the hand-off parameters corresponding to the applications handed off by the TF-A.</p>
 <p>The first stage boot loader initializes important blocks in the processing subsystem. This includes clearing the reset of the processors and initializing clocks, memory, UART, and so on before handing over the control of the next partition in DDR, to either the RPU or APU. In this example, the FSBL loads a bare-metal application in DDR and hands off to the RPU Cortex-R5F in lockstep mode, and then loads U-Boot to be executed by the APU Cortex-A53 Core-0. For more information, see the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em>
-(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1137-zynq-ultrascale-mpsoc-swdev.pdf">UG1137</a>).</p>
+(<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev">UG1137</a>).</p>
 <p>For this chapter, you can use the FSBL executable that you created in <a class="reference internal" href="4-build-sw-for-ps-subsystems.html"><span class="doc">Building Software for PS
 Subsystems</span></a>. In the FSBL application, the <code class="docutils literal notranslate"><span class="pre">xfsbl_translation_table.S</span></code> differs from the <code class="docutils literal notranslate"><span class="pre">translation_table.S</span></code> of the Cortex-A53 in only one aspect, to mark the DDR region as reserved. This is to avoid speculative access to DDR memory controller before it is initialized. When the DDR initialization is completed in FSBL, the memory attributes for the DDR region are changed to “memory” so that they are cacheable.</p>
 </div>
 <div class="section" id="platform-management-unit-firmware-pmufw">
 <h3>Platform Management Unit Firmware (PMUFW)<a class="headerlink" href="#platform-management-unit-firmware-pmufw" title="Permalink to this headline">¶</a></h3>
-<p>The platform management unit (PMU) and the configuration security unit manage and perform the multi-staged booting process. The PMU primarily controls the pre-configuration stage that executes the PMU ROM to set up the system. The PMU handles all of the processes related to reset and wake-up. The Vitis IDE provides PMU firmware that can be built to run on the PMU. For more details on the platform management and PMU firmware, see the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1137-zynq-ultrascale-mpsoc-swdev.pdf">UG1137</a>).</p>
+<p>The platform management unit (PMU) and the configuration security unit manage and perform the multi-staged booting process. The PMU primarily controls the pre-configuration stage that executes the PMU ROM to set up the system. The PMU handles all of the processes related to reset and wake-up. The Vitis IDE provides PMU firmware that can be built to run on the PMU. For more details on the platform management and PMU firmware, see the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em> (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev">UG1137</a>).</p>
 <p>The PMU firmware can be loaded in the following ways:</p>
 <ul class="simple">
 <li><p>Using BootROM as described in <a class="reference internal" href="#boot-sequence-for-sd-boot"><span class="std std-ref">Boot Sequence for SD-Boot</span></a>.</p></li>
@@ -465,7 +465,7 @@ Subsystems</span></a>. In the FSBL application, the <code class="docutils litera
 layer for switching between the secure and non-secure world. The Secure Monitor and the implementation of Trusted Board Boot Requirements (TBBR) make the TF-A layer a mandatory requirement to load Linux on an APU on Zynq UltraScale+.</p>
 <p>FSBL loads the TF-A to be executed by the APU, which keeps running in EL3 awaiting a service request. The TF-A starts at 0xFFFEA000. FSBL also loads U-Boot in DDR to be executed by the APU, which loads the Linux OS in SMP mode on the APU. It is important to note that the PL bitstream should be loaded before the TF-A is loaded. This is because FSBL uses the OCM region, which is reserved by the TF-A as a temporary buffer for when the bitstream is present in the BIN file. Because of this, if the bitstream is loaded after the TF-A, FSBL overwrites the TF-A image with its temporary buffer, corrupting the TF-A image. The bitstream should therefore be positioned the in BIF before the TF-A and preferably immediately after FSBL and PMU firmware.</p>
 <p>The TF-A (<code class="docutils literal notranslate"><span class="pre">bl31.elf</span></code>) is built by default in PetaLinux and can be found in the PetaLinux project images directory.</p>
-<p>For more details on TF-A, refer to the <em>Arm Trusted Firmware</em> section in the <em>Security</em> chapter of the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em> <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1137-zynq-ultrascale-mpsoc-swdev.pdf">UG1137</a>).</p>
+<p>For more details on TF-A, refer to the <em>Arm Trusted Firmware</em> section in the <em>Security</em> chapter of the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em> <a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev">UG1137</a>).</p>
 </div>
 <div class="section" id="linux-on-apu">
 <h3>Linux on APU<a class="headerlink" href="#linux-on-apu" title="Permalink to this headline">¶</a></h3>
@@ -614,10 +614,10 @@ U-Boot loads the kernel image. When the kernel starts up, a user interface promp
 <p>The ZCU102 board also comes with dual parallel QSPI flashes adding up to 128 MB in size. In this example, you will create a boot image and load the images on the Zynq UltraScale+ device in QSPI boot mode. The images can be configured using the Create Boot Image wizard in the Vitis IDE. This can be done by performing the following steps.</p>
 <div class="section" id="creating-linux-images-using-petalinux-for-qspi-flash">
 <h3>Creating Linux Images Using PetaLinux for QSPI Flash<a class="headerlink" href="#creating-linux-images-using-petalinux-for-qspi-flash" title="Permalink to this headline">¶</a></h3>
-<p>The earlier example highlighted creation of the Linux Images and Boot images to boot from an SD card. This section explains the configuration of PetaLinux to generate Linux images for QSPI flash. For more information about the dependencies for PetaLinux 2021.2, see the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>).</p>
+<p>The earlier example highlighted creation of the Linux Images and Boot images to boot from an SD card. This section explains the configuration of PetaLinux to generate Linux images for QSPI flash. For more information about the dependencies for PetaLinux, see the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>).</p>
 <ol class="arabic">
 <li><p>Before starting this example, create a backup of the boot images created for SD card setup using the following commands:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;Petalinux-project-path&gt;/xilinx-zcu102-2021.2/images/linux/
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;Petalinux-project-path&gt;/xilinx-zcu102-2022.1/images/linux/
 $ mkdir sd_boot
 $ cp image.ub sd_boot/
 $ cp u-boot.elf sd_boot/
@@ -626,7 +626,7 @@ $ cp BOOT.BIN sd_boot/
 </div>
 </li>
 <li><p>Change the directory to the PetaLinux project root directory:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;Petalinux-project-path&gt;/xilinx-zcu102-2021.2
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;Petalinux-project-path&gt;/xilinx-zcu102-2022.1
 </pre></div>
 </div>
 </li>
@@ -799,7 +799,7 @@ $ cp BOOT.BIN sd_boot/
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this boot sequence, the First Stage Boot Loader (FSBL) loads PMU firmware. This is because the PMU firmware was added as a datafile partition type. Ideally, the boot ROM code can load the PMU firmware for PMU as seen in the earlier section. For more details on PMU firmware, refer to the “Platform Management” chapter in the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1137-zynq-ultrascale-mpsoc-swdev.pdf">UG1137</a>).</p>
+<p>In this boot sequence, the First Stage Boot Loader (FSBL) loads PMU firmware. This is because the PMU firmware was added as a datafile partition type. Ideally, the boot ROM code can load the PMU firmware for PMU as seen in the earlier section. For more details on PMU firmware, refer to the “Platform Management” chapter in the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em> (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev">UG1137</a>).</p>
 </div>
 </div>
 <div class="section" id="running-the-image-in-qspi-boot-mode-on-zcu102-board">
@@ -1136,7 +1136,7 @@ psu_cortexa53_0</p></td>
 <li><p>Start a terminal session, using Tera Term or Minicom depending on the host machine being used, as well as the COM port and baud rate for your system.</p></li>
 <li><p>Power on the board.</p></li>
 </ol>
-<p>The following steps load the boot images via USB using the DFU utility, which can be found at <code class="docutils literal notranslate"><span class="pre">Vitis\2021.2\tps\lnx64\dfu-util-0.9</span></code>.</p>
+<p>The following steps load the boot images via USB using the DFU utility, which can be found at <code class="docutils literal notranslate"><span class="pre">Vitis\2022.1\tps\lnx64\dfu-util-0.9</span></code>.</p>
 <p>Alternatively, you can install the DFU utility on Linux using the Package Manager supported by Linux Distribution.</p>
 <div class="section" id="boot-commands-for-linux-host-machine">
 <h4>Boot Commands for Linux Host Machine<a class="headerlink" href="#boot-commands-for-linux-host-machine" title="Permalink to this headline">¶</a></h4>
@@ -1210,7 +1210,7 @@ $kernel_size&quot;
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">dfu-util.exe</span></code> can be found in <code class="docutils literal notranslate"><span class="pre">&lt;VITIS_Installation_path&gt;\VITIS\2021.2\tps\Win64\dfu-util-0.9\dfu-util.exe</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dfu-util.exe</span></code> can be found in <code class="docutils literal notranslate"><span class="pre">&lt;Vitis</span> <span class="pre">installation</span> <span class="pre">path&gt;\tps\Win64\dfu-util-0.9\dfu-util.exe</span></code>.</p>
 </div>
 </li>
 <li><p>The USB device should be enumerated with the vendor and product ID (<code class="docutils literal notranslate"><span class="pre">03fd:0050</span></code>).</p>

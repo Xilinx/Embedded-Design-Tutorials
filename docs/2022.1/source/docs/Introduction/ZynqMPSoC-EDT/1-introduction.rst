@@ -1,5 +1,5 @@
 ..
-   Copyright 2015-2021 Xilinx, Inc.
+   Copyright 2015-2022 Xilinx, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
 
@@ -98,11 +98,11 @@ You can accomplish all your hardware system development using the Vivado tools a
 The Zynq UltraScale+ PS can be booted and run without programming the PL. However, to use any soft IP in the fabric, or to bond out PS peripherals using EMIO, you must program the PL using the Vitis IDE or the Vivado hardware manager.
 
 For more information on the embedded design process, refer to the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design*
-(`UG940 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug940-vivado-tutorial-embedded-design.pdf>`_).
+(`UG940 <https://docs.xilinx.com/v/u/en-US/ug940-vivado-tutorial-embedded-design>`_).
 
-For more information about the Zynq UltraScale+ processing system, refer to the *Zynq UltraScale + MPSoC Processing System LogiCORE IP Product Guide* (`PG201 <https://www.xilinx.com/cgi-bin/docs/ipdoc?c=zynq_ultra_ps_e;v=latest;d=pg201-zynq-ultrascale-plus-processing-system.pdf>`_).
+For more information about the Zynq UltraScale+ processing system, refer to the *Zynq UltraScale + MPSoC Processing System LogiCORE IP Product Guide* (`PG201 <https://docs.xilinx.com/v/u/en-US/pg201-zynq-ultrascale-plus-processing-system>`_).
 
-In the :doc:`next chapter <./2-getting-started>`, we will get started.
+In the :doc:`next chapter <./2-getting-started>`, we will get started. 
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:

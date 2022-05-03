@@ -405,7 +405,7 @@
 <li><p>Input:</p>
 <ul>
 <li><p>Hardware XSA (<code class="docutils literal notranslate"><span class="pre">system_wrapper.xsa</span></code> generated in <a class="reference internal" href="2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc"><span class="std std-ref">Example 1: Creating a New Embedded Project with Zynq SoC</span></a>)</p></li>
-<li><p><a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2021.2-final.bsp">PetaLinux ZC702 BSP</a></p></li>
+<li><p><a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2022.1-final.bsp">PetaLinux ZC702 BSP</a></p></li>
 </ul>
 </li>
 <li><p>Output:</p>
@@ -418,8 +418,8 @@
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <ol class="arabic simple">
-<li><p>This example requires a Linux host machine with PetaLinux installed. Refer to the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) for information about dependencies for PetaLinux 2021.2.</p></li>
-<li><p>This example uses the <a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2021.2-final.bsp">PetaLinux ZC702 BSP</a> to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">PetaLinux Tools download page</a>.</p></li>
+<li><p>This example requires a Linux host machine with PetaLinux installed. Refer to the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) for information about dependencies for PetaLinux.</p></li>
+<li><p>This example uses the <a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2022.1-final.bsp">PetaLinux ZC702 BSP</a> to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">PetaLinux Tools download page</a>.</p></li>
 </ol>
 </div>
 </div>
@@ -427,21 +427,21 @@
 <h3>Creating a PetaLinux Image<a class="headerlink" href="#creating-a-petalinux-image" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>Create a PetaLinux project using the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-create -t project -s &lt;path to the xilinx-zc702-v2021.2-final.bsp&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-create -t project -s &lt;path to the xilinx-zc702-v2022.1-final.bsp&gt;
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>xilinx-zc702-v2021.2-final.bsp</strong> is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 Board.</p>
+<p><strong>xilinx-zc702-v2022.1-final.bsp</strong> is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.</p>
 </div>
-<p>This creates a PetaLinux project directory, <strong>xilinx-zc702-2021.2</strong>.</p>
+<p>This creates a PetaLinux project directory, <strong>xilinx-zc702-2022.1</strong>.</p>
 </li>
 <li><p>Reconfigure the project with <strong>system_wrapper.xsa</strong>:</p>
 <ul>
 <li><p>The created PetaLinux project uses the default hardware setup in the ZC702 Linux BSP. In this example, you will reconfigure the PetaLinux project based on the Zynq design that you configured using the Vivado® Design Suite in <a class="reference internal" href="2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc"><span class="std std-ref">Example 1: Creating a New Embedded Project with Zynq SoC</span></a>.</p></li>
 <li><p>Copy the hardware platform <code class="docutils literal notranslate"><span class="pre">system_wrapper.xsa</span></code> to the Linux host machine.</p></li>
 <li><p>Reconfigure the project using the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> xilinx-zc702-2021.2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> xilinx-zc702-2022.1
 petalinux-config --get-hw-description<span class="o">=</span>&lt;path that contains system_wrapper.xsa&gt;
 </pre></div>
 </div>
@@ -455,7 +455,7 @@ petalinux-config --get-hw-description<span class="o">=</span>&lt;path that conta
 </li>
 <li><p>Build the PetaLinux project:</p>
 <ul>
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">&lt;PetaLinux-project&gt;</span></code> directory (for example, <code class="docutils literal notranslate"><span class="pre">xilinx-zc702-2021.2</span></code>), build the Linux images using the following command:</p>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">&lt;PetaLinux-project&gt;</span></code> directory (for example, <code class="docutils literal notranslate"><span class="pre">xilinx-zc702-2022.1</span></code>), build the Linux images using the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-build
 </pre></div>
 </div>

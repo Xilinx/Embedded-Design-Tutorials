@@ -1,5 +1,5 @@
 ..
-   Copyright 2015-2021 Xilinx, Inc.
+   Copyright 2015-2022 Xilinx, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
 
@@ -143,9 +143,9 @@ The PUF enables storing the AES key in encrypted (black) format. The black key c
 needed for decryption, the encrypted key in eFUSEs or the boot header is decrypted using the PUF generated key encrypting key (KEK).
 
 There are two steps in using the PUF for black key storage. In the first, PUF registration software is used to generate PUF helper data and the PUF KEK. The PUF registration data allows the PUF to re-generate the identical key each time the PUF generates the KEK. For more details on the use of PUF registration software, see :ref:`puf-registration-in-boot-header-mode`. For more information on PUF Registration - eFUSE mode, see *Programming BBRAM and eFUSEs*
-(`XAPP1319 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf>`_).
+(`XAPP1319 <https://docs.xilinx.com/v/u/en-US/xapp1319-zynq-usp-prog-nvm>`_).
 
-The helper data and encrypted user key must both be stored in eFUSEs if the PUF eFUSE mode is used, and in the boot header if the PUF boot header mode is used. The procedure for the PUF boot header mode is discussed in :ref:`using-puf-in-boot-header-mode`. For the procedure to use PUF in eFUSE mode, see *Programming BBRAM and eFUSEs* (`XAPP1319 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf>`_).
+The helper data and encrypted user key must both be stored in eFUSEs if the PUF eFUSE mode is used, and in the boot header if the PUF boot header mode is used. The procedure for the PUF boot header mode is discussed in :ref:`using-puf-in-boot-header-mode`. For the procedure to use PUF in eFUSE mode, see *Programming BBRAM and eFUSEs* (`XAPP1319 <https://docs.xilinx.com/v/u/en-US/xapp1319-zynq-usp-prog-nvm>`_).
 
 This tutorial uses PUF boot header mode as it does not require programming of eFUSEs, and is therefore useful for test and debug However, the most common mode is PUF eFUSE mode, as the PUB boot header mode requires a unique run of Bootgen for each and every device. 
 
@@ -300,7 +300,7 @@ The following steps describe the process of creating the RSA private/public key 
 Generating SHA3 of Public Key in an RSA Private/Public Key Pair
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following steps are required only for RSA authentication in eFUSE mode, and can be skipped for RSA authentication in boot header mode. The 384 bits from ``sha3.txt`` can be programmed to eFUSE for RSA  authentication in eFUSE mode. For more information, see *Programming BBRAM and eFUSEs* (`XAPP1319 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf>`_).
+The following steps are required only for RSA authentication in eFUSE mode, and can be skipped for RSA authentication in boot header mode. The 384 bits from ``sha3.txt`` can be programmed to eFUSE for RSA  authentication in eFUSE mode. For more information, see *Programming BBRAM and eFUSEs* (`XAPP1319 <https://docs.xilinx.com/v/u/en-US/xapp1319-zynq-usp-prog-nvm>`_).
 
 1. Perform the steps from the prior section.
 
@@ -332,7 +332,7 @@ Additional RSA Private/Public Key Pairs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Follow the steps in this section to generate the secondary RSA private/public key pair required for key revocation, which requires the
-programming of eFUSE. For more information, see *Programming BBRAM and eFUSEs* (`XAPP1319 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf>`_). You can skip this section if you do not intend to use key revocation.
+programming of eFUSE. For more information, see *Programming BBRAM and eFUSEs* (`XAPP1319 <https://docs.xilinx.com/v/u/en-US/xapp1319-zynq-usp-prog-nvm>`_). You can skip this section if you do not intend to use key revocation.
 
 Repeat the steps from :ref:`creating-rsa-privatepublic-key-pairs` and :ref:`generating-sha3-of-public-key-in-an-rsa-privatepublic-key-pair` to generate the second RSA private/public key pair and the SHA3 of the second PPK.
 
@@ -519,7 +519,7 @@ When all the desired encryption features have been enabled, you can generate all
 Using Key Revocation
 ~~~~~~~~~~~~~~~~~~~~
 
-Key revocation allows you to revoke a RSA primary or secondary public key. Key revocation can be used due to elapsed time of key use, or if there is an indication that the key is compromised. The primary and secondary key revocation is controlled by one-time programmable eFUSEs. The Xilinx Secure Key Library is used for key revocation, allowing key revocation in fielded devices. Key revocation is discussed further in the *Zynq UltraScale+ Device Technical Reference Manual* (`UG1085 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides%3Bd%3Dug1085-zynq-ultrascale-trm.pdf>`_).
+Key revocation allows you to revoke a RSA primary or secondary public key. Key revocation can be used due to elapsed time of key use, or if there is an indication that the key is compromised. The primary and secondary key revocation is controlled by one-time programmable eFUSEs. The Xilinx Secure Key Library is used for key revocation, allowing key revocation in fielded devices. Key revocation is discussed further in the *Zynq UltraScale+ Device Technical Reference Manual* (`UG1085 <https://docs.xilinx.com/v/u/en-US/ug1085-zynq-ultrascale-trm>`_).
 
 .. _using-the-puf:
 
@@ -533,7 +533,7 @@ In this section, the PUF is used for black key storage in the PUF boot header mo
 PUF Registration in Boot Header Mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The PUF registration software is included in the XILSKEY library. The PUF registration software operates in a boot header mode or eFUSE mode. The boot header mode allows development without programming the OTP eFUSEs. The eFUSE mode is used in production. This lab runs through PUF registration in boot header mode only. For PUF registration using eFUSE, see *Programming BBRAM and eFUSEs* (`XAPP1319 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf>`_).
+The PUF registration software is included in the XILSKEY library. The PUF registration software operates in a boot header mode or eFUSE mode. The boot header mode allows development without programming the OTP eFUSEs. The eFUSE mode is used in production. This lab runs through PUF registration in boot header mode only. For PUF registration using eFUSE, see *Programming BBRAM and eFUSEs* (`XAPP1319 <https://docs.xilinx.com/v/u/en-US/xapp1319-zynq-usp-prog-nvm>`_).
 
 The PUF registration software accepts a red (unencrypted) key as input, and produces syndrome data (helper data), which also contains CHASH and AUX, and a black (encrypted) key. When the PUF boot header mode is used, the output is put in the boot header. When the PUF eFUSE mode is used, the output is programmed into eFUSEs.
 
@@ -696,7 +696,7 @@ storage) by hand editing the BIF file. This section performs the same operations
        cp ../keys/image.ub .
        cp ../keys/black_key.txt.
 
-3. Click **Programs → Xilinx Design Tools → Vitis 2021.2 → Xilinx Vitis 2021.2** to launch the Vitis IDE.
+3. Click **Programs → Xilinx Design Tools → Vitis <version number> → Xilinx Vitis 2022.1** to launch the Vitis IDE.
 
 4. Click **Xilinx Tools → Create Boot Image** from the menu bar to launch the Create Boot Image wizard.
 

@@ -460,8 +460,8 @@ Application software can link against the libraries generated in the platform pr
 <li><p>Launch the Vitis IDE:</p>
 <ul class="simple">
 <li><p>From the open Vivado IDE, click <strong>Tools → Launch Vitis IDE</strong>; or</p></li>
-<li><p>From Windows Start menu, select <strong>Xilinx Design Tools → Xilinx Vitis 2021.2</strong>; or</p></li>
-<li><p>Double-click the <code class="docutils literal notranslate"><span class="pre">C:\Xilinx\Vitis\2021.2\bin\vitis.bat</span></code> file.</p></li>
+<li><p>From Windows Start menu, select <strong>Xilinx Design Tools → Xilinx Vitis 2022.1</strong>; or</p></li>
+<li><p>Double-click the <code class="docutils literal notranslate"><span class="pre">C:\Xilinx\Vitis\2022.1\bin\vitis.bat</span></code> file.</p></li>
 </ul>
 </li>
 <li><p>Select the workspace <code class="docutils literal notranslate"><span class="pre">C\edt\edt_zcu102_workspace</span></code> and continue.</p>
@@ -671,9 +671,17 @@ psu_cortexa53_0</p></td>
 </li>
 <li><p>Power cycle the board.</p></li>
 <li><p>Click <strong>Run</strong>.</p>
-<p>Hello World appears on the serial communication utility in Terminal
-1, as shown in the following figure.</p>
-<img alt="../../../_images/image301.png" src="../../../_images/image301.png" />
+<p>Hello World appears on the serial communication utility in Terminal 1.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Xilinx</span> <span class="n">Zynq</span> <span class="n">MP</span> <span class="n">First</span> <span class="n">Stage</span> <span class="n">Boot</span> <span class="n">loader</span>
+
+<span class="n">Release</span> <span class="mf">2022.1</span> <span class="o">&lt;</span><span class="n">build</span> <span class="n">time</span><span class="o">&gt;</span>
+<span class="n">PMU</span><span class="o">-</span><span class="n">FW</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">running</span><span class="p">,</span> <span class="n">certain</span> <span class="n">applications</span> <span class="n">may</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">supported</span><span class="o">.</span>
+
+<span class="n">Hello</span> <span class="n">World</span>
+
+<span class="n">Successfully</span> <span class="n">ran</span> <span class="n">Hello</span> <span class="n">World</span> <span class="n">application</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>No bitstream download is required for the above software application to be executed on the Zynq UltraScale+ evaluation board. The Arm Cortex-A53 quad-core is already present in the processing system. Basic initialization of this system to run a simple application is accomplised by the device initialization Tcl script.</p>

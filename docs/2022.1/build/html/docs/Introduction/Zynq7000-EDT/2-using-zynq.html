@@ -429,7 +429,7 @@
 <ol class="arabic">
 <li><p>Start the Vivado Design Suite.</p>
 <ul class="simple">
-<li><p>On Windows 10, click the start menu and find <strong>Xilinx Design Tools -&gt; Vivado 2021.2</strong>.</p></li>
+<li><p>On Windows 10, click the start menu and find <strong>Xilinx Design Tools -&gt; Vivado 2022.1</strong>.</p></li>
 <li><p>On Linux, run <cite>source &lt;Vivado installation path&gt;/settings64.sh</cite> to set up the environment and run <code class="docutils literal notranslate"><span class="pre">vivado</span> <span class="pre">&amp;</span></code> to launch the Vivado IDE.</p></li>
 </ul>
 </li>
@@ -547,7 +547,7 @@ summary.</p></td>
 <img alt="../../../_images/image13.png" src="../../../_images/image13.png" />
 <ol class="arabic">
 <li><p>Click the <strong>Run Block Automation</strong> link. The Run Block Automation view opens.</p>
-<p>Note that Cross Trigger In and Cross Trigger Out are disabled. For a detailed tutorial with information about cross trigger set-up, refer to the <em>Vivado Design Suite Tutorial: Embedded Processor Hardware Design</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug940-vivado-tutorial-embedded-design.pdf">UG940</a>).</p>
+<p>Note that Cross Trigger In and Cross Trigger Out are disabled. For a detailed tutorial with information about cross trigger set-up, refer to the <em>Vivado Design Suite Tutorial: Embedded Processor Hardware Design</em> (<a class="reference external" href="https://docs.xilinx.com/v/u/en-US/ug940-vivado-tutorial-embedded-design">UG940</a>).</p>
 </li>
 <li><p>Click <strong>OK</strong> to accept the default processor system options and make default pin connections.</p>
 <p>The automation result looks like this. It configures PS properties inside the block and connects fixed IO and DDR pins.</p>
@@ -667,7 +667,7 @@ Leave as C:/edt/edt_zc702.</p></td>
 <p>After a while, the Vivado Tcl Console reports the following message; <code class="docutils literal notranslate"><span class="pre">system_wrapper.xsa</span></code> is the exported hardware handoff file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">write_hw_platform</span> <span class="o">-</span><span class="n">fixed</span> <span class="o">-</span><span class="n">force</span> <span class="o">-</span><span class="n">file</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">edt</span><span class="o">/</span><span class="n">edt_zc702</span><span class="o">/</span><span class="n">system_wrapper</span><span class="o">.</span><span class="n">xsa</span>
 <span class="n">INFO</span><span class="p">:</span> <span class="p">[</span><span class="n">Vivado</span> <span class="mi">12</span><span class="o">-</span><span class="mi">4895</span><span class="p">]</span> <span class="n">Creating</span> <span class="n">Hardware</span> <span class="n">Platform</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">edt</span><span class="o">/</span><span class="n">edt_zc702</span><span class="o">/</span><span class="n">system_wrapper</span><span class="o">.</span><span class="n">xsa</span> <span class="o">...</span>
-<span class="n">INFO</span><span class="p">:</span> <span class="p">[</span><span class="n">Hsi</span> <span class="mi">55</span><span class="o">-</span><span class="mi">2053</span><span class="p">]</span> <span class="n">elapsed</span> <span class="n">time</span> <span class="k">for</span> <span class="n">repository</span> <span class="p">(</span><span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Xilinx</span><span class="o">/</span><span class="n">Vivado</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">/</span><span class="n">data</span>\<span class="n">embeddedsw</span><span class="p">)</span> <span class="n">loading</span> <span class="mi">1</span> <span class="n">seconds</span>
+<span class="n">INFO</span><span class="p">:</span> <span class="p">[</span><span class="n">Hsi</span> <span class="mi">55</span><span class="o">-</span><span class="mi">2053</span><span class="p">]</span> <span class="n">elapsed</span> <span class="n">time</span> <span class="k">for</span> <span class="n">repository</span> <span class="p">(</span><span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Xilinx</span><span class="o">/</span><span class="n">Vivado</span><span class="o">/</span><span class="mf">2022.1</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">embeddedsw</span><span class="p">)</span> <span class="n">loading</span> <span class="mi">1</span> <span class="n">seconds</span>
 <span class="n">INFO</span><span class="p">:</span> <span class="p">[</span><span class="n">Vivado</span> <span class="mi">12</span><span class="o">-</span><span class="mi">12467</span><span class="p">]</span> <span class="n">The</span> <span class="n">Hardware</span> <span class="n">Platform</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="k">for</span> <span class="n">Hardware</span>
 <span class="n">INFO</span><span class="p">:</span> <span class="p">[</span><span class="n">Vivado</span> <span class="mi">12</span><span class="o">-</span><span class="mi">4896</span><span class="p">]</span> <span class="n">Successfully</span> <span class="n">created</span> <span class="n">Hardware</span> <span class="n">Platform</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">edt</span><span class="o">/</span><span class="n">edt_zc702</span><span class="o">/</span><span class="n">system_wrapper</span><span class="o">.</span><span class="n">xsa</span>
 </pre></div>
@@ -735,7 +735,7 @@ Leave as C:/edt/edt_zc702.</p></td>
 <li><p>Launch the Vitis IDE with any of the actions below:</p>
 <ol class="arabic simple">
 <li><p>From the Vivado IDE, select <strong>Tools -&gt; Launch Vitis IDE</strong>.</p></li>
-<li><p>On Windows, launch the Vitis IDE by using the desktop shortcut or <strong>Windows start menu → Xilinx Design Suite → Xilinx Vitis 2021.2</strong>.</p></li>
+<li><p>On Windows, launch the Vitis IDE by using the desktop shortcut or <strong>Windows start menu → Xilinx Design Suite → Xilinx Vitis 2022.1</strong>.</p></li>
 <li><p>On Linux, run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">&lt;Vitis</span> <span class="pre">Installation</span> <span class="pre">Directory&gt;/settings64.sh</span></code> to set up the environment and run <code class="docutils literal notranslate"><span class="pre">vitis</span> <span class="pre">&amp;</span></code>.</p></li>
 </ol>
 </li>

@@ -1,5 +1,5 @@
 ..
-   Copyright 2015-2021 Xilinx, Inc.
+   Copyright 2015-2022 Xilinx, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
 
@@ -32,9 +32,9 @@ Input and Output Files
 
 .. important::
 
-   1. This example requires a Linux host machine with PetaLinux installed. Refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`_) for information about dependencies for PetaLinux 2021.2.
+   1. This example requires a Linux host machine with PetaLinux installed. Refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`_) for information about dependencies for PetaLinux.
 
-   2. This example uses the `ZCU102 PetaLinux BSP <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_ to create a PetaLinux project. Ensure that you have downloaded the ZCU102 BSP for PetaLinux as instructed on the `PetaLinux Tools download page <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu102-v2021.2-final.bsp>`_.
+   2. This example uses the `ZCU102 PetaLinux BSP <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_ to create a PetaLinux project. Ensure that you have downloaded the ZCU102 BSP for PetaLinux as instructed on the `PetaLinux Tools download page <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu102-v2022.1-final.bsp>`_.
 
 .. _creating-a-petalinux-image:
 
@@ -45,11 +45,11 @@ Creating a PetaLinux Image
 
    .. code:: bash
 
-      petalinux-create -t project -s <path to the xilinx-zcu102-v2021.2-final.bsp>
+      petalinux-create -t project -s <path to the xilinx-zcu102-v2022.1-final.bsp>
 
-   .. note:: ``xilinx-zcu102-v2021.2-final.bsp`` is the PetaLinux BSP for the ZCU102 Production Silicon Rev 1.0 Board.
+   .. note:: ``xilinx-zcu102-v2022.1-final.bsp`` is the PetaLinux BSP for the ZCU102 Production Silicon Rev 1.0 Board.
 
-   This creates a PetaLinux project directory, ``xilinx-zcu102-2021.2``.
+   This creates a PetaLinux project directory, ``xilinx-zcu102-2022.1``.
 
 2. Reconfigure the project with `edt_zcu102_wrapper.xsa`:
 
@@ -63,7 +63,7 @@ Creating a PetaLinux Image
 
       .. code:: bash
 
-         cd xilinx-zcu102-2021.2
+         cd xilinx-zcu102-2022.1
          petalinux-config --get-hw-description=<path containing edt_zcu102_wrapper.xsa>
 
    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images.
@@ -76,7 +76,7 @@ Creating a PetaLinux Image
 
 3. Build the PetaLinux project:
 
-   1. In the ``<PetaLinux-project>`` directory, for example, ``xilinx-zcu102-2021.2``, build the Linux images using the
+   1. In the ``<PetaLinux-project>`` directory, for example, ``xilinx-zcu102-2022.1``, build the Linux images using the
       following command:
 
       .. code:: bash
