@@ -55,6 +55,11 @@ NOTE: the build instructions are universal if you use this template, so you don'
   ```
   bootargs = "xilinx_can.tdc_enable=1 xilinx_can.tdc_offset=12";
   ```
+  Default bootargs available in the path "components/plnx_workspace/device-tree/device-tree/system-conf.dtsi"
+  ![image](https://user-images.githubusercontent.com/74894579/167584812-ca4e94ac-e6bf-4bb4-bbd9-dd0bdabaec22.png)
+  Modified bootargs in the path "project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi"
+  ![image](https://user-images.githubusercontent.com/74894579/167585096-b42f3bec-0415-4440-a1ca-565cd4e375b3.png)
+
 	 To build the PetaLinux project, run the following from the directory:
 		
 		petalinux-build
