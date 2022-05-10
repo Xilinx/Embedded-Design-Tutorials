@@ -18,6 +18,54 @@ This was tested with the help of Canoe analyzer as external device with baud-rat
 ## IP Settings:
 Enable CANFD1 in CIPS and change the requested frequency to 160Mhz and generate PDI and XSA
 ![image](https://user-images.githubusercontent.com/74894579/167302091-f03dd15d-ef36-40cd-8c64-23c762b382e7.png)
+
+## Design Summary
+This project is a template for creating example design repositories targeting VCK190 ACAP devices.
+
+NOTE: the build instructions are universal if you use this template, so you don't have to edit that section.
+
+## Build Instructions
+ ### Vivado:
+1. Launch Vivado tool 
+
+1. Select target device as VCK190 evaluation board and create a project.
+
+1. Enter the Scripts directory. From the tcl console run the following block design tcl script:
+
+		source *bd.tcl
+
+1. The Vivado project will be built.
+
+1. Create your own toplevel hdl(.v/.vhd) wrapper (or) use the one available in Github directory.
+
+
+ ### PetaLinux:
+1. Enter the `hardware` directory and use the XSA to create petalinux workspace. Follow the commands for the following:
+
+   To create Petalinux project, run the following 
+	 
+		petalinux-create --type project --template versal --name <name_of_project> 
+		cd <name_of_project>
+	
+	 To export XSA and do configuration
+	    
+		petalinux-config --get-hw-description=<PATH TO XSA>
+  
+  Add the following bootargs to the existing bootargs in the device tree prior to the build to support the TDC feature.
+  ```
+  bootargs = "xilinx_can.tdc_enable=1 xilinx_can.tdc_offset=12";
+  ```
+	 To build the PetaLinux project, run the following from the directory:
+		
+		petalinux-build
+
+1. Once complete, the built images can be found in the plnx/images/linux/ directory. To package these images for SD boot, run the following from the plnx directory:
+
+		petalinux-package --boot 
+
+1. Once packaged, the BOOT.bin and image.ub files (in the plnx/images/linux directory) can be copied to an SD card, and used to boot.
+
+
 ## Commands to be used:
 - export CAN_BUS=can0
 - ip link set $CAN_BUS down
