@@ -223,7 +223,7 @@ static int XCanIntrExample(u16 DeviceId)
 	}
 
 	Status = XCan_SelfTest(&Can_2);
-	if (Status != XST_SUCCESS) {
+	if (Status != XST_SUCCESS) { 
 		return XST_FAILURE;
 	}
 	/*

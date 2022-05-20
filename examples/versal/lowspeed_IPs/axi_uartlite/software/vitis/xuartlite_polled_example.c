@@ -144,12 +144,12 @@ int UartLitePolledExample(u16 DeviceId)
 	/*
 	 * Initialize the UartLite driver so that it is ready to use.
 	 */
-	Status = XUartLite_Initialize(&UartLite_1, 2);
+	Status = XUartLite_Initialize(&UartLite_1, 1);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
 
-	Status = XUartLite_Initialize(&UartLite_2, 3);
+	Status = XUartLite_Initialize(&UartLite_2, 2);
 		if (Status != XST_SUCCESS) {
 			return XST_FAILURE;
 		}

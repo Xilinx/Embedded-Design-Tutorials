@@ -1,12 +1,12 @@
 /******************************************************************************
-* Copyright (C) 2015 - 2020 Xilinx, Inc.  All rights reserved.
+* Copyright (C) 2015 - 2021 Xilinx, Inc.  All rights reserved.
 * SPDX-License-Identifier: MIT
 ******************************************************************************/
 
 /****************************************************************************/
 /**
 *
-* @file XCanFd_polled_example.c
+* @file xcanfd_polled_example.c
 *
 * Contains an example of how to use the XCan driver directly. The example here
 * shows using the driver/device in polled mode.
@@ -48,7 +48,7 @@
  * xparameters.h file. They are defined here such that a user can easily
  * change all the needed parameters in one place.
  */
-#define CANFD_DEVICE_ID	XPAR_CANFD_4_DEVICE_ID
+#define CANFD_DEVICE_ID	XPAR_VERSAL_CIPS_0_PSPMC_0_PSV_CANFD_0_DEVICE_ID
 
 /* Maximum CAN frame length in Bytes */
 #define XCANFD_MAX_FRAME_SIZE_IN_BYTES 72
@@ -116,7 +116,6 @@ static XCanFd CanFd;
 * Main function to call the example. This function is not included if the
 * example is generated from the TestAppGen test tool.
 *
-* @param	None
 *
 * @return
 *		- XST_SUCCESS if the example has completed successfully.
@@ -137,7 +136,7 @@ int main(void)
 		xil_printf("XCanFd Polled Mode example Failed\n\r");
 		return XST_FAILURE;
 	}
-	xil_printf("Successfully ran PS-XCanFd Polled Mode example\n\r");
+	xil_printf("Successfully ran XCanFd Polled Mode example\n\r");
 	return XST_SUCCESS;
 
 }

@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (C) 2019 - 2020 Xilinx, Inc.  All rights reserved.
+* Copyright (C) 2019 - 2021 Xilinx, Inc.  All rights reserved.
 * SPDX-License-Identifier: MIT
 ******************************************************************************/
 
@@ -44,7 +44,7 @@
  * The following constant controls the length of the buffers to be sent
  * and received with the UART,
  */
-#define TEST_BUFFER_SIZE	4
+#define TEST_BUFFER_SIZE	10
 
 
 /**************************** Type Definitions ******************************/
@@ -55,7 +55,7 @@ int UartPsvPolledExample(u16 DeviceId);
 
 /************************** Variable Definitions ***************************/
 
-XUartPsv UartPsv;		/* Instance of the UART Device */
+static XUartPsv UartPsv;		/* Instance of the UART Device */
 
 /*
  * The following buffers are used in this example to send and receive data
@@ -64,20 +64,11 @@ XUartPsv UartPsv;		/* Instance of the UART Device */
 static u8 SendBuffer[TEST_BUFFER_SIZE];	/* Buffer for Transmitting Data */
 static u8 RecvBuffer[TEST_BUFFER_SIZE];	/* Buffer for Receiving Data */
 
-/*
- * The following counters are used to determine when the entire buffer has
- * been sent and received.
- */
-volatile int TotalReceivedCount;
-volatile int TotalSentCount;
-int TotalErrorCount;
-
 /**************************************************************************/
 /**
 *
 * Main function to call the Uart Polled mode example.
 *
-* @param	None
 *
 * @return	XST_SUCCESS if successful, XST_FAILURE if unsuccessful
 *
@@ -97,7 +88,7 @@ int main(void)
 		return XST_FAILURE;
 	}
 
-	xil_printf("\nSuccessfully ran UartPsv Polling Example Test\r\n");
+	xil_printf("\r\nSuccessfully ran UartPsv Polling Example Test\r\n");
 	return XST_SUCCESS;
 }
 #endif
@@ -130,7 +121,7 @@ int UartPsvPolledExample(u16 DeviceId)
 	XUartPsv_Config *Config;
 	int Index;
 	int BadByteCount = 0;
-	unsigned int ReceivedCount;
+	unsigned int TotalSentCount, ReceivedCount;
 
 	/*
 	 * Initialize the UART driver so that it's ready to use.
@@ -151,10 +142,43 @@ int UartPsvPolledExample(u16 DeviceId)
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
-	xil_printf("\n\r\n");
-	/* Use local loopback mode. */
-	XUartPsv_SetOperMode(&UartPsv, XUARTPSV_OPER_MODE_NORMAL);
 
+	/* Use local loopback mode. */
+	XUartPsv_SetOperMode(&UartPsv, XUARTPSV_OPER_MODE_LOCAL_LOOP);
+
+	/*
+	 * Initialize the send buffer bytes with a pattern and the
+	 * the receive buffer bytes to zero to allow the receive data to be
+	 * verified
+	 */
+	for (Index = 0; Index < TEST_BUFFER_SIZE; Index++) {
+		SendBuffer[Index] = (Index % 26) + 'A';
+		RecvBuffer[Index] = 0;
+	}
+
+	TotalSentCount = XUartPsv_Send(&UartPsv, SendBuffer, TEST_BUFFER_SIZE);
+
+	while (XUartPsv_IsTransmitbusy(UartPsv.Config.BaseAddress));
+	if (TotalSentCount != TEST_BUFFER_SIZE) {
+		return XST_FAILURE;
+	}
+
+	ReceivedCount = 0;
+	while (ReceivedCount < TEST_BUFFER_SIZE) {
+		ReceivedCount +=
+		XUartPsv_Recv(&UartPsv, &RecvBuffer[ReceivedCount],
+				      (TEST_BUFFER_SIZE - ReceivedCount));
+	}
+	/* Verify the entire receive buffer was successfully received */
+	for (Index = 0; Index < TEST_BUFFER_SIZE; Index++) {
+		if (RecvBuffer[Index] != SendBuffer[Index]) {
+			BadByteCount++;
+		}
+	}
+
+	/* Set the UART in Normal Mode */
+	XUartPsv_SetOperMode(&UartPsv, XUARTPSV_OPER_MODE_NORMAL);
+	
 	/*
 	 * Initialize the send buffer bytes with a pattern and the
 	 * the receive buffer bytes to zero to allow the receive data to be
@@ -170,10 +194,10 @@ int UartPsvPolledExample(u16 DeviceId)
 	xil_printf("\nPlease enter 4 characters from console\r\n");
 	while (XUartPsv_IsTransmitbusy(UartPsv.Config.BaseAddress));
 	ReceivedCount = 0;
-	while (ReceivedCount < TEST_BUFFER_SIZE) {
+	while (ReceivedCount < 4) {
 		ReceivedCount +=
 		XUartPsv_Recv(&UartPsv, &RecvBuffer[ReceivedCount],
-				      (TEST_BUFFER_SIZE - ReceivedCount));
+				      (4 - ReceivedCount));
 	}
 
 
@@ -181,7 +205,7 @@ int UartPsvPolledExample(u16 DeviceId)
 	XUartPsv_SetOperMode(&UartPsv, XUARTPSV_OPER_MODE_NORMAL);
 
 	xil_printf("\nYou have entered the following characters\r\n");
-	XUartPsv_Send(&UartPsv, SendBuffer, TEST_BUFFER_SIZE);
+	XUartPsv_Send(&UartPsv, RecvBuffer, 4);
 
 	/* If any bytes were not correct, return an error */
 	if (BadByteCount != 0) {

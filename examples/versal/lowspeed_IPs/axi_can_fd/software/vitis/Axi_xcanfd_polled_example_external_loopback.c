@@ -174,12 +174,12 @@ int XCanFdPolledExample(u16 DeviceId)
 	u8 RxBuffers;
 
 	/* Initialize the Can device */
-	ConfigPtr_1 = XCanFd_LookupConfig(2);
+	ConfigPtr_1 = XCanFd_LookupConfig(1);
 	if (CanFdInstPtr_1 == NULL) {
 		return XST_FAILURE;
 	}
 	/* Initialize the Can device */
-	ConfigPtr_2 = XCanFd_LookupConfig(3);
+	ConfigPtr_2 = XCanFd_LookupConfig(2);
 	if (CanFdInstPtr_2 == NULL) {
 		return XST_FAILURE;
 	}

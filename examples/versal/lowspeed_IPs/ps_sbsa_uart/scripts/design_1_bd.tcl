@@ -1,18 +1,10 @@
 
 ################################################################
-/* # Copyright 2020 Xilinx Inc.
+# This is a generated script based on design: design_1
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License. */
+# Though there are limitations about the generated script,
+# the main purpose of this utility is to make learning
+# IP Integrator Tcl commands easier.
 ################################################################
 
 namespace eval _tcl {
@@ -28,7 +20,7 @@ set script_folder [_tcl::get_script_folder]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2020.2
+set scripts_vivado_version 2021.1
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -125,6 +117,49 @@ if { $nRet != 0 } {
    return $nRet
 }
 
+set bCheckIPsPassed 1
+##################################################################
+# CHECK IPs
+##################################################################
+set bCheckIPs 1
+if { $bCheckIPs == 1 } {
+   set list_check_ips "\ 
+xilinx.com:ip:axi_gpio:2.0\
+xilinx.com:ip:axi_iic:2.1\
+xilinx.com:ip:axi_noc:1.0\
+xilinx.com:ip:axi_uartlite:2.0\
+xilinx.com:ip:can:5.0\
+xilinx.com:ip:canfd:3.0\
+xilinx.com:ip:clk_wizard:1.0\
+xilinx.com:ip:proc_sys_reset:5.0\
+xilinx.com:ip:smartconnect:1.0\
+xilinx.com:ip:util_reduced_logic:2.0\
+xilinx.com:ip:versal_cips:3.0\
+xilinx.com:ip:xlconcat:2.1\
+"
+
+   set list_ips_missing ""
+   common::send_gid_msg -ssname BD::TCL -id 2011 -severity "INFO" "Checking if the following IPs exist in the project's IP catalog: $list_check_ips ."
+
+   foreach ip_vlnv $list_check_ips {
+      set ip_obj [get_ipdefs -all $ip_vlnv]
+      if { $ip_obj eq "" } {
+         lappend list_ips_missing $ip_vlnv
+      }
+   }
+
+   if { $list_ips_missing ne "" } {
+      catch {common::send_gid_msg -ssname BD::TCL -id 2012 -severity "ERROR" "The following IPs are not found in the IP Catalog:\n  $list_ips_missing\n\nResolution: Please add the repository containing the IP(s) to the project." }
+      set bCheckIPsPassed 0
+   }
+
+}
+
+if { $bCheckIPsPassed != 1 } {
+  common::send_gid_msg -ssname BD::TCL -id 2023 -severity "WARNING" "Will not continue with creation of design due to the error(s) above."
+  return 3
+}
+
 ##################################################################
 # DESIGN PROCs
 ##################################################################
@@ -184,12 +219,13 @@ proc create_root_design { parentCell } {
  ] $axi_gpio_0
 
   # Create instance: axi_iic_0, and set properties
-  set axi_iic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_iic:2.0 axi_iic_0 ]
+  set axi_iic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_iic:2.1 axi_iic_0 ]
 
   # Create instance: axi_noc_0, and set properties
   set axi_noc_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_noc:1.0 axi_noc_0 ]
   set_property -dict [ list \
    CONFIG.CH0_DDR4_0_BOARD_INTERFACE {ddr4_dimm1} \
+   CONFIG.HBM_DENSITY_PER_CHNL {1GB} \
    CONFIG.LOGO_FILE {data/noc_mc.png} \
    CONFIG.MC0_CONFIG_NUM {config17} \
    CONFIG.MC1_CONFIG_NUM {config17} \
@@ -212,12 +248,16 @@ proc create_root_design { parentCell } {
    CONFIG.MC_INPUT_FREQUENCY0 {200.000} \
    CONFIG.MC_MEMORY_DEVICETYPE {UDIMMs} \
    CONFIG.MC_MEMORY_SPEEDGRADE {DDR4-3200AA(22-22-22)} \
+   CONFIG.MC_NETLIST_SIMULATION {true} \
+   CONFIG.MC_READ_BANDWIDTH {6400.0} \
    CONFIG.MC_TRC {45750} \
    CONFIG.MC_TRCD {13750} \
    CONFIG.MC_TRCDMIN {13750} \
    CONFIG.MC_TRCMIN {45750} \
    CONFIG.MC_TRP {13750} \
    CONFIG.MC_TRPMIN {13750} \
+   CONFIG.MC_WRITE_BANDWIDTH {6400.0} \
+   CONFIG.MC_XPLL_CLKOUT1_PHASE {238.176} \
    CONFIG.NUM_CLKS {10} \
    CONFIG.NUM_MC {1} \
    CONFIG.NUM_MCP {4} \
@@ -319,23 +359,22 @@ proc create_root_design { parentCell } {
   set axi_uartlite_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_uartlite:2.0 axi_uartlite_0 ]
   set_property -dict [ list \
    CONFIG.C_BAUDRATE {115200} \
+   CONFIG.C_S_AXI_ACLK_FREQ_HZ {249999985} \
    CONFIG.UARTLITE_BOARD_INTERFACE {Custom} \
    CONFIG.USE_BOARD_FLOW {true} \
  ] $axi_uartlite_0
 
   # Create instance: axi_uartlite_1, and set properties
   set axi_uartlite_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_uartlite:2.0 axi_uartlite_1 ]
+  set_property -dict [ list \
+   CONFIG.C_S_AXI_ACLK_FREQ_HZ {249999985} \
+ ] $axi_uartlite_1
 
   # Create instance: axi_uartlite_2, and set properties
   set axi_uartlite_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_uartlite:2.0 axi_uartlite_2 ]
-
-  # Create instance: axis_ila_0, and set properties
-  set axis_ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axis_ila:1.1 axis_ila_0 ]
   set_property -dict [ list \
-   CONFIG.C_BRAM_CNT {4} \
-   CONFIG.C_DATA_DEPTH {16384} \
-   CONFIG.C_NUM_OF_PROBES {8} \
- ] $axis_ila_0
+   CONFIG.C_S_AXI_ACLK_FREQ_HZ {249999985} \
+ ] $axi_uartlite_2
 
   # Create instance: can_0, and set properties
   set can_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:can:5.0 can_0 ]
@@ -381,6 +420,7 @@ proc create_root_design { parentCell } {
    CONFIG.CLKOUT_REQUESTED_PHASE {0.000,0.000,0.000,0.000,0.000,0.000,0.000} \
    CONFIG.CLKOUT_USED {true,true,true,false,false,false,false} \
    CONFIG.DIVCLK_DIVIDE {25} \
+   CONFIG.SECONDARY_IN_FREQ {187.500} \
  ] $clk_wizard_0
 
   # Create instance: rst_versal_cips_0_249M, and set properties
@@ -412,311 +452,167 @@ proc create_root_design { parentCell } {
  ] $util_reduced_logic_2
 
   # Create instance: versal_cips_0, and set properties
-  set versal_cips_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:versal_cips:2.1 versal_cips_0 ]
+  set versal_cips_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:versal_cips:3.0 versal_cips_0 ]
   set_property -dict [ list \
-   CONFIG.CPM_AUX0_REF_CTRL_ACT_FREQMHZ {899.999939} \
-   CONFIG.CPM_AUX1_REF_CTRL_ACT_FREQMHZ {899.999939} \
-   CONFIG.CPM_CORE_REF_CTRL_ACT_FREQMHZ {899.999939} \
-   CONFIG.CPM_DBG_REF_CTRL_ACT_FREQMHZ {299.999969} \
-   CONFIG.CPM_DMA_CREDIT_INIT_DEMUX {0} \
-   CONFIG.CPM_LSBUS_REF_CTRL_ACT_FREQMHZ {149.999985} \
-   CONFIG.CPM_PCIE0_PF0_SUB_CLASS_INTF_MENU {Other_memory_controller} \
-   CONFIG.CPM_PCIE0_PF0_USE_CLASS_CODE_LOOKUP_ASSISTANT {0} \
-   CONFIG.CPM_PCIE0_PF1_BASE_CLASS_VALUE {05} \
-   CONFIG.CPM_PCIE0_PF1_INTERFACE_VALUE {00} \
-   CONFIG.CPM_PCIE0_PF1_SUB_CLASS_INTF_MENU {Other_memory_controller} \
-   CONFIG.CPM_PCIE0_PF1_SUB_CLASS_VALUE {80} \
-   CONFIG.CPM_PCIE0_PF1_USE_CLASS_CODE_LOOKUP_ASSISTANT {1} \
-   CONFIG.CPM_PCIE0_PF2_BASE_CLASS_VALUE {05} \
-   CONFIG.CPM_PCIE0_PF2_INTERFACE_VALUE {00} \
-   CONFIG.CPM_PCIE0_PF2_SUB_CLASS_INTF_MENU {Other_memory_controller} \
-   CONFIG.CPM_PCIE0_PF2_SUB_CLASS_VALUE {80} \
-   CONFIG.CPM_PCIE0_PF2_USE_CLASS_CODE_LOOKUP_ASSISTANT {1} \
-   CONFIG.CPM_PCIE0_PF3_BASE_CLASS_VALUE {05} \
-   CONFIG.CPM_PCIE0_PF3_INTERFACE_VALUE {00} \
-   CONFIG.CPM_PCIE0_PF3_SUB_CLASS_INTF_MENU {Other_memory_controller} \
-   CONFIG.CPM_PCIE0_PF3_SUB_CLASS_VALUE {80} \
-   CONFIG.CPM_PCIE0_PF3_USE_CLASS_CODE_LOOKUP_ASSISTANT {1} \
-   CONFIG.CPM_PCIE1_PF0_CLASS_CODE {0} \
-   CONFIG.CPM_PCIE1_PF0_SUB_CLASS_INTF_MENU {Other_memory_controller} \
-   CONFIG.CPM_PCIE1_PF0_USE_CLASS_CODE_LOOKUP_ASSISTANT {0} \
-   CONFIG.CPM_PCIE1_PF1_BASE_CLASS_VALUE {05} \
-   CONFIG.CPM_PCIE1_PF1_INTERFACE_VALUE {00} \
-   CONFIG.CPM_PCIE1_PF1_SUB_CLASS_INTF_MENU {Other_memory_controller} \
-   CONFIG.CPM_PCIE1_PF1_SUB_CLASS_VALUE {80} \
-   CONFIG.CPM_PCIE1_PF1_USE_CLASS_CODE_LOOKUP_ASSISTANT {1} \
-   CONFIG.CPM_PCIE1_PF2_BASE_CLASS_VALUE {05} \
-   CONFIG.CPM_PCIE1_PF2_INTERFACE_VALUE {00} \
-   CONFIG.CPM_PCIE1_PF2_SUB_CLASS_INTF_MENU {Other_memory_controller} \
-   CONFIG.CPM_PCIE1_PF2_SUB_CLASS_VALUE {80} \
-   CONFIG.CPM_PCIE1_PF2_USE_CLASS_CODE_LOOKUP_ASSISTANT {1} \
-   CONFIG.CPM_PCIE1_PF3_BASE_CLASS_VALUE {05} \
-   CONFIG.CPM_PCIE1_PF3_INTERFACE_VALUE {00} \
-   CONFIG.CPM_PCIE1_PF3_SUB_CLASS_INTF_MENU {Other_memory_controller} \
-   CONFIG.CPM_PCIE1_PF3_SUB_CLASS_VALUE {80} \
-   CONFIG.CPM_PCIE1_PF3_USE_CLASS_CODE_LOOKUP_ASSISTANT {1} \
-   CONFIG.PMC_CRP_CFU_REF_CTRL_ACT_FREQMHZ {394.444427} \
-   CONFIG.PMC_CRP_HSM0_REF_CTRL_ACT_FREQMHZ {32.870369} \
-   CONFIG.PMC_CRP_HSM1_REF_CTRL_ACT_FREQMHZ {131.481476} \
-   CONFIG.PMC_CRP_I2C_REF_CTRL_ACT_FREQMHZ {99.999992} \
-   CONFIG.PMC_CRP_I2C_REF_CTRL_DIVISOR0 {10} \
-   CONFIG.PMC_CRP_I2C_REF_CTRL_SRCSEL {NPLL} \
-   CONFIG.PMC_CRP_LSBUS_REF_CTRL_ACT_FREQMHZ {147.916656} \
-   CONFIG.PMC_CRP_NOC_REF_CTRL_ACT_FREQMHZ {999.999939} \
-   CONFIG.PMC_CRP_NPI_REF_CTRL_ACT_FREQMHZ {295.833313} \
-   CONFIG.PMC_CRP_PL0_REF_CTRL_ACT_FREQMHZ {249.999985} \
-   CONFIG.PMC_CRP_PL0_REF_CTRL_DIVISOR0 {4} \
-   CONFIG.PMC_CRP_PL0_REF_CTRL_FREQMHZ {250} \
-   CONFIG.PMC_CRP_PPLL_CTRL_FBDIV {71} \
-   CONFIG.PMC_CRP_QSPI_REF_CTRL_ACT_FREQMHZ {295.833313} \
-   CONFIG.PMC_CRP_SDIO1_REF_CTRL_ACT_FREQMHZ {199.999985} \
-   CONFIG.PMC_CRP_SDIO1_REF_CTRL_DIVISOR0 {5} \
-   CONFIG.PMC_CRP_SDIO1_REF_CTRL_SRCSEL {NPLL} \
-   CONFIG.PMC_CRP_SD_DLL_REF_CTRL_ACT_FREQMHZ {1183.333252} \
-   CONFIG.PMC_CRP_SYSMON_REF_CTRL_ACT_FREQMHZ {295.833313} \
-   CONFIG.PMC_CRP_SYSMON_REF_CTRL_FREQMHZ {295.833313} \
-   CONFIG.PMC_GPIO0_MIO_PERIPHERAL_ENABLE {1} \
-   CONFIG.PMC_GPIO1_MIO_PERIPHERAL_ENABLE {1} \
-   CONFIG.PMC_I2CPMC_PERIPHERAL_ENABLE {1} \
-   CONFIG.PMC_I2CPMC_PERIPHERAL_IO {PMC_MIO 46 .. 47} \
-   CONFIG.PMC_MIO_0_DIRECTION {out} \
-   CONFIG.PMC_MIO_0_SCHMITT {1} \
-   CONFIG.PMC_MIO_10_DIRECTION {inout} \
-   CONFIG.PMC_MIO_11_DIRECTION {inout} \
-   CONFIG.PMC_MIO_12_DIRECTION {out} \
-   CONFIG.PMC_MIO_12_SCHMITT {1} \
-   CONFIG.PMC_MIO_13_DIRECTION {out} \
-   CONFIG.PMC_MIO_13_SCHMITT {1} \
-   CONFIG.PMC_MIO_14_DIRECTION {inout} \
-   CONFIG.PMC_MIO_15_DIRECTION {inout} \
-   CONFIG.PMC_MIO_16_DIRECTION {inout} \
-   CONFIG.PMC_MIO_17_DIRECTION {inout} \
-   CONFIG.PMC_MIO_19_DIRECTION {inout} \
-   CONFIG.PMC_MIO_1_DIRECTION {inout} \
-   CONFIG.PMC_MIO_20_DIRECTION {inout} \
-   CONFIG.PMC_MIO_21_DIRECTION {inout} \
-   CONFIG.PMC_MIO_22_DIRECTION {inout} \
-   CONFIG.PMC_MIO_24_DIRECTION {out} \
-   CONFIG.PMC_MIO_24_SCHMITT {1} \
-   CONFIG.PMC_MIO_26_DIRECTION {inout} \
-   CONFIG.PMC_MIO_27_DIRECTION {inout} \
-   CONFIG.PMC_MIO_29_DIRECTION {inout} \
-   CONFIG.PMC_MIO_2_DIRECTION {inout} \
-   CONFIG.PMC_MIO_30_DIRECTION {inout} \
-   CONFIG.PMC_MIO_31_DIRECTION {inout} \
-   CONFIG.PMC_MIO_32_DIRECTION {inout} \
-   CONFIG.PMC_MIO_33_DIRECTION {inout} \
-   CONFIG.PMC_MIO_34_DIRECTION {inout} \
-   CONFIG.PMC_MIO_35_DIRECTION {inout} \
-   CONFIG.PMC_MIO_36_DIRECTION {inout} \
-   CONFIG.PMC_MIO_37_DIRECTION {out} \
-   CONFIG.PMC_MIO_37_OUTPUT_DATA {high} \
-   CONFIG.PMC_MIO_37_USAGE {GPIO} \
-   CONFIG.PMC_MIO_3_DIRECTION {inout} \
-   CONFIG.PMC_MIO_40_DIRECTION {out} \
-   CONFIG.PMC_MIO_40_SCHMITT {0} \
-   CONFIG.PMC_MIO_43_DIRECTION {out} \
-   CONFIG.PMC_MIO_43_SCHMITT {1} \
-   CONFIG.PMC_MIO_44_DIRECTION {inout} \
-   CONFIG.PMC_MIO_45_DIRECTION {inout} \
-   CONFIG.PMC_MIO_46_DIRECTION {inout} \
-   CONFIG.PMC_MIO_47_DIRECTION {inout} \
-   CONFIG.PMC_MIO_4_DIRECTION {inout} \
-   CONFIG.PMC_MIO_51_DIRECTION {out} \
-   CONFIG.PMC_MIO_51_SCHMITT {1} \
-   CONFIG.PMC_MIO_5_DIRECTION {out} \
-   CONFIG.PMC_MIO_5_SCHMITT {1} \
-   CONFIG.PMC_MIO_6_DIRECTION {out} \
-   CONFIG.PMC_MIO_6_SCHMITT {1} \
-   CONFIG.PMC_MIO_7_DIRECTION {out} \
-   CONFIG.PMC_MIO_7_SCHMITT {1} \
-   CONFIG.PMC_MIO_8_DIRECTION {inout} \
-   CONFIG.PMC_MIO_9_DIRECTION {inout} \
-   CONFIG.PMC_MIO_TREE_PERIPHERALS { \
-     0#Enet 0 \
-     0#Enet 0 \
-     0#Enet 0 \
-     0#Enet 0 \
-     0#Enet 0 \
-     0#Enet 0 \
-     0#Enet 0 \
-     0#SD1/eMMC1#SD1/eMMC1#SD1#SD1/eMMC1#SD1/eMMC1#SD1/eMMC1#SD1/eMMC1#SD1/eMMC1#SD1/eMMC1#SD1/eMMC1#SD1/eMMC1#GPIO 1#####UART \
-     0#UART 0#I2C \
-     0#USB 0#USB \
-     0#USB 0#USB \
-     0#USB 0#USB \
-     0#USB 0#USB \
-     0#USB 0#USB \
-     0#USB 0#USB \
-     1#Enet 1#Enet \
-     1#Enet 1#Enet \
-     1#Enet 1#Enet \
-     1#Enet 1#Enet \
-     1#Enet 1#Enet \
-     1#Enet 1#Enet \
-     1#I2C 1#i2c_pmc#i2c_pmc####SD1/eMMC1#Enet \
-     QSPI#QSPI#QSPI#QSPI#QSPI#QSPI#Loopback Clk#QSPI#QSPI#QSPI#QSPI#QSPI#QSPI#USB \
-   } \
-   CONFIG.PMC_MIO_TREE_SIGNALS {qspi0_clk#qspi0_io[1]#qspi0_io[2]#qspi0_io[3]#qspi0_io[0]#qspi0_cs_b#qspi_lpbk#qspi1_cs_b#qspi1_io[0]#qspi1_io[1]#qspi1_io[2]#qspi1_io[3]#qspi1_clk#usb2phy_reset#ulpi_tx_data[0]#ulpi_tx_data[1]#ulpi_tx_data[2]#ulpi_tx_data[3]#ulpi_clk#ulpi_tx_data[4]#ulpi_tx_data[5]#ulpi_tx_data[6]#ulpi_tx_data[7]#ulpi_dir#ulpi_stp#ulpi_nxt#clk#dir1/data[7]#detect#cmd#data[0]#data[1]#data[2]#data[3]#sel/data[4]#dir_cmd/data[5]#dir0/data[6]#gpio_1_pin[37]#####rxd#txd#scl#sda#scl#sda####buspwr/rst#rgmii_tx_clk#rgmii_txd[0]#rgmii_txd[1]#rgmii_txd[2]#rgmii_txd[3]#rgmii_tx_ctl#rgmii_rx_clk#rgmii_rxd[0]#rgmii_rxd[1]#rgmii_rxd[2]#rgmii_rxd[3]#rgmii_rx_ctl#rgmii_tx_clk#rgmii_txd[0]#rgmii_txd[1]#rgmii_txd[2]#rgmii_txd[3]#rgmii_tx_ctl#rgmii_rx_clk#rgmii_rxd[0]#rgmii_rxd[1]#rgmii_rxd[2]#rgmii_rxd[3]#rgmii_rx_ctl#gem0_mdc#gem0_mdio} \
-   CONFIG.PMC_QSPI_GRP_FBCLK_ENABLE {1} \
-   CONFIG.PMC_QSPI_PERIPHERAL_DATA_MODE {x4} \
-   CONFIG.PMC_QSPI_PERIPHERAL_ENABLE {1} \
-   CONFIG.PMC_QSPI_PERIPHERAL_MODE {Dual Parallel} \
-   CONFIG.PMC_REF_CLK_FREQMHZ {33.333333} \
-   CONFIG.PMC_SD1_DATA_TRANSFER_MODE {8Bit} \
-   CONFIG.PMC_SD1_GRP_CD_ENABLE {1} \
-   CONFIG.PMC_SD1_GRP_CD_IO {PMC_MIO 28} \
-   CONFIG.PMC_SD1_GRP_POW_ENABLE {1} \
-   CONFIG.PMC_SD1_GRP_POW_IO {PMC_MIO 51} \
-   CONFIG.PMC_SD1_PERIPHERAL_ENABLE {1} \
-   CONFIG.PMC_SD1_PERIPHERAL_IO {PMC_MIO 26 .. 36} \
-   CONFIG.PMC_SD1_SLOT_TYPE {SD 3.0} \
-   CONFIG.PMC_SD1_SPEED_MODE {high speed} \
-   CONFIG.PMC_USE_PMC_NOC_AXI0 {1} \
-   CONFIG.PS_BOARD_INTERFACE {cips_fixed_io} \
-   CONFIG.PS_CAN0_PERIPHERAL_ENABLE {1} \
-   CONFIG.PS_CAN0_PERIPHERAL_IO {EMIO} \
-   CONFIG.PS_CAN1_PERIPHERAL_ENABLE {1} \
-   CONFIG.PS_CAN1_PERIPHERAL_IO {EMIO} \
-   CONFIG.PS_CRF_ACPU_CTRL_ACT_FREQMHZ {1350.000000} \
-   CONFIG.PS_CRF_DBG_FPD_CTRL_ACT_FREQMHZ {394.444427} \
-   CONFIG.PS_CRF_FPD_LSBUS_CTRL_ACT_FREQMHZ {150.000000} \
-   CONFIG.PS_CRF_FPD_LSBUS_CTRL_DIVISOR0 {9} \
-   CONFIG.PS_CRF_FPD_LSBUS_CTRL_SRCSEL {APLL} \
-   CONFIG.PS_CRF_FPD_TOP_SWITCH_CTRL_ACT_FREQMHZ {775.000000} \
-   CONFIG.PS_CRL_CAN0_REF_CTRL_ACT_FREQMHZ {99.999992} \
-   CONFIG.PS_CRL_CAN0_REF_CTRL_DIVISOR0 {10} \
-   CONFIG.PS_CRL_CAN0_REF_CTRL_SRCSEL {NPLL} \
-   CONFIG.PS_CRL_CAN1_REF_CTRL_ACT_FREQMHZ {99.999992} \
-   CONFIG.PS_CRL_CAN1_REF_CTRL_DIVISOR0 {10} \
-   CONFIG.PS_CRL_CAN1_REF_CTRL_SRCSEL {NPLL} \
-   CONFIG.PS_CRL_CPM_TOPSW_REF_CTRL_ACT_FREQMHZ {775.000000} \
-   CONFIG.PS_CRL_CPM_TOPSW_REF_CTRL_FREQMHZ {775} \
-   CONFIG.PS_CRL_CPU_R5_CTRL_ACT_FREQMHZ {591.666626} \
-   CONFIG.PS_CRL_DBG_LPD_CTRL_ACT_FREQMHZ {394.444427} \
-   CONFIG.PS_CRL_DBG_TSTMP_CTRL_ACT_FREQMHZ {394.444427} \
-   CONFIG.PS_CRL_GEM0_REF_CTRL_ACT_FREQMHZ {124.999992} \
-   CONFIG.PS_CRL_GEM0_REF_CTRL_DIVISOR0 {8} \
-   CONFIG.PS_CRL_GEM1_REF_CTRL_ACT_FREQMHZ {124.999992} \
-   CONFIG.PS_CRL_GEM1_REF_CTRL_DIVISOR0 {8} \
-   CONFIG.PS_CRL_GEM_TSU_REF_CTRL_ACT_FREQMHZ {249.999985} \
-   CONFIG.PS_CRL_GEM_TSU_REF_CTRL_DIVISOR0 {4} \
-   CONFIG.PS_CRL_I2C1_REF_CTRL_ACT_FREQMHZ {99.999992} \
-   CONFIG.PS_CRL_I2C1_REF_CTRL_DIVISOR0 {10} \
-   CONFIG.PS_CRL_I2C1_REF_CTRL_SRCSEL {NPLL} \
-   CONFIG.PS_CRL_IOU_SWITCH_CTRL_ACT_FREQMHZ {249.999985} \
-   CONFIG.PS_CRL_LPD_LSBUS_CTRL_ACT_FREQMHZ {147.916656} \
-   CONFIG.PS_CRL_LPD_LSBUS_CTRL_DIVISOR0 {8} \
-   CONFIG.PS_CRL_LPD_LSBUS_CTRL_SRCSEL {PPLL} \
-   CONFIG.PS_CRL_LPD_TOP_SWITCH_CTRL_ACT_FREQMHZ {591.666626} \
-   CONFIG.PS_CRL_PSM_REF_CTRL_ACT_FREQMHZ {394.444427} \
-   CONFIG.PS_CRL_RPLL_CTRL_FBDIV {93} \
-   CONFIG.PS_CRL_SPI0_REF_CTRL_ACT_FREQMHZ {199.999985} \
-   CONFIG.PS_CRL_SPI0_REF_CTRL_DIVISOR0 {5} \
-   CONFIG.PS_CRL_SPI0_REF_CTRL_SRCSEL {NPLL} \
-   CONFIG.PS_CRL_SPI1_REF_CTRL_ACT_FREQMHZ {199.999985} \
-   CONFIG.PS_CRL_SPI1_REF_CTRL_DIVISOR0 {5} \
-   CONFIG.PS_CRL_SPI1_REF_CTRL_SRCSEL {NPLL} \
-   CONFIG.PS_CRL_TIMESTAMP_REF_CTRL_ACT_FREQMHZ {99.999992} \
-   CONFIG.PS_CRL_TIMESTAMP_REF_CTRL_DIVISOR0 {10} \
-   CONFIG.PS_CRL_TIMESTAMP_REF_CTRL_SRCSEL {NPLL} \
-   CONFIG.PS_CRL_UART0_REF_CTRL_ACT_FREQMHZ {99.999992} \
-   CONFIG.PS_CRL_UART0_REF_CTRL_DIVISOR0 {10} \
-   CONFIG.PS_CRL_UART0_REF_CTRL_SRCSEL {NPLL} \
-   CONFIG.PS_CRL_UART1_REF_CTRL_ACT_FREQMHZ {99.999992} \
-   CONFIG.PS_CRL_UART1_REF_CTRL_DIVISOR0 {10} \
-   CONFIG.PS_CRL_UART1_REF_CTRL_SRCSEL {NPLL} \
-   CONFIG.PS_CRL_USB0_BUS_REF_CTRL_ACT_FREQMHZ {19.999998} \
-   CONFIG.PS_CRL_USB0_BUS_REF_CTRL_DIVISOR0 {50} \
-   CONFIG.PS_CRL_USB0_BUS_REF_CTRL_SRCSEL {NPLL} \
-   CONFIG.PS_CRL_USB3_DUAL_REF_CTRL_FREQMHZ {100} \
-   CONFIG.PS_ENET0_GRP_MDIO_ENABLE {1} \
-   CONFIG.PS_ENET0_GRP_MDIO_IO {PS_MIO 24 .. 25} \
-   CONFIG.PS_ENET0_PERIPHERAL_ENABLE {1} \
-   CONFIG.PS_ENET0_PERIPHERAL_IO {PS_MIO 0 .. 11} \
-   CONFIG.PS_ENET1_PERIPHERAL_ENABLE {1} \
-   CONFIG.PS_ENET1_PERIPHERAL_IO {PS_MIO 12 .. 23} \
-   CONFIG.PS_GEN_IPI_0_ENABLE {1} \
-   CONFIG.PS_GEN_IPI_1_ENABLE {1} \
-   CONFIG.PS_GEN_IPI_2_ENABLE {1} \
-   CONFIG.PS_GEN_IPI_3_ENABLE {1} \
-   CONFIG.PS_GEN_IPI_4_ENABLE {1} \
-   CONFIG.PS_GEN_IPI_5_ENABLE {1} \
-   CONFIG.PS_GEN_IPI_6_ENABLE {1} \
-   CONFIG.PS_I2C1_PERIPHERAL_ENABLE {1} \
-   CONFIG.PS_I2C1_PERIPHERAL_IO {PMC_MIO 44 .. 45} \
-   CONFIG.PS_MIO_0_DIRECTION {out} \
-   CONFIG.PS_MIO_0_SCHMITT {1} \
-   CONFIG.PS_MIO_12_DIRECTION {out} \
-   CONFIG.PS_MIO_12_SCHMITT {1} \
-   CONFIG.PS_MIO_13_DIRECTION {out} \
-   CONFIG.PS_MIO_13_SCHMITT {1} \
-   CONFIG.PS_MIO_14_DIRECTION {out} \
-   CONFIG.PS_MIO_14_SCHMITT {1} \
-   CONFIG.PS_MIO_15_DIRECTION {out} \
-   CONFIG.PS_MIO_15_SCHMITT {1} \
-   CONFIG.PS_MIO_16_DIRECTION {out} \
-   CONFIG.PS_MIO_16_SCHMITT {1} \
-   CONFIG.PS_MIO_17_DIRECTION {out} \
-   CONFIG.PS_MIO_17_SCHMITT {1} \
-   CONFIG.PS_MIO_19_PULL {disable} \
-   CONFIG.PS_MIO_1_DIRECTION {out} \
-   CONFIG.PS_MIO_1_SCHMITT {1} \
-   CONFIG.PS_MIO_21_PULL {disable} \
-   CONFIG.PS_MIO_24_DIRECTION {out} \
-   CONFIG.PS_MIO_24_SCHMITT {1} \
-   CONFIG.PS_MIO_25_DIRECTION {inout} \
-   CONFIG.PS_MIO_2_DIRECTION {out} \
-   CONFIG.PS_MIO_2_SCHMITT {1} \
-   CONFIG.PS_MIO_3_DIRECTION {out} \
-   CONFIG.PS_MIO_3_SCHMITT {1} \
-   CONFIG.PS_MIO_4_DIRECTION {out} \
-   CONFIG.PS_MIO_4_SCHMITT {1} \
-   CONFIG.PS_MIO_5_DIRECTION {out} \
-   CONFIG.PS_MIO_5_SCHMITT {1} \
-   CONFIG.PS_MIO_7_PULL {disable} \
-   CONFIG.PS_MIO_9_PULL {disable} \
-   CONFIG.PS_NUM_FABRIC_RESETS {1} \
-   CONFIG.PS_PCIE_RESET_ENABLE {1} \
+   CONFIG.CPM_CONFIG {CPM_DMA_CREDIT_INIT_DEMUX 1 CPM_CORE_REF_CTRL_ACT_FREQMHZ 899.991028\
+CPM_AUX0_REF_CTRL_ACT_FREQMHZ 899.991028 CPM_AUX1_REF_CTRL_ACT_FREQMHZ\
+899.991028 CPM_DBG_REF_CTRL_ACT_FREQMHZ 299.997009\
+CPM_LSBUS_REF_CTRL_ACT_FREQMHZ 149.998505 CPM_PCIE1_PF0_CLASS_CODE 0\
+CPM_PCIE0_PF1_SUB_CLASS_VALUE 80 CPM_PCIE1_PF1_SUB_CLASS_VALUE 80\
+CPM_PCIE0_PF2_SUB_CLASS_VALUE 80 CPM_PCIE1_PF2_SUB_CLASS_VALUE 80\
+CPM_PCIE0_PF3_SUB_CLASS_VALUE 80 CPM_PCIE1_PF3_SUB_CLASS_VALUE 80\
+CPM_PCIE0_PF0_SUB_CLASS_INTF_MENU Other_memory_controller\
+CPM_PCIE1_PF0_SUB_CLASS_INTF_MENU Other_memory_controller\
+CPM_PCIE0_PF1_SUB_CLASS_INTF_MENU Other_memory_controller\
+CPM_PCIE1_PF1_SUB_CLASS_INTF_MENU Other_memory_controller\
+CPM_PCIE0_PF2_SUB_CLASS_INTF_MENU Other_memory_controller\
+CPM_PCIE1_PF2_SUB_CLASS_INTF_MENU Other_memory_controller\
+CPM_PCIE0_PF3_SUB_CLASS_INTF_MENU Other_memory_controller\
+CPM_PCIE1_PF3_SUB_CLASS_INTF_MENU Other_memory_controller\
+CPM_PCIE0_PF1_BASE_CLASS_VALUE 05 CPM_PCIE1_PF1_BASE_CLASS_VALUE 05\
+CPM_PCIE0_PF2_BASE_CLASS_VALUE 05 CPM_PCIE1_PF2_BASE_CLASS_VALUE 05\
+CPM_PCIE0_PF3_BASE_CLASS_VALUE 05 CPM_PCIE1_PF3_BASE_CLASS_VALUE 05\
+CPM_PCIE0_PF0_USE_CLASS_CODE_LOOKUP_ASSISTANT 0\
+CPM_PCIE1_PF0_USE_CLASS_CODE_LOOKUP_ASSISTANT 0\
+CPM_PCIE0_PF1_USE_CLASS_CODE_LOOKUP_ASSISTANT 1\
+CPM_PCIE1_PF1_USE_CLASS_CODE_LOOKUP_ASSISTANT 1\
+CPM_PCIE0_PF2_USE_CLASS_CODE_LOOKUP_ASSISTANT 1\
+CPM_PCIE1_PF2_USE_CLASS_CODE_LOOKUP_ASSISTANT 1\
+CPM_PCIE0_PF3_USE_CLASS_CODE_LOOKUP_ASSISTANT 1\
+CPM_PCIE1_PF3_USE_CLASS_CODE_LOOKUP_ASSISTANT 1 CPM_PCIE0_PF1_INTERFACE_VALUE\
+00 CPM_PCIE1_PF1_INTERFACE_VALUE 00 CPM_PCIE0_PF2_INTERFACE_VALUE 00\
+CPM_PCIE1_PF2_INTERFACE_VALUE 00 CPM_PCIE0_PF3_INTERFACE_VALUE 00\
+CPM_PCIE1_PF3_INTERFACE_VALUE 00 CPM_PCIE0_MODES None}\
+   CONFIG.PS_PMC_CONFIG {PMC_CRP_CFU_REF_CTRL_ACT_FREQMHZ 394.444427 PMC_CRP_HSM0_REF_CTRL_ACT_FREQMHZ\
+32.870369 PMC_CRP_HSM1_REF_CTRL_ACT_FREQMHZ 131.481476\
+PMC_CRP_I2C_REF_CTRL_ACT_FREQMHZ 99.999992 PMC_CRP_I2C_REF_CTRL_DIVISOR0 10\
+PMC_CRP_I2C_REF_CTRL_SRCSEL NPLL PMC_CRP_LSBUS_REF_CTRL_ACT_FREQMHZ 147.916656\
+PMC_CRP_NOC_REF_CTRL_ACT_FREQMHZ 999.999939 PMC_CRP_NPI_REF_CTRL_ACT_FREQMHZ\
+295.833313 PMC_CRP_PL0_REF_CTRL_ACT_FREQMHZ 249.999985\
+PMC_CRP_PL0_REF_CTRL_DIVISOR0 4 PMC_CRP_PL0_REF_CTRL_FREQMHZ 250\
+PMC_CRP_PPLL_CTRL_FBDIV 71 PMC_CRP_QSPI_REF_CTRL_ACT_FREQMHZ 295.833313\
+PMC_CRP_SDIO1_REF_CTRL_ACT_FREQMHZ 199.999985 PMC_CRP_SDIO1_REF_CTRL_DIVISOR0 5\
+PMC_CRP_SDIO1_REF_CTRL_SRCSEL NPLL PMC_CRP_SD_DLL_REF_CTRL_ACT_FREQMHZ\
+1183.333252 PMC_CRP_SYSMON_REF_CTRL_ACT_FREQMHZ 295.833313\
+PMC_CRP_SYSMON_REF_CTRL_FREQMHZ 295.833313 PMC_MIO_TREE_PERIPHERALS\
+{QSPI#QSPI#QSPI#QSPI#QSPI#QSPI#Loopback Clk#QSPI#QSPI#QSPI#QSPI#QSPI#QSPI#USB\
+0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB\
+0#SD1/eMMC1#SD1/eMMC1#SD1#SD1/eMMC1#SD1/eMMC1#SD1/eMMC1#SD1/eMMC1#SD1/eMMC1#SD1/eMMC1#SD1/eMMC1#SD1/eMMC1#GPIO\
+1#####UART 0#UART 0#I2C 1#I2C 1#i2c_pmc#i2c_pmc####SD1/eMMC1#Enet 0#Enet 0#Enet\
+0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 1#Enet\
+1#Enet 1#Enet 1#Enet 1#Enet 1#Enet 1#Enet 1#Enet 1#Enet 1#Enet 1#Enet 1#Enet\
+0#Enet 0} PMC_MIO_TREE_SIGNALS\
+qspi0_clk#qspi0_io[1]#qspi0_io[2]#qspi0_io[3]#qspi0_io[0]#qspi0_cs_b#qspi_lpbk#qspi1_cs_b#qspi1_io[0]#qspi1_io[1]#qspi1_io[2]#qspi1_io[3]#qspi1_clk#usb2phy_reset#ulpi_tx_data[0]#ulpi_tx_data[1]#ulpi_tx_data[2]#ulpi_tx_data[3]#ulpi_clk#ulpi_tx_data[4]#ulpi_tx_data[5]#ulpi_tx_data[6]#ulpi_tx_data[7]#ulpi_dir#ulpi_stp#ulpi_nxt#clk#dir1/data[7]#detect#cmd#data[0]#data[1]#data[2]#data[3]#sel/data[4]#dir_cmd/data[5]#dir0/data[6]#gpio_1_pin[37]#####rxd#txd#scl#sda#scl#sda####buspwr/rst#rgmii_tx_clk#rgmii_txd[0]#rgmii_txd[1]#rgmii_txd[2]#rgmii_txd[3]#rgmii_tx_ctl#rgmii_rx_clk#rgmii_rxd[0]#rgmii_rxd[1]#rgmii_rxd[2]#rgmii_rxd[3]#rgmii_rx_ctl#rgmii_tx_clk#rgmii_txd[0]#rgmii_txd[1]#rgmii_txd[2]#rgmii_txd[3]#rgmii_tx_ctl#rgmii_rx_clk#rgmii_rxd[0]#rgmii_rxd[1]#rgmii_rxd[2]#rgmii_rxd[3]#rgmii_rx_ctl#gem0_mdc#gem0_mdio\
+PMC_QSPI_PERIPHERAL_DATA_MODE x4 PMC_QSPI_PERIPHERAL_ENABLE 1\
+PMC_QSPI_PERIPHERAL_MODE {Dual Parallel} PMC_REF_CLK_FREQMHZ 33.333333\
+PMC_SD1_DATA_TRANSFER_MODE 8Bit PMC_SD1_SLOT_TYPE {SD 3.0} PMC_SD1_SPEED_MODE\
+{high speed} PMC_USE_PMC_NOC_AXI0 1 PS_CRF_ACPU_CTRL_ACT_FREQMHZ 1350.0\
+PS_CRF_DBG_FPD_CTRL_ACT_FREQMHZ 394.444427 PS_CRF_FPD_LSBUS_CTRL_ACT_FREQMHZ\
+150.0 PS_CRF_FPD_LSBUS_CTRL_DIVISOR0 9 PS_CRF_FPD_LSBUS_CTRL_SRCSEL APLL\
+PS_CRF_FPD_TOP_SWITCH_CTRL_ACT_FREQMHZ 775.0 PS_CRL_CAN0_REF_CTRL_ACT_FREQMHZ\
+99.999992 PS_CRL_CAN0_REF_CTRL_DIVISOR0 10 PS_CRL_CAN0_REF_CTRL_SRCSEL NPLL\
+PS_CRL_CAN1_REF_CTRL_ACT_FREQMHZ 99.999992 PS_CRL_CAN1_REF_CTRL_DIVISOR0 10\
+PS_CRL_CAN1_REF_CTRL_SRCSEL NPLL PS_CRL_CPU_R5_CTRL_ACT_FREQMHZ 591.666626\
+PS_CRL_DBG_LPD_CTRL_ACT_FREQMHZ 394.444427 PS_CRL_DBG_TSTMP_CTRL_ACT_FREQMHZ\
+394.444427 PS_CRL_GEM0_REF_CTRL_ACT_FREQMHZ 124.999992\
+PS_CRL_GEM0_REF_CTRL_DIVISOR0 8 PS_CRL_GEM1_REF_CTRL_ACT_FREQMHZ 124.999992\
+PS_CRL_GEM1_REF_CTRL_DIVISOR0 8 PS_CRL_GEM_TSU_REF_CTRL_ACT_FREQMHZ 249.999985\
+PS_CRL_GEM_TSU_REF_CTRL_DIVISOR0 4 PS_CRL_I2C1_REF_CTRL_ACT_FREQMHZ 99.999992\
+PS_CRL_I2C1_REF_CTRL_DIVISOR0 10 PS_CRL_I2C1_REF_CTRL_SRCSEL NPLL\
+PS_CRL_IOU_SWITCH_CTRL_ACT_FREQMHZ 249.999985 PS_CRL_LPD_LSBUS_CTRL_ACT_FREQMHZ\
+147.916656 PS_CRL_LPD_LSBUS_CTRL_DIVISOR0 8 PS_CRL_LPD_LSBUS_CTRL_SRCSEL PPLL\
+PS_CRL_LPD_TOP_SWITCH_CTRL_ACT_FREQMHZ 591.666626\
+PS_CRL_PSM_REF_CTRL_ACT_FREQMHZ 394.444427 PS_CRL_RPLL_CTRL_FBDIV 93\
+PS_CRL_SPI0_REF_CTRL_ACT_FREQMHZ 199.999985 PS_CRL_SPI0_REF_CTRL_DIVISOR0 5\
+PS_CRL_SPI0_REF_CTRL_SRCSEL NPLL PS_CRL_SPI1_REF_CTRL_ACT_FREQMHZ 199.999985\
+PS_CRL_SPI1_REF_CTRL_DIVISOR0 5 PS_CRL_SPI1_REF_CTRL_SRCSEL NPLL\
+PS_CRL_TIMESTAMP_REF_CTRL_ACT_FREQMHZ 99.999992\
+PS_CRL_TIMESTAMP_REF_CTRL_DIVISOR0 10 PS_CRL_TIMESTAMP_REF_CTRL_SRCSEL NPLL\
+PS_CRL_UART0_REF_CTRL_ACT_FREQMHZ 99.999992 PS_CRL_UART0_REF_CTRL_DIVISOR0 10\
+PS_CRL_UART0_REF_CTRL_SRCSEL NPLL PS_CRL_UART1_REF_CTRL_ACT_FREQMHZ 99.999992\
+PS_CRL_UART1_REF_CTRL_DIVISOR0 10 PS_CRL_UART1_REF_CTRL_SRCSEL NPLL\
+PS_CRL_USB0_BUS_REF_CTRL_ACT_FREQMHZ 19.999998\
+PS_CRL_USB0_BUS_REF_CTRL_DIVISOR0 50 PS_CRL_USB0_BUS_REF_CTRL_SRCSEL NPLL\
+PS_CRL_USB3_DUAL_REF_CTRL_FREQMHZ 100 PS_GEN_IPI0_ENABLE 1 PS_GEN_IPI1_ENABLE 1\
+PS_GEN_IPI2_ENABLE 1 PS_GEN_IPI3_ENABLE 1 PS_GEN_IPI4_ENABLE 1\
+PS_GEN_IPI5_ENABLE 1 PS_GEN_IPI6_ENABLE 1 PS_NUM_FABRIC_RESETS 1\
+PS_USE_M_AXI_FPD 1 PS_USE_PMCPL_CLK0 1 PS_USE_FPD_CCI_NOC 1 PS_USE_FPD_AXI_NOC0\
+1 PS_USE_FPD_AXI_NOC1 1 PS_USE_NOC_LPD_AXI0 1\
+PS_CRL_CPM_TOPSW_REF_CTRL_ACT_FREQMHZ 775.0 PS_CRL_CPM_TOPSW_REF_CTRL_FREQMHZ\
+775 PS_BOARD_INTERFACE cips_fixed_io PS_IRQ_USAGE {{CH0 1} {CH1 1} {CH10 1}\
+{CH11 0} {CH12 0} {CH13 0} {CH14 0} {CH15 0} {CH2 1} {CH3 1} {CH4 1} {CH5 1}\
+{CH6 1} {CH7 1} {CH8 1} {CH9 1}} PMC_GPIO0_MIO_PERIPHERAL {{ENABLE 1} {IO\
+{PMC_MIO 0 .. 25}}} PMC_GPIO1_MIO_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 26 ..\
+51}}} PMC_I2CPMC_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 46 .. 47}}} PMC_QSPI_FBCLK\
+{{ENABLE 1} {IO {PMC_MIO 6}}} PMC_SD1_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 26 ..\
+36}}} PS_CAN0_PERIPHERAL {{ENABLE 1} {IO EMIO}} PS_CAN1_PERIPHERAL {{ENABLE 1}\
+{IO EMIO}} PS_ENET0_MDIO {{ENABLE 1} {IO {PS_MIO 24 .. 25}}}\
+PS_ENET0_PERIPHERAL {{ENABLE 1} {IO {PS_MIO 0 .. 11}}} PS_ENET1_PERIPHERAL\
+{{ENABLE 1} {IO {PS_MIO 12 .. 23}}} PS_I2C1_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO\
+44 .. 45}}} PS_PCIE_RESET {{ENABLE 1} {IO {PS_MIO 18 .. 19}}}\
+PS_UART0_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 42 .. 43}}} PS_UART1_PERIPHERAL\
+{{ENABLE 1} {IO EMIO}} PS_USB3_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 13 .. 25}}}\
+PMC_SD1 {{CD_ENABLE 1} {CD_IO {PMC_MIO 28}} {POW_ENABLE 1} {POW_IO {PMC_MIO\
+51}} {RESET_ENABLE 0} {RESET_IO {PMC_MIO 1}} {WP_ENABLE 0} {WP_IO {PMC_MIO 1}}}\
+PS_SPI0 {{GRP_SS0_ENABLE 1} {GRP_SS0_IO EMIO} {GRP_SS1_ENABLE 1} {GRP_SS1_IO\
+EMIO} {GRP_SS2_ENABLE 1} {GRP_SS2_IO EMIO} {PERIPHERAL_ENABLE 1} {PERIPHERAL_IO\
+EMIO}} PS_SPI1 {{GRP_SS0_ENABLE 1} {GRP_SS0_IO EMIO} {GRP_SS1_ENABLE 1}\
+{GRP_SS1_IO EMIO} {GRP_SS2_ENABLE 1} {GRP_SS2_IO EMIO} {PERIPHERAL_ENABLE 1}\
+{PERIPHERAL_IO EMIO}} PMC_MIO0 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA}\
+{OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE Reserved}}\
+PMC_MIO5 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default}\
+{PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE Reserved}} PMC_MIO6 {{AUX_IO 0}\
+{DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default} {PULL pullup}\
+{SCHMITT 1} {SLEW slow} {USAGE Reserved}} PMC_MIO7 {{AUX_IO 0} {DIRECTION out}\
+{DRIVE_STRENGTH 8mA} {OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW\
+slow} {USAGE Reserved}} PMC_MIO12 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH\
+8mA} {OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE\
+Reserved}} PMC_MIO13 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA}\
+{OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE Reserved}}\
+PMC_MIO24 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA\
+default} {PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE Reserved}} PMC_MIO37\
+{{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA high} {PULL\
+pullup} {SCHMITT 0} {SLEW slow} {USAGE GPIO}} PMC_MIO40 {{AUX_IO 0} {DIRECTION\
+in} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default} {PULL pullup} {SCHMITT 0} {SLEW\
+slow} {USAGE Unassigned}} PMC_MIO43 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH\
+8mA} {OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE\
+Reserved}} PMC_MIO51 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA}\
+{OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE Reserved}}\
+PS_MIO0 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default}\
+{PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE Reserved}} PS_MIO1 {{AUX_IO 0}\
+{DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default} {PULL pullup}\
+{SCHMITT 1} {SLEW slow} {USAGE Reserved}} PS_MIO2 {{AUX_IO 0} {DIRECTION out}\
+{DRIVE_STRENGTH 8mA} {OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW\
+slow} {USAGE Reserved}} PS_MIO3 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH\
+8mA} {OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE\
+Reserved}} PS_MIO4 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA}\
+{OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE Reserved}}\
+PS_MIO5 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default}\
+{PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE Reserved}} PS_MIO7 {{AUX_IO 0}\
+{DIRECTION in} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default} {PULL disable}\
+{SCHMITT 0} {SLEW slow} {USAGE Reserved}} PS_MIO9 {{AUX_IO 0} {DIRECTION in}\
+{DRIVE_STRENGTH 8mA} {OUTPUT_DATA default} {PULL disable} {SCHMITT 0} {SLEW\
+slow} {USAGE Reserved}} PS_MIO12 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH\
+8mA} {OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE\
+Reserved}} PS_MIO13 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA}\
+{OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE Reserved}}\
+PS_MIO14 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default}\
+{PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE Reserved}} PS_MIO15 {{AUX_IO 0}\
+{DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default} {PULL pullup}\
+{SCHMITT 1} {SLEW slow} {USAGE Reserved}} PS_MIO16 {{AUX_IO 0} {DIRECTION out}\
+{DRIVE_STRENGTH 8mA} {OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW\
+slow} {USAGE Reserved}} PS_MIO17 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH\
+8mA} {OUTPUT_DATA default} {PULL pullup} {SCHMITT 1} {SLEW slow} {USAGE\
+Reserved}} PS_MIO19 {{AUX_IO 0} {DIRECTION in} {DRIVE_STRENGTH 8mA}\
+{OUTPUT_DATA default} {PULL disable} {SCHMITT 0} {SLEW slow} {USAGE Reserved}}\
+PS_MIO21 {{AUX_IO 0} {DIRECTION in} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default}\
+{PULL disable} {SCHMITT 0} {SLEW slow} {USAGE Reserved}} PS_MIO24 {{AUX_IO 0}\
+{DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA default} {PULL pullup}\
+{SCHMITT 1} {SLEW slow} {USAGE Reserved}} SMON_ALARMS Set_Alarms_On\
+SMON_ENABLE_TEMP_AVERAGING 0 SMON_TEMP_AVERAGING_SAMPLES 8 DESIGN_MODE 1\
+PS_PCIE1_PERIPHERAL_ENABLE 0 PS_PCIE2_PERIPHERAL_ENABLE 0\
+PCIE_APERTURES_SINGLE_ENABLE 0 PCIE_APERTURES_DUAL_ENABLE 0}\
    CONFIG.PS_PMC_CONFIG_APPLIED {1} \
-   CONFIG.PS_SPI0_GRP_SS0_ENABLE {1} \
-   CONFIG.PS_SPI0_GRP_SS0_IO {EMIO} \
-   CONFIG.PS_SPI0_GRP_SS1_ENABLE {1} \
-   CONFIG.PS_SPI0_GRP_SS1_IO {EMIO} \
-   CONFIG.PS_SPI0_GRP_SS2_ENABLE {1} \
-   CONFIG.PS_SPI0_GRP_SS2_IO {EMIO} \
-   CONFIG.PS_SPI0_PERIPHERAL_ENABLE {1} \
-   CONFIG.PS_SPI0_PERIPHERAL_IO {EMIO} \
-   CONFIG.PS_SPI1_GRP_SS0_ENABLE {1} \
-   CONFIG.PS_SPI1_GRP_SS0_IO {EMIO} \
-   CONFIG.PS_SPI1_GRP_SS1_ENABLE {1} \
-   CONFIG.PS_SPI1_GRP_SS1_IO {EMIO} \
-   CONFIG.PS_SPI1_GRP_SS2_ENABLE {1} \
-   CONFIG.PS_SPI1_GRP_SS2_IO {EMIO} \
-   CONFIG.PS_SPI1_PERIPHERAL_ENABLE {1} \
-   CONFIG.PS_SPI1_PERIPHERAL_IO {EMIO} \
-   CONFIG.PS_UART0_PERIPHERAL_ENABLE {1} \
-   CONFIG.PS_UART0_PERIPHERAL_IO {PMC_MIO 42 .. 43} \
-   CONFIG.PS_UART1_PERIPHERAL_ENABLE {1} \
-   CONFIG.PS_UART1_PERIPHERAL_IO {EMIO} \
-   CONFIG.PS_USB3_PERIPHERAL_ENABLE {1} \
-   CONFIG.PS_USE_IRQ_0 {1} \
-   CONFIG.PS_USE_IRQ_1 {1} \
-   CONFIG.PS_USE_IRQ_2 {1} \
-   CONFIG.PS_USE_IRQ_3 {1} \
-   CONFIG.PS_USE_IRQ_4 {1} \
-   CONFIG.PS_USE_IRQ_5 {1} \
-   CONFIG.PS_USE_IRQ_6 {1} \
-   CONFIG.PS_USE_IRQ_7 {1} \
-   CONFIG.PS_USE_IRQ_8 {1} \
-   CONFIG.PS_USE_IRQ_9 {1} \
-   CONFIG.PS_USE_IRQ_10 {1} \
-   CONFIG.PS_USE_M_AXI_GP0 {1} \
-   CONFIG.PS_USE_PMCPL_CLK0 {1} \
-   CONFIG.PS_USE_PS_NOC_CCI {1} \
-   CONFIG.PS_USE_PS_NOC_NCI_0 {1} \
-   CONFIG.PS_USE_PS_NOC_NCI_1 {1} \
-   CONFIG.PS_USE_PS_NOC_RPU_0 {1} \
  ] $versal_cips_0
 
   # Create instance: xlconcat_0, and set properties
@@ -789,11 +685,11 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net versal_cips_0_FPD_CCI_NOC_2 [get_bd_intf_pins axi_noc_0/S02_AXI] [get_bd_intf_pins versal_cips_0/FPD_CCI_NOC_2]
   connect_bd_intf_net -intf_net versal_cips_0_FPD_CCI_NOC_3 [get_bd_intf_pins axi_noc_0/S03_AXI] [get_bd_intf_pins versal_cips_0/FPD_CCI_NOC_3]
   connect_bd_intf_net -intf_net versal_cips_0_M_AXI_FPD [get_bd_intf_pins smartconnect_0/S00_AXI] [get_bd_intf_pins versal_cips_0/M_AXI_FPD]
-  connect_bd_intf_net -intf_net versal_cips_0_NOC_LPD_AXI_0 [get_bd_intf_pins axi_noc_0/S06_AXI] [get_bd_intf_pins versal_cips_0/NOC_LPD_AXI_0]
+  connect_bd_intf_net -intf_net versal_cips_0_NOC_LPD_AXI_0 [get_bd_intf_pins axi_noc_0/S06_AXI] [get_bd_intf_pins versal_cips_0/LPD_AXI_NOC_0]
   connect_bd_intf_net -intf_net versal_cips_0_PMC_NOC_AXI_0 [get_bd_intf_pins axi_noc_0/S07_AXI] [get_bd_intf_pins versal_cips_0/PMC_NOC_AXI_0]
 
   # Create port connections
-  connect_bd_net -net Net [get_bd_pins axi_noc_0/aclk9] [get_bd_pins axis_ila_0/clk] [get_bd_pins can_0/can_clk] [get_bd_pins can_1/can_clk] [get_bd_pins can_2/can_clk] [get_bd_pins clk_wizard_0/clk_out1]
+  connect_bd_net -net Net [get_bd_pins axi_noc_0/aclk9] [get_bd_pins can_0/can_clk] [get_bd_pins can_1/can_clk] [get_bd_pins can_2/can_clk] [get_bd_pins clk_wizard_0/clk_out1]
   connect_bd_net -net Net1 [get_bd_pins canfd_1/can_phy_rx] [get_bd_pins canfd_2/can_phy_rx] [get_bd_pins util_reduced_logic_2/Res]
   connect_bd_net -net axi_gpio_0_gpio2_io_o [get_bd_pins axi_gpio_0/gpio2_io_o] [get_bd_pins axi_gpio_0/gpio_io_i]
   connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio2_io_i] [get_bd_pins axi_gpio_0/gpio_io_o]
@@ -821,10 +717,10 @@ proc create_root_design { parentCell } {
   connect_bd_net -net clk_wizard_0_clk_out3 [get_bd_pins canfd_0/can_clk] [get_bd_pins canfd_1/can_clk] [get_bd_pins canfd_2/can_clk] [get_bd_pins clk_wizard_0/clk_out3]
   connect_bd_net -net rst_versal_cips_0_249M_interconnect_aresetn [get_bd_pins rst_versal_cips_0_249M/interconnect_aresetn] [get_bd_pins smartconnect_0/aresetn]
   connect_bd_net -net rst_versal_cips_0_249M_peripheral_aresetn [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_iic_0/s_axi_aresetn] [get_bd_pins axi_uartlite_0/s_axi_aresetn] [get_bd_pins axi_uartlite_1/s_axi_aresetn] [get_bd_pins axi_uartlite_2/s_axi_aresetn] [get_bd_pins can_0/s_axi_aresetn] [get_bd_pins can_1/s_axi_aresetn] [get_bd_pins can_2/s_axi_aresetn] [get_bd_pins canfd_0/s_axi_aresetn] [get_bd_pins canfd_1/s_axi_aresetn] [get_bd_pins canfd_2/s_axi_aresetn] [get_bd_pins rst_versal_cips_0_249M/peripheral_aresetn]
-  connect_bd_net -net util_reduced_logic_0_Res [get_bd_pins util_reduced_logic_0/Res] [get_bd_pins versal_cips_0/canfd0_phy_rx] [get_bd_pins versal_cips_0/canfd1_phy_rx]
+  connect_bd_net -net util_reduced_logic_0_Res [get_bd_pins util_reduced_logic_0/Res] [get_bd_pins versal_cips_0/CANFD0_PHY_rx] [get_bd_pins versal_cips_0/CANFD1_PHY_rx]
   connect_bd_net -net util_reduced_logic_1_Res [get_bd_pins can_1/can_phy_rx] [get_bd_pins can_2/can_phy_rx] [get_bd_pins util_reduced_logic_1/Res]
-  connect_bd_net -net versal_cips_0_canfd0_phy_tx [get_bd_pins versal_cips_0/canfd0_phy_tx] [get_bd_pins xlconcat_5/In0]
-  connect_bd_net -net versal_cips_0_canfd1_phy_tx [get_bd_pins versal_cips_0/canfd1_phy_tx] [get_bd_pins xlconcat_5/In1]
+  connect_bd_net -net versal_cips_0_canfd0_phy_tx [get_bd_pins versal_cips_0/CANFD0_PHY_tx] [get_bd_pins xlconcat_5/In0]
+  connect_bd_net -net versal_cips_0_canfd1_phy_tx [get_bd_pins versal_cips_0/CANFD1_PHY_tx] [get_bd_pins xlconcat_5/In1]
   connect_bd_net -net versal_cips_0_fpd_axi_noc_axi0_clk [get_bd_pins axi_noc_0/aclk4] [get_bd_pins versal_cips_0/fpd_axi_noc_axi0_clk]
   connect_bd_net -net versal_cips_0_fpd_axi_noc_axi1_clk [get_bd_pins axi_noc_0/aclk6] [get_bd_pins versal_cips_0/fpd_axi_noc_axi1_clk]
   connect_bd_net -net versal_cips_0_fpd_cci_noc_axi0_clk [get_bd_pins axi_noc_0/aclk0] [get_bd_pins versal_cips_0/fpd_cci_noc_axi0_clk]
@@ -835,15 +731,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net versal_cips_0_pl0_ref_clk [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_iic_0/s_axi_aclk] [get_bd_pins axi_noc_0/aclk8] [get_bd_pins axi_uartlite_0/s_axi_aclk] [get_bd_pins axi_uartlite_1/s_axi_aclk] [get_bd_pins axi_uartlite_2/s_axi_aclk] [get_bd_pins can_0/s_axi_aclk] [get_bd_pins can_1/s_axi_aclk] [get_bd_pins can_2/s_axi_aclk] [get_bd_pins canfd_0/s_axi_aclk] [get_bd_pins canfd_1/s_axi_aclk] [get_bd_pins canfd_2/s_axi_aclk] [get_bd_pins clk_wizard_0/clk_in1] [get_bd_pins rst_versal_cips_0_249M/slowest_sync_clk] [get_bd_pins smartconnect_0/aclk] [get_bd_pins versal_cips_0/m_axi_fpd_aclk] [get_bd_pins versal_cips_0/pl0_ref_clk]
   connect_bd_net -net versal_cips_0_pl0_resetn [get_bd_pins rst_versal_cips_0_249M/ext_reset_in] [get_bd_pins versal_cips_0/pl0_resetn]
   connect_bd_net -net versal_cips_0_pmc_axi_noc_axi0_clk [get_bd_pins axi_noc_0/aclk7] [get_bd_pins versal_cips_0/pmc_axi_noc_axi0_clk]
-  connect_bd_net -net versal_cips_0_spi0_m_o [get_bd_pins axis_ila_0/probe2] [get_bd_pins versal_cips_0/spi0_m_o] [get_bd_pins versal_cips_0/spi1_s_i]
-  connect_bd_net -net versal_cips_0_spi0_s_o [get_bd_pins axis_ila_0/probe6] [get_bd_pins versal_cips_0/spi0_s_o] [get_bd_pins versal_cips_0/spi1_m_i]
-  connect_bd_net -net versal_cips_0_spi0_sclk_o [get_bd_pins axis_ila_0/probe0] [get_bd_pins versal_cips_0/spi0_sclk_o] [get_bd_pins versal_cips_0/spi1_sclk_i]
-  connect_bd_net -net versal_cips_0_spi0_ss_o_n [get_bd_pins axis_ila_0/probe4] [get_bd_pins versal_cips_0/spi0_ss_o_n] [get_bd_pins versal_cips_0/spi1_ss_i_n]
-  connect_bd_net -net versal_cips_0_spi1_m_o [get_bd_pins axis_ila_0/probe3] [get_bd_pins versal_cips_0/spi0_s_i] [get_bd_pins versal_cips_0/spi1_m_o]
-  connect_bd_net -net versal_cips_0_spi1_s_o [get_bd_pins axis_ila_0/probe1] [get_bd_pins versal_cips_0/spi0_m_i] [get_bd_pins versal_cips_0/spi1_s_o]
-  connect_bd_net -net versal_cips_0_spi1_sclk_o [get_bd_pins axis_ila_0/probe7] [get_bd_pins versal_cips_0/spi0_sclk_i] [get_bd_pins versal_cips_0/spi1_sclk_o]
-  connect_bd_net -net versal_cips_0_spi1_ss_o_n [get_bd_pins axis_ila_0/probe5] [get_bd_pins versal_cips_0/spi0_ss_i_n] [get_bd_pins versal_cips_0/spi1_ss_o_n]
-  connect_bd_net -net versal_cips_0_uart1_txd [get_bd_pins versal_cips_0/uart1_txd] [get_bd_pins xlconcat_8/In0]
+  connect_bd_net -net versal_cips_0_uart1_txd [get_bd_pins versal_cips_0/UART1_txd] [get_bd_pins xlconcat_8/In0]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins util_reduced_logic_1/Op1] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconcat_1_dout [get_bd_pins can_0/can_phy_rx] [get_bd_pins xlconcat_1/dout]
   connect_bd_net -net xlconcat_2_dout [get_bd_pins util_reduced_logic_2/Op1] [get_bd_pins xlconcat_2/dout]
@@ -852,36 +740,36 @@ proc create_root_design { parentCell } {
   connect_bd_net -net xlconcat_6_dout [get_bd_pins axi_uartlite_1/rx] [get_bd_pins xlconcat_6/dout]
   connect_bd_net -net xlconcat_7_dout [get_bd_pins axi_uartlite_2/rx] [get_bd_pins xlconcat_7/dout]
   connect_bd_net -net xlconcat_8_dout [get_bd_pins axi_uartlite_0/rx] [get_bd_pins xlconcat_8/dout]
-  connect_bd_net -net xlconcat_9_dout [get_bd_pins versal_cips_0/uart1_rxd] [get_bd_pins xlconcat_9/dout]
+  connect_bd_net -net xlconcat_9_dout [get_bd_pins versal_cips_0/UART1_rxd] [get_bd_pins xlconcat_9/dout]
 
   # Create address segments
-  assign_bd_address -offset 0x0404A0000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/Data1] [get_bd_addr_segs axi_gpio_0/S_AXI/Reg] -force
-  assign_bd_address -offset 0xA4000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/Data1] [get_bd_addr_segs axi_iic_0/S_AXI/Reg] -force
-  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_NCI0] [get_bd_addr_segs axi_noc_0/S04_AXI/C0_DDR_LOW0] -force
-  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_CCI0] [get_bd_addr_segs axi_noc_0/S00_AXI/C0_DDR_LOW0] -force
-  assign_bd_address -offset 0x000800000000 -range 0x000100000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_NCI0] [get_bd_addr_segs axi_noc_0/S04_AXI/C0_DDR_LOW1] -force
-  assign_bd_address -offset 0x000800000000 -range 0x000100000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_CCI0] [get_bd_addr_segs axi_noc_0/S00_AXI/C0_DDR_LOW1] -force
-  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_NCI1] [get_bd_addr_segs axi_noc_0/S05_AXI/C1_DDR_LOW0] -force
-  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_CCI1] [get_bd_addr_segs axi_noc_0/S01_AXI/C1_DDR_LOW0] -force
-  assign_bd_address -offset 0x000800000000 -range 0x000100000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_CCI1] [get_bd_addr_segs axi_noc_0/S01_AXI/C1_DDR_LOW1] -force
-  assign_bd_address -offset 0x000800000000 -range 0x000100000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_NCI1] [get_bd_addr_segs axi_noc_0/S05_AXI/C1_DDR_LOW1] -force
-  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_RPU0] [get_bd_addr_segs axi_noc_0/S06_AXI/C2_DDR_LOW0] -force
-  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_CCI2] [get_bd_addr_segs axi_noc_0/S02_AXI/C2_DDR_LOW0] -force
-  assign_bd_address -offset 0x000800000000 -range 0x000100000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_RPU0] [get_bd_addr_segs axi_noc_0/S06_AXI/C2_DDR_LOW1] -force
-  assign_bd_address -offset 0x000800000000 -range 0x000100000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_CCI2] [get_bd_addr_segs axi_noc_0/S02_AXI/C2_DDR_LOW1] -force
-  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_CCI3] [get_bd_addr_segs axi_noc_0/S03_AXI/C3_DDR_LOW0] -force
-  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_PMC] [get_bd_addr_segs axi_noc_0/S07_AXI/C3_DDR_LOW0] -force
-  assign_bd_address -offset 0x000800000000 -range 0x000100000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_CCI3] [get_bd_addr_segs axi_noc_0/S03_AXI/C3_DDR_LOW1] -force
-  assign_bd_address -offset 0x000800000000 -range 0x000100000000 -target_address_space [get_bd_addr_spaces versal_cips_0/DATA_PMC] [get_bd_addr_segs axi_noc_0/S07_AXI/C3_DDR_LOW1] -force
-  assign_bd_address -offset 0xA4070000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/Data1] [get_bd_addr_segs axi_uartlite_0/S_AXI/Reg] -force
-  assign_bd_address -offset 0xA4080000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/Data1] [get_bd_addr_segs axi_uartlite_1/S_AXI/Reg] -force
-  assign_bd_address -offset 0xA4090000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/Data1] [get_bd_addr_segs axi_uartlite_2/S_AXI/Reg] -force
-  assign_bd_address -offset 0xA4010000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/Data1] [get_bd_addr_segs can_0/CAN_S_AXI_LITE/Reg] -force
-  assign_bd_address -offset 0xA4020000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/Data1] [get_bd_addr_segs can_1/CAN_S_AXI_LITE/Reg] -force
-  assign_bd_address -offset 0xA4030000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/Data1] [get_bd_addr_segs can_2/CAN_S_AXI_LITE/Reg] -force
-  assign_bd_address -offset 0xA4040000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/Data1] [get_bd_addr_segs canfd_0/S_AXI_LITE/Reg] -force
-  assign_bd_address -offset 0xA4050000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/Data1] [get_bd_addr_segs canfd_1/S_AXI_LITE/Reg] -force
-  assign_bd_address -offset 0xA4060000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/Data1] [get_bd_addr_segs canfd_2/S_AXI_LITE/Reg] -force
+  assign_bd_address -offset 0xA4060000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/M_AXI_FPD] [get_bd_addr_segs axi_gpio_0/S_AXI/Reg] -force
+  assign_bd_address -offset 0xA4070000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/M_AXI_FPD] [get_bd_addr_segs axi_iic_0/S_AXI/Reg] -force
+  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/FPD_AXI_NOC_0] [get_bd_addr_segs axi_noc_0/S04_AXI/C0_DDR_LOW0] -force
+  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/FPD_CCI_NOC_0] [get_bd_addr_segs axi_noc_0/S00_AXI/C0_DDR_LOW0] -force
+  assign_bd_address -offset 0x000800000000 -range 0x000180000000 -target_address_space [get_bd_addr_spaces versal_cips_0/FPD_AXI_NOC_0] [get_bd_addr_segs axi_noc_0/S04_AXI/C0_DDR_LOW1] -force
+  assign_bd_address -offset 0x000800000000 -range 0x000180000000 -target_address_space [get_bd_addr_spaces versal_cips_0/FPD_CCI_NOC_0] [get_bd_addr_segs axi_noc_0/S00_AXI/C0_DDR_LOW1] -force
+  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/FPD_AXI_NOC_1] [get_bd_addr_segs axi_noc_0/S05_AXI/C1_DDR_LOW0] -force
+  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/FPD_CCI_NOC_1] [get_bd_addr_segs axi_noc_0/S01_AXI/C1_DDR_LOW0] -force
+  assign_bd_address -offset 0x000800000000 -range 0x000180000000 -target_address_space [get_bd_addr_spaces versal_cips_0/FPD_AXI_NOC_1] [get_bd_addr_segs axi_noc_0/S05_AXI/C1_DDR_LOW1] -force
+  assign_bd_address -offset 0x000800000000 -range 0x000180000000 -target_address_space [get_bd_addr_spaces versal_cips_0/FPD_CCI_NOC_1] [get_bd_addr_segs axi_noc_0/S01_AXI/C1_DDR_LOW1] -force
+  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/FPD_CCI_NOC_2] [get_bd_addr_segs axi_noc_0/S02_AXI/C2_DDR_LOW0] -force
+  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/LPD_AXI_NOC_0] [get_bd_addr_segs axi_noc_0/S06_AXI/C2_DDR_LOW0] -force
+  assign_bd_address -offset 0x000800000000 -range 0x000180000000 -target_address_space [get_bd_addr_spaces versal_cips_0/LPD_AXI_NOC_0] [get_bd_addr_segs axi_noc_0/S06_AXI/C2_DDR_LOW1] -force
+  assign_bd_address -offset 0x000800000000 -range 0x000180000000 -target_address_space [get_bd_addr_spaces versal_cips_0/FPD_CCI_NOC_2] [get_bd_addr_segs axi_noc_0/S02_AXI/C2_DDR_LOW1] -force
+  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/FPD_CCI_NOC_3] [get_bd_addr_segs axi_noc_0/S03_AXI/C3_DDR_LOW0] -force
+  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces versal_cips_0/PMC_NOC_AXI_0] [get_bd_addr_segs axi_noc_0/S07_AXI/C3_DDR_LOW0] -force
+  assign_bd_address -offset 0x000800000000 -range 0x000180000000 -target_address_space [get_bd_addr_spaces versal_cips_0/PMC_NOC_AXI_0] [get_bd_addr_segs axi_noc_0/S07_AXI/C3_DDR_LOW1] -force
+  assign_bd_address -offset 0x000800000000 -range 0x000180000000 -target_address_space [get_bd_addr_spaces versal_cips_0/FPD_CCI_NOC_3] [get_bd_addr_segs axi_noc_0/S03_AXI/C3_DDR_LOW1] -force
+  assign_bd_address -offset 0xA4080000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/M_AXI_FPD] [get_bd_addr_segs axi_uartlite_0/S_AXI/Reg] -force
+  assign_bd_address -offset 0xA4090000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/M_AXI_FPD] [get_bd_addr_segs axi_uartlite_1/S_AXI/Reg] -force
+  assign_bd_address -offset 0xA40A0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/M_AXI_FPD] [get_bd_addr_segs axi_uartlite_2/S_AXI/Reg] -force
+  assign_bd_address -offset 0xA4000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/M_AXI_FPD] [get_bd_addr_segs can_0/CAN_S_AXI_LITE/Reg] -force
+  assign_bd_address -offset 0xA4010000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/M_AXI_FPD] [get_bd_addr_segs can_1/CAN_S_AXI_LITE/Reg] -force
+  assign_bd_address -offset 0xA4020000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/M_AXI_FPD] [get_bd_addr_segs can_2/CAN_S_AXI_LITE/Reg] -force
+  assign_bd_address -offset 0xA4030000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/M_AXI_FPD] [get_bd_addr_segs canfd_0/S_AXI_LITE/Reg] -force
+  assign_bd_address -offset 0xA4040000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/M_AXI_FPD] [get_bd_addr_segs canfd_1/S_AXI_LITE/Reg] -force
+  assign_bd_address -offset 0xA4050000 -range 0x00010000 -target_address_space [get_bd_addr_spaces versal_cips_0/M_AXI_FPD] [get_bd_addr_segs canfd_2/S_AXI_LITE/Reg] -force
 
 
   # Restore current instance

@@ -1,14 +1,14 @@
 <p align="right"><a href="../docs-cn/README.md">简体中文</a> | <a href="../docs-jp/README.md">日本語</a></p>
-<table width="100%" class="sphinxhide">
-  <tr width="100%">
-    <td align="center"><img src="https://github.com/Xilinx/Image-Collateral/blob/main/xilinx-logo_30percent.png?raw=true"/><h1>Embedded Design Documentation</h1>
+<table width="100%">
+ <tr width="100%">
+    <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Embedded Design Documentation</h1>
     </td>
  </tr>
- </table>
+</table>
 
 Xilinx and its Ecosystem Partners deliver embedded tools and runtime environments designed to enable you to efficiently and quickly move from concept to release. We provide you with all the components needed to create your embedded system using Xilinx Zynq® SoC and Zynq UltraScale+ MPSoC devices, MicroBlaze™ processor cores, and Arm Cortex-M1/M3 micro controllers including open source operating systems and bare metal drivers, multiple runtimes and Multi-OS environments, sophisticated Integrated Development Environments, and compilers, debuggers, and profiling tools.
 
-<img src="./Introduction/Versal-EDT/docs/media/embedded-tutorials-landing.png">
+![Embedded tutorials](../docs/Introduction/Versal-EDT/docs/media/embedded-tutorials-landing.png)
 
 For more information about available embedded tools available from Xilinx, see [Xilinx Embedded Software Infrastructure](https://www.xilinx.com/products/design-tools/embedded-software.html).
 
@@ -25,16 +25,16 @@ The Embedded Design Tutorials provide an introduction to the embedded flow for X
  <td align="center"><b>Description</b></td>
  </tr>
  <tr>
- <td align="center"><a href="Introduction/Versal-EDT/README.md">Versal Adaptive Compute Acceleration Platform</a></td>
+  <td align="center"><a href="Introduction/Versal-EDT/Versal-EDT.rst">Versal Adaptive Compute Acceleration Platform</a></td>
  <td>
  Versal&trade; ACAP devices</td><td>
 Provides an introduction for using the Xilinx&reg; Vivado&reg; Design Suite flow for a Versal&trade; VMK180/VCK190 evaluation board.</td></tr>
 <tr>
-<td align="center"><a href="Introduction/ZynqMPSoC-EDT/README.md">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></td>
+<td align="center"><a href="Introduction/ZynqMPSoC-EDT/ZynqMPSoC-EDT.rst">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></td>
 <td>Zynq&reg; UltraScale+&trade; MPSoC devices</td><td>
 Provides an introduction for using the Xilinx Vivado Design Suite flow for using the Zynq UltraScale+ MPSoC device.</td></tr>
 <tr>
-<td align="center"><a href="Introduction/Zynq7000-EDT/README.md">Zynq-7000 SoC Embedded Design Tutorial</a></td>
+<td align="center"><a href="Introduction/Zynq7000-EDT/Zynq7000-EDT.rst">Zynq-7000 SoC Embedded Design Tutorial</a></td>
 <td>Zynq-7000 SoC devices</td><td>
 Provides an introduction for using the Xilinx Vivado Design Suite flow for using the Zynq-7000 SoC device.</td></tr>
 </table>

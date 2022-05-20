@@ -820,7 +820,7 @@ static int IicPsSlaveMonitor(u16 Address, u16 DeviceId, u32 Int_Id)
 
 	if (Index >= SLV_MON_LOOP_COUNT) {
 		return XST_FAILURE;
-
+ 
 	}
 
 	XIicPs_DisableSlaveMonitor(&IicInstance);
