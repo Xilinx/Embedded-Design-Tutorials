@@ -42,33 +42,33 @@ NOTE: the build instructions are universal if you use this template, so you don'
  ### PetaLinux:
 1. Enter the `hardware` directory and use the XSA to create petalinux workspace. Follow the commands for the following:
 
-   To create Petalinux project, run the following 
-	 
+	To create Petalinux project, run the following 
+	```
 		petalinux-create --type project --template versal --name <name_of_project> 
 		cd <name_of_project>
-	
-	 To export XSA and do configuration
-	    
+	```
+	To export XSA and do configuration
+	```   
 		petalinux-config --get-hw-description=<PATH TO XSA>
-  
-  Add the following bootargs to the existing bootargs in the device tree prior to the build to support the TDC feature.
-  ```
-  bootargs = "xilinx_can.tdc_enable=1 xilinx_can.tdc_offset=12";
-  ```
+  	```
+2. Add the following bootargs to the existing bootargs in the device tree prior to the build to support the TDC feature.
+ 	```
+ 		bootargs = "xilinx_can.tdc_enable=1 xilinx_can.tdc_offset=12";
+ 	```
   Default bootargs available in the path "components/plnx_workspace/device-tree/device-tree/system-conf.dtsi"
   ![image](https://user-images.githubusercontent.com/74894579/167584812-ca4e94ac-e6bf-4bb4-bbd9-dd0bdabaec22.png)
   Modified bootargs in the path "project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi"
   ![image](https://user-images.githubusercontent.com/74894579/167585096-b42f3bec-0415-4440-a1ca-565cd4e375b3.png)
 
-	 To build the PetaLinux project, run the following from the directory:
-		
+3. To build the PetaLinux project, run the following from the directory:
+	```	
 		petalinux-build
-
-1. Once complete, the built images can be found in the plnx/images/linux/ directory. To package these images for SD boot, run the following from the plnx directory:
-
+	```
+4. Once complete, the built images can be found in the plnx/images/linux/ directory. To package these images for SD boot, run the following from the plnx directory:
+	```
 		petalinux-package --boot 
-
-1. Once packaged, the BOOT.bin and image.ub files (in the plnx/images/linux directory) can be copied to an SD card, and used to boot.
+	```
+5. Once packaged, the BOOT.bin and image.ub files (in the plnx/images/linux directory) can be copied to an SD card, and used to boot.
 
 
 ## Commands to be used:
@@ -214,4 +214,10 @@ root@VCK190CANFD:~# ip -d -s link show $CAN_BUS
 ![image](https://user-images.githubusercontent.com/74894579/167307389-d8d7b3a0-38b2-4019-922c-239cc259ce73.png)
 
 
+Copyright 2020 Xilinx Inc.
 
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
