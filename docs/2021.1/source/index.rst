@@ -174,7 +174,7 @@ User Guides
    :caption: Previous Releases
    :hidden:
 
-   2020.2 <http://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/docs/index.html>
+   2020.2 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/docs/index.html>
 
 
 

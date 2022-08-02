@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html{
     box-sizing:border-box
 }
@@ -87,11 +86,13 @@ sub{
     bottom:-.25em
 }
 dl,ol,ul{
-  margin:0;
-  padding:0;
+    margin:0;
+    padding:0;
+    list-style:none;
+    list-style-image:none
 }
 li{
-
+    list-style:none
 }
 dd{
     margin:0
@@ -226,50 +227,50 @@ big,small{
     @page{
         margin:.5cm
     }
-    .rst-content .toctree-wrapper p.caption,h2,h3,p{
+    .rst-content .toctree-wrapper>p.caption,h2,h3,p{
         orphans:3;
         widows:3
     }
-    .rst-content .toctree-wrapper p.caption,h2,h3{
+    .rst-content .toctree-wrapper>p.caption,h2,h3{
         page-break-after:avoid
     }
 }
 .btn,.fa:before,.icon:before,.rst-content .admonition,.rst-content .admonition-title:before,.rst-content .admonition-todo,.rst-content .attention,.rst-content .caution,.rst-content .code-block-caption .headerlink:before,.rst-content .danger,.rst-content .error,.rst-content .hint,.rst-content .important,.rst-content .note,.rst-content .seealso,.rst-content .tip,.rst-content .warning,.rst-content code.download span:first-child:before,.rst-content dl dt .headerlink:before,.rst-content h1 .headerlink:before,.rst-content h2 .headerlink:before,.rst-content h3 .headerlink:before,.rst-content h4 .headerlink:before,.rst-content h5 .headerlink:before,.rst-content h6 .headerlink:before,.rst-content p.caption .headerlink:before,.rst-content table>caption .headerlink:before,.rst-content tt.download span:first-child:before,.wy-alert,.wy-dropdown .caret:before,.wy-inline-validate.wy-inline-validate-danger .wy-input-context:before,.wy-inline-validate.wy-inline-validate-info .wy-input-context:before,.wy-inline-validate.wy-inline-validate-success .wy-input-context:before,.wy-inline-validate.wy-inline-validate-warning .wy-input-context:before,.wy-menu-vertical li.current>a,.wy-menu-vertical li.current>a span.toctree-expand:before,.wy-menu-vertical li.on a,.wy-menu-vertical li.on a span.toctree-expand:before,.wy-menu-vertical li span.toctree-expand:before,.wy-nav-top a,.wy-side-nav-search .wy-dropdown>a,.wy-side-nav-search>a,input[type=color],input[type=date],input[type=datetime-local],input[type=datetime],input[type=email],input[type=month],input[type=number],input[type=password],input[type=search],input[type=tel],input[type=text],input[type=time],input[type=url],input[type=week],select,textarea{
-    -webkit-font-smoothing:antialiased
+  -webkit-font-smoothing:antialiased
 }
 /*! * Custome CSS styles for Xilinx GitHub Tutorials */
  p .footerinfo {
-    font-size:small;
+  font-size:small;
 }
  footer .sphinxfooter{
-    z-index:0;
-    background:#ffffff;
+  z-index:0;
+  background:#ffffff;
 }
  .sphinxhide {
-    display:none;
+  display:none;
 }
  a:visited {
-     color: #9b59b6;
+   color: #9b59b6;
 }
  a:link {
-     color: blue;
+   color: blue;
 }
  .wy-nav-side a:hover {
-     color: white;
+   color: white;
 }
  .headerlink {
-     padding-top: 60px;
-     margin-top: -50px;
+   padding-top: 60px;
+   margin-top: -50px;
 }
 /*! * Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome * License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
 @font-face{
     font-family:FontAwesome;
-    src:url(../fonts/fontawesome-webfont.eot?674f50d287a8c48dc19ba404d20fe713);
-    src:url(../fonts/fontawesome-webfont.eot?674f50d287a8c48dc19ba404d20fe713?#iefix&v=4.7.0) format("embedded-opentype"),url(../fonts/fontawesome-webfont.woff2?af7ae505a9eed503f8b8e6982036873e) format("woff2"),url(../fonts/fontawesome-webfont.woff?fee66e712a8a08eef5805a46892932ad) format("woff"),url(../fonts/fontawesome-webfont.ttf?b06871f281fee6b241d60582ae9369b9) format("truetype"),url(../fonts/fontawesome-webfont.svg?912ec66d7572ff821749319396470bde#fontawesomeregular) format("svg");
+    src:url(fonts/fontawesome-webfont.eot?674f50d287a8c48dc19ba404d20fe713);
+    src:url(fonts/fontawesome-webfont.eot?674f50d287a8c48dc19ba404d20fe713?#iefix&v=4.7.0) format("embedded-opentype"),url(fonts/fontawesome-webfont.woff2?af7ae505a9eed503f8b8e6982036873e) format("woff2"),url(fonts/fontawesome-webfont.woff?fee66e712a8a08eef5805a46892932ad) format("woff"),url(fonts/fontawesome-webfont.ttf?b06871f281fee6b241d60582ae9369b9) format("truetype"),url(fonts/fontawesome-webfont.svg?912ec66d7572ff821749319396470bde#fontawesomeregular) format("svg");
     font-weight:400;
     font-style:normal
 }
-.fa,.icon,.rst-content .admonition-title,.rst-content .code-block-caption .headerlink,.rst-content code.download span:first-child,.rst-content dl dt .headerlink,.rst-content h1 .headerlink,.rst-content h2 .headerlink,.rst-content h3 .headerlink,.rst-content h4 .headerlink,.rst-content h5 .headerlink,.rst-content h6 .headerlink,.rst-content p.caption .headerlink,.rst-content table>caption .headerlink,.rst-content tt.download span:first-child,.wy-menu-vertical li.current>a span.toctree-expand,.wy-menu-vertical li.on a span.toctree-expand,.wy-menu-vertical li span.toctree-expand{
+.fa,.icon,.rst-content .admonition-title,.rst-content .code-block-caption .headerlink,.rst-content .eqno .headerlink,.rst-content code.download span:first-child,.rst-content dl dt .headerlink,.rst-content h1 .headerlink,.rst-content h2 .headerlink,.rst-content h3 .headerlink,.rst-content h4 .headerlink,.rst-content h5 .headerlink,.rst-content h6 .headerlink,.rst-content p.caption .headerlink,.rst-content p .headerlink,.rst-content table>caption .headerlink,.rst-content tt.download span:first-child,.wy-menu-vertical li.current>a button.toctree-expand,.wy-menu-vertical li.on a button.toctree-expand,.wy-menu-vertical li button.toctree-expand{
     display:inline-block;
     font:normal normal normal 14px/1 FontAwesome;
     font-size:inherit;
@@ -327,10 +328,10 @@ big,small{
 .fa-pull-right{
     float:right
 }
-.fa-pull-left.icon,.fa.fa-pull-left,.rst-content .code-block-caption .fa-pull-left.headerlink,.rst-content .fa-pull-left.admonition-title,.rst-content code.download span.fa-pull-left:first-child,.rst-content dl dt .fa-pull-left.headerlink,.rst-content h1 .fa-pull-left.headerlink,.rst-content h2 .fa-pull-left.headerlink,.rst-content h3 .fa-pull-left.headerlink,.rst-content h4 .fa-pull-left.headerlink,.rst-content h5 .fa-pull-left.headerlink,.rst-content h6 .fa-pull-left.headerlink,.rst-content p.caption .fa-pull-left.headerlink,.rst-content table>caption .fa-pull-left.headerlink,.rst-content tt.download span.fa-pull-left:first-child,.wy-menu-vertical li.current>a span.fa-pull-left.toctree-expand,.wy-menu-vertical li.on a span.fa-pull-left.toctree-expand,.wy-menu-vertical li span.fa-pull-left.toctree-expand{
+.fa-pull-left.icon,.fa.fa-pull-left,.rst-content .code-block-caption .fa-pull-left.headerlink,.rst-content .eqno .fa-pull-left.headerlink,.rst-content .fa-pull-left.admonition-title,.rst-content code.download span.fa-pull-left:first-child,.rst-content dl dt .fa-pull-left.headerlink,.rst-content h1 .fa-pull-left.headerlink,.rst-content h2 .fa-pull-left.headerlink,.rst-content h3 .fa-pull-left.headerlink,.rst-content h4 .fa-pull-left.headerlink,.rst-content h5 .fa-pull-left.headerlink,.rst-content h6 .fa-pull-left.headerlink,.rst-content p .fa-pull-left.headerlink,.rst-content table>caption .fa-pull-left.headerlink,.rst-content tt.download span.fa-pull-left:first-child,.wy-menu-vertical li.current>a button.fa-pull-left.toctree-expand,.wy-menu-vertical li.on a button.fa-pull-left.toctree-expand,.wy-menu-vertical li button.fa-pull-left.toctree-expand{
     margin-right:.3em
 }
-.fa-pull-right.icon,.fa.fa-pull-right,.rst-content .code-block-caption .fa-pull-right.headerlink,.rst-content .fa-pull-right.admonition-title,.rst-content code.download span.fa-pull-right:first-child,.rst-content dl dt .fa-pull-right.headerlink,.rst-content h1 .fa-pull-right.headerlink,.rst-content h2 .fa-pull-right.headerlink,.rst-content h3 .fa-pull-right.headerlink,.rst-content h4 .fa-pull-right.headerlink,.rst-content h5 .fa-pull-right.headerlink,.rst-content h6 .fa-pull-right.headerlink,.rst-content p.caption .fa-pull-right.headerlink,.rst-content table>caption .fa-pull-right.headerlink,.rst-content tt.download span.fa-pull-right:first-child,.wy-menu-vertical li.current>a span.fa-pull-right.toctree-expand,.wy-menu-vertical li.on a span.fa-pull-right.toctree-expand,.wy-menu-vertical li span.fa-pull-right.toctree-expand{
+.fa-pull-right.icon,.fa.fa-pull-right,.rst-content .code-block-caption .fa-pull-right.headerlink,.rst-content .eqno .fa-pull-right.headerlink,.rst-content .fa-pull-right.admonition-title,.rst-content code.download span.fa-pull-right:first-child,.rst-content dl dt .fa-pull-right.headerlink,.rst-content h1 .fa-pull-right.headerlink,.rst-content h2 .fa-pull-right.headerlink,.rst-content h3 .fa-pull-right.headerlink,.rst-content h4 .fa-pull-right.headerlink,.rst-content h5 .fa-pull-right.headerlink,.rst-content h6 .fa-pull-right.headerlink,.rst-content p .fa-pull-right.headerlink,.rst-content table>caption .fa-pull-right.headerlink,.rst-content tt.download span.fa-pull-right:first-child,.wy-menu-vertical li.current>a button.fa-pull-right.toctree-expand,.wy-menu-vertical li.on a button.fa-pull-right.toctree-expand,.wy-menu-vertical li button.fa-pull-right.toctree-expand{
     margin-left:.3em
 }
 .pull-right{
@@ -339,10 +340,10 @@ big,small{
 .pull-left{
     float:left
 }
-.fa.pull-left,.pull-left.icon,.rst-content .code-block-caption .pull-left.headerlink,.rst-content .pull-left.admonition-title,.rst-content code.download span.pull-left:first-child,.rst-content dl dt .pull-left.headerlink,.rst-content h1 .pull-left.headerlink,.rst-content h2 .pull-left.headerlink,.rst-content h3 .pull-left.headerlink,.rst-content h4 .pull-left.headerlink,.rst-content h5 .pull-left.headerlink,.rst-content h6 .pull-left.headerlink,.rst-content p.caption .pull-left.headerlink,.rst-content table>caption .pull-left.headerlink,.rst-content tt.download span.pull-left:first-child,.wy-menu-vertical li.current>a span.pull-left.toctree-expand,.wy-menu-vertical li.on a span.pull-left.toctree-expand,.wy-menu-vertical li span.pull-left.toctree-expand{
+.fa.pull-left,.pull-left.icon,.rst-content .code-block-caption .pull-left.headerlink,.rst-content .eqno .pull-left.headerlink,.rst-content .pull-left.admonition-title,.rst-content code.download span.pull-left:first-child,.rst-content dl dt .pull-left.headerlink,.rst-content h1 .pull-left.headerlink,.rst-content h2 .pull-left.headerlink,.rst-content h3 .pull-left.headerlink,.rst-content h4 .pull-left.headerlink,.rst-content h5 .pull-left.headerlink,.rst-content h6 .pull-left.headerlink,.rst-content p .pull-left.headerlink,.rst-content table>caption .pull-left.headerlink,.rst-content tt.download span.pull-left:first-child,.wy-menu-vertical li.current>a button.pull-left.toctree-expand,.wy-menu-vertical li.on a button.pull-left.toctree-expand,.wy-menu-vertical li button.pull-left.toctree-expand{
     margin-right:.3em
 }
-.fa.pull-right,.pull-right.icon,.rst-content .code-block-caption .pull-right.headerlink,.rst-content .pull-right.admonition-title,.rst-content code.download span.pull-right:first-child,.rst-content dl dt .pull-right.headerlink,.rst-content h1 .pull-right.headerlink,.rst-content h2 .pull-right.headerlink,.rst-content h3 .pull-right.headerlink,.rst-content h4 .pull-right.headerlink,.rst-content h5 .pull-right.headerlink,.rst-content h6 .pull-right.headerlink,.rst-content p.caption .pull-right.headerlink,.rst-content table>caption .pull-right.headerlink,.rst-content tt.download span.pull-right:first-child,.wy-menu-vertical li.current>a span.pull-right.toctree-expand,.wy-menu-vertical li.on a span.pull-right.toctree-expand,.wy-menu-vertical li span.pull-right.toctree-expand{
+.fa.pull-right,.pull-right.icon,.rst-content .code-block-caption .pull-right.headerlink,.rst-content .eqno .pull-right.headerlink,.rst-content .pull-right.admonition-title,.rst-content code.download span.pull-right:first-child,.rst-content dl dt .pull-right.headerlink,.rst-content h1 .pull-right.headerlink,.rst-content h2 .pull-right.headerlink,.rst-content h3 .pull-right.headerlink,.rst-content h4 .pull-right.headerlink,.rst-content h5 .pull-right.headerlink,.rst-content h6 .pull-right.headerlink,.rst-content p .pull-right.headerlink,.rst-content table>caption .pull-right.headerlink,.rst-content tt.download span.pull-right:first-child,.wy-menu-vertical li.current>a button.pull-right.toctree-expand,.wy-menu-vertical li.on a button.pull-right.toctree-expand,.wy-menu-vertical li button.pull-right.toctree-expand{
     margin-left:.3em
 }
 .fa-spin{
@@ -1308,7 +1309,7 @@ big,small{
 .fa-minus-square:before{
     content:""
 }
-.fa-minus-square-o:before,.wy-menu-vertical li.current>a span.toctree-expand:before,.wy-menu-vertical li.on a span.toctree-expand:before{
+.fa-minus-square-o:before,.wy-menu-vertical li.current>a button.toctree-expand:before,.wy-menu-vertical li.on a button.toctree-expand:before{
     content:""
 }
 .fa-level-up:before{
@@ -1530,7 +1531,7 @@ big,small{
 .fa-try:before,.fa-turkish-lira:before{
     content:""
 }
-.fa-plus-square-o:before,.wy-menu-vertical li span.toctree-expand:before{
+.fa-plus-square-o:before,.wy-menu-vertical li button.toctree-expand:before{
     content:""
 }
 .fa-space-shuttle:before{
@@ -2472,10 +2473,10 @@ big,small{
     overflow:visible;
     clip:auto
 }
-.fa,.icon,.rst-content .admonition-title,.rst-content .code-block-caption .headerlink,.rst-content code.download span:first-child,.rst-content dl dt .headerlink,.rst-content h1 .headerlink,.rst-content h2 .headerlink,.rst-content h3 .headerlink,.rst-content h4 .headerlink,.rst-content h5 .headerlink,.rst-content h6 .headerlink,.rst-content p.caption .headerlink,.rst-content table>caption .headerlink,.rst-content tt.download span:first-child,.wy-dropdown .caret,.wy-inline-validate.wy-inline-validate-danger .wy-input-context,.wy-inline-validate.wy-inline-validate-info .wy-input-context,.wy-inline-validate.wy-inline-validate-success .wy-input-context,.wy-inline-validate.wy-inline-validate-warning .wy-input-context,.wy-menu-vertical li.current>a span.toctree-expand,.wy-menu-vertical li.on a span.toctree-expand,.wy-menu-vertical li span.toctree-expand{
+.fa,.icon,.rst-content .admonition-title,.rst-content .code-block-caption .headerlink,.rst-content .eqno .headerlink,.rst-content code.download span:first-child,.rst-content dl dt .headerlink,.rst-content h1 .headerlink,.rst-content h2 .headerlink,.rst-content h3 .headerlink,.rst-content h4 .headerlink,.rst-content h5 .headerlink,.rst-content h6 .headerlink,.rst-content p.caption .headerlink,.rst-content p .headerlink,.rst-content table>caption .headerlink,.rst-content tt.download span:first-child,.wy-dropdown .caret,.wy-inline-validate.wy-inline-validate-danger .wy-input-context,.wy-inline-validate.wy-inline-validate-info .wy-input-context,.wy-inline-validate.wy-inline-validate-success .wy-input-context,.wy-inline-validate.wy-inline-validate-warning .wy-input-context,.wy-menu-vertical li.current>a button.toctree-expand,.wy-menu-vertical li.on a button.toctree-expand,.wy-menu-vertical li button.toctree-expand{
     font-family:inherit
 }
-.fa:before,.icon:before,.rst-content .admonition-title:before,.rst-content .code-block-caption .headerlink:before,.rst-content code.download span:first-child:before,.rst-content dl dt .headerlink:before,.rst-content h1 .headerlink:before,.rst-content h2 .headerlink:before,.rst-content h3 .headerlink:before,.rst-content h4 .headerlink:before,.rst-content h5 .headerlink:before,.rst-content h6 .headerlink:before,.rst-content p.caption .headerlink:before,.rst-content table>caption .headerlink:before,.rst-content tt.download span:first-child:before,.wy-dropdown .caret:before,.wy-inline-validate.wy-inline-validate-danger .wy-input-context:before,.wy-inline-validate.wy-inline-validate-info .wy-input-context:before,.wy-inline-validate.wy-inline-validate-success .wy-input-context:before,.wy-inline-validate.wy-inline-validate-warning .wy-input-context:before,.wy-menu-vertical li.current>a span.toctree-expand:before,.wy-menu-vertical li.on a span.toctree-expand:before,.wy-menu-vertical li span.toctree-expand:before{
+.fa:before,.icon:before,.rst-content .admonition-title:before,.rst-content .code-block-caption .headerlink:before,.rst-content .eqno .headerlink:before,.rst-content code.download span:first-child:before,.rst-content dl dt .headerlink:before,.rst-content h1 .headerlink:before,.rst-content h2 .headerlink:before,.rst-content h3 .headerlink:before,.rst-content h4 .headerlink:before,.rst-content h5 .headerlink:before,.rst-content h6 .headerlink:before,.rst-content p.caption .headerlink:before,.rst-content p .headerlink:before,.rst-content table>caption .headerlink:before,.rst-content tt.download span:first-child:before,.wy-dropdown .caret:before,.wy-inline-validate.wy-inline-validate-danger .wy-input-context:before,.wy-inline-validate.wy-inline-validate-info .wy-input-context:before,.wy-inline-validate.wy-inline-validate-success .wy-input-context:before,.wy-inline-validate.wy-inline-validate-warning .wy-input-context:before,.wy-menu-vertical li.current>a button.toctree-expand:before,.wy-menu-vertical li.on a button.toctree-expand:before,.wy-menu-vertical li button.toctree-expand:before{
     font-family:FontAwesome;
     display:inline-block;
     font-style:normal;
@@ -2483,29 +2484,29 @@ big,small{
     line-height:1;
     text-decoration:inherit
 }
-.rst-content .code-block-caption a .headerlink,.rst-content a .admonition-title,.rst-content code.download a span:first-child,.rst-content dl dt a .headerlink,.rst-content h1 a .headerlink,.rst-content h2 a .headerlink,.rst-content h3 a .headerlink,.rst-content h4 a .headerlink,.rst-content h5 a .headerlink,.rst-content h6 a .headerlink,.rst-content p.caption a .headerlink,.rst-content table>caption a .headerlink,.rst-content tt.download a span:first-child,.wy-menu-vertical li.current>a span.toctree-expand,.wy-menu-vertical li.on a span.toctree-expand,.wy-menu-vertical li a span.toctree-expand,a .fa,a .icon,a .rst-content .admonition-title,a .rst-content .code-block-caption .headerlink,a .rst-content code.download span:first-child,a .rst-content dl dt .headerlink,a .rst-content h1 .headerlink,a .rst-content h2 .headerlink,a .rst-content h3 .headerlink,a .rst-content h4 .headerlink,a .rst-content h5 .headerlink,a .rst-content h6 .headerlink,a .rst-content p.caption .headerlink,a .rst-content table>caption .headerlink,a .rst-content tt.download span:first-child,a .wy-menu-vertical li span.toctree-expand{
+.rst-content .code-block-caption a .headerlink,.rst-content .eqno a .headerlink,.rst-content a .admonition-title,.rst-content code.download a span:first-child,.rst-content dl dt a .headerlink,.rst-content h1 a .headerlink,.rst-content h2 a .headerlink,.rst-content h3 a .headerlink,.rst-content h4 a .headerlink,.rst-content h5 a .headerlink,.rst-content h6 a .headerlink,.rst-content p.caption a .headerlink,.rst-content p a .headerlink,.rst-content table>caption a .headerlink,.rst-content tt.download a span:first-child,.wy-menu-vertical li.current>a button.toctree-expand,.wy-menu-vertical li.on a button.toctree-expand,.wy-menu-vertical li a button.toctree-expand,a .fa,a .icon,a .rst-content .admonition-title,a .rst-content .code-block-caption .headerlink,a .rst-content .eqno .headerlink,a .rst-content code.download span:first-child,a .rst-content dl dt .headerlink,a .rst-content h1 .headerlink,a .rst-content h2 .headerlink,a .rst-content h3 .headerlink,a .rst-content h4 .headerlink,a .rst-content h5 .headerlink,a .rst-content h6 .headerlink,a .rst-content p.caption .headerlink,a .rst-content p .headerlink,a .rst-content table>caption .headerlink,a .rst-content tt.download span:first-child,a .wy-menu-vertical li button.toctree-expand{
     display:inline-block;
     text-decoration:inherit
 }
-.btn .fa,.btn .icon,.btn .rst-content .admonition-title,.btn .rst-content .code-block-caption .headerlink,.btn .rst-content code.download span:first-child,.btn .rst-content dl dt .headerlink,.btn .rst-content h1 .headerlink,.btn .rst-content h2 .headerlink,.btn .rst-content h3 .headerlink,.btn .rst-content h4 .headerlink,.btn .rst-content h5 .headerlink,.btn .rst-content h6 .headerlink,.btn .rst-content p.caption .headerlink,.btn .rst-content table>caption .headerlink,.btn .rst-content tt.download span:first-child,.btn .wy-menu-vertical li.current>a span.toctree-expand,.btn .wy-menu-vertical li.on a span.toctree-expand,.btn .wy-menu-vertical li span.toctree-expand,.nav .fa,.nav .icon,.nav .rst-content .admonition-title,.nav .rst-content .code-block-caption .headerlink,.nav .rst-content code.download span:first-child,.nav .rst-content dl dt .headerlink,.nav .rst-content h1 .headerlink,.nav .rst-content h2 .headerlink,.nav .rst-content h3 .headerlink,.nav .rst-content h4 .headerlink,.nav .rst-content h5 .headerlink,.nav .rst-content h6 .headerlink,.nav .rst-content p.caption .headerlink,.nav .rst-content table>caption .headerlink,.nav .rst-content tt.download span:first-child,.nav .wy-menu-vertical li.current>a span.toctree-expand,.nav .wy-menu-vertical li.on a span.toctree-expand,.nav .wy-menu-vertical li span.toctree-expand,.rst-content .btn .admonition-title,.rst-content .code-block-caption .btn .headerlink,.rst-content .code-block-caption .nav .headerlink,.rst-content .nav .admonition-title,.rst-content code.download .btn span:first-child,.rst-content code.download .nav span:first-child,.rst-content dl dt .btn .headerlink,.rst-content dl dt .nav .headerlink,.rst-content h1 .btn .headerlink,.rst-content h1 .nav .headerlink,.rst-content h2 .btn .headerlink,.rst-content h2 .nav .headerlink,.rst-content h3 .btn .headerlink,.rst-content h3 .nav .headerlink,.rst-content h4 .btn .headerlink,.rst-content h4 .nav .headerlink,.rst-content h5 .btn .headerlink,.rst-content h5 .nav .headerlink,.rst-content h6 .btn .headerlink,.rst-content h6 .nav .headerlink,.rst-content p.caption .btn .headerlink,.rst-content p.caption .nav .headerlink,.rst-content table>caption .btn .headerlink,.rst-content table>caption .nav .headerlink,.rst-content tt.download .btn span:first-child,.rst-content tt.download .nav span:first-child,.wy-menu-vertical li .btn span.toctree-expand,.wy-menu-vertical li.current>a .btn span.toctree-expand,.wy-menu-vertical li.current>a .nav span.toctree-expand,.wy-menu-vertical li .nav span.toctree-expand,.wy-menu-vertical li.on a .btn span.toctree-expand,.wy-menu-vertical li.on a .nav span.toctree-expand{
+.btn .fa,.btn .icon,.btn .rst-content .admonition-title,.btn .rst-content .code-block-caption .headerlink,.btn .rst-content .eqno .headerlink,.btn .rst-content code.download span:first-child,.btn .rst-content dl dt .headerlink,.btn .rst-content h1 .headerlink,.btn .rst-content h2 .headerlink,.btn .rst-content h3 .headerlink,.btn .rst-content h4 .headerlink,.btn .rst-content h5 .headerlink,.btn .rst-content h6 .headerlink,.btn .rst-content p .headerlink,.btn .rst-content table>caption .headerlink,.btn .rst-content tt.download span:first-child,.btn .wy-menu-vertical li.current>a button.toctree-expand,.btn .wy-menu-vertical li.on a button.toctree-expand,.btn .wy-menu-vertical li button.toctree-expand,.nav .fa,.nav .icon,.nav .rst-content .admonition-title,.nav .rst-content .code-block-caption .headerlink,.nav .rst-content .eqno .headerlink,.nav .rst-content code.download span:first-child,.nav .rst-content dl dt .headerlink,.nav .rst-content h1 .headerlink,.nav .rst-content h2 .headerlink,.nav .rst-content h3 .headerlink,.nav .rst-content h4 .headerlink,.nav .rst-content h5 .headerlink,.nav .rst-content h6 .headerlink,.nav .rst-content p .headerlink,.nav .rst-content table>caption .headerlink,.nav .rst-content tt.download span:first-child,.nav .wy-menu-vertical li.current>a button.toctree-expand,.nav .wy-menu-vertical li.on a button.toctree-expand,.nav .wy-menu-vertical li button.toctree-expand,.rst-content .btn .admonition-title,.rst-content .code-block-caption .btn .headerlink,.rst-content .code-block-caption .nav .headerlink,.rst-content .eqno .btn .headerlink,.rst-content .eqno .nav .headerlink,.rst-content .nav .admonition-title,.rst-content code.download .btn span:first-child,.rst-content code.download .nav span:first-child,.rst-content dl dt .btn .headerlink,.rst-content dl dt .nav .headerlink,.rst-content h1 .btn .headerlink,.rst-content h1 .nav .headerlink,.rst-content h2 .btn .headerlink,.rst-content h2 .nav .headerlink,.rst-content h3 .btn .headerlink,.rst-content h3 .nav .headerlink,.rst-content h4 .btn .headerlink,.rst-content h4 .nav .headerlink,.rst-content h5 .btn .headerlink,.rst-content h5 .nav .headerlink,.rst-content h6 .btn .headerlink,.rst-content h6 .nav .headerlink,.rst-content p .btn .headerlink,.rst-content p .nav .headerlink,.rst-content table>caption .btn .headerlink,.rst-content table>caption .nav .headerlink,.rst-content tt.download .btn span:first-child,.rst-content tt.download .nav span:first-child,.wy-menu-vertical li .btn button.toctree-expand,.wy-menu-vertical li.current>a .btn button.toctree-expand,.wy-menu-vertical li.current>a .nav button.toctree-expand,.wy-menu-vertical li .nav button.toctree-expand,.wy-menu-vertical li.on a .btn button.toctree-expand,.wy-menu-vertical li.on a .nav button.toctree-expand{
     display:inline
 }
-.btn .fa-large.icon,.btn .fa.fa-large,.btn .rst-content .code-block-caption .fa-large.headerlink,.btn .rst-content .fa-large.admonition-title,.btn .rst-content code.download span.fa-large:first-child,.btn .rst-content dl dt .fa-large.headerlink,.btn .rst-content h1 .fa-large.headerlink,.btn .rst-content h2 .fa-large.headerlink,.btn .rst-content h3 .fa-large.headerlink,.btn .rst-content h4 .fa-large.headerlink,.btn .rst-content h5 .fa-large.headerlink,.btn .rst-content h6 .fa-large.headerlink,.btn .rst-content p.caption .fa-large.headerlink,.btn .rst-content table>caption .fa-large.headerlink,.btn .rst-content tt.download span.fa-large:first-child,.btn .wy-menu-vertical li span.fa-large.toctree-expand,.nav .fa-large.icon,.nav .fa.fa-large,.nav .rst-content .code-block-caption .fa-large.headerlink,.nav .rst-content .fa-large.admonition-title,.nav .rst-content code.download span.fa-large:first-child,.nav .rst-content dl dt .fa-large.headerlink,.nav .rst-content h1 .fa-large.headerlink,.nav .rst-content h2 .fa-large.headerlink,.nav .rst-content h3 .fa-large.headerlink,.nav .rst-content h4 .fa-large.headerlink,.nav .rst-content h5 .fa-large.headerlink,.nav .rst-content h6 .fa-large.headerlink,.nav .rst-content p.caption .fa-large.headerlink,.nav .rst-content table>caption .fa-large.headerlink,.nav .rst-content tt.download span.fa-large:first-child,.nav .wy-menu-vertical li span.fa-large.toctree-expand,.rst-content .btn .fa-large.admonition-title,.rst-content .code-block-caption .btn .fa-large.headerlink,.rst-content .code-block-caption .nav .fa-large.headerlink,.rst-content .nav .fa-large.admonition-title,.rst-content code.download .btn span.fa-large:first-child,.rst-content code.download .nav span.fa-large:first-child,.rst-content dl dt .btn .fa-large.headerlink,.rst-content dl dt .nav .fa-large.headerlink,.rst-content h1 .btn .fa-large.headerlink,.rst-content h1 .nav .fa-large.headerlink,.rst-content h2 .btn .fa-large.headerlink,.rst-content h2 .nav .fa-large.headerlink,.rst-content h3 .btn .fa-large.headerlink,.rst-content h3 .nav .fa-large.headerlink,.rst-content h4 .btn .fa-large.headerlink,.rst-content h4 .nav .fa-large.headerlink,.rst-content h5 .btn .fa-large.headerlink,.rst-content h5 .nav .fa-large.headerlink,.rst-content h6 .btn .fa-large.headerlink,.rst-content h6 .nav .fa-large.headerlink,.rst-content p.caption .btn .fa-large.headerlink,.rst-content p.caption .nav .fa-large.headerlink,.rst-content table>caption .btn .fa-large.headerlink,.rst-content table>caption .nav .fa-large.headerlink,.rst-content tt.download .btn span.fa-large:first-child,.rst-content tt.download .nav span.fa-large:first-child,.wy-menu-vertical li .btn span.fa-large.toctree-expand,.wy-menu-vertical li .nav span.fa-large.toctree-expand{
+.btn .fa-large.icon,.btn .fa.fa-large,.btn .rst-content .code-block-caption .fa-large.headerlink,.btn .rst-content .eqno .fa-large.headerlink,.btn .rst-content .fa-large.admonition-title,.btn .rst-content code.download span.fa-large:first-child,.btn .rst-content dl dt .fa-large.headerlink,.btn .rst-content h1 .fa-large.headerlink,.btn .rst-content h2 .fa-large.headerlink,.btn .rst-content h3 .fa-large.headerlink,.btn .rst-content h4 .fa-large.headerlink,.btn .rst-content h5 .fa-large.headerlink,.btn .rst-content h6 .fa-large.headerlink,.btn .rst-content p .fa-large.headerlink,.btn .rst-content table>caption .fa-large.headerlink,.btn .rst-content tt.download span.fa-large:first-child,.btn .wy-menu-vertical li button.fa-large.toctree-expand,.nav .fa-large.icon,.nav .fa.fa-large,.nav .rst-content .code-block-caption .fa-large.headerlink,.nav .rst-content .eqno .fa-large.headerlink,.nav .rst-content .fa-large.admonition-title,.nav .rst-content code.download span.fa-large:first-child,.nav .rst-content dl dt .fa-large.headerlink,.nav .rst-content h1 .fa-large.headerlink,.nav .rst-content h2 .fa-large.headerlink,.nav .rst-content h3 .fa-large.headerlink,.nav .rst-content h4 .fa-large.headerlink,.nav .rst-content h5 .fa-large.headerlink,.nav .rst-content h6 .fa-large.headerlink,.nav .rst-content p .fa-large.headerlink,.nav .rst-content table>caption .fa-large.headerlink,.nav .rst-content tt.download span.fa-large:first-child,.nav .wy-menu-vertical li button.fa-large.toctree-expand,.rst-content .btn .fa-large.admonition-title,.rst-content .code-block-caption .btn .fa-large.headerlink,.rst-content .code-block-caption .nav .fa-large.headerlink,.rst-content .eqno .btn .fa-large.headerlink,.rst-content .eqno .nav .fa-large.headerlink,.rst-content .nav .fa-large.admonition-title,.rst-content code.download .btn span.fa-large:first-child,.rst-content code.download .nav span.fa-large:first-child,.rst-content dl dt .btn .fa-large.headerlink,.rst-content dl dt .nav .fa-large.headerlink,.rst-content h1 .btn .fa-large.headerlink,.rst-content h1 .nav .fa-large.headerlink,.rst-content h2 .btn .fa-large.headerlink,.rst-content h2 .nav .fa-large.headerlink,.rst-content h3 .btn .fa-large.headerlink,.rst-content h3 .nav .fa-large.headerlink,.rst-content h4 .btn .fa-large.headerlink,.rst-content h4 .nav .fa-large.headerlink,.rst-content h5 .btn .fa-large.headerlink,.rst-content h5 .nav .fa-large.headerlink,.rst-content h6 .btn .fa-large.headerlink,.rst-content h6 .nav .fa-large.headerlink,.rst-content p .btn .fa-large.headerlink,.rst-content p .nav .fa-large.headerlink,.rst-content table>caption .btn .fa-large.headerlink,.rst-content table>caption .nav .fa-large.headerlink,.rst-content tt.download .btn span.fa-large:first-child,.rst-content tt.download .nav span.fa-large:first-child,.wy-menu-vertical li .btn button.fa-large.toctree-expand,.wy-menu-vertical li .nav button.fa-large.toctree-expand{
     line-height:.9em
 }
-.btn .fa-spin.icon,.btn .fa.fa-spin,.btn .rst-content .code-block-caption .fa-spin.headerlink,.btn .rst-content .fa-spin.admonition-title,.btn .rst-content code.download span.fa-spin:first-child,.btn .rst-content dl dt .fa-spin.headerlink,.btn .rst-content h1 .fa-spin.headerlink,.btn .rst-content h2 .fa-spin.headerlink,.btn .rst-content h3 .fa-spin.headerlink,.btn .rst-content h4 .fa-spin.headerlink,.btn .rst-content h5 .fa-spin.headerlink,.btn .rst-content h6 .fa-spin.headerlink,.btn .rst-content p.caption .fa-spin.headerlink,.btn .rst-content table>caption .fa-spin.headerlink,.btn .rst-content tt.download span.fa-spin:first-child,.btn .wy-menu-vertical li span.fa-spin.toctree-expand,.nav .fa-spin.icon,.nav .fa.fa-spin,.nav .rst-content .code-block-caption .fa-spin.headerlink,.nav .rst-content .fa-spin.admonition-title,.nav .rst-content code.download span.fa-spin:first-child,.nav .rst-content dl dt .fa-spin.headerlink,.nav .rst-content h1 .fa-spin.headerlink,.nav .rst-content h2 .fa-spin.headerlink,.nav .rst-content h3 .fa-spin.headerlink,.nav .rst-content h4 .fa-spin.headerlink,.nav .rst-content h5 .fa-spin.headerlink,.nav .rst-content h6 .fa-spin.headerlink,.nav .rst-content p.caption .fa-spin.headerlink,.nav .rst-content table>caption .fa-spin.headerlink,.nav .rst-content tt.download span.fa-spin:first-child,.nav .wy-menu-vertical li span.fa-spin.toctree-expand,.rst-content .btn .fa-spin.admonition-title,.rst-content .code-block-caption .btn .fa-spin.headerlink,.rst-content .code-block-caption .nav .fa-spin.headerlink,.rst-content .nav .fa-spin.admonition-title,.rst-content code.download .btn span.fa-spin:first-child,.rst-content code.download .nav span.fa-spin:first-child,.rst-content dl dt .btn .fa-spin.headerlink,.rst-content dl dt .nav .fa-spin.headerlink,.rst-content h1 .btn .fa-spin.headerlink,.rst-content h1 .nav .fa-spin.headerlink,.rst-content h2 .btn .fa-spin.headerlink,.rst-content h2 .nav .fa-spin.headerlink,.rst-content h3 .btn .fa-spin.headerlink,.rst-content h3 .nav .fa-spin.headerlink,.rst-content h4 .btn .fa-spin.headerlink,.rst-content h4 .nav .fa-spin.headerlink,.rst-content h5 .btn .fa-spin.headerlink,.rst-content h5 .nav .fa-spin.headerlink,.rst-content h6 .btn .fa-spin.headerlink,.rst-content h6 .nav .fa-spin.headerlink,.rst-content p.caption .btn .fa-spin.headerlink,.rst-content p.caption .nav .fa-spin.headerlink,.rst-content table>caption .btn .fa-spin.headerlink,.rst-content table>caption .nav .fa-spin.headerlink,.rst-content tt.download .btn span.fa-spin:first-child,.rst-content tt.download .nav span.fa-spin:first-child,.wy-menu-vertical li .btn span.fa-spin.toctree-expand,.wy-menu-vertical li .nav span.fa-spin.toctree-expand{
+.btn .fa-spin.icon,.btn .fa.fa-spin,.btn .rst-content .code-block-caption .fa-spin.headerlink,.btn .rst-content .eqno .fa-spin.headerlink,.btn .rst-content .fa-spin.admonition-title,.btn .rst-content code.download span.fa-spin:first-child,.btn .rst-content dl dt .fa-spin.headerlink,.btn .rst-content h1 .fa-spin.headerlink,.btn .rst-content h2 .fa-spin.headerlink,.btn .rst-content h3 .fa-spin.headerlink,.btn .rst-content h4 .fa-spin.headerlink,.btn .rst-content h5 .fa-spin.headerlink,.btn .rst-content h6 .fa-spin.headerlink,.btn .rst-content p .fa-spin.headerlink,.btn .rst-content table>caption .fa-spin.headerlink,.btn .rst-content tt.download span.fa-spin:first-child,.btn .wy-menu-vertical li button.fa-spin.toctree-expand,.nav .fa-spin.icon,.nav .fa.fa-spin,.nav .rst-content .code-block-caption .fa-spin.headerlink,.nav .rst-content .eqno .fa-spin.headerlink,.nav .rst-content .fa-spin.admonition-title,.nav .rst-content code.download span.fa-spin:first-child,.nav .rst-content dl dt .fa-spin.headerlink,.nav .rst-content h1 .fa-spin.headerlink,.nav .rst-content h2 .fa-spin.headerlink,.nav .rst-content h3 .fa-spin.headerlink,.nav .rst-content h4 .fa-spin.headerlink,.nav .rst-content h5 .fa-spin.headerlink,.nav .rst-content h6 .fa-spin.headerlink,.nav .rst-content p .fa-spin.headerlink,.nav .rst-content table>caption .fa-spin.headerlink,.nav .rst-content tt.download span.fa-spin:first-child,.nav .wy-menu-vertical li button.fa-spin.toctree-expand,.rst-content .btn .fa-spin.admonition-title,.rst-content .code-block-caption .btn .fa-spin.headerlink,.rst-content .code-block-caption .nav .fa-spin.headerlink,.rst-content .eqno .btn .fa-spin.headerlink,.rst-content .eqno .nav .fa-spin.headerlink,.rst-content .nav .fa-spin.admonition-title,.rst-content code.download .btn span.fa-spin:first-child,.rst-content code.download .nav span.fa-spin:first-child,.rst-content dl dt .btn .fa-spin.headerlink,.rst-content dl dt .nav .fa-spin.headerlink,.rst-content h1 .btn .fa-spin.headerlink,.rst-content h1 .nav .fa-spin.headerlink,.rst-content h2 .btn .fa-spin.headerlink,.rst-content h2 .nav .fa-spin.headerlink,.rst-content h3 .btn .fa-spin.headerlink,.rst-content h3 .nav .fa-spin.headerlink,.rst-content h4 .btn .fa-spin.headerlink,.rst-content h4 .nav .fa-spin.headerlink,.rst-content h5 .btn .fa-spin.headerlink,.rst-content h5 .nav .fa-spin.headerlink,.rst-content h6 .btn .fa-spin.headerlink,.rst-content h6 .nav .fa-spin.headerlink,.rst-content p .btn .fa-spin.headerlink,.rst-content p .nav .fa-spin.headerlink,.rst-content table>caption .btn .fa-spin.headerlink,.rst-content table>caption .nav .fa-spin.headerlink,.rst-content tt.download .btn span.fa-spin:first-child,.rst-content tt.download .nav span.fa-spin:first-child,.wy-menu-vertical li .btn button.fa-spin.toctree-expand,.wy-menu-vertical li .nav button.fa-spin.toctree-expand{
     display:inline-block
 }
-.btn.fa:before,.btn.icon:before,.rst-content .btn.admonition-title:before,.rst-content .code-block-caption .btn.headerlink:before,.rst-content code.download span.btn:first-child:before,.rst-content dl dt .btn.headerlink:before,.rst-content h1 .btn.headerlink:before,.rst-content h2 .btn.headerlink:before,.rst-content h3 .btn.headerlink:before,.rst-content h4 .btn.headerlink:before,.rst-content h5 .btn.headerlink:before,.rst-content h6 .btn.headerlink:before,.rst-content p.caption .btn.headerlink:before,.rst-content table>caption .btn.headerlink:before,.rst-content tt.download span.btn:first-child:before,.wy-menu-vertical li span.btn.toctree-expand:before{
+.btn.fa:before,.btn.icon:before,.rst-content .btn.admonition-title:before,.rst-content .code-block-caption .btn.headerlink:before,.rst-content .eqno .btn.headerlink:before,.rst-content code.download span.btn:first-child:before,.rst-content dl dt .btn.headerlink:before,.rst-content h1 .btn.headerlink:before,.rst-content h2 .btn.headerlink:before,.rst-content h3 .btn.headerlink:before,.rst-content h4 .btn.headerlink:before,.rst-content h5 .btn.headerlink:before,.rst-content h6 .btn.headerlink:before,.rst-content p .btn.headerlink:before,.rst-content table>caption .btn.headerlink:before,.rst-content tt.download span.btn:first-child:before,.wy-menu-vertical li button.btn.toctree-expand:before{
     opacity:.5;
     -webkit-transition:opacity .05s ease-in;
     -moz-transition:opacity .05s ease-in;
     transition:opacity .05s ease-in
 }
-.btn.fa:hover:before,.btn.icon:hover:before,.rst-content .btn.admonition-title:hover:before,.rst-content .code-block-caption .btn.headerlink:hover:before,.rst-content code.download span.btn:first-child:hover:before,.rst-content dl dt .btn.headerlink:hover:before,.rst-content h1 .btn.headerlink:hover:before,.rst-content h2 .btn.headerlink:hover:before,.rst-content h3 .btn.headerlink:hover:before,.rst-content h4 .btn.headerlink:hover:before,.rst-content h5 .btn.headerlink:hover:before,.rst-content h6 .btn.headerlink:hover:before,.rst-content p.caption .btn.headerlink:hover:before,.rst-content table>caption .btn.headerlink:hover:before,.rst-content tt.download span.btn:first-child:hover:before,.wy-menu-vertical li span.btn.toctree-expand:hover:before{
+.btn.fa:hover:before,.btn.icon:hover:before,.rst-content .btn.admonition-title:hover:before,.rst-content .code-block-caption .btn.headerlink:hover:before,.rst-content .eqno .btn.headerlink:hover:before,.rst-content code.download span.btn:first-child:hover:before,.rst-content dl dt .btn.headerlink:hover:before,.rst-content h1 .btn.headerlink:hover:before,.rst-content h2 .btn.headerlink:hover:before,.rst-content h3 .btn.headerlink:hover:before,.rst-content h4 .btn.headerlink:hover:before,.rst-content h5 .btn.headerlink:hover:before,.rst-content h6 .btn.headerlink:hover:before,.rst-content p .btn.headerlink:hover:before,.rst-content table>caption .btn.headerlink:hover:before,.rst-content tt.download span.btn:first-child:hover:before,.wy-menu-vertical li button.btn.toctree-expand:hover:before{
     opacity:1
 }
-.btn-mini .fa:before,.btn-mini .icon:before,.btn-mini .rst-content .admonition-title:before,.btn-mini .rst-content .code-block-caption .headerlink:before,.btn-mini .rst-content code.download span:first-child:before,.btn-mini .rst-content dl dt .headerlink:before,.btn-mini .rst-content h1 .headerlink:before,.btn-mini .rst-content h2 .headerlink:before,.btn-mini .rst-content h3 .headerlink:before,.btn-mini .rst-content h4 .headerlink:before,.btn-mini .rst-content h5 .headerlink:before,.btn-mini .rst-content h6 .headerlink:before,.btn-mini .rst-content p.caption .headerlink:before,.btn-mini .rst-content table>caption .headerlink:before,.btn-mini .rst-content tt.download span:first-child:before,.btn-mini .wy-menu-vertical li span.toctree-expand:before,.rst-content .btn-mini .admonition-title:before,.rst-content .code-block-caption .btn-mini .headerlink:before,.rst-content code.download .btn-mini span:first-child:before,.rst-content dl dt .btn-mini .headerlink:before,.rst-content h1 .btn-mini .headerlink:before,.rst-content h2 .btn-mini .headerlink:before,.rst-content h3 .btn-mini .headerlink:before,.rst-content h4 .btn-mini .headerlink:before,.rst-content h5 .btn-mini .headerlink:before,.rst-content h6 .btn-mini .headerlink:before,.rst-content p.caption .btn-mini .headerlink:before,.rst-content table>caption .btn-mini .headerlink:before,.rst-content tt.download .btn-mini span:first-child:before,.wy-menu-vertical li .btn-mini span.toctree-expand:before{
+.btn-mini .fa:before,.btn-mini .icon:before,.btn-mini .rst-content .admonition-title:before,.btn-mini .rst-content .code-block-caption .headerlink:before,.btn-mini .rst-content .eqno .headerlink:before,.btn-mini .rst-content code.download span:first-child:before,.btn-mini .rst-content dl dt .headerlink:before,.btn-mini .rst-content h1 .headerlink:before,.btn-mini .rst-content h2 .headerlink:before,.btn-mini .rst-content h3 .headerlink:before,.btn-mini .rst-content h4 .headerlink:before,.btn-mini .rst-content h5 .headerlink:before,.btn-mini .rst-content h6 .headerlink:before,.btn-mini .rst-content p .headerlink:before,.btn-mini .rst-content table>caption .headerlink:before,.btn-mini .rst-content tt.download span:first-child:before,.btn-mini .wy-menu-vertical li button.toctree-expand:before,.rst-content .btn-mini .admonition-title:before,.rst-content .code-block-caption .btn-mini .headerlink:before,.rst-content .eqno .btn-mini .headerlink:before,.rst-content code.download .btn-mini span:first-child:before,.rst-content dl dt .btn-mini .headerlink:before,.rst-content h1 .btn-mini .headerlink:before,.rst-content h2 .btn-mini .headerlink:before,.rst-content h3 .btn-mini .headerlink:before,.rst-content h4 .btn-mini .headerlink:before,.rst-content h5 .btn-mini .headerlink:before,.rst-content h6 .btn-mini .headerlink:before,.rst-content p .btn-mini .headerlink:before,.rst-content table>caption .btn-mini .headerlink:before,.rst-content tt.download .btn-mini span:first-child:before,.wy-menu-vertical li .btn-mini button.toctree-expand:before{
     font-size:14px;
     vertical-align:-15%
 }
@@ -3309,11 +3310,10 @@ input[type=checkbox][disabled],input[type=radio][disabled]{
     text-align:center
 }
 .rst-content table.docutils td,.rst-content table.docutils th,.rst-content table.field-list td,.rst-content table.field-list th,.wy-table td,.wy-table th{
-    /* font-size:90%;
-     */
+    font-size:90%;
     margin:0;
     overflow:visible;
-    padding:8px 16px;
+    padding:8px 16px
 }
 .rst-content table.docutils td:first-child,.rst-content table.docutils th:first-child,.rst-content table.field-list td:first-child,.rst-content table.field-list th:first-child,.wy-table td:first-child,.wy-table th:first-child{
     border-left-width:0
@@ -3325,9 +3325,8 @@ input[type=checkbox][disabled],input[type=radio][disabled]{
     white-space:nowrap
 }
 .rst-content table.docutils thead th,.rst-content table.field-list thead th,.wy-table thead th{
-    /* font-weight:700;
-     */
-    border-bottom:2px solid #e1e4e5;
+    font-weight:700;
+    border-bottom:2px solid #e1e4e5
 }
 .rst-content table.docutils td,.rst-content table.field-list td,.wy-table td{
     background-color:transparent;
@@ -3392,7 +3391,7 @@ input[type=checkbox][disabled],input[type=radio][disabled]{
     margin-bottom:0!important
 }
 .wy-table-responsive table td,.wy-table-responsive table th{
-    white-space:nowrap
+    white-space:auto
 }
 a{
     color:#2980b9;
@@ -3469,7 +3468,7 @@ a.wy-text-danger:hover{
 a.wy-text-neutral:hover{
     color:#595959!important
 }
-.rst-content .toctree-wrapper p.caption,h1,h2,h3,h4,h5,h6,legend{
+.rst-content .toctree-wrapper>p.caption,h1,h2,h3,h4,h5,h6,legend{
     margin-top:0;
     font-weight:700;
     font-family:Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif
@@ -3482,8 +3481,8 @@ p{
 h1{
     font-size:175%
 }
-.rst-content .toctree-wrapper p.caption,h2{
-    /* font-size:150% */
+.rst-content .toctree-wrapper>p.caption,h2{
+    font-size:150%
 }
 h3{
     font-size:125%
@@ -3519,40 +3518,40 @@ hr{
 .rst-content tt.code-large,code.code-large{
     font-size:90%
 }
-.rst-content .section ul,.rst-content .toctree-wrapper ul,.wy-plain-list-disc,article ul{
+.rst-content .section ul,.rst-content .toctree-wrapper ul,.rst-content section ul,.wy-plain-list-disc,article ul{
     list-style:disc;
     line-height:24px;
     margin-bottom:24px
 }
-.rst-content .section ul li,.rst-content .toctree-wrapper ul li,.wy-plain-list-disc li,article ul li{
+.rst-content .section ul li,.rst-content .toctree-wrapper ul li,.rst-content section ul li,.wy-plain-list-disc li,article ul li{
     list-style:disc;
     margin-left:24px
 }
-.rst-content .section ul li p:last-child,.rst-content .section ul li ul,.rst-content .toctree-wrapper ul li p:last-child,.rst-content .toctree-wrapper ul li ul,.wy-plain-list-disc li p:last-child,.wy-plain-list-disc li ul,article ul li p:last-child,article ul li ul{
+.rst-content .section ul li p:last-child,.rst-content .section ul li ul,.rst-content .toctree-wrapper ul li p:last-child,.rst-content .toctree-wrapper ul li ul,.rst-content section ul li p:last-child,.rst-content section ul li ul,.wy-plain-list-disc li p:last-child,.wy-plain-list-disc li ul,article ul li p:last-child,article ul li ul{
     margin-bottom:0
 }
-.rst-content .section ul li li,.rst-content .toctree-wrapper ul li li,.wy-plain-list-disc li li,article ul li li{
+.rst-content .section ul li li,.rst-content .toctree-wrapper ul li li,.rst-content section ul li li,.wy-plain-list-disc li li,article ul li li{
     list-style:circle
 }
-.rst-content .section ul li li li,.rst-content .toctree-wrapper ul li li li,.wy-plain-list-disc li li li,article ul li li li{
+.rst-content .section ul li li li,.rst-content .toctree-wrapper ul li li li,.rst-content section ul li li li,.wy-plain-list-disc li li li,article ul li li li{
     list-style:square
 }
-.rst-content .section ul li ol li,.rst-content .toctree-wrapper ul li ol li,.wy-plain-list-disc li ol li,article ul li ol li{
+.rst-content .section ul li ol li,.rst-content .toctree-wrapper ul li ol li,.rst-content section ul li ol li,.wy-plain-list-disc li ol li,article ul li ol li{
     list-style:decimal
 }
-.rst-content .section ol,.rst-content ol.arabic,.wy-plain-list-decimal,article ol{
+.rst-content .section ol,.rst-content .section ol.arabic,.rst-content .toctree-wrapper ol,.rst-content .toctree-wrapper ol.arabic,.rst-content section ol,.rst-content section ol.arabic,.wy-plain-list-decimal,article ol{
     list-style:decimal;
     line-height:24px;
     margin-bottom:24px
 }
-.rst-content .section ol li,.rst-content ol.arabic li,.wy-plain-list-decimal li,article ol li{
+.rst-content .section ol.arabic li,.rst-content .section ol li,.rst-content .toctree-wrapper ol.arabic li,.rst-content .toctree-wrapper ol li,.rst-content section ol.arabic li,.rst-content section ol li,.wy-plain-list-decimal li,article ol li{
     list-style:decimal;
     margin-left:24px
 }
-.rst-content .section ol li p:last-child,.rst-content .section ol li ul,.rst-content ol.arabic li p:last-child,.rst-content ol.arabic li ul,.wy-plain-list-decimal li p:last-child,.wy-plain-list-decimal li ul,article ol li p:last-child,article ol li ul{
+.rst-content .section ol.arabic li ul,.rst-content .section ol li p:last-child,.rst-content .section ol li ul,.rst-content .toctree-wrapper ol.arabic li ul,.rst-content .toctree-wrapper ol li p:last-child,.rst-content .toctree-wrapper ol li ul,.rst-content section ol.arabic li ul,.rst-content section ol li p:last-child,.rst-content section ol li ul,.wy-plain-list-decimal li p:last-child,.wy-plain-list-decimal li ul,article ol li p:last-child,article ol li ul{
     margin-bottom:0
 }
-.rst-content .section ol li ul li,.rst-content ol.arabic li ul li,.wy-plain-list-decimal li ul li,article ol li ul li{
+.rst-content .section ol.arabic li ul li,.rst-content .section ol li ul li,.rst-content .toctree-wrapper ol.arabic li ul li,.rst-content .toctree-wrapper ol li ul li,.rst-content section ol.arabic li ul li,.rst-content section ol li ul li,.wy-plain-list-decimal li ul li,article ol li ul li{
     list-style:disc
 }
 .wy-breadcrumbs{
@@ -3641,19 +3640,18 @@ html{
     padding:0 16px
 }
 .wy-menu-vertical{
-    width:300px;
-    margin-bottom: 50px;
+    width:300px
+    margin-bottom: 20px;
 }
 .wy-menu-vertical header,.wy-menu-vertical p.caption{
     color:#E9102B;
     height:32px;
-    display:inline-block;
     line-height:32px;
-    padding: 0 .9em.618em;
+    padding:0 1.618em;
     margin:12px 0 0;
     display:block;
-    /* font-weight:700;
-     */
+    font-weight:700;
+    text-transform:uppercase;
     font-size:100%;
     white-space:nowrap;
 }
@@ -3684,13 +3682,15 @@ html{
     padding-left:0;
     padding-right:0
 }
-.wy-menu-vertical li span.toctree-expand{
+.wy-menu-vertical li button.toctree-expand{
     display:block;
     float:left;
     margin-left:-1.2em;
-    font-size:.8em;
-    line-height:1.6em;
-    color:#4d4d4d
+    line-height:18px;
+    color:#4d4d4d;
+    border:none;
+    background:none;
+    padding:0
 }
 .wy-menu-vertical li.current>a,.wy-menu-vertical li.on a{
     color:#404040;
@@ -3703,63 +3703,101 @@ html{
 .wy-menu-vertical li.current>a:hover,.wy-menu-vertical li.on a:hover{
     background:#fcfcfc
 }
-.wy-menu-vertical li.current>a:hover span.toctree-expand,.wy-menu-vertical li.on a:hover span.toctree-expand{
+.wy-menu-vertical li.current>a:hover button.toctree-expand,.wy-menu-vertical li.on a:hover button.toctree-expand{
     color:grey
 }
-.wy-menu-vertical li.current>a span.toctree-expand,.wy-menu-vertical li.on a span.toctree-expand{
+.wy-menu-vertical li.current>a button.toctree-expand,.wy-menu-vertical li.on a button.toctree-expand{
     display:block;
-    font-size:.8em;
-    line-height:1.6em;
+    line-height:18px;
     color:#333
 }
 .wy-menu-vertical li.toctree-l1.current>a{
     border-bottom:1px solid #c9c9c9;
     border-top:1px solid #c9c9c9
 }
-.wy-menu-vertical li.toctree-l2 a,.wy-menu-vertical li.toctree-l3 a,.wy-menu-vertical li.toctree-l4 a{
-    color:#404040
-}
-.wy-menu-vertical li.toctree-l1.current li.toctree-l2>ul,.wy-menu-vertical li.toctree-l2.current li.toctree-l3>ul{
+.wy-menu-vertical .toctree-l1.current .toctree-l2>ul,.wy-menu-vertical .toctree-l2.current .toctree-l3>ul,.wy-menu-vertical .toctree-l3.current .toctree-l4>ul,.wy-menu-vertical .toctree-l4.current .toctree-l5>ul,.wy-menu-vertical .toctree-l5.current .toctree-l6>ul,.wy-menu-vertical .toctree-l6.current .toctree-l7>ul,.wy-menu-vertical .toctree-l7.current .toctree-l8>ul,.wy-menu-vertical .toctree-l8.current .toctree-l9>ul,.wy-menu-vertical .toctree-l9.current .toctree-l10>ul,.wy-menu-vertical .toctree-l10.current .toctree-l11>ul{
     display:none
 }
-.wy-menu-vertical li.toctree-l1.current li.toctree-l2.current>ul,.wy-menu-vertical li.toctree-l2.current li.toctree-l3.current>ul{
+.wy-menu-vertical .toctree-l1.current .current.toctree-l2>ul,.wy-menu-vertical .toctree-l2.current .current.toctree-l3>ul,.wy-menu-vertical .toctree-l3.current .current.toctree-l4>ul,.wy-menu-vertical .toctree-l4.current .current.toctree-l5>ul,.wy-menu-vertical .toctree-l5.current .current.toctree-l6>ul,.wy-menu-vertical .toctree-l6.current .current.toctree-l7>ul,.wy-menu-vertical .toctree-l7.current .current.toctree-l8>ul,.wy-menu-vertical .toctree-l8.current .current.toctree-l9>ul,.wy-menu-vertical .toctree-l9.current .current.toctree-l10>ul,.wy-menu-vertical .toctree-l10.current .current.toctree-l11>ul{
+    display:block
+}
+.wy-menu-vertical li.toctree-l3,.wy-menu-vertical li.toctree-l4{
+    font-size:.9em
+}
+.wy-menu-vertical li.toctree-l2 a,.wy-menu-vertical li.toctree-l3 a,.wy-menu-vertical li.toctree-l4 a,.wy-menu-vertical li.toctree-l5 a,.wy-menu-vertical li.toctree-l6 a,.wy-menu-vertical li.toctree-l7 a,.wy-menu-vertical li.toctree-l8 a,.wy-menu-vertical li.toctree-l9 a,.wy-menu-vertical li.toctree-l10 a{
+    color:#404040
+}
+.wy-menu-vertical li.toctree-l2 a:hover button.toctree-expand,.wy-menu-vertical li.toctree-l3 a:hover button.toctree-expand,.wy-menu-vertical li.toctree-l4 a:hover button.toctree-expand,.wy-menu-vertical li.toctree-l5 a:hover button.toctree-expand,.wy-menu-vertical li.toctree-l6 a:hover button.toctree-expand,.wy-menu-vertical li.toctree-l7 a:hover button.toctree-expand,.wy-menu-vertical li.toctree-l8 a:hover button.toctree-expand,.wy-menu-vertical li.toctree-l9 a:hover button.toctree-expand,.wy-menu-vertical li.toctree-l10 a:hover button.toctree-expand{
+    color:grey
+}
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3>a,.wy-menu-vertical li.toctree-l3.current li.toctree-l4>a,.wy-menu-vertical li.toctree-l4.current li.toctree-l5>a,.wy-menu-vertical li.toctree-l5.current li.toctree-l6>a,.wy-menu-vertical li.toctree-l6.current li.toctree-l7>a,.wy-menu-vertical li.toctree-l7.current li.toctree-l8>a,.wy-menu-vertical li.toctree-l8.current li.toctree-l9>a,.wy-menu-vertical li.toctree-l9.current li.toctree-l10>a,.wy-menu-vertical li.toctree-l10.current li.toctree-l11>a{
     display:block
 }
 .wy-menu-vertical li.toctree-l2.current>a{
-    background:#c9c9c9;
     padding:.4045em 2.427em
 }
 .wy-menu-vertical li.toctree-l2.current li.toctree-l3>a{
-    display:block;
-    background:#c9c9c9;
-    padding:.4045em 4.045em
-}
-.wy-menu-vertical li.toctree-l2 a:hover span.toctree-expand{
-    color:grey
-}
-.wy-menu-vertical li.toctree-l2 span.toctree-expand{
-    color:#a3a3a3
-}
-.wy-menu-vertical li.toctree-l3{
-    font-size:.9em
+    padding:.4045em 1.618em .4045em 4.045em
 }
 .wy-menu-vertical li.toctree-l3.current>a{
-    background:#bdbdbd;
     padding:.4045em 4.045em
 }
 .wy-menu-vertical li.toctree-l3.current li.toctree-l4>a{
-    display:block;
-    background:#bdbdbd;
+    padding:.4045em 1.618em .4045em 5.663em
+}
+.wy-menu-vertical li.toctree-l4.current>a{
     padding:.4045em 5.663em
 }
-.wy-menu-vertical li.toctree-l3 a:hover span.toctree-expand{
-    color:grey
+.wy-menu-vertical li.toctree-l4.current li.toctree-l5>a{
+    padding:.4045em 1.618em .4045em 7.281em
 }
-.wy-menu-vertical li.toctree-l3 span.toctree-expand{
+.wy-menu-vertical li.toctree-l5.current>a{
+    padding:.4045em 7.281em
+}
+.wy-menu-vertical li.toctree-l5.current li.toctree-l6>a{
+    padding:.4045em 1.618em .4045em 8.899em
+}
+.wy-menu-vertical li.toctree-l6.current>a{
+    padding:.4045em 8.899em
+}
+.wy-menu-vertical li.toctree-l6.current li.toctree-l7>a{
+    padding:.4045em 1.618em .4045em 10.517em
+}
+.wy-menu-vertical li.toctree-l7.current>a{
+    padding:.4045em 10.517em
+}
+.wy-menu-vertical li.toctree-l7.current li.toctree-l8>a{
+    padding:.4045em 1.618em .4045em 12.135em
+}
+.wy-menu-vertical li.toctree-l8.current>a{
+    padding:.4045em 12.135em
+}
+.wy-menu-vertical li.toctree-l8.current li.toctree-l9>a{
+    padding:.4045em 1.618em .4045em 13.753em
+}
+.wy-menu-vertical li.toctree-l9.current>a{
+    padding:.4045em 13.753em
+}
+.wy-menu-vertical li.toctree-l9.current li.toctree-l10>a{
+    padding:.4045em 1.618em .4045em 15.371em
+}
+.wy-menu-vertical li.toctree-l10.current>a{
+    padding:.4045em 15.371em
+}
+.wy-menu-vertical li.toctree-l10.current li.toctree-l11>a{
+    padding:.4045em 1.618em .4045em 16.989em
+}
+.wy-menu-vertical li.toctree-l2.current>a,.wy-menu-vertical li.toctree-l2.current li.toctree-l3>a{
+    background:#c9c9c9
+}
+.wy-menu-vertical li.toctree-l2 button.toctree-expand{
+    color:#a3a3a3
+}
+.wy-menu-vertical li.toctree-l3.current>a,.wy-menu-vertical li.toctree-l3.current li.toctree-l4>a{
+    background:#bdbdbd
+}
+.wy-menu-vertical li.toctree-l3 button.toctree-expand{
     color:#969696
-}
-.wy-menu-vertical li.toctree-l4{
-    font-size:.9em
 }
 .wy-menu-vertical li.current ul{
     display:block
@@ -3774,20 +3812,18 @@ html{
     font-weight:400
 }
 .wy-menu-vertical a{
-    display:inline-block;
     line-height:18px;
     padding:.4045em 1.618em;
     display:block;
     position:relative;
-    /* font-size:90%;
-     */
-    color:#d9d9d9;
+    font-size:90%;
+    color:#d9d9d9
 }
 .wy-menu-vertical a:hover{
     background-color:#4e4a4a;
     cursor:pointer
 }
-.wy-menu-vertical a:hover span.toctree-expand{
+.wy-menu-vertical a:hover button.toctree-expand{
     color:#d9d9d9
 }
 .wy-menu-vertical a:active{
@@ -3795,27 +3831,22 @@ html{
     cursor:pointer;
     color:#fff
 }
-.wy-menu-vertical a:active span.toctree-expand{
+.wy-menu-vertical a:active button.toctree-expand{
     color:#fff
 }
 .wy-side-nav-search{
-    width:300px;
-    z-index:200;
-    text-align:center;
-    padding:.809em;
-    margin-top:10px;
     display:block;
-    color:#fcfcfc;
+    width:300px;
+    padding:.809em;
     margin-bottom:.809em;
-    /* position: fixed;
-     */
-    /* padding-bottom: 200px;
-     */
+    z-index:200;
+    background-color:#171c2d;
+    text-align:center;
+    color:#fcfcfc
 }
 .wy-side-nav-search input[type=text]{
     width:100%;
     border-radius:50px;
-    color:black;
     padding:6px 12px;
     border-color:#2472a4
 }
@@ -3824,18 +3855,18 @@ html{
     margin:auto auto .809em;
     height:45px;
     width:45px;
-    background-color:#2980b9;
+    background-color:#171c2d;
     padding:5px;
     border-radius:100%
 }
 .wy-side-nav-search .wy-dropdown>a,.wy-side-nav-search>a{
     color:#fcfcfc;
-    font-size:1.25em;
-    /* font-weight:700;
-     */
+    font-size:100%;
+    font-weight:700;
     display:inline-block;
     padding:4px 6px;
     margin-bottom:.809em;
+    max-width:100%
 }
 .wy-side-nav-search .wy-dropdown>a:hover,.wy-side-nav-search>a:hover{
     background:hsla(0,0%,100%,.1)
@@ -3896,11 +3927,9 @@ html{
     background:#fcfcfc
 }
 .wy-grid-for-nav{
-    /* position:absolute;
-     */
+    position:absolute;
     width:100%;
-    /* height:100% */
-    background: none;
+    height:100%
 }
 .wy-nav-side{
     position:fixed;
@@ -3908,16 +3937,13 @@ html{
     bottom:0;
     left:0;
     padding-bottom:2em;
-    margin-top: 50px;
     width:300px;
     overflow-x:hidden;
-    /* overflow-y:hidden;
-     */
+    overflow-y:hidden;
     min-height:100%;
     color:#9b9b9b;
     background:#171c2d;
-    z-index:200;
-    margin-bottom: 100px;
+    z-index:200
 }
 .wy-side-scroll{
     width:320px;
@@ -3964,15 +3990,14 @@ html{
 }
 .wy-nav-content-wrap{
     margin-left:300px;
-    /* background:#fcfcfc;
-     */
-    min-height:100%;
+    background:#fcfcfc;
+    min-height:100%
 }
 .wy-nav-content{
     padding:1.618em 3.236em;
     height:100%;
-    /*max-width:800px*/
-    margin:auto;
+    max-width:800px;
+    margin:auto
 }
 .wy-body-mask{
     position:fixed;
@@ -4053,26 +4078,17 @@ footer p{
         left:-300px
     }
     .wy-nav-side.shift{
-        width:100%;
+        width:85%;
         left:0
     }
     .wy-menu.wy-menu-vertical,.wy-side-nav-search,.wy-side-scroll{
-        width:auto;
-        position: unset;
-        z-index: auto;
+        width:auto
     }
     .wy-nav-content-wrap{
-        margin-left:0;
-        width: auto;
-        padding-right:0px;
-        margin-top:-10px;
+        margin-left:0
     }
     .wy-nav-content-wrap .wy-nav-content{
-        max-width: 95%;
-        padding: 0px;
-        margin-left: 0px;
-        /* margin-right: -180px;
-         */
+        padding:1.618em
     }
     .wy-nav-content-wrap.shift{
         position:fixed;
@@ -4085,13 +4101,11 @@ footer p{
 }
 @media screen and (min-width:1100px){
     .wy-nav-content-wrap{
-        /* background:rgba(0,0,0,.05);
-         */
+        /* background:rgba(0,0,0,.05) */
     }
     .wy-nav-content{
         margin:0;
-        background: #ffffff;
-        background-color: white;
+        background:#fcfcfc
     }
 }
 @media print{
@@ -4102,42 +4116,141 @@ footer p{
         margin-left:0
     }
 }
+.rst-versions{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:300px;
+    color:#fcfcfc;
+    background:#1f1d1d;
+    font-family:Lato,proxima-nova,Helvetica Neue,Arial,sans-serif;
+    z-index:400
+}
+.rst-versions a{
+    color:#2980b9;
+    text-decoration:none
+}
+.rst-versions .rst-badge-small{
+    display:none
+}
 .rst-versions .rst-current-version{
+    padding:12px;
+    background-color:#272525;
+    display:block;
+    text-align:right;
+    font-size:90%;
+    cursor:pointer;
+    color:#27ae60;
     *zoom:1
 }
 .rst-versions .rst-current-version:after,.rst-versions .rst-current-version:before{
     display:table;
     content:""
 }
-.rst-content .code-block-caption .rst-versions .rst-current-version .headerlink,.rst-content .rst-versions .rst-current-version .admonition-title,.rst-content code.download .rst-versions .rst-current-version span:first-child,.rst-content dl dt .rst-versions .rst-current-version .headerlink,.rst-content h1 .rst-versions .rst-current-version .headerlink,.rst-content h2 .rst-versions .rst-current-version .headerlink,.rst-content h3 .rst-versions .rst-current-version .headerlink,.rst-content h4 .rst-versions .rst-current-version .headerlink,.rst-content h5 .rst-versions .rst-current-version .headerlink,.rst-content h6 .rst-versions .rst-current-version .headerlink,.rst-content p.caption .rst-versions .rst-current-version .headerlink,.rst-content table>caption .rst-versions .rst-current-version .headerlink,.rst-content tt.download .rst-versions .rst-current-version span:first-child,.rst-versions .rst-current-version .fa,.rst-versions .rst-current-version .icon,.rst-versions .rst-current-version .rst-content .admonition-title,.rst-versions .rst-current-version .rst-content .code-block-caption .headerlink,.rst-versions .rst-current-version .rst-content code.download span:first-child,.rst-versions .rst-current-version .rst-content dl dt .headerlink,.rst-versions .rst-current-version .rst-content h1 .headerlink,.rst-versions .rst-current-version .rst-content h2 .headerlink,.rst-versions .rst-current-version .rst-content h3 .headerlink,.rst-versions .rst-current-version .rst-content h4 .headerlink,.rst-versions .rst-current-version .rst-content h5 .headerlink,.rst-versions .rst-current-version .rst-content h6 .headerlink,.rst-versions .rst-current-version .rst-content p.caption .headerlink,.rst-versions .rst-current-version .rst-content table>caption .headerlink,.rst-versions .rst-current-version .rst-content tt.download span:first-child,.rst-versions .rst-current-version .wy-menu-vertical li span.toctree-expand,.wy-menu-vertical li .rst-versions .rst-current-version span.toctree-expand{
+.rst-versions .rst-current-version:after{
+    clear:both
+}
+.rst-content .code-block-caption .rst-versions .rst-current-version .headerlink,.rst-content .eqno .rst-versions .rst-current-version .headerlink,.rst-content .rst-versions .rst-current-version .admonition-title,.rst-content code.download .rst-versions .rst-current-version span:first-child,.rst-content dl dt .rst-versions .rst-current-version .headerlink,.rst-content h1 .rst-versions .rst-current-version .headerlink,.rst-content h2 .rst-versions .rst-current-version .headerlink,.rst-content h3 .rst-versions .rst-current-version .headerlink,.rst-content h4 .rst-versions .rst-current-version .headerlink,.rst-content h5 .rst-versions .rst-current-version .headerlink,.rst-content h6 .rst-versions .rst-current-version .headerlink,.rst-content p .rst-versions .rst-current-version .headerlink,.rst-content table>caption .rst-versions .rst-current-version .headerlink,.rst-content tt.download .rst-versions .rst-current-version span:first-child,.rst-versions .rst-current-version .fa,.rst-versions .rst-current-version .icon,.rst-versions .rst-current-version .rst-content .admonition-title,.rst-versions .rst-current-version .rst-content .code-block-caption .headerlink,.rst-versions .rst-current-version .rst-content .eqno .headerlink,.rst-versions .rst-current-version .rst-content code.download span:first-child,.rst-versions .rst-current-version .rst-content dl dt .headerlink,.rst-versions .rst-current-version .rst-content h1 .headerlink,.rst-versions .rst-current-version .rst-content h2 .headerlink,.rst-versions .rst-current-version .rst-content h3 .headerlink,.rst-versions .rst-current-version .rst-content h4 .headerlink,.rst-versions .rst-current-version .rst-content h5 .headerlink,.rst-versions .rst-current-version .rst-content h6 .headerlink,.rst-versions .rst-current-version .rst-content p .headerlink,.rst-versions .rst-current-version .rst-content table>caption .headerlink,.rst-versions .rst-current-version .rst-content tt.download span:first-child,.rst-versions .rst-current-version .wy-menu-vertical li button.toctree-expand,.wy-menu-vertical li .rst-versions .rst-current-version button.toctree-expand{
     color:#fcfcfc
 }
 .rst-versions .rst-current-version .fa-book,.rst-versions .rst-current-version .icon-book{
     float:left
 }
+.rst-versions .rst-current-version.rst-out-of-date{
+    background-color:#e74c3c;
+    color:#fff
+}
+.rst-versions .rst-current-version.rst-active-old-version{
+    background-color:#f1c40f;
+    color:#000
+}
+.rst-versions.shift-up{
+    height:auto;
+    max-height:100%;
+    overflow-y:scroll
+}
+.rst-versions.shift-up .rst-other-versions{
+    display:block
+}
+.rst-versions .rst-other-versions{
+    font-size:90%;
+    padding:12px;
+    color:grey;
+    display:none
+}
+.rst-versions .rst-other-versions hr{
+    display:block;
+    height:1px;
+    border:0;
+    margin:20px 0;
+    padding:0;
+    border-top:1px solid #413d3d
+}
+.rst-versions .rst-other-versions dd{
+    display:inline-block;
+    margin:0
+}
+.rst-versions .rst-other-versions dd a{
+    display:inline-block;
+    padding:6px;
+    color:#fcfcfc
+}
+.rst-versions.rst-badge{
+    width:auto;
+    bottom:20px;
+    right:20px;
+    left:auto;
+    border:none;
+    max-width:300px;
+    max-height:90%
+}
 .rst-versions.rst-badge .fa-book,.rst-versions.rst-badge .icon-book{
-    float:none
+    float:none;
+    line-height:30px
+}
+.rst-versions.rst-badge.shift-up .rst-current-version{
+    text-align:right
 }
 .rst-versions.rst-badge.shift-up .rst-current-version .fa-book,.rst-versions.rst-badge.shift-up .rst-current-version .icon-book{
     float:left
+}
+.rst-versions.rst-badge>.rst-current-version{
+    width:auto;
+    height:30px;
+    line-height:30px;
+    padding:0 6px;
+    display:block;
+    text-align:center
+}
+@media screen and (max-width:768px){
+    .rst-versions{
+        width:85%;
+        display:none
+    }
+    .rst-versions.shift{
+        display:block
+    }
+}
+.rst-content .toctree-wrapper>p.caption,.rst-content h1,.rst-content h2,.rst-content h3,.rst-content h4,.rst-content h5,.rst-content h6{
+    margin-bottom:24px
 }
 .rst-content img{
     max-width:100%;
     height:auto
 }
-.rst-content div.figure{
+.rst-content div.figure,.rst-content figure{
     margin-bottom:24px
 }
-.rst-content div.figure p.caption{
+.rst-content div.figure .caption-text,.rst-content figure .caption-text{
     font-style:italic
 }
-.rst-content div.figure p:last-child.caption{
+.rst-content div.figure p:last-child.caption,.rst-content figure p:last-child.caption{
     margin-bottom:0
 }
-.rst-content div.figure.align-center{
+.rst-content div.figure.align-center,.rst-content figure.align-center{
     text-align:center
 }
-.rst-content .section>a>img,.rst-content .section>img{
+.rst-content .section>a>img,.rst-content .section>img,.rst-content section>a>img,.rst-content section>img{
     margin-bottom:24px
 }
 .rst-content abbr[title]{
@@ -4202,6 +4315,17 @@ footer p{
     font-size:12px;
     line-height:1.4
 }
+.rst-content div.highlight .gp,.rst-content div.highlight span.linenos{
+    user-select:none;
+    pointer-events:none
+}
+.rst-content div.highlight span.linenos{
+    display:inline-block;
+    padding-left:0;
+    padding-right:12px;
+    margin-right:12px;
+    border-right:1px solid #e6e9ea
+}
 .rst-content .code-block-caption{
     font-style:italic;
     font-size:85%;
@@ -4217,7 +4341,7 @@ footer p{
 .rst-content .admonition,.rst-content .admonition-todo,.rst-content .attention,.rst-content .caution,.rst-content .danger,.rst-content .error,.rst-content .hint,.rst-content .important,.rst-content .note,.rst-content .seealso,.rst-content .tip,.rst-content .warning{
     clear:both
 }
-.rst-content .admonition-todo .last,.rst-content .admonition .last,.rst-content .attention .last,.rst-content .caution .last,.rst-content .danger .last,.rst-content .error .last,.rst-content .hint .last,.rst-content .important .last,.rst-content .note .last,.rst-content .seealso .last,.rst-content .tip .last,.rst-content .warning .last{
+.rst-content .admonition-todo .last,.rst-content .admonition-todo>:last-child,.rst-content .admonition .last,.rst-content .admonition>:last-child,.rst-content .attention .last,.rst-content .attention>:last-child,.rst-content .caution .last,.rst-content .caution>:last-child,.rst-content .danger .last,.rst-content .danger>:last-child,.rst-content .error .last,.rst-content .error>:last-child,.rst-content .hint .last,.rst-content .hint>:last-child,.rst-content .important .last,.rst-content .important>:last-child,.rst-content .note .last,.rst-content .note>:last-child,.rst-content .seealso .last,.rst-content .seealso>:last-child,.rst-content .tip .last,.rst-content .tip>:last-child,.rst-content .warning .last,.rst-content .warning>:last-child{
     margin-bottom:0
 }
 .rst-content .admonition-title:before{
@@ -4230,17 +4354,31 @@ footer p{
     background:transparent!important;
     border-color:rgba(0,0,0,.1)!important
 }
-.rst-content .section ol.loweralpha,.rst-content .section ol.loweralpha li{
+.rst-content .section ol.loweralpha,.rst-content .section ol.loweralpha>li,.rst-content .toctree-wrapper ol.loweralpha,.rst-content .toctree-wrapper ol.loweralpha>li,.rst-content section ol.loweralpha,.rst-content section ol.loweralpha>li{
     list-style:lower-alpha
 }
-.rst-content .section ol.upperalpha,.rst-content .section ol.upperalpha li{
+.rst-content .section ol.upperalpha,.rst-content .section ol.upperalpha>li,.rst-content .toctree-wrapper ol.upperalpha,.rst-content .toctree-wrapper ol.upperalpha>li,.rst-content section ol.upperalpha,.rst-content section ol.upperalpha>li{
     list-style:upper-alpha
 }
-.rst-content .section ol p,.rst-content .section ul p{
+.rst-content .section ol li>*,.rst-content .section ul li>*,.rst-content .toctree-wrapper ol li>*,.rst-content .toctree-wrapper ul li>*,.rst-content section ol li>*,.rst-content section ul li>*{
+    margin-top:12px;
     margin-bottom:12px
 }
-.rst-content .section ol p:last-child,.rst-content .section ul p:last-child{
-    margin-bottom:24px
+.rst-content .section ol li>:first-child,.rst-content .section ul li>:first-child,.rst-content .toctree-wrapper ol li>:first-child,.rst-content .toctree-wrapper ul li>:first-child,.rst-content section ol li>:first-child,.rst-content section ul li>:first-child{
+    margin-top:0
+}
+.rst-content .section ol li>p,.rst-content .section ol li>p:last-child,.rst-content .section ul li>p,.rst-content .section ul li>p:last-child,.rst-content .toctree-wrapper ol li>p,.rst-content .toctree-wrapper ol li>p:last-child,.rst-content .toctree-wrapper ul li>p,.rst-content .toctree-wrapper ul li>p:last-child,.rst-content section ol li>p,.rst-content section ol li>p:last-child,.rst-content section ul li>p,.rst-content section ul li>p:last-child{
+    margin-bottom:12px
+}
+.rst-content .section ol li>p:only-child,.rst-content .section ol li>p:only-child:last-child,.rst-content .section ul li>p:only-child,.rst-content .section ul li>p:only-child:last-child,.rst-content .toctree-wrapper ol li>p:only-child,.rst-content .toctree-wrapper ol li>p:only-child:last-child,.rst-content .toctree-wrapper ul li>p:only-child,.rst-content .toctree-wrapper ul li>p:only-child:last-child,.rst-content section ol li>p:only-child,.rst-content section ol li>p:only-child:last-child,.rst-content section ul li>p:only-child,.rst-content section ul li>p:only-child:last-child{
+    margin-bottom:0
+}
+.rst-content .section ol li>ol,.rst-content .section ol li>ul,.rst-content .section ul li>ol,.rst-content .section ul li>ul,.rst-content .toctree-wrapper ol li>ol,.rst-content .toctree-wrapper ol li>ul,.rst-content .toctree-wrapper ul li>ol,.rst-content .toctree-wrapper ul li>ul,.rst-content section ol li>ol,.rst-content section ol li>ul,.rst-content section ul li>ol,.rst-content section ul li>ul{
+    margin-bottom:12px
+}
+.rst-content .section ol.simple li>*,.rst-content .section ol.simple li ol,.rst-content .section ol.simple li ul,.rst-content .section ul.simple li>*,.rst-content .section ul.simple li ol,.rst-content .section ul.simple li ul,.rst-content .toctree-wrapper ol.simple li>*,.rst-content .toctree-wrapper ol.simple li ol,.rst-content .toctree-wrapper ol.simple li ul,.rst-content .toctree-wrapper ul.simple li>*,.rst-content .toctree-wrapper ul.simple li ol,.rst-content .toctree-wrapper ul.simple li ul,.rst-content section ol.simple li>*,.rst-content section ol.simple li ol,.rst-content section ol.simple li ul,.rst-content section ul.simple li>*,.rst-content section ul.simple li ol,.rst-content section ul.simple li ul{
+    margin-top:0;
+    margin-bottom:0
 }
 .rst-content .line-block{
     margin-left:0;
@@ -4272,16 +4410,17 @@ footer p{
 .rst-content .align-center:not(table){
     display:block
 }
-.rst-content .code-block-caption .headerlink,.rst-content .toctree-wrapper p.caption .headerlink,.rst-content dl dt .headerlink,.rst-content h1 .headerlink,.rst-content h2 .headerlink,.rst-content h3 .headerlink,.rst-content h4 .headerlink,.rst-content h5 .headerlink,.rst-content h6 .headerlink,.rst-content p.caption .headerlink,.rst-content table>caption .headerlink{
-    visibility:hidden;
-    font-size:14px
+.rst-content .code-block-caption .headerlink,.rst-content .eqno .headerlink,.rst-content .toctree-wrapper>p.caption .headerlink,.rst-content dl dt .headerlink,.rst-content h1 .headerlink,.rst-content h2 .headerlink,.rst-content h3 .headerlink,.rst-content h4 .headerlink,.rst-content h5 .headerlink,.rst-content h6 .headerlink,.rst-content p.caption .headerlink,.rst-content p .headerlink,.rst-content table>caption .headerlink{
+    opacity:0;
+    font-size:14px;
+    font-family:FontAwesome;
+    margin-left:.5em
 }
-.rst-content .code-block-caption .headerlink:after,.rst-content .toctree-wrapper p.caption .headerlink:after,.rst-content dl dt .headerlink:after,.rst-content h1 .headerlink:after,.rst-content h2 .headerlink:after,.rst-content h3 .headerlink:after,.rst-content h4 .headerlink:after,.rst-content h5 .headerlink:after,.rst-content h6 .headerlink:after,.rst-content p.caption .headerlink:after,.rst-content table>caption .headerlink:after{
-    content:"\f0c1";
-    font-family:FontAwesome
+.rst-content .code-block-caption .headerlink:focus,.rst-content .code-block-caption:hover .headerlink,.rst-content .eqno .headerlink:focus,.rst-content .eqno:hover .headerlink,.rst-content .toctree-wrapper>p.caption .headerlink:focus,.rst-content .toctree-wrapper>p.caption:hover .headerlink,.rst-content dl dt .headerlink:focus,.rst-content dl dt:hover .headerlink,.rst-content h1 .headerlink:focus,.rst-content h1:hover .headerlink,.rst-content h2 .headerlink:focus,.rst-content h2:hover .headerlink,.rst-content h3 .headerlink:focus,.rst-content h3:hover .headerlink,.rst-content h4 .headerlink:focus,.rst-content h4:hover .headerlink,.rst-content h5 .headerlink:focus,.rst-content h5:hover .headerlink,.rst-content h6 .headerlink:focus,.rst-content h6:hover .headerlink,.rst-content p.caption .headerlink:focus,.rst-content p.caption:hover .headerlink,.rst-content p .headerlink:focus,.rst-content p:hover .headerlink,.rst-content table>caption .headerlink:focus,.rst-content table>caption:hover .headerlink{
+    opacity:1
 }
-.rst-content .code-block-caption:hover .headerlink:after,.rst-content .toctree-wrapper p.caption:hover .headerlink:after,.rst-content dl dt:hover .headerlink:after,.rst-content h1:hover .headerlink:after,.rst-content h2:hover .headerlink:after,.rst-content h3:hover .headerlink:after,.rst-content h4:hover .headerlink:after,.rst-content h5:hover .headerlink:after,.rst-content h6:hover .headerlink:after,.rst-content p.caption:hover .headerlink:after,.rst-content table>caption:hover .headerlink:after{
-    visibility:visible
+.rst-content .btn:focus{
+    outline:2px solid
 }
 .rst-content table>caption .headerlink:after{
     font-size:12px
@@ -4301,7 +4440,7 @@ footer p{
 .rst-content .sidebar dl,.rst-content .sidebar p,.rst-content .sidebar ul{
     font-size:90%
 }
-.rst-content .sidebar .last{
+.rst-content .sidebar .last,.rst-content .sidebar>:last-child{
     margin-bottom:0
 }
 .rst-content .sidebar .sidebar-title{
@@ -4315,9 +4454,9 @@ footer p{
 }
 .rst-content .highlighted{
     background:#f1c40f;
-    display:inline-block;
-    font-weight:700;
-    padding:0 6px
+    box-shadow:0 0 0 2px #f1c40f;
+    display:inline;
+    font-weight:700
 }
 .rst-content .citation-reference,.rst-content .footnote-reference{
     vertical-align:baseline;
@@ -4326,22 +4465,74 @@ footer p{
     line-height:0;
     font-size:90%
 }
-.rst-content table.docutils.citation,.rst-content table.docutils.footnote{
-    background:none;
-    border:none;
-    color:grey
+.rst-content .hlist{
+    width:100%
 }
-.rst-content table.docutils.citation td,.rst-content table.docutils.citation tr,.rst-content table.docutils.footnote td,.rst-content table.docutils.footnote tr{
+.rst-content dl dt span.classifier:before{
+    content:" : "
+}
+.rst-content dl dt span.classifier-delimiter{
+    display:none!important
+}
+html.writer-html4 .rst-content table.docutils.citation,html.writer-html4 .rst-content table.docutils.footnote{
+    background:none;
+    border:none
+}
+html.writer-html4 .rst-content table.docutils.citation td,html.writer-html4 .rst-content table.docutils.citation tr,html.writer-html4 .rst-content table.docutils.footnote td,html.writer-html4 .rst-content table.docutils.footnote tr{
     border:none;
     background-color:transparent!important;
     white-space:normal
 }
-.rst-content table.docutils.citation td.label,.rst-content table.docutils.footnote td.label{
+html.writer-html4 .rst-content table.docutils.citation td.label,html.writer-html4 .rst-content table.docutils.footnote td.label{
     padding-left:0;
     padding-right:0;
     vertical-align:top
 }
-.rst-content table.docutils.citation code,.rst-content table.docutils.citation tt,.rst-content table.docutils.footnote code,.rst-content table.docutils.footnote tt{
+html.writer-html5 .rst-content dl.field-list,html.writer-html5 .rst-content dl.footnote{
+    display:grid;
+    grid-template-columns:max-content auto
+}
+html.writer-html5 .rst-content dl.field-list>dt,html.writer-html5 .rst-content dl.footnote>dt{
+    padding-left:1rem
+}
+html.writer-html5 .rst-content dl.field-list>dt:after,html.writer-html5 .rst-content dl.footnote>dt:after{
+    content:":"
+}
+html.writer-html5 .rst-content dl.field-list>dd,html.writer-html5 .rst-content dl.field-list>dt,html.writer-html5 .rst-content dl.footnote>dd,html.writer-html5 .rst-content dl.footnote>dt{
+    margin-bottom:0
+}
+html.writer-html5 .rst-content dl.footnote{
+    font-size:.9rem
+}
+html.writer-html5 .rst-content dl.footnote>dt{
+    margin:0 .5rem .5rem 0;
+    line-height:1.2rem;
+    word-break:break-all;
+    font-weight:400
+}
+html.writer-html5 .rst-content dl.footnote>dt>span.brackets{
+    margin-right:.5rem
+}
+html.writer-html5 .rst-content dl.footnote>dt>span.brackets:before{
+    content:"["
+}
+html.writer-html5 .rst-content dl.footnote>dt>span.brackets:after{
+    content:"]"
+}
+html.writer-html5 .rst-content dl.footnote>dt>span.fn-backref{
+    font-style:italic
+}
+html.writer-html5 .rst-content dl.footnote>dd{
+    margin:0 0 .5rem;
+    line-height:1.2rem
+}
+html.writer-html5 .rst-content dl.footnote>dd p,html.writer-html5 .rst-content dl.option-list kbd{
+    font-size:.9rem
+}
+.rst-content table.docutils.footnote,html.writer-html4 .rst-content table.docutils.citation,html.writer-html5 .rst-content dl.footnote{
+    color:grey
+}
+.rst-content table.docutils.footnote code,.rst-content table.docutils.footnote tt,html.writer-html4 .rst-content table.docutils.citation code,html.writer-html4 .rst-content table.docutils.citation tt,html.writer-html5 .rst-content dl.footnote code,html.writer-html5 .rst-content dl.footnote tt{
     color:#555
 }
 .rst-content .wy-table-responsive.citation,.rst-content .wy-table-responsive.footnote{
@@ -4356,7 +4547,15 @@ footer p{
 .rst-content table.docutils th{
     border-color:#e1e4e5
 }
-.rst-content table.docutils td .last,.rst-content table.docutils td .last :last-child{
+html.writer-html5 .rst-content table.docutils th{
+    border:1px solid #e1e4e5
+}
+html.writer-html5 .rst-content table.docutils td>p,html.writer-html5 .rst-content table.docutils th>p{
+    line-height:1rem;
+    margin-bottom:0;
+    font-size:.9rem
+}
+.rst-content table.docutils td .last,.rst-content table.docutils td .last>:last-child{
     margin-bottom:0
 }
 .rst-content table.field-list,.rst-content table.field-list td{
@@ -4387,7 +4586,8 @@ footer p{
     line-height:normal
 }
 .rst-content code.literal,.rst-content tt.literal{
-    color:#e74c3c
+    color:#e74c3c;
+    white-space:normal
 }
 .rst-content code.xref,.rst-content tt.xref,a .rst-content code,a .rst-content tt{
     font-weight:700;
@@ -4407,16 +4607,16 @@ footer p{
     margin-bottom:12px
 }
 .rst-content dl ol,.rst-content dl p,.rst-content dl table,.rst-content dl ul{
-    margin-bottom:12px!important
+    margin-bottom:12px
 }
 .rst-content dl dd{
     margin:0 0 12px 24px;
     line-height:24px
 }
-.rst-content dl:not(.docutils){
+html.writer-html4 .rst-content dl:not(.docutils),html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple){
     margin-bottom:24px
 }
-.rst-content dl:not(.docutils) dt{
+html.writer-html4 .rst-content dl:not(.docutils)>dt,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple)>dt{
     display:table;
     margin:6px 0;
     font-size:90%;
@@ -4427,48 +4627,53 @@ footer p{
     padding:6px;
     position:relative
 }
-.rst-content dl:not(.docutils) dt:before{
+html.writer-html4 .rst-content dl:not(.docutils)>dt:before,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple)>dt:before{
     color:#6ab0de
 }
-.rst-content dl:not(.docutils) dt .headerlink{
+html.writer-html4 .rst-content dl:not(.docutils)>dt .headerlink,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple)>dt .headerlink{
     color:#404040;
     font-size:100%!important
 }
-.rst-content dl:not(.docutils) dl dt{
+html.writer-html4 .rst-content dl:not(.docutils) dl:not(.field-list)>dt,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dl:not(.field-list)>dt{
     margin-bottom:6px;
     border:none;
     border-left:3px solid #ccc;
     background:#f0f0f0;
     color:#555
 }
-.rst-content dl:not(.docutils) dl dt .headerlink{
+html.writer-html4 .rst-content dl:not(.docutils) dl:not(.field-list)>dt .headerlink,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dl:not(.field-list)>dt .headerlink{
     color:#404040;
     font-size:100%!important
 }
-.rst-content dl:not(.docutils) dt:first-child{
+html.writer-html4 .rst-content dl:not(.docutils)>dt:first-child,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple)>dt:first-child{
     margin-top:0
 }
-.rst-content dl:not(.docutils) code,.rst-content dl:not(.docutils) tt{
-    font-weight:700
-}
-.rst-content dl:not(.docutils) code.descclassname,.rst-content dl:not(.docutils) code.descname,.rst-content dl:not(.docutils) tt.descclassname,.rst-content dl:not(.docutils) tt.descname{
+html.writer-html4 .rst-content dl:not(.docutils) code.descclassname,html.writer-html4 .rst-content dl:not(.docutils) code.descname,html.writer-html4 .rst-content dl:not(.docutils) tt.descclassname,html.writer-html4 .rst-content dl:not(.docutils) tt.descname,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) code.descclassname,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) code.descname,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) tt.descclassname,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) tt.descname{
     background-color:transparent;
     border:none;
     padding:0;
     font-size:100%!important
 }
-.rst-content dl:not(.docutils) code.descname,.rst-content dl:not(.docutils) tt.descname{
+html.writer-html4 .rst-content dl:not(.docutils) code.descname,html.writer-html4 .rst-content dl:not(.docutils) tt.descname,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) code.descname,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) tt.descname{
     font-weight:700
 }
-.rst-content dl:not(.docutils) .optional{
+html.writer-html4 .rst-content dl:not(.docutils) .optional,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) .optional{
     display:inline-block;
     padding:0 4px;
     color:#000;
     font-weight:700
 }
-.rst-content dl:not(.docutils) .property{
+html.writer-html4 .rst-content dl:not(.docutils) .property,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) .property{
     display:inline-block;
-    padding-right:8px
+    padding-right:8px;
+    max-width:100%
+}
+html.writer-html4 .rst-content dl:not(.docutils) .k,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) .k{
+    font-style:italic
+}
+html.writer-html4 .rst-content dl:not(.docutils) .descclassname,html.writer-html4 .rst-content dl:not(.docutils) .descname,html.writer-html4 .rst-content dl:not(.docutils) .sig-name,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) .descclassname,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) .descname,html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) .sig-name{
+    font-family:SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,Courier,monospace;
+    color:#000
 }
 .rst-content .viewcode-back,.rst-content .viewcode-link{
     display:inline-block;
@@ -4525,214 +4730,43 @@ span[id*=MathJax-Span]{
 }
 @font-face{
     font-family:Lato;
-    src:url(../fonts/lato-normal.woff2?bd03a2cc277bbbc338d464e679fe9942) format("woff2"),url(../fonts/lato-normal.woff?27bd77b9162d388cb8d4c4217c7c5e2a) format("woff");
+    src:url(fonts/lato-normal.woff2?bd03a2cc277bbbc338d464e679fe9942) format("woff2"),url(fonts/lato-normal.woff?27bd77b9162d388cb8d4c4217c7c5e2a) format("woff");
     font-weight:400;
     font-style:normal;
-    font-display:swap
+    font-display:block
 }
 @font-face{
     font-family:Lato;
-    src:url(../fonts/lato-bold.woff2?cccb897485813c7c256901dbca54ecf2) format("woff2"),url(../fonts/lato-bold.woff?d878b6c29b10beca227e9eef4246111b) format("woff");
+    src:url(fonts/lato-bold.woff2?cccb897485813c7c256901dbca54ecf2) format("woff2"),url(fonts/lato-bold.woff?d878b6c29b10beca227e9eef4246111b) format("woff");
     font-weight:700;
     font-style:normal;
-    font-display:swap
+    font-display:block
 }
 @font-face{
     font-family:Lato;
-    src:url(../fonts/lato-bold-italic.woff2?0b6bb6725576b072c5d0b02ecdd1900d) format("woff2"),url(../fonts/lato-bold-italic.woff?9c7e4e9eb485b4a121c760e61bc3707c) format("woff");
+    src:url(fonts/lato-bold-italic.woff2?0b6bb6725576b072c5d0b02ecdd1900d) format("woff2"),url(fonts/lato-bold-italic.woff?9c7e4e9eb485b4a121c760e61bc3707c) format("woff");
     font-weight:700;
     font-style:italic;
-    font-display:swap
+    font-display:block
 }
 @font-face{
     font-family:Lato;
-    src:url(../fonts/lato-normal-italic.woff2?4eb103b4d12be57cb1d040ed5e162e9d) format("woff2"),url(../fonts/lato-normal-italic.woff?f28f2d6482446544ef1ea1ccc6dd5892) format("woff");
+    src:url(fonts/lato-normal-italic.woff2?4eb103b4d12be57cb1d040ed5e162e9d) format("woff2"),url(fonts/lato-normal-italic.woff?f28f2d6482446544ef1ea1ccc6dd5892) format("woff");
     font-weight:400;
     font-style:italic;
-    font-display:swap
+    font-display:block
 }
 @font-face{
     font-family:Roboto Slab;
     font-style:normal;
     font-weight:400;
-    src:url(../fonts/Roboto-Slab-Regular.woff2?7abf5b8d04d26a2cafea937019bca958) format("woff2"),url(../fonts/Roboto-Slab-Regular.woff?c1be9284088d487c5e3ff0a10a92e58c) format("woff");
-    font-display:swap
+    src:url(fonts/Roboto-Slab-Regular.woff2?7abf5b8d04d26a2cafea937019bca958) format("woff2"),url(fonts/Roboto-Slab-Regular.woff?c1be9284088d487c5e3ff0a10a92e58c) format("woff");
+    font-display:block
 }
 @font-face{
     font-family:Roboto Slab;
     font-style:normal;
     font-weight:700;
-    src:url(../fonts/Roboto-Slab-Bold.woff2?9984f4a9bda09be08e83f2506954adbe) format("woff2"),url(../fonts/Roboto-Slab-Bold.woff?bed5564a116b05148e3b3bea6fb1162a) format("woff");
-    font-display:swap
-}
-.fa:before{
-    -webkit-font-smoothing:antialiased
-}
-.clearfix{
-    *zoom:1
-}
-.clearfix:after,.clearfix:before{
-    display:table;
-    content:""
-}
-.clearfix:after{
-    clear:both
-}
-@font-face{
-    font-family:FontAwesome;
-    font-style:normal;
-    font-weight:400;
-    src:url(../fonts/fontawesome-webfont.eot?674f50d287a8c48dc19ba404d20fe713?#iefix) format("embedded-opentype"),url(../fonts/fontawesome-webfont.woff2?af7ae505a9eed503f8b8e6982036873e) format("woff2"),url(../fonts/fontawesome-webfont.woff?fee66e712a8a08eef5805a46892932ad) format("woff"),url(../fonts/fontawesome-webfont.ttf?b06871f281fee6b241d60582ae9369b9) format("truetype"),url(../fonts/fontawesome-webfont.svg?912ec66d7572ff821749319396470bde#FontAwesome) format("svg")
-}
-.fa:before{
-    font-family:FontAwesome;
-    font-style:normal;
-    font-weight:400;
-    line-height:1
-}
-.fa:before,a .fa{
-    text-decoration:inherit
-}
-.fa:before,a .fa,li .fa{
-    display:inline-block
-}
-li .fa-large:before{
-    width:1.875em
-}
-ul.fas{
-    list-style-type:none;
-    margin-left:2em;
-    text-indent:-.8em
-}
-ul.fas li .fa{
-    width:.8em
-}
-ul.fas li .fa-large:before{
-    vertical-align:baseline
-}
-.fa-book:before,.icon-book:before{
-    content:"\f02d"
-}
-.fa-caret-down:before,.icon-caret-down:before{
-    content:"\f0d7"
-}
-.fa-caret-up:before,.icon-caret-up:before{
-    content:"\f0d8"
-}
-.fa-caret-left:before,.icon-caret-left:before{
-    content:"\f0d9"
-}
-.fa-caret-right:before,.icon-caret-right:before{
-    content:"\f0da"
-}
-.rst-versions{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:300px;
-    color:#fcfcfc;
-    background:#1f1d1d;
-    font-family:Lato,proxima-nova,Helvetica Neue,Arial,sans-serif;
-    z-index:400
-}
-.rst-versions a{
-    color:#2980b9;
-    text-decoration:none
-}
-.rst-versions .rst-badge-small{
-    display:none
-}
-.rst-versions .rst-current-version{
-    padding:12px;
-    background-color:#272525;
-    display:block;
-    text-align:right;
-    font-size:90%;
-    cursor:pointer;
-    color:#27ae60
-}
-.rst-versions .rst-current-version:after{
-    clear:both;
-    content:"";
-    display:block
-}
-.rst-versions .rst-current-version .fa{
-    color:#fcfcfc
-}
-.rst-versions .rst-current-version .fa-book,.rst-versions .rst-current-version .icon-book{
-    float:left
-}
-.rst-versions .rst-current-version.rst-out-of-date{
-    background-color:#e74c3c;
-    color:#fff
-}
-.rst-versions .rst-current-version.rst-active-old-version{
-    background-color:#f1c40f;
-    color:#000
-}
-.rst-versions.shift-up{
-    height:auto;
-    max-height:100%;
-    overflow-y:scroll
-}
-.rst-versions.shift-up .rst-other-versions{
-    display:block
-}
-.rst-versions .rst-other-versions{
-    font-size:90%;
-    padding:12px;
-    color:grey;
-    display:none
-}
-.rst-versions .rst-other-versions hr{
-    display:block;
-    height:1px;
-    border:0;
-    margin:20px 0;
-    padding:0;
-    border-top:1px solid #413d3d
-}
-.rst-versions .rst-other-versions dd{
-    display:inline-block;
-    margin:0
-}
-.rst-versions .rst-other-versions dd a{
-    display:inline-block;
-    padding:6px;
-    color:#fcfcfc
-}
-.rst-versions.rst-badge{
-    width:auto;
-    bottom:20px;
-    right:20px;
-    left:auto;
-    border:none;
-    max-width:300px;
-    max-height:90%
-}
-.rst-versions.rst-badge .fa-book,.rst-versions.rst-badge .icon-book{
-    float:none
-}
-.rst-versions.rst-badge.shift-up .rst-current-version{
-    text-align:right
-}
-.rst-versions.rst-badge.shift-up .rst-current-version .fa-book,.rst-versions.rst-badge.shift-up .rst-current-version .icon-book{
-    float:left
-}
-.rst-versions.rst-badge .rst-current-version{
-    width:auto;
-    height:30px;
-    line-height:30px;
-    padding:0 6px;
-    display:block;
-    text-align:center
-}
-@media screen and (max-width:768px){
-    .rst-versions{
-        width:85%;
-        display:none
-    }
-    .rst-versions.shift{
-        display:block
-    }
+    src:url(fonts/Roboto-Slab-Bold.woff2?9984f4a9bda09be08e83f2506954adbe) format("woff2"),url(fonts/Roboto-Slab-Bold.woff?bed5564a116b05148e3b3bea6fb1162a) format("woff");
+    font-display:block
 }

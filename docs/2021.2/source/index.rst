@@ -200,8 +200,8 @@ User Guides
    :caption: Previous Releases
    :hidden:
 
-   2021.1 <http://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/docs/index.html>
-   2020.2 <http://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/docs/index.html>
+   2021.1 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html>
+   2020.2 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/docs/index.html>
 
 
 

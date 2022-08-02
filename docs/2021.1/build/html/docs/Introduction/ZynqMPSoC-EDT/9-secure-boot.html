@@ -1,316 +1,48 @@
-﻿
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
 
-<!DOCTYPE HTML>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-		
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<meta name="description"/>
-		<meta name="keywords"/>
-		<meta property="og:title" content=""/>
-		<meta property="og:description"/>
-		<!-- favicon -->
-		<link rel="icon" type="image/vnd.microsoft.icon" href="../../../_static/favicon.ico"/>
-		<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="../../../_static/favicon.ico"/>
-		<!-- Fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css"/>
-
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Use Secure Boot Features to Protect Your Design &mdash; Embedded Design Tutorials 2021.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-  
-  
-  
-
-  
-      <script type="text/javascript" src="../../../_static/js/jquery.min.js"></script>
-	  <script type="text/javascript" src="../../../_static/js/gtm.js"></script>
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
-    <script type="text/javascript" src="../../../_static/js/d3dd8c60ed.js"></script>
-    <script type="text/javascript" src="../../../_static/js/common-ui-all.min.js"></script>
-    <script type="text/javascript" src="../../../_static/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="../../../_static/js/CoveoJsSearch.Lazy.min.js"></script>
-    <script type="text/javascript" src="../../../_static/js/linkid.js"></script>
-	    <script type="text/javascript" src="../../../_static/js/header-footer.min.js"></script>
-    <script type="text/javascript" src="../../../_static/js/Searchbox.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/common-ui-all.min.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/header-footer.min.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/pro.min.css" media="all" />
+    <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Zynq-7000 Embedded Design Tutorial" href="../Zynq7000-EDT/Zynq7000-EDT.html" />
     <link rel="prev" title="Boot and Configuration" href="8-boot-and-configuration.html" /> 
-	</head>
-	<body>
-		<div class="xilinx-bs3"/>
-		<div class="root responsivegrid">
-			<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 aem-Grid--large--16 aem-Grid--xlarge--16 aem-Grid--xxlarge--16 aem-Grid--xxxlarge--16 ">
-				<div class="xilinxExperienceFragments experiencefragment aem-GridColumn aem-GridColumn--default--12">
-					<div class="xf-content-height">
-						<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 ">
-							<div class="header parbase aem-GridColumn aem-GridColumn--default--12">
-								<noindex>
-									<header data-component="header">
-										<nav class="navbar navbar-default aem-Grid aem-Grid--16">
-											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
-												<div class="container-fluid main-nav">
-													<div class="row">
-														<div class="col-xs-12">
-															<div class="logo-column">
-																<div class="logo">
-																	<a href="https://www.xilinx.com/">
-																	<img src="https://github.com/Xilinx/Image-Collateral/blob/main/xilinx-header-logo.svg?raw=true" title="Xilinx Inc"/>
-																	</a>
-																</div>
-															</div>
-															<div class="navbar-column">
-																<div class="navbar navbar-collapse collapse" id="xilinx-main-menu">
-																	<div class="mobile-search-container">
-																		<div id="headerSearchBox" class="headerSearch"
-																			data-component="header-search"
-																			data-redirect-if-empty="false"
-																			data-coveo-access-token="xxa237d4dd-f0aa-47fc-9baa-af9121851b33"
-																			data-coveo-organization-id="xilinxcomprode2rjoqok">
-																			<div class='coveo-search-section'>
-																				<div class="CoveoAnalytics" data-search-hub="Site"></div>
-																				<ul class="dropdown-menu options">
-																					<li class="option" data-label="All" data-action-link="https://www.xilinx.com/search/site-keyword-search.html" data-search-hub="Site">
-																						<a href="#">
-																						All</a>
-																					</li>
-																					<li data-label="Silicon Devices" data-action-link="https://www.xilinx.com//products/silicon-devices/si-keyword-search.html" data-search-hub="Product">
-																						<a href="#">
-																						Silicon Devices</a>
-																					</li>
-																					<li data-label="Boards and Kits" data-action-link="https://www.xilinx.com//products/boards-and-kits/bk-keyword-search.html" data-search-hub="Product">
-																						<a href="#">
-																						Boards and Kits</a>
-																					</li>
-																					<li data-label="Intellectual Property" data-action-link="https://www.xilinx.com//products/intellectual-property/ip-keyword-search.html" data-search-hub="Product">
-																						<a href="#">
-																						Intellectual Property</a>
-																					</li>
-																					<li data-label="Support" class="option" data-action-link="https://www.xilinx.com/search/support-keyword-search.html" data-search-hub="Support">
-																						<a href="#">
-																						Support</a>
-																						<ul>
-																							<li data-label="Documentation" data-action-link="https://www.xilinx.com//support/documentation-navigation/documentation-keyword-search.html" data-search-hub="Document">
-																								<a href="#">
-																								Documentation</a>
-																							</li>
-																							<li data-label="Knowledge Base" data-action-link="https://www.xilinx.com//support/answer-navigation/answer-keyword-search.html" data-search-hub="AnswerRecord">
-																								<a href="#">
-																								Knowledge Base</a>
-																							</li>
-																							<li data-label="Community Forums" data-action-link="https://www.xilinx.com/search/forums-keyword-search.html" data-search-hub="Forums">
-																								<a href="#">
-																								Community Forums</a>
-																							</li>
-																						</ul>
-																					</li>
-																					<li data-label="Partners" data-action-link="https://www.xilinx.com//alliance/member-keyword-search.html" data-search-hub="Partner">
-																						<a href="#">
-																						Partners</a>
-																					</li>
-																					<li data-label="Videos" data-action-link="https://www.xilinx.com/video/video-keyword-search.html" data-search-hub="Video">
-																						<a href="#">
-																						Videos</a>
-																					</li>
-																					<li data-label="Press" data-action-link="https://www.xilinx.com/search/press-keyword-search.html" data-search-hub="Press">
-																						<a href="#">
-																						Press</a>
-																					</li>
-																				</ul>
-																				<a href="#" class="btn dropdown-toggle value" data-toggle="dropdown"></a>
-																				<div class="CoveoSearchbox" data-id="coveosearchbox" data-action-link="https://www.xilinx.com/search/site-keyword-search.html" data-placeholder="Search Xilinx"></div>
-																			</div>
-																		</div>
-																	</div>
-																	<ul class="nav navbar-nav nav-justified">
-																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
-																			<a href="https://www.xilinx.com/applications.html">
-																			Applications</a>
-																		</li>
-																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
-																			<a href="https://www.xilinx.com/products/silicon-devices.html">
-																			Products</a>
-																		</li>
-																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
-																			<a href="https://developer.xilinx.com/">
-																			Developers</a>
-																		</li>
-																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
-																			<a href="https://www.xilinx.com/support.html">
-																			Support</a>
-																		</li>
-																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
-																			<a href="https://www.xilinx.com/about/company-overview.html">
-																			About</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-															<script type="text/javascript" src="../../../_static/js/gtm.js"></script>
-															<!--<div class="mini-nav">
-																<button type="button" data-function="xilinx-mobile-menu" id="nav-toggle" class="navbar-toggle collapsed visible-xs-block" aria-expanded="false">
-																<span></span>
-																<span></span>
-																<span></span>
-																<span></span>
-																</button>
-																<ul class="list-inline">
-																	<li class="dropdown user-menu">
-																		<button data-toggle="dropdown">
-																		<span class="sr-only">Account</span>
-																		<span class="fas fa-user"></span>
-																		</button>
-																		<ul class="dropdown-menu">
-																			<li>
-																				<a href="https://www.xilinx.com/myprofile/subscriptions.html">
-																				My Account</a>
-																			</li>
-																			<li>
-																				<a href="https://www.xilinx.com/registration/create-account.html">
-																				Create Account</a>
-																			</li>
-																			<li>
-																				<a href="https://www.xilinx.com/bin/protected/en/signout">
-																				Sign Out</a>
-																			</li>
-																		</ul>
-																	</li>
-																	<li class="hidden-xs">
-																		<button data-function="search-toggle">
-																		<span class="sr-only">Search</span>
-																		<span class="far fa-search"></span>
-																		</button>
-																	</li>
-																</ul>
-															</div>
-															-->
-															<div class="search-container">
-																<div id="headerSearchBox" class="headerSearch"
-																	data-component="header-search"
-																	data-redirect-if-empty="false"
-																	data-coveo-access-token="xxa237d4dd-f0aa-47fc-9baa-af9121851b33"
-																	data-coveo-organization-id="xilinxcomprode2rjoqok">
-																	<div class='coveo-search-section'>
-																		<div class="CoveoAnalytics" data-search-hub="Site"></div>
-																		<ul class="dropdown-menu options">
-																			<li class="option" data-label="All" data-action-link="https://www.xilinx.com/search/site-keyword-search.html" data-search-hub="Site">
-																				<a href="#">
-																				All</a>
-																			</li>
-																			<li data-label="Silicon Devices" data-action-link="https://www.xilinx.com/products/silicon-devices/si-keyword-search.html" data-search-hub="Product">
-																				<a href="#">
-																				Silicon Devices</a>
-																			</li>
-																			<li data-label="Boards and Kits" data-action-link="https://www.xilinx.com/products/boards-and-kits/bk-keyword-search.html" data-search-hub="Product">
-																				<a href="#">
-																				Boards and Kits</a>
-																			</li>
-																			<li data-label="Intellectual Property" data-action-link="https://www.xilinx.com/products/intellectual-property/ip-keyword-search.html" data-search-hub="Product">
-																				<a href="#">
-																				Intellectual Property</a>
-																			</li>
-																			<li data-label="Support" class="option" data-action-link="https://www.xilinx.com/search/support-keyword-search.html" data-search-hub="Support">
-																				<a href="#">
-																				Support</a>
-																				<ul>
-																					<li data-label="Documentation" data-action-link="https://www.xilinx.com/support/documentation-navigation/documentation-keyword-search.html" data-search-hub="Document">
-																						<a href="#">
-																						Documentation</a>
-																					</li>
-																					<li data-label="Knowledge Base" data-action-link="https://www.xilinx.com/support/answer-navigation/answer-keyword-search.html" data-search-hub="AnswerRecord">
-																						<a href="#">
-																						Knowledge Base</a>
-																					</li>
-																					<li data-label="Community Forums" data-action-link="https://www.xilinx.com/search/forums-keyword-search.html" data-search-hub="Forums">
-																						<a href="#">
-																						Community Forums</a>
-																					</li>
-																				</ul>
-																			</li>
-																			<li data-label="Partners" data-action-link="https://www.xilinx.com/alliance/member-keyword-search.html" data-search-hub="Partner">
-																				<a href="#">
-																				Partners</a>
-																			</li>
-																			<li data-label="Videos" data-action-link="https://www.xilinx.com/video/video-keyword-search.html" data-search-hub="Video">
-																				<a href="#">
-																				Videos</a>
-																			</li>
-																			<li data-label="Press" data-action-link="https://www.xilinx.com/search/press-keyword-search.html" data-search-hub="Press">
-																				<a href="#">
-																				Press</a>
-																			</li>
-																		</ul>
-																		<a href="#" class="btn dropdown-toggle value" data-toggle="dropdown"></a>
-																		<div class="CoveoSearchbox" data-id="coveosearchbox" data-action-link="https://www.xilinx.com/search/site-keyword-search.html" data-placeholder="Search Xilinx"></div>
-																	</div>
-																</div>
-																<button data-function="search-toggle">
-																<span class="sr-only">Search</span>
-																<span class="far fa-times"></span>
-																</button>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</nav>
-									</header>
-								</noindex>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="parsys aem-GridColumn--xxxlarge--none aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
-						<div class="container-fluid">
-							<div class="row">
-							<div class="col-xs-12">
-   
+</head>
+
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Embedded Design Tutorials
-          
-
-          
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> Embedded Design Tutorials
+            <img src="../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
           </a>
-
-          
-            
-            
               <div class="version">
                 2021.1
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -318,27 +50,16 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-      
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-            
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">简体中文</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">日本語</span></p>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a><ul class="current">
@@ -378,98 +99,52 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Feature Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Debugging</span></p>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="http://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/docs/index.html">2020.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/docs/index.html">2020.2</a></li>
 </ul>
 
-            
-			
-			<p class="caption"><span class="caption-text">This Page</span></p>
-				<ul class="current">
-				  <li class="toctree-l1"><a href="../../../_sources/docs/Introduction/ZynqMPSoC-EDT/9-secure-boot.md.txt"
-						rel="nofollow">Show Source</a></li>
-				</ul>
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Embedded Design Tutorials</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a> &raquo;</li>
-        
       <li>Use Secure Boot Features to Protect Your Design</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../../../_sources/docs/Introduction/ZynqMPSoC-EDT/9-secure-boot.md.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="use-secure-boot-features-to-protect-your-design">
-<h1>Use Secure Boot Features to Protect Your Design<a class="headerlink" href="#use-secure-boot-features-to-protect-your-design" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="use-secure-boot-features-to-protect-your-design">
+<h1>Use Secure Boot Features to Protect Your Design<a class="headerlink" href="#use-secure-boot-features-to-protect-your-design" title="Permalink to this heading">¶</a></h1>
 <p>The secure boot functionality in Xilinx™ devices allows you to support the confidentiality, integrity, and authentication of partitions.</p>
 <p>Secure boot in Zynq® UltraScale+™ MPSoCs is accomplished by combining the Hardware Root of Trust
 (HWRoT) capabilities with the option of encrypting all boot partitions. The HWRoT is based on the RSA-4096
@@ -485,8 +160,8 @@ asymmetric algorithm with SHA-3/384, which is hardware accelerated. Confidential
 <p>The <a class="reference external" href="#boot-image-confidentiality-and-dpa">Boot Image Confidentiality and DPA</a> section discusses the use of the operational key and key rolling techniques as countermeasures to a DPA attack. Changing the AES key reduces the exposure of both the key and the data protected by the key.</p>
 <p>A red key is a key in unencrypted format. The <a class="reference external" href="#black-key-storage">Black Key Storage</a> section provides a method for storing the AES key in encrypted, or black format. Black key storage uses the physically unclonable function (PUF) as a Key Encryption Key (KEK).</p>
 <p>The <a class="reference external" href="#example-practical-methods-in-secure-boot">Example: Practical Methods in Secure Boot</a> section provides steps to develop and test systems that use AES encryption and RSA authentication.</p>
-<div class="section" id="secure-boot-system-design-decisions">
-<h2>Secure Boot System Design Decisions<a class="headerlink" href="#secure-boot-system-design-decisions" title="Permalink to this headline">¶</a></h2>
+<section id="secure-boot-system-design-decisions">
+<h2>Secure Boot System Design Decisions<a class="headerlink" href="#secure-boot-system-design-decisions" title="Permalink to this heading">¶</a></h2>
 <p>The following are device level decisions affecting secure boot:</p>
 <ul class="simple">
 <li><p>Boot mode</p></li>
@@ -533,8 +208,8 @@ which there are multiple sources/suppliers of sensitive data and/or proprietary 
 <td>Black Key Storage</td>
 </tr>
 </tbody>
-</table><div class="section" id="hardware-root-of-trust">
-<h3>Hardware Root of Trust<a class="headerlink" href="#hardware-root-of-trust" title="Permalink to this headline">¶</a></h3>
+</table><section id="hardware-root-of-trust">
+<h3>Hardware Root of Trust<a class="headerlink" href="#hardware-root-of-trust" title="Permalink to this heading">¶</a></h3>
 <p>Roots of trust are security primitives for storage (RTS), integrity
 (RTI), verification (RTV), measurement (RTM), and reporting (RTR). RoT
 consists of hardware, firmware, and software. The HWRoT has advantages
@@ -551,8 +226,8 @@ drivers, and the XILSKEY and XILSECURE libraries which run on the
 HWRoT. These provide a well-tested, proven in use API so that
 developers do not create security components from scratch with limited
 testing.</p>
-<div class="section" id="data-integrity">
-<h4>Data Integrity<a class="headerlink" href="#data-integrity" title="Permalink to this headline">¶</a></h4>
+<section id="data-integrity">
+<h4>Data Integrity<a class="headerlink" href="#data-integrity" title="Permalink to this heading">¶</a></h4>
 <p>Data integrity is the absence of corruption of hardware, firmware, and
 software. Data integrity functions verify that an adversary has not
 tampered with the configuration and operating environment.</p>
@@ -565,9 +240,9 @@ from the public key.</p>
 <p>Encrypted partitions are also authenticated using the Galois Counter
 Mode (GCM) mode of AES. In the secure boot flow, partitions are first
 authenticated and then decrypted if necessary.</p>
-</div>
-<div class="section" id="authentication">
-<h4>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="authentication">
+<h4>Authentication<a class="headerlink" href="#authentication" title="Permalink to this heading">¶</a></h4>
 <p>The following figure shows RSA signing and verification of partitions.
 From a secure facility, the Bootgen tool signs partitions, using the
 private key. In the device, the ROM verifies the FSBL and either the
@@ -595,10 +270,10 @@ does not require programming of eFUSEs.</p>
 <p>This tutorial uses this mode. However, fielded systems should not use
 boot header authentication. The example BIF file for a fully secured
 system is included at the end of this section.</p>
-</div>
-</div>
-<div class="section" id="boot-image-confidentiality-and-dpa">
-<h3>Boot Image Confidentiality and DPA<a class="headerlink" href="#boot-image-confidentiality-and-dpa" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="boot-image-confidentiality-and-dpa">
+<h3>Boot Image Confidentiality and DPA<a class="headerlink" href="#boot-image-confidentiality-and-dpa" title="Permalink to this heading">¶</a></h3>
 <p>AES is used to ensure the confidentiality of sensitive data and IP. Zynq
 UltraScale+ uses AES Galois Counter Mode (GCM) and a 256 AES bit key. The principle AES enhancements provided by Zynq UltraScale+ are increased resistance to differential power analysis
 (DPA) attacks and the availability of AES encryption/decryption post
@@ -614,9 +289,9 @@ BBRAM and eFUSE are also available in the Vitis™ IDE. One such example
 is discussed in <a class="reference external" href="#example-practical-methods-in-secure-boot">Example: Practical Methods in Secure Boot</a>.</p>
 <p><strong>Note:</strong> It is recommended that you generate your own keys for fielded systems and then provide those keys to the development tools.
 Refer to AR <a class="reference external" href="https://www.xilinx.com/support/answers/76171.html">76171</a> for details.</p>
-</div>
-<div class="section" id="dpa-protections">
-<h3>DPA Protections<a class="headerlink" href="#dpa-protections" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="dpa-protections">
+<h3>DPA Protections<a class="headerlink" href="#dpa-protections" title="Permalink to this heading">¶</a></h3>
 <p>Key rolling is used for DPA resistance. Key rolling and black key
 store can be used in the same design. In key rolling, software and
 bitstream is broken up into multiple data blocks, each encrypted with
@@ -636,9 +311,9 @@ user-specified operational key and the first block IV. The AES key in
 eFUSE or BBRAM is used only to decrypt the 384-bit secure header with
 the 256-bit operational key. This limits the exposure of the device
 key to DPA attacks.</p>
-</div>
-<div class="section" id="black-key-storage">
-<h3>Black Key Storage<a class="headerlink" href="#black-key-storage" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="black-key-storage">
+<h3>Black Key Storage<a class="headerlink" href="#black-key-storage" title="Permalink to this heading">¶</a></h3>
 <p>The PUF enables storing the AES key in encrypted (black) format. The
 black key can be stored either in eFUSEs or in the boot header. When
 needed for decryption, the encrypted key in eFUSEs or the boot header
@@ -663,10 +338,10 @@ mode requires a unique run of bootgen for each and every device. The
 example BIF file for a fully secured system is included at the end of
 the <a class="reference external" href="#secure-boot-sequence">Secure Boot Sequence</a> section demonstrates
 the PUF eFUSE mode.</p>
-</div>
-</div>
-<div class="section" id="example-practical-methods-in-secure-boot">
-<h2>Example: Practical Methods in Secure Boot<a class="headerlink" href="#example-practical-methods-in-secure-boot" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="example-practical-methods-in-secure-boot">
+<h2>Example: Practical Methods in Secure Boot<a class="headerlink" href="#example-practical-methods-in-secure-boot" title="Permalink to this heading">¶</a></h2>
 <p>This section outlines the steps to develop secure boot in a Zynq
 UltraScale+ system. Producing a secure embedded system is a two-step
 process. In the first phase, the cryptographic keys are generated and
@@ -704,8 +379,8 @@ specify security attributes.</p>
 test should be executed. The system loads successfully and displays the FSBL
 messages on the terminal. These messages indicate the cryptographic
 operations performed on each partition. The <a class="reference external" href="#debugging-problems-with-secure-boot">Debugging Problems with Secure Boot</a> section provides the debugging steps to follow if the secure boot test fails.</p>
-<div class="section" id="sample-design-overview">
-<h3>Sample Design Overview<a class="headerlink" href="#sample-design-overview" title="Permalink to this headline">¶</a></h3>
+<section id="sample-design-overview">
+<h3>Sample Design Overview<a class="headerlink" href="#sample-design-overview" title="Permalink to this heading">¶</a></h3>
 <p>The sample design demonstrates loading various types of images into
 the device. It includes loading a FSBL, PMU Firmware, U-Boot, Linux,
 RPU software and a PL configuration image. In this sample, all of
@@ -799,9 +474,9 @@ that are enabled which security features. The second method uses the
 Create Boot Image wizard in the Vitis IDE. It demonstrates the same
 set of security features and reuses the keys from the first method for
 convenience.</p>
-</div>
-<div class="section" id="generating-keys-for-authentication">
-<h3>Generating Keys for Authentication<a class="headerlink" href="#generating-keys-for-authentication" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="generating-keys-for-authentication">
+<h3>Generating Keys for Authentication<a class="headerlink" href="#generating-keys-for-authentication" title="Permalink to this heading">¶</a></h3>
 <p>There are multiple methods of generating keys. These include, but are
 not limited to, using Bootgen, customized key files, OpenSSL and
 hardware security modules (HSMs). This tutorial covers methods using
@@ -813,9 +488,9 @@ and modification of the BIF files. The key generation section of this
 tutorial creates these BIF files “by hand” using a text editor. The
 next section, building your boot image demonstrates how to create
 these BIF files using the Bootgen GUI (create Boot Image Wizard).</p>
-</div>
-<div class="section" id="creating-rsa-private-public-key-pairs">
-<h3>Creating RSA Private/Public Key Pairs<a class="headerlink" href="#creating-rsa-private-public-key-pairs" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="creating-rsa-private-public-key-pairs">
+<h3>Creating RSA Private/Public Key Pairs<a class="headerlink" href="#creating-rsa-private-public-key-pairs" title="Permalink to this heading">¶</a></h3>
 <p>For this example, you will create the primary and secondary keys in
 the PEM format. The keys are generated using Bootgen command-line
 options. Alternatively, you can create the keys using external tools such as OpenSSL.</p>
@@ -867,8 +542,8 @@ steps.</p>
 <li><p>Verify that the files <code class="docutils literal notranslate"><span class="pre">psk0.pem</span></code> and <code class="docutils literal notranslate"><span class="pre">ssk0.pem</span></code> are generated at the location specified in the BIF file (<code class="docutils literal notranslate"><span class="pre">c:\edt\secure_boot_sd\keys</span></code>).</p></li>
 </ol>
 <p><strong>Note:</strong> 2020.3 (and previous) Bootgen fails to replace the old authentication key files with new authentication key files generated using the <code class="docutils literal notranslate"><span class="pre">-generate_keys</span></code> option. It is recommended that you check the existence and permissions of the target key files before generation. Refer to AR <a class="reference external" href="https://www.xilinx.com/support/answers/76125.html">76125</a> for details.</p>
-<div class="section" id="generating-sha3-of-public-key-in-an-rsa-private-public-key-pair">
-<h4>Generating SHA3 of Public Key in an RSA Private/Public Key Pair<a class="headerlink" href="#generating-sha3-of-public-key-in-an-rsa-private-public-key-pair" title="Permalink to this headline">¶</a></h4>
+<section id="generating-sha3-of-public-key-in-an-rsa-private-public-key-pair">
+<h4>Generating SHA3 of Public Key in an RSA Private/Public Key Pair<a class="headerlink" href="#generating-sha3-of-public-key-in-an-rsa-private-public-key-pair" title="Permalink to this heading">¶</a></h4>
 <p>The following steps are required only for RSA authentication in eFUSE mode, and can be skipped for RSA authentication in boot header mode. The 384 bits from <code class="docutils literal notranslate"><span class="pre">sha3.txt</span></code> can be programmed to eFUSE for RSA authentication in eFUSE mode. For more information, see <em>Programming BBRAM and eFUSEs</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf">XAPP1319</a>).</p>
 <ol>
 <li><p>Perform the steps from the prior section.</p></li>
@@ -892,9 +567,9 @@ steps.</p>
 </li>
 <li><p>Verify that the file <code class="docutils literal notranslate"><span class="pre">ppk0_digest.txt</span></code> is generated at the location specified (<code class="docutils literal notranslate"><span class="pre">c:\edt\secure_boot_sd\keys</span></code>).</p></li>
 </ol>
-</div>
-<div class="section" id="additional-rsa-private-public-key-pairs">
-<h4>Additional RSA Private/Public Key Pairs<a class="headerlink" href="#additional-rsa-private-public-key-pairs" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="additional-rsa-private-public-key-pairs">
+<h4>Additional RSA Private/Public Key Pairs<a class="headerlink" href="#additional-rsa-private-public-key-pairs" title="Permalink to this heading">¶</a></h4>
 <p>Follow the steps in this section to generate the secondary RSA private/public key
 pair required for key revocation, which requires the programming of eFUSE.
 For more information, see <em>Programming BBRAM and eFUSEs</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf">XAPP1319</a>). You can skip this section if you do not intend to use key revocation.</p>
@@ -944,9 +619,9 @@ and <code class="docutils literal notranslate"><span class="pre">ppk1_digest.pem
 </li>
 <li><p>Verify that the files <code class="docutils literal notranslate"><span class="pre">ppk1.pem</span></code>, <code class="docutils literal notranslate"><span class="pre">spk1.pem</span></code>, and <code class="docutils literal notranslate"><span class="pre">ppk1_digest.txt</span></code> are all generated at the location specified (<code class="docutils literal notranslate"><span class="pre">c:\edt\secure_boot\keys</span></code>).</p></li>
 </ol>
-</div>
-<div class="section" id="enabling-boot-header-authentication">
-<h4>Enabling Boot Header Authentication<a class="headerlink" href="#enabling-boot-header-authentication" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="enabling-boot-header-authentication">
+<h4>Enabling Boot Header Authentication<a class="headerlink" href="#enabling-boot-header-authentication" title="Permalink to this heading">¶</a></h4>
 <p>Boot header authentication is a mode of authentication that instructs
 the ROM to skip the checks of the eFUSE hashes for the PPKs, the
 revocation status of the PPKs, and the session IDs for the secondary
@@ -974,18 +649,18 @@ the BIF file appears as follows:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="generating-keys-for-confidentiality">
-<h3>Generating Keys for Confidentiality<a class="headerlink" href="#generating-keys-for-confidentiality" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="generating-keys-for-confidentiality">
+<h3>Generating Keys for Confidentiality<a class="headerlink" href="#generating-keys-for-confidentiality" title="Permalink to this heading">¶</a></h3>
 <p>Image confidentiality is discussed in the <a class="reference external" href="#boot-image-confidentiality-and-dpa">Boot Image Confidentiality and
 DPA</a> section. In this section you
 will modify the BIF file from the authentication section by adding
 the attributes required to enable image confidentiality, using the
 AES-256-GCM encryption algorithm. At the end, a <code class="docutils literal notranslate"><span class="pre">bootgen</span></code> command will
 be used to create all of the required AES-256 keys.</p>
-<div class="section" id="using-aes-encryption">
-<h4>Using AES Encryption<a class="headerlink" href="#using-aes-encryption" title="Permalink to this headline">¶</a></h4>
+<section id="using-aes-encryption">
+<h4>Using AES Encryption<a class="headerlink" href="#using-aes-encryption" title="Permalink to this heading">¶</a></h4>
 <ol class="simple">
 <li><p>Enable image confidentiality by specifying the key source for the
 initial encryption key (<code class="docutils literal notranslate"><span class="pre">bbram_red_key</span></code> for now) using the
@@ -1008,14 +683,14 @@ initial encryption key (<code class="docutils literal notranslate"><span class="
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="enabling-dpa-protections">
-<h4>Enabling DPA Protections<a class="headerlink" href="#enabling-dpa-protections" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="enabling-dpa-protections">
+<h4>Enabling DPA Protections<a class="headerlink" href="#enabling-dpa-protections" title="Permalink to this heading">¶</a></h4>
 <p>This section provides the steps for using an operational key, and also demonstrates key
 rolling effective countermeasures against differential power analysis (DPA).</p>
-</div>
-<div class="section" id="enable-use-of-an-operational-key">
-<h4>Enable Use of an Operational Key<a class="headerlink" href="#enable-use-of-an-operational-key" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="enable-use-of-an-operational-key">
+<h4>Enable Use of an Operational Key<a class="headerlink" href="#enable-use-of-an-operational-key" title="Permalink to this heading">¶</a></h4>
 <p>Use of an operational key limits the amount of information encrypted
 using a device key. Enable use of the operational key by adding the
 <code class="docutils literal notranslate"><span class="pre">opt_key</span></code> attribute to the <code class="docutils literal notranslate"><span class="pre">[fsbl_config]</span></code> line of the BIF file. The
@@ -1036,9 +711,9 @@ using a device key. Enable use of the operational key by adding the
 }
 </pre></div>
 </div>
-</div>
-<div class="section" id="enabling-encryption-using-key-rolling">
-<h4>Enabling Encryption Using Key Rolling<a class="headerlink" href="#enabling-encryption-using-key-rolling" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="enabling-encryption-using-key-rolling">
+<h4>Enabling Encryption Using Key Rolling<a class="headerlink" href="#enabling-encryption-using-key-rolling" title="Permalink to this heading">¶</a></h4>
 <p>Use of key rolling limits the amount of information encrypted using
 any of the other keys. Key rolling is enabled on a partition-by-partition basis using the blocks attribute in the BIF file. The blocks attribute allows you to specify the amount of information
 in bytes to encrypt with each key. For example, <code class="docutils literal notranslate"><span class="pre">blocks=4096,1024(3),512(*)</span></code> would use the first key for 4096 bytes, the second through fourth keys for 1024 bytes, and all remaining keys
@@ -1062,9 +737,9 @@ of the encrypted partitions. The <code class="docutils literal notranslate"><spa
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="generating-all-of-the-aes-keys">
-<h4>Generating All of the AES Keys<a class="headerlink" href="#generating-all-of-the-aes-keys" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="generating-all-of-the-aes-keys">
+<h4>Generating All of the AES Keys<a class="headerlink" href="#generating-all-of-the-aes-keys" title="Permalink to this heading">¶</a></h4>
 <p>When all the desired encryption features have been enabled, you can
 generate all key files by running Bootgen. Some of the source files
 (for example, ELF) contain multiple sections. These individual
@@ -1080,24 +755,24 @@ that creates the final <code class="docutils literal notranslate"><span class="p
 </li>
 <li><p>Verify that the NKY files were generated. These file should include <code class="docutils literal notranslate"><span class="pre">edt_zcu102_wrapper.nky,</span> <span class="pre">fsbl_a53.nky,</span> <span class="pre">pmu_fw.nky,</span> <span class="pre">pmu_fw.1.nky,</span> <span class="pre">pmu_fw.2.nky,</span> <span class="pre">tmr_psled_r5.nky,</span> <span class="pre">and</span> <span class="pre">tmr_psled_r5.1.nky.</span></code></p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="using-key-revocation">
-<h3>Using Key Revocation<a class="headerlink" href="#using-key-revocation" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="using-key-revocation">
+<h3>Using Key Revocation<a class="headerlink" href="#using-key-revocation" title="Permalink to this heading">¶</a></h3>
 <p>Key revocation allows you to revoke a RSA primary or secondary public
 key. Key revocation can be used due to elapsed time of key use, or if
 there is an indication that the key is compromised. The primary and
 secondary key revocation is controlled by one-time programmable eFUSEs.
 The Xilinx Secure Key Library is used for key revocation, allowing key
 revocation in fielded devices. Key revocation is discussed further in the <em>Zynq UltraScale+ Device Technical Reference Manual</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides%3Bd%3Dug1085-zynq-ultrascale-trm.pdf">UG1085</a>).</p>
-<div class="section" id="using-the-puf">
-<h4>Using the PUF<a class="headerlink" href="#using-the-puf" title="Permalink to this headline">¶</a></h4>
+<section id="using-the-puf">
+<h4>Using the PUF<a class="headerlink" href="#using-the-puf" title="Permalink to this heading">¶</a></h4>
 <p>In this section, the PUF is used for black key storage in the PUF boot header mode. RSA authentication is required when the PUF is used. In PUF boot header mode, the PUF helper data and the encrypted user’s AES key are stored in the boot header. This section shows how to create
 a BIF for using the PUF. Because the helper data and encrypted user key are unique for each and every board, the Bootgen image created only works on the board from which the helper data originated.</p>
 <p>At the end of the <a class="reference external" href="#secure-boot-sequence">Secure Boot Sequence</a> section, a different BIF file demonstrates using the PUF in eFUSE mode. In PUF eFUSE mode, the PUF helper data and encrypted user’s AES key are stored in eFUSEs. In PUF eFUSE mode, a single boot image can be used across all boards.</p>
-</div>
-<div class="section" id="puf-registration-in-boot-header-mode">
-<h4>PUF Registration in Boot Header Mode<a class="headerlink" href="#puf-registration-in-boot-header-mode" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="puf-registration-in-boot-header-mode">
+<h4>PUF Registration in Boot Header Mode<a class="headerlink" href="#puf-registration-in-boot-header-mode" title="Permalink to this heading">¶</a></h4>
 <p>The PUF registration software is included in the XILSKEY library. The PUF registration software operates in a boot header mode or eFUSE mode. The boot header mode allows development without programming the OTP eFUSEs. The eFUSE mode is used in production. This lab runs through PUF registration in boot header mode only. For PUF registration using eFUSE, see <em>Programming BBRAM and eFUSEs</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf">XAPP1319</a>).</p>
 <p>The PUF registration software accepts a red (unencrypted) key as input, and produces syndrome data (helper data), which also contains CHASH and AUX, and a black (encrypted) key. When the PUF boot header mode is used, the output is put in the boot header. When the PUF eFUSE mode is used, the output is programmed into eFUSEs.</p>
 <ol>
@@ -1167,9 +842,9 @@ terminal.</p></li>
 <li><p>Save the black key to a file named <code class="docutils literal notranslate"><span class="pre">black_key.txt</span></code>.</p></li>
 <li><p>The files <code class="docutils literal notranslate"><span class="pre">helperdata.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">black_key.txt</span></code>, and <code class="docutils literal notranslate"><span class="pre">black_iv.txt</span></code> can be saved in <code class="docutils literal notranslate"><span class="pre">C:\edt\secure_boot_sd\keys</span></code>.</p></li>
 </ol>
-</div>
-<div class="section" id="using-puf-in-boot-header-mode">
-<h4>Using PUF in Boot Header Mode<a class="headerlink" href="#using-puf-in-boot-header-mode" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="using-puf-in-boot-header-mode">
+<h4>Using PUF in Boot Header Mode<a class="headerlink" href="#using-puf-in-boot-header-mode" title="Permalink to this heading">¶</a></h4>
 <p>The following steps describe the process to update the BIF file from the previous sections to include using the PUF in Boot Header mode. This section makes use of the syndrome data and black key created during PUF registration process.</p>
 <ol>
 <li><p>Enable use of the PUF by adding all of the fields and attributes indicated in bold to the BIF file (<code class="docutils literal notranslate"><span class="pre">key_generation.bif</span></code>) as shown below.</p>
@@ -1205,10 +880,10 @@ terminal.</p></li>
 <span class="p">[</span><span class="n">bh_key_iv</span><span class="p">]</span><span class="n">black_iv</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="system-example-using-the-vitis-ide-create-boot-image-wizard">
-<h3>System Example Using the Vitis IDE Create Boot Image Wizard<a class="headerlink" href="#system-example-using-the-vitis-ide-create-boot-image-wizard" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="system-example-using-the-vitis-ide-create-boot-image-wizard">
+<h3>System Example Using the Vitis IDE Create Boot Image Wizard<a class="headerlink" href="#system-example-using-the-vitis-ide-create-boot-image-wizard" title="Permalink to this heading">¶</a></h3>
 <p>The previous sections enabled the various security features (authentication, confidentiality, DPA protections, and black key storage) by hand editing the BIF file. This section performs the same operations, but uses the Bootgen Wizard as a starting point. The Bootgen Wizard creates a base BIF file, and then adds the additional security features that are not supported by the wizard using a text editor.</p>
 <ol>
 <li><p>Change directory to the <code class="docutils literal notranslate"><span class="pre">bootgen_files</span></code> directory.</p>
@@ -1422,8 +1097,8 @@ terminal.</p></li>
 <p><code class="docutils literal notranslate"><span class="pre">bootgen</span> <span class="pre">-p</span> <span class="pre">zcu9eg</span> <span class="pre">-arch</span> <span class="pre">zynqmp</span> <span class="pre">-image</span> <span class="pre">design_bh_bkey_keyrolling.bif</span> <span class="pre">-w</span> <span class="pre">-o</span> <span class="pre">BOOT.bin</span> <span class="pre">-encryption_dump</span></code></p>
 </li>
 </ol>
-<div class="section" id="booting-the-system-using-a-secure-boot-image">
-<h4>Booting the System Using a Secure Boot Image<a class="headerlink" href="#booting-the-system-using-a-secure-boot-image" title="Permalink to this headline">¶</a></h4>
+<section id="booting-the-system-using-a-secure-boot-image">
+<h4>Booting the System Using a Secure Boot Image<a class="headerlink" href="#booting-the-system-using-a-secure-boot-image" title="Permalink to this heading">¶</a></h4>
 <p>This section demonstrates how to use the <code class="docutils literal notranslate"><span class="pre">BOOT.bin</span></code> boot image created in prior sections to perform a secure boot using the ZCU102.</p>
 <ol>
 <li><p>Copy the BOOT.bin image, the <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> file generated in PetaLinux, and the <code class="docutils literal notranslate"><span class="pre">ps_pl_linux_app.elf</span></code> file.</p></li>
@@ -1450,9 +1125,9 @@ terminal.</p></li>
 <p><img alt="../../../_images/image951.png" src="../../../_images/image951.png" /></p>
 </li>
 </ol>
-<!--Screenshot version: 2020.1--></div>
-<div class="section" id="running-the-linux-application">
-<h4>Running the Linux Application<a class="headerlink" href="#running-the-linux-application" title="Permalink to this headline">¶</a></h4>
+<!--Screenshot version: 2020.1--></section>
+<section id="running-the-linux-application">
+<h4>Running the Linux Application<a class="headerlink" href="#running-the-linux-application" title="Permalink to this heading">¶</a></h4>
 <p>Use the following steps to run a Linux application:</p>
 <ol>
 <li><p>Copy the application from SD card mount point to <code class="docutils literal notranslate"><span class="pre">/tmp</span></code>.</p>
@@ -1467,9 +1142,9 @@ cp /media/ps_pl_linux_app.elf /tmp
 </div>
 </li>
 </ol>
-</div>
-<div class="section" id="sample-bif-for-a-fielded-system">
-<h4>Sample BIF for a Fielded System<a class="headerlink" href="#sample-bif-for-a-fielded-system" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="sample-bif-for-a-fielded-system">
+<h4>Sample BIF for a Fielded System<a class="headerlink" href="#sample-bif-for-a-fielded-system" title="Permalink to this heading">¶</a></h4>
 <p>The following BIF file is an example for a fielded system. For this BIF file to work on a board, it requires the RSA_EN, PPK0 Digest, black AES key and PUF helper data to all be programmed in the eFUSEs. Because programming these eFUSEs severely limits the use of the device or board for testing and debugging, it is only included here as a reference. It is not part of the tutorial.</p>
 <p>The following changes are made to the final <code class="docutils literal notranslate"><span class="pre">generation.bif</span></code> file reach the following result:</p>
 <ol class="simple">
@@ -1503,14 +1178,14 @@ cp /media/ps_pl_linux_app.elf /tmp
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="debugging-problems-with-secure-boot">
-<h2>Debugging Problems with Secure Boot<a class="headerlink" href="#debugging-problems-with-secure-boot" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="debugging-problems-with-secure-boot">
+<h2>Debugging Problems with Secure Boot<a class="headerlink" href="#debugging-problems-with-secure-boot" title="Permalink to this heading">¶</a></h2>
 <p>This appendix describes how to debug security failures. One procedure determines if PUF registration has been run on the device. A second procedure checks the value of the boot header in the boot image.</p>
-<div class="section" id="determine-if-puf-registration-is-running">
-<h3>Determine if PUF Registration is Running<a class="headerlink" href="#determine-if-puf-registration-is-running" title="Permalink to this headline">¶</a></h3>
+<section id="determine-if-puf-registration-is-running">
+<h3>Determine if PUF Registration is Running<a class="headerlink" href="#determine-if-puf-registration-is-running" title="Permalink to this heading">¶</a></h3>
 <p>The following steps can be used to verify if the PUF registration software has been run on the device:</p>
 <ol>
 <li><p>In the Vitis IDE, select <strong>Xilinx → XSCT Console</strong>.</p></li>
@@ -1525,9 +1200,9 @@ cp /media/ps_pl_linux_app.elf /tmp
 </li>
 <li><p>This location contains the CHASH and AUX values. If non-zero, PUF registration software has been run on the device.</p></li>
 </ol>
-</div>
-<div class="section" id="read-the-boot-image">
-<h3>Read the Boot Image<a class="headerlink" href="#read-the-boot-image" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="read-the-boot-image">
+<h3>Read the Boot Image<a class="headerlink" href="#read-the-boot-image" title="Permalink to this heading">¶</a></h3>
 <p>You can use the Bootgen utility to verify the header values and the partition data used in the boot image.</p>
 <ol>
 <li><p>Change to the directory containing <code class="docutils literal notranslate"><span class="pre">BOOT.bin</span></code>.</p></li>
@@ -1541,82 +1216,14 @@ cp /media/ps_pl_linux_app.elf /tmp
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-<!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
-</footer>
-
-        </div>
-      </div>
-
-
-	  <!-- Sphinx Page Footer block -->
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../Zynq7000-EDT/Zynq7000-EDT.html" class="btn btn-neutral float-right" title="Zynq-7000 Embedded Design Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="8-boot-and-configuration.html" class="btn btn-neutral float-left" title="Boot and Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo" class="copyright">
-    <p class="footerinfo">
-      <span class="lastupdated">
-        Last updated on September 27, 2021.
-      </span>
-
-    </p>
-	<br>
-  </div>
-      </div>
-    </section>
-
-
-  
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-   <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-
-  <script type="text/javascript" id="searchindexloader"></script>
-
-
-  
-  
-    
-  
-
-
-
-  <!--  Xilinx template footer block -->
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="xilinxExperienceFragments experiencefragment aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16">
-					<div class="xf-content-height">
-						<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 ">
-							<div class="footer parbase aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16">
-								<noindex>
-                  <!-- make footer fixed - NileshP -->
+          
                   <style>
                         .footer {
                         position: fixed;
@@ -1625,103 +1232,64 @@ cp /media/ps_pl_linux_app.elf /tmp
                         width: 100%;
                         }
                   </style>
-                  <!-- make footer fixed NileshP-->
-									<footer>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="8-boot-and-configuration.html" class="btn btn-neutral float-left" title="Boot and Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Zynq7000-EDT/Zynq7000-EDT.html" class="btn btn-neutral float-right" title="Zynq-7000 Embedded Design Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on August 1, 2022.
+      </span></p>
+  </div>
+
+
+
 										<div class="aem-Grid aem-Grid--16">
 											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
 												<div class="container-fluid sub-footer">
-													<div class="row">
-														<div class="footerSocial parbase">
-															<div class="col-md-push-6 col-lg-push-6 col-md-6 col-lg-6">
-																<ul class="list-inline pull-right social-menu">
-																	<li>
-																		<a href="https://www.linkedin.com/company/xilinx">
-																		<span class="linkedin icon"></span>
-																		<span class="sr-only">Connect on LinkedIn</span>
-																		</a>
-																	</li>
-																	<li>
-																		<a href="https://www.twitter.com/XilinxInc">
-																		<span class="twitter icon"></span>
-																		<span class="sr-only">Follow us on Twitter</span>
-																		</a>
-																	</li>
-																	<li>
-																		<a href="https://www.facebook.com/XilinxInc">
-																		<span class="facebook icon"></span>
-																		<span class="sr-only">Connect on Facebook</span>
-																		</a>
-																	</li>
-																	<li>
-																		<a href="https://www.youtube.com/XilinxInc">
-																		<span class="youtube icon"></span>
-																		<span class="sr-only">Watch us on YouTube</span>
-																		</a>
-																	</li>
-																	<li>
-																		<a href="https://www.xilinx.com/registration/subscriber-signup.html">
-																		<span class="newsletter icon"></span>
-																		<span class="sr-only">Subscribe to Newsletter</span>
-																		</a>
-																	</li>
-																</ul>
-															</div>
-														</div>
-														<div class="col-md-pull-6 col-lg-pull-6 col-md-6 col-lg-6">
-															<span class="copyright">
-                                  
-                                  &copy; 2019-2021, Xilinx, Inc.
-                              </span>
-															  <ul class="list-inline sub-menu">
-																<li>
-																	<a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a>
-																</li>
-																<li>
-																	<a href="https://www.xilinx.com/about/privacy-policy.html">Privacy</a>
-																</li>
-																<li>
-																	<a href="https://www.xilinx.com/about/legal.html">Legal</a>
-																</li>
-																<li>
-																	<a href="https://www.xilinx.com/about/contact.html">Contact</a>
-																</li>
-															</ul>
-														</div>
-													</div>
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
 												</div>
 											</div>
 										</div>
-									</footer>
-								</noindex>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="quicklinks parbase aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16">
-					<noindex>
-						<span class="quickLinks">
-							<ul>
-								<li>
-									<a href="#top" class="btn backToTop">
-									<span class="fas fa-angle-up" aria-hidden="true"></span>
-									</a>
-								</li>
-							</ul>
-						</span>
-					</noindex>
-				</div>
-			</div>
-		</div>
-		<script>window.CQ = window.CQ || {}</script>
-		<script src="https://static.cloud.coveo.com/searchui/v2.4382/js/CoveoJsSearch.Lazy.min.js"></script>
-		<script>
-			var underscoreSetup = function () {
-			  _.templateSettings.interpolate = /\{\{=([^-][\S\s]+?)\}\}/g;
-			  _.templateSettings.evaluate = /\{\{([^-=][\S\s]+?)\}\}/g;
-			  _.templateSettings.escape = /\{\{-([^=][\S\s]+?)\}\}/g;
-			}
+										
+</br>
 
-			underscoreSetup();
-		</script>
-	</body>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
 </html>
