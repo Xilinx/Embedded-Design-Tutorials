@@ -90,7 +90,9 @@ Feature Tutorials
    :hidden:
 
    First Stage Boot Loader (FSBL) <docs/Feature_Tutorials/debuggable-fsbl/debuggable-fsbl>
+   Programming an Embedded MicroBlaze Processor<docs/Feature_Tutorials/microblaze-system/README>
    Profiling Applications with System Debugger <docs/Feature_Tutorials/sw-profiling/sw-profiling>
+   
 
 
 
@@ -103,9 +105,14 @@ Feature Tutorials
 	 
    * - :doc:`First Stage Boot Loader (FSBL) <docs/Feature_Tutorials/debuggable-fsbl/debuggable-fsbl>`
      - First Stage Boot Loader (FSBL) can initialize the SoC device, load the required application or data to memory, and launch applications on the target CPU core. An FSBL is provided in the Vitis platform project (if you enabled creating boot components while creating the platform project), but you are free to create additional FSBL applications as general applications for further modification or debugging purposes.
+	 
+   * - :doc:`Programming an Embedded MicroBlaze Processor <docs/Feature_Tutorials/microblaze-system/README>`
+     - Create a simple MicroBlaze™ system for a Spartan®-7 FPGA using Vivado® IP integrator.
 
    * - :doc:`Profiling Applications with System Debugger <docs/Feature_Tutorials/sw-profiling/sw-profiling>`
      - Enable profiling features for the standalone domain or board support package (BSP) and the application related to AXI CDMA, which you created in :doc:`Linux Booting and Debug in the Vitis Software Platform <docs/Introduction/Zynq7000-EDT/7-linux-booting-debug>`.
+	 
+
 
 
 
@@ -202,7 +209,7 @@ User Guides
 
    2021.2 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html>
    2021.1 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html>
-   2020.2 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/docs/index.html>
+   2020.2 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html>
 
 
 

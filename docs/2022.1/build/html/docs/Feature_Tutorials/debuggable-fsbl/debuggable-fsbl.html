@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -23,12 +23,11 @@ function OptanonWrapper() { }
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Software Profiling Using the Vitis Software Platform" href="../sw-profiling/sw-profiling.html" />
+    <link rel="next" title="Programming an Embedded MicroBlaze Processor" href="../microblaze-system/README.html" />
     <link rel="prev" title="Creating Custom IP and Device Drivers for Linux" href="../../Introduction/Zynq7000-EDT/8-custom-ip-driver-linux.html" /> 
 </head>
 
@@ -51,21 +50,21 @@ function OptanonWrapper() { }
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+              <p class="caption"><span class="caption-text">简体中文</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<p class="caption"><span class="caption-text">日本語</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<p class="caption"><span class="caption-text">Feature Tutorials</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">First Stage Boot Loader (FSBL)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#enabling-detailed-prints-in-fsbl">Enabling Detailed Prints in FSBL</a></li>
@@ -78,22 +77,23 @@ function OptanonWrapper() { }
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../microblaze-system/README.html">Programming an Embedded MicroBlaze Processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<p class="caption"><span class="caption-text">Design Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<p class="caption"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<p class="caption"><span class="caption-text">User Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption"><span class="caption-text">Previous Releases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
@@ -125,10 +125,10 @@ function OptanonWrapper() { }
            <div itemprop="articleBody">
              
   <section id="creating-a-debuggable-first-stage-boot-loader">
-<h1>Creating a Debuggable First Stage Boot Loader<a class="headerlink" href="#creating-a-debuggable-first-stage-boot-loader" title="Permalink to this heading">¶</a></h1>
+<h1>Creating a Debuggable First Stage Boot Loader<a class="headerlink" href="#creating-a-debuggable-first-stage-boot-loader" title="Permalink to this headline">¶</a></h1>
 <p>First Stage Boot Loader (FSBL) can initialize the SoC device, load the required application or data to memory, and launch applications on the target CPU core. An FSBL is provided in the Vitis platform project (if you enabled creating boot components while creating the platform project), but you are free to create additional FSBL applications as general applications for further modification or debugging purposes.</p>
 <section id="enabling-detailed-prints-in-fsbl">
-<h2>Enabling Detailed Prints in FSBL<a class="headerlink" href="#enabling-detailed-prints-in-fsbl" title="Permalink to this heading">¶</a></h2>
+<h2>Enabling Detailed Prints in FSBL<a class="headerlink" href="#enabling-detailed-prints-in-fsbl" title="Permalink to this headline">¶</a></h2>
 <p>If you desire more detailed information during the boot process, but are not planning to modify the FSBL source code, you can set FSBL to print more information - but it is not necessary to run FSBL in Vitis debugger. In this example, you will create an FSBL image targeted for Arm™ Cortex-A53 core 0 and update its properties to enable detailed print info.</p>
 <ol class="simple">
 <li><p>Launch the Vitis IDE if it is not already open.</p></li>
@@ -243,7 +243,7 @@ function OptanonWrapper() { }
 </ol>
 </section>
 <section id="stripping-out-unused-functions">
-<h2>Stripping Out Unused Functions<a class="headerlink" href="#stripping-out-unused-functions" title="Permalink to this heading">¶</a></h2>
+<h2>Stripping Out Unused Functions<a class="headerlink" href="#stripping-out-unused-functions" title="Permalink to this headline">¶</a></h2>
 <p>The FSBL application is capable of performing numerous tasks. The tasks it executes are based on the user definition in header files. Some functions are not executed by default. GCC includes these functions into the compiled executable by default. Because FSBL runs on OCM, and OCM only has a capacity of 128 KB, unused functions must be stripped out to make FSBL fit into OCM. Run the following instructions to update the BSP compile settings to strip out unused functions:</p>
 <ol class="simple">
 <li><p>Double-click <strong>fsbl_a53.prj</strong>.</p></li>
@@ -253,16 +253,16 @@ function OptanonWrapper() { }
 </ol>
 </section>
 <section id="building-the-project">
-<h2>Building the Project<a class="headerlink" href="#building-the-project" title="Permalink to this heading">¶</a></h2>
+<h2>Building the Project<a class="headerlink" href="#building-the-project" title="Permalink to this headline">¶</a></h2>
 <p>Right-click the <strong>fsbl_a53</strong> application and select <strong>Build Project</strong>. The FSBL executable is now saved as <code class="docutils literal notranslate"><span class="pre">fsbl_a53/debug/fsbl_a53.elf</span></code>. In this tutorial, the application name <code class="docutils literal notranslate"><span class="pre">fsbl_a53</span></code> is to identify that the FSBL is targeted for the APU (the Arm Cortex-A53 core).</p>
 <p><strong>Note:</strong> If the system design demands, FSBL can be targeted to run on the RPU.</p>
 </section>
 <section id="debugging-fsbl-using-the-vitis-debugger">
-<h2>Debugging FSBL Using the Vitis Debugger<a class="headerlink" href="#debugging-fsbl-using-the-vitis-debugger" title="Permalink to this heading">¶</a></h2>
+<h2>Debugging FSBL Using the Vitis Debugger<a class="headerlink" href="#debugging-fsbl-using-the-vitis-debugger" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes you need to modify FSBL source code to add more custom features. To debug these features, you need to run FSBL in Vitis debugger. This example guides you through the steps to run FSBL in Vitis debugger.</p>
 <p>FSBL is built with size optimization and link time optimization flags (such as <code class="docutils literal notranslate"><span class="pre">-Os</span></code>). These optimizations reduce the memory footprint of FSBL but can make debugging difficult. Removing optimizations can lead to increased code size, which can result in FBSL build failure (because FSBL needs to run on the 128 KB OCM). Instead, these optimizations should be disabled for debugging purposes. To do this, some FSBL features should be disabled in the <code class="docutils literal notranslate"><span class="pre">xfsbl_config.h</span></code> file of the FSBL if they are not required.</p>
 <section id="creating-and-modifying-fsbl">
-<h3>Creating and Modifying FSBL<a class="headerlink" href="#creating-and-modifying-fsbl" title="Permalink to this heading">¶</a></h3>
+<h3>Creating and Modifying FSBL<a class="headerlink" href="#creating-and-modifying-fsbl" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Launch the Vitis IDE if it is not already open.</p></li>
 <li><p>Set the Vitis workspace. For example, <code class="docutils literal notranslate"><span class="pre">C:\edt\fsbl_debuggable</span></code>.</p></li>
@@ -344,7 +344,7 @@ function OptanonWrapper() { }
 </ol>
 </section>
 <section id="disabling-optimizations">
-<h3>Disabling Optimizations<a class="headerlink" href="#disabling-optimizations" title="Permalink to this heading">¶</a></h3>
+<h3>Disabling Optimizations<a class="headerlink" href="#disabling-optimizations" title="Permalink to this headline">¶</a></h3>
 <ol>
 <li><p>In the Explorer view, right-click the <strong>fsbl_debug</strong> application.</p></li>
 <li><p>Click <strong>C/C++ Build Settings</strong>.</p></li>
@@ -394,14 +394,14 @@ function OptanonWrapper() { }
 				  
 				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../../Introduction/Zynq7000-EDT/8-custom-ip-driver-linux.html" class="btn btn-neutral float-left" title="Creating Custom IP and Device Drivers for Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../sw-profiling/sw-profiling.html" class="btn btn-neutral float-right" title="Software Profiling Using the Vitis Software Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../microblaze-system/README.html" class="btn btn-neutral float-right" title="Programming an Embedded MicroBlaze Processor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on July 29, 2022.
+      <span class="lastupdated">Last updated on August 08, 2022.
       </span></p>
   </div>
 

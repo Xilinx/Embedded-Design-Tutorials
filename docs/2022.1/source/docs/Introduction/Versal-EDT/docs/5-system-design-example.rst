@@ -355,7 +355,7 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
       |               | Processor               | versal_cips               |
       |               |                         | _0_pspmc_0_psv_cortexr5_0 |
       +---------------+-------------------------+---------------------------+
-      | Templates     | Available               | Empty      				|
+      | Templates     | Available               | Empty      		          |
       +---------------+-------------------------+---------------------------+
       |               | Templates               | Application (C)           |
       +---------------+-------------------------+---------------------------+

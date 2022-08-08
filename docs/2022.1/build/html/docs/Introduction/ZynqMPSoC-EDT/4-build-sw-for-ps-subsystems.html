@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -23,7 +23,6 @@ function OptanonWrapper() { }
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -51,15 +50,15 @@ function OptanonWrapper() { }
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+              <p class="caption"><span class="caption-text">简体中文</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<p class="caption"><span class="caption-text">日本語</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a><ul class="current">
@@ -120,25 +119,26 @@ function OptanonWrapper() { }
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<p class="caption"><span class="caption-text">Feature Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/microblaze-system/README.html">Programming an Embedded MicroBlaze Processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<p class="caption"><span class="caption-text">Design Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<p class="caption"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<p class="caption"><span class="caption-text">User Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption"><span class="caption-text">Previous Releases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
@@ -171,7 +171,7 @@ function OptanonWrapper() { }
            <div itemprop="articleBody">
              
   <section id="building-standalone-software-for-ps-subsystems">
-<h1>Building Standalone Software for PS Subsystems<a class="headerlink" href="#building-standalone-software-for-ps-subsystems" title="Permalink to this heading">¶</a></h1>
+<h1>Building Standalone Software for PS Subsystems<a class="headerlink" href="#building-standalone-software-for-ps-subsystems" title="Permalink to this headline">¶</a></h1>
 <p>This chapter lists the steps to configure and build software for PS subsystems.</p>
 <p>In the previous chapter, <a class="reference internal" href="3-system-configuration.html"><span class="doc">Zynq UltraScale+ MPSoC Processing System Configuration</span></a>, you created and exported
 the hardware design from Vivado. The exported XSA file contains the hardware handoff, the processing system initialization (<code class="docutils literal notranslate"><span class="pre">psu_init</span></code>),
@@ -183,7 +183,7 @@ and the PL bitstream (if the hardware is exported as post-implementation). In th
 <li><p>Create a system project for the APU and real time processing unit (RPU).</p></li>
 </ol>
 <section id="example-2-creating-a-platform-project-using-vitis-ide">
-<h2>Example 2: Creating a Platform Project Using Vitis IDE<a class="headerlink" href="#example-2-creating-a-platform-project-using-vitis-ide" title="Permalink to this heading">¶</a></h2>
+<h2>Example 2: Creating a Platform Project Using Vitis IDE<a class="headerlink" href="#example-2-creating-a-platform-project-using-vitis-ide" title="Permalink to this headline">¶</a></h2>
 <p>In this example, we will create a platform project to extract the information from Vivado exported XSA.</p>
 <p>The main processing units in the Zynq UltraScale+ processing system are listed below:</p>
 <ul class="simple">
@@ -195,7 +195,7 @@ and the PL bitstream (if the hardware is exported as post-implementation). In th
 <p>The platform project reads in hardware information from the XSA file and contains the runtime environment for the above processing units.
 Application software can link against the libraries generated in the platform project.</p>
 <section id="example-input-and-output-files">
-<h3>Example Input and Output Files<a class="headerlink" href="#example-input-and-output-files" title="Permalink to this heading">¶</a></h3>
+<h3>Example Input and Output Files<a class="headerlink" href="#example-input-and-output-files" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Input: hardware handoff XSA file (<code class="docutils literal notranslate"><span class="pre">edt_zcu102_wrapper.xsa</span></code>)</p></li>
 <li><p>Output:</p>
@@ -207,7 +207,7 @@ Application software can link against the libraries generated in the platform pr
 </ul>
 </section>
 <section id="creating-the-platform-project">
-<h3>Creating the Platform Project<a class="headerlink" href="#creating-the-platform-project" title="Permalink to this heading">¶</a></h3>
+<h3>Creating the Platform Project<a class="headerlink" href="#creating-the-platform-project" title="Permalink to this headline">¶</a></h3>
 <p>The following steps show how to create a platform project with a standalone domain for Arm Cortex-A53.</p>
 <ol class="arabic">
 <li><p>Launch the Vitis IDE:</p>
@@ -294,18 +294,18 @@ specification (XSA)</strong>.</p>
 </section>
 </section>
 <section id="example-3-running-the-hello-world-application-from-arm-cortex-a53">
-<span id="id1"></span><h2>Example 3: Running the “Hello World” Application from Arm Cortex-A53<a class="headerlink" href="#example-3-running-the-hello-world-application-from-arm-cortex-a53" title="Permalink to this heading">¶</a></h2>
+<span id="id1"></span><h2>Example 3: Running the “Hello World” Application from Arm Cortex-A53<a class="headerlink" href="#example-3-running-the-hello-world-application-from-arm-cortex-a53" title="Permalink to this headline">¶</a></h2>
 <p>In this example, you will create a “Hello World” application based on the platform created in the previous example. You will learn how to
 manage the board settings, make cable connections, connect to the board through your PC, and run a simple “Hello World” software application from an Arm Cortex-A53 processor in JTAG mode using the System Debugger in the Vitis IDE.</p>
 <section id="input-and-output-files">
-<h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
+<h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Input: standalone BSP libraries in the platform created in the previous example</p></li>
 <li><p>Output: <code class="docutils literal notranslate"><span class="pre">hello.elf</span></code> for Arm Cortex-A53</p></li>
 </ul>
 </section>
 <section id="board-setup">
-<h3>Board Setup<a class="headerlink" href="#board-setup" title="Permalink to this heading">¶</a></h3>
+<h3>Board Setup<a class="headerlink" href="#board-setup" title="Permalink to this headline">¶</a></h3>
 <figure class="align-default" id="id10">
 <img alt="../../../_images/image27.jpeg" src="../../../_images/image27.jpeg" />
 <figcaption>
@@ -323,7 +323,7 @@ manage the board settings, make cable connections, connect to the board through 
 </ol>
 </section>
 <section id="connecting-the-serial-port">
-<h3>Connecting the Serial Port<a class="headerlink" href="#connecting-the-serial-port" title="Permalink to this heading">¶</a></h3>
+<h3>Connecting the Serial Port<a class="headerlink" href="#connecting-the-serial-port" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>Open your preferred serial communication utility for the COM port.</p>
 <div class="admonition note">
@@ -362,7 +362,7 @@ manage the board settings, make cable connections, connect to the board through 
 </ol>
 </section>
 <section id="creating-a-hello-world-application-on-arm-cortex-a53">
-<h3>Creating a Hello World Application on Arm Cortex-A53<a class="headerlink" href="#creating-a-hello-world-application-on-arm-cortex-a53" title="Permalink to this heading">¶</a></h3>
+<h3>Creating a Hello World Application on Arm Cortex-A53<a class="headerlink" href="#creating-a-hello-world-application-on-arm-cortex-a53" title="Permalink to this headline">¶</a></h3>
 <p>To send the “Hello World” string to the UART0 peripheral, follow these steps:</p>
 <ol class="arabic">
 <li><p>Select <strong>File → New → Application Project</strong>. The Create New Application Project wizard opens.</p></li>
@@ -416,7 +416,7 @@ psu_cortexa53_0</p></td>
 </ol>
 </section>
 <section id="running-hello-world-on-the-board">
-<h3>Running Hello World on the Board<a class="headerlink" href="#running-hello-world-on-the-board" title="Permalink to this heading">¶</a></h3>
+<h3>Running Hello World on the Board<a class="headerlink" href="#running-hello-world-on-the-board" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>Right-click the <strong>hello_a53 application project</strong> and select <strong>Build</strong> to build the application.</p></li>
 <li><p>Right-click <strong>hello_a53</strong> and select <strong>Run as → Run Configurations</strong>.</p></li>
@@ -451,12 +451,12 @@ psu_cortexa53_0</p></td>
 <li><p>Power cycle the board and retain the same connections and board settings for the next section.</p></li>
 </ol>
 <section id="what-just-happened">
-<h4>What Just Happened?<a class="headerlink" href="#what-just-happened" title="Permalink to this heading">¶</a></h4>
+<h4>What Just Happened?<a class="headerlink" href="#what-just-happened" title="Permalink to this headline">¶</a></h4>
 <p>The application software sent the “Hello World” string to the UART0 peripheral of the PS section.</p>
 <p>From UART0, the “Hello World” string goes byte-by-byte to the serial terminal application running on the host machine, which displays it as a string.</p>
 </section>
 <section id="one-step-further">
-<h4>One Step Further<a class="headerlink" href="#one-step-further" title="Permalink to this heading">¶</a></h4>
+<h4>One Step Further<a class="headerlink" href="#one-step-further" title="Permalink to this headline">¶</a></h4>
 <p>Could you create a “Hello World” application for Arm Cortex-R5F and launch it though JTAG?</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -470,15 +470,15 @@ psu_cortexa53_0</p></td>
 </section>
 </section>
 <section id="additional-information">
-<h2>Additional Information<a class="headerlink" href="#additional-information" title="Permalink to this heading">¶</a></h2>
+<h2>Additional Information<a class="headerlink" href="#additional-information" title="Permalink to this headline">¶</a></h2>
 <p>See below for definitions of some of the terms used in this chapter.</p>
 <section id="domain">
-<h3>Domain<a class="headerlink" href="#domain" title="Permalink to this heading">¶</a></h3>
+<h3>Domain<a class="headerlink" href="#domain" title="Permalink to this headline">¶</a></h3>
 <p>A domain can refer to the settings and files of a standalone BSP, a Linux OS, a third-party OS/BSP such as FreeRTOS, or a component such as the device tree generator.</p>
 <p>You can create multiple applications to run on the domain. A domain is tied to a single processor or a cluster of isomorphic processors (for example: A53_0 or A53) in the platform.</p>
 </section>
 <section id="board-support-package">
-<h3>Board Support Package<a class="headerlink" href="#board-support-package" title="Permalink to this heading">¶</a></h3>
+<h3>Board Support Package<a class="headerlink" href="#board-support-package" title="Permalink to this headline">¶</a></h3>
 <p>The board support package (BSP) is the support code for a given hardware platform or board that helps in basic initialization at power-up and helps software applications to be run on top of it. It can be specific to some operating systems with boot loader and device drivers.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -486,26 +486,26 @@ psu_cortexa53_0</p></td>
 </div>
 </section>
 <section id="standalone-bsp">
-<h3>Standalone BSP<a class="headerlink" href="#standalone-bsp" title="Permalink to this heading">¶</a></h3>
+<h3>Standalone BSP<a class="headerlink" href="#standalone-bsp" title="Permalink to this headline">¶</a></h3>
 <p>Standalone is a simple, low-level software layer. It provides access to basic processor features such as caches, interrupts, and exceptions, as well as the basic processor features of a hosted environment. These basic features include standard input/output, profiling, abort, and exit. It is a single-threaded semi-hosted environment.</p>
 </section>
 </section>
 <section id="example-4-running-the-hello-world-application-from-arm-cortex-r5">
-<h2>Example 4: Running the “Hello World” Application from Arm Cortex-R5<a class="headerlink" href="#example-4-running-the-hello-world-application-from-arm-cortex-r5" title="Permalink to this heading">¶</a></h2>
+<h2>Example 4: Running the “Hello World” Application from Arm Cortex-R5<a class="headerlink" href="#example-4-running-the-hello-world-application-from-arm-cortex-r5" title="Permalink to this headline">¶</a></h2>
 <p>In this example, you will learn how to run a simple “Hello World” software application for the Arm Cortex-R5F processor in the JTAG mode
 using System Debugger in the Vitis IDE.</p>
 <p>The application for Cortex-R5F needs a domain for cortexr5_0. You will create it in the zcu102_edt platform and reuse it for the new
 application. You will create the Cortex-R5F application with the updated zcu102_edt platform.</p>
 <p>The hardware setup and serial console connection is the same as in Example 2.</p>
 <section id="input-and-output-files-1">
-<span id="id2"></span><h3>Input and Output Files<a class="headerlink" href="#input-and-output-files-1" title="Permalink to this heading">¶</a></h3>
+<span id="id2"></span><h3>Input and Output Files<a class="headerlink" href="#input-and-output-files-1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Input: zcu102_edt platform with standalone domain on Arm Cortex-A53</p></li>
 <li><p>Output: zcu102_edt platform with standalone domain on Arm Cortex-A53 and Cortex-R5F processors</p></li>
 </ul>
 </section>
 <section id="creating-a-standalone-bsp-domain-for-cortexr5-0">
-<h3>Creating a Standalone BSP Domain for cortexr5_0<a class="headerlink" href="#creating-a-standalone-bsp-domain-for-cortexr5-0" title="Permalink to this heading">¶</a></h3>
+<h3>Creating a Standalone BSP Domain for cortexr5_0<a class="headerlink" href="#creating-a-standalone-bsp-domain-for-cortexr5-0" title="Permalink to this headline">¶</a></h3>
 <p>In this step, you will prepare for the next example design: running a “Hello World” application on Arm Cortex-R5. The first step is to create a standalone BSP domain for cortexr5_0 by performing the following steps:</p>
 <ol class="arabic">
 <li><p>Double-click <code class="docutils literal notranslate"><span class="pre">platform.spr</span></code>. The platform opens in the Explorer view.</p></li>
@@ -549,12 +549,12 @@ application. You will create the Cortex-R5F application with the updated zcu102_
 <li><p>The Vitis IDE creates a new domain and <strong>standalone_r5</strong> appears under the <strong>zcu102_edt</strong> platform.</p></li>
 </ol>
 <section id="what-just-happened-1">
-<span id="id3"></span><h4>What Just Happened?<a class="headerlink" href="#what-just-happened-1" title="Permalink to this heading">¶</a></h4>
+<span id="id3"></span><h4>What Just Happened?<a class="headerlink" href="#what-just-happened-1" title="Permalink to this headline">¶</a></h4>
 <p>The edt_zcu102_wrapper platform is, by default, assigned the default domain for psu_cortexa53_0. You created a new domain for cortexr5_0 in this platform..</p>
 </section>
 </section>
 <section id="creating-a-hello-world-application-on-arm-cortex-r5f">
-<h3>Creating a “Hello World” Application on Arm Cortex-R5F<a class="headerlink" href="#creating-a-hello-world-application-on-arm-cortex-r5f" title="Permalink to this heading">¶</a></h3>
+<h3>Creating a “Hello World” Application on Arm Cortex-R5F<a class="headerlink" href="#creating-a-hello-world-application-on-arm-cortex-r5f" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>Select <strong>File → New → Application Project</strong>. The Create New Application Project wizard welcome screen opens.</p></li>
 <li><p>Click <strong>Next</strong>.</p></li>
@@ -607,7 +607,7 @@ name</p></td>
 </ol>
 </section>
 <section id="running-the-hello-world-application-on-arm-cortex-r5f">
-<h3>Running the “Hello World” Application on Arm Cortex-R5F<a class="headerlink" href="#running-the-hello-world-application-on-arm-cortex-r5f" title="Permalink to this heading">¶</a></h3>
+<h3>Running the “Hello World” Application on Arm Cortex-R5F<a class="headerlink" href="#running-the-hello-world-application-on-arm-cortex-r5f" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>Right-click <strong>hello_r5</strong> and select <strong>Run as → Run Configurations</strong>.</p></li>
 <li><p>Right-click <strong>Xilinx Application Debugger</strong> and click <strong>New Configuration</strong>.</p>
@@ -657,7 +657,7 @@ Successfully downloaded C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
 </section>
 </section>
 <section id="example-5-using-system-project-to-manage-multiple-applications-in-the-vitis-ide">
-<h2>Example 5: Using System Project to Manage Multiple Applications in the Vitis IDE<a class="headerlink" href="#example-5-using-system-project-to-manage-multiple-applications-in-the-vitis-ide" title="Permalink to this heading">¶</a></h2>
+<h2>Example 5: Using System Project to Manage Multiple Applications in the Vitis IDE<a class="headerlink" href="#example-5-using-system-project-to-manage-multiple-applications-in-the-vitis-ide" title="Permalink to this headline">¶</a></h2>
 <p>The Vitis IDE can organize application projects that need to run at the same time in one system project. This can be useful in project
 organization and can make debugging easier when the Arm Cortex-A53, Arm Cortex-R5F, or MicroBlaze soft processors need to run simultaneously.</p>
 <p>In this example, you will create a <code class="docutils literal notranslate"><span class="pre">hello_system</span></code> project that contains the “Hello World” application for Arm Cortex-A53 and Cortex-R5F
@@ -668,7 +668,7 @@ and you will achieve the following:</p>
 <li><p>Adjust the linker script.</p></li>
 </ul>
 <section id="id4">
-<h3>Input and Output Files<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<h3>Input and Output Files<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Input:</p>
 <ul>
@@ -685,7 +685,7 @@ and you will achieve the following:</p>
 </ul>
 </section>
 <section id="creating-the-hello-system-system-project">
-<h3>Creating the hello_system System Project<a class="headerlink" href="#creating-the-hello-system-system-project" title="Permalink to this heading">¶</a></h3>
+<h3>Creating the hello_system System Project<a class="headerlink" href="#creating-the-hello-system-system-project" title="Permalink to this headline">¶</a></h3>
 <p>Use the same steps as <a class="reference internal" href="#example-3-running-the-hello-world-application-from-arm-cortex-a53"><span class="std std-ref">Example 3: Running the “Hello World” Application from Arm Cortex-A53</span></a>, but this time create the system project with name <code class="docutils literal notranslate"><span class="pre">hello_system</span></code>.</p>
 <ol class="arabic">
 <li><p>Select <strong>File → New → Application Project</strong>. The Create New Application Project wizard welcome screen opens.</p></li>
@@ -742,7 +742,7 @@ psu_cortexa53_0</p></td>
 </ol>
 </section>
 <section id="modifying-the-hello-sys-a53-application-source-code">
-<span id="modifying-the-board-support-package-for-testapp-r5"></span><h3>Modifying the hello_sys_a53 Application Source Code<a class="headerlink" href="#modifying-the-hello-sys-a53-application-source-code" title="Permalink to this heading">¶</a></h3>
+<span id="modifying-the-board-support-package-for-testapp-r5"></span><h3>Modifying the hello_sys_a53 Application Source Code<a class="headerlink" href="#modifying-the-hello-sys-a53-application-source-code" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>Open the <strong>helloworld.c</strong> source file for the <strong>hello_sys_a53</strong> application.</p>
 <ul class="simple">
@@ -786,7 +786,7 @@ psu_cortexa53_0</p></td>
 </ol>
 </section>
 <section id="creating-a-custom-bare-metal-application-for-an-arm-cortex-r5f-based-rpu-in-the-same-system-project">
-<span id="id5"></span><h3>Creating a Custom Bare-Metal Application for an Arm Cortex-R5F Based RPU in the Same System Project<a class="headerlink" href="#creating-a-custom-bare-metal-application-for-an-arm-cortex-r5f-based-rpu-in-the-same-system-project" title="Permalink to this heading">¶</a></h3>
+<span id="id5"></span><h3>Creating a Custom Bare-Metal Application for an Arm Cortex-R5F Based RPU in the Same System Project<a class="headerlink" href="#creating-a-custom-bare-metal-application-for-an-arm-cortex-r5f-based-rpu-in-the-same-system-project" title="Permalink to this headline">¶</a></h3>
 <p>You will now create a bare-metal application for Arm Cortex-R5F. The application source files are provided in the <code class="docutils literal notranslate"><span class="pre">ref_files/example5</span></code>
 directory. They will be imported in the next steps.</p>
 <ol class="arabic">
@@ -864,7 +864,7 @@ specification</p></td>
 </ol>
 </section>
 <section id="modifying-the-linker-script-for-testapp-r5">
-<h3>Modifying the Linker Script for testapp_r5<a class="headerlink" href="#modifying-the-linker-script-for-testapp-r5" title="Permalink to this heading">¶</a></h3>
+<h3>Modifying the Linker Script for testapp_r5<a class="headerlink" href="#modifying-the-linker-script-for-testapp-r5" title="Permalink to this headline">¶</a></h3>
 <p>When two applications needs to run at the same time, they cannot use resources in conflict. They should not each other’s memory space. They should use their own peripherals, or share peripherals by time. In this step, memory space is assigned by updating the linker scripts.</p>
 <ol class="arabic">
 <li><p>In the Explorer view, expand the <strong>testapp_r5 project</strong>.</p></li>
@@ -890,7 +890,7 @@ DDR, and occupies no more than 256 MB of size.</p>
 </ol>
 </section>
 <section id="id7">
-<h3>Modifying the Board Support Package for testapp_r5<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
+<h3>Modifying the Board Support Package for testapp_r5<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>The ZCU102 Evaluation kit has a USB-TO-QUAD-UART Bridge IC from Silicon Labs (CP2108). This enables you to select a different UART port for applications running on Cortex-A53 and Cortex-R5F cores. For this example, let Cortex-A53 use the UART 0 by default, and send and receive RPU serial data over UART 1. This requires a small modification in the standalone_r5 bsp configuration.</p>
 <ol class="arabic">
 <li><p>Open the platform details tab by double-clicking <strong>zcu102_edt → platform.spr</strong>.</p></li>
@@ -915,7 +915,7 @@ DDR, and occupies no more than 256 MB of size.</p>
 </ol>
 </section>
 <section id="running-the-hello-system-system-project-on-hardware">
-<h3>Running the hello_system System Project on Hardware<a class="headerlink" href="#running-the-hello-system-system-project-on-hardware" title="Permalink to this heading">¶</a></h3>
+<h3>Running the hello_system System Project on Hardware<a class="headerlink" href="#running-the-hello-system-system-project-on-hardware" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>Set up the board as in Example Project 1:</p>
 <ol class="arabic simple">
@@ -943,7 +943,7 @@ DDR, and occupies no more than 256 MB of size.</p>
 </ol>
 </section>
 <section id="what-just-happened-2">
-<span id="id8"></span><h3>What Just Happened?<a class="headerlink" href="#what-just-happened-2" title="Permalink to this heading">¶</a></h3>
+<span id="id8"></span><h3>What Just Happened?<a class="headerlink" href="#what-just-happened-2" title="Permalink to this headline">¶</a></h3>
 <p>The Vitis tool uses JTAG to control the board, and performed the following tasks:</p>
 <ul class="simple">
 <li><p>Used FSBL to initialize the MPSoC.</p></li>
@@ -963,10 +963,10 @@ DDR, and occupies no more than 256 MB of size.</p>
 </section>
 </section>
 <section id="reviewing-bootloader-projects-in-the-platform">
-<h2>Reviewing Bootloader Projects in the Platform<a class="headerlink" href="#reviewing-bootloader-projects-in-the-platform" title="Permalink to this heading">¶</a></h2>
+<h2>Reviewing Bootloader Projects in the Platform<a class="headerlink" href="#reviewing-bootloader-projects-in-the-platform" title="Permalink to this headline">¶</a></h2>
 <p>The platform creates boot components by default. The generated FSBL has been used to initialize the running environment before launching “Hello World” applications. You can review their settings and modify the configuration if required.</p>
 <section id="reviewing-fsbl-in-the-platform">
-<h3>Reviewing FSBL in the Platform<a class="headerlink" href="#reviewing-fsbl-in-the-platform" title="Permalink to this heading">¶</a></h3>
+<h3>Reviewing FSBL in the Platform<a class="headerlink" href="#reviewing-fsbl-in-the-platform" title="Permalink to this headline">¶</a></h3>
 <p>To review the FSBL in the platform, follow these steps:</p>
 <ol class="arabic simple">
 <li><p>In the Explorer view, navigate to zynqmp_fsbl by expanding the <strong>zcu102_edt</strong> platform to see the FSBL source code. You can edit this source for customizations. Build the platform after code modification.</p></li>
@@ -976,7 +976,7 @@ DDR, and occupies no more than 256 MB of size.</p>
 </ol>
 </section>
 <section id="reviewing-the-pmu-firmware-in-the-platform">
-<h3>Reviewing the PMU Firmware in the Platform<a class="headerlink" href="#reviewing-the-pmu-firmware-in-the-platform" title="Permalink to this heading">¶</a></h3>
+<h3>Reviewing the PMU Firmware in the Platform<a class="headerlink" href="#reviewing-the-pmu-firmware-in-the-platform" title="Permalink to this headline">¶</a></h3>
 <p>To review the PMU firmware in the platform, follow these steps:</p>
 <ol class="arabic simple">
 <li><p>In the Explorer view, navigate to zynqmp_pmufw by expanding the <strong>zcu102_edt</strong> platform to see the PMUFW source code.</p></li>
@@ -1010,7 +1010,7 @@ DDR, and occupies no more than 256 MB of size.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on July 29, 2022.
+      <span class="lastupdated">Last updated on August 08, 2022.
       </span></p>
   </div>
 

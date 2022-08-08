@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -23,13 +23,12 @@ function OptanonWrapper() { }
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Design Example: Example Setup for a Graphics and DisplayPort Based Sub-System" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html" />
-    <link rel="prev" title="Creating a Debuggable First Stage Boot Loader" href="../debuggable-fsbl/debuggable-fsbl.html" /> 
+    <link rel="prev" title="Programming an Embedded MicroBlaze Processor" href="../microblaze-system/README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,23 +50,24 @@ function OptanonWrapper() { }
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+              <p class="caption"><span class="caption-text">简体中文</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<p class="caption"><span class="caption-text">日本語</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<p class="caption"><span class="caption-text">Feature Tutorials</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../microblaze-system/README.html">Programming an Embedded MicroBlaze Processor</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Profiling Applications with System Debugger</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#profiling-an-application-in-the-vitis-software-platform-with-system-debugger">Profiling an Application in the Vitis Software Platform with System Debugger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#additional-design-support-options">Additional Design Support Options</a><ul>
@@ -77,20 +77,20 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<p class="caption"><span class="caption-text">Design Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<p class="caption"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<p class="caption"><span class="caption-text">User Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption"><span class="caption-text">Previous Releases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
@@ -122,13 +122,13 @@ function OptanonWrapper() { }
            <div itemprop="articleBody">
              
   <section id="software-profiling-using-the-vitis-software-platform">
-<h1>Software Profiling Using the Vitis Software Platform<a class="headerlink" href="#software-profiling-using-the-vitis-software-platform" title="Permalink to this heading">¶</a></h1>
+<h1>Software Profiling Using the Vitis Software Platform<a class="headerlink" href="#software-profiling-using-the-vitis-software-platform" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter, you will enable profiling features for the standalone
 domain or board support package (BSP) and the application related to
 AXI CDMA, which you created in <a class="reference external" href="docs%5CIntroduction%5CZynq7000-EDT%5C7-linux-booting-debug">Linux Booting
 and Debug in the Vitis Software Platform</a>.</p>
 <section id="profiling-an-application-in-the-vitis-software-platform-with-system-debugger">
-<h2>Profiling an Application in the Vitis Software Platform with System Debugger<a class="headerlink" href="#profiling-an-application-in-the-vitis-software-platform-with-system-debugger" title="Permalink to this heading">¶</a></h2>
+<h2>Profiling an Application in the Vitis Software Platform with System Debugger<a class="headerlink" href="#profiling-an-application-in-the-vitis-software-platform-with-system-debugger" title="Permalink to this headline">¶</a></h2>
 <p>Profiling is a method by which the software execution time of each
 routine is determined. You can use this information to determine
 critical pieces of code and optimal code placement in a design.
@@ -166,11 +166,11 @@ to stop.</p>
 </ol>
 </section>
 <section id="additional-design-support-options">
-<h2>Additional Design Support Options<a class="headerlink" href="#additional-design-support-options" title="Permalink to this heading">¶</a></h2>
+<h2>Additional Design Support Options<a class="headerlink" href="#additional-design-support-options" title="Permalink to this headline">¶</a></h2>
 <p>To assist in your design goals, you might want to learn about the
 System Performance Analysis (SPA) toolbox.</p>
 <section id="the-system-performance-analysis-spa-toolbox">
-<h3>The System Performance Analysis (SPA) Toolbox<a class="headerlink" href="#the-system-performance-analysis-spa-toolbox" title="Permalink to this heading">¶</a></h3>
+<h3>The System Performance Analysis (SPA) Toolbox<a class="headerlink" href="#the-system-performance-analysis-spa-toolbox" title="Permalink to this headline">¶</a></h3>
 <p>To address the need for performance analysis and benchmarking, the
 Vitis software platform has a System Performance Analysis (SPA)
 toolbox to provide early exploration of hardware and software systems.
@@ -208,7 +208,7 @@ Development</em>
                   </style>
 				  
 				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../debuggable-fsbl/debuggable-fsbl.html" class="btn btn-neutral float-left" title="Creating a Debuggable First Stage Boot Loader" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../microblaze-system/README.html" class="btn btn-neutral float-left" title="Programming an Embedded MicroBlaze Processor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html" class="btn btn-neutral float-right" title="Design Example: Example Setup for a Graphics and DisplayPort Based Sub-System" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -216,7 +216,7 @@ Development</em>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on July 29, 2022.
+      <span class="lastupdated">Last updated on August 08, 2022.
       </span></p>
   </div>
 

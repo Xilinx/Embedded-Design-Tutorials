@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -23,7 +23,6 @@ function OptanonWrapper() { }
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -51,26 +50,27 @@ function OptanonWrapper() { }
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+              <p class="caption"><span class="caption-text">简体中文</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<p class="caption"><span class="caption-text">日本語</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<p class="caption"><span class="caption-text">Feature Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/microblaze-system/README.html">Programming an Embedded MicroBlaze Processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<p class="caption"><span class="caption-text">Design Tutorials</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Example Setup for a Graphics and DisplayPort Based Sub-System</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-the-hardware">Configuring the Hardware</a><ul>
@@ -92,16 +92,16 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<p class="caption"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<p class="caption"><span class="caption-text">User Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption"><span class="caption-text">Previous Releases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
@@ -133,7 +133,7 @@ function OptanonWrapper() { }
            <div itemprop="articleBody">
              
   <section id="design-example-example-setup-for-a-graphics-and-displayport-based-sub-system">
-<h1>Design Example: Example Setup for a Graphics and DisplayPort Based Sub-System<a class="headerlink" href="#design-example-example-setup-for-a-graphics-and-displayport-based-sub-system" title="Permalink to this heading">¶</a></h1>
+<h1>Design Example: Example Setup for a Graphics and DisplayPort Based Sub-System<a class="headerlink" href="#design-example-example-setup-for-a-graphics-and-displayport-based-sub-system" title="Permalink to this headline">¶</a></h1>
 <p>This design example is primarily based on the graphics processing unit
 and the DisplayPort on a Zynq® UltraScale+™ MPSoC device. The main idea
 behind this example is to demonstrate the configurations, packages,
@@ -153,13 +153,13 @@ into the following steps:</p>
 <li><p>Loading Linux on the ZCU102 board and running the graphics application on the target to see the result on the DisplayPort.</p></li>
 </ol>
 <section id="configuring-the-hardware">
-<h2>Configuring the Hardware<a class="headerlink" href="#configuring-the-hardware" title="Permalink to this heading">¶</a></h2>
+<h2>Configuring the Hardware<a class="headerlink" href="#configuring-the-hardware" title="Permalink to this headline">¶</a></h2>
 <p>In this section, you will configure the processing system to set dual
 lower GT lanes for the DisplayPort. The hardware configuration in this
 section is based on the same Vivado project that you created in
 <a class="reference external" href="#design-example-1-using-gpios-timers-and-interrupts">Design Example 1: Using GPIOs, Timers, and Interrupts</a>.</p>
 <section id="configuring-hardware-in-vivado-ip-integrator">
-<h3>Configuring Hardware in Vivado IP Integrator<a class="headerlink" href="#configuring-hardware-in-vivado-ip-integrator" title="Permalink to this heading">¶</a></h3>
+<h3>Configuring Hardware in Vivado IP Integrator<a class="headerlink" href="#configuring-hardware-in-vivado-ip-integrator" title="Permalink to this headline">¶</a></h3>
 <ol>
 <li><p>Ensure that the edt_zcu102 project and the block design are open in Vivado.</p></li>
 <li><p>Double-click the Zynq UltraScale+ processing system block in the Block Diagram window and wait till the Re-customize IP page opens.</p></li>
@@ -192,7 +192,7 @@ the X Window System.</p>
 </section>
 </section>
 <section id="modifying-the-configuration-and-building-linux-images-using-petalinux">
-<h2>Modifying the Configuration and Building Linux Images Using PetaLinux<a class="headerlink" href="#modifying-the-configuration-and-building-linux-images-using-petalinux" title="Permalink to this heading">¶</a></h2>
+<h2>Modifying the Configuration and Building Linux Images Using PetaLinux<a class="headerlink" href="#modifying-the-configuration-and-building-linux-images-using-petalinux" title="Permalink to this headline">¶</a></h2>
 <p>Reconfigure the PetaLinux BSP in sync with the new hardware changes.
 This section uses the PetaLinux project you created in Example
 Project: Create Linux Images using PetaLinux.</p>
@@ -212,12 +212,12 @@ Project: Create Linux Images using PetaLinux.</p>
 </ol>
 </section>
 <section id="building-the-mali-opengles-application">
-<h2>Building the Mali OpenGLES Application<a class="headerlink" href="#building-the-mali-opengles-application" title="Permalink to this heading">¶</a></h2>
+<h2>Building the Mali OpenGLES Application<a class="headerlink" href="#building-the-mali-opengles-application" title="Permalink to this headline">¶</a></h2>
 <p>This section leads you through building a triangle-based cube
 application. This application is written in OpenGLES and is based on
 the X Window System. For more details and for the application source
 code, refer to <code class="docutils literal notranslate"><span class="pre">tricube</span></code> in the <code class="docutils literal notranslate"><span class="pre">design_files</span></code> folder of the zip file that
-accompanies this tutorial. See <a class="reference external" href="2-getting-started.md#design-files-for-this-tutorial">Design Files for This Tutorial</a>.</p>
+accompanies this tutorial. See <a class="reference external" href="2-getting-started.html#design-files-for-this-tutorial">Design Files for This Tutorial</a>.</p>
 <p>Use the following steps to build the OpenGLES application:</p>
 <ol>
 <li><p>Copy the entire <code class="docutils literal notranslate"><span class="pre">tricube</span></code> application source directory to the Linux host machine in the <code class="docutils literal notranslate"><span class="pre">recipe-apps</span></code> directory of the PetaLinux project.</p>
@@ -239,7 +239,7 @@ based on the packages that were used in the application.</p></li>
 </ol>
 </section>
 <section id="enable-gpu-libraries-and-other-packages-in-rootfs">
-<h2>Enable GPU Libraries and Other Packages in RootFS<a class="headerlink" href="#enable-gpu-libraries-and-other-packages-in-rootfs" title="Permalink to this heading">¶</a></h2>
+<h2>Enable GPU Libraries and Other Packages in RootFS<a class="headerlink" href="#enable-gpu-libraries-and-other-packages-in-rootfs" title="Permalink to this headline">¶</a></h2>
 <p>In this section, you will use the PetaLinux RootFS configuration
 wizard to add the Mali GPU libraries. PetaLinux is shipped with Mali
 GPU libraries and device drivers for the Mali GPU. By default, the Mali
@@ -294,19 +294,19 @@ System, which is the default setting in PetaLinux 2019.2. To enable
 Frame Buffer fbdev based GPU packages in PetaLinux 2019.2, add the
 following line in <code class="docutils literal notranslate"><span class="pre">/project-spec/meta-user/conf/petalinuxbsp.conf</span></code>:</p>
 <p><em>DISTRO_FEATURES_remove_zynqmp = “ x11”</em></p>
-<p>See the example eglfbdev application (based on fdev) available in the <a class="reference external" href="2-getting-started.md#design-files-for-this-tutorial">Design Files for This Tutorial</a>. For more information, see Xilinx Answer Record <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=answers%3Bd%3D68821.html">68821</a>.</p>
+<p>See the example eglfbdev application (based on fdev) available in the <a class="reference external" href="2-getting-started.html#design-files-for-this-tutorial">Design Files for This Tutorial</a>. For more information, see Xilinx Answer Record <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=answers%3Bd%3D68821.html">68821</a>.</p>
 </div></blockquote>
 </section>
 <section id="loading-linux-and-running-the-opengles-application-on-the-target-and-viewing-the-result-on-the-displayport">
-<h2>Loading Linux and Running the OpenGLES Application on the Target and Viewing the Result on the DisplayPort<a class="headerlink" href="#loading-linux-and-running-the-opengles-application-on-the-target-and-viewing-the-result-on-the-displayport" title="Permalink to this heading">¶</a></h2>
+<h2>Loading Linux and Running the OpenGLES Application on the Target and Viewing the Result on the DisplayPort<a class="headerlink" href="#loading-linux-and-running-the-opengles-application-on-the-target-and-viewing-the-result-on-the-displayport" title="Permalink to this headline">¶</a></h2>
 <section id="preparing-the-sd-card">
-<h3>Preparing the SD Card<a class="headerlink" href="#preparing-the-sd-card" title="Permalink to this heading">¶</a></h3>
+<h3>Preparing the SD Card<a class="headerlink" href="#preparing-the-sd-card" title="Permalink to this headline">¶</a></h3>
 <p>Now that the Linux images and the application are both built, copy the <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> and <code class="docutils literal notranslate"><span class="pre">image.ub</span></code> images to an SD card and load the SD card in the ZCU102 board/</p>
 </section>
 <section id="running-the-application-on-a-linux-target">
-<h3>Running the Application on a Linux Target<a class="headerlink" href="#running-the-application-on-a-linux-target" title="Permalink to this heading">¶</a></h3>
+<h3>Running the Application on a Linux Target<a class="headerlink" href="#running-the-application-on-a-linux-target" title="Permalink to this headline">¶</a></h3>
 <section id="setting-up-the-target">
-<h4>Setting Up the Target<a class="headerlink" href="#setting-up-the-target" title="Permalink to this heading">¶</a></h4>
+<h4>Setting Up the Target<a class="headerlink" href="#setting-up-the-target" title="Permalink to this headline">¶</a></h4>
 <ol>
 <li><p>Load the SD card into the J100 connector of the ZCU102 board.</p></li>
 <li><p>Connect the micro USB cable to micro USB port J83 on ZCU102 board. Connect the other end to an open USB port on the host machine. Also, make sure that the JTAG cable is disconnected. If the JTAG cable is connected, the system might hang.</p></li>
@@ -330,7 +330,7 @@ this case, for UART-0, select the COM port with interface-0.</p>
 </section>
 </section>
 <section id="powering-on-the-target-and-running-the-applications">
-<h3>Powering On the Target and Running the Applications<a class="headerlink" href="#powering-on-the-target-and-running-the-applications" title="Permalink to this heading">¶</a></h3>
+<h3>Powering On the Target and Running the Applications<a class="headerlink" href="#powering-on-the-target-and-running-the-applications" title="Permalink to this headline">¶</a></h3>
 <ol>
 <li><p>Turn on the ZCU102 board using SW1, and wait until Linux loads on the board.</p></li>
 <li><p>After Linux loads, log in to the target Linux console using <code class="docutils literal notranslate"><span class="pre">root</span></code> for the login and password.</p></li>
@@ -378,7 +378,7 @@ made of multi-colored triangles.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on July 29, 2022.
+      <span class="lastupdated">Last updated on August 08, 2022.
       </span></p>
   </div>
 

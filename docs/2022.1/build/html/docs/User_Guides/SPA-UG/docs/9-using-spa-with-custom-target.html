@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -23,7 +23,6 @@ function OptanonWrapper() { }
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
-        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -51,34 +50,35 @@ function OptanonWrapper() { }
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+              <p class="caption"><span class="caption-text">简体中文</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<p class="caption"><span class="caption-text">日本語</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Introduction/Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Introduction/ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Introduction/Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<p class="caption"><span class="caption-text">Feature Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/microblaze-system/README.html">Programming an Embedded MicroBlaze Processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<p class="caption"><span class="caption-text">Design Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<p class="caption"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<p class="caption"><span class="caption-text">User Guides</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../SPA-UG.html">System Performance Analysis</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="1-introduction.html">Introduction</a></li>
@@ -107,7 +107,7 @@ function OptanonWrapper() { }
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption"><span class="caption-text">Previous Releases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
@@ -140,7 +140,7 @@ function OptanonWrapper() { }
            <div itemprop="articleBody">
              
   <section id="using-spa-with-a-custom-target">
-<h1>Using SPA with a Custom Target<a class="headerlink" href="#using-spa-with-a-custom-target" title="Permalink to this heading">¶</a></h1>
+<h1>Using SPA with a Custom Target<a class="headerlink" href="#using-spa-with-a-custom-target" title="Permalink to this headline">¶</a></h1>
 <p>To use the Vitis™ IDE system performance analysis toolbox with your design, there are three important items to be aware of:</p>
 <ul class="simple">
 <li><p>Instrumenting your hardware</p></li>
@@ -148,10 +148,10 @@ function OptanonWrapper() { }
 <li><p>Monitoring a live, custom target within the Vitis IDE.</p></li>
 </ul>
 <section id="instrumenting-hardware">
-<h2>Instrumenting Hardware<a class="headerlink" href="#instrumenting-hardware" title="Permalink to this heading">¶</a></h2>
+<h2>Instrumenting Hardware<a class="headerlink" href="#instrumenting-hardware" title="Permalink to this headline">¶</a></h2>
 <p>As long as your design include the AXI Performance Monitor (APM) IP, you can make use of the Vitis IDE performance analysis features to visualize the AXI performance. The Vitis IDE performance analysis can also make use of AXI Traffic Generator IP in your system, if it is configured and connected properly. So, you can create hardware designs similar to the pre-built SPM projects.</p>
 <section id="instantiate-apm-ip">
-<h3>Instantiate APM IP<a class="headerlink" href="#instantiate-apm-ip" title="Permalink to this heading">¶</a></h3>
+<h3>Instantiate APM IP<a class="headerlink" href="#instantiate-apm-ip" title="Permalink to this headline">¶</a></h3>
 <p>The Zynq UltraScale+ MPSoC has some hardened APM IP blocks in the PS. They can be used to monitor the AXI performance for DDR, CCI, OCM and LPD. Check the yellow blocks in the following diagram.</p>
 <p><img alt="../../../../_images/X21026-060818.png" src="../../../../_images/X21026-060818.png" /></p>
 <p>The Vitis IDE performance analysis can make use of the PS built-in APM (blocks in yellow in the diagram above) as well as user-instantiated APM IPs in the PL. You can instantiate the APM in PL to monitor the performance of AXI interfaces between PS and PL for Zynq-7000 devices and Zynq UltraScale+ MPSoCs.</p>
@@ -188,7 +188,7 @@ function OptanonWrapper() { }
 </ol>
 </section>
 <section id="instantiate-axi-traffic-generator-ip">
-<h3>Instantiate AXI Traffic Generator IP<a class="headerlink" href="#instantiate-axi-traffic-generator-ip" title="Permalink to this heading">¶</a></h3>
+<h3>Instantiate AXI Traffic Generator IP<a class="headerlink" href="#instantiate-axi-traffic-generator-ip" title="Permalink to this headline">¶</a></h3>
 <p>If you have not implemented your traffic IP during the system performance evaluation, you can use the AXI Traffic Generator to mimic its throughput to test the system performance. The AXI Traffic Generator is optional to SPA.</p>
 <p>Follow these steps to add, configure, and connect the ATG IP to your Vivado design.</p>
 <ol>
@@ -222,7 +222,7 @@ function OptanonWrapper() { }
 </ol>
 </section>
 <section id="export-to-vitis-ide">
-<h3>Export to Vitis IDE<a class="headerlink" href="#export-to-vitis-ide" title="Permalink to this heading">¶</a></h3>
+<h3>Export to Vitis IDE<a class="headerlink" href="#export-to-vitis-ide" title="Permalink to this headline">¶</a></h3>
 <p>To configure the Vitis IDE to read the hardware design, generate a platform, and read the APM and ATG related information, follow these steps:</p>
 <ul class="simple">
 <li><p>In the Flow Navigator pane, click <strong>Generate Bitstream</strong>.</p></li>
@@ -234,7 +234,7 @@ function OptanonWrapper() { }
 </section>
 </section>
 <section id="instrumenting-software">
-<h2>Instrumenting Software<a class="headerlink" href="#instrumenting-software" title="Permalink to this heading">¶</a></h2>
+<h2>Instrumenting Software<a class="headerlink" href="#instrumenting-software" title="Permalink to this headline">¶</a></h2>
 <p>The processing system of Zynq-7000 devices and Zynq UltraScale+ MPSoCs have built-in modules to monitor the characteristics like processor utilization, CPU instructions per cycle, L1 cache miss rate, L1 data cache access per ms, CPU write stall cycle per instruction, and CPU read stall cycle per instructions. They are reported during live monitoring with any PS applications.</p>
 <p>Monitoring function runtime, throughput, and latency are metrics to measure the software performance. They can be calculated using straightforward instrumentation available in the standalone BSP defined in the <strong>xtime_l.h</strong> header.</p>
 <p>Insert a call to <code class="docutils literal notranslate"><span class="pre">XTime_GetTime()</span></code> before and after every benchmark. The difference between these two XTime values can be converted to seconds (or ms) using the <strong>COUNTS_PER_SECOND</strong> value provided in <code class="docutils literal notranslate"><span class="pre">xtime_l.h</span></code>. As the amount of data sent during any given benchmark is known, you can also calculate the achieved bandwidth and average latency during that particular benchmark.</p>
@@ -286,7 +286,7 @@ function OptanonWrapper() { }
 <p>The software run time calculation is controlled by the application itself. The Vitis IDE would show a PS-related performance matrix from the <strong>Performance Analysis</strong> perspective. Check the steps in <a class="reference external" href="#monitoring-a-custom-target">Monitoring a Custom Target</a> to configure this. Function level software runtime can also be checked by profiling tools. Profiling is beyond the scope of this document. See the <em>Vitis Unified Platform Embedded Software Development Guide</em> <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/profileanalyze.html">UG1400</a> for more details.</p>
 </section>
 <section id="monitoring-a-custom-target">
-<h2>Monitoring a Custom Target<a class="headerlink" href="#monitoring-a-custom-target" title="Permalink to this heading">¶</a></h2>
+<h2>Monitoring a Custom Target<a class="headerlink" href="#monitoring-a-custom-target" title="Permalink to this headline">¶</a></h2>
 <p>The Vitis IDE provides the capability to monitor a running target, as well as controlling the ATG IP in the hardware design.</p>
 <p>Prepare a platform project before running the performance analysis because the Vitis IDE must be able to understand your hardware setup. For more details about creating a platform project, see the <em>Vitis Unified Platform Embedded Software Development Guide</em> <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/profileanalyze.html">UG1400</a>.</p>
 <ol class="simple">
@@ -344,7 +344,7 @@ function OptanonWrapper() { }
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on July 29, 2022.
+      <span class="lastupdated">Last updated on August 08, 2022.
       </span></p>
   </div>
 
