@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>入門 &mdash; エンベデッド デザイン チュートリアル 2020.2 の資料</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../../index.html" class="icon icon-home"> エンベデッド デザイン チュートリアル
+            <img src="../../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2020.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p><ul><li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li></ul><p class="caption" role="heading"><span class="caption-text">English</span></p><ul><li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/index.html">Master</a></li></ul><p class="caption" role="heading"><span class="caption-text">入門</span></p><ul><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs-jp/2020.2/docs-jp/docs/Introduction/Versal-EDT/README.html">Versal ACAP エンベデッド デザイン チュートリアル</a></li><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Introduction/ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC エンベデッド デザイン チュートリアル</a></li><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Introduction/Zynq7000-EDT/README.html">Zynq-7000 エンベデッド デザイン チュートリアル</a></li></ul><p class="caption" role="heading"><span class="caption-text">デバッグ</span></p><ul><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Vitis-Embedded-Software-Debugging/README.html">Vitis エンベデッド ソフトウェア デバッグ ガイド</a></li></ul><p class="caption" role="heading"><span class="caption-text">ユーザー ガイド</span></p><ul><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/SPA-UG/README.html">システム パフォーマンス解析</a></li></ul></div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">エンベデッド デザイン チュートリアル</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>入門</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/docs/Introduction/Versal-EDT/docs/1-getting-started.md.txt" rel="nofollow">ページ ソースの表示</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1>入門<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h1>
+<p>必要なツールが正しくインストールされ、環境が要件に適合していることを確認します。</p>
+<section id="hardware-requirements">
+<h2>ハードウェア要件<a class="headerlink" href="#hardware-requirements" title="Permalink to this heading">¶</a></h2>
+<p>このチュートリアルでは、Versal™ ACAP VCK190 および VMK180 評価ボードをターゲットとしています。このチュートリアルのサンプル プロジェクトは VCK190 ES1 ボードを使用してテストされています。このガイドを活用するにあたって、評価ボードに同梱されている次のものを用意してください。</p>
+<ul class="simple">
+<li><p>VCK190/VMK180 ES1/プロダクション ボード</p></li>
+<li><p>AC 電源アダプター (12 VDC)</p></li>
+<li><p>USB Type-A/Micro ケーブル (UART 通信用)</p></li>
+<li><p>USB-Micro JTAG 接続を介するプログラムおよびデバッグ用の USB Micro ケーブル</p></li>
+<li><p>Linux ブート用の SD-MMC フラッシュ カード</p></li>
+<li><p>QSPI ドーター カード X_EBM-01、REV_A01</p></li>
+<li><p>OSPI ドーター カード X-EBM-03、REV_A02</p></li>
+</ul>
+</section>
+<section id="installation-requirements">
+<h2>インストール要件<a class="headerlink" href="#installation-requirements" title="Permalink to this heading">¶</a></h2>
+<section id="vitis-integrated-design-environment-and-vivado-design-suite">
+<h3>Vitis 統合デザイン環境および Vivado Design Suite<a class="headerlink" href="#vitis-integrated-design-environment-and-vivado-design-suite" title="Permalink to this heading">¶</a></h3>
+<p>Vitis™ 2020.2 ソフトウェア開発プラットフォームがインストールされていることを確認します。Vitis IDE は、ハードウェアおよびソフトウェアが 1 つのパッケージとして提供されるザイリンクス統合ツールです。Vitis IDE をインストールすると、Vivado® Design Suite および Vitis 開発ツールの両方が自動的にインストールされます。インストール時に余分にオプションを選択する必要はありません。</p>
+<blockquote>
+<div><p><strong>注記:</strong> ツールのバージョンが最新であるかどうかは、<a class="reference external" href="https://japan.xilinx.com/support/download.html">https://www.xilinx.com/support/download.html</a> で確認できます。</p>
+</div></blockquote>
+<p>Vivado Design Suite のインストールに関する詳細は、『Vitis 統合ソフトウェア プラットフォームの資料: エンベデッド ソフトウェア開発』 (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1400-vitis-embedded.pdf">UG1400</a>) を参照してください。</p>
+</section>
+<section id="petalinux-tools">
+<h3>PetaLinux ツール<a class="headerlink" href="#petalinux-tools" title="Permalink to this heading">¶</a></h3>
+<p>このチュートリアルの Linux 部分の演習で実行する PetaLinux ツールをインストールします。PetaLinux ツールは、次のいずれかが稼働している Linux ホスト システムで実行します。</p>
+<ul class="simple">
+<li><p>Red Hat Enterprise Workstation/Server 7.4、7.5、7.6、7.7、7.8 (64 ビット)</p></li>
+<li><p>CentOS Workstation/Server 7.4、7.5、7.6、7.7、7.8 (64 ビット)</p></li>
+<li><p>Ubuntu Linux Workstation/Server 16.04.5、16.04.6、18.04.1、18.04.02、18.04.3、18.04.4 (64 ビット)</p></li>
+</ul>
+<p>このツールは、専用 Linux ホスト システム、または Windows 開発プラットフォーム上でこれらの Linux オペレーティング システムのいずれかが稼働している仮想マシンを使用できます。</p>
+<p>PetaLinux ツールを選択したシステムにインストールするには、次を実行する必要があります。</p>
+<ul class="simple">
+<li><p>PetaLinux 2020.2 ツールを、ザイリンクスのウェブサイトからダウンロードします。</p></li>
+<li><p><a class="reference external" href="../docs/5-system-design-example.md#example-project-creating-linux-images-using-petalinux">サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成</a>に示される該当 BSP をダウンロードします。</p></li>
+<li><p>ワークステーションまたは仮想マシンに共通のシステム パッケージおよびライブラリを追加します。詳細は、『PetaLinux ツールの資料: リファレンス ガイド』 (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf を参照してください">UG1144</a>) および <a class="reference external" href="https://www.xilinx.com/support/answers/75775.html">PetaLinux リリース ノート 2020.2</a> を参照してください。</p></li>
+</ul>
+</section>
+</section>
+<section id="prerequisites">
+<h2>前提条件<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>8 GB RAM (ザイリンクス ツールで推奨される最小サイズ)</p></li>
+<li><p>2 GHz CPU クロックまたは同等の CPU (少なくとも 8 つのコア)</p></li>
+<li><p>100 GB のハードディスク空き容量</p></li>
+</ul>
+<section id="extracting-the-petalinux-package">
+<h3>PetaLinux パッケージの展開<a class="headerlink" href="# petalinux パッケージを解凍します" title="Permalink to this heading">¶</a></h3>
+<p>PetaLinux ツールのインストールは簡単です。オプションを指定しない場合、PetaLinux ツールは現在のディレクトリにインストールされます。インストール先パスをオプションで指定することもできます。</p>
+<p>たとえば、PetaLinux ツールを <code class="docutils literal notranslate"><span class="pre">/opt/pkg/petalinux/&lt;petalinux-version&gt;</span></code> にインストールするには、次のコマンドを使用します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p /opt/pkg/petalinux/&lt;petalinux-version&gt;
+$ ./petalinux-v&lt;petalinux-version&gt;-final-installer.run --dir /opt/pkg/petalinux/&lt;petalinux-version&gt;
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>注記:</strong> インストール ディレクトリの権限を chmod 775 に変更すると、BitBake エラーが発生することがあります。
+これにより、PetaLinux ツールが <code class="docutils literal notranslate"><span class="pre">/opt/pkg/petalinux/&lt;petalinux-version&gt;</span></code> ディレクトリにインストールされます。</p>
+</div></blockquote>
+<p>詳細は、『PetaLinux ツールの資料: リファレンス ガイド』 (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf を参照してください">UG1144</a>) を参照してください。</p>
+<section id="software-licensing">
+<h4>ソフトウェアのライセンス<a class="headerlink" href="#software-licensing" title="Permalink to this heading">¶</a></h4>
+<p>ザイリンクスのソフトウェアには FLEXnet ライセンスが使用されています。ソフトウェアを初めて起動する際、ライセンスの検証プロセスが実行されます。ライセンス検証で有効なライセンスが検出されない場合、ライセンス ウィザードに従ってライセンスを取得し、インストールしたツールでそのライセンスを使用できるようにします。ソフトウェアのフル バージョンが不要な場合は、評価版ライセンスを使用できます。インストール手順と情報については、『Vivado Design Suite ユーザー ガイド: リリース ノート、インストール、およびライセンス』 (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bt%3Dvivado%2Binstall%2Bguide">UG973</a>) を参照してください。</p>
+</section>
+<section id="tutorial-design-files">
+<h4>チュートリアルのデザイン ファイル<a class="headerlink" href="#tutorial-design-files" title="Permalink to this heading">¶</a></h4>
+<p>このチュートリアルのリファレンス デザイン ファイルは <a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Versal-EDT/ref_files">ref_files</a> ディレクトリにあります。</p>
+<p>© Copyright 2020-2021 Xilinx, Inc.</p>
+<p><em>Apache ライセンス、バージョン 2.0 (以下「ライセンス」) に基づいてライセンス付与されています。本ライセンスに準拠しないと、このファイルを使用することはできません。ライセンスのコピーは、<a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a> から入手できます。</em></p>
+<p><em>適切な法律で要求されるか、書面で同意された場合を除き、本ライセンスに基づいて配布されるソフトウェアは、明示的または黙示的を問わず、いかなる種類の保証または条件もなく、「現状のまま」配布されます。ライセンスに基づく権限と制限を管理する特定の言語については、ライセンスを参照してください。</em></p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p><span class="lastupdated">Last updated on August 1, 2022.
+      </span>© Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
+      </p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

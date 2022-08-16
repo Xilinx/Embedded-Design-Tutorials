@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Versal ACAP CIPS および NoC (DDR) IP コアの設定 &mdash; エンベデッド デザイン チュートリアル 2020.2 の資料</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../../index.html" class="icon icon-home"> エンベデッド デザイン チュートリアル
+            <img src="../../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2020.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p><ul><li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li></ul><p class="caption" role="heading"><span class="caption-text">English</span></p><ul><li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/index.html">Master</a></li></ul><p class="caption" role="heading"><span class="caption-text">入門</span></p><ul><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs-jp/2020.2/docs-jp/docs/Introduction/Versal-EDT/README.html">Versal ACAP エンベデッド デザイン チュートリアル</a></li><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Introduction/ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC エンベデッド デザイン チュートリアル</a></li><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Introduction/Zynq7000-EDT/README.html">Zynq-7000 エンベデッド デザイン チュートリアル</a></li></ul><p class="caption" role="heading"><span class="caption-text">デバッグ</span></p><ul><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Vitis-Embedded-Software-Debugging/README.html">Vitis エンベデッド ソフトウェア デバッグ ガイド</a></li></ul><p class="caption" role="heading"><span class="caption-text">ユーザー ガイド</span></p><ul><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/SPA-UG/README.html">システム パフォーマンス解析</a></li></ul></div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">エンベデッド デザイン チュートリアル</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Versal ACAP CIPS および NoC (DDR) IP コアの設定</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/docs/Introduction/Versal-EDT/docs/2-cips-noc-ip-config.md.txt" rel="nofollow">ページ ソースの表示</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="versal-acap-cips-and-noc-ddr-ip-core-configuration">
+<h1>Versal ACAP CIPS および NoC (DDR) IP コアの設定<a class="headerlink" href="#versal-acap-cips-and-noc-ddr-ip-core-configuration" title="Permalink to this heading">¶</a></h1>
+<p>Versal™ ACAP CIPS IP コアを使用すると、ブート モード、ペリフェラル、クロック、インターフェイス、割り込みなどのプロセッシング システムおよび PMC ブロックを設定できます。</p>
+<p>この章では、次のタスクを実行する方法について説明します。</p>
+<ul class="simple">
+<li><p>CIPS IP コアを設定して、Versal ACAP 用の Vivado ® プロジェクトを作成し、適切なブート デバイスとペリフェラルを選択します。</p></li>
+<li><p>Arm® Cortex™-A72 のオンチップ メモリ (OCM) 上で Hello World ソフトウェア アプリケーションを作成して実行します。</p></li>
+<li><p>Arm Cortex-R5F の TCM (Tightly-coupled-memory) 上で Hello World ソフトウェア アプリケーションを作成して実行します。</p></li>
+</ul>
+<p>NoC IP コアは、 DDR メモリ、およびシステム内のプロセッシング エンジン (スカラー型エンジン、適応型エンジン、AI エンジン) を通るデータパスの設定に役立ちます。</p>
+<ul class="simple">
+<li><p>DDR をメモリとして使用して、Arm Cortex-A72 上で Hello World ソフトウェア アプリケーションを作成して実行します。</p></li>
+<li><p>DDR をメモリとして使用して、Arm Cortex-R5F 上で Hello World ソフトウェア アプリケーションを作成して実行します。</p></li>
+</ul>
+<section id="prerequisites">
+<h2>前提条件<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<p>この章で説明する Hello World アプリケーションを作成して実行するには、Vitis™ 統合ソフトウェア プラットフォームをインストールする必要があります。インストールするには、『Vitis 統合ソフトウェア プラットフォームの資料: エンベデッド ソフトウェア開発』<em> </em>(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1400-vitis-embedded.pdf">UG1400</a>)を参照してください。</p>
+</section>
+<section id="cips-ip-core-configuration">
+<h2>CIPS IP コアの設定<a class="headerlink" href="#cips-ip-core-configuration" title="Permalink to this heading">¶</a></h2>
+<p>Versal ACAP システム デザインの作成には、適切なブート デバイスおよびペリフェラルを選択するように CIPS IP を設定する必要があります。まず、CIPS IP コアのペリフェラルと利用可能な MIO (Multiplexed I/O) の接続が要件を満たしていれば、PL コンポーネントは必要ありません。この章では、単純な CIPS IP コア ベースのデザインを作成する方法について説明します。</p>
+<section id="creating-a-new-embedded-project-with-the-versal-acap">
+<h3>Versal ACAP を使用した新規エンベデッド プロジェクトの作成<a class="headerlink" href="#creating-a-new-embedded-project-with-the-versal-acap" title="Permalink to this heading">¶</a></h3>
+<p>この例では、Vivado Design Suite を起動し、エンベデッド プロセッシング システムのプロジェクトを最上位として作成します。</p>
+<section id="starting-your-design">
+<h4>デザインの開始<a class="headerlink" href="#starting-your-design" title="Permalink to this heading">¶</a></h4>
+<ol>
+<li><p>Vivado Design Suite を起動します。</p></li>
+<li><p>[Tcl Console] ウィンドウに次のコマンドを入力して、ES1 ボードをイネーブルにします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable_beta_device</span>
+</pre></div>
+</div>
+<p><strong>Enter</strong> キーを押します。</p>
+</li>
+<li><p>[Quick Start] セクションの <strong>[Create Project]</strong> をクリックし、New Project ウィザードを開きます。</p></li>
+<li><p>ウィザードの各ページで次の表の情報に基づいて設定します。</p>
+<p>表 1: <strong>システム プロパティ設定</strong></p>
+</li>
+</ol>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="left">ウィザード ページ</th>
+<th align="left">システム プロパティ</th>
+<th align="left">設定または使用するコマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Project Name</td>
+<td align="left">Project Name</td>
+<td align="left">edt_versal</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Project Location</td>
+<td align="left">C:/edt</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Create Project Subdirectory</td>
+<td align="left">オン</td>
+</tr>
+<tr>
+<td align="left">Project Type</td>
+<td align="left">作成するプロジェクトのタイプを指定(RTL または合成済み EDIF にしてみます)</td>
+<td align="left">RTL Project</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Do not specify sources at this time check box</td>
+<td align="left">オフのまま</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Project is an extensible Vitis platform checkbox</td>
+<td align="left">オフのまま</td>
+</tr>
+<tr>
+<td align="left">ソースの追加</td>
+<td align="left">この画面は変更しません。</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add Constraints</td>
+<td align="left">この画面は変更しません。</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Default Part</td>
+<td align="left">選択</td>
+<td align="left"><strong>Boards</strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Display Name</td>
+<td align="left">Versal VMK180/VCK190 Evaluation Platform</td>
+</tr>
+<tr>
+<td align="left">Project Summary</td>
+<td align="left">Project Summary</td>
+<td align="left">プロジェクト サマリを確認</td>
+</tr>
+</tbody>
+</table><ol class="simple">
+<li><p><strong>[Finish]</strong> をクリックします。New Project ウィザードが閉じ、作成したプロジェクトが Vivado デザイン ツールで開きます。</p></li>
+</ol>
+<blockquote>
+<div><p><strong>注記:</strong> ボードを選択する際には、バージョン番号を確認してください。ES1 シリコンの場合、ボードのバージョンは 1.1 で、プロダクション シリコンの場合、ボードのバージョンは 2.0 です。ボード上のシリコンに基づいてバージョンを選択します。</p>
+</div></blockquote>
+</section>
+<section id="creating-an-embedded-processor-project">
+<h4>エンベデッド プロセッサ プロジェクトの作成<a class="headerlink" href="#creating-an-embedded-processor-project" title="Permalink to this heading">¶</a></h4>
+<p>エンベデッド プロセッサ プロジェクトを作成する手順は、次のとおりです。</p>
+<ol>
+<li><p>Flow Navigator の [IP Integrator] → <strong>[Create Block Design]</strong> をクリックします。</p>
+<p><img alt="../../../../_images/image5.png" src="../../../../_images/image5.png" /></p>
+<p>[Create Block Design] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p>[Create Block Design] ダイアログ ボックスで次のように選択します。</p>
+<p>表 2: <strong>システム プロパティ設定</strong></p>
+</li>
+</ol>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="left">ウィザード ページ</th>
+<th align="left">システム プロパティ</th>
+<th align="left">設定または使用するコマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Create Block Design</td>
+<td align="left">Design name</td>
+<td align="left">edt_versal</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Directory</td>
+<td align="left"><code>&lt;Local to Project&gt;</code></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Specify source set</td>
+<td align="left">Design Sources</td>
+</tr>
+</tbody>
+</table><ol>
+<li><p><strong>[OK]</strong> をクリックします。</p>
+<p>[Diagram] ウィンドウがこのデザインが空であることを示すメッセージと共に表示されます。まずは、IP カタログから IP を追加します。</p>
+</li>
+<li><p><strong>[Add IP]</strong> <img alt="../../../../_images/image6.png" src="../../../../_images/image6.png" /> をクリックします。</p></li>
+<li><p>検索ボックスに「CIPS」と入力して、[Control, Interfaces and Processing System] を見つけます。</p></li>
+<li><p><strong>[Control, Interface &amp; Processing System IP]</strong> をダブルクリックして、ブロック デザインに追加します。次の図に示すように、[Diagram] ウィンドウに CIPS IP コアが表示されます。</p>
+<p><img alt="../../../../_images/image7.png" src="../../../../_images/image7.png" /></p>
+</li>
+</ol>
+</section>
+<section id="managing-the-versal-acap-cips-ip-core-in-the-vivado-design-suite">
+<h4>Vivado Design Suite での Versal ACAP CIPS IP コアの管理<a class="headerlink" href="#managing-the-versal-acap-cips-ip-core-in-the-vivado-design-suite" title="Permalink to this heading">¶</a></h4>
+<p>Versal™ ACAP のプロセッサ システムをデザインに追加したので、オプションを設定します。</p>
+<ol>
+<li><p>[Diagram] ウィンドウで versal_cips_0 をダブルクリックします。</p></li>
+<li><p>次の図に示すように、[Board] タブで <strong>[cips fixed io]</strong> を選択します。</p>
+<p><img alt="cips-fixed-io-selection" src="../../../../_images/cips-fixed-io.png" /></p>
+</li>
+<li><p><strong>[OK]</strong> をクリックします。</p>
+<p>デフォルトでは、CIPS にはイネーブルになった制御またはインターフェイスはありません。ボード プリセットを適用すると、MO ピンにボード接続された CIPS 上のペリフェラルが有効になります。</p>
+</li>
+<li><p>[Diagram] ウィンドウで versal_cips_0 をダブルクリックします。次の図に示す [Re-customize IP] ダイアログ ボックスが開きます。</p>
+<p><img alt="../../../../_images/image9.jpeg" src="../../../../_images/image9.jpeg" /></p>
+</li>
+<li><p><strong>[PS-PMC]</strong> ドロップダウン リストを展開します。次の図に示すように <strong>[IO Configuration]</strong> をクリックします。[IO Configurations] ダイアログ ボックスが開きます。</p>
+<p>I/O コンフィギュレーションでは、プロセッシング システム内のペリフェラルをイネーブルにし、関連する MIO のピン割り当てを選択できます。次の図のようにペリフェラルがコンフィギュレーションされます。</p>
+<blockquote>
+<div><p><strong>注記:</strong> ブロック オートメーションは明示的には実行されません。ボード インターフェイスが [Custom] から [cips fixed io] に変更されるとディスエーブルになります。</p>
+</div></blockquote>
+<p><img alt="../../../../_images/Recustomize-IP.PNG" src="../../../../_images/Recustomize-IP.PNG" /></p>
+</li>
+<li><p><strong>[OK]</strong> をクリックして CIPS の GUI を閉じます。</p></li>
+</ol>
+</section>
+<section id="validating-the-design-and-generating-the-output">
+<h4>デザインの検証および出力の生成<a class="headerlink" href="#validating-the-design-and-generating-the-output" title="Permalink to this heading">¶</a></h4>
+<p>デザインを検証し、出力ファイルを生成するには、次の手順を実行します。</p>
+<ol>
+<li><p>[Diagram] ウィンドウの空白部分を右クリックして、<strong>[Validate Design]</strong> をクリックします。</p>
+<p>または、<strong>F6</strong> キーを押します。次の図のようなメッセージが表示されます。</p>
+<p><img alt="validation_message" src="../../../../_images/validation_message.PNG" /></p>
+</li>
+<li><p>[Block Design] 環境の <strong>[Sources]</strong> ウィンドウをクリックします。</p>
+<p><img alt="../../../../_images/image13.png" src="../../../../_images/image13.png" /></p>
+</li>
+<li><p><strong>[Hierarchy]</strong> タブをクリックします。</p></li>
+<li><p>[Design Sources] の下の <strong>[edt_versal]</strong> を右クリックし、<strong>[Create HDL Wrapper]</strong> をクリックします。</p>
+<p>[Create HDL Wrapper] ダイアログ ボックスが開きます。このダイアログ ボックスを使用して、プロセッサ サブシステム用の HDL ラッパー ファイルを作成します。</p>
+<blockquote>
+<div><p><strong>ヒント:</strong> HDL ラッパーは、デザイン ツールに必要な最上位エンティティです。</p>
+</div></blockquote>
+</li>
+<li><p><strong>[Let Vivado manage wrapper and auto-update]</strong> をオンにし、<strong>[OK]</strong> をクリックします。</p></li>
+<li><p>[Block Design] の [Sources] ウィンドウで、[Design Sources] の <strong>[edt_versal_wrapper]</strong> を展開します。</p></li>
+<li><p>edt_versal_i: edt_versal (edt_versal.bd) という最上位ブロックを右クリックし、<strong>[Generate Output Products]</strong> をクリックします。</p>
+<p>次に示す [Generate Output Products] ダイアログ ボックスが開きます。</p>
+<p><img alt="../../../../_images/image15.png" src="../../../../_images/image15.png" /></p>
+<blockquote>
+<div><p><strong>注記:</strong> Windows マシンで Vivado® Design Suite を実行している場合は、[Run Settings] の下にさまざまなオプションが表示されることがあります。その場合は、デフォルト設定で続行します。</p>
+</div></blockquote>
+</li>
+<li><p><strong>[Generate]</strong> をクリックします。</p>
+<p>この手順では、選択したソースに必要なすべての出力ファイルを作成します。たとえば、IP プロセッサ システムの制約を手動で作成する必要はありません。<strong>[Generate Output Products]</strong> を実行すると、Vivado ツールでプロセッサ サブシステム用の XDC ファイルが自動的に生成されます。</p>
+</li>
+<li><p>[Block Design] の [Sources] ウィンドウで、<strong>[IP Sources]</strong> タブをクリックします。次の図に示すように、生成した出力ファイルが表示されます。</p>
+<p><img alt="../../../../_images/image16.png" src="../../../../_images/image16.png" /></p>
+</li>
+</ol>
+</section>
+<section id="synthesizing-implementing-and-generating-the-device-image">
+<h4>デバイス イメージの合成、インプリメント、生成<a class="headerlink" href="#synthesizing-implementing-and-generating-the-device-image" title="Permalink to this heading">¶</a></h4>
+<p>デザインのデバイス イメージを生成するには、次の手順を実行します。</p>
+<ol>
+<li><p>Flow Navigator の <strong>[Program and Debug]</strong> をクリックし、<strong>[Generate Device Image]</strong> をクリックします。</p></li>
+<li><p>[No Implementation Results Available] メニューが表示されます。<strong>[Yes]</strong> をクリックします。</p></li>
+<li><p>[Launch Run] メニューが表示されます。<strong>[OK]</strong> をクリックします。</p>
+<p>デバイス イメージの生成が完了すると、[Device Image Generation Completed] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Cancel]</strong> をクリックしてウィンドウを閉じます。</p></li>
+<li><p>デバイス イメージを生成したら、ハードウェアをエクスポートします。</p>
+<blockquote>
+<div><p><strong>注記:</strong> 次の手順はオプションなので、省略して<a class="reference external" href="#exporting-hardware">「ハードウェアのエクスポート」</a> セクションに進むこともできます。これらの手順を実行すると、デバイス イメージを生成する前に合成およびインプリメンテーションを実行するので、デバイス イメージ生成の詳細なフローがわかるようになります。デバイス イメージの生成フローを理解する必要がある場合は、次の手順を実行します。</p>
+</div></blockquote>
+</li>
+<li><p>Flow Navigator の <strong>[Synthesis]</strong> の <strong>[Run Synthesis]</strong> をクリックして、<strong>[OK]</strong> をクリックします。</p>
+<p><img alt="../../../../_images/image17.png" src="../../../../_images/image17.png" /></p>
+</li>
+<li><p>合成の開始前にプロジェクトを保存するようメッセージが表示された場合は、<strong>[Save]</strong> をクリックします。</p>
+<p>合成の実行中、ウィンドウの右上にステータス バーが表示されます。このステータス バーは、デザイン プロセスをとおして、さまざまな理由により表示されます。ステータス バーは、プロセスがバックグラウンドで実行されていることを示します。合成が完了すると、[Synthesis Completed] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Run Implementation]</strong> をクリックして <strong>[OK]</strong> をクリックします。</p>
+<p>インプリメンテーションが完了すると、[Implementation Completed] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Generate Device Image]</strong> をクリックして <strong>[OK]</strong> をクリックします。</p>
+<p>デバイス イメージの生成が完了すると、[Device Image Generation Completed] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Cancel]</strong> をクリックしてウィンドウを閉じます。</p>
+<p>デバイス イメージを生成したら、ハードウェアをエクスポートします。</p>
+</li>
+</ol>
+</section>
+<section id="exporting-hardware">
+<h4>ハードウェアのエクスポート<a class="headerlink" href="#exporting-hardware" title="Permalink to this heading">¶</a></h4>
+<ol>
+<li><p><strong>[File] → [Export] → [Export Hardware]</strong> をクリックします。</p>
+<p>[Export Hardware] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Include device image]</strong> を選択し、<strong>[Next]</strong> をクリックします。</p></li>
+<li><p>エクスポートしたファイルの名前を入力し (またはデフォルトを使用し)、ディレクトリを選択します。<strong>[Next]</strong> をクリックします。</p>
+<p>ハードウェア モジュールが既にエクスポートされている場合は、警告メッセージが表示されます。既存の XSA ファイルを上書きするかどうか尋ねるメッセージが表示されたら、<strong>[Yes]</strong> をクリックします。</p>
+</li>
+<li><p><strong>[Finish]</strong> をクリックします。</p></li>
+</ol>
+</section>
+</section>
+<section id="running-a-bare-metal-hello-world-application">
+<h3>ベアメタル Hello World アプリケーションの実行<a class="headerlink" href="#running-a-bare-metal-hello-world-application" title="Permalink to this heading">¶</a></h3>
+<p>この例では、Vitis ソフトウェア プラットフォームでのボード設定の管理、ケーブルの接続、システムからのボードへの接続、および OCM (オンチップ メモリ) 上の Arm Cortex-A72 および TCM (Tightly-coupled-memory) 上の Arm Cortex- R5F から Hello World ソフトウェア アプリケーションを実行する方法を説明します。</p>
+<p>次の手順では、必要なケーブル接続をし、システムからボードを接続して、Vitis ソフトウェア プラットフォームを起動する方法を示します。</p>
+<ol>
+<li><p>電源ケーブルをボードに接続します。</p></li>
+<li><p>マイクロ USB ケーブルで Windows ホスト マシンとターゲット ボードの USB JTAG コネクタを接続します。このケーブルは、USB のシリアル転送に使用されます。</p>
+<blockquote>
+<div><p><strong>注記:</strong> SW1 スイッチが次の図に示すように JTAG ブート モードに設定されることを確認しください。</p>
+</div></blockquote>
+<p><img alt="../../../../_images/image19.jpeg" src="../../../../_images/image19.jpeg" /></p>
+</li>
+<li><p>次の図に示すように、電源スイッチを使用して VMK180/VCK190 ボードに電源を投入します。</p>
+<p><img alt="../../../../_images/image20.png" src="../../../../_images/image20.png" /></p>
+<blockquote>
+<div><p><strong>注記:</strong> Vitis ソフトウェア プラットフォームが既に起動している場合は、手順 6 へ進みます。</p>
+</div></blockquote>
+</li>
+<li><p><strong>[Tools] → [Launch Vitis IDE from Vivado]</strong> をクリックして Vitis ソフトウェア プラットフォームを起動し、ワークスペース パス (この例の場合は、<code class="docutils literal notranslate"><span class="pre">C:\edt\edt_vck190</span></code>) を指定します。</p>
+<p>または、デフォルトのワークスペースを使用して Vitis ソフトウェア プラットフォームを開き、後で <strong>[File] → [Switch Workspace]</strong> をクリックして正しいワークスペースに切り替えることもできます。</p>
+</li>
+<li><p>システムで割り当てられている COM ポートのシリアル通信ユーティリティを開きます。Vitis ソフトウェア プラットフォームではシリアル端末ユーティリティが提供されており、これをチュートリアルを通して使用します。<strong>[Window] → [Show View] → [Xilinx] → [Vitis Serial Terminal]</strong> をクリックしてこのユーティリティを開きます。</p>
+<p><img alt="../../../../_images/image21.jpeg" src="../../../../_images/image21.jpeg" /></p>
+</li>
+<li><p>Vitis ターミナル コンテキストで <strong>[Connect to a serial port]</strong> ボタン <img alt="../../../../_images/image22.png" src="../../../../_images/image22.png" /> をクリックして、シリアル コンフィギュレーションを設定し、接続します。</p></li>
+<li><p>Windows デバイス マネージャーでポートの詳細を検証します。</p>
+<p>UART-0 ターミナルは、Interface-0 の COM ポートに対応します。この例では、UART-0 ターミナルがデフォルトで設定されているため、COM ポートに対して Interface-0 のポートを選択します。次の図に、Versal ACAP プロセッシング システム用の標準的な設定を示します。</p>
+<p><img alt="../../../../_images/image23.png" src="../../../../_images/image23.png" /></p>
+</li>
+</ol>
+<blockquote>
+<div><p><strong>注記:</strong> Tera Term や Putty などの外部ターミナル シリアル ポート コンソールを使用できます。関連する COM ポート情報は、[コントロール パネル] の [デバイス マネージャー] メニューから確認できます。</p>
+</div></blockquote>
+<section id="creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm">
+<h4>OCM 上の Arm Cortex-A72 用の Hello World アプリケーションの作成<a class="headerlink" href="#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm" title="Permalink to this heading">¶</a></h4>
+<p>次は、OCM 上の Arm Cortex-A72 から Hello World アプリケーションを作成する手順を示しています。</p>
+<ol>
+<li><p><strong>[File] → [New] → [Application Project]</strong> をクリックします。Creating a New Application Project ウィザードが開きます。Vitis IDE を初めて起動した場合は、次の図に示す Welcome 画面で [Create Application Project] を選択できます。</p>
+<blockquote>
+<div><p><strong>注記:</strong> オプションで、[Skip welcome page next time] チェック ボックスをオンにすると、毎回 Welcome ページを表示しないようにすることもできます。</p>
+</div></blockquote>
+</li>
+<li><p>ウィザードの各ページで次の表の情報に基づいて設定を選択します。</p>
+<p>表 3: <em></em><strong>システム プロパティ設定</strong></p>
+</li>
+</ol>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>ウィザード ページ</th>
+<th>システム プロパティ</th>
+<th>設定または使用するコマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform</td>
+<td>Create a new platform from hardware (XSA)</td>
+<td>[Browse] ボタンをクリックして XSA ファイルを追加</td>
+</tr>
+<tr>
+<td></td>
+<td>Platform Name</td>
+<td>vck190_platform</td>
+</tr>
+<tr>
+<td>Application Project Details</td>
+<td>Application project name</td>
+<td>helloworld_a72</td>
+</tr>
+<tr>
+<td></td>
+<td>システム プロジェクトを選択</td>
+<td>+Create New</td>
+</tr>
+<tr>
+<td></td>
+<td>System project name</td>
+<td>helloworld _system</td>
+</tr>
+<tr>
+<td></td>
+<td>Processor</td>
+<td>psv_cortexa72_0</td>
+</tr>
+<tr>
+<td>Domain</td>
+<td>Select a domain</td>
+<td>+Create New</td>
+</tr>
+<tr>
+<td></td>
+<td>Name</td>
+<td>デフォルト名入力済み</td>
+</tr>
+<tr>
+<td></td>
+<td>Display Name</td>
+<td>デフォルト名入力済み</td>
+</tr>
+<tr>
+<td></td>
+<td>Operating System</td>
+<td>Standalone</td>
+</tr>
+<tr>
+<td></td>
+<td>Processor</td>
+<td>psv_cortexa72_0</td>
+</tr>
+<tr>
+<td></td>
+<td>&lt;architecture&gt;</td>
+<td>64-bit</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Available Templates</td>
+<td>Hello World</td>
+</tr>
+</tbody>
+</table><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span><span class="n">Vitis</span><span class="n">software</span><span class="n">platform</span><span class="n">creates</span><span class="n">the</span><span class="n">board</span><span class="n">support</span><span class="n">package</span><span class="k">for</span><span class="n">the</span><span class="n">Platform</span><span class="n">project</span><span class="p">(</span><span class="n">vck190_platform</span><span class="p">)</span><span class="ow">and</span><span class="n">the</span><span class="n">system</span><span class="n">project</span><span class="p">(</span><span class="n">helloworld_system</span><span class="p">)</span><span class="n">containing</span><span class="n">an</span><span class="n">application</span><span class="n">project</span><span class="n">named</span><span class="n">helloworld_a72</span><span class="n">under</span><span class="n">the</span><span class="n">Explorer</span><span class="n">view</span><span class="n">after</span><span class="n">performing</span><span class="n">the</span><span class="n">above</span><span class="n">steps</span><span class="o">.</span></pre></div>
+</div>
+<ol>
+<li><p><strong>vck190_platform</strong> を右クリックし、<strong>[Build Project]</strong> をクリックし。または、<img alt="../../../../_images/image26.png" src="../../../../_images/image26.png" /> をクリックすることもできます。</p>
+<blockquote>
+<div><p><strong>注記:</strong> [Project Explorer] ビューが表示されない場合は、左側のパネルの復元アイコン <img alt="../../../../_images/image27.png" src="../../../../_images/image27.png" /> をクリックし、手順 3 を実行します。</p>
+</div></blockquote>
+</li>
+</ol>
+<section id="modifying-the-helloworld-a72-application-source-code">
+<h5>helloworld_a72 アプリケーション ソース コードの変更<a class="headerlink" href="#modifying-the-helloworld-a72-application-source-code" title="Permalink to this heading">¶</a></h5>
+<ol>
+<li><p><strong>[helloworld_a72]</strong> をダブルクリックし、<strong>[src]</strong> をダブルクリックして <strong>[helloworld.c]</strong> を選択します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">helloworld.c</span></code> アプリケーションの  ソース ファイルが開きます。</p>
+</li>
+<li><p>print コマンドの引数を編集します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World from APU</span><span class="se">\n\r</span><span class="s2">&quot;</span><span class="p">);</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Successfully ran Hello World application from APU</span><span class="se">\n\r</span><span class="s2">&quot;</span><span class="p">);</span></pre></div>
+</div>
+<p><img alt="../../../../_images/image28.png" src="../../../../_images/image28.png" /></p>
+</li>
+<li><p><img alt="../../../../_images/image29.png" src="../../../../_images/image29.png" /> をクリックしてプロジェクトをビルドします。</p></li>
+</ol>
+</section>
+</section>
+<section id="adding-a-new-rpu-domain-to-the-platform-project">
+<h4>プラットフォーム プロジェクトへの新規 RPU ドメインの追加<a class="headerlink" href="#adding-a-new-rpu-domain-to-the-platform-project" title="Permalink to this heading">¶</a></h4>
+<p>次は、TCM 上の Arm Cortex-R5F 用にベアメタル Hello World アプリケーションを作成する手順を示しています。アプリケーションは、ドメインにリンクする必要があります。アプリケーション プロジェクトを作成する前に、ターゲット ドメインのソフトウェア環境が使用可能かどうかを確認してください。使用可能でない場合は、次の手順を使用して必要なドメインをプラットフォームに追加します。</p>
+<ol>
+<li><p>Vitis の [Explorer] ビューで <code class="docutils literal notranslate"><span class="pre">platform.spr</span></code> ファイルをダブルクリックします。この例では <strong>vck190_platform → platform.spr</strong> です。</p></li>
+<li><p>メイン ウィンドウで <img alt="../../../../_images/image30.png" src="../../../../_images/image30.png" /> ボタンをクリックします。</p></li>
+<li><p>Domain ウィザードの各ページで次の表の情報に基づいて設定を選択します。</p>
+<p><strong>表 4: 新しいドメイン設定</strong></p>
+</li>
+</ol>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>ウィザード ページ</th>
+<th>フィールド</th>
+<th>設定または使用するコマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Domain</td>
+<td>Name</td>
+<td>r5_domain</td>
+</tr>
+<tr>
+<td></td>
+<td>Display Name</td>
+<td>autogenerated</td>
+</tr>
+<tr>
+<td></td>
+<td>OS</td>
+<td>standalone</td>
+</tr>
+<tr>
+<td></td>
+<td>Processor</td>
+<td>psv_cortexr5_0</td>
+</tr>
+<tr>
+<td></td>
+<td>[Supported Runtimes]</td>
+<td>C/C++</td>
+</tr>
+<tr>
+<td></td>
+<td>&lt;architecture&gt;</td>
+<td>32-bit</td>
+</tr>
+</tbody>
+</table><ol>
+<li><p><strong>[OK]</strong> をクリックします。新しく生成された r5_domain が設定されます。</p>
+<blockquote>
+<div><p><strong>注記:</strong> この時点で、[Explorer] ビューのプラットフォームの横に Out of date を示すアイコンが表示されます。</p>
+</div></blockquote>
+</li>
+<li><p><img alt="../../../../_images/image26.png" src="../../../../_images/image26.png" /> アイコンをクリックしてプラットフォームをビルドします。[Project Explorer] ビューには、プラットフォーム プロジェクトで生成されたイメージ ファイルが表示されます。</p></li>
+</ol>
+</section>
+<section id="creating-the-standalone-application-project-for-the-arm-cortex-r5f">
+<h4>Arm Cortex-R5F のスタンドアロン アプリケーション プロジェクトの作成<a class="headerlink" href="#creating-the-standalone-application-project-for-the-arm-cortex-r5f" title="Permalink to this heading">¶</a></h4>
+<p>次の手順は、Arm Cortex-R5F から Hello World アプリケーションを作成する手順を示しています。</p>
+<ol>
+<li><p><strong>[File] → [New] → [Application Project]</strong> をクリックします。Creating a New Application Project ウィザードが開きます。Vitis IDE を初めて起動した場合は、Welcome 画面で [Create Application Project] を選択できます。</p>
+<blockquote>
+<div><p><strong>注記:</strong> オプションで、[Skip welcome page next time] チェック ボックスをオンにすると、毎回 Welcome ページを表示しないようにすることもできます。</p>
+</div></blockquote>
+</li>
+<li><p>ウィザードの各ページで次の表の情報に基づいて設定を選択します。</p>
+<p>表 5: <strong>システム プロパティ設定</strong></p>
+</li>
+</ol>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>ウィザード ページ</th>
+<th>システム プロパティ</th>
+<th>設定または使用するコマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform</td>
+<td>Select a platform from repository</td>
+<td>Select <strong>vck190_platform</strong></td>
+</tr>
+<tr>
+<td>Application Project Details</td>
+<td>Application project name</td>
+<td>helloworld_r5</td>
+</tr>
+<tr>
+<td></td>
+<td>Select a system project</td>
+<td>helloworld_system</td>
+</tr>
+<tr>
+<td></td>
+<td>System project name</td>
+<td>helloworld _system</td>
+</tr>
+<tr>
+<td></td>
+<td>Target processor</td>
+<td>psv_cortexr5_0</td>
+</tr>
+<tr>
+<td>Domain</td>
+<td>Select a domain</td>
+<td>r5_domain</td>
+</tr>
+<tr>
+<td></td>
+<td>Name</td>
+<td>r5_domain</td>
+</tr>
+<tr>
+<td></td>
+<td>Display Name</td>
+<td>r5_domain</td>
+</tr>
+<tr>
+<td></td>
+<td>Operating System</td>
+<td>standalone</td>
+</tr>
+<tr>
+<td></td>
+<td>Processor</td>
+<td>psv_cortexr5_0</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Available Templates</td>
+<td>Hello World</td>
+</tr>
+</tbody>
+</table><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;***</span><span class="n">Note</span><span class="o">*</span><span class="p">:</span><span class="o">**</span><span class="n">The</span><span class="n">standalone</span><span class="n">application</span><span class="n">helloworld_r5</span><span class="ow">is</span><span class="n">generated</span><span class="n">within</span><span class="n">the</span><span class="n">existing</span><span class="n">system</span><span class="n">project</span><span class="n">helloworld_system</span><span class="o">.</span></pre></div>
+</div>
+<ol class="simple">
+<li><p><strong>vck190_platform</strong> を右クリックし、<strong>[Build Project]</strong> をクリックし。または、<img alt="../../../../_images/image29.png" src="../../../../_images/image29.png" /> をクリックしてもプロジェクトをビルドできます。</p></li>
+</ol>
+<section id="modifying-the-helloworld-r5-application-source-code">
+<h5>helloworld_r5 アプリケーション ソース コードの変更<a class="headerlink" href="#modifying-the-helloworld-r5-application-source-code" title="Permalink to this heading">¶</a></h5>
+<ol>
+<li><p><strong>helloworld_r5</strong> を展開し、<strong>src</strong> をダブルクリックして <strong>helloworld.c</strong> を選択し、helloworld_r5 アプリケーションの <code class="docutils literal notranslate"><span class="pre">helloworld.c</span></code> ソース ファイルを開きます。</p></li>
+<li><p>print コマンドの引数を編集します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World from RPU</span><span class="se">\n\r</span><span class="s2">&quot;</span><span class="p">);</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Successfully ran Hello World application from RPU</span><span class="se">\n\r</span><span class="s2">&quot;</span><span class="p">);</span></pre></div>
+</div>
+<p><img alt="../../../../_images/image31.png" src="../../../../_images/image31.png" /></p>
+</li>
+<li><p><img alt="../../../../_images/image29.png" src="../../../../_images/image29.png" /> をクリックしてプロジェクトをビルドします。</p></li>
+</ol>
+</section>
+<section id="modifying-the-application-linker-script-for-the-application-project-helloworld-r5">
+<h5>アプリケーション プロジェクト helloworld_r5 のアプリケーション リンカー スクリプトの変更<a class="headerlink" href="#modifying-the-application-linker-script-for-the-application-project-helloworld-r5" title="Permalink to this heading">¶</a></h5>
+<p>次の手順は、アプリケーション プロジェクト helloworld_r5 のアプリケーション リンカー スクリプトを変更する手順を示しています。</p>
+<blockquote>
+<div><p><strong>注記:</strong> Vitis ソフトウェア プラットフォームにはリンカー スクリプト ジェネレーターが含まれており、GCC 用のリンカー スクリプトを簡単に生成できます。リンカー スクリプト ジェネレーター GUI によりターゲット ハードウェア プラットフォームが調べられ、使用可能なメモリ セクションが判断されます。ユーザーの作業は、ELF ファイルの異なるコードおよびデータ セクションを異なるメモリ領域に割り当てることだけです。</p>
+</div></blockquote>
+<ol>
+<li><p>Vitis の [Explorer] ビューでアプリケーション プロジェクト (helloworld_r5) を選択します。</p>
+<blockquote>
+<div><p><strong>注記:</strong> リンカーは DDR メモリがプラットフォーム上に存在する場合はそれを使用し、存在しない場合はデフォルトでオンチップ メモリ (OCM) を使用します。</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code> ディレクトリでデフォルトの <code class="docutils literal notranslate"><span class="pre">lscript.ld</span></code> ファイルを削除します。</p></li>
+<li><p><strong>helloworld_r5</strong> を右クリックし、<strong>[Generate Linker Script]</strong> をクリックします。または、<strong>[Xilinx] → [Generate Linker Script]</strong> を選択することもできます。</p>
+<p><img alt="../../../../_images/image32.png" src="../../../../_images/image32.png" /></p>
+<blockquote>
+<div><p><strong>注記:</strong> [Generate linker script] ダイアログ ボックスでは、左側は [Modify project build settings as follows] フィールドの出力スクリプト名とプロジェクト ビルド設定以外は読み取り専用です。右側には、メモリの割り当て方法に [Basic] タブと [Advanced] タブの 2 つの選択肢があります。どちらも同じタスクを実行しますが、[Basic] タブの方が大まかで、すべてのデータ型をデータとして、すべての命令型をコードとして処理します。ほとんどのタスクはこれで達成できます。[Advanced] タブは、ソフトウェア ブロックをさまざまなタイプのメモリに正確に割り当てる場合に使用します。</p>
+</div></blockquote>
+</li>
+<li><p>[Basic] タブで、3 つのセクションすべてのドロップダウンメニューから <strong>psv_r5_0_atcm_MEM_0</strong> を選択し、<strong>[Generate]</strong> をクリックします。</p>
+<p><img alt="../../../../_images/image33.png" src="../../../../_images/image33.png" /></p>
+<blockquote>
+<div><p><strong>注記:</strong> 新しいリンカー スクリプト (<code class="docutils literal notranslate"><span class="pre">lscript.ld</span></code>) がアプリケーション プロジェクト内の src フォルダーに生成されます。</p>
+</div></blockquote>
+</li>
+<li><p><strong>helloworld _system</strong> を右クリックして <strong>[Build Project]</strong> をクリックするか、<img alt="../../../../_images/image26.png" src="../../../../_images/image26.png" /> をクリックします。これにより、helloworld_r5 プロジェクトの Debug フォルダー内にプロジェクトの ELF ファイルが生成されます。</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform">
+<h3>Vitis ソフトウェア プラットフォームでのシステム デバッガーを使用した JTAG モードでのアプリケーションの実行<a class="headerlink" href="#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform" title="Permalink to this heading">¶</a></h3>
+<p>アプリケーションを実行するには、アプリケーション実行の設定を保存する実行コンフィギュレーションを作成する必要があります。システム プロジェクト全体または独立したアプリケーションの実行コンフィギュレーションを作成できます。</p>
+<section id="creating-a-run-configuration-for-the-system-project">
+<h4>システム プロジェクトの実行コンフィギュレーションの作成<a class="headerlink" href="#creating-a-run-configuration-for-the-system-project" title="Permalink to this heading">¶</a></h4>
+<ol>
+<li><p><strong>[helloworld_system]</strong> システム プロジェクトを右クリックして <strong>[Run as] → [Run Configurations]</strong> をクリックします。[Run configuration] ダイアログ ボックスが開きます。</p></li>
+<li><p><strong>[System Project Debug]</strong> をダブルクリックして、実行コンフィギュレーションを作成します。</p>
+<p>SystemDebugger_helloworld_system という名前の新しい実行コンフィギュレーションが作成されます。残りのオプションについては、次の表を参照してください。</p>
+<p><strong>表 6: コンフィギュレーションの作成、管理、実行の設定</strong></p>
+</li>
+</ol>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>ウィザードのタブ</th>
+<th>システム プロパティ</th>
+<th>設定または使用するコマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main</td>
+<td>Project</td>
+<td>helloworld_system</td>
+</tr>
+<tr>
+<td></td>
+<td>Target → Hardware Server</td>
+<td>実行中のターゲット (ローカル) に接続します。まだ追加されていない場合は、[New] ボタンを使用して追加します。</td>
+</tr>
+</tbody>
+</table><ol>
+<li><p><strong>[Run]</strong> をクリックします。</p>
+<blockquote>
+<div><p><strong>注記:</strong> 既存の起動コンフィギュレーションがある場合は、プロセスを終了するかどうかを確認するダイアログボックスが表示されます。<strong>[Yes]</strong> をクリックします。次のログがターミナルに表示されます。</p>
+</div></blockquote>
+<p><img alt="../../../../_images/image34.png" src="../../../../_images/image34.png" /></p>
+</li>
+</ol>
+</section>
+<section id="creating-a-run-configuration-for-a-single-application-within-a-system-project">
+<h4>システム プロジェクト内の単一アプリケーションの実行コンフィギュレーションの作成<a class="headerlink" href="#creating-a-run-configuration-for-a-single-application-within-a-system-project" title="Permalink to this heading">¶</a></h4>
+<p>システム プロジェクト内の 1 つのアプリケーションの実行コンフィギュレーションを作成するには、次の 2 つの方法があります。</p>
+<section id="method-i">
+<h5>方法 I<a class="headerlink" href="#method-i" title="Permalink to this heading">¶</a></h5>
+<ol>
+<li><p><strong>[helloworld_system]</strong> システム プロジェクトを右クリックして <strong>[Run as] → [Run Configurations]</strong> をクリックします。[Run configuration] ダイアログ ボックスが開きます。</p></li>
+<li><p><strong>[System Project Debug]</strong> をダブルクリックして、実行コンフィギュレーションを作成します。</p>
+<p>SystemDebugger_helloworld_system_1 という名前の新しい実行コンフィギュレーションが作成されます。この名前を SystemDebugger_helloworld_system_A72 に変更します。残りのオプションについては、次の表を参照してください。</p>
+<p><strong>表 7: コンフィギュレーションの作成、管理、実行の設定</strong></p>
+</li>
+</ol>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>ウィザードのタブ</th>
+<th>システム プロパティ</th>
+<th>設定または使用するコマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main</td>
+<td>Project</td>
+<td>helloworld_system</td>
+</tr>
+<tr>
+<td></td>
+<td>Debug only selected applications</td>
+<td>オン</td>
+</tr>
+<tr>
+<td></td>
+<td>Selected Applications</td>
+<td><strong>[Edit]</strong> ボタンをクリックして、helloworld_a72 をオン</td>
+</tr>
+<tr>
+<td></td>
+<td>Target → Hardware Server</td>
+<td>実行中のターゲット (ローカル) に接続。まだ追加されていない場合は、[New] ボタンを使用して追加します。</td>
+</tr>
+</tbody>
+</table><ol>
+<li><p><strong>[Apply]</strong> をクリックします。</p></li>
+<li><p><strong>[Run]</strong> をクリックします。</p>
+<blockquote>
+<div><p><strong>注記:</strong> 既存の実行コンフィギュレーションがある場合は、プロセスを終了するかどうかを確認するダイアログボックスが表示されます。<strong>[Yes]</strong> をクリックします。次のログがターミナルに表示されます。</p>
+</div></blockquote>
+<p><img alt="../../../../_images/image35.png" src="../../../../_images/image35.png" /></p>
+</li>
+</ol>
+<blockquote>
+<div><p><strong>注記:</strong> APU と RPU どちらのアプリケーションも UART0 を使用しているので、同じコンソールに表示されます。アプリケーション ソフトウェアが APU と RPU 両方の Hello World 文字列を PS セクションの UART0 ペリフェラルに送信します。UART0 からホスト マシンで動作しているシリアル端末アプリケーションへ、hello world 文字列がバイトごとに送信され、文字列として表示されます。</p>
+</div></blockquote>
+</section>
+<section id="method-ii">
+<h5>方法 II<a class="headerlink" href="#method-ii" title="Permalink to this heading">¶</a></h5>
+<ol>
+<li><p>[hello_world_r5] アプリケーション プロジェクトを右クリックして <strong>[Run as] → [Run Configurations]</strong> をクリックします。[Run configuration] ダイアログ ボックスが開きます。</p></li>
+<li><p><strong>[Single Project Debug]</strong> をダブルクリックして、実行コンフィギュレーションを作成します。</p>
+<p>Debugger_helloworld_r5-Default という名前の新しい実行コンフィギュレーションが作成されます。残りのオプションについては、次の表を参照してください。</p>
+<p><strong>表 8: コンフィギュレーションの作成、管理、実行の設定</strong></p>
+</li>
+</ol>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>ウィザードのタブ</th>
+<th>システム プロパティ</th>
+<th>設定または使用するコマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main</td>
+<td>Debug Type</td>
+<td>Standalone Application Debug</td>
+</tr>
+<tr>
+<td></td>
+<td>Connection</td>
+<td>ボードに接続します。既に接続されている場合は、ここで接続を選択。</td>
+</tr>
+<tr>
+<td></td>
+<td>Project</td>
+<td>helloworld_r5</td>
+</tr>
+<tr>
+<td></td>
+<td>Configuration</td>
+<td>Debug</td>
+</tr>
+</tbody>
+</table><ol>
+<li><p><strong>[Apply]</strong> をクリックします。</p></li>
+<li><p><strong>[Run]</strong> をクリックします。</p>
+<blockquote>
+<div><p><strong>注記:</strong> 既存の実行コンフィギュレーションがある場合は、プロセスを終了するかどうかを確認するダイアログボックスが表示されます。<strong>[Yes]</strong> をクリックします。次のログがターミナルに表示されます。</p>
+</div></blockquote>
+<p><img alt="../../../../_images/image36.png" src="../../../../_images/image36.png" /></p>
+</li>
+</ol>
+</section>
+</section>
+</section>
+</section>
+<section id="noc-and-ddr-ip-core-configuration">
+<h2>NoC (および DDR) IP コアの設定<a class="headerlink" href="#noc-and-ddr-ip-core-configuration" title="Permalink to this heading">¶</a></h2>
+<p>このセクションでは、この章の前半で設定した CIPS と一緒に使用のに必要な NoC (および DDR) 設定と関連する接続について説明します。Versal ACAP CIPS IP コアを使用すると、2 つのスーパー スカラー、マルチコア Arm Cortex-A72 ベースの APU、 2 つの Arm Cortex-R5F RPU、プラットフォーム管理コントローラー (PMC)、および CCIX PCIe® モジュール (CPM) を設定できます。NoC IP コアを使用すると、NoC を設定し、DDR メモリ コントローラーをイネーブルにできます。</p>
+<section id="configuring-the-noc-ip-core-in-an-existing-project">
+<h3>既存のプロジェクトでの NoC IP コアの設定<a class="headerlink" href="#configuring-the-noc-ip-core-in-an-existing-project" title="Permalink to this heading">¶</a></h3>
+<p>この例では、<a class="reference external" href="./2-cips-noc-ip-config.md#creating-a-new-embedded-project-with-the-versal-acap">「サンプル プロジェクト: Versal ACAP を使用した新規エンベデッド プロジェクトの作成」</a>に示すように、Vivado Design Suite を起動し、基本的な CIPS を設定済みのプロジェクトを使用します。</p>
+<section id="configuring-your-design">
+<h4>デザインのコンフィギュレーション<a class="headerlink" href="#configuring-your-design" title="Permalink to this heading">¶</a></h4>
+<p>デザインをコンフィギュレーションする手順は、次のとおりです。</p>
+<ol>
+<li><p><a class="reference external" href="./2-cips-noc-ip-config.md#creating-a-new-embedded-project-with-the-versal-acap">「サンプル プロジェクト: Versal ACAP を使用した新規エンベデッド プロジェクトの作成」</a>で作成したデザイン (<code class="docutils literal notranslate"><span class="pre">edt_versal.xpr</span></code>) を開きます。</p></li>
+<li><p>ブロック デザイン <code class="docutils literal notranslate"><span class="pre">edt_versal.bd</span></code> を開きます。</p></li>
+<li><p>Vivado Design Suite の [Tcl Console] ウィンドウに移動し、次のコマンドを入力します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apply_bd_automation</span><span class="o">-</span><span class="n">rule</span><span class="n">xilinx</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">bd_rule</span><span class="p">:</span><span class="n">versal_cips</span><span class="o">-</span><span class="n">config</span><span class="p">{</span><span class="n">apply_board_preset</span><span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="n">configure_noc</span><span class="p">{</span><span class="n">Add</span><span class="n">new</span><span class="n">AXI</span><span class="n">NoC</span><span class="p">}</span><span class="n">num_ddr</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="n">pcie0_lane_width</span><span class="p">{</span><span class="kc">None</span><span class="p">}</span><span class="n">pcie0_mode</span><span class="p">{</span><span class="kc">None</span><span class="p">}</span><span class="n">pcie0_port_type</span><span class="p">{</span><span class="n">Endpoint</span><span class="n">Device</span><span class="p">}</span><span class="n">pcie1_lane_width</span><span class="p">{</span><span class="kc">None</span><span class="p">}</span><span class="n">pcie1_mode</span><span class="p">{</span><span class="kc">None</span><span class="p">}</span><span class="n">pcie1_port_type</span><span class="p">{</span><span class="n">Endpoint</span><span class="n">Device</span><span class="p">}</span><span class="n">pl_clocks</span><span class="p">{</span><span class="kc">None</span><span class="p">}</span><span class="n">pl_resets</span><span class="p">{</span><span class="kc">None</span><span class="p">}}</span><span class="p">[</span><span class="n">get_bd_cells</span><span class="n">versal_cips_0</span><span class="p">]</span></pre></div>
+</div>
+</li>
+<li><p><strong>Enter</strong> キーを押します。</p></li>
+<li><p>AXI NoC IP を開きます。</p></li>
+<li><p>[Boards] タブを次の図のように入力して設定したら、<strong>[OK]</strong> をクリックします。</p>
+<p><img alt="axi-noc-ip-board" src="../../../../_images/axi-noc-ip-board.png" /></p>
+</li>
+<li><p>デザインの <strong>sys_clk_0_0</strong> ピンをクリックします。</p></li>
+<li><p>[External Interface Properties] ウィンドウで <strong>[Properties] → [CONFIG] → [FREQ_HZ]</strong> をクリックし、周波数を 200 MHz に変更します。</p>
+<p><img alt="external-interface" src="../../../../_images/external-interface.png" /></p>
+<p>これにより、 DDR アクセス用の AXI NoC IP が追加されます。</p>
+<p><img alt="../../../../_images/image38.png" src="../../../../_images/image38.png" /></p>
+</li>
+</ol>
+</section>
+<section id="id1">
+<h4>デザインの検証および出力の生成<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
+<p>デザインを検証して出力を生成するには、次の手順を実行します。</p>
+<ol>
+<li><p>[Diagram] ウィンドウの空白部分を右クリックして、<strong>[Validate Design]</strong> をクリックします。または、<strong>F6</strong> キーを押します。次のメッセージを示すダイアログ ボックスが開きます。</p>
+<p><img alt="validation-message" src="../../../../_images/validation_message.PNG" /></p>
+</li>
+<li><p><strong>[OK]</strong> をクリックしてメッセージを閉じます。</p></li>
+<li><p>[Block Design] の [Sources] ウィンドウで、[Design Sources] の <strong>[edt_versal_wrapper]</strong> を展開します。</p></li>
+<li><p>[edt_versal_i: edt_versal] (<code class="docutils literal notranslate"><span class="pre">edt_versal.bd</span></code>) という最上位ブロックを右クリックし、<strong>[Generate Output Products]</strong> をクリックします。</p>
+<p>次に示す [Generate Output Products] ダイアログ ボックスが開きます。</p>
+<p><img alt="../../../../_images/image15.png" src="../../../../_images/image15.png" /></p>
+<blockquote>
+<div><p><strong>注記:</strong> Windows マシンで Vivado Design Suite を実行している場合は、[Run Settings] の下にさまざまなオプションが表示されることがあります。その場合は、デフォルト設定で続行します。</p>
+</div></blockquote>
+</li>
+<li><p><strong>[Generate]</strong> をクリックします。</p>
+<p>この手順では、選択したソースに必要なすべての出力ファイルを作成します。たとえば、IP プロセッサ システムの制約を手動で作成する必要はありません。<strong>[Generate Output Products]</strong> を実行すると、Vivado ツールでプロセッサ サブシステム用の XDC ファイルが自動的に生成されます。</p>
+</li>
+<li><p>[Generate Output Products] の処理が完了したら、<strong>[OK]</strong> をクリックします。一番下のウィンドウの <strong>[Design Runs]</strong> ウィンドウをクリックして、OOC モジュールの実行/合成/インプリメンテーション run を確認します。</p></li>
+<li><p>[Sources] ウィンドウで <strong>[IP Sources]</strong> ビューをクリックします。次の図に示すように、生成した出力ファイルが表示されます。</p>
+<p><img alt="../../../../_images/image391.png" src="../../../../_images/image391.png" /></p>
+</li>
+</ol>
+</section>
+<section id="id2">
+<h4>デバイス イメージの合成、インプリメント、生成<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
+<p>デザインのデバイス イメージを生成するには、次の手順を実行します。</p>
+<ol>
+<li><p>Flow Navigator の <strong>[Program and Debug]</strong> をクリックし、<strong>[Generate Device Image]</strong> をクリックします。</p></li>
+<li><p>[No Implementation Results Available] メニューが表示されます。<strong>[Yes]</strong> をクリックします。</p></li>
+<li><p>[Launch Run] メニューが表示されます。<strong>[OK]</strong> をクリックします。</p>
+<p>デバイス イメージの生成が完了すると、[Device Image Generation Completed] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Cancel]</strong> をクリックしてウィンドウを閉じます。</p></li>
+<li><p>デバイス イメージを生成したら、ハードウェアをエクスポートし、<strong>[OK]</strong> をクリックします。</p>
+<blockquote>
+<div><p><strong>注記:</strong> 次の手順はオプションなので、省略して<a class="reference external" href="#exporting-hardware">「ハードウェアのエクスポート」</a> セクションに進むこともできます。これらの手順を実行すると、デバイス イメージを生成する前に合成およびインプリメンテーションを実行するので、デバイス イメージ生成の詳細なフローがわかるようになります。デバイス イメージの生成フローを理解する必要がある場合は、次の手順を実行します。</p>
+</div></blockquote>
+</li>
+<li><p>Flow Navigator で <strong>[Synthesis]</strong> をクリックし、<strong>[Run Synthesis]</strong> をクリックします。</p>
+<p><img alt="../../../../_images/image17.png" src="../../../../_images/image17.png" /></p>
+</li>
+<li><p>合成の開始前にプロジェクトを保存するようメッセージが表示された場合は、<strong>[Save]</strong> をクリックします。</p>
+<p>合成の実行中、ウィンドウの右上にステータス バーが表示されます。このステータス バーは、デザイン プロセスをとおして、さまざまな理由により表示されます。ステータス バーは、プロセスがバックグラウンドで実行されていることを示します。合成が完了すると、[Synthesis Completed] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Run Implementation]</strong> をクリックして <strong>[OK]</strong> をクリックします。</p>
+<p>インプリメンテーションが完了すると、[Implementation Completed] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Generate Device Image]</strong> をクリックして <strong>[OK]</strong> をクリックします。</p>
+<p>デバイス イメージの生成が完了すると、[Device Image Generation Completed] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Cancel]</strong> をクリックしてウィンドウを閉じます。</p>
+<p>デバイス イメージを生成したら、ハードウェアをエクスポートします。</p>
+</li>
+</ol>
+</section>
+<section id="id3">
+<h4>ハードウェアのエクスポート<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
+<ol>
+<li><p>Vivado のメイン メニューから <strong>[File] → [Export] → [Export Hardware]</strong> をクリックします。[Export Hardware] ダイアログ ボックスが開きます。</p></li>
+<li><p><strong>[Include bitstream]</strong> を選択し、<strong>[Next]</strong> をクリックします。</p></li>
+<li><p>エクスポートしたファイルの名前を入力し (またはデフォルトを使用し)、ディレクトリを選択します。<strong>[Next]</strong> をクリックします。</p>
+<p>ハードウェア モジュールが既にエクスポートされている場合は、警告メッセージが表示されます。既存の XSA ファイルを上書きするかどうか尋ねるメッセージが表示されたら、<strong>[Yes]</strong> をクリックします。</p>
+</li>
+<li><p><strong>[Finish]</strong> をクリックします。</p></li>
+</ol>
+</section>
+</section>
+<section id="running-a-bare-metal-hello-world-application-on-ddr-memory">
+<h3>DDR メモリでのベアメタル Hello World アプリケーションの実行<a class="headerlink" href="#running-a-bare-metal-hello-world-application-on-ddr-memory" title="Permalink to this heading">¶</a></h3>
+<p>この例では、ザイリンクス Vitis ソフトウェア プラットフォームで、ボード設定を管理し、ケーブルを接続し、PC を介してボードへ接続し、DDR メモリの Arm Cortex-A72 および Arm Cortex-R5F から Hello World ソフトウェア アプリケーションを実行する方法を説明します。</p>
+<p>新しい Vitis プロジェクトを作成します。これは、<a class="reference external" href="#running-a-bare-metal-hello-world-application">「ベアメタル Hello World アプリケーションの実行」</a>と同様ですが、DDR メモリを参照するデフォルトのリンカースクリプトを使用する点が異なります。</p>
+<ol>
+<li><p><a class="reference external" href="#running-a-bare-metal-hello-world-application">「ベアメタル Hello World アプリケーションの実行」</a>の手順 1 ～ 7 で説明されるように、ボード設定を管理し、ケーブルを接続し、システムを介してボードへ接続し、Vitis ソフトウェア プラットフォームを起動します。</p>
+<blockquote>
+<div><p><strong>注記:</strong> このためには、新しい Vitis ワークスペースを作成する必要があります。<a class="reference external" href="#running-a-bare-metal-hello-world-application">「ベアメタル Hello World アプリケーションの実行」</a>で作成されたワークスペースは使用しないでください。</p>
+</div></blockquote>
+</li>
+<li><p>Arm Cortex-A72 で実行されるアプリケーションを使用してベアメタル Hello World システム プロジェクトを作成し、<a class="reference external" href="#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm">「OCM 上の Arm Cortex-A72 用の Hello World アプリケーションの作成」</a>の手順 1 ～ 3 および <a class="reference external" href="#modifying-the-helloworld_a72-application-source-code">「helloworld_a72 アプリケーション ソース コードの変更」</a>の手順 1 ～ 3 の説明に従ってソース コードを変更します。</p></li>
+<li><p><strong>helloworld_system</strong> を右クリックして <strong>[Build Project]</strong> をクリックするか、<img alt="../../../../_images/image29.png" src="../../../../_images/image29.png" /> をクリックして、アプリケーションプロジェクトの Debug フォルダー内にプロジェクトの ELF ファイルを生成します。</p></li>
+<li><p><a class="reference external" href="#adding-a-new-rpu-domain-to-the-platform-project">「プラットフォーム プロジェクトへの新規 RPU ドメインの追加」</a>で説明するように、プラットフォーム (手順 2 で作成) の RPU ドメインをさらに作成します。</p></li>
+<li><p>既存のシステム プロジェクト (手順 2 で作成) 内の Arm Cortex-R5F 上で動作するベアメタル Hello World アプリケーションを作成し、<a class="reference external" href="#creating-the-standalone-application-project-for-the-arm-cortex-r5f">「Arm Cortex-R5F のスタンドアロン アプリケーション プロジェクトの作成」</a>の手順 1 ～ 3 および <a class="reference external" href="#modifying-the-helloworld_r5-application-source-code">「helloworld_r5 アプリケーションソースコードの変更」</a>の手順 1 ～ 3 の説明に従ってソース コードを変更します。</p></li>
+<li><p><strong>helloworld_system</strong> を右クリックして [Build Project] をクリックするか、<img alt="../../../../_images/image29.png" src="../../../../_images/image29.png" /> をクリックして、アプリケーションプロジェクトの Debug フォルダー内にプロジェクトの ELF ファイルを生成します。</p></li>
+</ol>
+<p>上記の Vitis ソフトウェア プラットフォームのシステム デバッガーを使用して JTAG モードで構築したアプリケーションの実行については、<a class="reference external" href="#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform">「Vitis ソフトウェア プラットフォームでのシステム デバッガーを使用した JTAG モードでのアプリケーションの実行」</a>を、スタンドアロン アプリケーションのブート イメージを生成するには、<a class="reference external" href="#generating-boot-image-for-standalone-application">「スタンドアロン アプリケーションのブート イメージの生成」</a>を参照してください。</p>
+<p>© Copyright 2020-2021 Xilinx, Inc.</p>
+<p><em>Apache ライセンス、バージョン 2.0 (以下「ライセンス」) に基づいてライセンス付与されています。本ライセンスに準拠しないと、このファイルを使用することはできません。ライセンスのコピーは、<a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a> から入手できます。</em></p>
+<p><em>適切な法律で要求されるか、書面で同意された場合を除き、本ライセンスに基づいて配布されるソフトウェアは、明示的または黙示的を問わず、いかなる種類の保証または条件もなく、「現状のまま」配布されます。ライセンスに基づく権限と制限を管理する特定の言語については、ライセンスを参照してください。</em></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p><span class="lastupdated">Last updated on August 1, 2022.
+      </span>© Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
+      </p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
