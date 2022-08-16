@@ -3,15 +3,24 @@
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><!-- OneTrust Cookies Consent Notice start for xilinx.github.io --><script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
 <script type="text/javascript">
 function OptanonWrapper() { }
-</script><!-- OneTrust Cookies Consent Notice end for xilinx.github.io --><title>Versal ACAP エンベデッド デザイン チュートリアル &mdash; エンベデッド デザイン チュートリアル 2021.1 の資料</title>
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Versal ACAP Embedded Design Tutorial &mdash; Embedded Design Tutorials 2021.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" /><!--[if lt IE 9]>
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]--><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
@@ -19,15 +28,21 @@ function OptanonWrapper() { }
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="概要" href="docs/1-getting-started.html" />
-    <link rel="prev" title="エンベデッド デザイン" href="../../../index.html" /> 
+    <link rel="next" title="Getting Started" href="docs/1-getting-started.html" />
+    <link rel="prev" title="Embedded Designs" href="../../../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"><a href="../../../index.html" class="icon icon-home">エンベデッド デザイン チュートリアル<img src="../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/> </a><div class="version">2021.1</div>
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> Embedded Design Tutorials
+            <img src="../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2021.1
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -36,48 +51,130 @@ function OptanonWrapper() { }
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p><ul><li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li></ul><p class="caption" role="heading"><span class="caption-text">English</span></p><ul><li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/index.html">Master</a></li></ul><p class="caption" role="heading"><span class="caption-text">入門</span></p><ul class="current"><li class="toctree-l1 current"><a class="current reference internal" href="#">Versal ACAP エンベデッド デザイン チュートリアル</a><ul><li class="toctree-l2"><a class="reference internal" href="docs/1-getting-started.html">概要</a></li><li class="toctree-l2"><a class="reference internal" href="docs/2-cips-noc-ip-config.html">Versal ACAP CIPS および NoC (DDR) IP コアの設定</a></li><li class="toctree-l2"><a class="reference internal" href="docs/4-boot-and-config.html">ブートおよびコンフィギュレーション</a></li><li class="toctree-l2"><a class="reference internal" href="docs/3-debugging.html">Vitis ソフトウェア プラットフォームを使用したデバッグ</a></li><li class="toctree-l2"><a class="reference internal" href="docs/5-system-design-example.html">スカラー型エンジンと適応型エンジンを使用したシステム デザイン例</a></li><li class="toctree-l2"><a class="reference internal" href="docs/6-system-design-example-HSDP.html">SmartLynq+ モジュールを使用した高速デバッグ ポート (HSDP) のシステム デザイン例</a></li><li class="toctree-l2"><a class="reference internal" href="docs/A-creating-plm.html">付録: PLM の作成</a></li><li class="toctree-l2"><a class="reference internal" href="#navigating-content-by-design-process">この資料に関連する設計プロセス</a></li></ul></li><li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC エンベデッド デザイン チュートリアル</a></li><li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 エンベデッド デザイン チュートリアル</a></li></ul><p class="caption" role="heading"><span class="caption-text">機能チュートリアル</span></p><ul><li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">FSBL (First Stage Boot Loader)</a></li><li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">システム デバッガーを使用したアプリケーションのプロファイル</a></li></ul><p class="caption" role="heading"><span class="caption-text">デバッグ</span></p><ul><li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis エンベデッド ソフトウェア デバッグ ガイド (UG1515) 2021.1</a></li></ul><p class="caption" role="heading"><span class="caption-text">ユーザー ガイド</span></p><ul><li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">システム パフォーマンス解析</a></li><li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone ベンチマーク</a></li></ul><p class="caption" role="heading"><span class="caption-text">以前のリリース</span></p><ul><li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li></ul></div>
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Versal ACAP Embedded Design Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/1-getting-started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/2-cips-noc-ip-config.html">Versal ACAP CIPS and NoC (DDR) IP Core Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/4-boot-and-config.html">Boot and Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/3-debugging.html">Debugging Using the Vitis Software Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/5-system-design-example.html">System Design Example using Scalar Engine and Adaptable Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/A-creating-plm.html">Appendix: Creating the PLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#navigating-content-by-design-process">Navigating Content by Design Process</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
+</ul>
+
+        </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" ><i data-toggle="wy-nav-top" class="fa fa-bars"></i> <a href="../../../index.html">エンベデッド デザイン チュートリアル</a></nav>
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Embedded Design Tutorials</a>
+      </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation"><ul class="wy-breadcrumbs"><li><a href="../../../index.html" class="icon icon-home"></a>&raquo;</li> <li>Versal ACAP エンベデッド デザイン チュートリアル</li><li class="wy-breadcrumbs-aside"><a href="../../../_sources/docs/Introduction/Versal-EDT/Versal-EDT.rst.txt" rel="nofollow">ページ ソースの表示</a></li></ul><hr/>
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Versal ACAP Embedded Design Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/Introduction/Versal-EDT/Versal-EDT.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
   <section id="versal-acap-embedded-design-tutorial">
-<h1>Versal ACAP エンベデッド デザイン チュートリアル<a class="headerlink" href="#versal-acap-embedded-design-tutorial" title="Permalink to this heading">¶</a></h1>
+<h1>Versal ACAP Embedded Design Tutorial<a class="headerlink" href="#versal-acap-embedded-design-tutorial" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>この資料では、VCK190/VMK180 評価ボードにザイリンクス Vivado® Design Suite フローを使用する方法について説明します。使用するツールは、Vivado Design Suite および Vitis™ 統合ソフトウェア プラットフォームのバージョン 2021.1 です。Vitis 統合ソフトウェア プラットフォームをインストールするには、『Vitis 統合ソフトウェア プラットフォームの資料: エンベデッド ソフトウェア開発 [<a class="reference external" href="https://japan.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug1400-vitis-embedded.pdf">UG1400</a>]を参照してください。<em></em></p>
+<p>This document provides an introduction for using the Xilinx® Vivado® Design Suite flow for a VCK190/VMK180 evaluation board. The tools used are Vivado Design Suite and the Vitis™ unified software platform, version 2021.1. To install the Vitis unified software platform, see <em>Vitis Unified Software Platform Documentation: Embedded Software Development</em> <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug1400-vitis-embedded.pdf">[UG1400]</a>.</p>
 <div class="admonition note">
-<p class="admonition-title">注記</p>
-<p>このチュートリアルで説明する、ハードウェア上での Linux ブート手順はそれぞれ、2021.1 リリースの PetaLinux ツールに特化したものです。PetaLinux ツールは Linux ホスト マシンにインストールしないと、このガイドの Linux 部分の演習を実行できません。</p>
+<p class="admonition-title">Note</p>
+<p>In this tutorial, the instructions for booting Linux on the hardware is specific to the PetaLinux tools released for 2021.1, which must be installed on a Linux host machine for exercising the Linux portions of this document.</p>
 </div>
 <div class="admonition important">
-<p class="admonition-title">重要</p>
-<p>VCK190/VMK180 評価キットには、Silicon Labs CP210x VCP USB-UART Bridge. が含まれます。これらのドライバーを必ずインストールしている必要があります。詳細は、『Silicon Labs CP210x USB-to-UART Installation Guide』 (<a class="reference external" href="https://japan.xilinx.com/cgi-bin/docs/bkdoc?k=install;v=latest;d=ug1033-cp210x-usb-uart-install.pdf">UG1033</a>) を参照してください。<em></em></p>
+<p class="admonition-title">Important</p>
+<p>The VCK190/VMK180 Evaluation kit has a Silicon Labs CP210x VCP USB-UART Bridge. Ensure that these drivers are installed. See the <em>Silicon Labs CP210x USB-to-UART Installation Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/bkdoc?k=install;v=latest;d=ug1033-cp210x-usb-uart-install.pdf">[UG1033]</a>) for more information.</p>
 </div>
-<p>このガイドのサンプル プロジェクトは、64 ビットの Windows 10 OS で実行するザイリンクス ツール、Vitis ソフトウェア プラットフォームおよび 64 ビットの Linux OS で実行する PetaLinux を使用して作成されています。ほかの Windows インストールで別バージョンのツールを実行した場合、結果が異なることがあります。サンプル プロジェクトは、エンベデッド デザインの次の項目について紹介することに重点を置いています。</p><ul class="simple"> <li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst">Versal ACAP CIPS および NoC (DDR) IP コアの設定</a>: Versal™ ACAP CIPS (Control, Interfaces, and Processing System) IP コアと NoC を使用してデザインを作成し、 Arm® Cortex™-A72 および Cortex-R5F プロセッサ上で単純な Hello World アプリケーションを実行する方法について説明します。この章では、簡単なデザインを例として使用し、ハードウェアおよびソフトウェア ツールの概要を説明します。</p></li> <li><p><a class="reference external" href="../Versal-EDT/docs/4-boot-and-config.rst">ブートおよびコンフィギュレーション</a>: Versal ACAP のブートイメージを設定および作成するためのコンポーネントの統合を示します。この章の主旨は、ブートローダーを統合およびロードする方法を理解することです。</p></li> <li><p><a class="reference external" href="../Versal-EDT/docs/3-debugging.rst">Vitis ソフトウェア プラットフォームを使用したデバッグ</a>: ザイリンクス Vitis ソフトウェア プラットフォームのデバッグ機能を紹介します。この章では、前のデザインを使用してソフトウェアをベアメタル (OS なし) で実行して、Vitis IDE のデバッグ機能を示します。また、Versal ACAP のデバッグ コンフィギュレーションもリストします。</p></li> <li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst">スカラー型エンジンと適応型エンジンを使用したシステム デザイン例</a>: 使用可能なツールとサポートされるソフトウェア ブロックを使用して、Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで PL AXI GPIO を使用してエンベデッド デザインを作成する方法について説明します。また、Versal デバイス上で Arm Cortex-A72 コア ベースの APU 用の Linux OS をコンフィギュレーションしてビルドする手順についても説明します。</p></li> <li><p><a class="reference external" href="../Versal-EDT/docs/6-system-design-example-HSDP.rst">SmartLynq+ モジュールを使用した高速デバッグ ポート (HSDP) のシステム デザイン例</a>: 高速デバッグ ポート (HSDP) を使用して Versal ACAP 上にシステムを構築する方法について説明します。この章では、Vivado ツールで HSDP を利用し、Linux イメージのダウンロードに SmartLynq+ モジュールを使用するエンベデッド デザインを作成する方法について説明します。</p></li> </ul>
-<p>このデザイン チュートリアルでは、ザイリンクス提供のファイルを多数使用する必要があります。これらは、ザイリンクス ウェブサイトからダウンロードできる ZIP ファイルに含まれます（<a class="reference external" href="../Versal-EDT/docs/1-getting-started.rst">はじめに</a>を参照）。このチュートリアルでは ZIP ファイルの内容が <cite>C:edt</cite> に抽出されていることを前提にしています。</p>
+<p>The examples in this document are created using the Xilinx tools running on a Windows 10, 64-bit operating system, Vitis software platform and PetaLinux on a Linux 64-bit operating system. Other versions of the tools running on other Windows installs might provide varied results. These examples focus on introducing you to the following aspects of embedded design.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst">Versal ACAP CIPS and NoC (DDR) IP Core Configuration</a>: Describes creation of a design with Versal™ ACAP Control, Interfaces, and Processing System (CIPS) IP core and an NoC and running a simple “Hello World” application on Arm® Cortex™-A72, and Cortex-R5F processors. This chapter is an introduction to the hardware and software tools using a simple design as the example.</p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/4-boot-and-config.rst">Boot and Configuration</a>: Shows  integration of components to configure and create boot images for Versal ACAP. The purpose of this chapter is to understand how to integrate and load boot loaders.</p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/3-debugging.rst">Debugging Using the Vitis Software Platform</a>: Introduces debugging features of the Xilinx Vitis software platform. This chapter uses the previous design and runs the software on bare metal (without an OS) to show the debugging features of the Vitis IDE. This chapter also lists debug configurations for Versal ACAP.</p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst">System Design Example using Scalar Engine and Adaptable Engine</a>: Describes building a system on Versal ACAP using available tools and supported software blocks. This chapter demonstrates how to use the Vivado tool to create an embedded design using PL AXI GPIO. It also demonstrates the steps to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device.</p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/6-system-design-example-HSDP.rst">System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module</a>: Describes building a system on Versal ACAP that utilizes the High-Speed Debug Port (HSDP). This chapter demonstrates how to use the Vivado tool to create an embedded design that utilizes HSDP and uses the SmartLynq+ module for downloading Linux images.</p></li>
+</ul>
+<p>This design tutorial requires use of a number of files provided by Xilinx. These are contained in a ZIP file that can be downloaded from the Xilinx web site. (See <a class="reference external" href="../Versal-EDT/docs/1-getting-started.rst">Getting Started</a>). The tutorial assumes the contents of the ZIP file are extracted to <cite>C:edt</cite>.</p>
 <section id="navigating-content-by-design-process">
-<h2>この資料に関連する設計プロセス<a class="headerlink" href="#navigating-content-by-design-process" title="Permalink to this heading">¶</a></h2>
-<p>ザイリンクスの資料は、開発タスクに関連する内容を見つけやすいように、標準設計プロセスに基づいて構成されています。この資料では、次の設計プロセスについて説明します。</p><ul class="simple"> <li><p><strong>システムおよびソリューション プランニング</strong>: システム レベルのコンポーネント、パフォーマンス、I/O、およびデータ転送要件を特定します。ソリューションの PS、PL 、および AI エンジンへのアプリケーション マッピングも含みます。</p><ul> <li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#configuring-the-noc-ip-core-in-an-existing-project">既存のプロジェクトでの NoC IP コアの設定</a></p></li> <li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst">スカラー型エンジンと適応型エンジンを使用したシステム デザイン例</a></p></li> </ul>
+<h2>Navigating Content by Design Process<a class="headerlink" href="#navigating-content-by-design-process" title="Permalink to this heading">¶</a></h2>
+<p>Xilinx documentation is organized around a set of standard design processes to help you find relevant content for your current development task. This document covers the following design processes:</p>
+<ul class="simple">
+<li><p><strong>System and Solution Planning</strong>: Identifying the components, performance, I/O, and data transfer requirements at a system level. Includes application mapping for the solution to PS, PL, and AI Engine.</p>
+<ul>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#configuring-the-noc-ip-core-in-an-existing-project">Configuring the NoC IP Core in an Existing Project</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst">System Design Example using Scalar Engine and Adaptable Engine</a></p></li>
+</ul>
 </li>
-<li><p><strong>エンベデッド ソフトウェア開発</strong>: ハードウェア プラットフォームからソフトウェア プラットフォームを作成し、エンベデッド CPU を使用してアプリケーションを開発します。XRT および Graph API についても説明します。</p><ul> <li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#running-a-bare-metal-hello-world-application">ベアメタルの Hello World アプリケーションの実行</a></p></li> <li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform">Vitis ソフトウェア プラットフォームでのシステム デバッガーを使用した JTAG モードでのアプリケーションの実行</a></p></li> <li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#running-a-bare-metal-hello-world-application-on-ddr-memory">DDR メモリでのベアメタル Hello World アプリケーションの実行</a></p></li> </ul>
+<li><p><strong>Embedded Software Development</strong>: Creating the software platform from the hardware platform and developing the application code using the embedded CPU. Also covers XRT and Graph APIs.</p>
+<ul>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#running-a-bare-metal-hello-world-application">Running a Bare-Metal Hello World Application</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform">Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#running-a-bare-metal-hello-world-application-on-ddr-memory">Running a Bare-Metal Hello World Application on DDR Memory</a></p></li>
+</ul>
 </li>
-<li><p><strong>ハードウェア、IP、およびプラットフォーム開発</strong>: ハードウェア プラットフォーム用の PL IP ブロックの作成、PL カーネルの作成、サブシステムの論理シミュレーション、および Vivado のタイミング、リソース使用、消費電力クロージャの評価を実行します。システム統合用のハードウェア プラットフォームの開発も含まれます。この資料では、次のトピックがこの設計プロセスに関連します。</p><ul> <li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#cips-ip-core-configuration">CIPS IP コアの設定</a></p></li> <li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#noc-and-ddr-ip-core-configuration">NoC (および DDR) IP コアの設定</a></p></li> <li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst#design-example-using-axi-gpio">デザイン例: AXI GPIO の使用</a></p></li> </ul>
+<li><p><strong>Hardware, IP, and Platform Development</strong>: Creating the PL IP blocks for the hardware platform, creating PL kernels, subsystem functional simulation, and evaluating the Vivado timing, resource use, and power closure. Also involves developing the hardware platform for system integration. Topics in this document that apply to this design process include:</p>
+<ul>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#cips-ip-core-configuration">CIPS IP Core Configuration</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#noc-and-ddr-ip-core-configuration">NoC (and DDR) IP Core Configuration</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst#design-example-using-axi-gpio">Design Example: Using AXI GPIO</a></p></li>
+</ul>
 </li>
-<li><p><strong>システム統合および検証</strong>: タイミング、リソース使用量、消費電力クロージャを含むシステムの機能的なパフォーマンスを統合して検証します。この資料では、次のトピックがこの設計プロセスに関連します。</p><ul> <li><p><a class="reference external" href="../Versal-EDT/docs/4-boot-and-config.rst">ブートおよびコンフィギュレーション</a></p></li> <li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst#example-project-freertos-axi-uartlite-application-project-with-rpu">サンプル プロジェクト： RPU を使用した FreeRTOS GPIO アプリケーション プロジェクト</a></p></li> <li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst#example-project-creating-linux-images-using-petalinux">サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成</a></p></li> </ul>
+<li><p><strong>System Integration and Validation</strong>: Integrating and validating the system functional performance, including timing, resource use, and power closure. Topics in this document that apply to this design process include:</p>
+<ul>
+<li><p><a class="reference external" href="../Versal-EDT/docs/4-boot-and-config.rst">Boot and Configuration</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst#example-project-freertos-axi-uartlite-application-project-with-rpu">Example Project: FreeRTOS GPIO Application Project With RPU</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a></p></li>
+</ul>
 </li>
 </ul>
 <p>© Copyright 2020-2021 Xilinx, Inc.</p>
-<p><em>Apache ライセンス、バージョン 2.0 (以下「ライセンス」) に基づいてライセンス付与されています。本ライセンスに準拠しないと、このファイルを使用することはできません。 You may obtain a copy of the License at [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).</em></p>
-<p><em>適切な法律で要求されるか、書面で同意された場合を除き、本ライセンスに基づいて配布されるソフトウェアは、明示的または黙示的を問わず、いかなる種類の保証または条件もなく、「現状のまま」配布されます。ライセンスに基づく権限と制限を管理する特定の言語については、ライセンスを参照してください。</em></p>
+<p><em>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).</em></p>
+<p><em>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</em></p>
 </section>
 </section>
 
@@ -85,14 +182,26 @@ function OptanonWrapper() { }
            </div>
           </div>
           
-                  <style>.footer { position: fixed; left: 0; bottom: 0; width: 100%; }</style>
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
 				  
-				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer"> <a href="../../../index.html" class="btn btn-neutral float-left" title="Embedded Designs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a> <a href="docs/1-getting-started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a> </div>
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../index.html" class="btn btn-neutral float-left" title="Embedded Designs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docs/1-getting-started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>© Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD. <span class="lastupdated">Last updated on August 1, 2022.</span></p>
+    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on August 1, 2022.
+      </span></p>
   </div>
 
 
@@ -110,7 +219,15 @@ function OptanonWrapper() { }
 											</div>
 										</div>
 										
-</br>Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.</footer>
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
     </section>
