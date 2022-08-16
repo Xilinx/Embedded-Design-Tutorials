@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Linux OS Aware Debugging Using the Vitis Software Platform &mdash; Embedded Design Tutorials 2020.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> Embedded Design Tutorials
+            <img src="../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2020.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Embedded Design Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Linux OS Aware Debugging Using the Vitis Software Platform</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="linux-os-aware-debugging-using-the-vitis-software-platform">
+<h1>Linux OS Aware Debugging Using the Vitis Software Platform<a class="headerlink" href="#linux-os-aware-debugging-using-the-vitis-software-platform" title="Permalink to this heading">¶</a></h1>
+<p>OS-aware debugging helps you to visualize OS-specific information such
+as task lists, processes/threads that are currently running,
+process/thread-specific stack trace, registers, and variables.</p>
+<p>To support this, the debugger needs to be aware of the operating
+system used on the target and know about the intrinsic nature of the
+OS.</p>
+<p>With OS-aware debugging, you can debug the OS running on the processor
+cores and the processes/threads running on the OS simultaneously.</p>
+<p>The Vitis™ unified software platform supports the OS-aware debug
+feature for Linux OS running on Zynq®-7000 SoC devices.</p>
+<section id="setting-up-linux-os-aware-debugging">
+<h2>Setting Up Linux OS Aware Debugging<a class="headerlink" href="#setting-up-linux-os-aware-debugging" title="Permalink to this heading">¶</a></h2>
+<p>This section describes setting up OS aware debug for a Zynq board
+running Linux OS.</p>
+<section id="configure-the-linux-kernel">
+<h3>Configure the Linux Kernel<a class="headerlink" href="#configure-the-linux-kernel" title="Permalink to this heading">¶</a></h3>
+<p>To be able to read the process list or to allow process or module
+debugging, the Linux awareness accesses the internal kernel structures
+using the kernel symbols. Therefore, the kernel symbols must be
+available; otherwise Linux aware debugging is not possible. The
+vmlinux file must be compiled with debugging information enabled as
+shown in <a class="reference external" href="#configure-the-linux-kernel">Configure the Linux Kernel</a>.</p>
+<p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">vmlinux</span></code> file is a statically linked executable file
+that contains the Linux kernel along with corresponding debug
+information.</p>
+<p>In PetaLinux, enable the below configuration options before compiling
+the Linux Kernel using the PetaLinux Tools build configuration
+command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">CONFIG_DEBUG_KERNEL=y</span></code>
+<code class="docutils literal notranslate"><span class="pre">CONFIG_DEBUG_INFO=y</span></code></p>
+<p>Follow the below steps to configure the Linux kernel to build with the
+debug information.</p>
+<ol>
+<li><p>In the Linux machine terminal window, go to the directory of your
+PetaLinux project.</p>
+<p><code class="docutils literal notranslate"><span class="pre">\$</span> <span class="pre">cd</span> <span class="pre">\&lt;plnx-proj-root\&gt;</span></code></p>
+</li>
+<li><p>Launch the configuration menu to configure the Linux kernel.</p>
+<p><code class="docutils literal notranslate"><span class="pre">\$</span> <span class="pre">petalinux-config</span> <span class="pre">-c</span> <span class="pre">kernel</span></code></p>
+</li>
+<li><p>Select <strong>Kernel hacking</strong>.</p>
+<ul class="simple">
+<li><p>Select <strong>Compile-time checks and compiler options</strong>.</p></li>
+<li><p>Select <strong>Compile the kernel with debug info</strong>.</p></li>
+</ul>
+<p><img alt="../../../_images/image106.png" src="../../../_images/image106.png" /></p>
+</li>
+<li><p>Save the configuration. This sets the Linux kernel configuration file
+options to the following settings. You can verify that these
+options are enabled by looking in the configuration file.</p></li>
+<li><p>Launch the configuration menu to configure the system-level options:</p>
+<p><code class="docutils literal notranslate"><span class="pre">\$</span> <span class="pre">petalinux-config</span></code></p>
+<p>a.  Select <strong>Image Packaging Configuration</strong>.</p>
+<p>b.  Select INITRD for <strong>Root filesystem type</strong>.</p>
+<p>c.  Save configuration.</p>
+</li>
+<li><p>Build the PetaLinux using the PetaLinux build command
+<code class="docutils literal notranslate"><span class="pre">petalinux-build</span></code>.</p></li>
+<li><p>After PetaLinux builds successfully, copy the <code class="docutils literal notranslate"><span class="pre">vmlinux</span></code> file to your
+host machine. This file is needed for the debugger to refer to all
+Linux kernel symbols. Vmlinux generates under <code class="docutils literal notranslate"><span class="pre">\&lt;petalinux</span> <span class="pre">project</span> <span class="pre">file\&gt;/images/linux/vmlinux</span></code>.</p></li>
+<li><p>Copy <code class="docutils literal notranslate"><span class="pre">Vmlinux</span></code> to the host machine to use with the Vitis software
+platform for debugging the Linux kernel.</p></li>
+<li><p>Copy the Linux kernel source code to the host machine for debugging.
+The Linux kernel is present in <code class="docutils literal notranslate"><span class="pre">\&lt;petalinux-project\&gt;/build/tmp/work-shared/zc702-zynq7/</span> <span class="pre">kernel-source</span></code>.</p></li>
+</ol>
+<p><strong>Note:</strong> This document is composed and exercised using a Windows
+host machine, so it is necessary to copy the Linux source code to a location
+that is accessible for the Vitis tool running locally on the Windows host
+machine.</p>
+</section>
+<section id="creating-the-hello-world-linux-application-to-exercise-the-os-aware-debugging-feature">
+<h3>Creating the Hello World Linux Application to Exercise the OS Aware Debugging Feature<a class="headerlink" href="#creating-the-hello-world-linux-application-to-exercise-the-os-aware-debugging-feature" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Open the Vitis software platform.</p></li>
+<li><p>Select <strong>File → New → Application Project</strong>. The New Application
+Project wizard opens.</p></li>
+<li><p>Use the information below to make your selections in the wizard
+screens.</p>
+<table>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p><strong>Wizard Screen</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>System Property</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Setting or Command to Use</strong></p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Platform</td>
+<td>Select a platform from the repository.</td>
+<td>Click <strong>hw_platform [custom]</strong>.</td>
+</tr>
+<tr class="even">
+<td>Application Project Details</td>
+<td>Application project name</td>
+<td>Enter ``linux_hello``.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Select the target processor for the application project.</td>
+<td>Select <strong>ps7_cortexa9 SMP</strong>.</td>
+</tr>
+<tr class="even">
+<td>Domain</td>
+<td>Select a domain</td>
+<td>Click <strong>linux_application_domain</strong>.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Application settings</td>
+<td>If known, enter the sysroot, root FS, and kernel image paths. Otherwise, leave these options blank.</td>
+</tr>
+<tr class="even">
+<td>Templates</td>
+<td>Available Templates</td>
+<td>Linux Empty Application</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Click <strong>Finish</strong>.</p></li>
+<li><p>In Explorer view, expand the <strong>linux_hello</strong> project, right-click
+the <strong>src</strong> directory, and select <strong>Import</strong> to open the Import view.</p></li>
+<li><p>Expand <strong>General</strong> in the Import view and select <strong>File System</strong>.</p></li>
+<li><p>Click <strong>Next</strong>.</p></li>
+<li><p>Select <strong>Browse</strong>.</p></li>
+<li><p>Navigate to your design files folder and select the OSA folder and
+click <strong>OK</strong>.</p>
+<p><strong>Note:</strong> For more information about downloading the design files
+for this tutorial, see <a class="reference external" href="2-using-zynq.md#design-files-for-this-tutorial">Design Files for this Tutorial</a>.</p>
+</li>
+<li><p>Add the <strong>linux_hello.c</strong> file and click <strong>Finish</strong>.</p>
+<p>The Vitis software platform automatically builds the application and
+displays the status in the console window.</p>
+</li>
+<li><p>Copy <code class="docutils literal notranslate"><span class="pre">linux_hello.elf</span></code> to an SD card.</p></li>
+</ol>
+</section>
+<section id="debugging-linux-processes-and-threads-using-os-aware-debug">
+<h3>Debugging Linux Processes and Threads Using OS Aware Debug<a class="headerlink" href="#debugging-linux-processes-and-threads-using-os-aware-debug" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Boot Linux as described in <a class="reference external" href="6-linux-booting-debug.md#booting-linux-from-the-sd-card">Booting Linux from the SD
+Card</a>.</p></li>
+<li><p>Create a Debug configuration.</p></li>
+<li><p>Right-click <strong>linux_hello</strong> and select <strong>Debug as→ Debug
+Configurations</strong>.</p>
+<p>The Debug Configurations wizard opens, as shown in the following
+figure.</p>
+<p><img alt="../../../_images/image107.jpeg" src="../../../_images/image107.jpeg" /></p>
+</li>
+<li><p>In Main window, from the <strong>Debug Type</strong> drop-down list, select
+<strong>Attach to running target</strong>.</p></li>
+<li><p>From the <strong>Connection</strong> drop-down list, select <strong>Local</strong>.</p></li>
+<li><p>Click <strong>Debug</strong>.</p></li>
+<li><p>If the Confirm Perspective Switch dialog box appears, click <strong>Yes</strong>. Debugger_linux_hello-Default opens in the Debug view, as shown in the following figure.</p>
+<p><img alt="../../../_images/image108.png" src="../../../_images/image108.png" /></p>
+</li>
+<li><p>Set up the Linux kernel symbol file and enable the Linux OS
+awareness in the debug configuration.</p>
+<p>There are multiple options provided by the Vitis software platform to
+enable Linux OS awareness feature enablement and debugging the
+applications. The following options are listed in the Symbol File
+dialog box.</p>
+<ul>
+<li><p><strong>Enable Linux OS Awareness:</strong> This option enables OS awareness.</p></li>
+<li><p><strong>Auto refresh on exec:</strong></p>
+<p>When this option is selected, all running processes are refreshed and
+displayed in the Debug view.</p>
+<p>When this option is disabled, new processes are <em>not</em> displayed in
+the Debug view.</p>
+</li>
+<li><p><strong>Auto refresh on suspend:</strong></p>
+<p>When this option is selected, all processes are re-synced whenever the processor suspends.</p>
+<p>When this option is disabled, only the current process is re-synced.</p>
+</li>
+</ul>
+</li>
+<li><p>In the Debug view, right-click <strong>Debugger_linux_hello-Debug (Local)</strong> and select <strong>Edit Debugger_linux_hello-Default (Local)</strong>.</p></li>
+<li><p>Click the <strong>Symbol Files</strong> tab.</p></li>
+<li><p>Select <strong>/APU/Arm_Cortex_A9MPCore #0</strong> from the Debug context
+drop-down menu and click <strong>Add</strong>. The Symbol File dialog box opens.</p></li>
+<li><p>Click the browse button <img alt="../../../_images/image109.png" src="../../../_images/image109.png" />.</p></li>
+<li><p>Provide the path of the <code class="docutils literal notranslate"><span class="pre">vmlinux</span></code> file that you saved locally on the
+Windows host machine in the previous section, and check the box
+for <strong>Enable OS awareness- the file is an OS kernel</strong>, <strong>Auto refresh on exec</strong>, and <strong>Auto refresh on suspend</strong>, as shown in the
+following figure.</p>
+<p><img alt="../../../_images/image110.png" src="../../../_images/image110.png" /></p>
+</li>
+<li><p>Click <strong>OK</strong>.</p>
+<p>The Symbol File window closes.</p>
+</li>
+<li><p>Click <strong>Continue</strong> and then click <strong>Save</strong> to save the
+configuration changes. The Debug view opens, as shown in the
+following figure.</p>
+<p><img alt="../../../_images/image111.png" src="../../../_images/image111.png" /></p>
+<p>You can see the Linux kernel and list of processes running on the
+target.</p>
+<p><strong>Note:</strong> Because the Linux kernel is built on a different system
+(Linux) than the host machine (Windows) on which we are exercising the Linux OS aware application debug, symbol file path
+mapping information should be added.</p>
+<p>Path mapping enables you to perform source-level debugging so that you can see
+stack trace, variables, set up source level breakpoints, and so
+on.</p>
+<p>The debugger uses the Path Map setting to search and load symbols
+files for all executable files and shared libraries in the system.</p>
+<p><img alt="../../../_images/image112.jpeg" src="../../../_images/image112.jpeg" /></p>
+</li>
+<li><p>Set up the Path Map.</p>
+<p>a.  Click the <strong>Path Map</strong> tab.</p>
+<p>b.  Click <strong>Add</strong>.</p>
+<p>c.  The source path for the kernel is the compilation directory path
+from the Linux machine as shown in the previous figure. For
+example, <code class="docutils literal notranslate"><span class="pre">\&lt;petalinux-project\&gt;/build/tmp/work-shared/zc702-zynq7/kernel-source</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The destination path is the host location where you copied the kernel in the earlier step. For example, ``&lt;local-directory&gt;\linux-xlnx``.
+</pre></div>
+</div>
+<p>d.  Click <strong>Apply</strong> to apply the changes.</p>
+<p>e.  Click <strong>Continue</strong> to debug.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>![](./media/image113.jpeg)
+</pre></div>
+</div>
+</li>
+<li><p>Debug a Linux process or thread.</p></li>
+</ol>
+<p>As shown in Debugging Linux Processes and Threads Using OS Aware
+Debug](#debugging-linux-processes-and-threads-using-os-aware-debug),
+the list of processes running on the target is displayed. You can
+right-click any process and click <strong>Suspend</strong>. Using this method, you
+can exercise debugging features such as watch stack trace, registers,
+adding break points, and so on.</p>
+<p>In the following figure, the suspended process is named 1 init.</p>
+<p><img alt="../../../_images/image114.jpeg" src="../../../_images/image114.jpeg" /></p>
+<p><strong>Note:</strong> The addresses shown on this page might differ slightly
+from the addresses shown on your system.</p>
+</section>
+<section id="debugging-the-linux-hello-application-with-os-aware-debug">
+<h3>Debugging the linux_hello Application with OS Aware Debug<a class="headerlink" href="#debugging-the-linux-hello-application-with-os-aware-debug" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Mount an SD card using <code class="docutils literal notranslate"><span class="pre">mount</span> <span class="pre">/dev/mmcblk0p1</span> <span class="pre">/mnt</span></code>.</p></li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">/mnt/linux_hello.elf</span></code> application from the terminal as shown in the following figure.</p>
+<p><img alt="../../../_images/image1151.png" src="../../../_images/image1151.png" /></p>
+</li>
+<li><p>To debug the linux_hello application you created in the previous
+section using OS aware debug, follow the steps described in
+<a class="reference external" href="#debugging-linux-processes-and-threads-using-os-aware-debug">Debugging Linux Processes and Threads Using OS Aware Debug</a>, and in addition, add the path mappings for the linux_hello application as given in the following figure.</p>
+<p>The source path is <code class="docutils literal notranslate"><span class="pre">/linux_hello.elf</span></code>. The destination path is <code class="docutils literal notranslate"><span class="pre">\&lt;vitis-</span> <span class="pre">workspace\&gt;linux_hello/Debug/linux_hello.elf</span></code>.</p>
+<p><img alt="../../../_images/image116.jpeg" src="../../../_images/image116.jpeg" /></p>
+</li>
+<li><p>In the Debug view, right-click <strong>Debugger_linux_hello-Default (Local)</strong> and select <strong>Relaunch</strong>.</p></li>
+<li><p>In the Vitis debugger, do the following:</p>
+<p>a.  Observe the running application as one of the processes/threads
+in the kernel.</p>
+<p>b.  Right-click the <strong>linux_hello.elf</strong> thread and click <strong>Suspend</strong>
+to suspend the application.</p>
+<p>c.  Add a breakpoint.</p>
+</li>
+</ol>
+<p>These actions are shown in the following figure.</p>
+<p><img alt="../../../_images/image117.jpeg" src="../../../_images/image117.jpeg" /></p>
+<p>When the control hits the breakpoint, the Debug view updates with
+information on the <code class="docutils literal notranslate"><span class="pre">linux_hello.elf</span></code> process.</p>
+<p>The Debug view also shows the file, function, and the line information
+of the breakpoint hit. A thread label includes the name of a CPU core,
+if the thread is currently running on a core.</p>
+<p>You can perform source-level debugging, such as step-into, step-out, and watching variables, stack trace, and registers. You can also perform process/thread level debugging, including inserting
+breakpoints, step-into, step-out, watching variables, stack trace, and so on.</p>
+<p><strong>Note:</strong> One limitation with this process is that the target side
+path for a binary file does not include a mount point path. For
+example, when the linux_hello process is located on an SD card, which
+is mounted at <code class="docutils literal notranslate"><span class="pre">/</span> <span class="pre">mnt</span></code>, the debugger shows the file as <code class="docutils literal notranslate"><span class="pre">/linux_hello.elf</span></code>
+instead of <code class="docutils literal notranslate"><span class="pre">/mnt/linux_hello.elf</span></code>.</p>
+<p><strong>Note:</strong> There is an additional way to Enable Linux OS Awareness in
+the Vitis software platform using an XSCT command. For
+information about this command, refer to the <code class="docutils literal notranslate"><span class="pre">osa</span></code> command help in
+<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?t=vitis%2Bdoc%3Bv%3D2020.1%3Bd%3Dupu1569395223804.html">Xilinx Software Command-Line Tool</a>
+in the Embedded Software Development flow of the <em>Vitis Unified Software Platform Documentation</em> (UG1416).</p>
+<p>© Copyright 2015–2020 Xilinx, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
+<p>http://www.apache.org/licenses/LICENSE-2.0</p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on August 1, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>SmartLynq+ モジュールを使用した高速デバッグ ポートのシステム デザイン例 &mdash; エンベデッド デザイン チュートリアル 2020.2 の資料</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../../index.html" class="icon icon-home"> エンベデッド デザイン チュートリアル
+            <img src="../../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2020.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p><ul><li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li></ul><p class="caption" role="heading"><span class="caption-text">English</span></p><ul><li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/index.html">Master</a></li></ul><p class="caption" role="heading"><span class="caption-text">入門</span></p><ul><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs-jp/2020.2/docs-jp/docs/Introduction/Versal-EDT/README.html">Versal ACAP エンベデッド デザイン チュートリアル</a></li><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Introduction/ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC エンベデッド デザイン チュートリアル</a></li><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Introduction/Zynq7000-EDT/README.html">Zynq-7000 エンベデッド デザイン チュートリアル</a></li></ul><p class="caption" role="heading"><span class="caption-text">デバッグ</span></p><ul><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Vitis-Embedded-Software-Debugging/README.html">Vitis エンベデッド ソフトウェア デバッグ ガイド</a></li></ul><p class="caption" role="heading"><span class="caption-text">ユーザー ガイド</span></p><ul><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/SPA-UG/README.html">システム パフォーマンス解析</a></li></ul></div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">エンベデッド デザイン チュートリアル</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>SmartLynq+ モジュールを使用した高速デバッグ ポートのシステム デザイン例</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/docs/Introduction/Versal-EDT/docs/6-system-design-example-HSDP.md.txt" rel="nofollow">ページ ソースの表示</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="system-design-example-for-high-speed-debug-port-with-smartlynq-module">
+<h1>SmartLynq+ モジュールを使用した高速デバッグ ポートのシステム デザイン例<a class="headerlink" href="#system-design-example-for-high-speed-debug-port-with-smartlynq-module" title="Permalink to this heading">¶</a></h1>
+<section id="introduction">
+<h2>入門チュートリル<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>この章では、SmartLynq+ モジュールと高速デバッグ ポート (HSDP) の両方を利用する Versal™ ベースのシステムをビルドする方法について説明します。また、 SmartLynq+ モジュールを設定し、JTAG または HSDP のいずれかを使用して Linux イメージをダウンロードする方法も学習します。</p>
+<blockquote>
+<div><p><strong>重要:</strong> このチュートリアルには、SmartLynq+ モジュール、VCK190 または VMK180 評価ボード、および Linux ホストマシンが必要です。</p>
+</div></blockquote>
+</section>
+<section id="design-example-enabling-the-hsdp">
+<h2>デザイン例: HSDP のイネーブル<a class="headerlink" href="#design-example-enabling-the-hsdp" title="Permalink to this heading">¶</a></h2>
+<p>HSDP をイネーブルにするには、前の章で構築した VCK190 または VMK180 プロジェクトから開始し、HSDP サポートを含めるようにプロジェクトを変更します。  また、HSDP 対応デザインを作成するために、含まれているブロック デザイン Tcl を実行する手順から、この章を始めることもできます。  <code class="docutils literal notranslate"><span class="pre">ref_files/Prod_Si/smartlynq_plus/bd_tcl</span></code> を参照してください。</p>
+<section id="modifying-the-design-to-enable-the-hsdp">
+<h3>HSDP をイネーブルにするようにデザインを変更<a class="headerlink" href="#modifying-the-design-to-enable-the-hsdp" title="Permalink to this heading">¶</a></h3>
+<p>このデザインでは、<a class="reference internal" href="5-system-design-example.html"><span class="doc">「スカラー型エンジンと適応型エンジンを使用したシステム デザイン例」</span></a>でビルドしたプロジェクトを使用し、HSDP インターフェイスをイネーブルにします。これには、Vivado™ IP インテグレーターを使用します。</p>
+<ol>
+<li><p><a class="reference internal" href="5-system-design-example.html"><span class="doc">「スカラー型エンジンと適応型エンジンを使用したシステム デザイン例」</span></a>で作成した Vivado プロジェクトを開きます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">C:/edt/edt_versal/edt_versal.xpr</span></code></p>
+</li>
+<li><p>Flow Navigator の <strong>[IP Integrator]</strong> → <strong>[Open Block Design]</strong> をクリックします。</p>
+<p><img alt="../../../../_images/image5.png" src="../../../../_images/image5.png" /></p>
+</li>
+<li><p>Versal ACAP CIPS IP コアをダブルクリックして、IP を再カスタマイズします。  <strong>[Next]</strong> ボタンをクリックし、<strong>PS PMC</strong> というラベルの青いボックスをクリックして、プロセッシング システム (PS) およびプラットフォーム管理コントローラー (PMC) をカスタマイズします。  左ペインで、<strong>[Debug]</strong> を選択し、<strong>[HSDP]</strong> タブをクリックします。</p>
+<p><img alt="../../../../_images/ch6-image1.png" src="../../../../_images/ch6-image1.png" /></p>
+</li>
+<li><p><strong>[High-Speed Debug Port (HSDP)]</strong> の下の <strong>[Pathway to/from Debug Packet Controller (DPC)]</strong> を <strong>[AURORA]</strong> にします。</p>
+<p><img alt="../../../../_images/ch6-image2.png" src="../../../../_images/ch6-image2.png" /></p>
+</li>
+<li><p>次のオプションを設定します。</p>
+<ul class="simple">
+<li><p><strong>[GT Selection]</strong>: <strong>HSDP1 GT</strong></p></li>
+<li><p><strong>[GT Refclk Selection]</strong>: <strong>REFCLK1</strong></p></li>
+<li><p><strong>[GT Refclk Freq (MHz)]</strong>: <strong>156.25</strong></p></li>
+</ul>
+<blockquote>
+<div><p><strong>注記:</strong> ライン レートは 10.0 Gb/s に固定されます。</p>
+</div></blockquote>
+</li>
+<li><p><strong>[OK]</strong> をクリックして変更を保存します。CIPS IP 上に 2 つのポート (<code class="docutils literal notranslate"><span class="pre">gt_refclk1</span></code> および <code class="docutils literal notranslate"><span class="pre">HSDP1_GT</span></code>) が作成されます。</p></li>
+<li><p><strong>[IP Integrator]</strong> ページで <code class="docutils literal notranslate"><span class="pre">gt_refclk1</span></code> を右クリックし、<strong>[Make External]</strong> をクリックします。<strong>HSDP1_GT</strong> も同じように設定します。</p>
+<p><img alt="../../../../_images/ch6-image4.png" src="../../../../_images/ch6-image4.png" /></p>
+<p><img alt="../../../../_images/ch6-image5.png" src="../../../../_images/ch6-image5.png" /></p>
+</li>
+<li><p><strong>[Validate Design]</strong> をクリックして <strong>[Save]</strong> をクリックします。</p></li>
+</ol>
+</section>
+<section id="synthesizing-implementing-and-generating-the-device-image">
+<h3>デバイス イメージの合成、インプリメント、生成<a class="headerlink" href="#synthesizing-implementing-and-generating-the-device-image" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Flow Navigator で <strong>[Program and Debug]</strong> → <strong>[Generate Device Image]</strong> をクリックしてインプリメンテーションを開始します。</p>
+<p>デバイス イメージの生成が完了すると、[Device Image Generation Completed] ダイアログ ボックスが開きます。</p>
+<p><img alt="../../../../_images/ch6-image9.png" src="../../../../_images/ch6-image9.png" /></p>
+</li>
+</ol>
+</section>
+<section id="exporting-hardware-xsa">
+<h3>ハードウェア (XSA) のエクスポート<a class="headerlink" href="#exporting-hardware-xsa" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Vivado ツールバーから <strong>[File] → [Export] → [Export Hardware]</strong> をクリックします。[Export Hardware] ダイアログ ボックスが開きます。</p>
+<p><img alt="../../../../_images/ch6-image10.png" src="../../../../_images/ch6-image10.png" /></p>
+</li>
+<li><p><strong>[Fixed]</strong> を選択して <strong>[Next]</strong> をクリックします。</p></li>
+<li><p><strong>[Include Device Image]</strong> を選択し、<strong>[Next]</strong> をクリックします。</p></li>
+<li><p>エクスポートするファイルの名前 (例: <code class="docutils literal notranslate"><span class="pre">edt_versal_wrapper_with_hsdp</span></code>) を指定します。<strong>[Next]</strong> をクリックします。</p></li>
+<li><p><strong>[Finish]</strong> をクリックします。</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-the-hsdp-enabled-linux-image-using-petalinux">
+<h2>PetaLinux を使用した HSDP がイネーブルになった Linux イメージの作成<a class="headerlink" href="#creating-the-hsdp-enabled-linux-image-using-petalinux" title="Permalink to this heading">¶</a></h2>
+<p>この例では、前の手順でビルドした HSDP がイネーブルになった XSA を使用して PetaLinux プロジェクトを再構築します。PetaLinux プロジェクトは、<a class="reference internal" href="5-system-design-example.html"><span class="doc">「スカラー型エンジンと適応型エンジンを使用したシステム デザイン例」</span></a>に従って作成されたことを前提としています。</p>
+<blockquote>
+<div><p><strong>重要:</strong> 前の章で PetaLinux プロジェクトを作成せずにこのチュートリアルを実行する場合は、<a class="reference external" href="../docs/5-system-design-example.md#example-project-creating-Linux-images-using-petalinux">「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」</a>の手順 1 ～ 12 に従って、新しい PetaLinux プロジェクトを作成します。</p>
+</div></blockquote>
+<p>このサンプル プロジェクトには、Linux ホスト マシンが必要です。PetaLinux ツールの依存関係とインストール手順については、『etaLinux ツールの資料: リファレンス ガイド』 (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) を参照してください。</p>
+<ol>
+<li><p>次のコマンドを使用して、<a class="reference external" href="../docs/5-system-design-example.md#example-project-creating-Linux-images-using-petalinux">「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」</a>で作成した PetaLinux プロジェクト ディレクトリに移動します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">led_example</span></code></p>
+</li>
+<li><p>新しいハードウェア プラットフォーム プロジェクトの XSA を、PetaLinux ビルド ルートの 1 つ上のディレクトリにある Linux ホスト マシンにコピーします。</p>
+<blockquote>
+<div><p><strong>注記:</strong> 前の手順で生成したアップデート済みの XSA ファイルを使用するようにしてください。</p>
+</div></blockquote>
+</li>
+<li><p>次のコマンドを実行して BSP を再設定します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ petalinux-config --get-hw-description=&lt;path till the directory containing the respective xsa file&gt;</pre></div>
+</div>
+</li>
+<li><p>次のコマンドを使用して、Linux イメージをビルドします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ petalinux-build</pre></div>
+</div>
+</li>
+<li><p>ビルドが完了したら、次のコマンドを使用してブート イメージをパッケージにします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ petalinux-package --force --boot --atf --u-boot
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>注記:</strong> パッケージされた Linux ブート イメージは、PetaLinux ビルド ルートの <code class="docutils literal notranslate"><span class="pre">&lt;petaLinux-project&gt;/images/Linux/</span></code> ディレクトリに含まれます。このディレクトリの場所は、次の手順で使用するため、メモしておいてください。PetaLinux のビルドに使用したマシン (Windows ベースの PC など) とは別のマシンを使用し、SmartLynq+ を使用して Linux ブート イメージをダウンロードする場合は、このチュートリアルに進む前に、このディレクトリの内容をそのマシンに移動しておく必要があります。</p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="setting-up-the-smartlynq-module">
+<h2>SmartLynq+ モジュールの設定<a class="headerlink" href="#setting-up-the-smartlynq-module" title="Permalink to this heading">¶</a></h2>
+<p>Linux イメージがビルドされてパッケージされたら、JTAG または HSDP のいずれかを使用して VCK190 または VMK180 ボードにロードできます。HSDP を使用して接続するように SmartLynq+ モジュールを設定する手順は、次のとおりです。</p>
+<ol>
+<li><p>VCK190 USB-C コネクタと SmartLynq+ モジュールの間を USB-C ケーブルを使用して接続します。</p>
+<p><img alt="../../../../_images/ch6-slp1.png" src="../../../../_images/ch6-slp1.png" /></p>
+</li>
+<li><p>SmartLynq+ をイーサネットまたは USB のいずれかに接続します。</p>
+<ul class="simple">
+<li><p><strong>[Using Ethernet]:</strong> SmartLynq+ のイーサネット ポートとローカル エリア ネットワーク間をイーサネット ケーブルで接続します。</p></li>
+<li><p><strong>[Using USB]:</strong> SmartLynq+ の USB ポートと PC 間を提供されている USB ケーブルで接続します。</p></li>
+</ul>
+</li>
+<li><p>電源アダプターを SmartLynq+ に接続し、VCK190/VMK180 ボードの電源を入れます。</p>
+<blockquote>
+<div><p><strong>注記:</strong> ボードを起動する前に、イーサネットケ ーブルをターゲット デバイスに接続してください。</p>
+</div></blockquote>
+</li>
+<li><p>SmartLynq+ の起動が完了すると、<code class="docutils literal notranslate"><span class="pre">eth0</span></code> または <code class="docutils literal notranslate"><span class="pre">usb0</span></code> の下の画面に IP アドレスが表示されます。この IP アドレスは、イーサネットおよび USB の両方のユース ケースで SmartLynq+ への接続に使用される IP アドレスであるため、メモしておいてください。</p>
+<p><img alt="../../../../_images/ch6-image23.jpg" src="../../../../_images/ch6-image23.jpg" /></p>
+<blockquote>
+<div><p><strong>注記:</strong> イーサネットを使用する場合、SmartLynq+ はネットワーク上で検出された DHCP サーバーから IP アドレスを取得します。USB を使用する場合、USB ポートの IP アドレスは固定されており、<code class="docutils literal notranslate"><span class="pre">10.0.0.2</span></code> です。</p>
+</div></blockquote>
+</li>
+<li><p>デザイン パッケージ (<code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/smartlynq_plus/xsdb</span></code>) から Linux ダウンロード スクリプトをコピーします。</p></li>
+</ol>
+<section id="using-the-smartlynq-as-a-serial-terminal">
+<h3>SmartLynq+ をシリアル端末として使用<a class="headerlink" href="#using-the-smartlynq-as-a-serial-terminal" title="Permalink to this heading">¶</a></h3>
+<p>SmartLynq+ は、VCK190 からの UART 出力をリモートで表示するためのシリアル端末としても使用できます。この機能は、リモート設定に物理的なアクセスができない場合に便利です。SmartLynq+ モジュールには、VCK190 上の UART に直接接続するために使用できる minicom アプリケーションが事前にインストールされています。</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">PuTTY</span></code> (Windows) や <code class="docutils literal notranslate"><span class="pre">ssh</span></code> (UNIX ベースのシステム) などの SSH クライアントを使用して、SmartLynq+ ディスプレイに表示される IP アドレスに接続します。</p>
+<ul class="simple">
+<li><p>ユーザー名: <code class="docutils literal notranslate"><span class="pre">xilinx</span></code></p></li>
+<li><p>パスワード: <code class="docutils literal notranslate"><span class="pre">xilinx</span></code></p></li>
+</ul>
+<p>たとえば、SmartLynq+ に IP アドレス <code class="docutils literal notranslate"><span class="pre">192.168.0.10</span></code> が表示された場合、<code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">xilinx@192.168.0.10</span></code> コマンドを実行する必要があります。</p>
+</li>
+<li><p>デフォルトでは、minicom アプリケーションはハードウェア フロー制御を使用します。ザイリンクス ボード上の UART に正常に接続するには、ハードウェア フロー制御は VCK190 UART で使用されないので、ディスエーブルにする必要があります。これには、<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">minicom</span> <span class="pre">-s</span></code> を実行して機能をディスエーブルにし、minicom 設定モードにします。または、ルートとして次のコマンドを実行し、minicom のデフォルト設定を変更します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span><span class="s2">&quot;pu rtscts No&quot;</span><span class="o">|</span><span class="n">sudo</span><span class="n">tee</span><span class="o">-</span><span class="n">a</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">minicom</span><span class="o">/</span><span class="n">minirc</span><span class="o">.</span><span class="n">dfl</span></pre></div>
+</div>
+</li>
+<li><p>最後に、次を実行して VCK190/VMK180 シリアル端末出力に接続します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span><span class="n">minicom</span><span class="o">--</span><span class="n">device</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB1</span></pre></div>
+</div>
+</li>
+<li><p>この端末は開いたままにして、次のセクションに進みます。</p>
+<p><img alt="../../../../_images/ch6-image15.png" src="../../../../_images/ch6-image15.png" /></p>
+</li>
+</ol>
+</section>
+<section id="booting-linux-images-over-jtag-or-hsdp">
+<h3>JTAG または HSDP を介した Linux イメージのブート<a class="headerlink" href="#booting-linux-images-over-jtag-or-hsdp" title="Permalink to this heading">¶</a></h3>
+<p>SmartLynq+ を使用すると、SD カードを使用せずに Linux イメージを VCK190/VMK180 に直接ダウンロードできます。Linux イメージは JTAG または HSDP を使用して読み込むことができます。</p>
+<p>このチュートリアルに含まれるデザイン パッケージには、SmartLynq+ モジュールを使用して前のステップで作成した Linux イメージをダウンロードするスクリプトが含まれます。このスクリプトは、JTAG または HSDP のいずれかを使用できます。</p>
+<ol>
+<li><p>SmartLynq+ モジュールにアクセスできるマシンで、Vivado Tcl シェルを開きます。</p>
+<p><img alt="../../../../_images/ch6-image24.png" src="../../../../_images/ch6-image24.png" /></p>
+</li>
+<li><p>PetaLinux のビルドに使用したコンピューターで作業している場合は、作業ディレクトリを PetaLinux ビルド ルートに変更するか、上記の手順で <code class="docutils literal notranslate"><span class="pre">images/linux</span></code> ディレクトリがローカル コンピューターに転送された場所に変更します。</p></li>
+<li><p>Vivado Tcl シェルで次のコマンドを実行し、HSDP を使用してイメージをダウンロードします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsdb</span><span class="n">linux_download</span><span class="o">.</span><span class="n">tcl</span><span class="o">&lt;</span><span class="n">smartlynq</span><span class="o">+</span><span class="n">ip</span><span class="o">&gt;</span><span class="n">images</span><span class="o">/</span><span class="n">linux</span><span class="n">HSDP</span></pre></div>
+</div>
+<p>これにより、JTAG を使用して <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> が読み込まれ、HSDP リンクがオート ネゴシエートされ、残りのブート イメージは HSDP を使用して読み込まれます。これにより、JTAG と比較して、速度がかなり速くなります。</p>
+<p><img alt="../../../../_images/ch6-image16.png" src="../../../../_images/ch6-image16.png" /></p>
+<blockquote>
+<div><p><strong>注記:</strong> スクリプトの最後の引数を <code class="docutils literal notranslate"><span class="pre">xsdb</span> <span class="pre">linux-download</span> <span class="pre">&lt;smartlynq+</span> <span class="pre">ip&gt;</span> <span class="pre">images/linux</span> <span class="pre">FTDI-JTAG</span></code> のように <code class="docutils literal notranslate"><span class="pre">FTDI-JTAG</span></code> に変更して、JTAG を使用して Linux イメージをダウンロードすることもできます。これは、JTAG を使用してすべての Linux ブート イメージをプログラムします。HSDP を使用する場合のダウンロード速度の違いに注意してください。</p>
+</div></blockquote>
+</li>
+<li><p>Versal ブート メッセージは、前のセクションで開いた端末の VCK190 UART から表示できます。</p>
+<p><img alt="../../../../_images/ch6-image17.png" src="../../../../_images/ch6-image17.png" /></p>
+</li>
+<li><p>JTAG または HSDP のいずれかを使用した Linux の起動が完了すると、次のログイン画面が表示されます。</p>
+<p><img alt="../../../../_images/ch6-image18.png" src="../../../../_images/ch6-image18.png" /></p>
+</li>
+</ol>
+</section>
+</section>
+<section id="useful-links">
+<h2>役に立つリンク<a class="headerlink" href="#useful-links" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>AXA-ILA、AXA-VIO、PCIe™ デバッガー、DDRMC キャリブレーション インターフェイスなどの PL ハードウェア デバッグ コアの使用については、『Vivado Design Suite ユーザー ガイド: プログラムおよびデバッグ』 (<a class="reference external" href="https://japan.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug908-vivado-programming-debugging.pdf">UG908</a>) を参照してください。</p></li>
+<li><p>SmartLynq+ モジュールの詳細は、『SmartLynq+ モジュール ユーザー ガイド』 (<a class="reference external" href="https://japan.xilinx.com/support/documentation/boards_and_kits/smartlynq/ug1258-smartlynq-cable.pdf">UG1258</a>) を参照してください。</p></li>
+</ul>
+</section>
+<section id="summary">
+<h2>サマリ<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
+<p>このセクションでは、HSDP を使用し、SmartLynq+ モジュールを接続し、リモート UART アクセス用に SmartLynq+ を設定し、HSDP を使用して Linux イメージをボードにダウンロードするデザインを作成しました。</p>
+<p>© Copyright 2020-2021 Xilinx, Inc.</p>
+<p><em>Apache ライセンス、バージョン 2.0 (以下「ライセンス」) に基づいてライセンス付与されています。本ライセンスに準拠しないと、このファイルを使用することはできません。ライセンスのコピーは、<a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a> から入手できます。</em></p>
+<p><em>適切な法律で要求されるか、書面で同意された場合を除き、本ライセンスに基づいて配布されるソフトウェアは、明示的または黙示的を問わず、いかなる種類の保証または条件もなく、「現状のまま」配布されます。ライセンスに基づく権限と制限を管理する特定の言語については、ライセンスを参照してください。</em></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p><span class="lastupdated">Last updated on August 1, 2022.
+      </span>© Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.</p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>スカラー型エンジンと適応型エンジンを使用したシステム デザイン例 &mdash; エンベデッド デザイン チュートリアル 2020.2 の資料</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../../index.html" class="icon icon-home"> エンベデッド デザイン チュートリアル
+            <img src="../../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2020.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p><ul><li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li></ul><p class="caption" role="heading"><span class="caption-text">English</span></p><ul><li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/index.html">Master</a></li></ul><p class="caption" role="heading"><span class="caption-text">入門</span></p><ul><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs-jp/2020.2/docs-jp/docs/Introduction/Versal-EDT/README.html">Versal ACAP エンベデッド デザイン チュートリアル</a></li><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Introduction/ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC エンベデッド デザイン チュートリアル</a></li><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Introduction/Zynq7000-EDT/README.html">Zynq-7000 エンベデッド デザイン チュートリアル</a></li></ul><p class="caption" role="heading"><span class="caption-text">デバッグ</span></p><ul><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Vitis-Embedded-Software-Debugging/README.html">Vitis エンベデッド ソフトウェア デバッグ ガイド</a></li></ul><p class="caption" role="heading"><span class="caption-text">ユーザー ガイド</span></p><ul><li class="toctree-l1"><a class="reference internal" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/SPA-UG/README.html">システム パフォーマンス解析</a></li></ul></div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">エンベデッド デザイン チュートリアル</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>スカラー型エンジンと適応型エンジンを使用したシステム デザイン例</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/docs/Introduction/Versal-EDT/docs/5-system-design-example.md.txt" rel="nofollow">ページ ソースの表示</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="system-design-example-using-scalar-engine-and-adaptable-engine">
+<h1>スカラー型エンジンと適応型エンジンを使用したシステム デザイン例<a class="headerlink" href="#system-design-example-using-scalar-engine-and-adaptable-engine" title="Permalink to this heading">¶</a></h1>
+<p>この章では、使用可能なツールとサポートされているソフトウェア ブロックを使用して、Versal™ デバイスをベースにしたシステムを構築する方法を説明します。この章では、Vivado® ツールで PL AXI GPIO を使用してエンベデッド デザインを作成する方法について説明します。また、Versal ACAP デバイス上で Arm® Cortex™-A72 コア ベースの APU 用の Linux オペレーティング システムをコンフィギュレーションしてビルドする手順についても説明します。</p>
+<p>この章では、PetaLinux ツールの使用例についても説明します。</p>
+<section id="design-example-using-axi-gpio">
+<h2>デザイン例: AXI GPIO の使用<a class="headerlink" href="#design-example-using-axi-gpio" title="Permalink to this heading">¶</a></h2>
+<p>Linux アプリケーションは、PL ベースの AXI GPIO インターフェイスを使用してボードの DIP スイッチを監視し、ボードの LED を制御します。LED アプリケーションは、VMK180/VCK190 の両方で実行できます。</p>
+<section id="configuring-hardware">
+<h3>ハードウェアの設定<a class="headerlink" href="#configuring-hardware" title="Permalink to this heading">¶</a></h3>
+<p>最初の手順として、このデザインで PS セクションと PL セクションを設定します。これは、Vivado IP インテグレーターを使用して実行できます。まず Vivado IP カタログから必要な IP を追加し、PS サブシステムのブロックにコンポーネントを接続します。ハードウェアを設定する方法は、次のとおりです。</p>
+<blockquote>
+<div><p><strong>注記:</strong> Vivado Design Suite が既に開いている場合は、手順 3 へ進みます。</p>
+</div></blockquote>
+<ol>
+<li><p><a class="reference internal" href="2-cips-noc-ip-config.html"><span class="doc">「Versal ACAP CIPS および NoC (DDR) IP コアの設定」</span></a>で作成した Vivado プロジェクトを開きます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">C:/edt/edt_versal/edt_versal.xpr</span></code></p>
+</li>
+<li><p>Flow Navigator の <strong>[IP Integrator]</strong> → <strong>[Open Block Design]</strong> をクリックします。</p>
+<p><img alt="../../../../_images/image5.png" src="../../../../_images/image5.png" /></p>
+</li>
+<li><p>ブロック図で右クリックし、<strong>[Add IP]</strong> をクリックします。</p></li>
+</ol>
+<section id="connecting-ip-blocks-to-create-a-complete-system">
+<h4>IP ブロックを接続して完全なシステムを作成<a class="headerlink" href="#connecting-ip-blocks-to-create-a-complete-system" title="Permalink to this heading">¶</a></h4>
+<p>IP ブロックを接続してシステムを作成する手順は、次のとおりです。</p>
+<ol>
+<li><p>Versal™ ACAP CIPS IP コアをダブルクリックします。</p></li>
+<li><p><strong>[PS-PMC] → [PL-PS Interfaces]</strong> をクリックします。</p>
+<p><img alt="../../../../_images/image60.png" src="../../../../_images/image60.png" /></p>
+</li>
+<li><p>M_AXI_FPD インターフェイスをイネーブルにし、PL リセット数を 1 に設定します (前の図を参照)。</p></li>
+<li><p><strong>[Clock Configuration]</strong> をクリックし、[Output Clocks] タブをクリックします。</p></li>
+<li><p>[PMC Domain Clocks] を展開します。次に、[PL Fabric Clocks] を展開します。PL0_REF_CLK クロックを次の図に示すように設定します。</p>
+<p><img alt="../../../../_images/image61.jpeg" src="../../../../_images/image61.jpeg" /></p>
+</li>
+<li><p><strong>[OK]</strong> をクリックして設定を完了し、ブロック図に戻ります。</p></li>
+</ol>
+</section>
+<section id="adding-and-configuring-ip-addresses">
+<h4>IP アドレスの追加および設定<a class="headerlink" href="#adding-and-configuring-ip-addresses" title="Permalink to this heading">¶</a></h4>
+<p>IP アドレスを追加および設定する手順は、次のとおりです。</p>
+<ol>
+<li><p>ブロック図を右クリックし、<strong>[Add IP]</strong> をクリックして IP カタログから IP を追加します。</p></li>
+<li><p>AXI GPIO を検索し、<strong>[AXI GPIO]</strong> をダブルクリックしてブロック図に追加します。</p></li>
+<li><p>AXI GPIO IP の別のインスタンスをデザインに追加します。</p></li>
+<li><p>[Block Design] ビューで <strong>[Run Connection Automation]</strong> をクリックします。 <img alt="../../../../_images/image62.png" src="../../../../_images/image62.png" /></p>
+<p>[Run Connection Automation] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p>[Run Connection Automation] ダイアログ ボックスで、[All Automation] をオンにします。</p>
+<p><img alt="../../../../_images/image63.png" src="../../../../_images/image63.png" /></p>
+<p>これにより、AXI GPIO IP のすべてのポートの自動化がチェックされます。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">axi_gpio_0</span></code> の <strong>GPIO</strong> をクリックし、次に示すように [Select Board Part Interface] を <strong>[Custom]</strong> に設定します。</p>
+<p><img alt="../../../../_images/image64.png" src="../../../../_images/image64.png" /></p>
+</li>
+<li><p>axi_gpio_1 の GPIO も同じ設定にします。</p></li>
+<li><p>axi_gpio_0 の <strong>S_AXI</strong> をクリックします。次の図に示すように設定します。</p>
+<p><img alt="../../../../_images/image65.jpeg" src="../../../../_images/image65.jpeg" /></p>
+</li>
+<li><p>axi_gpio_1 の S_AXI も同じ設定にします。これにより、次の接続が設定されます。</p>
+<ul class="simple">
+<li><p>SmartConnect を CIPS と AXI GPIO IP 間のブリッジ IP として使用して AXI_GPIO の S_AXI と CIPS の M_AXI_FPD を接続します。</p></li>
+<li><p>プロセッサ システム リセット IP をイネーブルにします。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pl0_ref_clk</span></code> をプロセッサ システム リセット、AXI GPIO、および SmartConnect IP クロックに接続します。</p></li>
+<li><p>SmartConnect および AXI GPIO のリセットをプロセッサ システム リセット IP の <code class="docutils literal notranslate"><span class="pre">peripheral_aresetn</span></code> に接続します。</p></li>
+</ul>
+</li>
+<li><p><strong>[OK]</strong> をクリックします。</p></li>
+<li><p>[Block Design] ビューで <strong>[Run Connection Automation]</strong> をクリックし、[All Automation] チェック ボックスをオンにします。</p></li>
+<li><p><strong>ext_reset_in</strong> をクリックして、次のように設定します。</p>
+<p><img alt="../../../../_images/image66.jpeg" src="../../../../_images/image66.jpeg" /></p>
+<p>これにより、プロセッサ システム リセット IP の <code class="docutils literal notranslate"><span class="pre">ext_reset_in</span></code> が CIPS の pl_resetn に接続されます。</p>
+</li>
+<li><p><strong>OK</strong> をクリックします。</p></li>
+<li><p>プロセッサ システム リセット IP の <code class="docutils literal notranslate"><span class="pre">peripheral_aresetn</span></code> から SmartConnect IP の <code class="docutils literal notranslate"><span class="pre">aresetn</span></code> への接続を解除します。</p></li>
+<li><p>SmartConnect IP の <code class="docutils literal notranslate"><span class="pre">aresetn</span></code> をプロセッサ システム リセット IP の <code class="docutils literal notranslate"><span class="pre">interconnect_aresetn</span></code> に接続します。</p>
+<p><img alt="../../../../_images/image67.jpeg" src="../../../../_images/image67.jpeg" /></p>
+</li>
+<li><p>axi_gpio_0 IP をダブルクリックして開きます。</p></li>
+<li><p>次の図のように [IP Configuration] タブを設定します。</p>
+<p><img alt="../../../../_images/image68.png" src="../../../../_images/image68.png" /></p>
+</li>
+<li><p>axi_gpio_1 も同じ設定にします。</p></li>
+<li><p>Slice IP のインスタンスをさらに 4 つ追加します。</p></li>
+<li><p>AXI GPIO IP の外部ピンを削除し、インターフェイスを展開します。</p></li>
+<li><p>axi_gpio_0 の出力ピン gpio_io_0 をスライス 0 およびスライス 1 に接続します。</p></li>
+<li><p>同様に、axi_gpio_1 の出力ピン gpio_io_0 をスライス 2 およびスライス 3 に接続します。</p></li>
+<li><p>Slice IP の出力を外部接続 (Make External) にします。</p></li>
+<li><p>次のように各 Slice IP を設定します。</p>
+<p><img alt="../../../../_images/image69.png" src="../../../../_images/image69.png" /></p>
+<p><img alt="../../../../_images/image70.png" src="../../../../_images/image70.png" /></p>
+<p><img alt="../../../../_images/image71.png" src="../../../../_images/image71.png" /></p>
+<p><img alt="../../../../_images/image72.png" src="../../../../_images/image72.png" /></p>
+</li>
+</ol>
+<p>ブロック デザイン全体が次のようになります。</p>
+<p><img alt="../../../../_images/image73.png" src="../../../../_images/image73.png" /></p>
+</section>
+<section id="validating-the-design-and-generating-the-output">
+<h4>デザインの検証および出力の生成<a class="headerlink" href="#validating-the-design-and-generating-the-output" title="Permalink to this heading">¶</a></h4>
+<p>デザインを検証し、出力ファイルを生成するには、次の手順を実行します。</p>
+<ol>
+<li><p>[Block Design] ビューに戻り、ブロック デザインを保存します (<strong>Ctrl + S</strong> キーを押す)。</p></li>
+<li><p>[Diagram] ビューの空白部分を右クリックして、<strong>[Validate Design]</strong> をクリックします。または、<strong>F6</strong> キーを押します。</p>
+<p>次のメッセージを示すダイアログ ボックスが開きます。</p>
+<p><img alt="validation_message" src="../../../../_images/validation_message.PNG" /></p>
+</li>
+<li><p><strong>[OK]</strong> をクリックしてメッセージを閉じます。</p></li>
+<li><p><strong>[Sources]</strong> ウィンドウをクリックします。</p>
+<ol>
+<li><p>制約を展開します。</p></li>
+<li><p><strong>[constrs_1]</strong> を右クリックし、[Add Sources] をクリックします。
+[Add Sources] ウィンドウが開きます。</p></li>
+<li><p><strong>[Add or Create Constraints]</strong> オプションを選択し、<strong>[Next]</strong> をクリックします。</p></li>
+<li><p>追加する .xdc ファイルを選択します。</p>
+<blockquote>
+<div><p><strong>注記</strong>: 制約ファイルは <code class="docutils literal notranslate"><span class="pre">pl_axigpio/</span> <span class="pre">constrs</span></code> フォルダーにパッケージの一部として含まれます。</p>
+</div></blockquote>
+</li>
+<li><p><strong>[Finish]</strong> をクリックします。</p></li>
+</ol>
+</li>
+<li><p><strong>[Hierarchy]</strong> タブをクリックします。</p></li>
+<li><p>[Sources] ウィンドウの [Design Sources] の下の <strong>[edt_versal_wrapper]</strong> を展開します。</p></li>
+<li><p>edt_versal_i : edt_versal (<code class="docutils literal notranslate"><span class="pre">edt_versal.bd</span></code>) という最上位ブロックを右クリックし、<strong>[Generate Output Products]</strong> をクリックします。</p>
+<p><img alt="../../../../_images/image15.png" src="../../../../_images/image15.png" /></p>
+</li>
+<li><p><strong>[Generate]</strong> をクリックします。</p></li>
+<li><p>[Generate Output Products] の処理が完了したら、<strong>[OK]</strong> をクリックします。</p></li>
+<li><p>[Sources] ウィンドウで <strong>[IP Sources]</strong> ビューをクリックします。次の図に示すように、生成した出力ファイルが表示されます。</p>
+<p><img alt="../../../../_images/image74.png" src="../../../../_images/image74.png" /></p>
+</li>
+</ol>
+</section>
+<section id="synthesizing-implementing-and-generating-the-device-image">
+<h4>デバイス イメージの合成、インプリメント、生成<a class="headerlink" href="#synthesizing-implementing-and-generating-the-device-image" title="Permalink to this heading">¶</a></h4>
+<p>デザインのデバイス イメージを生成するには、次の手順を実行します。</p>
+<ol>
+<li><p>Flow Navigator の <strong>[Program and Debug]</strong> をクリックし、<strong>[Generate Device Image]</strong> をクリックし、<strong>[OK]</strong> をクリックします。</p></li>
+<li><p>[No Implementation Results Available] メニューが表示されます。<strong>[Yes]</strong> をクリックします。</p></li>
+<li><p>[Launch Run] メニューが表示されます。<strong>[OK]</strong> をクリックします。</p>
+<p>デバイス イメージの生成が完了すると、[Device Image Generation Completed] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Cancel]</strong> をクリックしてウィンドウを閉じます。</p></li>
+<li><p>デバイス イメージを生成したら、ハードウェアをエクスポートします。</p>
+<blockquote>
+<div><p><strong>注記:</strong> 次の手順はオプションなので、省略して<a class="reference external" href="#exporting-hardware">「ハードウェアのエクスポート」</a> セクションに進むこともできます。これらの手順を実行すると、デバイス イメージを生成する前に合成およびインプリメンテーションを実行するので、デバイス イメージ生成の詳細なフローがわかるようになります。デバイス イメージの生成フローを理解する必要がある場合は、次の手順を実行します。</p>
+</div></blockquote>
+</li>
+<li><p>Flow Navigator で <strong>[Synthesis]</strong> をクリックし、<strong>[Run Synthesis]</strong> をクリックします。</p>
+<p><img alt="../../../../_images/image17.png" src="../../../../_images/image17.png" /></p>
+</li>
+<li><p>合成の開始前にプロジェクトを保存するようメッセージが表示された場合は、<strong>[Save]</strong> をクリックします。</p>
+<p>合成の実行中、ウィンドウの右上にステータス バーが表示されます。このステータス バーは、デザイン プロセスをとおして、さまざまな理由により表示されます。ステータス バーは、プロセスがバックグラウンドで実行されていることを示します。合成が完了すると、[Synthesis Completed] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Run Implementation]</strong> をクリックして <strong>[OK]</strong> をクリックします。</p>
+<p>インプリメンテーションが完了すると、[Implementation Completed] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Generate Device Image]</strong> をクリックして <strong>[OK]</strong> をクリックします。</p>
+<p>デバイス イメージの生成が完了すると、[Device Image Generation Completed] ダイアログ ボックスが開きます。</p>
+</li>
+<li><p><strong>[Cancel]</strong> をクリックしてウィンドウを閉じます。</p>
+<p>デバイス イメージを生成したら、ハードウェアをエクスポートします。</p>
+</li>
+</ol>
+</section>
+<section id="exporting-hardware">
+<h4>ハードウェアのエクスポート<a class="headerlink" href="#exporting-hardware" title="Permalink to this heading">¶</a></h4>
+<ol>
+<li><p>Vivado のメイン メニューから <strong>[File] → [Export] → [Export Hardware]</strong> をクリックします。[Export Hardware] ダイアログ ボックスが開きます。</p></li>
+<li><p><strong>[Include bitstream]</strong> を選択し、<strong>[Next]</strong> をクリックします。</p></li>
+<li><p>エクスポートしたファイルの名前を入力し (またはデフォルトを使用し)、ディレクトリを選択します。<strong>[Next]</strong> をクリックします。</p>
+<p>ハードウェア モジュールが既にエクスポートされている場合は、警告メッセージが表示されます。既存の XSA ファイルを上書きするかどうか尋ねるメッセージが表示されたら、<strong>[Yes]</strong> をクリックします。</p>
+</li>
+<li><p><strong>[Finish]</strong> をクリックします。</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="example-project-freertos-gpio-application-project-with-rpu">
+<h2>サンプル プロジェクト: RPU を使用した FreeRTOS GPIO アプリケーション プロジェクト<a class="headerlink" href="#example-project-freertos-gpio-application-project-with-rpu" title="Permalink to this heading">¶</a></h2>
+<p>このセクションでは、Versal デバイス上で Arm® Cortex™R5F コア ベースの RPU 用の FreeRTOS アプリケーションをコンフィギュレーションしてビルドする手順について説明します。</p>
+<p>次の手順は、Arm Cortex-R5F から FreeRTOS アプリケーションを作成する手順を示しています:</p>
+<ol>
+<li><p>Vitis™ IDE を起動し、<code class="docutils literal notranslate"><span class="pre">c:/edt/freertos</span></code> などの新しいワークスペースを作成します。</p></li>
+<li><p><strong>[File] → [New] → [Application Project]</strong> をクリックします。<strong>[Create a New Application Project]</strong> ページが開きます。Vitis™ IDE を初めて起動した場合は、次の図に示す Welcome 画面で <strong>[Create Application Project]</strong> を選択できます。</p>
+<p><img alt="../../../../_images/image75.jpeg" src="../../../../_images/image75.jpeg" /></p>
+<blockquote>
+<div><p><strong>注記:</strong> オプションで、<strong>[Skip welcome page next time]</strong> チェック ボックスをオンにすると、毎回 Welcome ページを表示しないようにすることもできます。</p>
+</div></blockquote>
+</li>
+<li><p>Vitis IDE には、ターゲット プラットフォーム、システム プロジェクト、ドメイン、テンプレートの 4 つのコンポーネントがあります。 Vitis IDE で新しいアプリケーション プロジェクトを作成するには、次の手順に従います。</p>
+<ol class="simple">
+<li><p>ターゲット プラットフォームには、ベース ハードウェア デザインと、宣言されたインターフェイスにアクセラレータを接続するのに使用されたメタデータが含まれます。プラットフォームを選択するか、Vivado Design Suite からエクスポートした XSA からプラットフォーム プロジェクトを作成します。</p></li>
+<li><p>アプリケーション プロジェクトをシステム プロジェクトに配置し、プロセッサに関連付けます。</p></li>
+<li><p>ドメインでは、ターゲット プラットフォームでホスト プログラムを実行するのに使用されるプロセッサおよびオペレーティング システムを定義します。</p></li>
+<li><p>アプリケーションのテンプレートを選択して、開発を迅速に開始します。ウィザードの各ページで次の表の情報に基づいて設定を選択します。</p></li>
+</ol>
+<p><strong>表 9: ウィザード情報</strong></p>
+</li>
+</ol>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="left">ウィザード ページ</th>
+<th align="left">システム プロパティ</th>
+<th align="left">設定または使用するコマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Platform</td>
+<td align="left">Create a new platform from hardware (XSA)</td>
+<td align="left">[Browse] をクリックして XSA ファイルを追加</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Platform Name</td>
+<td align="left">vck190_platform</td>
+</tr>
+<tr>
+<td align="left">Application Project Detail</td>
+<td align="left">Application project name</td>
+<td align="left">freertos_gpio_test</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Select a system project</td>
+<td align="left">+Create New</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">System project name</td>
+<td align="left">freertos_gpio_test_system</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Processor</td>
+<td align="left">psv_cortexr5_0</td>
+</tr>
+<tr>
+<td align="left">Dom</td>
+<td align="left">Select a domain</td>
+<td align="left">+Create New</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Name</td>
+<td align="left">デフォルト名入力済み</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Display Name</td>
+<td align="left">デフォルト名入力済み</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Operating System</td>
+<td align="left">freertos10_xilinx</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Processor</td>
+<td align="left">psv_cortexr5_0</td>
+</tr>
+<tr>
+<td align="left">Templates</td>
+<td align="left">Available</td>
+<td align="left">Freertos Hello</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Templates</td>
+<td align="left">world</td>
+</tr>
+</tbody>
+</table>
+<p>Vitis ソフトウェア プラットフォームは、上記の手順を実行した後、Explorer ビューの下に、プラットフォーム プロジェクト (<strong>vck190_platform</strong>) と <strong>freertos_gpio_test</strong> というアプリケーション プロジェクトを含むシステム プロジェクト (<strong>freertos_gpio_test_system</strong>) のボード サポート パッケージを作成します。</p><ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/</span></code> の下の <code class="docutils literal notranslate"><span class="pre">freertos_hello_world.c</span></code> ファイルを右クリックし、<code class="docutils literal notranslate"><span class="pre">freertos_hello_world.c</span></code> ファイル名を <code class="docutils literal notranslate"><span class="pre">freertos_gpio_test.c</span></code> に変更します。FreeRTOS プロジェクト パス (<code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/vck190/freertos/</span></code>) から <code class="docutils literal notranslate"><span class="pre">freertos_gpio_test.c</span></code> ファイルを <code class="docutils literal notranslate"><span class="pre">src/</span></code> の下の <code class="docutils literal notranslate"><span class="pre">freertos_gpio_test.c</span></code> にコピーします。</p></li>
+<li><p><strong>freertos_gpio_test_system</strong> を右クリックし、<strong>[Build Project]</strong> をクリックします。または、<img alt="build-icon" src="../../../../_images/image77.jpeg" /> をクリックします。</p>
+<blockquote>
+<div><p><strong>注記:</strong> [Project Explorer] ビューが表示されない場合は、左側のパネルの復元アイコンをクリックし、この手順を実行します。</p>
+</div></blockquote>
+</li>
+</ol>
+<p>Linux イメージをビルドし、FreeRTOS ELF をイメージに組み込む方法については、<a class="reference external" href="#example-project-creating-linux-images-using-petalinux">「サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成」</a>を参照してください。</p>
+</section>
+<section id="example-project-creating-linux-images-using-petalinux">
+<h2>サンプル プロジェクト: PetaLinux を使用した Linux イメージの作成<a class="headerlink" href="#example-project-creating-linux-images-using-petalinux" title="Permalink to this heading">¶</a></h2>
+<p>このセクションでは、Versal デバイス上で Arm Cortex-A72 コア ベースの APU 用の Linux オペレーティング システムをコンフィギュレーションしてビルドする手順について説明します。PetaLinux ツールをボード固有の BSP と使用すると、Linux イメージをコンフィギュレーションおよびビルドできます。</p>
+<p>このサンプル プロジェクトには、Linux ホスト マシンが必要です。PetaLinux ツールの依存関係とインストール手順については、『etaLinux ツールの資料: リファレンス ガイド』 (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) を参照してください。</p>
+<blockquote>
+<div><p><strong>重要:</strong> この例では、VCK190 PetaLinux BSP を使用して PetaLinux プロジェクトを作成します。<em>PetaLinux (VCK190/VMK180) に該当する BSP がダウンロードされていることを確認します。</em></p>
+<ul class="simple">
+<li><p>VCK190 ボードを使用している場合は、<a class="reference external" href="https://www.xilinx.com/member/vck190_headstart.html">https://www.xilinx.com/member/vck190_headstart.html</a> から <code class="docutils literal notranslate"><span class="pre">xilinx-vck190-es1-v2020.2-final.bsp</span></code> ファイルをダウンロードします。</p></li>
+<li><p>VMK180 ボードを使用している場合は、<a class="reference external" href="https://www.xilinx.com/member/vmk180_headstart.html">https://japan.xilinx.com/member/vmk180_headstart.html</a> から VMK180 PetaLinux 2020.2 BSP (xilinx- vmk180-v2020.2-final.bsp) をダウンロードします。</p></li>
+</ul>
+</div></blockquote>
+<ol>
+<li><p>各ボードの PetaLinux BSP を現在のディレクトリにコピーします。</p></li>
+<li><p>PetaLinux 環境を設定します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source &lt;petalinux-tools-path&gt;/settings.csh
+</pre></div>
+</div>
+</li>
+<li><p>次のコマンドを使用して PetaLinux プロジェクトを作成します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ petalinux-create -t project -s xilinx-vck190-vxxyy.z-final.bsp -n led_example
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>注記：</strong> VMK180 ボードの場合は、コマンドの <code class="docutils literal notranslate"><span class="pre">-s</span></code> オプションの後に <code class="docutils literal notranslate"><span class="pre">xilinx-vmk180-vxxyy.z-final.bsp</span></code> を使用します。</p>
+</div></blockquote>
+</li>
+<li><p>次のコマンドを使用して、PetaLinux プロジェクト ディレクトリに移動します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cd led_example
+</pre></div>
+</div>
+</li>
+<li><p>ハードウェア プラットフォーム プロジェクトの XSA を Linux ホスト マシンにコピーします。</p>
+<blockquote>
+<div><p><strong>注記:</strong> VMK180 ボードの場合は、<a class="reference external" href="#design-example-using-axi-gpio">「デザイン例: AXI GPIO の使用」</a>で生成した XSA ファイルを使用します。</p>
+</div></blockquote>
+</li>
+<li><p>次のコマンドを実行して BSP を再設定します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ petalinux-config --get-hw-description=&lt;path till the directory containing the respective xsa file&gt;
+</pre></div>
+</div>
+<p>[PetaLinux Configuration] ウィンドウが開きます。この例では、このウィンドウで何も変更する必要はありません。</p>
+</li>
+<li><p><strong><Save></strong> をクリック して上記の設定を保存し、<strong><Exit></strong> でコンフィギュレーション ウィザードを終了します。</p></li>
+<li><p>次のコマンドを使用して、PetaLinux プロジェクト内に gpiotest という名前の Linux アプリケーションを作成します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$petalinux-create -t apps --template install --name gpiotest --enable
+</pre></div>
+</div>
+</li>
+<li><p>次のコマンドを使用して、<code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/&lt;vck190</span> <span class="pre">or</span> <span class="pre">vmk180&gt;/linux/bootimages</span></code> からプロジェクトにアプリケーション ファイルをコピーします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cp &lt;design-package&gt;/vck190/linux/design_files/gpiotest_app/gpiotest/files/* &lt;plnxproj-root&gt;/project-spec/meta-user/recipes-apps/gpiotest/files/
+
+$cp &lt;design-package&gt;/vck190/linux/design_files/gpiotest_app/gpiotest.bb
+&lt;plnx-proj-root&gt;/project-spec/meta-user/recipes-apps/gpiotest/gpiotest.bb
+
+$cp &lt;design-package&gt;/vck190/linux/design_files/device_tree/system-user.dtsi &lt;plnx-proj-root&gt;/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
+</pre></div>
+</div>
+</li>
+<li><p>カーネル コンフィギュレーション内で GPIO サポートをイネーブルにします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$petalinux-config -c kernel
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>注記:</strong> このコマンドは、PetaLinux プロジェクトのカーネル コンフィギュレーション ウィザードを開きます。</p>
+</div></blockquote>
+</li>
+<li><p><strong>[Device drivers] → [GPIO Support]</strong> をクリックし、<strong> <Y></strong> キーを押します。<strong>Enter</strong> キーを押し、<strong><Y></strong> キーを押して、Debug GPIO calls と  <code class="docutils literal notranslate"><span class="pre">/sys/class/gpio/...(sysfs</span> <span class="pre">interface)</span></code> のエントリをイネーブルにします。</p>
+<p><img alt="../../../../_images/image79.jpeg" src="../../../../_images/image79.jpeg" /></p>
+</li>
+<li><p><strong>Memory mapped GPIO drivers</strong> まで移動し、<strong><Y></strong> キーを押して、Xilinx GPIO support および Xilinx Zynq GPIO support をイネーブルにします。</p>
+<p><img alt="../../../../_images/image80.jpeg" src="../../../../_images/image80.jpeg" /></p>
+</li>
+<li><p><strong><Save></strong> をクリックして上記の設定を保存し、<strong><Exit></strong> オプションでコンフィギュレーション ウィザードを終了します。</p></li>
+<li><p>次のコマンドを使用して、Linux イメージをビルドします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ petalinux-build
+</pre></div>
+</div>
+</li>
+</ol>
+<section id="combining-freertos-and-apu-images-using-a-bif-file">
+<h3>BIF ファイルを使用した FreeRTOS と APU イメージの結合<a class="headerlink" href="#combining-freertos-and-apu-images-using-a-bif-file" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Vitis IDE ワークスペースで XSCT コンソールを開きます。</p></li>
+<li><p>PetaLinux プロジェクトの <code class="docutils literal notranslate"><span class="pre">images/linux</span></code> ディレクトリに移動します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd &lt;petalinux-project&gt;/images/linux/
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/vck190/freertos/freertos_gpio_test.elf</span></code> から <code class="docutils literal notranslate"><span class="pre">freertos_gpio_test.elf</span></code> を <code class="docutils literal notranslate"><span class="pre">images/linux</span></code> ディレクトリにコピーします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp &lt;design-package&gt;/freertos/freertos_gpio_test.elf.
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/</span></code> から <code class="docutils literal notranslate"><span class="pre">bootgen.bif</span></code> ファイルを <code class="docutils literal notranslate"><span class="pre">images/linux</span></code> ディレクトリにコピーします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp &lt;design-package&gt;/bootgen.bif.
+</pre></div>
+</div>
+</li>
+<li><p>次のコマンドを実行して <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> を作成します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bootgen -image bootgen.bif -arch versal -o BOOT.BIN -w
+</pre></div>
+</div>
+<p>これで、<code class="docutils literal notranslate"><span class="pre">&lt;petalinux-project&gt;/images/linux/</span></code> ディレクトリに <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> イメージ ファイルが作成されます。</p>
+</li>
+</ol>
+<blockquote>
+<div><p><strong>注記:</strong> SD ブート モードを使用してイメージを実行するには、<a class="reference external" href="./4-boot-and-config.md#boot-sequence-for-sd-boot-mode">「SD ブート モードのブート シーケンス」</a>を参照してください。</p>
+</div></blockquote>
+<p>© Copyright 2020-2021 Xilinx, Inc.</p>
+<p><em>Apache ライセンス、バージョン 2.0 (以下「ライセンス」) に基づいてライセンス付与されています。本ライセンスに準拠しないと、このファイルを使用することはできません。ライセンスのコピーは、<a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a> から入手できます。</em></p>
+<p><em>適切な法律で要求されるか、書面で同意された場合を除き、本ライセンスに基づいて配布されるソフトウェアは、明示的または黙示的を問わず、いかなる種類の保証または条件もなく、「現状のまま」配布されます。ライセンスに基づく権限と制限を管理する特定の言語については、ライセンスを参照してください。</em></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p><span class="lastupdated">Last updated on August 1, 2022.
+      </span>© Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.</p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

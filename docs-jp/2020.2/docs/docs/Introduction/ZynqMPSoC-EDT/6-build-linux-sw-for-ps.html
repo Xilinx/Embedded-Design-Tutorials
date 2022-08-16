@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Building and Debugging Linux Applications &mdash; Embedded Design Tutorials 2020.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> Embedded Design Tutorials
+            <img src="../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2020.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Embedded Design Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Building and Debugging Linux Applications</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/Introduction/ZynqMPSoC-EDT/6-build-linux-sw-for-ps.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-and-debugging-linux-applications">
+<h1>Building and Debugging Linux Applications<a class="headerlink" href="#building-and-debugging-linux-applications" title="Permalink to this heading">¶</a></h1>
+<p>The earlier examples highlighted the creation of bootloader images and bare-metal applications for APU, RPU, and PMU using the Vitis™ IDE. This chapter demonstrates how to develop Linux applications.</p>
+<section id="example-8-creating-linux-images-and-applications-using-petalinux">
+<h2>Example 8: Creating Linux Images and Applications using PetaLinux<a class="headerlink" href="#example-8-creating-linux-images-and-applications-using-petalinux" title="Permalink to this heading">¶</a></h2>
+<p>In this example, you will configure and build a Linux operating system platform for an Arm™ Cortex-A53 core based APU on a Zynq® UltraScale+™ MPSoC. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.</p>
+<section id="input-and-output-files">
+<h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Input:</p>
+<ul>
+<li><p>Hardware XSA (<code class="docutils literal notranslate"><span class="pre">edt_zcu102_wrapper.xsa</span></code> generated in Example 1)</p></li>
+<li><p><a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">ZCU102 PetaLinux BSP</a></p></li>
+</ul>
+</li>
+<li><p>Output:</p>
+<ul>
+<li><p>PetaLinux boot images (<code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code>, <code class="docutils literal notranslate"><span class="pre">image.ub</span></code>)</p></li>
+<li><p>PetaLinux application (hello_linux)</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>IMPORTANT!:</strong></p>
+<blockquote>
+<div><ol class="simple">
+<li><p>This example requires a Linux host machine with PetaLinux installed. Refer to the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) for information about dependencies for PetaLinux 2020.2.</p></li>
+</ol>
+</div></blockquote>
+<blockquote>
+<div><ol class="simple">
+<li><p>This example uses the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">ZCU102 PetaLinux BSP</a> to create a PetaLinux project. Ensure that you have downloaded the ZCU102 BSP for PetaLinux as instructed on the <a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu102-v2020.2-final.bsp">PetaLinux Tools download page</a>.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="creating-a-petalinux-image">
+<h3>Creating a PetaLinux Image<a class="headerlink" href="#creating-a-petalinux-image" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Create a PetaLinux project using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-create -t project -s &lt;path to the xilinx-zcu102-v2020.2-final.bsp&gt;
+</pre></div>
+</div>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">xilinx-zcu102-v2020.2-final.bsp</span></code> is the PetaLinux BSP for the ZCU102 Production Silicon Rev 1.0 Board.</p>
+<p>This creates a PetaLinux project directory, <code class="docutils literal notranslate"><span class="pre">xilinx-zcu102-2020.2</span></code>.</p>
+</li>
+<li><p>Reconfigure the project with <code class="docutils literal notranslate"><span class="pre">edt_zcu102_wrapper.xsa</span></code>:</p>
+<ul class="simple">
+<li><p>The created PetaLinux project uses the default hardware setup in the ZCU102 Linux BSP. In this example, you will reconfigure the PetaLinux project based on the Zynq UltraScale+ hardware platform that you configured using the Vivado® Design Suite in <a class="reference internal" href="3-system-configuration.html"><span class="doc">Zynq UltraScale+ MPSoC Processing System Configuration</span></a>.</p></li>
+<li><p>Copy the hardware platform <code class="docutils literal notranslate"><span class="pre">edt_zcu102_wrapper.xsa</span></code> to the Linux host machine.</p></li>
+<li><p>Reconfigure the project using the following command:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> xilinx-zcu102-2020.2
+petalinux-config --get-hw-description<span class="o">=</span>&lt;path containing edt_zcu102_wrapper.xsa&gt;
+</pre></div>
+</div>
+<p>This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images.</p>
+<p>If you would prefer to skip the configuration window and keep the default settings, run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">config</span> <span class="o">--</span><span class="n">get</span><span class="o">-</span><span class="n">hw</span><span class="o">-</span><span class="n">description</span><span class="o">=&lt;</span><span class="n">path</span> <span class="n">containing</span> <span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">xsa</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">silentconfig</span>
+</pre></div>
+</div>
+</li>
+<li><p>Build the PetaLinux project:</p>
+<ul class="simple">
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">&lt;PetaLinux-project&gt;</span></code> directory, e.g. <code class="docutils literal notranslate"><span class="pre">xilinx-zcu102-2020.2</span></code>, build the Linux images using the following command:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-build
+</pre></div>
+</div>
+<p>After the above statement executes successfully, verify the images
+and the timestamp in the images directory in the PetaLinux project
+folder using the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> images/linux
+ls -al
+</pre></div>
+</div>
+</li>
+<li><p>Generate the boot image using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-package --boot --fsbl zynqmp_fsbl.elf --u-boot
+</pre></div>
+</div>
+<p>This creates a <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> image file in the <code class="docutils literal notranslate"><span class="pre">&lt;petalinux-project&gt;/images/linux/</span></code> directory.</p>
+<p>The logs indicate that the above command includes PMU_FW and ATF in <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code>. You can also add <code class="docutils literal notranslate"><span class="pre">--pmufw</span> <span class="pre">&lt;PMUFW_ELF&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">--atf</span> <span class="pre">&lt;ATF_ELF&gt;</span></code> in the above command if you would prefer to use custom firmware images. Refer to <code class="docutils literal notranslate"><span class="pre">petalinux-package</span> <span class="pre">--boot</span> <span class="pre">--help</span></code> for more details about the boot image package command.</p>
+<p><strong>Note:</strong> The option to add bitstream, <code class="docutils literal notranslate"><span class="pre">--fpga</span></code>, is missing
+from the above command intentionally because so far the hardware
+configuration is based only on a PS with no design in the PL. If a bitstream
+is present in the design, <code class="docutils literal notranslate"><span class="pre">--fpga</span></code> can be added in the
+<code class="docutils literal notranslate"><span class="pre">petalinux-package</span></code> command as shown below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-package --boot --fsbl zynqmp_fsbl.elf --fpga system.bit --pmufw pmufw.elf --atf bl31.elf --u-boot u-boot.elf
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="verifying-the-image-on-the-zcu102-board">
+<h3>Verifyìng the Image on the ZCU102 Board<a class="headerlink" href="#verifying-the-image-on-the-zcu102-board" title="Permalink to this heading">¶</a></h3>
+<p>To verify the image, follow these steps:</p>
+<ol>
+<li><p>Copy the <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code>, <code class="docutils literal notranslate"><span class="pre">image.ub</span></code>, and <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> files to the SD card. Here, <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> is read by U-Boot to load the kernel and rootfs.</p></li>
+<li><p>Load the SD card into the ZCU102 board, in the J100 connector.</p></li>
+<li><p>Connect a micro USB cable from the ZCU102 board USB UART port (J83) to the USB port on the host machine.</p></li>
+<li><p>Configure the board to boot in SD boot mode by setting switch SW6 as
+shown in the following figure.</p>
+<p><img alt="../../../_images/image431.jpeg" src="../../../_images/image431.jpeg" /></p>
+</li>
+<li><p>Connect 12V power to the ZCU102 6-pin Molex connector.</p></li>
+<li><p>Start a serial terminal session using Tera Term or Minicom depending on the host machine being used. set the COM port and baud rate for your system as shown in the following figure.</p>
+<p><img alt="Tera Term Connection" src="../../../_images/image44.png" /></p>
+</li>
+<li><p>For port settings, verify the COM port in the device manager and select the COM port with interface-0.</p></li>
+<li><p>Turn on the ZCU102 board using SW1, and wait until Linux loads on the board.</p></li>
+</ol>
+</section>
+<section id="creating-linux-applications-in-the-vitis-ide">
+<h3>Creating Linux Applications in the Vitis IDE<a class="headerlink" href="#creating-linux-applications-in-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Create a Linux domain:</p>
+<ul class="simple">
+<li><p>Double-click <strong>platform.spr</strong> in the zcu102_edt platform to open platform configurations.</p></li>
+<li><p>Click the <strong>+</strong> button to add a domain.</p></li>
+<li><p>Input the following domain parameters:</p>
+<ul>
+<li><p>Name: <strong>linux</strong></p></li>
+<li><p>OS: <strong>linux</strong></p></li>
+<li><p>Keep the other options as-is and click <strong>OK</strong>.</p></li>
+</ul>
+</li>
+<li><p>Review the Linux domain configuration details.</p></li>
+<li><p>Build the platform project by clicking the hammer icon.</p></li>
+</ul>
+<p><img alt="Linux domain configuration details" src="../../../_images/linux_domain_details.png" /></p>
+</li>
+<li><p>Create a Linux application:</p>
+<ul class="simple">
+<li><p>Click <strong>File → New → Application Project</strong>.</p></li>
+<li><p>Click <strong>Next</strong> on the welcome page.</p></li>
+<li><p>Select platform: <strong>zcu102_edt</strong>. Click <strong>Next</strong>.</p></li>
+<li><p>Enter the application project name, <strong>hello_linux</strong>, and the target processor, <strong>psu_cortexa53 SMP</strong>.</p></li>
+<li><p>Keep the default domain: <strong>linux</strong>.</p></li>
+<li><p>Keep the SYSROOT, rootfs, and kernel image empty, and click <strong>Next</strong>.</p></li>
+<li><p>Select the <strong>Linux Hello World</strong> template. Click <strong>Finish</strong>.</p></li>
+</ul>
+<p><strong>Note:</strong> If you input an extracted SYSROOT directory, Vitis can find include files and libraries in SYSROOT. SYSROOT is generated by the PetaLinux project <code class="docutils literal notranslate"><span class="pre">petalinux-build</span> <span class="pre">--sdk</span></code>. Refer to the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) for more information about SYSROOT generation.</p>
+<p><strong>Note:</strong> If you input a rootfs and kernel image, Vitis can help to generate the <code class="docutils literal notranslate"><span class="pre">SD_card.img</span></code> when building the Linux system project.</p>
+</li>
+<li><p>Build the hello_linux application.</p>
+<ul class="simple">
+<li><p>Select <strong>hello_linux</strong>.</p></li>
+<li><p>Click the hammer button to build the application.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="preparing-the-linux-agent-for-remote-connection">
+<h3>Preparing the Linux Agent for Remote Connection<a class="headerlink" href="#preparing-the-linux-agent-for-remote-connection" title="Permalink to this heading">¶</a></h3>
+<p>The Vitis IDE needs a channel to download the application to the running target. When the target runs Linux, it uses TCF Agent running on Linux. TCF Agent is added to the Linux rootfs from the PetaLinux configuration by default. When Linux boots up, it launches TCF Agent automatically. The Vitis IDE talks to TCF Agent on the board using an Ethernet connection.</p>
+<ol>
+<li><p>Prepare for running the Linux application on the ZCU102 board. Vitis can download the Linux application to the board, which runs Linux through a network connection. It is important to ensure that the connection between the host machine and the board works well.</p>
+<ul class="simple">
+<li><p>Make sure the USB UART cable is still connected with the ZCU102 board. Turn on your serial console and connect to the UART port.</p></li>
+<li><p>Connect an Ethernet cable between the host and the ZCU102 board.</p>
+<ul>
+<li><p>It can be a direct connection from the host to the ZCU102 board.</p></li>
+<li><p>You can also connect the host and the ZCU102 board using a router.</p></li>
+</ul>
+</li>
+<li><p>Power on the board and let Linux run on ZCU102 (see <a class="reference external" href="#verifying-the-image-on-the-zcu102-board">Verifying the Image on the ZCU102 Board</a>).</p></li>
+<li><p>Set up a networking software environment.</p>
+<ul>
+<li><p>If the host and the board are connected directly, run <code class="docutils literal notranslate"><span class="pre">ifconfig</span> <span class="pre">eth0</span> <span class="pre">192.168.1.1</span></code> to setup an IP address on the board. Go to <strong>Control Panel → Network and Internet → Network and Sharing Center</strong>, and click <strong>Change Adapter Settings</strong>. Find your Ethernet adapter, then right-click and select <strong>Properties</strong>. Double-click <strong>Internet Protocol Version 4 (TCP/IPv4)</strong>, and select <strong>Use the following IP address</strong>. Input the IP address <strong>192.168.1.2</strong>. Click <strong>OK</strong>.</p></li>
+<li><p>If the host and the board are connected through a router, they should be able to get an IP address from the router. If the Ethernet cable is plugged in after the board boots up, you can get the IP address manually by running the <code class="docutils literal notranslate"><span class="pre">udhcpc</span> <span class="pre">eth0</span></code> command, which returns the board IP address.</p></li>
+<li><p>Have the host and the ZCU102 board ping each other to make sure the network is set up correctly.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Set up the Linux agent in the Vitis IDE.</p>
+<ul class="simple">
+<li><p>Click the <strong>Target Connections</strong> icon on the toolbar.</p></li>
+<li><p>It can also be launched by going to <strong>Window → Show View…</strong> and then looking for the target.</p></li>
+</ul>
+<p><img alt="Vitis Show View search for Target Connections" src="../../../_images/vitis_launch_target_connections1.png" /></p>
+<ul class="simple">
+<li><p>In the Target Connections window, double-click <strong>Linux TCF Agent → Linux Agent[default]</strong>.</p></li>
+<li><p>Input the IP address of your board.</p></li>
+<li><p>Click <strong>Test Connection</strong>.</p></li>
+</ul>
+<p><img alt="Vitis test connection details" src="../../../_images/vitis_target_connection_details1.png" /></p>
+<ul class="simple">
+<li><p>Vitis should return a pop-up confirmation for success.</p></li>
+</ul>
+<p><img alt="Vitis test connection success" src="../../../_images/vitis_test_connection_success1.png" /></p>
+</li>
+</ol>
+</section>
+<section id="running-the-linux-application-from-the-vitis-ide">
+<h3>Running the Linux Application from the Vitis IDE<a class="headerlink" href="#running-the-linux-application-from-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Run the Linux application:</p>
+<ul class="simple">
+<li><p>Right-click <strong>hello_linux</strong>, and select <strong>Run As → Run Configurations</strong>.</p></li>
+<li><p>Expand <strong>Single Application Debug</strong> and select <strong>Debugger_hello_linux-Default</strong>.</p></li>
+<li><p>Review the configurations:</p>
+<ul>
+<li><p>Debug type: <strong>Linux Application Debug</strong></p></li>
+<li><p>Connection: <strong>Linux Agent</strong></p></li>
+</ul>
+</li>
+<li><p>Click <strong>Run</strong>.</p></li>
+</ul>
+<p><img alt="Vitis Linux Run Configurations" src="../../../_images/vitis_linux_run_configurations1.png" /></p>
+<ul class="simple">
+<li><p>The console should print <strong>Hello World</strong>.</p></li>
+</ul>
+<p><img alt="Linux Hello World run result" src="../../../_images/linux_hello_world1.png" /></p>
+</li>
+<li><p>Disconnect the connection:</p>
+<ul class="simple">
+<li><p>Click the <strong>Terminate</strong> button on the toolbar or press <strong>Ctrl+F2</strong>.</p></li>
+<li><p>Click the <strong>Disconnect</strong> button on the toolbar.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="debugging-a-linux-application-from-the-vitis-ide">
+<h3>Debugging a Linux Application from the Vitis IDE<a class="headerlink" href="#debugging-a-linux-application-from-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
+<p>Debugging Linux applications requires the Linux agent to be set up properly. Refer to <a class="reference external" href="#preparing-the-linux-agent-for-remote-connection">Preparing the Linux Agent for Remote Connection</a> for detailed steps.</p>
+<ol>
+<li><p>Debug the Linux application:</p>
+<ul class="simple">
+<li><p>Right-click <strong>hello_linux</strong>, then select <strong>Debug As → Debug Configurations</strong>.</p></li>
+<li><p>Expand <strong>Single Application Debug</strong> and select <strong>Debugger_hello_linux-Default</strong>.</p></li>
+<li><p>Review the configurations:</p>
+<ul>
+<li><p>Debug type: <strong>Linux Application Debug</strong></p></li>
+<li><p>Connection: <strong>Linux Agent</strong></p></li>
+</ul>
+</li>
+<li><p>Click <strong>Debug</strong>.</p></li>
+</ul>
+<p>The debug configuration has identical options to the run configuration. The difference between debugging and running is that debugging stops at the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function.</p>
+</li>
+<li><p>Try the debugging features:</p>
+<p>Hello World is a simple application. It does not contain much to debug, but you can try the following to explore the Vitis debugger:</p>
+<ul class="simple">
+<li><p>Review the tabs on the upper right corner: Variables, Breakpoints, Expressions, and the rest.</p></li>
+<li><p>Review the call stack on the left.</p></li>
+<li><p>The next line to execute has a green background.</p></li>
+<li><p>Step over by clicking the icon on the toolbar or pressing <strong>F6</strong> on the keyboard. The printed string will be shown on the Console panel.</p></li>
+</ul>
+<p><img alt="../../../_images/vitis_debugger_hello_linux.png" src="../../../_images/vitis_debugger_hello_linux.png" /></p>
+</li>
+<li><p>Disconnect the connection:</p>
+<ul class="simple">
+<li><p>Click the <strong>Terminate button</strong> on the toolbar or press <strong>Ctrl+F2</strong>.</p></li>
+<li><p>Click the <strong>Disconnect</strong> button on the toolbar.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
+<p>In this chapter, you learned how to:</p>
+<ul class="simple">
+<li><p>Create a Linux boot image with PetaLinux.</p></li>
+<li><p>Create simple Linux applications with the Vitis IDE.</p></li>
+<li><p>Run and debug using the Vitis IDE.</p></li>
+</ul>
+<p>In the <a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html"><span class="doc">next chapter</span></a>, we will connect all points previously introduced and create a system design.</p>
+<p>© Copyright 2017-2021 Xilinx, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
+<p>http://www.apache.org/licenses/LICENSE-2.0</p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on August 1, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

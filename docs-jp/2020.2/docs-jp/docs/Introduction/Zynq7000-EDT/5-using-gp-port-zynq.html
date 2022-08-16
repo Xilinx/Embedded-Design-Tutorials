@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Using the GP Port in Zynq Devices &mdash; Embedded Design Tutorials 2020.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> Embedded Design Tutorials
+            <img src="../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2020.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Embedded Design Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Using the GP Port in Zynq Devices</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/Introduction/Zynq7000-EDT/5-using-gp-port-zynq.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-gp-port-in-zynq-devices">
+<h1>Using the GP Port in Zynq Devices<a class="headerlink" href="#using-the-gp-port-in-zynq-devices" title="Permalink to this heading">¶</a></h1>
+<p>One of the unique features of using the Xilinx® Zynq®-7000 SoC as an
+embedded design platform is in using the Zynq SoC processing system
+(PS) for its Arm™ Cortex-A9 dual core processing system as well as the
+programmable logic (PL) available on it.</p>
+<p>In this chapter, you will create a design with:</p>
+<ul class="simple">
+<li><p>An AXI GPIO and AXI Timer in the fabric (PL) with an interrupt from the fabric to the PS section</p></li>
+<li><p>A Zynq SoC PS GPIO pin connected to the fabric (PL) side pin using the EMIO interface</p></li>
+</ul>
+<p>The flow of this chapter is similar to that in <a class="reference internal" href="2-using-zynq.html"><span class="doc">Using the Zynq SoC Processing System</span></a> and uses the Zynq device as a
+base hardware design. It is assumed that you understand the concepts discussed in <a class="reference internal" href="2-using-zynq.html"><span class="doc">Using the Zynq SoC Processing System</span></a> regarding adding the Zynq device into a Vivado IP integrator block diagram design.</p>
+<section id="adding-ip-in-pl-to-the-zynq-soc-processing-system">
+<h2>Adding IP in PL to the Zynq SoC Processing System<a class="headerlink" href="#adding-ip-in-pl-to-the-zynq-soc-processing-system" title="Permalink to this heading">¶</a></h2>
+<p>There is no restriction on the complexity of an intellectual property
+(IP) that can be added in fabric to be tightly coupled with the Zynq®
+SoC PS. This section covers a simple example with an AXI GPIO, an AXI
+Timer with interrupt, and a PS section GPIO pin connected to a PL side
+pin using the EMIO interface. The block diagram for the system
+is as shown in the following figure.</p>
+<p><img alt="Target design block diagram" src="../../../_images/image381.jpeg" /></p>
+<p>You can use the system created in <a class="reference internal" href="2-using-zynq.html"><span class="doc">Using the Zynq SoC Processing System</span></a> and continue with the following examples.</p>
+<p>In the examples in this chapter, we will expand on the design with the following design changes:</p>
+<ul class="simple">
+<li><p>The fabric-side AXI GPIO is assigned a 1-bit channel width and is connected to the <strong>SW5</strong> push-button switch on the ZC702 board.</p></li>
+<li><p>The PS GPIO ports are modified to include a 1-bit interface that routes a fabric pin (using the EMIO interface) to the <strong>SW7</strong> push-button switch on the board.</p></li>
+<li><p>In the PS section, another 1-bit GPIO is connected to the <strong>DS23</strong> LED on the board, which is on the MIO port.</p></li>
+<li><p>The AXI timer interrupt is connected from the fabric to the PS section
+interrupt controller. The timer starts when you press any of the
+selected push buttons on the board. After the timer expires, the
+timer interrupt is triggered.</p></li>
+<li><p>Along with making the above hardware changes, you will write the
+application software code. The code will function as follows:</p>
+<ul>
+<li><p>A message appears in the serial terminal and asks you to select
+the push button switch to use on the board (either <strong>SW7</strong> or
+<strong>SW5</strong>).</p></li>
+<li><p>When the appropriate button is pressed, the timer automatically
+starts, switches LED <strong>DS23</strong> OFF, and waits for the timer
+interrupt to happen.</p></li>
+<li><p>After the timer interrupt, LED <strong>DS23</strong> switches ON and execution
+starts again and waits for you to select the push button
+switch in the serial terminal again.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="example-6-adding-peripheral-pl-ip">
+<h2>Example 6: Adding Peripheral PL IP<a class="headerlink" href="#example-6-adding-peripheral-pl-ip" title="Permalink to this heading">¶</a></h2>
+<section id="input-and-output-files">
+<h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Input Files:</p>
+<ul>
+<li><p>Vivado project from <a class="reference external" href="./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc">Example 1</a></p></li>
+<li><p>Vitis workspace in <a class="reference external" href="./2-using-zynq.md#example-2-creating-and-running-a-hello-world-application">Example 2</a></p></li>
+</ul>
+</li>
+<li><p>Output Files:</p>
+<ul>
+<li><p>Updated hardware handoff <code class="docutils literal notranslate"><span class="pre">system_wrapper.xsa</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hello_pl.elf</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="update-vivado-design-diagram">
+<h3>Update Vivado Design Diagram<a class="headerlink" href="#update-vivado-design-diagram" title="Permalink to this heading">¶</a></h3>
+<p>In this example, you will add the AXI GPIO, AXI Timer, the interrupt
+instantiated in the fabric, and the EMIO interface. You will then validate
+the fabric additions.</p>
+<ol>
+<li><p>Open the Vivado design created in <a class="reference external" href="./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc">Example 1</a>:</p>
+<ul class="simple">
+<li><p>Launch the Vivado® IDE.</p></li>
+<li><p>Under the Recent Projects column, click the <strong>edt_zc702</strong> design that you created in <a class="reference external" href="./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc">Using the Zynq SoC Processing System</a>.</p></li>
+<li><p>In Flow Navigator window, click <strong>Open Block Design</strong> under <strong>IP Integrator</strong>.</p></li>
+</ul>
+</li>
+<li><p>Add the AXI GPIO and AXI Timer IP:</p>
+<ul class="simple">
+<li><p>In the Diagram window, right-click in the blank space and select <strong>Add IP</strong>.</p></li>
+<li><p>In the search box, type AXI GPIO and double-click the <strong>AXI GPIO</strong> IP to add it to the block design. The AXI GPIO IP block appears in the Diagram window.</p></li>
+<li><p>In the Diagram window, right-click in the blank space and select <strong>Add IP</strong>.</p></li>
+<li><p>In the search box, type AXI Timer and double-click the <strong>AXI Timer</strong> IP to add it to the block design. The AXI Timer IP block appears in the Diagram view.</p></li>
+</ul>
+</li>
+<li><p>Enable the ZYNQ7 Processing System EMIO GPIO:</p>
+<ul class="simple">
+<li><p>Double-click the <strong>ZYNQ7 Processing System</strong> IP block.</p></li>
+</ul>
+<p>The Re-customize IP dialog box opens, as shown in the following figure.</p>
+<p><img alt="Recustomize ZYNQ7 PS 5.5" src="../../../_images/image39.jpeg" /></p>
+<ul class="simple">
+<li><p>Click <strong>MIO Configuration</strong>.</p></li>
+<li><p>Expand <strong>I/O Peripherals→ GPIO</strong> and enable the <strong>EMIO GPIO (Width)</strong> check box.</p></li>
+<li><p>Change the <strong>EMIO GPIO (Width)</strong> to <strong>1</strong>.</p></li>
+</ul>
+</li>
+<li><p>Enable the ZYNQ7 Processing System interrupt:</p>
+<ul class="simple">
+<li><p>Navigate to <strong>Interrupts → Fabric Interrupts → PL-PS Interrupt Ports</strong>.</p></li>
+<li><p>Check the <strong>Fabric Interrupts</strong> box to enable PL to PS interrupts.</p></li>
+<li><p>Check <strong>IRQ_F2P[15:0]</strong> to enable general interrupts. The <code class="docutils literal notranslate"><span class="pre">CoreN_nFIQ</span></code> signals are used for fast interrupt.</p></li>
+<li><p>Click <strong>OK</strong> to accept the changes to the ZYNQ7 Processing System IP. The diagram looks like the following figure.</p></li>
+</ul>
+<p><img alt="BD with Timer and GPIO" src="../../../_images/image401.png" /></p>
+</li>
+<li><p>Connect the PL IPs:</p>
+<ul class="simple">
+<li><p>Click the <strong>Run Connection Automation</strong> link at the top of the page to automate the connection process for the newly added IP blocks.</p></li>
+<li><p>In the Run Connection Automation dialog box, select the check box next to <strong>All Automation</strong>, as shown in the following figure.</p></li>
+</ul>
+<p><img alt="Connection Automation" src="../../../_images/image411.png" /></p>
+<ul class="simple">
+<li><p>Click <strong>OK</strong>.</p></li>
+</ul>
+<p>Upon completion, the updated diagram looks like the following figure.</p>
+<p><img alt="Connected" src="../../../_images/image421.png" /></p>
+</li>
+<li><p>Customize the <strong>AXI GPIO</strong> IP block:</p>
+<ul class="simple">
+<li><p>Double-click the <strong>AXI GPIO</strong> IP block to customize it.</p></li>
+<li><p>Under the <strong>Board</strong> page, make sure that both <strong>GPIO</strong> and <strong>GPIO2</strong> are set to <strong>Custom</strong>.</p></li>
+<li><p>Select the <strong>IP Configuration</strong> page. In the GPIO section, change
+the <strong>GPIO Width</strong> to <strong>1</strong> because you only need one GPIO port.</p></li>
+<li><p>Ensure that <strong>All Inputs</strong> and <strong>All Outputs</strong> are both unchecked.</p></li>
+<li><p>Click <strong>OK</strong> to accept the changes.</p></li>
+</ul>
+</li>
+<li><p>Connect interrupt signals:</p>
+<ul class="simple">
+<li><p>Notice that the Interrupt port is not automatically connected to the
+AXI Timer IP Core. In the Block Diagram view, locate the <code class="docutils literal notranslate"><span class="pre">IRQ_F2P[0:0]</span></code> port on the ZYNQ7 Processing System.</p></li>
+<li><p>Scroll your mouse over the connector port until the pencil button
+appears, then click the <strong>IRQ_F2P[0:0]</strong> port and drag to the
+<strong>interrupt</strong> output port on the <strong>axi_timer_0</strong> to make a
+connection between the two ports.</p></li>
+</ul>
+</li>
+<li><p>Make the PS GPIO port external:</p>
+<ul class="simple">
+<li><p>Notice that the ZYNQ7 Processing System <code class="docutils literal notranslate"><span class="pre">GPIO_0</span></code> port is not connected. Right-click the <strong>GPIO_0</strong> output port on the <strong>ZYNQ7 Processing System</strong> and select <strong>Make External</strong>.</p></li>
+</ul>
+<p>The pins are external but do not have the required constraints for our
+board. To constrain your hardware pins to specific device locations,
+follow the steps below. These steps can be used for any manual pin
+placements.</p>
+</li>
+</ol>
+</section>
+<section id="assigning-location-constraints-to-external-pins">
+<h3>Assigning Location Constraints to External Pins<a class="headerlink" href="#assigning-location-constraints-to-external-pins" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Click <strong>Open Elaborated Design</strong> under RTL Analysis in the Flow
+Navigator view.</p>
+<p><img alt="Open Elaborated Design" src="../../../_images/image43.png" /></p>
+<ul class="simple">
+<li><p>Click <strong>OK</strong> on the pop-up message.</p></li>
+</ul>
+<p><strong>TIP:</strong> The design might take a few minutes to elaborate. If you
+want to do something else in Vivado while the design elaborates, you
+can click the <strong>Background</strong> button to have Vivado continue running
+the process in the background.</p>
+</li>
+<li><p>Select <strong>I/O Planning</strong> from the dropdown menu, as shown in the following figure, to display the <strong>I/O Ports</strong> window.</p>
+<p><img alt="IO Planning Drop Down menu" src="../../../_images/image45.jpeg" /></p>
+</li>
+<li><p>Under the I/O Ports window at the bottom of the Vivado window (as
+seen in the following figure), expand the <strong>GPIO_0_0_<Num></strong> and
+<strong>gpio_sw_<Num></strong> ports to check the site (pin) map.</p>
+<p><img alt="../../../_images/image471.png" src="../../../_images/image471.png" /></p>
+</li>
+<li><p>Find <strong>GPIO_0_0_tri_io[0]</strong> and set the following properties,
+shown in the following figure:</p>
+<ul class="simple">
+<li><p>Package Pin = F19</p></li>
+<li><p>I/O Std = LVCMOS25</p></li>
+</ul>
+</li>
+<li><p>Find <strong>gpio_sw_tri_io[0]</strong> and set the following properties, shown
+in the following figure:</p>
+<ul class="simple">
+<li><p>Package Pin = G19</p></li>
+<li><p>I/O Std = LVCMOS25</p></li>
+</ul>
+<p><img alt="Pin Assigned" src="../../../_images/image481.png" /></p>
+<p><strong>Note:</strong> For additional information about creating other design
+constraints, refer to the <em>Vivado Design Suite User Guide: Using
+Constraints</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd=ug903-vivado-using-constraints.pdf">UG903</a>).</p>
+</li>
+<li><p>In the Flow Navigator, under Program and Debug, select <strong>Generate Bitstream</strong>.</p>
+<ul class="simple">
+<li><p>The Save Constraints window opens.</p></li>
+<li><p>Input a file name, such as <strong>constraints</strong>.</p></li>
+<li><p>Keep File Type = <strong>XDC</strong> and File Location = <strong><Local to Project></strong>.</p></li>
+<li><p>Click <strong>OK</strong>.</p></li>
+<li><p>Click <strong>OK</strong> to launch synthesis, implementation first.</p></li>
+<li><p>In the Launch Runs window, keep launch runs on the local host and click <strong>OK</strong>.</p></li>
+</ul>
+<p>A constraints file is created and saved under the <strong>Constraints</strong>
+folder on the <strong>Hierarchy</strong> view of the <strong>Sources</strong> window.</p>
+<p><img alt="../../../_images/image50.png" src="../../../_images/image50.png" /></p>
+<ul class="simple">
+<li><p>After bitstream generation completes, click cancel in the pop-up window.</p></li>
+</ul>
+</li>
+<li><p>Export the hardware using <strong>File→ Export → Export Hardware</strong>. Use the information in the
+table below to make selections in each of the wizard screens.
+Click <strong>Next</strong> where necessary.</p></li>
+</ol>
+<pre><code>| Screen            | System Property | Setting or Command to Use    |
+| ------------------------ | --------------- | ---------------------------- |
+| Export Hardware Platform |                 |                              |
+| Output                   |                 | Select **Include bitstream**. |
+| Files                    | XSA Filename    | Leave as system_wrapper.     |
+|                          | Export to       | Leave as C:/edt/edt_zc702.    |
+</code></pre><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>**Note:** If a pop-up appears saying the module is already exported, click **Yes** to overwrite the file.
+
+- Click **Finish**.
+
+The exported file is located at ``C:/edt/edt_zc702/system_wrapper.xsa``.
+</pre></div>
+</div>
+</section>
+<section id="updating-hardware-in-the-vitis-software-platform">
+<h3>Updating Hardware in the Vitis Software Platform<a class="headerlink" href="#updating-hardware-in-the-vitis-software-platform" title="Permalink to this heading">¶</a></h3>
+<p>Open the Vitis IDE and manually update the exported hardware from Vivado.</p>
+<ol>
+<li><p>In the Explorer view, right-click on the <strong>zc702_edt</strong> platform
+project and click the <strong>Update Hardware Specification</strong> option
+as shown in the following figure.</p>
+<p><img alt="Update Hardware Specification" src="../../../_images/image521.png" /></p>
+</li>
+<li><p>In the Update Hardware Specification view, browse for the exported XSA file (<code class="docutils literal notranslate"><span class="pre">C:/edt/edt_zc702/system_wrapper.xsa</span></code>) from Vitis and click <strong>OK</strong>.</p>
+<ul class="simple">
+<li><p>A view opens stating that the hardware specification for the platform project has been updated. Click <strong>OK</strong> to close it.</p></li>
+</ul>
+</li>
+<li><p>Rebuild the out-of-date platform project.</p>
+<ul class="simple">
+<li><p>Right-click the <strong>zc702_edt</strong> project, then select <strong>Clean Project</strong> followed by <strong>Build Project</strong>.</p></li>
+</ul>
+<p>After the zc702_edt project build completes, the <code class="docutils literal notranslate"><span class="pre">zc702_edt.xpfm</span></code> file is generated.</p>
+</li>
+</ol>
+</section>
+<section id="testing-the-pl-ip-with-prepared-software">
+<h3>Testing the PL IP with Prepared Software<a class="headerlink" href="#testing-the-pl-ip-with-prepared-software" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Create a new standalone application for Arm Cortex-A9:</p>
+<ul class="simple">
+<li><p>Select <strong>File → New → Application Project</strong>.</p></li>
+</ul>
+<p>The New Application Project wizard opens. Use the information in the following table to make your selections in the wizard screens.</p>
+</li>
+</ol>
+<pre><code>| Screen                     | System Properties                             | Setting or Command to Use                  |
+| --------------------------------- | --------------------------------------------- | ------------------------------------------ |
+| Platform                          | Select a platform from repository             | Click zc702_edt [custom].                   |
+| Application Project Details       | Application project name                      | Enter hello_pl.                        |
+|                                   | System project name                           | Keep hello_pl_system.                    |
+|                                   | Target Processor                              | Keep ps7_cortexa9_0 selected.               |
+|                                   | Show all processors in hardware specification | Keep unchecked.                            |
+| Domain                            | Select a domain                               | Keep standalone on ps7_cortex9_0 selected. |
+| Templates                         | Available Templates                           | Hello World                                |
+</code></pre><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Click</span> <span class="o">**</span><span class="n">Finish</span><span class="o">**.</span> <span class="n">The</span> <span class="n">Vitis</span> <span class="n">software</span> <span class="n">platform</span> <span class="n">creates</span> <span class="n">the</span> <span class="n">hello_world</span> <span class="n">application</span> <span class="n">project</span> <span class="ow">and</span> <span class="n">hello_world_system</span> <span class="n">project</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Explorer</span> <span class="n">view</span><span class="o">.</span>
+</pre></div>
+</div>
+<ol>
+<li><p>Import the provided source file to hello_pl project:</p>
+<ul class="simple">
+<li><p>Right-click the <strong>hello_pl</strong> project and select <strong>Import Sources</strong>.</p></li>
+<li><p>Click <strong>Browse</strong> in the pop-up Import Sources window.</p></li>
+<li><p>Point to the <strong>ref_files/example3</strong> directory of this repository.</p></li>
+<li><p>Select <strong>hello_pl.c</strong>.</p></li>
+<li><p>Click <strong>Finish</strong>.</p></li>
+</ul>
+</li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">helloworld.c</span></code> in the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory:</p>
+<ul class="simple">
+<li><p>Right-click <strong>helloworld.c</strong> in the src directory.</p></li>
+<li><p>Select <strong>Delete</strong>.</p></li>
+</ul>
+</li>
+<li><p>Build the hello_pl project:</p></li>
+<li><ul class="simple">
+<li><p>Right-click the <strong>hello_pl</strong> project.</p></li>
+<li><p>Select <strong>Build project</strong>.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">hello_pl.elf</span></code> file will be generated. The next step is to test the newly created hardware and software on the board.</p>
+</li>
+<li><p>Connect the USB cable for JTAG and serial.</p></li>
+<li><p>Open your preferred serial communication utility with baud rate set to <strong>115200</strong>. In this example, we used MobaXterm.</p>
+<p><strong>Note:</strong> This is the baud rate that the UART is programmed to on Zynq devices.</p>
+</li>
+<li><p>Change boot mode back to JTAG mode (as in <a class="reference external" href="./2-using-zynq.md#setting-up-the-board">Example 2</a>).</p>
+<ul class="simple">
+<li><p>Set <strong>SW16</strong> to 00000.</p></li>
+</ul>
+</li>
+<li><p>Run the project similar to the steps in <a class="reference external" href="./2-using-zynq.md#running-the-hello-world-application-on-a-zc702-board">Example 2</a>.</p>
+<ul class="simple">
+<li><p>Right-click <strong>hello_pl</strong>, and select <strong>Run as → Launch on Hardware</strong>.</p></li>
+</ul>
+<p>If the running fails, open the <strong>Run as → Run Configurations</strong> view, check the Target Setup configuration against the following screenshot, update the settings, and click <strong>Run</strong>.</p>
+<p><img alt="Run Configuration" src="../../../_images/image56.png" /></p>
+<p>Because you updated the hardware specification with the XSA that includes a post-implementation bitstream, the run configuration sets the bitstream file automatically. If your XSA file does not contain a bitstream, click the <strong>Browse</strong> button to point to your bitstream. You can also leave the Bitstream option blank and go to <strong>Xilinx → Program Device</strong> to program the bitstream before launching the application manually.</p>
+<p><img alt="Program Device" src="../../../_images/image55.png" /></p>
+</li>
+<li><p>In the system, the AXI GPIO pin is connected to push button <strong>SW5</strong>
+on the board, and the PS section GPIO pin is connected to push
+button <strong>SW7</strong> on the board through an EMIO interface.</p></li>
+<li><p>Follow the instructions printed on the serial terminal to run the
+application. See the following figure for the serial output logs.</p>
+<p><img alt="UART prints" src="../../../_images/image57.png" /></p>
+</li>
+</ol>
+</section>
+<section id="hello-pl-standalone-software-details">
+<h3>Hello_PL Standalone Software Details<a class="headerlink" href="#hello-pl-standalone-software-details" title="Permalink to this heading">¶</a></h3>
+<p>The system you designed in this chapter requires application software
+for the execution on the board. This section describes the details
+about the application software.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">main()</span></code> function in the application software is the entry point for
+the execution. This function includes initialization and the required
+settings for all peripherals connected in the system. It also has a
+selection procedure for the execution of the different use cases, such
+as AXI GPIO and PS GPIO using EMIO interface. You can select different
+use cases by following the instructions on the serial terminal.</p>
+<p>The application software is programmed to accomplish the following steps:</p>
+<ol>
+<li><p>Initialize the AXI GPIO module.</p></li>
+<li><p>Set a direction control for the AXI GPIO pin as an input pin, which
+is connected with the <strong>SW5</strong> push button on the board. The
+location is fixed by a LOC constraint in the user constraint file
+(XDC) during system creation.</p></li>
+<li><p>Initialize the AXI Timer module with device ID 0.</p></li>
+<li><p>Associate a timer callback function with AXI Timer ISR.</p>
+<p>This function is called every time the timer interrupt happens. This
+callback switches on the LED <strong>DS23</strong> on the board and sets the
+interrupt flag.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">main()</span></code> function uses the interrupt flag to halt execution, waits
+for timer interrupt to happen, and then restarts the execution.</p>
+</li>
+<li><p>Set the reset value of the timer, which is loaded to the timer
+during reset and timer starts.</p></li>
+<li><p>Set timer options such as Interrupt mode and Auto Reload mode.</p></li>
+<li><p>Initialize the PS section GPIO.</p></li>
+<li><p>Set the PS section GPIO, channel 0, pin number 10 to the output pin,
+which is mapped to the MIO pin and physically connected to the LED
+<strong>DS23</strong> on the board.</p></li>
+<li><p>Set PS Section GPIO channel number 2, pin number 0, to an input pin,
+which is mapped to PL side pin using the EMIO interface, and is physically connected to the <strong>SW7</strong> push button switch.</p></li>
+<li><p>Initialize the snoop control unit global interrupt controller. Register the timer interrupt routine to interrupt ID <strong>91</strong>, register the exceptional handler, and enable the interrupt.</p></li>
+<li><p>Execute a sequence in the loop to select between the AXI GPIO or PS GPIO
+use case using the serial terminal.</p>
+<p>The software accepts your selection from the serial terminal and
+executes the procedure accordingly. After the selection of the use
+case through the serial terminal, you must press a push button on the
+board as per the instruction on the terminal. This action switches off the
+LED DS23, starts the timer, and tells the function to wait infinitely
+for the timer interrupt to happen. After the timer interrupt happens,
+LED DS23 switches ON and restarts execution.</p>
+</li>
+</ol>
+<p>See the <a class="reference internal" href="6-using-hp-port.html"><span class="doc">next chapter</span></a> for information about using the HP slave port with AXI CDMA IP.</p>
+<p>© Copyright 2015–2021 Xilinx, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
+<p>http://www.apache.org/licenses/LICENSE-2.0</p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on August 1, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

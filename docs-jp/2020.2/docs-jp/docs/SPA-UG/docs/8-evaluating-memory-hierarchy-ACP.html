@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Evaluating Memory Hierarchy and the ACP &mdash; Embedded Design Tutorials 2020.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> Embedded Design Tutorials
+            <img src="../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2020.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Embedded Design Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Evaluating Memory Hierarchy and the ACP</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/SPA-UG/docs/8-evaluating-memory-hierarchy-ACP.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="evaluating-memory-hierarchy-and-the-acp">
+<h1>Evaluating Memory Hierarchy and the ACP<a class="headerlink" href="#evaluating-memory-hierarchy-and-the-acp" title="Permalink to this heading">¶</a></h1>
+<p>The System Performance Modeling (SPM) design can be used to evaluate the performance effects of the Zynq®-7000 SoC cache. You can assess baseline performance using software only, and then you can evaluate the effects of traffic on the Accelerator Coherency Port (ACP). While running software only can produce fairly predictable memory performance, introducing other traffic activity into the system may lead to less intuitive results. Specifically, CPU and ACP traffic have the potential to impact each other at the shared L2 cache. The SPM design allows you to do this analysis very easily.</p>
+<section id="assess-memory-performance">
+<h2>Assess Memory Performance<a class="headerlink" href="#assess-memory-performance" title="Permalink to this heading">¶</a></h2>
+<p>To begin the evaluation, the SPM design can be used to assess a baseline performance using software only. An application to use for this evaluation is the memory stride benchmarks program, one of the pre-compiled executables that comes with the SPM project.</p>
+<p>The following figure shows how this was defined in the Vitis™ IDE using the memory stride software executable (see <a class="reference external" href="../docs/2-system-performance-modeling-project.md#spm-software">SPM Software</a>). This software was instrumented to calculate bandwidth and average latency (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.md#instrumenting-software">Instrumenting Software</a>).</p>
+<p><em>Figure 33:</em> <strong>Application Setup using Memory Stride Software</strong></p>
+<p><img alt="../../../_images/image321.jpeg" src="../../../_images/image321.jpeg" /></p>
+<div id="table7"><p><em>Table 7:</em> <strong>Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</strong></p>
+<table>
+<thead>
+<tr>
+<th rowspan="2">Pattern Type</td>
+<th rowspan="2">Operation Type</td>
+<th colspan="3">Working Set Size</td>
+</tr>
+<tr>
+<th>4 KB</td>
+<th>64 KB</td>
+<th>1024 KB</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<p>Linear</p>
+</td>
+<td>
+<p>Read</p>
+</td>
+<td>
+<p>2141.4</p>
+</td>
+<td>
+<p>338.4</p>
+</td>
+<td>
+<p>118.1</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
+<p>Write</p>
+</td>
+<td>
+<p>2114.8</p>
+</td>
+<td>
+<p>238.4</p>
+</td>
+<td>
+<p>57.6</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
+<p>Copy</p>
+</td>
+<td>
+<p>1248.4</p>
+</td>
+<td>
+<p>126.7</p>
+</td>
+<td>
+<p>32.9</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
+<p>Read/Write</p>
+</td>
+<td>
+<p>1194.4</p>
+</td>
+<td>
+<p>265.2</p>
+</td>
+<td>
+<p>64.4</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Random (Pre- Computed)</p>
+</td>
+<td>
+<p>Read</p>
+</td>
+<td>
+<p>1019.9</p>
+</td>
+<td>
+<p>325.9</p>
+</td>
+<td>
+<p>92.4</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
+<p>Write</p>
+</td>
+<td>
+<p>532.4</p>
+</td>
+<td>
+<p>285.6</p>
+</td>
+<td>
+<p>64.1</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
+<p>Copy</p>
+</td>
+<td>
+<p>442.6</p>
+</td>
+<td>
+<p>140.6</p>
+</td>
+<td>
+<p>31.9</p>
+</td>
+</tr>
+<tr>
+<td>Random (Real-Time)</td>
+<td>Read</td>
+<td>
+<p>337.2</p>
+</td>
+<td>
+<p>138.7</p>
+</td>
+<td>
+<p>41.5</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>Write</td>
+<td>
+<p>409.8</p>
+</td>
+<td>
+<p>393.6</p>
+</td>
+<td>
+<p>70.0</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>Copy</td>
+<td>
+<p>409.7</p>
+</td>
+<td>
+<p>159.4</p>
+</td>
+<td>
+<p>32.8</p>
+</td>
+</tr>
+</tbody>
+</table></div><div id="table8"><p><em>Table 8:</em> <strong>Software-Only Latency Results for Memory Stride Benchmarks (in nsec)</strong></p>
+<table>
+<thead>
+<tr>
+<th rowspan="2">Pattern Type</td>
+<th rowspan="2">Operation Type</td>
+<th colspan="3">Working Set Size</td>
+</tr>
+<tr>
+<th>4 KB</td>
+<th>64 KB</td>
+<th>1024 KB</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear</td>
+<td>Read</td>
+<td>
+<p>1.87</p>
+</td>
+<td>
+<p>11.82</p>
+</td>
+<td>
+<p>33.88</p>
+</td>
+</tr>
+<tr>
+<td>Random (Pre- Computed)</td>
+<td>Read</td>
+<td>
+<p>1.89</p>
+</td>
+<td>
+<p>16.78</p>
+</td>
+<td>
+<p>69.46</p>
+</td>
+</tr>
+</tbody>
+</table></div><p>Using no traffic in the Programmable Logic (PL), bandwidth results (in MB/sec) for the software- only tests are listed in <a class="reference external" href="#table7">Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</a>, while latency results (in nsec) are shown in <a class="reference external" href="#table8">Table 8: Software-Only Latency Results for Memory Stride Benchmarks (in nsec)</a>. Three different working set sizes were used to specifically test the bandwidth of different stages of the memory hierarchy: 4 KB, 64 KB, and 1024 KB. These are the three sizes used by the pre-compiled memory stride executable in the SPM project. The locality of these data arrays is known based on their size and the fact that there is little else in the heap used by the program.</p>
+<p>Within a working set size, the highest bandwidths are achieved by the linear bandwidth tests as they can take advantage of the 32-byte cache lines. Operations such as copy and read/write are generally slower because they involve a mix of read and write operations. Among the three different set sizes, the 4 KB array sustains the highest bandwidth while the 1024 KB array sustains the lowest bandwidth.</p>
+<p>There are 36 total tests performed, as the 12 benchmarks listed in <a class="reference external" href="#table7">Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</a> and <a class="reference external" href="#table8">Table 8: Software-Only Latency Results for Memory Stride Benchmarks (in nsec)</a> are each run on the three different data array sizes. Since a sleep time of one second was inserted between each test, the CPU utilization gives a clear view of when these benchmarks were run. The following figure helps orient the timeline for the results. The three data sizes were run from smallest to largest within each benchmark, which can be seen in the value and length of the utilization of CPU0.</p>
+<p><em>Figure 34:</em> <strong>PS Performance Graphs for Memory Stride Benchmarks</strong></p>
+<p><img alt="../../../_images/image33.jpeg" src="../../../_images/image33.jpeg" /></p>
+<p>The previous figure also shows three other graphs reported in the PS Performance panel, including: L1 Data Cache Miss Rate, and CPU Write/Read Stall Cycles Per Instruction. While the periodic nature of
+the memory stride benchmarks is reflected in these graphs, these three graphs can also provide information as to where the data is being retrieved. Every third benchmark has a L1 data cache miss rate of 0% - that was when the 4 KB working set size was used. The other two set sizes do not fit in the L1 data cache and, therefore, have at or near 100% miss rates.</p>
+<p>The software impact of these cache misses can be seen in the Stall Cycles Per Instruction. A higher number of stall cycles means the processor is spending more cycles waiting for either a memory write (write) or a data cache refill (read). This would, in turn, lower the effective bandwidth of that benchmark. An example is the Linear Bandwidth – Copy benchmark which was performed between approximately 10-11s. The high number of CPU write/read stall cycles per instruction during this time shows why it sustains one of the lowest bandwidths of all memory stride benchmarks (33.23 MB/s; see <a class="reference external" href="#_bookmark47">Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</a>.</p>
+</section>
+<section id="data-size-and-locality">
+<h2>Data Size and Locality<a class="headerlink" href="#data-size-and-locality" title="Permalink to this heading">¶</a></h2>
+<p>To better visualize the performance of the memory hierarchy, the working set size used in the memory stride tests was swept across a range of values between 1 KB and 4096 KB. This enables a clear view of how data size and locality can affect the bandwidth and latency achieved by the CPU.</p>
+<p><em>Figure 35:</em> <strong>CPU Memory Bandwidth Achieved During Memory Stride Tests</strong></p>
+<p><img alt="../../../_images/image34.jpeg" src="../../../_images/image34.jpeg" /></p>
+<p>The previous figure shows the memory bandwidth achieved by CPU0 during the memory stride tests. For clarity, the random bandwidth (real-time) tests are not shown in the graph. As the working set size increases, there are noticeable transitions at the L1 and L2 data cache boundaries as the working set size no longer fits into the previous cache. The following figure shows similar transition points for the average memory access latency achieved by CPU0 during the memory stride tests. However, while the bandwidth decreases with an increasing working set size, the latency noticeably increases.</p>
+<p><em>Figure 36:</em> <strong>CPU Memory Access Latency Achieved During Memory Stride Tests</strong></p>
+<p><img alt="../../../_images/image352.png" src="../../../_images/image352.png" /></p>
+</section>
+<section id="shared-l2-cache">
+<h2>Shared L2 Cache<a class="headerlink" href="#shared-l2-cache" title="Permalink to this heading">¶</a></h2>
+<p>Now that baseline performance measurements have been made between the CPUs and the memories, traffic can be added on the Accelerator Coherency Port (ACP) to analyze its effects on system performance. The memory stride software (see <a class="reference external" href="../docs/2-system-performance-modeling-project.md#spm-software">SPM Software</a>) was run again on CPU0; however, this time traffic was added to the ACP. Since the L2 cache is shared by the CPUs and the ACP, there is expected to be some contention to occur at that memory.</p>
+<p>The following figure shows the ATG configuration that models the initial traffic on the ACP. It specifies random addressing within a 4 KB region and utilizes the memory path through the L2 cache to the DDR. The first value for Tranx Interval is 100 clock cycles, which configures the ATGs to request a throughput of 128 MB/sec at 100 MHz. Keeping every other setting constant, the values for Tranx Interval were decreased, thus increasing the requested throughputs. The values used for this transaction interval include: 100, 50, 30, 25, 20, and, 17. These intervals lead to request throughputs of 128, 256, 426, 512, 640, and 752 MB/s.</p>
+<p><em>Figure 37:</em> <strong>ATG Configuration Modeling Traffic on ACP</strong></p>
+<p><img alt="../../../_images/image36.jpeg" src="../../../_images/image36.jpeg" /></p>
+<p>This traffic scenario enables an exploration of bandwidth tradeoffs between the CPUs and the ACP. Note that this models the case where the CPU and ACP are not using a shared memory space. Similarly to the DDR, the L2 data cache allocates its bandwidth based on scheduling. If the combined bandwidth is higher than what the L2 cache can support, then contention in the form of backpressure is introduced.</p>
+<p><em>Figure 38:</em> <strong>Performance Summary for Memory Stride and No ACP Traffic</strong></p>
+<p><img alt="../../../_images/image37.jpeg" src="../../../_images/image37.jpeg" /></p>
+<p>The previous figure shows the performance summary table in the Vitis IDE after running memory stride with no ACP traffic, while the following figure shows the same summary table with memory stride running plus read/write traffic on the ACP requesting 752 MB/sec (Tranx Interval of 17). These are the two bounds of the test, and the differences are noticeable. While the ACP traffic is clearly evident in the following figure, the CPU statistics are generally very similar.</p>
+<p><em>Figure 39:</em> <strong>Performance Summary for Memory Stride and ACP Traffic Requesting 752 MB/sec</strong></p>
+<p><img alt="../../../_images/image382.jpeg" src="../../../_images/image382.jpeg" /></p>
+<p>One difference is in the CPU Write Stall Cycles Per Instruction and the CPU Read Stall Cycles Per Instruction. While these values are 2.79 and 4.29 with no ACP traffic, they increase to 3.35 and 5.64, respectively, with high-bandwidth ACP traffic. High values for these two metrics means the CPU is stalling often on memory writes and data cache refills. The reason for the increase in these values is the contention at the L2 cache, since the ACP traffic is consuming a significant amount of L2 cache bandwidth.</p>
+<p>The following figure shows how the write and read performance on the ACP is affected by this contention. There is minimal impact on the ACP write performance, with only slight increases in latency during the
+various software benchmarks. However, the average read latency is clearly affected by the memory stride software activity, showing a periodicity reflecting the sequence of benchmarks. The ACP throughput is also affected, dropping to a worst-case value of approximately 640 MB/s. While the requested bandwidth of 752 MB/s is perhaps unrealistically high and persistent for a typical design, it does provide a stress test of the system.</p>
+<p><em>Figure 40:</em> <strong>ACP Performance Results in the Vitis IDE Showing Impact on Latency</strong></p>
+<p><img alt="../../../_images/image391.jpeg" src="../../../_images/image391.jpeg" /></p>
+<p>As the requested ACP bandwidth was swept in value, the sustained CPU bandwidth was also recorded. The following figure shows the bandwidth achieved by CPU0 with memory stride using a working set size of 4 KB.</p>
+<p><em>Figure 41:</em> <strong>Performance Achieved by CPU0 vs. ACP Bandwidth (Set Size = 4 KB)</strong></p>
+<p><img alt="../../../_images/image402.png" src="../../../_images/image402.png" /></p>
+<p>The following figure shows the CPU0 bandwidth when memory stride operated on the 64 KB set size.</p>
+<p><em>Figure 42:</em> <strong>Performance Achieved by CPU0 vs. ACP Bandwidth (Set Size = 64 KB)</strong></p>
+<p><img alt="../../../_images/image412.png" src="../../../_images/image412.png" /></p>
+<p>The following figure shows the bandwidth when memory stride used the 1024 KB set size. Due to their set sizes, these results are assumed to be good measurements of achieved bandwidth from the L1 data cache, the L2 data cache, and the DDR, respectively.</p>
+<p><em>Figure 43:</em> <strong>Performance Achieved by CPU0 vs. ACP Bandwidth (Set Size = 1024 KB)</strong></p>
+<p><img alt="../../../_images/image422.png" src="../../../_images/image422.png" /></p>
+<p>When running the memory stride software with a working set size of 4 KB, the CPU bandwidth was unaffected by the traffic on the ACP. When using set sizes of 64 KB and 1024 KB, the ACP traffic does have a measurable impact on the CPU bandwidth. The largest decrease in CPU0 bandwidth was 14.6% for the Linear Bandwidth - Copy benchmark operating on a set size of 64 KB.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on August 1, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
