@@ -1,7 +1,7 @@
 <p align="right"><a href="../docs-cn/README.md">简体中文</a> | <a href="../docs/README.md">English</a></p>
 <table width="100%">
  <tr width="100%">
-    <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>エンベデッド デザインの資料</h1>
+    <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>エンベデッド デザインの資料</h1><p>この資料の最新日本語版は、<a href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">GitHub IO サイト</a>でのみ提供されています。</p>
     </td>
  </tr>
 </table>
