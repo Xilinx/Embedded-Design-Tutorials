@@ -268,7 +268,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
 
    .. code:: shell
 
-       $ cd <Petalinux-project-path>/xilinx-zcu102-2022.1/images/linux/
+       $ cd <Petalinux-project-path>/xilinx-zcu102-2022.2/images/linux/
        $ mkdir sd_boot
        $ cp image.ub sd_boot/
        $ cp u-boot.elf sd_boot/
@@ -278,7 +278,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
 
    .. code:: shell
    
-      $ cd <Petalinux-project-path>/xilinx-zcu102-2022.1
+      $ cd <Petalinux-project-path>/xilinx-zcu102-2022.2
 
 3. Launch the top-level system configuration menu:
 
@@ -818,7 +818,7 @@ In this section you will load the boot images on the ZCU102 target using the DFU
 
 5. Power on the board.
 
-The following steps load the boot images via USB using the DFU utility, which can be found at ``Vitis\2022.1\tps\lnx64\dfu-util-0.9``.
+The following steps load the boot images via USB using the DFU utility, which can be found at ``Vitis\2022.2\tps\lnx64\dfu-util-0.9``.
 
 Alternatively, you can install the DFU utility on Linux using the Package Manager supported by Linux Distribution.
 
