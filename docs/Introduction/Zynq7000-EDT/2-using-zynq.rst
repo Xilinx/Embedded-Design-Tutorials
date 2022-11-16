@@ -39,7 +39,7 @@ Creating Your Hardware Design
 
 1. Start the Vivado Design Suite.
 
-   -  On Windows 10, click the start menu and find **Xilinx Design Tools -> Vivado 2022.1**.
+   -  On Windows 10, click the start menu and find **Xilinx Design Tools -> Vivado 2022.2**.
    -  On Linux, run `source <Vivado installation path>/settings64.sh` to set up the environment and run ``vivado &`` to launch the Vivado IDE.
 
 2. In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
@@ -227,7 +227,7 @@ Two types of hardware can be exported from Vivado: pre-synthesis and post-implem
 
          write_hw_platform -fixed -force -file C:/edt/edt_zc702/system_wrapper.xsa
          INFO: [Vivado 12-4895] Creating Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa ...
-         INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2022.1/data/embeddedsw) loading 1 seconds
+         INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2022.2/data/embeddedsw) loading 1 seconds
          INFO: [Vivado 12-12467] The Hardware Platform can be used for Hardware
          INFO: [Vivado 12-4896] Successfully created Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa
 
@@ -291,7 +291,7 @@ Creating a Vitis Platform Project
 1. Launch the Vitis IDE with any of the actions below:
 
    1. From the Vivado IDE, select **Tools -> Launch Vitis IDE**.
-   2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Xilinx Vitis 2022.1**.
+   2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Xilinx Vitis 2022.2**.
    3. On Linux, run ``source <Vitis Installation Directory>/settings64.sh`` to set up the environment and run ``vitis &``.
 
 2. Select the workspace location as **C:/edt/edt_zc702_workspace** or any given location path.

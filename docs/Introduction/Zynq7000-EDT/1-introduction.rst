@@ -91,7 +91,7 @@ Installation Requirements
 Vitis Software Platform and Vivado Design Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Visit the `Xilinx Download Center <https://www.xilinx.com/support/download.html>`_ to download the Vitis software platform. This tutorial is verified with 2022.1. If you are using other Vitis versions, some features or screenshots might differ.
+Visit the `Xilinx Download Center <https://www.xilinx.com/support/download.html>`_ to download the Vitis software platform. This tutorial is verified with 2022.2. If you are using other Vitis versions, some features or screenshots might differ.
 
 The Vitis software platform supports Windows and Linux. To install the Vitis software platform, follow the instructions in the `Installation section <https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Getting-Started-with-Vitis>`_ of the *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Getting-Started-with-Vitis>`_). When you install the Vitis software platform, the Vivado Design Suite is installed automatically.
 

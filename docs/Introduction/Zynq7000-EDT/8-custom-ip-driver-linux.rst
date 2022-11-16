@@ -371,7 +371,7 @@ You will use a Linux workstation for this example project. The device driver sof
 
    .. code-block::
 
-      <petalinux-build_directory>/build/tmp/sysroots-components/zc702_zynq7/blink/lib/modules/5.4.0-xilinx-v2022.1/extra/blink.ko
+      <petalinux-build_directory>/build/tmp/sysroots-components/zc702_zynq7/blink/lib/modules/5.15.0-xilinx-v2022.2/extra/blink.ko
 
 6. You can install the driver using the ``modprobe`` command, which will be explained in further detail in the next section.
 

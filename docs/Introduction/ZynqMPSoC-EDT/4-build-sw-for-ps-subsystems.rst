@@ -55,8 +55,8 @@ The following steps show how to create a platform project with a standalone doma
 1. Launch the Vitis IDE:
 
    -  From the open Vivado IDE, click **Tools → Launch Vitis IDE**; or
-   -  From Windows Start menu, select **Xilinx Design Tools → Xilinx Vitis 2022.1**; or
-   -  Double-click the ``C:\Xilinx\Vitis\2022.1\bin\vitis.bat`` file.
+   -  From Windows Start menu, select **Xilinx Design Tools → Xilinx Vitis 2022.2**; or
+   -  Double-click the ``C:\Xilinx\Vitis\2022.2\bin\vitis.bat`` file.
 
 2. Select the workspace ``C\edt\edt_zcu102_workspace`` and continue.
 
@@ -239,7 +239,7 @@ Running Hello World on the Board
 
       Xilinx Zynq MP First Stage Boot loader
 
-      Release 2022.1 <build time>
+      Release 2022.2 <build time>
       PMU-FW is not running, certain applications may not be supported.
 
       Hello World
