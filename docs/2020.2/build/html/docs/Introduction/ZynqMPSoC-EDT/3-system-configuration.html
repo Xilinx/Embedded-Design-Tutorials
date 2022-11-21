@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,7 +113,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="zynq-ultrascale-mpsoc-processing-system-configuration-with-vivado">
+  <div class="section" id="zynq-ultrascale-mpsoc-processing-system-configuration-with-vivado">
 <h1>Zynq UltraScale+ MPSoC Processing System Configuration with Vivado<a class="headerlink" href="#zynq-ultrascale-mpsoc-processing-system-configuration-with-vivado" title="Permalink to this heading">¶</a></h1>
 <p>This chapter demonstrates how to use the Vivado® Design Suite to
 develop an embedded system using the Zynq® UltraScale+™ MPSoC
@@ -97,7 +128,7 @@ attaching any additional fabric IP.</p></li>
 <li><p>IP cores can be instantiated in fabric and attached to the Zynq
 UltraScale+ PS as a PS+PL combination.</p></li>
 </ul>
-<section id="zynq-ultrascale-system-configuration">
+<div class="section" id="zynq-ultrascale-system-configuration">
 <h2>Zynq UltraScale+ System Configuration<a class="headerlink" href="#zynq-ultrascale-system-configuration" title="Permalink to this heading">¶</a></h2>
 <p>Creating a Zynq UltraScale+ system design involves configuring the PS
 to select the appropriate boot devices and peripherals. To start with,
@@ -105,11 +136,11 @@ as long as the PS peripherals and available MIO connections meet the
 design requirements, no bitstream is required. This chapter guides you
 through creating a simple PS-based design that does not require a
 bitstream.</p>
-</section>
-<section id="example-1-creating-a-new-embedded-project-with-zynq-ultrascale-mpsoc">
+</div>
+<div class="section" id="example-1-creating-a-new-embedded-project-with-zynq-ultrascale-mpsoc">
 <h2>Example 1: Creating a New Embedded Project with Zynq UltraScale+ MPSoC<a class="headerlink" href="#example-1-creating-a-new-embedded-project-with-zynq-ultrascale-mpsoc" title="Permalink to this heading">¶</a></h2>
 <p>For this example, you will launch the Vivado Design Suite and create a project with an embedded processor system as the top level.</p>
-<section id="design-input-and-output-files">
+<div class="section" id="design-input-and-output-files">
 <h3>Design Input and Output files<a class="headerlink" href="#design-input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <p>This example design requires no input files. We will create the Vivado design from scratch. The design includes the processing system module of the MPSoC. No PL IPs will be added in this example design, so this design does not need to run through implementation and bitstream generation.</p>
 <p>The output of this example design is the hardware configuration XSA. It will be used for further software development.</p>
@@ -117,8 +148,8 @@ bitstream.</p>
 <li><p>Input: N/A</p></li>
 <li><p>Output: <code class="docutils literal notranslate"><span class="pre">edt_zcu102_wrapper.xsa</span></code></p></li>
 </ul>
-</section>
-<section id="starting-your-design">
+</div>
+<div class="section" id="starting-your-design">
 <h3>Starting Your Design<a class="headerlink" href="#starting-your-design" title="Permalink to this heading">¶</a></h3>
 <ol class="simple">
 <li><p>Launch the Vivado Design Suite.</p></li>
@@ -185,8 +216,8 @@ each of the wizard screens.</p></li>
 </table><ol class="simple">
 <li><p>Click <strong>Finish</strong>. The New Project wizard closes and the project you just created opens in the Vivado design tool.</p></li>
 </ol>
-</section>
-<section id="creating-a-block-design-project">
+</div>
+<div class="section" id="creating-a-block-design-project">
 <h3>Creating a Block Design Project<a class="headerlink" href="#creating-a-block-design-project" title="Permalink to this heading">¶</a></h3>
 <p>You will now use the IP integrator to create a block design project.</p>
 <ol>
@@ -235,8 +266,8 @@ empty. The next step is to add some IP from the catalog.</p>
 <p>The Zynq UltraScale+ MPSoC processing system IP block appears in the
 Diagram view, as shown in the following figure.</p>
 <p><img alt="../../../_images/image91.png" src="../../../_images/image91.png" /></p>
-</section>
-<section id="managing-the-zynq-ultrascale-processing-system-in-vivado">
+</div>
+<div class="section" id="managing-the-zynq-ultrascale-processing-system-in-vivado">
 <h3>Managing the Zynq UltraScale+ Processing System in Vivado<a class="headerlink" href="#managing-the-zynq-ultrascale-processing-system-in-vivado" title="Permalink to this heading">¶</a></h3>
 <p>Now that you have added the processing system for the Zynq MPSoC to the
 design, you can begin managing the available options.</p>
@@ -296,8 +327,8 @@ configuration looks like the following figure.</p>
 </li>
 <li><p>Click <strong>OK</strong> to close the Re-customize IP wizard.</p></li>
 </ol>
-</section>
-<section id="validating-the-design-and-connecting-ports">
+</div>
+<div class="section" id="validating-the-design-and-connecting-ports">
 <h3>Validating the Design and Connecting Ports<a class="headerlink" href="#validating-the-design-and-connecting-ports" title="Permalink to this heading">¶</a></h3>
 <p>Use the following steps to validate the design:</p>
 <ol>
@@ -344,8 +375,8 @@ in the following figure.</p>
 <p><img alt="Generated output products" src="../../../_images/image19.png" /></p>
 </li>
 </ol>
-</section>
-<section id="exporting-hardware">
+</div>
+<div class="section" id="exporting-hardware">
 <h3>Exporting Hardware<a class="headerlink" href="#exporting-hardware" title="Permalink to this heading">¶</a></h3>
 <p>To write a hardware platform using the GUI, follow these steps:</p>
 <ol>
@@ -360,8 +391,8 @@ Suite. The Export Hardware Platform window opens.</p></li>
 <p><strong>Note:</strong> In most cases, we export a pre-synthesis XSA for embedded platforms because a full implementation will run in the Vitis compiler (<code class="docutils literal notranslate"><span class="pre">v++</span></code>) link phase. Post-implementation, this can be used for DFX platforms.</p>
 </li>
 </ol>
-</section>
-<section id="example-summary">
+</div>
+<div class="section" id="example-summary">
 <h3>Example Summary<a class="headerlink" href="#example-summary" title="Permalink to this heading">¶</a></h3>
 <p>In this example, you created a Vivado design with an MPSoC processing system and configured it for the ZCU102 board. You exported the hardware XSA file for future software development example projects.</p>
 <p>In the <a class="reference internal" href="4-build-sw-for-ps-subsystems.html"><span class="doc">next chapter</span></a>, you will learn how to develop software based on the hardware created in this example.</p>
@@ -369,9 +400,9 @@ Suite. The Export Hardware Platform window opens.</p></li>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

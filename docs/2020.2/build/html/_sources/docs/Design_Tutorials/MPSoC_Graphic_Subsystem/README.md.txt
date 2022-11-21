@@ -92,7 +92,7 @@
  application. This application is written in OpenGLES and is based on
  the X Window System. For more details and for the application source
  code, refer to ``tricube`` in the ``design_files`` folder of the zip file that
- accompanies this tutorial. See [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial).
+ accompanies this tutorial. See [Design Files for This Tutorial](2-getting-started.html#design-files-for-this-tutorial).
 
  Use the following steps to build the OpenGLES application:
 
@@ -181,7 +181,7 @@
  >
  >*DISTRO_FEATURES_remove_zynqmp = " x11"*
  >
- >See the example eglfbdev application (based on fdev) available in the [Design Files for This Tutorial](2-getting-started.md#design-files-for-this-tutorial). For more information, see Xilinx Answer Record [68821](https://www.xilinx.com/cgi-bin/docs/ndoc?t=answers%3Bd%3D68821.html).
+ >See the example eglfbdev application (based on fdev) available in the [Design Files for This Tutorial](2-getting-started.html#design-files-for-this-tutorial). For more information, see Xilinx Answer Record [68821](https://www.xilinx.com/cgi-bin/docs/ndoc?t=answers%3Bd%3D68821.html).
 
 ### Loading Linux and Running the OpenGLES Application on the Target and Viewing the Result on the DisplayPort
 

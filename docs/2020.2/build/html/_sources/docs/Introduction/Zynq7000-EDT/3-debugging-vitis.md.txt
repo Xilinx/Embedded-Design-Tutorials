@@ -78,7 +78,7 @@ unexpected jumps in the execution trace.
 
 ## Example 3: Debugging Standalone Software Using the Vitis Software Platform
 
-In this example, you will walk through debugging the "Hello World" application created in [Example 2](./2-using-zynq.md#example-2-creating-and-running-a-hello-world-application).
+In this example, you will walk through debugging the "Hello World" application created in [Example 2](./2-using-zynq.html#example-2-creating-and-running-a-hello-world-application).
 
 ### Input and Output Files
 

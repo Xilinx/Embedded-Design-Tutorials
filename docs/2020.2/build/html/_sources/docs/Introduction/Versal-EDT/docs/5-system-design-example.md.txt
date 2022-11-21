@@ -387,7 +387,7 @@ This example needs a Linux host machine. Refer to the [PetaLinux Tools Documenta
 
     This creates a `BOOT.BIN` image file in the `<petalinux-project>/images/linux/` directory.
 
->***Note*:** To run the images using SD boot mode, see [Boot Sequence for SD-Boot Mode](./4-boot-and-config.md#boot-sequence-for-sd-boot-mode).
+>***Note*:** To run the images using SD boot mode, see [Boot Sequence for SD-Boot Mode](./4-boot-and-config.html#boot-sequence-for-sd-boot-mode).
 
 © Copyright 2020-2021 Xilinx, Inc.
 

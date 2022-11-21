@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -109,8 +109,9 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Releases</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
@@ -140,20 +141,20 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="system-design-example-for-high-speed-debug-port-with-smartlynq-module">
+  <div class="section" id="system-design-example-for-high-speed-debug-port-with-smartlynq-module">
 <h1>System Design Example for High-Speed Debug Port with SmartLynq+ Module<a class="headerlink" href="#system-design-example-for-high-speed-debug-port-with-smartlynq-module" title="Permalink to this heading">¶</a></h1>
-<section id="introduction">
+<div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>This chapter demonstrates how to build a Versal®-based system that utilizes the SmartLynq+ module and the High-Speed Debug Port (HSDP). You will also learn to set up the SmartLynq+ module and download a Linux image using either JTAG or the HSDP.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This tutorial requires a SmartLynq+ module, a VCK190 or VMK180 evaluation board, and a Linux host machine.</p>
 </div>
-</section>
-<section id="design-example-enabling-the-hsdp">
+</div>
+<div class="section" id="design-example-enabling-the-hsdp">
 <h2>Design Example: Enabling the HSDP<a class="headerlink" href="#design-example-enabling-the-hsdp" title="Permalink to this heading">¶</a></h2>
 <p>To enable the HSDP, start with the VCK190 or VMK180 project that you built in the preceding chapter and modify the project to include HSDP support.  It is also possible to start this chapter standalone by sourcing the included block design Tcl to create the HSDP capable design. See <cite>Prod_Si/smartlynq_plus/bd_tcl</cite>.</p>
-<section id="modifying-the-design-to-enable-the-hsdp">
+<div class="section" id="modifying-the-design-to-enable-the-hsdp">
 <h3>Modifying the Design to Enable the HSDP<a class="headerlink" href="#modifying-the-design-to-enable-the-hsdp" title="Permalink to this heading">¶</a></h3>
 <p>This design uses the project built in <a class="reference internal" href="5-system-design-example.html"><span class="doc">System Design Example using Scalar Engine and Adaptable Engine</span></a> and enables the HSDP interface. You can do this using the Vivado™ IP integrator.</p>
 <ol class="arabic">
@@ -185,8 +186,8 @@ function OptanonWrapper() { }
 </li>
 <li><p>Click <strong>Validate Design</strong>, then <strong>Save</strong>.</p></li>
 </ol>
-</section>
-<section id="synthesizing-implementing-and-generating-the-device-image">
+</div>
+<div class="section" id="synthesizing-implementing-and-generating-the-device-image">
 <h3>Synthesizing, Implementing, and Generating the Device Image<a class="headerlink" href="#synthesizing-implementing-and-generating-the-device-image" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>In the Flow Navigator, under <strong>Programming and Debug</strong>, click <strong>Generate Device Image</strong> to launch implementation.</p>
@@ -194,8 +195,8 @@ function OptanonWrapper() { }
 <img alt="../../../../_images/ch6-image9.png" src="../../../../_images/ch6-image9.png" />
 </li>
 </ol>
-</section>
-<section id="exporting-hardware-xsa">
+</div>
+<div class="section" id="exporting-hardware-xsa">
 <h3>Exporting Hardware (XSA)<a class="headerlink" href="#exporting-hardware-xsa" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Select <strong>File → Export → Export Hardware</strong> from the Vivado toolbar. The Export Hardware dialog box opens.</p>
@@ -206,9 +207,9 @@ function OptanonWrapper() { }
 <li><p>Provide the name for your exported file (example: <cite>edt_versal_wrapper_with_hsdp</cite>). Click <strong>Next</strong>.</p></li>
 <li><p>Click <strong>Finish</strong>.</p></li>
 </ol>
-</section>
-</section>
-<section id="creating-the-hsdp-enabled-linux-image-using-petalinux">
+</div>
+</div>
+<div class="section" id="creating-the-hsdp-enabled-linux-image-using-petalinux">
 <h2>Creating the HSDP-enabled Linux Image Using PetaLinux<a class="headerlink" href="#creating-the-hsdp-enabled-linux-image-using-petalinux" title="Permalink to this heading">¶</a></h2>
 <p>This example rebuilds the PetaLinux project using the HSDP-enabled XSA that was built in the preceding step. The assumption is that the PetaLinux project has been created as per the instructions in <a class="reference internal" href="5-system-design-example.html"><span class="doc">System Design Example using Scalar Engine and Adaptable Engine</span></a>.</p>
 <div class="admonition important">
@@ -248,8 +249,8 @@ function OptanonWrapper() { }
 </div>
 </li>
 </ol>
-</section>
-<section id="setting-up-the-smartlynq-module">
+</div>
+<div class="section" id="setting-up-the-smartlynq-module">
 <h2>Setting Up the SmartLynq+ Module<a class="headerlink" href="#setting-up-the-smartlynq-module" title="Permalink to this heading">¶</a></h2>
 <p>Once the Linux images have been built and packaged, they can be loaded onto the VCK190 or VMK180 board using either JTAG or HSDP. To set up the SmartLynq+ module for connectivity using HSDP, follow these steps:</p>
 <ol class="arabic">
@@ -277,7 +278,7 @@ function OptanonWrapper() { }
 </li>
 <li><p>Copy the Linux download scripts from the design package <code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/smartlynq_plus/xsdb</span></code>.</p></li>
 </ol>
-<section id="using-the-smartlynq-as-a-serial-terminal">
+<div class="section" id="using-the-smartlynq-as-a-serial-terminal">
 <h3>Using the SmartLynq+ as a Serial Terminal<a class="headerlink" href="#using-the-smartlynq-as-a-serial-terminal" title="Permalink to this heading">¶</a></h3>
 <p>The SmartLynq+ can also be used as a serial terminal to remotely view the UART output from the VCK190. This feature is useful when physical access to the remote setup is not available. The SmartLynq+ module has the minicom application pre-installed, which can be used to connect directly to the UART on the VCK190.</p>
 <ol class="arabic">
@@ -302,8 +303,8 @@ function OptanonWrapper() { }
 <img alt="../../../../_images/ch6-image15.png" src="../../../../_images/ch6-image15.png" />
 </li>
 </ol>
-</section>
-<section id="booting-linux-images-over-jtag-or-hsdp">
+</div>
+<div class="section" id="booting-linux-images-over-jtag-or-hsdp">
 <h3>Booting Linux Images over JTAG or HSDP<a class="headerlink" href="#booting-linux-images-over-jtag-or-hsdp" title="Permalink to this heading">¶</a></h3>
 <p>SmartLynq+ can be used to download Linux images directly to the VCK190/VMK180 without using an SD Card. Linux images can be loaded using JTAG or HSDP.</p>
 <p>The design package included with this tutorial contains a script that downloads the Linux images created in the prior steps using the SmartLynq+ module. The script can use either JTAG or HSDP.</p>
@@ -330,20 +331,20 @@ function OptanonWrapper() { }
 <img alt="../../../../_images/ch6-image18.png" src="../../../../_images/ch6-image18.png" />
 </li>
 </ol>
-</section>
-</section>
-<section id="useful-links">
+</div>
+</div>
+<div class="section" id="useful-links">
 <h2>Useful Links<a class="headerlink" href="#useful-links" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>For more information on using PL hardware debug cores such as the AXIS-ILA, AXIS-VIO, PCIe™ Debugger, and/or DDRMC Calibration Interfaces refer to the <em>Vivado Design Suite User Guide Programming and Debugging</em> <a class="reference external" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug908-vivado-programming-debugging.pdf">[UG908]</a>.</p></li>
 <li><p>For more information on the SmartLynq+ Module, refer to <a class="reference external" href="https://www.xilinx.com/support/documentation/boards_and_kits/smartlynq/ug1258-smartlynq-cable.pdf">SmartLynq+ Module User Guide</a>.</p></li>
 </ul>
-</section>
-<section id="summary">
+</div>
+<div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
 <p>In this section you have built a design that uses the HSDP, connected the SmartLynq+ module, configured the SmartLynq+ for remote UART access, and used the HSDP to download Linux images onto your board.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

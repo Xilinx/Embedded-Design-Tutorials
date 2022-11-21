@@ -67,7 +67,7 @@ As mentioned in the [Introduction](./1-introduction.md), there are a number of r
 
 ## Performance Validation
 
-The performance of the SPM model can be validated with the actual design. Analyze the performance of the Zynq-7000 SoC Base TRD using a properly instrumented design which include an APM (see [Instrumenting Hardware](../docs/9-using-spa-with-custom-target.md#instrumenting-hardware)). For the TRD delivered with 2015.1, this was already the case.
+The performance of the SPM model can be validated with the actual design. Analyze the performance of the Zynq-7000 SoC Base TRD using a properly instrumented design which include an APM (see [Instrumenting Hardware](../docs/9-using-spa-with-custom-target.html#instrumenting-hardware)). For the TRD delivered with 2015.1, this was already the case.
 
 The following figure shows the TRD defined as a block diagram in Vivado Design Suite IP integrator with the APM instance highlighted. The APM was properly configured in Profile mode to ensure that performance results would be reported correctly in the Vitis IDE. HP0 was connected to slot 0 on the APM while HP2 was connected to slot 2. Slot 1 was left open (because HP1 was not used), and the Number of Monitor interfaces was set to 3.
 

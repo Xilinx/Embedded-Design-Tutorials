@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -23,7 +22,9 @@ function OptanonWrapper() { }
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -50,31 +51,31 @@ function OptanonWrapper() { }
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">简体中文</span></p>
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">日本語</span></p>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Introduction/Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Introduction/ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Introduction/Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Feature Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/microblaze-system/README.html">Programming an Embedded MicroBlaze Processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Design Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Debugging</span></p>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../1-xilinx-debug-solution-overview/README.html">Vitis Embedded Software Debugging Guide Overview</a></li>
@@ -108,12 +109,12 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">User Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">All Releases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
@@ -145,8 +146,8 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="debugging-linux-applications">
-<h1>Debugging Linux Applications<a class="headerlink" href="#debugging-linux-applications" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="debugging-linux-applications">
+<h1>Debugging Linux Applications<a class="headerlink" href="#debugging-linux-applications" title="Permalink to this heading">¶</a></h1>
 <p>The Vitis IDE provides a familiar environment for debugging Linux applications for a target platform. This section covers the following Linux application debug features:</p>
 <ul class="simple">
 <li><p>Setting breakpoints</p></li>
@@ -156,8 +157,8 @@ function OptanonWrapper() { }
 <p>The following diagram illustrates the general Linux application debug flow. The Xilinx System Debugger an integrated debugger supporting Zynq®-7000 SoC, Zynq UltraScale+ MPSoC, and MicroBlaze™ and Versal™ processors.</p>
 <p><img alt="../../../../_images/Linux_debug_flow.png" src="../../../../_images/Linux_debug_flow.png" /></p>
 <p><strong>Note:</strong> Refer to the <a class="reference external" href="#appendix">Appendix</a> section for supplementary information about creating a hardware design and building software boot images.</p>
-<section id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h2>
 <p>Linux debug setup is a mandatory step. Setup allows you to create platform and application projects in the Vitis IDE.</p>
 <ol>
 <li><p>Open a terminal and navigate to your desired work directory.</p></li>
@@ -207,9 +208,9 @@ $ cp project_1.xsa vitis_work_dir/zcu104.xsa
 </li>
 <li><p>Launch the Vitis IDE with <strong>linux_debug_ws</strong>.</p></li>
 </ol>
-</section>
-<section id="error-1-there-is-no-linux-tcf-agent-running-on-the-specified-192-168-0-1">
-<h2>Error 1: There is no Linux TCF agent running on the specified ‘192.168.0.1’<a class="headerlink" href="#error-1-there-is-no-linux-tcf-agent-running-on-the-specified-192-168-0-1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="error-1-there-is-no-linux-tcf-agent-running-on-the-specified-192-168-0-1">
+<h2>Error 1: There is no Linux TCF agent running on the specified ‘192.168.0.1’<a class="headerlink" href="#error-1-there-is-no-linux-tcf-agent-running-on-the-specified-192-168-0-1" title="Permalink to this heading">¶</a></h2>
 <ol>
 <li><p>Download <a class="reference external" href="https://www.xilinx.com/bin/public/openDownload?filename=sdk-2020.2.0.0.sh">sdk-2020.2.0.0.sh</a> and copy it to your working directory.</p></li>
 <li><p>Create a folder named <code class="docutils literal notranslate"><span class="pre">toolchain_mismatch</span></code> within your working directory. In a terminal, run the <code class="docutils literal notranslate"><span class="pre">sdk-2020.2.0.0.sh</span></code> script and install the sysroot inside the <code class="docutils literal notranslate"><span class="pre">toolchain_mismatch</span></code> folder.</p>
@@ -223,8 +224,8 @@ $ cp project_1.xsa vitis_work_dir/zcu104.xsa
 <p><img alt="../../../../_images/TCF-connection.PNG" src="../../../../_images/TCF-connection.PNG" /></p>
 </li>
 </ol>
-<section id="setting-up-the-ethernet-connection">
-<h3>Setting Up the Ethernet Connection<a class="headerlink" href="#setting-up-the-ethernet-connection" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="setting-up-the-ethernet-connection">
+<h3>Setting Up the Ethernet Connection<a class="headerlink" href="#setting-up-the-ethernet-connection" title="Permalink to this heading">¶</a></h3>
 <ul>
 <li><p>Set your host machine’s Ethernet address to a static IP (suggested: 192.168.1.10).</p></li>
 <li><p>Using the serial terminal, configure the board’s IP address to 192.168.1.11:</p>
@@ -241,9 +242,9 @@ $ cp project_1.xsa vitis_work_dir/zcu104.xsa
 </div>
 </li>
 </ul>
-</section>
-<section id="setting-up-the-tcf-agent">
-<h3>Setting Up the TCF Agent<a class="headerlink" href="#setting-up-the-tcf-agent" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="setting-up-the-tcf-agent">
+<h3>Setting Up the TCF Agent<a class="headerlink" href="#setting-up-the-tcf-agent" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>In the Vitis IDE, click <strong>Target Connections</strong>. If the Target Connections view is not visible, select <strong>Window &gt; Show View &gt; Other &gt; Xilinx &gt; Target Connections</strong> and click <strong>OK</strong>.</p></li>
 <li><p>Go to the <strong>Linux TCF Agent</strong> option and double-click to edit it.</p></li>
@@ -251,10 +252,10 @@ $ cp project_1.xsa vitis_work_dir/zcu104.xsa
 <li><p>Click <strong>OK</strong>.</p></li>
 </ul>
 <p><img alt="../../../../_images/Linux-Agent.PNG" src="../../../../_images/Linux-Agent.PNG" /></p>
-</section>
-</section>
-<section id="error-2-linux-agent-disconnected-no-such-file-or-directory">
-<h2>Error 2: (Linux-Agent : Disconnected) : No such file or directory<a class="headerlink" href="#error-2-linux-agent-disconnected-no-such-file-or-directory" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="error-2-linux-agent-disconnected-no-such-file-or-directory">
+<h2>Error 2: (Linux-Agent : Disconnected) : No such file or directory<a class="headerlink" href="#error-2-linux-agent-disconnected-no-such-file-or-directory" title="Permalink to this heading">¶</a></h2>
 <ol class="simple">
 <li><p>Right-click the <code class="docutils literal notranslate"><span class="pre">linux_test_app</span></code> application project and navigate to <strong>Debug As &gt; Launch on Hardware (Single Application Debug)</strong>.</p></li>
 </ol>
@@ -264,9 +265,9 @@ $ cp project_1.xsa vitis_work_dir/zcu104.xsa
 <li><p>In the PetaLinux project folder structure, navigate to the <code class="docutils literal notranslate"><span class="pre">images/linux</span></code> folder to find the <code class="docutils literal notranslate"><span class="pre">sdk.sh</span></code> script. Run this shell script to set up a new and appropriate sysroot required for the Linux application.</p></li>
 <li><p>In the Vitis workspace, double-click to open <strong>linux_test_app_system.sprj</strong> and set up a new and correct sysroot path to <code class="docutils literal notranslate"><span class="pre">images/linux/sysroots/aarch64-xilinx-linux</span></code>.</p></li>
 </ol>
-</section>
-<section id="error-3-cannot-read-target-memory-input-output-error">
-<h2>Error 3: Cannot Read Target Memory, Input/Output Error<a class="headerlink" href="#error-3-cannot-read-target-memory-input-output-error" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="error-3-cannot-read-target-memory-input-output-error">
+<h2>Error 3: Cannot Read Target Memory, Input/Output Error<a class="headerlink" href="#error-3-cannot-read-target-memory-input-output-error" title="Permalink to this heading">¶</a></h2>
 <p>Sometimes you might try to watch the value of a pointer variable and find that it leads to a “Cannot read target memory” error. This section explores an error case in which a pointer allocated by <code class="docutils literal notranslate"><span class="pre">mmap()</span></code> can be printed but cannot be read using the debugger.</p>
 <ol>
 <li><p>Enable the <code class="docutils literal notranslate"><span class="pre">_ERROR3_</span></code> macro in the application source file <code class="docutils literal notranslate"><span class="pre">linux_test_application.c</span></code> and disable <code class="docutils literal notranslate"><span class="pre">_ERROR5_</span></code> and <code class="docutils literal notranslate"><span class="pre">_ERROR6_</span></code> as shown below.</p>
@@ -281,9 +282,9 @@ $ cp project_1.xsa vitis_work_dir/zcu104.xsa
 </ol>
 <p><img alt="../../../../_images/memory_input_output_error_small_window.PNG" src="../../../../_images/memory_input_output_error_small_window.PNG" /></p>
 <p>There is a service called <code class="docutils literal notranslate"><span class="pre">ptrace()</span></code> (process trace) which is used by debuggers. It provides extensive control over the operation of its target. This includes the manipulation of its file descriptors, memory, and registers. It can single-step through the target’s code as well as observe and intercept system calls and their results. See <a class="reference external" href="http://man7.org/linux/man-pages/man2/ptrace.2.html">this web page</a> for more information. GDB and the TCF debugger both use <code class="docutils literal notranslate"><span class="pre">ptrace()</span></code>. However, Linux does not make I/O memory accessible through <code class="docutils literal notranslate"><span class="pre">ptrace()</span></code>. To work around the issue, an application can access the I/O memory and write a function which will read the address.</p>
-</section>
-<section id="error-4-memory-view-both-physical-address-and-virtual-address-return">
-<h2>Error 4: Memory View Both Physical Address and Virtual Address Return ????????<a class="headerlink" href="#error-4-memory-view-both-physical-address-and-virtual-address-return" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="error-4-memory-view-both-physical-address-and-virtual-address-return">
+<h2>Error 4: Memory View Both Physical Address and Virtual Address Return ????????<a class="headerlink" href="#error-4-memory-view-both-physical-address-and-virtual-address-return" title="Permalink to this heading">¶</a></h2>
 <p>In the current debug session, navigate to <strong>Memory</strong> view and try to access 0xA0000000. It returns ????????, as shown below.</p>
 <p><img alt="../../../../_images/memory-view-error.PNG" src="../../../../_images/memory-view-error.PNG" /></p>
 <p>This behavior might be observed many times: the memory returned by <code class="docutils literal notranslate"><span class="pre">mmap()*</span></code> for either <code class="docutils literal notranslate"><span class="pre">/dev/mem</span></code> or <code class="docutils literal notranslate"><span class="pre">/dev/uioX</span></code> cannot be viewed in the Memory, Variables, or Expressions views. Vitis is unable to access it either by physical or vitural address. The <em>memory</em> when accessed in Memory view shows all values as <strong>????????</strong>.</p>
@@ -308,9 +309,9 @@ $ cp project_1.xsa vitis_work_dir/zcu104.xsa
 </pre></div>
 </div>
 <p><img alt="../../../../_images/memory-view.png" src="../../../../_images/memory-view.png" /></p>
-</section>
-<section id="error-5-multithread-application-debug">
-<h2>Error 5: Multithread Application Debug<a class="headerlink" href="#error-5-multithread-application-debug" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="error-5-multithread-application-debug">
+<h2>Error 5: Multithread Application Debug<a class="headerlink" href="#error-5-multithread-application-debug" title="Permalink to this heading">¶</a></h2>
 <p>Enable the <code class="docutils literal notranslate"><span class="pre">_ERROR5_</span></code> macro in the application source file <code class="docutils literal notranslate"><span class="pre">linux_test_application.c</span></code> and disable <code class="docutils literal notranslate"><span class="pre">_ERROR3_</span></code> and <code class="docutils literal notranslate"><span class="pre">_ERROR6_</span></code> as shown below.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="c1">#define _ERROR3_</span>
 <span class="c1">#define _ERROR5_</span>
@@ -368,9 +369,9 @@ $ cp project_1.xsa vitis_work_dir/zcu104.xsa
 <li><p>Right-click the <strong>linux_test_app</strong> application project and navigate to <strong>Debug As &gt; Launch on Hardware (Single Application Debug)</strong>.</p></li>
 <li><p>Observe the output.</p></li>
 </ol>
-</section>
-<section id="error-6-dynamic-memory-allocation">
-<h2>Error 6 : Dynamic Memory Allocation<a class="headerlink" href="#error-6-dynamic-memory-allocation" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="error-6-dynamic-memory-allocation">
+<h2>Error 6 : Dynamic Memory Allocation<a class="headerlink" href="#error-6-dynamic-memory-allocation" title="Permalink to this heading">¶</a></h2>
 <p>Enable the <code class="docutils literal notranslate"><span class="pre">_ERROR6_</span></code> macro in the application source file <code class="docutils literal notranslate"><span class="pre">linux_test_application.c</span></code> and disable <code class="docutils literal notranslate"><span class="pre">_ERROR3_</span></code> and <code class="docutils literal notranslate"><span class="pre">_ERROR5_</span></code> as shown below.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="c1">#define _ERROR3_</span>
 <span class="o">//</span><span class="c1">#define _ERROR5_</span>
@@ -418,17 +419,17 @@ $ cp project_1.xsa vitis_work_dir/zcu104.xsa
 <li><p>Right-click the <strong>linux_test_app</strong> application project and navigate to <strong>Debug As &gt; Launch on Hardware (Single Application Debug)</strong>.</p></li>
 <li><p>Observe the output.</p></li>
 </ol>
-</section>
-<section id="appendix">
-<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="appendix">
+<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference external" href="#Vivado-Design">Vivado Design</a> explains how to use a Vivado example design to create a Vivado project. This set of steps gives you the XSA file from Vivado to export. You can skip the manual steps and use this Tcl script to create an XSA directly.</p>
 <p><a class="reference external" href="#petalinux-build">PetaLinux Build</a> explains how to create a PetaLinux project, and how to configure and build boot images.</p>
-</section>
-<section id="vivado-design">
-<h2>Vivado Design<a class="headerlink" href="#vivado-design" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="vivado-design">
+<h2>Vivado Design<a class="headerlink" href="#vivado-design" title="Permalink to this heading">¶</a></h2>
 <p><strong>Note</strong>: You can skip these steps by running the <a class="reference external" href="#automation-steps">automation steps</a> instead.</p>
-<section id="creating-the-block-design">
-<h3>Creating the Block Design<a class="headerlink" href="#creating-the-block-design" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="creating-the-block-design">
+<h3>Creating the Block Design<a class="headerlink" href="#creating-the-block-design" title="Permalink to this heading">¶</a></h3>
 <p>The first step is to create a block design. You can create this according to your specific requirements, but here you will create a Zynq UltraScale+ MPSoC based example project using a template, as explained below.</p>
 <ol>
 <li><p>On the Welcome screen, navigate to <strong>Quick Start</strong> and click <strong>Open Example Project</strong>.</p>
@@ -452,24 +453,24 @@ $ cp project_1.xsa vitis_work_dir/zcu104.xsa
 </ol>
 <p>The block design you have created for the example project is shown in the following figure.</p>
 <p><img alt="../../../../_images/ZynqMP-Block-Design.PNG" src="../../../../_images/ZynqMP-Block-Design.PNG" /></p>
-</section>
-<section id="generating-the-bitstream">
-<h3>Generating the Bitstream<a class="headerlink" href="#generating-the-bitstream" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="generating-the-bitstream">
+<h3>Generating the Bitstream<a class="headerlink" href="#generating-the-bitstream" title="Permalink to this heading">¶</a></h3>
 <p>The preset example creates an HDL wrapper and also generates output products. You can directly perform synthesis and implementation, and you can generate a bitstream. To generate a bitstream, click <strong>Generate Bitstream</strong>.</p>
-</section>
-<section id="exporting-the-xsa">
-<h3>Exporting the XSA<a class="headerlink" href="#exporting-the-xsa" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="exporting-the-xsa">
+<h3>Exporting the XSA<a class="headerlink" href="#exporting-the-xsa" title="Permalink to this heading">¶</a></h3>
 <p>After successful bitsream generation, navigate to <strong>File &gt; Export &gt; Export Hardware</strong> to launch the Export Hardware Platform wizard.
 Click <strong>Next</strong> and export the hardware with the <strong>Include bitstream</strong> option. Enter the desired XSA name and complete the wizard.</p>
 <p><img alt="../../../../_images/Include-Bitstream.PNG" src="../../../../_images/Include-Bitstream.PNG" /></p>
-</section>
-<section id="automation-steps">
-<h3>Automation Steps<a class="headerlink" href="#automation-steps" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="automation-steps">
+<h3>Automation Steps<a class="headerlink" href="#automation-steps" title="Permalink to this heading">¶</a></h3>
 <p>Launch the Vivado Tcl console. Source <code class="docutils literal notranslate"><span class="pre">vivado_design.tcl</span></code>.</p>
-</section>
-</section>
-<section id="petalinux-build">
-<h2>PetaLinux Build<a class="headerlink" href="#petalinux-build" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="petalinux-build">
+<h2>PetaLinux Build<a class="headerlink" href="#petalinux-build" title="Permalink to this heading">¶</a></h2>
 <p>It is required to configure the PetaLinux project to support Linux application debug. Run the following commands for each step listed below.</p>
 <ol>
 <li><p>Create the PetaLinux project:</p>
@@ -551,8 +552,8 @@ Click <strong>Next</strong> and export the hardware with the <strong>Include bit
 <div><p><strong>Note:</strong> You can skip all the above steps by using the <code class="docutils literal notranslate"><span class="pre">petalinux_build.sh</span></code> script to build the Linux images.</p>
 </div></blockquote>
 <p><em>Copyright 2021 Xilinx Inc. Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</em></p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -576,7 +577,7 @@ Click <strong>Next</strong> and export the hardware with the <strong>Include bit
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on August 08, 2022.
+      <span class="lastupdated">Last updated on November 10, 2022.
       </span></p>
   </div>
 

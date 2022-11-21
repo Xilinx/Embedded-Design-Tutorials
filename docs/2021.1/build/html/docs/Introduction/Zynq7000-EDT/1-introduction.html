@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -101,6 +101,10 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
@@ -110,8 +114,11 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -140,48 +147,48 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="getting-started">
+  <div class="section" id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h1>
-<section id="how-zynq-devices-offer-a-single-chip-solution">
+<div class="section" id="how-zynq-devices-offer-a-single-chip-solution">
 <h2>How Zynq Devices Offer a Single Chip Solution<a class="headerlink" href="#how-zynq-devices-offer-a-single-chip-solution" title="Permalink to this heading">¶</a></h2>
 <p>The Zynq®-7000 SoC comes with a versatile processing system (PS) integrated with a highly flexible and high-performance programmable logic (PL) section, all on a single system-on-a-chip (SoC).</p>
 <p>The PS and the PL in Zynq UltraScale+ devices can be tightly or loosely coupled with a variety of high-performance and high-bandwidth PS-PL interfaces.</p>
-</section>
-<section id="how-xilinx-software-simplifies-embedded-processor-designs">
+</div>
+<div class="section" id="how-xilinx-software-simplifies-embedded-processor-designs">
 <h2>How Xilinx Software Simplifies Embedded Processor Designs<a class="headerlink" href="#how-xilinx-software-simplifies-embedded-processor-designs" title="Permalink to this heading">¶</a></h2>
 <p>Embedded systems with a processing system and FPGA designs can be complex. Hardware and software portions of an embedded design are projects in themselves. Merging the two design components so that they function as one system creates additional challenges. Add an FPGA design project to the mix, and your design has the potential to become complicated.</p>
 <p>The Zynq SoC solution reduces this complexity by offering an Arm® Cortex™-A9 dual core, along with programmable logic, all within a single SoC. To simplify the design process, Xilinx offers the Vitis software platform. This set of tools provides you with everything you need to simplify embedded system design for a device that merges an SoC with an FPGA. This combination of tools offers hardware and software application design, debugging capability, code execution, and transfer of the design onto actual boards for verification and validation.</p>
-</section>
-<section id="vitis-unified-software-platform">
+</div>
+<div class="section" id="vitis-unified-software-platform">
 <h2>Vitis Unified Software Platform<a class="headerlink" href="#vitis-unified-software-platform" title="Permalink to this heading">¶</a></h2>
 <p>The Vitis™ software platform includes all the tools that you need to develop, debug and deploy your embedded applications.</p>
 <p>It includes the Vivado Design Suite, that can create hardware designs for SoC. The hardware design includes the PL logic design, the configuration of PS and the connection between PS and PL.</p>
 <p>The Vitis IDE and the utilities it provides can develop, debug and create deployment images for embedded application designs.</p>
 <p>The Vitis installer also includes PetaLinux. PetaLinux can help to build the embedded Linux environment for Xilinx SoC.</p>
-<section id="vivado-design-suite">
+<div class="section" id="vivado-design-suite">
 <h3>Vivado Design Suite<a class="headerlink" href="#vivado-design-suite" title="Permalink to this heading">¶</a></h3>
 <p>The Vivado® Design Suite provides full features of Xilinx FPGA and SoC hardware design, including code editing, synthesis, implementation, simulation and binary generation. It also provides PS configuration and initialization code generation features.</p>
 <p>The Vivado Design Suite has several <a class="reference external" href="https://www.xilinx.com/products/design-tools/vivado/vivado-ml.html#licensing">editions</a>. The major differences between editions are supported <a class="reference external" href="https://www.xilinx.com/products/design-tools/vivado/vivado-ml.html#architecture">device architectures</a>. The ZC702 board used in the examples has a XC7Z020 device. It is supported by all Vivado editions. If you are using other devices, check the <a class="reference external" href="https://www.xilinx.com/products/design-tools/vivado/vivado-ml.html#architecture">device architecture page</a> to choose your Vivado edition.</p>
-</section>
-<section id="xsct-xilinx-software-command-tool">
+</div>
+<div class="section" id="xsct-xilinx-software-command-tool">
 <h3>XSCT (Xilinx Software Command Tool)<a class="headerlink" href="#xsct-xilinx-software-command-tool" title="Permalink to this heading">¶</a></h3>
 <p>The Vitis software platform provides an IDE (integrated design environment) and a command line interface (XSCT) to help you design and debug embedded software applications and generate deployment images.</p>
-</section>
-<section id="petalinux-tools">
+</div>
+<div class="section" id="petalinux-tools">
 <h3>PetaLinux Tools<a class="headerlink" href="#petalinux-tools" title="Permalink to this heading">¶</a></h3>
 <p>The PetaLinux tools offer everything necessary to customize, build, and deploy embedded Linux solutions on Xilinx processing systems. For more information, see the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">Embedded Design Tools</a> web page.</p>
 <p>The PetaLinux Tools design hub provides information and links to documentation specific to the PetaLinux Tools. For more information, see <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=design%2Bhubs%3Bd%3Ddh0016-petalinux-tools-hub.html">Embedded Design Hub - PetaLinux Tools</a>.</p>
-</section>
-</section>
-<section id="how-the-xilinx-design-tools-expedite-the-design-process">
+</div>
+</div>
+<div class="section" id="how-the-xilinx-design-tools-expedite-the-design-process">
 <h2>How the Xilinx Design Tools Expedite the Design Process<a class="headerlink" href="#how-the-xilinx-design-tools-expedite-the-design-process" title="Permalink to this heading">¶</a></h2>
 <p>You can use the Vivado Design Suite tools to add design sources to your hardware. These include the IP integrator, which simplifies the process of adding IP to your existing project and creating connections for ports (such as clock and reset).</p>
 <p>You can accomplish all your hardware system development using the Vivado tools along with IP integrator. This includes specification of the microprocessor, peripherals, and the interconnection of these components, along with their respective detailed configuration.</p>
 <p>The Vitis software platform is used for software development, and can be installed and used without any other Xilinx tools installed on the machine on which it is loaded. The Vitis software platform can also be used to debug software applications.</p>
 <p>The Zynq SoC Processing System (PS) can be booted and made to run without programming the FPGA (programmable logic or PL). However, in order to use any soft IP in the fabric, or to bond out PS peripherals using EMIO, programming of the PL is required. You can program the PL in the Vitis software platform.</p>
 <p>For more information on the embedded design process, see the <em>Vivado Design Suite Tutorial: Embedded Processor Hardware Design</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1%3Bd%3Dug940-vivado-tutorial-embedded-design.pdf">UG940</a>).</p>
-</section>
-<section id="hardware-requirements-for-this-guide">
+</div>
+<div class="section" id="hardware-requirements-for-this-guide">
 <h2>Hardware Requirements for this Guide<a class="headerlink" href="#hardware-requirements-for-this-guide" title="Permalink to this heading">¶</a></h2>
 <p>This tutorial targets the Zynq ZC702 Rev 1.0 evaluation board, and can also be used for Rev 1.0 boards. To use this guide, you need the following hardware items, which are included with the evaluation board:</p>
 <ul class="simple">
@@ -192,29 +199,29 @@ function OptanonWrapper() { }
 <li><p>SD-MMC flash card for Linux booting</p></li>
 <li><p>Ethernet cable to connect target board with host machine</p></li>
 </ul>
-</section>
-<section id="installation-requirements">
+</div>
+<div class="section" id="installation-requirements">
 <h2>Installation Requirements<a class="headerlink" href="#installation-requirements" title="Permalink to this heading">¶</a></h2>
-<section id="vitis-software-platform-and-vivado-design-suite">
+<div class="section" id="vitis-software-platform-and-vivado-design-suite">
 <h3>Vitis Software Platform and Vivado Design Suite<a class="headerlink" href="#vitis-software-platform-and-vivado-design-suite" title="Permalink to this heading">¶</a></h3>
 <p>Visit the <a class="reference external" href="https://www.xilinx.com/support/download.html">Xilinx Download Center</a> to download the Vitis software platform. This tutorial is verified with 2021.1. If you are using other Vitis versions, some features or screenshots might differ.</p>
 <p>The Vitis software platform supports Windows and Linux. To install the Vitis software platform, follow the instructions in the <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/vitis_embedded_installation.html#tlp1602134446371">Installation section</a> of the
 <em>Vitis Unified Software Platform Documentation: Embedded Software Development</em> (<a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/hly1569525384514.html">UG1400</a>). When you install the Vitis software platform, the Vivado Design Suite is installed automatically.</p>
 <p>You will use Vivado for hardware design, and you will use Vitis for the development of both Linux applications and standalone software applicationss.</p>
-</section>
-<section id="id1">
+</div>
+<div class="section" id="id1">
 <h3>PetaLinux Tools<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <p>The PetaLinux tool offers a full Linux distribution building system which includes the Linux OS as well as a complete configuration, build, and deploy environment for Xilinx silicon.</p>
 <p>Install the PetaLinux Tools to run through the embedded Linux portion of this tutorial.</p>
 <p>PetaLinux tools run under the Linux host system only. Refer to the “Setting Up Your Environment” chapter in the <em>PetaLinux Tools Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf">UG1144</a>) for supported operating systems and installation instructions. You can use either a dedicated Linux host system or a virtual machine running one of these Linux operating systems on your Windows development platform.</p>
 <p>PetaLinux can be installed from its own installer or from Vitis installer.</p>
-</section>
-<section id="software-licensing">
+</div>
+<div class="section" id="software-licensing">
 <h3>Software Licensing<a class="headerlink" href="#software-licensing" title="Permalink to this heading">¶</a></h3>
 <p>Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the <em>Vivado Design Suite User Guide: Release Notes, Installation, and Licensing Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1%3Bt%3Dvivado%2Binstall%2Bguide">UG973</a>).</p>
-</section>
-</section>
-<section id="design-files-for-this-tutorial">
+</div>
+</div>
+<div class="section" id="design-files-for-this-tutorial">
 <h2>Design Files for this Tutorial<a class="headerlink" href="#design-files-for-this-tutorial" title="Permalink to this heading">¶</a></h2>
 <p>The reference design files for this tutorial are provided in the <a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT/ref_files">ref_files</a> directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific <strong>ref_files</strong> subdirectory.</p>
 <p>Start with the first examples in the <a class="reference internal" href="2-using-zynq.html"><span class="doc">next chapter</span></a>.</p>
@@ -223,8 +230,8 @@ function OptanonWrapper() { }
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

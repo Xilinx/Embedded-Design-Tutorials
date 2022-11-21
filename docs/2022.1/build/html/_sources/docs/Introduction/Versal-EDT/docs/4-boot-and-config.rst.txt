@@ -76,10 +76,10 @@ The Vitis software platform supports boot image creation wizard for Versal ACAP.
    .. image:: ./media/image51.jpeg
 
 ======================================================
-Loading Petalinux Images on a Versal Board using JTAG
+Loading PetaLinux Images on a Versal Board using JTAG
 ======================================================
 
-This section describes how to load Versal Petalinux images using JTAG mode on the Versal board. 
+This section describes how to load Versal PetaLinux images using JTAG mode on the Versal board. 
 
 1. Build the Linux images using the command:
 

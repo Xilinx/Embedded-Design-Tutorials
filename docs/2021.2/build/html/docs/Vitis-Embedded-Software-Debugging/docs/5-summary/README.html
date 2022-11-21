@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -83,12 +83,6 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="../3-debugging-linux-applications/README.html">Debugging Linux Applications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3-debugging-linux-applications/README.html#appendix">Appendix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../4-advanced-debug-techniques/README.html">Advanced Debug Techniques</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../4-advanced-debug-techniques/README.html#error-1-axi-gpio-application-debug">Error 1: AXI GPIO Application Debug</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../4-advanced-debug-techniques/README.html#error-2-debugging-a-kernel-crash">Error 2: Debugging a Kernel Crash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../4-advanced-debug-techniques/README.html#error-3-debugging-a-kernel-process">Error 3: Debugging a Kernel Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../4-advanced-debug-techniques/README.html#error-4-debugging-a-kernel-module">Error 4: Debugging a Kernel Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../4-advanced-debug-techniques/README.html#error-5-debug-using-qemu">Error 5: Debug Using QEMU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../4-advanced-debug-techniques/README.html#further-reading">Further Reading</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Summary</a></li>
 </ul>
 </li>
@@ -98,8 +92,9 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Releases</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
@@ -134,7 +129,7 @@ function OptanonWrapper() { }
     <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Vitis Embedded Software Debugging Guide (UG1515) 2021.1</h1>
     </td>
  </tr>
-</table><section id="summary">
+</table><div class="section" id="summary">
 <h1>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h1>
 <p>This table summarises the available error information which has been described in the documentation for quick browsing.</p>
 <table border="1" class="docutils">
@@ -151,95 +146,95 @@ function OptanonWrapper() { }
 <td>Bare-Metal Debug</td>
 <td>What to do when you see an "Error Launching Program" message when launching a debug session?</td>
 <td>System Debugger, Linker Issue</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/2-debugging-bare-metal-applications#error-1-error-launching-program">Error 1: Error Launching Program</a></td>
+<td><a href="../2-debugging-bare-metal-applications/README.html#error-1-error-launching-program">Error 1: Error Launching Program</a></td>
 </tr>
 <tr>
 <td>Bare-Metal Debug</td>
 <td>What to do when a bare-metal application fails to complete the required operations?</td>
 <td>System Debugger, Register Viewer</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/2-debugging-bare-metal-applications#error-2-unfinished-dma-operation">Error 2: Unfinished DMA Operation</a></td>
+<td><a href="../2-debugging-bare-metal-applications/README.html#error-2-unfinished-dma-operation">Error 2: Unfinished DMA Operation</a></td>
 </tr>
 <tr>
 <td>Bare-Metal Debug</td>
 <td>What to do when you get an unexpcted result when running your bare-metal application?</td>
 <td>Breakpoints, System Debugger, Memory/Variables/Expressions Tabs</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/2-debugging-bare-metal-applications#error-3-unexpected-dma-transfer-result">Error 3: Unexpected DMA Transfer Result</a></td>
+<td><a href="../2-debugging-bare-metal-applications/README.html#error-3-unexpected-dma-transfer-result">Error 3: Unexpected DMA Transfer Result</a></td>
 </tr>
 <tr>
 <td>Bare-Metal Debug</td>
 <td>What to do when your bare-metal application gets stuck at <code>Xil_Assert</code> when analyzing in System Debugger?</td>
 <td>Assertions, System Debugger</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/2-debugging-bare-metal-applications#error-4-assertion">Error 4: Assertion</a></td>
+<td><a href="../2-debugging-bare-metal-applications/README.html#error-4-assertion">Error 4: Assertion</a></td>
 </tr>
 <tr>
 <td>Bare-Metal Debug</td>
 <td>How to step through and perform detailed debugging of code?</td>
 <td>Step functions</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/2-debugging-bare-metal-applications#error-5-non-lowercased-characters">Error 5: Non-Lowercased Characters</a></td>
+<td><a href="../2-debugging-bare-metal-applications/README.html#error-5-non-lowercased-characters">Error 5: Non-Lowercased Characters</a></td>
 </tr>
 <tr>
 <td>Linux Debug</td>
 <td>Are you getting started with linux application debug and facing connectivity issues?</td>
 <td>Setting up Ethernet connection and TCF agent</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications#error-1-there-is-no-linux-tcf-agent-running-on-the-specified-19216801">Error 1 : There is no Linux TCF agent running on the specified '192.168.0.1'</a></td>
+<td><a href="../3-debugging-linux-applications/README.html#error-1-there-is-no-linux-tcf-agent-running-on-the-specified-19216801">Error 1 : There is no Linux TCF agent running on the specified '192.168.0.1'</a></td>
 </tr>
 <tr>
 <td>Linux Debug</td>
 <td>Where is it going wrong when you see a "(Linux-Agent : Disconnected) : No such file or directory" error?</td>
 <td>Using the appropriate sysroot for TCF agent and application</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications#error-2-linux-agent--disconnected--no-such-file-or-directory">Error 2 : (Linux-Agent : Disconnected) : No such file or directory</a></td>
+<td><a href="../3-debugging-linux-applications/README.html#error-2-linux-agent--disconnected--no-such-file-or-directory">Error 2 : (Linux-Agent : Disconnected) : No such file or directory</a></td>
 </tr>
 <tr>
 <td>Linux Debug</td>
 <td>Why do you see this error when you try to read a certain memory address?</td>
 <td>System Debugger, Vitis Debug view, Variables view</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications#error-3-cannot-read-target-memory-inputoutput-error">Error 3: Cannot Read Target Memory, Input/Output Error</a></td>
+<td><a href="../3-debugging-linux-applications/README.html#error-3-cannot-read-target-memory-inputoutput-error">Error 3: Cannot Read Target Memory, Input/Output Error</a></td>
 </tr>
 <tr>
 <td>Linux Debug</td>
 <td>What to do when you see ???????? in memory view?</td>
 <td>System Debugger, Memory View</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications#error-4-memory-view-both-physical-address-and-virtual-address-return-">Error 4: Memory View Both Physical Address and Virtual Address Return ????????</a></td>
+<td><a href="../3-debugging-linux-applications/README.html#error-4-memory-view-both-physical-address-and-virtual-address-return-">Error 4: Memory View Both Physical Address and Virtual Address Return ????????</a></td>
 </tr>
 <tr>
 <td>Linux Debug</td>
 <td>How to make your Linux application thread-safe?</td>
 <td>System Debugger, Breakpoints, Stepping, Resume, Variables view</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications#error-5-multithread-application-debug">Error 5: Multithread Application Debug</a></td>
+<td><a href="../3-debugging-linux-applications/README.html#error-5-multithread-application-debug">Error 5: Multithread Application Debug</a></td>
 </tr>
 <tr>
 <td>Linux Debug</td>
 <td>How to debug your dynamically allocated data issue?</td>
 <td>System Debugger, Breakpoints, Variables view, Stepping</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications#error-6-dynamic-memory-allocation">Error 6: Dynamic Memory Allocation</a></td>
+<td><a href="../3-debugging-linux-applications/README.html#error-6-dynamic-memory-allocation">Error 6: Dynamic Memory Allocation</a></td>
 </tr>
 <tr>
 <td>Advanced Debug</td>
 <td>How to debug a Linux userspace application with OS awareness?</td>
 <td>Path Map, Attach to running target, Remote Host, OS Aware Debug, Breakpoints, Memory Viewer</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/4-advanced-debug-techniques#error-1-axi-gpio-application-debug">Error 1: AXI GPIO Application Debug</a></td>
+<td><a href="../4-advanced-debug-techniques/README.html#error-1-axi-gpio-application-debug">Error 1: AXI GPIO Application Debug</a></td>
 </tr>
 <tr>
 <td>Advanced Debug</td>
 <td>How to debug kernel crash issues?</td>
 <td>Path Map, Attach to running target, Remote Host, OS Aware Debug, Breakpoints</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/4-advanced-debug-techniques#error-2-debugging-a-kernel-crash">Error 2: Debugging a Kernel Crash</a></td>
+<td><a href="../4-advanced-debug-techniques/README.html#error-2-debugging-a-kernel-crash">Error 2: Debugging a Kernel Crash</a></td>
 </tr>
 <tr>
 <td>Advanced Debug</td>
 <td>How to debug issues with a kernel process?</td>
 <td>Path Map, Attach to running target, Remote Host, OS Aware Debug, Breakpoints</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/4-advanced-debug-techniques#error-3-debugging-a-kernel-process">Error 3: Debugging a Kernel Process</a></td>
+<td><a href="../4-advanced-debug-techniques/README.html#error-3-debugging-a-kernel-process">Error 3: Debugging a Kernel Process</a></td>
 </tr>
 <tr>
 <td>Advanced Debug</td>
 <td>How to debug kernel module issues?</td>
 <td>Path Map, Attach to running target, Remote Host, OS Aware Debug</td>
-<td><a href="/docs/Vitis-Embedded-Software-Debugging/docs/4-advanced-debug-techniques#error-4-debugging-a-kernel-module">Error 4: Debugging Kernel Module</a></td>
+<td><a href="../4-advanced-debug-techniques/README.html#error-4-debugging-a-kernel-module">Error 4: Debugging Kernel Module</a></td>
 </tr>
 </tbody>
 </table><p><em>Copyright 2021 Xilinx Inc. Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</em></p>
-</section>
+</div>
 
 
            </div>

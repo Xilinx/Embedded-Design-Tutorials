@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -103,8 +103,9 @@ function OptanonWrapper() { }
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Releases</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
@@ -134,10 +135,10 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="end-to-end-performance-analysis">
+  <div class="section" id="end-to-end-performance-analysis">
 <h1>End-To-End Performance Analysis<a class="headerlink" href="#end-to-end-performance-analysis" title="Permalink to this heading">¶</a></h1>
 <p>The Vitis™ IDE enables you to perform an end-to-end performance analysis flow (shown in <a class="reference external" href="#fig47">Figure 47: ATG Configuration to Model Traffic of Zynq-7000 SoC Base TRD</a>). This flow allows you to model the traffic of your estimated design and then validate the performance using your actual design. To better define this end-to-end flow, this chapter describes these steps for an example design. The design chosen is the Zynq®-7000 SoC Base Targeted Reference Design (TRD), described in detail in the <em>Zynq-7000 SoC ZC702 Base Targeted Reference Design User Guide for Vivado Design Suite 2015.4</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/bkdoc?k=zc702_zvik%3Bv%3D2015.4%3Bd%3Dug925-zynq-zc702-base-trd.pdf">UG925</a>).</p>
-<section id="assess-requirements">
+<div class="section" id="assess-requirements">
 <h2>Assess Requirements<a class="headerlink" href="#assess-requirements" title="Permalink to this heading">¶</a></h2>
 <p>The following figure shows the block diagram of this TRD involving HDMI video input and output and processing using a Sobel filter. There are multiple video frames stored in DDR memory, creating multiple channels of high-bandwidth write and read traffic.</p>
 <p><em>Figure 46:</em> <strong>Zynq-7000 SoC Base TRD Hardware Block Diagram</strong></p>
@@ -207,8 +208,8 @@ function OptanonWrapper() { }
 <td>26.5</td>
 </tr>
 </tbody>
-</table></section>
-<section id="model-design">
+</table></div>
+<div class="section" id="model-design">
 <h2>Model Design<a class="headerlink" href="#model-design" title="Permalink to this heading">¶</a></h2>
 <p>Now that the bandwidth requirements of the design have been identified, modeling can be performed using the SPM design. While not a necessity, a software application is recommended to model Processing System (PS) traffic. The memory stride software application was used to model high activity in the PS. While this is not the software that will be run in the actual design, it does provide a worst-case test scenario in terms of activity and memory bandwidth.</p>
 <p>The following figure shows one way the traffic of the TRD could be modeled using System Performance Modeling (SPM). Assuming the video frames are stored in different parts of memory, the Address Start values were set to ddr0 and ddr2. Furthermore, video data is typically stored as successive lines of data, so the Address Next values were set to increment. Beats/tranx values of 8 and 16 were chosen to model the video DMA to/from the Sobel filter and the multi-layer video output, respectively. The intervals were specified to match the desired throughputs for each port and type, as summarized in the previous table.</p>
@@ -226,10 +227,10 @@ function OptanonWrapper() { }
 <li><p><strong>Design Improvements:</strong> <a class="reference external" href="#fig48">Figure 48: Summary of Performance Results for Model of Zynq-7000 SoC Base TRD</a> shows average read latencies of the model to be 40.13 and 32.41 for HP0 and HP2, respectively. For a video design such as this one with definitive frame rate constraints, a display controller could be designed to work within these metrics.</p></li>
 <li><p><strong>What-If Scenarios:</strong> The TRD could consider adding more video layers to the output display. Instead of iterating within the real system, it could be done using SPM. Other options to consider might include: adding a second video pipeline and upgrading to 4K video resolution. All of these scenarios could be modeled and    analyzed before the design phase begins.</p></li>
 </ul>
-</section>
-<section id="performance-validation">
+</div>
+<div class="section" id="performance-validation">
 <h2>Performance Validation<a class="headerlink" href="#performance-validation" title="Permalink to this heading">¶</a></h2>
-<p>The performance of the SPM model can be validated with the actual design. Analyze the performance of the Zynq-7000 SoC Base TRD using a properly instrumented design which include an APM (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.md#instrumenting-hardware">Instrumenting Hardware</a>). For the TRD delivered with 2015.1, this was already the case.</p>
+<p>The performance of the SPM model can be validated with the actual design. Analyze the performance of the Zynq-7000 SoC Base TRD using a properly instrumented design which include an APM (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.html#instrumenting-hardware">Instrumenting Hardware</a>). For the TRD delivered with 2015.1, this was already the case.</p>
 <p>The following figure shows the TRD defined as a block diagram in Vivado Design Suite IP integrator with the APM instance highlighted. The APM was properly configured in Profile mode to ensure that performance results would be reported correctly in the Vitis IDE. HP0 was connected to slot 0 on the APM while HP2 was connected to slot 2. Slot 1 was left open (because HP1 was not used), and the Number of Monitor interfaces was set to 3.</p>
 <p><em>Figure 50:</em> <strong>Vivado IP Integrator Block Diagram of Zynq-7000 SoC Base TRD</strong></p>
 <p><img alt="../../../../_images/image49.jpeg" src="../../../../_images/image49.jpeg" /></p>
@@ -242,8 +243,8 @@ function OptanonWrapper() { }
 <p><img alt="../../../../_images/image47.jpeg" src="../../../../_images/image47.jpeg" /></p>
 <div id="fig53"><p><em>Figure 53:</em> <strong>Write and Read Performance of Zynq-7000 SoC Base TRD</strong></p>
 <p><img alt="../../../../_images/image511.jpeg" src="../../../../_images/image511.jpeg" /></p>
-</div></section>
-<section id="in-depth-analysis">
+</div></div>
+<div class="section" id="in-depth-analysis">
 <h2>In-Depth Analysis<a class="headerlink" href="#in-depth-analysis" title="Permalink to this heading">¶</a></h2>
 <p>A second run of the TRD was performed to investigate the performance impacts of various run- time settings of the TRD. The following table lists all of these settings, as well as a summary of their corresponding performance results captured in the Vitis IDE. The time window is approximately when those settings were used during the test run.</p>
 <p><em>Table 10:</em> <strong>Summary of Performance Metrics from Actual Zynq-7000 SoC Base TRD</strong></p>
@@ -398,8 +399,8 @@ function OptanonWrapper() { }
 <li><p>Validating the performance results originally modeled by the SPM</p></li>
 <li><p>Providing a deeper analysis into various design settings</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

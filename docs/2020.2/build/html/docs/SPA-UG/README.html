@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,9 +24,11 @@ function OptanonWrapper() { }
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Vitis Embedded Software Debugging" href="../Vitis-Embedded-Software-Debugging/README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,6 +58,40 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/Versal-EDT/README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/Zynq7000-EDT/README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">System Performance Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,7 +117,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="about-this-guide">
+  <div class="section" id="about-this-guide">
 <h1>About this Guide<a class="headerlink" href="#about-this-guide" title="Permalink to this heading">¶</a></h1>
 <p>This guide describes the performance analysis toolbox which can be used for early exploration of hardware and software systems. The performance analysis toolbox can be used for early exploration of hardware and software systems. It informs you about the capabilities of the target platform with user configurable settings in a visual way. This guide highlights various features of the performance anslysis toolbox with examples for the Zynq® SoC series, including Zynq® UltraScale+™ MPSoC and Zynq-7000 SoC platforms, as well as how the Vitis software platform can assist you in maximizing the capabilities of these SoC products.After reading this guide, you should be able to:</p>
 <ul class="simple">
@@ -110,7 +145,7 @@ function OptanonWrapper() { }
 <li><p><a class="reference internal" href="docs/10-end-to-end-performance-analysis.html"><span class="doc">Chapter 10: End-To-End Performance Analysis</span></a> describes the full cycle of performance analysis.</p></li>
 </ul>
 <p>Finally, the key performance recommendations mentioned throughout this guide are summarized in <a class="reference internal" href="docs/A-performance-checklist.html"><span class="doc">Appendix A: Performance Checklist</span></a>.</p>
-<section id="requirements">
+<div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
 <p>If you would like to reproduce any of the results shown and discussed in this guide, the requirements include the following:</p>
 <ul class="simple">
@@ -130,8 +165,8 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -146,7 +181,9 @@ function OptanonWrapper() { }
                         }
                   </style>
 				  
-				  <footer>
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Vitis-Embedded-Software-Debugging/README.html" class="btn btn-neutral float-left" title="Vitis Embedded Software Debugging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

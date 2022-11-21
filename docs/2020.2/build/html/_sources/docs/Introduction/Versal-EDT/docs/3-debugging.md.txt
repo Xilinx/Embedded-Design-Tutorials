@@ -46,7 +46,7 @@ You can repeat the cycle of modifying the code, building the executable, and deb
 
 This example describes debugging a hello world application.
 
-If you did not create a hello world application on APU or RPU, follow the steps in [Running a Bare-Metal Hello World Application](./2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application) or [Running a Bare-Metal Hello World Application on DDR Memory](./2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application-on-ddr-memory).
+If you did not create a hello world application on APU or RPU, follow the steps in [Running a Bare-Metal Hello World Application](./2-cips-noc-ip-config.html#running-a-bare-metal-hello-world-application) or [Running a Bare-Metal Hello World Application on DDR Memory](./2-cips-noc-ip-config.html#running-a-bare-metal-hello-world-application-on-ddr-memory).
 
 After you create the Hello World Application, work through the following example to debug the software using the Vitis software platform.
 

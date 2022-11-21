@@ -51,9 +51,9 @@ Introduction
    :caption: Introduction
    :hidden:
 
-   docs/Introduction/Versal-EDT/Versal-EDT
-   docs/Introduction/ZynqMPSoC-EDT/ZynqMPSoC-EDT
-   docs/Introduction/Zynq7000-EDT/Zynq7000-EDT
+   docs/Introduction/Versal-EDT/README
+   docs/Introduction/ZynqMPSoC-EDT/README
+   docs/Introduction/Zynq7000-EDT/README
 
 
 
@@ -65,15 +65,15 @@ Introduction
      - Board
      - Description
 	 
-   * - :doc:`Versal ACAP Embedded Design Tutorial <docs/Introduction/Versal-EDT/Versal-EDT>`
+   * - :doc:`Versal ACAP Embedded Design Tutorial <docs/Introduction/Versal-EDT/README>`
      - Versal VMK180/VCK190
      - Provides an introduction for using the Xilinx® Vivado® Design Suite flow and the Vitis™ unified software platform for embedded development on a Versal™ VMK180/VCK190 evaluation board.
 
-   * - :doc:`Zynq UltraScale+ MPSoC Embedded Design Tutorial <docs/Introduction/ZynqMPSoC-EDT/ZynqMPSoC-EDT>`
+   * - :doc:`Zynq UltraScale+ MPSoC Embedded Design Tutorial <docs/Introduction/ZynqMPSoC-EDT/README>`
      - ZCU102 Rev 1.0/1.1
      - Provides an introduction to using the Xilinx Vivado Design Suite flow and the Vitis unified software platform for embedded development on a Zynq UltraScale+ MPSoC device. 
 
-   * - :doc:`Zynq-7000 Embedded Design Tutorial <docs/Introduction/Zynq7000-EDT/Zynq7000-EDT>`
+   * - :doc:`Zynq-7000 Embedded Design Tutorial <docs/Introduction/Zynq7000-EDT/README>`
      - ZC702 Rev 1.0
      - Provides an introduction to using the Xilinx Vivado Design Suite flow and the Vitis unified software platform for embedded development on a Zynq-7000 SoC device. 
 
@@ -89,8 +89,10 @@ Feature Tutorials
    :caption: Feature Tutorials
    :hidden:
 
-   First Stage Boot Loader (FSBL) <docs/Feature_Tutorials/debuggable-fsbl/debuggable-fsbl>
-   Profiling Applications with System Debugger <docs/Feature_Tutorials/sw-profiling/sw-profiling>
+   First Stage Boot Loader (FSBL) <docs/Feature_Tutorials/debuggable_fsbl/debuggable-fsbl>
+   Linux Aware Debugging <docs/Feature_Tutorials/linux_aware_debugging/linux-aware-debugging>
+   Secure Boot <docs/Feature_Tutorials/secure_boot/secure-boot>
+   Profiling Applications with System Debugger <docs/Feature_Tutorials/sw_profiling/sw-profiling>
 
 
 
@@ -101,11 +103,40 @@ Feature Tutorials
    * - Tutorial
      - Description
 	 
-   * - :doc:`First Stage Boot Loader (FSBL) <docs/Feature_Tutorials/debuggable-fsbl/debuggable-fsbl>`
+   * - :doc:`First Stage Boot Loader (FSBL) <docs/Feature_Tutorials/debuggable_fsbl/debuggable-fsbl>`
      - First Stage Boot Loader (FSBL) can initialize the SoC device, load the required application or data to memory, and launch applications on the target CPU core. An FSBL is provided in the Vitis platform project (if you enabled creating boot components while creating the platform project), but you are free to create additional FSBL applications as general applications for further modification or debugging purposes.
+	 
+   * - :doc:`Linux Aware Debugging <docs/Feature_Tutorials/linux_aware_debugging/linux-aware-debugging>`
+     - Describes setting up OS aware debug for a Zynq board running Linux OS.
+	 
+   * - :doc:`Secure Boot <docs/Feature_Tutorials/secure_boot/secure-boot>`
+     - The secure boot functionality in Zynq® UltraScale+™ MPSoC allows you to support the confidentiality, integrity, and authentication of partitions. Secure boot is accomplished by combining the Hardware Root of Trust (HWRoT) capabilities of the Zynq UltraScale+ device with the option of encrypting all boot partitions.
 
-   * - :doc:`Profiling Applications with System Debugger <docs/Feature_Tutorials/sw-profiling/sw-profiling>`
+   * - :doc:`Profiling Applications with System Debugger <docs/Feature_Tutorials/sw_profiling/sw-profiling>`
      - Enable profiling features for the standalone domain or board support package (BSP) and the application related to AXI CDMA, which you created in :doc:`Linux Booting and Debug in the Vitis Software Platform <docs/Introduction/Zynq7000-EDT/7-linux-booting-debug>`.
+
+
+*************************
+Design Tutorials
+*************************
+
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Design Tutorials
+   :hidden:
+
+   Example Setup for a Graphics and DisplayPort Based Sub-System <docs/Design_Tutorials/MPSoC_Graphic_Subsystem/README>
+ 
+.. list-table:: 
+   :widths: 20 80
+   :header-rows: 1
+   
+   * - Tutorial
+     - Description
+	 
+   * - :doc:`Example Setup for a Graphics and DisplayPort Based Sub-System <docs/Design_Tutorials/MPSoC_Graphic_Subsystem/README>`
+     - Demonstrates the configurations, packages, and tool flow required for running designs based on GPU and DP on a Zynq UltraScale+ MPSoC device.
 
 
 *************************
@@ -118,7 +149,7 @@ Debugging
    :caption: Debugging
    :hidden:
 
-   docs/Vitis-Embedded-Software-Debugging/Debugging
+   docs/Vitis-Embedded-Software-Debugging/README
 
 
 
@@ -129,7 +160,7 @@ Debugging
    * - Tutorial
      - Description
 	 
-   * - :doc:`Vitis Embedded Software Debugging Guide <docs/Vitis-Embedded-Software-Debugging/Debugging>`
+   * - :doc:`Vitis Embedded Software Debugging Guide <docs/Vitis-Embedded-Software-Debugging/README>`
      - Provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help.
 
 
@@ -146,8 +177,7 @@ User Guides
    :caption: User Guides
    :hidden:
 
-   System Performance Analysis <docs/User_Guides/SPA-UG/SPA-UG>
-   Versal Dhrystone Benchmark <docs/User_Guides/Performance_Benchmark/Dhrystone/README>
+   System Performance Analysis <docs/SPA-UG/README>
 
 
 
@@ -158,12 +188,20 @@ User Guides
    * - Tutorial
      - Description
 	 
-   * - :doc:`Vitis Unified Software Platform User Guide System Performance Analysis <docs/User_Guides/SPA-UG/SPA-UG>`
+   * - :doc:`Vitis Unified Software Platform User Guide System Performance Analysis <docs/SPA-UG/README>`
      - Describes the technical details of the performance analysis toolbox, as well as a methodology explaining its usefulness and depth.
 	 
-   * - :doc:`Versal Dhrystone Benchmark <docs/User_Guides/Performance_Benchmark/Dhrystone/README>`
-     - Provides step-by-step instructions for generating a reference design for the Dhrystone benchmark and building and running the Dhrystone application.
+  
 
 
 
 
+.. toctree::
+   :maxdepth: 3
+   :caption: See All Versions
+   :hidden:
+
+   2022.1 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html>
+   2021.2 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html>
+   2021.1 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html>
+   

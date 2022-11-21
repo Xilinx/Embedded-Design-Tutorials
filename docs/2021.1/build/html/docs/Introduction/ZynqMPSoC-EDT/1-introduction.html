@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -78,6 +78,7 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html">System Design Example: Using GPIO, Timer and Interrupts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="8-boot-and-configuration.html">Boot and Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="9-secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ZynqMPSoC-EDT.html#example-project">Example Project</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
@@ -86,6 +87,10 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
@@ -96,8 +101,11 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -126,7 +134,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="how-zynq-ultrascale-devices-offer-a-single-chip-solution">
+  <div class="section" id="how-zynq-ultrascale-devices-offer-a-single-chip-solution">
 <h1>How Zynq UltraScale+ Devices Offer a Single Chip Solution<a class="headerlink" href="#how-zynq-ultrascale-devices-offer-a-single-chip-solution" title="Permalink to this heading">¶</a></h1>
 <p>Zynq® UltraScale+™ MPSoC, the next generation Zynq device, is designed
 with the idea of using the right engine for the right task. The Zynq
@@ -167,7 +175,7 @@ that merges an SoC with an FPGA. This combination of tools enables
 hardware and software application design, code execution and debug,
 and transfer of the design onto actual boards for verification and
 validation.</p>
-<section id="vitis-integrated-design-environment">
+<div class="section" id="vitis-integrated-design-environment">
 <h2>Vitis Integrated Design Environment<a class="headerlink" href="#vitis-integrated-design-environment" title="Permalink to this heading">¶</a></h2>
 <p>The Vitis unified software platform is an integrated development
 environment (IDE) for the development of embedded software
@@ -198,8 +206,8 @@ Development</em> (<a class="reference external" href="https://www.xilinx.com/cgi
 <li><p>Drivers and libraries for embedded software development</p></li>
 <li><p>Linaro GCC toolchain for C/C++ software development targeting the Arm Cortex-A53 and Arm Cortex-R5F MPCore processors in the Zynq UltraScale+ processing system.</p></li>
 </ul>
-</section>
-<section id="vivado-design-suite">
+</div>
+<div class="section" id="vivado-design-suite">
 <h2>Vivado Design Suite<a class="headerlink" href="#vivado-design-suite" title="Permalink to this heading">¶</a></h2>
 <p>The Vivado Design Suite offers a broad range of development system
 tools for FPGA implementation. It can be installed as a standalone
@@ -207,8 +215,8 @@ tool when software programming is not required. It is also a part of
 the Vitis IDE installation. Various Vivado Design Suite editions can
 be used for embedded system development. In this guide, the System
 Edition installed with the Vitis IDE is used.</p>
-</section>
-<section id="petalinux-tools">
+</div>
+<div class="section" id="petalinux-tools">
 <h2>PetaLinux Tools<a class="headerlink" href="#petalinux-tools" title="Permalink to this heading">¶</a></h2>
 <p>The PetaLinux toolset is an embedded Linux system development kit. It
 offers a multi-faceted Linux tool flow, which enables complete
@@ -216,8 +224,8 @@ configuration, build, and deploy environment for Linux OS for the
 Xilinx Zynq devices, including Zynq UltraScale+ devices.</p>
 <p>For more information, see the <em>PetaLinux Tools Documentation:
 Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>).</p>
-</section>
-<section id="how-the-xilinx-design-tools-expedite-the-design">
+</div>
+<div class="section" id="how-the-xilinx-design-tools-expedite-the-design">
 <h2>How the Xilinx Design Tools Expedite the Design<a class="headerlink" href="#how-the-xilinx-design-tools-expedite-the-design" title="Permalink to this heading">¶</a></h2>
 <p>You can use the Vivado Design Suite tools to add design sources to
 your hardware. These include the IP integrator, which simplifies the
@@ -243,8 +251,8 @@ refer to the <em>Zynq UltraScale + MPSoC Processing System LogiCORE IP Product G
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

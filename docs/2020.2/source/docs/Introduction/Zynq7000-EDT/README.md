@@ -1,4 +1,4 @@
-# Introduction
+# Zynq-7000 Embedded Design Tutorial
 
 This document provides an introduction to using the Xilinx&reg; Vivado&reg; Design Suite flow for using the Zynq&reg;-7000 SoC device. The examples are targeted for the Xilinx ZC702 Rev 1.0 evaluation board and the tools used are the Vivado&reg; Design Suite and the Vitis&trade; unified software platform.
 

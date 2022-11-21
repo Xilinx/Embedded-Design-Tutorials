@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Zynq7000-EDT/README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../SPA-UG/README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,7 +113,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="boot-and-configuration">
+  <div class="section" id="boot-and-configuration">
 <h1>Boot and Configuration<a class="headerlink" href="#boot-and-configuration" title="Permalink to this heading">¶</a></h1>
 <p>The purpose of this chapter is to show how to integrate and load boot loaders, bare-metal applications (For APU/RPU), and the Linux Operating System for a Versal™ ACAP. This chapter discusses the following topics:</p>
 <ul class="simple">
@@ -91,23 +122,23 @@ function OptanonWrapper() { }
 <li><p>Boot sequences for SD-boot, and QSPI and OSPI boot modes.</p></li>
 </ul>
 <p>You can achieve these configurations using the Vitis™ software platform and the PetaLinux tool flow. While <a class="reference internal" href="2-cips-noc-ip-config.html"><span class="doc">Versal ACAP CIPS and NoC (DDR) IP Core Configuration</span></a> focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a bigger system.</p>
-<section id="system-software">
+<div class="section" id="system-software">
 <h2>System Software<a class="headerlink" href="#system-software" title="Permalink to this heading">¶</a></h2>
 <p>The following system software blocks cover most of the boot and configuration for this chapter.</p>
-<section id="platform-loader-and-manager">
+<div class="section" id="platform-loader-and-manager">
 <h3>Platform Loader and Manager<a class="headerlink" href="#platform-loader-and-manager" title="Permalink to this heading">¶</a></h3>
 <p>The platform loader and manager (PLM) is the software that runs on one of the dedicated processors in the Platform Management Controller (PMC) block of the Versal ACAP. It is responsible for boot and run time management, including platform management, error management, partial reconfiguration, and subsystem restart of the device. The PLM can reload images, and load partial PDIs and service interrupts. The PLM reads the programmable device image from the boot source and configures the components of the system including the NoC initialization, DDR memory initialization, programmable logic, and processing system, and then completes the device boot.</p>
-</section>
-<section id="u-boot">
+</div>
+<div class="section" id="u-boot">
 <h3>U-Boot<a class="headerlink" href="#u-boot" title="Permalink to this heading">¶</a></h3>
 <p>U-Boot acts as a secondary boot loader. After the PLM handoff, U-Boot loads Linux onto the Arm A72 APU and configures the rest of the peripherals in the processing system based on the board configuration. U-Boot can fetch images from different memory sources like eMMC, SATA, TFTP, SD, and QSPI. U-Boot can be configured and built using the PetaLinux tool flow.</p>
-</section>
-<section id="arm-trusted-firmware">
+</div>
+<div class="section" id="arm-trusted-firmware">
 <h3>Arm Trusted Firmware<a class="headerlink" href="#arm-trusted-firmware" title="Permalink to this heading">¶</a></h3>
 <p>The Arm Trusted Firmware (ATF) is a transparent bare-metal application layer executed in Exception Level 3 (EL3) on the APU. The ATF includes a Secure Monitor layer for switching between the secure and the non-secure world. The Secure Monitor calls and implementation of Trusted Board Boot Requirements (TBBR) makes the ATF layer a mandatory requirement to load Linux on the APU on Versal ACAP. The PLM loads the ATF to be executed by the APU, which keeps running in EL3 awaiting a service request. The PLM also loads U-Boot into DDR to be executed by the APU, which loads Linux OS in SMP mode on the APU. The ATF (<code class="docutils literal notranslate"><span class="pre">bl31.elf</span></code>) is built by default in PetaLinux and can be found in the PetaLinux Project images directory.</p>
-</section>
-</section>
-<section id="generating-boot-image-for-standalone-application">
+</div>
+</div>
+<div class="section" id="generating-boot-image-for-standalone-application">
 <h2>Generating Boot Image for Standalone Application<a class="headerlink" href="#generating-boot-image-for-standalone-application" title="Permalink to this heading">¶</a></h2>
 <p>The Vitis software platform does not support automatic boot image creation for Versal architecture. To generate a bootable image, use Bootgen, which is a command line utility which is part of the Vitis software platform package. The principle function of Bootgen is to integrate the various partitions of the bootable image. Bootgen uses a Bootgen Image Format (BIF) file as an input and generates a single file image in binary BIN or PDI format. It outputs a single file image which can be loaded into non-volatile memory (NVM) (QSPI or SD Card). Use the following steps to generate a PDI/BIN file:</p>
 <ol>
@@ -131,8 +162,8 @@ function OptanonWrapper() { }
 <p><img alt="../../../../_images/image51.jpeg" src="../../../../_images/image51.jpeg" /></p>
 </li>
 </ol>
-</section>
-<section id="boot-sequence-for-sd-boot-mode">
+</div>
+<div class="section" id="boot-sequence-for-sd-boot-mode">
 <h2>Boot Sequence for SD-Boot Mode<a class="headerlink" href="#boot-sequence-for-sd-boot-mode" title="Permalink to this heading">¶</a></h2>
 <p>The following steps demonstrate the boot sequence for the SD-boot mode.</p>
 <ol>
@@ -142,7 +173,7 @@ function OptanonWrapper() { }
 <li><p>For Linux images, navigate to the <code class="docutils literal notranslate"><span class="pre">&lt;plnx-proj-root&gt;/images/linux</span></code> and copy <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code>, <code class="docutils literal notranslate"><span class="pre">image.ub</span></code>, and <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> to the SD card.</p></li>
 </ul>
 <blockquote>
-<div><p><strong><em>Note</em>:</strong> You can either boot the VCK190/VMK180 board using the   ready-to-test images as part of the released package path, <code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/&lt;vck190</span> <span class="pre">or</span> <span class="pre">vmk180&gt;/linux/bootimages</span></code>, or refer to <a class="reference external" href="../docs/5-system-design-example.md#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
+<div><p><strong><em>Note</em>:</strong> You can either boot the VCK190/VMK180 board using the   ready-to-test images as part of the released package path, <code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/&lt;vck190</span> <span class="pre">or</span> <span class="pre">vmk180&gt;/linux/bootimages</span></code>, or refer to <a class="reference external" href="../docs/5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
 </div></blockquote>
 </li>
 <li><p>Load the SD card into the VMK180/VCK190 board, in the J302 connector.</p></li>
@@ -163,14 +194,14 @@ function OptanonWrapper() { }
 </div></blockquote>
 </li>
 </ol>
-</section>
-<section id="boot-sequence-for-qspi-boot-mode">
+</div>
+<div class="section" id="boot-sequence-for-qspi-boot-mode">
 <h2>Boot Sequence for QSPI Boot Mode<a class="headerlink" href="#boot-sequence-for-qspi-boot-mode" title="Permalink to this heading">¶</a></h2>
 <p>This section demonstrates the boot sequence for the QSPI boot mode. For this, you need to connect a QSPI daughter card (part number: X_EBM-01, REV_A01) as shown in the following figure:</p>
 <p><em>Figure 2:</em> <strong>Daughter Card on VCK190</strong></p>
 <p><img alt="QSPI-boot-halfform-factor-module" src="../../../../_images/image54.jpeg" /></p>
 <blockquote>
-<div><p><strong><em>Note</em>:</strong> For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190/VMK180 board using the ready-to-test images as part of the released package path, <code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/&lt;vck190</span> <span class="pre">or</span> <span class="pre">vmk180&gt;/linux/bootimages</span></code>, or refer to <a class="reference external" href="./5-system-design-example.md#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
+<div><p><strong><em>Note</em>:</strong> For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190/VMK180 board using the ready-to-test images as part of the released package path, <code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/&lt;vck190</span> <span class="pre">or</span> <span class="pre">vmk180&gt;/linux/bootimages</span></code>, or refer to <a class="reference external" href="./5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a> to build your own set of Linux images using the PetaLinux tool.</p>
 </div></blockquote>
 <p>You need to flash the images to the daughter card, using the following steps:</p>
 <ol>
@@ -201,8 +232,8 @@ sf write 0x80000 0x7F80000 0x999
 <p>© Copyright 2020-2021 Xilinx, Inc.</p>
 <p><em>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>.</em></p>
 <p><em>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</em></p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

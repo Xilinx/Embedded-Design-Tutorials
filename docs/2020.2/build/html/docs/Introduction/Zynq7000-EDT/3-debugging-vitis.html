@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,7 +113,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="debugging-with-the-vitis-software-platform">
+  <div class="section" id="debugging-with-the-vitis-software-platform">
 <h1>Debugging with the Vitis Software Platform<a class="headerlink" href="#debugging-with-the-vitis-software-platform" title="Permalink to this heading">¶</a></h1>
 <p>This chapter describes debug possibilities with the design flow you
 have already been working with. The first option is debugging with
@@ -108,7 +139,7 @@ and stack, and view the contents of the memory in the system.</p>
 Debugger and GNU Debugger (GDB).</p>
 <p><strong>Note:</strong> The GDB flow is deprecated and will not be available for
 future devices.</p>
-<section id="xilinx-system-debugger">
+<div class="section" id="xilinx-system-debugger">
 <h2>Xilinx System Debugger<a class="headerlink" href="#xilinx-system-debugger" title="Permalink to this heading">¶</a></h2>
 <p>The Xilinx System Debugger uses the Xilinx hw_server as the underlying
 debug engine. The Vitis software platform translates each user
@@ -145,18 +176,18 @@ executable, and debugging the program in the Vitis software platform.</p>
 will be out of step because the debug information is tied directly to
 the source. Similarly, debugging optimized binaries can also cause
 unexpected jumps in the execution trace.</p>
-</section>
-<section id="example-3-debugging-standalone-software-using-the-vitis-software-platform">
+</div>
+<div class="section" id="example-3-debugging-standalone-software-using-the-vitis-software-platform">
 <h2>Example 3: Debugging Standalone Software Using the Vitis Software Platform<a class="headerlink" href="#example-3-debugging-standalone-software-using-the-vitis-software-platform" title="Permalink to this heading">¶</a></h2>
-<p>In this example, you will walk through debugging the “Hello World” application created in <a class="reference external" href="./2-using-zynq.md#example-2-creating-and-running-a-hello-world-application">Example 2</a>.</p>
-<section id="input-and-output-files">
+<p>In this example, you will walk through debugging the “Hello World” application created in <a class="reference external" href="./2-using-zynq.html#example-2-creating-and-running-a-hello-world-application">Example 2</a>.</p>
+<div class="section" id="input-and-output-files">
 <h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input files: Vitis workspace from Example 2</p></li>
 <li><p>Output files: N/A</p></li>
 </ul>
-</section>
-<section id="debugging-standalone-applications-in-the-vitis-ide">
+</div>
+<div class="section" id="debugging-standalone-applications-in-the-vitis-ide">
 <h3>Debugging Standalone Applications in the Vitis IDE<a class="headerlink" href="#debugging-standalone-applications-in-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>In the C/C++ perspective, right-click the Hello_world project and select <strong>Debug As → Debug Configurations</strong>.</p>
@@ -209,9 +240,9 @@ of the debugger.</p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

@@ -109,6 +109,30 @@ Feature Tutorials
 
 
 *************************
+Design Tutorials
+*************************
+
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Design Tutorials
+   :hidden:
+
+   Example Setup for a Graphics and DisplayPort Based Sub-System <docs/Design_Tutorials/MPSoC_Graphic_Subsystem/README>
+ 
+.. list-table:: 
+   :widths: 20 80
+   :header-rows: 1
+   
+   * - Tutorial
+     - Description
+	 
+   * - :doc:`Example Setup for a Graphics and DisplayPort Based Sub-System <docs/Design_Tutorials/MPSoC_Graphic_Subsystem/README>`
+     - Demonstrates the configurations, packages, and tool flow required for running designs based on GPU and DP on a Zynq UltraScale+ MPSoC device.
+
+
+
+*************************
 Debugging
 *************************
 
@@ -171,10 +195,13 @@ User Guides
 
 .. toctree::
    :maxdepth: 3
-   :caption: Previous Releases
+   :caption: See All Versions
    :hidden:
 
-   2020.2 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/docs/index.html>
+   2022.1 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html>
+   2021.2 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html>
+   2021.1 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html>
+   2020.2 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html>
 
 
 

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Zynq7000-EDT/README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../SPA-UG/README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,7 +113,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="versal-acap-cips-and-noc-ddr-ip-core-configuration">
+  <div class="section" id="versal-acap-cips-and-noc-ddr-ip-core-configuration">
 <h1>Versal ACAP CIPS and NoC (DDR) IP Core Configuration<a class="headerlink" href="#versal-acap-cips-and-noc-ddr-ip-core-configuration" title="Permalink to this heading">¶</a></h1>
 <p>The Versal™ ACAP CIPS IP core allows you to configure the processing system and the PMC block including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.</p>
 <p>This chapter describes how to perform the following tasks:</p>
@@ -96,17 +127,17 @@ function OptanonWrapper() { }
 <li><p>Creating and running a Hello World software application on Arm Cortex-A72 using DDR as memory.</p></li>
 <li><p>Creating and running a Hello World software application on Arm Cortex-R5F using DDR as memory.</p></li>
 </ul>
-<section id="prerequisites">
+<div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
 <p>To create and run the Hello World applications discussed in this chapter, you will need to install the Vitis™ unified software platform. For installation procedures, see <em>Vitis Unified Software Platform Documentation: Embedded Software Development</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1400-vitis-embedded.pdf">UG1400</a>).</p>
-</section>
-<section id="cips-ip-core-configuration">
+</div>
+<div class="section" id="cips-ip-core-configuration">
 <h2>CIPS IP Core Configuration<a class="headerlink" href="#cips-ip-core-configuration" title="Permalink to this heading">¶</a></h2>
 <p>Creating a Versal ACAP system design involves configuring the CIPS IP core to select the appropriate boot devices and peripherals. To start with, if the CIPS IP core peripherals and available multiplexed I/O (MIO) connections meet the requirements, no PL component is required. This chapter guides you through creating a simple CIPS IP core based design.</p>
-<section id="creating-a-new-embedded-project-with-the-versal-acap">
+<div class="section" id="creating-a-new-embedded-project-with-the-versal-acap">
 <h3>Creating a New Embedded Project with the Versal ACAP<a class="headerlink" href="#creating-a-new-embedded-project-with-the-versal-acap" title="Permalink to this heading">¶</a></h3>
 <p>For this example, launch the Vivado Design Suite and create a project with an embedded processor system as the top level.</p>
-<section id="starting-your-design">
+<div class="section" id="starting-your-design">
 <h4>Starting Your Design<a class="headerlink" href="#starting-your-design" title="Permalink to this heading">¶</a></h4>
 <ol>
 <li><p>Start the Vivado Design Suite.</p></li>
@@ -124,66 +155,66 @@ function OptanonWrapper() { }
 <table border="1" class="docutils">
 <thead>
 <tr>
-<th align="left">Wizard Screen System</th>
-<th align="left">System Property</th>
-<th align="left">Setting or Command to Use</th>
+<th style="text-align: left;">Wizard Screen System</th>
+<th style="text-align: left;">System Property</th>
+<th style="text-align: left;">Setting or Command to Use</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Project Name</td>
-<td align="left">Project Name</td>
-<td align="left">edt_versal</td>
+<td style="text-align: left;">Project Name</td>
+<td style="text-align: left;">Project Name</td>
+<td style="text-align: left;">edt_versal</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Project Location</td>
-<td align="left">C:/edt</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Project Location</td>
+<td style="text-align: left;">C:/edt</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Create Project Subdirectory</td>
-<td align="left">Leave this checked</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Create Project Subdirectory</td>
+<td style="text-align: left;">Leave this checked</td>
 </tr>
 <tr>
-<td align="left">Project Type</td>
-<td align="left">Specify the type of project to create. You can start with RTL or a synthesized EDIF</td>
-<td align="left">RTL Project</td>
+<td style="text-align: left;">Project Type</td>
+<td style="text-align: left;">Specify the type of project to create. You can start with RTL or a synthesized EDIF</td>
+<td style="text-align: left;">RTL Project</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Do not specify sources at this time check box</td>
-<td align="left">Leave this unchecked</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Do not specify sources at this time check box</td>
+<td style="text-align: left;">Leave this unchecked</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Project is an extensible Vitis platform checkbox</td>
-<td align="left">Leave this unchecked</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Project is an extensible Vitis platform checkbox</td>
+<td style="text-align: left;">Leave this unchecked</td>
 </tr>
 <tr>
-<td align="left">Add Sources</td>
-<td align="left">Do not make any changes to this screen</td>
-<td align="left"></td>
+<td style="text-align: left;">Add Sources</td>
+<td style="text-align: left;">Do not make any changes to this screen</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add Constraints</td>
-<td align="left">Do not make any changes to this screen</td>
-<td align="left"></td>
+<td style="text-align: left;">Add Constraints</td>
+<td style="text-align: left;">Do not make any changes to this screen</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Default Part</td>
-<td align="left">Select</td>
-<td align="left"><strong>Boards</strong></td>
+<td style="text-align: left;">Default Part</td>
+<td style="text-align: left;">Select</td>
+<td style="text-align: left;"><strong>Boards</strong></td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Display Name</td>
-<td align="left">Versal VMK180/VCK190 Evaluation Platform</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Display Name</td>
+<td style="text-align: left;">Versal VMK180/VCK190 Evaluation Platform</td>
 </tr>
 <tr>
-<td align="left">Project Summary</td>
-<td align="left">Project Summary</td>
-<td align="left">Review the project summary</td>
+<td style="text-align: left;">Project Summary</td>
+<td style="text-align: left;">Project Summary</td>
+<td style="text-align: left;">Review the project summary</td>
 </tr>
 </tbody>
 </table><ol class="simple">
@@ -192,8 +223,8 @@ function OptanonWrapper() { }
 <blockquote>
 <div><p><strong><em>Note</em>:</strong>  Check the version number while choosing a board. For ES1 silicon, the board version is 1.1 and for production silicon, the board version is 2.0. Select the version based on the silicon on the board.</p>
 </div></blockquote>
-</section>
-<section id="creating-an-embedded-processor-project">
+</div>
+<div class="section" id="creating-an-embedded-processor-project">
 <h4>Creating an Embedded Processor Project<a class="headerlink" href="#creating-an-embedded-processor-project" title="Permalink to this heading">¶</a></h4>
 <p>To create an embedded processor project:</p>
 <ol>
@@ -208,26 +239,26 @@ function OptanonWrapper() { }
 <table border="1" class="docutils">
 <thead>
 <tr>
-<th align="left">Wizard Screen</th>
-<th align="left">System Property</th>
-<th align="left">Setting or Command to Use</th>
+<th style="text-align: left;">Wizard Screen</th>
+<th style="text-align: left;">System Property</th>
+<th style="text-align: left;">Setting or Command to Use</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Create Block Design</td>
-<td align="left">Design Name</td>
-<td align="left">edt_versal</td>
+<td style="text-align: left;">Create Block Design</td>
+<td style="text-align: left;">Design Name</td>
+<td style="text-align: left;">edt_versal</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Directory</td>
-<td align="left"><code>&lt;Local to Project&gt;</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Directory</td>
+<td style="text-align: left;"><code>&lt;Local to Project&gt;</code></td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Specify Source Set</td>
-<td align="left">Design Sources</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Specify Source Set</td>
+<td style="text-align: left;">Design Sources</td>
 </tr>
 </tbody>
 </table><ol>
@@ -240,8 +271,8 @@ function OptanonWrapper() { }
 <p><img alt="../../../../_images/image7.png" src="../../../../_images/image7.png" /></p>
 </li>
 </ol>
-</section>
-<section id="managing-the-versal-acap-cips-ip-core-in-the-vivado-design-suite">
+</div>
+<div class="section" id="managing-the-versal-acap-cips-ip-core-in-the-vivado-design-suite">
 <h4>Managing the Versal ACAP CIPS IP Core in the Vivado Design Suite<a class="headerlink" href="#managing-the-versal-acap-cips-ip-core-in-the-vivado-design-suite" title="Permalink to this heading">¶</a></h4>
 <p>Now that you have added the processor system for Versal™ ACAP to the design, you can begin managing the available options.</p>
 <ol>
@@ -264,8 +295,8 @@ function OptanonWrapper() { }
 </li>
 <li><p>Click <strong>OK</strong> to close the CIPS GUI.</p></li>
 </ol>
-</section>
-<section id="validating-the-design-and-generating-the-output">
+</div>
+<div class="section" id="validating-the-design-and-generating-the-output">
 <h4>Validating the Design and Generating the Output<a class="headerlink" href="#validating-the-design-and-generating-the-output" title="Permalink to this heading">¶</a></h4>
 <p>To validate the design and to generate the output products, follow these steps:</p>
 <ol>
@@ -299,8 +330,8 @@ function OptanonWrapper() { }
 <p><img alt="../../../../_images/image16.png" src="../../../../_images/image16.png" /></p>
 </li>
 </ol>
-</section>
-<section id="synthesizing-implementing-and-generating-the-device-image">
+</div>
+<div class="section" id="synthesizing-implementing-and-generating-the-device-image">
 <h4>Synthesizing, Implementing, and Generating the Device Image<a class="headerlink" href="#synthesizing-implementing-and-generating-the-device-image" title="Permalink to this heading">¶</a></h4>
 <p>Follow these steps to generate a device image for the design.</p>
 <ol>
@@ -331,8 +362,8 @@ function OptanonWrapper() { }
 <p>Export hardware after you generate the Device Image.</p>
 </li>
 </ol>
-</section>
-<section id="exporting-hardware">
+</div>
+<div class="section" id="exporting-hardware">
 <h4>Exporting Hardware<a class="headerlink" href="#exporting-hardware" title="Permalink to this heading">¶</a></h4>
 <ol>
 <li><p>From the Vivado toolbar, select <strong>File → Export→ Export Hardware</strong>.</p>
@@ -344,9 +375,9 @@ function OptanonWrapper() { }
 </li>
 <li><p>Click <strong>Finish</strong>.</p></li>
 </ol>
-</section>
-</section>
-<section id="running-a-bare-metal-hello-world-application">
+</div>
+</div>
+<div class="section" id="running-a-bare-metal-hello-world-application">
 <h3>Running a Bare-Metal Hello World Application<a class="headerlink" href="#running-a-bare-metal-hello-world-application" title="Permalink to this heading">¶</a></h3>
 <p>In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your system, and run a Hello World software application from Arm Cortex-A72 on On-chip-memory (OCM) and Arm Cortex- R5F on Tightly-coupled-memory (TCM) on the Vitis software platform.</p>
 <p>The following steps demonstrate the procedure to make the required cable connections, connect the board through your system, and launch the Vitis software platform.</p>
@@ -379,7 +410,7 @@ function OptanonWrapper() { }
 <blockquote>
 <div><p><strong><em>Note</em>:</strong> You can use external terminal Serial Port Consoles like Tera Term or Putty. You can find the relevant COM port information from the Device Manager menu in Control Panel.</p>
 </div></blockquote>
-<section id="creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm">
+<div class="section" id="creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm">
 <h4>Creating a Hello World Application for the Arm Cortex-A72 on OCM<a class="headerlink" href="#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm" title="Permalink to this heading">¶</a></h4>
 <p>The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM.</p>
 <ol>
@@ -477,7 +508,7 @@ function OptanonWrapper() { }
 </div></blockquote>
 </li>
 </ol>
-<section id="modifying-the-helloworld-a72-application-source-code">
+<div class="section" id="modifying-the-helloworld-a72-application-source-code">
 <h5>Modifying the helloworld_a72 Application Source Code<a class="headerlink" href="#modifying-the-helloworld-a72-application-source-code" title="Permalink to this heading">¶</a></h5>
 <ol>
 <li><p>Double-click <strong>helloworld_a72</strong>, then double-click <strong>src</strong> and select <strong>helloworld.c</strong>.</p>
@@ -492,9 +523,9 @@ function OptanonWrapper() { }
 </li>
 <li><p>Click <img alt="../../../../_images/image29.png" src="../../../../_images/image29.png" /> to build the project.</p></li>
 </ol>
-</section>
-</section>
-<section id="adding-a-new-rpu-domain-to-the-platform-project">
+</div>
+</div>
+<div class="section" id="adding-a-new-rpu-domain-to-the-platform-project">
 <h4>Adding a New RPU Domain to the Platform Project<a class="headerlink" href="#adding-a-new-rpu-domain-to-the-platform-project" title="Permalink to this heading">¶</a></h4>
 <p>The following steps demonstrate the procedure to create a bare-metal Hello World application for the Arm Cortex-R5F on TCM. The application needs to be linked to a domain. Before creating the application project, make sure that the target domain software environment is available. If not, add the required domain to your platform using the following steps.</p>
 <ol>
@@ -552,8 +583,8 @@ function OptanonWrapper() { }
 </li>
 <li><p>Click the <img alt="../../../../_images/image26.png" src="../../../../_images/image26.png" /> icon to build the platform. The Explorer view shows the generated image files in the platform project.</p></li>
 </ol>
-</section>
-<section id="creating-the-standalone-application-project-for-the-arm-cortex-r5f">
+</div>
+<div class="section" id="creating-the-standalone-application-project-for-the-arm-cortex-r5f">
 <h4>Creating the Standalone Application Project for the Arm Cortex-R5F<a class="headerlink" href="#creating-the-standalone-application-project-for-the-arm-cortex-r5f" title="Permalink to this heading">¶</a></h4>
 <p>The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-R5F.</p>
 <ol>
@@ -637,7 +668,7 @@ function OptanonWrapper() { }
 <ol class="simple">
 <li><p>Right-click <strong>vck190_platform</strong> and select <strong>Build Project</strong>. Alternatively, you can also click <img alt="../../../../_images/image29.png" src="../../../../_images/image29.png" /> to build the project.</p></li>
 </ol>
-<section id="modifying-the-helloworld-r5-application-source-code">
+<div class="section" id="modifying-the-helloworld-r5-application-source-code">
 <h5>Modifying the helloworld_r5 Application Source Code<a class="headerlink" href="#modifying-the-helloworld-r5-application-source-code" title="Permalink to this heading">¶</a></h5>
 <ol>
 <li><p>Expand <strong>helloworld_r5</strong> and double-click <strong>src</strong> and select <strong>helloworld.c</strong> to open the <code class="docutils literal notranslate"><span class="pre">helloworld.c</span></code> source file for the helloworld_r5 application.</p></li>
@@ -650,8 +681,8 @@ function OptanonWrapper() { }
 </li>
 <li><p>Click <img alt="../../../../_images/image29.png" src="../../../../_images/image29.png" /> to build the project.</p></li>
 </ol>
-</section>
-<section id="modifying-the-application-linker-script-for-the-application-project-helloworld-r5">
+</div>
+<div class="section" id="modifying-the-application-linker-script-for-the-application-project-helloworld-r5">
 <h5>Modifying the Application Linker Script for the Application Project helloworld_r5<a class="headerlink" href="#modifying-the-application-linker-script-for-the-application-project-helloworld-r5" title="Permalink to this heading">¶</a></h5>
 <p>The following steps demonstrate the procedure to modify the application linker script for the application project helloworld_r5.</p>
 <blockquote>
@@ -678,13 +709,13 @@ function OptanonWrapper() { }
 </li>
 <li><p>Right-click <strong>helloworld _system</strong> and select <strong>Build Project</strong> or click <img alt="../../../../_images/image26.png" src="../../../../_images/image26.png" />. This generates the project elf files within the Debug folder of the helloworld_r5 project.</p></li>
 </ol>
-</section>
-</section>
-</section>
-<section id="running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform">
+</div>
+</div>
+</div>
+<div class="section" id="running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform">
 <h3>Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform<a class="headerlink" href="#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform" title="Permalink to this heading">¶</a></h3>
 <p>To run an application, you must create a ‘Run configuration’ that captures the settings for executing the application. You can either create a Run configuration for the whole system project or independent applications.</p>
-<section id="creating-a-run-configuration-for-the-system-project">
+<div class="section" id="creating-a-run-configuration-for-the-system-project">
 <h4>Creating a Run Configuration for the System Project<a class="headerlink" href="#creating-a-run-configuration-for-the-system-project" title="Permalink to this heading">¶</a></h4>
 <ol>
 <li><p>Right-click on the system project <strong>helloworld_system</strong> and select <strong>Run As → Run Configurations</strong>. The Run configuration dialog box opens.</p></li>
@@ -721,11 +752,11 @@ function OptanonWrapper() { }
 <p><img alt="../../../../_images/image34.png" src="../../../../_images/image34.png" /></p>
 </li>
 </ol>
-</section>
-<section id="creating-a-run-configuration-for-a-single-application-within-a-system-project">
+</div>
+<div class="section" id="creating-a-run-configuration-for-a-single-application-within-a-system-project">
 <h4>Creating a Run Configuration for a Single Application within a System Project<a class="headerlink" href="#creating-a-run-configuration-for-a-single-application-within-a-system-project" title="Permalink to this heading">¶</a></h4>
 <p>You can create a run configuration for a single application within a system project in two ways:</p>
-<section id="method-i">
+<div class="section" id="method-i">
 <h5>Method I<a class="headerlink" href="#method-i" title="Permalink to this heading">¶</a></h5>
 <ol>
 <li><p>Right-click on the system project <strong>helloworld_system</strong> and select <strong>Run As → Run Configurations</strong>. The Run configuration dialog box opens.</p></li>
@@ -776,8 +807,8 @@ function OptanonWrapper() { }
 <blockquote>
 <div><p><strong><em>Note</em>:</strong> Both the APU and RPU applications print on the same console as both applications are using UART0 for these applications. The application software sends the hello world strings for both APU and RPU to the UART0 peripheral of the PS section. From UART0, the hello world strings goes byte-by-byte to the serial terminal application running on the host machine, which displays it as a string.</p>
 </div></blockquote>
-</section>
-<section id="method-ii">
+</div>
+<div class="section" id="method-ii">
 <h5>Method II<a class="headerlink" href="#method-ii" title="Permalink to this heading">¶</a></h5>
 <ol>
 <li><p>Right-click on the application project hello_world_r5 and select <strong>Run As → Run Configurations</strong>. The Run configuration dialog box opens.</p></li>
@@ -825,21 +856,21 @@ function OptanonWrapper() { }
 <p><img alt="../../../../_images/image36.png" src="../../../../_images/image36.png" /></p>
 </li>
 </ol>
-</section>
-</section>
-</section>
-</section>
-<section id="noc-and-ddr-ip-core-configuration">
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="noc-and-ddr-ip-core-configuration">
 <h2>NoC (and DDR) IP Core Configuration<a class="headerlink" href="#noc-and-ddr-ip-core-configuration" title="Permalink to this heading">¶</a></h2>
 <p>This section describes the NoC (and DDR) configuration and related connections required for use with the CIPS configured earlier in this chapter. The Versal ACAP CIPS IP core allows you to configure two superscalar, multi-core Arm Cortex-A72 based APUs, two Arm Cortex-R5F RPUs, a platform management controller (PMC), and a CCIX PCIe® module (CPM). The NoC IP core allows configuring the NoC and enabling the DDR memory controllers.</p>
-<section id="configuring-the-noc-ip-core-in-an-existing-project">
+<div class="section" id="configuring-the-noc-ip-core-in-an-existing-project">
 <h3>Configuring the NoC IP Core in an Existing Project<a class="headerlink" href="#configuring-the-noc-ip-core-in-an-existing-project" title="Permalink to this heading">¶</a></h3>
-<p>For this example, launch the Vivado Design Suite and project with basic CIPS configuration done as shown in <a class="reference external" href="./2-cips-noc-ip-config.md#creating-a-new-embedded-project-with-the-versal-acap">Example Project: Creating a New Embedded Project with the Versal ACAP</a>.</p>
-<section id="configuring-your-design">
+<p>For this example, launch the Vivado Design Suite and project with basic CIPS configuration done as shown in <a class="reference external" href="./2-cips-noc-ip-config.html#creating-a-new-embedded-project-with-the-versal-acap">Example Project: Creating a New Embedded Project with the Versal ACAP</a>.</p>
+<div class="section" id="configuring-your-design">
 <h4>Configuring Your Design<a class="headerlink" href="#configuring-your-design" title="Permalink to this heading">¶</a></h4>
 <p>To configure your design, follow these steps:</p>
 <ol>
-<li><p>Open the design created in <a class="reference external" href="./2-cips-noc-ip-config.md#creating-a-new-embedded-project-with-the-versal-acap">Example Project: Creating a New Embedded Project with the Versal ACAP</a>, <code class="docutils literal notranslate"><span class="pre">edt_versal.xpr</span></code>.</p></li>
+<li><p>Open the design created in <a class="reference external" href="./2-cips-noc-ip-config.html#creating-a-new-embedded-project-with-the-versal-acap">Example Project: Creating a New Embedded Project with the Versal ACAP</a>, <code class="docutils literal notranslate"><span class="pre">edt_versal.xpr</span></code>.</p></li>
 <li><p>Open the block design <code class="docutils literal notranslate"><span class="pre">edt_versal.bd</span></code>.</p></li>
 <li><p>Go to the Tcl Console in the Vivado Design Suite and type the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apply_bd_automation</span> <span class="o">-</span><span class="n">rule</span> <span class="n">xilinx</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">bd_rule</span><span class="p">:</span><span class="n">versal_cips</span> <span class="o">-</span><span class="n">config</span> <span class="p">{</span> <span class="n">apply_board_preset</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span> <span class="n">configure_noc</span> <span class="p">{</span><span class="n">Add</span> <span class="n">new</span> <span class="n">AXI</span> <span class="n">NoC</span><span class="p">}</span> <span class="n">num_ddr</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span> <span class="n">pcie0_lane_width</span> <span class="p">{</span><span class="kc">None</span><span class="p">}</span> <span class="n">pcie0_mode</span> <span class="p">{</span><span class="kc">None</span><span class="p">}</span> <span class="n">pcie0_port_type</span> <span class="p">{</span><span class="n">Endpoint</span> <span class="n">Device</span><span class="p">}</span> <span class="n">pcie1_lane_width</span> <span class="p">{</span><span class="kc">None</span><span class="p">}</span> <span class="n">pcie1_mode</span> <span class="p">{</span><span class="kc">None</span><span class="p">}</span> <span class="n">pcie1_port_type</span> <span class="p">{</span><span class="n">Endpoint</span> <span class="n">Device</span><span class="p">}</span> <span class="n">pl_clocks</span> <span class="p">{</span><span class="kc">None</span><span class="p">}</span> <span class="n">pl_resets</span> <span class="p">{</span><span class="kc">None</span><span class="p">}}</span>  <span class="p">[</span><span class="n">get_bd_cells</span> <span class="n">versal_cips_0</span><span class="p">]</span>
@@ -858,8 +889,8 @@ function OptanonWrapper() { }
 <p><img alt="../../../../_images/image38.png" src="../../../../_images/image38.png" /></p>
 </li>
 </ol>
-</section>
-<section id="id1">
+</div>
+<div class="section" id="id1">
 <h4>Validating the Design and Generating the Output<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
 <p>To validate the design and generate the output, follow these steps:</p>
 <ol>
@@ -884,8 +915,8 @@ for the processor sub-system when you select <strong>Generate Output Products</s
 <p><img alt="../../../../_images/image391.png" src="../../../../_images/image391.png" /></p>
 </li>
 </ol>
-</section>
-<section id="id2">
+</div>
+<div class="section" id="id2">
 <h4>Synthesizing, Implementing, and Generating the Device Image<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
 <p>Follow these steps to generate a device image for the design.</p>
 <ol>
@@ -916,8 +947,8 @@ for the processor sub-system when you select <strong>Generate Output Products</s
 <p>Export hardware, after you generate Device Image.</p>
 </li>
 </ol>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h4>Exporting Hardware<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
 <ol>
 <li><p>From the Vivado main menu, select <strong>File→ Export → Export Hardware</strong>. The Export Hardware dialog box opens.</p></li>
@@ -927,9 +958,9 @@ for the processor sub-system when you select <strong>Generate Output Products</s
 </li>
 <li><p>Click <strong>Finish</strong>.</p></li>
 </ol>
-</section>
-</section>
-<section id="running-a-bare-metal-hello-world-application-on-ddr-memory">
+</div>
+</div>
+<div class="section" id="running-a-bare-metal-hello-world-application-on-ddr-memory">
 <h3>Running a Bare-Metal Hello World Application on DDR Memory<a class="headerlink" href="#running-a-bare-metal-hello-world-application-on-ddr-memory" title="Permalink to this heading">¶</a></h3>
 <p>In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Xilinx Vitis software platform.</p>
 <p>You will create a new Vitis project, similar to the one in <a class="reference external" href="#running-a-bare-metal-hello-world-application">Running a Bare-Metal Hello World Application</a>, except that it will use the default linker scripts, which will reference the DDR memory.</p>
@@ -949,9 +980,9 @@ for the processor sub-system when you select <strong>Generate Output Products</s
 <p>© Copyright 2020-2021 Xilinx, Inc.</p>
 <p><em>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>.</em></p>
 <p><em>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</em></p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

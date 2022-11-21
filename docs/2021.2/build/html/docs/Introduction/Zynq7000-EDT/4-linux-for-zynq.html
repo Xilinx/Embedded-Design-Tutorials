@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -110,8 +110,9 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Releases</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
@@ -141,17 +142,17 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="building-and-debugging-linux-applications-for-zynq-7000-socs">
+  <div class="section" id="building-and-debugging-linux-applications-for-zynq-7000-socs">
 <h1>Building and Debugging Linux Applications for Zynq-7000 SoCs<a class="headerlink" href="#building-and-debugging-linux-applications-for-zynq-7000-socs" title="Permalink to this heading">¶</a></h1>
 <p>This chapter demonstrates how to develop and debug Linux applications.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#example-4-creating-linux-images"><span class="std std-ref">Example 4: Creating Linux Images</span></a> introduces how to create a Linux image with PetaLinux.</p></li>
 <li><p><a class="reference internal" href="#example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide"><span class="std std-ref">Example 5: Creating a Hello World Application for Linux in the Vitis IDE</span></a> creates a Linux application in the Vitis IDE with the Linux image created in Example 4.</p></li>
 </ul>
-<section id="example-4-creating-linux-images">
+<div class="section" id="example-4-creating-linux-images">
 <span id="id1"></span><h2>Example 4: Creating Linux Images<a class="headerlink" href="#example-4-creating-linux-images" title="Permalink to this heading">¶</a></h2>
 <p>In this example, you will configure and build a Linux operating system platform for an Arm™ Cortex-A9 core based APU on a Zynq® 7000 device. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.</p>
-<section id="input-and-output-files">
+<div class="section" id="input-and-output-files">
 <h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input:</p>
@@ -174,8 +175,8 @@ function OptanonWrapper() { }
 <li><p>This example uses the <a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2021.2-final.bsp">PetaLinux ZC702 BSP</a> to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">PetaLinux Tools download page</a>.</p></li>
 </ol>
 </div>
-</section>
-<section id="creating-a-petalinux-image">
+</div>
+<div class="section" id="creating-a-petalinux-image">
 <h3>Creating a PetaLinux Image<a class="headerlink" href="#creating-a-petalinux-image" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Create a PetaLinux project using the following command:</p>
@@ -237,8 +238,8 @@ ls -al
 <p>Refer to <code class="docutils literal notranslate"><span class="pre">petalinux-package</span> <span class="pre">--boot</span> <span class="pre">--help</span></code> for more details about the boot image package command.</p>
 </li>
 </ol>
-</section>
-<section id="booting-linux-on-the-target-board">
+</div>
+<div class="section" id="booting-linux-on-the-target-board">
 <h3>Booting Linux on the Target Board<a class="headerlink" href="#booting-linux-on-the-target-board" title="Permalink to this heading">¶</a></h3>
 <p>You will now boot Linux on the Zynq-7000 SoC ZC702 target board using the JTAG mode.</p>
 <div class="admonition note">
@@ -252,20 +253,16 @@ ls -al
 <ul class="simple">
 <li><p>Change <strong>SW16[5:1]</strong> to <strong>01100</strong></p></li>
 </ul>
-<figure class="align-default" id="id5">
+<div class="figure align-default" id="id5">
 <img alt="SD Boot Mode Setup for SW16" src="../../../_images/image89.jpeg" />
-<figcaption>
-<p><span class="caption-text">SD Boot Mode Setup for SW16</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">SD Boot Mode Setup for SW16</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>Make sure Ethernet Jumper J30 and J43 are as shown in the following figure.</p>
-<figure class="align-default" id="id6">
+<div class="figure align-default" id="id6">
 <img alt="Ethernet Jumper" src="../../../_images/image69.jpeg" />
-<figcaption>
-<p><span class="caption-text">Ethernet Jumper</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Ethernet Jumper</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
 <p>Ethernet is optional in this example. It is required in Example 5.</p>
 </li>
 <li><p>Launch the Vitis software platform and open the same workspace you used in <a class="reference internal" href="2-using-zynq.html"><span class="doc">Using the Zynq SoC Processing System</span></a>.</p></li>
@@ -278,12 +275,12 @@ ls -al
 <li><p>Power on the target board.</p></li>
 <li><p>The Linux login prompt will appear. Use user name <code class="docutils literal notranslate"><span class="pre">root</span></code> and password <code class="docutils literal notranslate"><span class="pre">root</span></code> to log in.</p></li>
 </ol>
-</section>
-</section>
-<section id="example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide">
+</div>
+</div>
+<div class="section" id="example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide">
 <span id="id2"></span><h2>Example 5: Creating a Hello World Application for Linux in the Vitis IDE<a class="headerlink" href="#example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide" title="Permalink to this heading">¶</a></h2>
 <p>In this example, you will use the Vitis IDE to create a Linux application that runs on the embedded Linux environment.</p>
-<section id="creating-linux-domain">
+<div class="section" id="creating-linux-domain">
 <h3>Creating Linux Domain<a class="headerlink" href="#creating-linux-domain" title="Permalink to this heading">¶</a></h3>
 <p>First, create a Linux domain in the Vitis IDE. The Linux domain contains the information required by the Linux application.</p>
 <p>The steps to create a Linux domain are given below:</p>
@@ -291,12 +288,10 @@ ls -al
 <li><p>Go to the Explorer view in the Vitis software platform and expand the <strong>zc702_edt</strong> platform project.</p></li>
 <li><p>Open the platform by double clicking <strong>platform.spr</strong>.</p></li>
 <li><p>The platform view opens. Click the <strong>+</strong> button in the right corner to add a domain, as shown in the following figure.</p>
-<figure class="align-default" id="id7">
+<div class="figure align-default" id="id7">
 <img alt="platform.spr" src="../../../_images/image731.png" />
-<figcaption>
-<p><span class="caption-text">platform.spr</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">platform.spr</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>When the New Domain dialog box opens, enter the details as given below:</p>
 <table class="docutils align-default">
@@ -339,20 +334,16 @@ ls -al
 </tr>
 </tbody>
 </table>
-<figure class="align-default" id="id8">
+<div class="figure align-default" id="id8">
 <img alt="Creating Linux domain" src="../../../_images/image741.png" />
-<figcaption>
-<p><span class="caption-text">Creating Linux domain</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Creating Linux domain</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
 <ul>
 <li><p>Click <strong>OK</strong> to finish, and observe that the Linux domain has been added to the zc702_edt as shown below.</p>
-<figure class="align-default" id="id9">
+<div class="figure align-default" id="id9">
 <img alt="Updated platform domains" src="../../../_images/image75.png" />
-<figcaption>
-<p><span class="caption-text">Updated platform domains</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Updated platform domains</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 </ul>
 <div class="admonition note">
@@ -367,8 +358,8 @@ ls -al
 <p>Now you have a Linux domain and are ready to create Linux applications.</p>
 </li>
 </ol>
-</section>
-<section id="creating-linux-applications-in-the-vitis-ide">
+</div>
+<div class="section" id="creating-linux-applications-in-the-vitis-ide">
 <h3>Creating Linux Applications in the Vitis IDE<a class="headerlink" href="#creating-linux-applications-in-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Create a Linux application:</p>
@@ -397,8 +388,8 @@ ls -al
 </ul>
 </li>
 </ol>
-</section>
-<section id="preparing-the-linux-agent-for-remote-connection">
+</div>
+<div class="section" id="preparing-the-linux-agent-for-remote-connection">
 <span id="id4"></span><h3>Preparing the Linux Agent for Remote Connection<a class="headerlink" href="#preparing-the-linux-agent-for-remote-connection" title="Permalink to this heading">¶</a></h3>
 <p>The Vitis IDE needs a channel to download the application to the running target for debugging. When the target runs Linux, it uses TCF Agent running on the target. TCF Agent is added to the Linux rootfs from the PetaLinux configuration by default. When Linux boots up, it launches TCF Agent automatically. The Vitis IDE talks to TCF Agent on the board using an Ethernet connection.</p>
 <ol class="arabic">
@@ -425,35 +416,29 @@ ls -al
 <ol class="arabic">
 <li><p>Click the <strong>Target Connections</strong> icon on the toolbar.</p></li>
 <li><p>It can also be launched by going to <strong>Window → Show View…</strong> and then looking for the target.</p>
-<figure class="align-default" id="id10">
+<div class="figure align-default" id="id10">
 <img alt="Vitis Show View search for Target Connections" src="../../../_images/vitis_launch_target_connections.png" />
-<figcaption>
-<p><span class="caption-text">Vitis Show View search for Target Connections</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Vitis Show View search for Target Connections</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>In the Target Connections window, double-click <strong>Linux TCF Agent → Linux Agent[default]</strong>.</p></li>
 <li><p>Input the IP address of your board.</p></li>
 <li><p>Click <strong>Test Connection</strong>.</p>
-<figure class="align-default" id="id11">
+<div class="figure align-default" id="id11">
 <img alt="Vitis test connection details" src="../../../_images/vitis_target_connection_details.png" />
-<figcaption>
-<p><span class="caption-text">Vitis test connection details</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Vitis test connection details</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
 <p>Vitis should return a pop-up confirmation for success.</p>
-<figure class="align-default" id="id12">
+<div class="figure align-default" id="id12">
 <img alt="Vitis test connection success" src="../../../_images/vitis_test_connection_success.png" />
-<figcaption>
-<p><span class="caption-text">Vitis test connection success</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Vitis test connection success</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 </ol>
 </li>
 </ol>
-</section>
-<section id="running-the-linux-application-from-the-vitis-ide">
+</div>
+<div class="section" id="running-the-linux-application-from-the-vitis-ide">
 <h3>Running the Linux Application from the Vitis IDE<a class="headerlink" href="#running-the-linux-application-from-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Run the Linux application:</p>
@@ -468,27 +453,21 @@ ls -al
 </li>
 <li><p>Click <strong>Run</strong>.</p></li>
 </ul>
-<figure class="align-default" id="id13">
+<div class="figure align-default" id="id13">
 <img alt="Vitis Linux Run Configurations" src="../../../_images/vitis_linux_run_configurations.png" />
-<figcaption>
-<p><span class="caption-text">Vitis Linux Run Configurations</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="id14">
+<p class="caption"><span class="caption-text">Vitis Linux Run Configurations</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id14">
 <img alt="Application Tab" src="../../../_images/vitis_linux_run_configurations_applications.png" />
-<figcaption>
-<p><span class="caption-text">Application Tab</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Application Tab</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
 <ul class="simple">
 <li><p>The console should print <strong>Hello World</strong>.</p></li>
 </ul>
-<figure class="align-default" id="id15">
+<div class="figure align-default" id="id15">
 <img alt="Linux Hello World run result" src="../../../_images/linux_hello_world.png" />
-<figcaption>
-<p><span class="caption-text">Linux Hello World run result</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Linux Hello World run result</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>Disconnect the connection:</p>
 <ul class="simple">
@@ -497,8 +476,8 @@ ls -al
 </ul>
 </li>
 </ol>
-</section>
-<section id="debugging-a-linux-application-from-the-vitis-ide">
+</div>
+<div class="section" id="debugging-a-linux-application-from-the-vitis-ide">
 <h3>Debugging a Linux Application from the Vitis IDE<a class="headerlink" href="#debugging-a-linux-application-from-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <p>Debugging Linux applications requires the Linux agent to be set up properly. Refer to <a class="reference internal" href="../ZynqMPSoC-EDT/6-build-linux-sw-for-ps.html#preparing-the-linux-agent-for-remote-connection"><span class="std std-ref">Preparing the Linux Agent for Remote Connection</span></a> for detailed steps.</p>
 <ol class="arabic">
@@ -524,12 +503,10 @@ ls -al
 <li><p>The next line to execute has a green background.</p></li>
 <li><p>Step over by clicking the icon on the toolbar or pressing <strong>F6</strong> on the keyboard. The printed string will be shown on the Console panel.</p></li>
 </ul>
-<figure class="align-default" id="id16">
+<div class="figure align-default" id="id16">
 <img alt="Debug window" src="../../../_images/vitis_debugger_hello_linux_zynq.png" />
-<figcaption>
-<p><span class="caption-text">Debug window</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Debug window</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>Disconnect the connection:</p>
 <ul class="simple">
@@ -538,9 +515,9 @@ ls -al
 </ul>
 </li>
 </ol>
-</section>
-</section>
-<section id="summary">
+</div>
+</div>
+<div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
 <p>In this chapter, you learned how to:</p>
 <ul class="simple">
@@ -549,8 +526,8 @@ ls -al
 <li><p>Run and debug using the Vitis IDE.</p></li>
 </ul>
 <p>Up until now, all your development and debugging activities have been running on the processing system. In the <a class="reference internal" href="5-using-gp-port-zynq.html"><span class="doc">next chapter</span></a>, you will start to add components to the PL (programmable logic). First, you will see how to use the GP port in Zynq devices.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

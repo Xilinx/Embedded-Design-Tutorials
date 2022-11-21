@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -91,6 +91,10 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
@@ -100,8 +104,11 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -130,15 +137,15 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="system-design-example-using-scalar-engine-and-adaptable-engine">
+  <div class="section" id="system-design-example-using-scalar-engine-and-adaptable-engine">
 <h1>System Design Example using Scalar Engine and Adaptable Engine<a class="headerlink" href="#system-design-example-using-scalar-engine-and-adaptable-engine" title="Permalink to this heading">¶</a></h1>
 <p>This chapter guides you through building a system based on Versal™ devices using available tools and supported software blocks. This chapter demonstrates how to use the Vivado® tool to create an embedded design using PL AXI GPIO and PL AXI UART. It also demonstrates the steps to configure and build the Linux operating system for an Arm® Cortex™-A72 core-based APU on a Versal ACAP device.</p>
 <p>Examples using the PetaLinux tool are also provided in this chapter.</p>
-<section id="design-example-using-axi-gpio">
+<div class="section" id="design-example-using-axi-gpio">
 <h2>Design Example: Using AXI GPIO<a class="headerlink" href="#design-example-using-axi-gpio" title="Permalink to this heading">¶</a></h2>
 <p>The Linux application uses a PL-based AXI GPIO interface to monitor the DIP switch of the board and accordingly control the LEDs on the board. The LED application can run on both the VMK180 and the VCK190 boards.</p>
 <p>The RPU application uses the PL-based AXI UART lite to print the debug messages on the AXI UART console instead of using the PS UART console. The PL UART application can run on both the VMK180 and VCK190 boards.</p>
-<section id="configuring-hardware">
+<div class="section" id="configuring-hardware">
 <h3>Configuring Hardware<a class="headerlink" href="#configuring-hardware" title="Permalink to this heading">¶</a></h3>
 <p>The first step in this design is to configure the PS and PL sections. You can do this using the Vivado IP integrator. Start with adding the required IPs from the Vivado IP catalog and then connect the components to blocks in the PS subsystem. To configure the hardware, follow these steps:</p>
 <div class="admonition note">
@@ -154,7 +161,7 @@ function OptanonWrapper() { }
 </li>
 <li><p>Right-click the block diagram and select <strong>Add IP</strong>.</p></li>
 </ol>
-<section id="connecting-ip-blocks-to-create-a-complete-system">
+<div class="section" id="connecting-ip-blocks-to-create-a-complete-system">
 <h4>Connecting IP Blocks to Create a Complete System<a class="headerlink" href="#connecting-ip-blocks-to-create-a-complete-system" title="Permalink to this heading">¶</a></h4>
 <p>To connect IP blocks to create a system, follow these steps.</p>
 <ol class="arabic">
@@ -168,8 +175,8 @@ function OptanonWrapper() { }
 </li>
 <li><p>Click <strong>Finish</strong> and <strong>OK</strong> to complete the configuration and return to the block diagram.</p></li>
 </ol>
-</section>
-<section id="adding-and-configuring-ip-addresses">
+</div>
+<div class="section" id="adding-and-configuring-ip-addresses">
 <h4>Adding and Configuring IP Addresses<a class="headerlink" href="#adding-and-configuring-ip-addresses" title="Permalink to this heading">¶</a></h4>
 <p>To add and configure IP addresses, follow these steps.</p>
 <ol class="arabic">
@@ -264,8 +271,8 @@ function OptanonWrapper() { }
 </div></blockquote>
 <p>The overall block design is shown in the following figure:</p>
 <img alt="../../../../_images/image73.png" src="../../../../_images/image73.png" />
-</section>
-<section id="validating-the-design-and-generating-the-output">
+</div>
+<div class="section" id="validating-the-design-and-generating-the-output">
 <h4>Validating the Design and Generating the Output<a class="headerlink" href="#validating-the-design-and-generating-the-output" title="Permalink to this heading">¶</a></h4>
 <p>To validate the design and to generate the output product, follow these steps:</p>
 <ol class="arabic">
@@ -304,8 +311,8 @@ function OptanonWrapper() { }
 <img alt="../../../../_images/image74.png" src="../../../../_images/image74.png" />
 </li>
 </ol>
-</section>
-<section id="synthesizing-implementing-and-generating-the-device-image">
+</div>
+<div class="section" id="synthesizing-implementing-and-generating-the-device-image">
 <h4>Synthesizing, Implementing, and Generating the Device Image<a class="headerlink" href="#synthesizing-implementing-and-generating-the-device-image" title="Permalink to this heading">¶</a></h4>
 <p>Follow these steps to generate a device image for the design.</p>
 <ol class="arabic">
@@ -337,8 +344,8 @@ function OptanonWrapper() { }
 <p>Export hardware, after you generate Device Image.</p>
 </li>
 </ol>
-</section>
-<section id="exporting-hardware">
+</div>
+<div class="section" id="exporting-hardware">
 <h4>Exporting Hardware<a class="headerlink" href="#exporting-hardware" title="Permalink to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>From the Vivado main menu, select <strong>File→ Export → Export Hardware</strong>. The Export Hardware dialog box opens.</p></li>
@@ -348,10 +355,10 @@ function OptanonWrapper() { }
 </li>
 <li><p>Click <strong>Finish</strong>.</p></li>
 </ol>
-</section>
-</section>
-</section>
-<section id="example-project-freertos-axi-uartlite-application-project-with-rpu">
+</div>
+</div>
+</div>
+<div class="section" id="example-project-freertos-axi-uartlite-application-project-with-rpu">
 <h2>Example Project: FreeRTOS AXI UARTLITE Application Project with RPU<a class="headerlink" href="#example-project-freertos-axi-uartlite-application-project-with-rpu" title="Permalink to this heading">¶</a></h2>
 <p>This section explains how to configure and build the FreeRTOS application for an Arm Cortex-R5F core based RPU on a Versal device.</p>
 <p>The following steps demonstrate the procedure to create a FreeRTOS Application from Arm Cortex-R5F:</p>
@@ -465,7 +472,7 @@ _0_pspmc_0_psv_cortexr5_0</p></td>
 <li><p>Click <strong>&lt;OK&gt;</strong> to save the above configuration and exit the configuration wizard.</p></li>
 <li><p>Right-click <strong>freertos_gpio_test_system</strong> and select <strong>Build Project</strong>. Alternatively, you can click <img alt="build-icon" src="../../../../_images/image29.png" />.</p></li>
 </ol>
-<p>For building the Linux images and incorporating the FreeRTOS elf into the image, see <a class="reference external" href="./5-system-design-example.rst#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a>.</p>
+<p>For building the Linux images and incorporating the FreeRTOS elf into the image, see <a class="reference external" href="./5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a>.</p>
 <ol class="arabic" start="9">
 <li><p>On PL AXI UART Serial Console, RPU debug logs will be printed as below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Gpio</span> <span class="n">Initialization</span> <span class="n">started</span>
@@ -479,8 +486,8 @@ _0_pspmc_0_psv_cortexr5_0</p></td>
 </div>
 </li>
 </ol>
-</section>
-<section id="example-project-creating-linux-images-using-petalinux">
+</div>
+<div class="section" id="example-project-creating-linux-images-using-petalinux">
 <h2>Example Project: Creating Linux Images Using PetaLinux<a class="headerlink" href="#example-project-creating-linux-images-using-petalinux" title="Permalink to this heading">¶</a></h2>
 <p>This section explains how to  configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.</p>
 <p>This example needs a Linux host machine. Refer to the PetaLinux Tools Documentation Reference Guide <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a> for information on dependencies and installation procedure for the PetaLinux tool.</p>
@@ -563,7 +570,7 @@ $cp &lt;design-package&gt;/ch5_system_design_example_source__files/apu/device_tr
 <img alt="../../../../_images/rootfs_config_aie.JPG" src="../../../../_images/rootfs_config_aie.JPG" />
 </li>
 <li><p>Navigate to <strong>Filesystem Packages → misc → gcc-runtime</strong> and disable <strong>libstdc++ support</strong> by pressing &lt;Y&gt; key as shown in the following figure.</p>
-<img alt="../../../../_images/rootfs_config_stdc++.JPG" src="../../../../_images/rootfs_config_stdc++.JPG" />
+<img alt="../../../../_images/rootfs_config_stdc%2B%2B.JPG" src="../../../../_images/rootfs_config_stdc%2B%2B.JPG" />
 </li>
 <li><p>Navigate to <strong>Filesystem Packages → devel → tcltk → tcl</strong> and disable <strong>tcl support</strong> by pressing &lt;Y&gt; key as shown in the following figure.</p>
 <img alt="../../../../_images/rootfs_config_tcl.JPG" src="../../../../_images/rootfs_config_tcl.JPG" />
@@ -600,7 +607,7 @@ $cp &lt;design-package&gt;/ch5_system_design_example_source__files/apu/device_tr
 </div>
 </li>
 </ol>
-<section id="combining-freertos-and-apu-images-using-a-bif-file">
+<div class="section" id="combining-freertos-and-apu-images-using-a-bif-file">
 <h3>Combining FreeRTOS and APU Images using a BIF File<a class="headerlink" href="#combining-freertos-and-apu-images-using-a-bif-file" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Open the XSCT console in your Vitis IDE workspace.</p></li>
@@ -629,11 +636,11 @@ This creates a `BOOT.BIN` image file in the `&lt;petalinux-project&gt;/images/li
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To run the images using SD boot mode, see <a class="reference external" href="./4-boot-and-config.rst#boot-sequence-for-sd-boot-mode">Boot Sequence for SD-Boot Mode</a>.</p>
+<p>To run the images using SD boot mode, see <a class="reference external" href="./4-boot-and-config.html#boot-sequence-for-sd-boot-mode">Boot Sequence for SD-Boot Mode</a>.</p>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

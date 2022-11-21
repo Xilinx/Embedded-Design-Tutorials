@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -80,6 +80,10 @@ function OptanonWrapper() { }
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
@@ -89,8 +93,11 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -118,10 +125,10 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="creating-a-debuggable-first-stage-boot-loader">
+  <div class="section" id="creating-a-debuggable-first-stage-boot-loader">
 <h1>Creating a Debuggable First Stage Boot Loader<a class="headerlink" href="#creating-a-debuggable-first-stage-boot-loader" title="Permalink to this heading">¶</a></h1>
 <p>First Stage Boot Loader (FSBL) can initialize the SoC device, load the required application or data to memory, and launch applications on the target CPU core. An FSBL is provided in the Vitis platform project (if you enabled creating boot components while creating the platform project), but you are free to create additional FSBL applications as general applications for further modification or debugging purposes.</p>
-<section id="enabling-detailed-prints-in-fsbl">
+<div class="section" id="enabling-detailed-prints-in-fsbl">
 <h2>Enabling Detailed Prints in FSBL<a class="headerlink" href="#enabling-detailed-prints-in-fsbl" title="Permalink to this heading">¶</a></h2>
 <p>If you desire more detailed information during the boot process, but are not planning to modify the FSBL source code, you can set FSBL to print more information - but it is not necessary to run FSBL in Vitis debugger. In this example, you will create an FSBL image targeted for Arm™ Cortex-A53 core 0 and update its properties to enable detailed print info.</p>
 <ol class="simple">
@@ -235,8 +242,8 @@ function OptanonWrapper() { }
 </li>
 <li><p>Click <strong>OK</strong> to accept the changes and close the Settings view. Now that the symbol is defined, GCC will build the application with this symbol.</p></li>
 </ol>
-</section>
-<section id="stripping-out-unused-functions">
+</div>
+<div class="section" id="stripping-out-unused-functions">
 <h2>Stripping Out Unused Functions<a class="headerlink" href="#stripping-out-unused-functions" title="Permalink to this heading">¶</a></h2>
 <p>The FSBL application is capable of performing numerous tasks. The tasks it executes are based on the user definition in header files. Some functions are not executed by default. GCC includes these functions into the compiled executable by default. Because FSBL runs on OCM, and OCM only has a capacity of 128 KB, unused functions must be stripped out to make FSBL fit into OCM. Run the following instructions to update the BSP compile settings to strip out unused functions:</p>
 <ol class="simple">
@@ -245,17 +252,17 @@ function OptanonWrapper() { }
 <li><p>Click the <strong>Modify BSP Settings…</strong> button.</p></li>
 <li><p>Under <strong>Overview → Drivers → psu_cortexa53_0 → extra_compiler_flags</strong>, edit <strong>extra_compiler_flags</strong> to append <code class="docutils literal notranslate"><span class="pre">-Os</span> <span class="pre">-flto</span> <span class="pre">-ffat-lto-objects</span></code>.</p></li>
 </ol>
-</section>
-<section id="building-the-project">
+</div>
+<div class="section" id="building-the-project">
 <h2>Building the Project<a class="headerlink" href="#building-the-project" title="Permalink to this heading">¶</a></h2>
 <p>Right-click the <strong>fsbl_a53</strong> application and select <strong>Build Project</strong>. The FSBL executable is now saved as <code class="docutils literal notranslate"><span class="pre">fsbl_a53/debug/fsbl_a53.elf</span></code>. In this tutorial, the application name <code class="docutils literal notranslate"><span class="pre">fsbl_a53</span></code> is to identify that the FSBL is targeted for the APU (the Arm Cortex-A53 core).</p>
 <p><strong>Note:</strong> If the system design demands, FSBL can be targeted to run on the RPU.</p>
-</section>
-<section id="debugging-fsbl-using-the-vitis-debugger">
+</div>
+<div class="section" id="debugging-fsbl-using-the-vitis-debugger">
 <h2>Debugging FSBL Using the Vitis Debugger<a class="headerlink" href="#debugging-fsbl-using-the-vitis-debugger" title="Permalink to this heading">¶</a></h2>
 <p>Sometimes you need to modify FSBL source code to add more custom features. To debug these features, you need to run FSBL in Vitis debugger. This example guides you through the steps to run FSBL in Vitis debugger.</p>
 <p>FSBL is built with size optimization and link time optimization flags (such as <code class="docutils literal notranslate"><span class="pre">-Os</span></code>). These optimizations reduce the memory footprint of FSBL but can make debugging difficult. Removing optimizations can lead to increased code size, which can result in FBSL build failure (because FSBL needs to run on the 128 KB OCM). Instead, these optimizations should be disabled for debugging purposes. To do this, some FSBL features should be disabled in the <code class="docutils literal notranslate"><span class="pre">xfsbl_config.h</span></code> file of the FSBL if they are not required.</p>
-<section id="creating-and-modifying-fsbl">
+<div class="section" id="creating-and-modifying-fsbl">
 <h3>Creating and Modifying FSBL<a class="headerlink" href="#creating-and-modifying-fsbl" title="Permalink to this heading">¶</a></h3>
 <ol class="simple">
 <li><p>Launch the Vitis IDE if it is not already open.</p></li>
@@ -336,8 +343,8 @@ function OptanonWrapper() { }
 </table><ol class="simple">
 <li><p>Click <strong>Finish</strong>. The Vitis IDE creates the system project and the FSBL application.</p></li>
 </ol>
-</section>
-<section id="disabling-optimizations">
+</div>
+<div class="section" id="disabling-optimizations">
 <h3>Disabling Optimizations<a class="headerlink" href="#disabling-optimizations" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>In the Explorer view, right-click the <strong>fsbl_debug</strong> application.</p></li>
@@ -369,9 +376,9 @@ function OptanonWrapper() { }
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

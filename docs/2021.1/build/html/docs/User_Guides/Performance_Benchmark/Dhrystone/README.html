@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -68,6 +68,10 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
@@ -128,8 +132,11 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -157,9 +164,9 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="versal-dhrystone-benchmark-user-guide">
+  <div class="section" id="versal-dhrystone-benchmark-user-guide">
 <h1>Versal Dhrystone Benchmark User Guide<a class="headerlink" href="#versal-dhrystone-benchmark-user-guide" title="Permalink to this heading">¶</a></h1>
-<section id="table-of-contents">
+<div class="section" id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
@@ -171,12 +178,12 @@ function OptanonWrapper() { }
 <li><p><a class="reference external" href="#run-the-dhrystone-application">Run Dhrystone Application</a></p></li>
 <li><p><a class="reference external" href="#performance-calculation">Performance Calculation</a></p></li>
 </ul>
-</section>
-<section id="introduction">
+</div>
+<div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>Versal™ ACAP combines adaptable processing and acceleration engines with programmable logic and configurable connectivity to enable custom, heterogeneous hardware solutions for a wide variety of applications in data center, automotive, 5G wireless, wired network, and defense.</p>
 <p>This tutorial provides step-by-step instructions for generating a reference design for the Dhrystone benchmark and building and running the Dhrystone application.</p>
-<section id="objectives">
+<div class="section" id="objectives">
 <h3>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading">¶</a></h3>
 <p>After completing this tutorial, users can:</p>
 <ul class="simple">
@@ -184,8 +191,8 @@ function OptanonWrapper() { }
 <li><p>Build a Dhrystone application and execute it on the VCK190 evaluation kit.</p></li>
 <li><p>Calculate Dhrystone performance number.</p></li>
 </ul>
-</section>
-<section id="directory-structure">
+</div>
+<div class="section" id="directory-structure">
 <h3>Directory Structure<a class="headerlink" href="#directory-structure" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
 └── Dhrystone
@@ -232,9 +239,9 @@ function OptanonWrapper() { }
         └── README.md
 </pre></div>
 </div>
-</section>
-</section>
-<section id="prerequisites">
+</div>
+</div>
+<div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
 <p>Recommended general knowledge of:</p>
 <ul class="simple">
@@ -255,10 +262,10 @@ function OptanonWrapper() { }
 <li><p><a class="reference external" href="https://developer.arm.com/documentation/dai0273/a/">Dhrystone Benchmarking for ARM® Cortex® Processors</a></p></li>
 <li><p><a class="reference external" href="https://www.eembc.org/techlit/datasheets/dhrystone_wp.pdf">Dhrystone Benchmark</a></p></li>
 </ul>
-<section id="tutorial-requirements">
+<div class="section" id="tutorial-requirements">
 <h3>Tutorial Requirements<a class="headerlink" href="#tutorial-requirements" title="Permalink to this heading">¶</a></h3>
 <p>This tutorial is demonstrated on the VCK190 evaluation kit. Install the necessary licenses for Vivado, Vitis, and XSCT/XSDB tools. Contact your Xilinx sales representative for any assistance. For more information, see <a class="reference external" href="https://www.xilinx.com/products/boards-and-kits/vck190.html">https://www.xilinx.com/products/boards-and-kits/vck190.html</a>.</p>
-<section id="hardware-requirements">
+<div class="section" id="hardware-requirements">
 <h4>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>A host machine with an operating system supported by Vivado Design Suite, Vitis tool, and XSCT/XSDB.</p></li>
@@ -271,8 +278,8 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-</section>
-<section id="software-requirements">
+</div>
+<div class="section" id="software-requirements">
 <h4>Software Requirements<a class="headerlink" href="#software-requirements" title="Permalink to this heading">¶</a></h4>
 <p>The following tools are necessary to build the tutorial design and execute the Dhrystone application:</p>
 <ul class="simple">
@@ -289,10 +296,10 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-</section>
-</section>
-</section>
-<section id="build-the-tutorial-design">
+</div>
+</div>
+</div>
+<div class="section" id="build-the-tutorial-design">
 <h2>Build the Tutorial Design<a class="headerlink" href="#build-the-tutorial-design" title="Permalink to this heading">¶</a></h2>
 <p>Follow these steps to build the Dhrystone Benchmark design and create the PDI/XSA.</p>
 <ol>
@@ -333,39 +340,39 @@ function OptanonWrapper() { }
 </div>
 </li>
 </ol>
-<section id="hardware-design-details">
+<div class="section" id="hardware-design-details">
 <h3>Hardware Design Details<a class="headerlink" href="#hardware-design-details" title="Permalink to this heading">¶</a></h3>
 <p>The tutorial design creates a block design with CIPS-IP and NoC IP upon sourcing the <a class="reference external" href="./Design/run.tcl"><code class="docutils literal notranslate"><span class="pre">run.tcl</span></code></a> script. The following image shows the details of the IP configuration.</p>
 <p><img alt="Alt Text" src="../../../../_images/processor_cips_block_diagram.png" /></p>
-<section id="apu-clock-configuration">
+<div class="section" id="apu-clock-configuration">
 <h4>APU Clock Configuration<a class="headerlink" href="#apu-clock-configuration" title="Permalink to this heading">¶</a></h4>
 <p><img alt="Alt Text" src="../../../../_images/apu_clock_configuration.png" /></p>
-</section>
-<section id="noc-interfaces-details">
+</div>
+<div class="section" id="noc-interfaces-details">
 <h4>NoC Interfaces Details<a class="headerlink" href="#noc-interfaces-details" title="Permalink to this heading">¶</a></h4>
 <p><img alt="Alt Text" src="../../../../_images/axi_noc_0_general.png" /></p>
-</section>
-<section id="noc-inputs">
+</div>
+<div class="section" id="noc-inputs">
 <h4>NoC Inputs<a class="headerlink" href="#noc-inputs" title="Permalink to this heading">¶</a></h4>
 <p><img alt="Alt Text" src="../../../../_images/axi_noc_0_inputs.png" /></p>
-</section>
-<section id="noc-port-connectivity">
+</div>
+<div class="section" id="noc-port-connectivity">
 <h4>NoC Port Connectivity<a class="headerlink" href="#noc-port-connectivity" title="Permalink to this heading">¶</a></h4>
 <p><img alt="Alt Text" src="../../../../_images/axi_noc_0_connectivity.png" /></p>
-</section>
-<section id="ddr-configurations">
+</div>
+<div class="section" id="ddr-configurations">
 <h4>DDR Configurations<a class="headerlink" href="#ddr-configurations" title="Permalink to this heading">¶</a></h4>
 <p><img alt="Alt Text" src="../../../../_images/axi_noc_0_configuration_ddr_basic.png" /></p>
-</section>
-<section id="ddr-memory-options">
+</div>
+<div class="section" id="ddr-memory-options">
 <h4>DDR Memory Options<a class="headerlink" href="#ddr-memory-options" title="Permalink to this heading">¶</a></h4>
 <p><img alt="Alt Text" src="../../../../_images/axi_noc_0_ddr_configuration.png" /></p>
-</section>
-</section>
-</section>
-<section id="create-a-new-application-project-for-dhrystone">
+</div>
+</div>
+</div>
+<div class="section" id="create-a-new-application-project-for-dhrystone">
 <h2>Create a New Application Project for Dhrystone<a class="headerlink" href="#create-a-new-application-project-for-dhrystone" title="Permalink to this heading">¶</a></h2>
-<section id="create-and-browse-to-the-workspace">
+<div class="section" id="create-and-browse-to-the-workspace">
 <h3>Create and Browse to the Workspace<a class="headerlink" href="#create-and-browse-to-the-workspace" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Create a workspace and launch the Vitis tool.</p></li>
@@ -375,8 +382,8 @@ function OptanonWrapper() { }
 <p><img alt="Alt Text" src="../../../../_images/vitis_ide_launcher.png" /></p>
 </li>
 </ol>
-</section>
-<section id="create-the-application-project">
+</div>
+<div class="section" id="create-the-application-project">
 <h3>Create the Application Project<a class="headerlink" href="#create-the-application-project" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Select <strong>File-&gt;New-&gt;Application Project</strong> from the menu. Alternatively, you can create the project by clicking <strong>Create Application Project</strong>.</p>
@@ -386,8 +393,8 @@ function OptanonWrapper() { }
 <p><img alt="Alt Text" src="../../../../_images/create_a_new_application_project.png" /></p>
 </li>
 </ol>
-</section>
-<section id="add-hardware-description-file">
+</div>
+<div class="section" id="add-hardware-description-file">
 <h3>Add Hardware Description File<a class="headerlink" href="#add-hardware-description-file" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>To add the hardware description file (XSA), select <strong>Create a new platform from hardware (XSA)</strong>.</p>
@@ -400,10 +407,10 @@ function OptanonWrapper() { }
 <p><img alt="Alt Text" src="../../../../_images/browse_and_add_xsa.png" /></p>
 </li>
 </ol>
-</section>
-<section id="create-dhrystone-application">
+</div>
+<div class="section" id="create-dhrystone-application">
 <h3>Create Dhrystone application<a class="headerlink" href="#create-dhrystone-application" title="Permalink to this heading">¶</a></h3>
-<section id="set-domain-configuration">
+<div class="section" id="set-domain-configuration">
 <h4>Set Domain Configuration<a class="headerlink" href="#set-domain-configuration" title="Permalink to this heading">¶</a></h4>
 <ol>
 <li><p>For the <strong>Application project name</strong>, enter <strong>Dhrystone</strong>.</p></li>
@@ -414,8 +421,8 @@ function OptanonWrapper() { }
 <p><img alt="Alt Text" src="../../../../_images/configure_domain_settings.png" /></p>
 </li>
 </ol>
-</section>
-<section id="create-empty-application-template">
+</div>
+<div class="section" id="create-empty-application-template">
 <h4>Create Empty Application Template<a class="headerlink" href="#create-empty-application-template" title="Permalink to this heading">¶</a></h4>
 <ol>
 <li><p>Select the Empty Application template (blank c project) for Dhrystone application.</p></li>
@@ -425,8 +432,8 @@ function OptanonWrapper() { }
 <p><img alt="Alt Text" src="../../../../_images/project_template.png" /></p>
 </li>
 </ol>
-</section>
-<section id="import-dhrystone-source-code">
+</div>
+<div class="section" id="import-dhrystone-source-code">
 <h4>Import Dhrystone Source Code<a class="headerlink" href="#import-dhrystone-source-code" title="Permalink to this heading">¶</a></h4>
 <ol>
 <li><p>To import the Dhrystone source code to the project, right-click <strong>src-&gt;import sources</strong>.</p>
@@ -440,12 +447,12 @@ function OptanonWrapper() { }
 <p><img alt="Alt Text" src="../../../../_images/expand_and_view_source_files.png" /></p>
 </li>
 </ol>
-</section>
-</section>
-</section>
-<section id="build-dhrystone-application">
+</div>
+</div>
+</div>
+<div class="section" id="build-dhrystone-application">
 <h2>Build Dhrystone Application<a class="headerlink" href="#build-dhrystone-application" title="Permalink to this heading">¶</a></h2>
-<section id="set-optimization-level">
+<div class="section" id="set-optimization-level">
 <h3>Set Optimization Level<a class="headerlink" href="#set-optimization-level" title="Permalink to this heading">¶</a></h3>
 <p><strong>Note</strong>: Add the optimization Level <strong>-O3</strong>  and <strong>-fno-common</strong> for better performance.</p>
 <ol>
@@ -458,8 +465,8 @@ function OptanonWrapper() { }
 <p><img alt="Alt Text" src="../../../../_images/optimization_optimize_most_O3.png" /></p>
 </li>
 </ol>
-</section>
-<section id="set-debug-level">
+</div>
+<div class="section" id="set-debug-level">
 <h3>Set Debug Level<a class="headerlink" href="#set-debug-level" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Navigate to <strong>Properties-&gt;C/C++Build-&gt;Settings-&gt;Debugging</strong>.</p></li>
@@ -468,8 +475,8 @@ function OptanonWrapper() { }
 <p><img alt="Alt Text" src="../../../../_images/debug_level_none.png" /></p>
 </li>
 </ol>
-</section>
-<section id="build-the-project">
+</div>
+<div class="section" id="build-the-project">
 <h3>Build the Project<a class="headerlink" href="#build-the-project" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Right-click the project name, and then click  <strong>Build Project</strong>. Alternatively, navigate to the Project menu and click <strong>Build Project</strong>.</p>
@@ -484,9 +491,9 @@ function OptanonWrapper() { }
 </div>
 </li>
 </ol>
-</section>
-</section>
-<section id="run-the-dhrystone-application">
+</div>
+</div>
+<div class="section" id="run-the-dhrystone-application">
 <h2>Run the Dhrystone Application<a class="headerlink" href="#run-the-dhrystone-application" title="Permalink to this heading">¶</a></h2>
 <ol>
 <li><p>Insert the SD card with the system controller image into the System controller boot mode to SD1 (SW11 = 0111).</p></li>
@@ -527,8 +534,8 @@ function OptanonWrapper() { }
 <p>For performance number calculation, use the Dhrystones per second value from the last UART log print (highlighted in the previous image).</p>
 </li>
 </ol>
-</section>
-<section id="performance-calculation">
+</div>
+<div class="section" id="performance-calculation">
 <h2>Performance Calculation<a class="headerlink" href="#performance-calculation" title="Permalink to this heading">¶</a></h2>
 <p>Calculate DMIPS (Dhrystone MIPS) number by using the following formula:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DMIPS</span> <span class="o">=</span> <span class="n">Dhrystones</span> <span class="n">per</span> <span class="n">second</span> <span class="o">/</span> <span class="mi">1757</span>
@@ -544,18 +551,18 @@ function OptanonWrapper() { }
 <li><p>For more details on the formula, see <strong>5 Measurement characteristics</strong> of Dhrystone Benchmarking for ARM Cortex Processors - <a class="reference external" href="https://developer.arm.com/documentation/dai0273/a/">https://developer.arm.com/documentation/dai0273/a/</a></p></li>
 <li><p>For CPU Frequency configured in design, see the <strong>APU clock configuration</strong> section.</p></li>
 </ol>
-</section>
-<section id="support">
+</div>
+<div class="section" id="support">
 <h2>Support<a class="headerlink" href="#support" title="Permalink to this heading">¶</a></h2>
 <p>GitHub issues will be used for tracking requests and bugs. For questions go to <a class="reference external" href="http://forums.xilinx.com/">forums.xilinx.com</a>.</p>
-</section>
-<section id="license">
+</div>
+<div class="section" id="license">
 <h2>License<a class="headerlink" href="#license" title="Permalink to this heading">¶</a></h2>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
 <p>You may obtain a copy of the License at <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-<p align="center"><sup>XD071 | &copy; Copyright 2021 Xilinx, Inc.</sup></p></section>
-</section>
+<p align="center"><sup>XD071 | &copy; Copyright 2021 Xilinx, Inc.</sup></p></div>
+</div>
 
 
            </div>

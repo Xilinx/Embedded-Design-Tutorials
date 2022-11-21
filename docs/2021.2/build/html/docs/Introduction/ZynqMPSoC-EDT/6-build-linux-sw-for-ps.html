@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -107,8 +107,9 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Releases</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
@@ -138,13 +139,13 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="building-and-debugging-linux-applications">
+  <div class="section" id="building-and-debugging-linux-applications">
 <h1>Building and Debugging Linux Applications<a class="headerlink" href="#building-and-debugging-linux-applications" title="Permalink to this heading">¶</a></h1>
 <p>The earlier examples highlighted the creation of bootloader images and bare-metal applications for APU, RPU, and PMU using the Vitis™ IDE. This chapter demonstrates how to develop Linux applications.</p>
-<section id="example-8-creating-linux-images-and-applications-using-petalinux">
+<div class="section" id="example-8-creating-linux-images-and-applications-using-petalinux">
 <h2>Example 8: Creating Linux Images and Applications using PetaLinux<a class="headerlink" href="#example-8-creating-linux-images-and-applications-using-petalinux" title="Permalink to this heading">¶</a></h2>
 <p>In this example, you will configure and build a Linux operating system platform for an Arm™ Cortex-A53 core based APU on a Zynq® UltraScale+™ MPSoC. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.</p>
-<section id="input-and-output-files">
+<div class="section" id="input-and-output-files">
 <h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input:</p>
@@ -168,8 +169,8 @@ BSP</a></p></li>
 <li><p>This example uses the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">ZCU102 PetaLinux BSP</a> to create a PetaLinux project. Ensure that you have downloaded the ZCU102 BSP for PetaLinux as instructed on the <a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu102-v2021.2-final.bsp">PetaLinux Tools download page</a>.</p></li>
 </ol>
 </div>
-</section>
-<section id="creating-a-petalinux-image">
+</div>
+<div class="section" id="creating-a-petalinux-image">
 <span id="id2"></span><h3>Creating a PetaLinux Image<a class="headerlink" href="#creating-a-petalinux-image" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Create a PetaLinux project using the following command:</p>
@@ -233,8 +234,8 @@ ls -al
 </div>
 </li>
 </ol>
-</section>
-<section id="verifying-the-image-on-the-zcu102-board">
+</div>
+<div class="section" id="verifying-the-image-on-the-zcu102-board">
 <span id="id3"></span><h3>Verifying the Image on the ZCU102 Board<a class="headerlink" href="#verifying-the-image-on-the-zcu102-board" title="Permalink to this heading">¶</a></h3>
 <p>To verify the image, follow these steps:</p>
 <ol class="arabic">
@@ -248,18 +249,16 @@ rootfs.</p></li>
 <li><p>Connect 12V power to the ZCU102 6-pin Molex connector.</p></li>
 <li><p>Start a serial terminal session using Tera Term or Minicom depending on the host machine being used. set the COM port and baud rate for
 your system as shown in the following figure.</p>
-<figure class="align-default" id="id6">
+<div class="figure align-default" id="id6">
 <img alt="../../../_images/image44.png" src="../../../_images/image44.png" />
-<figcaption>
-<p><span class="caption-text">Tera Term Connection</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Tera Term Connection</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>For port settings, verify the COM port in the device manager and select the COM port with interface-0.</p></li>
 <li><p>Turn on the ZCU102 board using SW1, and wait until Linux loads on the board.</p></li>
 </ol>
-</section>
-<section id="creating-linux-applications-in-the-vitis-ide">
+</div>
+<div class="section" id="creating-linux-applications-in-the-vitis-ide">
 <h3>Creating Linux Applications in the Vitis IDE<a class="headerlink" href="#creating-linux-applications-in-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Create a Linux domain:</p>
@@ -275,12 +274,10 @@ your system as shown in the following figure.</p>
 </li>
 <li><p>Review the Linux domain configuration details.</p></li>
 <li><p>Build the platform project by clicking the hammer icon.</p>
-<figure class="align-default" id="id7">
+<div class="figure align-default" id="id7">
 <img alt="../../../_images/linux_domain_details.png" src="../../../_images/linux_domain_details.png" />
-<figcaption>
-<p><span class="caption-text">Linux domain configuration details</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Linux domain configuration details</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 </ol>
 </li>
@@ -310,8 +307,8 @@ your system as shown in the following figure.</p>
 </ul>
 </li>
 </ol>
-</section>
-<section id="preparing-the-linux-agent-for-remote-connection">
+</div>
+<div class="section" id="preparing-the-linux-agent-for-remote-connection">
 <span id="id5"></span><h3>Preparing the Linux Agent for Remote Connection<a class="headerlink" href="#preparing-the-linux-agent-for-remote-connection" title="Permalink to this heading">¶</a></h3>
 <p>The Vitis IDE needs a channel to download the application to the running target. When the target runs Linux, it uses TCF Agent running on Linux. TCF Agent is added to the Linux rootfs from the PetaLinux configuration by default. When Linux boots up, it launches TCF Agent automatically. The Vitis IDE talks to TCF Agent on the board using an Ethernet connection.</p>
 <ol class="arabic">
@@ -344,35 +341,29 @@ your system as shown in the following figure.</p>
 <li><p>Set up the Linux agent in the Vitis IDE.</p>
 <ol class="arabic">
 <li><p>Click the <strong>Target Connections</strong> icon on the toolbar. It can also be launched by going to <strong>Window → Show View…</strong> and then looking for the target.</p>
-<figure class="align-default" id="id8">
+<div class="figure align-default" id="id8">
 <img alt="Vitis Show View search for Target Connections" src="../../../_images/vitis_launch_target_connections1.png" />
-<figcaption>
-<p><span class="caption-text">Vitis Show View search for Target Connections</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Vitis Show View search for Target Connections</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>In the Target Connections window, double-click <strong>Linux TCF Agent → Linux Agent[default]</strong>.</p></li>
 <li><p>Input the IP address of your board.</p></li>
 <li><p>Click <strong>Test Connection</strong>.</p>
-<figure class="align-default" id="id9">
+<div class="figure align-default" id="id9">
 <img alt="Vitis test connection details" src="../../../_images/vitis_target_connection_details1.png" />
-<figcaption>
-<p><span class="caption-text">Vitis test connection details</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Vitis test connection details</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
 <p>Vitis should return a pop-up confirmation for success.</p>
-<figure class="align-default" id="id10">
+<div class="figure align-default" id="id10">
 <img alt="Vitis test connection success" src="../../../_images/vitis_test_connection_success1.png" />
-<figcaption>
-<p><span class="caption-text">Vitis test connection success</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Vitis test connection success</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 </ol>
 </li>
 </ol>
-</section>
-<section id="running-the-linux-application-from-the-vitis-ide">
+</div>
+<div class="section" id="running-the-linux-application-from-the-vitis-ide">
 <h3>Running the Linux Application from the Vitis IDE<a class="headerlink" href="#running-the-linux-application-from-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Run the Linux application:</p>
@@ -386,13 +377,13 @@ your system as shown in the following figure.</p>
 </ul>
 </li>
 <li><p>Click <strong>Run</strong>.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="Vitis Linux Run Configurations" src="../../../_images/vitis_linux_run_configurations1.png" />
-</figure>
+</div>
 <p>The console should print <strong>Hello World</strong>.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="Linux Hello World run result" src="../../../_images/linux_hello_world1.png" />
-</figure>
+</div>
 </li>
 </ol>
 </li>
@@ -403,8 +394,8 @@ your system as shown in the following figure.</p>
 </ul>
 </li>
 </ol>
-</section>
-<section id="debugging-a-linux-application-from-the-vitis-ide">
+</div>
+<div class="section" id="debugging-a-linux-application-from-the-vitis-ide">
 <h3>Debugging a Linux Application from the Vitis IDE<a class="headerlink" href="#debugging-a-linux-application-from-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <p>Debugging Linux applications requires the Linux agent to be set up properly. Refer to <a class="reference internal" href="#preparing-the-linux-agent-for-remote-connection"><span class="std std-ref">Preparing the Linux Agent for Remote Connection</span></a> for detailed steps.</p>
 <ol class="arabic">
@@ -440,9 +431,9 @@ panel.</p></li>
 </ul>
 </li>
 </ol>
-</section>
-</section>
-<section id="summary">
+</div>
+</div>
+<div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
 <p>In this chapter, you learned how to:</p>
 <ul class="simple">
@@ -451,8 +442,8 @@ panel.</p></li>
 <li><p>Run and debug using the Vitis IDE.</p></li>
 </ul>
 <p>In the <a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html"><span class="doc">next chapter</span></a>, you will connect all points previously introduced and create a system design.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

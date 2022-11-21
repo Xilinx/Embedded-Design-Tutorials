@@ -166,7 +166,7 @@ machine.
     click **OK**.
 
     **Note:** For more information about downloading the design files
-    for this tutorial, see [Design Files for this Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+    for this tutorial, see [Design Files for this Tutorial](2-using-zynq.html#design-files-for-this-tutorial).
 
 10. Add the **linux_hello.c** file and click **Finish**.
 
@@ -178,7 +178,7 @@ machine.
 ### Debugging Linux Processes and Threads Using OS Aware Debug
 
 1.  Boot Linux as described in [Booting Linux from the SD
-    Card](6-linux-booting-debug.md#booting-linux-from-the-sd-card).
+    Card](6-linux-booting-debug.html#booting-linux-from-the-sd-card).
 
 2.  Create a Debug configuration.
 

@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -72,6 +72,7 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html">System Design Example: Using GPIO, Timer and Interrupts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="8-boot-and-configuration.html">Boot and Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="9-secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-project">Example Project</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
@@ -80,6 +81,10 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
@@ -90,8 +95,11 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -119,75 +127,52 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="zynq-ultrascale-mpsoc-embedded-design-tutorial">
+  <div class="section" id="zynq-ultrascale-mpsoc-embedded-design-tutorial">
 <h1>Zynq UltraScale+ MPSoC Embedded Design Tutorial<a class="headerlink" href="#zynq-ultrascale-mpsoc-embedded-design-tutorial" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<dl class="simple">
-<dt>This document provides an introduction to using the Vivado&amp;reg; Design</dt><dd><p>Suite flow for the Xilinx&amp;reg; Zynq&amp;reg; UltraScale+&amp;trade; MPSoC ZCU102 Rev 1.0 and
-Rev 1.1 evaluation boards. The tool used is the Vitis&amp;trade; unified
-software platform.</p>
-</dd>
-</dl>
+<p>This document provides an introduction to using the Vivado® Design Suite flow for the Xilinx® Zynq® UltraScale® MPSoC ZCU102 Rev 1.0 and Rev 1.1 evaluation boards. The tool used is the Vitis&amp;trade; unified software platform.</p>
 <ol class="arabic">
-<li><p>Introduction &lt;./1-introduction&gt;</p></li>
-<li><p>Getting Started &lt;./2-getting-started&gt;</p></li>
-<li><p>Zynq UltraScale+ MPSoC System Configuration with Vivado &lt;./3-system-configuration&gt;</p>
+<li><p><a class="reference internal" href="1-introduction.html"><span class="doc">Introduction</span></a></p></li>
+<li><p><a class="reference internal" href="2-getting-started.html"><span class="doc">Getting Started</span></a></p></li>
+<li><p><a class="reference internal" href="3-system-configuration.html"><span class="doc">Zynq UltraScale+ MPSoC System Configuration with Vivado</span></a></p>
 <blockquote>
-<div><p>This chapter describes the creation of a system with the</p>
+<div><p>This chapter describes the creation of a system with the Zynq UltraScale+ MPSoC Processing System (PS) and the creation of a hardware platform for Zynq UltraScale+ MPSoC. This chapter is an introduction to the hardware and software tools using a simple design as the example.</p>
 </div></blockquote>
 </li>
-</ol>
+<li><p><a class="reference internal" href="4-build-sw-for-ps-subsystems.html"><span class="doc">Building Software for PS Subsystems</span></a></p>
 <blockquote>
-<div><p>Zynq UltraScale+ MPSoC Processing System (PS) and the creation of a
-hardware platform for Zynq UltraScale+ MPSoC. This chapter is an
-introduction to the hardware and software tools using a simple design
-as the example.</p>
-</div></blockquote>
-<ol class="arabic" start="4">
-<li><p>Building Software for PS Subsystems &lt;./4-build-sw-for-ps-subsystems&gt;</p>
-<blockquote>
-<div><p>This chapter describes the steps to configure and build software for processing blocks in the</p>
+<div><p>This chapter describes the steps to configure and build software for processing blocks in the processing system, including the application processing unit (APU) and real-time processing unit (RPU). It also covers the creation of bare-metal applications targeting the APU and RPU and how to conduct a review of the boot components in a hardware platform.</p>
 </div></blockquote>
 </li>
-</ol>
+<li><p><a class="reference internal" href="5-debugging-with-vitis-debugger.html"><span class="doc">Debugging Standalone Applications with the Vitis Debugger</span></a></p>
 <blockquote>
-<div><p>processing system, including the application processing unit (APU) and</p>
+<div><p>This chapter provides an introduction to debugging software using the debug features of the Vitis IDE. This chapter uses the previous design and runs the software bare metal (without an OS) to demonstrate the debugging process. This chapter also lists the debug configurations for Zynq UltraScale+ MPSoC.</p>
 </div></blockquote>
-<dl class="simple">
-<dt>real-time processing unit (RPU). It also covers the creation of bare-metal</dt><dd><p>applications targeting the APU and RPU and how to conduct a review of the boot components in a hardware platform.</p>
-</dd>
-</dl>
-<ol class="arabic" start="5">
-<li><p>Debugging Standalone Applications with the Vitis Debugger &lt;./5-debugging-with-vitis-debugger&gt;</p>
+</li>
+<li><p><a class="reference internal" href="6-build-linux-sw-for-ps.html"><span class="doc">Building and Debugging Linux Applications</span></a></p>
 <blockquote>
-<div><p>This chapter provides an introduction to debugging software using the debug features of the</p>
+<div><p>This chapter creates a Linux image with PetaLinux and creates a “Hello World” Linux application with the Vitis IDE. It also shows how to debug Linux applications with the Vitis IDE.</p>
 </div></blockquote>
-<p>Vitis IDE. This chapter uses the previous design and runs the software
-bare metal (without an OS) to demonstrate the debugging process. This
-chapter also lists the debug configurations for Zynq UltraScale+
-MPSoC.</p>
 </li>
-<li><p>Building and Debugging Linux Applications &lt;./6-build-linux-sw-for-ps&gt;</p>
-<p>This chapter creates a Linux image with PetaLinux and creates a “Hello World” Linux application with the Vitis IDE. It also shows how to debug Linux applications with the Vitis IDE.</p>
-</li>
-<li><p>System Design Example: Using GPIO, Timer and Interrupts &lt;./7-design1-using-gpio-timer-interrupts&gt;</p>
+<li><p><a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html"><span class="doc">System Design Example: Using GPIO, Timer and Interrupts</span></a></p>
 <blockquote>
 <div><p>This chapter added some IPs in the PL. It demonstrates how you can use the software blocks you configured in previous chapters to create a complex Zynq UltraScale+ system.</p>
 </div></blockquote>
 </li>
-<li><p>Boot and Configuration &lt;./8-boot-and-configuration&gt;</p>
+<li><p><a class="reference internal" href="8-boot-and-configuration.html"><span class="doc">Boot and Configuration</span></a></p>
 <blockquote>
 <div><p>This chapter shows the integration of components to configure and create boot images for a Zynq UltraScale+ system. The purpose of this chapter is to understand how to integrate and load boot loaders.</p>
 </div></blockquote>
 </li>
-<li><p>Secure Boot &lt;./9-secure-boot&gt;</p>
+<li><p><a class="reference internal" href="9-secure-boot.html"><span class="doc">Secure Boot</span></a></p>
 <blockquote>
 <div><p>This is an optional chapter that introduces the steps to build the Hardware Root of Trust and encryption for your design.</p>
 </div></blockquote>
 </li>
 </ol>
-<p>## Example Project</p>
+<div class="section" id="example-project">
+<h2>Example Project<a class="headerlink" href="#example-project" title="Permalink to this heading">¶</a></h2>
 <p>The best way to learn a tool is to use it. This guide provides
 opportunities for you to work with the tools under discussion.
 Specifications for sample projects are given in the example sections,
@@ -200,17 +185,16 @@ on Windows 10, 64-bit operating system, and PetaLinux on Linux 64-bit
 operating system. Other versions of the tools running on other Windows
 installations might provide varied results. These examples focus on
 introducing you to the following aspects of embedded design.</p>
-<blockquote>
-<div><p>&gt;**Note**: The sequence mentioned in the tutorial steps for booting
-Linux on the hardware is specific to 2021.1, which must be installed
-on the Linux host machine to execute the Linux portions of this document.</p>
-</div></blockquote>
-<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The sequence mentioned in the tutorial steps for booting Linux on the hardware is specific to 2021.1, which must be installed on the Linux host machine to execute the Linux portions of this document.</p>
+</div>
 <p>© Copyright 2017-2021 Xilinx, Inc.</p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p><a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
+</div>
+</div>
 
 
            </div>

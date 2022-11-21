@@ -60,8 +60,8 @@ In the examples in this chapter, we will expand on the design with the following
 ### Input and Output Files
 
 - Input Files: 
-  - Vivado project from [Example 1](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc)
-  - Vitis workspace in [Example 2](./2-using-zynq.md#example-2-creating-and-running-a-hello-world-application)
+  - Vivado project from [Example 1](./2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc)
+  - Vitis workspace in [Example 2](./2-using-zynq.html#example-2-creating-and-running-a-hello-world-application)
 - Output Files:
   - Updated hardware handoff ``system_wrapper.xsa``
   - ``hello_pl.elf``
@@ -72,10 +72,10 @@ In this example, you will add the AXI GPIO, AXI Timer, the interrupt
 instantiated in the fabric, and the EMIO interface. You will then validate
 the fabric additions.
 
-1.  Open the Vivado design created in [Example 1](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc):
+1.  Open the Vivado design created in [Example 1](./2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc):
 
     - Launch the Vivado&reg; IDE.
-    - Under the Recent Projects column, click the **edt_zc702** design that you created in [Using the Zynq SoC Processing System](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc).
+    - Under the Recent Projects column, click the **edt_zc702** design that you created in [Using the Zynq SoC Processing System](./2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc).
     - In Flow Navigator window, click **Open Block Design** under **IP Integrator**.
 
 2.  Add the AXI GPIO and AXI Timer IP:
@@ -288,11 +288,11 @@ Open the Vitis IDE and manually update the exported hardware from Vivado.
 
     **Note:** This is the baud rate that the UART is programmed to on Zynq devices.
 
-8. Change boot mode back to JTAG mode (as in [Example 2](./2-using-zynq.md#setting-up-the-board)).
+8. Change boot mode back to JTAG mode (as in [Example 2](./2-using-zynq.html#setting-up-the-board)).
 
     - Set **SW16** to 00000.
 
-9.  Run the project similar to the steps in [Example 2](./2-using-zynq.md#running-the-hello-world-application-on-a-zc702-board).
+9.  Run the project similar to the steps in [Example 2](./2-using-zynq.html#running-the-hello-world-application-on-a-zc702-board).
 
     - Right-click **hello_pl**, and select **Run as → Launch on Hardware**.
 

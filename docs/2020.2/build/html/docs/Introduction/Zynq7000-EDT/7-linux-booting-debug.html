@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,17 +113,17 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="linux-boot-image-configuration">
+  <div class="section" id="linux-boot-image-configuration">
 <h1>Linux Boot Image Configuration<a class="headerlink" href="#linux-boot-image-configuration" title="Permalink to this heading">¶</a></h1>
 <p>In previous chapters, you used SD boot mode for all Linux examples. SD boot mode is easy to use for development. Sometimes it is necessary to change the boot source to QSPI Flash for its reliability and anti-vibration. In the board bring-up development phase, because the peripherals might not be available yet, boot with JTAG is a common technique for debugging. This chapter describes the detailed steps of these use cases.</p>
-<section id="boot-methods">
+<div class="section" id="boot-methods">
 <h2>Boot Methods<a class="headerlink" href="#boot-methods" title="Permalink to this heading">¶</a></h2>
 <p>The following boot methods are available for Zynq®-7000 devices:</p>
 <ul class="simple">
 <li><p>Master boot method</p></li>
 <li><p>Slave boot method</p></li>
 </ul>
-<section id="master-boot-method">
+<div class="section" id="master-boot-method">
 <h3>Master Boot Method<a class="headerlink" href="#master-boot-method" title="Permalink to this heading">¶</a></h3>
 <p>In the master boot method, different kinds of non-volatile memories
 such as QSPI, NAND, NOR flash, and SD cards are used to store boot
@@ -116,8 +147,8 @@ to DDR</p></li>
 <p>The U-Boot loads and starts the execution of the kernel image, the
 root file system, and the device tree from non-volatile RAM to DDR. It
 finishes booting Linux on the target platform.</p>
-</section>
-<section id="slave-boot-method">
+</div>
+<div class="section" id="slave-boot-method">
 <h3>Slave Boot Method<a class="headerlink" href="#slave-boot-method" title="Permalink to this heading">¶</a></h3>
 <p>JTAG can only be used in slave boot mode. An external host computer
 acts as the master to load the boot components into the OCM, DDR or FPGA using a JTAG
@@ -128,22 +159,22 @@ loads. The slave boot method is always a non-secure mode of booting.</p>
 disables access to all security related items and enables the JTAG
 port. You must download the boot images into the DDR memory before
 restarting the CPU for execution.</p>
-</section>
-<section id="booting-linux-from-jtag">
+</div>
+<div class="section" id="booting-linux-from-jtag">
 <h3>Booting Linux from JTAG<a class="headerlink" href="#booting-linux-from-jtag" title="Permalink to this heading">¶</a></h3>
 <p>The flowchart in the following figure describes the process used to
 boot Linux on the target platform.</p>
 <p><img alt="../../../_images/X24074-Page-1.png" src="../../../_images/X24074-Page-1.png" /></p>
-</section>
-</section>
-<section id="example-9-booting-linux-with-jtag">
+</div>
+</div>
+<div class="section" id="example-9-booting-linux-with-jtag">
 <h2>Example 9: Booting Linux with JTAG<a class="headerlink" href="#example-9-booting-linux-with-jtag" title="Permalink to this heading">¶</a></h2>
 <p>This section covers the flow for booting Linux on the target board
 using the pre-compiled images with JTAG.</p>
-<section id="input-and-output-files">
+<div class="section" id="input-and-output-files">
 <h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
-<li><p>Input files: the files generated by PetaLinux in <a class="reference external" href="4-linux-for-zynq.md#example-4-creating-linux-images">Example 4</a> or <a class="reference external" href="4-linux-for-zynq.md#example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide">Example 5</a>:</p>
+<li><p>Input files: the files generated by PetaLinux in <a class="reference external" href="4-linux-for-zynq.html#example-4-creating-linux-images">Example 4</a> or <a class="reference external" href="4-linux-for-zynq.html#example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide">Example 5</a>:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">zynq_fsbl.elf</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">u-boot.elf</span></code></p></li>
@@ -152,14 +183,14 @@ using the pre-compiled images with JTAG.</p>
 </li>
 <li><p>Output files: N/A</p></li>
 </ul>
-</section>
-<section id="booting-linux-in-jtag-mode">
+</div>
+<div class="section" id="booting-linux-in-jtag-mode">
 <h3>Booting Linux in JTAG Mode<a class="headerlink" href="#booting-linux-in-jtag-mode" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Check the following board connections and settings for Linux booting
 using JTAG mode:</p>
 <ul>
-<li><p>Ensure that the settings of Jumpers J27 and J28 are set as described in <a class="reference external" href="2-using-zynq.md#setting-up-the-board">Example 2: Setting Up the Board</a>.</p></li>
+<li><p>Ensure that the settings of Jumpers J27 and J28 are set as described in <a class="reference external" href="2-using-zynq.html#setting-up-the-board">Example 2: Setting Up the Board</a>.</p></li>
 <li><p>Ensure that the SW16 switch is set to 00000, as shown in the following figure.</p>
 <p><img alt="JTAG Boot Mode" src="../../../_images/image671.jpeg" /></p>
 </li>
@@ -232,9 +263,9 @@ PetaLinux <code class="docutils literal notranslate"><span class="pre">U-Boot.el
 <li><p>At the command prompt of the serial terminal, run <code class="docutils literal notranslate"><span class="pre">bootm</span> <span class="pre">0x30000000</span></code>.
 The Linux OS boots.</p></li>
 </ol>
-</section>
-</section>
-<section id="example-10-booting-linux-from-qspi-flash">
+</div>
+</div>
+<div class="section" id="example-10-booting-linux-from-qspi-flash">
 <h2>Example 10: Booting Linux from QSPI Flash<a class="headerlink" href="#example-10-booting-linux-from-qspi-flash" title="Permalink to this heading">¶</a></h2>
 <p>In this example, you will make a Linux boot image for QSPI Flash, write it into Flash, and let it boot.</p>
 <p>QSPI Flash on a board normally has less capacity than an SD card or eMMC because of its relatively high price. It layout should be planned carefully. The Linux kernel image and rootfs can be stored in the same QSPI as this example, or stored in another non-volatile form of storage such as an SD card, NAND Flash, or eMMC. The only difference is the <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> packaging contents.</p>
@@ -290,10 +321,10 @@ The Linux OS boots.</p></li>
 <td>U-Boot loads it to 0x03000000</td>
 </tr>
 </tbody>
-</table><section id="id1">
+</table><div class="section" id="id1">
 <h3>Input and Output Files<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
-<li><p>Input Files: PetaLinux project in <a class="reference external" href="4-linux-for-zynq.md#example-4-creating-linux-images">Example 4</a> or <a class="reference external" href="4-linux-for-zynq.md#example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide">Example 5</a>:</p>
+<li><p>Input Files: PetaLinux project in <a class="reference external" href="4-linux-for-zynq.html#example-4-creating-linux-images">Example 4</a> or <a class="reference external" href="4-linux-for-zynq.html#example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide">Example 5</a>:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">zynq_fsbl.elf</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">u-boot.elf</span></code></p></li>
@@ -305,8 +336,8 @@ The Linux OS boots.</p></li>
 </li>
 <li><p>Output Files: <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> binary to write to QSPI Flash</p></li>
 </ul>
-</section>
-<section id="reducing-the-root-file-system-size">
+</div>
+<div class="section" id="reducing-the-root-file-system-size">
 <h3>Reducing the Root File System Size<a class="headerlink" href="#reducing-the-root-file-system-size" title="Permalink to this heading">¶</a></h3>
 <p>Because there is limited QSPI Flash size, you need to shrink the rootfs size so that the rootfs can be packed into 16 MB QSPI Flash. If in your system you have larger QSPI Flash, this step can be skipped.</p>
 <ol>
@@ -320,8 +351,8 @@ The Linux OS boots.</p></li>
 </li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">petalinux-config</span> <span class="pre">-c</span> <span class="pre">rootfs</span> <span class="pre">--silentconfig</span></code> to update the rootfs configuration</p></li>
 </ol>
-</section>
-<section id="changing-boot-scr-for-image-ub-offset-address-and-size">
+</div>
+<div class="section" id="changing-boot-scr-for-image-ub-offset-address-and-size">
 <h3>Changing boot.scr for image.ub Offset Address and Size<a class="headerlink" href="#changing-boot-scr-for-image-ub-offset-address-and-size" title="Permalink to this heading">¶</a></h3>
 <p>By default, <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> loads image.ub from 0x01000000. It is possible to open <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> with a text editor to check the behavior. If your system has more than 16 MB QSPI Flash, this step can be skipped, but it is important to pay attention to the boot image packaging step to make sure that the <code class="docutils literal notranslate"><span class="pre">image.ub</span></code> offset address is set to match the offset address in <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code>.</p>
 <ol>
@@ -334,8 +365,8 @@ The Linux OS boots.</p></li>
 <p>Save the file and quit the text editor.</p>
 </li>
 </ol>
-</section>
-<section id="building-the-petalinux-image">
+</div>
+<div class="section" id="building-the-petalinux-image">
 <h3>Building the PetaLinux Image<a class="headerlink" href="#building-the-petalinux-image" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Rebuild the PetaLinux project:</p>
@@ -347,8 +378,8 @@ The Linux OS boots.</p></li>
 (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf">UG1144</a>).</p>
 </li>
 </ol>
-</section>
-<section id="making-a-linux-bootable-image-for-qspi-flash-with-petalinux">
+</div>
+<div class="section" id="making-a-linux-bootable-image-for-qspi-flash-with-petalinux">
 <h3>Making a Linux Bootable Image for QSPI Flash with PetaLinux<a class="headerlink" href="#making-a-linux-bootable-image-for-qspi-flash-with-petalinux" title="Permalink to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> file is generated by the Bootgen utility. It reads in the BIF for boot partition information. PetaLinux can help to create the BIF file with command line options and call Bootgen to generate the <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> file. Alternatively, the Vitis IDE can create BIF files with GUI wizards and call Bootgen as well. This section introduces the PetaLinux method. The next section introduces the Vitis IDE method..</p>
 <ol>
@@ -372,8 +403,8 @@ The Linux OS boots.</p></li>
 <blockquote>
 <div><p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">petalinux-package</span> <span class="pre">--boot</span></code> tool adds <code class="docutils literal notranslate"><span class="pre">system.dtb</span></code> into the <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> for compatibility with a separate uImage, dtb and rootfs, instead of the FIT format for <code class="docutils literal notranslate"><span class="pre">image.ub</span></code>. The added <code class="docutils literal notranslate"><span class="pre">system.dtb</span></code> partition is not used during boot if <code class="docutils literal notranslate"><span class="pre">image.ub</span></code> is used. For details, refer to the code in <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code>.</p>
 </div></blockquote>
-</section>
-<section id="making-a-linux-bootable-image-for-qspi-flash-with-the-vitis-ide">
+</div>
+<div class="section" id="making-a-linux-bootable-image-for-qspi-flash-with-the-vitis-ide">
 <h3>Making a Linux Bootable Image for QSPI Flash with the Vitis IDE<a class="headerlink" href="#making-a-linux-bootable-image-for-qspi-flash-with-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <p>This method is an alternative to the PetaLinux method. If the PetaLinux tools and Vitis software platform are not installed on the same machine, copy the PetaLinux generated boot component files to the Vitis environment first.</p>
 <ol>
@@ -416,8 +447,8 @@ The Linux OS boots.</p></li>
 </div>
 </li>
 </ol>
-</section>
-<section id="programming-qspi-flash-with-the-flash-programming-tool">
+</div>
+<div class="section" id="programming-qspi-flash-with-the-flash-programming-tool">
 <h3>Programming QSPI Flash with the Flash Programming Tool<a class="headerlink" href="#programming-qspi-flash-with-the-flash-programming-tool" title="Permalink to this heading">¶</a></h3>
 <p>You can use the Flash Programming Tool in the Vitis IDE to program <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> into the QSPI Flash. The Program Flash GUI Wizard in Vitis IDE provides an easy way to select files and programming modes. When the settings are ready, it can call the <code class="docutils literal notranslate"><span class="pre">program_flash</span></code> command line tool to do the programming task. This is an easy-to-use method. You can also use JTAG to load U-Boot to DDR and use the U-Boot to program QSPI Flash. This method will be introduced in the next section.</p>
 <p>Following the steps below, you can program QSPI Flash with the flash programming tool in the Vitis software platform:</p>
@@ -436,8 +467,8 @@ saying “Flash Operation Successful”.</p>
 <ol class="simple">
 <li><p>Power off the board and boot it in QSPI boot mode (SW16=01000).</p></li>
 </ol>
-</section>
-<section id="optional-programning-qspi-flash-with-the-boot-image-using-jtag">
+</div>
+<div class="section" id="optional-programning-qspi-flash-with-the-boot-image-using-jtag">
 <h3>(Optional) Programning QSPI Flash with the Boot Image Using JTAG<a class="headerlink" href="#optional-programning-qspi-flash-with-the-boot-image-using-jtag" title="Permalink to this heading">¶</a></h3>
 <p>This is an alternative way for programming QSPI Flash with the flash programming tool. You can program QSPI Flash using JTAG and U-Boot. This method provides more control to user because U-Boot is programmable. For example, you can extend this method to use Ethernet, rather than JTAG, to send <code class="docutils literal notranslate"><span class="pre">BOOT.bin</span></code> to the ZC702 DDR memory so that the program process can be faster.</p>
 <ol>
@@ -482,8 +513,8 @@ image size.</p>
 <li><p>Power off the board and follow the booting steps described in the
 following section.</p></li>
 </ol>
-</section>
-<section id="booting-linux-from-qspi-flash">
+</div>
+<div class="section" id="booting-linux-from-qspi-flash">
 <h3>Booting Linux from QSPI Flash<a class="headerlink" href="#booting-linux-from-qspi-flash" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>After you program the QSPI Flash, set the SW16 switch on your board as shown in the following figure.</p>
@@ -505,9 +536,9 @@ login and password as root when prompted.</p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

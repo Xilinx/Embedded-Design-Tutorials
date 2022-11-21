@@ -375,7 +375,7 @@ You will use a Linux workstation for this example project. The device driver sof
 
 6. You can install the driver using the ``modprobe`` command, which will be explained in further detail in the next section.
 
-.._example-13-loading-the-module-into-a-kernel-and-application-execution:
+.. _example-13-loading-the-module-into-a-kernel-and-application-execution:
 
 Example 13: Loading a Module into a Kernel and Executing the Application
 ------------------------------------------------------------------------

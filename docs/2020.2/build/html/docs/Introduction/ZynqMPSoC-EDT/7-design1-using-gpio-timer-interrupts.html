@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,7 +113,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="design-example-1-using-gpios-timers-and-interrupts">
+  <div class="section" id="design-example-1-using-gpios-timers-and-interrupts">
 <h1>Design Example 1: Using GPIOs, Timers, and Interrupts<a class="headerlink" href="#design-example-1-using-gpios-timers-and-interrupts" title="Permalink to this heading">¶</a></h1>
 <p>The Zynq® UltraScale+™ MPSoC ZCU102 evaluation board comes with a few configurable switches and LEDs. This design example makes use of bare-metal and Linux applications to toggle these LEDs, with the following details:</p>
 <ul class="simple">
@@ -91,7 +122,7 @@ function OptanonWrapper() { }
 <li><p>The R5-Core 0 application uses an AXI Timer IP in the programmable logic to toggle PS LED (DS50). The application is configured to toggle the LED state every time the timer counter expires, and the timer in the PL is set to reset periodically after a configurable time interval.</p></li>
 <li><p>The system is configured so that the APU Linux application and RPU bare-metal application run simultaneously.</p></li>
 </ul>
-<section id="configuring-hardware">
+<div class="section" id="configuring-hardware">
 <h2>Configuring Hardware<a class="headerlink" href="#configuring-hardware" title="Permalink to this heading">¶</a></h2>
 <p>The first step in this design is to configure the PS and PL sections. This can be done in Vivado® IP integrator. Start with adding the required IPs from the Vivado IP catalog, and then connect the components to blocks in the PS subsystem.</p>
 <ol>
@@ -112,7 +143,7 @@ function OptanonWrapper() { }
 <p><img alt="../../../_images/image961.png" src="../../../_images/image961.png" /></p>
 </li>
 </ol>
-<section id="adding-the-axi-timer-and-axi-gpio-ip">
+<div class="section" id="adding-the-axi-timer-and-axi-gpio-ip">
 <h3>Adding the AXI Timer and AXI GPIO IP<a class="headerlink" href="#adding-the-axi-timer-and-axi-gpio-ip" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Adding the AXI Timer IP:</p>
@@ -165,8 +196,8 @@ shown in following figure.</p></li>
 <p><img alt="../../../_images/image100.png" src="../../../_images/image100.png" /></p>
 </li>
 </ol>
-</section>
-<section id="connecting-ip-blocks-to-create-a-complete-system">
+</div>
+<div class="section" id="connecting-ip-blocks-to-create-a-complete-system">
 <h3>Connecting IP Blocks to Create a Complete System<a class="headerlink" href="#connecting-ip-blocks-to-create-a-complete-system" title="Permalink to this heading">¶</a></h3>
 <p>The next step is to connect the IP blocks instantiated above to the PS block.</p>
 <ul class="simple">
@@ -212,8 +243,8 @@ shown in following figure.</p></li>
 <p><img alt="../../../_images/image104.png" src="../../../_images/image104.png" /></p>
 </li>
 </ol>
-</section>
-<section id="exporting-the-post-implementation-hardware-platform">
+</div>
+<div class="section" id="exporting-the-post-implementation-hardware-platform">
 <h3>Exporting the Post-Implementation Hardware Platform<a class="headerlink" href="#exporting-the-post-implementation-hardware-platform" title="Permalink to this heading">¶</a></h3>
 <p>We will run implementation of the Vivado design and export the post-implementation design. The Vivado generated bitstream will be included in the XSA file. It can make the software tests and boot image generation steps easier in the Vitis IDE. Note that the Vitis IDE also accepts pre-synthesis XSAs for application development. Bitstream is only required for debugging PL designs.</p>
 <ol>
@@ -259,9 +290,9 @@ shown in following figure.</p></li>
 </ul>
 </li>
 </ol>
-</section>
-</section>
-<section id="configuring-software">
+</div>
+</div>
+<div class="section" id="configuring-software">
 <h2>Configuring Software<a class="headerlink" href="#configuring-software" title="Permalink to this heading">¶</a></h2>
 <p>This use case has a bare-metal application running on an R5 core and a Linux application running on an APU Linux target. Most of the software blocks will remain the same as mentioned in <a class="reference internal" href="4-build-sw-for-ps-subsystems.html"><span class="doc">Build Software for PS Subsystems</span></a>. The software for this design example requires additional drivers for components added in the PL. For this reason, you will need to generate a new bare-metal BSP in the Vitis IDE using the hardware files generated for this design. Linux also requires the Linux BSP to be reconfigured in sync with the new hardware platform file (XSA).</p>
 <p>Before you configure the software, first look at the application
@@ -278,18 +309,18 @@ application. While this application runs on the RPU, the Linux target
 also hosts another Linux application. The Linux application uses user
 input from the PS or PL switches to toggle PL LEDs. This Linux application
 also runs in an infinite while loop, waiting for user input to toggle the PL LEDs. The next set of steps shows how to configure system software and build user applications for this design.</p>
-<section id="configuring-and-building-linux-using-petalinux">
+<div class="section" id="configuring-and-building-linux-using-petalinux">
 <h3>Configuring and Building Linux Using PetaLinux<a class="headerlink" href="#configuring-and-building-linux-using-petalinux" title="Permalink to this heading">¶</a></h3>
 <ol class="simple">
 <li><p>Create the Linux images using PetaLinux. The Linux images must be
 created in sync with the hardware configuration for this design.
 You will also need to configure PetaLinux to create images for SD
 boot.</p></li>
-<li><p>Repeat steps 2 to 4 as described in <a class="reference external" href="6-build-linux-sw-for-ps.md#creating-a-petalinux-image">Creating a PetaLinux Image</a> to update the device tree and build Linux images using PetaLinux.</p></li>
-<li><p>Follow instructions in <a class="reference external" href="6-build-linux-sw-for-ps.md#verifying-the-image-on-the-zcu102-board">Verifying the Image on the ZCU102 Board</a> to verify the images.</p></li>
+<li><p>Repeat steps 2 to 4 as described in <a class="reference external" href="6-build-linux-sw-for-ps.html#creating-a-petalinux-image">Creating a PetaLinux Image</a> to update the device tree and build Linux images using PetaLinux.</p></li>
+<li><p>Follow instructions in <a class="reference external" href="6-build-linux-sw-for-ps.html#verifying-the-image-on-the-zcu102-board">Verifying the Image on the ZCU102 Board</a> to verify the images.</p></li>
 </ol>
-</section>
-<section id="creating-the-bare-metal-application-project">
+</div>
+<div class="section" id="creating-the-bare-metal-application-project">
 <h3>Creating the Bare-Metal Application Project<a class="headerlink" href="#creating-the-bare-metal-application-project" title="Permalink to this heading">¶</a></h3>
 <ol class="simple">
 <li><p>In the Vitis IDE, select <strong>File → New → Application Project</strong>. The
@@ -353,8 +384,8 @@ Explorer.</p>
 <li><p>Click <strong>Finish</strong>.</p></li>
 </ol>
 <p>The Vitis IDE automatically builds the application and displays the status in the console window.</p>
-</section>
-<section id="modifying-the-linker-script">
+</div>
+<div class="section" id="modifying-the-linker-script">
 <h3>Modifying the Linker Script<a class="headerlink" href="#modifying-the-linker-script" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>In the Project Explorer, expand the tmr_psled_r5 project.</p></li>
@@ -371,9 +402,9 @@ occupies no more than 256 MB of size.</p>
 <li><p>Type <strong>Ctrl+S</strong> to save the changes.</p></li>
 <li><p>Right-click the <strong>tmr_psled_r5</strong> project and select <strong>Build Project</strong>.</p></li>
 <li><p>Verify that the application is compiled and linked successfully and that the <code class="docutils literal notranslate"><span class="pre">thetmr_psled_r5.elf</span></code> file is generated in the <code class="docutils literal notranslate"><span class="pre">tmr_psled_r5\Debug</span></code> folder.</p></li>
-<li><p>Verify that the BSP is configured for UART_1. For more information, see <a class="reference external" href="#4-build-sw-for-ps-subsystems.md#modifying-the-board-support-package-for-testapp_r5">Modifying the Board Support Package for testapp-r5</a>.</p></li>
+<li><p>Verify that the BSP is configured for UART_1. For more information, see <a class="reference external" href="#4-build-sw-for-ps-subsystems.html#modifying-the-board-support-package-for-testapp_r5">Modifying the Board Support Package for testapp-r5</a>.</p></li>
 </ol>
-<section id="creating-the-linux-domain-for-linux-applications">
+<div class="section" id="creating-the-linux-domain-for-linux-applications">
 <h4>Creating the Linux Domain for Linux Applications<a class="headerlink" href="#creating-the-linux-domain-for-linux-applications" title="Permalink to this heading">¶</a></h4>
 <p>To create a Linux domain for generating Linux applications, follow these steps:</p>
 <ol>
@@ -397,9 +428,9 @@ occupies no more than 256 MB of size.</p>
 </li>
 <li><p>Build the platform to make the domain change take effects.</p></li>
 </ol>
-</section>
-</section>
-<section id="creating-the-linux-application-project">
+</div>
+</div>
+<div class="section" id="creating-the-linux-application-project">
 <h3>Creating the Linux Application Project<a class="headerlink" href="#creating-the-linux-application-project" title="Permalink to this heading">¶</a></h3>
 <ol class="simple">
 <li><p>In the Vitis IDE, select <strong>File → New → Application Project</strong>. The New Project wizard opens.</p></li>
@@ -467,8 +498,8 @@ Explorer view.</p>
 reference to the pthread library. The next section shows how to add
 the pthread library.</p>
 </div></blockquote>
-</section>
-<section id="modifying-the-build-settings">
+</div>
+<div class="section" id="modifying-the-build-settings">
 <h3>Modifying the Build Settings<a class="headerlink" href="#modifying-the-build-settings" title="Permalink to this heading">¶</a></h3>
 <p>This application makes use of pthreads from the pthread library. Add
 the pthread library as follows:</p>
@@ -481,8 +512,8 @@ the pthread library as follows:</p>
 <li><p>Click <strong>OK</strong> in both the windows.</p></li>
 <li><p>Right-click the application and select <strong>Build</strong> to build the application.</p></li>
 </ol>
-</section>
-<section id="creating-a-boot-image">
+</div>
+<div class="section" id="creating-a-boot-image">
 <h3>Creating a Boot Image<a class="headerlink" href="#creating-a-boot-image" title="Permalink to this heading">¶</a></h3>
 <p>Now that all the individual images are ready, you will create the boot
 image to load all of these components on a Zynq UltraScale+ device. This can be done using the Create Boot Image wizard in the Vitis IDE by performing the following steps. This example creates a boot image <code class="docutils literal notranslate"><span class="pre">BOOT.bin</span></code> in <code class="docutils literal notranslate"><span class="pre">C:\\edt\\design1</span></code>.</p>
@@ -492,7 +523,7 @@ image to load all of these components on a Zynq UltraScale+ device. This can be 
 <li><p>Select <strong>Xilinx → Create Boot Image</strong>.</p></li>
 <li><p>In the Create Boot Image wizard, add the settings and partitions as shown in the following figure.</p>
 <blockquote>
-<div><p><strong>Note:</strong> For detailed steps on how to add partitions, see <a class="reference external" href="8-boot-and-configuration.md#boot-sequence-for-sd-boot">Boot Sequence for SD-Boot</a>.</p>
+<div><p><strong>Note:</strong> For detailed steps on how to add partitions, see <a class="reference external" href="8-boot-and-configuration.html#boot-sequence-for-sd-boot">Boot Sequence for SD-Boot</a>.</p>
 </div></blockquote>
 <p><img alt="../../../_images/image112.png" src="../../../_images/image112.png" /></p>
 <blockquote>
@@ -507,11 +538,11 @@ settings can be ignored for other partitions.</p>
 </div></blockquote>
 </li>
 </ol>
-</section>
-</section>
-<section id="running-the-image-on-a-zcu102-board">
+</div>
+</div>
+<div class="section" id="running-the-image-on-a-zcu102-board">
 <h2>Running the Image on a ZCU102 Board<a class="headerlink" href="#running-the-image-on-a-zcu102-board" title="Permalink to this heading">¶</a></h2>
-<section id="preparing-the-sd-card">
+<div class="section" id="preparing-the-sd-card">
 <h3>Preparing the SD Card<a class="headerlink" href="#preparing-the-sd-card" title="Permalink to this heading">¶</a></h3>
 <p>Copy the images and executables onto an SD card and load it into the SD card slot in the board.</p>
 <ol>
@@ -522,8 +553,8 @@ settings can be ignored for other partitions.</p>
 </li>
 <li><p>Copy the Linux application, <code class="docutils literal notranslate"><span class="pre">ps_pl_linux_app.elf</span></code>, to the same SD card. The application can be found in <code class="docutils literal notranslate"><span class="pre">C:\edt\ps_pl_linux_app\Debug</span></code>.</p></li>
 </ol>
-</section>
-<section id="target-setup">
+</div>
+<div class="section" id="target-setup">
 <h3>Target Setup<a class="headerlink" href="#target-setup" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Load the SD card into the ZCU102 board, in the J100 connector.</p></li>
@@ -538,8 +569,8 @@ settings can be ignored for other partitions.</p>
 <li><p>Select the COM port associated with the interface with the lowest number. In this case, for UART-0, select the COM port with interface-0.</p></li>
 <li><p>Similarly, for UART-1, select the COM port with interface-1. Remember that the R5 BSP has been configured to use UART-1, so R5 application messages will appear on the COM port with the UART-1 terminal.</p></li>
 </ol>
-</section>
-<section id="power-on-target-and-run-applications">
+</div>
+<div class="section" id="power-on-target-and-run-applications">
 <h3>Power On Target and Run Applications<a class="headerlink" href="#power-on-target-and-run-applications" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Turn on the ZCU102 board using SW1, and wait until Linux loads on the board.</p>
@@ -553,8 +584,8 @@ interface. This application is loaded by the FSBL onto the RPU.</p>
 <p><img alt="../../../_images/image113.png" src="../../../_images/image113.png" /></p>
 </li>
 </ol>
-</section>
-<section id="running-linux-applications">
+</div>
+<div class="section" id="running-linux-applications">
 <h3>Running Linux Applications<a class="headerlink" href="#running-linux-applications" title="Permalink to this heading">¶</a></h3>
 <p>After Linux is up on the ZCU102 system, log into the Linux target with login: root and password: root. The Linux target is now ready to run applications. Run the Linux application by performing the following steps.</p>
 <ol>
@@ -569,9 +600,9 @@ interface. This application is loaded by the FSBL onto the RPU.</p>
 <p><img alt="../../../_images/image114.png" src="../../../_images/image114.png" /></p>
 </li>
 </ol>
-</section>
-</section>
-<section id="summary">
+</div>
+</div>
+<div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
 <p>In this design example, you created the hardware design in Vivado with processing system and GPIO modules. The hardware was exported to an XSA file. You imported the hardware to PetaLinux to update the device tree. The regenerated PetaLinux image can boot the board. You also imported the XSA to the Vitis software platform to create the platform project and developed software for Arm Cortex-R5F. You finally created the boot image to include software binaries to run on both the APU and RPU to make the system perform as planned.</p>
 <p>The <a class="reference internal" href="8-boot-and-configuration.html"><span class="doc">next chapter</span></a> introduces more boot and configuration techniques.</p>
@@ -579,8 +610,8 @@ interface. This application is loaded by the FSBL onto the RPU.</p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

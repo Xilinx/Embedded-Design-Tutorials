@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,11 +24,12 @@ function OptanonWrapper() { }
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Vitis Embedded Software Debugging Guide Overview" href="docs/1-xilinx-debug-solution-overview/README.html" />
-    <link rel="prev" title="Software Profiling Using the Vitis Software Platform" href="../Feature_Tutorials/sw-profiling/sw-profiling.html" /> 
+    <link rel="prev" title="Design Example: Example Setup for a Graphics and DisplayPort Based Sub-System" href="../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -70,6 +70,10 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a><ul>
@@ -79,12 +83,6 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="docs/3-debugging-linux-applications/README.html">Debugging Linux Applications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/3-debugging-linux-applications/README.html#appendix">Appendix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/4-advanced-debug-techniques/README.html">Advanced Debug Techniques</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/4-advanced-debug-techniques/README.html#error-1-axi-gpio-application-debug">Error 1: AXI GPIO Application Debug</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/4-advanced-debug-techniques/README.html#error-2-debugging-a-kernel-crash">Error 2: Debugging a Kernel Crash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/4-advanced-debug-techniques/README.html#error-3-debugging-a-kernel-process">Error 3: Debugging a Kernel Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/4-advanced-debug-techniques/README.html#error-4-debugging-a-kernel-module">Error 4: Debugging a Kernel Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/4-advanced-debug-techniques/README.html#error-5-debug-using-qemu">Error 5: Debug Using QEMU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/4-advanced-debug-techniques/README.html#further-reading">Further Reading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/5-summary/README.html">Summary</a></li>
 </ul>
 </li>
@@ -94,8 +92,11 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -123,12 +124,12 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="vitis-embedded-software-debugging-guide-ug1515-2021-1">
+  <div class="section" id="vitis-embedded-software-debugging-guide-ug1515-2021-1">
 <h1>Vitis Embedded Software Debugging Guide (UG1515) 2021.1<a class="headerlink" href="#vitis-embedded-software-debugging-guide-ug1515-2021-1" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p>This guide provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help.</p>
-</section>
+</div>
 
 
            </div>
@@ -144,7 +145,7 @@ function OptanonWrapper() { }
                   </style>
 				  
 				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../Feature_Tutorials/sw-profiling/sw-profiling.html" class="btn btn-neutral float-left" title="Software Profiling Using the Vitis Software Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html" class="btn btn-neutral float-left" title="Design Example: Example Setup for a Graphics and DisplayPort Based Sub-System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="docs/1-xilinx-debug-solution-overview/README.html" class="btn btn-neutral float-right" title="Vitis Embedded Software Debugging Guide Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

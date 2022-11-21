@@ -355,7 +355,7 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
       |               | Processor               | versal_cips               |
       |               |                         | _0_pspmc_0_psv_cortexr5_0 |
       +---------------+-------------------------+---------------------------+
-      | Templates     | Available               | Empty      		          |
+      | Templates     | Available               | Empty                     |
       +---------------+-------------------------+---------------------------+
       |               | Templates               | Application (C)           |
       +---------------+-------------------------+---------------------------+
@@ -372,7 +372,7 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
 
 6. Click **<OK>** to save the above configuration and exit the configuration wizard.
    
-7. Right-click **freertos_gpio_test_system** and select **Build Project**. Alternatively, you can click |build|.
+7. Right-click **freertos_gpio_test_system** and select **Build Project**. Alternatively, you can click the |build| icon.
 
    For building the Linux images and incorporating the FreeRTOS elf into the image, see :ref:`creating-linux-images-using-petalinux`.
 

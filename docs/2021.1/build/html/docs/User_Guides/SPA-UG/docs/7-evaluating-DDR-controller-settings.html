@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -70,6 +70,10 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
@@ -98,8 +102,11 @@ function OptanonWrapper() { }
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -128,7 +135,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="evaluating-ddr-controller-settings">
+  <div class="section" id="evaluating-ddr-controller-settings">
 <h1>Evaluating DDR Controller Settings<a class="headerlink" href="#evaluating-ddr-controller-settings" title="Permalink to this heading">¶</a></h1>
 <p>The Zynq®-7000 SoC family of devices offers some control over the allocation of bandwidth to the DDR memory. These settings are provided in the on-chip DDR controller (DDRC). You can modify clock frequencies and DDRC settings for the SPM design in the Vitis™ IDE. This chapter shows that while bandwidth cannot necessarily be created, it can indeed be re-allocated.</p>
 <p>It is important to understand the connectivity to the DDRC. The following figure shows the block diagram of the Zynq-7000 SoC DDRC. There are four ports on the DDRC which service traffic from the CPUs and the Accelerator Coherency Port (ACP) (port 0), other masters via the central interconnect (port 1), HP ports HP2 and HP3 (port 2), and HP ports HP0 and HP1 (port 3). The settings for the DDRC are part of the PS7 or First Stage Boot Loader (FSBL) which configures various system settings early in the boot process. For more information, see the “DDR Memory Controller” chapter of the <em>Zynq-7000 SoC Technical Reference Manual</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides%3Bd=ug585-Zynq-7000-TRM.pdf">UG585</a>).</p>
@@ -149,17 +156,17 @@ function OptanonWrapper() { }
 <p><em>Figure 26:</em> <strong>Default FSBL Configuration Settings for SPM Design</strong></p>
 <p><img alt="../../../../_images/image25.jpeg" src="../../../../_images/image25.jpeg" /></p>
 <p>These DDRC settings can also be modified in the Vivado® Design Suite. In a Vivado IP integrator based design, you can double-click on the Zynq-7000 Processing System IP block in the block diagram. A configuration dialog box opens, in which you can re-customize the IP. The DDR Controller settings are listed under DDR Configuration, and the specific options of interest are under Enable Advanced options. When that box is checked, you can view and modify settings such as read/write priority, high-priority read (HPR), and other important settings that can impact performance. The functionality of these settings is described in depth in the <em>Zynq-7000 SoC Technical Reference Manual</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides%3Bd=ug585-Zynq-7000-TRM.pdf">UG585</a>).</p>
-<section id="default-ddrc-settings">
+<div class="section" id="default-ddrc-settings">
 <h2>Default DDRC Settings<a class="headerlink" href="#default-ddrc-settings" title="Permalink to this heading">¶</a></h2>
-<p>Baseline results were created by running HP only traffic using the default FSBL settings, as shown in the previous figure. The PL traffic was the high-bandwidth HP traffic shown in <a class="reference external" href="../docs/6-evaluating-high-performance-ports.md#fig20">Figure 20: ATG Traffic Configuration Modeling High-Bandwidth Traffic on HP Ports</a>; however, the traffic duration was set to 10s. Also, no software application was run. You can configure by modifying the Debug Configuration. Select the Application tab, and then uncheck the Download Applications check box.</p>
-<p>This traffic scenario was run on a ZC702 board, and the results can be seen in the following figure. Note that default DDRC settings were used because they have not been modified yet. The HP ports sustained a higher bandwidth than the previous results shown in <a class="reference external" href="../docs/6-evaluating-high-performance-ports.md#fig21">Figure 21: Summary of Performance Results from Modeling High-Bandwidth Traffic on HP Ports</a> because there is no DDR traffic from the CPUs.</p>
+<p>Baseline results were created by running HP only traffic using the default FSBL settings, as shown in the previous figure. The PL traffic was the high-bandwidth HP traffic shown in <a class="reference external" href="../docs/6-evaluating-high-performance-ports.html#fig20">Figure 20: ATG Traffic Configuration Modeling High-Bandwidth Traffic on HP Ports</a>; however, the traffic duration was set to 10s. Also, no software application was run. You can configure by modifying the Debug Configuration. Select the Application tab, and then uncheck the Download Applications check box.</p>
+<p>This traffic scenario was run on a ZC702 board, and the results can be seen in the following figure. Note that default DDRC settings were used because they have not been modified yet. The HP ports sustained a higher bandwidth than the previous results shown in <a class="reference external" href="../docs/6-evaluating-high-performance-ports.html#fig21">Figure 21: Summary of Performance Results from Modeling High-Bandwidth Traffic on HP Ports</a> because there is no DDR traffic from the CPUs.</p>
 <p><em>Figure 27:</em> <strong>HP Port Performance Using Default DDR Configuration Settings</strong></p>
 <p><img alt="../../../../_images/image261.jpeg" src="../../../../_images/image261.jpeg" /></p>
 <p>The total DDR bandwidth is therefore the sum of the bandwidths measured on the HP ports, calculated as follows:</p>
 <p><code class="docutils literal notranslate"><span class="pre">Total</span> <span class="pre">bandwidth=</span> <span class="pre">462.3</span> <span class="pre">+</span> <span class="pre">462.3</span> <span class="pre">+</span> <span class="pre">462.1</span> <span class="pre">+</span> <span class="pre">462.1</span> <span class="pre">+</span> <span class="pre">432.3</span> <span class="pre">+</span> <span class="pre">432.3</span> <span class="pre">+</span> <span class="pre">432.0</span> <span class="pre">+</span> <span class="pre">432.0=3577.4</span> <span class="pre">MB/sec</span></code></p>
 <p>This total bandwidth is 83.7% of the theoretical maximum throughput of the DDR. This is very good performance considering the mix of high-bandwidth reads and writes from four different HP ports.</p>
-</section>
-<section id="modified-ddrc-settings">
+</div>
+<div class="section" id="modified-ddrc-settings">
 <h2>Modified DDRC Settings<a class="headerlink" href="#modified-ddrc-settings" title="Permalink to this heading">¶</a></h2>
 <p>You can modify the DDRC settings and re-run the HP only test above to compare performance results. Note that while modifying the DDRC settings is important for this stress test, it may not be desirable for your design. In fact, most designs will achieve desired performance using the default DDRC settings.</p>
 <p><em>Figure 28:</em> <strong>Modified FSBL Configuration Settings for SPM Design</strong></p>
@@ -173,8 +180,8 @@ function OptanonWrapper() { }
 <p>Another way to observe this re-allocation of priorities can be seen in the read latency graph shown in the following figure. Since the DDRC is configured to provide high priority to read traffic on HP0 and HP1, the latency on those ports is relatively low. That is, read requests on those ports are being serviced by the DDRC at a higher priority whereas read requests on the other HP ports, HP2 and HP3, are being treated as low priority and therefore, their latency is much higher. The impact of this is increased throughput on HP0 and HP1 and decreased throughput on HP2 and HP3.</p>
 <p><em>Figure 30:</em> <strong>Read Latency of HP Ports Using Modified DDR Controller Settings</strong></p>
 <p><img alt="../../../../_images/image29.jpeg" src="../../../../_images/image29.jpeg" /></p>
-</section>
-<section id="utilizing-on-chip-memory">
+</div>
+<div class="section" id="utilizing-on-chip-memory">
 <h2>Utilizing On-Chip Memory<a class="headerlink" href="#utilizing-on-chip-memory" title="Permalink to this heading">¶</a></h2>
 <p>Consider the case where it is a design requirement to obtain 512 MB/sec for both write and read traffic from all HP ports. How do you leverage other memory to augment the DDRC bandwidth? This would require a total bandwidth of 8 * 512 = 4096 MB/sec, or 96.0% of the theoretical maximum throughput of the DDR. While this is not achievable from a typical DDR controller and memory with an even mix of writes and reads, the on-chip memory (OCM) can be explored for additional data buffering. This is an independent 256 KB memory within the Zynq-7000 SoC PS that provides an excellent low-latency scratch pad.</p>
 <p>The following figure shows one particular traffic scenario that utilizes the OCM. Compare this scenario to the original one shown in Figure 7-3. While the requested throughputs are kept the same for all operations and types, the traffic on HP2 and HP3 now uses the OCM.</p>
@@ -189,8 +196,8 @@ function OptanonWrapper() { }
 <blockquote>
 <div><p><strong><em>Note</em>:</strong> The Zynq UltraScale+ MPSoC also provides many ways to tune the DDR parameters and AXI QoR. The Vitis IDE does not provide a specific GUI to do it. You need to modify the registers with XSCT or customized FSBL.</p>
 </div></blockquote>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

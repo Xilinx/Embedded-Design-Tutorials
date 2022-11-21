@@ -9,7 +9,7 @@ In this example, you will configure and build a Linux operating system platform 
 ### Input and Output Files
 
 - Input:
-  - Hardware XSA (``system_wrapper.xsa`` generated in [Example 1](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc))
+  - Hardware XSA (``system_wrapper.xsa`` generated in [Example 1](./2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc))
   - [PetaLinux ZC702 BSP](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html)
 
 - Output:
@@ -36,7 +36,7 @@ In this example, you will configure and build a Linux operating system platform 
 
 2. Reconfigure the project with ``system_wrapper.xsa``:
 
-   - The created PetaLinux project uses the default hardware setup in the ZC702 Linux BSP. In this example, you will reconfigure the PetaLinux project based on the Zynq design that you configured using the Vivado® Design Suite in [Example 1](./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc).
+   - The created PetaLinux project uses the default hardware setup in the ZC702 Linux BSP. In this example, you will reconfigure the PetaLinux project based on the Zynq design that you configured using the Vivado® Design Suite in [Example 1](./2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc).
 
    - Copy the hardware platform ``system_wrapper.xsa`` to the Linux host machine.
 
@@ -104,7 +104,7 @@ JTAG mode.
 
 1. Copy the `BOOT.BIN`, `image.ub`, and `boot.scr` files to the SD card.
 
-2. Set up the board as described in [Setting Up the Board](./2-using-zynq.md#setting-up-the-board).
+2. Set up the board as described in [Setting Up the Board](./2-using-zynq.html#setting-up-the-board).
 
 3. Change the boot mode to SD boot.
 

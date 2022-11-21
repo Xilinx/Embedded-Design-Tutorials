@@ -4,7 +4,7 @@ Zynq-7000 Embedded Design Tutorial
 
 
 
-This document provides an introduction to using the Xilinx&reg; Vitis&trade; unified software platform with the Zynq&reg;-7000 SoC device. The examples are targeted for the Xilinx ZC702 rev 1.0 evaluation board and the tools used are the Vivado&reg; Design Suite, the Vitis software platform, and PetaLinux.
+This document provides an introduction to using the Xilinx |reg| Vitis |trade| unified software platform with the Zynq |reg|-7000 SoC device. The examples are targeted for the Xilinx ZC702 rev 1.0 evaluation board and the tools used are the Vivado |reg| Design Suite, the Vitis software platform, and PetaLinux.
 
 The examples in this document were created using the Xilinx tools running on a Windows 10 64-bit operating system, and PetaLinux on Linux 64-bit operating system. These examples focus on introducing you to the following aspects of embedded design.
 
@@ -37,5 +37,12 @@ References
 When reading this tutorial and running the examples, you may find the following documents good to references.
 
 
-- `Vitis Embedded Software Development Flow Documentation <https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/hly1569525384514.html`_
-- :doc:`../../Vitis-Embedded-Software-Debugging/README`
+-	`Vitis Embedded Software Development Flow Documentation <https://docs.xilinx.com/access/sources/dita/map?Doc_Version=2021.1%20English&url=ug1400-vitis-embedded>`_
+
+-	`Vitis Embedded Software Debugging Guide <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/docs/Vitis-Embedded-Software-Debugging/Debugging.html>`_
+
+
+.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
+   :ltrim:
+.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
+   :ltrim:

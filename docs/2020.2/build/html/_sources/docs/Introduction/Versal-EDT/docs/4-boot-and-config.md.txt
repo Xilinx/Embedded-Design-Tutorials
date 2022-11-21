@@ -63,7 +63,7 @@ The Vitis software platform does not support automatic boot image creation for V
 
     - For Linux images, navigate to the `<plnx-proj-root>/images/linux` and copy `BOOT.BIN`, `image.ub`, and `boot.scr` to the SD card.
 
-    >***Note*:** You can either boot the VCK190/VMK180 board using the   ready-to-test images as part of the released package path, `<design-package>/<vck190 or vmk180>/linux/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](../docs/5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
+    >***Note*:** You can either boot the VCK190/VMK180 board using the   ready-to-test images as part of the released package path, `<design-package>/<vck190 or vmk180>/linux/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](../docs/5-system-design-example.html#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
 
 2. Load the SD card into the VMK180/VCK190 board, in the J302 connector.
 
@@ -95,7 +95,7 @@ This section demonstrates the boot sequence for the QSPI boot mode. For this, yo
 
 ![QSPI-boot-halfform-factor-module](./media/image54.jpeg)
 
->***Note*:** For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190/VMK180 board using the ready-to-test images as part of the released package path, `<design-package>/<vck190 or vmk180>/linux/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.md#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
+>***Note*:** For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190/VMK180 board using the ready-to-test images as part of the released package path, `<design-package>/<vck190 or vmk180>/linux/bootimages`, or refer to [Example Project: Creating Linux Images Using PetaLinux](./5-system-design-example.html#example-project-creating-linux-images-using-petalinux) to build your own set of Linux images using the PetaLinux tool.
 
 You need to flash the images to the daughter card, using the following steps:
 

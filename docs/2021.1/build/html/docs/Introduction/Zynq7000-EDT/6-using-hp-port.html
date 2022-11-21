@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -94,6 +94,10 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
@@ -103,8 +107,11 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -133,7 +140,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-the-hp-slave-port-with-axi-cdma-ip">
+  <div class="section" id="using-the-hp-slave-port-with-axi-cdma-ip">
 <h1>Using the HP Slave Port with AXI CDMA IP<a class="headerlink" href="#using-the-hp-slave-port-with-axi-cdma-ip" title="Permalink to this heading">¶</a></h1>
 <p>In this chapter, you will instantiate AXI CDM\A (Central DMA) IP in fabric and
 integrate it with the processing system high performance (HP) 64-bit
@@ -145,7 +152,7 @@ system HP slave port to get read/write access to the DDR system memory.</p>
 application software using mmap() for the data transfer using the AXI CDMA
 block. You will also execute both standalone and Linux-based
 application software separately on the ZC702 board.</p>
-<section id="integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port">
+<div class="section" id="integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port">
 <h2>Integrating AXI CDMA with the Zynq SoC PS HP Slave Port<a class="headerlink" href="#integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port" title="Permalink to this heading">¶</a></h2>
 <p>Xilinx® Zynq®-7000 SoC devices internally provide four high
 performance (HP) AXI slave interface ports that connect the
@@ -202,15 +209,15 @@ buffer data with the destination buffer data and displays the
 comparison result on the serial terminal.</p>
 <p>If the data transfer status is an error, it displays the error status
 on the serial terminal and stops execution.</p>
-</section>
-<section id="example-7-integrating-axi-cdma-with-the-ps-hp-slave-port">
+</div>
+<div class="section" id="example-7-integrating-axi-cdma-with-the-ps-hp-slave-port">
 <h2>Example 7: Integrating AXI CDMA with the PS HP Slave Port<a class="headerlink" href="#example-7-integrating-axi-cdma-with-the-ps-hp-slave-port" title="Permalink to this heading">¶</a></h2>
-<section id="input-and-output-files">
+<div class="section" id="input-and-output-files">
 <h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input files:</p>
 <ul>
-<li><p>Vivado design from <a class="reference external" href="5-using-gp-port-zynq.md#example-6-adding-peripheral-pl-ip">Example 6</a></p></li>
+<li><p>Vivado design from <a class="reference external" href="5-using-gp-port-zynq.html#example-6-adding-peripheral-pl-ip">Example 6</a></p></li>
 <li><p>Vitis workspace</p></li>
 </ul>
 </li>
@@ -221,13 +228,13 @@ on the serial terminal and stops execution.</p>
 </ul>
 </li>
 </ul>
-</section>
-<section id="update-the-vivado-design">
+</div>
+<div class="section" id="update-the-vivado-design">
 <h3>Update the Vivado Design<a class="headerlink" href="#update-the-vivado-design" title="Permalink to this heading">¶</a></h3>
 <ol class="simple">
-<li><p>Start with the system you created in <a class="reference external" href="5-using-gp-port-zynq.md#example-6-adding-peripheral-pl-ip">Example 6: Adding Peripheral PL IP</a>.</p>
+<li><p>Start with the system you created in <a class="reference external" href="5-using-gp-port-zynq.html#example-6-adding-peripheral-pl-ip">Example 6: Adding Peripheral PL IP</a>.</p>
 <ul class="simple">
-<li><p>Open the Vivado® design from <a class="reference external" href="5-using-gp-port-zynq.md#example-6-adding-peripheral-pl-ip">Example 6</a>.</p></li>
+<li><p>Open the Vivado® design from <a class="reference external" href="5-using-gp-port-zynq.html#example-6-adding-peripheral-pl-ip">Example 6</a>.</p></li>
 <li><p>Open the block design from Flow Navigator <strong>Open Block Design</strong>.</p></li>
 </ul>
 </li>
@@ -332,8 +339,8 @@ Click <strong>OK</strong> if you see the error message.</p>
 <p><strong>Note:</strong> Make sure to select <strong>Include bitstream</strong> instead of <strong>Pre-synthesis</strong> on the Output page of the Export Hardware Platform wizard.</p>
 </li>
 </ol>
-</section>
-<section id="designing-standalone-application-software-for-the-design">
+</div>
+<div class="section" id="designing-standalone-application-software-for-the-design">
 <h3>Designing Standalone Application Software for the Design<a class="headerlink" href="#designing-standalone-application-software-for-the-design" title="Permalink to this heading">¶</a></h3>
 <p>The CDMA-based system that you designed in this chapter requires
 application software to execute on the board. This section describes
@@ -350,8 +357,8 @@ interrupt to happen. After the interrupt, it checks the status of the
 DMA transfer and compares the source buffer with the destination
 buffer. Finally, it prints the comparison result in the serial
 terminal and stops running.</p>
-</section>
-<section id="application-software-programming-model">
+</div>
+<div class="section" id="application-software-programming-model">
 <h3>Application Software Programming Model<a class="headerlink" href="#application-software-programming-model" title="Permalink to this heading">¶</a></h3>
 <p>The application software does the following tasks:</p>
 <ol>
@@ -392,8 +399,8 @@ and then exits from the execution.</p>
 error status in the serial terminal and stops running.</p>
 </li>
 </ol>
-</section>
-<section id="creating-the-standalone-cdma-application">
+</div>
+<div class="section" id="creating-the-standalone-cdma-application">
 <h3>Creating the Standalone CDMA Application<a class="headerlink" href="#creating-the-standalone-cdma-application" title="Permalink to this heading">¶</a></h3>
 <ol class="simple">
 <li><p>Launch the Vitis software platform and open the workspace you worked on before.</p></li>
@@ -454,8 +461,8 @@ folder to <a class="reference external" href="https://github.com/Xilinx/Embedded
 button or by right-clicking on the <strong>cdma_app</strong> project and
 selecting <strong>Build Project</strong>.</p></li>
 </ol>
-</section>
-<section id="running-cdma-the-app-on-zc702">
+</div>
+<div class="section" id="running-cdma-the-app-on-zc702">
 <h3>Running CDMA the App on ZC702<a class="headerlink" href="#running-cdma-the-app-on-zc702" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Open the serial communication utility with baud rate set to
@@ -496,9 +503,9 @@ message.</p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

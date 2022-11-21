@@ -1,3 +1,5 @@
+# Debugging FSBL Using the Vitis Debugger
+
 ## Creating First Stage Boot Loader for Arm Cortex-A53-Based APU
 
  FSBL can load the required application or data to memory and launch

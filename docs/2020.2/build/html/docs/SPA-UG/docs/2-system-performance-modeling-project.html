@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,19 +113,19 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="system-performance-modeling-project">
+  <div class="section" id="system-performance-modeling-project">
 <h1>System Performance Modeling Project<a class="headerlink" href="#system-performance-modeling-project" title="Permalink to this heading">¶</a></h1>
 <p>The Vitis™ IDE is delivered with a predefined project that enables System Performance Modeling (SPM) and helps enable performance analysis at an early design stage. The SPM project contains both software executable and a post-bitstream, configurable hardware system. The SPM serves multiple purposes, including the following:</p>
 <ul class="simple">
 <li><p><strong>Target Evaluation:</strong> Gain a better understanding of the target platform with minimal hardware design knowledge or experience. A complex SoC such as the Zynq®-7000 SoC can be characterized and evaluated, enabling critical partitioning trade-offs between the Arm® Cortex-A9s and the programmable logic. Most importantly, this evaluation can be done independently of the progression or completion of a design. You can always decide to gain a better understanding of your target platform.</p></li>
 <li><p><strong>Perform Stress Tests:</strong> Identify and exercise the various points of contention in the system. An excellent way of understanding a target platform is to evaluate the limits of its capabilities.</p></li>
 <li><p><strong>Performance Evaluation:</strong> Model the traffic of a design. Once the target platform is understood, specifics of a design can be entered as traffic scenarios, and SPM can be used to evaluate architectural options.</p></li>
-<li><p><strong>Performance Validation:</strong> Instrument the final design and confirm results with the initial model. The same monitoring used in the SPM design can also be added to your design (see <a class="reference external" href="./9-using-spa-with-custom-target.md#instrumenting-hardware">Instrumenting Hardware</a>), providing a validation of the modeled performance results.</p></li>
+<li><p><strong>Performance Validation:</strong> Instrument the final design and confirm results with the initial model. The same monitoring used in the SPM design can also be added to your design (see <a class="reference external" href="./9-using-spa-with-custom-target.html#instrumenting-hardware">Instrumenting Hardware</a>), providing a validation of the modeled performance results.</p></li>
 </ul>
 <p><em>Figure 5:</em> <strong>SPM Project Files in the Vitis IDE</strong></p>
 <p><img alt="../../../_images/image4.jpeg" src="../../../_images/image4.jpeg" /></p>
 <p>The previous figure lists the files contained in the predefined SPM project. It contains predefined traffic configurations (atgconfigs), performance monitor configurations (apmconfigs), pre-compiled software executables (executables), and multiple system definition files. The system definition files include Processing System initialization files, the bitstream for predefined PL design and the tcl file that can recreate the design.</p>
-<section id="spm-software">
+<div class="section" id="spm-software">
 <h2>SPM Software<a class="headerlink" href="#spm-software" title="Permalink to this heading">¶</a></h2>
 <p>The SPM project contains two pre-compiled software executables:</p>
 <ul class="simple">
@@ -104,9 +135,9 @@ function OptanonWrapper() { }
 <blockquote>
 <div><p><strong><em>Note</em>:</strong> ZCU102 SPM project only includes BEEBS benchmark.</p>
 </div></blockquote>
-<section id="beebs-benchmarks">
+<div class="section" id="beebs-benchmarks">
 <h3>BEEBS Benchmarks<a class="headerlink" href="#beebs-benchmarks" title="Permalink to this heading">¶</a></h3>
-<p>The BEEBS program comprises a sequence of eight diverse benchmarks. As shown in the following table, this suite contains algorithms originally contained as part of various well-known benchmark suites such as MiBench, WCET, and DSPstone. These benchmarks were chosen to test embedded systems and be portable to standalone or bare-metal targets. For more information about the BEEBS benchmark suite, refer to <a class="reference external" href="http://dblp.uni-trier.de/db/journals/corr/corr1308.md#PallisterHB13">BEEBS: Open Benchmarks for Energy Measurements on Embedded Platforms</a>.</p>
+<p>The BEEBS program comprises a sequence of eight diverse benchmarks. As shown in the following table, this suite contains algorithms originally contained as part of various well-known benchmark suites such as MiBench, WCET, and DSPstone. These benchmarks were chosen to test embedded systems and be portable to standalone or bare-metal targets. For more information about the BEEBS benchmark suite, refer to <a class="reference external" href="http://dblp.uni-trier.de/db/journals/corr/corr1308.html#PallisterHB13">BEEBS: Open Benchmarks for Energy Measurements on Embedded Platforms</a>.</p>
 <div id="table1"><p><em>Table 1:</em> <strong>BEEBS Benchmarks Provided in Pre-Compiled Program</strong></p>
 <table border="1" class="docutils">
 <thead>
@@ -168,9 +199,9 @@ function OptanonWrapper() { }
 <li><p>1024 KB (2-D array: 512 x 512) – fits into the DDR SDRAM</p></li>
 </ul>
 </li>
-<li><p><strong>Instrumented:</strong> Run-times of these benchmarks were calculated based on instrumentation added to the code before and after every benchmark. See <a class="reference external" href="../docs/9-using-spa-with-custom-target.md#instrumenting-hardware">Instrumenting Hardware</a> for more details. Note that the run-times are reported in the transcript delivered over the UART (Terminal 1 panel in the Vitis IDE) and read manually.</p></li>
+<li><p><strong>Instrumented:</strong> Run-times of these benchmarks were calculated based on instrumentation added to the code before and after every benchmark. See <a class="reference external" href="../docs/9-using-spa-with-custom-target.html#instrumenting-hardware">Instrumenting Hardware</a> for more details. Note that the run-times are reported in the transcript delivered over the UART (Terminal 1 panel in the Vitis IDE) and read manually.</p></li>
 </ul>
-<section id="memory-stride-benchmarks">
+<div class="section" id="memory-stride-benchmarks">
 <h4>Memory Stride Benchmarks<a class="headerlink" href="#memory-stride-benchmarks" title="Permalink to this heading">¶</a></h4>
 <p>The memory stride benchmarks differ from the BEEBS benchmarks in that they do minimal computation and are specifically designed to test memory bandwidth and latency. The various tests included in the software are listed in the following table. The five different types of tests include:</p>
 <ul class="simple">
@@ -256,30 +287,30 @@ function OptanonWrapper() { }
 </table></div><blockquote>
 <div><p><strong><em>Note</em>:</strong> ZCU102 SPM project doesn’t include this memory stride benchmark executable.</p>
 </div></blockquote>
-</section>
-</section>
-</section>
-<section id="spm-hardware">
+</div>
+</div>
+</div>
+<div class="section" id="spm-hardware">
 <h2>SPM Hardware<a class="headerlink" href="#spm-hardware" title="Permalink to this heading">¶</a></h2>
 <p>The SPM project contains a predefined hardware design that can be used for early performance exploration. This design is delivered in the project as a fixed bitstream to configure the Zynq-7000 SoC PL.</p>
 <p><em>Figure 6:</em> <strong>Pre-Defined SPM Design in Zynq-7000 SoC</strong></p>
 <p><img alt="../../../_images/x14651-Pre-Defined-SPM-Design-Zynq-7000-APSoC.png" src="../../../_images/x14651-Pre-Defined-SPM-Design-Zynq-7000-APSoC.png" /></p>
 <p>The previous figure shows a block diagram of this predefined SPM design targeting the</p>
 <p>Zynq-7000 SoC. It is a highly-configurable design involving five AXI traffic generator (ATGs) and one AXI performance monitor (APM). One ATG is connected to each of the four high- performance (HP) ports as well as one to the ACP. The configuration of these cores is performed via the general purpose (GP) port 0 master. CPU performance metrics are obtained using the Performance Monitor Units (PMUs).</p>
-<section id="axi-traffic-generator">
+<div class="section" id="axi-traffic-generator">
 <h3>AXI Traffic Generator<a class="headerlink" href="#axi-traffic-generator" title="Permalink to this heading">¶</a></h3>
 <p>The ATG is an intelligent traffic generator configured to exhibit specific AXI traffic behavior. The command queue for each ATG is filled during initialization, and these commands are executed upon the application of a start bit. Separate queues with depth of 256 commands are included for write and read traffic. The ATG also has a loop mode where the traffic in the command queue is continuous, iterating over the traffic in the queue until a stop bit has been applied. In the Vitis IDE, this has been simplified to a Traffic Duration (sec) value. The traffic specification for the ATGs is described in <a class="reference internal" href="4-getting-started-with-SPM.html"><span class="doc">Getting Started with SPM</span></a>.</p>
-</section>
-<section id="axi-performance-monitor">
+</div>
+<div class="section" id="axi-performance-monitor">
 <h3>AXI Performance Monitor<a class="headerlink" href="#axi-performance-monitor" title="Permalink to this heading">¶</a></h3>
 <p>The APM is a core designed to measure the real-time performance of every connected AXI interface. In the SPM design, these interfaces include the outputs of the five ATGs. The APM is configured in Profile mode, providing an event count module that includes six profile counters per ATG. These six counters are designed to monitor average throughput and latency for all write and read channels on the connected AXI interfaces. See <a class="reference internal" href="3-monitor-framework.html"><span class="doc">Monitor Framework</span></a> to understand how these metrics are calculated.</p>
-</section>
-<section id="performance-monitor-units">
+</div>
+<div class="section" id="performance-monitor-units">
 <h3>Performance Monitor Units<a class="headerlink" href="#performance-monitor-units" title="Permalink to this heading">¶</a></h3>
 <p>Each Arm Cortex-A9 CPU contains a Performance Monitor Unit (PMU). These PMUs are configured to monitor a number of different performance metrics, including CPU utilization and Instructions Per Cycle (IPC). The PMUs are accessed as part of the performance monitor framework used by the Vitis IDE. See <a class="reference internal" href="3-monitor-framework.html"><span class="doc">Chapter 3: Monitor Framework</span></a> to understand how these PMU counters are used.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -94,6 +94,10 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
@@ -103,8 +107,11 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -133,7 +140,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-the-gp-port-in-zynq-devices">
+  <div class="section" id="using-the-gp-port-in-zynq-devices">
 <h1>Using the GP Port in Zynq Devices<a class="headerlink" href="#using-the-gp-port-in-zynq-devices" title="Permalink to this heading">¶</a></h1>
 <p>One of the unique features of using the Xilinx® Zynq®-7000 SoC as an
 embedded design platform is in using the Zynq SoC processing system
@@ -146,7 +153,7 @@ programmable logic (PL) available on it.</p>
 </ul>
 <p>The flow of this chapter is similar to that in <a class="reference internal" href="2-using-zynq.html"><span class="doc">Using the Zynq SoC Processing System</span></a> and uses the Zynq device as a
 base hardware design. It is assumed that you understand the concepts discussed in <a class="reference internal" href="2-using-zynq.html"><span class="doc">Using the Zynq SoC Processing System</span></a> regarding adding the Zynq device into a Vivado IP integrator block diagram design.</p>
-<section id="adding-ip-in-pl-to-the-zynq-soc-processing-system">
+<div class="section" id="adding-ip-in-pl-to-the-zynq-soc-processing-system">
 <h2>Adding IP in PL to the Zynq SoC Processing System<a class="headerlink" href="#adding-ip-in-pl-to-the-zynq-soc-processing-system" title="Permalink to this heading">¶</a></h2>
 <p>There is no restriction on the complexity of an intellectual property
 (IP) that can be added in fabric to be tightly coupled with the Zynq®
@@ -180,16 +187,16 @@ switch in the serial terminal again.</p></li>
 </ul>
 </li>
 </ul>
-</section>
-<section id="example-6-adding-peripheral-pl-ip">
+</div>
+<div class="section" id="example-6-adding-peripheral-pl-ip">
 <h2>Example 6: Adding Peripheral PL IP<a class="headerlink" href="#example-6-adding-peripheral-pl-ip" title="Permalink to this heading">¶</a></h2>
-<section id="input-and-output-files">
+<div class="section" id="input-and-output-files">
 <h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input Files:</p>
 <ul>
-<li><p>Vivado project from <a class="reference external" href="./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc">Example 1</a></p></li>
-<li><p>Vitis workspace in <a class="reference external" href="./2-using-zynq.md#example-2-creating-and-running-a-hello-world-application">Example 2</a></p></li>
+<li><p>Vivado project from <a class="reference external" href="./2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc">Example 1</a></p></li>
+<li><p>Vitis workspace in <a class="reference external" href="./2-using-zynq.html#example-2-creating-and-running-a-hello-world-application">Example 2</a></p></li>
 </ul>
 </li>
 <li><p>Output Files:</p>
@@ -199,17 +206,17 @@ switch in the serial terminal again.</p></li>
 </ul>
 </li>
 </ul>
-</section>
-<section id="update-vivado-design-diagram">
+</div>
+<div class="section" id="update-vivado-design-diagram">
 <h3>Update Vivado Design Diagram<a class="headerlink" href="#update-vivado-design-diagram" title="Permalink to this heading">¶</a></h3>
 <p>In this example, you will add the AXI GPIO, AXI Timer, the interrupt
 instantiated in the fabric, and the EMIO interface. You will then validate
 the fabric additions.</p>
 <ol>
-<li><p>Open the Vivado design created in <a class="reference external" href="./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc">Example 1</a>:</p>
+<li><p>Open the Vivado design created in <a class="reference external" href="./2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc">Example 1</a>:</p>
 <ul class="simple">
 <li><p>Launch the Vivado® IDE.</p></li>
-<li><p>Under the Recent Projects column, click the <strong>edt_zc702</strong> design that you created in <a class="reference external" href="./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc">Using the Zynq SoC Processing System</a>.</p></li>
+<li><p>Under the Recent Projects column, click the <strong>edt_zc702</strong> design that you created in <a class="reference external" href="./2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc">Using the Zynq SoC Processing System</a>.</p></li>
 <li><p>In Flow Navigator window, click <strong>Open Block Design</strong> under <strong>IP Integrator</strong>.</p></li>
 </ul>
 </li>
@@ -284,8 +291,8 @@ follow the steps below. These steps can be used for any manual pin
 placements.</p>
 </li>
 </ol>
-</section>
-<section id="assigning-location-constraints-to-external-pins">
+</div>
+<div class="section" id="assigning-location-constraints-to-external-pins">
 <h3>Assigning Location Constraints to External Pins<a class="headerlink" href="#assigning-location-constraints-to-external-pins" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Click <strong>Open Elaborated Design</strong> under RTL Analysis in the Flow
@@ -358,8 +365,8 @@ Click <strong>Next</strong> where necessary.</p></li>
 The exported file is located at `C:/edt/edt_zc702/system_wrapper.xsa`.
 </pre></div>
 </div>
-</section>
-<section id="updating-hardware-in-the-vitis-software-platform">
+</div>
+<div class="section" id="updating-hardware-in-the-vitis-software-platform">
 <h3>Updating Hardware in the Vitis Software Platform<a class="headerlink" href="#updating-hardware-in-the-vitis-software-platform" title="Permalink to this heading">¶</a></h3>
 <p>Open the Vitis IDE and manually update the exported hardware from Vivado.</p>
 <ol>
@@ -380,8 +387,8 @@ as shown in the following figure.</p>
 <p>After the zc702_edt project build completes, the <code class="docutils literal notranslate"><span class="pre">zc702_edt.xpfm</span></code> file is generated.</p>
 </li>
 </ol>
-</section>
-<section id="testing-the-pl-ip-with-prepared-software">
+</div>
+<div class="section" id="testing-the-pl-ip-with-prepared-software">
 <h3>Testing the PL IP with Prepared Software<a class="headerlink" href="#testing-the-pl-ip-with-prepared-software" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Create a new standalone application for Arm Cortex-A9:</p>
@@ -430,12 +437,12 @@ as shown in the following figure.</p>
 <li><p>Open your preferred serial communication utility with baud rate set to <strong>115200</strong>. In this example, we used MobaXterm.</p>
 <p><strong>Note:</strong> This is the baud rate that the UART is programmed to on Zynq devices.</p>
 </li>
-<li><p>Change boot mode back to JTAG mode (as in <a class="reference external" href="./2-using-zynq.md#setting-up-the-board">Example 2</a>).</p>
+<li><p>Change boot mode back to JTAG mode (as in <a class="reference external" href="./2-using-zynq.html#setting-up-the-board">Example 2</a>).</p>
 <ul class="simple">
 <li><p>Set <strong>SW16</strong> to 00000.</p></li>
 </ul>
 </li>
-<li><p>Run the project similar to the steps in <a class="reference external" href="./2-using-zynq.md#running-the-hello-world-application-on-a-zc702-board">Example 2</a>.</p>
+<li><p>Run the project similar to the steps in <a class="reference external" href="./2-using-zynq.html#running-the-hello-world-application-on-a-zc702-board">Example 2</a>.</p>
 <ul class="simple">
 <li><p>Right-click <strong>hello_pl</strong>, and select <strong>Run as → Launch on Hardware</strong>.</p></li>
 </ul>
@@ -452,8 +459,8 @@ application. See the following figure for the serial output logs.</p>
 <p><img alt="UART prints" src="../../../_images/image57.png" /></p>
 </li>
 </ol>
-</section>
-<section id="hello-pl-standalone-software-details">
+</div>
+<div class="section" id="hello-pl-standalone-software-details">
 <h3>Hello_PL Standalone Software Details<a class="headerlink" href="#hello-pl-standalone-software-details" title="Permalink to this heading">¶</a></h3>
 <p>The system you designed in this chapter requires application software
 for the execution on the board. This section describes the details
@@ -506,9 +513,9 @@ LED DS23 switches ON and restarts execution.</p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

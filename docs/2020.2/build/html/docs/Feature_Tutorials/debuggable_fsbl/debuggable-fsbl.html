@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -12,7 +11,7 @@
 function OptanonWrapper() { }
 </script>
 <!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
-  <title>Creating First Stage Boot Loader for Arm Cortex-A53-Based APU &mdash; Embedded Design Tutorials 2020.2 documentation</title>
+  <title>Debugging FSBL Using the Vitis Debugger &mdash; Embedded Design Tutorials 2020.2 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
@@ -25,9 +24,12 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Linux OS Aware Debugging Using the Vitis Software Platform" href="../linux_aware_debugging/linux-aware-debugging.html" />
+    <link rel="prev" title="Zynq-7000 Embedded Design Tutorial" href="../../Introduction/Zynq7000-EDT/README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,6 +59,44 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">First Stage Boot Loader (FSBL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-first-stage-boot-loader-for-arm-cortex-a53-based-apu">Creating First Stage Boot Loader for Arm Cortex-A53-Based APU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Debugging FSBL Using the Vitis Debugger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-and-modify-fsbl">Create and Modify FSBL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -72,7 +112,7 @@ function OptanonWrapper() { }
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Creating First Stage Boot Loader for Arm Cortex-A53-Based APU</li>
+      <li>Debugging FSBL Using the Vitis Debugger</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/docs/Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,8 +122,10 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="creating-first-stage-boot-loader-for-arm-cortex-a53-based-apu">
-<h1>Creating First Stage Boot Loader for Arm Cortex-A53-Based APU<a class="headerlink" href="#creating-first-stage-boot-loader-for-arm-cortex-a53-based-apu" title="Permalink to this heading">¶</a></h1>
+  <div class="section" id="debugging-fsbl-using-the-vitis-debugger">
+<h1>Debugging FSBL Using the Vitis Debugger<a class="headerlink" href="#debugging-fsbl-using-the-vitis-debugger" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="creating-first-stage-boot-loader-for-arm-cortex-a53-based-apu">
+<h2>Creating First Stage Boot Loader for Arm Cortex-A53-Based APU<a class="headerlink" href="#creating-first-stage-boot-loader-for-arm-cortex-a53-based-apu" title="Permalink to this heading">¶</a></h2>
 <p>FSBL can load the required application or data to memory and launch
 applications on the target CPU core. One FSBL has been provided in the
 platform project but you can create an additional FSBL application as
@@ -182,9 +224,9 @@ run on the RPU.</p>
 </div></blockquote>
 </li>
 </ol>
-</section>
-<section id="debugging-fsbl-using-the-vitis-debugger">
-<h1>Debugging FSBL Using the Vitis Debugger<a class="headerlink" href="#debugging-fsbl-using-the-vitis-debugger" title="Permalink to this heading">¶</a></h1>
+</div>
+<div class="section" id="id1">
+<h2>Debugging FSBL Using the Vitis Debugger<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
 <p>The FSBL is built with size optimization and link time optimization flags, that is -Os and LTO optimizations by default in the Vitis debugger. This reduces the memory footprint of FSBL. This needs to be disabled for debugging FSBL.</p>
 <p>Removing optimization can lead to increased code size, resulting in
 failure to build the FSBL. To disable the optimization (for
@@ -193,8 +235,8 @@ disabled in the <code class="docutils literal notranslate"><span class="pre">xfs
 <p>Now, create a new FSBL for this section instead of modifying the FSBL
 created in the <a class="reference external" href="4-build-sw-for-ps-subsystems">Build Software for PS Subsystems</a>. This is to avoid disturbing the FSBL_a53 project, which will be used extensively in rest of the chapters in
 this tutorial.</p>
-<section id="create-and-modify-fsbl">
-<h2>Create and Modify FSBL<a class="headerlink" href="#create-and-modify-fsbl" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="create-and-modify-fsbl">
+<h3>Create and Modify FSBL<a class="headerlink" href="#create-and-modify-fsbl" title="Permalink to this heading">¶</a></h3>
 <p>Use the following steps to create an FSBL project.</p>
 <ol>
 <li><p>Launch the Vitis debugger if it is not already open.</p></li>
@@ -287,8 +329,9 @@ image by using the ‘Attach to running target’ mode of System Debugger.</p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>
@@ -303,7 +346,10 @@ image by using the ‘Attach to running target’ mode of System Debugger.</p>
                         }
                   </style>
 				  
-				  <footer>
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../Introduction/Zynq7000-EDT/README.html" class="btn btn-neutral float-left" title="Zynq-7000 Embedded Design Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../linux_aware_debugging/linux-aware-debugging.html" class="btn btn-neutral float-right" title="Linux OS Aware Debugging Using the Vitis Software Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

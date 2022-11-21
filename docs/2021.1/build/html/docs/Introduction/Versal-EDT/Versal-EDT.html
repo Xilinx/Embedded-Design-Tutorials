@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -80,6 +80,10 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
@@ -89,8 +93,11 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -118,7 +125,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="versal-acap-embedded-design-tutorial">
+  <div class="section" id="versal-acap-embedded-design-tutorial">
 <h1>Versal ACAP Embedded Design Tutorial<a class="headerlink" href="#versal-acap-embedded-design-tutorial" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
@@ -133,50 +140,50 @@ function OptanonWrapper() { }
 </div>
 <p>The examples in this document are created using the Xilinx tools running on a Windows 10, 64-bit operating system, Vitis software platform and PetaLinux on a Linux 64-bit operating system. Other versions of the tools running on other Windows installs might provide varied results. These examples focus on introducing you to the following aspects of embedded design.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst">Versal ACAP CIPS and NoC (DDR) IP Core Configuration</a>: Describes creation of a design with Versal™ ACAP Control, Interfaces, and Processing System (CIPS) IP core and an NoC and running a simple “Hello World” application on Arm® Cortex™-A72, and Cortex-R5F processors. This chapter is an introduction to the hardware and software tools using a simple design as the example.</p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/4-boot-and-config.rst">Boot and Configuration</a>: Shows  integration of components to configure and create boot images for Versal ACAP. The purpose of this chapter is to understand how to integrate and load boot loaders.</p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/3-debugging.rst">Debugging Using the Vitis Software Platform</a>: Introduces debugging features of the Xilinx Vitis software platform. This chapter uses the previous design and runs the software on bare metal (without an OS) to show the debugging features of the Vitis IDE. This chapter also lists debug configurations for Versal ACAP.</p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst">System Design Example using Scalar Engine and Adaptable Engine</a>: Describes building a system on Versal ACAP using available tools and supported software blocks. This chapter demonstrates how to use the Vivado tool to create an embedded design using PL AXI GPIO. It also demonstrates the steps to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device.</p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/6-system-design-example-HSDP.rst">System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module</a>: Describes building a system on Versal ACAP that utilizes the High-Speed Debug Port (HSDP). This chapter demonstrates how to use the Vivado tool to create an embedded design that utilizes HSDP and uses the SmartLynq+ module for downloading Linux images.</p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.html">Versal ACAP CIPS and NoC (DDR) IP Core Configuration</a>: Describes creation of a design with Versal™ ACAP Control, Interfaces, and Processing System (CIPS) IP core and an NoC and running a simple “Hello World” application on Arm® Cortex™-A72, and Cortex-R5F processors. This chapter is an introduction to the hardware and software tools using a simple design as the example.</p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/4-boot-and-config.html">Boot and Configuration</a>: Shows  integration of components to configure and create boot images for Versal ACAP. The purpose of this chapter is to understand how to integrate and load boot loaders.</p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/3-debugging.html">Debugging Using the Vitis Software Platform</a>: Introduces debugging features of the Xilinx Vitis software platform. This chapter uses the previous design and runs the software on bare metal (without an OS) to show the debugging features of the Vitis IDE. This chapter also lists debug configurations for Versal ACAP.</p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.html">System Design Example using Scalar Engine and Adaptable Engine</a>: Describes building a system on Versal ACAP using available tools and supported software blocks. This chapter demonstrates how to use the Vivado tool to create an embedded design using PL AXI GPIO. It also demonstrates the steps to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device.</p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module</a>: Describes building a system on Versal ACAP that utilizes the High-Speed Debug Port (HSDP). This chapter demonstrates how to use the Vivado tool to create an embedded design that utilizes HSDP and uses the SmartLynq+ module for downloading Linux images.</p></li>
 </ul>
-<p>This design tutorial requires use of a number of files provided by Xilinx. These are contained in a ZIP file that can be downloaded from the Xilinx web site. (See <a class="reference external" href="../Versal-EDT/docs/1-getting-started.rst">Getting Started</a>). The tutorial assumes the contents of the ZIP file are extracted to <cite>C:edt</cite>.</p>
-<section id="navigating-content-by-design-process">
+<p>This design tutorial requires use of a number of files provided by Xilinx. These are contained in a ZIP file that can be downloaded from the Xilinx web site. (See <a class="reference external" href="../Versal-EDT/docs/1-getting-started.html">Getting Started</a>). The tutorial assumes the contents of the ZIP file are extracted to <cite>C:edt</cite>.</p>
+<div class="section" id="navigating-content-by-design-process">
 <h2>Navigating Content by Design Process<a class="headerlink" href="#navigating-content-by-design-process" title="Permalink to this heading">¶</a></h2>
 <p>Xilinx documentation is organized around a set of standard design processes to help you find relevant content for your current development task. This document covers the following design processes:</p>
 <ul class="simple">
 <li><p><strong>System and Solution Planning</strong>: Identifying the components, performance, I/O, and data transfer requirements at a system level. Includes application mapping for the solution to PS, PL, and AI Engine.</p>
 <ul>
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#configuring-the-noc-ip-core-in-an-existing-project">Configuring the NoC IP Core in an Existing Project</a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst">System Design Example using Scalar Engine and Adaptable Engine</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.html#configuring-the-noc-ip-core-in-an-existing-project">Configuring the NoC IP Core in an Existing Project</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.html">System Design Example using Scalar Engine and Adaptable Engine</a></p></li>
 </ul>
 </li>
 <li><p><strong>Embedded Software Development</strong>: Creating the software platform from the hardware platform and developing the application code using the embedded CPU. Also covers XRT and Graph APIs.</p>
 <ul>
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#running-a-bare-metal-hello-world-application">Running a Bare-Metal Hello World Application</a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform">Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform</a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#running-a-bare-metal-hello-world-application-on-ddr-memory">Running a Bare-Metal Hello World Application on DDR Memory</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.html#running-a-bare-metal-hello-world-application">Running a Bare-Metal Hello World Application</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.html#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform">Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.html#running-a-bare-metal-hello-world-application-on-ddr-memory">Running a Bare-Metal Hello World Application on DDR Memory</a></p></li>
 </ul>
 </li>
 <li><p><strong>Hardware, IP, and Platform Development</strong>: Creating the PL IP blocks for the hardware platform, creating PL kernels, subsystem functional simulation, and evaluating the Vivado timing, resource use, and power closure. Also involves developing the hardware platform for system integration. Topics in this document that apply to this design process include:</p>
 <ul>
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#cips-ip-core-configuration">CIPS IP Core Configuration</a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.rst#noc-and-ddr-ip-core-configuration">NoC (and DDR) IP Core Configuration</a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst#design-example-using-axi-gpio">Design Example: Using AXI GPIO</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.html#cips-ip-core-configuration">CIPS IP Core Configuration</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/2-cips-noc-ip-config.html#noc-and-ddr-ip-core-configuration">NoC (and DDR) IP Core Configuration</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.html#design-example-using-axi-gpio">Design Example: Using AXI GPIO</a></p></li>
 </ul>
 </li>
 <li><p><strong>System Integration and Validation</strong>: Integrating and validating the system functional performance, including timing, resource use, and power closure. Topics in this document that apply to this design process include:</p>
 <ul>
-<li><p><a class="reference external" href="../Versal-EDT/docs/4-boot-and-config.rst">Boot and Configuration</a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst#example-project-freertos-axi-uartlite-application-project-with-rpu">Example Project: FreeRTOS GPIO Application Project With RPU</a></p></li>
-<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.rst#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/4-boot-and-config.html">Boot and Configuration</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.html#example-project-freertos-axi-uartlite-application-project-with-rpu">Example Project: FreeRTOS GPIO Application Project With RPU</a></p></li>
+<li><p><a class="reference external" href="../Versal-EDT/docs/5-system-design-example.html#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a></p></li>
 </ul>
 </li>
 </ul>
 <p>© Copyright 2020-2021 Xilinx, Inc.</p>
 <p><em>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).</em></p>
 <p><em>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</em></p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

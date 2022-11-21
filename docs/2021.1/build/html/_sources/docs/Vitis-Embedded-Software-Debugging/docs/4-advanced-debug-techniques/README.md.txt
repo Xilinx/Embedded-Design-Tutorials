@@ -78,7 +78,7 @@ The bottom part of the view shows the processes that are running on the target b
 ![top_command](./images/kernel_process.JPG)
 
 
-# Error 1: AXI GPIO Application Debug
+## Error 1: AXI GPIO Application Debug
 
 The application used here is a sample GPIO userspace application which uses `sysfs` calls to manage the on-board LED on ZCU102. The design uses an AXI GPIO connected to the 8-bit LEDs on the ZCU102 board.
 
@@ -88,7 +88,7 @@ The Vivado example design, shown in the following figure, has an AXI GPIO connec
 
 ![design](./images/vivado_des.JPG)
 
-## Vivado
+### Vivado
 
 In Vivado, source the `Vivado.tcl` file which generates the block design and runs through the synthesis, implementation, and device image generation processes automatically. This completes the generation of the required hardware for building the software artifacts.
 
@@ -104,7 +104,7 @@ In Vivado, source the `Vivado.tcl` file which generates the block design and run
 
    ```write_hw_platform -fixed -include_bit -force -file ../Hardware/mpsoc_preset_wrapper.xsa```
 
-## PetaLinux
+### PetaLinux
 
 In PetaLinux, import the custom hardware generated from Vivado on top of the ZCU102 BSP. After the project build is completed, you should have the kernel image and the required root file system to load Linux on the ZCU102 board. 
 
@@ -133,7 +133,7 @@ Perform the following steps using PetaLinux 2021.1.
 6. Run ``petalinux-build``. 
 7. Run ``petalinux-package --boot --format BIN --fsbl images/linux/zynqmp_fsbl.elf --u-boot images/linux/u-boot.elf --fpga images/linux/system.bit --force``.
 
-## Vitis
+### Vitis
 
 In the Vitis IDE, import the custom hardware generated from Vivado to build your Linux userspace application which will be executed after loading Linux. The userspace application uses SysFS calls to the GPIO driver and is used to toggle the ZCU102 on-board LEDs connected to the AXI GPIO IP.
 
@@ -211,7 +211,7 @@ root@xilinx-zcu102-2021_1:~# cat /sys/class/gpio/gpio500/direction
 out
 ```
 
-# Error 2: Debugging a Kernel Crash
+## Error 2: Debugging a Kernel Crash
 
 **Disclaimer:** This example is intended solely to demonstrate kernel-level debugging in the Vitis IDE.
 
@@ -295,7 +295,7 @@ out
 
 **Note:** The default ZCU102 pre-built image will not have this error.
 
-# Error 3: Debugging a Kernel Process
+## Error 3: Debugging a Kernel Process
 
 This section demonstrates how to debug a kernel process using the Vitis IDE. First, you need to complete the steps explained in [Setting Up the OS Aware Debug Session](#setting-up-the-os-aware-debug-session). You also need to ensure that you have PetaLinux set up as described in [Getting Started](#getting-started).
 
@@ -343,7 +343,7 @@ The next step focuses on the `dropbear` process. For more details about Dropbear
 
    ![dropbear_5](./images/dropbear_step.JPG)
 
-# Error 4: Debugging a Kernel Module
+## Error 4: Debugging a Kernel Module
 
 This section uses an example to demonstrate how to debug kernel modules easily using the Vitis IDE. It focuses on the lightweight Linux kernel module `lkm_demo1`. First, you need to complete the steps explained in [Setting Up the OS Aware Debug Session](#setting-up-the-os-aware-debug-session). You also need to ensure that you have PetaLinux set up as described in [Getting Started](#getting-started).
 
@@ -466,17 +466,17 @@ You can now use Vitis OS aware debug to check what has gone wrong in the kernel 
 
 10. Make the changes in the `lkm_demo1.c` file and rebuild the image. You can now fix the kernel module crash issue and debug it.
 
-# Error 5: Debug Using QEMU
+## Error 5: Debug Using QEMU
 
 Repeat the steps from [Debugging Bare-Metal Applications](/docs/2-debugging-bare-metal-applications) but this time using QEMU. To launch debug using QEMU, refer to [Standalone Application Debug Using System Debugger on QEMU](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#pqw1565072996942).
 
-# Further Reading
+## Further Reading
 
-## Attaching an Application to System Debugger
+### Attaching an Application to System Debugger
 
 Refer to [Attach and Debug using Xilinx System Debugger](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#jlr1565072996727) for more information. 
 
-## Path Mapping
+### Path Mapping
 
 When an application is compiled with debug flags (for example, `-O0 -g`), the compiler stores references to the source paths in the debug sections of the ELFs. This information is used by the debugger to map the PC address of the target processor to the source line in the code. Path mapping allows you to debug an application when its sources are not available at the location where it was compiled. For example, you can compile an application on Windows and debug it on Linux, or debug a pre-built Linux kernel image, without having to recompile the sources. In both cases, you can download and run the images using [XSCT](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/XSCT.html#mpr1543754624906), and then attach the debugger.
 
@@ -490,11 +490,11 @@ After this is done, the debugger should issue a warning about the missing source
 4. Enter the compilation path as the source path. Enter the new location where the sources are available as the destination path. For example, if the application was compiled at `C:\testapp`, and the same sources are available at `/scratch/source`, the source path would be `C:\testapp`, and the destination path would be `/scratch/source`.
 5. Save the settings by clicking **OK**. The debugger now shows the source files from the new path.
 
-## Using Remote Host
+### Using Remote Host
 
 Refer to [Using a Remote Host with System Debugger](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#hwl1565072997080__cr294539) for more information. 
 
-## Basic Setup for OS Aware Debug
+### Basic Setup for OS Aware Debug
 
 These steps are required if you are _not_ using the Xilinx provided BSP. The kernel must be built with the following steps for OS aware debug to work. 
 
@@ -525,7 +525,7 @@ These steps are required if you are _not_ using the Xilinx provided BSP. The ker
    - Copy over the `BOOT.BIN`, `image.ub`, and `boot.scr` from the `linux/images/` folder to the SD card. 
    - Boot the board.
 
-## OS Awareness (OSA) Options in the Vitis IDE
+### OS Awareness (OSA) Options in the Vitis IDE
 
 Refer to [Enabling OS Aware Debug](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#itw1565072997401).
 

@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -107,8 +107,9 @@ function OptanonWrapper() { }
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Releases</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
@@ -138,7 +139,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-spa-with-a-custom-target">
+  <div class="section" id="using-spa-with-a-custom-target">
 <h1>Using SPA with a Custom Target<a class="headerlink" href="#using-spa-with-a-custom-target" title="Permalink to this heading">¶</a></h1>
 <p>To use the Vitis™ IDE system performance analysis toolbox with your design, there are three important items to be aware of:</p>
 <ul class="simple">
@@ -146,10 +147,10 @@ function OptanonWrapper() { }
 <li><p>Instrumenting your software</p></li>
 <li><p>Monitoring a live, custom target within the Vitis IDE.</p></li>
 </ul>
-<section id="instrumenting-hardware">
+<div class="section" id="instrumenting-hardware">
 <h2>Instrumenting Hardware<a class="headerlink" href="#instrumenting-hardware" title="Permalink to this heading">¶</a></h2>
 <p>As long as your design include the AXI Performance Monitor (APM) IP, you can make use of the Vitis IDE performance analysis features to visualize the AXI performance. The Vitis IDE performance analysis can also make use of AXI Traffic Generator IP in your system, if it is configured and connected properly. So, you can create hardware designs similar to the pre-built SPM projects.</p>
-<section id="instantiate-apm-ip">
+<div class="section" id="instantiate-apm-ip">
 <h3>Instantiate APM IP<a class="headerlink" href="#instantiate-apm-ip" title="Permalink to this heading">¶</a></h3>
 <p>The Zynq UltraScale+ MPSoC has some hardened APM IP blocks in the PS. They can be used to monitor the AXI performance for DDR, CCI, OCM and LPD. Check the yellow blocks in the following diagram.</p>
 <p><img alt="../../../../_images/X21026-060818.png" src="../../../../_images/X21026-060818.png" /></p>
@@ -185,8 +186,8 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ol>
-</section>
-<section id="instantiate-axi-traffic-generator-ip">
+</div>
+<div class="section" id="instantiate-axi-traffic-generator-ip">
 <h3>Instantiate AXI Traffic Generator IP<a class="headerlink" href="#instantiate-axi-traffic-generator-ip" title="Permalink to this heading">¶</a></h3>
 <p>If you have not implemented your traffic IP during the system performance evaluation, you can use the AXI Traffic Generator to mimic its throughput to test the system performance. The AXI Traffic Generator is optional to SPA.</p>
 <p>Follow these steps to add, configure, and connect the ATG IP to your Vivado design.</p>
@@ -219,8 +220,8 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ol>
-</section>
-<section id="export-to-vitis-ide">
+</div>
+<div class="section" id="export-to-vitis-ide">
 <h3>Export to Vitis IDE<a class="headerlink" href="#export-to-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <p>To configure the Vitis IDE to read the hardware design, generate a platform, and read the APM and ATG related information, follow these steps:</p>
 <ul class="simple">
@@ -230,9 +231,9 @@ function OptanonWrapper() { }
 <li><p>After exporting the design, launch the Vitis IDE by selecting <strong>Tools → Launch Vitis IDE</strong>.</p></li>
 </ul>
 <p>The following up steps in Vitis IDE are described in <a class="reference external" href="#monitoring-a-custom-target">Monitoring a Custom Target</a> Chapter.</p>
-</section>
-</section>
-<section id="instrumenting-software">
+</div>
+</div>
+<div class="section" id="instrumenting-software">
 <h2>Instrumenting Software<a class="headerlink" href="#instrumenting-software" title="Permalink to this heading">¶</a></h2>
 <p>The processing system of Zynq-7000 devices and Zynq UltraScale+ MPSoCs have built-in modules to monitor the characteristics like processor utilization, CPU instructions per cycle, L1 cache miss rate, L1 data cache access per ms, CPU write stall cycle per instruction, and CPU read stall cycle per instructions. They are reported during live monitoring with any PS applications.</p>
 <p>Monitoring function runtime, throughput, and latency are metrics to measure the software performance. They can be calculated using straightforward instrumentation available in the standalone BSP defined in the <strong>xtime_l.h</strong> header.</p>
@@ -283,8 +284,8 @@ function OptanonWrapper() { }
 </pre></div>
 </div>
 <p>The software run time calculation is controlled by the application itself. The Vitis IDE would show a PS-related performance matrix from the <strong>Performance Analysis</strong> perspective. Check the steps in <a class="reference external" href="#monitoring-a-custom-target">Monitoring a Custom Target</a> to configure this. Function level software runtime can also be checked by profiling tools. Profiling is beyond the scope of this document. See the <em>Vitis Unified Platform Embedded Software Development Guide</em> <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/profileanalyze.html">UG1400</a> for more details.</p>
-</section>
-<section id="monitoring-a-custom-target">
+</div>
+<div class="section" id="monitoring-a-custom-target">
 <h2>Monitoring a Custom Target<a class="headerlink" href="#monitoring-a-custom-target" title="Permalink to this heading">¶</a></h2>
 <p>The Vitis IDE provides the capability to monitor a running target, as well as controlling the ATG IP in the hardware design.</p>
 <p>Prepare a platform project before running the performance analysis because the Vitis IDE must be able to understand your hardware setup. For more details about creating a platform project, see the <em>Vitis Unified Platform Embedded Software Development Guide</em> <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/profileanalyze.html">UG1400</a>.</p>
@@ -318,8 +319,8 @@ function OptanonWrapper() { }
 </li>
 <li><p>Click <strong>Run</strong> to launch the run and see the performance analysis.</p></li>
 </ol>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

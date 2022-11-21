@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -82,6 +82,10 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
@@ -91,8 +95,11 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -120,25 +127,25 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="zynq-7000-embedded-design-tutorial">
+  <div class="section" id="zynq-7000-embedded-design-tutorial">
 <h1>Zynq-7000 Embedded Design Tutorial<a class="headerlink" href="#zynq-7000-embedded-design-tutorial" title="Permalink to this heading">¶</a></h1>
-<p>This document provides an introduction to using the Xilinx&amp;reg; Vitis&amp;trade; unified software platform with the Zynq&amp;reg;-7000 SoC device. The examples are targeted for the Xilinx ZC702 rev 1.0 evaluation board and the tools used are the Vivado&amp;reg; Design Suite, the Vitis software platform, and PetaLinux.</p>
+<p>This document provides an introduction to using the Xilinx® Vitis™ unified software platform with the Zynq®-7000 SoC device. The examples are targeted for the Xilinx ZC702 rev 1.0 evaluation board and the tools used are the Vivado® Design Suite, the Vitis software platform, and PetaLinux.</p>
 <p>The examples in this document were created using the Xilinx tools running on a Windows 10 64-bit operating system, and PetaLinux on Linux 64-bit operating system. These examples focus on introducing you to the following aspects of embedded design.</p>
 <div class="toctree-wrapper compound">
 </div>
-<section id="example-projects">
+<div class="section" id="example-projects">
 <h2>Example Projects<a class="headerlink" href="#example-projects" title="Permalink to this heading">¶</a></h2>
 <p>The best way to learn a tool is to use it. This guide provides opportunities for you to work with the tools under discussion. Specifications for sample projects are given in the example sections, along with an explanation of what is happening behind the scenes. Each chapter and examples is intended to showcase different aspects of embedded design. The example takes you through the entire flow to complete the learning and then moves on to another topic.</p>
-</section>
-<section id="references">
+</div>
+<div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
 <p>When reading this tutorial and running the examples, you may find the following documents good to references.</p>
 <ul class="simple">
-<li><p><a href="#id1"><span class="problematic" id="id2">`Vitis Embedded Software Development Flow Documentation &lt;https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/hly1569525384514.html`_</span></a></p></li>
-<li><p><span class="xref std std-doc">../../Vitis-Embedded-Software-Debugging/README</span></p></li>
+<li><p><a class="reference external" href="https://docs.xilinx.com/access/sources/dita/map?Doc_Version=2021.1%20English&amp;url=ug1400-vitis-embedded">Vitis Embedded Software Development Flow Documentation</a></p></li>
+<li><p><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/docs/Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide</a></p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

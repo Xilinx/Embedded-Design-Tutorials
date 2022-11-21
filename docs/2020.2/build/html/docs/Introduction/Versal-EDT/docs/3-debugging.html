@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Zynq7000-EDT/README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../SPA-UG/README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,7 +113,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="debugging-using-the-vitis-software-platform">
+  <div class="section" id="debugging-using-the-vitis-software-platform">
 <h1>Debugging Using the Vitis Software Platform<a class="headerlink" href="#debugging-using-the-vitis-software-platform" title="Permalink to this heading">¶</a></h1>
 <p>This chapter describes debugging possibilities with the design flow you have already been working with. The first option is debugging using the Xilinx® Vitis™ software platform.</p>
 <p>The Vitis software platform debugger provides the following debug capabilities:</p>
@@ -95,7 +126,7 @@ function OptanonWrapper() { }
 </ul>
 <p>The Vitis software platform debugger enables you to see what is happening to a program while it executes. You can set breakpoints or watch points to stop the processor, step through program execution, view the program variables and stack, and view the contents of the memory in the system.</p>
 <p>The Vitis software platform supports debugging through Xilinx system debugger.</p>
-<section id="xilinx-system-debugger">
+<div class="section" id="xilinx-system-debugger">
 <h2>Xilinx System Debugger<a class="headerlink" href="#xilinx-system-debugger" title="Permalink to this heading">¶</a></h2>
 <p>The Xilinx® Vitis™ software platform debugger enables you to step through your code line by line. You can set breakpoints or watchpoints to stop the processor, step through program execution, view the program variables and stack, and view the contents of the memory in the system.</p>
 <p>The debugger supports debugging through Single Application Debug and GNU Debugger (GDB). The Xilinx customized system debugger is derived from open-source tools and is integrated with the Vitis software platform.</p>
@@ -112,11 +143,11 @@ function OptanonWrapper() { }
 <blockquote>
 <div><p><strong><em>Note</em>:</strong> If you edit the source after compiling, it changes the line numbering as the debug information is linked directly to the source. Similarly, debugging optimized binaries can also cause unexpected jumps in the execution trace.</p>
 </div></blockquote>
-</section>
-<section id="debugging-software-using-the-vitis-software-platform">
+</div>
+<div class="section" id="debugging-software-using-the-vitis-software-platform">
 <h2>Debugging Software Using the Vitis Software Platform<a class="headerlink" href="#debugging-software-using-the-vitis-software-platform" title="Permalink to this heading">¶</a></h2>
 <p>This example describes debugging a hello world application.</p>
-<p>If you did not create a hello world application on APU or RPU, follow the steps in <a class="reference external" href="./2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application">Running a Bare-Metal Hello World Application</a> or <a class="reference external" href="./2-cips-noc-ip-config.md#running-a-bare-metal-hello-world-application-on-ddr-memory">Running a Bare-Metal Hello World Application on DDR Memory</a>.</p>
+<p>If you did not create a hello world application on APU or RPU, follow the steps in <a class="reference external" href="./2-cips-noc-ip-config.html#running-a-bare-metal-hello-world-application">Running a Bare-Metal Hello World Application</a> or <a class="reference external" href="./2-cips-noc-ip-config.html#running-a-bare-metal-hello-world-application-on-ddr-memory">Running a Bare-Metal Hello World Application on DDR Memory</a>.</p>
 <p>After you create the Hello World Application, work through the following example to debug the software using the Vitis software platform.</p>
 <ol>
 <li><p>Right-click the application and click <strong>Build Project</strong> to build the application.</p></li>
@@ -160,13 +191,13 @@ function OptanonWrapper() { }
 </div></blockquote>
 </li>
 </ol>
-</section>
-<section id="debugging-using-xsct">
+</div>
+<div class="section" id="debugging-using-xsct">
 <h2>Debugging Using XSCT<a class="headerlink" href="#debugging-using-xsct" title="Permalink to this heading">¶</a></h2>
 <p>You can debug in the command line mode using XSDB, which is encapsulated as a part of XSCT. This example describes debugging the bare-metal application hello_world_r5 using XSCT.</p>
 <p>The following steps indicate how to load a bare-metal application on Arm Cortex-R5F using XSCT.</p>
 <p>This example is just to demonstrate the command line debugging possibility using XSDB/XSCT. Based on the requirement, you can choose to debug the code using either the system debugger graphical interface or the command line debugger in XSCT. All XSCT commands are scriptable and this applies to the commands covered in this example.</p>
-<section id="setting-up-target">
+<div class="section" id="setting-up-target">
 <h3>Setting Up Target<a class="headerlink" href="#setting-up-target" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Connect a USB cable between USB-JTAG connector on the target and the USB port on the host machine.</p></li>
@@ -189,8 +220,8 @@ function OptanonWrapper() { }
 </div></blockquote>
 </li>
 </ol>
-</section>
-<section id="loading-the-application-using-xsct">
+</div>
+<div class="section" id="loading-the-application-using-xsct">
 <h3>Loading the Application Using XSCT<a class="headerlink" href="#loading-the-application-using-xsct" title="Permalink to this heading">¶</a></h3>
 <p>Following are the steps to load the application using XSCT.</p>
 <ol>
@@ -218,8 +249,8 @@ function OptanonWrapper() { }
 <p>At this point, you can see the sections from the elf file downloaded sequentially. The XSCT prompt can be seen after a successful download. Now, configure a serial terminal (Tera Term, Mini com, or the Vitis software platform Serial Terminal interface for UART-0 USB-serial connection).</p>
 </li>
 </ol>
-</section>
-<section id="serial-terminal-configuration">
+</div>
+<div class="section" id="serial-terminal-configuration">
 <h3>Serial Terminal Configuration<a class="headerlink" href="#serial-terminal-configuration" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Start a terminal session, using Tera Term or Mini com depending on the host machine being used, and the COM port and baud rate as shown in following figure.</p>
@@ -227,8 +258,8 @@ function OptanonWrapper() { }
 </li>
 <li><p>For port settings, verify the COM port in the device manager. There are three USB UART interfaces exposed by the VCK190 board. Select the COM port associated with the interface with the lowest number. So in this case, for UART-0, select the com-port with interface-0.</p></li>
 </ol>
-</section>
-<section id="running-and-debugging-application-using-xsct">
+</div>
+<div class="section" id="running-and-debugging-application-using-xsct">
 <h3>Running and Debugging Application Using XSCT<a class="headerlink" href="#running-and-debugging-application-using-xsct" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Before you run the application, set a breakpoint at <code class="docutils literal notranslate"><span class="pre">main()</span></code>.</p>
@@ -265,9 +296,9 @@ xsct% bt
 <p>© Copyright 2020-2021 Xilinx, Inc.</p>
 <p><em>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>.</em></p>
 <p><em>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</em></p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

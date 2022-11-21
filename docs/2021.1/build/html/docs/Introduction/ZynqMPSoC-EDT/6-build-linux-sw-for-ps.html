@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -85,6 +85,7 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html">System Design Example: Using GPIO, Timer and Interrupts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="8-boot-and-configuration.html">Boot and Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="9-secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ZynqMPSoC-EDT.html#example-project">Example Project</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
@@ -93,6 +94,10 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
@@ -103,8 +108,11 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -133,13 +141,13 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="building-and-debugging-linux-applications">
+  <div class="section" id="building-and-debugging-linux-applications">
 <h1>Building and Debugging Linux Applications<a class="headerlink" href="#building-and-debugging-linux-applications" title="Permalink to this heading">¶</a></h1>
 <p>The earlier examples highlighted the creation of bootloader images and bare-metal applications for APU, RPU, and PMU using the Vitis™ IDE. This chapter demonstrates how to develop Linux applications.</p>
-<section id="example-8-creating-linux-images-and-applications-using-petalinux">
+<div class="section" id="example-8-creating-linux-images-and-applications-using-petalinux">
 <h2>Example 8: Creating Linux Images and Applications using PetaLinux<a class="headerlink" href="#example-8-creating-linux-images-and-applications-using-petalinux" title="Permalink to this heading">¶</a></h2>
 <p>In this example, you will configure and build a Linux operating system platform for an Arm™ Cortex-A53 core based APU on a Zynq® UltraScale+™ MPSoC. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.</p>
-<section id="input-and-output-files">
+<div class="section" id="input-and-output-files">
 <h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input:</p>
@@ -166,8 +174,8 @@ function OptanonWrapper() { }
 <li><p>This example uses the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">ZCU102 PetaLinux BSP</a> to create a PetaLinux project. Ensure that you have downloaded the ZCU102 BSP for PetaLinux as instructed on the <a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu102-v2021.1-final.bsp">PetaLinux Tools download page</a>.</p></li>
 </ol>
 </div></blockquote>
-</section>
-<section id="creating-a-petalinux-image">
+</div>
+<div class="section" id="creating-a-petalinux-image">
 <h3>Creating a PetaLinux Image<a class="headerlink" href="#creating-a-petalinux-image" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Create a PetaLinux project using the following command:</p>
@@ -224,8 +232,8 @@ is present in the design, <code class="docutils literal notranslate"><span class
 </div>
 </li>
 </ol>
-</section>
-<section id="verifying-the-image-on-the-zcu102-board">
+</div>
+<div class="section" id="verifying-the-image-on-the-zcu102-board">
 <h3>Verifying the Image on the ZCU102 Board<a class="headerlink" href="#verifying-the-image-on-the-zcu102-board" title="Permalink to this heading">¶</a></h3>
 <p>To verify the image, follow these steps:</p>
 <ol>
@@ -243,8 +251,8 @@ shown in the following figure.</p>
 <li><p>For port settings, verify the COM port in the device manager and select the COM port with interface-0.</p></li>
 <li><p>Turn on the ZCU102 board using SW1, and wait until Linux loads on the board.</p></li>
 </ol>
-</section>
-<section id="creating-linux-applications-in-the-vitis-ide">
+</div>
+<div class="section" id="creating-linux-applications-in-the-vitis-ide">
 <h3>Creating Linux Applications in the Vitis IDE<a class="headerlink" href="#creating-linux-applications-in-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Create a Linux domain:</p>
@@ -283,8 +291,8 @@ shown in the following figure.</p>
 </ul>
 </li>
 </ol>
-</section>
-<section id="preparing-the-linux-agent-for-remote-connection">
+</div>
+<div class="section" id="preparing-the-linux-agent-for-remote-connection">
 <h3>Preparing the Linux Agent for Remote Connection<a class="headerlink" href="#preparing-the-linux-agent-for-remote-connection" title="Permalink to this heading">¶</a></h3>
 <p>The Vitis IDE needs a channel to download the application to the running target. When the target runs Linux, it uses TCF Agent running on Linux. TCF Agent is added to the Linux rootfs from the PetaLinux configuration by default. When Linux boots up, it launches TCF Agent automatically. The Vitis IDE talks to TCF Agent on the board using an Ethernet connection.</p>
 <ol>
@@ -325,8 +333,8 @@ shown in the following figure.</p>
 <p><img alt="Vitis test connection success" src="../../../_images/vitis_test_connection_success1.png" /></p>
 </li>
 </ol>
-</section>
-<section id="running-the-linux-application-from-the-vitis-ide">
+</div>
+<div class="section" id="running-the-linux-application-from-the-vitis-ide">
 <h3>Running the Linux Application from the Vitis IDE<a class="headerlink" href="#running-the-linux-application-from-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Run the Linux application:</p>
@@ -354,8 +362,8 @@ shown in the following figure.</p>
 </ul>
 </li>
 </ol>
-</section>
-<section id="debugging-a-linux-application-from-the-vitis-ide">
+</div>
+<div class="section" id="debugging-a-linux-application-from-the-vitis-ide">
 <h3>Debugging a Linux Application from the Vitis IDE<a class="headerlink" href="#debugging-a-linux-application-from-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <p>Debugging Linux applications requires the Linux agent to be set up properly. Refer to <a class="reference external" href="#preparing-the-linux-agent-for-remote-connection">Preparing the Linux Agent for Remote Connection</a> for detailed steps.</p>
 <ol>
@@ -390,9 +398,9 @@ shown in the following figure.</p>
 </ul>
 </li>
 </ol>
-</section>
-</section>
-<section id="summary">
+</div>
+</div>
+<div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
 <p>In this chapter, you learned how to:</p>
 <ul class="simple">
@@ -405,8 +413,8 @@ shown in the following figure.</p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

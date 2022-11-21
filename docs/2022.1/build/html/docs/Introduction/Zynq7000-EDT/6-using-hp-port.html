@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -23,7 +22,9 @@ function OptanonWrapper() { }
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -50,15 +51,15 @@ function OptanonWrapper() { }
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">简体中文</span></p>
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">日本語</span></p>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
@@ -86,26 +87,26 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Feature Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/microblaze-system/README.html">Programming an Embedded MicroBlaze Processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Design Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Debugging</span></p>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">All Releases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
@@ -137,12 +138,12 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-the-hp-slave-port-with-axi-cdma-ip">
-<h1>Using the HP Slave Port with AXI CDMA IP<a class="headerlink" href="#using-the-hp-slave-port-with-axi-cdma-ip" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="using-the-hp-slave-port-with-axi-cdma-ip">
+<h1>Using the HP Slave Port with AXI CDMA IP<a class="headerlink" href="#using-the-hp-slave-port-with-axi-cdma-ip" title="Permalink to this heading">¶</a></h1>
 <p>In this chapter, you will instantiate AXI CDMA (Central DMA) IP in fabric and integrate it with the processing system high performance (HP) 64-bit slave port. In this system, a AXI CDMA instance acts as a master device to copy an array of the data from the source buffer location to the destination buffer location in the DDR system memory. The AXI CDMA uses the processing system HP slave port to get read/write access to the DDR system memory.</p>
 <p>You will write standalone application software and Linux OS based application software using mmap() for the data transfer using the AXI CDMA block. You will also execute both standalone and Linux-based application software separately on the ZC702 board.</p>
-<section id="integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port">
-<h2>Integrating AXI CDMA with the Zynq SoC PS HP Slave Port<a class="headerlink" href="#integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port">
+<h2>Integrating AXI CDMA with the Zynq SoC PS HP Slave Port<a class="headerlink" href="#integrating-axi-cdma-with-the-zynq-soc-ps-hp-slave-port" title="Permalink to this heading">¶</a></h2>
 <p>Xilinx  Zynq®-7000 SoC devices internally provide four high performance (HP) AXI slave interface ports that connect the programmable logic (PL) to asynchronous FIFO interface (AFI) blocks in the processing system (PS). The HP ports enable a high throughput data path between AXI masters in the programmable logic and the processing system’s memory system (DDR and on- chip memory). HP slave ports are configurable to 64-bit or 32-bit interfaces.</p>
 <p>In this section, you will create a design using AXI CDMA intellectual property (IP) as master in fabric and integrate it with the PS HP 64 bit slave port. The block diagram for the system is as shown in the following figure.</p>
 <img alt="../../../_images/image61.jpeg" src="../../../_images/image61.jpeg" />
@@ -159,11 +160,11 @@ function OptanonWrapper() { }
 <p>You will write the application software code for the above system. When you execute the code, it first initializes the source buffer memory with the specified data pattern and also clears the destination buffer memory by writing all zeroes to the memory location. It then starts configuring the CDMA register for the DMA transfer. It writes the source buffer location, destination buffer location, and number of bytes to be transferred to the CDMA registers and waits for the CDMA interrupt. When the interrupt occurs, it checks the status of the DMA transfers.</p>
 <p>If the data transfer status is successful, it compares the source buffer data with the destination buffer data and displays the comparison result on the serial terminal.</p>
 <p>If the data transfer status is an error, it displays the error status on the serial terminal and stops execution.</p>
-</section>
-<section id="example-7-integrating-axi-cdma-with-the-ps-hp-slave-port">
-<h2>Example 7: Integrating AXI CDMA with the PS HP Slave Port<a class="headerlink" href="#example-7-integrating-axi-cdma-with-the-ps-hp-slave-port" title="Permalink to this headline">¶</a></h2>
-<section id="input-and-output-files">
-<h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="example-7-integrating-axi-cdma-with-the-ps-hp-slave-port">
+<h2>Example 7: Integrating AXI CDMA with the PS HP Slave Port<a class="headerlink" href="#example-7-integrating-axi-cdma-with-the-ps-hp-slave-port" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="input-and-output-files">
+<h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input files:</p>
 <ul>
@@ -178,9 +179,9 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-</section>
-<section id="update-the-vivado-design">
-<h3>Update the Vivado Design<a class="headerlink" href="#update-the-vivado-design" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="update-the-vivado-design">
+<h3>Update the Vivado Design<a class="headerlink" href="#update-the-vivado-design" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Start with the system you created in <a class="reference internal" href="5-using-gp-port-zynq.html#example-6-adding-peripheral-pl-ip"><span class="std std-ref">Example 6: Adding Peripheral PL IP</span></a>.</p>
 <ol class="arabic simple">
@@ -261,9 +262,9 @@ function OptanonWrapper() { }
 <ol class="arabic">
 <li><p>Click the <strong>Run Connection Automation</strong> link in the Diagram window to automate the remaining connections.</p></li>
 <li><p>In the Run Connection Automation dialog box make sure the <strong>All Automation</strong> box is checked, then click <strong>OK</strong> to accept the default connections. The finished diagram should look like the following figure.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="block diagram" src="../../../_images/image621.png" />
-</figure>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You might receive a critical warning message regarding forcibly mapping a net into a conflicting address. Address the error by manually updating the memory mapped address in the next steps. Click <strong>OK</strong> if you see the error message.</p>
@@ -282,9 +283,9 @@ function OptanonWrapper() { }
 <li><p>In the Address Editor window, expand <strong>axi_cdma_0 → axi_cdma_0/Data → Unassigned</strong>. Right-click <strong>HP2_DDR_LOWOCM</strong> and select <strong>Assign</strong>.</p></li>
 <li><p>In the Range column for <strong>S_AXI_HP2</strong>, select <strong>256M</strong>.</p></li>
 <li><p>Under Offset Address for <strong>S_AXI_HP2</strong>, set a value of <strong>0x3000_0000</strong>.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="Final Address Settings" src="../../../_images/image64.png" />
-</figure>
+</div>
 </li>
 </ol>
 </li>
@@ -303,16 +304,16 @@ function OptanonWrapper() { }
 </div>
 </li>
 </ol>
-</section>
-<section id="designing-standalone-application-software-for-the-design">
-<h3>Designing Standalone Application Software for the Design<a class="headerlink" href="#designing-standalone-application-software-for-the-design" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="designing-standalone-application-software-for-the-design">
+<h3>Designing Standalone Application Software for the Design<a class="headerlink" href="#designing-standalone-application-software-for-the-design" title="Permalink to this heading">¶</a></h3>
 <p>The CDMA-based system that you designed in this chapter requires application software to execute on the board. This section describes the details of this software.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">main()</span></code> function in the application software is the entry point for the execution. It initializes the source memory buffer with the specified test pattern and clears the destination memory buffer by writing all zeroes.</p>
 <p>The application software then configures the CDMA register sets by providing information such as source buffer and destination buffer
 starting locations. To initiate DMA transfer, it writes the number of bytes to be transferred in the CDMA register and waits for the CDMA interrupt to happen. After the interrupt, it checks the status of the DMA transfer and compares the source buffer with the destination buffer. Finally, it prints the comparison result in the serial terminal and stops running.</p>
-</section>
-<section id="application-software-programming-model">
-<h3>Application Software Programming Model<a class="headerlink" href="#application-software-programming-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="application-software-programming-model">
+<h3>Application Software Programming Model<a class="headerlink" href="#application-software-programming-model" title="Permalink to this heading">¶</a></h3>
 <p>The application software does the following tasks:</p>
 <ol class="arabic">
 <li><p>Initializes the source buffer with the specified test pattern. The source buffer location ranges from 0x20000000 to 0x2fffffff.</p>
@@ -338,9 +339,9 @@ flag.</p>
 <p>If the transfer status displays an error, the software prints the error status in the serial terminal and stops running.</p>
 </li>
 </ol>
-</section>
-<section id="creating-the-standalone-cdma-application">
-<h3>Creating the Standalone CDMA Application<a class="headerlink" href="#creating-the-standalone-cdma-application" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="creating-the-standalone-cdma-application">
+<h3>Creating the Standalone CDMA Application<a class="headerlink" href="#creating-the-standalone-cdma-application" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Launch the Vitis software platform and open the workspace you worked on before.</p></li>
 <li><p>Update the hardware specification:</p>
@@ -397,9 +398,9 @@ under the Explorer view.</p>
 <li><p>Select the <strong>cdma_app.c</strong> file and click <strong>Finish</strong>.</p></li>
 <li><p>Build the CDMA application project either by clicking the hammer button or by right-clicking on the <strong>cdma_app</strong> project and selecting <strong>Build Project</strong>.</p></li>
 </ol>
-</section>
-<section id="running-cdma-the-app-on-zc702">
-<h3>Running CDMA the App on ZC702<a class="headerlink" href="#running-cdma-the-app-on-zc702" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="running-cdma-the-app-on-zc702">
+<h3>Running CDMA the App on ZC702<a class="headerlink" href="#running-cdma-the-app-on-zc702" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Open the serial communication utility with baud rate set to <strong>115200</strong>.</p>
 <div class="admonition note">
@@ -430,9 +431,9 @@ under the Explorer view.</p>
 </li>
 </ol>
 <p>Up until now, the examples you have been working with have all been developed and debugged in a lab environment. JTAG is required to configure and control the applications. How can you deploy applications to the board so that it can run the applications after booting by itself? See the <a class="reference internal" href="7-linux-booting-debug.html"><span class="doc">next chapter</span></a> for Linux boot image configuration.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>
@@ -456,7 +457,7 @@ under the Explorer view.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on August 08, 2022.
+      <span class="lastupdated">Last updated on November 10, 2022.
       </span></p>
   </div>
 

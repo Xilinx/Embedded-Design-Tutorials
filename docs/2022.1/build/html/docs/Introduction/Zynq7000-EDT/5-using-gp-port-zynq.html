@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -23,7 +22,9 @@ function OptanonWrapper() { }
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -50,15 +51,15 @@ function OptanonWrapper() { }
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">简体中文</span></p>
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">日本語</span></p>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
@@ -86,26 +87,26 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Feature Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/microblaze-system/README.html">Programming an Embedded MicroBlaze Processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Design Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Debugging</span></p>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">All Releases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
@@ -137,8 +138,8 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-the-gp-port-in-zynq-devices">
-<h1>Using the GP Port in Zynq Devices<a class="headerlink" href="#using-the-gp-port-in-zynq-devices" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="using-the-gp-port-in-zynq-devices">
+<h1>Using the GP Port in Zynq Devices<a class="headerlink" href="#using-the-gp-port-in-zynq-devices" title="Permalink to this heading">¶</a></h1>
 <p>One of the unique features of using the Xilinx® Zynq®-7000 SoC as an embedded design platform is in using the Zynq SoC processing system (PS) for its Arm™ Cortex-A9 dual core processing system as well as the programmable logic (PL) available on it.</p>
 <p>In this chapter, you will create a design with:</p>
 <ul class="simple">
@@ -146,15 +147,13 @@ function OptanonWrapper() { }
 <li><p>A Zynq SoC PS GPIO pin connected to the fabric (PL) side pin using the EMIO interface</p></li>
 </ul>
 <p>The flow of this chapter is similar to that in <a class="reference internal" href="2-using-zynq.html"><span class="doc">Using the Zynq SoC Processing System</span></a> and uses the Zynq device as a base hardware design. It is assumed that you understand the concepts discussed in <a class="reference internal" href="2-using-zynq.html"><span class="doc">Using the Zynq SoC Processing System</span></a> regarding adding the Zynq device into a Vivado IP integrator block diagram design.</p>
-<section id="adding-ip-in-pl-to-the-zynq-soc-processing-system">
-<h2>Adding IP in PL to the Zynq SoC Processing System<a class="headerlink" href="#adding-ip-in-pl-to-the-zynq-soc-processing-system" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-ip-in-pl-to-the-zynq-soc-processing-system">
+<h2>Adding IP in PL to the Zynq SoC Processing System<a class="headerlink" href="#adding-ip-in-pl-to-the-zynq-soc-processing-system" title="Permalink to this heading">¶</a></h2>
 <p>There is no restriction on the complexity of an intellectual property (IP) that can be added in fabric to be tightly coupled with the Zynq® SoC PS. This section covers a simple example with an AXI GPIO, an AXI Timer with interrupt, and a PS section GPIO pin connected to a PL side pin using the EMIO interface. The block diagram for the system is as shown in the following figure.</p>
-<figure class="align-default" id="id2">
+<div class="figure align-default" id="id2">
 <img alt="Target design block diagram" src="../../../_images/image38.jpeg" />
-<figcaption>
-<p><span class="caption-text">Target design block diagram</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Target design block diagram</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
 <p>You can use the system created in <a class="reference internal" href="2-using-zynq.html"><span class="doc">Using the Zynq SoC Processing System</span></a> and continue with the following examples.</p>
 <p>In the examples in this chapter, we will expand on the design with the following design changes:</p>
 <ul class="simple">
@@ -170,11 +169,11 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-</section>
-<section id="example-6-adding-peripheral-pl-ip">
-<span id="id1"></span><h2>Example 6: Adding Peripheral PL IP<a class="headerlink" href="#example-6-adding-peripheral-pl-ip" title="Permalink to this headline">¶</a></h2>
-<section id="input-and-output-files">
-<h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="example-6-adding-peripheral-pl-ip">
+<span id="id1"></span><h2>Example 6: Adding Peripheral PL IP<a class="headerlink" href="#example-6-adding-peripheral-pl-ip" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="input-and-output-files">
+<h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input Files:</p>
 <ul>
@@ -189,9 +188,9 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-</section>
-<section id="update-vivado-design-diagram">
-<h3>Update Vivado Design Diagram<a class="headerlink" href="#update-vivado-design-diagram" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="update-vivado-design-diagram">
+<h3>Update Vivado Design Diagram<a class="headerlink" href="#update-vivado-design-diagram" title="Permalink to this heading">¶</a></h3>
 <p>In this example, you will add the AXI GPIO, AXI Timer, the interrupt instantiated in the fabric, and the EMIO interface. You will then validate the fabric additions.</p>
 <ol class="arabic">
 <li><p>Open the Vivado design created in <a class="reference internal" href="2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc"><span class="std std-ref">Example 1: Creating a New Embedded Project with Zynq SoC</span></a>:</p>
@@ -213,12 +212,10 @@ function OptanonWrapper() { }
 <ol class="arabic">
 <li><p>Double-click the <strong>ZYNQ7 Processing System</strong> IP block.</p>
 <p>The Re-customize IP dialog box opens, as shown in the following figure.</p>
-<figure class="align-default" id="id3">
+<div class="figure align-default" id="id3">
 <img alt="Recustomize ZYNQ7 PS 5.5" src="../../../_images/image39.jpeg" />
-<figcaption>
-<p><span class="caption-text">Recustomize ZYNQ7 PS 5.5</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Recustomize ZYNQ7 PS 5.5</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>Click <strong>MIO Configuration</strong>.</p></li>
 <li><p>Expand <strong>I/O Peripherals→ GPIO</strong> and enable the <strong>EMIO GPIO (Width)</strong> check box.</p></li>
@@ -231,12 +228,10 @@ function OptanonWrapper() { }
 <li><p>Check the <strong>Fabric Interrupts</strong> box to enable PL to PS interrupts.</p></li>
 <li><p>Check <strong>IRQ_F2P[15:0]</strong> to enable general interrupts. The CoreN_nFIQ signals are used for fast interrupt.</p></li>
 <li><p>Click <strong>OK</strong> to accept the changes to the ZYNQ7 Processing System IP. The diagram looks like the following figure.</p>
-<figure class="align-default" id="id4">
+<div class="figure align-default" id="id4">
 <img alt="BD with Timer and GPIO" src="../../../_images/image401.png" />
-<figcaption>
-<p><span class="caption-text">BD with Timer and GPIO</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">BD with Timer and GPIO</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 </ol>
 </li>
@@ -244,21 +239,17 @@ function OptanonWrapper() { }
 <ol class="arabic">
 <li><p>Click the <strong>Run Connection Automation</strong> link at the top of the page to automate the connection process for the newly added IP blocks.</p></li>
 <li><p>In the Run Connection Automation dialog box, select the check box next to <strong>All Automation</strong>, as shown in the following figure.</p>
-<figure class="align-default" id="id5">
+<div class="figure align-default" id="id5">
 <img alt="Connection Automation" src="../../../_images/image411.png" />
-<figcaption>
-<p><span class="caption-text">Connection Automation</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Connection Automation</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>Click <strong>OK</strong>.</p>
 <p>Upon completion, the updated diagram looks like the following figure.</p>
-<figure class="align-default" id="id6">
+<div class="figure align-default" id="id6">
 <img alt="Connected" src="../../../_images/image421.png" />
-<figcaption>
-<p><span class="caption-text">Connected</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Connected</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 </ol>
 </li>
@@ -284,17 +275,15 @@ function OptanonWrapper() { }
 <p>The pins are external but do not have the required constraints for our board. To constrain your hardware pins to specific device locations, follow the steps below. These steps can be used for any manual pin placements.</p>
 </li>
 </ol>
-</section>
-<section id="assigning-location-constraints-to-external-pins">
-<h3>Assigning Location Constraints to External Pins<a class="headerlink" href="#assigning-location-constraints-to-external-pins" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="assigning-location-constraints-to-external-pins">
+<h3>Assigning Location Constraints to External Pins<a class="headerlink" href="#assigning-location-constraints-to-external-pins" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Click <strong>Open Elaborated Design</strong> under RTL Analysis in the Flow Navigator view.</p>
-<figure class="align-default" id="id7">
+<div class="figure align-default" id="id7">
 <img alt="Open Elaborated Design" src="../../../_images/image43.png" />
-<figcaption>
-<p><span class="caption-text">Open Elaborated Design</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Open Elaborated Design</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
 <ul>
 <li><p>Click <strong>OK</strong> on the pop-up message.</p>
 <div class="admonition tip">
@@ -305,12 +294,10 @@ function OptanonWrapper() { }
 </ul>
 </li>
 <li><p>Select <strong>I/O Planning</strong> from the dropdown menu, as shown in the following figure, to display the <strong>I/O Ports</strong> window.</p>
-<figure class="align-default" id="id8">
+<div class="figure align-default" id="id8">
 <img alt="IO Planning Drop Down menu" src="../../../_images/image45.jpeg" />
-<figcaption>
-<p><span class="caption-text">IO Planning Drop Down menu</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">IO Planning Drop Down menu</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>Under the I/O Ports window at the bottom of the Vivado window (as seen in the following figure), expand the <strong>GPIO_0_0_</strong> and <strong>gpio_sw_</strong> ports to check the site (pin) map.</p>
 <img alt="../../../_images/image471.png" src="../../../_images/image471.png" />
@@ -326,12 +313,10 @@ function OptanonWrapper() { }
 <li><p>Package Pin = G19</p></li>
 <li><p>I/O Std = LVCMOS25</p></li>
 </ul>
-<figure class="align-default" id="id9">
+<div class="figure align-default" id="id9">
 <img alt="Pin Assigned" src="../../../_images/image481.png" />
-<figcaption>
-<p><span class="caption-text">Pin Assigned</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Pin Assigned</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For additional information about creating other design constraints, refer to the <em>Vivado Design Suite User Guide: Using Constraints</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug903-vivado-using-constraints.pdf">UG903</a>).</p>
@@ -393,19 +378,17 @@ function OptanonWrapper() { }
 <p>The exported file is located at <code class="docutils literal notranslate"><span class="pre">C:/edt/edt_zc702/system_wrapper.xsa</span></code>.</p>
 </li>
 </ol>
-</section>
-<section id="updating-hardware-in-the-vitis-software-platform">
-<h3>Updating Hardware in the Vitis Software Platform<a class="headerlink" href="#updating-hardware-in-the-vitis-software-platform" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="updating-hardware-in-the-vitis-software-platform">
+<h3>Updating Hardware in the Vitis Software Platform<a class="headerlink" href="#updating-hardware-in-the-vitis-software-platform" title="Permalink to this heading">¶</a></h3>
 <p>Open the Vitis IDE and manually update the exported hardware from
 Vivado.</p>
 <ol class="arabic">
 <li><p>In the Explorer view, right-click on the <strong>zc702_edt</strong> platform project and click the <strong>Update Hardware Specification</strong> option as shown in the following figure.</p>
-<figure class="align-default" id="id10">
+<div class="figure align-default" id="id10">
 <img alt="Update Hardware Specification" src="../../../_images/image521.png" />
-<figcaption>
-<p><span class="caption-text">Update Hardware Specification</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Update Hardware Specification</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>In the Update Hardware Specification view, browse for the exported XSA file (<code class="docutils literal notranslate"><span class="pre">C:/edt/edt_zc702/system_wrapper.xsa</span></code>) from Vitis and click <strong>OK</strong>.</p>
 <ul class="simple">
@@ -419,9 +402,9 @@ Vivado.</p>
 <p>After the zc702_edt project build completes, the <code class="docutils literal notranslate"><span class="pre">zc702_edt.xpfm</span></code> file is generated.</p>
 </li>
 </ol>
-</section>
-<section id="testing-the-pl-ip-with-prepared-software">
-<h3>Testing the PL IP with Prepared Software<a class="headerlink" href="#testing-the-pl-ip-with-prepared-software" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="testing-the-pl-ip-with-prepared-software">
+<h3>Testing the PL IP with Prepared Software<a class="headerlink" href="#testing-the-pl-ip-with-prepared-software" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Create a new standalone application for Arm Cortex-A9:</p>
 <ul class="simple">
@@ -537,26 +520,22 @@ selected.</p></td>
 </dl>
 </div></blockquote>
 <p>Because you updated the hardware specification with the XSA that includes a post-implementation bitstream, the run configuration sets the bitstream file automatically. If your XSA file does not contain a bitstream, click the <strong>Browse</strong> button to point to your bitstream. You can also leave the Bitstream option blank and go to <strong>Xilinx → Program Device</strong> to program the bitstream before launching the application manually.</p>
-<figure class="align-default" id="id11">
+<div class="figure align-default" id="id11">
 <img alt="Program Device" src="../../../_images/image55.png" />
-<figcaption>
-<p><span class="caption-text">Program Device</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Program Device</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>In the system, the AXI GPIO pin is connected to push button <strong>SW5</strong> on the board, and the PS section GPIO pin is connected to push button <strong>SW7</strong> on the board through an EMIO interface.</p></li>
 <li><p>Follow the instructions printed on the serial terminal to run the application. See the following figure for the serial output logs.</p>
-<figure class="align-default" id="id12">
+<div class="figure align-default" id="id12">
 <img alt="UART prints" src="../../../_images/image57.png" />
-<figcaption>
-<p><span class="caption-text">UART prints</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">UART prints</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 </ol>
-</section>
-<section id="hello-pl-standalone-software-details">
-<h3>Hello_PL Standalone Software Details<a class="headerlink" href="#hello-pl-standalone-software-details" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="hello-pl-standalone-software-details">
+<h3>Hello_PL Standalone Software Details<a class="headerlink" href="#hello-pl-standalone-software-details" title="Permalink to this heading">¶</a></h3>
 <p>The system you designed in this chapter requires application software for the execution on the board. This section describes the details about the application software.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">main()</span></code> function in the application software is the entry point for the execution. This function includes initialization and the required settings for all peripherals connected in the system. It also has a selection procedure for the execution of the different use cases, such as AXI GPIO and PS GPIO using EMIO interface. You can select different use cases by following the instructions on the serial terminal.</p>
 <p>The application software is programmed to accomplish the following
@@ -580,9 +559,9 @@ steps:</p>
 </li>
 </ol>
 <p>See the <a class="reference internal" href="6-using-hp-port.html"><span class="doc">next chapter</span></a> for information about using the AXI HP (High Performance) slave port with the AXI Central DMA IP.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>
@@ -606,7 +585,7 @@ steps:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on August 08, 2022.
+      <span class="lastupdated">Last updated on November 10, 2022.
       </span></p>
   </div>
 

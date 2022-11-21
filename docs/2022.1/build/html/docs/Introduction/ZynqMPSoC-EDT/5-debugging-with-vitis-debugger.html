@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -23,7 +22,9 @@ function OptanonWrapper() { }
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -50,15 +51,15 @@ function OptanonWrapper() { }
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">简体中文</span></p>
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">日本語</span></p>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a><ul class="current">
@@ -86,26 +87,26 @@ function OptanonWrapper() { }
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Feature Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/microblaze-system/README.html">Programming an Embedded MicroBlaze Processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Design Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Debugging</span></p>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">All Releases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
@@ -137,8 +138,8 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="debugging-standalone-applications-with-the-vitis-debugger">
-<h1>Debugging Standalone Applications with the Vitis Debugger<a class="headerlink" href="#debugging-standalone-applications-with-the-vitis-debugger" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="debugging-standalone-applications-with-the-vitis-debugger">
+<h1>Debugging Standalone Applications with the Vitis Debugger<a class="headerlink" href="#debugging-standalone-applications-with-the-vitis-debugger" title="Permalink to this heading">¶</a></h1>
 <p>This chapter describes debug possibilities with the design flow you have already been working with. The first option is debugging with software using the Vitis™ debugger.</p>
 <p>The Vitis debugger provides the following debug capabilities:</p>
 <ul class="simple">
@@ -151,8 +152,8 @@ function OptanonWrapper() { }
 <p>The Vitis debugger enables you to see what is happening to a program while it executes. You can set breakpoints or watchpoints to stop the
 processor, step through program execution, view the program variables and stack, and view the contents of the memory in the system.</p>
 <p>The Vitis debugger supports debugging through Xilinx® System Debugger.</p>
-<section id="xilinx-system-debugger">
-<h2>Xilinx System Debugger<a class="headerlink" href="#xilinx-system-debugger" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="xilinx-system-debugger">
+<h2>Xilinx System Debugger<a class="headerlink" href="#xilinx-system-debugger" title="Permalink to this heading">¶</a></h2>
 <p>The Xilinx System Debugger uses the Xilinx hardware server as the underlying debug engine. The Vitis IDE translates each user interface
 action into a sequence of Target Communication Framework (TCF) commands. It then processes the output from System Debugger to display the current state of the program being debugged. It communicates to the processor on the hardware using Xilinx hardware server.</p>
 <p>The debug workflow is described in the following figure.</p>
@@ -168,9 +169,9 @@ action into a sequence of Target Communication Framework (TCF) commands. It then
 <p class="admonition-title">Note</p>
 <p>If you edit the source after compiling, the line numbering will be out of step because the debug information is tied directly to the source. Similarly, debugging optimized binaries can also cause unexpected jumps in the execution trace.</p>
 </div>
-</section>
-<section id="example-6-debugging-software-using-the-vitis-debugger">
-<h2>Example 6: Debugging Software Using the Vitis Debugger<a class="headerlink" href="#example-6-debugging-software-using-the-vitis-debugger" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="example-6-debugging-software-using-the-vitis-debugger">
+<h2>Example 6: Debugging Software Using the Vitis Debugger<a class="headerlink" href="#example-6-debugging-software-using-the-vitis-debugger" title="Permalink to this heading">¶</a></h2>
 <p>In this example, you will walk through debugging a “Hello World” application.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -185,12 +186,10 @@ following example to debug the software using the Vitis debugger.</p>
 <p class="admonition-title">Note</p>
 <p>The above step launches the Application Debugger in the Debug perspective based on the project settings. Alternatively, you can create a debug configuration which looks like the following figure.</p>
 </div>
-<figure class="align-default" id="id1">
+<div class="figure align-default" id="id1">
 <img alt="../../../_images/vitis_single_app_debug_configurations.png" src="../../../_images/vitis_single_app_debug_configurations.png" />
-<figcaption>
-<p><span class="caption-text">Debug Configurations</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Debug Configurations</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The contents of Debug Configurations are identical to those in Run Configurations. The difference between run and debug is that debug stops at the <cite>main()</cite> function by default.</p>
@@ -200,12 +199,10 @@ following example to debug the software using the Vitis debugger.</p>
 <p class="admonition-title">Note</p>
 <p>If the Debug perspective window does not open automatically, select <strong>Window→ Perspective → Open Perspective → Other</strong>, then select <strong>Debug</strong> in the Open Perspective wizard. You can quickly switch between Design Perspective and Debug Perspective with buttons on upper right corner.</p>
 </div>
-<figure class="align-default" id="id2">
+<div class="figure align-default" id="id2">
 <img alt="../../../_images/vitis_perspectives.png" src="../../../_images/vitis_perspectives.png" />
-<figcaption>
-<p><span class="caption-text">Switch between Vitis Perspectives</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Switch between Vitis Perspectives</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
 <p>The Debug Perspective looks like this:</p>
 <img alt="../../../_images/image46.jpeg" src="../../../_images/image46.jpeg" />
 <div class="admonition note">
@@ -252,16 +249,16 @@ that the program counter, pc register, contains <cite>0000000000000cf0</cite>.</
 </div>
 </li>
 </ol>
-</section>
-<section id="example-7-debugging-using-xsct">
-<h2>Example 7: Debugging Using XSCT<a class="headerlink" href="#example-7-debugging-using-xsct" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="example-7-debugging-using-xsct">
+<h2>Example 7: Debugging Using XSCT<a class="headerlink" href="#example-7-debugging-using-xsct" title="Permalink to this heading">¶</a></h2>
 <p>You can use the previous steps to debug bare-metal applications running on RPU and PMU using the Vitis application debugger GUI.</p>
 <p>Additionally, you can debug in command line mode using XSDB, which is encapsulated as a part of XSCT. In this example, you will debug the
 bare-metal application testapp_r5 using XSCT.</p>
 <p>The following steps indicate how to load a bare-metal application on R5 using XSCT. This example demonstrates the command line debugging
 capability of XSDB/XSCT. Based on your requirements, you can choose to debug the code using either the System Debugger GUI or the command line debugger in XSCT. All XSCT commands are scriptable, and this also applies to the commands covered in this example.</p>
-<section id="setting-up-the-target">
-<h3>Setting Up the Target<a class="headerlink" href="#setting-up-the-target" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="setting-up-the-target">
+<h3>Setting Up the Target<a class="headerlink" href="#setting-up-the-target" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Open the XSCT console:</p>
 <ul class="simple">
@@ -283,12 +280,10 @@ through its ID:</p>
 </pre></div>
 </div>
 <p>The targets are listed as shown in the following figure.</p>
-<figure class="align-default" id="id3">
+<div class="figure align-default" id="id3">
 <img alt="../../../_images/image491.png" src="../../../_images/image491.png" />
-<figcaption>
-<p><span class="caption-text">XSCT - targets</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">XSCT - targets</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>Select the PSU target. The Arm APU and RPU clusters are grouped under PSU. Select Cortex-A53#0 as the target using the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">targets</span> <span class="o">-</span><span class="nb">set</span> <span class="o">-</span><span class="nb">filter</span> <span class="p">{</span><span class="n">name</span> <span class="o">=</span>\<span class="o">~</span> \<span class="s2">&quot;Cortex-A53 \#0</span><span class="se">\&quot;</span><span class="s2">}</span>
@@ -296,12 +291,10 @@ through its ID:</p>
 </div>
 <p>The command <code class="docutils literal notranslate"><span class="pre">targets</span></code> now lists the targets and also shows the selected target highlighted with an asterisk (*) mark. You can also
 use the target number to select a target, as shown in the following figure.</p>
-<figure class="align-default" id="id4">
+<div class="figure align-default" id="id4">
 <img alt="../../../_images/image501.png" src="../../../_images/image501.png" />
-<figcaption>
-<p><span class="caption-text">XSCT - selected target</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">XSCT - selected target</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>The processor is now held in reset. To clear the processor reset, use the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rst</span> <span class="o">-</span><span class="n">processor</span>
@@ -320,9 +313,9 @@ xsct% stop
 </div>
 </li>
 </ol>
-</section>
-<section id="loading-the-application-using-xsct">
-<h3>Loading the Application Using XSCT<a class="headerlink" href="#loading-the-application-using-xsct" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="loading-the-application-using-xsct">
+<h3>Loading the Application Using XSCT<a class="headerlink" href="#loading-the-application-using-xsct" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Check and select the RPU Cortex-R5F Core 0 target ID.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">targets</span>
@@ -345,9 +338,9 @@ You must clear the resets on each core before debugging on these cores. The <cod
 <p>At this point, you can see the sections from the ELF file downloaded sequentially. The XSCT prompt can be seen after successful download. Now, configure a serial terminal (Tera Term, Minicom, or the serial terminal interface for a UART-1 USB-serial connection).</p>
 </li>
 </ol>
-</section>
-<section id="serial-terminal-configuration">
-<h3>Serial Terminal Configuration<a class="headerlink" href="#serial-terminal-configuration" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="serial-terminal-configuration">
+<h3>Serial Terminal Configuration<a class="headerlink" href="#serial-terminal-configuration" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Start a terminal session using Tera Term or Minicom depending on the host machine being used. Set the COM port and baud rate as shown in following figure.</p>
 <img alt="../../../_images/image44.png" src="../../../_images/image44.png" />
@@ -355,9 +348,9 @@ You must clear the resets on each core before debugging on these cores. The <cod
 <li><p>For port settings, verify the COM port in the device manager. There are four USB UART interfaces exposed by the ZCU102 board. Select the COM port associated with the interface with the lowest number. In this case, for UART-0, select the COM port with interface-0.</p></li>
 <li><p>Similarly, for UART-1, select the COM port with interface-1. Remember that the R5 BSP has been configured to use UART-1, so R5 application messages will appear on the COM port with the UART-1 terminal.</p></li>
 </ol>
-</section>
-<section id="running-and-debugging-the-application-using-xsct">
-<h3>Running and Debugging the Application Using XSCT<a class="headerlink" href="#running-and-debugging-the-application-using-xsct" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="running-and-debugging-the-application-using-xsct">
+<h3>Running and Debugging the Application Using XSCT<a class="headerlink" href="#running-and-debugging-the-application-using-xsct" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Before you run the application, set a breakpoint at <cite>main()</cite>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">bpadd</span> <span class="o">-</span><span class="n">addr</span> <span class="o">&amp;</span><span class="n">main</span>
@@ -404,9 +397,9 @@ breakpoints in XSCT, type <code class="docutils literal notranslate"><span class
 <p>The <a class="reference internal" href="6-build-linux-sw-for-ps.html"><span class="doc">next chapter</span></a> shows how to build and debug Linux applications.</p>
 </li>
 </ol>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>
@@ -430,7 +423,7 @@ breakpoints in XSCT, type <code class="docutils literal notranslate"><span class
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on August 08, 2022.
+      <span class="lastupdated">Last updated on November 10, 2022.
       </span></p>
   </div>
 

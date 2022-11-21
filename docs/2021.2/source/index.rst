@@ -197,11 +197,12 @@ User Guides
 
 .. toctree::
    :maxdepth: 3
-   :caption: Previous Releases
+   :caption: See All Releases
    :hidden:
 
+   2022.1 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html>
    2021.1 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html>
-   2020.2 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/docs/index.html>
+   2020.2 <https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html>
 
 
 

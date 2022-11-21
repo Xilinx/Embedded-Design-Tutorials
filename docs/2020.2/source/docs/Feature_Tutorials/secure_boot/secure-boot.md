@@ -1,3 +1,5 @@
+# Secure Boot
+
 ## Secure Boot Sequence
 
  The secure boot functionality in Zynq® UltraScale+™ MPSoC allows you to
@@ -903,23 +905,23 @@ The following steps describe the process to update the BIF file from the previou
 
 17. Add the U-Boot software binary to the boot image.
 
-    a.  Click **Add**.
+    a. Click **Add**.
 
-    b.  Use the browse button to select the **u-boot.elf** file.
+    b. Use the browse button to select the **u-boot.elf** file.
 
-    c.  Make sure the partition type is **datafile**.
+    c. Make sure the partition type is **datafile**.
 
-    d.  Make sure the destination CPU is **A53 0**.
+    d. Make sure the destination CPU is **A53 0**.
 
-    e.  Change the authentication to **RSA**.
+    e. Change the authentication to **RSA**.
 
-    f.  Make sure that encryption is **none**.
+    f. Make sure that encryption is **none**.
 
-    g.  Change the exception level to **EL2**.
+    g. Change the exception level to **EL2**.
 
-    h.  Click **OK**.
+    h. Click **OK**.
 
-        ![](./media/image91.png)
+         ![](./media/image91.png)
 
 18. Add the Linux image to the boot image.
 
@@ -1040,7 +1042,7 @@ This section demonstrates how to use the ``BOOT.bin`` boot image created in prio
 
 3. Set SW6 of the ZCU102 for SD boot mode (1=ON; 2,3,4=OFF).
 
-    ![](../Introduction/MPSoc-EDT/media/image43.jpeg)
+    ![](../Introduction/ZynqMPSoC-EDT/media/image43.jpeg)
 
 4. Connect Serial terminals to ZCU102 (115200, eight data bits, one stop bit, no parity).
 
@@ -1124,11 +1126,11 @@ blocks = 1728(*)]C:\edt\secure_boot_sd\bootgen_files\tmr_psled_r5.elf
 }
 ```
 
-# Debugging Problems with Secure Boot
+## Debugging Problems with Secure Boot
 
 This appendix describes how to debug security failures. One procedure determines if PUF registration has been run on the device. A second procedure checks the value of the boot header in the boot image.
 
-## Determine if PUF Registration is Running
+### Determine if PUF Registration is Running
 
 The following steps can be used to verify if the PUF registration software has been run on the device:
 
@@ -1146,7 +1148,7 @@ The following steps can be used to verify if the PUF registration software has b
 
 3. This location contains the CHASH and AUX values. If non-zero, PUF registration software has been run on the device.
 
-## Read the Boot Image
+### Read the Boot Image
 
  You can use the Bootgen utility to verify the header values and the partition data used in the boot image.
 

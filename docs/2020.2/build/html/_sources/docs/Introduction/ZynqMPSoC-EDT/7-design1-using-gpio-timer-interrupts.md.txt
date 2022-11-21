@@ -195,9 +195,9 @@ This use case has a bare-metal application running on an R5 core and a Linux app
      You will also need to configure PetaLinux to create images for SD
      boot.
 
-2. Repeat steps 2 to 4 as described in [Creating a PetaLinux Image](6-build-linux-sw-for-ps.md#creating-a-petalinux-image) to update the device tree and build Linux images using PetaLinux.
+2. Repeat steps 2 to 4 as described in [Creating a PetaLinux Image](6-build-linux-sw-for-ps.html#creating-a-petalinux-image) to update the device tree and build Linux images using PetaLinux.
 
-3. Follow instructions in [Verifying the Image on the ZCU102 Board](6-build-linux-sw-for-ps.md#verifying-the-image-on-the-zcu102-board) to verify the images.
+3. Follow instructions in [Verifying the Image on the ZCU102 Board](6-build-linux-sw-for-ps.html#verifying-the-image-on-the-zcu102-board) to verify the images.
 
 
 ### Creating the Bare-Metal Application Project
@@ -267,7 +267,7 @@ This use case has a bare-metal application running on an R5 core and a Linux app
 
 6. Verify that the application is compiled and linked successfully and that the ``thetmr_psled_r5.elf`` file is generated in the `tmr_psled_r5\Debug` folder.
 
-7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package for testapp-r5](#4-build-sw-for-ps-subsystems.md#modifying-the-board-support-package-for-testapp_r5).
+7. Verify that the BSP is configured for UART_1. For more information, see [Modifying the Board Support Package for testapp-r5](#4-build-sw-for-ps-subsystems.html#modifying-the-board-support-package-for-testapp_r5).
 
 #### Creating the Linux Domain for Linux Applications
 
@@ -374,7 +374,7 @@ This use case has a bare-metal application running on an R5 core and a Linux app
 
 4. In the Create Boot Image wizard, add the settings and partitions as shown in the following figure.
 
-    >**Note:** For detailed steps on how to add partitions, see [Boot Sequence for SD-Boot](8-boot-and-configuration.md#boot-sequence-for-sd-boot).
+    >**Note:** For detailed steps on how to add partitions, see [Boot Sequence for SD-Boot](8-boot-and-configuration.html#boot-sequence-for-sd-boot).
 
     ![](./media/image112.png)
 

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,13 +113,13 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="evaluating-memory-hierarchy-and-the-acp">
+  <div class="section" id="evaluating-memory-hierarchy-and-the-acp">
 <h1>Evaluating Memory Hierarchy and the ACP<a class="headerlink" href="#evaluating-memory-hierarchy-and-the-acp" title="Permalink to this heading">¶</a></h1>
 <p>The System Performance Modeling (SPM) design can be used to evaluate the performance effects of the Zynq®-7000 SoC cache. You can assess baseline performance using software only, and then you can evaluate the effects of traffic on the Accelerator Coherency Port (ACP). While running software only can produce fairly predictable memory performance, introducing other traffic activity into the system may lead to less intuitive results. Specifically, CPU and ACP traffic have the potential to impact each other at the shared L2 cache. The SPM design allows you to do this analysis very easily.</p>
-<section id="assess-memory-performance">
+<div class="section" id="assess-memory-performance">
 <h2>Assess Memory Performance<a class="headerlink" href="#assess-memory-performance" title="Permalink to this heading">¶</a></h2>
 <p>To begin the evaluation, the SPM design can be used to assess a baseline performance using software only. An application to use for this evaluation is the memory stride benchmarks program, one of the pre-compiled executables that comes with the SPM project.</p>
-<p>The following figure shows how this was defined in the Vitis™ IDE using the memory stride software executable (see <a class="reference external" href="../docs/2-system-performance-modeling-project.md#spm-software">SPM Software</a>). This software was instrumented to calculate bandwidth and average latency (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.md#instrumenting-software">Instrumenting Software</a>).</p>
+<p>The following figure shows how this was defined in the Vitis™ IDE using the memory stride software executable (see <a class="reference external" href="../docs/2-system-performance-modeling-project.html#spm-software">SPM Software</a>). This software was instrumented to calculate bandwidth and average latency (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.html#instrumenting-software">Instrumenting Software</a>).</p>
 <p><em>Figure 33:</em> <strong>Application Setup using Memory Stride Software</strong></p>
 <p><img alt="../../../_images/image321.jpeg" src="../../../_images/image321.jpeg" /></p>
 <div id="table7"><p><em>Table 7:</em> <strong>Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</strong></p>
@@ -305,8 +336,8 @@ function OptanonWrapper() { }
 <p>The previous figure also shows three other graphs reported in the PS Performance panel, including: L1 Data Cache Miss Rate, and CPU Write/Read Stall Cycles Per Instruction. While the periodic nature of
 the memory stride benchmarks is reflected in these graphs, these three graphs can also provide information as to where the data is being retrieved. Every third benchmark has a L1 data cache miss rate of 0% - that was when the 4 KB working set size was used. The other two set sizes do not fit in the L1 data cache and, therefore, have at or near 100% miss rates.</p>
 <p>The software impact of these cache misses can be seen in the Stall Cycles Per Instruction. A higher number of stall cycles means the processor is spending more cycles waiting for either a memory write (write) or a data cache refill (read). This would, in turn, lower the effective bandwidth of that benchmark. An example is the Linear Bandwidth – Copy benchmark which was performed between approximately 10-11s. The high number of CPU write/read stall cycles per instruction during this time shows why it sustains one of the lowest bandwidths of all memory stride benchmarks (33.23 MB/s; see <a class="reference external" href="#_bookmark47">Table 7: Software-Only Bandwidth Results for Memory Stride Benchmarks (in MB/sec)</a>.</p>
-</section>
-<section id="data-size-and-locality">
+</div>
+<div class="section" id="data-size-and-locality">
 <h2>Data Size and Locality<a class="headerlink" href="#data-size-and-locality" title="Permalink to this heading">¶</a></h2>
 <p>To better visualize the performance of the memory hierarchy, the working set size used in the memory stride tests was swept across a range of values between 1 KB and 4096 KB. This enables a clear view of how data size and locality can affect the bandwidth and latency achieved by the CPU.</p>
 <p><em>Figure 35:</em> <strong>CPU Memory Bandwidth Achieved During Memory Stride Tests</strong></p>
@@ -314,10 +345,10 @@ the memory stride benchmarks is reflected in these graphs, these three graphs ca
 <p>The previous figure shows the memory bandwidth achieved by CPU0 during the memory stride tests. For clarity, the random bandwidth (real-time) tests are not shown in the graph. As the working set size increases, there are noticeable transitions at the L1 and L2 data cache boundaries as the working set size no longer fits into the previous cache. The following figure shows similar transition points for the average memory access latency achieved by CPU0 during the memory stride tests. However, while the bandwidth decreases with an increasing working set size, the latency noticeably increases.</p>
 <p><em>Figure 36:</em> <strong>CPU Memory Access Latency Achieved During Memory Stride Tests</strong></p>
 <p><img alt="../../../_images/image352.png" src="../../../_images/image352.png" /></p>
-</section>
-<section id="shared-l2-cache">
+</div>
+<div class="section" id="shared-l2-cache">
 <h2>Shared L2 Cache<a class="headerlink" href="#shared-l2-cache" title="Permalink to this heading">¶</a></h2>
-<p>Now that baseline performance measurements have been made between the CPUs and the memories, traffic can be added on the Accelerator Coherency Port (ACP) to analyze its effects on system performance. The memory stride software (see <a class="reference external" href="../docs/2-system-performance-modeling-project.md#spm-software">SPM Software</a>) was run again on CPU0; however, this time traffic was added to the ACP. Since the L2 cache is shared by the CPUs and the ACP, there is expected to be some contention to occur at that memory.</p>
+<p>Now that baseline performance measurements have been made between the CPUs and the memories, traffic can be added on the Accelerator Coherency Port (ACP) to analyze its effects on system performance. The memory stride software (see <a class="reference external" href="../docs/2-system-performance-modeling-project.html#spm-software">SPM Software</a>) was run again on CPU0; however, this time traffic was added to the ACP. Since the L2 cache is shared by the CPUs and the ACP, there is expected to be some contention to occur at that memory.</p>
 <p>The following figure shows the ATG configuration that models the initial traffic on the ACP. It specifies random addressing within a 4 KB region and utilizes the memory path through the L2 cache to the DDR. The first value for Tranx Interval is 100 clock cycles, which configures the ATGs to request a throughput of 128 MB/sec at 100 MHz. Keeping every other setting constant, the values for Tranx Interval were decreased, thus increasing the requested throughputs. The values used for this transaction interval include: 100, 50, 30, 25, 20, and, 17. These intervals lead to request throughputs of 128, 256, 426, 512, 640, and 752 MB/s.</p>
 <p><em>Figure 37:</em> <strong>ATG Configuration Modeling Traffic on ACP</strong></p>
 <p><img alt="../../../_images/image36.jpeg" src="../../../_images/image36.jpeg" /></p>
@@ -342,8 +373,8 @@ various software benchmarks. However, the average read latency is clearly affect
 <p><em>Figure 43:</em> <strong>Performance Achieved by CPU0 vs. ACP Bandwidth (Set Size = 1024 KB)</strong></p>
 <p><img alt="../../../_images/image422.png" src="../../../_images/image422.png" /></p>
 <p>When running the memory stride software with a working set size of 4 KB, the CPU bandwidth was unaffected by the traffic on the ACP. When using set sizes of 64 KB and 1024 KB, the ACP traffic does have a measurable impact on the CPU bandwidth. The largest decrease in CPU0 bandwidth was 14.6% for the Linear Bandwidth - Copy benchmark operating on a set size of 64 KB.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

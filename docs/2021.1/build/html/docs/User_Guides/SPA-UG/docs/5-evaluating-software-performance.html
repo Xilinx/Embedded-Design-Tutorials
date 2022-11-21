@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -70,6 +70,10 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
@@ -97,8 +101,11 @@ function OptanonWrapper() { }
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -127,14 +134,14 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="evaluating-software-performance">
+  <div class="section" id="evaluating-software-performance">
 <h1>Evaluating Software Performance<a class="headerlink" href="#evaluating-software-performance" title="Permalink to this heading">¶</a></h1>
 <p>There are a number of monitoring capabilities that evaluate software performance on a Zynq®-7000 SoC. These capabilities can inform you about the efficiency of your application and provide visualizations for you to better understand and optimize your software.</p>
-<section id="software-performance-monitoring">
+<div class="section" id="software-performance-monitoring">
 <h2>Software Performance Monitoring<a class="headerlink" href="#software-performance-monitoring" title="Permalink to this heading">¶</a></h2>
 <p>To illustrate these performance monitoring capabilities, the BEEBS benchmark program (see <a class="reference internal" href="2-system-performance-modeling-project.html"><span class="doc">System Performance Modeling Project</span></a>) was run on a ZC702 target board and performance results were captured in the Vitis™ IDE. There was no traffic driven from the PL, so this is a software only test. Note that if you would like to re-create these results, the software application selection is
-shown in <a class="reference internal" href="4-getting-started-with-SPM.html"><span class="doc">Getting Started with SPM</span></a>, and the PL traffic is shown in <a class="reference external" href="../docs/4-getting-started-with-SPM.md#atg-configuration">ATG Configuration</a>. Although the results shown here are for the BEEBS benchmarks, these exact same metrics can also be obtained for a program provided to or compiled by the Vitis IDE.</p>
-<p>There are 24 total tests performed – each of the eight benchmarks listed in <a class="reference external" href="../docs/2-system-performance-modeling-project.md#table1">Table 1: BEEBS Benchmarks Provided in </a> is run on the three different data array sizes (that is, 4 KB, 64 KB, and 1024 KB). Because a sleep time of 1s was inserted between each test, the CPU utilization gives a clear view of when these benchmarks were run. The following figure helps orient the timeline for the results. The three data sizes were run from smallest to largest within each benchmark, which can be seen in the value and length of the utilization of CPU0. It took approximately 45s to run BEEBs benchmark without any traffic.</p>
+shown in <a class="reference internal" href="4-getting-started-with-SPM.html"><span class="doc">Getting Started with SPM</span></a>, and the PL traffic is shown in <a class="reference external" href="../docs/4-getting-started-with-SPM.html#atg-configuration">ATG Configuration</a>. Although the results shown here are for the BEEBS benchmarks, these exact same metrics can also be obtained for a program provided to or compiled by the Vitis IDE.</p>
+<p>There are 24 total tests performed – each of the eight benchmarks listed in <a class="reference external" href="../docs/2-system-performance-modeling-project.html#table1">Table 1: BEEBS Benchmarks Provided in </a> is run on the three different data array sizes (that is, 4 KB, 64 KB, and 1024 KB). Because a sleep time of 1s was inserted between each test, the CPU utilization gives a clear view of when these benchmarks were run. The following figure helps orient the timeline for the results. The three data sizes were run from smallest to largest within each benchmark, which can be seen in the value and length of the utilization of CPU0. It took approximately 45s to run BEEBs benchmark without any traffic.</p>
 <div id="fig13"><p><em>Figure 13:</em> <strong>CPU Utilization Labeled with BEEBS Benchmarks</strong></p>
 <p><img alt="../../../../_images/image131.jpeg" src="../../../../_images/image131.jpeg" /></p>
 <div><p>The following figure shows four different graphs displayed by the Vitis IDE in the PS Performance panel: CPU Utilization (%), CPU Instructions Per Cycle, L1 Data Cache Access, and L1 Data Cache Miss Rate (%).</p>
@@ -147,12 +154,12 @@ shown in <a class="reference internal" href="4-getting-started-with-SPM.html"><s
 </div><p>To refine the performance of an application, one option to consider using is to enable/disable the L2 data cache prefetch. This is specified with bit 28 of reg15_prefetch_ctrl (absolute address 0xF8F02F60). If this data prefetching is enabled, then the adjacent cache line will also be automatically fetched. While the results shown in Figure 14 and Figure 15 were generated with prefetch enabled, the BEEBS benchmarks were also run with prefetch disabled. The integer matrix multiplication saw the largest impact on software run-time with a decrease of 9.0%. While this prefetch option can improve the performance of some applications, it can lower the performance of others. It is recommended to verify run-times of your application with and without this prefetch option.</p>
 <p><em>Figure 16:</em> <strong>Run-Time Results of Software in BEEBS Benchmark Suite</strong></p>
 <p><img alt="../../../../_images/image161.png" src="../../../../_images/image161.png" /></p>
-<p>As mentioned above, a helpful measurement of overall software performance is the run-time of different portions of the application. The previous figure shows a summary of run times for the eight BEEBS benchmarks as run on the three different data array sizes (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.md#instrumenting-hardware">Instrumenting Hardware</a> on how these run-times were calculated and captured). The Y-axis on the left side of the previous figure shows the full range of values, while the Y-axis on the right side zooms in on the lowest range for clarity. As expected, the run-times increase with larger array sizes. However, the amount of increase varies across the different benchmarks tested. This is because there are a number of different factors that can impact run-time, including the amount of data, data locality, and algorithmic dependencies on data size. As far as data locality, the 4 KB, 64 KB, and 1024 KB data arrays fit into the L1 data cache, L2 data cache, and DDR, respectively.</p>
+<p>As mentioned above, a helpful measurement of overall software performance is the run-time of different portions of the application. The previous figure shows a summary of run times for the eight BEEBS benchmarks as run on the three different data array sizes (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.html#instrumenting-hardware">Instrumenting Hardware</a> on how these run-times were calculated and captured). The Y-axis on the left side of the previous figure shows the full range of values, while the Y-axis on the right side zooms in on the lowest range for clarity. As expected, the run-times increase with larger array sizes. However, the amount of increase varies across the different benchmarks tested. This is because there are a number of different factors that can impact run-time, including the amount of data, data locality, and algorithmic dependencies on data size. As far as data locality, the 4 KB, 64 KB, and 1024 KB data arrays fit into the L1 data cache, L2 data cache, and DDR, respectively.</p>
 <p>On the Zynq UltraScale+ MPSoC, the ZCU102 SPM project shows a similar result. The only difference difference is that the BEEBS benchmark does not use an interrupt between two tests, so the CPU utilization shows 100% all across the test time. However, you can see the same pattern of L1 data cache miss rate and CPU Read Stall Cycles per Instruction.</p>
 <p><img alt="../../../../_images/spm_zcu102_swonly.png" src="../../../../_images/spm_zcu102_swonly.png" /></p>
 <p>For more information on assessing the performance of the memory hierarchy, see <a class="reference internal" href="8-evaluating-memory-hierarchy-ACP.html"><span class="doc">Evaluating Memory Hierarchy and the ACP</span></a>.</p>
-</section>
-<section id="visualizing-performance-improvements">
+</div>
+<div class="section" id="visualizing-performance-improvements">
 <h2>Visualizing Performance Improvements<a class="headerlink" href="#visualizing-performance-improvements" title="Permalink to this heading">¶</a></h2>
 <p>As shown in the previous figure, the longest run- times are clearly the matrix multiplications,especially for the largest array size. What if these run- times need to be improved? How would the performance analysis features in the Vitis IDE help measure and visualize any code optimizations or improvements?</p>
 <p>The sample code below shows two different C/C++ implementations for floating-point matrix multiplication. The original and traditional implementation is the <code class="docutils literal notranslate"><span class="pre">Multiply_Old()</span></code> function, whereas a newer implementation is contained in <code class="docutils literal notranslate"><span class="pre">Multiply_New()</span></code>. While the newer implementation appears to be more complicated, it takes advantage of the 32 byte cache lines. See <a class="reference external" href="http://www.cs.bgu.ac.il/%7Eos142/wiki.files/drepper-2007.pdf">What Every Programmer Should Know About Memory</a> by Ulrich Drepper. The original and modified C/C++ software for floating-point matrix multiplication is as follows:</p>
@@ -298,8 +305,8 @@ shown in <a class="reference internal" href="4-getting-started-with-SPM.html"><s
 </td>
 </tr>
 </tbody>
-</table></section>
-</section>
+</table></div>
+</div>
 
 
            </div>

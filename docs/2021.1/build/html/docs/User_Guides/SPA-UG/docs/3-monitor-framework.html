@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -70,6 +70,10 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
@@ -98,8 +102,11 @@ function OptanonWrapper() { }
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -128,7 +135,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="monitor-framework">
+  <div class="section" id="monitor-framework">
 <h1>Monitor Framework<a class="headerlink" href="#monitor-framework" title="Permalink to this heading">¶</a></h1>
 <p>The performance analysis toolbox in the Vitis™ IDE offers a set of system-level performance measurements. For a design that targets SoCs, this includes performance metrics from both the Programmable Logic (PL) and the Processing System (PS).</p>
 <p>The PL performance metrics include the following:</p>
@@ -150,9 +157,9 @@ data cache refills (read)</p></li>
 </ul>
 <p>This mix of performance metrics is gathered from different parts of the target and combined into a common timeline and display, enabling system-level performance analysis. In order to gather and display these metrics, the Vitis IDE includes a monitor framework that accesses various profile counters across a target system, as well as a host-target communication framework to perform the sampling and offloading of these counters.</p>
 <p>The metadata required by the Vitis IDE to perform this monitoring is exported by Vivado® Design Suite and read by the Vitis IDE when a Hardware Platform Specification project is created. While this export/import procedure has already been performed for the System Performance Modeling (SPM) project, it can also be executed on your design (see Instrumenting Hardware). In other words, all of the monitoring and analysis described herein is available and applicable to the SPM design as well as your design. This extension is addressed in <a class="reference internal" href="10-end-to-end-performance-analysis.html"><span class="doc">End-To-End Performance Analysis</span></a>.</p>
-<section id="pl-profile-counters">
+<div class="section" id="pl-profile-counters">
 <h2>PL Profile Counters<a class="headerlink" href="#pl-profile-counters" title="Permalink to this heading">¶</a></h2>
-<p>An AXI Performance Monitor (APM) inserted into a design provides the PL profile counters (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.md#instrumenting-hardware">Instrumenting Hardware</a> for information about how to do this insertion for your design). There are six counters per connected AXI interface. The following table lists how these counters are used. Note that these are incrementing up-counters that capture a running total of bytes transferred, total latency, and the number of completed AXI transactions, respectively. As shown in the following table, the difference of these counters between successive samples (signified by Δ) is used in the calculations of average throughput and latency across a given Sample Interval. The Vitis IDE uses a default sample interval of approximately 50 ms.</p>
+<p>An AXI Performance Monitor (APM) inserted into a design provides the PL profile counters (see <a class="reference external" href="../docs/9-using-spa-with-custom-target.html#instrumenting-hardware">Instrumenting Hardware</a> for information about how to do this insertion for your design). There are six counters per connected AXI interface. The following table lists how these counters are used. Note that these are incrementing up-counters that capture a running total of bytes transferred, total latency, and the number of completed AXI transactions, respectively. As shown in the following table, the difference of these counters between successive samples (signified by Δ) is used in the calculations of average throughput and latency across a given Sample Interval. The Vitis IDE uses a default sample interval of approximately 50 ms.</p>
 <div id="table3"><p><em>Table 3:</em> <strong>Profile Counters per AXI Interface in AXI Performance Monitor</strong></p>
 <table border="1" class="docutils">
 <thead>
@@ -198,8 +205,8 @@ data cache refills (read)</p></li>
 <li><p>Interleaved transactions. Where the transactions can be address initialization of new data transaction before finishing the current data transaction (before getting wlast/rlast).</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="ps-profile-counters">
+</div>
+<div class="section" id="ps-profile-counters">
 <h2>PS Profile Counters<a class="headerlink" href="#ps-profile-counters" title="Permalink to this heading">¶</a></h2>
 <p>The PS profile counters comprise the Arm Performance Monitor Unit (PMU) included with each Cortex-A9 CPU. The following table shows how the six counters in each PMU are automatically configured by the Vitis IDE, as well as the performance metric equations they provide for each CPU. As shown later in this guide, these are the metrics that are directly graphed in the Vitis IDE.</p>
 <div id="table4"><p><em>Table 4:</em> <strong>Profile Counters used in Arm Performance Monitor Unit</strong></p>
@@ -250,13 +257,13 @@ data cache refills (read)</p></li>
 <td>Write Stall Cycles Per Instruction = (∆(MEM_WRITE_STALL))/(∆(INST_R ENAME))</td>
 </tr>
 </tbody>
-</table></div></section>
-<section id="host-target-communication">
+</table></div></div>
+<div class="section" id="host-target-communication">
 <h2>Host-Target Communication<a class="headerlink" href="#host-target-communication" title="Permalink to this heading">¶</a></h2>
 <p>Now that you appreciate the profile counters and how they are processed and displayed in the SPA toolbox, it is also important to understand how those counters are sampled and transferred from the target to the host machine.</p>
-<p>The Vitis IDE tool itself runs on a host machine and includes a hardware server using the Target Communication Framework (TCF). TCF can efficiently communicate with the target over the JTAG programming cable. This TCF-based hardware server controls and samples the profile counters listed in <a class="reference external" href="../docs/2-system-performance-modeling-project.md#table1">Table 1: BEEBS Benchmarks Provided in Pre-Compiled Program Table</a> and <a class="reference external" href="../docs/2-system-performance-modeling-project.md#table2">Table 2: Memory Stride Benchmarks Provided in Pre-Compiled Program</a> in the least intrusive manner possible. The APM and PMU counters are read using memory-mapped access via the Zynq-7000 SoC central interconnect. The counter values are then processed as described previously and displayed in the Vitis IDE.</p>
-</section>
-</section>
+<p>The Vitis IDE tool itself runs on a host machine and includes a hardware server using the Target Communication Framework (TCF). TCF can efficiently communicate with the target over the JTAG programming cable. This TCF-based hardware server controls and samples the profile counters listed in <a class="reference external" href="../docs/2-system-performance-modeling-project.html#table1">Table 1: BEEBS Benchmarks Provided in Pre-Compiled Program Table</a> and <a class="reference external" href="../docs/2-system-performance-modeling-project.html#table2">Table 2: Memory Stride Benchmarks Provided in Pre-Compiled Program</a> in the least intrusive manner possible. The APM and PMU counters are read using memory-mapped access via the Zynq-7000 SoC central interconnect. The counter values are then processed as described previously and displayed in the Vitis IDE.</p>
+</div>
+</div>
 
 
            </div>

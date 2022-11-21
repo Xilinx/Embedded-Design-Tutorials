@@ -45,7 +45,7 @@ The block diagram includes the following configuration register:
 
 In this section, you will create an AXI4-Lite compliant slave peripheral IP.
 
-1.  Create a new project as described in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc).
+1.  Create a new project as described in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc).
 
 2.  With the Vivado design open, select **Tools → Create and Package New IP**. Click **Next** to continue.
 
@@ -231,7 +231,7 @@ start or stop blinking.
 In this section, you will connect the AXI4-Lite compliant custom slave
 peripheral IP that you created in [Creating Peripheral IP](#creating-peripheral-ip).
 
-1.  Open the Vivado project you previously created in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc).
+1.  Open the Vivado project you previously created in [Creating a New Embedded Project with Zynq SoC](2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc).
 
 2.  Add the custom IP to the existing design. Right-click the Diagram view and select **Add IP**.
 
@@ -273,7 +273,7 @@ peripheral IP that you created in [Creating Peripheral IP](#creating-peripheral-
 
 13. If a message appears stating that synthesis is Out-of-date, click **Yes**.
 
-14. After the bitstream generation completes, export the hardware and launch the Vitis unified software platform as described in [Exporting a Hardware Platform](2-using-zynq.md#exporting-a-hardware-platform).
+14. After the bitstream generation completes, export the hardware and launch the Vitis unified software platform as described in [Exporting a Hardware Platform](2-using-zynq.html#exporting-a-hardware-platform).
 
 **Note:** Make sure to select **Include bitstream** instead of **Pre-synthesis** on the **Output** page of the **Export Hardware
 Platform** wizard.
@@ -322,7 +322,7 @@ Programming Guide</a>.
 
 In this section you are going to develop a peripheral IP device driver as an LKM, which is dynamically loadable onto the running kernel. You must build the peripheral IP LKM as part of the same kernel build process that generates the base kernel image.
 
-**Note:** If you do not want to compile the device driver, you can skip the example in this section and jump to [Loading a Module into the Kernel and Application Execution](#example-13-loading-the-module-into-a-kernel-and-application-execution). In that section, you can use the kernel image, which contains ``blink.ko`` (``image.ub`` in the shared ZIP files). See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+**Note:** If you do not want to compile the device driver, you can skip the example in this section and jump to [Loading a Module into the Kernel and Application Execution](#example-13-loading-the-module-into-a-kernel-and-application-execution). In that section, you can use the kernel image, which contains ``blink.ko`` (``image.ub`` in the shared ZIP files). See [Design Files for This Tutorial](2-using-zynq.html#design-files-for-this-tutorial).
 
 For kernel compilation and device driver development, you must use the Linux workstation. Before you start developing the device driver, the following steps are required:
 
@@ -334,7 +334,7 @@ For kernel compilation and device driver development, you must use the Linux wor
 
 You will use a Linux workstation for this example project. The device
 driver software is provided in the LKM folder of the ZIP file that
-accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial).
+accompanies this guide. See [Design Files for This Tutorial](2-using-zynq.html#design-files-for-this-tutorial).
 
 1.  Under the PetaLinux project directory, use the command below to
     create your module:
@@ -414,7 +414,7 @@ blinking and retain the previous state.
 
 #### Booting Linux on the Target Board
 
-Boot Linux on the Zynq SoC ZC702 target board, as described in [Booting Linux on a Zynq SoC Board](7-linux-booting-debug.md#booting-linux-on-a-zynq-soc-board).
+Boot Linux on the Zynq SoC ZC702 target board, as described in [Booting Linux on a Zynq SoC Board](7-linux-booting-debug.html#booting-linux-on-a-zynq-soc-board).
 
 #### Loading Modules and Executing Applications
 
@@ -446,7 +446,7 @@ In this section, you will use the Vitis software platform installed on a Windows
     **Note:** The application software file name for the system is
     ``linux_blinkled_app.c`` and the header file name is ``blink.h``. These files
     are available in the LKM folder of the ZIP file that accompanies this
-    guide. See [Design Files for This Tutorial](2-using-zynq.md#design-files-for-this-tutorial). Add the
+    guide. See [Design Files for This Tutorial](2-using-zynq.html#design-files-for-this-tutorial). Add the
     ``linux_blinkled_app.c`` and ``blink.h`` files.
 
 8.  Click **Finish**.

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,7 +113,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-the-zynq-soc-processing-system">
+  <div class="section" id="using-the-zynq-soc-processing-system">
 <h1>Using the Zynq SoC Processing System<a class="headerlink" href="#using-the-zynq-soc-processing-system" title="Permalink to this heading">¶</a></h1>
 <p>Now that you have been introduced to the Xilinx® Vivado® Design Suite, you can look at how to use it to develop an embedded system using the Zynq®-7000 SoC processing system (PS).</p>
 <p>The Zynq SoC consists of Arm® Cortex™-A9 cores, many hard intellectual property components (IPs), and programmable logic (PL). This offering can be used in two ways:</p>
@@ -90,7 +121,7 @@ function OptanonWrapper() { }
 <li><p>The Zynq SoC PS can be used in a standalone mode, without attaching any additional fabric IP.</p></li>
 <li><p>IP cores can be instantiated in fabric and attached to the Zynq PS as a PS+PL combination.</p></li>
 </ul>
-<section id="embedded-system-configuration">
+<div class="section" id="embedded-system-configuration">
 <h2>Embedded System Configuration<a class="headerlink" href="#embedded-system-configuration" title="Permalink to this heading">¶</a></h2>
 <p>Creation of a Zynq device system design involves configuring the PS to
 select the appropriate boot devices and peripherals. To start with, as
@@ -98,18 +129,18 @@ long as the PS peripherals and available MIO connections meet the
 design requirements, no bitstream is required. This chapter guides you
 through creating a simple PS-based design that does not require a
 bitstream.</p>
-</section>
-<section id="example-1-creating-a-new-embedded-project-with-zynq-soc">
+</div>
+<div class="section" id="example-1-creating-a-new-embedded-project-with-zynq-soc">
 <h2>Example 1: Creating a New Embedded Project with Zynq SoC<a class="headerlink" href="#example-1-creating-a-new-embedded-project-with-zynq-soc" title="Permalink to this heading">¶</a></h2>
 <p>For this example, you will launch the Vivado Design Suite and create a project with an embedded processor system as the top level.</p>
-<section id="input-and-output-files">
+<div class="section" id="input-and-output-files">
 <h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input Files: N/A</p></li>
 <li><p>Output Files: Vivado hardware handoff file system_wrapper.xsa</p></li>
 </ul>
-</section>
-<section id="creating-your-hardware-design">
+</div>
+<div class="section" id="creating-your-hardware-design">
 <h3>Creating Your Hardware Design<a class="headerlink" href="#creating-your-hardware-design" title="Permalink to this heading">¶</a></h3>
 <ol class="simple">
 <li><p>Start the Vivado Design Suite.</p>
@@ -136,8 +167,8 @@ bitstream.</p>
 </code></pre><ol class="simple">
 <li><p>Click <strong>Finish</strong>. The New Project wizard closes and the project you just created opens in the Vivado design tool.</p></li>
 </ol>
-</section>
-<section id="creating-an-embedded-processor-block-diagram">
+</div>
+<div class="section" id="creating-an-embedded-processor-block-diagram">
 <h3>Creating an Embedded Processor Block Diagram<a class="headerlink" href="#creating-an-embedded-processor-block-diagram" title="Permalink to this heading">¶</a></h3>
 <p>Perform the following steps to create an embedded processor project.</p>
 <ol>
@@ -161,8 +192,8 @@ is empty. To get started, you will next add some IP from the catalog.</p>
 <p><img alt="ZYNQ7 in block diagram" src="../../../_images/image9.png" /></p>
 </li>
 </ol>
-</section>
-<section id="configuring-the-zynq-7000-processing-system-with-presets-in-vivado">
+</div>
+<div class="section" id="configuring-the-zynq-7000-processing-system-with-presets-in-vivado">
 <h3>Configuring the Zynq-7000 Processing System with Presets in Vivado<a class="headerlink" href="#configuring-the-zynq-7000-processing-system-with-presets-in-vivado" title="Permalink to this heading">¶</a></h3>
 <p>In the Block Diagram window, notice the message stating that Designer assistance is available, as shown in the following figure.</p>
 <p><img alt="../../../_images/image131.png" src="../../../_images/image131.png" /></p>
@@ -178,8 +209,8 @@ to the <em>Vivado Design Suite Tutorial: Embedded Processor Hardware Design</em>
 <p><img alt="../../../_images/vivado_zynq_automation_result.png" src="../../../_images/vivado_zynq_automation_result.png" /></p>
 </li>
 </ol>
-</section>
-<section id="validating-the-design-and-connecting-ports">
+</div>
+<div class="section" id="validating-the-design-and-connecting-ports">
 <h3>Validating the Design and Connecting Ports<a class="headerlink" href="#validating-the-design-and-connecting-ports" title="Permalink to this heading">¶</a></h3>
 <p>Now, let’s validate the design.</p>
 <ol>
@@ -213,8 +244,8 @@ to the <em>Vivado Design Suite Tutorial: Embedded Processor Hardware Design</em>
 </ul>
 </li>
 </ol>
-</section>
-<section id="creating-an-hdl-wrapper-for-the-block-diagram">
+</div>
+<div class="section" id="creating-an-hdl-wrapper-for-the-block-diagram">
 <h3>Creating an HDL Wrapper for the Block Diagram<a class="headerlink" href="#creating-an-hdl-wrapper-for-the-block-diagram" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Click the <strong>Sources</strong> window.</p>
@@ -232,8 +263,8 @@ to the <em>Vivado Design Suite Tutorial: Embedded Processor Hardware Design</em>
 </ul>
 </li>
 </ol>
-</section>
-<section id="generating-the-block-design">
+</div>
+<div class="section" id="generating-the-block-design">
 <h3>Generating the Block Design<a class="headerlink" href="#generating-the-block-design" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>In <strong>Flow Navigator</strong> window, click <strong>Generate Block Design</strong> under <strong>IP Integrator</strong>.</p></li>
@@ -250,8 +281,8 @@ following figure.</p>
 <p><img alt="Generated IP Source Files" src="../../../_images/image18.png" /></p>
 </li>
 </ol>
-</section>
-<section id="exporting-hardware">
+</div>
+<div class="section" id="exporting-hardware">
 <h3>Exporting Hardware<a class="headerlink" href="#exporting-hardware" title="Permalink to this heading">¶</a></h3>
 <p>Two types of hardware can be exported from Vivado: pre-synthesis and post-implementation. In the block design for this example, the hardware in the PL is the signal from <code class="docutils literal notranslate"><span class="pre">FCLK_CLK0</span></code> to <code class="docutils literal notranslate"><span class="pre">M_AXI_GP0_ACLK</span></code>. It drives the clock of <code class="docutils literal notranslate"><span class="pre">M_AXI_GP0</span></code>. Because only pure PS functions will be tested in this example and PL resources will not be used, no loads are added to the <code class="docutils literal notranslate"><span class="pre">M_AXI_GP0</span></code> AXI interface. You can skip the synthesis, implementation and bitstream generation phases to save time. We will export the pre-synthesis hardware in this case.</p>
 <ol class="simple">
@@ -299,22 +330,22 @@ following figure.</p>
 </ol>
 <p><strong>What’s Next?</strong></p>
 <p>Now you can start developing the software for your project using the Vitis software platform. The next sections help you create a software application for your hardware platform.</p>
-</section>
-</section>
-<section id="example-2-creating-and-running-a-hello-world-application">
+</div>
+</div>
+<div class="section" id="example-2-creating-and-running-a-hello-world-application">
 <h2>Example 2: Creating and Running a “Hello World” Application<a class="headerlink" href="#example-2-creating-and-running-a-hello-world-application" title="Permalink to this heading">¶</a></h2>
 <p>In this example, you will learn how to manage the board settings, make
 cable connections, connect to the board through your PC, and run a
 simple “Hello World” software application in JTAG mode using System
 Debugger in the Vitis IDE.</p>
-<section id="id1">
+<div class="section" id="id1">
 <h3>Input and Output Files<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input Files: <code class="docutils literal notranslate"><span class="pre">system_wrapper.xsa</span></code></p></li>
 <li><p>Output Files: <code class="docutils literal notranslate"><span class="pre">hello_world.elf</span></code></p></li>
 </ul>
-</section>
-<section id="setting-up-the-board">
+</div>
+<div class="section" id="setting-up-the-board">
 <h3>Setting Up the Board<a class="headerlink" href="#setting-up-the-board" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Connect the power cable to the board.</p></li>
@@ -343,8 +374,8 @@ Debugger in the Vitis IDE.</p>
 </li>
 <li><p>Power on the ZC702 board.</p></li>
 </ol>
-</section>
-<section id="creating-a-vitis-platform-project">
+</div>
+<div class="section" id="creating-a-vitis-platform-project">
 <h3>Creating a Vitis Platform Project<a class="headerlink" href="#creating-a-vitis-platform-project" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Launch the Vitis IDE with any of the actions below:</p>
@@ -400,8 +431,8 @@ processor and an FSBL application project. You have built a platform
 project, and the generated Xilinx platform definition file
 (<code class="docutils literal notranslate"><span class="pre">zc702_edt.xpfm</span></code>) can be used as a platform for the applications that
 you create in the Vitis IDE.</p>
-</section>
-<section id="creating-the-hello-world-application">
+</div>
+<div class="section" id="creating-the-hello-world-application">
 <h3>Creating the Hello World application<a class="headerlink" href="#creating-the-hello-world-application" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Select <strong>File → New → Application Project</strong>.</p>
@@ -429,8 +460,8 @@ in the wizard screens.</p></li>
 <ol class="simple">
 <li><p>Right-click the <strong>hello_world</strong> standalone application and select <strong>Build Project</strong> to generate the <code class="docutils literal notranslate"><span class="pre">hello_world.elf</span></code> binary file.</p></li>
 </ol>
-</section>
-<section id="running-the-hello-world-application-on-a-zc702-board">
+</div>
+<div class="section" id="running-the-hello-world-application-on-a-zc702-board">
 <h3>Running the Hello World Application on a ZC702 Board<a class="headerlink" href="#running-the-hello-world-application-on-a-zc702-board" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Open a serial communication utility for the COM port assigned on your system.</p>
@@ -473,11 +504,11 @@ peripheral of the PS section.</p>
 <p>From UART1, the “Hello World” string goes byte-by-byte to the serial
 terminal application running on the host machine, which displays it as
 a string.</p>
-</section>
-</section>
-<section id="additional-information">
+</div>
+</div>
+<div class="section" id="additional-information">
 <h2>Additional Information<a class="headerlink" href="#additional-information" title="Permalink to this heading">¶</a></h2>
-<section id="domain-or-board-support-package">
+<div class="section" id="domain-or-board-support-package">
 <h3>Domain or Board Support Package<a class="headerlink" href="#domain-or-board-support-package" title="Permalink to this heading">¶</a></h3>
 <p>A domain or board support package (BSP) is a collection of software
 drivers and, optionally, the operating system on which to build your
@@ -486,8 +517,8 @@ board that helps in basic initialization at power up and helps
 software applications to be run on top of it. You can create multiple
 applications to run on the domain. A domain is tied to a single
 processor in the platform.</p>
-</section>
-<section id="standalone-os">
+</div>
+<div class="section" id="standalone-os">
 <h3>Standalone OS<a class="headerlink" href="#standalone-os" title="Permalink to this heading">¶</a></h3>
 <p>Standalone is a simple, low-level software layer. It provides access to basic processor features such as caches, interrupts, and exceptions, as well as the basic processor features of a hosted environment. These basic features include
 standard input/output, profiling, abort, and exit. It is a single
@@ -501,9 +532,9 @@ creation process.</p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,9 +24,12 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Secure Boot" href="../secure_boot/secure-boot.html" />
+    <link rel="prev" title="Debugging FSBL Using the Vitis Debugger" href="../debuggable_fsbl/debuggable-fsbl.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,6 +59,46 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Linux Aware Debugging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-linux-os-aware-debugging">Setting Up Linux OS Aware Debugging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configure-the-linux-kernel">Configure the Linux Kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-hello-world-linux-application-to-exercise-the-os-aware-debugging-feature">Creating the Hello World Linux Application to Exercise the OS Aware Debugging Feature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-linux-processes-and-threads-using-os-aware-debug">Debugging Linux Processes and Threads Using OS Aware Debug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-the-linux-hello-application-with-os-aware-debug">Debugging the linux_hello Application with OS Aware Debug</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,7 +124,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="linux-os-aware-debugging-using-the-vitis-software-platform">
+  <div class="section" id="linux-os-aware-debugging-using-the-vitis-software-platform">
 <h1>Linux OS Aware Debugging Using the Vitis Software Platform<a class="headerlink" href="#linux-os-aware-debugging-using-the-vitis-software-platform" title="Permalink to this heading">¶</a></h1>
 <p>OS-aware debugging helps you to visualize OS-specific information such
 as task lists, processes/threads that are currently running,
@@ -94,11 +136,11 @@ OS.</p>
 cores and the processes/threads running on the OS simultaneously.</p>
 <p>The Vitis™ unified software platform supports the OS-aware debug
 feature for Linux OS running on Zynq®-7000 SoC devices.</p>
-<section id="setting-up-linux-os-aware-debugging">
+<div class="section" id="setting-up-linux-os-aware-debugging">
 <h2>Setting Up Linux OS Aware Debugging<a class="headerlink" href="#setting-up-linux-os-aware-debugging" title="Permalink to this heading">¶</a></h2>
 <p>This section describes setting up OS aware debug for a Zynq board
 running Linux OS.</p>
-<section id="configure-the-linux-kernel">
+<div class="section" id="configure-the-linux-kernel">
 <h3>Configure the Linux Kernel<a class="headerlink" href="#configure-the-linux-kernel" title="Permalink to this heading">¶</a></h3>
 <p>To be able to read the process list or to allow process or module
 debugging, the Linux awareness accesses the internal kernel structures
@@ -154,8 +196,8 @@ The Linux kernel is present in <code class="docutils literal notranslate"><span 
 host machine, so it is necessary to copy the Linux source code to a location
 that is accessible for the Vitis tool running locally on the Windows host
 machine.</p>
-</section>
-<section id="creating-the-hello-world-linux-application-to-exercise-the-os-aware-debugging-feature">
+</div>
+<div class="section" id="creating-the-hello-world-linux-application-to-exercise-the-os-aware-debugging-feature">
 <h3>Creating the Hello World Linux Application to Exercise the OS Aware Debugging Feature<a class="headerlink" href="#creating-the-hello-world-linux-application-to-exercise-the-os-aware-debugging-feature" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Open the Vitis software platform.</p></li>
@@ -219,7 +261,7 @@ the <strong>src</strong> directory, and select <strong>Import</strong> to open t
 <li><p>Navigate to your design files folder and select the OSA folder and
 click <strong>OK</strong>.</p>
 <p><strong>Note:</strong> For more information about downloading the design files
-for this tutorial, see <a class="reference external" href="2-using-zynq.md#design-files-for-this-tutorial">Design Files for this Tutorial</a>.</p>
+for this tutorial, see <a class="reference external" href="2-using-zynq.html#design-files-for-this-tutorial">Design Files for this Tutorial</a>.</p>
 </li>
 <li><p>Add the <strong>linux_hello.c</strong> file and click <strong>Finish</strong>.</p>
 <p>The Vitis software platform automatically builds the application and
@@ -227,11 +269,11 @@ displays the status in the console window.</p>
 </li>
 <li><p>Copy <code class="docutils literal notranslate"><span class="pre">linux_hello.elf</span></code> to an SD card.</p></li>
 </ol>
-</section>
-<section id="debugging-linux-processes-and-threads-using-os-aware-debug">
+</div>
+<div class="section" id="debugging-linux-processes-and-threads-using-os-aware-debug">
 <h3>Debugging Linux Processes and Threads Using OS Aware Debug<a class="headerlink" href="#debugging-linux-processes-and-threads-using-os-aware-debug" title="Permalink to this heading">¶</a></h3>
 <ol>
-<li><p>Boot Linux as described in <a class="reference external" href="6-linux-booting-debug.md#booting-linux-from-the-sd-card">Booting Linux from the SD
+<li><p>Boot Linux as described in <a class="reference external" href="6-linux-booting-debug.html#booting-linux-from-the-sd-card">Booting Linux from the SD
 Card</a>.</p></li>
 <li><p>Create a Debug configuration.</p></li>
 <li><p>Right-click <strong>linux_hello</strong> and select <strong>Debug as→ Debug
@@ -324,8 +366,8 @@ adding break points, and so on.</p>
 <p><img alt="../../../_images/image114.jpeg" src="../../../_images/image114.jpeg" /></p>
 <p><strong>Note:</strong> The addresses shown on this page might differ slightly
 from the addresses shown on your system.</p>
-</section>
-<section id="debugging-the-linux-hello-application-with-os-aware-debug">
+</div>
+<div class="section" id="debugging-the-linux-hello-application-with-os-aware-debug">
 <h3>Debugging the linux_hello Application with OS Aware Debug<a class="headerlink" href="#debugging-the-linux-hello-application-with-os-aware-debug" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Mount an SD card using <code class="docutils literal notranslate"><span class="pre">mount</span> <span class="pre">/dev/mmcblk0p1</span> <span class="pre">/mnt</span></code>.</p></li>
@@ -370,9 +412,9 @@ in the Embedded Software Development flow of the <em>Vitis Unified Software Plat
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>
@@ -387,7 +429,10 @@ in the Embedded Software Development flow of the <em>Vitis Unified Software Plat
                         }
                   </style>
 				  
-				  <footer>
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../debuggable_fsbl/debuggable-fsbl.html" class="btn btn-neutral float-left" title="Debugging FSBL Using the Vitis Debugger" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../secure_boot/secure-boot.html" class="btn btn-neutral float-right" title="Secure Boot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

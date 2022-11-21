@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPA-UG/README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,18 +113,18 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="building-and-debugging-linux-applications-for-zynq-7000-socs">
+  <div class="section" id="building-and-debugging-linux-applications-for-zynq-7000-socs">
 <h1>Building and Debugging Linux Applications for Zynq-7000 SoCs<a class="headerlink" href="#building-and-debugging-linux-applications-for-zynq-7000-socs" title="Permalink to this heading">¶</a></h1>
 <p>The earlier examples highlighted the creation of standalone applications. This chapter demonstrates how to develop Linux applications.</p>
-<section id="example-4-creating-linux-images">
+<div class="section" id="example-4-creating-linux-images">
 <h2>Example 4: Creating Linux Images<a class="headerlink" href="#example-4-creating-linux-images" title="Permalink to this heading">¶</a></h2>
 <p>In this example, you will configure and build a Linux operating system platform for an Arm™ Cortex-A9 core based APU on a Zynq® 7000 device. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.</p>
-<section id="input-and-output-files">
+<div class="section" id="input-and-output-files">
 <h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input:</p>
 <ul>
-<li><p>Hardware XSA (<code class="docutils literal notranslate"><span class="pre">system_wrapper.xsa</span></code> generated in <a class="reference external" href="./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc">Example 1</a>)</p></li>
+<li><p>Hardware XSA (<code class="docutils literal notranslate"><span class="pre">system_wrapper.xsa</span></code> generated in <a class="reference external" href="./2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc">Example 1</a>)</p></li>
 <li><p><a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">PetaLinux ZC702 BSP</a></p></li>
 </ul>
 </li>
@@ -115,8 +146,8 @@ function OptanonWrapper() { }
 <li><p>This example uses the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html">PetaLinux ZC702 BSP</a> to create a PetaLinux project. Ensure that you have downloaded the zc702 BSP for PetaLinux as instructed on the <a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2020.2-final.bsp">PetaLinux Tools download page</a>.</p></li>
 </ol>
 </div></blockquote>
-</section>
-<section id="creating-a-petalinux-image">
+</div>
+<div class="section" id="creating-a-petalinux-image">
 <h3>Creating a PetaLinux Image<a class="headerlink" href="#creating-a-petalinux-image" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Create a PetaLinux project using the following command:</p>
@@ -128,7 +159,7 @@ function OptanonWrapper() { }
 </li>
 <li><p>Reconfigure the project with <code class="docutils literal notranslate"><span class="pre">system_wrapper.xsa</span></code>:</p>
 <ul class="simple">
-<li><p>The created PetaLinux project uses the default hardware setup in the ZC702 Linux BSP. In this example, you will reconfigure the PetaLinux project based on the Zynq design that you configured using the Vivado® Design Suite in <a class="reference external" href="./2-using-zynq.md#example-1-creating-a-new-embedded-project-with-zynq-soc">Example 1</a>.</p></li>
+<li><p>The created PetaLinux project uses the default hardware setup in the ZC702 Linux BSP. In this example, you will reconfigure the PetaLinux project based on the Zynq design that you configured using the Vivado® Design Suite in <a class="reference external" href="./2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc">Example 1</a>.</p></li>
 <li><p>Copy the hardware platform <code class="docutils literal notranslate"><span class="pre">system_wrapper.xsa</span></code> to the Linux host machine.</p></li>
 <li><p>Reconfigure the project using the following command:</p></li>
 </ul>
@@ -176,15 +207,15 @@ configuration is based only on a PS with no design in the PL. If a bitstream is 
 <p>Refer to <code class="docutils literal notranslate"><span class="pre">petalinux-package</span> <span class="pre">--boot</span> <span class="pre">--help</span></code> for more details about the boot image package command.</p>
 </li>
 </ol>
-</section>
-<section id="booting-linux-on-the-target-board">
+</div>
+<div class="section" id="booting-linux-on-the-target-board">
 <h3>Booting Linux on the Target Board<a class="headerlink" href="#booting-linux-on-the-target-board" title="Permalink to this heading">¶</a></h3>
 <p>You will now boot Linux on the Zynq-7000 SoC ZC702 target board using
 JTAG mode.</p>
 <p><strong>Note:</strong> Additional boot options are explained in <a class="reference internal" href="7-linux-booting-debug.html"><span class="doc">Linux Booting and Debug in the Software Platform</span></a>.</p>
 <ol>
 <li><p>Copy the <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code>, <code class="docutils literal notranslate"><span class="pre">image.ub</span></code>, and <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> files to the SD card.</p></li>
-<li><p>Set up the board as described in <a class="reference external" href="./2-using-zynq.md#setting-up-the-board">Setting Up the Board</a>.</p></li>
+<li><p>Set up the board as described in <a class="reference external" href="./2-using-zynq.html#setting-up-the-board">Setting Up the Board</a>.</p></li>
 <li><p>Change the boot mode to SD boot.</p>
 <ul class="simple">
 <li><p>Change <strong>SW16[5:1]</strong> to <strong>01100</strong></p></li>
@@ -205,11 +236,11 @@ Zynq devices.</p>
 <li><p>Power on the target board.</p></li>
 <li><p>The Linux login prompt will appear. Use user name <code class="docutils literal notranslate"><span class="pre">root</span></code> and password <code class="docutils literal notranslate"><span class="pre">root</span></code> to log in.</p></li>
 </ol>
-</section>
-</section>
-<section id="example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide">
+</div>
+</div>
+<div class="section" id="example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide">
 <h2>Example 5: Creating a Hello World Application for Linux in the Vitis IDE<a class="headerlink" href="#example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide" title="Permalink to this heading">¶</a></h2>
-<section id="creating-linux-domain">
+<div class="section" id="creating-linux-domain">
 <h3>Creating Linux Domain<a class="headerlink" href="#creating-linux-domain" title="Permalink to this heading">¶</a></h3>
 <p>Now that Linux is running on the board, you can create a Linux domain
 followed by a Linux application. The steps to create a Linux domain
@@ -253,8 +284,8 @@ below:</p></li>
 <p>Now you have a Linux domain and are ready to create Linux applications.</p>
 </li>
 </ol>
-</section>
-<section id="creating-linux-applications-in-the-vitis-ide">
+</div>
+<div class="section" id="creating-linux-applications-in-the-vitis-ide">
 <h3>Creating Linux Applications in the Vitis IDE<a class="headerlink" href="#creating-linux-applications-in-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Create a Linux application:</p>
@@ -277,8 +308,8 @@ below:</p></li>
 </ul>
 </li>
 </ol>
-</section>
-<section id="preparing-the-linux-agent-for-remote-connection">
+</div>
+<div class="section" id="preparing-the-linux-agent-for-remote-connection">
 <h3>Preparing the Linux Agent for Remote Connection<a class="headerlink" href="#preparing-the-linux-agent-for-remote-connection" title="Permalink to this heading">¶</a></h3>
 <p>The Vitis IDE needs a channel to download the application to the running target. When the target runs Linux, it uses TCF Agent running on Linux. TCF Agent is added to the Linux rootfs from the PetaLinux configuration by default. When Linux boots up, it launches TCF Agent automatically. The Vitis IDE talks to TCF Agent on the board using an Ethernet connection.</p>
 <ol>
@@ -319,8 +350,8 @@ below:</p></li>
 <p><img alt="Vitis test connection success" src="../../../_images/vitis_test_connection_success.png" /></p>
 </li>
 </ol>
-</section>
-<section id="running-the-linux-application-from-the-vitis-ide">
+</div>
+<div class="section" id="running-the-linux-application-from-the-vitis-ide">
 <h3>Running the Linux Application from the Vitis IDE<a class="headerlink" href="#running-the-linux-application-from-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Run the Linux application:</p>
@@ -349,8 +380,8 @@ below:</p></li>
 </ul>
 </li>
 </ol>
-</section>
-<section id="debugging-a-linux-application-from-the-vitis-ide">
+</div>
+<div class="section" id="debugging-a-linux-application-from-the-vitis-ide">
 <h3>Debugging a Linux Application from the Vitis IDE<a class="headerlink" href="#debugging-a-linux-application-from-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <p>Debugging Linux applications requires the Linux agent to be set up properly. Refer to <a class="reference external" href="#preparing-the-linux-agent-for-remote-connection">Preparing the Linux Agent for Remote Connection</a> for detailed steps.</p>
 <ol>
@@ -385,9 +416,9 @@ below:</p></li>
 </ul>
 </li>
 </ol>
-</section>
-</section>
-<section id="summary">
+</div>
+</div>
+<div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
 <p>In this chapter, you learned how to:</p>
 <ul class="simple">
@@ -400,8 +431,8 @@ below:</p></li>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

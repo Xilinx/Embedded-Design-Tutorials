@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -108,8 +108,9 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Releases</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
@@ -139,7 +140,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="versal-acap-cips-and-noc-ddr-ip-core-configuration">
+  <div class="section" id="versal-acap-cips-and-noc-ddr-ip-core-configuration">
 <h1>Versal ACAP CIPS and NoC (DDR) IP Core Configuration<a class="headerlink" href="#versal-acap-cips-and-noc-ddr-ip-core-configuration" title="Permalink to this heading">¶</a></h1>
 <p>The Versal® ACAP CIPS IP core allows you to configure the processing system and the PMC block, including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.</p>
 <p>This chapter describes how to perform the following tasks:</p>
@@ -153,17 +154,17 @@ function OptanonWrapper() { }
 <li><p>Creating and running a Hello World software application on Arm Cortex-A72 using DDR as memory.</p></li>
 <li><p>Creating and running a Hello World software application on Arm Cortex-R5F using DDR as memory.</p></li>
 </ul>
-<section id="prerequisites">
+<div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
 <p>To create and run Hello World applications discussed in this chapter, install the Vitis™ unified software platform. For installation procedures, see <em>Vitis Unified Software Platform Documentation: Embedded Software Development</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug1400-vitis-embedded.pdf">UG1400</a>).</p>
-</section>
-<section id="cips-ip-core-configuration">
+</div>
+<div class="section" id="cips-ip-core-configuration">
 <span id="id1"></span><h2>CIPS IP Core Configuration<a class="headerlink" href="#cips-ip-core-configuration" title="Permalink to this heading">¶</a></h2>
 <p>Creating a Versal ACAP system design involves configuring the CIPS IP core to select the appropriate boot devices and peripherals. To start with, if the CIPS IP core peripherals and available multiplexed I/O (MIO) connections meet the requirements, no PL component is required. This chapter guides you through creating a simple CIPS IP core-based design.</p>
-<section id="creating-a-new-embedded-project-with-the-versal-acap">
+<div class="section" id="creating-a-new-embedded-project-with-the-versal-acap">
 <h3>Creating a New Embedded Project with the Versal ACAP<a class="headerlink" href="#creating-a-new-embedded-project-with-the-versal-acap" title="Permalink to this heading">¶</a></h3>
 <p>For this example, launch the Vivado Design Suite and create a project with an embedded processor system as the top level.</p>
-<section id="starting-your-design">
+<div class="section" id="starting-your-design">
 <h4>Starting Your Design<a class="headerlink" href="#starting-your-design" title="Permalink to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>Start the Vivado Design Suite.</p></li>
@@ -265,8 +266,8 @@ Summary</p></td>
 </div>
 </li>
 </ol>
-</section>
-<section id="creating-an-embedded-processor-project">
+</div>
+<div class="section" id="creating-an-embedded-processor-project">
 <h4>Creating an Embedded Processor Project<a class="headerlink" href="#creating-an-embedded-processor-project" title="Permalink to this heading">¶</a></h4>
 <p>To create an embedded processor project:</p>
 <ol class="arabic">
@@ -314,8 +315,8 @@ Design</p></td>
 <a class="reference internal image-reference" href="../../../../_images/image7.png"><img alt="../../../../_images/image7.png" src="../../../../_images/image7.png" style="width: 600px;" /></a>
 </li>
 </ol>
-</section>
-<section id="managing-the-versal-acap-cips-ip-core-in-the-vivado-design-suite">
+</div>
+<div class="section" id="managing-the-versal-acap-cips-ip-core-in-the-vivado-design-suite">
 <h4>Managing the Versal ACAP CIPS IP Core in the Vivado Design Suite<a class="headerlink" href="#managing-the-versal-acap-cips-ip-core-in-the-vivado-design-suite" title="Permalink to this heading">¶</a></h4>
 <p>Now that you have added the processor system for Versal ACAP to the design, you can begin managing the available options.</p>
 <ol class="arabic">
@@ -346,8 +347,8 @@ Design</p></td>
 </li>
 <li><p>Click <strong>Finish</strong> and <strong>Finish</strong> to close the CIPS GUI.</p></li>
 </ol>
-</section>
-<section id="validating-the-design-and-generating-the-output">
+</div>
+<div class="section" id="validating-the-design-and-generating-the-output">
 <h4>Validating the Design and Generating the Output<a class="headerlink" href="#validating-the-design-and-generating-the-output" title="Permalink to this heading">¶</a></h4>
 <p>To validate the design and to generate the output products, follow these steps:</p>
 <ol class="arabic">
@@ -380,8 +381,8 @@ Design</p></td>
 <img alt="../../../../_images/image16.png" src="../../../../_images/image16.png" />
 </li>
 </ol>
-</section>
-<section id="synthesizing-implementing-and-generating-the-device-image">
+</div>
+<div class="section" id="synthesizing-implementing-and-generating-the-device-image">
 <h4>Synthesizing, Implementing, and Generating the Device Image<a class="headerlink" href="#synthesizing-implementing-and-generating-the-device-image" title="Permalink to this heading">¶</a></h4>
 <p>Follow these steps to generate a device image for the design.</p>
 <ol class="arabic">
@@ -414,8 +415,8 @@ Design</p></td>
 </li>
 </ol>
 </div>
-</section>
-<section id="exporting-hardware">
+</div>
+<div class="section" id="exporting-hardware">
 <span id="exporting-hardware-2"></span><h4>Exporting Hardware<a class="headerlink" href="#exporting-hardware" title="Permalink to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>From the Vivado toolbar, select <strong>File → Export→ Export Hardware</strong>.</p>
@@ -427,9 +428,9 @@ Design</p></td>
 </li>
 <li><p>Click <strong>Finish</strong>.</p></li>
 </ol>
-</section>
-</section>
-<section id="running-a-bare-metal-hello-world-application">
+</div>
+</div>
+<div class="section" id="running-a-bare-metal-hello-world-application">
 <span id="running-bare-metal-hello-world-application"></span><h3>Running a Bare-Metal Hello World Application<a class="headerlink" href="#running-a-bare-metal-hello-world-application" title="Permalink to this heading">¶</a></h3>
 <p>In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your system, and run a Hello World software application from Arm Cortex-A72 on On-chip-memory (OCM) and Arm Cortex- R5F on Tightly-coupled-memory (TCM) on the Vitis software platform.</p>
 <p>The following steps demonstrate the procedure to make the required cable connections, connect the board through your system, and launch the Vitis software platform.</p>
@@ -465,7 +466,7 @@ Design</p></td>
 <p class="admonition-title">Note</p>
 <p>You can use external terminal Serial Port Consoles like Tera Term or Putty. You can find the relevant COM port information from the Device Manager menu in Control Panel.</p>
 </div>
-<section id="creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm">
+<div class="section" id="creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm">
 <h4>Creating a Hello World Application for the Arm Cortex-A72 on OCM<a class="headerlink" href="#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm" title="Permalink to this heading">¶</a></h4>
 <p>The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM.</p>
 <ol class="arabic">
@@ -560,7 +561,7 @@ project</p></td>
 </div>
 </li>
 </ol>
-<section id="modifying-the-helloworld-a72-application-source-code">
+<div class="section" id="modifying-the-helloworld-a72-application-source-code">
 <h5>Modifying the helloworld_a72 Application Source Code<a class="headerlink" href="#modifying-the-helloworld-a72-application-source-code" title="Permalink to this heading">¶</a></h5>
 <ol class="arabic">
 <li><p>Double-click <strong>helloworld_a72</strong>, then double-click <strong>src</strong> and select <strong>helloworld.c</strong>.</p>
@@ -576,9 +577,9 @@ project</p></td>
 </li>
 <li><p>Click <img alt="build" src="../../../../_images/image29.png" /> to build the project.</p></li>
 </ol>
-</section>
-</section>
-<section id="adding-a-new-rpu-domain-to-the-platform-project">
+</div>
+</div>
+<div class="section" id="adding-a-new-rpu-domain-to-the-platform-project">
 <h4>Adding a New RPU Domain to the Platform Project<a class="headerlink" href="#adding-a-new-rpu-domain-to-the-platform-project" title="Permalink to this heading">¶</a></h4>
 <p>The following steps demonstrate the procedure to create a bare-metal Hello World application for the Arm Cortex-R5F on TCM. The application needs to be linked to a domain. Before creating the application project, make sure that the target domain software environment is available. If not, add the required domain to your platform using the following steps.</p>
 <ol class="arabic">
@@ -635,8 +636,8 @@ Runtimes</p></td>
 </li>
 <li><p>Click the <img alt="build" src="../../../../_images/image29.png" /> icon to build the platform. The Explorer view shows the generated image files in the platform project.</p></li>
 </ol>
-</section>
-<section id="creating-the-standalone-application-project-for-the-arm-cortex-r5f">
+</div>
+<div class="section" id="creating-the-standalone-application-project-for-the-arm-cortex-r5f">
 <h4>Creating the Standalone Application Project for the Arm Cortex-R5F<a class="headerlink" href="#creating-the-standalone-application-project-for-the-arm-cortex-r5f" title="Permalink to this heading">¶</a></h4>
 <p>The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-R5F.</p>
 <ol class="arabic">
@@ -719,7 +720,7 @@ project</p></td>
 </li>
 <li><p>Right-click <strong>vck190_platform</strong> and select <strong>Build Project</strong>. Alternatively, you can also click <img alt="build" src="../../../../_images/image29.png" /> to build the project.</p></li>
 </ol>
-<section id="modifying-the-helloworld-r5-application-source-code">
+<div class="section" id="modifying-the-helloworld-r5-application-source-code">
 <h5>Modifying the helloworld_r5 Application Source Code<a class="headerlink" href="#modifying-the-helloworld-r5-application-source-code" title="Permalink to this heading">¶</a></h5>
 <ol class="arabic">
 <li><p>Expand <strong>helloworld_r5</strong> and double-click <strong>src</strong> and select <strong>helloworld.c</strong> to open the <cite>helloworld.c</cite> source file for the helloworld_r5 application.</p></li>
@@ -732,8 +733,8 @@ project</p></td>
 </li>
 <li><p>Click <img alt="build" src="../../../../_images/image29.png" /> to build the project.</p></li>
 </ol>
-</section>
-<section id="modifying-the-application-linker-script-for-the-application-project-helloworld-r5">
+</div>
+<div class="section" id="modifying-the-application-linker-script-for-the-application-project-helloworld-r5">
 <h5>Modifying the Application Linker Script for the Application Project helloworld_r5<a class="headerlink" href="#modifying-the-application-linker-script-for-the-application-project-helloworld-r5" title="Permalink to this heading">¶</a></h5>
 <p>The following steps demonstrate the procedure to modify the application linker script for the application project helloworld_r5.</p>
 <div class="admonition note">
@@ -764,13 +765,13 @@ project</p></td>
 </li>
 <li><p>Right-click <strong>helloworld_system</strong> and select <strong>Build Project</strong> or <img alt="build" src="../../../../_images/image29.png" />. This generates the project elf files within the Debug folder of the helloworld_r5 project.</p></li>
 </ol>
-</section>
-</section>
-</section>
-<section id="running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform">
+</div>
+</div>
+</div>
+<div class="section" id="running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform">
 <span id="running-applications-in-jtag-mode"></span><h3>Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform<a class="headerlink" href="#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform" title="Permalink to this heading">¶</a></h3>
 <p>To run an application, you must create a <strong>Run configuration</strong> that captures the settings for executing the application. You can either create a Run configuration for the whole system project or independent applications.</p>
-<section id="creating-a-run-configuration-for-the-system-project">
+<div class="section" id="creating-a-run-configuration-for-the-system-project">
 <h4>Creating a Run Configuration for the System Project<a class="headerlink" href="#creating-a-run-configuration-for-the-system-project" title="Permalink to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>Right-click on the system project <strong>helloworld_system</strong> and select <strong>Run As → Run Configurations</strong>. The Run Configuration dialog box opens.</p></li>
@@ -854,11 +855,11 @@ button.</p></td>
 </div>
 </li>
 </ol>
-</section>
-<section id="creating-a-run-configuration-for-a-single-application-within-a-system-project">
+</div>
+<div class="section" id="creating-a-run-configuration-for-a-single-application-within-a-system-project">
 <h4>Creating a Run Configuration for a Single Application within a System Project<a class="headerlink" href="#creating-a-run-configuration-for-a-single-application-within-a-system-project" title="Permalink to this heading">¶</a></h4>
 <p>You can create a run configuration for a single application within a system project in two ways:</p>
-<section id="method-i">
+<div class="section" id="method-i">
 <h5>Method I<a class="headerlink" href="#method-i" title="Permalink to this heading">¶</a></h5>
 <ol class="arabic">
 <li><p>Right-click on the system project <strong>helloworld_system</strong> and select <strong>Run As → Run Configurations</strong>. The Run configuration dialog box opens.</p></li>
@@ -953,8 +954,8 @@ the New button.</p></td>
 <p class="admonition-title">Note</p>
 <p>Both the APU and RPU applications print on the same console as both applications are using UART0 for these applications. The application software sends the hello world strings for both APU and RPU to the UART0 peripheral of the PS section. From UART0, the hello world string goes byte-by-byte to the serial terminal application running on the host machine, which displays it as a string.</p>
 </div>
-</section>
-<section id="method-ii">
+</div>
+<div class="section" id="method-ii">
 <h5>Method II<a class="headerlink" href="#method-ii" title="Permalink to this heading">¶</a></h5>
 <ol class="arabic">
 <li><p>Right-click on the application project hello_world_r5 and select <strong>Run As → Run Configurations</strong>. The Run Configuration dialog box opens.</p></li>
@@ -1041,17 +1042,17 @@ connection here.</p></td>
 </div>
 </li>
 </ol>
-</section>
-</section>
-</section>
-</section>
-<section id="noc-and-ddr-ip-core-configuration">
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="noc-and-ddr-ip-core-configuration">
 <span id="noc-ip-core-configuration"></span><h2>NoC (and DDR) IP Core Configuration<a class="headerlink" href="#noc-and-ddr-ip-core-configuration" title="Permalink to this heading">¶</a></h2>
 <p>This section describes the NoC (and DDR) configuration and related connections required for use with the CIPS configured earlier in this chapter. The Versal ACAP CIPS IP core allows you to configure two superscalar, multi-core Arm Cortex-A72 based APUs, two Arm Cortex-R5F RPUs, a platform management controller (PMC), and a CCIX PCIe® module (CPM). The NoC IP core allows configuring the NoC and enabling the DDR memory controllers.</p>
-<section id="configuring-the-noc-ip-core-in-an-existing-project">
+<div class="section" id="configuring-the-noc-ip-core-in-an-existing-project">
 <h3>Configuring the NoC IP Core in an Existing Project<a class="headerlink" href="#configuring-the-noc-ip-core-in-an-existing-project" title="Permalink to this heading">¶</a></h3>
 <p>For this example, launch the Vivado Design Suite and the project with basic CIPS configuration as shown in <a class="reference external" href="#creating-a-new-embedded-project-with-the-versal-acap">Creating a New Embedded Project with the Versal ACAP</a>.</p>
-<section id="configuring-your-design">
+<div class="section" id="configuring-your-design">
 <h4>Configuring Your Design<a class="headerlink" href="#configuring-your-design" title="Permalink to this heading">¶</a></h4>
 <p>To configure your design, follow these steps:</p>
 <ol class="arabic">
@@ -1082,8 +1083,8 @@ connection here.</p></td>
 <a class="reference internal image-reference" href="../../../../_images/noc-ip.png"><img alt="../../../../_images/noc-ip.png" src="../../../../_images/noc-ip.png" style="width: 600px;" /></a>
 </li>
 </ol>
-</section>
-<section id="id2">
+</div>
+<div class="section" id="id2">
 <h4>Validating the Design and Generating the Output<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
 <p>To validate the design and generate the output, follow these steps:</p>
 <ol class="arabic">
@@ -1115,8 +1116,8 @@ connection here.</p></td>
 <img alt="../../../../_images/image39.png" src="../../../../_images/image39.png" />
 </li>
 </ol>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h4>Synthesizing, Implementing, and Generating the Device Image<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
 <p>Follow these steps to generate a device image for the design.</p>
 <ol class="arabic">
@@ -1149,8 +1150,8 @@ connection here.</p></td>
 </li>
 </ol>
 </div>
-</section>
-<section id="exporting-hardware-1">
+</div>
+<div class="section" id="exporting-hardware-1">
 <span id="id4"></span><h4>Exporting Hardware<a class="headerlink" href="#exporting-hardware-1" title="Permalink to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>From the Vivado main menu, select <strong>File→ Export → Export Hardware</strong>. The Export Hardware dialog box opens.</p></li>
@@ -1160,9 +1161,9 @@ connection here.</p></td>
 </li>
 <li><p>Click <strong>Finish</strong>.</p></li>
 </ol>
-</section>
-</section>
-<section id="running-a-bare-metal-hello-world-application-on-ddr-memory">
+</div>
+</div>
+<div class="section" id="running-a-bare-metal-hello-world-application-on-ddr-memory">
 <span id="bare-metal-hello-world-on-ddr"></span><h3>Running a Bare-Metal Hello World Application on DDR Memory<a class="headerlink" href="#running-a-bare-metal-hello-world-application-on-ddr-memory" title="Permalink to this heading">¶</a></h3>
 <p>In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Xilinx Vitis software platform.</p>
 <p>You will create a new Vitis project, similar to the one in <a class="reference external" href="#running-a-bare-metal-hello-world-application">Running a Bare-Metal Hello World Application</a>, except that it will use the default linker scripts, which will reference the DDR memory.</p>
@@ -1180,9 +1181,9 @@ connection here.</p></td>
 <li><p>Right-click <strong>helloworld_system</strong> and select Build Project or click <img alt="build" src="../../../../_images/image29.png" /> to generate the project elf files within the Debug folder of the application project.</p></li>
 </ol>
 <p>Refer to <a class="reference external" href="#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform">Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform</a> for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to <a class="reference internal" href="4-boot-and-config.html#generating-boot-image-for-standalone-application"><span class="std std-ref">Generating Boot Image for Standalone Application</span></a> for generating boot images for standalone applications.</p>
-</section>
-</section>
-<section id="ospi-boot-mode">
+</div>
+</div>
+<div class="section" id="ospi-boot-mode">
 <h2>OSPI Boot Mode<a class="headerlink" href="#ospi-boot-mode" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1203,8 +1204,8 @@ connection here.</p></td>
 <li><p>Click <strong>Finish</strong>.</p></li>
 </ol>
 <p>This configures the design in OSPI boot mode.</p>
-</section>
-<section id="emmc-boot-mode">
+</div>
+<div class="section" id="emmc-boot-mode">
 <h2>eMMC Boot Mode<a class="headerlink" href="#emmc-boot-mode" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1225,8 +1226,8 @@ connection here.</p></td>
 <li><p>Click <strong>Finish</strong>.</p></li>
 </ol>
 <p>This configures the design in eMMC boot mode.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

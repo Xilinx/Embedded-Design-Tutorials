@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -23,7 +22,9 @@ function OptanonWrapper() { }
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -50,15 +51,15 @@ function OptanonWrapper() { }
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">简体中文</span></p>
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">日本語</span></p>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a><ul class="current">
@@ -109,26 +110,26 @@ function OptanonWrapper() { }
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Feature Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/microblaze-system/README.html">Programming an Embedded MicroBlaze Processor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Design Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Debugging</span></p>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">All Releases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
@@ -160,8 +161,8 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="boot-and-configuration">
-<h1>Boot and Configuration<a class="headerlink" href="#boot-and-configuration" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="boot-and-configuration">
+<h1>Boot and Configuration<a class="headerlink" href="#boot-and-configuration" title="Permalink to this heading">¶</a></h1>
 <p>This chapter shows how to integrate the software and hardware components generated in the previous steps to create a Zynq® UltraScale+™ boot image. After reading this chapter, you will understand how to integrate and load boot loaders, bare-metal applications (for APU/RPU), and the Linux OS for a Zynq UltraScale+ system in different boot requirements: QSPI, SD card, JTAG, and so on.</p>
 <p>The following key points are covered in this chapter:</p>
 <ul class="simple">
@@ -184,20 +185,20 @@ function OptanonWrapper() { }
 <p>To create a boot image, you can either use the Create Boot Image wizard in the Vitis IDE, or the Bootgen command line tool (the Create Boot Image wizard calls the Bootgen tool as well). The principle function of the Create Boot Image wizard or Bootgen is to integrate the partitions (hardware-bitstream and software) in the proper format. It allows you to specify security options. It can also create cryptographic keys.</p>
 <p>Functionally, Bootgen uses a BIF (Bootgen image format) file as an input, and generates a single file image in binary BIN or MCS format. It can be used to program non-volatile memories such as QSPI and SD cards. The Bootgen GUI facilitates the creation of the BIF input file.</p>
 <p>This chapter makes use of a processing system block. <a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html"><span class="doc">Design Example 1: Using GPIOs, Timers, and Interrupts</span></a> covers the boot image which will include the PS partitions used in this chapter and a bitstream targeted for the PL fabric.</p>
-<section id="system-software">
-<h2>System Software<a class="headerlink" href="#system-software" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="system-software">
+<h2>System Software<a class="headerlink" href="#system-software" title="Permalink to this heading">¶</a></h2>
 <p>The following system software blocks cover most of the boot and configuration for this chapter. For detailed boot flow and various boot sequences, refer to the <em>System Boot and Configuration</em> chapter in the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em>
 (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev">UG1137</a>).</p>
-<section id="first-stage-boot-loader">
-<h3>First Stage Boot Loader<a class="headerlink" href="#first-stage-boot-loader" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="first-stage-boot-loader">
+<h3>First Stage Boot Loader<a class="headerlink" href="#first-stage-boot-loader" title="Permalink to this heading">¶</a></h3>
 <p>In non-secure boot mode, the platform management unit (PMU) releases the reset of the configuration security unit, and enters the PMU server mode to monitor power. At this stage, the configuration security unit loads the first stage boot loader (FSBL) into on-chip memory (OCM). The FSBL can be run from either APU A53_0, RPU R5_0, or RPU R5_lockstep. In this example, the FSBL is targeted for APU Cortex™-A53 Core 0. The last 512 bytes of this region are used by FSBL to share the hand-off parameters corresponding to the applications handed off by the TF-A.</p>
 <p>The first stage boot loader initializes important blocks in the processing subsystem. This includes clearing the reset of the processors and initializing clocks, memory, UART, and so on before handing over the control of the next partition in DDR, to either the RPU or APU. In this example, the FSBL loads a bare-metal application in DDR and hands off to the RPU Cortex-R5F in lockstep mode, and then loads U-Boot to be executed by the APU Cortex-A53 Core-0. For more information, see the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em>
 (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev">UG1137</a>).</p>
 <p>For this chapter, you can use the FSBL executable that you created in <a class="reference internal" href="4-build-sw-for-ps-subsystems.html"><span class="doc">Building Software for PS
 Subsystems</span></a>. In the FSBL application, the <code class="docutils literal notranslate"><span class="pre">xfsbl_translation_table.S</span></code> differs from the <code class="docutils literal notranslate"><span class="pre">translation_table.S</span></code> of the Cortex-A53 in only one aspect, to mark the DDR region as reserved. This is to avoid speculative access to DDR memory controller before it is initialized. When the DDR initialization is completed in FSBL, the memory attributes for the DDR region are changed to “memory” so that they are cacheable.</p>
-</section>
-<section id="platform-management-unit-firmware-pmufw">
-<h3>Platform Management Unit Firmware (PMUFW)<a class="headerlink" href="#platform-management-unit-firmware-pmufw" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="platform-management-unit-firmware-pmufw">
+<h3>Platform Management Unit Firmware (PMUFW)<a class="headerlink" href="#platform-management-unit-firmware-pmufw" title="Permalink to this heading">¶</a></h3>
 <p>The platform management unit (PMU) and the configuration security unit manage and perform the multi-staged booting process. The PMU primarily controls the pre-configuration stage that executes the PMU ROM to set up the system. The PMU handles all of the processes related to reset and wake-up. The Vitis IDE provides PMU firmware that can be built to run on the PMU. For more details on the platform management and PMU firmware, see the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em> (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev">UG1137</a>).</p>
 <p>The PMU firmware can be loaded in the following ways:</p>
 <ul class="simple">
@@ -206,22 +207,22 @@ Subsystems</span></a>. In the FSBL application, the <code class="docutils litera
 <li><p>Using JTAG boot mode as described in <a class="reference internal" href="#boot-sequence-for-qspi-boot-mode-using-jtag"><span class="std std-ref">Boot Sequence for QSPI-Boot Mode Using JTAG</span></a>.</p></li>
 </ul>
 <p>For more information, see the <a class="reference external" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841724/PMU+Firmware">PMU Firmware Xilinx Wiki</a>.</p>
-</section>
-<section id="u-boot">
-<h3>U-Boot<a class="headerlink" href="#u-boot" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="u-boot">
+<h3>U-Boot<a class="headerlink" href="#u-boot" title="Permalink to this heading">¶</a></h3>
 <p>The U-Boot acts as a secondary boot loader. After the FSBL handoff, the U-Boot loads Linux on the Arm® Cortex-A53 APU. After FSBL, the U-Boot configures the rest of the peripherals in the processing system based on board configuration. U-Boot can fetch images from different memory sources such as eMMC, SATA, TFTP, SD, and QSPI. For this example, U-Boot and all other images are loaded from the SD card. Therefore, for this example, the board will be set to SD-boot mode.</p>
 <p>U-Boot can be configured and built using the PetaLinux tool flow. For this example, you can use the U-Boot image that you created in <a class="reference internal" href="6-build-linux-sw-for-ps.html"><span class="doc">Building Linux Software for PS Subsystems</span></a>.</p>
-</section>
-<section id="trusted-firmware-a-tf-a">
-<h3>Trusted Firmware-A (TF-A)<a class="headerlink" href="#trusted-firmware-a-tf-a" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="trusted-firmware-a-tf-a">
+<h3>Trusted Firmware-A (TF-A)<a class="headerlink" href="#trusted-firmware-a-tf-a" title="Permalink to this heading">¶</a></h3>
 <p>The TF-A is a transparent bare-metal application layer executed in Exception Level 3 (EL3) on the APU. The TF-A includes a Secure Monitor
 layer for switching between the secure and non-secure world. The Secure Monitor and the implementation of Trusted Board Boot Requirements (TBBR) make the TF-A layer a mandatory requirement to load Linux on an APU on Zynq UltraScale+.</p>
 <p>FSBL loads the TF-A to be executed by the APU, which keeps running in EL3 awaiting a service request. The TF-A starts at 0xFFFEA000. FSBL also loads U-Boot in DDR to be executed by the APU, which loads the Linux OS in SMP mode on the APU. It is important to note that the PL bitstream should be loaded before the TF-A is loaded. This is because FSBL uses the OCM region, which is reserved by the TF-A as a temporary buffer for when the bitstream is present in the BIN file. Because of this, if the bitstream is loaded after the TF-A, FSBL overwrites the TF-A image with its temporary buffer, corrupting the TF-A image. The bitstream should therefore be positioned the in BIF before the TF-A and preferably immediately after FSBL and PMU firmware.</p>
 <p>The TF-A (<code class="docutils literal notranslate"><span class="pre">bl31.elf</span></code>) is built by default in PetaLinux and can be found in the PetaLinux project images directory.</p>
 <p>For more details on TF-A, refer to the <em>Arm Trusted Firmware</em> section in the <em>Security</em> chapter of the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em> <a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev">UG1137</a>).</p>
-</section>
-<section id="linux-on-apu">
-<h3>Linux on APU<a class="headerlink" href="#linux-on-apu" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="linux-on-apu">
+<h3>Linux on APU<a class="headerlink" href="#linux-on-apu" title="Permalink to this heading">¶</a></h3>
 <p>You already created the PetaLinux images in <a class="reference internal" href="4-build-sw-for-ps-subsystems.html"><span class="doc">Building Software for PS Subsystems</span></a>. In this example, the PetaLinux is configured to build images for SD-boot with an <code class="docutils literal notranslate"><span class="pre">initramfs</span></code> root file system. This is the default boot setting in PetaLinux.</p>
 <p>The images can be found in the <code class="docutils literal notranslate"><span class="pre">$&lt;PetaLinux_Project&gt;/images/linux/</span></code> directory. For loading Linux on the APU, the following images are used from PetaLinux:</p>
 <ul class="simple">
@@ -235,15 +236,15 @@ layer for switching between the secure and non-secure world. The Secure Monitor 
 </ul>
 </li>
 </ul>
-</section>
-<section id="bare-metal-on-the-rpu">
-<h3>Bare Metal on the RPU<a class="headerlink" href="#bare-metal-on-the-rpu" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bare-metal-on-the-rpu">
+<h3>Bare Metal on the RPU<a class="headerlink" href="#bare-metal-on-the-rpu" title="Permalink to this heading">¶</a></h3>
 <p>In addition to Linux on APU, this example also loads a bare-metal application on RPU Cortex-R5F in lockstep mode.</p>
 <p>For this example, refer to the testapp_r5 application that you created in <a class="reference internal" href="4-build-sw-for-ps-subsystems.html#creating-a-custom-bare-metal-application-for-an-arm-cortex-r5f-based-rpu-in-the-same-system-project"><span class="std std-ref">Creating a Custom Bare-Metal Application for an Arm Cortex-R5F Based RPU in the Same System Project</span></a>.</p>
-</section>
-</section>
-<section id="boot-sequence-for-sd-boot">
-<span id="id4"></span><h2>Boot Sequence for SD-Boot<a class="headerlink" href="#boot-sequence-for-sd-boot" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="boot-sequence-for-sd-boot">
+<span id="id4"></span><h2>Boot Sequence for SD-Boot<a class="headerlink" href="#boot-sequence-for-sd-boot" title="Permalink to this heading">¶</a></h2>
 <p>Now that all the individual images are ready, create the boot image to load all of these components on the Zynq UltraScale+ device. This can be done using the Create Boot Image wizard in the Vitis IDE by performing the following steps.</p>
 <ol class="arabic">
 <li><p>Launch the Create Boot Image wizard in the Vitis IDE:</p>
@@ -335,8 +336,8 @@ layer for switching between the secure and non-secure world. The Secure Monitor 
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bootgen</span> <span class="o">-</span><span class="n">image</span> <span class="n">sd_boot</span><span class="o">.</span><span class="n">bif</span> <span class="o">-</span><span class="n">arch</span> <span class="n">zynqmp</span> <span class="o">-</span><span class="n">o</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">sd_boot</span>\<span class="n">BOOT</span><span class="o">.</span><span class="n">bin</span>
 </pre></div>
 </div>
-<section id="running-the-image-on-the-zcu102-board">
-<h3>Running the Image on the ZCU102 Board<a class="headerlink" href="#running-the-image-on-the-zcu102-board" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="running-the-image-on-the-zcu102-board">
+<h3>Running the Image on the ZCU102 Board<a class="headerlink" href="#running-the-image-on-the-zcu102-board" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Copy the <code class="docutils literal notranslate"><span class="pre">BOOT.bin</span></code>, <code class="docutils literal notranslate"><span class="pre">image.ub</span></code>, and <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> to the SD card. Here <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> is read by U-Boot to load the kernel and the root file system.</p></li>
 <li><p>Load the SD card into the ZCU102 board, in the J100 connector.</p></li>
@@ -360,13 +361,13 @@ layer for switching between the secure and non-secure world. The Secure Monitor 
 <p>The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 APU in SMP mode. The terminal messages indicate when the
 U-Boot loads the kernel image. When the kernel starts up, a user interface prompt is shown in the target Linux OS. The kernel loading and starting sequence can be seen in the following figure.</p>
 <img alt="../../../_images/image632.png" src="../../../_images/image632.png" />
-</section>
-</section>
-<section id="boot-sequence-for-qspi-boot-mode">
-<span id="id5"></span><h2>Boot Sequence for QSPI Boot Mode<a class="headerlink" href="#boot-sequence-for-qspi-boot-mode" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="boot-sequence-for-qspi-boot-mode">
+<span id="id5"></span><h2>Boot Sequence for QSPI Boot Mode<a class="headerlink" href="#boot-sequence-for-qspi-boot-mode" title="Permalink to this heading">¶</a></h2>
 <p>The ZCU102 board also comes with dual parallel QSPI flashes adding up to 128 MB in size. In this example, you will create a boot image and load the images on the Zynq UltraScale+ device in QSPI boot mode. The images can be configured using the Create Boot Image wizard in the Vitis IDE. This can be done by performing the following steps.</p>
-<section id="creating-linux-images-using-petalinux-for-qspi-flash">
-<h3>Creating Linux Images Using PetaLinux for QSPI Flash<a class="headerlink" href="#creating-linux-images-using-petalinux-for-qspi-flash" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="creating-linux-images-using-petalinux-for-qspi-flash">
+<h3>Creating Linux Images Using PetaLinux for QSPI Flash<a class="headerlink" href="#creating-linux-images-using-petalinux-for-qspi-flash" title="Permalink to this heading">¶</a></h3>
 <p>The earlier example highlighted creation of the Linux Images and Boot images to boot from an SD card. This section explains the configuration of PetaLinux to generate Linux images for QSPI flash. For more information about the dependencies for PetaLinux, see the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>).</p>
 <ol class="arabic">
 <li><p>Before starting this example, create a backup of the boot images created for SD card setup using the following commands:</p>
@@ -430,9 +431,9 @@ $ cp BOOT.BIN sd_boot/
 <p class="admonition-title">Note</p>
 <p>For more information, refer to the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a>).</p>
 </div>
-</section>
-<section id="boot-image-setup-in-vitis">
-<h3>Boot Image Setup in Vitis<a class="headerlink" href="#boot-image-setup-in-vitis" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="boot-image-setup-in-vitis">
+<h3>Boot Image Setup in Vitis<a class="headerlink" href="#boot-image-setup-in-vitis" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>If the Vitis IDE is not already running, start it and set the workspace as indicated in <a class="reference internal" href="4-build-sw-for-ps-subsystems.html"><span class="doc">Build Software for PS Subsystems</span></a>.</p></li>
 <li><p>Select <strong>Xilinx → Create Boot Image</strong>.</p></li>
@@ -554,9 +555,9 @@ $ cp BOOT.BIN sd_boot/
 <p class="admonition-title">Note</p>
 <p>In this boot sequence, the First Stage Boot Loader (FSBL) loads PMU firmware. This is because the PMU firmware was added as a datafile partition type. Ideally, the boot ROM code can load the PMU firmware for PMU as seen in the earlier section. For more details on PMU firmware, refer to the “Platform Management” chapter in the <em>Zynq UltraScale+ MPSoC: Software Developers Guide</em> (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev">UG1137</a>).</p>
 </div>
-</section>
-<section id="running-the-image-in-qspi-boot-mode-on-zcu102-board">
-<h3>Running the Image in QSPI Boot Mode on ZCU102 Board<a class="headerlink" href="#running-the-image-in-qspi-boot-mode-on-zcu102-board" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="running-the-image-in-qspi-boot-mode-on-zcu102-board">
+<h3>Running the Image in QSPI Boot Mode on ZCU102 Board<a class="headerlink" href="#running-the-image-in-qspi-boot-mode-on-zcu102-board" title="Permalink to this heading">¶</a></h3>
 <p>To test the image in this example, load the boot image (<code class="docutils literal notranslate"><span class="pre">qspi_BOOT.bin</span></code>) onto QSPI on the ZCU102 board using the program flash utility in the Vitis IDE. Alternatively, you can use the XSDB debugger.</p>
 <ol class="arabic">
 <li><p>In the Vitis IDE, select <strong>Xilinx → Program Flash</strong>.</p></li>
@@ -577,8 +578,8 @@ $ cp BOOT.BIN sd_boot/
 <img alt="../../../_images/image721.png" src="../../../_images/image721.png" />
 </li>
 </ol>
-<section id="setting-up-the-zcu102-board">
-<span id="id8"></span><h4>Setting Up the ZCU102 Board<a class="headerlink" href="#setting-up-the-zcu102-board" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="setting-up-the-zcu102-board">
+<span id="id8"></span><h4>Setting Up the ZCU102 Board<a class="headerlink" href="#setting-up-the-zcu102-board" title="Permalink to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>Connect the USB-UART on the board to the host machine. Connect the micro USB cable to micro USB port J83 on the ZCU102 board, and connect the other end to an open USB port on the host machine.</p></li>
 <li><p>Configure the board to boot in QSPI boot mode by switching SW6 as shown in the following figure.</p>
@@ -604,16 +605,16 @@ U-Boot loads the kernel image. When the kernel starts up, a user interface promp
 <img alt="../../../_images/image632.png" src="../../../_images/image632.png" />
 </li>
 </ol>
-</section>
-</section>
-</section>
-<section id="boot-sequence-for-qspi-boot-mode-using-jtag">
-<span id="id9"></span><h2>Boot Sequence for QSPI-Boot Mode Using JTAG<a class="headerlink" href="#boot-sequence-for-qspi-boot-mode-using-jtag" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="section" id="boot-sequence-for-qspi-boot-mode-using-jtag">
+<span id="id9"></span><h2>Boot Sequence for QSPI-Boot Mode Using JTAG<a class="headerlink" href="#boot-sequence-for-qspi-boot-mode-using-jtag" title="Permalink to this heading">¶</a></h2>
 <p>The Zynq UltraScale+ MPSoC supports many methods of loading the boot image. One method is to use the JTAG interface. This example XSCT
 session demonstrates how to download a boot image file (<code class="docutils literal notranslate"><span class="pre">qspi_BOOT.bin</span></code>) in QSPI using the XSDB debugger. After the QSPI is loaded, the <code class="docutils literal notranslate"><span class="pre">qspi_BOOT.bin</span></code> image executes in the same way as QSPI boot mode in Zynq UltraScale+ MPSoC. You can use the same XSCT session or the System Debugger for debugging similar boot flows.</p>
 <p>The following sections demonstrate the basic steps involved in this boot mode.</p>
-<section id="setting-up-the-target">
-<h3>Setting Up the Target<a class="headerlink" href="#setting-up-the-target" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="setting-up-the-target">
+<h3>Setting Up the Target<a class="headerlink" href="#setting-up-the-target" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Connect a USB cable between the USB-JTAG J2 connector on the target and the USB port on the host machine.</p></li>
 <li><p>Set the board to JTAG boot mode by setting the SW6 switch, as shown in the following figure.</p>
@@ -639,9 +640,9 @@ open the XSCT console by selecting <strong>Xilinx → XSCT Console</strong>.</p>
 <img alt="../../../_images/image751.png" src="../../../_images/image751.png" />
 </li>
 </ol>
-</section>
-<section id="loading-u-boot-using-xsct-xsdb">
-<h3>Loading U-Boot Using XSCT/XSDB<a class="headerlink" href="#loading-u-boot-using-xsct-xsdb" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="loading-u-boot-using-xsct-xsdb">
+<h3>Loading U-Boot Using XSCT/XSDB<a class="headerlink" href="#loading-u-boot-using-xsct-xsdb" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Download the U-Boot application on Cortex-A53 #0 using the following commands.</p>
 <ol class="arabic">
@@ -709,9 +710,9 @@ open the XSCT console by selecting <strong>Xilinx → XSCT Console</strong>.</p>
 </div>
 </li>
 </ol>
-</section>
-<section id="load-boot-bin-in-the-ddr-memory-using-xsdb">
-<h3>Load boot.bin in the DDR Memory Using XSDB<a class="headerlink" href="#load-boot-bin-in-the-ddr-memory-using-xsdb" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="load-boot-bin-in-the-ddr-memory-using-xsdb">
+<h3>Load boot.bin in the DDR Memory Using XSDB<a class="headerlink" href="#load-boot-bin-in-the-ddr-memory-using-xsdb" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Download the <code class="docutils literal notranslate"><span class="pre">boot.bin</span></code> binary into DDR on ZCU102. Use the same <code class="docutils literal notranslate"><span class="pre">boot.bin</span></code> created for QSPI boot mode.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">dow</span> <span class="o">-</span><span class="n">data</span> <span class="p">{</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">qspi_boot</span>\<span class="n">qspi_BOOT</span><span class="o">.</span><span class="n">bin</span><span class="p">}</span> <span class="mh">0x2000000</span>
@@ -724,9 +725,9 @@ open the XSCT console by selecting <strong>Xilinx → XSCT Console</strong>.</p>
 </div>
 </li>
 </ol>
-</section>
-<section id="loading-the-boot-bin-image-in-qspi-using-u-boot">
-<h3>Loading the boot.bin Image in QSPI Using U-Boot<a class="headerlink" href="#loading-the-boot-bin-image-in-qspi-using-u-boot" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="loading-the-boot-bin-image-in-qspi-using-u-boot">
+<h3>Loading the boot.bin Image in QSPI Using U-Boot<a class="headerlink" href="#loading-the-boot-bin-image-in-qspi-using-u-boot" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Execute the following commands in the U-Boot console on the target terminal. These commands erase QSPI and then write the <code class="docutils literal notranslate"><span class="pre">boot.bin</span></code> image from DDR to QSPI.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ZynqMP</span><span class="o">&gt;</span> <span class="n">sf</span> <span class="n">probe</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
@@ -737,17 +738,17 @@ open the XSCT console by selecting <strong>Xilinx → XSCT Console</strong>.</p>
 </li>
 <li><p>After successfully writing the image to QSPI, turn off the board and set up the ZCU102 board as described in <a class="reference internal" href="#setting-up-the-zcu102-board"><span class="std std-ref">Setting Up the ZCU102 Board</span></a>. You can see Linux loading on the UART-0 terminal and the R5F application executing in the UART-1 terminal.</p></li>
 </ol>
-</section>
-</section>
-<section id="boot-sequence-for-usb-boot-mode">
-<h2>Boot Sequence for USB Boot Mode<a class="headerlink" href="#boot-sequence-for-usb-boot-mode" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="boot-sequence-for-usb-boot-mode">
+<h2>Boot Sequence for USB Boot Mode<a class="headerlink" href="#boot-sequence-for-usb-boot-mode" title="Permalink to this heading">¶</a></h2>
 <p>Zynq UltraScale+ MPSoC also supports USB slave boot mode using the device firmware upgrade (DFU) for the device class specification of USB. Using a standard update utility such as <a class="reference external" href="http://dfu-util.sourceforge.net/releases/">OpenMoko’s DFU-Util</a>, you will be able to load the newly created image on the Zynq UltraScale+ MPSoC using the USB port. The following steps list the required configuration steps to load boot images using this boot mode. The DFU utility is also shipped with the Vitis unified software platform and PetaLinux.</p>
-<section id="configuring-fsbl-to-enable-usb-boot-mode">
-<h3>Configuring FSBL to Enable USB Boot Mode<a class="headerlink" href="#configuring-fsbl-to-enable-usb-boot-mode" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="configuring-fsbl-to-enable-usb-boot-mode">
+<h3>Configuring FSBL to Enable USB Boot Mode<a class="headerlink" href="#configuring-fsbl-to-enable-usb-boot-mode" title="Permalink to this heading">¶</a></h3>
 <p>A few changes are required in FSBL to enable USB boot mode. USB boot mode support increases the footprint of FSBL by approximately 10 KB.
 Because it is mostly intended to be used during the initial development phase, its support is disabled by default to conserve OCM space. In this section, you will modify the FSBL to enable USB boot mode. Considering the FSBL project is used extensively throughout this tutorial, do <em>not</em> modify the existing FSBL project. Instead, this section makes use of a new FSBL project.</p>
-<section id="create-first-stage-boot-loader-for-usb-boot">
-<h4>Create First Stage Boot Loader for USB Boot<a class="headerlink" href="#create-first-stage-boot-loader-for-usb-boot" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="create-first-stage-boot-loader-for-usb-boot">
+<h4>Create First Stage Boot Loader for USB Boot<a class="headerlink" href="#create-first-stage-boot-loader-for-usb-boot" title="Permalink to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>In the Vitis IDE, select <strong>File → New → Application Project</strong> to open the New Project wizard.</p></li>
 <li><p>Use the information in the table below to make your selections in the
@@ -808,10 +809,10 @@ psu_cortexa53_0</p></td>
 <li><p>Press <strong>Ctrl+S</strong> to save these changes.</p></li>
 <li><p>Build FSBL (<code class="docutils literal notranslate"><span class="pre">fsbl_usb_boot</span></code>).</p></li>
 </ol>
-</section>
-</section>
-<section id="creating-boot-images-for-usb-boot">
-<span id="id10"></span><h3>Creating Boot Images for USB Boot<a class="headerlink" href="#creating-boot-images-for-usb-boot" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="creating-boot-images-for-usb-boot">
+<span id="id10"></span><h3>Creating Boot Images for USB Boot<a class="headerlink" href="#creating-boot-images-for-usb-boot" title="Permalink to this heading">¶</a></h3>
 <p>In this section, you will create the boot images to be loaded through a USB using the DFU utility. Device firmware upgrade (DFU) is intended to download and upload firmware to/from devices connected over USB. In this boot mode, the boot loader (FSBL) and the PMU firmware which are loaded by bootROM are copied to Zynq UltraScale+ on-chip memory (OCM) from the host machine USB port using the DFU utility. The size of the OCM (256 KB) limits the size of the boot image downloaded by bootROM in USB boot mode. Considering this, and subject to the size requirement being met, only FSBL and PMU firmware are stitched into the first <code class="docutils literal notranslate"><span class="pre">boot.bin</span></code>, which is copied to the OCM. The remaining boot partitions will be stitched in another boot image and copied to DDR to be loaded by the FSBL which is already loaded and running at this stage. Follow these steps to create boot images for this boot mode.</p>
 <ol class="arabic">
 <li><p>In the Vitis IDE, select <strong>Xilinx → Create Boot Image</strong>.</p></li>
@@ -821,8 +822,8 @@ psu_cortexa53_0</p></td>
 <li><p>Ensure that the PMU partition is set to be loaded by bootROM.</p></li>
 <li><p>Click <strong>Create Image</strong> to generate <code class="docutils literal notranslate"><span class="pre">BOOT.bin</span></code>.</p></li>
 </ol>
-<section id="modifying-petalinux-u-boot">
-<h4>Modifying PetaLinux U-Boot<a class="headerlink" href="#modifying-petalinux-u-boot" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="modifying-petalinux-u-boot">
+<h4>Modifying PetaLinux U-Boot<a class="headerlink" href="#modifying-petalinux-u-boot" title="Permalink to this heading">¶</a></h4>
 <p>Modify PetaLinux U-Boot so that it can load the <code class="docutils literal notranslate"><span class="pre">image.ub</span></code> image. The device tree needs to be modified to set the USB in peripheral mode. The default PetaLinux configuration is set for the USB in host mode. Follow these steps to modify <code class="docutils literal notranslate"><span class="pre">system-user.dtsi</span></code> in the PetaLinux project:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">PetaLinux</span><span class="o">-</span><span class="n">project</span><span class="o">&gt;/</span><span class="n">project</span><span class="o">-</span><span class="n">spec</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">user</span><span class="o">/</span><span class="n">recipes</span><span class="o">-</span><span class="n">bsp</span><span class="o">/</span><span class="n">device</span><span class="o">-</span><span class="n">tree</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">system</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">dtsi</span>
 </pre></div>
@@ -875,10 +876,10 @@ psu_cortexa53_0</p></td>
 </div>
 </li>
 </ol>
-</section>
-</section>
-<section id="boot-using-usb-boot">
-<h3>Boot Using USB Boot<a class="headerlink" href="#boot-using-usb-boot" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="boot-using-usb-boot">
+<h3>Boot Using USB Boot<a class="headerlink" href="#boot-using-usb-boot" title="Permalink to this heading">¶</a></h3>
 <p>In this section you will load the boot images on the ZCU102 target using the DFU utility. Before you start, set the board connections as shown below:</p>
 <ol class="arabic">
 <li><p>Set ZCU102 for USB boot mode by setting SW6 (1-OFF, 2-OFF, 3-OFF, and 4-ON), as shown below:</p>
@@ -891,8 +892,8 @@ psu_cortexa53_0</p></td>
 </ol>
 <p>The following steps load the boot images via USB using the DFU utility, which can be found at <code class="docutils literal notranslate"><span class="pre">Vitis\2022.1\tps\lnx64\dfu-util-0.9</span></code>.</p>
 <p>Alternatively, you can install the DFU utility on Linux using the Package Manager supported by Linux Distribution.</p>
-<section id="boot-commands-for-linux-host-machine">
-<h4>Boot Commands for Linux Host Machine<a class="headerlink" href="#boot-commands-for-linux-host-machine" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="boot-commands-for-linux-host-machine">
+<h4>Boot Commands for Linux Host Machine<a class="headerlink" href="#boot-commands-for-linux-host-machine" title="Permalink to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>Check if the DFU can detect the USB target.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo dfu-util -l
@@ -952,9 +953,9 @@ $kernel_size&quot;
 </div>
 </li>
 </ol>
-</section>
-<section id="boot-commands-for-windows-host-machine">
-<h4>Boot Commands for Windows Host Machine<a class="headerlink" href="#boot-commands-for-windows-host-machine" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="boot-commands-for-windows-host-machine">
+<h4>Boot Commands for Windows Host Machine<a class="headerlink" href="#boot-commands-for-windows-host-machine" title="Permalink to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>In the Vitis IDE, select <strong>Xilinx → Launch Shell</strong>.</p></li>
 <li><p>In the shell, verify if the DFU can detect the USB target:</p>
@@ -1014,10 +1015,10 @@ $ setenv dfu_ram_info &quot;setenv dfu_alt_info image.ub ram $kernel_addr $kerne
 </li>
 <li><p>Verify that Linux loads successfully on the target.</p></li>
 </ol>
-</section>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
+</div>
 
 
            </div>
@@ -1041,7 +1042,7 @@ $ setenv dfu_ram_info &quot;setenv dfu_alt_info image.ub ram $kernel_addr $kerne
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on August 08, 2022.
+      <span class="lastupdated">Last updated on November 10, 2022.
       </span></p>
   </div>
 

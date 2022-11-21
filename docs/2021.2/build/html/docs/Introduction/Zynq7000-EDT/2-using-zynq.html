@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -122,8 +122,9 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Releases</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
@@ -153,7 +154,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-the-zynq-soc-processing-system">
+  <div class="section" id="using-the-zynq-soc-processing-system">
 <h1>Using the Zynq SoC Processing System<a class="headerlink" href="#using-the-zynq-soc-processing-system" title="Permalink to this heading">¶</a></h1>
 <p>The Zynq SoC consists of Arm® Cortex™-A9 cores, many hard intellectual property components (IPs), and programmable logic (PL). This offering can be used in two ways:</p>
 <ul class="simple">
@@ -166,17 +167,17 @@ function OptanonWrapper() { }
 <li><p>Example 1 uses Vivado to design the hardware project of this embedded system.</p></li>
 <li><p>Example 2 designs a “Hello World” software application in the Vitis IDE based on the Example 1 hardware.</p></li>
 </ul>
-<section id="example-1-creating-a-new-embedded-project-with-zynq-soc">
+<div class="section" id="example-1-creating-a-new-embedded-project-with-zynq-soc">
 <span id="id1"></span><h2>Example 1: Creating a New Embedded Project with Zynq SoC<a class="headerlink" href="#example-1-creating-a-new-embedded-project-with-zynq-soc" title="Permalink to this heading">¶</a></h2>
 <p>For this example, you will launch the Vivado Design Suite and create a project with an embedded processor system as the top level.</p>
-<section id="input-and-output-files">
+<div class="section" id="input-and-output-files">
 <h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input Files: N/A</p></li>
 <li><p>Output Files: Vivado hardware handoff file system_wrapper.xsa</p></li>
 </ul>
-</section>
-<section id="creating-your-hardware-design">
+</div>
+<div class="section" id="creating-your-hardware-design">
 <h3>Creating Your Hardware Design<a class="headerlink" href="#creating-your-hardware-design" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Start the Vivado Design Suite.</p>
@@ -265,8 +266,8 @@ summary.</p></td>
 </li>
 <li><p>Click <strong>Finish</strong>. The New Project wizard closes and the project you just created opens in the Vivado design tool.</p></li>
 </ol>
-</section>
-<section id="creating-an-embedded-processor-block-diagram">
+</div>
+<div class="section" id="creating-an-embedded-processor-block-diagram">
 <h3>Creating an Embedded Processor Block Diagram<a class="headerlink" href="#creating-an-embedded-processor-block-diagram" title="Permalink to this heading">¶</a></h3>
 <p>Perform the following steps to create an embedded processor project.</p>
 <ol class="arabic">
@@ -286,16 +287,14 @@ summary.</p></td>
 <li><p>Double-click the <strong>ZYNQ7 Processing System</strong> IP to add it to the block design.</p></li>
 </ol>
 <p>The Zynq Processing System IP block appears in the Diagram view, as shown in the following figure.</p>
-<figure class="align-default" id="id6">
+<div class="figure align-default" id="id6">
 <img alt="ZYNQ7 in block diagram" src="../../../_images/image9.png" />
-<figcaption>
-<p><span class="caption-text">ZYNQ7 in block diagram</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">ZYNQ7 in block diagram</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 </ol>
-</section>
-<section id="configuring-the-zynq-7000-processing-system-with-presets-in-vivado">
+</div>
+<div class="section" id="configuring-the-zynq-7000-processing-system-with-presets-in-vivado">
 <h3>Configuring the Zynq-7000 Processing System with Presets in Vivado<a class="headerlink" href="#configuring-the-zynq-7000-processing-system-with-presets-in-vivado" title="Permalink to this heading">¶</a></h3>
 <p>In the Block Diagram window, notice the message stating that Designer assistance is available, as shown in the following figure.</p>
 <img alt="../../../_images/image13.png" src="../../../_images/image13.png" />
@@ -308,8 +307,8 @@ summary.</p></td>
 <img alt="../../../_images/vivado_zynq_automation_result.png" src="../../../_images/vivado_zynq_automation_result.png" />
 </li>
 </ol>
-</section>
-<section id="validating-the-design-and-connecting-ports">
+</div>
+<div class="section" id="validating-the-design-and-connecting-ports">
 <h3>Validating the Design and Connecting Ports<a class="headerlink" href="#validating-the-design-and-connecting-ports" title="Permalink to this heading">¶</a></h3>
 <p>Now, let’s validate the design.</p>
 <ol class="arabic">
@@ -317,9 +316,9 @@ summary.</p></td>
 the check button on the block diagram toolbar.</p>
 <ul>
 <li><p>A critical message appears, indicating that the <code class="docutils literal notranslate"><span class="pre">M_AXI_GP0_ACLK</span></code> must be connected.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../../../_images/image14.png" src="../../../_images/image14.png" />
-</figure>
+</div>
 </li>
 <li><p>Click <strong>OK</strong> to close the message window.</p></li>
 </ul>
@@ -346,8 +345,8 @@ the check button on the block diagram toolbar.</p>
 </ul>
 </li>
 </ol>
-</section>
-<section id="creating-an-hdl-wrapper-for-the-block-diagram">
+</div>
+<div class="section" id="creating-an-hdl-wrapper-for-the-block-diagram">
 <h3>Creating an HDL Wrapper for the Block Diagram<a class="headerlink" href="#creating-an-hdl-wrapper-for-the-block-diagram" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Click the <strong>Sources</strong> window.</p>
@@ -364,8 +363,8 @@ the check button on the block diagram toolbar.</p>
 <p><code class="docutils literal notranslate"><span class="pre">system_wrapper.v</span></code> is generated. It is set to the top module of this design automatically.</p>
 </li>
 </ol>
-</section>
-<section id="generating-the-block-design">
+</div>
+<div class="section" id="generating-the-block-design">
 <h3>Generating the Block Design<a class="headerlink" href="#generating-the-block-design" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>In <strong>Flow Navigator</strong> window, click <strong>Generate Block Design</strong> under <strong>IP Integrator</strong>.</p></li>
@@ -380,16 +379,14 @@ the check button on the block diagram toolbar.</p>
 </li>
 <li><p>When the Generate Output Products process completes, click <strong>OK</strong>.</p></li>
 <li><p>In the Sources window, click the <strong>IP Sources</strong> view. Here you can see the output products that you just generated, as shown in the following figure.</p>
-<figure class="align-default" id="id7">
+<div class="figure align-default" id="id7">
 <img alt="Generated IP Source Files" src="../../../_images/image18.png" />
-<figcaption>
-<p><span class="caption-text">Generated IP Source Files</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Generated IP Source Files</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 </ol>
-</section>
-<section id="exporting-hardware">
+</div>
+<div class="section" id="exporting-hardware">
 <h3>Exporting Hardware<a class="headerlink" href="#exporting-hardware" title="Permalink to this heading">¶</a></h3>
 <p>Two types of hardware can be exported from Vivado: pre-synthesis and post-implementation. In the block design for this example, the hardware in the PL is the signal from <code class="docutils literal notranslate"><span class="pre">FCLK_CLK0</span></code> to <code class="docutils literal notranslate"><span class="pre">M_AXI_GP0_ACLK</span></code>. It drives the clock of <code class="docutils literal notranslate"><span class="pre">M_AXI_GP0</span></code>. Because only pure PS functions will be tested in this example and PL resources will not be used, no loads are added to the <code class="docutils literal notranslate"><span class="pre">M_AXI_GP0</span></code> AXI interface. You can skip the synthesis, implementation and bitstream generation phases to save time. We will export the pre-synthesis hardware in this case.</p>
 <ol class="arabic">
@@ -430,23 +427,23 @@ Leave as C:/edt/edt_zc702.</p></td>
 </div>
 </li>
 </ol>
-</section>
-<section id="whats-next">
+</div>
+<div class="section" id="whats-next">
 <h3>What’s Next?<a class="headerlink" href="#whats-next" title="Permalink to this heading">¶</a></h3>
 <p>Now you can start developing the software for your project using the Vitis software platform. The next sections help you create a software application for your hardware platform.</p>
-</section>
-</section>
-<section id="example-2-creating-and-running-a-hello-world-application">
+</div>
+</div>
+<div class="section" id="example-2-creating-and-running-a-hello-world-application">
 <h2>Example 2: Creating and Running a “Hello World” Application<a class="headerlink" href="#example-2-creating-and-running-a-hello-world-application" title="Permalink to this heading">¶</a></h2>
 <p>In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a simple “Hello World” software application in JTAG mode using System Debugger in the Vitis IDE.</p>
-<section id="id2">
+<div class="section" id="id2">
 <h3>Input and Output Files<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input Files: <code class="docutils literal notranslate"><span class="pre">system_wrapper.xsa</span></code></p></li>
 <li><p>Output Files: <code class="docutils literal notranslate"><span class="pre">hello_world.elf</span></code></p></li>
 </ul>
-</section>
-<section id="setting-up-the-board">
+</div>
+<div class="section" id="setting-up-the-board">
 <span id="id3"></span><h3>Setting Up the Board<a class="headerlink" href="#setting-up-the-board" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Connect the power cable to the board.</p></li>
@@ -461,9 +458,9 @@ Leave as C:/edt/edt_zc702.</p></td>
 </ul>
 </li>
 </ol>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="JTAG Select SW10" src="../../../_images/image68.jpeg" />
-</figure>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -477,17 +474,15 @@ Leave as C:/edt/edt_zc702.</p></td>
 <li><p>Ensure that jumpers <strong>J27</strong> and <strong>J28</strong> are placed on the side farther from the SD card slot.</p></li>
 <li><p>Change the <strong>SW16</strong> switch setting as shown in the following figure.</p></li>
 </ul>
-<figure class="align-default" id="id8">
+<div class="figure align-default" id="id8">
 <img alt="JTAG Boot Setup" src="../../../_images/image32.jpeg" />
-<figcaption>
-<p><span class="caption-text">JTAG Boot Setup</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">JTAG Boot Setup</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>Power on the ZC702 board.</p></li>
 </ol>
-</section>
-<section id="creating-a-vitis-platform-project">
+</div>
+<div class="section" id="creating-a-vitis-platform-project">
 <h3>Creating a Vitis Platform Project<a class="headerlink" href="#creating-a-vitis-platform-project" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Launch the Vitis IDE with any of the actions below:</p>
@@ -501,12 +496,10 @@ Leave as C:/edt/edt_zc702.</p></td>
 <ul class="simple">
 <li><p>Vitis will create the workspace folder if it is not already created.</p></li>
 </ul>
-<figure class="align-default" id="id9">
+<div class="figure align-default" id="id9">
 <img alt="Vitis IDE Launcher" src="../../../_images/image231.png" />
-<figcaption>
-<p><span class="caption-text">Vitis IDE Launcher</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Vitis IDE Launcher</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
 <ul class="simple">
 <li><p>Click <strong>Launch</strong>. The Vitis IDE opens.</p></li>
 </ul>
@@ -516,12 +509,10 @@ Leave as C:/edt/edt_zc702.</p></td>
 <img alt="../../../_images/image24.jpeg" src="../../../_images/image24.jpeg" />
 </li>
 <li><p>When the New Platform Project wizard opens, enter the platform project name as <strong>zc702_edt</strong>, as shown in following figure. Click <strong>Next</strong>.</p>
-<figure class="align-default" id="id10">
+<div class="figure align-default" id="id10">
 <img alt="Platform Project Name" src="../../../_images/image25.png" />
-<figcaption>
-<p><span class="caption-text">Platform Project Name</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Platform Project Name</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>In the <strong>Platform</strong> page, you see the <strong>Create a new platform from hardware (XSA)</strong> tab by default. Under <strong>Hardware Specification</strong>, click <strong>browse</strong> to specify the XSA file <code class="docutils literal notranslate"><span class="pre">C:\edt\edt`\_zc702\system`\_wrapper.xsa\</span></code>, and click <strong>OK</strong>.</p>
 <ul class="simple">
@@ -529,12 +520,10 @@ Leave as C:/edt/edt_zc702.</p></td>
 <li><p>Keep the <strong>Generate boot components</strong> option selected, as shown in the following figure.</p></li>
 <li><p>Click <strong>Finish</strong>.</p></li>
 </ul>
-<figure class="align-default" id="id11">
+<div class="figure align-default" id="id11">
 <img alt="Select XSA" src="../../../_images/image26.png" />
-<figcaption>
-<p><span class="caption-text">Select XSA</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Select XSA</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>The platform project is created. In the <strong>Explorer</strong> view, double-click <strong>zc702_edt → platform.spr</strong> to view the platform view as shown in the following figure.</p>
 <img alt="../../../_images/image271.png" src="../../../_images/image271.png" />
@@ -543,24 +532,22 @@ Leave as C:/edt/edt_zc702.</p></td>
 <img alt="../../../_images/image28.png" src="../../../_images/image28.png" />
 </li>
 <li><p>Build the platform project either by clicking the hammer button or by right-clicking on the platform project and selecting <strong>Build Project</strong> as shown in following figure.</p>
-<figure class="align-default" id="id12">
+<div class="figure align-default" id="id12">
 <img alt="Build Project" src="../../../_images/image291.png" />
-<figcaption>
-<p><span class="caption-text">Build Project</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Build Project</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>As the project builds, you can see the output in the Console window.</p></li>
 </ol>
 <blockquote>
 <div><p>The build process takes some time because it is not only building the standalone BSP, but also boot components such as FSBL.</p>
 </div></blockquote>
-</section>
-<section id="what-just-happened">
+</div>
+<div class="section" id="what-just-happened">
 <h3>What Just Happened?<a class="headerlink" href="#what-just-happened" title="Permalink to this heading">¶</a></h3>
 <p>Using the Vitis IDE, you have created a platform project and exported the XSA file to the workspace in the <code class="docutils literal notranslate"><span class="pre">C:\designs\workspace</span></code>. The export operation generated a standalone domain with a ps7_cortexa9_0 processor and an FSBL application project. You have built a platform project, and the generated Xilinx platform definition file (<code class="docutils literal notranslate"><span class="pre">zc702_edt.xpfm</span></code>) can be used as a platform for the applications that you create in the Vitis IDE.</p>
-</section>
-<section id="creating-the-hello-world-application">
+</div>
+<div class="section" id="creating-the-hello-world-application">
 <h3>Creating the Hello World Application<a class="headerlink" href="#creating-the-hello-world-application" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Select <strong>File → New → Application Project</strong>.</p>
@@ -630,8 +617,8 @@ selected.</p></td>
 </li>
 <li><p>Right-click the <strong>hello_world</strong> standalone application and select <strong>Build Project</strong> to generate the <code class="docutils literal notranslate"><span class="pre">hello_world.elf</span></code> binary file.</p></li>
 </ol>
-</section>
-<section id="running-the-hello-world-application-on-a-zc702-board">
+</div>
+<div class="section" id="running-the-hello-world-application-on-a-zc702-board">
 <span id="id4"></span><h3>Running the Hello World Application on a ZC702 Board<a class="headerlink" href="#running-the-hello-world-application-on-a-zc702-board" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Open a serial communication utility for the COM port assigned on your system.</p>
@@ -642,12 +629,10 @@ selected.</p></td>
 <li><p>Select <strong>Vitis Serial Terminal</strong>.</p></li>
 <li><p>Click <strong>Open</strong>.</p></li>
 </ol>
-<figure class="align-default" id="id13">
+<div class="figure align-default" id="id13">
 <img alt="Open Vitis Serial Terminal" src="../../../_images/image33.png" />
-<figcaption>
-<p><span class="caption-text">Open Vitis Serial Terminal</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Open Vitis Serial Terminal</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>Click the <strong>Add</strong> button in the Vitis Serial Terminal to connect to a serial terminal.</p>
 <ol class="arabic simple">
@@ -655,12 +640,10 @@ selected.</p></td>
 <li><p>Keep the Advanced Settings as-is.</p></li>
 <li><p>Click <strong>OK</strong></p></li>
 </ol>
-<figure class="align-default" id="id14">
+<div class="figure align-default" id="id14">
 <img alt="Connect UART" src="../../../_images/image35.png" />
-<figcaption>
-<p><span class="caption-text">Connect UART</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Connect UART</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
 </li>
 <li><p>Right-click <strong>hello_world</strong> and select <strong>Run as → Run Configurations</strong>.</p></li>
 <li><p>Right-click <strong>Single Application Debug</strong> and click <strong>New Configuration</strong>. The Vitis software platform creates the new run configuration, named Debugger_hello_world-Default.</p>
@@ -670,39 +653,37 @@ selected.</p></td>
 choice is the Tcl script.</p></li>
 <li><p>Click <strong>Run</strong>.</p>
 <p>“Hello World” appears on the Vitis Serial Terminal, as shown in the following figure.</p>
-<figure class="align-default" id="id15">
+<div class="figure align-default" id="id15">
 <img alt="Terminal Print Result" src="../../../_images/image36.png" />
-<figcaption>
-<p><span class="caption-text">Terminal Print Result</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text">Terminal Print Result</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>No bitstream download is required for the above software application to be executed on the Zynq SoC evaluation board. The Arm Cortex-A9 dual core is already present on the board. Basic initialization of this system to run a simple application is accomplished by the device initialization Tcl script.</p>
 </div>
 </li>
 </ol>
-</section>
-<section id="id5">
+</div>
+<div class="section" id="id5">
 <h3>What Just Happened?<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
 <p>The application software sent the “Hello World” string to the UART1 peripheral of the PS section.</p>
 <p>From UART1, the “Hello World” string goes byte-by-byte to the serial terminal application running on the host machine, which displays it as a string.</p>
-</section>
-</section>
-<section id="additional-information">
+</div>
+</div>
+<div class="section" id="additional-information">
 <h2>Additional Information<a class="headerlink" href="#additional-information" title="Permalink to this heading">¶</a></h2>
-<section id="domain-or-board-support-package">
+<div class="section" id="domain-or-board-support-package">
 <h3>Domain or Board Support Package<a class="headerlink" href="#domain-or-board-support-package" title="Permalink to this heading">¶</a></h3>
 <p>A domain or board support package (BSP) is a collection of software drivers and, optionally, the operating system on which to build your application. It is the support code for a given hardware platform or board that helps in basic initialization at power up and helps software applications to be run on top of it. You can create multiple applications to run on the domain. A domain is tied to a single processor in the platform.</p>
-</section>
-<section id="standalone-os">
+</div>
+<div class="section" id="standalone-os">
 <h3>Standalone OS<a class="headerlink" href="#standalone-os" title="Permalink to this heading">¶</a></h3>
 <p>Standalone is a simple, low-level software layer. It provides access to basic processor features such as caches, interrupts, and exceptions, as well as the basic processor features of a hosted environment. These basic features include standard input/output, profiling, abort, and exit. It is a single-threaded semi-hosted environment.</p>
 <p>The application you ran in this chapter was created on top of the standalone OS. The domain/BSP that your software application targets is selected during the New Platform Project creation process.</p>
 <p>In the <a class="reference internal" href="3-debugging-vitis.html"><span class="doc">next chapter</span></a>, you will learn how to debug software applications using the Vitis software platform.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

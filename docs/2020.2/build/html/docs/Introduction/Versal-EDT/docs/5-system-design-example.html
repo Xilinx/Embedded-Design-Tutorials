@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Zynq7000-EDT/README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../SPA-UG/README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,14 +113,14 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="system-design-example-using-scalar-engine-and-adaptable-engine">
+  <div class="section" id="system-design-example-using-scalar-engine-and-adaptable-engine">
 <h1>System Design Example using Scalar Engine and Adaptable Engine<a class="headerlink" href="#system-design-example-using-scalar-engine-and-adaptable-engine" title="Permalink to this heading">¶</a></h1>
 <p>This chapter guides you through building a system based on Versal™ devices using available tools and supported software blocks. This chapter demonstrates how to use the Vivado® tool to create an embedded design using PL AXI GPIO. It also demonstrates the steps to configure and build the Linux operating system for an Arm® Cortex™-A72 core-based APU on a Versal ACAP device.</p>
 <p>Examples using the PetaLinux tool are also provided in this chapter.</p>
-<section id="design-example-using-axi-gpio">
+<div class="section" id="design-example-using-axi-gpio">
 <h2>Design Example: Using AXI GPIO<a class="headerlink" href="#design-example-using-axi-gpio" title="Permalink to this heading">¶</a></h2>
 <p>The Linux application uses a PL-based AXI GPIO interface to monitor the DIP switch of the board and accordingly control the board’s LEDs. The LED application can run on both the VMK180/VCK190.</p>
-<section id="configuring-hardware">
+<div class="section" id="configuring-hardware">
 <h3>Configuring Hardware<a class="headerlink" href="#configuring-hardware" title="Permalink to this heading">¶</a></h3>
 <p>The first step in this design is to configure the PS and PL sections. You can do this using the Vivado IP integrator. You start with adding the required IPs from the Vivado IP catalog and then connect the components to blocks in the PS subsystem. To configure the hardware, follow these steps:</p>
 <blockquote>
@@ -104,7 +135,7 @@ function OptanonWrapper() { }
 </li>
 <li><p>Right-click the block diagram and select <strong>Add IP</strong>.</p></li>
 </ol>
-<section id="connecting-ip-blocks-to-create-a-complete-system">
+<div class="section" id="connecting-ip-blocks-to-create-a-complete-system">
 <h4>Connecting IP Blocks to Create a Complete System<a class="headerlink" href="#connecting-ip-blocks-to-create-a-complete-system" title="Permalink to this heading">¶</a></h4>
 <p>To connect IP blocks to create a system, follow these steps.</p>
 <ol>
@@ -119,8 +150,8 @@ function OptanonWrapper() { }
 </li>
 <li><p>Click <strong>OK</strong> to complete the configuration and return to the block diagram.</p></li>
 </ol>
-</section>
-<section id="adding-and-configuring-ip-addresses">
+</div>
+<div class="section" id="adding-and-configuring-ip-addresses">
 <h4>Adding and Configuring IP Addresses<a class="headerlink" href="#adding-and-configuring-ip-addresses" title="Permalink to this heading">¶</a></h4>
 <p>To add and configure IP addresses, follow these steps.</p>
 <ol>
@@ -180,8 +211,8 @@ function OptanonWrapper() { }
 </ol>
 <p>The overall block design is shown in the following figure:</p>
 <p><img alt="../../../../_images/image73.png" src="../../../../_images/image73.png" /></p>
-</section>
-<section id="validating-the-design-and-generating-the-output">
+</div>
+<div class="section" id="validating-the-design-and-generating-the-output">
 <h4>Validating the Design and Generating the Output<a class="headerlink" href="#validating-the-design-and-generating-the-output" title="Permalink to this heading">¶</a></h4>
 <p>To validate the design and to generate the output product, follow these steps:</p>
 <ol>
@@ -216,8 +247,8 @@ The Add Sources window opens.</p></li>
 <p><img alt="../../../../_images/image74.png" src="../../../../_images/image74.png" /></p>
 </li>
 </ol>
-</section>
-<section id="synthesizing-implementing-and-generating-the-device-image">
+</div>
+<div class="section" id="synthesizing-implementing-and-generating-the-device-image">
 <h4>Synthesizing, Implementing, and Generating the Device Image<a class="headerlink" href="#synthesizing-implementing-and-generating-the-device-image" title="Permalink to this heading">¶</a></h4>
 <p>Follow these steps to generate a device image for the design.</p>
 <ol>
@@ -248,8 +279,8 @@ The Add Sources window opens.</p></li>
 <p>Export hardware, after you generate Device Image.</p>
 </li>
 </ol>
-</section>
-<section id="exporting-hardware">
+</div>
+<div class="section" id="exporting-hardware">
 <h4>Exporting Hardware<a class="headerlink" href="#exporting-hardware" title="Permalink to this heading">¶</a></h4>
 <ol>
 <li><p>From the Vivado main menu, select <strong>File→ Export → Export Hardware</strong>. The Export Hardware dialog box opens.</p></li>
@@ -259,10 +290,10 @@ The Add Sources window opens.</p></li>
 </li>
 <li><p>Click <strong>Finish</strong>.</p></li>
 </ol>
-</section>
-</section>
-</section>
-<section id="example-project-freertos-gpio-application-project-with-rpu">
+</div>
+</div>
+</div>
+<div class="section" id="example-project-freertos-gpio-application-project-with-rpu">
 <h2>Example Project: FreeRTOS GPIO Application Project With RPU<a class="headerlink" href="#example-project-freertos-gpio-application-project-with-rpu" title="Permalink to this heading">¶</a></h2>
 <p>This section explains how to configure and build the FreeRTOS application for an Arm® Cortex™-R5F core based RPU on a Versal device.</p>
 <p>The following steps demonstrate the procedure to create a FreeRTOS Application from Arm Cortex-R5F:</p>
@@ -287,76 +318,76 @@ The Add Sources window opens.</p></li>
 <table border="1" class="docutils">
 <thead>
 <tr>
-<th align="left">Wizard Screen</th>
-<th align="left">System Properties</th>
-<th align="left">Setting or Command to Use</th>
+<th style="text-align: left;">Wizard Screen</th>
+<th style="text-align: left;">System Properties</th>
+<th style="text-align: left;">Setting or Command to Use</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Platform</td>
-<td align="left">Create a new platform from hardware (XSA)</td>
-<td align="left">Click Browse to add your XSA file</td>
+<td style="text-align: left;">Platform</td>
+<td style="text-align: left;">Create a new platform from hardware (XSA)</td>
+<td style="text-align: left;">Click Browse to add your XSA file</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Platform Name</td>
-<td align="left">vck190_platform</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Platform Name</td>
+<td style="text-align: left;">vck190_platform</td>
 </tr>
 <tr>
-<td align="left">Application Project Detail</td>
-<td align="left">Application project name</td>
-<td align="left">freertos_gpio_test</td>
+<td style="text-align: left;">Application Project Detail</td>
+<td style="text-align: left;">Application project name</td>
+<td style="text-align: left;">freertos_gpio_test</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Select a system project</td>
-<td align="left">+Create New</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Select a system project</td>
+<td style="text-align: left;">+Create New</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">System project name</td>
-<td align="left">freertos_gpio_test_system</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">System project name</td>
+<td style="text-align: left;">freertos_gpio_test_system</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Processor</td>
-<td align="left">psv_cortexr5_0</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Processor</td>
+<td style="text-align: left;">psv_cortexr5_0</td>
 </tr>
 <tr>
-<td align="left">Dom</td>
-<td align="left">Select a domain</td>
-<td align="left">+Create New</td>
+<td style="text-align: left;">Dom</td>
+<td style="text-align: left;">Select a domain</td>
+<td style="text-align: left;">+Create New</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Name</td>
-<td align="left">The default name assigned</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">The default name assigned</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Display Name</td>
-<td align="left">The default name assigned</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Display Name</td>
+<td style="text-align: left;">The default name assigned</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Operating System</td>
-<td align="left">freertos10_xilinx</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Operating System</td>
+<td style="text-align: left;">freertos10_xilinx</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Processor</td>
-<td align="left">psv_cortexr5_0</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Processor</td>
+<td style="text-align: left;">psv_cortexr5_0</td>
 </tr>
 <tr>
-<td align="left">Templates</td>
-<td align="left">Available</td>
-<td align="left">Freertos Hello</td>
+<td style="text-align: left;">Templates</td>
+<td style="text-align: left;">Available</td>
+<td style="text-align: left;">Freertos Hello</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Templates</td>
-<td align="left">world</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Templates</td>
+<td style="text-align: left;">world</td>
 </tr>
 </tbody>
 </table>
@@ -369,8 +400,8 @@ The Add Sources window opens.</p></li>
 </li>
 </ol>
 <p>For building the Linux images and incorporating the FreeRTOS elf into the image, see <a class="reference external" href="#example-project-creating-linux-images-using-petalinux">Example Project: Creating Linux Images Using PetaLinux</a>.</p>
-</section>
-<section id="example-project-creating-linux-images-using-petalinux">
+</div>
+<div class="section" id="example-project-creating-linux-images-using-petalinux">
 <h2>Example Project: Creating Linux Images Using PetaLinux<a class="headerlink" href="#example-project-creating-linux-images-using-petalinux" title="Permalink to this heading">¶</a></h2>
 <p>This section explains how to  configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.</p>
 <p>This example needs a Linux host machine. Refer to the <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd=ug1144-petalinux-tools-reference-guide.pdf">PetaLinux Tools Documentation Reference Guide (UG1144)</a> for information on dependencies and installation procedure for the PetaLinux tool.</p>
@@ -449,7 +480,7 @@ $cp &lt;design-package&gt;/vck190/linux/design_files/device_tree/system-user.dts
 </div>
 </li>
 </ol>
-<section id="combining-freertos-and-apu-images-using-a-bif-file">
+<div class="section" id="combining-freertos-and-apu-images-using-a-bif-file">
 <h3>Combining FreeRTOS and APU Images using a BIF File<a class="headerlink" href="#combining-freertos-and-apu-images-using-a-bif-file" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Open the XSCT console in your Vitis IDE workspace.</p></li>
@@ -476,14 +507,14 @@ $cp &lt;design-package&gt;/vck190/linux/design_files/device_tree/system-user.dts
 </li>
 </ol>
 <blockquote>
-<div><p><strong><em>Note</em>:</strong> To run the images using SD boot mode, see <a class="reference external" href="./4-boot-and-config.md#boot-sequence-for-sd-boot-mode">Boot Sequence for SD-Boot Mode</a>.</p>
+<div><p><strong><em>Note</em>:</strong> To run the images using SD boot mode, see <a class="reference external" href="./4-boot-and-config.html#boot-sequence-for-sd-boot-mode">Boot Sequence for SD-Boot Mode</a>.</p>
 </div></blockquote>
 <p>© Copyright 2020-2021 Xilinx, Inc.</p>
 <p><em>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>.</em></p>
 <p><em>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</em></p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

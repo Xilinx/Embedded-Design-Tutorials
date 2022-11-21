@@ -488,13 +488,13 @@ This section describes the NoC (and DDR) configuration and related connections r
 
 ### Configuring the NoC IP Core in an Existing Project
 
-For this example, launch the Vivado Design Suite and project with basic CIPS configuration done as shown in [Example Project: Creating a New Embedded Project with the Versal ACAP](./2-cips-noc-ip-config.md#creating-a-new-embedded-project-with-the-versal-acap).
+For this example, launch the Vivado Design Suite and project with basic CIPS configuration done as shown in [Example Project: Creating a New Embedded Project with the Versal ACAP](./2-cips-noc-ip-config.html#creating-a-new-embedded-project-with-the-versal-acap).
 
 #### Configuring Your Design
 
 To configure your design, follow these steps:
 
-1. Open the design created in [Example Project: Creating a New Embedded Project with the Versal ACAP](./2-cips-noc-ip-config.md#creating-a-new-embedded-project-with-the-versal-acap), `edt_versal.xpr`.
+1. Open the design created in [Example Project: Creating a New Embedded Project with the Versal ACAP](./2-cips-noc-ip-config.html#creating-a-new-embedded-project-with-the-versal-acap), `edt_versal.xpr`.
 
 2. Open the block design `edt_versal.bd`.
 3. Go to the Tcl Console in the Vivado Design Suite and type the following command:

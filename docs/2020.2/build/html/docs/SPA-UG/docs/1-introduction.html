@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,6 +57,37 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/README.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/README.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/README.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable_fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/linux_aware_debugging/linux-aware-debugging.html">Linux Aware Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/secure_boot/secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw_profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/README.html">Vitis Embedded Software Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">System Performance Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
 
         </div>
       </div>
@@ -82,18 +113,18 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="introduction">
+  <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
 <p>The Xilinx® SoC device family has had several generations, from Zynq®-7000 devices and Zynq UltraScale+™ MPSoCs to Versal™ ACAPs. They integrate the Processing System (PS) with the Programmable Logic (PL) in one chip. The PS and PL are connected through standard Arm® AMBA® AXI interfaces designed for performance and system integration. This style of SoC requires novel performance analysis and benchmarking techniques to provide you with a clear understanding of system performance. It is critical to understand the SoC architecture so that you can use its full potential and differentiate your products in the marketplace.</p>
-<section id="system-performance-analysis-toolbox">
+<div class="section" id="system-performance-analysis-toolbox">
 <h2>System Performance Analysis Toolbox<a class="headerlink" href="#system-performance-analysis-toolbox" title="Permalink to this heading">¶</a></h2>
 <p>To address the need for performance analysis and benchmarking techniques, the Xilinx Vitis™ integrated design environment (IDE) has been enhanced with a System Performance Analysis (SPA) toolbox to provide early exploration of hardware and software systems. Specifically, a Zynq-7000 SoC designer is presented with insights into both the PS and the PL to understand the interactions across such a complex, heterogeneous system. You can observe system performance at critical stages of a design flow, enabling you to refine the performance of your system.</p>
 <p>The following figure shows how the SPA toolbox fits into the feature set of the Vitis IDE. Other important features of the Vitis software platform include software profiling tools, a system debugger, and supporting drivers and libraries. The SPA toolbox contains a monitor framework, user interface, and visualizations that are common for two important use models: an early exploration environment called System Performance Modeling (SPM) and the monitoring and analysis of your own designs. This common toolbox can be used for performance validation to ensure consistent and expected performance throughout the design process.</p>
 <p><em>Figure 1:</em> <strong>Vitis IDE Features Including the SPA Toolbox</strong></p>
 <p><img alt="Vitis SPM features" src="../../../_images/x14646-xilinx_sdk_features.png" /></p>
 <p>SPM is a unique feature of the Vitis software platform that enables complex performance modeling before design work has started. SPM is executed on hardware target. It includes a highly configurable, fixed bitstream containing one AXI traffic generator for each PS-PL AXI interface. These traffic generators are configurable modules used by the Vitis software platform to model PL traffic activity. Software applications can also be run simultaneously in the processing system, and you can specify system configuration parameters.</p>
-</section>
-<section id="performance-analysis-flow">
+</div>
+<div class="section" id="performance-analysis-flow">
 <h2>Performance Analysis Flow<a class="headerlink" href="#performance-analysis-flow" title="Permalink to this heading">¶</a></h2>
 <p>Using the SPM design, the Vitis software platform enables you to achieve an end-to-end performance analysis flow. This flow allows you to model the traffic of your estimated design and then validate the performance using your actual design.</p>
 <p><em>Figure 2:</em> <strong>End-to-End Performance Analysis Flow</strong></p>
@@ -111,11 +142,11 @@ function OptanonWrapper() { }
 <li><p><strong>Design Improvements:</strong> Running traffic scenarios using SPM will provide valuable insights into system performance (for example, latencies) that will help you in your actual design work.</p></li>
 <li><p><strong>What-If Scenarios:</strong> The SPM is a highly-configurable model and you can use it to try variations of capabilities, features, and architectures.</p></li>
 </ul>
-</section>
-<section id="background">
+</div>
+<div class="section" id="background">
 <h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">¶</a></h2>
 <p>Targeting a design to the Xilinx SoC devices (Zynq-7000, Zynq UltraScale+ MPSoC, or Versal ACAP) can be facilitated if you are aware of the numerous system resources and their capabilities. After you become acquainted with the device, then you can decide how to map your functionality onto those resources and optimize the performance of your design.</p>
-<section id="zynq-7000-architecture-highlights">
+<div class="section" id="zynq-7000-architecture-highlights">
 <h3>Zynq-7000 Architecture Highlights<a class="headerlink" href="#zynq-7000-architecture-highlights" title="Permalink to this heading">¶</a></h3>
 <p><em>Figure 3:</em> <strong>Block Diagram of Zynq-7000 SoC</strong></p>
 <p><img alt="../../../_images/x14648-block_diagram_of_zynq-7000.png" src="../../../_images/x14648-block_diagram_of_zynq-7000.png" /></p>
@@ -133,8 +164,8 @@ function OptanonWrapper() { }
 <p>An example is the L2 cache. Because the ACP shares the L2 cache with the Cortex-A9 CPUs, high-throughput traffic from either the ACP or the processors has the potential to impact the performance of the other.
 While this effect can be anticipated, understanding the nature and extent of this impact can be challenging.</p>
 <p>This is where the performance capabilities of the Vitis IDE can be exploited. The Vitis IDE provides the visualizations to better understand this impact as well as SPM: an exploratory, early design environment. Tables and real-time graphs are provided to visualize PS and PL performance metrics on a common timeline. This provides much needed insight into when and where things occur to quickly isolate any potential issues. Furthermore, the same performance metrics are calculated for the SPM design as well as your own design, therefore providing early performance exploration as well as consistent results across a design flow.</p>
-</section>
-<section id="zynq-ultrascale-mpsoc-architecture-highlights">
+</div>
+<div class="section" id="zynq-ultrascale-mpsoc-architecture-highlights">
 <h3>Zynq UltraScale+ MPSoC Architecture Highlights<a class="headerlink" href="#zynq-ultrascale-mpsoc-architecture-highlights" title="Permalink to this heading">¶</a></h3>
 <p>The Zynq UltraScale+ MPSoC is the next generation of Zynq-7000. Its PS includes dual-core or quad-core Arm® Cortex-A53 APU, dual-core Arm® Cortex-R5, optional Mali-400 GPU, VCU and a number of peripherals and controllers.</p>
 <p><em>Figure:</em> <strong>Block Diagram of Zynq UltraScale+ MPSoC</strong></p>
@@ -159,13 +190,13 @@ accessed by AXI masters in the PL.</p></li>
 <li><p><strong>AXI Coherency Extension(ACE) AXI Ports:</strong> Two way AXI coherency extension slave port that can be accessed by AXI masters in the PL.</p></li>
 </ul>
 <p>These interfaces serve a variety of purposes for communication between the PS, the PL, and any external memory (for example, DDR4 SDRAM, etc.).</p>
-</section>
-<section id="understanding-your-software">
+</div>
+<div class="section" id="understanding-your-software">
 <h3>Understanding Your Software<a class="headerlink" href="#understanding-your-software" title="Permalink to this heading">¶</a></h3>
 <p>Before you begin using the performance tools and analyzing performance results, it is important to understand what design is being used and what is being measured. The next chapters summarize the SPM design and the performance monitor framework used by the Vitis software platform.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

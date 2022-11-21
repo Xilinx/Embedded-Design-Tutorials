@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -25,6 +24,7 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -83,6 +83,7 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html">System Design Example: Using GPIO, Timer and Interrupts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="8-boot-and-configuration.html">Boot and Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="9-secure-boot.html">Secure Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ZynqMPSoC-EDT.html#example-project">Example Project</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
@@ -91,6 +92,10 @@ function OptanonWrapper() { }
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
 <ul>
@@ -101,8 +106,11 @@ function OptanonWrapper() { }
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Previous Releases</span></p>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
 </ul>
 
@@ -131,7 +139,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="debugging-standalone-applications-with-the-vitis-debugger">
+  <div class="section" id="debugging-standalone-applications-with-the-vitis-debugger">
 <h1>Debugging Standalone Applications with the Vitis Debugger<a class="headerlink" href="#debugging-standalone-applications-with-the-vitis-debugger" title="Permalink to this heading">¶</a></h1>
 <p>This chapter describes debug possibilities with the design flow you
 have already been working with. The first option is debugging with
@@ -152,7 +160,7 @@ while it executes. You can set breakpoints or watchpoints to stop the
 processor, step through program execution, view the program variables
 and stack, and view the contents of the memory in the system.</p>
 <p>The Vitis debugger supports debugging through Xilinx® System Debugger.</p>
-<section id="xilinx-system-debugger">
+<div class="section" id="xilinx-system-debugger">
 <h2>Xilinx System Debugger<a class="headerlink" href="#xilinx-system-debugger" title="Permalink to this heading">¶</a></h2>
 <p>The Xilinx System Debugger uses the Xilinx hardware server as the
 underlying debug engine. The Vitis IDE translates each user interface
@@ -193,20 +201,20 @@ will be out of step because the debug information is tied directly to
 the source. Similarly, debugging optimized binaries can also cause
 unexpected jumps in the execution trace.</p>
 </div></blockquote>
-</section>
-<section id="example-6-debugging-software-using-the-vitis-debugger">
+</div>
+<div class="section" id="example-6-debugging-software-using-the-vitis-debugger">
 <h2>Example 6: Debugging Software Using the Vitis Debugger<a class="headerlink" href="#example-6-debugging-software-using-the-vitis-debugger" title="Permalink to this heading">¶</a></h2>
 <p>In this example, you will walk through debugging a “Hello World”
 application.</p>
 <blockquote>
 <div><p><strong>Note:</strong> If you did not create a “Hello World” application on the APU or
-RPU, follow the steps in <a class="reference external" href="4-build-sw-for-ps-subsystems.md#creating-a-custom-bare-metal-application-for-an-arm-cortex-a53-based-apu">Create Custom Bare-Metal Application for Arm Cortex-A53 based APU</a>
+RPU, follow the steps in <a class="reference external" href="4-build-sw-for-ps-subsystems.html#creating-a-custom-bare-metal-application-for-an-arm-cortex-a53-based-apu">Create Custom Bare-Metal Application for Arm Cortex-A53 based APU</a>
 to create a new “Hello World” application.</p>
 </div></blockquote>
 <p>After you create the “Hello World” application, work through the
 following example to debug the software using the Vitis debugger.</p>
 <ol>
-<li><p>Connect the JTAG cable, set the boot mode to JTAG, and power on the board. Refer to the steps in <a class="reference external" href="4-build-sw-for-ps-subsystems.md#example-3-running-the-hello-world-application-from-arm-cortex-a53">Example 3: Running the “Hello World” Application from Arm Cortex-A53</a>.</p></li>
+<li><p>Connect the JTAG cable, set the boot mode to JTAG, and power on the board. Refer to the steps in <a class="reference external" href="4-build-sw-for-ps-subsystems.html#example-3-running-the-hello-world-application-from-arm-cortex-a53">Example 3: Running the “Hello World” Application from Arm Cortex-A53</a>.</p></li>
 <li><p>In the C/C++ Perspective, right-click the <strong>hello_a53 Project</strong> and select <strong>Debug As→ Launch on Hardware → Single Application Debug</strong>.</p>
 <blockquote>
 <div><p><strong>Note:</strong> The above step launches the Application Debugger in the
@@ -245,7 +253,7 @@ confirm that the program counter, pc register, contains
 <p><strong><em>Note</em>:</strong> If the Registers window is not visible, select <strong>Window → Show View → Registers</strong>.</p>
 </li>
 <li><p>Double-click in the margin of the <strong>helloworld.c</strong> window next to the
-line of code that reads print (”<code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World\n\r</span></code>”);. This sets a
+line of code that reads print (“<code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World\n\r</span></code>”);. This sets a
 breakpoint at the <code class="docutils literal notranslate"><span class="pre">printf</span></code> command. To confirm the breakpoint,
 review the Breakpoints window.</p>
 <blockquote>
@@ -281,8 +289,8 @@ step-into (F5), step-return (F7), step-over (F6), and resume (F8).*</p>
 </div></blockquote>
 </li>
 </ol>
-</section>
-<section id="example-7-debugging-using-xsct">
+</div>
+<div class="section" id="example-7-debugging-using-xsct">
 <h2>Example 7: Debugging Using XSCT<a class="headerlink" href="#example-7-debugging-using-xsct" title="Permalink to this heading">¶</a></h2>
 <p>You can use the previous steps to debug bare-metal applications
 running on RPU and PMU using the Vitis application debugger GUI.</p>
@@ -296,7 +304,7 @@ can choose to debug the code using either the System Debugger
 GUI or the command line debugger in XSCT. All XSCT
 commands are scriptable, and this also applies to the commands covered in
 this example.</p>
-<section id="setting-up-the-target">
+<div class="section" id="setting-up-the-target">
 <h3>Setting Up the Target<a class="headerlink" href="#setting-up-the-target" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Open the XSCT console:</p>
@@ -348,8 +356,8 @@ machines to enable backward slashes () in file paths. These brackets can be
 avoided by using forward “/” in paths. For Linux paths, use
 forward slashes; the paths in XSCT in Linux can work as-is, without any brackets.</p>
 </div></blockquote>
-</section>
-<section id="loading-the-application-using-xsct">
+</div>
+<div class="section" id="loading-the-application-using-xsct">
 <h3>Loading the Application Using XSCT<a class="headerlink" href="#loading-the-application-using-xsct" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Check and select the RPU Cortex-R5F Core 0 target ID.</p>
@@ -381,8 +389,8 @@ is a child. For example, when A53 #0 is the current target, <code class="docutil
 sequentially. The XSCT prompt can be seen after successful download. Now, configure a serial terminal (Tera Term, Minicom, or the serial terminal interface for a UART-1 USB-serial connection).</p>
 </li>
 </ol>
-</section>
-<section id="serial-terminal-configuration">
+</div>
+<div class="section" id="serial-terminal-configuration">
 <h3>Serial Terminal Configuration<a class="headerlink" href="#serial-terminal-configuration" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Start a terminal session using Tera Term or Minicom depending on the host machine being used. Set the
@@ -398,8 +406,8 @@ that the R5 BSP has been configured to use UART-1, so R5
 application messages will appear on the COM port with the UART-1
 terminal.</p></li>
 </ol>
-</section>
-<section id="running-and-debugging-the-application-using-xsct">
+</div>
+<div class="section" id="running-and-debugging-the-application-using-xsct">
 <h3>Running and Debugging the Application Using XSCT<a class="headerlink" href="#running-and-debugging-the-application-using-xsct" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Before you run the application, set a breakpoint at <code class="docutils literal notranslate"><span class="pre">main()</span></code>:</p>
@@ -443,9 +451,9 @@ UART-1 terminal.</p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>
