@@ -468,17 +468,17 @@ You can now use Vitis OS aware debug to check what has gone wrong in the kernel 
 
 # Error 5: Debug Using QEMU
 
-Repeat the steps from [Debugging Bare-Metal Applications](/docs/2-debugging-bare-metal-applications) but this time using QEMU. To launch debug using QEMU, refer to [Standalone Application Debug Using System Debugger on QEMU](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#pqw1565072996942).
+Repeat the steps from [Debugging Bare-Metal Applications](/docs/Vitis-Embedded-Software-Debugging/docs/2-debugging-bare-metal-applications) but this time using QEMU. To launch debug using QEMU, refer to [Standalone Application Debug Using System Debugger on QEMU](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Standalone-Application-Debug-Using-System-Debugger-on-QEMU).
 
 # Further Reading
 
 ## Attaching an Application to System Debugger
 
-Refer to [Attach and Debug using Xilinx System Debugger](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#jlr1565072996727) for more information. 
+Refer to [Attach and Debug using Xilinx System Debugger](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Attach-and-Debug-using-Xilinx-System-Debugger) for more information. 
 
 ## Path Mapping
 
-When an application is compiled with debug flags (for example, `-O0 -g`), the compiler stores references to the source paths in the debug sections of the ELFs. This information is used by the debugger to map the PC address of the target processor to the source line in the code. Path mapping allows you to debug an application when its sources are not available at the location where it was compiled. For example, you can compile an application on Windows and debug it on Linux, or debug a pre-built Linux kernel image, without having to recompile the sources. In both cases, you can download and run the images using [XSCT](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/XSCT.html#mpr1543754624906), and then attach the debugger.
+When an application is compiled with debug flags (for example, `-O0 -g`), the compiler stores references to the source paths in the debug sections of the ELFs. This information is used by the debugger to map the PC address of the target processor to the source line in the code. Path mapping allows you to debug an application when its sources are not available at the location where it was compiled. For example, you can compile an application on Windows and debug it on Linux, or debug a pre-built Linux kernel image, without having to recompile the sources. In both cases, you can download and run the images using [XSCT](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Xilinx-Software-Command-Line-Tool?tocId=CwnQ90bFNEhE~pGBspGuOQ), and then attach the debugger.
 
 After this is done, the debugger should issue a warning about the missing source files when the processor is stopped. You can then enable path mapping in one of the following ways, so that the debugger can find the sources from a different location. 
 
@@ -492,7 +492,7 @@ After this is done, the debugger should issue a warning about the missing source
 
 ## Using Remote Host
 
-Refer to [Using a Remote Host with System Debugger](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#hwl1565072997080__cr294539) for more information. 
+Refer to [Using a Remote Host with System Debugger](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Using-a-Remote-Host-with-System-Debugger) for more information. 
 
 ## Basic Setup for OS Aware Debug
 
@@ -527,7 +527,7 @@ These steps are required if you are _not_ using the Xilinx provided BSP. The ker
 
 ## OS Awareness (OSA) Options in the Vitis IDE
 
-Refer to [Enabling OS Aware Debug](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#itw1565072997401).
+Refer to [Enabling OS Aware Debug](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Enabling-OS-Aware-Debug).
 
 ![osa_menu](./images/osa_menu.PNG)
 
