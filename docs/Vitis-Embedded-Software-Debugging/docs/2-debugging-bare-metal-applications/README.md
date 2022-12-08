@@ -20,7 +20,7 @@ The Vitis workspace will be created in the top-level directory in a folder named
 
 ## Error 1: Error Launching Program
 
-Create a [debug launch session](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/runappproject.html#tvc1565072991613__bm294539) for the ``testapp_a53`` application and launch the debug session with the default settings. The process will be interrupted with an error message.
+Create a [debug launch session](https://docs.xilinx.com/access/sources/dita/topic?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded&resourceid=tvc1565072991613.html) for the ``testapp_a53`` application and launch the debug session with the default settings. The process will be interrupted with an error message.
 
 ![Error Launching program](./images/001.png)
 
