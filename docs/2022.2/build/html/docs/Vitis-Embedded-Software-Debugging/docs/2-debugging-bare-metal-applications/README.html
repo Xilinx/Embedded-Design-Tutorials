@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -24,7 +25,6 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
-        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -137,27 +137,27 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="debugging-bare-metal-applications">
+  <section id="debugging-bare-metal-applications">
 <h1>Debugging Bare-Metal Applications<a class="headerlink" href="#debugging-bare-metal-applications" title="Permalink to this heading">¶</a></h1>
 <p>This section showcases the different debugging features available within the Vitis™ embedded software development flow for bare-metal applications. Using an example application project with intentional bugs, the debug guide goes through each issue and leverages the different windows and features available in the application debug session to highlight the potential usage of debug features in a real world scenario.</p>
-<div class="section" id="getting-started">
+<section id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h2>
-<div class="section" id="example-design">
+<section id="example-design">
 <h3>Example Design<a class="headerlink" href="#example-design" title="Permalink to this heading">¶</a></h3>
 <p>The example design targets the Xilinx ZCU102 evaluation platform and implements a simple string manipulation example. A predefined string is loaded into a memory buffer, copied into a different memory buffer using a DMA engine, and finally transformed to lower case. As mentioned previously, the example design includes some intentional bugs and missing statements. Consequently, running the example will not generate the ideal result, but this is by design.</p>
-</div>
-<div class="section" id="build-instructions">
+</section>
+<section id="build-instructions">
 <h3>Build Instructions<a class="headerlink" href="#build-instructions" title="Permalink to this heading">¶</a></h3>
 <p>Source <code class="docutils literal notranslate"><span class="pre">settings.sh</span></code> from Vitis, or launch an XSCT instance. Enter the <code class="docutils literal notranslate"><span class="pre">scripts</span></code> directory, and run the following command from the command line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span> <span class="n">vitis</span><span class="o">.</span><span class="n">tcl</span>
 </pre></div>
 </div>
 <p>The Vitis workspace will be created in the top-level directory in a folder named <code class="docutils literal notranslate"><span class="pre">workspace</span></code>. Launch the Vitis IDE and select the workspace to open the working directory.</p>
-</div>
-</div>
-<div class="section" id="error-1-error-launching-program">
+</section>
+</section>
+<section id="error-1-error-launching-program">
 <h2>Error 1: Error Launching Program<a class="headerlink" href="#error-1-error-launching-program" title="Permalink to this heading">¶</a></h2>
-<p>Create a <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/runappproject.html#tvc1565072991613__bm294539">debug launch session</a> for the <code class="docutils literal notranslate"><span class="pre">testapp_a53</span></code> application and launch the debug session with the default settings. The process will be interrupted with an error message.</p>
+<p>Create a <a class="reference external" href="https://docs.xilinx.com/access/sources/dita/topic?isLatest=true&amp;ft:locale=en-US&amp;url=ug1400-vitis-embedded&amp;resourceid=tvc1565072991613.html">debug launch session</a> for the <code class="docutils literal notranslate"><span class="pre">testapp_a53</span></code> application and launch the debug session with the default settings. The process will be interrupted with an error message.</p>
 <p><img alt="Error Launching program" src="../../../../_images/001.png" /></p>
 <p>To debug an application, a launch configuration needs to be created with the desired settings. These settings generate a Xilinx System Debugger (XSDB) script that is executed to download the applications to the device. The debug launch process is transparent to the user, and the expected outcome is for the application to stop at the <code class="docutils literal notranslate"><span class="pre">main</span></code> function, so you can start debugging the code from there.</p>
 <p>In some cases, however, this under-the-hood script might not execute successfully, generating error or warning messages that lead to a cancelled debug session. These scenarios are most likely on board bring-up processes, due to either incorrect hardware configurations in Vivado or hardware-related issues. The issue usually manifests as an error message stating that the initialization process (FSBL execution) did not succeed, or as an error message pointing that launching the program did not succeed. An incorrect linker script that places code on non-initialized or invalid memory addresses might also display similar symptoms.</p>
@@ -165,29 +165,29 @@ function OptanonWrapper() { }
 <p><img alt="Vitis log" src="../../../../_images/002.png" /></p>
 <p>Open the XSCT window within the Vitis IDE and execute each command line in the script manually until you reach the command that generates the error.</p>
 <p><img alt="XSCT error" src="../../../../_images/003.png" /></p>
-<p>Running each command one by one allows you to see that the issue in this particular test case is in the download process of the <code class="docutils literal notranslate"><span class="pre">testapp_a53</span></code> application to memory. See the <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/qqo1569237914824.html#ariaid-title2">dow</a> command for more information.</p>
+<p>Running each command one by one allows you to see that the issue in this particular test case is in the download process of the <code class="docutils literal notranslate"><span class="pre">testapp_a53</span></code> application to memory. See the <a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/dow">dow</a> command for more information.</p>
 <p>In this case, the error message has already pointed out the root cause of the issue. There is a memory write error at 0xFFFB0000 which does not belong to a memory region according to the <em>Zynq Ultrascale+ MPSoC Technical Reference Manual</em> (<a class="reference external" href="https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf#G12.407191">UG1085</a>). Checking the linker script within the Vitis IDE confirms that there is a mistake in the OCM memory region description because the base address is not correct.</p>
 <p><img alt="Linker file wrong" src="../../../../_images/004.png" /></p>
 <p>Open the linker script in a text editor and modify the base address of the OCM memory region to match with the correct address.</p>
 <p><img alt="Linker file correct" src="../../../../_images/005.png" /></p>
 <p>Build the application and launch your previously created debug session again. Finally, the launch process succeeds and the test application is stopped at the <code class="docutils literal notranslate"><span class="pre">main</span></code> function breakpoint.</p>
 <p><img alt="Launch succeed" src="../../../../_images/006.png" /></p>
-</div>
-<div class="section" id="error-2-unfinished-dma-operation">
+</section>
+<section id="error-2-unfinished-dma-operation">
 <h2>Error 2: Unfinished DMA Operation<a class="headerlink" href="#error-2-unfinished-dma-operation" title="Permalink to this heading">¶</a></h2>
 <p>Resume the execution of the application and wait to see whether the application reaches the end. The application keeps running. Pausing the execution shows that the DMA operation has not been finished, so the program execution is looping forever.</p>
 <p><img alt="Unfinished DMA operation" src="../../../../_images/007.png" /></p>
-<p>The DMA operation is monitored by an interrupt handler which has not been executed for some reason. The <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/runappproject.html?hl=registers,view#ariaid-title15">Registers view</a> in the Vitis IDE can be used in these cases to inspect the peripheral/controller status as well as the processor status for debugging purposes. This window is context aware, which means that the registers shown in the window are based on the target selected in the Debug window.</p>
+<p>The DMA operation is monitored by an interrupt handler which has not been executed for some reason. The <a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Viewing-Target-Registers">Registers view</a> in the Vitis IDE can be used in these cases to inspect the peripheral/controller status as well as the processor status for debugging purposes. This window is context aware, which means that the registers shown in the window are based on the target selected in the Debug window.</p>
 <p>Select the PSU target in the Debug window and check the ADMA_CH0 controller (the channel used for the data transfer) registers. The DMA_DONE bit within the ZDMA_CH_ISR register shows that the transfer has been completed and the interrupt signal in the controller has been also triggered.</p>
 <p><img alt="DMA Register" src="../../../../_images/008.png" /></p>
-<p>Select the <strong>Cortex-A53#0</strong> target in the Debug window and check that the interrupt for the LPD DMA CH0 (<a class="reference external" href="https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf#G15.435570">INTC109</a>) has not been enabled in the corresponding GICD_ISENABLER# register. The interrupt signal is consequently created in the DMA controller but is not handled in the interrupt controller, which prevents the handler from being executed and the loop from finishing in the application code. Review of the code can confirm that the interrupt has not been enabled in the GIC using the <code class="docutils literal notranslate"><span class="pre">XScuGic_Enable</span></code> function.</p>
+<p>Select the <strong>Cortex-A53#0</strong> target in the Debug window and check that the interrupt for the LPD DMA CH0 has not been enabled in the corresponding GICD_ISENABLER# register. The interrupt signal is consequently created in the DMA controller but is not handled in the interrupt controller, which prevents the handler from being executed and the loop from finishing in the application code. Review of the code can confirm that the interrupt has not been enabled in the GIC using the <code class="docutils literal notranslate"><span class="pre">XScuGic_Enable</span></code> function.</p>
 <p><img alt="GIC Register" src="../../../../_images/009.png" /></p>
 <p>Open <code class="docutils literal notranslate"><span class="pre">main.c</span></code> in the file editor and add <code class="docutils literal notranslate"><span class="pre">XScuGic_Enable(&amp;ScuGic,</span> <span class="pre">XPAR_XADMAPS_0_INTR);</span></code> in the GIC configuration steps.</p>
 <p><img alt="Enable DMA interrupt" src="../../../../_images/010.png" /></p>
 <p>Build the application and launch the initially created debug session again. This time, the application is executed completely and the exit point is reached, confirming that the DMA transfer has been completed.</p>
 <p><img alt="DMA finished" src="../../../../_images/011.png" /></p>
-</div>
-<div class="section" id="error-3-unexpected-dma-transfer-result">
+</section>
+<section id="error-3-unexpected-dma-transfer-result">
 <h2>Error 3: Unexpected DMA Transfer Result<a class="headerlink" href="#error-3-unexpected-dma-transfer-result" title="Permalink to this heading">¶</a></h2>
 <p>Despite the successful DMA transfer, the serial output of the application shows that there has been an unexpected result, because the destination buffer does not match with the source buffer.</p>
 <p><img alt="DMA transfer failure" src="../../../../_images/012.png" /></p>
@@ -213,8 +213,8 @@ function OptanonWrapper() { }
 <p><img alt="Enable DMA interrupt" src="../../../../_images/018.png" /></p>
 <p>Build the application and launch the initially created debug session again. This time the execution does not end at the exit point, but serial output confirms that the DMA transfer has been successful.</p>
 <p><img alt="DMA succeed" src="../../../../_images/019.png" /></p>
-</div>
-<div class="section" id="error-4-assertion">
+</section>
+<section id="error-4-assertion">
 <h2>Error 4: Assertion<a class="headerlink" href="#error-4-assertion" title="Permalink to this heading">¶</a></h2>
 <p>With the latest changes in the code, the application still does not succeed executing the whole application. Stopping the core in the debugger shows that it is looping forever in the <code class="docutils literal notranslate"><span class="pre">Xil_Assert</span></code> function.</p>
 <p><img alt="Assertion" src="../../../../_images/020.png" /></p>
@@ -226,8 +226,8 @@ function OptanonWrapper() { }
 </pre></div>
 </div>
 <p>Build the application and launch the debug session again. This time, the application is executed completely and the exit point is reached.</p>
-</div>
-<div class="section" id="error-5-non-lowercased-characters">
+</section>
+<section id="error-5-non-lowercased-characters">
 <h2>Error 5: Non-Lowercased Characters<a class="headerlink" href="#error-5-non-lowercased-characters" title="Permalink to this heading">¶</a></h2>
 <p>In the previous step, the execution flow of the example application reached the end, but the result of the string lowercase conversion did not succeed because the ‘Z’ character has not been lowercased.</p>
 <p><img alt="Z not lowercased" src="../../../../_images/022.png" /></p>
@@ -244,8 +244,8 @@ function OptanonWrapper() { }
 <p>Build the application and launch the debug session again. This time, the application is executed completely, and the original string is lowercased properly in the destination buffer.</p>
 <p><img alt="Success" src="../../../../_images/025.png" /></p>
 <p><em>Copyright 2021 Xilinx Inc. Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</em></p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -269,7 +269,7 @@ function OptanonWrapper() { }
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on November 17, 2022.
+      <span class="lastupdated">Last updated on December 08, 2022.
       </span></p>
   </div>
 

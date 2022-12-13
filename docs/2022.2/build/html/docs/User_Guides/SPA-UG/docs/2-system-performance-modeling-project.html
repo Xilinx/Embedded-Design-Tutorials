@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -24,7 +25,6 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
-        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -143,7 +143,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="system-performance-modeling-project">
+  <section id="system-performance-modeling-project">
 <h1>System Performance Modeling Project<a class="headerlink" href="#system-performance-modeling-project" title="Permalink to this heading">¶</a></h1>
 <p>The Vitis™ IDE is delivered with a predefined project that enables System Performance Modeling (SPM) and helps enable performance analysis at an early design stage. The SPM project contains both software executable and a post-bitstream, configurable hardware system. The SPM serves multiple purposes, including the following:</p>
 <ul class="simple">
@@ -155,7 +155,7 @@ function OptanonWrapper() { }
 <p><em>Figure 5:</em> <strong>SPM Project Files in the Vitis IDE</strong></p>
 <p><img alt="../../../../_images/image4.jpeg" src="../../../../_images/image4.jpeg" /></p>
 <p>The previous figure lists the files contained in the predefined SPM project. It contains predefined traffic configurations (atgconfigs), performance monitor configurations (apmconfigs), pre-compiled software executables (executables), and multiple system definition files. The system definition files include Processing System initialization files, the bitstream for predefined PL design and the tcl file that can recreate the design.</p>
-<div class="section" id="spm-software">
+<section id="spm-software">
 <h2>SPM Software<a class="headerlink" href="#spm-software" title="Permalink to this heading">¶</a></h2>
 <p>The SPM project contains two pre-compiled software executables:</p>
 <ul class="simple">
@@ -165,7 +165,7 @@ function OptanonWrapper() { }
 <blockquote>
 <div><p><strong><em>Note</em>:</strong> ZCU102 SPM project only includes BEEBS benchmark.</p>
 </div></blockquote>
-<div class="section" id="beebs-benchmarks">
+<section id="beebs-benchmarks">
 <h3>BEEBS Benchmarks<a class="headerlink" href="#beebs-benchmarks" title="Permalink to this heading">¶</a></h3>
 <p>The BEEBS program comprises a sequence of eight diverse benchmarks. As shown in the following table, this suite contains algorithms originally contained as part of various well-known benchmark suites such as MiBench, WCET, and DSPstone. These benchmarks were chosen to test embedded systems and be portable to standalone or bare-metal targets. For more information about the BEEBS benchmark suite, refer to <a class="reference external" href="http://dblp.uni-trier.de/db/journals/corr/corr1308.html#PallisterHB13">BEEBS: Open Benchmarks for Energy Measurements on Embedded Platforms</a>.</p>
 <div id="table1"><p><em>Table 1:</em> <strong>BEEBS Benchmarks Provided in Pre-Compiled Program</strong></p>
@@ -231,7 +231,7 @@ function OptanonWrapper() { }
 </li>
 <li><p><strong>Instrumented:</strong> Run-times of these benchmarks were calculated based on instrumentation added to the code before and after every benchmark. See <a class="reference external" href="../docs/9-using-spa-with-custom-target.html#instrumenting-hardware">Instrumenting Hardware</a> for more details. Note that the run-times are reported in the transcript delivered over the UART (Terminal 1 panel in the Vitis IDE) and read manually.</p></li>
 </ul>
-<div class="section" id="memory-stride-benchmarks">
+<section id="memory-stride-benchmarks">
 <h4>Memory Stride Benchmarks<a class="headerlink" href="#memory-stride-benchmarks" title="Permalink to this heading">¶</a></h4>
 <p>The memory stride benchmarks differ from the BEEBS benchmarks in that they do minimal computation and are specifically designed to test memory bandwidth and latency. The various tests included in the software are listed in the following table. The five different types of tests include:</p>
 <ul class="simple">
@@ -317,30 +317,30 @@ function OptanonWrapper() { }
 </table></div><blockquote>
 <div><p><strong><em>Note</em>:</strong> ZCU102 SPM project doesn’t include this memory stride benchmark executable.</p>
 </div></blockquote>
-</div>
-</div>
-</div>
-<div class="section" id="spm-hardware">
+</section>
+</section>
+</section>
+<section id="spm-hardware">
 <h2>SPM Hardware<a class="headerlink" href="#spm-hardware" title="Permalink to this heading">¶</a></h2>
 <p>The SPM project contains a predefined hardware design that can be used for early performance exploration. This design is delivered in the project as a fixed bitstream to configure the Zynq-7000 SoC PL.</p>
 <p><em>Figure 6:</em> <strong>Pre-Defined SPM Design in Zynq-7000 SoC</strong></p>
 <p><img alt="../../../../_images/x14651-Pre-Defined-SPM-Design-Zynq-7000-APSoC.png" src="../../../../_images/x14651-Pre-Defined-SPM-Design-Zynq-7000-APSoC.png" /></p>
 <p>The previous figure shows a block diagram of this predefined SPM design targeting the</p>
 <p>Zynq-7000 SoC. It is a highly-configurable design involving five AXI traffic generator (ATGs) and one AXI performance monitor (APM). One ATG is connected to each of the four high- performance (HP) ports as well as one to the ACP. The configuration of these cores is performed via the general purpose (GP) port 0 master. CPU performance metrics are obtained using the Performance Monitor Units (PMUs).</p>
-<div class="section" id="axi-traffic-generator">
+<section id="axi-traffic-generator">
 <h3>AXI Traffic Generator<a class="headerlink" href="#axi-traffic-generator" title="Permalink to this heading">¶</a></h3>
 <p>The ATG is an intelligent traffic generator configured to exhibit specific AXI traffic behavior. The command queue for each ATG is filled during initialization, and these commands are executed upon the application of a start bit. Separate queues with depth of 256 commands are included for write and read traffic. The ATG also has a loop mode where the traffic in the command queue is continuous, iterating over the traffic in the queue until a stop bit has been applied. In the Vitis IDE, this has been simplified to a Traffic Duration (sec) value. The traffic specification for the ATGs is described in <a class="reference internal" href="4-getting-started-with-SPM.html"><span class="doc">Getting Started with SPM</span></a>.</p>
-</div>
-<div class="section" id="axi-performance-monitor">
+</section>
+<section id="axi-performance-monitor">
 <h3>AXI Performance Monitor<a class="headerlink" href="#axi-performance-monitor" title="Permalink to this heading">¶</a></h3>
 <p>The APM is a core designed to measure the real-time performance of every connected AXI interface. In the SPM design, these interfaces include the outputs of the five ATGs. The APM is configured in Profile mode, providing an event count module that includes six profile counters per ATG. These six counters are designed to monitor average throughput and latency for all write and read channels on the connected AXI interfaces. See <a class="reference internal" href="3-monitor-framework.html"><span class="doc">Monitor Framework</span></a> to understand how these metrics are calculated.</p>
-</div>
-<div class="section" id="performance-monitor-units">
+</section>
+<section id="performance-monitor-units">
 <h3>Performance Monitor Units<a class="headerlink" href="#performance-monitor-units" title="Permalink to this heading">¶</a></h3>
 <p>Each Arm Cortex-A9 CPU contains a Performance Monitor Unit (PMU). These PMUs are configured to monitor a number of different performance metrics, including CPU utilization and Instructions Per Cycle (IPC). The PMUs are accessed as part of the performance monitor framework used by the Vitis IDE. See <a class="reference internal" href="3-monitor-framework.html"><span class="doc">Chapter 3: Monitor Framework</span></a> to understand how these PMU counters are used.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -364,7 +364,7 @@ function OptanonWrapper() { }
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on November 17, 2022.
+      <span class="lastupdated">Last updated on December 08, 2022.
       </span></p>
   </div>
 

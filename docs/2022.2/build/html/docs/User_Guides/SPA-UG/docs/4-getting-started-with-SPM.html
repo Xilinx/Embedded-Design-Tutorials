@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -24,7 +25,6 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
-        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -135,7 +135,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="getting-started-with-spm">
+  <section id="getting-started-with-spm">
 <h1>Getting Started with SPM<a class="headerlink" href="#getting-started-with-spm" title="Permalink to this heading">¶</a></h1>
 <p>The predefined SPM project can be automatically loaded into the workspace with the following steps</p>
 <ol>
@@ -163,7 +163,7 @@ function OptanonWrapper() { }
 </div><p>By default, the software run in this configuration is the executable <code class="docutils literal notranslate"><span class="pre">beebs_benchmarks.elf</span></code>, an excellent starting application because it contains significant amounts of data processing and memory accesses
 (see <a class="reference internal" href="2-system-performance-modeling-project.html"><span class="doc">System Performance Modeling Project</span></a>).</p>
 <p>This default application was chosen to prepare your design for evaluating software performance, which is described in the next chapter. Later in this guide, this setting will be modified and memory stride, which is the other application that is supplied with the SPM project, will be used.</p>
-<div class="section" id="atg-configuration">
+<section id="atg-configuration">
 <h2>ATG Configuration<a class="headerlink" href="#atg-configuration" title="Permalink to this heading">¶</a></h2>
 <p>The Vitis IDE enables you to specify traffic scenarios for configuring the ATGs. The following figure shows the ATG Configuration tab, where this traffic can be specified.</p>
 <p><em>Figure 10:</em> <strong>ATG Configuration Setup in the Vitis IDE Configuration Wizard</strong></p>
@@ -179,8 +179,8 @@ function OptanonWrapper() { }
 <li><p><strong>Tranx Interval:</strong> The number of PL clock cycles between the start of two consecutive AXI transactions. Valid values are between 5 and 1024.</p></li>
 <li><p><strong>Est. Throughput:</strong> An estimated throughput (in MB/s) of the current traffic settings; the throughput is calculated using: <code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">×</span> <span class="pre">(Lburst/(MAX(Linterval,</span> <span class="pre">Lburst)))</span> <span class="pre">×</span> <span class="pre">f</span></code>, where <code class="docutils literal notranslate"><span class="pre">Lburst</span></code> is the Beats/tranx, <code class="docutils literal notranslate"><span class="pre">Linterval</span></code> is the Tranx interval, and <code class="docutils literal notranslate"><span class="pre">f</span></code> is the PL clock frequency.</p></li>
 </ul>
-</div>
-<div class="section" id="performance-analysis-perspective">
+</section>
+<section id="performance-analysis-perspective">
 <h2>Performance Analysis Perspective<a class="headerlink" href="#performance-analysis-perspective" title="Permalink to this heading">¶</a></h2>
 <p>After editing your configuration, you can start a performance analysis session by clicking <strong>Debug</strong> in the Edit Configuration dialog box. The Vitis IDE opens the Performance Analysis perspective.</p>
 <div id="fig11"><p><em>Figure 11:</em> <strong>Performance Analysis Perspective in the Vitis IDE</strong></p>
@@ -201,8 +201,8 @@ function OptanonWrapper() { }
 <blockquote>
 <div><p><strong><em>Note</em>:</strong> Your port may be different than COM5, but all other settings are valid.</p>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -226,7 +226,7 @@ function OptanonWrapper() { }
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on November 17, 2022.
+      <span class="lastupdated">Last updated on December 08, 2022.
       </span></p>
   </div>
 

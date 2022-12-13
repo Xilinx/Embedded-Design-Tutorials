@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -24,7 +25,6 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -144,7 +144,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="creating-custom-ip-and-device-drivers-for-linux">
+  <section id="creating-custom-ip-and-device-drivers-for-linux">
 <h1>Creating Custom IP and Device Drivers for Linux<a class="headerlink" href="#creating-custom-ip-and-device-drivers-for-linux" title="Permalink to this heading">¶</a></h1>
 <p>In this chapter, you will create an intellectual property (IP) using the Create and Package New IP wizard. You will also design a system to include the new IP created for the Xilinx® Zynq®-7000 SoC device.</p>
 <p>For the IP, you will develop a Linux-based device driver as a module that can be dynamically loaded onto the running kernel.</p>
@@ -158,20 +158,18 @@ function OptanonWrapper() { }
 <li><p><a class="reference internal" href="#example-13-loading-the-module-into-a-kernel-and-application-execution"><span class="std std-ref">Example 13: Loading a Module into a Kernel and Executing the Application</span></a>: Loading the Module into a Kernel and Executing the Application</p></li>
 </ul>
 </div>
-<div class="section" id="creating-peripheral-ip">
+<section id="creating-peripheral-ip">
 <h2>Creating Peripheral IP<a class="headerlink" href="#creating-peripheral-ip" title="Permalink to this heading">¶</a></h2>
 <p>In this section, you will create an AXI4-Lite compliant slave peripheral IP framework using the Create and Package New IP wizard. You will also add functionality and port assignments to the peripheral IP framework.</p>
 <p>The peripheral IP you will create is an AXI4-Lite compliant slave IP. It includes a 28-bit counter. The four most significant bits of the counter drive the four output ports of the peripheral IP. The block diagram is shown in the following figure.</p>
-<div class="figure align-default" id="id5">
+<figure class="align-default" id="id5">
 <img alt="Custom IP Structure" src="../../../_images/image93.jpeg" />
-<p class="caption"><span class="caption-text">Custom IP Structure</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Custom IP Structure</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The block diagram includes the following configuration register:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Register Name</p></th>
 <th class="head"><p>Control Register</p></th>
@@ -196,13 +194,6 @@ function OptanonWrapper() { }
 <div class="line"><br /></div>
 </div>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 10%" />
-<col style="width: 11%" />
-<col style="width: 19%" />
-<col style="width: 44%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field Name</p></th>
 <th class="head"><p>Bits</p></th>
@@ -220,10 +211,10 @@ function OptanonWrapper() { }
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="example-11-creating-peripheral-ip">
+</section>
+<section id="example-11-creating-peripheral-ip">
 <span id="id1"></span><h2>Example 11: Creating Peripheral IP<a class="headerlink" href="#example-11-creating-peripheral-ip" title="Permalink to this heading">¶</a></h2>
-<div class="section" id="id2">
+<section id="id2">
 <span id="id3"></span><h3>Creating Peripheral IP<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <p>In this section, you will create an AXI4-Lite compliant slave peripheral IP.</p>
 <ol class="arabic">
@@ -232,11 +223,6 @@ function OptanonWrapper() { }
 <li><p>Select <strong>Create a new AXI4 peripheral</strong> and then click <strong>Next</strong>.</p></li>
 <li><p>Fill in the peripheral details as follows:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 27%" />
-<col style="width: 32%" />
-<col style="width: 42%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Screen</p></th>
 <th class="head"><p>System Property</p></th>
@@ -385,8 +371,8 @@ File</strong>. You need to add Verilog code that creates output ports to map to 
 <p class="admonition-title">Note</p>
 <p>The custom core creation process that you have worked through is very simple with the example Verilog included in the IP creation process. For more information, refer to the <em>GitHub Zynq Cookbook: How to Run BFM Simulation</em> web page.</p>
 </div>
-</div>
-<div class="section" id="integrating-peripheral-ip-with-ps-gp-master-port">
+</section>
+<section id="integrating-peripheral-ip-with-ps-gp-master-port">
 <h3>Integrating Peripheral IP with PS GP Master Port<a class="headerlink" href="#integrating-peripheral-ip-with-ps-gp-master-port" title="Permalink to this heading">¶</a></h3>
 <p>You will now create a system for the ZC702 board by instantiating the peripheral IP as a slave in the Zynq SoC programmable logic (PL)
 section. You will then connect it with the processor through the processing system (PS) general purpose (GP) master port. The block diagram for the system is shown in the following figure.</p>
@@ -402,8 +388,8 @@ peripheral IP register configurations.</p></li>
 <li><p>When you select the start option on the serial terminal, all four LEDs start blinking.</p></li>
 <li><p>When you select the stop option, all four LEDs stop blinking and retain the previous state.</p></li>
 </ul>
-</div>
-<div class="section" id="connecting-an-axi4-lite-compliant-custom-slave-ip">
+</section>
+<section id="connecting-an-axi4-lite-compliant-custom-slave-ip">
 <h3>Connecting an AXI4-Lite Compliant Custom Slave IP<a class="headerlink" href="#connecting-an-axi4-lite-compliant-custom-slave-ip" title="Permalink to this heading">¶</a></h3>
 <p>In this section, you will connect the AXI4-Lite compliant custom slave peripheral IP that you created in <a class="reference internal" href="#id2"><span class="std std-ref">Creating Peripheral IP</span></a>.</p>
 <ol class="arabic">
@@ -422,11 +408,6 @@ peripheral IP register configurations.</p></li>
 </li>
 <li><p>Edit the <strong>leds</strong> port settings as follows:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 28%" />
-<col style="width: 42%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Port Name</p></th>
 <th class="head"><p>I/O Std</p></th>
@@ -464,9 +445,9 @@ peripheral IP register configurations.</p></li>
 <p class="admonition-title">Note</p>
 <p>Make sure to select <strong>Include bitstream</strong> instead of <strong>Pre-synthesis</strong> on the <strong>Output</strong> page of the <strong>Export Hardware Platform</strong> wizard.</p>
 </div>
-</div>
-</div>
-<div class="section" id="linux-based-device-driver-development">
+</section>
+</section>
+<section id="linux-based-device-driver-development">
 <h2>Linux-Based Device Driver Development<a class="headerlink" href="#linux-based-device-driver-development" title="Permalink to this heading">¶</a></h2>
 <p>Modules in Linux are pieces of code that can be loaded and unloaded into the kernel on demand. A piece of code that you add in this way is called a loadable kernel module (LKM). These modules extend the functionality of the kernel without the need to reboot the system. Without modules, you would need to build monolithic kernels and add new functionality directly into the kernel image. Besides having larger kernels, this has the disadvantage of requiring you to rebuild and reboot the kernel every time you want new functionality. &gt; LKMs typically are one of the following things:</p>
 <ul class="simple">
@@ -493,8 +474,8 @@ peripheral IP register configurations.</p></li>
 <li><p>Download the kernel source code and compile it. For downloading and compilation, refer to the steps mentioned in the <a class="reference external" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841961/Zynq+Linux">Xilinx Zynq Linux
 Wiki Page</a>.</p></li>
 </ol>
-</div>
-<div class="section" id="example-12-device-driver-development">
+</section>
+<section id="example-12-device-driver-development">
 <span id="id4"></span><h2>Example 12: Device Driver Development<a class="headerlink" href="#example-12-device-driver-development" title="Permalink to this heading">¶</a></h2>
 <p>You will use a Linux workstation for this example project. The device driver software is provided in the LKM folder of the ZIP file that accompanies this guide.</p>
 <ol class="arabic">
@@ -520,28 +501,28 @@ Wiki Page</a>.</p></li>
 </li>
 <li><p>You can install the driver using the <code class="docutils literal notranslate"><span class="pre">modprobe</span></code> command, which will be explained in further detail in the next section.</p></li>
 </ol>
-</div>
-<div class="section" id="example-13-loading-a-module-into-a-kernel-and-executing-the-application">
+</section>
+<section id="example-13-loading-a-module-into-a-kernel-and-executing-the-application">
 <span id="example-13-loading-the-module-into-a-kernel-and-application-execution"></span><h2>Example 13: Loading a Module into a Kernel and Executing the Application<a class="headerlink" href="#example-13-loading-a-module-into-a-kernel-and-executing-the-application" title="Permalink to this heading">¶</a></h2>
 <p>In this example, you will boot Linux onto the Zynq SoC Board and load the peripheral IP as an LKM onto it. You will develop the application for the system and execute it onto the hardware.</p>
-<div class="section" id="loading-the-module-into-kernel-memory">
+<section id="loading-the-module-into-kernel-memory">
 <h3>Loading the Module into Kernel Memory<a class="headerlink" href="#loading-the-module-into-kernel-memory" title="Permalink to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">modprobe</span></code> command makes an <code class="docutils literal notranslate"><span class="pre">init_module</span></code> system call to load the LKM into the kernel memory. The <code class="docutils literal notranslate"><span class="pre">init_module</span></code> system call invokes the LKM initialization routine immediately after it loads the LKM. As part of its initialization routine, <code class="docutils literal notranslate"><span class="pre">insmod</span></code> passes to the address of the subroutine to <code class="docutils literal notranslate"><span class="pre">init_module</span></code>.</p>
 <p>In the peripheral IP device driver, you already set up <code class="docutils literal notranslate"><span class="pre">init_module</span></code> to call a kernel function that registers the subroutines. It calls the kernel’s <code class="docutils literal notranslate"><span class="pre">register_chrdev</span></code> subroutine, passing the major and minor number of the devices it intends to drive and the address of its own “open” routine among the arguments. The subroutine <code class="docutils literal notranslate"><span class="pre">register_chrdev</span></code> specifies in base kernel tables that when the kernel wants to open that particular device, it should call the open routine in your LKM.</p>
-</div>
-<div class="section" id="application-software">
+</section>
+<section id="application-software">
 <h3>Application Software<a class="headerlink" href="#application-software" title="Permalink to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">main()</span></code> function in the application software is the entry point for the execution. It opens the device file for the peripheral IP and then waits for the user selection on the serial terminal.</p>
 <p>If you select the start option on the serial terminal, all four LEDs start blinking. If you select the stop option, all four LEDs stop
 blinking and retain the previous state.</p>
-</div>
-<div class="section" id="example-steps">
+</section>
+<section id="example-steps">
 <h3>Example Steps<a class="headerlink" href="#example-steps" title="Permalink to this heading">¶</a></h3>
-<div class="section" id="booting-linux-on-the-target-board">
+<section id="booting-linux-on-the-target-board">
 <h4>Booting Linux on the Target Board<a class="headerlink" href="#booting-linux-on-the-target-board" title="Permalink to this heading">¶</a></h4>
 <p>Boot Linux on the Zynq SoC ZC702 target board.</p>
-</div>
-<div class="section" id="loading-modules-and-executing-applications">
+</section>
+<section id="loading-modules-and-executing-applications">
 <h4>Loading Modules and Executing Applications<a class="headerlink" href="#loading-modules-and-executing-applications" title="Permalink to this heading">¶</a></h4>
 <p>In this section, you will use the Vitis software platform installed on a Windows machine.</p>
 <ol class="arabic">
@@ -550,11 +531,6 @@ blinking and retain the previous state.</p>
 <li><p>In the Vitis software platform, select <strong>File → New → Application Project</strong> to open the New Application Project wizard.</p></li>
 <li><p>Use the information in the table below to make your selections in the wizard screens.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 27%" />
-<col style="width: 55%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Screen</p></th>
 <th class="head"><p>System Property</p></th>
@@ -662,10 +638,10 @@ Explorer perspective.</p></li>
 </li>
 <li><p>After you finish debugging the Linux application, close the Vitis software platform.</p></li>
 </ol>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -689,7 +665,7 @@ Explorer perspective.</p></li>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on November 17, 2022.
+      <span class="lastupdated">Last updated on December 08, 2022.
       </span></p>
   </div>
 

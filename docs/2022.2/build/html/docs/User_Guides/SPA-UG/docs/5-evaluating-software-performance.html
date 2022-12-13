@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -24,7 +25,6 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
-        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -135,10 +135,10 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="evaluating-software-performance">
+  <section id="evaluating-software-performance">
 <h1>Evaluating Software Performance<a class="headerlink" href="#evaluating-software-performance" title="Permalink to this heading">¶</a></h1>
 <p>There are a number of monitoring capabilities that evaluate software performance on a Zynq®-7000 SoC. These capabilities can inform you about the efficiency of your application and provide visualizations for you to better understand and optimize your software.</p>
-<div class="section" id="software-performance-monitoring">
+<section id="software-performance-monitoring">
 <h2>Software Performance Monitoring<a class="headerlink" href="#software-performance-monitoring" title="Permalink to this heading">¶</a></h2>
 <p>To illustrate these performance monitoring capabilities, the BEEBS benchmark program (see <a class="reference internal" href="2-system-performance-modeling-project.html"><span class="doc">System Performance Modeling Project</span></a>) was run on a ZC702 target board and performance results were captured in the Vitis™ IDE. There was no traffic driven from the PL, so this is a software only test. Note that if you would like to re-create these results, the software application selection is
 shown in <a class="reference internal" href="4-getting-started-with-SPM.html"><span class="doc">Getting Started with SPM</span></a>, and the PL traffic is shown in <a class="reference external" href="../docs/4-getting-started-with-SPM.html#atg-configuration">ATG Configuration</a>. Although the results shown here are for the BEEBS benchmarks, these exact same metrics can also be obtained for a program provided to or compiled by the Vitis IDE.</p>
@@ -159,8 +159,8 @@ shown in <a class="reference internal" href="4-getting-started-with-SPM.html"><s
 <p>On the Zynq UltraScale+ MPSoC, the ZCU102 SPM project shows a similar result. The only difference difference is that the BEEBS benchmark does not use an interrupt between two tests, so the CPU utilization shows 100% all across the test time. However, you can see the same pattern of L1 data cache miss rate and CPU Read Stall Cycles per Instruction.</p>
 <p><img alt="../../../../_images/spm_zcu102_swonly.png" src="../../../../_images/spm_zcu102_swonly.png" /></p>
 <p>For more information on assessing the performance of the memory hierarchy, see <a class="reference internal" href="8-evaluating-memory-hierarchy-ACP.html"><span class="doc">Evaluating Memory Hierarchy and the ACP</span></a>.</p>
-</div>
-<div class="section" id="visualizing-performance-improvements">
+</section>
+<section id="visualizing-performance-improvements">
 <h2>Visualizing Performance Improvements<a class="headerlink" href="#visualizing-performance-improvements" title="Permalink to this heading">¶</a></h2>
 <p>As shown in the previous figure, the longest run- times are clearly the matrix multiplications,especially for the largest array size. What if these run- times need to be improved? How would the performance analysis features in the Vitis IDE help measure and visualize any code optimizations or improvements?</p>
 <p>The sample code below shows two different C/C++ implementations for floating-point matrix multiplication. The original and traditional implementation is the <code class="docutils literal notranslate"><span class="pre">Multiply_Old()</span></code> function, whereas a newer implementation is contained in <code class="docutils literal notranslate"><span class="pre">Multiply_New()</span></code>. While the newer implementation appears to be more complicated, it takes advantage of the 32 byte cache lines. See <a class="reference external" href="http://www.cs.bgu.ac.il/%7Eos142/wiki.files/drepper-2007.pdf">What Every Programmer Should Know About Memory</a> by Ulrich Drepper. The original and modified C/C++ software for floating-point matrix multiplication is as follows:</p>
@@ -306,8 +306,8 @@ shown in <a class="reference internal" href="4-getting-started-with-SPM.html"><s
 </td>
 </tr>
 </tbody>
-</table></div>
-</div>
+</table></section>
+</section>
 
 
            </div>
@@ -331,7 +331,7 @@ shown in <a class="reference internal" href="4-getting-started-with-SPM.html"><s
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on November 17, 2022.
+      <span class="lastupdated">Last updated on December 08, 2022.
       </span></p>
   </div>
 

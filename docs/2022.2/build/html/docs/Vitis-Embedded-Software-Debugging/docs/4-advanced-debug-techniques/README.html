@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -24,7 +25,6 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
-        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -85,23 +85,22 @@ function OptanonWrapper() { }
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Advanced Debug Techniques</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#setting-up-the-os-aware-debug-session">Setting Up the OS Aware Debug Session</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#debug-view">Debug View</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#error-1-axi-gpio-application-debug">Error 1: AXI GPIO Application Debug</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#vivado">Vivado</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#petalinux">PetaLinux</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vitis">Vitis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debug-view">Debug View</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#error-1-axi-gpio-application-debug">Error 1: AXI GPIO Application Debug</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error-2-debugging-a-kernel-crash">Error 2: Debugging a Kernel Crash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error-3-debugging-a-kernel-process">Error 3: Debugging a Kernel Process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error-4-debugging-a-kernel-module">Error 4: Debugging a Kernel Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error-5-debug-using-qemu">Error 5: Debug Using QEMU</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#error-2-debugging-a-kernel-crash">Error 2: Debugging a Kernel Crash</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#error-3-debugging-a-kernel-process">Error 3: Debugging a Kernel Process</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#error-4-debugging-a-kernel-module">Error 4: Debugging a Kernel Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#error-5-debug-using-qemu">Error 5: Debug Using QEMU</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#further-reading">Further Reading</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#attaching-an-application-to-system-debugger">Attaching an Application to System Debugger</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#path-mapping">Path Mapping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-remote-host">Using Remote Host</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#basic-setup-for-os-aware-debug">Basic Setup for OS Aware Debug</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#os-awareness-osa-options-in-the-vitis-ide">OS Awareness (OSA) Options in the Vitis IDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">Further Reading</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#attaching-an-application-to-system-debugger">Attaching an Application to System Debugger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#path-mapping">Path Mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-remote-host">Using Remote Host</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-setup-for-os-aware-debug">Basic Setup for OS Aware Debug</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#os-awareness-osa-options-in-the-vitis-ide">OS Awareness (OSA) Options in the Vitis IDE</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../5-summary/README.html">Summary</a></li>
@@ -146,7 +145,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="advanced-debug-techniques">
+  <section id="advanced-debug-techniques">
 <h1>Advanced Debug Techniques<a class="headerlink" href="#advanced-debug-techniques" title="Permalink to this heading">¶</a></h1>
 <p>This section covers the use of the Vitis™ software platform to debug a Linux kernel using the OS aware debug feature. OS aware debug over JTAG helps you to visualize the following OS-specific information, although this is not an exhaustive list:</p>
 <ul class="simple">
@@ -156,7 +155,7 @@ function OptanonWrapper() { }
 <li><p>Variables</p></li>
 </ul>
 <p>To support this, the JTAG debugger identifies the OS running on the target and is aware of the intrinsics of the OS. You can debug the OS running on the processor cores and the processes/threads running on the OS simultaneously: more details are provided below. Also, if you don’t have a board in hand, you can use QEMU for debug.</p>
-<div class="section" id="getting-started">
+<section id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h2>
 <p>To start the debug session, perform the following steps:</p>
 <ol>
@@ -190,8 +189,8 @@ function OptanonWrapper() { }
 <li><p>Connect the SD card to the ZCU102 board.</p></li>
 <li><p>Set the UART terminal to <code class="docutils literal notranslate"><span class="pre">baudrate</span> <span class="pre">=115200</span></code> and start the board.</p></li>
 </ol>
-</div>
-<div class="section" id="setting-up-the-os-aware-debug-session">
+</section>
+<section id="setting-up-the-os-aware-debug-session">
 <h2>Setting Up the OS Aware Debug Session<a class="headerlink" href="#setting-up-the-os-aware-debug-session" title="Permalink to this heading">¶</a></h2>
 <ol>
 <li><p>Launch the Vitis software platform, version 2021.1. Make sure your board is connected to host PC using JTAG. If you are using a remote board, refer to the remote connection section.</p></li>
@@ -209,23 +208,22 @@ function OptanonWrapper() { }
 <li><p>Wait for a minute or so, and then you will be able to see the Linux option appear beneath APU.</p></li>
 </ol>
 <p><img alt="kernel_image_osa" src="../../../../_images/vmlinux.JPG" /></p>
-</div>
-<div class="section" id="debug-view">
+</section>
+<section id="debug-view">
 <h2>Debug View<a class="headerlink" href="#debug-view" title="Permalink to this heading">¶</a></h2>
 <p>In Debug view, you can see the kernel threads and processes that are running.</p>
 <p>The top part of the view shows the kernel threads that are running on the target board:</p>
 <p><img alt="kernel_image_osa" src="../../../../_images/vmlinux.JPG" /></p>
 <p>The bottom part of the view shows the processes that are running on the target board: If you run a top command in the Linux kernel, you can see the process identifiers (PIDs) which match with the process view in the Vitis IDE. In the following example, the PID of uhdpc is 747, and the same can be seen in the Vitis process list.</p>
 <p><img alt="top_command" src="../../../../_images/kernel_process.JPG" /></p>
-</div>
-<div class="section" id="error-1-axi-gpio-application-debug">
-<h2>Error 1: AXI GPIO Application Debug<a class="headerlink" href="#error-1-axi-gpio-application-debug" title="Permalink to this heading">¶</a></h2>
+<section id="error-1-axi-gpio-application-debug">
+<h3>Error 1: AXI GPIO Application Debug<a class="headerlink" href="#error-1-axi-gpio-application-debug" title="Permalink to this heading">¶</a></h3>
 <p>The application used here is a sample GPIO userspace application which uses <code class="docutils literal notranslate"><span class="pre">sysfs</span></code> calls to manage the on-board LED on ZCU102. The design uses an AXI GPIO connected to the 8-bit LEDs on the ZCU102 board.</p>
 <p><strong>Note:</strong> The PetaLinux project must be rebuilt for this example.</p>
 <p>The Vivado example design, shown in the following figure, has an AXI GPIO connected to the Zynq UltraScale+ MPSoC Processor Configuration IP. The AXI GPIO is further connected to the on-board 8-bit LED available on the ZCU102 board (GPIO_LED[7-0]: DS38, DS37, DS39, DS40, DS41, DS42, DS43, DS44). Refer to callout 21 in the ZCU102 Evaluation Board Components figure in the <em>ZCU102 Evaluation Board User Guide</em> (<a class="reference external" href="https://www.xilinx.com/support/documentation/boards_and_kits/zcu102/ug1182-zcu102-eval-bd.pdf">UG1182</a>) for the location of the LEDs on the board.</p>
 <p><img alt="design" src="../../../../_images/vivado_des.JPG" /></p>
-<div class="section" id="vivado">
-<h3>Vivado<a class="headerlink" href="#vivado" title="Permalink to this heading">¶</a></h3>
+<section id="vivado">
+<h4>Vivado<a class="headerlink" href="#vivado" title="Permalink to this heading">¶</a></h4>
 <p>In Vivado, source the <code class="docutils literal notranslate"><span class="pre">Vivado.tcl</span></code> file which generates the block design and runs through the synthesis, implementation, and device image generation processes automatically. This completes the generation of the required hardware for building the software artifacts.</p>
 <ol>
 <li><p>Source <code class="docutils literal notranslate"><span class="pre">settings.sh</span></code> for Vivado 2021.1. To create the project, browse to the scripts folder and run the following from the command line:</p>
@@ -238,9 +236,9 @@ function OptanonWrapper() { }
 <p><code class="docutils literal notranslate"><span class="pre">write_hw_platform</span> <span class="pre">-fixed</span> <span class="pre">-include_bit</span> <span class="pre">-force</span> <span class="pre">-file</span> <span class="pre">../Hardware/mpsoc_preset_wrapper.xsa</span></code></p>
 </li>
 </ol>
-</div>
-<div class="section" id="petalinux">
-<h3>PetaLinux<a class="headerlink" href="#petalinux" title="Permalink to this heading">¶</a></h3>
+</section>
+<section id="petalinux">
+<h4>PetaLinux<a class="headerlink" href="#petalinux" title="Permalink to this heading">¶</a></h4>
 <p>In PetaLinux, import the custom hardware generated from Vivado on top of the ZCU102 BSP. After the project build is completed, you should have the kernel image and the required root file system to load Linux on the ZCU102 board.</p>
 <p>Perform the following steps using PetaLinux 2021.1.</p>
 <ol>
@@ -266,9 +264,9 @@ function OptanonWrapper() { }
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">petalinux-build</span></code>.</p></li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">petalinux-package</span> <span class="pre">--boot</span> <span class="pre">--format</span> <span class="pre">BIN</span> <span class="pre">--fsbl</span> <span class="pre">images/linux/zynqmp_fsbl.elf</span> <span class="pre">--u-boot</span> <span class="pre">images/linux/u-boot.elf</span> <span class="pre">--fpga</span> <span class="pre">images/linux/system.bit</span> <span class="pre">--force</span></code>.</p></li>
 </ol>
-</div>
-<div class="section" id="vitis">
-<h3>Vitis<a class="headerlink" href="#vitis" title="Permalink to this heading">¶</a></h3>
+</section>
+<section id="vitis">
+<h4>Vitis<a class="headerlink" href="#vitis" title="Permalink to this heading">¶</a></h4>
 <p>In the Vitis IDE, import the custom hardware generated from Vivado to build your Linux userspace application which will be executed after loading Linux. The userspace application uses SysFS calls to the GPIO driver and is used to toggle the ZCU102 on-board LEDs connected to the AXI GPIO IP.</p>
 <ol>
 <li><p>Source <code class="docutils literal notranslate"><span class="pre">settings.sh</span></code> for Vitis 2021.1 or launch an XSCT instance. Enter the <code class="docutils literal notranslate"><span class="pre">scripts</span></code> directory, and from the command line run the following:</p>
@@ -324,10 +322,10 @@ function OptanonWrapper() { }
 <span class="n">out</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="error-2-debugging-a-kernel-crash">
-<h2>Error 2: Debugging a Kernel Crash<a class="headerlink" href="#error-2-debugging-a-kernel-crash" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+<section id="error-2-debugging-a-kernel-crash">
+<h3>Error 2: Debugging a Kernel Crash<a class="headerlink" href="#error-2-debugging-a-kernel-crash" title="Permalink to this heading">¶</a></h3>
 <p><strong>Disclaimer:</strong> This example is intended solely to demonstrate kernel-level debugging in the Vitis IDE.</p>
 <ol>
 <li><p>Copy over the <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code>, <code class="docutils literal notranslate"><span class="pre">image.ub</span></code>, and <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> from <code class="docutils literal notranslate"><span class="pre">bootimages/Error_1_Kernel_Crash/</span></code> to the ZCU102 SD card and boot the board.</p></li>
@@ -404,9 +402,9 @@ function OptanonWrapper() { }
 <li><p>When the driver is updated, the boot should work without issue.</p></li>
 </ol>
 <p><strong>Note:</strong> The default ZCU102 pre-built image will not have this error.</p>
-</div>
-<div class="section" id="error-3-debugging-a-kernel-process">
-<h2>Error 3: Debugging a Kernel Process<a class="headerlink" href="#error-3-debugging-a-kernel-process" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="error-3-debugging-a-kernel-process">
+<h3>Error 3: Debugging a Kernel Process<a class="headerlink" href="#error-3-debugging-a-kernel-process" title="Permalink to this heading">¶</a></h3>
 <p>This section demonstrates how to debug a kernel process using the Vitis IDE. First, you need to complete the steps explained in <a class="reference external" href="#setting-up-the-os-aware-debug-session">Setting Up the OS Aware Debug Session</a>. You also need to ensure that you have PetaLinux set up as described in <a class="reference external" href="#getting-started">Getting Started</a>.</p>
 <p>The next step focuses on the <code class="docutils literal notranslate"><span class="pre">dropbear</span></code> process. For more details about Dropbear, refer to <a class="reference external" href="https://matt.ucc.asn.au/dropbear/dropbear.html">this website</a>. By default, PetaLinux enables Dropbear while compiling the root file system, and then deletes the intermediate source files. These files are required for debugging <code class="docutils literal notranslate"><span class="pre">dropbear</span></code> or any other processes compiled by PetaLinux (e<code class="docutils literal notranslate"><span class="pre">x-</span> <span class="pre">udev</span></code>, <code class="docutils literal notranslate"><span class="pre">tcf-agent</span></code>, and so on). Perform the following steps to make sure that the source/symbols are <em>not</em> deleted by the PetaLinux build.</p>
 <ol>
@@ -442,9 +440,9 @@ function OptanonWrapper() { }
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">step</span></code> functions to browse over the code and debug if you see any issues.</p></li>
 </ol>
 <p><img alt="dropbear_5" src="../../../../_images/dropbear_step.JPG" /></p>
-</div>
-<div class="section" id="error-4-debugging-a-kernel-module">
-<h2>Error 4: Debugging a Kernel Module<a class="headerlink" href="#error-4-debugging-a-kernel-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="error-4-debugging-a-kernel-module">
+<h3>Error 4: Debugging a Kernel Module<a class="headerlink" href="#error-4-debugging-a-kernel-module" title="Permalink to this heading">¶</a></h3>
 <p>This section uses an example to demonstrate how to debug kernel modules easily using the Vitis IDE. It focuses on the lightweight Linux kernel module <code class="docutils literal notranslate"><span class="pre">lkm_demo1</span></code>. First, you need to complete the steps explained in <a class="reference external" href="#setting-up-the-os-aware-debug-session">Setting Up the OS Aware Debug Session</a>. You also need to ensure that you have PetaLinux set up as described in <a class="reference external" href="#getting-started">Getting Started</a>.</p>
 <ol>
 <li><p>Run the command <code class="docutils literal notranslate"><span class="pre">petalinux-create</span> <span class="pre">-t</span> <span class="pre">modules</span> <span class="pre">--name</span> <span class="pre">lkm-demo1</span> <span class="pre">--enable</span></code>.</p></li>
@@ -547,21 +545,21 @@ Segmentation fault
 </li>
 <li><p>Make the changes in the <code class="docutils literal notranslate"><span class="pre">lkm_demo1.c</span></code> file and rebuild the image. You can now fix the kernel module crash issue and debug it.</p></li>
 </ol>
-</div>
-<div class="section" id="error-5-debug-using-qemu">
-<h2>Error 5: Debug Using QEMU<a class="headerlink" href="#error-5-debug-using-qemu" title="Permalink to this heading">¶</a></h2>
-<p>Repeat the steps from <a class="reference external" href="/docs/2-debugging-bare-metal-applications">Debugging Bare-Metal Applications</a> but this time using QEMU. To launch debug using QEMU, refer to <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#pqw1565072996942">Standalone Application Debug Using System Debugger on QEMU</a>.</p>
-</div>
-<div class="section" id="further-reading">
+</section>
+<section id="error-5-debug-using-qemu">
+<h3>Error 5: Debug Using QEMU<a class="headerlink" href="#error-5-debug-using-qemu" title="Permalink to this heading">¶</a></h3>
+<p>Repeat the steps from <a class="reference external" href="/docs/Vitis-Embedded-Software-Debugging/docs/2-debugging-bare-metal-applications">Debugging Bare-Metal Applications</a> but this time using QEMU. To launch debug using QEMU, refer to <a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Standalone-Application-Debug-Using-System-Debugger-on-QEMU">Standalone Application Debug Using System Debugger on QEMU</a>.</p>
+</section>
+</section>
+<section id="further-reading">
 <h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this heading">¶</a></h2>
-</div>
-<div class="section" id="attaching-an-application-to-system-debugger">
-<h2>Attaching an Application to System Debugger<a class="headerlink" href="#attaching-an-application-to-system-debugger" title="Permalink to this heading">¶</a></h2>
-<p>Refer to <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#jlr1565072996727">Attach and Debug using Xilinx System Debugger</a> for more information.</p>
-</div>
-<div class="section" id="path-mapping">
-<h2>Path Mapping<a class="headerlink" href="#path-mapping" title="Permalink to this heading">¶</a></h2>
-<p>When an application is compiled with debug flags (for example, <code class="docutils literal notranslate"><span class="pre">-O0</span> <span class="pre">-g</span></code>), the compiler stores references to the source paths in the debug sections of the ELFs. This information is used by the debugger to map the PC address of the target processor to the source line in the code. Path mapping allows you to debug an application when its sources are not available at the location where it was compiled. For example, you can compile an application on Windows and debug it on Linux, or debug a pre-built Linux kernel image, without having to recompile the sources. In both cases, you can download and run the images using <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/XSCT.html#mpr1543754624906">XSCT</a>, and then attach the debugger.</p>
+<section id="attaching-an-application-to-system-debugger">
+<h3>Attaching an Application to System Debugger<a class="headerlink" href="#attaching-an-application-to-system-debugger" title="Permalink to this heading">¶</a></h3>
+<p>Refer to <a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Attach-and-Debug-using-Xilinx-System-Debugger">Attach and Debug using Xilinx System Debugger</a> for more information.</p>
+</section>
+<section id="path-mapping">
+<h3>Path Mapping<a class="headerlink" href="#path-mapping" title="Permalink to this heading">¶</a></h3>
+<p>When an application is compiled with debug flags (for example, <code class="docutils literal notranslate"><span class="pre">-O0</span> <span class="pre">-g</span></code>), the compiler stores references to the source paths in the debug sections of the ELFs. This information is used by the debugger to map the PC address of the target processor to the source line in the code. Path mapping allows you to debug an application when its sources are not available at the location where it was compiled. For example, you can compile an application on Windows and debug it on Linux, or debug a pre-built Linux kernel image, without having to recompile the sources. In both cases, you can download and run the images using <a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Xilinx-Software-Command-Line-Tool?tocId=CwnQ90bFNEhE~pGBspGuOQ">XSCT</a>, and then attach the debugger.</p>
 <p>After this is done, the debugger should issue a warning about the missing source files when the processor is stopped. You can then enable path mapping in one of the following ways, so that the debugger can find the sources from a different location.</p>
 <p><strong>Note:</strong> The source files at the new location should exactly match the source files at the original location.</p>
 <ol class="simple">
@@ -571,13 +569,13 @@ Segmentation fault
 <li><p>Enter the compilation path as the source path. Enter the new location where the sources are available as the destination path. For example, if the application was compiled at <code class="docutils literal notranslate"><span class="pre">C:\testapp</span></code>, and the same sources are available at <code class="docutils literal notranslate"><span class="pre">/scratch/source</span></code>, the source path would be <code class="docutils literal notranslate"><span class="pre">C:\testapp</span></code>, and the destination path would be <code class="docutils literal notranslate"><span class="pre">/scratch/source</span></code>.</p></li>
 <li><p>Save the settings by clicking <strong>OK</strong>. The debugger now shows the source files from the new path.</p></li>
 </ol>
-</div>
-<div class="section" id="using-remote-host">
-<h2>Using Remote Host<a class="headerlink" href="#using-remote-host" title="Permalink to this heading">¶</a></h2>
-<p>Refer to <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#hwl1565072997080__cr294539">Using a Remote Host with System Debugger</a> for more information.</p>
-</div>
-<div class="section" id="basic-setup-for-os-aware-debug">
-<h2>Basic Setup for OS Aware Debug<a class="headerlink" href="#basic-setup-for-os-aware-debug" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="using-remote-host">
+<h3>Using Remote Host<a class="headerlink" href="#using-remote-host" title="Permalink to this heading">¶</a></h3>
+<p>Refer to <a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Using-a-Remote-Host-with-System-Debugger">Using a Remote Host with System Debugger</a> for more information.</p>
+</section>
+<section id="basic-setup-for-os-aware-debug">
+<h3>Basic Setup for OS Aware Debug<a class="headerlink" href="#basic-setup-for-os-aware-debug" title="Permalink to this heading">¶</a></h3>
 <p>These steps are required if you are <em>not</em> using the Xilinx provided BSP. The kernel must be built with the following steps for OS aware debug to work.</p>
 <ol>
 <li><p>Enable kernel debug and debug info in the kernel menuconfig:</p>
@@ -611,14 +609,15 @@ Segmentation fault
 </ul>
 </li>
 </ol>
-</div>
-<div class="section" id="os-awareness-osa-options-in-the-vitis-ide">
-<h2>OS Awareness (OSA) Options in the Vitis IDE<a class="headerlink" href="#os-awareness-osa-options-in-the-vitis-ide" title="Permalink to this heading">¶</a></h2>
-<p>Refer to <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#itw1565072997401">Enabling OS Aware Debug</a>.</p>
+</section>
+<section id="os-awareness-osa-options-in-the-vitis-ide">
+<h3>OS Awareness (OSA) Options in the Vitis IDE<a class="headerlink" href="#os-awareness-osa-options-in-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
+<p>Refer to <a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Enabling-OS-Aware-Debug">Enabling OS Aware Debug</a>.</p>
 <p><img alt="osa_menu" src="../../../../_images/osa_menu.PNG" /></p>
 <p><em>Copyright 2021 Xilinx Inc. Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</em></p>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -642,7 +641,7 @@ Segmentation fault
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on November 17, 2022.
+      <span class="lastupdated">Last updated on December 08, 2022.
       </span></p>
   </div>
 

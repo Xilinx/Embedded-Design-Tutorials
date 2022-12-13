@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -24,7 +25,6 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -141,7 +141,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="zynq-ultrascale-mpsoc-processing-system-configuration-with-the-vivado-design-suite">
+  <section id="zynq-ultrascale-mpsoc-processing-system-configuration-with-the-vivado-design-suite">
 <h1>Zynq UltraScale+ MPSoC Processing System Configuration with the Vivado Design Suite<a class="headerlink" href="#zynq-ultrascale-mpsoc-processing-system-configuration-with-the-vivado-design-suite" title="Permalink to this heading">¶</a></h1>
 <p>This chapter demonstrates how to use the Vivado® Design Suite to develop an embedded system using the Zynq® UltraScale+™ MPSoC Processing System (PS).</p>
 <p>The Zynq UltraScale+ device consists of quad-core Arm® Cortex™-A53-based APU, dual-core Arm® Cortex™-R5F RPU, Mali™ 400 MP2 GPU, many hard Intellectual Property (IP) components, and Programmable Logic (PL). This offering can be used in two ways:</p>
@@ -149,14 +149,14 @@ function OptanonWrapper() { }
 <li><p>The Zynq UltraScale+ PS can be used in a standalone mode, without attaching any additional fabric IP.</p></li>
 <li><p>IP cores can be instantiated in fabric and attached to the Zynq UltraScale+ PS as a PS+PL combination.</p></li>
 </ul>
-<div class="section" id="zynq-ultrascale-system-configuration">
+<section id="zynq-ultrascale-system-configuration">
 <h2>Zynq UltraScale+ System Configuration<a class="headerlink" href="#zynq-ultrascale-system-configuration" title="Permalink to this heading">¶</a></h2>
 <p>Creating a Zynq UltraScale+ system design involves configuring the PS to select the appropriate boot devices and peripherals. To start with, as long as the PS peripherals and available MIO connections meet the design requirements, no bitstream is required. This chapter guides you through creating a simple PS-based design that does not require a bitstream.</p>
-</div>
-<div class="section" id="example-1-creating-a-new-embedded-project-with-zynq-ultrascale-mpsoc">
+</section>
+<section id="example-1-creating-a-new-embedded-project-with-zynq-ultrascale-mpsoc">
 <h2>Example 1: Creating a New Embedded Project with Zynq UltraScale+ MPSoC<a class="headerlink" href="#example-1-creating-a-new-embedded-project-with-zynq-ultrascale-mpsoc" title="Permalink to this heading">¶</a></h2>
 <p>For this example, you will launch the Vivado Design Suite and create a project with an embedded processor system as the top level.</p>
-<div class="section" id="design-input-and-output-files">
+<section id="design-input-and-output-files">
 <h3>Design Input and Output files<a class="headerlink" href="#design-input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <p>This example design requires no input files. We will create the Vivado design from scratch. The design includes the processing system module of the MPSoC. No PL IPs will be added in this example design, so this design does not need to run through implementation and bitstream generation.</p>
 <p>The output of this example design is the hardware configuration XSA. It will be used for further software development.</p>
@@ -164,19 +164,14 @@ function OptanonWrapper() { }
 <li><p>Input: N/A</p></li>
 <li><p>Output: <code class="docutils literal notranslate"><span class="pre">edt_zcu102_wrapper.xsa</span></code></p></li>
 </ul>
-</div>
-<div class="section" id="starting-your-design">
+</section>
+<section id="starting-your-design">
 <h3>Starting Your Design<a class="headerlink" href="#starting-your-design" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Launch the Vivado Design Suite.</p></li>
 <li><p>In the Vivado Quick Start page, click <strong>Create Project</strong> to open the New Project wizard.</p></li>
 <li><p>Use the information in the following table to make selections in each of the wizard screens.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Screen</p></th>
 <th class="head"><p>System Property</p></th>
@@ -236,8 +231,8 @@ summary</p></td>
 </li>
 <li><p>Click <strong>Finish</strong>. The New Project wizard closes and the project you just created opens in the Vivado design tool.</p></li>
 </ol>
-</div>
-<div class="section" id="creating-a-block-design-project">
+</section>
+<section id="creating-a-block-design-project">
 <h3>Creating a Block Design Project<a class="headerlink" href="#creating-a-block-design-project" title="Permalink to this heading">¶</a></h3>
 <p>You will now use the IP integrator to create a block design project.</p>
 <ol class="arabic">
@@ -247,11 +242,6 @@ summary</p></td>
 </li>
 <li><p>Use the following information to make selections in the Create Block Design wizard.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 27%" />
-<col style="width: 44%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Screen</p></th>
 <th class="head"><p>System Property</p></th>
@@ -283,8 +273,8 @@ summary</p></td>
 </ol>
 <p>The Zynq UltraScale+ MPSoC processing system IP block appears in the Diagram view, as shown in the following figure.</p>
 <img alt="../../../_images/image91.png" src="../../../_images/image91.png" />
-</div>
-<div class="section" id="managing-the-zynq-ultrascale-processing-system-in-vivado">
+</section>
+<section id="managing-the-zynq-ultrascale-processing-system-in-vivado">
 <h3>Managing the Zynq UltraScale+ Processing System in Vivado<a class="headerlink" href="#managing-the-zynq-ultrascale-processing-system-in-vivado" title="Permalink to this heading">¶</a></h3>
 <p>Now that you have added the processing system for the Zynq MPSoC to the design, you can begin managing the available options.</p>
 <ol class="arabic">
@@ -322,8 +312,8 @@ summary</p></td>
 </li>
 <li><p>Click <strong>OK</strong> to close the Re-customize IP wizard.</p></li>
 </ol>
-</div>
-<div class="section" id="validating-the-design-creating-the-wrapper-and-generating-the-block-design">
+</section>
+<section id="validating-the-design-creating-the-wrapper-and-generating-the-block-design">
 <h3>Validating the Design, Creating the Wrapper, and Generating the Block Design<a class="headerlink" href="#validating-the-design-creating-the-wrapper-and-generating-the-block-design" title="Permalink to this heading">¶</a></h3>
 <p>The block design provides all the IP configuration and block connection information. Vivado can validate the block design before running
 synthesis and implementation. This can help save time if the design has errors. After validation, generate the source files from the block
@@ -346,10 +336,12 @@ design so that the synthesizer can consume and process them. You also need to ge
 <li><p>In the Block Diagram, Sources window, under Design Sources, you can see <strong>edt_zcu102_wrapper</strong> is created by Vivado. Expand the hierarchy, you can see <strong>edt_zcu102.bd</strong> is instantiated.</p></li>
 <li><p>Select <strong>Generate Block Design</strong> from Flow Navigator -&gt; IP INTEGRATOR.</p>
 <p>The Generate Output Products dialog box opens, as shown in the following figure.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <img alt="../../../_images/image181.png" src="../../../_images/image181.png" />
-<p class="caption"><span class="caption-text">Generate Output Products dialog</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Generate Output Products dialog</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you are running the Vivado Design Suite on a Linux host machine, you might see additional options under Run Settings. In this case, continue with the default settings.</p>
@@ -361,14 +353,16 @@ design so that the synthesizer can consume and process them. You also need to ge
 </li>
 <li><p>When the Generate Output Products process completes, click <strong>OK</strong>.</p></li>
 <li><p>In the Block Diagram Sources window, click the <strong>IP Sources</strong> tab. Here you can see the output products that you just generated, as shown in the following figure.</p>
-<div class="figure align-default" id="id2">
+<figure class="align-default" id="id2">
 <img alt="../../../_images/image19.png" src="../../../_images/image19.png" />
-<p class="caption"><span class="caption-text">Generated output products</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Generated output products</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </li>
 </ol>
-</div>
-<div class="section" id="exporting-hardware">
+</section>
+<section id="exporting-hardware">
 <h3>Exporting Hardware<a class="headerlink" href="#exporting-hardware" title="Permalink to this heading">¶</a></h3>
 <p>To write a hardware platform using the GUI, follow these steps:</p>
 <ol class="arabic">
@@ -376,10 +370,12 @@ design so that the synthesizer can consume and process them. You also need to ge
 <li><p>Click <strong>Next</strong>.</p></li>
 <li><p>In the output window, select <strong>Pre-synthesis</strong> and click <strong>Next</strong>.</p></li>
 <li><p>Provide the <strong>XSA file name</strong> and <strong>Export path</strong>, then click <strong>Next</strong>.</p>
-<div class="figure align-default" id="id3">
+<figure class="align-default" id="id3">
 <img alt="../../../_images/image20.png" src="../../../_images/image20.png" />
-<p class="caption"><span class="caption-text">Files window for Export Hardware</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Files window for Export Hardware</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </li>
 <li><p>Click <strong>Finish</strong> to generate the hardware platform file in the specified path. It will be the input file of next examples.</p>
 <div class="admonition note">
@@ -389,14 +385,14 @@ design so that the synthesizer can consume and process them. You also need to ge
 <p>For this example, we do not have programmable logic, so the pre-synthesis XSA is used.</p>
 </li>
 </ol>
-</div>
-<div class="section" id="example-summary">
+</section>
+<section id="example-summary">
 <h3>Example Summary<a class="headerlink" href="#example-summary" title="Permalink to this heading">¶</a></h3>
 <p>In this example, you created a Vivado design with an MPSoC processing system and configured it for the ZCU102 board. You exported the hardware XSA file for future software development example projects.</p>
 <p>In the <a class="reference internal" href="4-build-sw-for-ps-subsystems.html"><span class="doc">next chapter</span></a>, you will learn how to develop software based on the hardware created in this example.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -420,7 +416,7 @@ design so that the synthesizer can consume and process them. You also need to ge
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on November 17, 2022.
+      <span class="lastupdated">Last updated on December 08, 2022.
       </span></p>
   </div>
 

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -24,7 +25,6 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -134,7 +134,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="design-example-example-setup-for-a-graphics-and-displayport-based-sub-system">
+  <section id="design-example-example-setup-for-a-graphics-and-displayport-based-sub-system">
 <h1>Design Example: Example Setup for a Graphics and DisplayPort Based Sub-System<a class="headerlink" href="#design-example-example-setup-for-a-graphics-and-displayport-based-sub-system" title="Permalink to this heading">¶</a></h1>
 <p>This design example is primarily based on the graphics processing unit
 and the DisplayPort on a Zynq® UltraScale+™ MPSoC device. The main idea
@@ -154,13 +154,13 @@ into the following steps:</p>
 <li><p>Building a graphics OpenGL ES application targeted for Mali GPU. This application is based on the X Window System.</p></li>
 <li><p>Loading Linux on the ZCU102 board and running the graphics application on the target to see the result on the DisplayPort.</p></li>
 </ol>
-<div class="section" id="configuring-the-hardware">
+<section id="configuring-the-hardware">
 <h2>Configuring the Hardware<a class="headerlink" href="#configuring-the-hardware" title="Permalink to this heading">¶</a></h2>
 <p>In this section, you will configure the processing system to set dual
 lower GT lanes for the DisplayPort. The hardware configuration in this
 section is based on the same Vivado project that you created in
 <a class="reference external" href="#design-example-1-using-gpios-timers-and-interrupts">Design Example 1: Using GPIOs, Timers, and Interrupts</a>.</p>
-<div class="section" id="configuring-hardware-in-vivado-ip-integrator">
+<section id="configuring-hardware-in-vivado-ip-integrator">
 <h3>Configuring Hardware in Vivado IP Integrator<a class="headerlink" href="#configuring-hardware-in-vivado-ip-integrator" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Ensure that the edt_zcu102 project and the block design are open in Vivado.</p></li>
@@ -191,9 +191,9 @@ design updates you made using in this section.*</p>
 <p>The next section describes how to build Linux for your hardware
 configuration and also add additional software packages for GPU and
 the X Window System.</p>
-</div>
-</div>
-<div class="section" id="modifying-the-configuration-and-building-linux-images-using-petalinux">
+</section>
+</section>
+<section id="modifying-the-configuration-and-building-linux-images-using-petalinux">
 <h2>Modifying the Configuration and Building Linux Images Using PetaLinux<a class="headerlink" href="#modifying-the-configuration-and-building-linux-images-using-petalinux" title="Permalink to this heading">¶</a></h2>
 <p>Reconfigure the PetaLinux BSP in sync with the new hardware changes.
 This section uses the PetaLinux project you created in Example
@@ -212,8 +212,8 @@ Project: Create Linux Images using PetaLinux.</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">petalinux-build</span> <span class="pre">-c</span> <span class="pre">bootloader</span> <span class="pre">-x</span> <span class="pre">distclean</span></code></p>
 </li>
 </ol>
-</div>
-<div class="section" id="building-the-mali-opengles-application">
+</section>
+<section id="building-the-mali-opengles-application">
 <h2>Building the Mali OpenGLES Application<a class="headerlink" href="#building-the-mali-opengles-application" title="Permalink to this heading">¶</a></h2>
 <p>This section leads you through building a triangle-based cube
 application. This application is written in OpenGLES and is based on
@@ -239,8 +239,8 @@ libraries used for building this application. The X Window System
 application dependent. Libraries included in <code class="docutils literal notranslate"><span class="pre">tricube.bb</span></code> recipe are
 based on the packages that were used in the application.</p></li>
 </ol>
-</div>
-<div class="section" id="enable-gpu-libraries-and-other-packages-in-rootfs">
+</section>
+<section id="enable-gpu-libraries-and-other-packages-in-rootfs">
 <h2>Enable GPU Libraries and Other Packages in RootFS<a class="headerlink" href="#enable-gpu-libraries-and-other-packages-in-rootfs" title="Permalink to this heading">¶</a></h2>
 <p>In this section, you will use the PetaLinux RootFS configuration
 wizard to add the Mali GPU libraries. PetaLinux is shipped with Mali
@@ -298,16 +298,16 @@ following line in <code class="docutils literal notranslate"><span class="pre">/
 <p><em>DISTRO_FEATURES_remove_zynqmp = “ x11”</em></p>
 <p>See the example eglfbdev application (based on fdev) available in the <a class="reference external" href="2-getting-started.html#design-files-for-this-tutorial">Design Files for This Tutorial</a>. For more information, see Xilinx Answer Record <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=answers%3Bd%3D68821.html">68821</a>.</p>
 </div></blockquote>
-</div>
-<div class="section" id="loading-linux-and-running-the-opengles-application-on-the-target-and-viewing-the-result-on-the-displayport">
+</section>
+<section id="loading-linux-and-running-the-opengles-application-on-the-target-and-viewing-the-result-on-the-displayport">
 <h2>Loading Linux and Running the OpenGLES Application on the Target and Viewing the Result on the DisplayPort<a class="headerlink" href="#loading-linux-and-running-the-opengles-application-on-the-target-and-viewing-the-result-on-the-displayport" title="Permalink to this heading">¶</a></h2>
-<div class="section" id="preparing-the-sd-card">
+<section id="preparing-the-sd-card">
 <h3>Preparing the SD Card<a class="headerlink" href="#preparing-the-sd-card" title="Permalink to this heading">¶</a></h3>
 <p>Now that the Linux images and the application are both built, copy the <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span></code> and <code class="docutils literal notranslate"><span class="pre">image.ub</span></code> images to an SD card and load the SD card in the ZCU102 board/</p>
-</div>
-<div class="section" id="running-the-application-on-a-linux-target">
+</section>
+<section id="running-the-application-on-a-linux-target">
 <h3>Running the Application on a Linux Target<a class="headerlink" href="#running-the-application-on-a-linux-target" title="Permalink to this heading">¶</a></h3>
-<div class="section" id="setting-up-the-target">
+<section id="setting-up-the-target">
 <h4>Setting Up the Target<a class="headerlink" href="#setting-up-the-target" title="Permalink to this heading">¶</a></h4>
 <ol>
 <li><p>Load the SD card into the J100 connector of the ZCU102 board.</p></li>
@@ -329,9 +329,9 @@ the COM port associated with the interface with the lowest number. In
 this case, for UART-0, select the COM port with interface-0.</p>
 </li>
 </ol>
-</div>
-</div>
-<div class="section" id="powering-on-the-target-and-running-the-applications">
+</section>
+</section>
+<section id="powering-on-the-target-and-running-the-applications">
 <h3>Powering On the Target and Running the Applications<a class="headerlink" href="#powering-on-the-target-and-running-the-applications" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>Turn on the ZCU102 board using SW1, and wait until Linux loads on the board.</p></li>
@@ -354,9 +354,9 @@ made of multi-colored triangles.</p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
 <p>http://www.apache.org/licenses/LICENSE-2.0</p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -380,7 +380,7 @@ made of multi-colored triangles.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on November 17, 2022.
+      <span class="lastupdated">Last updated on December 08, 2022.
       </span></p>
   </div>
 

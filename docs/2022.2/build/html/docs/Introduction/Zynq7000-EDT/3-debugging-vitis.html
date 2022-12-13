@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -24,7 +25,6 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -135,7 +135,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="debugging-standalone-applications-with-the-vitis-software-platform">
+  <section id="debugging-standalone-applications-with-the-vitis-software-platform">
 <h1>Debugging Standalone Applications with the Vitis Software Platform<a class="headerlink" href="#debugging-standalone-applications-with-the-vitis-software-platform" title="Permalink to this heading">¶</a></h1>
 <p>Although a simple “Hello World” application does not require much debugging, this chapter demonstrates the debugging setup and procedurein the Vitis IDE in <a class="reference internal" href="#example-3-debugging-standalone-software-using-the-vitis-software-platform"><span class="std std-ref">Example 3: Debugging Standalone Software Using the Vitis Software Platform</span></a>.</p>
 <p>The Vitis software platform debugger provides the following debug
@@ -153,7 +153,7 @@ capabilities:</p>
 <p class="admonition-title">Note</p>
 <p>The GDB flow is deprecated and might not be available in the future releases.</p>
 </div>
-<div class="section" id="xilinx-system-debugger">
+<section id="xilinx-system-debugger">
 <h2>Xilinx System Debugger<a class="headerlink" href="#xilinx-system-debugger" title="Permalink to this heading">¶</a></h2>
 <p>The Xilinx System Debugger uses the Xilinx hw_server as the underlying debug engine. The Vitis software platform translates each user interface action into a sequence of Target Communication Framework (TCF) commands. It then processes the output from System Debugger to display the current state of the program being debugged. It communicates to the processor on the hardware using Xilinx hw_server.</p>
 <p>The debug workflow is described in the following figure.</p>
@@ -169,18 +169,18 @@ capabilities:</p>
 <p class="admonition-title">Note</p>
 <p>If you edit the source after compiling, the line numbering will be out of step because the debug information is tied directly to the source. Similarly, debugging optimized binaries can also cause unexpected jumps in the execution trace.</p>
 </div>
-</div>
-<div class="section" id="example-3-debugging-standalone-software-using-the-vitis-software-platform">
+</section>
+<section id="example-3-debugging-standalone-software-using-the-vitis-software-platform">
 <span id="id1"></span><h2>Example 3: Debugging Standalone Software Using the Vitis Software Platform<a class="headerlink" href="#example-3-debugging-standalone-software-using-the-vitis-software-platform" title="Permalink to this heading">¶</a></h2>
 <p>In this example, you will walk through debugging the “Hello World” application created in Example 2 in the <a class="reference internal" href="2-using-zynq.html"><span class="doc">previous chapter</span></a>.</p>
-<div class="section" id="input-and-output-files">
+<section id="input-and-output-files">
 <h3>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Input files: Vitis workspace from Example 2</p></li>
 <li><p>Output files: N/A</p></li>
 </ul>
-</div>
-<div class="section" id="debugging-standalone-applications-in-the-vitis-ide">
+</section>
+<section id="debugging-standalone-applications-in-the-vitis-ide">
 <h3>Debugging Standalone Applications in the Vitis IDE<a class="headerlink" href="#debugging-standalone-applications-in-the-vitis-ide" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>In the C/C++ perspective, right-click the Hello_world project and select <strong>Debug As → Debug Configurations</strong>.</p>
@@ -236,9 +236,9 @@ capabilities:</p>
 <li><p>Click the <strong>Disconnect</strong> button on the tool bar to disconnect to the board, or exit the Vitis software platform directly.</p></li>
 </ol>
 <p>This chapter introduced standalone software building and debugging. In the <a class="reference internal" href="4-linux-for-zynq.html"><span class="doc">next chapter</span></a>, you can start working on Linux applications for Zynq-7000 SoCs.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -262,7 +262,7 @@ capabilities:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on November 17, 2022.
+      <span class="lastupdated">Last updated on December 08, 2022.
       </span></p>
   </div>
 

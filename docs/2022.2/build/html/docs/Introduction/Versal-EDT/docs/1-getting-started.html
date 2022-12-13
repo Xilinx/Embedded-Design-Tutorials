@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -24,7 +25,6 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
-        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -141,9 +141,9 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="getting-started">
+  <section id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h1>
-<div class="section" id="navigating-content-by-design-process">
+<section id="navigating-content-by-design-process">
 <h2>Navigating Content by Design Process<a class="headerlink" href="#navigating-content-by-design-process" title="Permalink to this heading">¶</a></h2>
 <p>Xilinx documentation is organized around a set of standard design processes to help you find relevant content for your current development task. This document covers the following design processes:</p>
 <ul class="simple">
@@ -175,8 +175,8 @@ function OptanonWrapper() { }
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="hardware-requirements">
+</section>
+<section id="hardware-requirements">
 <h2>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this heading">¶</a></h2>
 <p>This tutorial targets the Versal® ACAP VCK190 and VMK180 evaluation boards. To use this guide, you need the following hardware items. These are included with the evaluation board. Ensure that the required tools are installed properly and your environments match the requirements.</p>
 <p>The evaluation board kit includes:</p>
@@ -205,10 +205,10 @@ function OptanonWrapper() { }
 <li><p>OSPI and eMMC boot modes are only supported on the VCK190 and VMK180 RevB production boards.</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="installation-requirements">
+</section>
+<section id="installation-requirements">
 <h2>Installation Requirements<a class="headerlink" href="#installation-requirements" title="Permalink to this heading">¶</a></h2>
-<div class="section" id="vitis-integrated-design-environment-and-vivado-design-suite">
+<section id="vitis-integrated-design-environment-and-vivado-design-suite">
 <h3>Vitis Integrated Design Environment and Vivado Design Suite<a class="headerlink" href="#vitis-integrated-design-environment-and-vivado-design-suite" title="Permalink to this heading">¶</a></h3>
 <p>Ensure that you have the Vitis™ 2021.2 software development platform installed. The Vitis IDE is a Xilinx® unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado® Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.</p>
 <div class="admonition note">
@@ -216,8 +216,8 @@ function OptanonWrapper() { }
 <p>Visit <a class="reference external" href="https://www.xilinx.com/support/download.html">https://www.xilinx.com/support/download.html</a> to confirm that you have the latest tools version.</p>
 </div>
 <p>For more information on installing the Vivado Design Suite, refer to the <em>Vitis Unified Software Platform Documentation: Embedded Software Development</em> (<a class="reference external" href="https://docs.xilinx.com/access/sources/dita/map?isLatest=true&amp;ft:locale=en-US&amp;url=ug1400-vitis-embedded">UG1400</a>).</p>
-</div>
-<div class="section" id="petalinux-tools">
+</section>
+<section id="petalinux-tools">
 <h3>PetaLinux Tools<a class="headerlink" href="#petalinux-tools" title="Permalink to this heading">¶</a></h3>
 <p>Install the PetaLinux tools to run through the Linux portion of this tutorial. PetaLinux tools run under the Linux host system running one of the following:</p>
 <ul class="simple">
@@ -232,16 +232,16 @@ function OptanonWrapper() { }
 <li><p>Download the respective BSP as described in <a class="reference internal" href="5-system-design-example.html#creating-linux-images-using-petalinux"><span class="std std-ref">Example Project: Creating Linux Images Using PetaLinux</span></a>.</p></li>
 <li><p>Add common system packages and libraries to the workstation or virtual machine. For more information, see the Installation Requirements from the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://docs.xilinx.com/access/sources/dita/map?isLatest=true&amp;ft:locale=en-US&amp;url=ug1144-petalinux-tools-reference-guide">UG1144</a>) and the <a class="reference external" href="https://support.xilinx.com/s/article/000032521">PetaLinux Release Notes</a>.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="prerequisites">
+</section>
+</section>
+<section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>8 GB RAM (recommended minimum for Xilinx tools)</p></li>
 <li><p>2 GHz CPU clock or equivalent (minimum of eight cores)</p></li>
 <li><p>100 GB free HDD space</p></li>
 </ul>
-<div class="section" id="extracting-the-petalinux-package">
+<section id="extracting-the-petalinux-package">
 <h3>Extracting the PetaLinux Package<a class="headerlink" href="#extracting-the-petalinux-package" title="Permalink to this heading">¶</a></h3>
 <p>By default, the PetaLinux tools are installed into the current working directory. Alternatively, you can specify an installation path.</p>
 <p>For example, to install PetaLinux tools under <code class="docutils literal notranslate"><span class="pre">/opt/pkg/petalinux/&lt;petalinux-version&gt;</span></code>:</p>
@@ -254,17 +254,17 @@ $ ./petalinux-v&lt;petalinux-version&gt;-final-installer.run --dir /opt/pkg/peta
 <p>Do not change the install directory permissions to CHMOD 775 as it might cause BitBake errors. This installs the PetaLinux tool into the <code class="docutils literal notranslate"><span class="pre">/opt/pkg/petalinux/&lt;petalinux-version&gt;</span></code> directory.</p>
 </div>
 <p>For more information, see <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://docs.xilinx.com/access/sources/dita/map?isLatest=true&amp;ft:locale=en-US&amp;url=ug1144-petalinux-tools-reference-guide">UG1144</a>).</p>
-</div>
-</div>
-<div class="section" id="software-licensing">
+</section>
+</section>
+<section id="software-licensing">
 <h2>Software Licensing<a class="headerlink" href="#software-licensing" title="Permalink to this heading">¶</a></h2>
 <p>Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the <em>Vivado Design Suite User Guide: Release Notes, Installation, and Licensing</em> (<a class="reference external" href="https://docs.xilinx.com/access/sources/dita/map?isLatest=true&amp;ft:locale=en-US&amp;url=ug973-vivado-release-notes-install-license">UG973</a>).</p>
-</div>
-<div class="section" id="tutorial-design-files">
+</section>
+<section id="tutorial-design-files">
 <h2>Tutorial Design Files<a class="headerlink" href="#tutorial-design-files" title="Permalink to this heading">¶</a></h2>
 <p>The reference design files for Production Silicon are provided in the <a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Versal-EDT/ref_files">ref_files</a> directory.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -288,7 +288,7 @@ $ ./petalinux-v&lt;petalinux-version&gt;-final-installer.run --dir /opt/pkg/peta
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on November 17, 2022.
+      <span class="lastupdated">Last updated on December 08, 2022.
       </span></p>
   </div>
 

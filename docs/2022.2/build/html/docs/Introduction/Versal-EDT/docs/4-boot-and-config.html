@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -24,7 +25,6 @@ function OptanonWrapper() { }
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
-        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -143,7 +143,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="boot-and-configuration">
+  <section id="boot-and-configuration">
 <h1>Boot and Configuration<a class="headerlink" href="#boot-and-configuration" title="Permalink to this heading">¶</a></h1>
 <p>The purpose of this chapter is to show how to integrate and load boot loaders, bare-metal applications (For APU/RPU), and the Linux Operating System for a Versal® ACAP. This chapter discusses the following topics:</p>
 <ul class="simple">
@@ -152,23 +152,23 @@ function OptanonWrapper() { }
 <li><p>Boot sequences for SD boot, and QSPI and OSPI boot modes.</p></li>
 </ul>
 <p>You can achieve these configurations using the Vitis™ software platform and the PetaLinux tool flow. While <a class="reference internal" href="2-cips-noc-ip-config.html"><span class="doc">Versal ACAP CIPS and NoC (DDR) IP Core Configuration</span></a> focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a larger system.</p>
-<div class="section" id="system-software">
+<section id="system-software">
 <h2>System Software<a class="headerlink" href="#system-software" title="Permalink to this heading">¶</a></h2>
 <p>The following system software blocks cover most of the boot and configuration for this chapter.</p>
-<div class="section" id="platform-loader-and-manager">
+<section id="platform-loader-and-manager">
 <h3>Platform Loader and Manager<a class="headerlink" href="#platform-loader-and-manager" title="Permalink to this heading">¶</a></h3>
 <p>The platform loader and manager (PLM) is the software that runs on one of the dedicated processors in the Platform Management Controller (PMC) block of the Versal ACAP. It is responsible for boot and run time management, including platform management, error management, partial reconfiguration, and subsystem restart of the device. The PLM can reload images, and load partial PDIs and service interrupts. The PLM reads the programmable device image from the boot source and configures the components of the system, including the NoC initialization, DDR memory initialization, programmable logic, and processing system, and then completes the device boot.</p>
-</div>
-<div class="section" id="u-boot">
+</section>
+<section id="u-boot">
 <h3>U-Boot<a class="headerlink" href="#u-boot" title="Permalink to this heading">¶</a></h3>
 <p>U-Boot acts as a secondary boot loader. After the PLM handoff, U-Boot loads Linux onto the Arm A72 APU and configures the rest of the peripherals in the processing system based on the board configuration. U-Boot can fetch images from various memory sources like eMMC, SATA, TFTP, SD, and QSPI. U-Boot can be configured and built using the PetaLinux tool flow.</p>
-</div>
-<div class="section" id="trusted-firmware-a">
+</section>
+<section id="trusted-firmware-a">
 <h3>Trusted Firmware-A<a class="headerlink" href="#trusted-firmware-a" title="Permalink to this heading">¶</a></h3>
 <p>The Trusted Firmware-A (ATF) is a transparent bare-metal application layer executed in Exception Level 3 (EL3) on the APU. The ATF includes a Secure Monitor layer for switching between the secure and the non-secure world. The Secure Monitor calls and implementation of Trusted Board Boot Requirements (TBBR) makes the ATF layer a mandatory requirement to load Linux on the APU on Versal ACAP. The PLM loads the ATF to be executed by the APU, which keeps running in EL3 awaiting a service request. The PLM also loads U-Boot into the DDR memory to be executed by the APU. The DDR memory loads the Linux OS in the SMP mode on the APU. The ATF (<cite>bl31.elf</cite>) is built, by default, in PetaLinux. You can find it in the PetaLinux project images directory.</p>
-</div>
-</div>
-<div class="section" id="generating-boot-image-for-standalone-application">
+</section>
+</section>
+<section id="generating-boot-image-for-standalone-application">
 <span id="id1"></span><h2>Generating Boot Image for Standalone Application<a class="headerlink" href="#generating-boot-image-for-standalone-application" title="Permalink to this heading">¶</a></h2>
 <p>The Vitis software platform supports boot image creation wizard for Versal ACAP. To generate a boot image PDI or <code class="docutils literal notranslate"><span class="pre">Boot.bin</span></code>, you can either use Bootgen command line options or use the wizard in Vitis. This tutorial shows how to create Boot image using Bootgen, which is released as a part of the Vitis software platform package. The primary function of Bootgen is to integrate the various partitions of the bootable image. Bootgen uses a BIF file (Bootgen Image Format) as an input and generates a single file image in binary BIN or PDI format. It outputs a single file image which can be loaded into non-volatile memory (QSPI or SD card). Use the following steps to generate a PDI/BIN file:</p>
 <ol class="arabic">
@@ -195,8 +195,8 @@ function OptanonWrapper() { }
 <img alt="../../../../_images/image51.jpeg" src="../../../../_images/image51.jpeg" />
 </li>
 </ol>
-</div>
-<div class="section" id="loading-petalinux-images-on-a-versal-board-using-jtag">
+</section>
+<section id="loading-petalinux-images-on-a-versal-board-using-jtag">
 <h2>Loading PetaLinux Images on a Versal Board using JTAG<a class="headerlink" href="#loading-petalinux-images-on-a-versal-board-using-jtag" title="Permalink to this heading">¶</a></h2>
 <p>This section describes how to load Versal PetaLinux images using JTAG mode on the Versal board.</p>
 <ol class="arabic">
@@ -286,8 +286,8 @@ function OptanonWrapper() { }
 </div>
 </li>
 </ol>
-</div>
-<div class="section" id="boot-sequence-for-sd-boot-mode">
+</section>
+<section id="boot-sequence-for-sd-boot-mode">
 <span id="boot-sequence-sd-boot-mode"></span><h2>Boot Sequence for SD-Boot Mode<a class="headerlink" href="#boot-sequence-for-sd-boot-mode" title="Permalink to this heading">¶</a></h2>
 <p>The following steps demonstrate the boot sequence for the SD-boot mode.</p>
 <ol class="arabic">
@@ -319,8 +319,8 @@ function OptanonWrapper() { }
 <img alt="../../../../_images/led_example_console_prints.PNG" src="../../../../_images/led_example_console_prints.PNG" />
 </li>
 </ol>
-</div>
-<div class="section" id="boot-sequence-for-qspi-boot-mode">
+</section>
+<section id="boot-sequence-for-qspi-boot-mode">
 <h2>Boot Sequence for QSPI Boot Mode<a class="headerlink" href="#boot-sequence-for-qspi-boot-mode" title="Permalink to this heading">¶</a></h2>
 <p>This section demonstrates the boot sequence for the QSPI boot mode. For this, you need to connect a QSPI daughter card (part number: X_EBM-01, REV_A01) as shown in the following figure:</p>
 <p><em>Figure 2:</em> <strong>Daughter Card on VCK190</strong></p>
@@ -358,8 +358,8 @@ function OptanonWrapper() { }
 </li>
 <li><p>Power cycle the board. The board now boots up using the images in the QSPI flash.</p></li>
 </ol>
-</div>
-<div class="section" id="boot-sequence-for-ospi-boot-mode">
+</section>
+<section id="boot-sequence-for-ospi-boot-mode">
 <h2>Boot Sequence for OSPI Boot Mode<a class="headerlink" href="#boot-sequence-for-ospi-boot-mode" title="Permalink to this heading">¶</a></h2>
 <p>To configure the design for the OSPI boot mode, see OSPI Boot Mode Configuration. This section demonstrates the boot sequence for the OSPI boot mode. For this, you need to connect an OSPI daughter card (part number X-EBM-03 REV_A02) as shown in the following figure:</p>
 <div class="admonition note">
@@ -403,8 +403,8 @@ function OptanonWrapper() { }
 <p class="admonition-title">Note</p>
 <p>For the VMK180 production board, OSPI images are not provided as part of the design package. Only VCK190 OSPI images are shared as part of the design package.</p>
 </div>
-</div>
-<div class="section" id="boot-sequence-for-emmc-boot-mode">
+</section>
+<section id="boot-sequence-for-emmc-boot-mode">
 <h2>Boot Sequence for eMMC Boot Mode<a class="headerlink" href="#boot-sequence-for-emmc-boot-mode" title="Permalink to this heading">¶</a></h2>
 <p>To configure the design for the eMMC boot mode, see eMMC Boot Mode Configuration. This section demonstrates the boot sequence for the eMMC boot mode. For this, you need to connect an eMMC daughter card (part number X-EBM-02, REV_A02) as shown in the following figure:</p>
 <div class="admonition note">
@@ -501,7 +501,7 @@ xilinx-vck190-20221:~$ mkfs.vfat -F 32 -n boot /dev/mmcblk0p1
 <p>eMMC flash is formatted with the FAT32 filesystem.</p>
 </li>
 </ol>
-<div class="section" id="flashing-linux-images-to-the-emmc-flash">
+<section id="flashing-linux-images-to-the-emmc-flash">
 <h3>Flashing Linux Images to the eMMC Flash<a class="headerlink" href="#flashing-linux-images-to-the-emmc-flash" title="Permalink to this heading">¶</a></h3>
 <p>To flash the Linux images to the eMMC Flash, use the following steps:</p>
 <ol class="arabic">
@@ -525,9 +525,9 @@ xilinx-vck190-20221:~$ mkfs.vfat -F 32 -n boot /dev/mmcblk0p1
 <li><p>After flashing the images, turn off the power switch on the board, and change the SW1 boot mode pin settings to eMMC boot mode, ON-OFF-OFF-ON (MODE[0:3]= 0110).</p></li>
 <li><p>Power cycle the board. The board now boots up using the images in the eMMC flash.</p></li>
 </ol>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -551,7 +551,7 @@ xilinx-vck190-20221:~$ mkfs.vfat -F 32 -n boot /dev/mmcblk0p1
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on November 17, 2022.
+      <span class="lastupdated">Last updated on December 08, 2022.
       </span></p>
   </div>
 

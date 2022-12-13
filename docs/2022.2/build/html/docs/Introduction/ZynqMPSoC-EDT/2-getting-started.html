@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 <!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
@@ -24,7 +25,6 @@ function OptanonWrapper() { }
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -138,9 +138,9 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="getting-started">
+  <section id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h1>
-<div class="section" id="hardware-requirements">
+<section id="hardware-requirements">
 <h2>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this heading">¶</a></h2>
 <p>This tutorial targets the Zynq® UltraScale+™ ZCU102 evaluation board. The examples in this tutorial were tested using the ZCU102 Rev 1 board. To use this guide, you need the following hardware items, which are
 included with the evaluation board:</p>
@@ -154,16 +154,16 @@ included with the evaluation board:</p>
 <li><p>Monitor with DisplayPort (DP) capability and at least 1080P resolution</p></li>
 <li><p>DP cable to connect the display output from the ZCU102 board to a DP monitor</p></li>
 </ul>
-</div>
-<div class="section" id="installation-requirements">
+</section>
+<section id="installation-requirements">
 <h2>Installation Requirements<a class="headerlink" href="#installation-requirements" title="Permalink to this heading">¶</a></h2>
-<div class="section" id="vitis-integrated-design-environment-and-vivado-design-suite">
+<section id="vitis-integrated-design-environment-and-vivado-design-suite">
 <h3>Vitis Integrated Design Environment and Vivado Design Suite<a class="headerlink" href="#vitis-integrated-design-environment-and-vivado-design-suite" title="Permalink to this heading">¶</a></h3>
 <p>Ensure that you have the Vitis™ 2022.2 unified software development platform installed. The Vitis software platform comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis IDE. You do not have to make any extra selections in the installer.</p>
 <p>Visit this <a class="reference external" href="https://www.xilinx.com/support/download.html">web page</a> to download the required Vitis tool installer.</p>
 <p>Make sure your operating system is supported by the <a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Installation-Requirements">Vitis embedded software development flow</a>. For more information on installing the Vitis unified software platform, refer to the Installation section of the Vitis embedded software development flow documentation (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Installation">UG1400</a>).</p>
-</div>
-<div class="section" id="petalinux-tools">
+</section>
+<section id="petalinux-tools">
 <h3>PetaLinux Tools<a class="headerlink" href="#petalinux-tools" title="Permalink to this heading">¶</a></h3>
 <p>Install the PetaLinux tools to run through the Linux portion of this tutorial. PetaLinux tools run under the Linux host system. The supported operation systems can be checked from the PetaLinux Tools Documentation: Reference Guide (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1144-petalinux-tools-reference-guide/Installation-Requirements">UG1144</a>).</p>
 <p>This can use either a dedicated Linux host system or a virtual machine running one of these Linux operating systems on your Windows development platform.</p>
@@ -173,21 +173,21 @@ included with the evaluation board:</p>
 <li><p>Download the ZCU102 PetaLinux BSP (ZCU102 BSP (prod-silicon)) from the downloads page.</p></li>
 <li><p>Read and follow the installation instructions in the PetaLinux Tools Documentation: Reference Guide (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1144-petalinux-tools-reference-guide/Setting-Up-Your-Environment">UG1144</a>).</p></li>
 </ul>
-</div>
-<div class="section" id="tutorial-design-files">
+</section>
+<section id="tutorial-design-files">
 <h3>Tutorial Design Files<a class="headerlink" href="#tutorial-design-files" title="Permalink to this heading">¶</a></h3>
 <p>The reference design files for this tutorial are provided in the <a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files">ref_files</a> directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific <code class="docutils literal notranslate"><span class="pre">ref_files</span></code> subdirectory.</p>
 <ul class="simple">
 <li><p>If the examples are GUI based, the <code class="docutils literal notranslate"><span class="pre">ref_files</span></code> directory provides the source files for the examples.</p></li>
 <li><p>If the examples can be run in script mode, the <code class="docutils literal notranslate"><span class="pre">ref_files</span></code> directory contains the Makefile to help you run through the flow easily. Run <code class="docutils literal notranslate"><span class="pre">make</span></code> in this directory to run through the implementation flow.</p></li>
 </ul>
-</div>
-<div class="section" id="next-chapter">
+</section>
+<section id="next-chapter">
 <h3>Next Chapter<a class="headerlink" href="#next-chapter" title="Permalink to this heading">¶</a></h3>
 <p>The <a class="reference internal" href="3-system-configuration.html"><span class="doc">next chapter</span></a> details the configuration of a Zynq UltraScale+ MPSoC PS with the Vivado IDE.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -211,7 +211,7 @@ included with the evaluation board:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on November 17, 2022.
+      <span class="lastupdated">Last updated on December 08, 2022.
       </span></p>
   </div>
 
