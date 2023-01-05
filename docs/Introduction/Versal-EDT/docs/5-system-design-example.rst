@@ -1,5 +1,5 @@
 ..
-   Copyright 2000-2021 Xilinx, Inc.
+   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
 
    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
@@ -21,9 +21,9 @@ Examples using the PetaLinux tool are provided in this chapter.
 Design Example: Using AXI GPIO
 ==============================
 
-The Linux application uses a PL-based AXI GPIO interface to monitor the DIP switch of the board and accordingly control the LEDs on the board. The LED application can run on both the VMK180 and the VCK190 boards.
+The Linux application uses a PL-based AXI GPIO interface to monitor the DIP switch of the board and accordingly control the LEDs on the board. The LED application can run on VCK190, VMK180, and VPK180 boards.
 
-The RPU application uses the PL-based AXI UART lite to print the debug messages on the AXI UART console instead of using the PS UART console. The PL UART application can run on both the VMK180 and VCK190 boards.
+The RPU application uses the PL-based AXI UART lite to print the debug messages on the AXI UART console instead of using the PS UART console. The PL UART application can run on VCK190, VMK180, and VPK180 boards.
 
 Configuring Hardware
 ~~~~~~~~~~~~~~~~~~~~
@@ -355,7 +355,7 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
       |               | Processor               | versal_cips               |
       |               |                         | _0_pspmc_0_psv_cortexr5_0 |
       +---------------+-------------------------+---------------------------+
-      | Templates     | Available               | Empty      		    |
+      | Templates     | Available               | Empty      		          |
       +---------------+-------------------------+---------------------------+
       |               | Templates               | Application (C)           |
       +---------------+-------------------------+---------------------------+
@@ -400,14 +400,32 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 .. important:: 
 
-   This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180). 
+   This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180/VPK180).
+
+   .. list-table::
+      :widths: 25 25 25 25
+      :header-rows: 1
+
+      * - Board
+        - QSPI/SD
+        - OSPI
+        - eMMC
+
+      * - VCK190 Production Board
+        - `xilinx-vck190-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
+        - `xilinx-vck190-ospi-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
+        - `xilinx-vck190-emmc-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
+      
+      * - VMK180 Production Board
+        - `xilinx-vmk180-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
+        - `xilinx-vmk180-ospi-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
+        - `xilinx-vmk180-emmc-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
+
+      * - VPK180 Production Board
+        - `xilinx-vpk180-v2022.2-final.bsp <https://www.xilinx.com/member/vpk180_headstart.html>`__
+        - N/A 
+        - N/A
     
-   - If you are using the VCK190 production board, download the VCK190 PetaLinux 2022.1 BSP for QSPI/SD (xilinx-vck190-v2022.1-final.bsp) from https://www.xilinx.com/member/vck190_headstart.html.
-   - If you are using the VCK190 production board, download the VCK190 PetaLinux 2022.1 BSP for OSPI (xilinx-vck190-ospi-v2022.1-final.bsp) from https://www.xilinx.com/member/vck190_headstart.html.
-   - If you are using the VCK190 production board, download the VCK190 PetaLinux 2022.1 BSP for eMMC (xilinx-vck190-emmc-v2022.1-final.bsp) from https://www.xilinx.com/member/vck190_headstart.html.
-   - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2022.1 BSP for QSPI/SD (xilinx-vmk180-v2022.1-final.bsp) from https://www.xilinx.com/member/vmk180_headstart.html.
-   - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2022.1 BSP for OSPI (xilinx-vmk180-ospi-v2022.1-final.bsp) from https://www.xilinx.com/member/vmk180_headstart.html.
-   - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2022.1 BSP for eMMC (xilinx-vmk180-emmc-v2022.1-final.bsp) from https://www.xilinx.com/member/vmk180_headstart.html.
 
 1. Copy the respective board's PetaLinux BSP to the current directory.
    
@@ -423,7 +441,10 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
    
         $ petalinux-create -t project -s xilinx-vck190-vxxyy.z-final.bsp -n led_example
 
-   .. note:: For VMK180 board, use `xilinx-vmk180-vxxyy.z-final.bsp` after the `-s` option in the command.
+   .. note:: 
+   
+      - For VMK180 board, use `xilinx-vmk180-vxxyy.z-final.bsp` after the `-s` option in the command.
+      - For VPK180 board, use `xilinx-vpk180-vxxyy.z-final.bsp` after the `-s` option in the command.
 
 4. Change to the PetaLinux project directory using the following command.
 
@@ -451,7 +472,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
         $petalinux-create -t apps --template install --name gpiotest --enable
 
-9. Copy application files from ``<design-package>/<vck190 or vmk180>/linux/bootimages`` to the project using the following commands.
+9. Copy application files from ``<design-package>/<vck190 or vmk180 or vpk180>/linux/bootimages`` to the project using the following commands.
 
    .. code-block::
     
@@ -499,7 +520,9 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 19. OSPI and eMMC boot modes will work only on VCK190/VMK180 REVB Production boards.
 
-20. Build the Linux images using the following command.
+20. Only SD adn QSPI boot modes will work on VPK180 Production boards.
+
+21. Build the Linux images using the following command.
 
     .. code-block::
        
