@@ -18,7 +18,7 @@ The following diagram illustrates the general Linux application debug flow. The 
 Linux debug setup is a mandatory step. Setup allows you to create platform and application projects in the Vitis IDE.
 
 1. Open a terminal and navigate to your desired work directory.
-2. Download [petalinux_build.sh](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/gh-pages/docs/2021.1/source/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/script/petalinux_build.sh) and the [ZCU104 BSP](https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu104-v2021.1-final.bsp). Copy both files to your desired working directory; for example, `UG1515/petalinux_prj`.
+2. Download [petalinux_build.sh](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2022.2/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/script/petalinux_build.sh) and the [ZCU104 BSP](https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu104-v2021.1-final.bsp). Copy both files to your desired working directory; for example, `UG1515/petalinux_prj`.
 3. Source the PetaLinux tool.
 4. Follow the steps in the [PetaLinux Build](#petalinux-build) section to complete the PetaLinux build and configuration manually.
    **Note:** You can skip the manual steps by using the automated `petalinux_build.sh` script to generate Linux images. However, make sure to select the appropriate configuration whenever prompted.
@@ -32,7 +32,7 @@ Linux debug setup is a mandatory step. Setup allows you to create platform and a
 
     **Note:** If you create a custom ZCU104 XSA by following the steps in [Vivado Design](#vivado-design), you can use it as it is here.
 
-6. Download the [Vitis-workspace.tcl](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/gh-pages/docs/2021.1/source/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/script/Vitis-workspace.tcl) script. Copy it to your Vitis work directory (in this example, `vitis_work_dir`) as you did for `zcu104.xsa`. Download the source file [linux_test_application.c](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/gh-pages/docs/2021.1/source/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/src/linux_test_application.c) to `vitis_work_dir/src`. These files are required to set up the Vitis workspace. Your Vitis work directory should be structured like the example below after downloading these files.
+6. Download the [Vitis-workspace.tcl](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2022.2/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/script/Vitis-workspace.tcl) script. Copy it to your Vitis work directory (in this example, `vitis_work_dir`) as you did for `zcu104.xsa`. Download the source file [linux_test_application.c](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2022.2/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/src/linux_test_application.c) to `vitis_work_dir/src`. These files are required to set up the Vitis workspace. Your Vitis work directory should be structured like the example below after downloading these files.
 
     ```
     vitis_work_dir
