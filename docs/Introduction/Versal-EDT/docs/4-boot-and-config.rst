@@ -75,6 +75,8 @@ The Vitis software platform supports boot image creation wizard for Versal ACAP.
 
    .. image:: ./media/image51.jpeg
 
+.. _loading-petalinux-images-versal-board-using-jtag:
+
 ======================================================
 Loading Petalinux Images on a Versal Board using JTAG
 ======================================================
@@ -153,30 +155,30 @@ This section describes how to load Versal Petalinux images using JTAG mode on th
 
          U-Boot 2022.01 (Feb 16 2022 - 14:57:10 +0000)
 
-	CPU:   Versal
-	Silicon: v2
-	Model: Xilinx Versal vck190 Eval board revA
-	DRAM:  8 GiB
-	EL Level:       EL2
-	MMC:   mmc@f1050000: 0
-	Loading Environment from nowhere... OK
-	In:    serial@ff000000
-	Out:   serial@ff000000
-	Err:   serial@ff000000
-	Bootmode: JTAG_MODE
-	Net:
-	ZYNQ GEM: ff0c0000, mdio bus ff0c0000, phyaddr 1, interface rgmii-id
-	zynq_gem ethernet@ff0c0000: Failed to read eth PHY id, err: -2
+         CPU:   Versal
+         Silicon: v2
+         Model: Xilinx Versal vck190 Eval board revA
+         DRAM:  8 GiB
+         EL Level:       EL2
+         MMC:   mmc@f1050000: 0
+         Loading Environment from nowhere... OK
+         In:    serial@ff000000
+         Out:   serial@ff000000
+         Err:   serial@ff000000
+         Bootmode: JTAG_MODE
+         Net:
+         ZYNQ GEM: ff0c0000, mdio bus ff0c0000, phyaddr 1, interface rgmii-id
+         zynq_gem ethernet@ff0c0000: Failed to read eth PHY id, err: -2
 
-	Warning: ethernet@ff0c0000 (eth0) using random MAC address - fe:77:f4:77:5c:c7
-	eth0: ethernet@ff0c0000
-	ZYNQ GEM: ff0d0000, mdio bus ff0c0000, phyaddr 2, interface rgmii-id
-	zynq_gem ethernet@ff0d0000: Failed to read eth PHY id, err: -2
+         Warning: ethernet@ff0c0000 (eth0) using random MAC address - fe:77:f4:77:5c:c7
+         eth0: ethernet@ff0c0000
+         ZYNQ GEM: ff0d0000, mdio bus ff0c0000, phyaddr 2, interface rgmii-id
+         zynq_gem ethernet@ff0d0000: Failed to read eth PHY id, err: -2
 
-	Warning: ethernet@ff0d0000 (eth1) using random MAC address - c6:e7:dd:d5:b1:05
-	, eth1: ethernet@ff0d0000
-         Hit any key to stop autoboot:  5  4  3  2  0 
-         Versal>
+         Warning: ethernet@ff0d0000 (eth1) using random MAC address - c6:e7:dd:d5:b1:05
+         , eth1: ethernet@ff0d0000
+               Hit any key to stop autoboot:  5  4  3  2  0 
+               Versal>
 
 .. _boot-sequence-sd-boot-mode:
  	
@@ -231,7 +233,7 @@ You need to flash the images to the daughter card using the following steps:
 
 1. With the card powered off, install the QSPI daughter card.
 
-2. Power on the board. Run modified version of versal TCL from "Loading Petalinux images on Veral Board using JTAG" section, to ensure U-boot is running and also to have Boot.BIN copied to DDR location. 
+2. Power on the board. Run modified version of Versal Tcl from the :ref:`loading-petalinux-images-versal-board-using-jtag` section, to ensure that U-Boot is running and also to have Boot.BIN copied to DDR location. 
 
 3. At the U-Boot stage, when the message **Hit any key to stop autoboot:** appears, hit any key, then run the following commands to flash the images on the QSPI daughter card:
 
@@ -272,7 +274,7 @@ To flash the images to the daughter card, use the following steps:
 
 1. With the card powered off, install the OSPI daughter card.
    
-2. Power on the board. Run modified version of versal TCL from "Loading Petalinux images on Veral Board using JTAG" section, to ensure U-boot is running and also to have Boot.BIN copied to DDR location.
+2. Power on the board. Run modified version of versal Tcl from the :ref:`loading-petalinux-images-versal-board-using-jtag` section, to ensure U-Boot is running and also to have Boot.BIN copied to DDR location.
    
 3. At the U-Boot stage, when the message **Hit any key to stop autoboot:** appears, hit any key, then run the following commands to flash the images on the OSPI daughter card:
 
@@ -420,7 +422,7 @@ To flash the Linux images to the eMMC Flash, use the following steps:
 
 2. Set the boot mode switch SW1 to ON-ON-ON-ON JTAG Boot mode.
 
-3. Power on the board. Refer to `Loading Petalinux Images on a Versal Board using JTAG <#loading-petalinux-images-on-a-versal-board-using-jtag>`__ on how to load images on the DDR memory over JTAG.
+3. Power on the board. Refer to :ref:`loading-petalinux-images-versal-board-using-jtag` on how to load images on the DDR memory over JTAG.
 
 4. At the U-Boot stage, when the message **Hit any key to stop autoboot:** appears, hit any key, then run the following commands to flash the images on the eMMC daughter card:
 

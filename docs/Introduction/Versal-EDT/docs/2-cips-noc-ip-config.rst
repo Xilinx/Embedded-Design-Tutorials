@@ -465,7 +465,7 @@ The following steps demonstrate the procedure to create a Hello World applicatio
    +----------------------+----------------------+----------------------------------------+
    |                      | System project name  | helloworld_system                      |
    +----------------------+----------------------+----------------------------------------+
-   |                      | Target processor     | versal_cips_0_pspmc_0_psv_cortexr5_0  |
+   |                      | Target processor     | versal_cips_0_pspmc_0_psv_cortexr5_0   |
    +----------------------+----------------------+----------------------------------------+
    | Domain               | Select a domain      | r5_domain                              |
    +----------------------+----------------------+----------------------------------------+
@@ -475,7 +475,7 @@ The following steps demonstrate the procedure to create a Hello World applicatio
    +----------------------+----------------------+----------------------------------------+
    |                      | Operating System     | standalone                             |
    +----------------------+----------------------+----------------------------------------+
-   |                      | Processor            | versal_cips_0_pspmc_0_psv_cortexr5_0  |
+   |                      | Processor            | versal_cips_0_pspmc_0_psv_cortexr5_0   |
    +----------------------+----------------------+----------------------------------------+
    | Templates            | Available Templates  | Hello World                            |
    +----------------------+----------------------+----------------------------------------+
