@@ -7,13 +7,13 @@
 
    Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
-*************************************************************************
-System Design Example for Stacked Silicon Interconnect Technology Devices
-*************************************************************************
+*********************************************************************************
+System Design Example for Versal Stacked Silicon Interconnect Technology Devices
+*********************************************************************************
 
-This chapter guides you through building a system based on Versal |reg| devices using available tools and supported software blocks for Stacked Silicon Interconnect Technology Devices (SSIT) devices. This chapter explains creating an embedded design using PL AXI GPIO and PL AXI UART using Vivado |reg| tool. It also describes configuring and building the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU on a Versal ACAP device.
+This chapter guides you through building a system based on Versal |reg| devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) technology devices. This chapter explains creating an embedded design using PL AXI GPIO and PL AXI UART using Vivado |reg| tool for Versal XCVC SSI technology device based VPK180 board. It also describes configuring and building the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU for targeted Versal ACAP device.
 
-Example using the PetaLinux tool is provided in :doc:`../docs/5-system-design-example`.
+Example application created using the PetaLinux tool is provided in :doc:`../docs/5-system-design-example`.
 
 .. _using-axi-gpio:
 
@@ -21,17 +21,17 @@ Example using the PetaLinux tool is provided in :doc:`../docs/5-system-design-ex
 Design Example: Using AXI GPIO
 ===============================
 
-The design example uses PL-based AXI GPIO interfaces to control the LEDs on the board based on a Linux application `gpiotest`. To utilize the four Super Logic Regions (SLR) available in the VPK180 SSIT device, the PL AXI GPIO interface paths for LED0, LED1 ,LED2 and LED3 are routed via SLR-0, SLR-1, SLR-2 and SLR-3 respectively.
+The design example uses PL-based AXI GPIO interfaces to control the LEDs on the board using a Linux application (``gpiotest``). To utilize the four Super Logic Regions (SLR) available in the VPK180 SSI technology device, the PL AXI GPIO interface paths for LED0, LED1, LED2, and LED3 are routed via SLR-0, SLR-1, SLR-2, and SLR-3, respectively.
 
-The RPU application uses the PL-based AXI UART lite to print the debug messages on the AXI UART console instead of using the PS UART console. 
+The RPU bare-metal example application uses the PL-based AXI UART lite to print the debug messages on the AXI UART console instead of using the PS UART console. 
  
 The steps to configure the following are described in this design example:
 
-- Versal |reg| ACAP CIPS IP core configuration for SSIT devices. 
+- Versal |reg| ACAP CIPS IP core configuration for SSI technology devices. 
  
-- NoC (DDR) IP Core configuration and related connections required for SSIT devices.
+- NoC (DDR) IP Core configuration and related connections required for SSI technology devices.
 
-- Configure AXI GPIO and AXI UART PL IPs and related connections to the CIPS via PS and PL interfaces
+- Configure AXI GPIO and AXI UART PL IPs and related connections to the CIPS via PS and PL interfaces.
 
 Versal ACAP CIPS IP core Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,7 +45,7 @@ Managing the Versal ACAP CIPS IP Core in the Vivado Design Suite
 
 2. To get started, add an IP from the IP catalog by clicking the **Add IP** button.
 
-3. In the search box, type CIPS to find the Control, Interfaces and Processing System.
+3. In the search box, type CIPS to find the Control, Interfaces, and Processing System.
 
 4. Double-click the **Control, Interface & Processing System IP** to add it to the block design. The CIPS IP core appears in the diagram view, as shown in the following figure:
 
@@ -57,7 +57,8 @@ Managing the Versal ACAP CIPS IP Core in the Vivado Design Suite
 6. Configure the run block settings as shown in the following figure:
 
    .. image:: media/run-automation-1.png
-      :width: 600	
+      :width: 600
+
 7. Double-click **versal_cips_0** in the Block Diagram window.	
 
 8. Ensure that all the settings for **Design Flow** and **Presets** are as shown in the following figure.
@@ -100,12 +101,12 @@ Configuring NoC and CIPS
 
 1. Open **CIPS → PS-PMC**.
 
-2. Click **NoC** and enable the NoC coherent,Non coherent Interfaces and the NoC to PMC interfaces for Master SLR (SLR-0) as shown below.
+2. Click **NoC** and enable the NoC coherent, non-coherent interfaces and the NoC to PMC interfaces for Master SLR (SLR-0) as shown below.
 
    .. image:: media/vpk_noc-interface-slr0.png
       :width: 600 
 
-3. Enable PMC to NoC and NoC to PMC connectivity for slave SLRs (SLR-1,SLR-2,SLR3) as shown below.
+3. Enable PMC to NoC and NoC to PMC connectivity for slave SLRs (SLR-1, SLR-2, SLR3) as shown below.
 
    .. image:: media/vpk_noc-interface-slr-1.png
       :width: 600
@@ -125,7 +126,7 @@ Configuring NoC and CIPS
    .. image:: media/vpk_noc_board.png
       :width: 600
 	  
-7. Select the General tab, set **Number of AXI Slave interfaces** , **AXI Clocks** to 8 and the **Number of Inter-NoC Master Interfaces** to 5 as shown below 
+7. Select the General tab, set **Number of AXI Slave interfaces**, **AXI Clocks** to 8, and the **Number of Inter-NoC Master Interfaces** to 5 as shown below.
 
    .. image:: media/vpk_noc-settings.png
       :width: 600
@@ -135,29 +136,29 @@ Configuring NoC and CIPS
    .. image:: media/noc-axi.png
       :width: 600
 
-9. Configure the following settings from the Connectivity tab:
+9. Configure the following settings from the Connectivity tab.
 
     .. image:: media/vpk_noc-connectivity.png
        :width: 600
 
 10. Click **OK**.
 
-11. Double-click the **axi_noc-1**. From General tab, set **Number of AXI Slave interfaces** to 3 , **Number of AXI Master interfaces** to 4 , **AXI Clocks** to 7 and the **Number of Inter-NoC Slave Interfaces** to 5 as shown below.
+11. Double-click the **axi_noc-1**. From General tab, set **Number of AXI Slave interfaces** to 3, **Number of AXI Master interfaces** to 4, **AXI Clocks** to 7, and the **Number of Inter-NoC Slave Interfaces** to 5 as shown below.
 
    .. image:: media/vpk_noc_board1.png
       :width: 600
 
-12. From the Inputs tab, configure the 3 **AXI Slave interfaces** to PS PMC as shown below
+12. From the Inputs tab, configure the 3 **AXI Slave interfaces** to PS PMC as shown below:
 
    .. image:: media/vpk_noc-axi1.png
       :width: 600
 	  
-13. From the Outputs tab, configure the 4 **AXI Master interfaces** to PS PMC as shown below
+13. From the Outputs tab, configure the 4 **AXI Master interfaces** to PS PMC as shown below:
 
    .. image:: media/vpk_noc-axi2.png
       :width: 600
 	  
-14. Configure the following settings from the Connectivity tab:
+14. Configure the following settings from the Connectivity tab.
 
    .. image:: media/vpk_noc-connectivity1.png
       :width: 600
@@ -171,6 +172,7 @@ Configuring NoC and CIPS
 
 Configuring PL AXI GPIO and AXI UART
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 This section describes the PS and PL configurations and the related connections to create a complete system with AXI GPIO and AXI UART. You can do this by adding the required IPs from the Vivado IP catalog and then connect the components to blocks in the PS subsystem. To configure the hardware, follow these steps:
   
 Configuring CIPS PS-PL interface
@@ -219,24 +221,24 @@ To configure the PL IPs used in this design example, follow these steps.
       
    This checks the automation for all the ports of the AXI GPIO IP.
 
-6. Click **GPIO** of `axi_gpio_0` and set the Select Board Part Interface to **Custom** as shown below.
+6. Click **GPIO** of ``axi_gpio_0`` and set the Select Board Part Interface to **Custom** as shown below.
 
    .. image:: ./media/vpk_image64.png
       :width: 600
 
-7. Click **S_AXI** of `axi_gpio_0`. Set the configurations as shown in the following figure:
+7. Click **S_AXI** of ``axi_gpio_0``. Set the configurations as shown in the following figure.
 
    .. image:: ./media/vpk_gpio_config0.png
       :width: 600
    
-8. Do repeat previous step 6 and step 7 for `axi_gpio_1`, `axi_gpio_2` and `axi_gpio_3`.
+8. Repeat steps 6 and 7 for ``axi_gpio_1``, ``axi_gpio_2``, and ``axi_gpio_3``.
 
-9. Click **S_AXI** of `axi_uartlite_0`. Set the configurations as shown in the following figure:
+9. Click **S_AXI** of ``axi_uartlite_0``. Set the configurations as shown in the following figure.
 
    .. image:: media/vpk_s-axi-uartlite1.png
       :width: 600
 
-10. Click **UART** of `axi_uartlite_0`. Set the configurations as shown in the following figure:
+10. Click **UART** of ``axi_uartlite_0``. Set the configurations as shown in the following figure.
 
    .. image:: media/vpk_s-axi-uartlite.png
       :width: 600
@@ -245,10 +247,10 @@ To configure the PL IPs used in this design example, follow these steps.
 	  
 12. This configuration sets the following connections:
 
-    - Connects the `S_AXI of AXI_GPIO` and AXI Uartlite to `M_AXI_FPD` of CIPS with SmartConnect as a bridge IP between CIPS and AXI GPIO IPs.
+    - Connects the ``S_AXI of AXI_GPIO`` and AXI UART lite to ``M_AXI_FPD`` of CIPS with SmartConnect as a bridge IP between CIPS and AXI GPIO IPs.
     - Enables the processor system reset IP.
-    - Connects the `pl0_ref_clk` to the processor system reset, AXI GPIO, and the SmartConnect IP clocks.
-    - Connects the reset of the SmartConnect and AXI GPIO to the `peripheral_aresetn` of the processor system reset IP.
+    - Connects the ``pl0_ref_clk`` to the processor system reset, AXI GPIO, and the SmartConnect IP clocks.
+    - Connects the reset of the SmartConnect and AXI GPIO to the ``peripheral_aresetn`` of the processor system reset IP.
 
 13. Click **Run Connection Automation** in the block design window and select the All Automation check box.
 
@@ -257,13 +259,13 @@ To configure the PL IPs used in this design example, follow these steps.
    .. image:: media/image66.jpeg
       :width: 600
 
-This connects the `ext_reset_in` of the processor system reset IP to the `pl_resetn` of the CIPS.
+This connects the `ext_reset_in` of the processor system reset IP to the ``pl_resetn`` of the CIPS.
 
 15. Click **OK**.
 
-16. Disconnect the `aresetn` of SmartConnect IP from `peripheral_aresetn` of processor system reset IP.
+16. Disconnect the `aresetn` of SmartConnect IP from ``peripheral_aresetn`` of processor system reset IP.
 
-17. Connect the `aresetn` of SmartConnect IP to `interconnect_aresetn` of processor system reset IP.
+17. Connect the `aresetn` of SmartConnect IP to ``interconnect_aresetn`` of processor system reset IP.
 
    .. image:: ./media/image67.jpeg
       :width: 600 
@@ -275,22 +277,22 @@ This connects the `ext_reset_in` of the processor system reset IP to the `pl_res
    .. image:: ./media/vpk_image68.png
       :width: 600 
 
-20. Make the same setting for `axi_gpio_1`, `axi_gpio_2` and `axi_gpio_3`.
+20. Make the same setting for ``axi_gpio_1``, ``axi_gpio_2``, and ``axi_gpio_3``.
 
-21. Delete the external pins of the `axi_gpio_0` IP and expand the interface.
+21. Delete the external pins of the ``axi_gpio_0`` IP and expand the interface.
 
-22. Make the output of `axi_gpio_0` IP as External.
+22. Make the output of ``axi_gpio_0`` IP as External.
 
-23. Right click the external port of `axi_gpio_0` IP and select External Port Properties and rename as Dout_0.
+23. Right-click the external port of ``axi_gpio_0`` IP and select External Port Properties and rename as Dout_0.
 
    .. image:: ./media/vpk_gpio_port.png
       :width: 600 	
 
-24. Do repeat previous step 21 to step 23 for `axi_gpio_1`, `axi_gpio_2` and `axi_gpio_3` and rename as Dout_1, Dout_2 and Dout_3 respectively.
+24. Repeat step 21 to step 23 for ``axi_gpio_1``, ``axi_gpio_2``, and ``axi_gpio_3`` and rename as Dout_1, Dout_2, and Dout_3, respectively.
 
-25. Add three instances of **AXI Register Slice** IP to be placed on SLR-1, SLR-2 and SLR-3.
+25. Add three instances of **AXI Register Slice** IP to be placed on SLR-1, SLR-2, and SLR-3.
 
-26. Right click a Register Slice IP and select **Block Properties** and rename as axi_register_slice_1_s2 as shown below.
+26. Right-click a Register Slice IP and select **Block Properties** and rename as axi_register_slice_1_s2 as shown below.
 
    .. image:: ./media/vpk_register_light_2.png
       :width: 600 
@@ -300,72 +302,72 @@ This connects the `ext_reset_in` of the processor system reset IP to the `pl_res
    .. image:: media/vpk_register_light_1.png
       :width: 600  
 
-28. Do repeat previous step 26 and step 27 for the second and third instances of AXI Register Slice IP and rename as axi_register_slice_2_s2 and axi_register_slice_3_s2 respectively.
+28. Repeat step 26 and 27 for the second and third instances of AXI Register Slice IP and rename as ``axi_register_slice_2_s2`` and ``axi_register_slice_3_s2``, respectively.
 
-.. note:: axi_register_slice_1_s2, axi_register_slice_2_s2 and axi_register_slice_3_s2 are placed to SLR-1 , SLR-2 and SLR-3 respectively using the constraints file provided as part of the package in the `pl_gpio_uart/constrs` folder.
+.. note:: ``axi_register_slice_1_s2``, ``axi_register_slice_2_s2``, and ``axi_register_slice_3_s2`` are placed to SLR-1, SLR-2, and SLR-3, respectively using the constraints file provided as part of the package in the ``pl_gpio_uart/constrs` folder.
 
 **SLR Crossing from SLR-0 to SLR-1** 
 
 29. Add two instances of **AXI Register Slice** IP to handle the SLR crossing from SLR-0 to SLR-1.
 
-30. Right click the Register Slice IP and select **Block Properties** and rename as axi_register_slice_1_s1.
+30. Right-click the Register Slice IP and select **Block Properties** and rename as ``axi_register_slice_1_s1``.
 
 31. Double-click the Register Slice IP and set the Register Slice Option as **SLR Crossing** as shown below.
 
-   .. image:: media/vpk_slr_crossing_1.png
-      :width: 600  
+    .. image:: media/vpk_slr_crossing_1.png
+       :width: 600  
 
-32. Do repeat previous step 30 and step 31 for the second instance of AXI Register Slice IP and rename as axi_register_slice_1_s3.
+32. Repeat step 30 and step 31 for the second instance of AXI Register Slice IP and rename as ``axi_register_slice_1_s3``.
 
 **SLR Crossing from SLR-0 to SLR-2** 
 
-33. Similarly add two instances of **AXI Register Slice** IP to handle the Multi SLR crossing from SLR-0 to SLR-2.
+33. Similarly add two instances of **AXI Register Slice** IP to handle the multi SLR crossing from SLR-0 to SLR-2.
 
-34. Right click a Register Slice IP and select **Block Properties** and rename as axi_register_slice_2_s1.
+34. Right-click a Register Slice IP and select **Block Properties** and rename as ``axi_register_slice_2_s1``.
 
 35. Double-click a Register Slice IP and set the Register Slice Option as **Multi SLR Crossing** as shown below.
 
-   .. image:: media/vpk_multi_slr_crossing_2_1.png
-      :width: 600  
+    .. image:: media/vpk_multi_slr_crossing_2_1.png
+       :width: 600  
 
 36. Open SLR Crossing tab, and set Number of SLR Crossing as 2 as shown below.
 
-   .. image:: media/vpk_multi_slr_crossing_2_2.png
-      :width: 600 
+    .. image:: media/vpk_multi_slr_crossing_2_2.png
+       :width: 600 
   
-37. Do repeat previous step 34, step 35 and step 36 for the second instance of AXI Register Slice IP and rename as axi_register_slice_2_s3.
+37. Repeat step 34, step 35, and step 36 for the second instance of AXI Register Slice IP and rename as ``axi_register_slice_2_s3``.
 
 **SLR Crossing from SLR-0 to SLR-3** 
 
 38. Similarly add two instances of **AXI Register Slice** IP to handle the SLR crossing from SLR-0 to SLR-3.
 
-39. Right click a Register Slice IP and select **Block Properties** and rename as axi_register_slice_3_s1.
+39. Right-click a Register Slice IP and select **Block Properties** and rename as ``axi_register_slice_3_s1``.
 
 40. Double-click a Register Slice IP and set the Register Slice Option as **Multi SLR Crossing** as shown below.
 
-   .. image:: media/vpk_multi_slr_crossing_3.png
-      :width: 600  
+    .. image:: media/vpk_multi_slr_crossing_3.png
+       :width: 600  
 
 41. Open SLR Crossing tab, and set Number of SLR Crossing as 3 as shown below.
 
-   .. image:: media/vpk_multi_slr_crossing_4.png
-      :width: 600 
+    .. image:: media/vpk_multi_slr_crossing_4.png
+       :width: 600 
 	  
-42. Do repeat previous step 39 step 40 and step 41 for the second instance of the AXI Register Slice IP and rename as axi_register_slice_3_s3.
+42. Repeat step 39, step 40, and step 41 for the second instance of the AXI Register Slice IP and rename as ``axi_register_slice_3_s3``.
 
 43. Disconnect `axi_gpio_0` , `axi_gpio_1` , `axi_gpio_2` and `axi_gpio_3` from axi smart connect and connect the register slices as shown below.
    
-   .. image:: ./media/vpk_register_slice_con.PNG
-      :width: 600     
+    .. image:: ./media/vpk_register_slice_con.PNG
+       :width: 600     
 
-44. Click **Run Connection Automation** in the Block Design view. Select aclk of all register slices and click ok.
+44. Click **Run Connection Automation** in the Block Design view. Select ``aclk`` of all register slices and click **OK**.
 
-   .. image:: ./media/vpk_register_slice_con_clk.png
-      :width: 600
+    .. image:: ./media/vpk_register_slice_con_clk.png
+       :width: 600
 	  
 45. Double-click **axi_uartlite_0** to open the IP. Go to the IP Configuration tab and configure the settings as shown in the following figure.
 
-   .. image:: media/vpk_configure-ip-settings.png
+    .. image:: media/vpk_configure-ip-settings.png
 
 46. Add **Clock Wizard IP**. Double-click to open the IP.
 
@@ -375,15 +377,15 @@ This connects the `ext_reset_in` of the processor system reset IP to the `pl_res
 
 48. Make sure the Source option in **Input Clock Information** is set to **Global buffer**.
     
-49. Go to Output clocks tab and configure the output clock as **250MHz** as follows:
+49. Go to Output clocks tab and configure the output clock as **250 MHz** as follows:
 
     .. image:: media/vpk_output-clocks-tab.png
 
-50. Right-click `pl0_ref_clk` of CIPS and click **Disconnect Pin**.
+50. Right-click ``pl0_ref_clk`` of CIPS and click **Disconnect Pin**.
 
-51. Connect the `pl0_ref_clk` from CIPS to input `clk_in1` of the Clocking wizard.
+51. Connect the ``pl0_ref_clk`` from CIPS to input ``clk_in1`` of the Clocking wizard.
 
-52. Connect the output of clocking wizard to `slowest_sync_clock` of Processor System Reset IP.
+52. Connect the output of clocking wizard to ``slowest_sync_clock`` of Processor System Reset IP.
 
     This will help in avoiding timing failure. 
 
@@ -424,7 +426,7 @@ To validate the design and to generate the output product, follow these steps:
 
    4. Choose the .xdc file to be added.
 
-      .. note:: The constraints file is provided as part of the package in the `pl_gpio_uart/constrs` folder.
+      .. note:: The constraints file is provided as part of the package in the ``pl_gpio_uart/constrs`` folder.
     
    5. Click **Finish**.
 
@@ -432,7 +434,7 @@ To validate the design and to generate the output product, follow these steps:
 
 6. In the Sources window, under Design Sources, expand **edt_versal_wrapper**.
 
-7. Right-click the top-level block design, edt_versal_i : edt_versal (`edt_versal.bd`), and select **Generate Output Products**.
+7. Right-click the top-level block design, edt_versal_i : edt_versal (``edt_versal.bd``), and select **Generate Output Products**.
 
    .. image:: ./media/GOP.png
 
@@ -461,7 +463,7 @@ Follow these steps to generate a device image for the design.
 
 5. Export hardware after you generate the Device Image.
 
-.. note:: The following steps are optional and you can skip these and go to the `Exporting Hardware <#exporting-hardware>`__ section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.
+.. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-7` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.
 
    1. Go to **Flow Navigator→ Synthesis** and click **Run Synthesis**.
 
@@ -482,6 +484,8 @@ Follow these steps to generate a device image for the design.
    5.  Click **Cancel** to close the window.
 
        Export hardware, after you generate Device Image.
+
+.. _exporting-hardware-7:
 
 Exporting Hardware
 ------------------

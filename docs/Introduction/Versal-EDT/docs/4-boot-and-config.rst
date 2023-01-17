@@ -19,7 +19,7 @@ The purpose of this chapter is to show how to integrate and load boot loaders, b
 - Steps to generate boot image for standalone application.
 - Boot sequences for SD boot, and QSPI and OSPI boot modes.
 
-You can achieve these configurations using the Vitis |trade| software platform and the PetaLinux tool flow. While :doc:`../2-cips-noc-ip-config` focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a larger system.
+You can achieve these configurations using the Vitis |trade| software platform and the PetaLinux tool flow. While :doc:`../docs/2-cips-noc-ip-config` focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a larger system.
 
 ===============
 System Software
@@ -63,7 +63,7 @@ The Vitis software platform supports boot image creation wizard for Versal ACAP.
     
 3. Copy the sd_boot.bif file present within the ``<design-package>/<board-name>/ready_to_test/qspi_images/standalone/<cips or cips_noc>/<apu or rpu>/`` directory, the PDI file present within ``<Vitis platform project>/hw/<.pdi-file>``, and the application elf files present within the ``<Vitis application-project>/Debug`` folder to the folder created in step 2.
 
-   .. note:: If needed, open the `sd_boot.bif` file in a text editor of your choice and modify the name of the PDI or elfs as per your Vitis projects.
+   .. note:: If needed, open the ``sd_boot.bif`` file in a text editor of your choice and modify the name of the PDI or elfs as per your Vitis projects.
 
 4. Run the following command in the XSCT Console view.
 
@@ -78,10 +78,10 @@ The Vitis software platform supports boot image creation wizard for Versal ACAP.
 .. _loading-petalinux-images-versal-board-using-jtag:
 
 ======================================================
-Loading Petalinux Images on a Versal Board using JTAG
+Loading PetaLinux Images on a Versal Board using JTAG
 ======================================================
 
-This section describes how to load Versal Petalinux images using JTAG mode on the Versal board. 
+This section describes how to load Versal PetaLinux images using JTAG mode on the Versal board. 
 
 1. Build the Linux images using the command:
 
@@ -101,9 +101,7 @@ This section describes how to load Versal Petalinux images using JTAG mode on th
    
       $petalinux-boot --jtag --kernel --tcl versal.tcl
 
-   .. note:: 
-      
-      The ``versal.tcl`` file includes commands to select appropriate targets and download application files to required locations in the DDR memory.
+   .. note:: The ``versal.tcl`` file includes commands to select appropriate targets and download application files to required locations in the DDR memory.
 
       .. image:: ./media/versal_tcl.JPG
  
@@ -116,7 +114,7 @@ This section describes how to load Versal Petalinux images using JTAG mode on th
 
          puts stderr "INFO: Loading image: BOOT.BIN at 0x70000000" 
          dow -data -force "BOOT.BIN" 0x70000000
-	 after 2000
+	      after 2000
 
 5. Set the boot mode switch SW1 to ON-ON-ON-ON JTAG boot mode, as shown in the following figure.
 
@@ -227,7 +225,6 @@ This section demonstrates the boot sequence for the QSPI boot mode. For this, yo
 *Figure 2:* **Daughter Card on VCK190**
 
 .. image:: ./media/vck190_production_board_QSPI_daughter_card.jpg
-   :width: 600
 
 You need to flash the images to the daughter card using the following steps:
 
@@ -255,7 +252,7 @@ You need to flash the images to the daughter card using the following steps:
 4. After flashing the images, turn off the power switch on the board, and change the SW1 boot mode pin settings to QSPI boot mode (ON-OFF-ON-ON, M[0:3] = 0100) as shown in the following figure:
 
    .. image:: ./media/image52.png
-      :width: 600
+      
 
 5. Power cycle the board. The board now boots up using the images in the QSPI flash.
 
@@ -268,7 +265,7 @@ To configure the design for the OSPI boot mode, see OSPI Boot Mode Configuration
 .. note:: The OSPI daughter card is not provided with the VCK190 Kit. 
 
 .. image:: ./media/X-EBM-03_OSPI_Daughter_card.jpg
-   :width: 600
+   
 
 To flash the images to the daughter card, use the following steps:
 
@@ -310,8 +307,7 @@ To configure the design for the eMMC boot mode, see eMMC Boot Mode Configuration
 .. note:: The eMMC daughter card is not provided with the VCK190 Kit. 
 
 .. image:: ./media/X-EBM-02_emmc_Daughter_card.jpg
-   :width: 600
-
+   
 .. note:: For the VPK180 production board, emmc images are not provided as part of the design package. Only VCK190 and VMK180 emmc images are shared as part of the design package.
 
 To format the eMMC flash on the Versal ACAP board for the first time, use the following steps:
@@ -321,7 +317,6 @@ To format the eMMC flash on the Versal ACAP board for the first time, use the fo
 2. Set the boot mode switch SW1 to ON-ON-ON-ON JTAG Boot mode, as shown in the following figure.
 
    .. image:: ./media/vck190_jtag_boot_mode_sw1_settings.png
-      :width: 500
 
    This example uses the XSCT console to download a BOOT image file (BOOT.BIN). It uses the U-Boot console to load Linux images to format the eMMC flash.
 
@@ -411,7 +406,7 @@ To format the eMMC flash on the Versal ACAP board for the first time, use the fo
 
         xilinx-vck190-20221:~$ mkfs.vfat -F 32 -n boot /dev/mmcblk0p1
 
-   eMMC flash is formatted with the FAT32 filesystem.
+.. note:: eMMC flash is formatted with the FAT32 filesystem.
 
 Flashing Linux Images to the eMMC Flash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -442,6 +437,7 @@ To flash the Linux images to the eMMC Flash, use the following steps:
 5. After flashing the images, turn off the power switch on the board, and change the SW1 boot mode pin settings to eMMC boot mode, ON-OFF-OFF-ON (MODE[0:3]= 0110).
 
 6. Power cycle the board. The board now boots up using the images in the eMMC flash.
+
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
