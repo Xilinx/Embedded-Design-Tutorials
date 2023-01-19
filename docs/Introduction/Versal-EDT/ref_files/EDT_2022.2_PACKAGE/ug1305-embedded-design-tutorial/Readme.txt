@@ -1,8 +1,8 @@
 ************************************************************************
 
-Vendor: Xilinx 
-Current readme.txt Version: 3.5
-Date Created: 20Dec2022
+Vendor: Advanced Micro Devices, Inc
+Current readme.txt Version: 3.3
+Date Created: 28Oct2021
 
 Associated Filename: ug1305-embedded-design-tutorial.zip
 Associated Document: ug1305-Versal ACAP Embedded Design Tutorial
@@ -10,43 +10,6 @@ Supported Device(s): Versal ACAP
    
 *************************************************************************
 
-Disclaimer: 
-
-      This disclaimer is not a license and does not grant any rights to 
-      the materials distributed herewith. Except as otherwise provided in 
-      a valid license issued to you by Xilinx, and to the maximum extent 
-      permitted by applicable law: (1) THESE MATERIALS ARE MADE AVAILABLE 
-      "AS IS" AND WITH ALL FAULTS, AND XILINX HEREBY DISCLAIMS ALL 
-      WARRANTIES AND CONDITIONS, EXPRESS, IMPLIED, OR STATUTORY, 
-      INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, 
-      NON-INFRINGEMENT, OR FITNESS FOR ANY PARTICULAR PURPOSE; and 
-      (2) Xilinx shall not be liable (whether in contract or tort, 
-      including negligence, or under any other theory of liability) for 
-      any loss or damage of any kind or nature related to, arising under 
-      or in connection with these materials, including for any direct, or 
-      any indirect, special, incidental, or consequential loss or damage 
-      (including loss of data, profits, goodwill, or any type of loss or 
-      damage suffered as a result of any action brought by a third party) 
-      even if such damage or loss was reasonably foreseeable or Xilinx 
-      had been advised of the possibility of the same.
-
-Critical Applications:
-
-      Xilinx products are not designed or intended to be fail-safe, or 
-      for use in any application requiring fail-safe performance, such as 
-      life-support or safety devices or systems, Class III medical 
-      devices, nuclear facilities, applications related to the deployment 
-      of airbags, or any other applications that could lead to death, 
-      personal injury, or severe property or environmental damage 
-      (individually and collectively, "Critical Applications"). Customer 
-      assumes the sole risk and liability of any use of Xilinx products 
-      in Critical Applications, subject only to applicable laws and 
-      regulations governing limitations on product liability.
-
-THIS COPYRIGHT NOTICE AND DISCLAIMER MUST BE RETAINED AS PART OF THIS 
-FILE AT ALL TIMES.
-
-*************************************************************************
 
 This readme file contains these sections:
 
@@ -68,12 +31,12 @@ Date             Version      Revision Description
 23FEB2021	   3.1         UPDATED BOOTGEN.BIF AND FREERTOS BINARIES
 22JUNE2021	   3.2         UPDATED VCK190,VMK180 PRODUCTION SILICON BOARD FILES
 			       AND APPLICATION BINARIES FOR OSPI, EMMC
-28OCT2021	   3.3         UPDATED VCK190,VMK180 PRODUCTION SILICON BOARD FILES
+28Oct2021	   3.3         UPDATED VCK190,VMK180 PRODUCTION SILICON BOARD FILES
 			       AND APPLICATION BINARIES for 2021.2 release
-22APR2022	   3.4         UPDATED VCK190,VMK180 PRODUCTION SILICON BOARD FILES
-			       AND APPLICATION BINARIES for 2021.2 release
-20DEC2022	   3.5         UPDATED VPK180 PRODUCTION SILICON BOARD FILES
-			       AND APPLICATION BINARIES for 2022.2 release
+22APR2022      3.4 	UPDATED VCK190,VMK180 PRODUCTION SILICON BOARD FILES
+			       AND APPLICATION BINARIES for 2022.1 release	
+20DEC2022      3.5	UPDATED VPK180 PRODUCTION SILICON BOARD FILES
+			       AND APPLICATION BINARIES for 2022.2 release			   
 ========================================================================
 
 
@@ -84,7 +47,6 @@ below:
 
 \ug1305-embedded-design-tutorial
  |-- \ch5_system_design_example_source__files
- |		This folder contains files related to chapter 5
  |	\apu
  |		\device_tree
  |			Contains system_user.dtsi for APU
@@ -96,115 +58,58 @@ below:
  |			Contains bif file for generating BOOT.BIN consits of both Petalinux APU 
  |			and FreeRTOS RPU images.
  |	\rpu
- |		Contains source files for FreeRTOS RPU application for AXI UART
- | 	\pre-built_xsa
- |		Contains perbuilt xsa design files used as part of Chapter 5.
+ |		contains source files for FreeRTOS RPU application for AXI UART	
  |-- \vck190
- |		This folder contains binaries and design files of VCK190 related to chapter 2 and Chapter 5.
  |	\ready_to_test
- |		\sd_qspi_images
- |		 	This folder contains binaries and design files related to QSPI/SD boot mode under Chapter 5.
- |			\linux
- |				 Contains binaries for the linux application to toggle GPIO under chapter 5.
- |	
- |			\standalone
- |				 Contains binaries for the baremetal hello world application under chapter 2.
- |				\cips
- |					\apu
- |						Contains binaries for the baremetal APU application
- |					\rpu
- |						Contains binaries for the baremetal RPU application
- |				\cips_noc 
- |					\apu
- |						Contains binaries for the baremetal APU application
- |					\rpu
- |						Contains binaries for the baremetal RPU application
- |			\freertos
- |				Contains bif file and binaries for freertos AXI UART application under Chapter 5.
- | 
- |			\pre-built_xsa
- |				Contains perbuilt xsa design files used to boot QSPI or SD Boot under chapter 5.
- |
- |		\ospi_images
- |			This folder contains binaries related to OSPI boot mode under Chapter 2.
+ |		\qspi_images
  |			\linux
  |				 Contains binaries for the linux application to toggle GPIO
- | 			\pre-built_xsa
- |				Contains perbuilt xsa design files used to boot OSPI Boot.
- |
- |		\emmc_images
- |			 This folder contains binaries related to eMMC boot mode under Chapter 2.
+ |	
+ |			\standalone
+ |				\cips
+ |					\apu
+ |						Contains binaries for the baremetal APU application
+ |					\rpu
+ |						Contains binaries for the baremetal RPU application
+ |				\cips_noc 
+ |					\apu
+ |						Contains binaries for the baremetal APU application
+ |					\rpu
+ |						Contains binaries for the baremetal RPU application
+ |			\freertos
+ |				Contains bif file and binaries for freertos GPIO application.
+ |		\ospi_images
  |			\linux
- |				Contains binaries for the linux application to toggle GPIO
- | 			\pre-built_xsa
- |				Contains perbuilt xsa design files used to boot eMMC Boot.
+ |				 Contains binaries for the linux application to toggle GPIO
+ |		\emmc_images
+ |			\linux
+ |				 Contains binaries for the linux application to toggle GPIO
  |
  |-- \vmk180
- |	This folder contains binaries and design files of VMK180 related to chapter 2 and Chapter 5.	
  |	\ready_to_test
- |		\sd_qspi_images
- |			This folder contains binaries and design files related to QSPI/SD boot mode under Chapter 5.
+ |		\qspi_images
  |			\linux
- |				 Contains binaries for the linux application to toggle GPIO under chapter 5.
+ |				 Contains binaries for the linux application to toggle GPIO
  |	
  |			\standalone
- |				 Contains binaries for the baremetal hello world application under chapter 2.
  |				\cips
  |					\apu
- |						Contains binaries for the baremetal APU hello world application
+ |						Contains binaries for the baremetal APU application
  |					\rpu
- |						Contains binaries for the baremetal RPU hello world application
+ |						Contains binaries for the baremetal RPU application
  |				\cips_noc 
  |					\apu
- |						Contains binaries for the baremetal APU hello world application
+ |						Contains binaries for the baremetal APU application
  |					\rpu
- |						Contains binaries for the baremetal RPU hello world application
+ |						Contains binaries for the baremetal RPU application
  |			\freertos
- |				Contains bif file and binaries for freertos AXI UART application under chapter 5.
- |
- |			\pre-built_xsa
- |				Contains perbuilt xsa design files used to boot QSPI or SD Boot.
+ |				Contains bif file and binaries for freertos GPIO application.
  |		\ospi_images
- |			 This folder contains binaries and design files related to OSPI boot mode under Chapter 2.
  |			\linux
- |				Contains binaries for the linux application to toggle GPIO
- | 			\pre-built_xsa
- |				Contains perbuilt xsa design files used to boot OSPI Boot.
+ |				 Contains binaries for the linux application to toggle GPIO
  |		\emmc_images
- |			This folder contains binaries and design files related to eMMC boot mode under Chapter 2.
  |			\linux
- |				Contains binaries for the linux application to toggle GPIO
- | 			\pre-built_xsa
- |				Contains perbuilt xsa design files used to boot eMMC Boot.
- |-- \vpk180
- |		This folder contains binaries and design files of VPK180 related to chapter 2 and Chapter 5.
- |	\ready_to_test
- |		\sd_qspi_images
- |		 	This folder contains binaries and design files related to QSPI/SD boot mode under Chapter 5.
- |			\linux
- |				 Contains binaries for the linux application to toggle GPIO under chapter 5.
- |	
- |			\standalone
- |				 Contains binaries for the baremetal hello world application under chapter 2.
- |				\cips
- |					\apu
- |						Contains binaries for the baremetal APU application
- |					\rpu
- |						Contains binaries for the baremetal RPU application
- |				\cips_noc 
- |					\apu
- |						Contains binaries for the baremetal APU application
- |					\rpu
- |						Contains binaries for the baremetal RPU application
- |			\freertos
- |				Contains bif file and binaries for freertos AXI UART application under Chapter 5.
- | 
- |			\pre-built_xsa
- |				Contains perbuilt xsa design files used to boot QSPI or SD Boot under chapter 5.
- |
- |
-To build Vivado Project go to 
-\ug1305-embedded-design-tutorial\vck190\ or \ug1305-embedded-design-tutorial\vmk180\ or \ug1305-embedded-design-tutorial\vpk180\
+ |				 Contains binaries for the linux application to toggle GPIO
  |-- \pl
  |	\pl_helloworld
  |        Contains files to build Vivado project for helloworld application
@@ -214,19 +119,48 @@ To build Vivado Project go to
  |	  Contains files to build Vivado project for PL AXI GPIO and PL AXI UART application
  |	  \Readme
  |   	  Contains steps to build Vivado project
+ |-- \vpk180
+ |	\ready_to_test
+ |		\qspi_images
+ |			\linux
+ |				 Contains binaries for the linux application to toggle GPIO
+ |	
+ |			\standalone
+ |				\cips
+ |					\apu
+ |						Contains binaries for the baremetal APU application
+ |					\rpu
+ |						Contains binaries for the baremetal RPU application
+ |				\cips_noc 
+ |					\apu
+ |						Contains binaries for the baremetal APU application
+ |					\rpu
+ |						Contains binaries for the baremetal RPU application
+ |			\freertos
+ |				Contains bif file and binaries for freertos GPIO application.
+ |		\ospi_images
+ |			\linux
+ |				 Contains binaries for the linux application to toggle GPIO
+ |		\emmc_images
+ |			\linux
+ |				 Contains binaries for the linux application to toggle GPIO
+ |-- \pl
+ |	\pl_gpio_uart
+ |	  Contains files to build Vivado project for PL AXI GPIO and PL AXI UART application
+ |	  \Readme
+ |   	  Contains steps to build Vivado project
  |-- \Readme
- |	Contains description of EDT package files.
 		
 
 3. INSTALLATION AND OPERATING INSTRUCTIONS 
 
 Hardware project creation and device image generation 
-	- Set vivado tool version to 2022.2
+	- Set vivado tool version to 2021.2
 	- Open Vivado tool
         - Browse to ug1305-embedded-design-tutorial folder. Go to the pl folder.Go to pl_helloworld/pl_gpio_uart folder.
 	- In the Tcl Console, type the following command
 			/> source ./scripts/create_project.tcl
-	- Vivado® tool will open the design, loads the block diagram, and adds the required top file and XDC file to the project
+	- Vivadoï¿½ tool will open the design, loads the block diagram, and adds the required top file and XDC file to the project
 	- In the Flow Navigator pane on the left-hand side under Program and Debug, click Generate Device Image.
 
 4. SUPPORT

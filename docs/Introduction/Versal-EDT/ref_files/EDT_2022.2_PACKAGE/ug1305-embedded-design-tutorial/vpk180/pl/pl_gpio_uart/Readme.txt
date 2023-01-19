@@ -1,13 +1,7 @@
 *************************************************************************
-   ____  ____ 
-  /   /\/   / 
- /___/  \  /   
- \   \   \/    © Copyright 2022 Xilinx, Inc. All rights reserved.
-  \   \        This file contains confidential and proprietary 
-  /   /        information of Xilinx, Inc. and is protected under U.S. 
- /___/   /\    and international copyright and other intellectual 
- \   \  /  \   property laws. 
-  \___\/\___\ 
+#--(C) Copyright 2020 - 2021 Xilinx, Inc. 
+#--Copyright (C) 2022, Advanced Micro Devices, Inc 
+#--SPDX-License-Identifier: Apache-2.0
  
 *************************************************************************
 Hardware project creation and device image generation 

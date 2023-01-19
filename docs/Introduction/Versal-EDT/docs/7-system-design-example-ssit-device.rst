@@ -8,12 +8,10 @@
    Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 *********************************************************************************
-System Design Example for Versal Stacked Silicon Interconnect Technology Devices
+System Design Example for Versal Stacked Silicon Interconnect Devices
 *********************************************************************************
 
-This chapter guides you through building a system based on Versal |reg| devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) technology devices. This chapter explains creating an embedded design using PL AXI GPIO and PL AXI UART using Vivado |reg| tool for Versal XCVC SSI technology device based VPK180 board. It also describes configuring and building the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU for targeted Versal ACAP device.
-
-Example application created using the PetaLinux tool is provided in :doc:`../docs/5-system-design-example`.
+This chapter guides you through building a system based on Versal |reg| devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) devices. It explains how to create an embedded design utilizing PL AXI GPIO and PL AXI UART using the Vivado |reg| tool for the Versal Premium VP1802 SSI device based VPK180 board. Refer to the Documentation Reference Guide `(UG949) <https://docs.xilinx.com/r/en-US/ug949-vivado-design-methodology/Designing-with-SSI-Devices>` for information on designing with SSI devices. It also describes configuring and building the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU for a targetted Versal ACAP device.
 
 .. _using-axi-gpio:
 
@@ -496,7 +494,7 @@ Exporting Hardware
 
 3. Provide a name for your exported file (or use the default provided) and choose the location. Click **Next**.
 
-   A warning message appears if a hardware module has already been exported. Click **Yes** to overwrite the existing XSA file, if the overwrite message is displayed.
+   A warning message appears if a hardware module has already been exported. You may choose to pick a different name for this design or click **Yes** to overwrite the existing XSA file, if the overwrite message is displayed.
 
 4. Click **Finish**.
 
