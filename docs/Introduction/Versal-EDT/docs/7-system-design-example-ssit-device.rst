@@ -13,7 +13,7 @@ System Design Example for Versal Stacked Silicon Interconnect Devices
 
 This chapter guides you through building a system based on Versal |reg| devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) devices. It explains how to create an embedded design utilizing PL AXI GPIO and PL AXI UART using the Vivado |reg| tool for the Versal Premium VP1802 SSI device based VPK180 board. Refer to the Documentation Reference Guide `(UG949) <https://docs.xilinx.com/r/en-US/ug949-vivado-design-methodology/Designing-with-SSI-Devices>`__ for information on designing with SSI devices. It also describes configuring and building the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU for a targeted Versal ACAP device.
 
-.. _using-axi-gpio:
+.. _7-using-axi-gpio:
 
 ===============================
 Design Example: Using AXI GPIO
@@ -531,7 +531,7 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
       | Platform      | Create a new platform   | Click Browse to add your  |
       |               | from hardware (XSA)     | XSA file                  |
       +---------------+-------------------------+---------------------------+
-      |               | Platform Name           | vck190_platform           |
+      |               | Platform Name           | vpk180_platform           |
       +---------------+-------------------------+---------------------------+
       | Application   | Application project     | freertos_gpio_test        |
       | Project       | name                    |                           |
@@ -560,13 +560,13 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
       |               | Templates               | Application (C)           |
       +---------------+-------------------------+---------------------------+
  
-   The Vitis software platform creates the board support package for the Platform project (**vck190_platform**) and the system project (**freertos_gpio_test_system**) containing an application project named **freertos_gpio_test** under the Explorer view after performing the preceding steps.
+   The Vitis software platform creates the board support package for the Platform project (**vpk180_platform**) and the system project (**freertos_gpio_test_system**) containing an application project named **freertos_gpio_test** under the Explorer view after performing the preceding steps.
   
 4. Delete the source files under `src/` directory and Copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``src/`` directory.
 
 5. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
 
-   Navigate to `platform.spr` under vck190_platform project, and then select **Modify BSP** settings under Board support package, and modify stdin and stdout to **axi_uarlite_0** by pressing <Y> option as shown in the figure.
+   Navigate to `platform.spr` under vpk180_platform project, and then select **Modify BSP** settings under Board support package, and modify stdin and stdout to **axi_uarlite_0** by pressing <Y> option as shown in the figure.
 
    .. image:: media/vitis_uartlite_enable.JPG
 
@@ -600,7 +600,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 .. important:: 
 
-   This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180/VPK180).
+   This example uses the VPK180 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VPK180).
 
    .. list-table::
       :widths: 25 25 25 25
@@ -610,16 +610,6 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
         - QSPI/SD
         - OSPI
         - eMMC
-
-      * - VCK190 Production Board
-        - `xilinx-vck190-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
-        - `xilinx-vck190-ospi-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
-        - `xilinx-vck190-emmc-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
-      
-      * - VMK180 Production Board
-        - `xilinx-vmk180-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
-        - `xilinx-vmk180-ospi-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
-        - `xilinx-vmk180-emmc-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
 
       * - VPK180 Production Board
         - `xilinx-vpk180-v2022.2-11160035.bsp <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-vpk120-v2022.2-10141622.bsp>`__
@@ -639,11 +629,10 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
    
    .. code-block::
    
-        $ petalinux-create -t project -s xilinx-vck190-vxxyy.z-final.bsp -n led_example
+        $ petalinux-create -t project -s xilinx-vpk180-vxxyy.z-final.bsp -n led_example
 
    .. note:: 
    
-      - For VMK180 board, use `xilinx-vmk180-vxxyy.z-final.bsp` after the `-s` option in the command.
       - For VPK180 board, use `xilinx-vpk180-vxxyy.z-final.bsp` after the `-s` option in the command.
 
 4. Change to the PetaLinux project directory using the following command.
@@ -654,7 +643,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 5. Copy the hardware platform project XSA to the Linux host machine.
 
-   .. note:: For the VMK180 board, use the XSA file that you generated in the `Design Example: Using AXI GPIO <#design-example-using-axi-gpio>`__.
+   .. note:: For the VPK180 board, use the XSA file that you generated in the :ref:`7-using-axi-gpio`.
 
 6. Reconfigure the BSP using the following commands.
 
@@ -672,13 +661,13 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
         $petalinux-create -t apps --template install --name gpiotest --enable
 
-9. Copy application files from ``<design-package>/<vck190 or vmk180 or vpk180>/linux/bootimages`` to the project using the following commands.
+9. Copy application files from ``<design-package>/<vpk180>/linux/bootimages`` to the project using the following commands.
 
    .. code-block::
     
-        $cp <design-package>/ch5_system_design_example_source__files/apu/gpiotest_app/gpiotest/files/* <plnxproj-root>/project-spec/meta-user/recipes-apps/gpiotest/files/
-        $cp <design-package>/ch5_system_design_example_source__files/apu/gpiotest_app/gpiotest/gpiotest.bb <plnx-proj-root>/project-spec/meta-user/recipes-apps/gpiotest/gpiotest.bb
-        $cp <design-package>/ch5_system_design_example_source__files/apu/device_tree/system-user.dtsi <plnx-proj-root>/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
+        $cp <design-package>/ch7_system_design_example_source__files/apu/gpiotest_app/gpiotest/files/* <plnxproj-root>/project-spec/meta-user/recipes-apps/gpiotest/files/
+        $cp <design-package>/ch7_system_design_example_source__files/apu/gpiotest_app/gpiotest/gpiotest.bb <plnx-proj-root>/project-spec/meta-user/recipes-apps/gpiotest/gpiotest.bb
+        $cp <design-package>/ch7_system_design_example_source__files/apu/device_tree/system-user.dtsi <plnx-proj-root>/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
 
 10. Enable GPIO support within kernel configuration.
 
@@ -698,7 +687,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 13. Click **<Save>** to save the above configuration and then **<Exit>** option to exit the configuration wizard.
 
-14. Configure ROOTFS to disable the AIE, STDC++, and TCL options to reduce the rootfs size to fit into both SD and OSPI/QSPI Flash partitions. 
+14. Configure ROOTFS to disable the AIE, STDC++, and Tcl options to reduce the rootfs size to fit into both SD and OSPI/QSPI Flash partitions. 
  
     .. code-block::
    
@@ -718,15 +707,15 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 18. Click **<Save>** to save the above configuration and then click **<Exit>** to exit the configuration wizard.
 
-19. OSPI and eMMC boot modes will work only on VCK190/VMK180 REVB Production boards.
+    .. note:: Only SD and QSPI boot modes will work on VPK180 Production boards.
 
-20. Only SD adn QSPI boot modes will work on VPK180 Production boards.
-
-21. Build the Linux images using the following command.
+19. Build the Linux images using the following command.
 
     .. code-block::
        
         $ petalinux-build
+
+After flashing the built images, all four LEDs which are connected to slave SLR will be turned on on the VPK180 board.
 
 
 .. |build|  image:: ./media/image29.png

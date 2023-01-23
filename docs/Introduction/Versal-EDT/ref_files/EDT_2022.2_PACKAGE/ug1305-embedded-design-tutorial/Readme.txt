@@ -1,8 +1,8 @@
 ************************************************************************
 
 Vendor: Advanced Micro Devices, Inc
-Current readme.txt Version: 3.3
-Date Created: 28Oct2021
+Current readme.txt Version: 3.5
+Date Created: 23JAN2022
 
 Associated Filename: ug1305-embedded-design-tutorial.zip
 Associated Document: ug1305-Versal ACAP Embedded Design Tutorial
@@ -33,9 +33,9 @@ Date             Version      Revision Description
 			       AND APPLICATION BINARIES FOR OSPI, EMMC
 28Oct2021	   3.3         UPDATED VCK190,VMK180 PRODUCTION SILICON BOARD FILES
 			       AND APPLICATION BINARIES for 2021.2 release
-22APR2022      3.4 	UPDATED VCK190,VMK180 PRODUCTION SILICON BOARD FILES
+22APR2022          3.4 	       UPDATED VCK190,VMK180 PRODUCTION SILICON BOARD FILES
 			       AND APPLICATION BINARIES for 2022.1 release	
-20DEC2022      3.5	UPDATED VPK180 PRODUCTION SILICON BOARD FILES
+23JAN2022          3.5	       UPDATED VPK180 PRODUCTION SILICON BOARD FILES
 			       AND APPLICATION BINARIES for 2022.2 release			   
 ========================================================================
 
@@ -59,9 +59,21 @@ below:
  |			and FreeRTOS RPU images.
  |	\rpu
  |		contains source files for FreeRTOS RPU application for AXI UART	
+ |-- \ch7_system_design_example_source__files
+ |	\apu
+ |		\device_tree
+ |			Contains system_user.dtsi for APU
+ |
+ |		\gpiotest_app
+ |			Contains gpio test application source files.
+ |
+ |		\bootgen.bif
+ |			Contains bif file for generating BOOT.BIN consits of Petalinux APU images.
+ |	\rpu
+ |		contains source files for FreeRTOS RPU application for AXI UART	
  |-- \vck190
  |	\ready_to_test
- |		\qspi_images
+ |		\sd_qspi_images
  |			\linux
  |				 Contains binaries for the linux application to toggle GPIO
  |	
@@ -84,10 +96,18 @@ below:
  |		\emmc_images
  |			\linux
  |				 Contains binaries for the linux application to toggle GPIO
- |
+ |	\pl
+ |		\pl_helloworld
+ |        		Contains files to build Vivado project for helloworld application
+ |        	\Readme
+ |        		Contains steps to build Vivado project
+ |		\pl_gpio_uart
+ |	  		Contains files to build Vivado project for PL AXI GPIO and PL AXI UART application
+ |	  	\Readme
+ |   	  		Contains steps to build Vivado project
  |-- \vmk180
  |	\ready_to_test
- |		\qspi_images
+ |		\sd_qspi_images
  |			\linux
  |				 Contains binaries for the linux application to toggle GPIO
  |	
@@ -110,20 +130,20 @@ below:
  |		\emmc_images
  |			\linux
  |				 Contains binaries for the linux application to toggle GPIO
- |-- \pl
- |	\pl_helloworld
- |        Contains files to build Vivado project for helloworld application
- |        \Readme
- |        Contains steps to build Vivado project
- |	\pl_gpio_uart
- |	  Contains files to build Vivado project for PL AXI GPIO and PL AXI UART application
- |	  \Readme
- |   	  Contains steps to build Vivado project
+ |	\pl
+ |		\pl_helloworld
+ |        		Contains files to build Vivado project for helloworld application
+ |        	\Readme
+ |        		Contains steps to build Vivado project
+ |		\pl_gpio_uart
+ |	  		Contains files to build Vivado project for PL AXI GPIO and PL AXI UART application
+ |	  	\Readme
+ |   	  		Contains steps to build Vivado project
  |-- \vpk180
  |	\ready_to_test
- |		\qspi_images
+ |		\sd_qspi_images
  |			\linux
- |				 Contains binaries for the linux application to toggle GPIO
+ |				 Contains binaries for the linux application to toggle GPIO of all 4 LEDs connected to all Slave SLR
  |	
  |			\standalone
  |				\cips
@@ -138,24 +158,19 @@ below:
  |						Contains binaries for the baremetal RPU application
  |			\freertos
  |				Contains bif file and binaries for freertos GPIO application.
- |		\ospi_images
- |			\linux
- |				 Contains binaries for the linux application to toggle GPIO
- |		\emmc_images
- |			\linux
- |				 Contains binaries for the linux application to toggle GPIO
- |-- \pl
- |	\pl_gpio_uart
- |	  Contains files to build Vivado project for PL AXI GPIO and PL AXI UART application
- |	  \Readme
- |   	  Contains steps to build Vivado project
+ |
+ |	\pl
+ |		\pl_gpio_uart
+ |	  		Contains files to build Vivado project for PL AXI GPIO and PL AXI UART application
+ |	  	\Readme
+ |   	  		Contains steps to build Vivado project
  |-- \Readme
 		
 
 3. INSTALLATION AND OPERATING INSTRUCTIONS 
 
 Hardware project creation and device image generation 
-	- Set vivado tool version to 2021.2
+	- Set vivado tool version to 2022.2
 	- Open Vivado tool
         - Browse to ug1305-embedded-design-tutorial folder. Go to the pl folder.Go to pl_helloworld/pl_gpio_uart folder.
 	- In the Tcl Console, type the following command

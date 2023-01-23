@@ -15,7 +15,7 @@ This chapter guides you through building a system based on Versal |reg| devices 
 
 Examples using the PetaLinux tool are provided in this chapter.
 
-.. _using-axi-gpio:
+.. _5-using-axi-gpio:
 
 ==============================
 Design Example: Using AXI GPIO
@@ -159,7 +159,7 @@ To add and configure IP addresses, follow these steps.
 
     .. image:: ./media/image72.png
 
-28.	Double-click **axi_uartlite_0** to open the IP.
+28. Double-click **axi_uartlite_0** to open the IP.
 
 29. In the Board tab, set Board interface as shown below:
 
@@ -263,7 +263,7 @@ Follow these steps to generate a device image for the design.
 
 5. Export hardware after you generate the Device Image.
 
-.. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-5` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.
+   .. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-5` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.
 
    1. Go to **Flow Navigator→ Synthesis** and click **Run Synthesis**.
 
@@ -450,7 +450,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 5. Copy the hardware platform project XSA to the Linux host machine.
 
-   .. note:: For the VMK180 board, use the XSA file that you generated in the `Design Example: Using AXI GPIO <#design-example-using-axi-gpio>`__.
+   .. note:: For the VMK180 board, use the XSA file that you generated in the :ref:`5-using-axi-gpio`.
 
 6. Reconfigure the BSP using the following commands.
 
@@ -494,7 +494,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 13. Click **<Save>** to save the above configuration and then **<Exit>** option to exit the configuration wizard.
 
-14. Configure ROOTFS to disable the AIE, STDC++, and TCL options to reduce the rootfs size to fit into both SD and OSPI/QSPI Flash partitions. 
+14. Configure ROOTFS to disable the AIE, STDC++, and Tcl options to reduce the rootfs size to fit into both SD and OSPI/QSPI Flash partitions. 
  
     .. code-block::
    
@@ -516,7 +516,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
     .. note:: OSPI and eMMC boot modes will work only on VCK190/VMK180 REVB Production boards.
 
-21. Build the Linux images using the following command.
+19. Build the Linux images using the following command.
 
     .. code-block::
        
