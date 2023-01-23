@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2012 - 2023 Advanced Micro Devices, Inc.  All rights reserved.
+* Copyright (C) 2012 - 2021  Xilinx, Inc.  All rights reserved.
 *
 * Permission is hereby granted, free of charge, to any person
 * obtaining a copy of this software and associated documentation
@@ -25,49 +25,31 @@
 *
 */
 
+#ifndef SRC_COMMON_
+#define SRC_COMMON_
+
+
+#include <fcntl.h>
 #include <stdio.h>
-#include <unistd.h>
-#include "gpio.h"
+#include <stdlib.h>
+#include <string.h>
 
-int main(int argc, char **argv)
-{
-	int ret;
-	int i;
-    
-	int gpio[2] = {
-		510, 511
+#define SUCCESS 0
+#define FAIL 1
 
-	};
-	for (i = 0; i < 2; i++) {
-		/* Enable/Export reset GPIO */
-		ret = enable_gpio(gpio[i]);
-		if (ret) {
-		  printf("Unable to enable GPIO: %d\n", gpio[i]);
-		  return ret;
-		}
-		ret = config_gpio_op(gpio[i]);
-		if (ret) {
-		  printf("Unable to set direction for gpio %d\n", gpio[i]);
-		  return ret;
-		}
-	}
-	for (i = 0; i < 2; i++) {
-		ret = set_gpio(gpio[i], 1);
-		if (ret) {
-			printf( "Unable to set value for GPIO: %d\n",gpio[i] );
-			goto err;
-		} else { 
-			printf("LED turned on!\n\n");
-		}             
-		sleep(5);
-		ret = set_gpio(gpio[i], 0);
-		if (ret) {
-			printf( "Unable to set value for GPIO: %d\n", gpio[i]);
-			goto err;
-		} else { 
-			printf("LED turned off!\n\n");
-		}      
-	}
-err:
-    return 0;
-}
+/****************************************************************************/
+/**
+*
+* This function updates sysfs path with the requested value.
+*
+* @param	sysfs path
+* @param	value to update in the path
+*
+* @return	SUCCESS/FAILURE.
+*
+* @note		None.
+*
+******************************************************************************/
+int write_to_file(char *path, unsigned int val);
+
+#endif /* SRC_COMMON_ */

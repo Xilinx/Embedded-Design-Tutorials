@@ -14,15 +14,16 @@ Versal ACAP Embedded Design Tutorial
    Debugging Using the Vitis Software Platform <docs/3-debugging>
    System Design Example using Scalar Engine and Adaptable Engine <docs/5-system-design-example>
    System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module <docs/6-system-design-example-HSDP>
+   System Design Example for SSI Devices <docs/7-system-design-example-ssit-device>
    Appendix: Creating the PLM <docs/A-creating-plm>
 
 
 
 
-This document provides an introduction for using the Xilinx |reg| Vivado |reg| Design Suite flow for a VCK190/VMK180 evaluation board. The tools used are Vivado Design Suite and the Vitis |trade| unified software platform, version 2022.1. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* `[UG1400] <https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;d=ug1400-vitis-embedded.pdf>`__.
+This document provides an introduction for using the Xilinx |reg| Vivado |reg| Design Suite flow for a VCK190/VMK180/VPK180 evaluation board. The tools used are Vivado Design Suite and the Vitis |trade| unified software platform, version 2022.2. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* `[UG1400] <https://www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;d=ug1400-vitis-embedded.pdf>`__.
 
 .. note:: 
-   In this tutorial, the instructions for booting Linux on the hardware is specific to the PetaLinux tools released for 2022.1, which must be installed on a Linux host machine for exercising the Linux portions of this document.
+   In this tutorial, the instructions for booting Linux on the hardware is specific to the PetaLinux tools released for 2022.2, which must be installed on a Linux host machine for exercising the Linux portions of this document.
 
 .. important:: 
    
@@ -39,6 +40,8 @@ The examples in this document are created using the Xilinx tools running on a Wi
 - :doc:`../Versal-EDT/docs/5-system-design-example`: Describes building a system on Versal ACAP using available tools and supported software blocks. This chapter demonstrates how to use the Vivado tool to create an embedded design using PL AXI GPIO. It also demonstrates the steps to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device.
   
 - :doc:`../Versal-EDT/docs/6-system-design-example-HSDP`: Describes building a system on Versal ACAP that utilizes the High-Speed Debug Port (HSDP). This chapter demonstrates how to use the Vivado tool to create an embedded design that utilizes HSDP and uses the SmartLynq+ module for downloading Linux images.
+
+- :doc:`../Versal-EDT/docs/7-system-design-example-ssit-device`: Describes building a system based on Versal devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) devices.
 
 This design tutorial requires use of a number of files provided by Xilinx. These are contained in a ZIP file that can be downloaded from the Xilinx web site. (See :doc:`../Versal-EDT/docs/1-getting-started`). The tutorial assumes the contents of the ZIP file are extracted to ``C:\edt``.
 

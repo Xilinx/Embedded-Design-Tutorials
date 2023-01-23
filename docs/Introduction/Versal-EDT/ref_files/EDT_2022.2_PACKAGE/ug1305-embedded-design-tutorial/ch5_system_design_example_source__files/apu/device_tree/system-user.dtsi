@@ -58,6 +58,6 @@
 };
 
 &amba_pl {
-       // /delete-node/ gpio@a4000000;
+        /delete-node/ gpio@a4000000;
 	/delete-node/ serial@a4020000;
 };

@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2012 - 2023 Advanced Micro Devices, Inc.  All rights reserved.
+* Copyright (C) 2012 - 2021  Xilinx, Inc.  All rights reserved.
 *
 * Permission is hereby granted, free of charge, to any person
 * obtaining a copy of this software and associated documentation
@@ -25,49 +25,34 @@
 *
 */
 
-#include <stdio.h>
-#include <unistd.h>
-#include "gpio.h"
+/***************************** Include Files *********************************/
 
-int main(int argc, char **argv)
-{
-	int ret;
-	int i;
-    
-	int gpio[2] = {
-		510, 511
+#include "common.h"
 
-	};
-	for (i = 0; i < 2; i++) {
-		/* Enable/Export reset GPIO */
-		ret = enable_gpio(gpio[i]);
-		if (ret) {
-		  printf("Unable to enable GPIO: %d\n", gpio[i]);
-		  return ret;
-		}
-		ret = config_gpio_op(gpio[i]);
-		if (ret) {
-		  printf("Unable to set direction for gpio %d\n", gpio[i]);
-		  return ret;
-		}
-	}
-	for (i = 0; i < 2; i++) {
-		ret = set_gpio(gpio[i], 1);
-		if (ret) {
-			printf( "Unable to set value for GPIO: %d\n",gpio[i] );
-			goto err;
-		} else { 
-			printf("LED turned on!\n\n");
-		}             
-		sleep(5);
-		ret = set_gpio(gpio[i], 0);
-		if (ret) {
-			printf( "Unable to set value for GPIO: %d\n", gpio[i]);
-			goto err;
-		} else { 
-			printf("LED turned off!\n\n");
-		}      
-	}
-err:
-    return 0;
+/**************************** Type Definitions *******************************/
+
+/***************** Macros (Inline Functions) Definitions *********************/
+
+/************************** Variable Definitions *****************************/
+/************************** Function Definitions *****************************/
+int write_to_file(char *path, unsigned int val) {
+  FILE *fp;
+  int ret;
+
+  fp = fopen(path, "wb");
+  if (fp == NULL) {
+    printf("Error opening file : %s\n", path);
+    return FAIL;
+  }
+
+  ret = fprintf(fp, "%d\n", val);
+  if (ret <= 0) {
+    printf("Unable to set clock value\n");
+    fclose(fp);
+    return FAIL;
+  }
+
+  fclose(fp);
+
+  return SUCCESS;
 }

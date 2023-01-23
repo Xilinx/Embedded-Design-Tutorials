@@ -357,14 +357,14 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
       |               | Processor               | versal_cips               |
       |               |                         | _0_pspmc_0_psv_cortexr5_0 |
       +---------------+-------------------------+---------------------------+
-      | Templates     | Available               | Empty      		          |
+      | Templates     | Available               | Empty                     |
       +---------------+-------------------------+---------------------------+
       |               | Templates               | Application (C)           |
       +---------------+-------------------------+---------------------------+
  
    The Vitis software platform creates the board support package for the Platform project (**vck190_platform**) and the system project (**freertos_gpio_test_system**) containing an application project named **freertos_gpio_test** under the Explorer view after performing the preceding steps.
   
-4. Delete the source files under `src/` directory and Copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``src/`` direcrtory.
+4. Delete the source files under `src/` directory and Copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``src/`` directory.
 
 5. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
 
@@ -424,7 +424,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
         - `xilinx-vmk180-emmc-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
 
       * - VPK180 Production Board
-        - `xilinx-vpk180-v2022.2-final.bsp <https://www.xilinx.com/member/vpk180_headstart.html>`__
+        - `xilinx-vpk180-v2022.2-11160035.bsp <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-vpk120-v2022.2-10141622.bsp>`__
         - N/A 
         - N/A
     
