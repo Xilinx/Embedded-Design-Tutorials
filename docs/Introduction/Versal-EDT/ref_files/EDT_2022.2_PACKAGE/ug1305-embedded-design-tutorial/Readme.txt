@@ -2,7 +2,7 @@
 
 Vendor: Advanced Micro Devices, Inc
 Current readme.txt Version: 3.5
-Date Created: 23JAN2022
+Date Created: 23JAN2023
 
 Associated Filename: ug1305-embedded-design-tutorial.zip
 Associated Document: ug1305-Versal ACAP Embedded Design Tutorial
@@ -35,7 +35,7 @@ Date             Version      Revision Description
 			       AND APPLICATION BINARIES for 2021.2 release
 22APR2022          3.4 	       UPDATED VCK190,VMK180 PRODUCTION SILICON BOARD FILES
 			       AND APPLICATION BINARIES for 2022.1 release	
-23JAN2022          3.5	       UPDATED VPK180 PRODUCTION SILICON BOARD FILES
+23JAN2023          3.5	       UPDATED VPK180 PRODUCTION SILICON BOARD FILES
 			       AND APPLICATION BINARIES for 2022.2 release			   
 ========================================================================
 

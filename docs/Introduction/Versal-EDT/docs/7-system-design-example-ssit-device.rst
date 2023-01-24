@@ -188,7 +188,7 @@ To connect the PL IPs to CIPS, follow these steps.
 	
 4. Click **Clocking**, and then click on the Output Clocks tab.
 
-5. Expand PMC Domain Clocks. Then expand PL Fabric Clocks. Configure the PL0_REF_CLK to 300 MHz as shown in the following figure:
+5. Expand PMC Domain Clocks. Then expand PL Fabric Clocks. Configure the PL0_REF_CLK (PL CLK 0) to 300 MHz as shown in the following figure:
 
    .. image:: ./media/clocking_ps_PMC.png
       :width: 600
