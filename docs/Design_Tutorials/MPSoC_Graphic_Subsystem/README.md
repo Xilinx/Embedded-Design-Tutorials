@@ -172,7 +172,7 @@
     ```
 
  A `BOOT.BIN` Boot image is created. It is composed of the FSBL boot
- loader, the PL bitstream, PMU firmware, Trusted Firmware-A (TF-A), and U-Boot.
+ loader, the PL bitstream, PMU firmware, ATF, and U-Boot.
 
  >**IMPORTANT!:** This example uses GPU packages based on the X Window
  System, which is the default setting in PetaLinux 2019.2. To enable
@@ -204,7 +204,7 @@
 
 4. Configure the board to boot in SD boot mode by setting switch SW6 as shown in the following figure.
 
-     ![](./media/image43.png)
+     ![](./media/image43.jpeg)
 
 5. Connect 12V power to the ZCU102 6-Pin Molex connector.
 

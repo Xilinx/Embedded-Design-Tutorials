@@ -100,7 +100,7 @@ The Zynq UltraScale+ PS can be booted and run without programming the PL. Howeve
 For more information on the embedded design process, refer to the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design*
 (`UG940 <https://docs.xilinx.com/v/u/en-US/ug940-vivado-tutorial-embedded-design>`_).
 
-For more information about the Zynq UltraScale+ processing system, refer to the *Zynq UltraScale + MPSoC Processing System LogiCORE IP Product Guide* (`PG201 <https://docs.xilinx.com/v/u/en-US/pg201-zynq-ultrascale-plus-processing-system>`_).
+For more information about the Zynq UltraScale+ processing system, refer to the *Zynq UltraScale + MPSoC Processing System LogiCORE IP Product Guide* (`PG201 <https://docs.xilinx.com/r/en-US/pg201-zynq-ultrascale-plus-processing-system>`_).
 
 In the :doc:`next chapter <./2-getting-started>`, we will get started. 
 

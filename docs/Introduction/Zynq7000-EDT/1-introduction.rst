@@ -57,7 +57,7 @@ The PetaLinux tools offer everything necessary to customize, build, and deploy e
 information, see the `Embedded Design Tools <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_
 web page.
 
-The PetaLinux Tools design hub provides information and links to documentation specific to the PetaLinux Tools. For more information, see `Embedded Design Hub - PetaLinux Tools <https://www.xilinx.com/cgi-bin/docs/ndoc?t=design%2Bhubs%3Bd%3Ddh0016-petalinux-tools-hub.html>`_.
+The PetaLinux Tools design hub provides information and links to documentation specific to the PetaLinux Tools. For more information, see `Embedded Design Hub - PetaLinux Tools <https://www.xilinx.com/support/documentation-navigation/design-hubs/dh0016-petalinux-tools-hub.html>`_.
 
 How the Xilinx Design Tools Expedite the Design Process
 -------------------------------------------------------

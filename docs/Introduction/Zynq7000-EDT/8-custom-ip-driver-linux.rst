@@ -69,7 +69,7 @@ Creating Peripheral IP
 
 In this section, you will create an AXI4-Lite compliant slave peripheral IP.
 
-1. Create a new project as described in `Creating a New Embedded Project with Zynq SoC :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`.
+1. Create a new project as described in :ref:`Creating a New Embedded Project with Zynq SoC <example-1-creating-a-new-embedded-project-with-zynq-soc>`.
 
 2. With the Vivado design open, select **Tools → Create and Package New IP**. Click **Next** to continue.
 
@@ -375,7 +375,7 @@ You will use a Linux workstation for this example project. The device driver sof
 
 6. You can install the driver using the ``modprobe`` command, which will be explained in further detail in the next section.
 
-.._example-13-loading-the-module-into-a-kernel-and-application-execution:
+.. _example-13-loading-the-module-into-a-kernel-and-application-execution:
 
 Example 13: Loading a Module into a Kernel and Executing the Application
 ------------------------------------------------------------------------

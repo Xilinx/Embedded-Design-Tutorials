@@ -23,7 +23,7 @@ The following key points are covered in this chapter:
 
 -  Creating and loading a secure boot image
 
-.. note:: For more information on RPU lockstep, see the *Zynq UltraScale+ Device Technical Reference Manual* (`UG1085 <https://docs.xilinx.com/v/u/en-US/ug1085-zynq-ultrascale-trm>`_).
+.. note:: For more information on RPU lockstep, see the *Zynq UltraScale+ Device Technical Reference Manual* (`UG1085 <https://docs.xilinx.com/r/en-US/ug1085-zynq-ultrascale-trm>`_).
 
 While previous sections focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a bigger system.
 
