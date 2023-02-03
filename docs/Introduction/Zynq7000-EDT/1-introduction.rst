@@ -57,7 +57,7 @@ The PetaLinux tools offer everything necessary to customize, build, and deploy e
 information, see the `Embedded Design Tools <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_
 web page.
 
-The PetaLinux Tools design hub provides information and links to documentation specific to the PetaLinux Tools. For more information, see `Embedded Design Hub - PetaLinux Tools <https://www.xilinx.com/support/documentation-navigation/design-hubs/dh0016-petalinux-tools-hub.html>`_.
+The PetaLinux Tools design hub provides information and links to documentation specific to the PetaLinux Tools. For more information, see `Embedded Design Hub - PetaLinux Tools <https://www.xilinx.com/cgi-bin/docs/ndoc?t=design%2Bhubs%3Bd%3Ddh0016-petalinux-tools-hub.html>`_.
 
 How the Xilinx Design Tools Expedite the Design Process
 -------------------------------------------------------
@@ -91,7 +91,7 @@ Installation Requirements
 Vitis Software Platform and Vivado Design Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Visit the `Xilinx Download Center <https://www.xilinx.com/support/download.html>`_ to download the Vitis software platform. This tutorial is verified with 2022.2. If you are using other Vitis versions, some features or screenshots might differ.
+Visit the `Xilinx Download Center <https://www.xilinx.com/support/download.html>`_ to download the Vitis software platform. This tutorial is verified with 2022.1. If you are using other Vitis versions, some features or screenshots might differ.
 
 The Vitis software platform supports Windows and Linux. To install the Vitis software platform, follow the instructions in the `Installation section <https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Getting-Started-with-Vitis>`_ of the *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Getting-Started-with-Vitis>`_). When you install the Vitis software platform, the Vivado Design Suite is installed automatically.
 

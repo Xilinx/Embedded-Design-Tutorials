@@ -35,7 +35,7 @@ complete the learning and then moves on to another topic.
 
 The examples in this document were created using Xilinx tools running on Windows 10, 64-bit operating system, and PetaLinux on Linux 64-bit operating system. Other versions of the tools running on other Windows installations might provide varied results. These examples focus on introducing you to the following aspects of embedded design.
 
-.. note:: The sequence mentioned in the tutorial steps for booting Linux on the hardware is specific to 2022.2, which must be installed on the Linux host machine to execute the Linux portions of this document.
+.. note:: The sequence mentioned in the tutorial steps for booting Linux on the hardware is specific to 2022.1, which must be installed on the Linux host machine to execute the Linux portions of this document.
 
 :doc:`Zynq UltraScale+ MPSoC System Configuration with Vivado <./3-system-configuration>` describes the creation of a system with the Zynq UltraScale+ MPSoC Processing System (PS) and the creation of a hardware platform for Zynq UltraScale+ MPSoC. This chapter is an introduction to the hardware and software tools using a simple design as the example.
 

@@ -1,5 +1,5 @@
 ..
-   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
+   Copyright 2000-2021 Xilinx, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
@@ -63,7 +63,7 @@ The Vitis software platform supports boot image creation wizard for Versal ACAP.
     
 3. Copy the sd_boot.bif file present within the ``<design-package>/<board-name>/ready_to_test/qspi_images/standalone/<cips or cips_noc>/<apu or rpu>/`` directory, the PDI file present within ``<Vitis platform project>/hw/<.pdi-file>``, and the application elf files present within the ``<Vitis application-project>/Debug`` folder to the folder created in step 2.
 
-   .. note:: If needed, open the ``sd_boot.bif`` file in a text editor of your choice and modify the name of the PDI or elfs as per your Vitis projects.
+   .. note:: If needed, open the `sd_boot.bif` file in a text editor of your choice and modify the name of the PDI or elfs as per your Vitis projects.
 
 4. Run the following command in the XSCT Console view.
 
@@ -74,8 +74,6 @@ The Vitis software platform supports boot image creation wizard for Versal ACAP.
    The following log is displayed in the XSCT Console view.
 
    .. image:: ./media/image51.jpeg
-
-.. _loading-petalinux-images-versal-board-using-jtag:
 
 ======================================================
 Loading PetaLinux Images on a Versal Board using JTAG
@@ -101,7 +99,9 @@ This section describes how to load Versal PetaLinux images using JTAG mode on th
    
       $petalinux-boot --jtag --kernel --tcl versal.tcl
 
-   .. note:: The ``versal.tcl`` file includes commands to select appropriate targets and download application files to required locations in the DDR memory.
+   .. note:: 
+      
+      The ``versal.tcl`` file includes commands to select appropriate targets and download application files to required locations in the DDR memory.
 
       .. image:: ./media/versal_tcl.JPG
  
@@ -114,7 +114,7 @@ This section describes how to load Versal PetaLinux images using JTAG mode on th
 
          puts stderr "INFO: Loading image: BOOT.BIN at 0x70000000" 
          dow -data -force "BOOT.BIN" 0x70000000
-	      after 2000
+	 after 2000
 
 5. Set the boot mode switch SW1 to ON-ON-ON-ON JTAG boot mode, as shown in the following figure.
 
@@ -153,30 +153,30 @@ This section describes how to load Versal PetaLinux images using JTAG mode on th
 
          U-Boot 2022.01 (Feb 16 2022 - 14:57:10 +0000)
 
-         CPU:   Versal
-         Silicon: v2
-         Model: Xilinx Versal vck190 Eval board revA
-         DRAM:  8 GiB
-         EL Level:       EL2
-         MMC:   mmc@f1050000: 0
-         Loading Environment from nowhere... OK
-         In:    serial@ff000000
-         Out:   serial@ff000000
-         Err:   serial@ff000000
-         Bootmode: JTAG_MODE
-         Net:
-         ZYNQ GEM: ff0c0000, mdio bus ff0c0000, phyaddr 1, interface rgmii-id
-         zynq_gem ethernet@ff0c0000: Failed to read eth PHY id, err: -2
+	CPU:   Versal
+	Silicon: v2
+	Model: Xilinx Versal vck190 Eval board revA
+	DRAM:  8 GiB
+	EL Level:       EL2
+	MMC:   mmc@f1050000: 0
+	Loading Environment from nowhere... OK
+	In:    serial@ff000000
+	Out:   serial@ff000000
+	Err:   serial@ff000000
+	Bootmode: JTAG_MODE
+	Net:
+	ZYNQ GEM: ff0c0000, mdio bus ff0c0000, phyaddr 1, interface rgmii-id
+	zynq_gem ethernet@ff0c0000: Failed to read eth PHY id, err: -2
 
-         Warning: ethernet@ff0c0000 (eth0) using random MAC address - fe:77:f4:77:5c:c7
-         eth0: ethernet@ff0c0000
-         ZYNQ GEM: ff0d0000, mdio bus ff0c0000, phyaddr 2, interface rgmii-id
-         zynq_gem ethernet@ff0d0000: Failed to read eth PHY id, err: -2
+	Warning: ethernet@ff0c0000 (eth0) using random MAC address - fe:77:f4:77:5c:c7
+	eth0: ethernet@ff0c0000
+	ZYNQ GEM: ff0d0000, mdio bus ff0c0000, phyaddr 2, interface rgmii-id
+	zynq_gem ethernet@ff0d0000: Failed to read eth PHY id, err: -2
 
-         Warning: ethernet@ff0d0000 (eth1) using random MAC address - c6:e7:dd:d5:b1:05
-         , eth1: ethernet@ff0d0000
-               Hit any key to stop autoboot:  5  4  3  2  0 
-               Versal>
+	Warning: ethernet@ff0d0000 (eth1) using random MAC address - c6:e7:dd:d5:b1:05
+	, eth1: ethernet@ff0d0000
+         Hit any key to stop autoboot:  5  4  3  2  0 
+         Versal>
 
 .. _boot-sequence-sd-boot-mode:
  	
@@ -192,17 +192,17 @@ The following steps demonstrate the boot sequence for the SD-boot mode.
 
    - For Linux images, navigate to the `<plnx-proj-root>/images/linux` and copy `BOOT.BIN`, Image, `rootfs.cpio.gz.uboot`, `boot.scr` to the SD card.
 
-   .. note:: You can either boot the VCK190/VMK180/VPK180 board using the ready-to-test images as part of the released package path, ``<design-package>/<vck190 or vmk180 or vpk180>/ready_to_test/qspi_images/linux/``, or refer to :ref:`creating-linux-images-using-petalinux` to build your own set of Linux images using the PetaLinux tool.
+   .. note:: You can either boot the VCK190/VMK180 board using the ready-to-test images as part of the released package path, ``<design-package>/<vck190 or vmk180>/ready_to_test/qspi_images/linux/``, or refer to :ref:`creating-linux-images-using-petalinux` to build your own set of Linux images using the PetaLinux tool.
 
-2. Load the SD card into the VMK180/VCK190/VPK180 board in the J302 connector.
+2. Load the SD card into the VMK180/VCK190 board in the J302 connector.
 
-3. Connect the Micro USB cable into the VMK180/VCK190/VPK180 Board Micro USB port (J207), and the other end into an open USB port on the host machine.
+3. Connect the Micro USB cable into the VMK180/VCK190 Board Micro USB port (J207), and the other end into an open USB port on the host machine.
 
 4. Configure the board to boot in SD-Boot mode (1-ON, 2-OFF, 3-OFF, 4-OFF) by setting the SW1 switch as shown in the following figure.
 
    .. image:: ./media/sd_boot_mode.JPG
 
-5. Connect 12V power to the VMK180/VCK190/VPK180 6-Pin Molex connector.
+5. Connect 12V power to the VMK180/VCK190 6-Pin Molex connector.
 
 6. Start a terminal session using Tera Term or Minicom depending on the host machine being used. Set the COM port and baud rate for your system, as shown in the following figure.
 
@@ -210,7 +210,7 @@ The following steps demonstrate the boot sequence for the SD-boot mode.
 
 7. For port settings, verify COM Port in the device manager and select the com port with interface-0.
 
-8. Turn on the VMK180/VCK190/VPK180 board using the power switch (SW13).
+8. Turn on the VMK180/VCK190 board using the power switch (SW13).
 
    .. note:: Logs for standalone images are displayed on the terminal. For Linux images, you can log in using `user: root` and `pw: root` after the boot-up sequence on the terminal. After that, run `gpiotest` on the terminal. You will see logs as shown in the following figure.
 
@@ -225,12 +225,17 @@ This section demonstrates the boot sequence for the QSPI boot mode. For this, yo
 *Figure 2:* **Daughter Card on VCK190**
 
 .. image:: ./media/vck190_production_board_QSPI_daughter_card.jpg
+   :width: 600
+
+.. note:: For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190/VMK180 board using the ready-to-test images as part of the released package path, ``<design-package>/<vck190 or vmk180>/ready_to_test/qspi_images/linux/``, or refer to :ref:`creating-linux-images-using-petalinux` to build your own set of Linux images using the PetaLinux tool.
 
 You need to flash the images to the daughter card using the following steps:
 
+.. note:: The following steps use the SD boot mode to load an image to indirectly program the QSPI Flash.
+
 1. With the card powered off, install the QSPI daughter card.
 
-2. Power on the board. Run modified version of Versal Tcl from the :ref:`loading-petalinux-images-versal-board-using-jtag` section, to ensure that U-Boot is running and also to have Boot.BIN copied to DDR location. 
+2. Power on the board. Refer to section Loading Petalinux images on Veral Board using JTAG on how to load images on the DDR memory over JTAG.
 
 3. At the U-Boot stage, when the message **Hit any key to stop autoboot:** appears, hit any key, then run the following commands to flash the images on the QSPI daughter card:
 
@@ -252,7 +257,7 @@ You need to flash the images to the daughter card using the following steps:
 4. After flashing the images, turn off the power switch on the board, and change the SW1 boot mode pin settings to QSPI boot mode (ON-OFF-ON-ON, M[0:3] = 0100) as shown in the following figure:
 
    .. image:: ./media/image52.png
-      
+      :width: 600
 
 5. Power cycle the board. The board now boots up using the images in the QSPI flash.
 
@@ -265,13 +270,17 @@ To configure the design for the OSPI boot mode, see OSPI Boot Mode Configuration
 .. note:: The OSPI daughter card is not provided with the VCK190 Kit. 
 
 .. image:: ./media/X-EBM-03_OSPI_Daughter_card.jpg
-   
+   :width: 600
+
+.. note:: For standalone, copy the `BOOT.BIN` to the SD card. For Linux images, you can either boot the VCK190 or VMK180 board using the ready-to-test images as part of the released package path, ``<design-package>/<vck190 or vmk180>/ready_to_test/ospi_images/linux``, or refer to :ref:`creating-linux-images-using-petalinux` to build your own set of Linux images using the PetaLinux tool.
 
 To flash the images to the daughter card, use the following steps:
 
+.. note:: The following steps use the SD boot mode to load an image to indirectly program the OSPI Flash.
+
 1. With the card powered off, install the OSPI daughter card.
    
-2. Power on the board. Run modified version of versal Tcl from the :ref:`loading-petalinux-images-versal-board-using-jtag` section, to ensure U-Boot is running and also to have Boot.BIN copied to DDR location.
+2. Power on the board. Refer to section Loading Petalinux images on Veral Board using JTAG on how to load images on the DDR memory over JTAG.
    
 3. At the U-Boot stage, when the message **Hit any key to stop autoboot:** appears, hit any key, then run the following commands to flash the images on the OSPI daughter card:
 
@@ -296,7 +305,7 @@ To flash the images to the daughter card, use the following steps:
    
 6. Power cycle the board. The board now boots up using the images in the OSPI flash.
 
-.. note:: For the VPK180 production board, OSPI images are not provided as part of the design package. Only VCK190 and VMK180 OSPI images are shared as part of the design package.
+.. note:: For the VMK180 production board, OSPI images are not provided as part of the design package. Only VCK190 OSPI images are shared as part of the design package.
 
 ================================
 Boot Sequence for eMMC Boot Mode
@@ -307,8 +316,9 @@ To configure the design for the eMMC boot mode, see eMMC Boot Mode Configuration
 .. note:: The eMMC daughter card is not provided with the VCK190 Kit. 
 
 .. image:: ./media/X-EBM-02_emmc_Daughter_card.jpg
-   
-.. note:: For the VPK180 production board, emmc images are not provided as part of the design package. Only VCK190 and VMK180 emmc images are shared as part of the design package.
+   :width: 600
+
+.. note:: For standalone, copy the BOOT.BIN to the SD card. For Linux images, you can either boot the VCK190 or vmk180 board using the ready-to-test images as part of the released package path, ``<designpackage>/<vck190 or YAML_DT_BOARD_FLAGS_vmk180>/ready_to_test/emmc_images/linux``, or refer to :ref:`creating-linux-images-using-petalinux` to build your own set of Linux images using the PetaLinux tool.
 
 To format the eMMC flash on the Versal ACAP board for the first time, use the following steps:
 
@@ -317,6 +327,7 @@ To format the eMMC flash on the Versal ACAP board for the first time, use the fo
 2. Set the boot mode switch SW1 to ON-ON-ON-ON JTAG Boot mode, as shown in the following figure.
 
    .. image:: ./media/vck190_jtag_boot_mode_sw1_settings.png
+      :width: 500
 
    This example uses the XSCT console to download a BOOT image file (BOOT.BIN). It uses the U-Boot console to load Linux images to format the eMMC flash.
 
@@ -406,7 +417,7 @@ To format the eMMC flash on the Versal ACAP board for the first time, use the fo
 
         xilinx-vck190-20221:~$ mkfs.vfat -F 32 -n boot /dev/mmcblk0p1
 
-.. note:: eMMC flash is formatted with the FAT32 filesystem.
+   eMMC flash is formatted with the FAT32 filesystem.
 
 Flashing Linux Images to the eMMC Flash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -417,7 +428,7 @@ To flash the Linux images to the eMMC Flash, use the following steps:
 
 2. Set the boot mode switch SW1 to ON-ON-ON-ON JTAG Boot mode.
 
-3. Power on the board. Refer to :ref:`loading-petalinux-images-versal-board-using-jtag` on how to load images on the DDR memory over JTAG.
+3. Power on the board. Refer to `Loading Petalinux Images on a Versal Board using JTAG <#loading-petalinux-images-on-a-versal-board-using-jtag>`__ on how to load images on the DDR memory over JTAG.
 
 4. At the U-Boot stage, when the message **Hit any key to stop autoboot:** appears, hit any key, then run the following commands to flash the images on the eMMC daughter card:
 
@@ -437,7 +448,6 @@ To flash the Linux images to the eMMC Flash, use the following steps:
 5. After flashing the images, turn off the power switch on the board, and change the SW1 boot mode pin settings to eMMC boot mode, ON-OFF-OFF-ON (MODE[0:3]= 0110).
 
 6. Power cycle the board. The board now boots up using the images in the eMMC flash.
-
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:

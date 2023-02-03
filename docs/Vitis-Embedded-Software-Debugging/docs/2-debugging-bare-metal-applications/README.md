@@ -20,7 +20,7 @@ The Vitis workspace will be created in the top-level directory in a folder named
 
 ## Error 1: Error Launching Program
 
-Create a [debug launch session](https://docs.xilinx.com/access/sources/dita/topic?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded&resourceid=tvc1565072991613.html) for the ``testapp_a53`` application and launch the debug session with the default settings. The process will be interrupted with an error message.
+Create a [debug launch session](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/runappproject.html#tvc1565072991613__bm294539) for the ``testapp_a53`` application and launch the debug session with the default settings. The process will be interrupted with an error message.
 
 ![Error Launching program](./images/001.png)
 
@@ -36,7 +36,7 @@ Open the XSCT window within the Vitis IDE and execute each command line in the s
 
 ![XSCT error](./images/003.png)
 
-Running each command one by one allows you to see that the issue in this particular test case is in the download process of the ``testapp_a53`` application to memory. See the [dow](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/dow) command for more information.
+Running each command one by one allows you to see that the issue in this particular test case is in the download process of the ``testapp_a53`` application to memory. See the [dow](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/qqo1569237914824.html#ariaid-title2) command for more information.
 
 In this case, the error message has already pointed out the root cause of the issue. There is a memory write error at 0xFFFB0000 which does not belong to a memory region according to the _Zynq Ultrascale+ MPSoC Technical Reference Manual_ ([UG1085](https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf#G12.407191)). Checking the linker script within the Vitis IDE confirms that there is a mistake in the OCM memory region description because the base address is not correct.
 
@@ -56,13 +56,13 @@ Resume the execution of the application and wait to see whether the application 
 
 ![Unfinished DMA operation](./images/007.png)
 
-The DMA operation is monitored by an interrupt handler which has not been executed for some reason. The [Registers view](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Viewing-Target-Registers) in the Vitis IDE can be used in these cases to inspect the peripheral/controller status as well as the processor status for debugging purposes. This window is context aware, which means that the registers shown in the window are based on the target selected in the Debug window.
+The DMA operation is monitored by an interrupt handler which has not been executed for some reason. The [Registers view](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/runappproject.html?hl=registers,view#ariaid-title15) in the Vitis IDE can be used in these cases to inspect the peripheral/controller status as well as the processor status for debugging purposes. This window is context aware, which means that the registers shown in the window are based on the target selected in the Debug window.
 
 Select the PSU target in the Debug window and check the ADMA_CH0 controller (the channel used for the data transfer) registers. The DMA_DONE bit within the ZDMA_CH_ISR register shows that the transfer has been completed and the interrupt signal in the controller has been also triggered.
 
 ![DMA Register](./images/008.png)
 
-Select the **Cortex-A53#0** target in the Debug window and check that the interrupt for the LPD DMA CH0 has not been enabled in the corresponding GICD_ISENABLER# register. The interrupt signal is consequently created in the DMA controller but is not handled in the interrupt controller, which prevents the handler from being executed and the loop from finishing in the application code. Review of the code can confirm that the interrupt has not been enabled in the GIC using the ``XScuGic_Enable`` function.
+Select the **Cortex-A53#0** target in the Debug window and check that the interrupt for the LPD DMA CH0 ([INTC109](https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf#G15.435570)) has not been enabled in the corresponding GICD_ISENABLER# register. The interrupt signal is consequently created in the DMA controller but is not handled in the interrupt controller, which prevents the handler from being executed and the loop from finishing in the application code. Review of the code can confirm that the interrupt has not been enabled in the GIC using the ``XScuGic_Enable`` function.
 
 ![GIC Register](./images/009.png)
 

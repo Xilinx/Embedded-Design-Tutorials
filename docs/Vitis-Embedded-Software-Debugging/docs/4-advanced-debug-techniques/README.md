@@ -78,7 +78,7 @@ The bottom part of the view shows the processes that are running on the target b
 ![top_command](./images/kernel_process.JPG)
 
 
-### Error 1: AXI GPIO Application Debug
+## Error 1: AXI GPIO Application Debug
 
 The application used here is a sample GPIO userspace application which uses `sysfs` calls to manage the on-board LED on ZCU102. The design uses an AXI GPIO connected to the 8-bit LEDs on the ZCU102 board.
 
@@ -88,7 +88,7 @@ The Vivado example design, shown in the following figure, has an AXI GPIO connec
 
 ![design](./images/vivado_des.JPG)
 
-#### Vivado
+### Vivado
 
 In Vivado, source the `Vivado.tcl` file which generates the block design and runs through the synthesis, implementation, and device image generation processes automatically. This completes the generation of the required hardware for building the software artifacts.
 
@@ -104,7 +104,7 @@ In Vivado, source the `Vivado.tcl` file which generates the block design and run
 
    ```write_hw_platform -fixed -include_bit -force -file ../Hardware/mpsoc_preset_wrapper.xsa```
 
-#### PetaLinux
+### PetaLinux
 
 In PetaLinux, import the custom hardware generated from Vivado on top of the ZCU102 BSP. After the project build is completed, you should have the kernel image and the required root file system to load Linux on the ZCU102 board. 
 
@@ -133,7 +133,7 @@ Perform the following steps using PetaLinux 2021.1.
 6. Run ``petalinux-build``. 
 7. Run ``petalinux-package --boot --format BIN --fsbl images/linux/zynqmp_fsbl.elf --u-boot images/linux/u-boot.elf --fpga images/linux/system.bit --force``.
 
-#### Vitis
+### Vitis
 
 In the Vitis IDE, import the custom hardware generated from Vivado to build your Linux userspace application which will be executed after loading Linux. The userspace application uses SysFS calls to the GPIO driver and is used to toggle the ZCU102 on-board LEDs connected to the AXI GPIO IP.
 
@@ -211,7 +211,7 @@ root@xilinx-zcu102-2021_1:~# cat /sys/class/gpio/gpio500/direction
 out
 ```
 
-### Error 2: Debugging a Kernel Crash
+## Error 2: Debugging a Kernel Crash
 
 **Disclaimer:** This example is intended solely to demonstrate kernel-level debugging in the Vitis IDE.
 
@@ -295,7 +295,7 @@ out
 
 **Note:** The default ZCU102 pre-built image will not have this error.
 
-### Error 3: Debugging a Kernel Process
+## Error 3: Debugging a Kernel Process
 
 This section demonstrates how to debug a kernel process using the Vitis IDE. First, you need to complete the steps explained in [Setting Up the OS Aware Debug Session](#setting-up-the-os-aware-debug-session). You also need to ensure that you have PetaLinux set up as described in [Getting Started](#getting-started).
 
@@ -343,7 +343,7 @@ The next step focuses on the `dropbear` process. For more details about Dropbear
 
    ![dropbear_5](./images/dropbear_step.JPG)
 
-### Error 4: Debugging a Kernel Module
+## Error 4: Debugging a Kernel Module
 
 This section uses an example to demonstrate how to debug kernel modules easily using the Vitis IDE. It focuses on the lightweight Linux kernel module `lkm_demo1`. First, you need to complete the steps explained in [Setting Up the OS Aware Debug Session](#setting-up-the-os-aware-debug-session). You also need to ensure that you have PetaLinux set up as described in [Getting Started](#getting-started).
 
@@ -367,60 +367,60 @@ This section uses an example to demonstrate how to debug kernel modules easily u
 
 7. Boot the board type the command `insmod /lib/modules/5.10.0-xilinx-v2021.1/extra/lkm-demo1.ko`. The module will crash as shown below.
   
-   ```
-   root@xilinx-zcu102-2021_1:~# insmod /lib/modules/5.10.0-xilinx-v2021.1/extra/lkm-demo1.ko 
-   [   90.899879] <1>Hello module world.
-   [   90.903310] Organized Panic!......
-   [   90.906725] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
-   [   90.915505] Mem abort info:
-   [   90.918297]   ESR = 0x96000046
-   [   90.921340]   EC = 0x25: DABT (current EL), IL = 32 bits
-   [   90.926649]   SET = 0, FnV = 0
-   [   90.929698]   EA = 0, S1PTW = 0
-   [   90.932837] Data abort info:
-   [   90.935709]   ISV = 0, ISS = 0x00000046
-   [   90.939539]   CM = 0, WnR = 1
-   [   90.942500] user pgtable: 4k pages, 48-bit VAs, pgdp=0000000805206000
-   [   90.948934] [0000000000000000] pgd=000000080664e003, p4d=000000080664e003, pud=0000000805cf1003, pmd=0000000000000000
-   [   90.959554] Internal error: Oops: 96000046 [#1] SMP
-   [   90.964422] Modules linked in: lkm_demo1(O+) zocl(O) uio_pdrv_genirq
-   [   90.970782] CPU: 1 PID: 814 Comm: insmod Tainted: G           O      5.10.0-xilinx-v2021.1 #1
-   [   90.979295] Hardware name: ZynqMP ZCU102 Rev1.0 (DT)
-   [   90.984252] pstate: 60000005 (nZCv daif -PAN -UAO -TCO BTYPE=--)
-   [   90.990256] pc : lkm_demo1_init+0x38/0x1000 [lkm_demo1]
-   [   90.995478] lr : lkm_demo1_init+0x28/0x1000 [lkm_demo1]
-   [   91.000691] sp : ffff80001429bb10
-   [   91.003997] x29: ffff80001429bb10 x28: 0000000000000013 
-   [   91.009302] x27: 0000000000000100 x26: ffff800008ddd280 
-   [   91.014606] x25: ffff8000100ecf80 x24: 0000000000000003 
-   [   91.019910] x23: 0000000000000000 x22: ffff000800344080 
-   [   91.025214] x21: ffff800008de0000 x20: ffff000800344080 
-   [   91.030518] x19: ffff800008ddd000 x18: 0000000000000030 
-   [   91.035822] x17: 0000000000000000 x16: 0000000000000000 
-   [   91.041126] x15: ffff000800344498 x14: 0720072007200720 
-   [   91.046430] x13: ffff8000113c3de0 x12: 000000000000053d 
-   [   91.051734] x11: 00000000000001bf x10: ffff8000113efde0 
-   [   91.057038] x9 : 00000000fffff800 x8 : ffff8000113c3de0 
-   [   91.062342] x7 : ffff8000113efde0 x6 : 0000000000000000 
-   [   91.067646] x5 : 0000000000005ff4 x4 : 0000000000000000 
-   [   91.072950] x3 : 0000000000000000 x2 : 0000000000000000 
-   [   91.078254] x1 : ffff800008ddd000 x0 : ffff800008ddc000 
-   [   91.083558] Call trace:
-   [   91.086001]  lkm_demo1_init+0x38/0x1000 [lkm_demo1]
-   [   91.090873]  do_one_initcall+0x54/0x1bc
-   [   91.094699]  do_init_module+0x54/0x240
-   [   91.098438]  load_module+0x1ec8/0x2500
-   [   91.102180]  __do_sys_finit_module+0xb8/0xfc
-   [   91.106442]  __arm64_sys_finit_module+0x24/0x30
-   [   91.110967]  el0_svc_common.constprop.0+0x94/0x1c0
-   [   91.115750]  do_el0_svc+0x44/0xb0
-   [   91.119057]  el0_svc+0x14/0x20
-   [   91.122102]  el0_sync_handler+0x1a4/0x1b0
-   [   91.126104]  el0_sync+0x174/0x180
-   [   91.129415] Code: d2800002 b0ffffe1 91000033 90ffffe0 (b900005f) 
-   [   91.135499] ---[ end trace a492e574dceee8f8 ]---
-   Segmentation fault
-   ```
+      ```
+      root@xilinx-zcu102-2021_1:~# insmod /lib/modules/5.10.0-xilinx-v2021.1/extra/lkm-demo1.ko 
+      [   90.899879] <1>Hello module world.
+      [   90.903310] Organized Panic!......
+      [   90.906725] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
+      [   90.915505] Mem abort info:
+      [   90.918297]   ESR = 0x96000046
+      [   90.921340]   EC = 0x25: DABT (current EL), IL = 32 bits
+      [   90.926649]   SET = 0, FnV = 0
+      [   90.929698]   EA = 0, S1PTW = 0
+      [   90.932837] Data abort info:
+      [   90.935709]   ISV = 0, ISS = 0x00000046
+      [   90.939539]   CM = 0, WnR = 1
+      [   90.942500] user pgtable: 4k pages, 48-bit VAs, pgdp=0000000805206000
+      [   90.948934] [0000000000000000] pgd=000000080664e003, p4d=000000080664e003, pud=0000000805cf1003, pmd=0000000000000000
+      [   90.959554] Internal error: Oops: 96000046 [#1] SMP
+      [   90.964422] Modules linked in: lkm_demo1(O+) zocl(O) uio_pdrv_genirq
+      [   90.970782] CPU: 1 PID: 814 Comm: insmod Tainted: G           O      5.10.0-xilinx-v2021.1 #1
+      [   90.979295] Hardware name: ZynqMP ZCU102 Rev1.0 (DT)
+      [   90.984252] pstate: 60000005 (nZCv daif -PAN -UAO -TCO BTYPE=--)
+      [   90.990256] pc : lkm_demo1_init+0x38/0x1000 [lkm_demo1]
+      [   90.995478] lr : lkm_demo1_init+0x28/0x1000 [lkm_demo1]
+      [   91.000691] sp : ffff80001429bb10
+      [   91.003997] x29: ffff80001429bb10 x28: 0000000000000013 
+      [   91.009302] x27: 0000000000000100 x26: ffff800008ddd280 
+      [   91.014606] x25: ffff8000100ecf80 x24: 0000000000000003 
+      [   91.019910] x23: 0000000000000000 x22: ffff000800344080 
+      [   91.025214] x21: ffff800008de0000 x20: ffff000800344080 
+      [   91.030518] x19: ffff800008ddd000 x18: 0000000000000030 
+      [   91.035822] x17: 0000000000000000 x16: 0000000000000000 
+      [   91.041126] x15: ffff000800344498 x14: 0720072007200720 
+      [   91.046430] x13: ffff8000113c3de0 x12: 000000000000053d 
+      [   91.051734] x11: 00000000000001bf x10: ffff8000113efde0 
+      [   91.057038] x9 : 00000000fffff800 x8 : ffff8000113c3de0 
+      [   91.062342] x7 : ffff8000113efde0 x6 : 0000000000000000 
+      [   91.067646] x5 : 0000000000005ff4 x4 : 0000000000000000 
+      [   91.072950] x3 : 0000000000000000 x2 : 0000000000000000 
+      [   91.078254] x1 : ffff800008ddd000 x0 : ffff800008ddc000 
+      [   91.083558] Call trace:
+      [   91.086001]  lkm_demo1_init+0x38/0x1000 [lkm_demo1]
+      [   91.090873]  do_one_initcall+0x54/0x1bc
+      [   91.094699]  do_init_module+0x54/0x240
+      [   91.098438]  load_module+0x1ec8/0x2500
+      [   91.102180]  __do_sys_finit_module+0xb8/0xfc
+      [   91.106442]  __arm64_sys_finit_module+0x24/0x30
+      [   91.110967]  el0_svc_common.constprop.0+0x94/0x1c0
+      [   91.115750]  do_el0_svc+0x44/0xb0
+      [   91.119057]  el0_svc+0x14/0x20
+      [   91.122102]  el0_sync_handler+0x1a4/0x1b0
+      [   91.126104]  el0_sync+0x174/0x180
+      [   91.129415] Code: d2800002 b0ffffe1 91000033 90ffffe0 (b900005f) 
+      [   91.135499] ---[ end trace a492e574dceee8f8 ]---
+      Segmentation fault
+      ```
 
 You can now use Vitis OS aware debug to check what has gone wrong in the kernel module. To do that, power cycle the board and relaunch the Linux kernel on the target board. Do not insert the module. Set up the Linux OS aware debug by following the steps explained in [Setting Up the OS Aware Debug Session](#setting-up-the-os-aware-debug-session). When the OS aware debug view is ready, work through the following steps. 
 
@@ -466,19 +466,19 @@ You can now use Vitis OS aware debug to check what has gone wrong in the kernel 
 
 10. Make the changes in the `lkm_demo1.c` file and rebuild the image. You can now fix the kernel module crash issue and debug it.
 
-### Error 5: Debug Using QEMU
+## Error 5: Debug Using QEMU
 
-Repeat the steps from [Debugging Bare-Metal Applications](/docs/Vitis-Embedded-Software-Debugging/docs/2-debugging-bare-metal-applications) but this time using QEMU. To launch debug using QEMU, refer to [Standalone Application Debug Using System Debugger on QEMU](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Standalone-Application-Debug-Using-System-Debugger-on-QEMU).
+Repeat the steps from [Debugging Bare-Metal Applications](/docs/2-debugging-bare-metal-applications) but this time using QEMU. To launch debug using QEMU, refer to [Standalone Application Debug Using System Debugger on QEMU](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#pqw1565072996942).
 
 ## Further Reading
 
-### Attaching an Application to System Debugger
+## Attaching an Application to System Debugger
 
-Refer to [Attach and Debug using Xilinx System Debugger](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Attach-and-Debug-using-Xilinx-System-Debugger) for more information. 
+Refer to [Attach and Debug using Xilinx System Debugger](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#jlr1565072996727) for more information. 
 
-### Path Mapping
+## Path Mapping
 
-When an application is compiled with debug flags (for example, `-O0 -g`), the compiler stores references to the source paths in the debug sections of the ELFs. This information is used by the debugger to map the PC address of the target processor to the source line in the code. Path mapping allows you to debug an application when its sources are not available at the location where it was compiled. For example, you can compile an application on Windows and debug it on Linux, or debug a pre-built Linux kernel image, without having to recompile the sources. In both cases, you can download and run the images using [XSCT](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Xilinx-Software-Command-Line-Tool?tocId=CwnQ90bFNEhE~pGBspGuOQ), and then attach the debugger.
+When an application is compiled with debug flags (for example, `-O0 -g`), the compiler stores references to the source paths in the debug sections of the ELFs. This information is used by the debugger to map the PC address of the target processor to the source line in the code. Path mapping allows you to debug an application when its sources are not available at the location where it was compiled. For example, you can compile an application on Windows and debug it on Linux, or debug a pre-built Linux kernel image, without having to recompile the sources. In both cases, you can download and run the images using [XSCT](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/XSCT.html#mpr1543754624906), and then attach the debugger.
 
 After this is done, the debugger should issue a warning about the missing source files when the processor is stopped. You can then enable path mapping in one of the following ways, so that the debugger can find the sources from a different location. 
 
@@ -490,11 +490,11 @@ After this is done, the debugger should issue a warning about the missing source
 4. Enter the compilation path as the source path. Enter the new location where the sources are available as the destination path. For example, if the application was compiled at `C:\testapp`, and the same sources are available at `/scratch/source`, the source path would be `C:\testapp`, and the destination path would be `/scratch/source`.
 5. Save the settings by clicking **OK**. The debugger now shows the source files from the new path.
 
-### Using Remote Host
+## Using Remote Host
 
-Refer to [Using a Remote Host with System Debugger](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Using-a-Remote-Host-with-System-Debugger) for more information. 
+Refer to [Using a Remote Host with System Debugger](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#hwl1565072997080__cr294539) for more information. 
 
-### Basic Setup for OS Aware Debug
+## Basic Setup for OS Aware Debug
 
 These steps are required if you are _not_ using the Xilinx provided BSP. The kernel must be built with the following steps for OS aware debug to work. 
 
@@ -525,9 +525,9 @@ These steps are required if you are _not_ using the Xilinx provided BSP. The ker
    - Copy over the `BOOT.BIN`, `image.ub`, and `boot.scr` from the `linux/images/` folder to the SD card. 
    - Boot the board.
 
-### OS Awareness (OSA) Options in the Vitis IDE
+## OS Awareness (OSA) Options in the Vitis IDE
 
-Refer to [Enabling OS Aware Debug](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Enabling-OS-Aware-Debug).
+Refer to [Enabling OS Aware Debug](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#itw1565072997401).
 
 ![osa_menu](./images/osa_menu.PNG)
 

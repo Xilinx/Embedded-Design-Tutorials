@@ -37,7 +37,7 @@ Installation Requirements
 Vitis Integrated Design Environment and Vivado Design Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ensure that you have the Vitis |trade| 2022.2 unified software development platform installed. The Vitis software platform comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis IDE. You do not have to make any extra selections in the installer.
+Ensure that you have the Vitis |trade| 2022.1 unified software development platform installed. The Vitis software platform comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis IDE. You do not have to make any extra selections in the installer.
 
 Visit this `web page <https://www.xilinx.com/support/download.html>`_ to download the required Vitis tool installer.
 

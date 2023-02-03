@@ -27,7 +27,7 @@ Input and Output Files
 -  Input:
 
    -  Hardware XSA (``system_wrapper.xsa`` generated in :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`)
-   -  `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2022.2-final.bsp>`__
+   -  `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2022.1-final.bsp>`__
 
 -  Output:
 
@@ -38,7 +38,7 @@ Input and Output Files
 
    1. This example requires a Linux host machine with PetaLinux installed. Refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`_) for information about dependencies for PetaLinux.
 
-   2. This example uses the `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2022.2-final.bsp>`__ to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the `PetaLinux Tools download page <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_.
+   2. This example uses the `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2022.1-final.bsp>`__ to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the `PetaLinux Tools download page <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_.
 
 Creating a PetaLinux Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,11 +47,11 @@ Creating a PetaLinux Image
 
    .. code:: bash
 
-      petalinux-create -t project -s <path to the xilinx-zc702-v2022.2-final.bsp>
+      petalinux-create -t project -s <path to the xilinx-zc702-v2022.1-final.bsp>
 
-   .. note:: **xilinx-zc702-v2022.2-final.bsp** is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.
+   .. note:: **xilinx-zc702-v2022.1-final.bsp** is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.
 
-   This creates a PetaLinux project directory, **xilinx-zc702-2022.2**.
+   This creates a PetaLinux project directory, **xilinx-zc702-2022.1**.
 
 2. Reconfigure the project with **system_wrapper.xsa**:
 
@@ -63,7 +63,7 @@ Creating a PetaLinux Image
 
       .. code:: bash
 
-         cd xilinx-zc702-2022.2
+         cd xilinx-zc702-2022.1
          petalinux-config --get-hw-description=<path that contains system_wrapper.xsa>
 
    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images. Select **Exit** and press **Enter** to exit the configuration window.
@@ -76,7 +76,7 @@ Creating a PetaLinux Image
 
 3. Build the PetaLinux project:
 
-   -  In the ``<PetaLinux-project>`` directory (for example, ``xilinx-zc702-2022.2``), build the Linux images using the following command:
+   -  In the ``<PetaLinux-project>`` directory (for example, ``xilinx-zc702-2022.1``), build the Linux images using the following command:
 
       .. code:: bash
 

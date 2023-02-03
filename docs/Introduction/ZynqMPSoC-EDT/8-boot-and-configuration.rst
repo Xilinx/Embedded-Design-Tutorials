@@ -23,7 +23,7 @@ The following key points are covered in this chapter:
 
 -  Creating and loading a secure boot image
 
-.. note:: For more information on RPU lockstep, see the *Zynq UltraScale+ Device Technical Reference Manual* (`UG1085 <https://docs.xilinx.com/r/en-US/ug1085-zynq-ultrascale-trm>`_).
+.. note:: For more information on RPU lockstep, see the *Zynq UltraScale+ Device Technical Reference Manual* (`UG1085 <https://docs.xilinx.com/v/u/en-US/ug1085-zynq-ultrascale-trm>`_).
 
 While previous sections focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a bigger system.
 
@@ -268,7 +268,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
 
    .. code:: shell
 
-       $ cd <Petalinux-project-path>/xilinx-zcu102-2022.2/images/linux/
+       $ cd <Petalinux-project-path>/xilinx-zcu102-2022.1/images/linux/
        $ mkdir sd_boot
        $ cp image.ub sd_boot/
        $ cp u-boot.elf sd_boot/
@@ -278,7 +278,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
 
    .. code:: shell
    
-      $ cd <Petalinux-project-path>/xilinx-zcu102-2022.2
+      $ cd <Petalinux-project-path>/xilinx-zcu102-2022.1
 
 3. Launch the top-level system configuration menu:
 
@@ -818,7 +818,7 @@ In this section you will load the boot images on the ZCU102 target using the DFU
 
 5. Power on the board.
 
-The following steps load the boot images via USB using the DFU utility, which can be found at ``Vitis\2022.2\tps\lnx64\dfu-util-0.9``.
+The following steps load the boot images via USB using the DFU utility, which can be found at ``Vitis\2022.1\tps\lnx64\dfu-util-0.9``.
 
 Alternatively, you can install the DFU utility on Linux using the Package Manager supported by Linux Distribution.
 

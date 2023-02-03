@@ -1,5 +1,5 @@
 ..
-   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
+   Copyright 2000-2021 Xilinx, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
@@ -38,8 +38,6 @@ CIPS IP Core Configuration
 ==========================
 
 Creating a Versal ACAP system design involves configuring the CIPS IP core to select the appropriate boot devices and peripherals. To start with, if the CIPS IP core peripherals and available multiplexed I/O (MIO) connections meet the requirements, no PL component is required. This chapter guides you through creating a simple CIPS IP core-based design.
-
-.. _creating-new-embedded-project-versal-acap:
 
 Creating a New Embedded Project with the Versal ACAP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -100,14 +98,12 @@ Starting Your Design
    | Default  | Select                   | **Boards**                     |
    | Part     |                          |                                |
    +----------+--------------------------+--------------------------------+
-   |          | Display Name             | Versal VMK180/VCK190/VPK180    |
+   |          | Display Name             | Versal VMK180/VCK190           |
    |          |                          | Evaluation Platform            |
    +----------+--------------------------+--------------------------------+
    | Project  | Project Summary          | Review the project summary     |
    | Summary  |                          |                                |
    +----------+--------------------------+--------------------------------+
-
-   .. note:: Select **Display Name** as VPK180 Evaluation platform for creating project for SSI devices.
 
 5. Click **Finish**. The New Project wizard closes and the project you just created opens in the Vivado design tool.
 
@@ -332,8 +328,6 @@ The following steps demonstrate the procedure to make the required cable connect
    .. image:: media/image23.png
 
 .. note:: You can use external terminal Serial Port Consoles like Tera Term or Putty. You can find the relevant COM port information from the Device Manager menu in Control Panel.
-
-.. _creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm:
 
 Creating a Hello World Application for the Arm Cortex-A72 on OCM
 ----------------------------------------------------------------
@@ -929,13 +923,15 @@ Running a Bare-Metal Hello World Application on DDR Memory
 
 In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Xilinx Vitis software platform.
 
-You will create a new Vitis project, similar to the one in :ref:`running-bare-metal-hello-world-application`, except that it will use the default linker scripts, which will reference the DDR memory.
+You will create a new Vitis project, similar to the one in `Running a Bare-Metal Hello World Application <#running-a-bare-metal-hello-world-application>`__, except that it will use the default linker scripts, which will reference the DDR memory.
 
-1. Manage board settings, make cable connections, and connect to the board through your system and launch the Vitis software platform as discussed in steps 1 through 7 in :ref:`running-bare-metal-hello-world-application`.
+1. Manage board settings, make cable connections, and connect to the board through your system and launch the Vitis software platform as discussed in steps 1 through 7 in `Running a Bare-Metal Hello World Application <#running-a-bare-metal-hello-world-application>`__.
 
-   .. note:: Create a new Vitis workspace for this. Do not use the workspace created in :ref:`running-bare-metal-hello-world-application`.
+   .. note:: 
+    
+       Create a new Vitis workspace for this. Do not use the workspace created in `Running a Bare-Metal Hello World Application <#running-a-bare-metal-hello-world-application>`__.
 
-2. Create a bare-metal Hello World system project with an application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 through 3 of :ref:`creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm` and steps 1 through 3 of `Modifying the helloworld_a72 Application Source Code <#modifying-the-helloworld-a72-application-source-code>`__.
+2. Create a bare-metal Hello World system project with an application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 through 3 of `Creating a Hello World Application for the Arm Cortex-A72 on OCM <#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm>`__ and steps 1 through 3 of `Modifying the helloworld_a72 Application Source Code <#modifying-the-helloworld-a72-application-source-code>`__.
 
 3. Right-click **helloworld_system** and select **Build Project** or click |build| to generate the project elf files within the Debug folder of the application project.
         
@@ -957,7 +953,7 @@ OSPI Boot Mode
 
 To boot check the OSPI boot mode, follow these steps:
 
-1. Open the design created in :ref:`creating-new-embedded-project-versal-acap`, ``edt_versal.xpr``.
+1. Open the design created in `Creating a New Embedded Project with the Versal ACAP <#creating-a-new-embedded-project-with-the-versal-acap>`__, ``edt_versal.xpr``.
 
 2. Double-click the **Versal CIPS IP**.
 
@@ -987,7 +983,7 @@ eMMC Boot Mode
 
 To boot check the eMMC boot mode, follow these steps:
 
-1. Open the design created in :ref:`creating-new-embedded-project-versal-acap`, ``edt_versal.xpr``.
+1. Open the design created in `Creating a New Embedded Project with the Versal ACAP <#creating-a-new-embedded-project-with-the-versal-acap>`__, ``edt_versal.xpr``.
 
 2. Double-click the **Versal CIPS IP**.
 

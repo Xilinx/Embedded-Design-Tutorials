@@ -1,8 +1,8 @@
 ﻿# Vitis Embedded Software Debugging Guide Overview 
 
-This document is targeted at embedded software developers who are using the embedded software development flow in the Vitis™ unified software platform for application development using Xilinx™ FPGA, SoC, and ACAP devices. During the course of software development, effective use of the debug options available with the tool can help speed up product development, reduce time to market, and enable a good experience with the tool flow. The [Debug](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Debug-Application-Project) section in the _Vitis Embedded Software Development Flow documentation_ ([UG1400](https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded)) introduces the Debug options available in the tool.
+This document is targeted at embedded software developers who are using the embedded software development flow in the Vitis™ unified software platform for application development using Xilinx™ FPGA, SoC, and ACAP devices. During the course of software development, effective use of the debug options available with the tool can help speed up product development, reduce time to market, and enable a good experience with the tool flow. The [Debug](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html) section in the _Vitis Embedded Software Development Flow documentation_ ([UG1400](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc)) introduces the Debug options available in the tool.
 
-This is not a user guide or a tutorial; rather, is a practical self-help guide to empower you to choose the right debug options. It should be used in conjunction with the _Vitis Embedded Software Development Flow documentation_ ([UG1400](https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded)). In this document, various debug scenarios are provided with examples to demonstrate an appropriate selection and usage of the available basic and advanced debug options during bare-metal/Linux application development. 
+This is not a user guide or a tutorial; rather, is a practical self-help guide to empower you to choose the right debug options. It should be used in conjunction with the _Vitis Embedded Software Development Flow documentation_ ([UG1400](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc)). In this document, various debug scenarios are provided with examples to demonstrate an appropriate selection and usage of the available basic and advanced debug options during bare-metal/Linux application development. 
 
 The Vitis Embedded Software Debugging Guide has been broken into the following main sections:
 
@@ -28,7 +28,7 @@ The following figure shows the embedded software development workflow for the Vi
 
 ![Vitis Workflow Diagram](./images/vitis_workspace.png)
 
-For more details about the workspace structure in the Vitis tool, refer to [this section](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Vitis-Unified-Software-Platform-Overview) in [UG1400](https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded). During the course of the workflow, the use of debug is required mostly after the Application Creation stage. The Vitis software platform provides the following debug tools, which are tightly integrated with the Vitis IDE.
+For more details about the workspace structure in the Vitis tool, refer to [this section](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/vitis_embedded_getstarted.html#voe1588842154054) in [UG1400](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc). During the course of the workflow, the use of debug is required mostly after the Application Creation stage. The Vitis software platform provides the following debug tools, which are tightly integrated with the Vitis IDE.
 
 ## Debuggers
 
@@ -36,11 +36,11 @@ The debugger in the Vitis software platform enables you to see what is happening
 
 ### Xilinx System Debugger 
 
-Xilinx System Debugger is derived from open source tools and is integrated with the Vitis software platform. For the typical XSDB flows, refer to [this section](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/System-Debugger-Supported-Design-Flows) in [UG1400](https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded).
+Xilinx System Debugger is derived from open source tools and is integrated with the Vitis software platform. For the typical XSDB flow, refer to [this section](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#hgr1567764336349) in [UG1400](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc).
 
 ### GDB
 
-GNU Debugger (GDB) is an open source project: https://www.gnu.org/software/gdb/ and supporters debugging of a vast variety of application languages. GDB is integrated with Vitis and can be used for debugging. For the typical GDB flow, refer to [this section](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/GDB-GNU-Project-Debugger) in [UG1400](https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded).
+GNU Debugger (GDB) is an open source project: https://www.gnu.org/software/gdb/ and supporters debugging of a vast variety of application languages. GDB is integrated with Vitis and can be used for debugging. For the typical GDB flow, refer to [this section](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/debugappproj.html#ariaid-title10) in [UG1400](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc).
 
 ## Xilinx Software Command-line Tool (XSCT)
 
@@ -53,6 +53,6 @@ XSCT is an interactive and scriptable command-line interface to the Vitis IDE. A
 - Downloading and running applications on hardware targets
 - Creating and flashing boot images by running Bootgen and program_flash tools
 
-For more details, refer to the [XSCT User Guide](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/Xilinx-Software-Command-Line-Tool?tocId=CwnQ90bFNEhE~pGBspGuOQ) which is available as part of [UG1400](https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded).
+For more details, refer to the [XSCT User Guide](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/jed1590410655455.html) which is available as part of [UG1400](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc).
 
 _Copyright 2021 Xilinx Inc. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License._

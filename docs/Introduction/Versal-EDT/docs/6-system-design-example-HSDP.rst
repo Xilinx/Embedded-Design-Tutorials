@@ -1,5 +1,5 @@
 ..
-   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
+   Copyright 2000-2021 Xilinx, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -99,7 +99,7 @@ This example rebuilds the PetaLinux project using the HSDP-enabled XSA that was 
 
 .. important:: If you are building this tutorial without having created a PetaLinux project in the preceding chapter, follow steps 1 through 12 in the :ref:`creating-Linux-images-using-petalinux` section to create a new PetaLinux project.
 
-This example needs a Linux host machine. Refer to the *PetaLinux Tools Documentation Reference Guide* `[UG1144] <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`__ for information on dependencies and installation procedure for the PetaLinux tool.
+This example needs a Linux host machine. Refer to the *PetaLinux Tools Documentation Reference Guide* `(UG1144) <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`__ for information on dependencies and installation procedure for the PetaLinux tool.
 
 1. Change to the PetaLinux project directory that was created in :ref:`creating-Linux-images-using-petalinux` using the following command.
 

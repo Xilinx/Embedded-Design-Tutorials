@@ -323,7 +323,7 @@ Testing the PL IP with Prepared Software
 
    If the running fails, open the **Run as → Run Configurations** view, check the Target Setup configuration against the following screenshot, update the settings, and click **Run**.
 
-    .. figure:: ./media/image56.png
+    . figure:: ./media/image56.png
        :alt: Run Configuration
 
        Run Configuration

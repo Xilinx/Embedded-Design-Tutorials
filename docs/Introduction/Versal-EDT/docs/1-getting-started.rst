@@ -1,5 +1,5 @@
 ..
-   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
+   Copyright 2000-2021 Xilinx, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
@@ -45,11 +45,11 @@ Xilinx documentation is organized around a set of standard design processes to h
 Hardware Requirements
 =====================
 
-This tutorial targets the Versal |reg| ACAP VCK190, VMK180, and VPK180 evaluation boards. To use this guide, you need the following hardware items. These are included with the evaluation board. Ensure that the required tools are installed properly and your environments match the requirements.
+This tutorial targets the Versal |reg| ACAP VCK190 and VMK180 evaluation boards. To use this guide, you need the following hardware items. These are included with the evaluation board. Ensure that the required tools are installed properly and your environments match the requirements.
 
 The evaluation board kit includes:
 
-- VCK190/VMK180/VPK180 Production board
+- VCK190/VMK180 Production board
 - AC power adapter (12 VDC)
 - USB Type-A to USB Micro cable (for UART communications)
 - USB Micro cable for programming and debugging via USB-Micro JTAG connection
@@ -65,7 +65,7 @@ Additional flash daughter cards:
 
 .. note:: 
 
-   - QSPI/SD were tested on VCK190/VMK180/VPK180 Production boards.
+   - QSPI/SD were tested on VCK190/VMK180 Production boards.
    - OSPI/eMMC were tested on VCK190 and VMK180 RevB production boards.
    - OSPI and eMMC boot modes are only supported on the VCK190 and VMK180 RevB production boards.
 
