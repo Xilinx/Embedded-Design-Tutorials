@@ -27,7 +27,7 @@ The Embedded Design Tutorials provide an introduction to the embedded flow for X
  </tr>
  <tr>
  <td align="center"><a href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.2/build/html/docs/Introduction/Versal-EDT/Versal-EDT.html">Versal Adaptive Compute Acceleration Platform</a></td>
- <td>2022.1</td>
+ <td>2022.2</td>
  <td>
  Versal&trade; ACAP devices</td><td>
 Provides an introduction for using the Xilinx&reg; Vivado&reg; Design Suite flow for a Versal&trade; VMK180/VCK190 evaluation board.</td></tr>
