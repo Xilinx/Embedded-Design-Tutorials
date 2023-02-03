@@ -159,7 +159,7 @@ function OptanonWrapper() { }
 <p>Linux debug setup is a mandatory step. Setup allows you to create platform and application projects in the Vitis IDE.</p>
 <ol>
 <li><p>Open a terminal and navigate to your desired work directory.</p></li>
-<li><p>Download <a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/blob/gh-pages/docs/2021.1/source/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/script/petalinux_build.sh">petalinux_build.sh</a> and the <a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu104-v2021.1-final.bsp">ZCU104 BSP</a>. Copy both files to your desired working directory; for example, <code class="docutils literal notranslate"><span class="pre">UG1515/petalinux_prj</span></code>.</p></li>
+<li><p>Download <a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2022.2/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/script/petalinux_build.sh">petalinux_build.sh</a> and the <a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu104-v2021.1-final.bsp">ZCU104 BSP</a>. Copy both files to your desired working directory; for example, <code class="docutils literal notranslate"><span class="pre">UG1515/petalinux_prj</span></code>.</p></li>
 <li><p>Source the PetaLinux tool.</p></li>
 <li><p>Follow the steps in the <a class="reference external" href="#petalinux-build">PetaLinux Build</a> section to complete the PetaLinux build and configuration manually.
 <strong>Note:</strong> You can skip the manual steps by using the automated <code class="docutils literal notranslate"><span class="pre">petalinux_build.sh</span></code> script to generate Linux images. However, make sure to select the appropriate configuration whenever prompted.</p></li>
@@ -170,7 +170,7 @@ $ cp project_1.xsa vitis_work_dir/zcu104.xsa
 </div>
 <p><strong>Note:</strong> If you create a custom ZCU104 XSA by following the steps in <a class="reference external" href="#vivado-design">Vivado Design</a>, you can use it as it is here.</p>
 </li>
-<li><p>Download the <a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/blob/gh-pages/docs/2021.1/source/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/script/Vitis-workspace.tcl">Vitis-workspace.tcl</a> script. Copy it to your Vitis work directory (in this example, <code class="docutils literal notranslate"><span class="pre">vitis_work_dir</span></code>) as you did for <code class="docutils literal notranslate"><span class="pre">zcu104.xsa</span></code>. Download the source file <a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/blob/gh-pages/docs/2021.1/source/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/src/linux_test_application.c">linux_test_application.c</a> to <code class="docutils literal notranslate"><span class="pre">vitis_work_dir/src</span></code>. These files are required to set up the Vitis workspace. Your Vitis work directory should be structured like the example below after downloading these files.</p>
+<li><p>Download the <a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2022.2/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/script/Vitis-workspace.tcl">Vitis-workspace.tcl</a> script. Copy it to your Vitis work directory (in this example, <code class="docutils literal notranslate"><span class="pre">vitis_work_dir</span></code>) as you did for <code class="docutils literal notranslate"><span class="pre">zcu104.xsa</span></code>. Download the source file <a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2022.2/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/src/linux_test_application.c">linux_test_application.c</a> to <code class="docutils literal notranslate"><span class="pre">vitis_work_dir/src</span></code>. These files are required to set up the Vitis workspace. Your Vitis work directory should be structured like the example below after downloading these files.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vitis_work_dir</span>
 <span class="o">|</span>
 <span class="o">|</span><span class="n">_</span> <span class="n">zcu104</span><span class="o">.</span><span class="n">xsa</span>
@@ -564,8 +564,8 @@ Click <strong>Next</strong> and export the hardware with the <strong>Include bit
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on December 08, 2022.
+    <p>&#169; Copyright 2019-2023, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on February 03, 2023.
       </span></p>
   </div>
 

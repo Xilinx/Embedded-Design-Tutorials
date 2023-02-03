@@ -1,5 +1,5 @@
 ..
-   Copyright 2000-2021 Xilinx, Inc.
+   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
 
    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
@@ -15,15 +15,15 @@ This chapter guides you through building a system based on Versal |reg| devices 
 
 Examples using the PetaLinux tool are provided in this chapter.
 
-.. _using-axi-gpio:
+.. _5-using-axi-gpio:
 
 ==============================
 Design Example: Using AXI GPIO
 ==============================
 
-The Linux application uses a PL-based AXI GPIO interface to monitor the DIP switch of the board and accordingly control the LEDs on the board. The LED application can run on both the VMK180 and the VCK190 boards.
+The Linux application uses a PL-based AXI GPIO interface to monitor the DIP switch of the board and accordingly control the LEDs on the board. The LED application can run on VCK190 and VMK180 boards.
 
-The RPU application uses the PL-based AXI UART lite to print the debug messages on the AXI UART console instead of using the PS UART console. The PL UART application can run on both the VMK180 and VCK190 boards.
+The RPU application uses the PL-based AXI UART lite to print the debug messages on the AXI UART console instead of using the PS UART console. The PL UART application can run on VCK190 and VMK180 boards.
 
 Configuring Hardware
 ~~~~~~~~~~~~~~~~~~~~
@@ -159,7 +159,7 @@ To add and configure IP addresses, follow these steps.
 
     .. image:: ./media/image72.png
 
-28.	Double-click **axi_uartlite_0** to open the IP.
+28. Double-click **axi_uartlite_0** to open the IP.
 
 29. In the Board tab, set Board interface as shown below:
 
@@ -263,7 +263,7 @@ Follow these steps to generate a device image for the design.
 
 5. Export hardware after you generate the Device Image.
 
-.. note:: The following steps are optional and you can skip these and go to the `Exporting Hardware <#exporting-hardware>`__ section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.
+   .. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-5` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.
 
    1. Go to **Flow Navigator→ Synthesis** and click **Run Synthesis**.
 
@@ -284,6 +284,8 @@ Follow these steps to generate a device image for the design.
    5.  Click **Cancel** to close the window.
 
        Export hardware, after you generate Device Image.
+
+.. _exporting-hardware-5:
 
 Exporting Hardware
 ------------------
@@ -362,7 +364,7 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
  
    The Vitis software platform creates the board support package for the Platform project (**vck190_platform**) and the system project (**freertos_gpio_test_system**) containing an application project named **freertos_gpio_test** under the Explorer view after performing the preceding steps.
   
-4. Delete the source files under `src/` directory and Copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``src/`` direcrtory.
+4. Delete the source files under `src/` directory and Copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``src/`` directory.
 
 5. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
 
@@ -372,7 +374,7 @@ The following steps demonstrate the procedure to create a FreeRTOS Application f
 
 6. Click **<OK>** to save the above configuration and exit the configuration wizard.
    
-7. Right-click **freertos_gpio_test_system** and select **Build Project**. Alternatively, you can click the |build| icon.
+7. Right-click **freertos_gpio_test_system** and select **Build Project**. Alternatively, you can click |build|.
 
    For building the Linux images and incorporating the FreeRTOS elf into the image, see :ref:`creating-linux-images-using-petalinux`.
 
@@ -396,18 +398,32 @@ Example Project: Creating Linux Images Using PetaLinux
 
 This section explains how to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.
 
-This example needs a Linux host machine. Refer to the PetaLinux Tools Documentation Reference Guide (`UG1144 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1144-petalinux-tools-reference-guide>`__) for information on dependencies and installation procedure for the PetaLinux tool.
+This example needs a Linux host machine. Refer to the PetaLinux Tools Documentation Reference Guide `UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`__ for information on dependencies and installation procedure for the PetaLinux tool.
 
 .. important:: 
 
-   This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180). 
+   This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180).
+
+   .. list-table::
+      :widths: 25 25 25 25
+      :header-rows: 1
+
+      * - Board
+        - QSPI/SD
+        - OSPI
+        - eMMC
+
+      * - VCK190 Production Board
+        - `xilinx-vck190-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
+        - `xilinx-vck190-ospi-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
+        - `xilinx-vck190-emmc-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
+      
+      * - VMK180 Production Board
+        - `xilinx-vmk180-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
+        - `xilinx-vmk180-ospi-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
+        - `xilinx-vmk180-emmc-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
+
     
-   - If you are using the VCK190 production board, download the VCK190 PetaLinux 2022.1 BSP for QSPI/SD (xilinx-vck190-v2022.1-final.bsp) from https://www.xilinx.com/member/vck190_headstart.html.
-   - If you are using the VCK190 production board, download the VCK190 PetaLinux 2022.1 BSP for OSPI (xilinx-vck190-ospi-v2022.1-final.bsp) from https://www.xilinx.com/member/vck190_headstart.html.
-   - If you are using the VCK190 production board, download the VCK190 PetaLinux 2022.1 BSP for eMMC (xilinx-vck190-emmc-v2022.1-final.bsp) from https://www.xilinx.com/member/vck190_headstart.html.
-   - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2022.1 BSP for QSPI/SD (xilinx-vmk180-v2022.1-final.bsp) from https://www.xilinx.com/member/vmk180_headstart.html.
-   - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2022.1 BSP for OSPI (xilinx-vmk180-ospi-v2022.1-final.bsp) from https://www.xilinx.com/member/vmk180_headstart.html.
-   - If you are using the VMK180 Production board, download the VMK180 PetaLinux 2022.1 BSP for eMMC (xilinx-vmk180-emmc-v2022.1-final.bsp) from https://www.xilinx.com/member/vmk180_headstart.html.
 
 1. Copy the respective board's PetaLinux BSP to the current directory.
    
@@ -423,7 +439,8 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
    
         $ petalinux-create -t project -s xilinx-vck190-vxxyy.z-final.bsp -n led_example
 
-   .. note:: For VMK180 board, use `xilinx-vmk180-vxxyy.z-final.bsp` after the `-s` option in the command.
+   .. note:: For the VMK180 board, use `xilinx-vmk180-vxxyy.z-final.bsp` after the `-s` option in the command.
+
 
 4. Change to the PetaLinux project directory using the following command.
 
@@ -433,7 +450,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 5. Copy the hardware platform project XSA to the Linux host machine.
 
-   .. note:: For the VMK180 board, use the XSA file that you generated in the `Design Example: Using AXI GPIO <#design-example-using-axi-gpio>`__.
+   .. note:: For the VMK180 board, use the XSA file that you generated in the :ref:`5-using-axi-gpio`.
 
 6. Reconfigure the BSP using the following commands.
 
@@ -477,7 +494,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 13. Click **<Save>** to save the above configuration and then **<Exit>** option to exit the configuration wizard.
 
-14. Configure ROOTFS to disable the AIE, STDC++, and TCL options to reduce the rootfs size to fit into both SD and OSPI/QSPI Flash partitions. 
+14. Configure ROOTFS to disable the AIE, STDC++, and Tcl options to reduce the rootfs size to fit into both SD and OSPI/QSPI Flash partitions. 
  
     .. code-block::
    
@@ -497,9 +514,9 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 18. Click **<Save>** to save the above configuration and then click **<Exit>** to exit the configuration wizard.
 
-19. OSPI and eMMC boot modes will work only on VCK190/VMK180 REVB Production boards.
+    .. note:: OSPI and eMMC boot modes will work only on VCK190/VMK180 REVB Production boards.
 
-20. Build the Linux images using the following command.
+19. Build the Linux images using the following command.
 
     .. code-block::
        

@@ -68,6 +68,7 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="docs/3-debugging.html">Debugging Using the Vitis Software Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/5-system-design-example.html">System Design Example using Scalar Engine and Adaptable Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/7-system-design-example-ssit-device.html">System Design Example for SSI Devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
 </li>
@@ -129,14 +130,14 @@ function OptanonWrapper() { }
 <h1>Versal ACAP Embedded Design Tutorial<a class="headerlink" href="#versal-acap-embedded-design-tutorial" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>This document provides an introduction for using the Xilinx® Vivado® Design Suite flow for a VCK190/VMK180 evaluation board. The tools used are Vivado Design Suite and the Vitis™ unified software platform, version 2022.1. To install the Vitis unified software platform, see <em>Vitis Unified Software Platform Documentation: Embedded Software Development</em> (<a class="reference external" href="https://docs.xilinx.com/access/sources/dita/map?isLatest=true&amp;ft:locale=en-US&amp;url=ug1400-vitis-embedded">UG1400</a>).</p>
+<p>This document provides an introduction for using the Xilinx® Vivado® Design Suite flow for a VCK190/VMK180/VPK180 evaluation board. The tools used are Vivado Design Suite and the Vitis™ unified software platform, version 2022.2. To install the Vitis unified software platform, see <em>Vitis Unified Software Platform Documentation: Embedded Software Development</em> <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;d=ug1400-vitis-embedded.pdf">[UG1400]</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this tutorial, the instructions for booting Linux on the hardware is specific to the PetaLinux tools released for 2022.1, which must be installed on a Linux host machine for exercising the Linux portions of this document.</p>
+<p>In this tutorial, the instructions for booting Linux on the hardware is specific to the PetaLinux tools released for 2022.2, which must be installed on a Linux host machine for exercising the Linux portions of this document.</p>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The VCK190/VMK180 Evaluation kit has a Silicon Labs CP210x VCP USB-UART Bridge. Ensure that these drivers are installed. See the <em>Silicon Labs CP210x USB-to-UART Installation Guide</em> (<a class="reference external" href="https://docs.xilinx.com/v/u/en-US/ug1033-cp210x-usb-uart-install">UG1033</a>) for more information.</p>
+<p>The VCK190/VMK180 Evaluation kit has a Silicon Labs CP210x VCP USB-UART Bridge. Ensure that these drivers are installed. See the <em>Silicon Labs CP210x USB-to-UART Installation Guide</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/bkdoc?k=install;v=latest;d=ug1033-cp210x-usb-uart-install.pdf">UG1033</a>) for more information.</p>
 </div>
 <p>The examples in this document are created using the Xilinx tools running on a Windows 10, 64-bit operating system, Vitis software platform and PetaLinux on a Linux 64-bit operating system. Other versions of the tools running on other Windows installs might provide varied results. These examples focus on introducing you to the following aspects of embedded design.</p>
 <ul class="simple">
@@ -145,9 +146,10 @@ function OptanonWrapper() { }
 <li><p><a class="reference internal" href="docs/3-debugging.html"><span class="doc">Debugging Using the Vitis Software Platform</span></a>: Introduces debugging features of the Xilinx Vitis software platform. This chapter uses the previous design and runs the software on bare metal (without an OS) to show the debugging features of the Vitis IDE. This chapter also lists debug configurations for Versal ACAP.</p></li>
 <li><p><a class="reference internal" href="docs/5-system-design-example.html"><span class="doc">System Design Example using Scalar Engine and Adaptable Engine</span></a>: Describes building a system on Versal ACAP using available tools and supported software blocks. This chapter demonstrates how to use the Vivado tool to create an embedded design using PL AXI GPIO. It also demonstrates the steps to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device.</p></li>
 <li><p><a class="reference internal" href="docs/6-system-design-example-HSDP.html"><span class="doc">System Design Example for High-Speed Debug Port with SmartLynq+ Module</span></a>: Describes building a system on Versal ACAP that utilizes the High-Speed Debug Port (HSDP). This chapter demonstrates how to use the Vivado tool to create an embedded design that utilizes HSDP and uses the SmartLynq+ module for downloading Linux images.</p></li>
+<li><p><a class="reference internal" href="docs/7-system-design-example-ssit-device.html"><span class="doc">System Design Example for Versal Stacked Silicon Interconnect Devices</span></a>: Describes building a system based on Versal devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) devices.</p></li>
 </ul>
 <p>This design tutorial requires use of a number of files provided by Xilinx. These are contained in a ZIP file that can be downloaded from the Xilinx web site. (See <a class="reference internal" href="docs/1-getting-started.html"><span class="doc">Getting Started</span></a>). The tutorial assumes the contents of the ZIP file are extracted to <code class="docutils literal notranslate"><span class="pre">C:\edt</span></code>.</p>
-<p>© Copyright 2020-2022 Xilinx, Inc.</p>
+<p>© Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.</p>
 <p><em>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.</em></p>
 <p><em>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</em></p>
 </section>
@@ -173,8 +175,8 @@ function OptanonWrapper() { }
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on December 08, 2022.
+    <p>&#169; Copyright 2019-2023, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on February 03, 2023.
       </span></p>
   </div>
 

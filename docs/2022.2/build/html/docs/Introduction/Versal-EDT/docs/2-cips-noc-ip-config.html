@@ -84,6 +84,7 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="3-debugging.html">Debugging Using the Vitis Software Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5-system-design-example.html">System Design Example using Scalar Engine and Adaptable Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-system-design-example-ssit-device.html">System Design Example for SSI Devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
 </li>
@@ -164,7 +165,7 @@ function OptanonWrapper() { }
 <span id="id1"></span><h2>CIPS IP Core Configuration<a class="headerlink" href="#cips-ip-core-configuration" title="Permalink to this heading">¶</a></h2>
 <p>Creating a Versal ACAP system design involves configuring the CIPS IP core to select the appropriate boot devices and peripherals. To start with, if the CIPS IP core peripherals and available multiplexed I/O (MIO) connections meet the requirements, no PL component is required. This chapter guides you through creating a simple CIPS IP core-based design.</p>
 <section id="creating-a-new-embedded-project-with-the-versal-acap">
-<h3>Creating a New Embedded Project with the Versal ACAP<a class="headerlink" href="#creating-a-new-embedded-project-with-the-versal-acap" title="Permalink to this heading">¶</a></h3>
+<span id="creating-new-embedded-project-versal-acap"></span><h3>Creating a New Embedded Project with the Versal ACAP<a class="headerlink" href="#creating-a-new-embedded-project-with-the-versal-acap" title="Permalink to this heading">¶</a></h3>
 <p>For this example, launch the Vivado Design Suite and create a project with an embedded processor system as the top level.</p>
 <section id="starting-your-design">
 <h4>Starting Your Design<a class="headerlink" href="#starting-your-design" title="Permalink to this heading">¶</a></h4>
@@ -245,7 +246,7 @@ Part</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p>Display Name</p></td>
-<td><p>Versal VMK180/VCK190
+<td><p>Versal VMK180/VCK190/VPK180
 Evaluation Platform</p></td>
 </tr>
 <tr class="row-even"><td><p>Project
@@ -255,6 +256,10 @@ Summary</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Select <strong>Display Name</strong> as VPK180 Evaluation platform for creating project for SSI devices.</p>
+</div>
 </li>
 <li><p>Click <strong>Finish</strong>. The New Project wizard closes and the project you just created opens in the Vivado design tool.</p>
 <div class="admonition note">
@@ -459,7 +464,7 @@ Design</p></td>
 <p>You can use external terminal Serial Port Consoles like Tera Term or Putty. You can find the relevant COM port information from the Device Manager menu in Control Panel.</p>
 </div>
 <section id="creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm">
-<h4>Creating a Hello World Application for the Arm Cortex-A72 on OCM<a class="headerlink" href="#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm" title="Permalink to this heading">¶</a></h4>
+<span id="id2"></span><h4>Creating a Hello World Application for the Arm Cortex-A72 on OCM<a class="headerlink" href="#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm" title="Permalink to this heading">¶</a></h4>
 <p>The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM.</p>
 <ol class="arabic">
 <li><p>Select <strong>File→ New → Application Project</strong>. Creating a New Application Project wizard opens. If this is the first time the Vitis IDE has been launched, you can select Create Application Project on the Welcome screen, as shown in the following figure.</p>
@@ -1051,8 +1056,8 @@ connection here.</p></td>
 </li>
 </ol>
 </section>
-<section id="id2">
-<h4>Validating the Design and Generating the Output<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
+<section id="id3">
+<h4>Validating the Design and Generating the Output<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
 <p>To validate the design and generate the output, follow these steps:</p>
 <ol class="arabic">
 <li><p>Right-click in the white space of the Block Diagram view and select <strong>Validate Design</strong>. Alternatively, you can press the F6 key. A message dialog box opens as shown below.</p>
@@ -1084,8 +1089,8 @@ connection here.</p></td>
 </li>
 </ol>
 </section>
-<section id="id3">
-<h4>Synthesizing, Implementing, and Generating the Device Image<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
+<section id="id4">
+<h4>Synthesizing, Implementing, and Generating the Device Image<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h4>
 <p>Follow these steps to generate a device image for the design.</p>
 <ol class="arabic">
 <li><p>Go to <strong>Flow Navigator→ Program and Debug</strong> and click <strong>Generate Device Image</strong>.</p></li>
@@ -1119,7 +1124,7 @@ connection here.</p></td>
 </div>
 </section>
 <section id="exporting-hardware-1">
-<span id="id4"></span><h4>Exporting Hardware<a class="headerlink" href="#exporting-hardware-1" title="Permalink to this heading">¶</a></h4>
+<span id="id5"></span><h4>Exporting Hardware<a class="headerlink" href="#exporting-hardware-1" title="Permalink to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>From the Vivado main menu, select <strong>File→ Export → Export Hardware</strong>. The Export Hardware dialog box opens.</p></li>
 <li><p>Choose <strong>Include device image</strong> and click <strong>Next</strong>.</p></li>
@@ -1133,15 +1138,15 @@ connection here.</p></td>
 <section id="running-a-bare-metal-hello-world-application-on-ddr-memory">
 <span id="bare-metal-hello-world-on-ddr"></span><h3>Running a Bare-Metal Hello World Application on DDR Memory<a class="headerlink" href="#running-a-bare-metal-hello-world-application-on-ddr-memory" title="Permalink to this heading">¶</a></h3>
 <p>In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Xilinx Vitis software platform.</p>
-<p>You will create a new Vitis project, similar to the one in <a class="reference external" href="#running-a-bare-metal-hello-world-application">Running a Bare-Metal Hello World Application</a>, except that it will use the default linker scripts, which will reference the DDR memory.</p>
+<p>You will create a new Vitis project, similar to the one in <a class="reference internal" href="#running-bare-metal-hello-world-application"><span class="std std-ref">Running a Bare-Metal Hello World Application</span></a>, except that it will use the default linker scripts, which will reference the DDR memory.</p>
 <ol class="arabic">
-<li><p>Manage board settings, make cable connections, and connect to the board through your system and launch the Vitis software platform as discussed in steps 1 through 7 in <a class="reference external" href="#running-a-bare-metal-hello-world-application">Running a Bare-Metal Hello World Application</a>.</p>
+<li><p>Manage board settings, make cable connections, and connect to the board through your system and launch the Vitis software platform as discussed in steps 1 through 7 in <a class="reference internal" href="#running-bare-metal-hello-world-application"><span class="std std-ref">Running a Bare-Metal Hello World Application</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Create a new Vitis workspace for this. Do not use the workspace created in <a class="reference external" href="#running-a-bare-metal-hello-world-application">Running a Bare-Metal Hello World Application</a>.</p>
+<p>Create a new Vitis workspace for this. Do not use the workspace created in <a class="reference internal" href="#running-bare-metal-hello-world-application"><span class="std std-ref">Running a Bare-Metal Hello World Application</span></a>.</p>
 </div>
 </li>
-<li><p>Create a bare-metal Hello World system project with an application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 through 3 of <a class="reference external" href="#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm">Creating a Hello World Application for the Arm Cortex-A72 on OCM</a> and steps 1 through 3 of <a class="reference external" href="#modifying-the-helloworld-a72-application-source-code">Modifying the helloworld_a72 Application Source Code</a>.</p></li>
+<li><p>Create a bare-metal Hello World system project with an application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 through 3 of <a class="reference internal" href="#creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm"><span class="std std-ref">Creating a Hello World Application for the Arm Cortex-A72 on OCM</span></a> and steps 1 through 3 of <a class="reference external" href="#modifying-the-helloworld-a72-application-source-code">Modifying the helloworld_a72 Application Source Code</a>.</p></li>
 <li><p>Right-click <strong>helloworld_system</strong> and select <strong>Build Project</strong> or click <img alt="build" src="../../../../_images/image291.png" /> to generate the project elf files within the Debug folder of the application project.</p></li>
 <li><p>Create an additional RPU domain for your platform (created in Step 2) as discussed in <a class="reference external" href="#adding-a-new-rpu-domain-to-the-platform-project">Adding a New RPU Domain to the Platform Project</a>.</p></li>
 <li><p>Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 through 3 of <a class="reference external" href="#creating-the-standalone-application-project-for-the-arm-cortex-r5f">Creating the Standalone Application Project for the Arm Cortex-R5F</a> and steps 1 through 3 of <a class="reference external" href="#modifying-the-helloworld-r5-application-source-code">Modifying the helloworld_r5 Application Source Code</a>.</p></li>
@@ -1162,7 +1167,7 @@ connection here.</p></td>
 </div>
 <p>To boot check the OSPI boot mode, follow these steps:</p>
 <ol class="arabic">
-<li><p>Open the design created in <a class="reference external" href="#creating-a-new-embedded-project-with-the-versal-acap">Creating a New Embedded Project with the Versal ACAP</a>, <code class="docutils literal notranslate"><span class="pre">edt_versal.xpr</span></code>.</p></li>
+<li><p>Open the design created in <a class="reference internal" href="#creating-new-embedded-project-versal-acap"><span class="std std-ref">Creating a New Embedded Project with the Versal ACAP</span></a>, <code class="docutils literal notranslate"><span class="pre">edt_versal.xpr</span></code>.</p></li>
 <li><p>Double-click the <strong>Versal CIPS IP</strong>.</p></li>
 <li><p>Under <strong>Presets</strong> Choose Board Interface as <strong>ps pmc fixed io OSPI</strong>. While doing so, click <strong>Yes</strong> if you get a Apply Preset pop-up.</p>
 <a class="reference internal image-reference" href="../../../../_images/ospi-boot1.png"><img alt="../../../../_images/ospi-boot1.png" src="../../../../_images/ospi-boot1.png" style="width: 600px;" /></a>
@@ -1187,7 +1192,7 @@ connection here.</p></td>
 </div>
 <p>To boot check the eMMC boot mode, follow these steps:</p>
 <ol class="arabic">
-<li><p>Open the design created in <a class="reference external" href="#creating-a-new-embedded-project-with-the-versal-acap">Creating a New Embedded Project with the Versal ACAP</a>, <code class="docutils literal notranslate"><span class="pre">edt_versal.xpr</span></code>.</p></li>
+<li><p>Open the design created in <a class="reference internal" href="#creating-new-embedded-project-versal-acap"><span class="std std-ref">Creating a New Embedded Project with the Versal ACAP</span></a>, <code class="docutils literal notranslate"><span class="pre">edt_versal.xpr</span></code>.</p></li>
 <li><p>Double-click the <strong>Versal CIPS IP</strong>.</p></li>
 <li><p>Under <strong>Presets</strong> Choose Board Interface as <strong>ps pmc fixed io eMMC</strong>.  While doing so, click <strong>Yes</strong> if you get a Apply Preset pop-up.</p>
 <a class="reference internal image-reference" href="../../../../_images/emmc-boot1.png"><img alt="../../../../_images/emmc-boot1.png" src="../../../../_images/emmc-boot1.png" style="width: 600px;" /></a>
@@ -1224,8 +1229,8 @@ connection here.</p></td>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on December 08, 2022.
+    <p>&#169; Copyright 2019-2023, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on February 03, 2023.
       </span></p>
   </div>
 

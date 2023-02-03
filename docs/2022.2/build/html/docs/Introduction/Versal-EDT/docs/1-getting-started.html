@@ -83,6 +83,7 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="3-debugging.html">Debugging Using the Vitis Software Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5-system-design-example.html">System Design Example using Scalar Engine and Adaptable Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-system-design-example-ssit-device.html">System Design Example for SSI Devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
 </li>
@@ -164,24 +165,24 @@ function OptanonWrapper() { }
 <ul>
 <li><p><a class="reference internal" href="2-cips-noc-ip-config.html"><span class="doc">Versal ACAP CIPS and NoC (DDR) IP Core Configuration</span></a></p></li>
 <li><p><a class="reference internal" href="2-cips-noc-ip-config.html#noc-ip-core-configuration"><span class="std std-ref">NoC (and DDR) IP Core Configuration</span></a></p></li>
-<li><p><a class="reference internal" href="5-system-design-example.html#using-axi-gpio"><span class="std std-ref">Design Example: Using AXI GPIO</span></a></p></li>
+<li><p><span class="xref std std-ref">using-axi-gpio</span></p></li>
 </ul>
 </li>
 <li><p><strong>System Integration and Validation</strong>: Integrating and validating the system functional performance, including timing, resource use, and power closure. Topics in this document that apply to this design process include:</p>
 <ul>
 <li><p><a class="reference internal" href="4-boot-and-config.html"><span class="doc">Boot and Configuration</span></a></p></li>
 <li><p><a class="reference internal" href="5-system-design-example.html#freertos-axi-uartlite-application-project"><span class="std std-ref">Example Project: FreeRTOS AXI UARTLITE Application Project with RPU</span></a></p></li>
-<li><p><a class="reference internal" href="5-system-design-example.html#creating-linux-images-using-petalinux"><span class="std std-ref">Example Project: Creating Linux Images Using PetaLinux</span></a></p></li>
+<li><p><a class="reference internal" href="7-system-design-example-ssit-device.html#creating-linux-images-using-petalinux"><span class="std std-ref">Example Project: Creating Linux Images Using PetaLinux</span></a></p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="hardware-requirements">
 <h2>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this heading">¶</a></h2>
-<p>This tutorial targets the Versal® ACAP VCK190 and VMK180 evaluation boards. To use this guide, you need the following hardware items. These are included with the evaluation board. Ensure that the required tools are installed properly and your environments match the requirements.</p>
+<p>This tutorial targets the Versal® ACAP VCK190, VMK180, and VPK180 evaluation boards. To use this guide, you need the following hardware items. These are included with the evaluation board. Ensure that the required tools are installed properly and your environments match the requirements.</p>
 <p>The evaluation board kit includes:</p>
 <ul class="simple">
-<li><p>VCK190/VMK180 Production board</p></li>
+<li><p>VCK190/VMK180/VPK180 Production board</p></li>
 <li><p>AC power adapter (12 VDC)</p></li>
 <li><p>USB Type-A to USB Micro cable (for UART communications)</p></li>
 <li><p>USB Micro cable for programming and debugging via USB-Micro JTAG connection</p></li>
@@ -200,7 +201,7 @@ function OptanonWrapper() { }
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>QSPI/SD were tested on VCK190/VMK180 Production boards.</p></li>
+<li><p>QSPI/SD were tested on VCK190/VMK180/VPK180 Production boards.</p></li>
 <li><p>OSPI/eMMC were tested on VCK190 and VMK180 RevB production boards.</p></li>
 <li><p>OSPI and eMMC boot modes are only supported on the VCK190 and VMK180 RevB production boards.</p></li>
 </ul>
@@ -229,7 +230,7 @@ function OptanonWrapper() { }
 <p>When you install PetaLinux tools on your system of choice, you must do the following:</p>
 <ul class="simple">
 <li><p>Download PetaLinux 2021.2 software from the Xilinx website.</p></li>
-<li><p>Download the respective BSP as described in <a class="reference internal" href="5-system-design-example.html#creating-linux-images-using-petalinux"><span class="std std-ref">Example Project: Creating Linux Images Using PetaLinux</span></a>.</p></li>
+<li><p>Download the respective BSP as described in <a class="reference internal" href="7-system-design-example-ssit-device.html#creating-linux-images-using-petalinux"><span class="std std-ref">Example Project: Creating Linux Images Using PetaLinux</span></a>.</p></li>
 <li><p>Add common system packages and libraries to the workstation or virtual machine. For more information, see the Installation Requirements from the <em>PetaLinux Tools Documentation: Reference Guide</em> (<a class="reference external" href="https://docs.xilinx.com/access/sources/dita/map?isLatest=true&amp;ft:locale=en-US&amp;url=ug1144-petalinux-tools-reference-guide">UG1144</a>) and the <a class="reference external" href="https://support.xilinx.com/s/article/000032521">PetaLinux Release Notes</a>.</p></li>
 </ul>
 </section>
@@ -287,8 +288,8 @@ $ ./petalinux-v&lt;petalinux-version&gt;-final-installer.run --dir /opt/pkg/peta
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on December 08, 2022.
+    <p>&#169; Copyright 2019-2023, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on February 03, 2023.
       </span></p>
   </div>
 

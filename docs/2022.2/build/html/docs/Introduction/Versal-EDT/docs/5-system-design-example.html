@@ -79,6 +79,7 @@ function OptanonWrapper() { }
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-system-design-example-ssit-device.html">System Design Example for SSI Devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A-creating-plm.html">Appendix: Creating the PLM</a></li>
 </ul>
 </li>
@@ -143,8 +144,8 @@ function OptanonWrapper() { }
 <p>Examples using the PetaLinux tool are provided in this chapter.</p>
 <section id="design-example-using-axi-gpio">
 <span id="using-axi-gpio"></span><h2>Design Example: Using AXI GPIO<a class="headerlink" href="#design-example-using-axi-gpio" title="Permalink to this heading">¶</a></h2>
-<p>The Linux application uses a PL-based AXI GPIO interface to monitor the DIP switch of the board and accordingly control the LEDs on the board. The LED application can run on both the VMK180 and the VCK190 boards.</p>
-<p>The RPU application uses the PL-based AXI UART lite to print the debug messages on the AXI UART console instead of using the PS UART console. The PL UART application can run on both the VMK180 and VCK190 boards.</p>
+<p>The Linux application uses a PL-based AXI GPIO interface to monitor the DIP switch of the board and accordingly control the LEDs on the board. The LED application can run on VCK190 and VMK180 boards.</p>
+<p>The RPU application uses the PL-based AXI UART lite to print the debug messages on the AXI UART console instead of using the PS UART console. The PL UART application can run on VCK190 and VMK180 boards.</p>
 <section id="configuring-hardware">
 <h3>Configuring Hardware<a class="headerlink" href="#configuring-hardware" title="Permalink to this heading">¶</a></h3>
 <p>The first step in this design is to configure the PS and PL sections. You can do this using the Vivado IP integrator. Start with adding the required IPs from the Vivado IP catalog and then connect the components to blocks in the PS subsystem. To configure the hardware, follow these steps:</p>
@@ -319,11 +320,11 @@ function OptanonWrapper() { }
 <p>When the Device Image Generation completes, the Device Image Generation Completed dialog box opens.</p>
 </li>
 <li><p>Click <strong>Cancel</strong> to close the window.</p></li>
-<li><p>Export hardware after you generate the Device Image.</p></li>
-</ol>
+<li><p>Export hardware after you generate the Device Image.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The following steps are optional and you can skip these and go to the <a class="reference external" href="#exporting-hardware">Exporting Hardware</a> section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.</p>
+<p>The following steps are optional and you can skip these and go to the <a class="reference internal" href="#exporting-hardware-5"><span class="std std-ref">Exporting Hardware</span></a> section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.</p>
+</div>
 <ol class="arabic">
 <li><p>Go to <strong>Flow Navigator→ Synthesis</strong> and click <strong>Run Synthesis</strong>.</p>
 <img alt="../../../../_images/image17.png" src="../../../../_images/image17.png" />
@@ -341,10 +342,11 @@ function OptanonWrapper() { }
 <p>Export hardware, after you generate Device Image.</p>
 </li>
 </ol>
-</div>
+</li>
+</ol>
 </section>
 <section id="exporting-hardware">
-<h4>Exporting Hardware<a class="headerlink" href="#exporting-hardware" title="Permalink to this heading">¶</a></h4>
+<span id="exporting-hardware-5"></span><h4>Exporting Hardware<a class="headerlink" href="#exporting-hardware" title="Permalink to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>From the Vivado main menu, select <strong>File→ Export → Export Hardware</strong>. The Export Hardware dialog box opens.</p></li>
 <li><p>Choose <strong>Include bitstream</strong> and click <strong>Next</strong>.</p></li>
@@ -449,14 +451,14 @@ _0_pspmc_0_psv_cortexr5_0</p></td>
 </ol>
 <p>The Vitis software platform creates the board support package for the Platform project (<strong>vck190_platform</strong>) and the system project (<strong>freertos_gpio_test_system</strong>) containing an application project named <strong>freertos_gpio_test</strong> under the Explorer view after performing the preceding steps.</p>
 </li>
-<li><p>Delete the source files under <cite>src/</cite> directory and Copy the freertos source code files from the FreeRTOS project path, <code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/ch5_system_design_example_source__files/rpu/</span></code> to the <code class="docutils literal notranslate"><span class="pre">src/</span></code> direcrtory.</p></li>
+<li><p>Delete the source files under <cite>src/</cite> directory and Copy the freertos source code files from the FreeRTOS project path, <code class="docutils literal notranslate"><span class="pre">&lt;design-package&gt;/ch5_system_design_example_source__files/rpu/</span></code> to the <code class="docutils literal notranslate"><span class="pre">src/</span></code> directory.</p></li>
 <li><p>Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.</p>
 <p>Navigate to <cite>platform.spr</cite> under vck190_platform project, and then select <strong>Modify BSP</strong> settings under Board support package, and modify stdin and stdout to <strong>axi_uarlite_0</strong> by pressing &lt;Y&gt; option as shown in the figure.</p>
 <img alt="../../../../_images/vitis_uartlite_enable.JPG" src="../../../../_images/vitis_uartlite_enable.JPG" />
 </li>
 <li><p>Click <strong>&lt;OK&gt;</strong> to save the above configuration and exit the configuration wizard.</p></li>
-<li><p>Right-click <strong>freertos_gpio_test_system</strong> and select <strong>Build Project</strong>. Alternatively, you can click the <img alt="build" src="../../../../_images/image291.png" /> icon.</p>
-<p>For building the Linux images and incorporating the FreeRTOS elf into the image, see <a class="reference internal" href="#creating-linux-images-using-petalinux"><span class="std std-ref">Example Project: Creating Linux Images Using PetaLinux</span></a>.</p>
+<li><p>Right-click <strong>freertos_gpio_test_system</strong> and select <strong>Build Project</strong>. Alternatively, you can click <img alt="build" src="../../../../_images/image291.png" />.</p>
+<p>For building the Linux images and incorporating the FreeRTOS elf into the image, see <a class="reference internal" href="7-system-design-example-ssit-device.html#creating-linux-images-using-petalinux"><span class="std std-ref">Example Project: Creating Linux Images Using PetaLinux</span></a>.</p>
 </li>
 <li><p>On PL AXI UART Serial Console, RPU debug logs will be printed as below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Gpio</span> <span class="n">Initialization</span> <span class="n">started</span>
@@ -474,18 +476,37 @@ _0_pspmc_0_psv_cortexr5_0</p></td>
 <section id="example-project-creating-linux-images-using-petalinux">
 <span id="creating-linux-images-using-petalinux"></span><h2>Example Project: Creating Linux Images Using PetaLinux<a class="headerlink" href="#example-project-creating-linux-images-using-petalinux" title="Permalink to this heading">¶</a></h2>
 <p>This section explains how to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.</p>
-<p>This example needs a Linux host machine. Refer to the PetaLinux Tools Documentation Reference Guide (<a class="reference external" href="https://docs.xilinx.com/access/sources/dita/map?isLatest=true&amp;ft:locale=en-US&amp;url=ug1144-petalinux-tools-reference-guide">UG1144</a>) for information on dependencies and installation procedure for the PetaLinux tool.</p>
+<p>This example needs a Linux host machine. Refer to the PetaLinux Tools Documentation Reference Guide <a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf">UG1144</a> for information on dependencies and installation procedure for the PetaLinux tool.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180).</p>
-<ul class="simple">
-<li><p>If you are using the VCK190 production board, download the VCK190 PetaLinux 2022.1 BSP for QSPI/SD (xilinx-vck190-v2022.1-final.bsp) from <a class="reference external" href="https://www.xilinx.com/member/vck190_headstart.html">https://www.xilinx.com/member/vck190_headstart.html</a>.</p></li>
-<li><p>If you are using the VCK190 production board, download the VCK190 PetaLinux 2022.1 BSP for OSPI (xilinx-vck190-ospi-v2022.1-final.bsp) from <a class="reference external" href="https://www.xilinx.com/member/vck190_headstart.html">https://www.xilinx.com/member/vck190_headstart.html</a>.</p></li>
-<li><p>If you are using the VCK190 production board, download the VCK190 PetaLinux 2022.1 BSP for eMMC (xilinx-vck190-emmc-v2022.1-final.bsp) from <a class="reference external" href="https://www.xilinx.com/member/vck190_headstart.html">https://www.xilinx.com/member/vck190_headstart.html</a>.</p></li>
-<li><p>If you are using the VMK180 Production board, download the VMK180 PetaLinux 2022.1 BSP for QSPI/SD (xilinx-vmk180-v2022.1-final.bsp) from <a class="reference external" href="https://www.xilinx.com/member/vmk180_headstart.html">https://www.xilinx.com/member/vmk180_headstart.html</a>.</p></li>
-<li><p>If you are using the VMK180 Production board, download the VMK180 PetaLinux 2022.1 BSP for OSPI (xilinx-vmk180-ospi-v2022.1-final.bsp) from <a class="reference external" href="https://www.xilinx.com/member/vmk180_headstart.html">https://www.xilinx.com/member/vmk180_headstart.html</a>.</p></li>
-<li><p>If you are using the VMK180 Production board, download the VMK180 PetaLinux 2022.1 BSP for eMMC (xilinx-vmk180-emmc-v2022.1-final.bsp) from <a class="reference external" href="https://www.xilinx.com/member/vmk180_headstart.html">https://www.xilinx.com/member/vmk180_headstart.html</a>.</p></li>
-</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Board</p></th>
+<th class="head"><p>QSPI/SD</p></th>
+<th class="head"><p>OSPI</p></th>
+<th class="head"><p>eMMC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>VCK190 Production Board</p></td>
+<td><p><a class="reference external" href="https://www.xilinx.com/member/vck190_headstart.html">xilinx-vck190-v2022.2-final.bsp</a></p></td>
+<td><p><a class="reference external" href="https://www.xilinx.com/member/vck190_headstart.html">xilinx-vck190-ospi-v2022.2-final.bsp</a></p></td>
+<td><p><a class="reference external" href="https://www.xilinx.com/member/vck190_headstart.html">xilinx-vck190-emmc-v2022.2-final.bsp</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>VMK180 Production Board</p></td>
+<td><p><a class="reference external" href="https://www.xilinx.com/member/vmk180_headstart.html">xilinx-vmk180-v2022.2-final.bsp</a></p></td>
+<td><p><a class="reference external" href="https://www.xilinx.com/member/vmk180_headstart.html">xilinx-vmk180-ospi-v2022.2-final.bsp</a></p></td>
+<td><p><a class="reference external" href="https://www.xilinx.com/member/vmk180_headstart.html">xilinx-vmk180-emmc-v2022.2-final.bsp</a></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <ol class="arabic">
 <li><p>Copy the respective board’s PetaLinux BSP to the current directory.</p></li>
@@ -500,7 +521,7 @@ _0_pspmc_0_psv_cortexr5_0</p></td>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For VMK180 board, use <cite>xilinx-vmk180-vxxyy.z-final.bsp</cite> after the <cite>-s</cite> option in the command.</p>
+<p>For the VMK180 board, use <cite>xilinx-vmk180-vxxyy.z-final.bsp</cite> after the <cite>-s</cite> option in the command.</p>
 </div>
 </li>
 <li><p>Change to the PetaLinux project directory using the following command.</p>
@@ -511,7 +532,7 @@ _0_pspmc_0_psv_cortexr5_0</p></td>
 <li><p>Copy the hardware platform project XSA to the Linux host machine.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For the VMK180 board, use the XSA file that you generated in the <a class="reference external" href="#design-example-using-axi-gpio">Design Example: Using AXI GPIO</a>.</p>
+<p>For the VMK180 board, use the XSA file that you generated in the <a class="reference internal" href="#using-axi-gpio"><span class="std std-ref">Design Example: Using AXI GPIO</span></a>.</p>
 </div>
 </li>
 <li><p>Reconfigure the BSP using the following commands.</p>
@@ -549,7 +570,7 @@ $cp &lt;design-package&gt;/ch5_system_design_example_source__files/apu/device_tr
 <img alt="../../../../_images/versal_2021_gpio_xilinx.png" src="../../../../_images/versal_2021_gpio_xilinx.png" />
 </li>
 <li><p>Click <strong>&lt;Save&gt;</strong> to save the above configuration and then <strong>&lt;Exit&gt;</strong> option to exit the configuration wizard.</p></li>
-<li><p>Configure ROOTFS to disable the AIE, STDC++, and TCL options to reduce the rootfs size to fit into both SD and OSPI/QSPI Flash partitions.</p>
+<li><p>Configure ROOTFS to disable the AIE, STDC++, and Tcl options to reduce the rootfs size to fit into both SD and OSPI/QSPI Flash partitions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">config</span> <span class="o">-</span><span class="n">c</span> <span class="n">rootfs</span>
 </pre></div>
 </div>
@@ -563,8 +584,12 @@ $cp &lt;design-package&gt;/ch5_system_design_example_source__files/apu/device_tr
 <li><p>Navigate to <strong>Filesystem Packages → devel → tcltk → tcl</strong> and disable <strong>tcl support</strong> by pressing &lt;Y&gt; key as shown in the following figure.</p>
 <img alt="../../../../_images/rootfs_config_tcl.JPG" src="../../../../_images/rootfs_config_tcl.JPG" />
 </li>
-<li><p>Click <strong>&lt;Save&gt;</strong> to save the above configuration and then click <strong>&lt;Exit&gt;</strong> to exit the configuration wizard.</p></li>
-<li><p>OSPI and eMMC boot modes will work only on VCK190/VMK180 REVB Production boards.</p></li>
+<li><p>Click <strong>&lt;Save&gt;</strong> to save the above configuration and then click <strong>&lt;Exit&gt;</strong> to exit the configuration wizard.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>OSPI and eMMC boot modes will work only on VCK190/VMK180 REVB Production boards.</p>
+</div>
+</li>
 <li><p>Build the Linux images using the following command.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ petalinux-build
 </pre></div>
@@ -626,8 +651,8 @@ $cp &lt;design-package&gt;/ch5_system_design_example_source__files/apu/device_tr
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on December 08, 2022.
+    <p>&#169; Copyright 2019-2023, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on February 03, 2023.
       </span></p>
   </div>
 

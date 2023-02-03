@@ -27,14 +27,14 @@ sys.path.insert(0, os.path.abspath('docs'))
 # Enter project name in next line, replacing example text
 project = 'Embedded Design Tutorials'
 # Enter copyright date range in next line. All years that your project has been released should be included.
-copyright = '2019-2022, Xilinx, Inc. Xilinx is now a part of AMD'
+copyright = '2019-2023, Xilinx, Inc. Xilinx is now a part of AMD'
 author = 'Xilinx, Inc.'
 
 # The short X.Y version
 version = '2022.2'
 # The full version, including alpha/beta/rc tags
 release = '2022.2'
-html_last_updated_fmt = 'December 08, 2022'
+html_last_updated_fmt = 'February 03, 2023'
 
 # -- General configuration ---------------------------------------------------
 
