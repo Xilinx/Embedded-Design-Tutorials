@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Programming an Embedded MicroBlaze Processor &mdash; Embedded Design Tutorials 2022.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Software Profiling Using the Vitis Software Platform" href="../sw-profiling/sw-profiling.html" />
+    <link rel="prev" title="Creating a Debuggable First Stage Boot Loader" href="../debuggable-fsbl/debuggable-fsbl.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> Embedded Design Tutorials
+            <img src="../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2022.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction/Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Programming an Embedded MicroBlaze Processor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-start-the-vivado-ide-and-create-a-project">Step 1: Start the Vivado IDE and Create a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-create-an-ip-integrator-design">Step 2: Create an IP Integrator Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#use-the-board-window-to-connect-to-board-interfaces">Use the Board Window to Connect to Board Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-peripheral-axi-block-ram-controller">Add Peripheral: AXI block RAM Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-block-automation">Run Block Automation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-connection-automation">Use Connection Automation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mark-nets-for-debugging">Mark Nets for Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-connection-between-mdm-and-axi-smartconnect">Add Connection Between MDM and AXI SmartConnect</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-memory-mapping-the-peripherals-in-ip-integrator">Step 3: Memory-Mapping the Peripherals in IP Integrator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-validate-block-design">Step 4: Validate Block Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-5-generate-output-products">Step 5: Generate Output Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-6-create-a-top-level-wrapper">Step 6: Create a Top-Level Wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-7-take-the-design-through-implementation">Step 7: Take the Design through Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-8-export-the-design-to-the-vitis-software-platform">Step 8: Export the Design to the Vitis software platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-9-create-a-peripheral-test-application">Step 9: Create a “Peripheral Test” Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-10-execute-the-software-application-on-a-sp701-board">Step 10: Execute the Software Application on a SP701 Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-11-connect-to-vivado-logic-analyzer">Step 11: Connect to Vivado Logic Analyzer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-12-set-the-microblaze-to-logic-cross-trigger">Step 12: Set the MicroBlaze to Logic Cross Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-13-set-the-logic-to-processor-cross-trigger">Step 13: Set the Logic to Processor Cross- Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lab-files">Lab Files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">All Releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Embedded Design Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Programming an Embedded MicroBlaze Processor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/Feature_Tutorials/microblaze-system/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p class="sphinxhide" align="right"><a href="../../docs-cn/README.md">简体中文</a> | <a href="../../docs-jp/README.md">日本語</a></p>
+<table width="100%">
+  <tr width="100%">
+    <td align="center"> <img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"> 
+    </td>
+ </tr>
+</table><div class="section" id="programming-an-embedded-microblaze-processor">
+<h1>Programming an Embedded MicroBlaze Processor<a class="headerlink" href="#programming-an-embedded-microblaze-processor" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>In this tutorial, you create a simple MicroBlaze™ system for a Spartan®-7 FPGA using Vivado® IP integrator.</p>
+<p>The MicroBlaze system includes native Xilinx® IP including:</p>
+<ul class="simple">
+<li><p>MicroBlaze processor</p></li>
+<li><p>AXI block RAM</p></li>
+<li><p>Double Data Rate 3 (DDR3) memory</p></li>
+<li><p>UARTLite</p></li>
+<li><p>AXI GPIO</p></li>
+<li><p>MicroBlaze Debug Module (MDM)</p></li>
+<li><p>Proc Sys Reset</p></li>
+<li><p>Local memory bus (LMB)</p></li>
+</ul>
+<p>Parts of the block design are constructed using the Platform Board Flow feature.</p>
+<p>This lab also shows the cross-trigger capability of the MicroBlaze processor.</p>
+<p>The feature is demonstrated using a software application code developed in the Vitis software platform in a stand-alone application mode.</p>
+<p>This lab targets the Xilinx SP701 FPGA Evaluation Kit.</p>
+</div>
+<div class="section" id="step-1-start-the-vivado-ide-and-create-a-project">
+<h2>Step 1: Start the Vivado IDE and Create a Project<a class="headerlink" href="#step-1-start-the-vivado-ide-and-create-a-project" title="Permalink to this heading">¶</a></h2>
+<ol>
+<li><p>Start the Vivado IDE by clicking the Vivado desktop icon or by typing <code class="docutils literal notranslate"><span class="pre">vivado</span></code> at a command prompt.</p></li>
+<li><p>From the Quick Start page, select <strong>Create Project</strong>.</p></li>
+<li><p>In the New Project dialog box, use the following settings:</p>
+<p>a. In the Project Name dialog box, type the project name and location.</p>
+<p>b. Make sure that the <strong>Create project subdirectory</strong> check box is selected. Click <strong>Next</strong>.</p>
+<p>c. In the Project Type dialog box, select <strong>RTL project</strong>. Ensure that the <strong>Do not specify sources at this time</strong> check box is cleared. Click <strong>Next</strong>.</p>
+<p>d. In the Add Sources dialog box, set the Target language to either <strong>VHDL</strong> or <strong>Verilog</strong>. You can leave the Simulator language selection to <strong>Mixed</strong>.</p>
+<p>e. Click <strong>Next</strong>.</p>
+<p>f. In Add Constraints dialog box, click <strong>Next</strong>.</p>
+<p>g. In the Default Part dialog box, select <strong>Boards</strong> and choose <strong>Spartan-7 SP701 Evaluation Platform</strong>. Click <strong>Next</strong>.</p>
+<p>h. Review the project summary in the New Project Summary dialog box and click <strong>Finish</strong> to create the project.</p>
+</li>
+</ol>
+<p>Because you selected the SP701 board when you created the Vivado IDE project, you see the following message in the Tcl Console:</p>
+<p><code class="docutils literal notranslate"><span class="pre">set_property</span> <span class="pre">board_part</span> <span class="pre">xilinx.com:sp701:part0:1.1</span> <span class="pre">[current_project]</span></code></p>
+<p>Although Tcl commands are available for many of the actions performed in the Vivado IDE, they are not explained in this tutorial. Instead, a Tcl script is provided that can be used to recreate this entire project. See the Tcl Console for more information. You can also refer to the <em>Vivado Design Suite Tcl Command Reference Guide</em>(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.2%3Bd%3Dug835-vivado-tcl-commands.pdf">UG835</a>) for information about the <code class="docutils literal notranslate"><span class="pre">write_bd_tcl</span></code> commands.</p>
+</div>
+<div class="section" id="step-2-create-an-ip-integrator-design">
+<h2>Step 2: Create an IP Integrator Design<a class="headerlink" href="#step-2-create-an-ip-integrator-design" title="Permalink to this heading">¶</a></h2>
+<ol>
+<li><p>From Flow Navigator, under IP integrator, select <strong>Create Block Design</strong>.</p></li>
+<li><p>Specify the IP subsystem design name. For this step, you can use <code class="docutils literal notranslate"><span class="pre">mb_subsystem</span></code> as the Design name. Leave the Directory field set to its default value of &lt;Local to Project&gt;. Leave the Specify source set drop-down list set to its default value of Design Sources.</p></li>
+<li><p>Click <strong>OK</strong> in the Create Block Design dialog box, shown in the following figure.</p>
+<p><img alt="../../../_images/image1-1.png" src="../../../_images/image1-1.png" /></p>
+</li>
+<li><p>In the IP integrator diagram area, right-click and select <strong>Add IP</strong>.</p>
+<p>The IP integrator Catalog opens. Alternatively, you can also select the Add IP icon in the middle of the canvas.</p>
+<p><img alt="../../../_images/image2-1.png" src="../../../_images/image2-1.png" /></p>
+</li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">mig</span></code> in the Search field to find the MIG core, then select <strong>Memory Interface Generator (MIG 7 Series)</strong>, and press <strong>Enter</strong>.</p>
+<p><img alt="../../../_images/image3-1.png" src="../../../_images/image3-1.png" /></p>
+<p>The Designer Assistance link becomes active in the block design banner.</p>
+</li>
+<li><p>Click <strong>Run Block Automation</strong>.</p>
+<p><img alt="../../../_images/image4-1.png" src="../../../_images/image4-1.png" /></p>
+<p>The Run Block Automation dialog box opens.</p>
+<p><img alt="../../../_images/image5-1.png" src="../../../_images/image5-1.png" /></p>
+</li>
+<li><p>Click <strong>OK</strong>. This instantiates the MIG core and connects the I/O interfaces to the I/O interfaces for the DDR memory on the SP701 board.
+<img alt="../../../_images/image6-1.png" src="../../../_images/image6-1.png" /></p></li>
+<li><p>Right-click anywhere in the block design canvas, and select <strong>Add IP</strong>. The IP catalog opens.</p></li>
+<li><p>In the Search field, type <code class="docutils literal notranslate"><span class="pre">micr</span></code> to find the MicroBlaze IP, then select <strong>MicroBlaze</strong>, and press <strong>Enter</strong>.</p></li>
+</ol>
+<p><strong><em>Note</em>:</strong> If not displayed by default, the IP Details window can be displayed by clicking <strong>CTRL+Q</strong> on the keyboard while searching for IP.</p>
+<p><img alt="../../../_images/image8-1.png" src="../../../_images/image8-1.png" /> <img alt="../../../_images/image7-1.png" src="../../../_images/image7-1.png" /></p>
+<div class="section" id="use-the-board-window-to-connect-to-board-interfaces">
+<h3>Use the Board Window to Connect to Board Interfaces<a class="headerlink" href="#use-the-board-window-to-connect-to-board-interfaces" title="Permalink to this heading">¶</a></h3>
+<p>There are several ways to use an existing interface in IP integrator. Use the Board window to instantiate some of the interfaces that are present on the SP701 board.</p>
+<ol>
+<li><p>Select the <strong>Board</strong> window to see the interfaces present on the SP701 board.</p>
+<p><img alt="../../../_images/image9-1.png" src="../../../_images/image9-1.png" /></p>
+<p>In the Board window, notice that the DDR3 SDRAM interface is connected as shown by the circle<img alt="../../../_images/image10-1.png" src="../../../_images/image10-1.png" />  in the following figure. This is because you used the Block Automation feature in the previous steps to connect the MIG core to the board interfaces for DDR3 SDRAM memory.</p>
+<p><img alt="../../../_images/image11-1.png" src="../../../_images/image11-1.png" /></p>
+</li>
+<li><p>From the Board window, select <strong>UART</strong> under the Miscellaneous folder, and drag and drop it into the block design canvas.</p>
+<p>This instantiates the AXI Uartlite IP on the block design.</p>
+</li>
+<li><p>Likewise, from the Board window, select <strong>LED</strong> under the General Purpose Input or Output folder, and drag and drop it into the block design canvas.</p>
+<p>This instantiates the GPIO IP on the block design and connects it to the on-board LEDs.</p>
+</li>
+<li><p>Next, from the Board window, select <strong>FPGA Reset</strong> under the Reset folder, and drag and drop it into the block design canvas.</p>
+<p>This connects the CPU push button reset to the MIG core IP.</p>
+<p>The block design now should look like the following figure.
+<img alt="../../../_images/image12-1.png" src="../../../_images/image12-1.png" /></p>
+</li>
+</ol>
+</div>
+<div class="section" id="add-peripheral-axi-block-ram-controller">
+<h3>Add Peripheral: AXI block RAM Controller<a class="headerlink" href="#add-peripheral-axi-block-ram-controller" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Add the AXI block RAM Controller, shown in the following figure, by right-clicking the IP integrator canvas and selecting <strong>Add IP</strong>.</p>
+<p><img alt="../../../_images/image14-1.png" src="../../../_images/image14-1.png" /><img alt="../../../_images/image13-1.png" src="../../../_images/image13-1.png" /></p>
+<p>The block design now should look like the following figure.</p>
+<p><img alt="../../../_images/image14-2.png" src="../../../_images/image14-2.png" /></p>
+</li>
+</ol>
+</div>
+<div class="section" id="run-block-automation">
+<h3>Run Block Automation<a class="headerlink" href="#run-block-automation" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>Click <strong>Run Block Automation</strong>, as shown below.
+<img alt="../../../_images/image15-1.png" src="../../../_images/image15-1.png" /></p>
+<p>The <strong>Run Block Automation</strong> dialog box opens.</p>
+</li>
+<li><p>On the <strong>Run Block Automation</strong> dialog box:</p>
+<p>a. Leave Preset as the default value, <strong>None</strong>.</p>
+<p>b. Set Local Memory to <strong>64 KB</strong>.</p>
+<p>c. Leave the Local Memory ECC as the default value, <strong>None</strong>.</p>
+<p>d. Set Cache Configuration to <strong>32 KB</strong>.</p>
+<p>e. Set Debug Module to <strong>Extended Debug</strong>.</p>
+<p>f. Leave the Peripheral AXI Port option as the default value, <strong>Enabled</strong>.</p>
+<p>g. Leave the Interrupt Controller option unchecked.</p>
+<p>h. Leave The Clock source option set to <strong>/mig_7series_0/ui_addn_clk_0 (100 MHz)</strong>.
+<img alt="../../../_images/image16-1.png" src="../../../_images/image16-1.png" /></p>
+</li>
+<li><p>Click <strong>OK</strong>.</p>
+<p>This generates a basic MicroBlaze system in the IP integrator diagram area, as shown in the following figure.</p>
+<p><img alt="../../../_images/image17-1.png" src="../../../_images/image17-1.png" /></p>
+</li>
+</ol>
+</div>
+<div class="section" id="use-connection-automation">
+<h3>Use Connection Automation<a class="headerlink" href="#use-connection-automation" title="Permalink to this heading">¶</a></h3>
+<p>Run Connection Automation provides several options that you can select to make connections. This section will walk you through the first connection, and then you will use the same procedure to make the rest of the required connections for this tutorial.</p>
+<ol>
+<li><p>Click <strong>Run Connection Automation</strong> as shown in the following figure.
+<img alt="../../../_images/image18-1.png" src="../../../_images/image18-1.png" /></p>
+<p>The Run Connection Automation dialog box opens.</p>
+</li>
+<li><p>Check the All Automation check box in the left pane of the dialog box as shown in the following figure.
+This selects interfaces to run Connection Automation for.
+<img alt="../../../_images/image19-1.png" src="../../../_images/image19-1.png" /></p></li>
+<li><p>Use the following table to set options in the Run Connection Automation dialog box.</p>
+<p><em>Table 1:</em> <strong>Run Connection Automation Options</strong></p>
+</li>
+</ol>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Connection</th>
+<th>More Information</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>axi_bram_ctrl_0     BRAM_PORTA</td>
+<td>The only option for this automation is to instantiate a new Block Memory Generator as shown under options.</td>
+<td>Leave the Blk_Mem_Gen to its default option of Auto.</td>
+</tr>
+<tr>
+<td>axi_bram_ctrl_0     BRAM_PORTB</td>
+<td>The Run Connection Automation dialog box opens and gives you two choices:    Instantiate a new BMG and connect the PORTB of the AXI block RAM Controller to the new BMG IP   Use the previously instantiated BMG core and automatically configure it to be a true dual- ported memory and connected to PORTB of the AXI block RAM Controller.</td>
+<td>Leave the Blk_Mem_Gen option to its default value of Auto.</td>
+</tr>
+<tr>
+<td>axi_bram_ctrl_0    S_AXI</td>
+<td>Two options are presented in this case. The Master field can be set for either cached or non-cached accesses.</td>
+<td>The Run Connection Automation dialog box offers to connect this to the /microblaze_0 (Cached). Leave it to its default value. In case, cached accesses are not desired this could be changed to /microblaze_0 (Periph).    Leave the Clock Connection (for unconnected clks) field set to its default value of Auto.</td>
+</tr>
+<tr>
+<td>axi_gpio_0    S_AXI</td>
+<td>The Master field is set to its default value of /microblaze_0 (Periph).  The Clock Connection (for unconnected clks) field is set to its default value of Auto.</td>
+<td>Keep these default settings.</td>
+</tr>
+<tr>
+<td>axi_uartlite_0    S_AXI</td>
+<td>The Master field is set to its default value of /microblaze_0 (Periph).  The Clock Connection (for unconnected clks) field is set to its default value of Auto.</td>
+<td>Keep these default settings.</td>
+</tr>
+<tr>
+<td>mdm_1     TRIG_IN_0</td>
+<td>This will be connected to a new System ILA core’s TRIG_OUT pin.</td>
+<td>Leave the ILA Connection settings to its default value of Auto.</td>
+</tr>
+<tr>
+<td>mdm_1     TRIG_OUT_0</td>
+<td>This will be connected to the System ILA core’sTRIG_IN pin.</td>
+<td>Leave the ILA Connections settings to its default value of Auto.</td>
+</tr>
+<tr>
+<td>mig_7series_0    S_AXI</td>
+<td>The Master field is set to microblaze_0 (Cached). Leave it to this value so the accesses to the DDR3 memory are cached accesses.  The Clock Connection (for unconnected clks) field is set to its default value of Auto.</td>
+<td>Keep these default settings.</td>
+</tr>
+<tr>
+<td>Rst_mig_7_series_0_100M     ext_reset_in</td>
+<td>The reset pin of the Processor Sys Rreset IP will be connected to the board reset pin.</td>
+<td>Keep the default setting.</td>
+</tr>
+</tbody>
+</table><ol>
+<li><p>After setting the appropriate options, as shown in the table above, click <strong>OK</strong>.</p>
+<p>At this point, your IP integrator diagram area should look like the following figure.</p>
+<p><img alt="../../../_images/image20-1.png" src="../../../_images/image20-1.png" /></p>
+</li>
+</ol>
+<p><strong><em>Note</em>:</strong> The relative placement of your IP might be slightly different.</p>
+</div>
+<div class="section" id="mark-nets-for-debugging">
+<h3>Mark Nets for Debugging<a class="headerlink" href="#mark-nets-for-debugging" title="Permalink to this heading">¶</a></h3>
+<ol>
+<li><p>To monitor the AXI transactions taking place between the MicroBlaze and the GPIO, select the interface net connecting M00_AXI interface pin of
+the microblaze_0_axi_periph instance and the S_AXI interface pin of the axi_gpio_0 instance.</p></li>
+<li><p>Right-click and select <strong>Debug</strong> from the context menu.</p>
+<p><strong><em>Note</em>:</strong> The Designer Assistance is available as indicated by the Run Connection Automation link in the banner of the block design.</p>
+</li>
+<li><p>Click <strong>Run Connection Automation</strong>.</p></li>
+<li><p>In the Run Connection Automation dialog box, go with the default setting as shown in the following figure.
+<img alt="../../../_images/image21-1.png" src="../../../_images/image21-1.png" /></p></li>
+<li><p>Click <strong>OK</strong>.</p></li>
+<li><p>Click the Regenerate Layout button<img alt="../../../_images/image25-1.png" src="../../../_images/image25-1.png" /> in the IP integrator toolbar to generate an optimum layout for the
+block design. The block diagram should look like the following figure.
+<img alt="../../../_images/image22-1.png" src="../../../_images/image22-1.png" /></p></li>
+</ol>
+<p><strong><em>Note</em>:</strong> The relative placement of your IP might be slightly different.</p>
+</div>
+<div class="section" id="add-connection-between-mdm-and-axi-smartconnect">
+<h3>Add Connection Between MDM and AXI SmartConnect<a class="headerlink" href="#add-connection-between-mdm-and-axi-smartconnect" title="Permalink to this heading">¶</a></h3>
+<p>In order to enable JTAG-based debugging of the AXI BRAM Controller and the DDR3 RAM, a connection between the MicroBlaze Debug Module (MDM) and AXI SmartConnect must be made.</p>
+<ol class="simple">
+<li><p>Click <strong>Run Connection Automation</strong>.</p></li>
+<li><p>In the Run Connection Automation dialog box box set the Slave interface option to either <strong>/axi_bram_ctrl_0/S_AXI</strong> or <strong>/mig_7series_0/S_AXI</strong>.</p></li>
+</ol>
+<p><img alt="../../../_images/image24-1.png" src="../../../_images/image24-1.png" /></p>
+<p>Either option will connect to the same AXI SmartConnect instance allowing for JTAG memory access.
+3. Click the Regenerate Layout button <img alt="../../../_images/image25-1.png" src="../../../_images/image25-1.png" /> in the IP integrator toolbar to generate an optimum layout for the block design. The block diagram should look like the following figure.</p>
+<p><img alt="../../../_images/image26-1.png" src="../../../_images/image26-1.png" /></p>
+<p><strong><em>Note</em>:</strong> The relative placement of your IP might be slightly different.</p>
+<p>This connection connects the AXI4 master port of the MicroBlaze Debug Module (MDM) to the AXI SmartConnect for direct access to memory from JTAG. This allows fast program download, as well as transparent memory access when the connected MicroBlaze processors are executing.</p>
+</div>
+</div>
+<div class="section" id="step-3-memory-mapping-the-peripherals-in-ip-integrator">
+<h2>Step 3: Memory-Mapping the Peripherals in IP Integrator<a class="headerlink" href="#step-3-memory-mapping-the-peripherals-in-ip-integrator" title="Permalink to this heading">¶</a></h2>
+<ol>
+<li><p>Click the <strong>Address Editor</strong> window.</p></li>
+<li><p>In the Address Editor, do the following:</p>
+<p>a. Expand the microblaze_0 instance by clicking on the Expand All icon <img alt="../../../_images/image27-1.png" src="../../../_images/image27-1.png" /> in the toolbar to the top of the Address Editor window.</p>
+<p>b. Change the range of microblaze_0/mig_7_series_0/memmap IP in both the Data and the Instruction section to <strong>512 MB</strong>, and mdm_1/mig_7_series_0/memmap also to <strong>512 MB</strong>, as shown in the following figure.
+<img alt="../../../_images/image29-1.png" src="../../../_images/image29-1.png" /></p>
+<p>c. The top of the Address Editor window should show Assigned (11), indicating all 11 interfaces were assigned addresses. If Unassigned shows any interfaces unassigned, click on the <strong>Assign All</strong> arrow <img alt="../../../_images/image28-1.png" src="../../../_images/image28-1.png" />.</p>
+</li>
+</ol>
+<p>You must also ensure that the memory in which you are going to run and store your software is within the cacheable address range. This occurs when you enable Instruction Cache and Data Cache, while running the Block Automation for the MicroBlaze processor.</p>
+<p>To use either Memory IP DDR or AXI block RAM, those IP must be in the cacheable area; otherwise, the MicroBlaze processor cannot read from or write to them.</p>
+<p>Validating the design will automatically re-configure the MicroBlaze processor’s cacheable address range.</p>
+</div>
+<div class="section" id="step-4-validate-block-design">
+<h2>Step 4: Validate Block Design<a class="headerlink" href="#step-4-validate-block-design" title="Permalink to this heading">¶</a></h2>
+<p>To run design rule checks on the design:</p>
+<ol>
+<li><p>Click the Validate Design button on the toolbar, or select <strong>Tools &gt; Validate Design</strong>.</p>
+<p>The Validate Design dialog box informs you that there are no critical warnings or errors in the design.</p>
+</li>
+<li><p>Click <strong>OK</strong>.</p></li>
+<li><p>Save your design by pressing <strong>Ctrl+S</strong>, or select <strong>File &gt; Save Block Design</strong>.</p></li>
+</ol>
+</div>
+<div class="section" id="step-5-generate-output-products">
+<h2>Step 5: Generate Output Products<a class="headerlink" href="#step-5-generate-output-products" title="Permalink to this heading">¶</a></h2>
+<ol>
+<li><p>In the Sources window, select the block design, then right-click it and select <strong>Generate Output Products</strong>. Alternatively, you can click
+<strong>Generate Block Design in the Flow Navigator</strong>.</p>
+<p>The Generate Output Products dialog box opens.</p>
+</li>
+<li><p>Click <strong>Generate</strong>.</p>
+<p><img alt="../../../_images/image30-1.png" src="../../../_images/image30-1.png" /></p>
+<p>The Generate Output Products dialog box informs you that Out-of-context module runs were launched.</p>
+</li>
+<li><p>Click <strong>OK</strong>.</p></li>
+<li><p>Wait a few minutes for all the Out-of-Context module runs to finish as shown in the Design Runs windows.
+<img alt="../../../_images/image31-1.png" src="../../../_images/image31-1.png" /></p></li>
+</ol>
+</div>
+<div class="section" id="step-6-create-a-top-level-wrapper">
+<h2>Step 6: Create a Top-Level Wrapper<a class="headerlink" href="#step-6-create-a-top-level-wrapper" title="Permalink to this heading">¶</a></h2>
+<ol>
+<li><p>Under Design Sources, right-click the block design <code class="docutils literal notranslate"><span class="pre">mb_subsystem</span></code> and click <strong>Create HDL Wrapper</strong>.</p>
+<p>In the Create HDL Wrapper dialog box, Let Vivado manage wrapper and auto-update is selected by default.</p>
+</li>
+<li><p>Click <strong>OK</strong>.</p>
+<p><img alt="../../../_images/image32-1.png" src="../../../_images/image32-1.png" /></p>
+</li>
+</ol>
+</div>
+<div class="section" id="step-7-take-the-design-through-implementation">
+<h2>Step 7: Take the Design through Implementation<a class="headerlink" href="#step-7-take-the-design-through-implementation" title="Permalink to this heading">¶</a></h2>
+<ol>
+<li><p>In the Flow Navigator, click <strong>Generate Bitstream</strong>.</p>
+<p>The No implementation Results Available dialog box opens.</p>
+</li>
+<li><p>Click <strong>Yes</strong>.</p>
+<p>The Launch Runs dialog box opens.</p>
+</li>
+<li><p>Make the appropriate choices and click <strong>OK</strong>.</p>
+<p>Bitstream generation can take several minutes to complete. Once it finishes, the Bitstream Generation Completed dialog box asks you to select what to do next.</p>
+</li>
+<li><p>Keep the default selection of Open Implemented Design and click <strong>OK</strong>.</p></li>
+<li><p>Verify that all timing constraints have been met by looking at the Timing - Design Timing Summary window, as shown in the following figure.
+<img alt="../../../_images/image33-1.png" src="../../../_images/image33-1.png" /></p></li>
+</ol>
+</div>
+<div class="section" id="step-8-export-the-design-to-the-vitis-software-platform">
+<h2>Step 8: Export the Design to the Vitis software platform<a class="headerlink" href="#step-8-export-the-design-to-the-vitis-software-platform" title="Permalink to this heading">¶</a></h2>
+<p><img alt="../../../_images/image29.png" src="../../../_images/image29.png" /> <strong>IMPORTANT!</strong> <em>For the usb driver to install, you must power on and connect the board to the host PC before launching the Vitis software platform.</em></p>
+<p>Next, open the design and export to the Vitis software platform.</p>
+<ol class="simple">
+<li><p>From the Vivado File menu, select <strong>File &gt; Export &gt; Export Hardware</strong>. The Export Hardware Platform dialog box opens.</p></li>
+<li><p>Click <strong>Next</strong>.</p></li>
+<li><p>Select the <strong>Include bitstream</strong> option using the radio button in the Output view and click <strong>Next</strong>.
+<img alt="../../../_images/image34-1.png" src="../../../_images/image34-1.png" /></p></li>
+<li><p>Leave the XSA file name field at its default value and click <strong>Next</strong>. (The following figure shows Windows-specific settings.)
+<img alt="../../../_images/image35-1.png" src="../../../_images/image35-1.png" /></p></li>
+<li><p>Click <strong>Finish</strong>. This will export the hardware XSA File in the lab1 project directory.
+<img alt="../../../_images/image36-1.png" src="../../../_images/image36-1.png" /></p></li>
+<li><p>To launch the Vitis software platform, select <strong>Tools &gt; Launch Vitis IDE</strong>. The Eclipse Launcher dialog box opens.</p></li>
+<li><p>Specify the desired Workspace location such as C:\Projects\Vitis_Workspaces\microblaze-system (Windows-specific).</p></li>
+<li><p>Click <strong>Launch</strong>.</p></li>
+</ol>
+</div>
+<div class="section" id="step-9-create-a-peripheral-test-application">
+<h2>Step 9: Create a “Peripheral Test” Application<a class="headerlink" href="#step-9-create-a-peripheral-test-application" title="Permalink to this heading">¶</a></h2>
+<p>The Vitis software platform launches in a separate window.
+<img alt="../../../_images/image37-1.png" src="../../../_images/image37-1.png" /></p>
+<ol>
+<li><p>Close the Welcome screen if it appears.</p></li>
+<li><p>Select <strong>File &gt; New &gt; Application Project</strong> or under <strong>Project</strong> click <strong>Create Application Project</strong>.
+<img alt="../../../_images/image38-1.png" src="../../../_images/image38-1.png" /></p></li>
+<li><p>Select the <strong>Skip welcome page next time</strong> check box if you do not want the welcome to appear when the Vitis software platform is launched again.</p></li>
+<li><p>Click <strong>Next</strong>.</p></li>
+<li><p>In the Platform page, select the <strong>Create a new platform from hardware (XSA)</strong> tab.
+<img alt="../../../_images/image39-1.png" src="../../../_images/image39-1.png" /></p></li>
+<li><p>Click <strong>Browse</strong> to open the Create Platform from XSA window. Navigate to the directory where the XSA file was created in Vivado and click <strong>Open</strong>.
+<img alt="../../../_images/image40-1.png" src="../../../_images/image40-1.png" /></p></li>
+<li><p>Click <strong>Next</strong>.</p></li>
+<li><p>In the Application project name field, type the name desired, such as <code class="docutils literal notranslate"><span class="pre">peri_test</span></code>. Leave all other fields to their default values, and click <strong>Next</strong>.</p>
+<p><img alt="../../../_images/image41-1.png" src="../../../_images/image41-1.png" /></p>
+</li>
+<li><p>In the Domain page leave all the fields at their default values and click <strong>Next</strong>.
+<img alt="../../../_images/image42-1.png" src="../../../_images/image42-1.png" /></p></li>
+<li><p>In the Templates page, select <strong>Peripheral Tests</strong>.
+<img alt="../../../_images/image43-1.png" src="../../../_images/image43-1.png" /></p></li>
+<li><p>Click <strong>Finish</strong>.</p></li>
+<li><p>A new <code class="docutils literal notranslate"><span class="pre">peri_test</span></code> application is created. To build the application click the hammer icon<img alt="../../../_images/image44-1.png" src="../../../_images/image44-1.png" /> in the toolbar.</p></li>
+<li><p>Wait for the application to finish compiling.</p></li>
+<li><p>Right-click the peri_test application in the Project Explorer, and select <strong>Generate Linker Script</strong>.</p>
+<p>The Generate Linker Script dialog box opens.</p>
+</li>
+<li><p>Select the <strong>Basic</strong> tab, and change the Assigned Memory for Heap and Stack, Code, and Data to DDR memory. Change the Place Code Sections in:,
+Place Data Sections in: and Place Heap and Stack in: sections to <strong>mig_7series_0_memaddr</strong>.
+<img alt="../../../_images/image45-1.png" src="../../../_images/image45-1.png" /></p>
+<p>Setting these values to <strong>mig_7series_0</strong> ensures that the compiled code executes from the DDR3 Memory IP.</p>
+</li>
+<li><p>Click <strong>Generate</strong>.</p></li>
+<li><p>Click <strong>Yes</strong> to overwrite it in the <strong>Linker Already Exists!</strong> dialog box.</p></li>
+<li><p>Click the hammer icon<img alt="../../../_images/image44-1.png" src="../../../_images/image44-1.png" /> in the toolbar again to rebuild the application with the modified linker script.</p></li>
+</ol>
+</div>
+<div class="section" id="step-10-execute-the-software-application-on-a-sp701-board">
+<h2>Step 10: Execute the Software Application on a SP701 Board<a class="headerlink" href="#step-10-execute-the-software-application-on-a-sp701-board" title="Permalink to this heading">¶</a></h2>
+<p><img alt="../../../_images/image29.png" src="../../../_images/image29.png" /><strong>IMPORTANT!</strong> <em>Make sure that you have connected the target board to the host computer and it is turned on.</em></p>
+<ol>
+<li><p>Select and right-click the peri_test application in the Project Explorer, and select <strong>Debug As → Debug Configurations</strong>.</p>
+<p>The Debug Configurations dialog box opens, as shown in the following figure.</p>
+</li>
+<li><p>Right-click <strong>Single Application Debug</strong>, and select <strong>New Configuration</strong>.</p>
+<p><img alt="../../../_images/image46-1.png" src="../../../_images/image46-1.png" /></p>
+</li>
+<li><p>The configurations page opens. Click <strong>Debug</strong>.</p>
+<p><img alt="../../../_images/image47-1.png" src="../../../_images/image47-1.png" /></p>
+<p>The Debug perspective window opens.</p>
+</li>
+<li><p>Set the terminal by selecting the Vitis Terminal tab and clicking the <img alt="../../../_images/image48-1.png" src="../../../_images/image48-1.png" /> button.</p></li>
+<li><p>Use the settings shown in the following figure for the SP701 board and click <strong>OK</strong>.</p>
+<p><img alt="../../../_images/image49-1.png" src="../../../_images/image49-1.png" /></p>
+</li>
+<li><p>Verify the terminal connection by checking the status at the top of the Vitis software platform Terminal tab, as shown in the following figure.</p>
+<p><img alt="../../../_images/image50-1.png" src="../../../_images/image50-1.png" /></p>
+</li>
+<li><p>If the <code class="docutils literal notranslate"><span class="pre">testperiph.c</span></code> file is not already open, select <strong>../src/testperiph.c</strong>, and double-click to open the source file.</p></li>
+<li><p>Modify the source file by inserting a while statement at approximately line 41.</p>
+<p>a. In line 41, add <code class="docutils literal notranslate"> <span class="pre">while(1)</span></code> above the curly brace as shown in the following figure.
+<img alt="../../../_images/image51-1.png" src="../../../_images/image51-1.png" /></p>
+</li>
+<li><p>Add a breakpoint in the code so that the processor stops code execution when the breakpoint is encountered. To do so, scroll down to line 50 and double-click on the left pane, which adds a breakpoint on that line of code, as shown in the following figure.</p></li>
+<li><p>Press <strong>Ctrl + S</strong> to save the file. Alternatively, you can select <strong>File → Save</strong>.
+<img alt="../../../_images/image52-1.png" src="../../../_images/image52-1.png" /></p></li>
+<li><p>Click the hammer icon<img alt="../../../_images/image44-1.png" src="../../../_images/image44-1.png" /> to rebuild the file with the modified code. Now you are ready to execute the code from the Vitis software platform.</p></li>
+</ol>
+</div>
+<div class="section" id="step-11-connect-to-vivado-logic-analyzer">
+<h2>Step 11: Connect to Vivado Logic Analyzer<a class="headerlink" href="#step-11-connect-to-vivado-logic-analyzer" title="Permalink to this heading">¶</a></h2>
+<p>Connect to the SP701 board using the Vivado Logic Analyzer.</p>
+<ol>
+<li><p>In the Vivado IDE session, from the Program and Debug drop-down list of the Vivado Flow Navigator, select <strong>Open Hardware Manager</strong>.</p></li>
+<li><p>In the Hardware Manager window, click <strong>Open target &gt; Open New Target</strong>.</p>
+<p><img alt="../../../_images/image53-1.png" src="../../../_images/image53-1.png" /></p>
+<p>The Open New Hardware Target dialog box opens, shown in the following figure.
+<img alt="../../../_images/image54-1.png" src="../../../_images/image54-1.png" /></p>
+</li>
+<li><p>Click <strong>Next</strong>.</p></li>
+<li><p>On the Hardware Server Settings page, ensure that the Connect to field is set to <strong>Local server (target is on local machine)</strong> as shown in the following figure, and click <strong>Next</strong>.
+<img alt="../../../_images/image55-1.png" src="../../../_images/image55-1.png" /></p></li>
+<li><p>On the Select Hardware Target page, click <strong>Next</strong>.</p></li>
+<li><p>Ensure that all the settings are correct on the Open Hardware Target Summary dialog box, as shown in the following figure, and click <strong>Finish</strong>.
+<img alt="../../../_images/image56-1.png" src="../../../_images/image56-1.png" /></p></li>
+</ol>
+<p><strong><em>Note</em>:</strong> You can also use the Auto Connect option to connect to the target hardware.</p>
+</div>
+<div class="section" id="step-12-set-the-microblaze-to-logic-cross-trigger">
+<h2>Step 12: Set the MicroBlaze to Logic Cross Trigger<a class="headerlink" href="#step-12-set-the-microblaze-to-logic-cross-trigger" title="Permalink to this heading">¶</a></h2>
+<p>When the Vivado Hardware Session successfully connects to the SP701 board, you see the information shown in the following figure:
+<img alt="../../../_images/image57-1.png" src="../../../_images/image57-1.png" /></p>
+<ol>
+<li><p>Select the <strong>Settings - hw_ila_1</strong> tab and set the Trigger Mode Settings as follows:</p>
+<ol class="simple">
+<li><p>Set Trigger mode to <strong>TRIG_IN_ONLY</strong>.</p></li>
+<li><p>Set TRIG_OUT mode to <strong>TRIG_IN_ONLY</strong>.</p></li>
+<li><p>Under Capture Mode Settings, ensure that Trigger position in window is set to <strong>512</strong>.
+<img alt="../../../_images/image59-1.png" src="../../../_images/image59-1.png" /></p></li>
+</ol>
+</li>
+<li><p>Arm the ILA core by clicking the Run Trigger<img alt="../../../_images/image58-1.png" src="../../../_images/image58-1.png" /> button.</p>
+<p>This arms the ILA. You should see the status “Waiting for Trigger” in the <strong>Status - hw_ila_1</strong> tab as shown in the following figure.</p>
+<p><img alt="../../../_images/image60-1.png" src="../../../_images/image60-1.png" /></p>
+</li>
+<li><p>In the Vitis software platform Debug window, click <strong>MicroBlaze #0</strong> and then click the <strong>Resume</strong> button.</p></li>
+</ol>
+<p>The code will execute until the breakpoint set on line 50 in <code class="docutils literal notranslate"><span class="pre">testperiph.c</span></code> file is reached. As the breakpoint is reached, this triggers the ILA, as shown in the following figure.
+<img alt="../../../_images/image61-1.png" src="../../../_images/image61-1.png" /></p>
+<p>This demonstrates that when the breakpoint is encountered during code execution, the MicroBlaze triggers the ILA that is set up to trigger. This way you can monitor the state of the hardware at a certain point of code execution.</p>
+</div>
+<div class="section" id="step-13-set-the-logic-to-processor-cross-trigger">
+<h2>Step 13: Set the Logic to Processor Cross- Trigger<a class="headerlink" href="#step-13-set-the-logic-to-processor-cross-trigger" title="Permalink to this heading">¶</a></h2>
+<p>Now try the logic to processor side of the cross-trigger mechanism. In other words, remove the breakpoint that you set earlier on line 50 to have the ILA trigger the processor and stop code execution.</p>
+<ol>
+<li><p>Select the <strong>Breakpoints</strong> tab towards the top right corner of the window, and clear the <strong>testperiph.c [line: 50]</strong> check box. This removes
+the breakpoint that you set up earlier.</p>
+<p>Alternatively, you can also right click on the breakpoint in the <code class="docutils literal notranslate"><span class="pre">testperiph.c</span></code> file, and select <strong>Disable Breakpoint</strong>.</p>
+</li>
+<li><p>In the Debug window, right-click the <strong>MicroBlaze #0 target</strong> and select <strong>Resume</strong>.</p>
+<p>The code runs continuously because it has an infinite loop.</p>
+<p>You can see the code executing in the Terminal Window in the Vitis software platform.</p>
+</li>
+<li><p>In Vivado, select the <strong>Settings - hw_ila_1</strong> tab. Change the Trigger Mode to <strong>BASIC_OR_TRIG_IN</strong> and the TRIG_OUT mode to <strong>TRIGGER_OR_TRIG_IN</strong>.</p></li>
+<li><p>Click on the (+) sign in the Trigger Setup window to add the <code class="docutils literal notranslate"><span class="pre">slot_0:microblaze_0_axi_periph_M00:AWVALID</span></code> signal from the Add Probes window.</p></li>
+<li><p>In the Trigger Setup window, for <code class="docutils literal notranslate"><span class="pre">slot_0:microblaze_0_axi_periph_M00:AWVALID</span></code> signal, ensure that the Radix field is set to <strong>[B] (Binary)</strong> and set the Value field to <strong>1 (logical one)</strong>.</p>
+<p>This essentially sets up the ILA to trigger when the <code class="docutils literal notranslate"><span class="pre">awvalid</span></code> transitions to a value of 1.</p>
+</li>
+<li><p>Click the Run Trigger button to ‘arm’ the ILA in the Status - hw_ila_1 window.</p>
+<p>The ILA immediately triggers as the application software is continuously performing a write to the GPIO thereby toggling the <code class="docutils literal notranslate"><span class="pre">net_slot_0\_axi_awvalid</span></code> signal, which causes the ILA to trigger. The ILA in turn, toggles the <code class="docutils literal notranslate"><span class="pre">TRIG_OUT</span></code> signal, which signals the processor to stop code execution.</p>
+<p>This is seen in Vitis in the highlighted area of the debug window.</p>
+<p><img alt="../../../_images/image62-1.png" src="../../../_images/image62-1.png" /></p>
+</li>
+</ol>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">¶</a></h2>
+<p>In this tutorial, you:</p>
+<ul class="simple">
+<li><p>Stitched together a design in the Vivado IP integrator</p></li>
+<li><p>Took the design through implementation and bitstream generation</p></li>
+<li><p>Exported the hardware to Vitis</p></li>
+<li><p>Created and modified application code that runs on a Standalone Operating System</p></li>
+<li><p>Modified the linker script so that the code executes from the DDR3 memory</p></li>
+<li><p>Verified cross-trigger functionality between the MicroBlaze processor executing code and the design logic</p></li>
+</ul>
+</div>
+<div class="section" id="lab-files">
+<h2>Lab Files<a class="headerlink" href="#lab-files" title="Permalink to this heading">¶</a></h2>
+<p>The Tcl script <code class="docutils literal notranslate"><span class="pre">lab.tcl</span></code> is included with the design files to perform all the tasks in Vivado. The Vitis software platform operations must be done in the Vitis GUI. You will need to modify the Tcl script to match the desired project path and project name on your machine.</p>
+<hr class="docutils" />
+<p>© Copyright 2017-2022 Xilinx, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
+<p>http://www.apache.org/licenses/LICENSE-2.0</p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../debuggable-fsbl/debuggable-fsbl.html" class="btn btn-neutral float-left" title="Creating a Debuggable First Stage Boot Loader" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../sw-profiling/sw-profiling.html" class="btn btn-neutral float-right" title="Software Profiling Using the Vitis Software Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on November 10, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
