@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Creating Custom IP and Device Drivers for Linux &mdash; Embedded Design Tutorials 2021.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Creating a Debuggable First Stage Boot Loader" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html" />
+    <link rel="prev" title="Linux Boot Image Configuration" href="7-linux-booting-debug.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> Embedded Design Tutorials
+            <img src="../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2021.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-introduction.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-using-zynq.html">Using the Zynq SoC Processing System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-debugging-vitis.html">Debugging Standalone Applications with the Vitis Software Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-linux-for-zynq.html">Building and Debugging Linux Applications for Zynq-7000 SoCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-using-gp-port-zynq.html">Using the GP Port in Zynq Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-using-hp-port.html">Using the HP Slave Port with AXI CDMA IP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-linux-booting-debug.html">Linux Boot Image Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating Custom IP and Device Drivers for Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-peripheral-ip">Creating Peripheral IP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-11-creating-peripheral-ip">Example 11: Creating Peripheral IP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Creating Peripheral IP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integrating-peripheral-ip-with-ps-gp-master-port">Integrating Peripheral IP with PS GP Master Port</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connecting-an-axi4-lite-compliant-custom-slave-ip">Connecting an AXI4-Lite Compliant Custom Slave IP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#linux-based-device-driver-development">Linux-Based Device Driver Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-12-device-driver-development">Example 12: Device Driver Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-13-loading-a-module-into-a-kernel-and-executing-the-application">Example 13: Loading a Module into a Kernel and Executing the Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#loading-the-module-into-kernel-memory">Loading the Module into Kernel Memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-software">Application Software</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-steps">Example Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Zynq7000-EDT.html#example-projects">Example Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Zynq7000-EDT.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Embedded Design Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a> &raquo;</li>
+      <li>Creating Custom IP and Device Drivers for Linux</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/Introduction/Zynq7000-EDT/8-custom-ip-driver-linux.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="creating-custom-ip-and-device-drivers-for-linux">
+<h1>Creating Custom IP and Device Drivers for Linux<a class="headerlink" href="#creating-custom-ip-and-device-drivers-for-linux" title="Permalink to this heading">¶</a></h1>
+<p>In this chapter, you will create an intellectual property (IP) using
+the Create and Package New IP wizard. You will also design a system to
+include the new IP created for the Xilinx® Zynq®-7000 SoC device.</p>
+<p>For the IP, you will develop a Linux-based device driver as a module
+that can be dynamically loaded onto the running kernel.</p>
+<p>You will also develop Linux-based application software for the system
+to execute on the Zynq SoC ZC702 board.</p>
+<p><strong>IMPORTANT</strong>: You will need to rebuild the Linux kernel: a Linux host machine to run PetaLinux is required.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#example-11-creating-peripheral-ip">Example 11</a>: Creating Peripheral IP</p></li>
+<li><p><a class="reference external" href="#example-12-device-driver-development">Example 12</a>: Device Driver Development</p></li>
+<li><p><a class="reference external" href="#example-13-loading-the-module-into-a-kernel-and-application-execution">Example 13</a>: Loading the Module into a Kernel and Executing the Application</p></li>
+</ul>
+<div class="section" id="creating-peripheral-ip">
+<h2>Creating Peripheral IP<a class="headerlink" href="#creating-peripheral-ip" title="Permalink to this heading">¶</a></h2>
+<p>In this section, you will create an AXI4-Lite compliant slave
+peripheral IP framework using the Create and Package New IP wizard.
+You will also add functionality and port assignments to the peripheral
+IP framework.</p>
+<p>The peripheral IP you will create is an AXI4-Lite compliant slave IP.
+It includes a 28-bit counter. The four most significant bits of the counter drive the
+four output ports of the peripheral IP. The block diagram is shown in the
+following figure.</p>
+<p><img alt="Custom IP Structure" src="../../../_images/image93.jpeg" /></p>
+<p>The block diagram includes the following configuration register:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Register Name</th>
+<th>Control Register</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relative Address</td>
+<td>0x0000_0000</td>
+</tr>
+<tr>
+<td>Width</td>
+<td>1 bit</td>
+</tr>
+<tr>
+<td>Access Type</td>
+<td>Read/Write</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Start/Stop the Counter</td>
+</tr>
+</tbody>
+</table><table border="1" class="docutils">
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Bits</th>
+<th>Type</th>
+<th>Reset Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Control Bit</td>
+<td>0</td>
+<td>R/W</td>
+<td>0x0</td>
+<td>1 : Start Counter 2 : Stop Counter</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="example-11-creating-peripheral-ip">
+<h2>Example 11: Creating Peripheral IP<a class="headerlink" href="#example-11-creating-peripheral-ip" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id1">
+<h3>Creating Peripheral IP<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<p>In this section, you will create an AXI4-Lite compliant slave peripheral IP.</p>
+<ol class="simple">
+<li><p>Create a new project as described in <a class="reference external" href="2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc">Creating a New Embedded Project with Zynq SoC</a>.</p></li>
+<li><p>With the Vivado design open, select <strong>Tools → Create and Package New IP</strong>. Click <strong>Next</strong> to continue.</p></li>
+<li><p>Select <strong>Create a new AXI4 peripheral</strong> and then click <strong>Next</strong>.</p></li>
+<li><p>Fill in the peripheral details as follows:</p></li>
+</ol>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Screen</th>
+<th>System Property</th>
+<th>Setting or Comment to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peripheral Details</td>
+<td>Name</td>
+<td>Blink</td>
+</tr>
+<tr>
+<td></td>
+<td>Version</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td></td>
+<td>Display name</td>
+<td>Blink_v1.0</td>
+</tr>
+<tr>
+<td></td>
+<td>Description</td>
+<td>My new AXI IP</td>
+</tr>
+<tr>
+<td></td>
+<td>IP location</td>
+<td>C:/designs/ip_repro</td>
+</tr>
+<tr>
+<td></td>
+<td>Overwrite existing</td>
+<td>unchecked</td>
+</tr>
+</tbody>
+</table><ol>
+<li><p>Click <strong>Next</strong>.</p></li>
+<li><p>In the Add Interfaces page, accept the default settings and click <strong>Next</strong>.</p></li>
+<li><p>In the Create Peripheral page, select <strong>Edit IP</strong> and then click <strong>Finish</strong>. Upon completion of the new IP generation process, the Package IP window opens (see the following figure).</p>
+<p><img alt="../../../_images/image94.png" src="../../../_images/image94.png" /></p>
+</li>
+<li><p>In the Hierarchy view of the <strong>Sources</strong> window, right-click
+<strong>blink_v1_0</strong> under the Design Sources folder and select <strong>Open File</strong>. You need to add Verilog code that creates output ports
+to map to the external LEDs on the ZC702 board. Navigate to the line <code class="docutils literal notranslate"><span class="pre">//Users</span> <span class="pre">to</span> <span class="pre">add</span> <span class="pre">ports</span> <span class="pre">here</span></code> and add <code class="docutils literal notranslate"><span class="pre">output</span> <span class="pre">wire</span> <span class="pre">\[3:0\]</span> <span class="pre">leds</span></code>below this line, as shown in the following example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Users</span> <span class="n">to</span> <span class="n">add</span> <span class="n">ports</span> <span class="n">here</span>
+<span class="n">output</span> <span class="n">wire</span> <span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="n">leds</span><span class="p">,</span>
+<span class="o">//</span><span class="n">User</span> <span class="n">ports</span> <span class="n">ends</span>
+</pre></div>
+</div>
+</li>
+<li><p>Find the instantiation to the AXI bus interface and add <code class="docutils literal notranslate"><span class="pre">.leds(leds)</span></code>, as shown in the following example, to map the port
+connections:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">S_AXI_RREADY</span><span class="p">(</span><span class="n">s00_axi_rready</span><span class="p">),</span>
+  <span class="o">.</span><span class="n">leds</span><span class="p">(</span><span class="n">leds</span><span class="p">)</span>
+  <span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Save and close <strong>blink_v1_0.v</strong>.</p></li>
+<li><p>Under <strong>Sources → Hierarchy → Design Sources→ blink_v1_0</strong>, right-click <strong>blink_v1_0_S00_AXI_inst - blink_v1_0_S00_AXI</strong> and select <strong>Open File</strong>.</p>
+<p>Next, you will need to add Verilog code that creates output ports to
+map to the external LEDs on the ZC702 board and also create the logic
+code to blink the LEDs when register 0 is written to.</p>
+</li>
+<li><p>Navigate to the line <code class="docutils literal notranslate"><span class="pre">//Users</span> <span class="pre">to</span> <span class="pre">add</span> <span class="pre">ports</span> <span class="pre">here</span></code> and add <code class="docutils literal notranslate"><span class="pre">output</span> <span class="pre">wire</span> <span class="pre">\[3:0\]</span> <span class="pre">leds</span></code> below this line, as shown in the example below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Users</span> <span class="n">to</span> <span class="n">add</span> <span class="n">ports</span> <span class="n">here</span>
+<span class="n">output</span> <span class="n">wire</span> <span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="n">leds</span><span class="p">,</span>
+<span class="o">//</span><span class="n">User</span> <span class="n">ports</span> <span class="n">ends</span>
+</pre></div>
+</div>
+</li>
+<li><p>Find the AXI4-Lite signals section:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">AXI4LITE</span> <span class="n">signals</span>
+  <span class="n">reg</span> <span class="p">[</span><span class="n">C_S_AXI_ADDR_WIDTH</span><span class="o">-</span><span class="mi">1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">]</span> <span class="n">axi_awaddr</span><span class="p">;</span>
+  <span class="n">reg</span> <span class="n">axi_awready</span><span class="p">;</span>
+  <span class="n">reg</span> <span class="n">axi_wready</span><span class="p">;</span>
+  <span class="n">reg</span> <span class="p">[</span><span class="mi">1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">]</span> <span class="n">axi_bresp</span><span class="p">;</span>
+  <span class="n">reg</span> <span class="n">axi_bvalid</span><span class="p">;</span>
+  <span class="n">reg</span> <span class="p">[</span><span class="n">C_S_AXI_ADDR_WIDTH</span><span class="o">-</span><span class="mi">1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">]</span> <span class="n">axi_araddr</span><span class="p">;</span>
+  <span class="n">reg</span> <span class="n">axi_arready</span><span class="p">;</span>
+  <span class="n">reg</span> <span class="p">[</span><span class="n">C_S_AXI_DATA_WIDTH</span><span class="o">-</span><span class="mi">1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">]</span> <span class="n">axi_rdata</span><span class="p">;</span>
+  <span class="n">reg</span> <span class="p">[</span><span class="mi">1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">]</span> <span class="n">axi_rresp</span><span class="p">;</span>
+  <span class="n">reg</span> <span class="n">axi_rvalid</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>After this section, add a custom register, which you will use as a counter. Add the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">add</span> <span class="mi">28</span><span class="o">-</span><span class="n">bit</span> <span class="n">register</span> <span class="n">to</span> <span class="n">use</span> <span class="k">as</span> <span class="n">counter</span>
+<span class="n">reg</span> <span class="p">[</span><span class="mi">27</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="n">count</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Find the I/O connections assignments section:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="n">Connections</span> <span class="n">assignments</span>
+  <span class="n">assign</span> <span class="n">S_AXI_AWREADY</span> <span class="o">=</span> <span class="n">axi_awready</span><span class="p">;</span>
+  <span class="n">assign</span> <span class="n">S_AXI_WREADY</span> <span class="o">=</span> <span class="n">axi_wready</span><span class="p">;</span>
+  <span class="n">assign</span> <span class="n">S_AXI_BRESP</span> <span class="o">=</span> <span class="n">axi_bresp</span><span class="p">;</span>
+  <span class="n">assign</span> <span class="n">S_AXI_BVALID</span> <span class="o">=</span> <span class="n">axi_bvalid</span><span class="p">;</span>
+  <span class="n">assign</span> <span class="n">S_AXI_ARREADY</span> <span class="o">=</span> <span class="n">axi_arready</span><span class="p">;</span>
+  <span class="n">assign</span> <span class="n">S_AXI_RDATA</span> <span class="o">=</span> <span class="n">axi_rdata</span><span class="p">;</span>
+  <span class="n">assign</span> <span class="n">S_AXI_RRESP</span> <span class="o">=</span> <span class="n">axi_rresp</span><span class="p">;</span>
+  <span class="n">assign</span> <span class="n">S_AXI_RVALID</span> <span class="o">=</span> <span class="n">axi_rvalid</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Add the following code at the bottom:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">assign</span> <span class="n">MSB</span> <span class="n">of</span> <span class="n">count</span> <span class="n">to</span> <span class="n">LEDs</span>
+  <span class="n">assign</span> <span class="n">leds</span> <span class="o">=</span> <span class="n">count</span><span class="p">[</span><span class="mi">27</span><span class="p">:</span><span class="mi">24</span><span class="p">];</span>
+</pre></div>
+</div>
+</li>
+<li><p>Toward the bottom of the file, find the section that states <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">user</span> <span class="pre">logic</span> <span class="pre">here</span></code>. Add the following code, which will increment the count while the slv_reg0 is set to 0x1. If the register is not set, the counter will not increment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Add</span> <span class="n">user</span> <span class="n">logic</span> <span class="n">here</span>
+  <span class="o">//</span> <span class="n">on</span> <span class="n">positive</span> <span class="n">edge</span> <span class="n">of</span> <span class="nb">input</span> <span class="n">clock</span>
+  <span class="n">always</span> <span class="o">@</span><span class="p">(</span> <span class="n">posedge</span> <span class="n">S_AXI_ACLK</span> <span class="p">)</span>
+  <span class="n">begin</span>
+  <span class="o">//</span><span class="k">if</span> <span class="n">reset</span> <span class="ow">is</span> <span class="nb">set</span><span class="p">,</span> <span class="nb">set</span> <span class="n">count</span> <span class="o">=</span> <span class="mh">0x0</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="n">S_AXI_ARESETN</span> <span class="o">==</span> <span class="mi">1</span><span class="s1">&#39;b0 )</span>
+  <span class="n">begin</span>
+  <span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">28</span><span class="s1">&#39;b0;</span>
+  <span class="n">end</span>
+  <span class="k">else</span>
+  <span class="n">begin</span>
+  <span class="o">//</span><span class="n">when</span> <span class="n">slv_reg_0</span> <span class="ow">is</span> <span class="nb">set</span> <span class="n">to</span> <span class="mh">0x1</span><span class="p">,</span> <span class="n">increment</span> <span class="n">count</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">slv_reg0</span> <span class="o">==</span> <span class="mi">2</span><span class="s1">&#39;h01)</span>
+  <span class="n">begin</span>
+  <span class="n">count</span> <span class="o">&lt;=</span> <span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+  <span class="n">end</span>
+  <span class="k">else</span>
+  <span class="n">begin</span>
+  <span class="n">count</span> <span class="o">&lt;=</span> <span class="n">count</span><span class="p">;</span>
+  <span class="n">end</span>
+  <span class="n">end</span>
+  <span class="n">end</span>
+  <span class="o">//</span> <span class="n">User</span> <span class="n">logic</span> <span class="n">ends</span>
+</pre></div>
+</div>
+</li>
+<li><p>Save and close <strong>blink_v1_0_S00_AXI.v</strong>.</p></li>
+<li><p>Open the <strong>Package IP - blink</strong> page. Under <strong>Packaging Steps</strong>, select <strong>Ports and Interfaces</strong>.</p></li>
+<li><p>Click the <strong>Merge Changes from Ports and Interfaces Wizard</strong> link.</p>
+<p><img alt="../../../_images/image95.png" src="../../../_images/image95.png" /></p>
+</li>
+<li><p>Make sure that the window is updated and includes the LEDs output ports.</p>
+<p><img alt="../../../_images/image96.png" src="../../../_images/image96.png" /></p>
+</li>
+<li><p>Under Packaging Steps, select <strong>Review and Package</strong>. At the bottom of the Review and Package page, click <strong>Re-Package IP</strong>.</p>
+<p>The view that opens states that packaging is complete and asks if you would like to close the project.</p>
+</li>
+<li><p>Click <strong>Yes</strong>.</p></li>
+</ol>
+<p><strong>Note:</strong> The custom core creation process that you have worked
+through is very simple with the example Verilog included in the IP
+creation process. For more information, refer to the <em>GitHub Zynq Cookbook: How to Run BFM Simulation</em> <a href="https://github.com/imrickysu/ZYNQ-Cookbook/wiki/How-to-run-BFM-simulation">web page</a>.</p>
+</div>
+<div class="section" id="integrating-peripheral-ip-with-ps-gp-master-port">
+<h3>Integrating Peripheral IP with PS GP Master Port<a class="headerlink" href="#integrating-peripheral-ip-with-ps-gp-master-port" title="Permalink to this heading">¶</a></h3>
+<p>You will now create a system for the ZC702 board by instantiating the
+peripheral IP as a slave in the Zynq SoC programmable logic (PL)
+section. You will then connect it with the processor through the
+processing system (PS) general purpose (GP) master port. The block
+diagram for the system is shown in the following figure.</p>
+<p><img alt="../../../_images/image97.jpeg" src="../../../_images/image97.jpeg" /></p>
+<p>This system covers the following connections:</p>
+<ul class="simple">
+<li><p>Peripheral IP connected to PS general purpose master port 0
+(<strong>M_AXI_GP0</strong>). This connection is used by the PS CPU to configure peripheral IP register configurations.</p></li>
+<li><p>Four output ports for peripheral IP connected to DS15, DS16, DS17, and DS18 on-board LEDs.</p></li>
+</ul>
+<p>In this system, when you run application code, a message appears on
+the serial terminal and asks you to choose the option to make the LEDs
+start or stop blinking.</p>
+<ul class="simple">
+<li><p>When you select the start option on the serial terminal, all four
+LEDs start blinking.</p></li>
+<li><p>When you select the stop option, all four LEDs stop blinking and
+retain the previous state.</p></li>
+</ul>
+</div>
+<div class="section" id="connecting-an-axi4-lite-compliant-custom-slave-ip">
+<h3>Connecting an AXI4-Lite Compliant Custom Slave IP<a class="headerlink" href="#connecting-an-axi4-lite-compliant-custom-slave-ip" title="Permalink to this heading">¶</a></h3>
+<p>In this section, you will connect the AXI4-Lite compliant custom slave
+peripheral IP that you created in <a class="reference external" href="#creating-peripheral-ip">Creating Peripheral IP</a>.</p>
+<ol>
+<li><p>Open the Vivado project you previously created in <a class="reference external" href="2-using-zynq.html#example-1-creating-a-new-embedded-project-with-zynq-soc">Creating a New Embedded Project with Zynq SoC</a>.</p></li>
+<li><p>Add the custom IP to the existing design. Right-click the Diagram view and select <strong>Add IP</strong>.</p></li>
+<li><p>Type “blink” into the search view. Blink_v1.0 appears. Double-click the IP to add it to the design.</p></li>
+<li><p>Click <strong>Run Connection Automation</strong> to make automatic port connections.</p></li>
+<li><p>With the <strong>All Automation</strong> box checked by default, click <strong>OK</strong> to make the connections. Your new IP is automatically connected, but the <strong>leds</strong> output port is disconnected.</p></li>
+<li><p>Right-click the <strong>leds</strong> port and select <strong>Make External</strong>.</p>
+<p><img alt="../../../_images/image98.jpeg" src="../../../_images/image98.jpeg" /></p>
+</li>
+<li><p>In the Flow Navigator view, navigate to <strong>RTL Analysis</strong> and select <strong>Open Elaborated Design</strong>.</p></li>
+<li><p>Click <strong>OK</strong>.</p></li>
+<li><p>After the elaborated design opens, click the <strong>I/O Ports</strong> window and expand <strong>All ports → led_0</strong>.</p>
+<p><img alt="../../../_images/image99.png" src="../../../_images/image99.png" /></p>
+</li>
+<li><p>Edit the <strong>leds</strong> port settings as follows:</p></li>
+</ol>
+<pre><code>| Port Name | I/O Std  | Package Pin |
+| --------- | -------- | ----------- |
+| Leds[3]   | LVCMOS25 | P17         |
+| Leds[2]   | LVCMOS25 | P18         |
+| Leds[1]   | LVCMOS25 | W10         |
+| Leds[0]   | LVCMOS25 | V7          |
+</code></pre><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The following figure shows the completed **leds** port settings in the I/O Ports window.
+
+![](./media/image100.png)
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Select <strong>Generate Bitstream</strong>.</p></li>
+<li><p>The Save Project view opens. Ensure that the check box is selected and then click <strong>Save</strong>.</p></li>
+<li><p>If a message appears stating that synthesis is Out-of-date, click <strong>Yes</strong>.</p></li>
+<li><p>After the bitstream generation completes, export the hardware and launch the Vitis unified software platform as described in <a class="reference external" href="2-using-zynq.html#exporting-a-hardware-platform">Exporting a Hardware Platform</a>.</p></li>
+</ol>
+<p><strong>Note:</strong> Make sure to select <strong>Include bitstream</strong> instead of <strong>Pre-synthesis</strong> on the <strong>Output</strong> page of the <strong>Export Hardware
+Platform</strong> wizard.</p>
+</div>
+</div>
+<div class="section" id="linux-based-device-driver-development">
+<h2>Linux-Based Device Driver Development<a class="headerlink" href="#linux-based-device-driver-development" title="Permalink to this heading">¶</a></h2>
+<p>Modules in Linux are pieces of code that can be loaded and unloaded
+into the kernel on demand. A piece of code that you add in this way is
+called a loadable kernel module (LKM). These modules extend the
+functionality of the kernel without the need to reboot the system.
+Without modules, you would need to build monolithic kernels and add
+new functionality directly into the kernel image. Besides having
+larger kernels, this has the disadvantage of requiring you to rebuild
+and reboot the kernel every time you want new functionality.</p>
+<p>LKMs typically are one of the following things:</p>
+<ul class="simple">
+<li><p><strong>Device drivers:</strong> A device driver is designed for a specific piece
+of hardware. The kernel uses it to communicate with that piece of
+hardware without having to know any details of how the hardware
+works.</p></li>
+<li><p><strong>File system drivers:</strong> A file system driver interprets the contents
+of a file system as files and directories.</p></li>
+<li><p><strong>System calls:</strong> User space programs use system calls to get
+services from the kernel.</p></li>
+</ul>
+<p>On Linux, each piece of hardware is represented by a file named as a
+device file, which provides the means to communicate with the
+hardware. Most hardware devices are used for output as well as input,
+so device files provide input/output control (ioctl) to send and
+receive data to and from hardware. Each device can have its own ioctl
+commands, which can be of the following types:</p>
+<ul class="simple">
+<li><p><strong>read ioctl:</strong> These commands send information from a process to the kernel.</p></li>
+<li><p><strong>write ioctl:</strong> These commands return information to a process.</p></li>
+<li><p>Both read and write ioctl.</p></li>
+<li><p>Neither read nor write ioctl.</p></li>
+</ul>
+<p>For more details about LKM, refer to the <a href="http://tldp.org/LDP/lkmpg/2.6/html/index.html">Linux Kernel Module
+Programming Guide</a>.</p>
+<p>In this section you are going to develop a peripheral IP device driver as an LKM, which is dynamically loadable onto the running kernel. You must build the peripheral IP LKM as part of the same kernel build process that generates the base kernel image.</p>
+<p><strong>Note:</strong> If you do not want to compile the device driver, you can skip the example in this section and jump to <a class="reference external" href="#example-13-loading-the-module-into-a-kernel-and-application-execution">Loading a Module into the Kernel and Application Execution</a>. In that section, you can use the kernel image, which contains <code class="docutils literal notranslate"><span class="pre">blink.ko</span></code> (<code class="docutils literal notranslate"><span class="pre">image.ub</span></code> in the shared ZIP files). See <a class="reference external" href="2-using-zynq.html#design-files-for-this-tutorial">Design Files for This Tutorial</a>.</p>
+<p>For kernel compilation and device driver development, you must use the Linux workstation. Before you start developing the device driver, the following steps are required:</p>
+<ol class="simple">
+<li><p>Set the toolchain path in your Linux workstation.</p></li>
+<li><p>Download the kernel source code and compile it. For downloading and compilation, refer to the steps mentioned in the <a class="reference external" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841961/Zynq+Linux">Xilinx Zynq Linux Wiki Page</a>.</p></li>
+</ol>
+</div>
+<div class="section" id="example-12-device-driver-development">
+<h2>Example 12: Device Driver Development<a class="headerlink" href="#example-12-device-driver-development" title="Permalink to this heading">¶</a></h2>
+<p>You will use a Linux workstation for this example project. The device
+driver software is provided in the LKM folder of the ZIP file that
+accompanies this guide. See <a class="reference external" href="2-using-zynq.html#design-files-for-this-tutorial">Design Files for This Tutorial</a>.</p>
+<ol>
+<li><p>Under the PetaLinux project directory, use the command below to
+create your module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">create</span> <span class="o">-</span><span class="n">t</span> <span class="n">modules</span> \<span class="o">--</span><span class="n">name</span> <span class="n">mymodule</span> \<span class="o">--</span><span class="n">enable</span>
+</pre></div>
+</div>
+<p>PetaLinux creates the module under the following directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="o">&lt;</span><span class="n">plnx</span><span class="o">-</span><span class="n">project</span>\<span class="o">&gt;/</span><span class="n">project</span><span class="o">-</span><span class="n">spec</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">user</span><span class="o">/</span> <span class="n">recipes</span><span class="o">-</span><span class="n">modules</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>For this exercise, create the “blink” module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">create</span> <span class="o">-</span><span class="n">t</span> <span class="n">modules</span> \<span class="o">--</span><span class="n">name</span> <span class="n">blink</span> \<span class="o">--</span><span class="n">enable</span>
+</pre></div>
+</div>
+<p>The default driver creation includes a Makefile, C-file, and README
+files. In this exercise, PetaLinux creates <code class="docutils literal notranslate"><span class="pre">blink.c</span></code>, a Makefile, and
+README files. It also contains the bit bake recipe <code class="docutils literal notranslate"><span class="pre">blink.bb</span></code>.</p>
+</li>
+<li><p>Change the C-file (driver file) and the Makefile as per your
+driver.</p></li>
+<li><p>Take the LKM folder (reference files) and copy <strong>blink.c</strong> and <strong>blink.h</strong>
+into this directory.</p></li>
+<li><p>Open the <strong>blink.bb</strong> recipe and add a <code class="docutils literal notranslate"><span class="pre">blink.h</span></code> entry in <code class="docutils literal notranslate"><span class="pre">SRC_URI</span></code>.</p></li>
+<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">petalinux-build</span></code>.</p>
+<p>After successful compilation the <code class="docutils literal notranslate"><span class="pre">.ko</span></code> file is created in the following
+location:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">petalinux</span><span class="o">-</span><span class="n">build_directory</span><span class="o">&gt;/</span><span class="n">build</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">sysroots</span><span class="o">-</span><span class="n">components</span><span class="o">/</span><span class="n">zc702_zynq7</span><span class="o">/</span><span class="n">blink</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="mf">5.4.0</span><span class="o">-</span><span class="n">xilinx</span><span class="o">-</span><span class="n">v2021</span><span class="mf">.1</span><span class="o">/</span><span class="n">extra</span><span class="o">/</span><span class="n">blink</span><span class="o">.</span><span class="n">ko</span>
+</pre></div>
+</div>
+</li>
+<li><p>You can install the driver using the <code class="docutils literal notranslate"><span class="pre">modprobe</span></code> command, which will be
+explained in further detail in the next section.</p></li>
+</ol>
+</div>
+<div class="section" id="example-13-loading-a-module-into-a-kernel-and-executing-the-application">
+<h2>Example 13: Loading a Module into a Kernel and Executing the Application<a class="headerlink" href="#example-13-loading-a-module-into-a-kernel-and-executing-the-application" title="Permalink to this heading">¶</a></h2>
+<p>In this example, you will boot Linux onto the Zynq SoC Board and load
+the peripheral IP as an LKM onto it. You will develop the application
+for the system and execute it onto the hardware.</p>
+<div class="section" id="loading-the-module-into-kernel-memory">
+<h3>Loading the Module into Kernel Memory<a class="headerlink" href="#loading-the-module-into-kernel-memory" title="Permalink to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">modprobe</span></code> command makes an <code class="docutils literal notranslate"><span class="pre">init_module</span></code> system call to load the LKM into the kernel
+memory. The <code class="docutils literal notranslate"><span class="pre">init_module</span></code> system call invokes the LKM initialization routine immediately after it loads the LKM. As part of its
+initialization routine, <code class="docutils literal notranslate"><span class="pre">insmod</span></code> passes to the address of the subroutine
+to <code class="docutils literal notranslate"><span class="pre">init_module</span></code>.</p>
+<p>In the peripheral IP device driver, you already set up <code class="docutils literal notranslate"><span class="pre">init_module</span></code> to
+call a kernel function that registers the subroutines. It calls the
+kernel’s <code class="docutils literal notranslate"><span class="pre">register_chrdev</span></code> subroutine, passing the major and minor
+number of the devices it intends to drive and the address of its own
+“open” routine among the arguments. The subroutine <code class="docutils literal notranslate"><span class="pre">register_chrdev</span></code>
+specifies in base kernel tables that when the kernel wants to open
+that particular device, it should call the open routine in your LKM.</p>
+</div>
+<div class="section" id="application-software">
+<h3>Application Software<a class="headerlink" href="#application-software" title="Permalink to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">main()</span></code> function in the application software is the entry point for
+the execution. It opens the device file for the peripheral IP and then
+waits for the user selection on the serial terminal.</p>
+<p>If you select the start option on the serial terminal, all four LEDs
+start blinking. If you select the stop option, all four LEDs stop
+blinking and retain the previous state.</p>
+</div>
+<div class="section" id="example-steps">
+<h3>Example Steps<a class="headerlink" href="#example-steps" title="Permalink to this heading">¶</a></h3>
+<div class="section" id="booting-linux-on-the-target-board">
+<h4>Booting Linux on the Target Board<a class="headerlink" href="#booting-linux-on-the-target-board" title="Permalink to this heading">¶</a></h4>
+<p>Boot Linux on the Zynq SoC ZC702 target board, as described in <a class="reference external" href="7-linux-booting-debug.html#booting-linux-on-a-zynq-soc-board">Booting Linux on a Zynq SoC Board</a>.</p>
+</div>
+<div class="section" id="loading-modules-and-executing-applications">
+<h4>Loading Modules and Executing Applications<a class="headerlink" href="#loading-modules-and-executing-applications" title="Permalink to this heading">¶</a></h4>
+<p>In this section, you will use the Vitis software platform installed on a Windows machine.</p>
+<ol>
+<li><p>Open the Vitis software platform. You must run the Target Communication Frame (TCF) agent on the host machine.</p></li>
+<li><p>In the XSCT Console view, type <code class="docutils literal notranslate"><span class="pre">connect</span></code> to connect to the Xilinx Software Command-Line Tool (XSCT).</p></li>
+<li><p>In the Vitis software platform, select <strong>File → New → Application Project</strong> to open the New Application Project wizard.</p></li>
+<li><p>Use the information in the table below to make your selections in the wizard screens.</p>
+<p>| Screen               | System Property                                     | Setting or Command to Use                                                                           |
+| ————————— | ————————————————— | ————————————————————————————————— |
+| Platform                    | Select a platform from repository                   | Click hw_platform [custom].                                                                         |
+| Application Project Details | Application project name                            | Enter linux_blinkled_app                                                                            |
+|                             | Select target processor for the Application project | Select ps7_cortexa9 SMP.                                                                            |
+| Domain                      | Select a domain                                     | Click linux_application_domain.                                                                     |
+|                             | Application settings                                | If known, enter the sysroot, root FS, and kernel image paths. Otherwise, leave these options blank. |
+| Templates                   | Available Templates                                 | Linux Empty Application                                                                             |</p>
+</li>
+<li><p>Click <strong>Finish</strong>. The New Application Project wizard closes and the Vitis software platform creates the linux_blinkled_app project under the Explorer view.</p></li>
+<li><p>In the Explorer view, expand the <strong>linux_blinkled_app</strong> project, right-click the <strong>src</strong> directory, and select <strong>Import</strong>. The Import Sources view opens.</p></li>
+<li><p>Browse for the <strong>LKM_App</strong> folder and select the <strong>linux_blinkled_app.c</strong> and <strong>blink.h</strong> files.</p>
+<p><strong>Note:</strong> The application software file name for the system is
+<code class="docutils literal notranslate"><span class="pre">linux_blinkled_app.c</span></code> and the header file name is <code class="docutils literal notranslate"><span class="pre">blink.h</span></code>. These files
+are available in the LKM folder of the ZIP file that accompanies this
+guide. See <a class="reference external" href="2-using-zynq.html#design-files-for-this-tutorial">Design Files for This Tutorial</a>.</p>
+<p>Add the <strong>linux_blinkled_app.c</strong> and <strong>blink.h</strong> files.</p>
+</li>
+<li><p>Click <strong>Finish</strong>.</p>
+<p>Right-click on the <strong>linux_blinkled_app</strong> project and select <strong>Build Project</strong>
+to generate the <code class="docutils literal notranslate"><span class="pre">linux_blinkled_app.elf</span></code> file in binary folders. Check the
+Console window for the status of this action.</p>
+</li>
+<li><p>Connect the board.</p></li>
+<li><p>Because you have a bitstream for the PL fabric, you must download the bitstream. Select <strong>Xilinx → Program FPGA</strong>. The Program FPGA view opens. It displays the bitstream exported from Vivado.</p></li>
+<li><p>Click <strong>Program</strong> to download the bitstream and program the PL fabric.</p></li>
+<li><p>Follow the steps described in <a class="reference internal" href="7-linux-booting-debug.html"><span class="doc">Linux Booting and Debug in the Vitis Software Platform</span></a> to load the Linux image and start it.</p>
+<p>After the kernel boots successfully, in a serial terminal, navigate to <code class="docutils literal notranslate"><span class="pre">/lib/modules/\&lt;kernel-version\&gt;/extr</span></code> and run the command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">modprobe</span> <span class="pre">blink.ko</span></code></p>
+<p>You will see the following message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="n">Hello</span> <span class="n">module</span> <span class="n">world</span><span class="o">.</span>
+<span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="n">Module</span> <span class="n">parameters</span> <span class="n">were</span> <span class="p">(</span><span class="mh">0xdeadbeef</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;default&quot;</span>
+<span class="n">blink_init</span><span class="p">:</span> <span class="n">Registers</span> <span class="n">mapped</span> <span class="n">to</span> <span class="n">mmio</span> <span class="o">=</span> <span class="mh">0xf09f4000</span>
+<span class="n">Registration</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">success</span> <span class="n">the</span> <span class="n">major</span> <span class="n">device</span> <span class="n">number</span> <span class="ow">is</span> <span class="mf">244.</span>
+</pre></div>
+</div>
+<p>If you want to talk to the device driver, create a device file by running the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">mknod</span> <span class="pre">/dev/blink_Dev</span> <span class="pre">c</span> <span class="pre">244</span> <span class="pre">0</span></code></p>
+<p>The device file name is important, because the ioctl program assumes that is the file you will use.</p>
+</li>
+<li><p>Create a device node. Run the <code class="docutils literal notranslate"><span class="pre">mknod</span></code> command and select the the string from the printed message.</p>
+<p>For example, the command <code class="docutils literal notranslate"><span class="pre">mknod</span> <span class="pre">/dev/blink_Dev</span> <span class="pre">c</span> <span class="pre">244</span> <span class="pre">0</span></code> creates the <code class="docutils literal notranslate"><span class="pre">/dev/blink_Dev</span></code> node.</p>
+</li>
+<li><p>Select <strong>Window → Open perspective → Remote System Explorer</strong> and click <strong>Open</strong>. The Vitis software platform opens the Remote
+Systems Explorer perspective.</p></li>
+<li><p>In the Remote Systems view, do the following:</p>
+<p>a.  Right-click and select <strong>New → Connection</strong> to open the New
+Connection wizard.</p>
+<p>b.  Select the <strong>SSH Only</strong> and click <strong>Next</strong>.</p>
+<p>c.  In the Host name field, type the target board IP. To determine the target IP, type “ifconfig eth0” at the Zynq prompt in the serial terminal. The target IP assigned to the board displays.</p>
+<p>d.  Set the connection name as <strong>blink</strong> and type a description.</p>
+<p>e.  Click <strong>Finish</strong> to create the connection.</p>
+<p>f.  Expand <strong>blink → sftp Files → Root</strong>. The Enter Password wizard opens.</p>
+<p>g.  Enter the user ID and password (<strong>root/root</strong>). Select the <strong>Save user ID</strong> and <strong>Save password</strong> options.</p>
+<p>h.  Click <strong>OK</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">window</span> <span class="n">displays</span> <span class="n">the</span> <span class="n">root</span> <span class="n">directory</span> <span class="n">content</span><span class="p">,</span> <span class="n">because</span> <span class="n">you</span> <span class="n">previously</span>
+<span class="n">established</span> <span class="n">the</span> <span class="n">connection</span> <span class="n">between</span> <span class="n">the</span> <span class="n">Windows</span> <span class="n">host</span> <span class="n">machine</span> <span class="ow">and</span> <span class="n">the</span>
+<span class="n">target</span> <span class="n">board</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>i.  Right-click the <strong>/</strong> in the path name and create a new directory; name it “Apps”.</p>
+<p>j.  Using the Remote System Explorer perspective, copy the <strong>linux_blinkled_app.elf</strong> file from the <strong><project-dir>/linux_blinkled_app/Debug</strong> folder and paste it into the <strong>/Apps</strong> directory under <strong>blink connection</strong>.</p>
+</li>
+<li><p>In the serial terminal, type <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Apps</span></code> to open the <code class="docutils literal notranslate"><span class="pre">/Apps</span></code> directory.</p></li>
+<li><p>Go to the <strong>Apps</strong> directory. Type <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">777</span> <span class="pre">linux_blinkled_app.elf</span></code> to change the <code class="docutils literal notranslate"><span class="pre">linux_blinkled_app.elf</span></code> file mode to executable mode.</p></li>
+<li><p>At the prompt, type <code class="docutils literal notranslate"><span class="pre">./linux_blinkled_app.elf</span></code> to execute the application.</p></li>
+<li><p>Follow the instruction printed on the serial terminal to run the
+application. The application asks you to enter 1 or 0 as input.</p>
+<ul class="simple">
+<li><p>Type 1, and observe the LEDs DS15, DS16, DS17, and DS18. They start
+glowing.</p></li>
+<li><p>Type 0, and observe that the LEDs stop at their state. No more
+blinking changes. Repeat your inputs and observe the LEDs.</p></li>
+</ul>
+</li>
+<li><p>After you finish debugging the Linux application, close the Vitis
+software platform.</p></li>
+</ol>
+<hr class="docutils" />
+<p>© Copyright 2015–2021 Xilinx, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
+<p>http://www.apache.org/licenses/LICENSE-2.0</p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="7-linux-booting-debug.html" class="btn btn-neutral float-left" title="Linux Boot Image Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html" class="btn btn-neutral float-right" title="Creating a Debuggable First Stage Boot Loader" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on August 1, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

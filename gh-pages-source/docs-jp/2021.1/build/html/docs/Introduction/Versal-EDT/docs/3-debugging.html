@@ -1,0 +1,411 @@
+﻿<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+
+
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Vitis ソフトウェア プラットフォームを使用したデバッグ &mdash; エンベデッド デザイン チュートリアル 2021.1 の資料</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="スカラー型エンジンと適応型エンジンを使用したシステム デザイン例" href="5-system-design-example.html" />
+    <link rel="prev" title="ブートおよびコンフィギュレーション" href="4-boot-and-config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../../index.html" class="icon icon-home"> エンベデッド デザイン チュートリアル
+            <img src="../../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2021.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">English</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">入門</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Versal-EDT.html">Versal ACAP エンベデッド デザイン チュートリアル</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-getting-started.html">入門</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-cips-noc-ip-config.html">Versal ACAP CIPS および NoC (DDR) IP コアの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-boot-and-config.html">ブートおよびコンフィギュレーション</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Vitis ソフトウェア プラットフォームを使用したデバッグ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xilinx-system-debugger">ザイリンクス システム デバッガー</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-software-using-the-vitis-software-platform">Vitis ソフトウェア プラットフォームでのソフトウェアのデバッグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-using-xsct">ザイリンクス ソフトウェア コマンド ライン ツール (XSCT) を使用したデバッグ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-target">ターゲットの設定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loading-the-application-using-xsct">XSCT を使用したアプリケーションのロード</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-the-serial-terminal">シリアル端末の設定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-and-debugging-application-using-xsct">XSCT を使用したアプリケーションの実行およびデバッグ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="5-system-design-example.html">スカラー型エンジンと適応型エンジンを使用したシステム デザイン例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-system-design-example-HSDP.html">SmartLynq+ モジュールを使用した高速デバッグ ポート (HSDP) のシステム デザイン例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A-creating-plm.html">付録: PLM の作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Versal-EDT.html#navigating-content-by-design-process">この資料に関連する設計プロセス</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC エンベデッド デザイン チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 エンベデッド デザイン チュートリアル</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">機能チュートリアル</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">FSBL (First Stage Boot Loader)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw-profiling/sw-profiling.html">システム デバッガーを使用したアプリケーションのプロファイル</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">デバッグ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis エンベデッド ソフトウェア デバッグ ガイド (UG1515) 2021.1</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ユーザー ガイド</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/SPA-UG/SPA-UG.html">システム パフォーマンス解析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone のベンチマーク</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">以前のリリース</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs-jp/2020.2/docs-jp/index.html">2020.2</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">エンベデッド デザイン チュートリアル</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../Versal-EDT.html">Versal ACAP エンベデッド デザイン チュートリアル</a> &raquo;</li>
+      <li>Vitis ソフトウェア プラットフォームを使用したデバッグ</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/docs/Introduction/Versal-EDT/docs/3-debugging.rst.txt" rel="nofollow">ページ ソースの表示</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="debugging-using-the-vitis-software-platform">
+<h1>Vitis ソフトウェア プラットフォームを使用したデバッグ<a class="headerlink" href="#debugging-using-the-vitis-software-platform" title="Permalink to this heading">¶</a></h1>
+<p>この章では、これまで説明してきたデザイン フローで可能なデバッグについて説明します。最初のオプションは、ザイリンクス Vitis™ソフトウェア プラットフォームを使用したデバッグです。</p>
+<p>Vitis ソフトウェア プラットフォーム デバッガーには、次のデバッグ機能があります。</p>
+<ul class="simple">
+<li><p>Arm® Cortex™-A72、Arm Cortex-R5F、および MicroBlaze™ プロセッサ アーキテクチャ上のプログラムのデバッグをサポート (ヘテロジニアス マルチプロセッサ ハードウェア システムのデバッグ)。</p></li>
+<li><p>ハードウェア ボード上のプログラムのデバッグをサポート。</p></li>
+<li><p>リモート ハードウェア システムでのデバッグをサポート。</p></li>
+<li><p>プログラムをデバッグするための豊富な機能を備えた IDE を提供。</p></li>
+<li><p>テスト スクリプトの実行および自動化のためのツール コマンド言語 (Tcl) インターフェイスを提供。</p></li>
+</ul>
+<p>Vitis ソフトウェア プラットフォーム デバッガーを使用すると、プログラムの実行中に何が起こっているかを確認できます。プロセッサを停止するブレークポイントまたはウォッチ ポイントの設定、プログラムのステップ実行、プログラム変数およびスタックの確認、システム内のメモリ内容の確認などを実行できます。</p>
+<p>Vitis ソフトウェア プラットフォームでは、ザイリンクス システム デバッガーを使用したデバッグがサポートされます。</p>
+<section id="xilinx-system-debugger">
+<h2>ザイリンクス システム デバッガー<a class="headerlink" href="#xilinx-system-debugger" title="Permalink to this heading">¶</a></h2>
+<p>Vitis ソフトウェア プラットフォーム デバッガーを使用すると、コードを 1 行ずつをステップ スルーできます。プロセッサを停止するブレークポイントまたはウォッチポイントの設定、プログラムのステップ実行、プログラム変数およびスタックの確認、システム内のメモリ内容の確認などを実行できます。</p>
+<p>デバッガーでは、シングル アプリケーション デバッグと GNU デバッガー (GDB) によるデバッグがサポートされます。ザイリンクスのカスタマイズしたシステム デバッガーは、オープンソース ツールから作成されたツールで、Vitis ソフトウェア プラットフォームに統合されています。</p>
+<p>ザイリンクス システム デバッガーでは、ザイリンクスの hw_server が基本のデバッグ エンジンとして使用されます。Vitis ソフトウェア プラットフォームは、各ユーザー インターフェイス操作を一連の TCF (Target Communication Framework) コマンドに変換し、システム デバッガーからの出力を処理して、デバッグされているプログラムの現在のステートを表示します。Vits IDE は、ザイリンクスの hw_server を使用してハードウェア上のプロセッサと通信します。次の図に、このデバッグ ワークフローを示します。</p>
+<p><strong>図 1: システム デバッガーのフロー</strong></p>
+<img alt="../../../../_images/quz1567060977342_LowRes.png" src="../../../../_images/quz1567060977342_LowRes.png" />
+<p>デバッグ ワークフローは、次の要素で構成されます。</p>
+<ul class="simple">
+<li><p><strong>実行可能 ELF ファイル:</strong> ELF ファイルを実行できユーザー アプリケーションをデバッグするには、デバッグ用にコンパイルされた ELF ファイルを使用する必要があります。デバッグ ELF ファイルには、デバッガーへの追加のデバッグ情報が含まれ、ソース コードとその元のソースから生成された 2 進数間が直接関連付けられます。ビルド コンフィギュレーションを→するには、ソフトウェア アプリケーションを右クリックして <strong>[Build Configurations] → [Manage]</strong> をクリックします。</p></li>
+<li><p><strong>デバッグ コンフィギュレーション</strong>: デバッグ セッションを開始するには、Vitis ソフトウェア プラットフォームでデバッグ コンフィギュレーションを作成する必要があります。このコンフィギュレーションには、実行ファイル名、デバッグするプロセッサ ターゲットなど、デバッグ セッションを開始するのに必要な情報が含まれます。デバッグ コンフィギュレーションを作成するには、ソフトウェア アプリケーションを右クリックして <strong>[Debug As] → [Debug Configurations]</strong> をクリックします。</p></li>
+<li><p><strong>Vitis ソフトウェア プラットフォームの [Debug] パースペクティブ</strong>: [Debug] パースペクティブを使用すると、ワークベンチでプログラムのデバッグまたは実行を管理できます。ブレークポイントを設定、実行中のプログラムを一時停止、コードをステップ実行、変数の内容を確認するなど、プログラムの実行を制御できます。<strong>[Debug]</strong> パースペクティブを表示するには、<strong>[Window] → [Open Perspective→ → [Debug]</strong> をクリックします。</p></li>
+</ul>
+<p>Vitis ソフトウェア プラットフォームで、コードの修正、実行ファイルの構築、プログラムのデバッグというサイクルを繰り返すことができます。</p>
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>コンパイル後にソースを編集すると、デバッグ情報がソースに直接リンクされるため、行番号が変更されます。同様に、最適化されたバイナリをデバッグすると、実行トレース中に予期しないジャンプが発生することがあります。</p>
+</div>
+</section>
+<section id="debugging-software-using-the-vitis-software-platform">
+<h2>Vitis ソフトウェア プラットフォームでのソフトウェアのデバッグ<a class="headerlink" href="#debugging-software-using-the-vitis-software-platform" title="Permalink to this heading">¶</a></h2>
+<p>この例では、Hello World アプリケーションのデバッグについて説明します。</p>
+<p>APU または RPU で Hello World アプリケーションを作成しなかった場合は、<a class="reference external" href="./2-cips-noc-ip-config.rst#running-a-bare-metal-hello-world-application">「ベアメタル Hello World アプリケーションの実行」</a>または<a class="reference external" href="./2-cips-noc-ip-config.rst#running-a-bare-metal-hello-world-application-on-ddr-memory">「DDR メモリでのベアメタル Hello World アプリケーションの実行」</a>の手順に従ってください。</p>
+<p>hello world アプリケーションを作成したら、Vitis ソフトウェア プラットフォームで次の例を実行してソフトウェアをデバッグします。</p>
+<ol class="arabic">
+<li><p>アプリケーションを右クリックし、<strong>[Build Project]</strong> をクリックしてアプリケーションをビルドします。</p></li>
+<li><p>次の図に示すように、アプリケーション プロジェクトを右クリックし、<strong>[Debug As] → [Launch on Hardware (Single Application Debug)]</strong> をクリックします。</p>
+<blockquote>
+<div><img alt="../../../../_images/image40.jpeg" src="../../../../_images/image40.jpeg" />
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>[Debug] パースペクティブは、<strong>[Window] → [Debug Perspective]</strong> をクリックしても起動できます。</p>
+</div>
+</div></blockquote>
+<img alt="../../../../_images/image41.jpeg" src="../../../../_images/image41.jpeg" />
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>このページに示されているアドレスは、システムで表示されているものと若干異なる場合があります。</p>
+</div>
+<p>プロセッサが <cite>main()</cite> メソッドの始め部分にあり、プログラム実行が 0x00000000fffc0cf0 で停止していることがわかります。この情報は [Disassembly] ビューで確認できます。このビューに、アセンブリ レベルのプログラム実行が <cite>0x00000000fffc0cf0</cite> で一時停止していることが示されています。</p>
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p><strong>[Disassembly]</strong> ビューが表示されていない場合は、<strong>[Window] → [Disassembly]</strong> をクリックします。</p>
+</div>
+</li>
+<li><p>helloworld.c ウィンドウにも、C コードの最初の実行可能な行で実行が一時停止していることが表示されています。<strong>[Registers]</strong> ビューを選択し、プログラム カウンターである pc レジスタに <cite>0x00000000fffc0cf0</cite> が含まれていることを確認します。</p>
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>[Registers] ウィンドウが表示されていない場合は、<strong>[Window] → [Registers]</strong> をクリックします。</p>
+</div>
+</li>
+<li><p><cite>helloworld.c</cite> ウィンドウの <cite>printf(&ldquo;Hello World from APUnr&rdquo;);</cite> を読み出すコード行の横の空白をダブルクリックします。これにより、<cite>printf</cite> コマンドにブレークポイントが設定されます。ブレークポイントの確認には、[Breakpoints] ウィンドウを使用します。</p>
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>[Breakpoints] ウィンドウが表示されていない場合は、<strong>[Window] → [Breakpoints]</strong> をクリックします。</p>
+</div>
+</li>
+<li><p><strong>[Run] → [Step Into]</strong> をクリックし、<cite>init_platform ()</cite> ルーチンにステップインします。プログラムの実行が <cite>0x00000000fffc0cf0</cite> の位置で一時停止します。コール スタックの深さは 2 レベルになります。</p></li>
+<li><p><strong>[Run] → [Resume]</strong> をクリックし、プログラムをブレークポイントまで実行します。</p>
+<p>プログラムの実行は、<cite>printf</cite> コマンドを含むコードの行で停止します。<strong>[Disassembly]</strong> および <strong>[Debug]</strong> ウィンドウに、プログラムの実行が <cite>0x00000000fffc0cf4</cite> で停止していることが示されます。</p>
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>helloworld ソース コードを変更した場合、ウィンドウに表示される実行アドレスは異なる場合があります。</p>
+</div>
+</li>
+<li><p><strong>[Run] → [Resume]</strong> をクリックし、プログラムを最後まで実行します。</p>
+<p>プログラムの実行が完了すると、<strong>[Debug]</strong> ウィンドウにプログラムが <strong>exit</strong> というルーチンで一時停止していることが示されます。これは、デバッガーの制御下で実行しているときに発生します。</p>
+</li>
+<li><p>コードを複数回再実行します。シングル ステップ、メモリの検査、ブレークポイント、コードの変更、および print 文の追加を試してみます。ビューの追加および移動を試します。</p>
+<div class="admonition tip">
+<p class="admonition-title">ヒント</p>
+<p>Vitis ソフトウェア プラットフォームのデバッグ ショートカット (ステップ イン (F5)、ステップ リターン (F7)、ステップ オーバー (F6)、および再開 (F8)) を使用できます。または、ツールバー ボタンを使用することもできます。</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="debugging-using-xsct">
+<h2>ザイリンクス ソフトウェア コマンド ライン ツール (XSCT) を使用したデバッグ<a class="headerlink" href="#debugging-using-xsct" title="Permalink to this heading">¶</a></h2>
+<p>XSCT の一部として含まれる XSDB を使用してコマンド ライン モードでデバッグできます。この例では、XSCT を使用してベアメタル アプリケーション hello_world_r5 をデバッグします。</p>
+<p>次の手順は、XSCT を使用して Arm Cortex-R5F にベアメタル アプリケーションをロードする方法を示しています。</p>
+<p>この例は、XSDB/XSCT を使用して可能なコマンド ライン デバッグを示すことを目的としています。要件に基づいて、システム デバッガー GUI または XSCT のコマンド ライン デバッガーのいずれかを選択してコードをデバッグできます。すべての XSCT コマンドはスクリプト記述可能であり、これはこの例で説明するコマンドに当てはまります。</p>
+<section id="setting-up-target">
+<h3>ターゲットの設定<a class="headerlink" href="#setting-up-target" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>USB ケーブルでターゲット USB-JTAG コネクタとホスト マシンの USB ポートを接続します。</p></li>
+<li><p>SW1 を次の図のように設定して、ボードを JTAG ブート モードに設定します。</p>
+<img alt="../../../../_images/image43.jpeg" src="../../../../_images/image43.jpeg" />
+</li>
+<li><p>電源スイッチ SW13 を使用してボードに電源を投入します。</p></li>
+<li><p>Vitis ソフトウェア プラットフォーム ツールバーの <strong>[XSCT Console]</strong> ボタンをクリックして、[XSCT Console] ビューを開きます。または、<strong>[Xilinx] → [XSCT Console]</strong> をクリックしても XSCT コンソールを開くことできます。</p>
+<img alt="../../../../_images/image44.jpeg" src="../../../../_images/image44.jpeg" />
+</li>
+<li><p><strong>[XSCT Console]</strong> ビューで、次の connect コマンドを使用して JTAG を介してターゲットに接続します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span><span class="n">connect</span></pre></div>
+</div>
+<p>connect コマンドは、接続のチャネル ID を返します。</p>
+</li>
+<li><p>pdi/bin ファイルを読み込みます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">device</span><span class="n">program</span><span class="o">&lt;</span><span class="n">path</span><span class="n">to</span><span class="o">.</span><span class="n">pdi</span><span class="n">file</span><span class="o">&gt;</span></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>PDI ファイルは <cite>C:edtedt_versaledt_versal.runsimpl_1edt_versal_wrapper.pdi</cite> に含まれます:。Windows では、バックスラッシュがエスケープ文字として解釈されないように、パス名は中かっこで囲む必要があります。たとえば、{<cite>C:pathtofile.pdi</cite>} のようにして、バックスラッシュがエスケープ文字として解釈されないようにします。これは、スラッシュを使用する Linux では必要ありません。</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="loading-the-application-using-xsct">
+<h3>XSCT を使用したアプリケーションのロード<a class="headerlink" href="#loading-the-application-using-xsct" title="Permalink to this heading">¶</a></h3>
+<p>次に、XSCT を使用してアプリケーションをロードする手順を示します。</p>
+<ol class="arabic">
+<li><p><cite>xsct% targets</cite> を実行します。</p>
+<p>target コマンドにより、使用可能なターゲットがリストされ、各 ID を使用してターゲットを選択できます。ターゲットには JTAG チェーンで検出されたときに ID が割り当てられるので、ターゲット ID はセッションごとに変わります。</p>
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>スクリプト記述などの非対話型の使用法では、ID を使用してターゲットを選択するのではなく、<cite>-filter</cite> オプションを利用してターゲットを選択できます。</p>
+</div>
+<p>次の図に示すように、ターゲットが一覧表示されます。</p>
+<img alt="../../../../_images/image45.png" src="../../../../_images/image45.png" />
+</li>
+<li><p>Arm&amp;reg; Cortex-R5F コア 0 に hello_world_r5 アプリケーションをダウンロードします。</p></li>
+<li><p>RPU Cortex&amp;trade;-R5F コア 0 のターゲット ID を選択します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tcl</span><span class="n">xsct</span><span class="o">%</span><span class="n">targets</span><span class="mi">3</span><span class="n">xsct</span><span class="o">%</span><span class="n">rst</span><span class="o">-</span><span class="n">processor</span></pre></div>
+</div>
+<p><cite>rst-processoror</cite> コマンドは個々のプロセッサ コアのリセットをクリアします。Versal ACAP を JTAG ブート モードで起動すると、すべての Cortex-A72 コアおよび Cortex-R5F コアがリセット状態に保持されるので、この操作は重要です。これらのコアでデバッグを実行する前に、各コアのリセットをクリアする必要があります。リセットは XSDB の rst コマンドでクリアできます。</p>
+<div class="admonition note">
+<p class="admonition-title">注記</p>
+<p>rst -cores コマンドは、現在のターゲットが子である、グループ (APU または RPU など) 内にあるすべてのプロセッサ コアのリセットをクリアします。たとえば、Cortex-A72＃0 が現在のターゲットである場合、<cite>rst -cores</cite> は APU のすべての Cortex-A72 コアのリセットをクリアします。</p>
+<p><cite>xsct% dow {C:edtedt_vck190helloworld_r5Debughelloworld_r5.elf}</cite></p>
+<p>または</p>
+<p><cite>xsct% dow C:/edt/edt_vck190/helloworld_r5/Debug/helloworld_r5.elf</cite></p>
+</div>
+<p>ここで、ELF ファイルのセクションが順にダウンロードされるのが表示されます。XSCT プロンプトはダウンロードが正常に完了すると表示されます。次に、シリアル端末 (Tera Term、Minicom、または UART-0 USB シリアル接続用の Vitis ソフトウェア プラットフォーム シリアル端末インターフェイス) を設定します。</p>
+</li>
+</ol>
+</section>
+<section id="configuring-the-serial-terminal">
+<h3>シリアル端末の設定<a class="headerlink" href="#configuring-the-serial-terminal" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>使用しているホスト マシンに応じて Tera Term または Minicom を使用し、ターミナル セッションを開始します。COM ポートとボー レートを次の図に示すように設定します。</p>
+<img alt="../../../../_images/image46.png" src="../../../../_images/image46.png" />
+</li>
+<li><p>ポート設定では、デバイス マネージャーで COM ポートを検証します。VCK190 ボードでは 3 つの USB UART インターフェイスを使用できます。最も小さい番号のインターフェイスに関連付けられた COM ポートを選択します。つまりここでは、UART-0 に Interface-0 の com-port を選択します。</p></li>
+</ol>
+</section>
+<section id="running-and-debugging-application-using-xsct">
+<h3>XSCT を使用したアプリケーションの実行およびデバッグ<a class="headerlink" href="#running-and-debugging-application-using-xsct" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>アプリケーションを実行する前に、<cite>main ()</cite> にブレークポイントを設定します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span><span class="n">bpadd</span><span class="o">-</span><span class="n">addr</span><span class="o">&amp;</span><span class="n">main</span></pre></div>
+</div>
+<p>このコマンドにより、ブレークポイント ID が返されます。bplist コマンドを使用して挿入されたブレークポイントを確認できます。XSCT のブレークポイントの詳細を、XSCT で「<cite>help breakpoint</cite>」と入力して確認します。</p>
+</li>
+<li><p>プロセッサ コアの実行を再開します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span><span class="n">con</span></pre></div>
+</div>
+<p>コアがブレークポイントに到達すると、次のメッセージが表示されます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span><span class="n">Info</span><span class="p">:</span><span class="n">Cortex</span><span class="o">-</span><span class="n">R5</span><span class="c1">#0 Stopped at 0x10021C (Breakpoint)</span>   \
+</pre></div>
+</div>
+</li>
+<li><p>コアが停止しているので、レジスタを表示して確認します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span><span class="n">rrd</span></pre></div>
+</div>
+</li>
+<li><p>ローカル変数を表示します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span><span class="nb">locals</span></pre></div>
+</div>
+</li>
+<li><p>ソース コードの行をステップ実行し、スタックト レースを表示します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tcl</span><span class="n">xsct</span><span class="o">%</span><span class="n">nxt</span><span class="n">Info</span><span class="p">:</span><span class="n">Cortex</span><span class="o">-</span><span class="n">R5</span><span class="c1">#0 Stopped at 0x100490 (Step)</span><span class="n">xsct</span><span class="o">%</span><span class="n">bt</span></pre></div>
+</div>
+<p><cite>help</cite> コマンドを使用すると、ほかのオプションを表示できます。</p>
+<img alt="../../../../_images/image47.png" src="../../../../_images/image47.png" />
+<p><cite>help running</cite> コマンドを使用すると、XSCT を使用してアプリケーションを実行またはデバッグするためのオプションを表示できます。</p>
+<img alt="../../../../_images/image48.png" src="../../../../_images/image48.png" />
+</li>
+<li><p>コードを実行します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span><span class="n">con</span></pre></div>
+</div>
+<p>ここで、UART-0 ターミナルに Cortex-R5F アプリケーションのメッセージが表示されます。</p>
+</li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="4-boot-and-config.html" class="btn btn-neutral float-left" title="ブートおよびコンフィギュレーション" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="5-system-design-example.html" class="btn btn-neutral float-right" title="スカラー型エンジンと適応型エンジンを使用したシステム デザイン例" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p><span class="lastupdated">Last updated on August 1, 2022.
+      </span>© Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.</p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with 
+
+
+  Built with  using a
+    <a href="https://www.sphinx-doc.org/">Sphinx</a>
+    provided by  using a
+    .
+   
+
+<a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
