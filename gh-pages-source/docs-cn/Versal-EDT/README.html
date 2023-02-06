@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><!-- OneTrust Cookies Consent Notice start for xilinx.github.io --><script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script><!-- OneTrust Cookies Consent Notice end for xilinx.github.io --><title>嵌入式设计教程 2020.2</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/_static/custom.css" type="text/css" /><!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]--><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">嵌入式设计教程<img src="_static/xilinx-header-logo.svg" class="logo" alt="Logo"/> </a><div class="version">2020.2</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Versal 嵌入式设计教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/1-getting-started.html">入门指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/2-cips-noc-ip-config.html">Versal ACAP CIPS 和 NoC (DDR) IP 核配置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/3-debugging.html">使用 Vitis 软件平台进行调试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/4-boot-and-config.html">启动和配置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/5-system-design-example.html">使用标量引擎和自适应引擎的系统设计示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/6-system-design-example-HSDP.html">面向含 SmartLynq+ 模块的高速调试端口的系统设计示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/A-creating-plm.html">附录：创建 PLM</a></li>
+</ul>     
+              
+            
+            
+              <p class="caption"><span class="caption-text">版本</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master">主干</a></li>
+</ul>
+
+            
+			
+			<p class="caption"><span class="caption-text">本页</span></p>
+				<ul class="current">
+				  <li class="toctree-l1"><a href="_sources/about-guide.md.txt"
+						rel="nofollow">显示源代码</a></li>						
+				</ul>
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">嵌入式设计教程</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Versal 嵌入式设计教程</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/about-guide.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="versal">
+<h1>Versal 嵌入式设计教程<a class="headerlink" href="#versal" title="Permalink to this headline">¶</a></h1>
+<p>本文档旨在提供有关将赛灵思 Vivado® Design Suite 流程应用于 Versal™ VMK180/VCK190 评估板的指示信息。所使用的工具为 Vivado Design Suite 和 Vitis™ 统一软件平台 2020.2 版。要安装 Vitis 统一软件平台，请参阅《Vitis 统一软件平台文档：嵌入式软件开发》(<a class="reference external" href="https://china.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd=ug1400-vitis-embedded.pdf">UG1400</a>)。</p>
+<blockquote>
+<div><p><strong>注意</strong>：在本教程中，有关在硬件上启动 Linux 的指示信息仅适用于针对 2020.2 版发布的 PetaLinux 工具，这些工具将安装在 Linux 主机上用于实践本文档的 Linux 部分内容。</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>重要</strong>！VCK190/VMK180 评估板包含 Silicon Labs CP210x VCP USB-UART Bridge。请确保这些驱动均已完成安装。请参阅《Silicon Labs CP210x USB-to-UART 安装指南》(<a class="reference external" href="https://china.xilinx.com/support/documentation/boards_and_kits/install/ug1033-cp210x-usb-uart-install.pdf">UG1033</a>)，以获取更多信息。</p>
+</div></blockquote>
+<p>本文档中的示例是使用 Windows 10 64 位操作系统上运行的赛灵思工具、Vitis 软件平台和 Linux 64 位操作系统上的 PetaLinux 所创建的。使用其它 Windows 上运行的其它版本的工具进行安装所产生的结果可能与此处结果不尽相同。这些示例主要围绕嵌入式设计的以下方面来展开。</p>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="./2-cips-noc-ip-config.md#versal-acap-cips-%E5%92%8C-noc-ddr-ip-%E6%A0%B8%E9%85%8D%E7%BD%AE">Versal ACAP CIPS 和 NoC (DDR) IP 核配置</a></strong>：描述如何使用 Versal™ ACAP Control, Interfaces, and Processing System (CIPS) IP 核与 NoC 来创建设计，以及如何在 Arm® Cortex™-A72 和 Cortex™-R5F 处理器上运行简单的“Hello World”应用。本章提供了使用简单设计作为示例的软硬件工具简介。</p></li>
+<li><p><strong><a class="reference external" href="./3-debugging.md#%E4%BD%BF%E7%94%A8-vitis-%E8%BD%AF%E4%BB%B6%E5%B9%B3%E5%8F%B0%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95">使用 Vitis 软件平台进行调试</a></strong>：介绍赛灵思 Vitis 软件平台的调试功能。本章使用前述设计并在裸机（无操作系统）上运行软件以演示 Vitis IDE 的调试功能。本章还列出了 Versal ACAP 的调试配置。</p></li>
+<li><p><strong><a class="reference external" href="./4-boot-and-config.md#%E5%90%AF%E5%8A%A8%E5%92%8C%E9%85%8D%E7%BD%AE">启动和配置</a></strong>：显示集成组件以便为 Versal ACAP 配置并创建启动镜像。本章旨在帮助您了解如何集成和加载引导加载程序。</p></li>
+<li><p><strong><a class="reference external" href="./5-system-design-example.md#%E4%BD%BF%E7%94%A8%E6%A0%87%E9%87%8F%E5%BC%95%E6%93%8E%E5%92%8C%E8%87%AA%E9%80%82%E5%BA%94%E5%BC%95%E6%93%8E%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%A4%BA%E4%BE%8B">使用标量引擎和自适应引擎的系统设计示例</a></strong>：描述如何在 Versal ACAP 上使用可用工具和受支持的软件块来构建系统。本章演示了如何利用 Vivado 工具并使用 PL AXI GPIO 来创建嵌入式设计。其中还演示了如何在 Versal 器件上为基于 Arm Cortex-A72 核的 APU 配置并构建 Linux 操作系统。</p></li>
+</ul>
+<p>本设计教程需使用多个赛灵思提供的文件。这些文件包含在 ZIP 文件内，此文件可从赛灵思网站下载。（请参阅<a class="reference external" href="./1-getting-started.md#%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97">入门指南</a>）。本教程假定该 ZIP 文件的内容已解压至 <code class="docutils literal notranslate"><span class="pre">C:\edt</span></code>。</p>
+<div class="section" id="id1">
+<h2>按设计进程浏览内容<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>赛灵思文档按一组标准设计进程进行组织，以便帮助您查找当前开发任务相关的内容。本文档涵盖了以下设计进程：</p>
+<ul class="simple">
+<li><p><strong>系统和解决方案规划</strong>：确认系统级别的组件、性能、I/O 和数据传输要求。包括解决方案到 PS、PL 和 AI 引擎的应用映射。</p>
+<ul>
+<li><p><a class="reference external" href="./2-cips-noc-ip-config.md#%E5%9C%A8%E7%8E%B0%E6%9C%89%E5%B7%A5%E7%A8%8B%E5%86%85%E9%85%8D%E7%BD%AE-noc-ip-%E6%A0%B8">在现有工程内配置 NoC IP 核</a></p></li>
+<li><p><a class="reference external" href="./5-system-design-example.md#%E4%BD%BF%E7%94%A8%E6%A0%87%E9%87%8F%E5%BC%95%E6%93%8E%E5%92%8C%E8%87%AA%E9%80%82%E5%BA%94%E5%BC%95%E6%93%8E%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%A4%BA%E4%BE%8B">使用标量引擎和自适应引擎的系统设计示例</a></p></li>
+</ul>
+</li>
+<li><p><strong>嵌入式软件开发</strong>：从硬件平台创建软件平台，并使用嵌入式 CPU 开发应用代码。还涵盖 XRT 和 Graph API。</p>
+<ul>
+<li><p><a class="reference external" href="./2-cips-noc-ip-config.md#%E8%BF%90%E8%A1%8C%E8%A3%B8%E6%9C%BA-hello-world-%E5%BA%94%E7%94%A8">运行裸机 Hello World 应用</a></p></li>
+<li><p><a class="reference external" href="./2-cips-noc-ip-config.md#%E5%9C%A8-vitis-%E8%BD%AF%E4%BB%B6%E5%B9%B3%E5%8F%B0%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95%E5%99%A8%E4%BB%A5-jtag-%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E5%BA%94%E7%94%A8">在 Vitis 软件平台中使用系统调试器以 JTAG 模式运行应用</a></p></li>
+<li><p><a class="reference external" href="./2-cips-noc-ip-config.md#%E5%9C%A8-ddr-%E5%86%85%E5%AD%98%E4%B8%8A%E8%BF%90%E8%A1%8C%E8%A3%B8%E6%9C%BA-hello-world-%E5%BA%94%E7%94%A8">在 DDR 内存上运行裸机 Hello World 应用</a></p></li>
+</ul>
+</li>
+<li><p><strong>硬件、IP 和平台开发</strong>：为硬件平台创建 PL IP 块、创建 PL 内核、子系统功能仿真以及评估 Vivado® 时序收敛、资源使用情况和功耗收敛。还涉及为系统集成开发硬件平台。本文档中适用于此设计进程的主题包括：</p>
+<ul>
+<li><p><a class="reference external" href="./2-cips-noc-ip-config.md#cips-ip-%E6%A0%B8%E9%85%8D%E7%BD%AE">CIPS IP 核配置</a></p></li>
+<li><p><a class="reference external" href="./2-cips-noc-ip-config.md#noc%E5%92%8C-ddrip-%E6%A0%B8%E9%85%8D%E7%BD%AE">NoC（和 DDR）IP 核配置</a></p></li>
+<li><p><a class="reference external" href="./5-system-design-example.md#%E8%AE%BE%E8%AE%A1%E7%A4%BA%E4%BE%8B%E4%BD%BF%E7%94%A8-axi-gpio">设计示例：使用 AXI GPIO</a></p></li>
+</ul>
+</li>
+<li><p><strong>系统集成与验证</strong>：集成和验证系统功能性能，包括时序收敛、资源使用情况和功耗收敛。本文档中适用于此设计进程的主题包括：</p>
+<ul>
+<li><p><a class="reference external" href="./4-boot-and-config.md#%E5%90%AF%E5%8A%A8%E5%92%8C%E9%85%8D%E7%BD%AE">启动和配置</a></p></li>
+<li><p><a class="reference external" href="./5-system-design-example.md#%E5%B7%A5%E7%A8%8B%E7%A4%BA%E4%BE%8B%E5%90%AB-rpu-%E7%9A%84-freertos-gpio-%E5%BA%94%E7%94%A8%E5%B7%A5%E7%A8%8B">工程示例：含 RPU 的 FreeRTOS GPIO 应用工程</a></p></li>
+<li><p><a class="reference external" href="./5-system-design-example.md#%E5%B7%A5%E7%A8%8B%E7%A4%BA%E4%BE%8B%E4%BD%BF%E7%94%A8-petalinux-%E5%88%9B%E5%BB%BA-linux-%E9%95%9C%E5%83%8F">工程示例：使用 PetaLinux 创建 Linux 镜像</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+
+                  <style>.footer { position: fixed; left: 0; bottom: 0; width: 100%; }</style>
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>© Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD. <span class="lastupdated">Last updated on August 1, 2022.</span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
