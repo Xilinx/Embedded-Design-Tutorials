@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Use Secure Boot Features to Protect Your Design &mdash; Embedded Design Tutorials 2021.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Zynq-7000 Embedded Design Tutorial" href="../Zynq7000-EDT/Zynq7000-EDT.html" />
+    <link rel="prev" title="Boot and Configuration" href="8-boot-and-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> Embedded Design Tutorials
+            <img src="../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2021.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-getting-started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-system-configuration.html">Zynq UltraScale+ MPSoC System Configuration with Vivado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-build-sw-for-ps-subsystems.html">Building Software for PS Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-debugging-with-vitis-debugger.html">Debugging Standalone Applications with the Vitis Debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-build-linux-sw-for-ps.html">Building and Debugging Linux Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html">System Design Example: Using GPIO, Timer and Interrupts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8-boot-and-configuration.html">Boot and Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Secure Boot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#secure-boot-system-design-decisions">Secure Boot System Design Decisions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#hardware-root-of-trust">Hardware Root of Trust</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boot-image-confidentiality-and-dpa">Boot Image Confidentiality and DPA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dpa-protections">DPA Protections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#black-key-storage">Black Key Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example-practical-methods-in-secure-boot">Example: Practical Methods in Secure Boot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sample-design-overview">Sample Design Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-keys-for-authentication">Generating Keys for Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-rsa-private-public-key-pairs">Creating RSA Private/Public Key Pairs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-keys-for-confidentiality">Generating Keys for Confidentiality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-key-revocation">Using Key Revocation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#system-example-using-the-vitis-ide-create-boot-image-wizard">System Example Using the Vitis IDE Create Boot Image Wizard</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-problems-with-secure-boot">Debugging Problems with Secure Boot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#determine-if-puf-registration-is-running">Determine if PUF Registration is Running</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#read-the-boot-image">Read the Boot Image</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Embedded Design Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a> &raquo;</li>
+      <li>Use Secure Boot Features to Protect Your Design</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/Introduction/ZynqMPSoC-EDT/9-secure-boot.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="use-secure-boot-features-to-protect-your-design">
+<h1>Use Secure Boot Features to Protect Your Design<a class="headerlink" href="#use-secure-boot-features-to-protect-your-design" title="Permalink to this heading">¶</a></h1>
+<p>The secure boot functionality in Xilinx™ devices allows you to support the confidentiality, integrity, and authentication of partitions.</p>
+<p>Secure boot in Zynq® UltraScale+™ MPSoCs is accomplished by combining the Hardware Root of Trust (HWRoT) capabilities with the option of encrypting all boot partitions. The HWRoT is based on the RSA-4096 asymmetric algorithm with SHA-3/384, which is hardware accelerated. Confidentiality is provided using 256-bit Advanced Encryption Standard Galois Counter Mode (AES-GCM).</p>
+<p>This section focuses on how to use and implement the following:</p>
+<ul class="simple">
+<li><p>Hardware Root of Trust with key revocation</p></li>
+<li><p>Partition encryption with differential power analysis (DPA) countermeasures</p></li>
+<li><p>Black key storage using the physically unclonable function (PUF)</p></li>
+</ul>
+<p>The section <a class="reference internal" href="#secure-boot-system-design-decisions"><span class="std std-ref">Secure Boot System Design Decisions</span></a> outlines high-level secure boot decisions which should be made early in design development.</p>
+<p>The <a class="reference internal" href="#hardware-root-of-trust"><span class="std std-ref">Hardware Root of Trust</span></a> section discusses the use of a Root of Trust (RoT) in boot.</p>
+<p>The <a class="reference internal" href="#boot-image-confidentiality-and-dpa"><span class="std std-ref">Boot Image Confidentiality and DPA</span></a> section discusses the use of the operational key and key rolling techniques as countermeasures to a DPA attack. Changing the AES key reduces the exposure of both the key and the data protected by the key.</p>
+<p>A red key is a key in unencrypted format. The <a class="reference internal" href="#black-key-storage"><span class="std std-ref">Black Key Storage</span></a> section provides a method for storing the AES key in encrypted, or black format. Black key storage uses the physically unclonable function (PUF) as a Key Encryption Key (KEK).</p>
+<p>The <a class="reference internal" href="#example-practical-methods-in-secure-boot"><span class="std std-ref">Example: Practical Methods in Secure Boot</span></a> section provides steps to develop and test systems that use AES encryption and RSA authentication.</p>
+<div class="section" id="secure-boot-system-design-decisions">
+<span id="id1"></span><h2>Secure Boot System Design Decisions<a class="headerlink" href="#secure-boot-system-design-decisions" title="Permalink to this heading">¶</a></h2>
+<p>The following are device level decisions affecting secure boot:</p>
+<ul class="simple">
+<li><p>Boot mode</p></li>
+<li><p>AES key storage location</p></li>
+<li><p>AES storage state (encrypted or unencrypted)</p></li>
+<li><p>Encryption and authentication requirements</p></li>
+<li><p>Key provisioning</p></li>
+</ul>
+<p>The boot modes which support secure boot are quad serial peripheral interface (QSPI), SD, eMMC, USB Boot, and NAND. The AES key is stored in either eFUSEs (encrypted or unencrypted), battery backed random access memory (BBRAM) (unencrypted only), or in external Non-Volatile Memory (NVM) (encrypted only).</p>
+<p>In Zynq UltraScale+ MPSoC devices, partitions can be encrypted and/or authenticated on a partition basis. Xilinx generally recommends that all partitions be RSA authenticated. Partitions that are open source (such as U-Boot and Linux) or that do not contain any proprietary or confidential information typically do not need to be encrypted. In systems in which there are multiple sources/suppliers of sensitive data and/or proprietary IP, encrypting the partitions using unique keys can be important.</p>
+<p>DPA resistance requirements are dictated by whether the adversary has physical access to the device.</p>
+<p>The following table can be a good reference when deciding on features required to meet a specific secure system requirement. The following sections discuss the features in more detail.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 75%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>System Consideration</p></th>
+<th class="head"><p>Zynq
+UltraScale+
+Feature</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ensure that only the users software and hardware
+runs on the device</p></td>
+<td><p>Hardware Root
+of Trust</p></td>
+</tr>
+<tr class="row-odd"><td><p>Guarantee that the users software and hardware are
+not modified</p></td>
+<td><p>Hardware Root
+of Trust</p></td>
+</tr>
+<tr class="row-even"><td><p>Ensure that an adversary cannot clone or reverse
+engineer software/hardware</p></td>
+<td><p>Boot Image
+Confidentiality</p></td>
+</tr>
+<tr class="row-odd"><td><p>Protect sensitive data and proprietary
+Intellectual Property (IP)</p></td>
+<td><p>Boot Image
+Confidentiality</p></td>
+</tr>
+<tr class="row-even"><td><p>Ensure that Private Key (AES key) is protected
+against side channel attacks</p></td>
+<td><p>DPA Protections</p></td>
+</tr>
+<tr class="row-odd"><td><p>Private/Secret keys (AES key) is stored encrypted
+at rest</p></td>
+<td><p>Black Key
+Storage</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="hardware-root-of-trust">
+<span id="id2"></span><h3>Hardware Root of Trust<a class="headerlink" href="#hardware-root-of-trust" title="Permalink to this heading">¶</a></h3>
+<p>Roots of trust are security primitives for storage (RTS), integrity (RTI), verification (RTV), measurement (RTM), and reporting (RTR). RoT consists of hardware, firmware, and software. The HWRoT has advantages over software RoTs because the HWRoT is immutable, has a smaller attack surface, and the behavior is more reliable.</p>
+<p>The HWRoT is based on the CSU, eFUSEs, BBRAM (battery-backed RAM), and isolation elements. The HWRoT is responsible for validating that the operating environment and configuration have not been modified. The RoT acts as an anchor for boot, so an adversary cannot insert malicious code before detection mechanisms start.</p>
+<p>Firmware and software run on the HWRoT during boot. Zynq UltraScale+ provides immutable bootROM code, a first stage boot loader, device
+drivers, and the XILSKEY and XILSECURE libraries which run on the HWRoT. These provide a well-tested, proven in use API so that developers do not create security components from scratch with limited testing.</p>
+<div class="section" id="data-integrity">
+<h4>Data Integrity<a class="headerlink" href="#data-integrity" title="Permalink to this heading">¶</a></h4>
+<p>Data integrity is the absence of corruption of hardware, firmware, and software. Data integrity functions verify that an adversary has not tampered with the configuration and operating environment.</p>
+<p>Zynq UltraScale+ verifies the integrity of partition(s) using both symmetric key (AES-GCM) and asymmetric key (RSA) authentication. RSA
+uses a private/public key pair. The fielded embedded system only has the public key. Theft of the public key is of limited value since it is not possible, with current technology, to derive the private key from the public key.</p>
+<p>Encrypted partitions are also authenticated using the Galois Counter Mode (GCM) mode of AES. In the secure boot flow, partitions are  first authenticated and then decrypted if necessary.</p>
+</div>
+<div class="section" id="authentication">
+<h4>Authentication<a class="headerlink" href="#authentication" title="Permalink to this heading">¶</a></h4>
+<p>The following figure shows RSA signing and verification of partitions. From a secure facility, the Bootgen tool signs partitions, using the private key. In the device, the ROM verifies the FSBL and either the FSBL or U-Boot verifies the subsequent partitions, using the public key.</p>
+<p>Primary and secondary private/public key pairs are used. The function of the primary private/ public key pair is to authenticate the secondary private/public key pair. The function of the secondary key is to sign/verify partitions.</p>
+<img alt="../../../_images/zynqus-rsa-auth.png" src="../../../_images/zynqus-rsa-auth.png" />
+<p>To sign a partition, Bootgen first calculates the SHA3 of the partition data. The 384-bit hash is then RSA signed using the private key. The resulting RSA signature is placed in the authentication certificate. In the image, each signed partition has partition data followed by an authentication certificate which includes the RSA signature.</p>
+<p>Verification of the FSBL is handled by the CSU ROM code. To verify the subsequent partitions, the FSBL or U-Boot uses the XILSECURE library.</p>
+<p>There is a debug mode for authentication called boot header authentication. In this mode of authentication, the CSU ROM code does
+not check the primary public key digests, the session key ID or the key revocation bits stored in the device eFUSEs. Therefore, this mode is not secure. However, it is useful for testing and debugging as it does not require programming of eFUSEs.</p>
+<p>This tutorial uses this mode. However, fielded systems should not use boot header authentication. The example BIF file for a fully secured system is included at the end of this section.</p>
+</div>
+</div>
+<div class="section" id="boot-image-confidentiality-and-dpa">
+<span id="id3"></span><h3>Boot Image Confidentiality and DPA<a class="headerlink" href="#boot-image-confidentiality-and-dpa" title="Permalink to this heading">¶</a></h3>
+<p>AES is used to ensure the confidentiality of sensitive data and IP. Zynq UltraScale+ uses AES Galois Counter Mode (GCM) and a 256 AES bit key. The principle AES enhancements provided by Zynq UltraScale+ are increased resistance to differential power analysis (DPA) attacks and the availability of AES encryption/decryption post boot.</p>
+<p>Bootgen and FSBL software support AES encryption. Private keys are used in AES encryption, and AES encryption is done by Bootgen using the key files. The key files can be generated by Bootgen or OpenSSL. The use of the operational key limits the exposure of the device key. The use of the operational key in key rolling is discussed in the next section. To maintain Boot image confidentiality, encrypted boot images can be created using Bootgen. Software examples to program keys to BBRAM and eFUSE are also available in the Vitis™ IDE. One such example is discussed in <a class="reference internal" href="#example-practical-methods-in-secure-boot"><span class="std std-ref">Example: Practical Methods in Secure Boot</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended that you generate your own keys for fielded systems and then provide those keys to the development tools. Refer to AR <a class="reference external" href="https://www.xilinx.com/support/answers/76171.html">76171</a> for details.</p>
+</div>
+</div>
+<div class="section" id="dpa-protections">
+<h3>DPA Protections<a class="headerlink" href="#dpa-protections" title="Permalink to this heading">¶</a></h3>
+<p>Key rolling is used for DPA resistance. Key rolling and black key store can be used in the same design. In key rolling, software and bitstream is broken up into multiple data blocks, each encrypted with a unique AES key. The initial key is stored in BBRAM or eFUSE NVM. Keys for successive data blocks are encrypted in the previous data block. After the initial key, the key update register is used as the key source.</p>
+<p>A 96-bit initialization vector is included in the NKY key file. The IV uses 96 bits to initialize AES counters. When key rolling is used, a 128-bit IV is provided in the boot header. The 32 least significant bits define the block size of data to decrypt using the current key. The block sizes following the initial block defined in the IV are defined as attributes in the Bootgen Image Format (BIF) file.</p>
+<p>An efficient method of key rolling uses the operational key. With the operational key, Bootgen creates an encrypted secure header with the user-specified operational key and the first block IV. The AES key in eFUSE or BBRAM is used only to decrypt the 384-bit secure header with the 256-bit operational key. This limits the exposure of the device key to DPA attacks.</p>
+</div>
+<div class="section" id="black-key-storage">
+<span id="id5"></span><h3>Black Key Storage<a class="headerlink" href="#black-key-storage" title="Permalink to this heading">¶</a></h3>
+<p>The PUF enables storing the AES key in encrypted (black) format. The black key can be stored either in eFUSEs or in the boot header. When
+needed for decryption, the encrypted key in eFUSEs or the boot header is decrypted using the PUF generated key encrypting key (KEK).</p>
+<p>There are two steps in using the PUF for black key storage. In the first, PUF registration software is used to generate PUF helper data and the PUF KEK. The PUF registration data allows the PUF to re-generate the identical key each time the PUF generates the KEK. For more details on the use of PUF registration software, see <a class="reference internal" href="#puf-registration-in-boot-header-mode"><span class="std std-ref">PUF Registration in Boot Header Mode</span></a>. For more information on PUF Registration - eFUSE mode, see <em>Programming BBRAM and eFUSEs</em>
+(<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf">XAPP1319</a>).</p>
+<p>The helper data and encrypted user key must both be stored in eFUSEs if the PUF eFUSE mode is used, and in the boot header if the PUF boot header mode is used. The procedure for the PUF boot header mode is discussed in <a class="reference internal" href="#using-puf-in-boot-header-mode"><span class="std std-ref">Using PUF in Boot Header Mode</span></a>. For the procedure to use PUF in eFUSE mode, see <em>Programming BBRAM and eFUSEs</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf">XAPP1319</a>).</p>
+<p>This tutorial uses PUF boot header mode as it does not require programming of eFUSEs, and is therefore useful for test and debug However, the most common mode is PUF eFUSE mode, as the PUB boot header mode requires a unique run of Bootgen for each and every device.</p>
+</div>
+</div>
+<div class="section" id="example-practical-methods-in-secure-boot">
+<span id="id7"></span><h2>Example: Practical Methods in Secure Boot<a class="headerlink" href="#example-practical-methods-in-secure-boot" title="Permalink to this heading">¶</a></h2>
+<p>This section outlines the steps to develop secure boot in a Zynq UltraScale+ system. Producing a secure embedded system is a two-step
+process. In the first phase, the cryptographic keys are generated and programmed into NVM. In the second phase, the secure system is developed and tested. Both steps use the Vitis IDE to create software projects, generate the image, and program the image. For the second phase, a test system can be as simple as fsbl.elf and hello.elf files. In this section, you will use the same images used in <a class="reference internal" href="8-boot-and-configuration.html#boot-sequence-for-sd-boot"><span class="std std-ref">Boot Sequence for SD-Boot</span></a>, but this time the images will be assembled together, and have the secure attributes enabled as part of the secure boot sequence.</p>
+<p>This section starts by showing how to generate AES and RSA keys. Following key generation, systems using the advanced AES and RSA methods are developed and tested. Keys generated in this section are also included in the <a class="reference external" href="https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/secure_boot_sd">ref_files/secure_boot_sd</a> directory.</p>
+<p>The methods used to develop AES functionality are provided in the following sections:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#generating-keys-for-authentication"><span class="std std-ref">Generating Keys for Authentication</span></a></p></li>
+<li><p><a class="reference internal" href="#enabling-encryption-using-key-rolling"><span class="std std-ref">Enabling Encryption Using Key Rolling</span></a></p></li>
+<li><p><a class="reference internal" href="#enabling-use-of-an-operational-key"><span class="std std-ref">Enabling Use of an Operational Key</span></a></p></li>
+<li><p><a class="reference internal" href="#using-the-puf"><span class="std std-ref">Using the PUF</span></a></p></li>
+<li><p><a class="reference internal" href="#creating-rsa-privatepublic-key-pairs"><span class="std std-ref">Creating RSA Private/Public Key Pairs</span></a> provides the steps to authenticate all partitions loaded at boot. This section also shows how to revoke keys.</p></li>
+</ul>
+<p>A requirement in the development of a secure system is to add security attributes which are used in image generation. Bootgen generates a Boot Image Format (BIF) file. The BIF file is a text file. In its simplest form, the BIF is a list of partitions to be loaded at boot. Security attributes are added to the BIF to specify cryptographic functionality. In most cases, the Bootgen GUI (Create Boot Image wizard in the Vitis IDE) is used to generate the BIF file. In some cases, adding security attributes requires editing the Bootgen generated BIF file. In Create Boot Image Wizard in the Vitis IDE, after the Security tab is selected, the Authentication and Encryption tabs are used to specify security attributes.</p>
+<p>After implementing AES and RSA cryptography in secure boot, a boot test should be executed. The system loads successfully and displays the FSBL messages on the terminal. These messages indicate the cryptographic operations performed on each partition. The <a class="reference internal" href="#debugging-problems-with-secure-boot"><span class="std std-ref">Debugging Problems with Secure Boot</span></a> section provides the debugging steps to follow if the secure boot test fails.</p>
+<div class="section" id="sample-design-overview">
+<h3>Sample Design Overview<a class="headerlink" href="#sample-design-overview" title="Permalink to this heading">¶</a></h3>
+<p>The sample design demonstrates loading various types of images into the device. It includes loading a FSBL, PMU Firmware, U-Boot, Linux, RPU software and a PL configuration image. In this sample, all of these images are loaded by the FSBL which performs all authentication and decryption. This is not the only means of booting a system. However, it is the simple and secure method.</p>
+<img alt="../../../_images/sample-design.png" src="../../../_images/sample-design.png" />
+<p>Different sections within the boot image have different levels of security and are loaded into different locations. The following table
+explains the contents of the final boot image.</p>
+<p><strong>Final Boot Image with Secure Attributes</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Binary</p></th>
+<th class="head"><p>RSA
+A
+uthenticated</p></th>
+<th class="head"><p>AES
+Encrypted</p></th>
+<th class="head"><p>Exception
+Level</p></th>
+<th class="head"><p>Loader</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FSBL</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>EL3</p></td>
+<td><p>CSU ROM</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMU Firmware</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>NA</p></td>
+<td><p>FSBL</p></td>
+</tr>
+<tr class="row-even"><td><p>PL Bitstream</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>NA</p></td>
+<td><p>FSBL</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trusted
+Firmware-A
+(TF-A)</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>EL3</p></td>
+<td><p>FSBL</p></td>
+</tr>
+<tr class="row-even"><td><p>R5 Software</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>NA</p></td>
+<td><p>FSBL</p></td>
+</tr>
+<tr class="row-odd"><td><p>U-Boot</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>EL2</p></td>
+<td><p>FSBL</p></td>
+</tr>
+<tr class="row-even"><td><p>Linux</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>EL1</p></td>
+<td><p>FSBL</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>In a secure boot sequence, the PMU image is loaded by the FSBL. Using the bootROM/CSU to load the PMU firmware introduces a
+security weakness as the key/IV combination is used twice: first to decrypt the FSBL, and then again to decrypt the PMU image. This
+is not allowed for the secure systems.</p></li>
+<li><p>As of 2019.1, U-Boot does not perform a secure authenticated loading of Linux. Instead of U-Boot, FSBL loads the Linux images
+to a memory address and then uses U-Boot to jump to that memory address.</p></li>
+</ol>
+</div>
+<p>This tutorial demonstrates assembling the binaries that are created using <a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html"><span class="doc">Design Example 1: Using GPIOs, Timers, and Interrupts</span></a> in a boot image with all the security features enabled. This section also shows how a PL bitstream can be added as a part of the secure boot flow. Follow the information in this chapter until <a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html#modifying-the-build-settings"><span class="std std-ref">Modifying the Build Settings</span></a> to create all the necessary files and then switch back.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have not run MPSoC Design Example 1, you can run the script (see <a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html#reference-design-automation"><span class="std std-ref">Reference Design Automation</span></a>) in the example’s <code class="docutils literal notranslate"><span class="pre">ref_files</span></code> to generate the binaries with one <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span></code> command.</p>
+</div>
+<p>Enabling the security features in boot image is done in two different methods. In the first method, the BIF file is manually created using a text editor and then that BIF file is used to make Bootgen create keys. This enables you to identify the sections of the BIF file that are enabled which security features. The second method uses the Create Boot Image wizard in the Vitis IDE. It demonstrates the same set of security features and reuses the keys from the first method for convenience.</p>
+</div>
+<div class="section" id="generating-keys-for-authentication">
+<span id="id8"></span><h3>Generating Keys for Authentication<a class="headerlink" href="#generating-keys-for-authentication" title="Permalink to this heading">¶</a></h3>
+<p>There are multiple methods of generating keys. These include, but are not limited to, using Bootgen, customized key files, OpenSSL and
+hardware security modules (HSMs). This tutorial covers methods using bootgen. The Bootgen created files can be used as templates for creating files containing user-specified keys from the other key sources.</p>
+<p>The creation of keys using Bootgen commands requires the generation and modification of the BIF files. The key generation section of this
+tutorial creates these BIF files “by hand” using a text editor. The next section, building your boot image demonstrates how to create these BIF files using the Bootgen GUI (create Boot Image Wizard).</p>
+</div>
+<div class="section" id="creating-rsa-private-public-key-pairs">
+<span id="creating-rsa-privatepublic-key-pairs"></span><h3>Creating RSA Private/Public Key Pairs<a class="headerlink" href="#creating-rsa-private-public-key-pairs" title="Permalink to this heading">¶</a></h3>
+<p>For this example, you will create the primary and secondary keys in the PEM format. The keys are generated using Bootgen command-line options. Alternatively, you can create the keys using external tools such as OpenSSL.</p>
+<p>The following steps describe the process of creating the RSA private/public key pairs:</p>
+<ol class="arabic">
+<li><p>Launch the shell from the Vitis IDE by clicking <strong>Xilinx → Vitis Shell</strong>.</p></li>
+<li><p>Create a file named <code class="docutils literal notranslate"><span class="pre">key_generation.bif</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">key_generation.bif</span></code> file will be used to create both the asymmetric keys in these steps and the symmetric keys in later steps.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">psk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">ssk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">a53_x64</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">]</span><span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">]</span><span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_device</span> <span class="o">=</span> <span class="n">pl</span><span class="p">]</span><span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">]</span> <span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">]</span><span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">load</span> <span class="o">=</span> <span class="mh">0x1000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">]</span><span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Save the <code class="docutils literal notranslate"><span class="pre">key_generation.bif</span></code> file in the <code class="docutils literal notranslate"><span class="pre">C:\edt\secure_boot_sd\keys</span></code> directory.</p></li>
+<li><p>Copy all of the ELF, BIF, and UB files built in <a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html"><span class="doc">Design Example 1: Using GPIOs, Timers, and Interrupts</span></a> to <code class="docutils literal notranslate"><span class="pre">C:\edt\secure_boot_sd\keys</span> <span class="pre">directory</span></code>.</p>
+<ul class="simple">
+<li><p><cite>bl31.elf</cite></p></li>
+<li><p><cite>edt_zcu102_wrapper.bit</cite></p></li>
+<li><p><cite>fsbl_a53.elf</cite></p></li>
+<li><p><cite>image.ub</cite></p></li>
+<li><p><cite>pmufw.elf</cite></p></li>
+<li><p><cite>tmr_psled_r5.elf</cite></p></li>
+<li><p><cite>u-boot.elf</cite></p></li>
+</ul>
+</li>
+<li><p>Navigate to the folder containing the BIF file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">keys</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the following command to generate the keys:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bootgen</span> <span class="o">-</span><span class="n">p</span> <span class="n">zu9eg</span> <span class="o">-</span><span class="n">arch</span> <span class="n">zynqmp</span> <span class="o">-</span><span class="n">generate_keys</span> <span class="n">auth</span> <span class="n">pem</span> <span class="o">-</span><span class="n">image</span> <span class="n">key_generation</span><span class="o">.</span><span class="n">bif</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify that the files <code class="docutils literal notranslate"><span class="pre">psk0.pem</span></code> and <code class="docutils literal notranslate"><span class="pre">ssk0.pem</span></code> are generated at the location specified in the BIF file
+(<code class="docutils literal notranslate"><span class="pre">c:\edt\secure_boot_sd\keys</span></code>).</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>2020.3 (and previous) Bootgen fails to replace the old authentication key files with new authentication key files generated using the <code class="docutils literal notranslate"><span class="pre">-generate_keys</span></code> option. It is recommended that you check the existence and permissions of the target key files before generation. Refer to AR <a class="reference external" href="https://www.xilinx.com/support/answers/76125.html">76125</a> for details.</p>
+</div>
+<div class="section" id="generating-sha3-of-public-key-in-an-rsa-private-public-key-pair">
+<span id="generating-sha3-of-public-key-in-an-rsa-privatepublic-key-pair"></span><h4>Generating SHA3 of Public Key in an RSA Private/Public Key Pair<a class="headerlink" href="#generating-sha3-of-public-key-in-an-rsa-private-public-key-pair" title="Permalink to this heading">¶</a></h4>
+<p>The following steps are required only for RSA authentication in eFUSE mode, and can be skipped for RSA authentication in boot header mode. The 384 bits from <code class="docutils literal notranslate"><span class="pre">sha3.txt</span></code> can be programmed to eFUSE for RSA  authentication in eFUSE mode. For more information, see <em>Programming BBRAM and eFUSEs</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf">XAPP1319</a>).</p>
+<ol class="arabic">
+<li><p>Perform the steps from the prior section.</p></li>
+<li><p>Now that the PEM files have been defined, add <code class="docutils literal notranslate"><span class="pre">authentication</span> <span class="pre">=</span> <span class="pre">rsa</span></code> attributes as shown below to <code class="docutils literal notranslate"><span class="pre">key_generation.bif</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">psk0</span><span class="o">.</span><span class="n">pem</span> <span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">ssk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">a53_x64</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span> <span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">,</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_device</span> <span class="o">=</span> <span class="n">pl</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">,</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">load</span> <span class="o">=</span> <span class="mh">0x1000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">bootgen</span></code> command to calculate the hash of the PPK:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bootgen</span> <span class="o">-</span><span class="n">p</span> <span class="n">zcu9eg</span> <span class="o">-</span><span class="n">arch</span> <span class="n">zynqmp</span> <span class="o">-</span><span class="n">efuseppkbits</span> <span class="n">ppk0_digest</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">image</span> <span class="n">key_generation</span><span class="o">.</span><span class="n">bif</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify that the file <code class="docutils literal notranslate"><span class="pre">ppk0_digest.txt</span></code> is generated at the location specified (<code class="docutils literal notranslate"><span class="pre">c:\edt\secure_boot_sd\keys</span></code>).</p></li>
+</ol>
+</div>
+<div class="section" id="additional-rsa-private-public-key-pairs">
+<h4>Additional RSA Private/Public Key Pairs<a class="headerlink" href="#additional-rsa-private-public-key-pairs" title="Permalink to this heading">¶</a></h4>
+<p>Follow the steps in this section to generate the secondary RSA private/public key pair required for key revocation, which requires the
+programming of eFUSE. For more information, see <em>Programming BBRAM and eFUSEs</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf">XAPP1319</a>). You can skip this section if you do not intend to use key revocation.</p>
+<p>Repeat the steps from <a class="reference internal" href="#creating-rsa-privatepublic-key-pairs"><span class="std std-ref">Creating RSA Private/Public Key Pairs</span></a> and <a class="reference internal" href="#generating-sha3-of-public-key-in-an-rsa-privatepublic-key-pair"><span class="std std-ref">Generating SHA3 of Public Key in an RSA Private/Public Key Pair</span></a> to generate the second RSA private/public key pair and the SHA3 of the second PPK.</p>
+<ol class="arabic">
+<li><p>Perform the steps from the prior section, replacing <code class="docutils literal notranslate"><span class="pre">psk0.pem</span></code>, <code class="docutils literal notranslate"><span class="pre">ssk0.pem</span></code>, and <code class="docutils literal notranslate"><span class="pre">ppk0_digest.txt</span></code> with <code class="docutils literal notranslate"><span class="pre">psk1.pem</span></code>, <code class="docutils literal notranslate"><span class="pre">ssk1.pem</span></code>, and <code class="docutils literal notranslate"><span class="pre">ppk1_digest.pem</span></code> respectively. Save this file as <code class="docutils literal notranslate"><span class="pre">key_generation_1.bif</span></code>. That BIF file will look like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">psk1</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">ssk1</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">a53_x64</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">]</span><span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span> <span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">]</span><span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_device</span> <span class="o">=</span> <span class="n">pl</span><span class="p">]</span><span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">]</span><span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">]</span><span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span> <span class="p">[</span><span class="n">load</span> <span class="o">=</span> <span class="mh">0x1000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">]</span><span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">bootgen</span></code> command to create the RSA private/public key pairs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bootgen</span> <span class="o">-</span><span class="n">p</span> <span class="n">zu9eg</span> <span class="o">-</span><span class="n">arch</span> <span class="n">zynqmp</span> <span class="o">-</span><span class="n">generate_keys</span> <span class="n">auth</span> <span class="n">pem</span> <span class="o">-</span><span class="n">image</span> <span class="n">key_generation_1</span><span class="o">.</span><span class="n">bif</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">authentication</span> <span class="pre">=</span> <span class="pre">rsa</span></code> attributes to the <code class="docutils literal notranslate"><span class="pre">key_generation_1.bif</span></code> file. The BIF file will look like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">psk1</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">ssk1</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">a53_x64</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_device</span> <span class="o">=</span> <span class="n">pl</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">load</span> <span class="o">=</span> <span class="mh">0x1000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">bootgen</span></code> command to generate the hash of the primary RSA public key.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>bootgen -p zcu9eg -arch zynqmp -efuseppkbits ppk1_digest.txt -image key_generation_1.bif``
+</pre></div>
+</div>
+</li>
+<li><p>Verify that the files <code class="docutils literal notranslate"><span class="pre">ppk1.pem</span></code>, <code class="docutils literal notranslate"><span class="pre">spk1.pem</span></code>, and <code class="docutils literal notranslate"><span class="pre">ppk1_digest.txt</span></code> are all generated at the location specified (<code class="docutils literal notranslate"><span class="pre">c:\edt\secure_boot\keys</span></code>).</p></li>
+</ol>
+</div>
+<div class="section" id="enabling-boot-header-authentication">
+<h4>Enabling Boot Header Authentication<a class="headerlink" href="#enabling-boot-header-authentication" title="Permalink to this heading">¶</a></h4>
+<p>Boot header authentication is a mode of authentication that instructs the ROM to skip the checks of the eFUSE hashes for the PPKs, the
+revocation status of the PPKs, and the session IDs for the secondary keys. This mode is useful for testing and debugging because it does not require programming of eFUSEs. This mode can be permanently disabled for a device by programming the RSA_EN eFUSEs, which forces RSA
+authentication with the eFUSE checks. Fielded systems should use the RSA_EN eFUSE to force the eFUSE checks and disable boot header
+authentication.</p>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">bh_auth_enable</span></code> attribute to the <code class="docutils literal notranslate"><span class="pre">[fsbl_config]</span></code> line so that the BIF file appears as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">psk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">ssk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">a53_x64</span><span class="p">,</span><span class="n">bh_auth_enable</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_device</span> <span class="o">=</span> <span class="n">pl</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">load</span> <span class="o">=</span> <span class="mh">0x1000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="generating-keys-for-confidentiality">
+<h3>Generating Keys for Confidentiality<a class="headerlink" href="#generating-keys-for-confidentiality" title="Permalink to this heading">¶</a></h3>
+<p>Image confidentiality is discussed in the <a class="reference internal" href="#boot-image-confidentiality-and-dpa"><span class="std std-ref">Boot Image Confidentiality and DPA</span></a> section. In this
+section you will modify the BIF file from the authentication section by adding the attributes required to enable image confidentiality, using the AES-256-GCM encryption algorithm. At the end, a <code class="docutils literal notranslate"><span class="pre">bootgen</span></code> command will be used to create all of the required AES-256 keys.</p>
+<div class="section" id="using-aes-encryption">
+<h4>Using AES Encryption<a class="headerlink" href="#using-aes-encryption" title="Permalink to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>Enable image confidentiality by specifying the key source for the initial encryption key (<code class="docutils literal notranslate"><span class="pre">bbram_red_key</span></code> for now) using the <code class="docutils literal notranslate"><span class="pre">[keysrc_encryption]</span></code> <code class="docutils literal notranslate"><span class="pre">bbram_red_key</span></code> attribute.</p></li>
+<li><p>On several of the partitions, enable confidentiality by adding the <code class="docutils literal notranslate"><span class="pre">encryption</span> <span class="pre">=</span> <span class="pre">aes</span></code> attribute. Specify a unique key file for each
+partition. Having a unique key file for each partition allows each partition to use a unique set of keys which increases security
+strength by not reusing keys and reducing the amount of information encrypted on any one key. The <code class="docutils literal notranslate"><span class="pre">key_generation.bif</span></code> file should now look as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">psk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">ssk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">[</span><span class="n">keysrc_encryption</span><span class="p">]</span><span class="n">bbram_red_key</span>
+<span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">a53_x64</span><span class="p">,</span> <span class="n">bh_auth_enable</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">fsbl_a53</span><span class="o">.</span><span class="n">nky</span><span class="p">]</span><span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">pmufw</span><span class="o">.</span><span class="n">nky</span><span class="p">]</span><span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_device</span> <span class="o">=</span> <span class="n">pl</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">nky</span><span class="p">]</span><span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span><span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">nky</span><span class="p">]</span><span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">load</span> <span class="o">=</span> <span class="mh">0x1000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="enabling-dpa-protections">
+<h4>Enabling DPA Protections<a class="headerlink" href="#enabling-dpa-protections" title="Permalink to this heading">¶</a></h4>
+<p>This section provides the steps for using an operational key, and also demonstrates key rolling effective countermeasures against differential power analysis (DPA).</p>
+</div>
+<div class="section" id="enabling-use-of-an-operational-key">
+<span id="id12"></span><h4>Enabling Use of an Operational Key<a class="headerlink" href="#enabling-use-of-an-operational-key" title="Permalink to this heading">¶</a></h4>
+<p>Use of an operational key limits the amount of information encrypted using a device key. Enable use of the operational key by adding the
+<code class="docutils literal notranslate"><span class="pre">opt_key</span></code> attribute to the <code class="docutils literal notranslate"><span class="pre">[fsbl_config]</span></code> line of the BIF file. The <code class="docutils literal notranslate"><span class="pre">key_generation.bif</span></code> file should now appear as shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">psk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">ssk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">[</span><span class="n">keysrc_encryption</span><span class="p">]</span><span class="n">bbram_red_key</span>
+<span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">a53_x64</span><span class="p">,</span> <span class="n">bh_auth_enable</span><span class="p">,</span> <span class="n">opt_key</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">fsbl_a53</span><span class="o">.</span><span class="n">nky</span><span class="p">]</span><span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">pmufw</span><span class="o">.</span><span class="n">nky</span><span class="p">]</span><span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_device</span> <span class="o">=</span> <span class="n">pl</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">nky</span><span class="p">]</span><span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">nky</span><span class="p">]</span><span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">load</span> <span class="o">=</span> <span class="mh">0x1000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="enabling-encryption-using-key-rolling">
+<span id="id13"></span><h4>Enabling Encryption Using Key Rolling<a class="headerlink" href="#enabling-encryption-using-key-rolling" title="Permalink to this heading">¶</a></h4>
+<p>Use of key rolling limits the amount of information encrypted using any of the other keys. Key rolling is enabled on a partition-by-partition basis using the blocks attribute in the BIF file. The blocks attribute allows you to specify the amount of information in bytes to encrypt with each key. For example, <code class="docutils literal notranslate"><span class="pre">blocks=4096,1024(3),512(*)</span></code> would use the first key for 4096 bytes, the second through fourth keys for 1024 bytes, and all remaining keys for 512 bytes. In this example, the block command will be used to limit the life of each key to 1728 bytes.</p>
+<p>Enable use of key rolling by adding the <code class="docutils literal notranslate"><span class="pre">blocks</span></code> attribute to each of the encrypted partitions. The <code class="docutils literal notranslate"><span class="pre">key_generation.bif</span></code> file should appear as shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">psk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">ssk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">[</span><span class="n">keysrc_encryption</span><span class="p">]</span><span class="n">bbram_red_key</span>
+<span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">a53_x64</span><span class="p">,</span> <span class="n">bh_auth_enable</span><span class="p">,</span> <span class="n">opt_key</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">fsbl_a53</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span><span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">pmufw</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_device</span> <span class="o">=</span> <span class="n">pl</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span><span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">load</span> <span class="o">=</span> <span class="mh">0x1000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-all-of-the-aes-keys">
+<span id="id14"></span><h4>Generating All of the AES Keys<a class="headerlink" href="#generating-all-of-the-aes-keys" title="Permalink to this heading">¶</a></h4>
+<p>When all the desired encryption features have been enabled, you can generate all key files by running Bootgen. Some of the source files (for example, ELF) contain multiple sections. These individual sections will be mapped to separate partitions, and each partition will have a unique key file. In this case, the key file will be appended with a “.1.”. For example, if the <code class="docutils literal notranslate"><span class="pre">pmufw.elf</span></code> file contains multiple sections, both a <code class="docutils literal notranslate"><span class="pre">pmufw.nky</span></code> and a <code class="docutils literal notranslate"><span class="pre">pmufw.1.nky</span></code> file will be generated.</p>
+<ol class="arabic">
+<li><p>Create all of the necessary NKY files by running the <code class="docutils literal notranslate"><span class="pre">bootgen</span></code> command that creates the final <code class="docutils literal notranslate"><span class="pre">BOOT.bin</span></code> image.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bootgen</span> <span class="o">-</span><span class="n">p</span> <span class="n">zcu9eg</span> <span class="o">-</span><span class="n">arch</span> <span class="n">zynqmp</span> <span class="o">-</span><span class="n">image</span> <span class="n">key_generation</span><span class="o">.</span><span class="n">bif</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify that the NKY files were generated. These file should include <code class="docutils literal notranslate"><span class="pre">edt_zcu102_wrapper.nky,</span> <span class="pre">fsbl_a53.nky,</span> <span class="pre">pmu_fw.nky,</span> <span class="pre">pmu_fw.1.nky,</span> <span class="pre">pmu_fw.2.nky,</span> <span class="pre">tmr_psled_r5.nky,</span> <span class="pre">and</span> <span class="pre">tmr_psled_r5.1.nky.</span></code></p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="using-key-revocation">
+<h3>Using Key Revocation<a class="headerlink" href="#using-key-revocation" title="Permalink to this heading">¶</a></h3>
+<p>Key revocation allows you to revoke a RSA primary or secondary public key. Key revocation can be used due to elapsed time of key use, or if there is an indication that the key is compromised. The primary and secondary key revocation is controlled by one-time programmable eFUSEs. The Xilinx Secure Key Library is used for key revocation, allowing key revocation in fielded devices. Key revocation is discussed further in the <em>Zynq UltraScale+ Device Technical Reference Manual</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides%3Bd%3Dug1085-zynq-ultrascale-trm.pdf">UG1085</a>).</p>
+<div class="section" id="using-the-puf">
+<span id="id15"></span><h4>Using the PUF<a class="headerlink" href="#using-the-puf" title="Permalink to this heading">¶</a></h4>
+<p>In this section, the PUF is used for black key storage in the PUF boot header mode. RSA authentication is required when the PUF is used. In PUF boot header mode, the PUF helper data and the encrypted user’s AES key are stored in the boot header. This section shows how to create a BIF for using the PUF. Because the helper data and encrypted user key are unique for each and every board, the Bootgen image created only works on the board from which the helper data originated.</p>
+</div>
+<div class="section" id="puf-registration-in-boot-header-mode">
+<span id="id16"></span><h4>PUF Registration in Boot Header Mode<a class="headerlink" href="#puf-registration-in-boot-header-mode" title="Permalink to this heading">¶</a></h4>
+<p>The PUF registration software is included in the XILSKEY library. The PUF registration software operates in a boot header mode or eFUSE mode. The boot header mode allows development without programming the OTP eFUSEs. The eFUSE mode is used in production. This lab runs through PUF registration in boot header mode only. For PUF registration using eFUSE, see <em>Programming BBRAM and eFUSEs</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/ndoc?t=application_notes%3Bd%3Dxapp1319-zynq-usp-prog-nvm.pdf">XAPP1319</a>).</p>
+<p>The PUF registration software accepts a red (unencrypted) key as input, and produces syndrome data (helper data), which also contains CHASH and AUX, and a black (encrypted) key. When the PUF boot header mode is used, the output is put in the boot header. When the PUF eFUSE mode is used, the output is programmed into eFUSEs.</p>
+<ol class="arabic">
+<li><p>In the Vitis IDE, navigate to tmr_psled_r5 Board Support Package Settings.</p></li>
+<li><p>Ensure that the xilskey and the xilsecure libraries are enabled.</p>
+<img alt="../../../_images/image80.png" src="../../../_images/image80.png" />
+</li>
+<li><p>Click <strong>OK</strong>. Rebuild the hardware platform for changes to apply. Navigate to tmr_psled_r5_bsp settings.</p></li>
+<li><p>Scroll to the Libraries section. Click <strong>xilskey 6.8 Import Examples</strong>.</p></li>
+<li><p>In the view, select <strong>xilskey_puf_registration example</strong>. Click <strong>OK</strong>.</p>
+<img alt="../../../_images/image811.png" src="../../../_images/image811.png" />
+</li>
+<li><p>In the Project Explorer view, verify that the xilskey_puf_example_1 application is created.</p></li>
+<li><p>In the Project Explorer view, xilskey_puf_example_1 ‘Src’, double-click <strong>xilskey_puf_registration.h</strong> to open it in the Vitis IDE.</p></li>
+<li><p>Edit xilskey_puf_registration.h as follows:</p>
+<ol class="arabic">
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">#define</span> <span class="pre">XSK_PUF_INFO_ON_UART</span></code> from <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>.</p></li>
+<li><p>Ensure that <code class="docutils literal notranslate"><span class="pre">#define</span> <span class="pre">XSK_PUF_PROGRAM_EFUSE</span></code> is set to <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">XSK_PUF_AES_KEY</span></code> (256-bit key).</p>
+<p>The key must be entered in hex format and should be Key 0 from the <code class="docutils literal notranslate"><span class="pre">fsbl_a53.nky</span></code> file that you generated in <a class="reference internal" href="#generating-all-of-the-aes-keys"><span class="std std-ref">Generating All of the AES Keys</span></a>. You can find a sample key below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define XSK_PUF_AES_KEY</span>
+<span class="s2">&quot;68D58595279ED1481C674383583C1D98DA816202A57E7FE4F67859CB069CD510&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not copy this key. Refer to the <strong>fsbl_a53.nky</strong> file for your key.</p>
+</div>
+</li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">XSK_PUF_BLACK_KEY_IV</span></code>. The initialization vector IV is a 12-byte piece of data of your choice.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define XSK_PUF_BLACK_KEY_IV \&quot;E1757A6E6DD1CC9F733BED31\&quot;</span>
+</pre></div>
+</div>
+<img alt="../../../_images/image82.png" src="../../../_images/image82.png" />
+</li>
+</ol>
+</li>
+<li><p>Save the file and exit.</p></li>
+<li><p>In the Project Explorer view, right-click the <strong>xilskey_puf_example_1</strong> project and select <strong>Build Project</strong>.</p></li>
+<li><p>In the Vitis IDE, select <strong>Xilinx → Create Boot Image</strong>.</p></li>
+<li><p>Select <strong>Zynq MP</strong> in the Architecture view.</p></li>
+<li><p>Specify the BIF path in the Output BIF file path view as <code class="docutils literal notranslate"><span class="pre">C:\edt\secureboot_sd\puf_registration\puf_registration.bif</span></code>.</p></li>
+<li><p>Specify the output path in the Output Path view as <code class="docutils literal notranslate"><span class="pre">C:\edt\secureboot_sd\puf_registration\BOOT.bin</span></code>.</p></li>
+<li><p>In the Boot Image Partitions pane, click <strong>Add</strong>. Add the partitions and set the destination CPU of the xilskey_puf_example_1 application to R5-0:</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">fsbl_a53</span>\<span class="n">Debug</span>\<span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span>
+<span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">xilskey_puf_example_1</span>\<span class="n">Debug</span>\<span class="n">xilskey_puf_example_1</span><span class="o">.</span><span class="n">elf</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic" start="16">
+<li><p>Click <strong>Create Image</strong> to create the boot image for PUF registration.</p>
+<img alt="../../../_images/image83.png" src="../../../_images/image83.png" />
+</li>
+<li><p>Insert an SD card into the PC SD card slot.</p></li>
+<li><p>Copy <code class="docutils literal notranslate"><span class="pre">C:\edt\secureboot_sd\puf_registration\BOOT.bin</span></code> to the SD card.</p></li>
+<li><p>Move the SD card from the PC SD card slot to the ZCU102 card slot.</p></li>
+<li><p>Start a terminal session using Tera Term or Minicom depending on the host machine being used, as well as the COM port and baud rate for your system.</p></li>
+<li><p>In the communication terminal menu bar, select <strong>File → Log</strong>. Enter <code class="docutils literal notranslate"><span class="pre">C:\edt\secureboot_sd\puf_registration\puf_registration.log</span></code> in the view.</p></li>
+<li><p>Power cycle the board.</p></li>
+<li><p>After the puf_registration software has run, exit the communication terminal.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">puf_registration.log</span></code> file is used in <a class="reference internal" href="#using-puf-in-boot-header-mode"><span class="std std-ref">Using PUF in Boot Header Mode</span></a>. Open <code class="docutils literal notranslate"><span class="pre">puf_registration.log</span></code> in a text editor.</p></li>
+<li><p>Save the PUF Syndrome data that starts after <code class="docutils literal notranslate"><span class="pre">App</span> <span class="pre">PUF</span> <span class="pre">Syndrome</span> <span class="pre">data</span> <span class="pre">Start!!!</span></code> and ends at <code class="docutils literal notranslate"><span class="pre">PUF</span> <span class="pre">Syndrome</span> <span class="pre">data</span> <span class="pre">End!!!</span></code>, non-inclusive, to a file named <code class="docutils literal notranslate"><span class="pre">helperdata.txt</span></code>.</p></li>
+<li><p>Save the black key IV identified by <code class="docutils literal notranslate"><span class="pre">App:</span> <span class="pre">Black</span> <span class="pre">Key</span> <span class="pre">IV</span></code> to a file named <code class="docutils literal notranslate"><span class="pre">black_iv.txt</span></code>.</p></li>
+<li><p>Save the black key to a file named <code class="docutils literal notranslate"><span class="pre">black_key.txt</span></code>.</p></li>
+<li><p>The files <code class="docutils literal notranslate"><span class="pre">helperdata.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">black_key.txt</span></code>, and <code class="docutils literal notranslate"><span class="pre">black_iv.txt</span></code> can be saved in <code class="docutils literal notranslate"><span class="pre">C:\edt\secure_boot_sd\keys</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="using-puf-in-boot-header-mode">
+<span id="id18"></span><h4>Using PUF in Boot Header Mode<a class="headerlink" href="#using-puf-in-boot-header-mode" title="Permalink to this heading">¶</a></h4>
+<p>The following steps describe the process to update the BIF file from the previous sections to include using the PUF in Boot Header mode. This section makes use of the syndrome data and black key created during PUF registration process.</p>
+<ol class="arabic">
+<li><p>Enable use of the PUF by adding all of the fields and attributes indicated in bold to the BIF file (<code class="docutils literal notranslate"><span class="pre">key_generation.bif</span></code>) as shown
+below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">psk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">ssk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">[</span><span class="n">keysrc_encryption</span><span class="p">]</span><span class="n">bh_blk_key</span>
+<span class="p">[</span><span class="n">bh_key_iv</span><span class="p">]</span><span class="n">black_iv</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="n">bh_keyfile</span><span class="p">]</span><span class="n">black_key</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="n">puf_file</span><span class="p">]</span><span class="n">helperdata</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">a53_x64</span><span class="p">,</span> <span class="n">bh_auth_enable</span><span class="p">,</span> <span class="n">opt_key</span><span class="p">,</span> <span class="n">puf4kmode</span><span class="p">,</span> <span class="n">shutter</span><span class="o">=</span><span class="mh">0x0100005E</span><span class="p">,</span><span class="n">pufhd_bh</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">fsbl_a53</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">pmufw</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_device</span> <span class="o">=</span> <span class="n">pl</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span><span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">load</span> <span class="o">=</span> <span class="mh">0x1000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">]</span><span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>The above BIF file can be used for creating a final boot image using an AES key encrypted in the boot image header with the PUF KEK. This should be done using the following <code class="docutils literal notranslate"><span class="pre">bootgen</span></code> command:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The above steps can also be executed with PUF in eFUSE mode. In this case, repeat the previous steps using the PUF in eFUSE mode. This requires enabling the programming of eFUSEs during PUF registration by setting the <code class="docutils literal notranslate"><span class="pre">XSK_PUF_PROGRAM_EFUSE</span></code> macro in the <code class="docutils literal notranslate"><span class="pre">xilskey_puf_registration.h</span></code> file used to build the PUF registration application. The BIF must also be modified to use the encryption key from eFUSE, and the helper data and black key files should be removed. PUF in eFUSE mode is not covered in this tutorial to avoid programming the eFUSEs on development or tutorial systems.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">keysrc_encryption</span><span class="p">]</span><span class="n">efuse_blk_key</span>
+<span class="p">[</span><span class="n">bh_key_iv</span><span class="p">]</span><span class="n">black_iv</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="system-example-using-the-vitis-ide-create-boot-image-wizard">
+<h3>System Example Using the Vitis IDE Create Boot Image Wizard<a class="headerlink" href="#system-example-using-the-vitis-ide-create-boot-image-wizard" title="Permalink to this heading">¶</a></h3>
+<p>The previous sections enabled the various security features (authentication, confidentiality, DPA protections, and black key
+storage) by hand editing the BIF file. This section performs the same operations, but uses the Bootgen Wizard as a starting point. The Bootgen Wizard creates a base BIF file, and then adds the additional security features that are not supported by the wizard using a text editor.</p>
+<ol class="arabic">
+<li><p>Change directory to the <code class="docutils literal notranslate"><span class="pre">bootgen_files</span></code> directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>
+</pre></div>
+</div>
+</li>
+<li><p>Copy the below data from the previous example to this example.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">../</span><span class="n">keys</span><span class="o">/*</span><span class="n">nky</span> <span class="o">.</span>
+<span class="n">cp</span> <span class="o">../</span><span class="n">keys</span><span class="o">/*</span><span class="n">pem</span> <span class="o">.</span>
+<span class="n">cp</span> <span class="o">../</span><span class="n">keys</span><span class="o">/</span><span class="n">black_iv</span><span class="o">.</span><span class="n">txt</span> <span class="o">.</span>
+<span class="n">cp</span> <span class="o">../</span><span class="n">keys</span><span class="o">/</span><span class="n">helperdata</span><span class="o">.</span><span class="n">txt</span> <span class="o">.</span>
+<span class="n">cp</span> <span class="o">../</span><span class="n">keys</span><span class="o">/*.</span><span class="n">elf</span> <span class="o">.</span>
+<span class="n">cp</span> <span class="o">../</span><span class="n">keys</span><span class="o">/</span><span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span> <span class="o">.</span>
+<span class="n">cp</span> <span class="o">../</span><span class="n">keys</span><span class="o">/</span><span class="n">image</span><span class="o">.</span><span class="n">ub</span> <span class="o">.</span>
+<span class="n">cp</span> <span class="o">../</span><span class="n">keys</span><span class="o">/</span><span class="n">black_key</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+<li><p>Click <strong>Programs → Xilinx Design Tools → Vitis 2021.2 → Xilinx Vitis 2021.2</strong> to launch the Vitis IDE.</p></li>
+<li><p>Click <strong>Xilinx Tools → Create Boot Image</strong> from the menu bar to launch the Create Boot Image wizard.</p></li>
+<li><p>elect Zynq MP as the Architecture.</p></li>
+<li><p>Enter the Output BIF file path as <code class="docutils literal notranslate"><span class="pre">C:\edt\secure_boot_sd\bootgen_files\design_bh_bkey_keyrolling.bif</span></code>.</p></li>
+<li><p>Select BIN as the output format.</p></li>
+<li><p>Enter the output path <code class="docutils literal notranslate"><span class="pre">C:\edt\secure_boot_sd\bootgen_files\BOOT.bin</span></code>.</p></li>
+<li><p>Enable authentication.</p>
+<ol class="arabic">
+<li><p>Click the <strong>Security</strong> page.</p></li>
+<li><p>Check the Use Authentication check box.</p></li>
+<li><p>Browse to select the <strong>psk0.pem</strong> file for the PSK and the <strong>ssk0.pem</strong> for the SSK.</p></li>
+<li><p>Ensure PPK select is 0.</p></li>
+<li><p>Enter SPK ID as 0.</p></li>
+<li><p>Check the <strong>Use BH Auth</strong> check box.</p>
+<img alt="../../../_images/image84.jpeg" src="../../../_images/image84.jpeg" />
+</li>
+</ol>
+</li>
+<li><p>Enable encryption.</p>
+<ol class="arabic">
+<li><p>Click the <strong>Encryption</strong> page.</p></li>
+<li><p>Check the <strong>Use Encryption</strong> check box.</p></li>
+<li><p>Provide the part name as <strong>zcu9eg</strong>.</p></li>
+<li><p>Check the <strong>Operational Key</strong> check box.</p>
+<img alt="../../../_images/image85.png" src="../../../_images/image85.png" />
+</li>
+</ol>
+</li>
+<li><p>Click the <strong>Basic</strong> page.</p></li>
+<li><p>Add the FSBL binary to the boot image.</p>
+<ol class="arabic">
+<li><p>Click <strong>Add</strong>.</p></li>
+<li><p>Use the browse button to select the <strong>fsbl_a53.elf</strong> file.</p></li>
+<li><p>Make sure the partition type is <strong>bootloader</strong> and the destination CPU is <strong>a53x64</strong>.</p></li>
+<li><p>Change the authentication to <strong>RSA</strong>.</p></li>
+<li><p>Change the encryption to <strong>AES</strong>.</p></li>
+<li><p>Browse to the <strong>fsbl_a53.nky</strong> file that was generated earlier and add the key file.</p></li>
+<li><p>Click <strong>OK</strong>.</p>
+<img alt="../../../_images/image861.png" src="../../../_images/image861.png" />
+</li>
+</ol>
+</li>
+<li><p>Add the PMU firmware binary to the boot image.</p>
+<ol class="arabic">
+<li><p>Click <strong>Add</strong>.</p></li>
+<li><p>Use the browse button to select the <strong>pmufw.elf</strong> file.</p></li>
+<li><p>Make sure the partition type is <strong>datafile</strong>.</p></li>
+<li><p>Change the destination CPU to <strong>PMU</strong>.</p></li>
+<li><p>Change the authentication to <strong>RSA</strong>.</p></li>
+<li><p>Change the encryption to <strong>AES</strong>.</p></li>
+<li><p>Add the <strong>pmufw.nky</strong> file as the key file.</p></li>
+<li><p>Click <strong>OK</strong>.</p>
+<img alt="../../../_images/image87.png" src="../../../_images/image87.png" />
+</li>
+</ol>
+</li>
+<li><p>Add the PL bitstream to the boot image.</p>
+<ol class="arabic">
+<li><p>Click the <strong>Add</strong>.</p></li>
+<li><p>Use the browse button to select the <strong>edt_zcu102_wrapper.bit</strong> file.</p></li>
+<li><p>Make sure the partition type is <strong>datafile</strong>.</p></li>
+<li><p>Make sure the destination device is <strong>PL</strong>.</p></li>
+<li><p>Change the authentication to <strong>RSA</strong>.</p></li>
+<li><p>Change the encryption to <strong>AES</strong>.</p></li>
+<li><p>Add the <strong>edt_zcu102_wrapper.bit</strong> file as the key file.</p></li>
+<li><p>Click <strong>OK</strong>.</p>
+<img alt="../../../_images/image88.png" src="../../../_images/image88.png" />
+</li>
+</ol>
+</li>
+<li><p>Add the Trusted Firmware-A (TF-A) binary to the image.</p>
+<ol class="arabic">
+<li><p>Click <strong>Add</strong>.</p></li>
+<li><p>Use the browse button to select the <strong>bl31.elf</strong> file.</p></li>
+<li><p>Make sure the partition type is <strong>datafile</strong>.</p></li>
+<li><p>Make sure the destination CPU is <strong>A53 0</strong>.</p></li>
+<li><p>Change the authentication to <strong>RSA</strong>.</p></li>
+<li><p>Make sure the encryption is <strong>none</strong>.</p></li>
+<li><p>Make sure the exception level is <strong>EL3</strong> and click <strong>Enable TrustZone</strong>.</p></li>
+<li><p>Click <strong>OK</strong>.</p>
+<img alt="../../../_images/image89.png" src="../../../_images/image89.png" />
+</li>
+</ol>
+</li>
+<li><p>Add the R5 software binary to the boot image.</p>
+<ol class="arabic">
+<li><p>Click <strong>Add</strong>.</p></li>
+<li><p>Use the browse button to select the <strong>tmr_psled_r5.elf</strong> file.</p></li>
+<li><p>Make sure the partition type is <strong>datafile</strong>.</p></li>
+<li><p>Make sure the destination CPU is <strong>R5 0</strong>.</p></li>
+<li><p>Change the authentication to <strong>RSA</strong>.</p></li>
+<li><p>Change the encryption to <strong>AES</strong>.</p></li>
+<li><p>Add the <strong>tmr_psled_r5.nky</strong> file as the key file.</p></li>
+<li><p>Click <strong>OK</strong>.</p>
+<img alt="../../../_images/image90.png" src="../../../_images/image90.png" />
+</li>
+</ol>
+</li>
+<li><p>Add the U-Boot software binary to the boot image.</p>
+<ol class="loweralpha simple">
+<li><p>Click <strong>Add</strong>.</p></li>
+<li><p>Use the browse button to select the <strong>u-boot.elf</strong> file.</p></li>
+<li><p>Make sure the partition type is <strong>datafile</strong>.</p></li>
+<li><p>Make sure the destination CPU is <strong>A53 0</strong>.</p></li>
+<li><p>Change the authentication to <strong>RSA</strong>.</p></li>
+<li><p>Make sure that encryption is <strong>none</strong>.</p></li>
+<li><p>Change the exception level to <strong>EL2</strong>.</p></li>
+<li><p>Click <strong>OK</strong>.</p></li>
+</ol>
+<img alt="../../../_images/image911.png" src="../../../_images/image911.png" />
+</li>
+<li><p>Add the Linux image to the boot image.</p>
+<ol class="arabic">
+<li><p>Click <strong>Add</strong>.</p></li>
+<li><p>Use the browse button to select the <strong>image.ub</strong> file.</p></li>
+<li><p>Make sure the partition type is <strong>datafile</strong>.</p></li>
+<li><p>Make sure the destination CPU is <strong>A53 0</strong>.</p></li>
+<li><p>Change the authentication to <strong>RSA</strong>.</p></li>
+<li><p>Make sure that the encryption is <strong>none</strong>.</p></li>
+<li><p>Update the load field to <strong>0x2000000</strong>.</p></li>
+<li><p>Click <strong>OK</strong>.</p>
+<img alt="../../../_images/image92.png" src="../../../_images/image92.png" />
+</li>
+</ol>
+</li>
+<li><p>Click <strong>Create image</strong>.</p>
+<img alt="../../../_images/image93.png" src="../../../_images/image93.png" />
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">design_bh_bkey_keyrolling.bif</span></code> file should look similar to the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">arch</span> <span class="o">=</span> <span class="n">zynqmp</span><span class="p">;</span> <span class="n">split</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span> <span class="nb">format</span> <span class="o">=</span> <span class="n">BIN</span><span class="p">;</span> <span class="n">key_part_name</span> <span class="o">=</span> <span class="n">zcu9eg</span>
+<span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">psk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">ssk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">[</span><span class="n">keysrc_encryption</span><span class="p">]</span><span class="n">efuse_red_key</span>
+<span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">bh_auth_enable</span><span class="p">,</span> <span class="n">opt_key</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">fsbl_a53</span><span class="o">.</span><span class="n">nky</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">pmufw</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">destination_device</span> <span class="o">=</span> <span class="n">pl</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span><span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">load</span> <span class="o">=</span> <span class="mh">0x2000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This BIF file is still missing several security features that are not supported by the Create Boot Image wizard. These are features are key rolling and black key store.</p>
+</div>
+</li>
+<li><p>Add black key store by changing the <code class="docutils literal notranslate"><span class="pre">keysrc_encryption</span></code> and adding the other additional items so that the BIF file looks like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">psk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">ssk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">[</span><span class="n">keysrc_encryption</span><span class="p">]</span><span class="n">bh_blk_key</span>
+<span class="p">[</span><span class="n">bh_key_iv</span><span class="p">]</span><span class="n">black_iv</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="n">bh_keyfile</span><span class="p">]</span><span class="n">black_key</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="n">puf_file</span><span class="p">]</span><span class="n">helperdata</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">a53_x64</span><span class="p">,</span> <span class="n">bh_auth_enable</span><span class="p">,</span> <span class="n">opt_key</span><span class="p">,</span><span class="n">puf4kmode</span><span class="p">,</span><span class="n">shutter</span><span class="o">=</span><span class="mh">0x0100005E</span><span class="p">,</span><span class="n">pufhd_bh</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">fsbl_a53</span><span class="o">.</span><span class="n">nky</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">pmufw</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">destination_device</span><span class="o">=</span> <span class="n">pl</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">load</span> <span class="o">=</span> <span class="mh">0x2000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Enable key rolling by adding the block attributes to the encrypted partitions. The updated BIF file should now look like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">arch</span> <span class="o">=</span> <span class="n">zynqmp</span><span class="p">;</span> <span class="n">split</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span> <span class="nb">format</span> <span class="o">=</span> <span class="n">BIN</span><span class="p">;</span> <span class="n">key_part_name</span> <span class="o">=</span> <span class="n">zcu9eg</span>
+<span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">psk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">ssk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">[</span><span class="n">keysrc_encryption</span><span class="p">]</span><span class="n">bh_blk_key</span>
+<span class="p">[</span><span class="n">bh_key_iv</span><span class="p">]</span><span class="n">black_iv</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="n">bh_keyfile</span><span class="p">]</span><span class="n">black_key</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="n">puf_file</span><span class="p">]</span><span class="n">helperdata</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">a53_x64</span><span class="p">,</span> <span class="n">bh_auth_enable</span><span class="p">,</span> <span class="n">opt_key</span><span class="p">,</span> <span class="n">puf4kmode</span><span class="p">,</span><span class="n">shutter</span><span class="o">=</span><span class="mh">0x0100005E</span><span class="p">,</span><span class="n">pufhd_bh</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">fsbl_a53</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>  \<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">pmufw</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">destination_device</span> <span class="o">=</span> <span class="n">pl</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">trustzone</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">load</span> <span class="o">=</span> <span class="mh">0x2000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Generate the boot image by running the following command. Note that the <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">encryption_dump</span></code> flag has been added. This flag causes the log file <code class="docutils literal notranslate"><span class="pre">aes_log.txt</span></code> to be created. The log file details all encryption operations that were used. This allows you to see which keys and IVs were used on which sections of the boot image.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bootgen</span> <span class="o">-</span><span class="n">p</span> <span class="n">zcu9eg</span> <span class="o">-</span><span class="n">arch</span> <span class="n">zynqmp</span> <span class="o">-</span><span class="n">image</span> <span class="n">design_bh_bkey_keyrolling</span><span class="o">.</span><span class="n">bif</span> <span class="o">-</span><span class="n">w</span> <span class="o">-</span><span class="n">o</span> <span class="n">BOOT</span><span class="o">.</span><span class="n">bin</span> <span class="o">-</span><span class="n">encryption_dump</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="section" id="booting-the-system-using-a-secure-boot-image">
+<h4>Booting the System Using a Secure Boot Image<a class="headerlink" href="#booting-the-system-using-a-secure-boot-image" title="Permalink to this heading">¶</a></h4>
+<p>This section demonstrates how to use the <code class="docutils literal notranslate"><span class="pre">BOOT.bin</span></code> boot image created in prior sections to perform a secure boot using the ZCU102.</p>
+<ol class="arabic">
+<li><p>Copy the BOOT.bin image, the <code class="docutils literal notranslate"><span class="pre">boot.scr</span></code> file generated in PetaLinux, and the <code class="docutils literal notranslate"><span class="pre">ps_pl_linux_app.elf</span></code> file.</p></li>
+<li><p>Insert the SD card into the ZCU102.</p></li>
+<li><p>Set SW6 of the ZCU102 for SD boot mode (1=ON; 2,3,4=OFF).</p>
+<img alt="../../../_images/image431.jpeg" src="../../../_images/image431.jpeg" />
+</li>
+<li><p>Connect Serial terminals to ZCU102 (115200, eight data bits, one stop bit, no parity).</p></li>
+<li><p>Power on the ZCU102.</p></li>
+<li><p>When the terminal reaches the U-Boot <code class="docutils literal notranslate"><span class="pre">ZynqMP&gt;</span></code> prompt, type <code class="docutils literal notranslate"><span class="pre">bootm</span> <span class="pre">0x2000000</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>0x2000000</cite> is the address of image.ub</p>
+</div>
+<img alt="../../../_images/image941.png" src="../../../_images/image941.png" />
+</li>
+<li><p>Log into Linux using the following credentials:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Login</span><span class="p">:</span> <span class="n">root</span><span class="p">;</span>
+<span class="n">Password</span><span class="p">:</span> <span class="n">root</span>
+</pre></div>
+</div>
+<p>Run the Linux application as described in <a class="reference internal" href="7-design1-using-gpio-timer-interrupts.html"><span class="doc">Design Example 1: Using GPIOs, Timers, and Interrupts</span></a>.</p>
+<img alt="../../../_images/image951.png" src="../../../_images/image951.png" />
+</li>
+</ol>
+</div>
+<div class="section" id="running-the-linux-application">
+<h4>Running the Linux Application<a class="headerlink" href="#running-the-linux-application" title="Permalink to this heading">¶</a></h4>
+<p>Use the following steps to run a Linux application:</p>
+<ol class="arabic">
+<li><p>Copy the application from SD card mount point to <code class="docutils literal notranslate"><span class="pre">/tmp</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mount /dev/mmcblk0p1 /media/
+cp /media/ps_pl_linux_app.elf /tmp
+</pre></div>
+</div>
+</li>
+<li><p>Run the application.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/tmp/ps_pl_linux_app.elf
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="sample-bif-for-a-fielded-system">
+<h4>Sample BIF for a Fielded System<a class="headerlink" href="#sample-bif-for-a-fielded-system" title="Permalink to this heading">¶</a></h4>
+<p>The following BIF file is an example for a fielded system. For this BIF file to work on a board, it requires the RSA_EN, PPK0 Digest, black AES key and PUF helper data to all be programmed in the eFUSEs. Because programming these eFUSEs severely limits the use of the device or board for testing and debugging, it is only included here as a reference. It is not part of the tutorial.</p>
+<p>The following changes are made to the final <code class="docutils literal notranslate"><span class="pre">generation.bif</span></code> file reach the following result:</p>
+<ol class="arabic">
+<li><p>Change from PUF boot header mode to PUF eFUSE mode.</p>
+<ol class="arabic simple">
+<li><p>Change the <code class="docutils literal notranslate"><span class="pre">keysrc_encryption</span></code> attribute to <code class="docutils literal notranslate"><span class="pre">efuse_blk_key</span></code>.</p></li>
+<li><p>Remove the <code class="docutils literal notranslate"><span class="pre">bh_keyfile</span></code> and <code class="docutils literal notranslate"><span class="pre">puf_file</span></code> lines.</p></li>
+<li><p>Remove the <code class="docutils literal notranslate"><span class="pre">puf4kmode</span></code> and <code class="docutils literal notranslate"><span class="pre">pufhd_bh</span></code> attributes from the <code class="docutils literal notranslate"><span class="pre">fsbl_config</span></code> line.</p></li>
+</ol>
+</li>
+<li><p>Change from boot header authentication to eFUSE authentication. Remove the <code class="docutils literal notranslate"><span class="pre">bh_auth_enable</span></code> attribute from the <code class="docutils literal notranslate"><span class="pre">fsbl_config</span></code>
+line.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">arch</span> <span class="o">=</span> <span class="n">zynqmp</span><span class="p">;</span> <span class="n">split</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span> <span class="nb">format</span> <span class="o">=</span> <span class="n">BIN</span><span class="p">;</span> <span class="n">key_part_name</span> <span class="o">=</span> <span class="n">zcu9eg</span>
+<span class="n">the_ROM_image</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="p">[</span><span class="n">pskfile</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">psk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">sskfile</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">ssk0</span><span class="o">.</span><span class="n">pem</span>
+<span class="p">[</span><span class="n">auth_params</span><span class="p">]</span><span class="n">spk_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ppk_select</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">[</span><span class="n">keysrc_encryption</span><span class="p">]</span><span class="n">bh_blk_key</span>
+<span class="p">[</span><span class="n">bh_key_iv</span><span class="p">]</span><span class="n">black_iv</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="n">bh_keyfile</span><span class="p">]</span><span class="n">black_key</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="n">puf_file</span><span class="p">]</span><span class="n">helperdata</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="n">fsbl_config</span><span class="p">]</span><span class="n">a53_x64</span><span class="p">,</span> <span class="n">bh_auth_enable</span><span class="p">,</span> <span class="n">opt_key</span><span class="p">,</span> <span class="n">puf4kmode</span><span class="p">,</span><span class="n">shutter</span><span class="o">=</span><span class="mh">0x0100005E</span><span class="p">,</span><span class="n">pufhd_bh</span>
+<span class="p">[</span><span class="n">bootloader</span><span class="p">,</span> <span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">fsbl_a53</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">fsbl_a53</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">pmufw</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">pmu</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span><span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">pmufw</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">destination_device</span><span class="o">=</span> <span class="n">pl</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">edt_zcu102_wrapper</span><span class="o">.</span><span class="n">bit</span>
+<span class="p">[</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="n">trustzone</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">bl31</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">encryption</span> <span class="o">=</span> <span class="n">aes</span><span class="p">,</span> <span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">aeskeyfile</span> <span class="o">=</span> <span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">nky</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">r5</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="n">blocks</span> <span class="o">=</span> <span class="mi">1728</span><span class="p">(</span><span class="o">*</span><span class="p">)]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">tmr_psled_r5</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">exception_level</span> <span class="o">=</span> <span class="n">el</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">elf</span>
+<span class="p">[</span><span class="n">authentication</span> <span class="o">=</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">load</span> <span class="o">=</span> <span class="mh">0x2000000</span><span class="p">,</span> <span class="n">destination_cpu</span> <span class="o">=</span> <span class="n">a53</span><span class="o">-</span><span class="mi">0</span><span class="p">]</span><span class="n">C</span><span class="p">:</span>\<span class="n">edt</span>\<span class="n">secure_boot_sd</span>\<span class="n">bootgen_files</span>\<span class="n">image</span><span class="o">.</span><span class="n">ub</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="debugging-problems-with-secure-boot">
+<span id="id19"></span><h2>Debugging Problems with Secure Boot<a class="headerlink" href="#debugging-problems-with-secure-boot" title="Permalink to this heading">¶</a></h2>
+<p>This appendix describes how to debug security failures. One procedure determines if PUF registration has been run on the device. A second
+procedure checks the value of the boot header in the boot image.</p>
+<div class="section" id="determine-if-puf-registration-is-running">
+<h3>Determine if PUF Registration is Running<a class="headerlink" href="#determine-if-puf-registration-is-running" title="Permalink to this heading">¶</a></h3>
+<p>The following steps can be used to verify if the PUF registration software has been run on the device:</p>
+<ol class="arabic">
+<li><p>In the Vitis IDE, select <strong>Xilinx → XSCT Console</strong>.</p></li>
+<li><p>Enter the following commands at the prompt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">connect</span>
+<span class="n">xsct</span><span class="o">%</span> <span class="n">targets</span>
+<span class="n">xsct</span><span class="o">%</span> <span class="n">targets</span> <span class="o">-</span><span class="nb">set</span> <span class="o">-</span><span class="nb">filter</span> <span class="p">{</span><span class="n">name</span> <span class="o">=~</span> <span class="s2">&quot;Cortex-A53 #0&quot;</span><span class="p">}</span>
+<span class="n">xsct</span><span class="o">%</span> <span class="n">rst</span> <span class="o">-</span><span class="n">processor</span>
+<span class="n">xsct</span><span class="o">%</span> <span class="n">mrd</span> <span class="o">-</span><span class="n">force</span> <span class="mh">0xFFCC1050</span> <span class="p">(</span><span class="mh">0xFFCC1054</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>This location contains the CHASH and AUX values. If non-zero, PUF registration software has been run on the device.</p></li>
+</ol>
+</div>
+<div class="section" id="read-the-boot-image">
+<h3>Read the Boot Image<a class="headerlink" href="#read-the-boot-image" title="Permalink to this heading">¶</a></h3>
+<p>You can use the Bootgen utility to verify the header values and the partition data used in the boot image.</p>
+<ol class="arabic">
+<li><p>Change to the directory containing <code class="docutils literal notranslate"><span class="pre">BOOT.bin</span></code>.</p></li>
+<li><p>From an XSCT prompt, run the following command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bootgen_utility</span> <span class="o">--</span><span class="nb">bin</span> <span class="n">BOOT</span><span class="o">.</span><span class="n">bin</span> <span class="o">--</span><span class="n">out</span> <span class="n">myfile</span> <span class="o">--</span><span class="n">arch</span> <span class="n">zynqmp</span>
+</pre></div>
+</div>
+</li>
+<li><p>Look for “BH” in <code class="docutils literal notranslate"><span class="pre">myfile</span></code>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="8-boot-and-configuration.html" class="btn btn-neutral float-left" title="Boot and Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Zynq7000-EDT/Zynq7000-EDT.html" class="btn btn-neutral float-right" title="Zynq-7000 Embedded Design Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on August 1, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Debugging Linux Applications &mdash; Embedded Design Tutorials 2021.2 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Advanced Debug Techniques" href="../4-advanced-debug-techniques/README.html" />
+    <link rel="prev" title="Debugging Bare-Metal Applications" href="../2-debugging-bare-metal-applications/README.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../../index.html" class="icon icon-home"> Embedded Design Tutorials
+            <img src="../../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2021.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Introduction/Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Introduction/ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Introduction/Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../1-xilinx-debug-solution-overview/README.html">Vitis Embedded Software Debugging Guide Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1-xilinx-debug-solution-overview/README.html#xilinx-debug-solution-overview">Xilinx Debug Solution Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2-debugging-bare-metal-applications/README.html">Debugging Bare-Metal Applications</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Debugging Linux Applications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-1-there-is-no-linux-tcf-agent-running-on-the-specified-192-168-0-1">Error 1: There is no Linux TCF agent running on the specified ‘192.168.0.1’</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-the-ethernet-connection">Setting Up the Ethernet Connection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-the-tcf-agent">Setting Up the TCF Agent</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#error-2-linux-agent-disconnected-no-such-file-or-directory">Error 2: (Linux-Agent : Disconnected) : No such file or directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-3-cannot-read-target-memory-input-output-error">Error 3: Cannot Read Target Memory, Input/Output Error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-4-memory-view-both-physical-address-and-virtual-address-return">Error 4: Memory View Both Physical Address and Virtual Address Return ????????</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-5-multithread-application-debug">Error 5: Multithread Application Debug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-6-dynamic-memory-allocation">Error 6 : Dynamic Memory Allocation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#appendix">Appendix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vivado-design">Vivado Design</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-block-design">Creating the Block Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-the-bitstream">Generating the Bitstream</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exporting-the-xsa">Exporting the XSA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automation-steps">Automation Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#petalinux-build">PetaLinux Build</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../4-advanced-debug-techniques/README.html">Advanced Debug Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5-summary/README.html">Summary</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">See All Releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Embedded Design Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a> &raquo;</li>
+      <li>Debugging Linux Applications</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/docs/Vitis-Embedded-Software-Debugging/docs/3-debugging-linux-applications/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="debugging-linux-applications">
+<h1>Debugging Linux Applications<a class="headerlink" href="#debugging-linux-applications" title="Permalink to this heading">¶</a></h1>
+<p>The Vitis IDE provides a familiar environment for debugging Linux applications for a target platform. This section covers the following Linux application debug features:</p>
+<ul class="simple">
+<li><p>Setting breakpoints</p></li>
+<li><p>Stepping through program execution</p></li>
+<li><p>Viewing program variables, memory contents, and the stack</p></li>
+</ul>
+<p>The following diagram illustrates the general Linux application debug flow. The Xilinx System Debugger an integrated debugger supporting Zynq®-7000 SoC, Zynq UltraScale+ MPSoC, and MicroBlaze™ and Versal™ processors.</p>
+<div align="center">
+  <img width="100%" height="100%" src="images/Linux_debug_flow.png">
+</div><p><strong>Note:</strong> Refer to the <a class="reference external" href="#appendix">Appendix</a> section for supplementary information about creating a hardware design and building software boot images.</p>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h2>
+<p>Linux debug setup is a mandatory step. Setup allows you to create platform and application projects in the Vitis IDE.</p>
+<ol class="simple">
+<li><p>Open a terminal and navigate to your desired work directory.</p></li>
+<li><p>Download <a class="reference external" href="script/petalinux_build.sh">petalinux_build.sh</a> and the <a class="reference external" href="https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zcu104-v2021.1-final.bsp">ZCU104 BSP</a>. Copy both files to your desired working directory; for example, <code class="docutils literal notranslate"><span class="pre">UG1515/petalinux_prj</span></code>.</p></li>
+<li><p>Source the PetaLinux tool.</p></li>
+<li><p>Follow the steps in the <a class="reference external" href="#petalinux-build">PetaLinux Build</a> section to complete the PetaLinux build and configuration manually.
+<strong>Note:</strong> You can skip the manual steps by using the automated <code class="docutils literal notranslate"><span class="pre">petalinux_build.sh</span></code> script to generate Linux images. However, make sure to select the appropriate configuration whenever prompted.</p></li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">xilinx-zcu104-2021.1/hardware/xilinx-zcu104-2021.1/outputs</span></code> in your PetaLinux project and copy <code class="docutils literal notranslate"><span class="pre">project_1.xsa</span></code> to your desired Vitis work directory (in the following example, it is <code class="docutils literal notranslate"><span class="pre">vitis_work_dir</span></code>) as <code class="docutils literal notranslate"><span class="pre">zcu104.xsa</span></code>.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd xilinx-zcu104-2021.1/hardware/xilinx-zcu104-2021.1/outputs
+$ cp project_1.xsa vitis_work_dir/zcu104.xsa
+</pre></div>
+</div>
+<p><strong>Note:</strong> If you create a custom ZCU104 XSA by following the steps in <a class="reference external" href="#vivado-design">Vivado Design</a>, you can use it as it is here.</p>
+<ol class="simple">
+<li><p>Download the <a class="reference external" href="script/Vitis-workspace.tcl">Vitis-workspace.tcl</a> script. Copy it to your Vitis work directory (in this example, <code class="docutils literal notranslate"><span class="pre">vitis_work_dir</span></code>) as you did for <code class="docutils literal notranslate"><span class="pre">zcu104.xsa</span></code>. Download the source file <a class="reference external" href="src/linux_test_application.c">linux_test_application.c</a> to <code class="docutils literal notranslate"><span class="pre">vitis_work_dir/src</span></code>. These files are required to set up the Vitis workspace. Your Vitis work directory should be structured like the example below after downloading these files.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vitis_work_dir</span>
+<span class="o">|</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">zcu104</span><span class="o">.</span><span class="n">xsa</span>
+<span class="o">|</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">vitis</span><span class="o">-</span><span class="n">workspace</span><span class="o">.</span><span class="n">tcl</span>
+<span class="o">|</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">src</span>
+  <span class="o">|</span>
+  <span class="o">|</span><span class="n">_</span> <span class="n">linux_test_application</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">Vitis-workspace.tcl</span></code> script for workspace setup in XSCT. After successful execution of the script, a Vitis worskpace named <code class="docutils literal notranslate"><span class="pre">linux_debug_ws</span></code> will be created witha ZCU104 based platform and a Linux test application.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vitis_work_dir</span>
+<span class="o">|</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">zcu104</span><span class="o">.</span><span class="n">xsa</span>
+<span class="o">|</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">vitis</span><span class="o">-</span><span class="n">workspace</span><span class="o">.</span><span class="n">tcl</span>
+<span class="o">|</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">src</span>
+<span class="o">|</span>   <span class="o">|</span>
+<span class="o">|</span>   <span class="o">|</span><span class="n">_</span> <span class="n">linux_test_application</span><span class="o">.</span><span class="n">c</span>
+<span class="o">|</span>
+<span class="o">|</span><span class="n">_</span> <span class="n">linux_debug_ws</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Launch the Vitis IDE with <strong>linux_debug_ws</strong>.</p></li>
+</ol>
+</div>
+<div class="section" id="error-1-there-is-no-linux-tcf-agent-running-on-the-specified-192-168-0-1">
+<h2>Error 1: There is no Linux TCF agent running on the specified ‘192.168.0.1’<a class="headerlink" href="#error-1-there-is-no-linux-tcf-agent-running-on-the-specified-192-168-0-1" title="Permalink to this heading">¶</a></h2>
+<ol class="simple">
+<li><p>Download <a class="reference external" href="https://www.xilinx.com/bin/public/openDownload?filename=sdk-2020.2.0.0.sh">sdk-2020.2.0.0.sh</a> and copy it to your working directory.</p></li>
+<li><p>Create a folder named <code class="docutils literal notranslate"><span class="pre">toolchain_mismatch</span></code> within your working directory. In a terminal, run the <code class="docutils literal notranslate"><span class="pre">sdk-2020.2.0.0.sh</span></code> script and install the sysroot inside the <code class="docutils literal notranslate"><span class="pre">toolchain_mismatch</span></code> folder.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sh sdk-2020.2.0.0.sh
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>In the Vitis workspace, double-click <strong>linux_test_app_system.sprj</strong> to open it, and set up a sysroot path to <code class="docutils literal notranslate"><span class="pre">toolchain_mistmatch/sysroots/aarch64-xilinx-linux</span></code>.</p></li>
+<li><p>Build the <code class="docutils literal notranslate"><span class="pre">linux_test_app</span></code> application to generate <code class="docutils literal notranslate"><span class="pre">linux_test_app.elf</span></code>.</p></li>
+<li><p>Right-click the <strong>linux_test_app</strong> application project and navigate to <strong>Debug As &gt; Launch on Hardware (Single Application Debug)</strong>.</p></li>
+</ol>
+  <div align="left">
+    <img width="80%" height="80%" src="images/TCF-connection.PNG">
+  </div><div class="section" id="setting-up-the-ethernet-connection">
+<h3>Setting Up the Ethernet Connection<a class="headerlink" href="#setting-up-the-ethernet-connection" title="Permalink to this heading">¶</a></h3>
+<ul>
+<li><p>Set your host machine’s Ethernet address to a static IP (suggested: 192.168.1.10).</p></li>
+<li><p>Using the serial terminal, configure the board’s IP address to 192.168.1.11:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ifconfig</span> <span class="n">eth0</span> <span class="mf">192.168.1.11</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> This can be any address other than the one that the host is configured to.</p>
+</li>
+<li><p>Ping the host machine using the terminal to verify connectivity.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ping 192.168.1.10 –c 1
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="setting-up-the-tcf-agent">
+<h3>Setting Up the TCF Agent<a class="headerlink" href="#setting-up-the-tcf-agent" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>In the Vitis IDE, click <strong>Target Connections</strong>. If the Target Connections view is not visible, select <strong>Window &gt; Show View &gt; Other &gt; Xilinx &gt; Target Connections</strong> and click <strong>OK</strong>.</p></li>
+<li><p>Go to the <strong>Linux TCF Agent</strong> option and double-click to edit it.</p></li>
+<li><p>Change the host IP address to 192.168.1.11.</p></li>
+<li><p>Click <strong>OK</strong>.</p></li>
+</ul>
+<div align="center">
+  <img width="100%" height="100%" src="images/Linux-Agent.PNG">
+</div></div>
+</div>
+<div class="section" id="error-2-linux-agent-disconnected-no-such-file-or-directory">
+<h2>Error 2: (Linux-Agent : Disconnected) : No such file or directory<a class="headerlink" href="#error-2-linux-agent-disconnected-no-such-file-or-directory" title="Permalink to this heading">¶</a></h2>
+<ol class="simple">
+<li><p>Right-click the <code class="docutils literal notranslate"><span class="pre">linux_test_app</span></code> application project and navigate to <strong>Debug As &gt; Launch on Hardware (Single Application Debug)</strong>.</p></li>
+</ol>
+<div align="center">
+  <img width="90%" height="90%" src="images/Linux-Agent-Disconnected-error.PNG">
+</div><p>This error occurs due to a mismatch between the Linux application toolchain and the TCF agent toolchain. Update to the appropriate toolchain to resolve this issue.</p>
+<ol class="simple">
+<li><p>In the PetaLinux project folder structure, navigate to the <code class="docutils literal notranslate"><span class="pre">images/linux</span></code> folder to find the <code class="docutils literal notranslate"><span class="pre">sdk.sh</span></code> script. Run this shell script to set up a new and appropriate sysroot required for the Linux application.</p></li>
+<li><p>In the Vitis workspace, double-click to open <strong>linux_test_app_system.sprj</strong> and set up a new and correct sysroot path to <code class="docutils literal notranslate"><span class="pre">images/linux/sysroots/aarch64-xilinx-linux</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="error-3-cannot-read-target-memory-input-output-error">
+<h2>Error 3: Cannot Read Target Memory, Input/Output Error<a class="headerlink" href="#error-3-cannot-read-target-memory-input-output-error" title="Permalink to this heading">¶</a></h2>
+<p>Sometimes you might try to watch the value of a pointer variable and find that it leads to a “Cannot read target memory” error. This section explores an error case in which a pointer allocated by <code class="docutils literal notranslate"><span class="pre">mmap()</span></code> can be printed but cannot be read using the debugger.</p>
+<ol class="simple">
+<li><p>Enable the <code class="docutils literal notranslate"><span class="pre">_ERROR3_</span></code> macro in the application source file <code class="docutils literal notranslate"><span class="pre">linux_test_application.c</span></code> and disable <code class="docutils literal notranslate"><span class="pre">_ERROR5_</span></code> and <code class="docutils literal notranslate"><span class="pre">_ERROR6_</span></code> as shown below.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define _ERROR3_</span>
+<span class="o">//</span><span class="c1">#define _ERROR5_</span>
+<span class="o">//</span><span class="c1">#define _ERROR6_</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Build the application project.</p></li>
+<li><p>Right-click the <strong>linux_test_app</strong> application project and navigate to<strong>Debug As &gt; Launch on Hardware (Single Application Debug)</strong>.</p></li>
+</ol>
+<div align="left">
+  <img width="70%" height="70%" src="images/memory_input_output_error_small_window.PNG">
+</div><p>There is a service called <code class="docutils literal notranslate"><span class="pre">ptrace()</span></code> (process trace) which is used by debuggers. It provides extensive control over the operation of its target. This includes the manipulation of its file descriptors, memory, and registers. It can single-step through the target’s code as well as observe and intercept system calls and their results. See <a class="reference external" href="http://man7.org/linux/man-pages/man2/ptrace.2.html">this web page</a> for more information. GDB and the TCF debugger both use <code class="docutils literal notranslate"><span class="pre">ptrace()</span></code>. However, Linux does not make I/O memory accessible through <code class="docutils literal notranslate"><span class="pre">ptrace()</span></code>. To work around the issue, an application can access the I/O memory and write a function which will read the address.</p>
+</div>
+<div class="section" id="error-4-memory-view-both-physical-address-and-virtual-address-return">
+<h2>Error 4: Memory View Both Physical Address and Virtual Address Return ????????<a class="headerlink" href="#error-4-memory-view-both-physical-address-and-virtual-address-return" title="Permalink to this heading">¶</a></h2>
+<p>In the current debug session, navigate to <strong>Memory</strong> view and try to access 0xA0000000. It returns ????????, as shown below.</p>
+<div align="left">
+  <img width="80%" height="80%" src="images/memory-view-error.PNG">
+</div><p>This behavior might be observed many times: the memory returned by <code class="docutils literal notranslate"><span class="pre">mmap()*</span></code> for either <code class="docutils literal notranslate"><span class="pre">/dev/mem</span></code> or <code class="docutils literal notranslate"><span class="pre">/dev/uioX</span></code> cannot be viewed in the Memory, Variables, or Expressions views. Vitis is unable to access it either by physical or vitural address. The <em>memory</em> when accessed in Memory view shows all values as <strong>????????</strong>.</p>
+<p>To workaround this issue, we will add a memory region <strong>0xA0000000-0xA000000F</strong> to the target’s memory map. We will use XSCT command <em>memmap</em> for this modification. Open the XSCT console and work through the following steps to fix this issue.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">connect</span>
+<span class="n">xsct</span><span class="o">%</span> <span class="n">ta</span>
+  <span class="mi">1</span>  <span class="n">PS</span> <span class="n">TAP</span>
+     <span class="mi">2</span>  <span class="n">PMU</span>
+     <span class="mi">3</span>  <span class="n">PL</span>
+  <span class="mi">4</span>  <span class="n">PSU</span>
+     <span class="mi">5</span>  <span class="n">RPU</span> <span class="p">(</span><span class="n">Reset</span><span class="p">)</span>
+        <span class="mi">6</span>  <span class="n">Cortex</span><span class="o">-</span><span class="n">R5</span> <span class="c1">#0 (RPU Reset)</span>
+        <span class="mi">7</span>  <span class="n">Cortex</span><span class="o">-</span><span class="n">R5</span> <span class="c1">#1 (RPU Reset)</span>
+     <span class="mi">8</span> <span class="n">APU</span>
+        <span class="mi">9</span>  <span class="n">Cortex</span><span class="o">-</span><span class="n">A53</span> <span class="c1">#0 (Reset Catch, EL3(S)/A64)</span>
+       <span class="mi">10</span>  <span class="n">Cortex</span><span class="o">-</span><span class="n">A53</span> <span class="c1">#1 (Reset Catch, EL3(S)/A64)</span>
+       <span class="mi">11</span>  <span class="n">Cortex</span><span class="o">-</span><span class="n">A53</span> <span class="c1">#2 (Reset Catch, EL3(S)/A64)</span>
+       <span class="mi">12</span>  <span class="n">Cortex</span><span class="o">-</span><span class="n">A53</span> <span class="c1">#3 (Reset Catch, EL3(S)/A64)</span>
+
+<span class="n">xsct</span><span class="o">%</span> <span class="n">ta</span> <span class="mi">4</span>
+<span class="n">xsct</span><span class="o">%</span> <span class="n">memmap</span> <span class="o">-</span><span class="n">addr</span> <span class="mh">0xa0000000</span> <span class="o">-</span><span class="n">size</span> <span class="mh">0x10</span>
+</pre></div>
+</div>
+<div align="left">
+  <img width="60%" height="60%" src="images/memory-view.png">
+</div></div>
+<div class="section" id="error-5-multithread-application-debug">
+<h2>Error 5: Multithread Application Debug<a class="headerlink" href="#error-5-multithread-application-debug" title="Permalink to this heading">¶</a></h2>
+<p>Enable the <code class="docutils literal notranslate"><span class="pre">_ERROR5_</span></code> macro in the application source file <code class="docutils literal notranslate"><span class="pre">linux_test_application.c</span></code> and disable <code class="docutils literal notranslate"><span class="pre">_ERROR3_</span></code> and <code class="docutils literal notranslate"><span class="pre">_ERROR6_</span></code> as shown below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="c1">#define _ERROR3_</span>
+<span class="c1">#define _ERROR5_</span>
+<span class="o">//</span><span class="c1">#define _ERROR6_</span>
+</pre></div>
+</div>
+<p>The goal of multithread application debugging is to make the application thread-safe. You need to debug the application and identify the locations to protect read/write operations.</p>
+<ol class="simple">
+<li><p>Right-click the <strong>linux_test_app</strong> application project and navigate to <strong>Debug As &gt; Launch on Hardware (Single Application Debug)</strong>.</p></li>
+<li><p>The code will stop at the program entry. There are various debugging techniques such as breakpoints, stepping, and so on to identify the data that needs to be protected. This example will use the breakpoint inside thread function.</p></li>
+<li><p>Put a breakpoint at below two lines.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Job </span><span class="si">%d</span><span class="s2"> started</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">counter</span><span class="p">);</span>
+<span class="o">.......</span>
+<span class="o">.......</span>
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Job </span><span class="si">%d</span><span class="s2"> finished</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">counter</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Click <strong>Resume</strong> and check the Job ID printed in the console. Here, the job to be done is not thread-safe.</p></li>
+<li><p>Open the <strong>Variables</strong> view to track the counter variable value.</p></li>
+</ol>
+  <div align="left">
+    <img width="90%" height="90%" src="images/variables-view.PNG">
+  </div><ol class="simple">
+<li><p>Use a synchronization mechanism (mutex, for example) to ensure that two or more concurrent threads do not simultaneously execute read/writes.</p></li>
+<li><p>Uncomment the mutex code lines listed below from the application to make it thread-safe.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">............................</span>
+<span class="o">............................</span>
+
+<span class="c1">#ifdef _ERROR5_</span>
+<span class="n">void</span><span class="o">*</span> <span class="n">doSomeThing</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//</span>  <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+   <span class="o">.................</span>
+   <span class="o">.................</span>
+  <span class="o">//</span> <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+   <span class="o">.................</span>
+<span class="p">}</span>
+<span class="c1">#endif</span>
+<span class="o">............................</span>
+<span class="o">............................</span>
+<span class="c1">#ifdef _ERROR5_</span>
+<span class="o">/*</span> <span class="k">if</span> <span class="p">(</span><span class="n">pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span> <span class="n">NULL</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> mutex init failed</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="o">*/</span>
+<span class="o">...............</span>
+<span class="o">...............</span>
+<span class="o">...............</span>
+<span class="o">//</span>    <span class="n">pthread_mutex_destroy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Rebuild the application.</p></li>
+<li><p>Right-click the <strong>linux_test_app</strong> application project and navigate to <strong>Debug As &gt; Launch on Hardware (Single Application Debug)</strong>.</p></li>
+<li><p>Observe the output.</p></li>
+</ol>
+</div>
+<div class="section" id="error-6-dynamic-memory-allocation">
+<h2>Error 6 : Dynamic Memory Allocation<a class="headerlink" href="#error-6-dynamic-memory-allocation" title="Permalink to this heading">¶</a></h2>
+<p>Enable the <code class="docutils literal notranslate"><span class="pre">_ERROR6_</span></code> macro in the application source file <code class="docutils literal notranslate"><span class="pre">linux_test_application.c</span></code> and disable <code class="docutils literal notranslate"><span class="pre">_ERROR3_</span></code> and <code class="docutils literal notranslate"><span class="pre">_ERROR5_</span></code> as shown below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="c1">#define _ERROR3_</span>
+<span class="o">//</span><span class="c1">#define _ERROR5_</span>
+<span class="c1">#define _ERROR6_</span>
+</pre></div>
+</div>
+<p>The goal of dynamic memory allocation debugging is to understand memory management.</p>
+<ol class="simple">
+<li><p>Right-click the <strong>linux_test_app</strong> application project and navigate to <strong>Debug As &gt; Launch on Hardware (Single Application Debug)</strong>.</p></li>
+<li><p>The code will stop at the program entry.</p></li>
+<li><p>Use debugging techniques such as the Variables view, step over, breakpoints, and so on to identify the incorrect memory assignment.</p></li>
+<li><p>Place a breakpoint at the following lines.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">ptr</span><span class="o">++</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Click <strong>Resume</strong> and let the tool stop at the breakpoint.</p></li>
+<li><p>Open <strong>Variables</strong> view to check the <strong>ptr</strong> value. Observe that a value is not correctly assigned to a pointer.</p></li>
+</ol>
+  <div align="left">
+    <img width="90%" height="90%" src="images/ptr-variable.PNG">
+  </div><ol class="simple">
+<li><p>Comment out the following code lines:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ifdef _ERROR6_</span>
+<span class="o">................</span>
+<span class="o">................</span>
+<span class="o">................</span>
+<span class="o">//</span><span class="n">ptr</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="o">//</span><span class="n">ptr</span><span class="o">++</span><span class="p">;</span>
+<span class="o">................</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Uncomment the following line of code to make the appropriate pointer assignment.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ifdef _ERROR6_</span>
+<span class="o">................</span>
+<span class="o">................</span>
+<span class="o">................</span>
+<span class="o">................</span>
+<span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="o">................</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Rebuild the application.</p></li>
+<li><p>Right-click the <strong>linux_test_app</strong> application project and navigate to <strong>Debug As &gt; Launch on Hardware (Single Application Debug)</strong>.</p></li>
+<li><p>Observe the output.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="appendix">
+<h1>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="#Vivado-Design">Vivado Design</a> explains how to use a Vivado example design to create a Vivado project. This set of steps gives you the XSA file from Vivado to export. You can skip the manual steps and use this Tcl script to create an XSA directly.</p>
+<p><a class="reference external" href="#petalinux-build">PetaLinux Build</a> explains how to create a PetaLinux project, and how to configure and build boot images.</p>
+<div class="section" id="vivado-design">
+<h2>Vivado Design<a class="headerlink" href="#vivado-design" title="Permalink to this heading">¶</a></h2>
+<p><strong>Note</strong>: You can skip these steps by running the <a class="reference external" href="#automation-steps">automation steps</a> instead.</p>
+<div class="section" id="creating-the-block-design">
+<h3>Creating the Block Design<a class="headerlink" href="#creating-the-block-design" title="Permalink to this heading">¶</a></h3>
+<p>The first step is to create a block design. You can create this according to your specific requirements, but here you will create a Zynq UltraScale+ MPSoC based example project using a template, as explained below.</p>
+<ol class="simple">
+<li><p>On the Welcome screen, navigate to <strong>Quick Start</strong> and click <strong>Open Example Project</strong>.</p></li>
+</ol>
+  <div align="center">
+    <img width="100%" height="100%" src="images/Create-Example-Project.PNG">
+  </div><ol class="simple">
+<li><p>The Create Example Project wizard will be launched. Click <strong>Next</strong>.</p></li>
+<li><p>In the Select Project Template window, click <strong>Install/Update Example Designs</strong> to install templates.</p></li>
+</ol>
+  <div align="center">
+    <img width="100%" height="100%" src="images/Install-Update_Example-Designs.PNG">
+  </div><ol class="simple">
+<li><p>A new window will pop up with a list of preset designs. Right-click <strong>Zynq Ultrascale+ MPSoC Design Presets</strong>, and then click <strong>Install…</strong>.</p></li>
+</ol>
+  <div align="center">
+    <img width="100%" height="100%" src="images/ZynqMPSoC-Preset.PNG">
+  </div><ol class="simple">
+<li><p>After successful installation, click <strong>Close</strong>.</p></li>
+<li><p>You will now be able to see the <strong>Zynq Ultrascale+ MPSoC Design Presets</strong> template. Select the template and click <strong>Next</strong>.</p></li>
+</ol>
+  <div align="center">
+    <img width="100%" height="100%" src="images/ZynqMPSoC-Preset-Template.PNG">
+  </div><ol>
+<li><p>Update the Project Name to “zcu104” and update the path.</p></li>
+<li><p>In the next window, select <strong>Zynq UltraScale+ MPSoC ZCU104 Evaluation Board</strong> and click <strong>Next</strong>. Here, you can see two preset designs. Select the second option, <strong>Processing System and Programmable Logic (PS+PL) with GPIO and Block RAM</strong>, and click <strong>Finish</strong>.</p>
+ <div align="center">
+   <img width="100%" height="100%" src="images/PS-PL.PNG">
+ </div></li>
+</ol>
+<p>The block design you have created for the example project is shown in the following figure.</p>
+  <div align="center">
+    <img width="100%" height="100%" src="images/ZynqMP-Block-Design.PNG">
+  </div></div>
+<div class="section" id="generating-the-bitstream">
+<h3>Generating the Bitstream<a class="headerlink" href="#generating-the-bitstream" title="Permalink to this heading">¶</a></h3>
+<p>The preset example creates an HDL wrapper and also generates output products. You can directly perform synthesis and implementation, and you can generate a bitstream. To generate a bitstream, click <strong>Generate Bitstream</strong>.</p>
+</div>
+<div class="section" id="exporting-the-xsa">
+<h3>Exporting the XSA<a class="headerlink" href="#exporting-the-xsa" title="Permalink to this heading">¶</a></h3>
+<p>After successful bitsream generation, navigate to <strong>File &gt; Export &gt; Export Hardware</strong> to launch the Export Hardware Platform wizard.
+Click <strong>Next</strong> and export the hardware with the <strong>Include bitstream</strong> option. Enter the desired XSA name and complete the wizard.</p>
+  <div align="center">
+    <img width="100%" height="100%" src="images/Include-Bitstream.PNG">
+  </div></div>
+<div class="section" id="automation-steps">
+<h3>Automation Steps<a class="headerlink" href="#automation-steps" title="Permalink to this heading">¶</a></h3>
+<p>Launch the Vivado Tcl console. Source <code class="docutils literal notranslate"><span class="pre">vivado_design.tcl</span></code>.</p>
+</div>
+</div>
+<div class="section" id="petalinux-build">
+<h2>PetaLinux Build<a class="headerlink" href="#petalinux-build" title="Permalink to this heading">¶</a></h2>
+<p>It is required to configure the PetaLinux project to support Linux application debug. Run the following commands for each step listed below.</p>
+<ol class="simple">
+<li><p>Create the PetaLinux project:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>petalinux-create -t project -s {$PWD}/xilinx-zcu104-v2021.1-final.bsp
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Configure the hardware description (optional):</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">config</span> <span class="o">--</span><span class="n">get</span><span class="o">-</span><span class="n">hw</span><span class="o">-</span><span class="n">description</span> <span class="o">&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">XSA</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Configure the root file system to enable TCF agent:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">config</span> <span class="o">-</span><span class="n">c</span> <span class="n">rootfs</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">Filesystem</span> <span class="pre">Packages</span></code>:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Filesystem</span> <span class="n">Packages</span> <span class="o">---&gt;</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Scroll down to select <code class="docutils literal notranslate"><span class="pre">misc</span></code>.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">misc</span> <span class="o">---&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Scroll down to select <code class="docutils literal notranslate"><span class="pre">tcf-agent</span></code>. Ensure that the <code class="docutils literal notranslate"><span class="pre">tcf-agent</span></code> is enabled.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">tcf</span><span class="o">-</span><span class="n">agent</span> 
+<span class="p">[</span> <span class="p">]</span> <span class="n">tcf</span><span class="o">-</span><span class="n">agent</span><span class="o">-</span><span class="n">dev</span> 
+<span class="p">[</span> <span class="p">]</span> <span class="n">tcf</span><span class="o">-</span><span class="n">agent</span><span class="o">-</span><span class="n">dbg</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Go back to the <code class="docutils literal notranslate"><span class="pre">Filesystem</span> <span class="pre">Packages</span></code> menu and click <strong>console</strong>.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">console</span> <span class="o">---&gt;</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">network</span></code>.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">network</span> <span class="o">---&gt;</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Click into the <code class="docutils literal notranslate"><span class="pre">dropbear</span></code> submenu and make sure that <code class="docutils literal notranslate"><span class="pre">dropbear</span></code> is enabled:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">dropbear</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Go back to the previous menu to select OpenSSH and ensure that <code class="docutils literal notranslate"><span class="pre">openssh-sftp-server</span></code> is enabled.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="p">]</span> <span class="n">openssh</span> 
+<span class="p">[</span> <span class="p">]</span> <span class="n">openssh</span><span class="o">-</span><span class="n">ssh</span> 
+<span class="p">[</span> <span class="p">]</span> <span class="n">openssh</span><span class="o">-</span><span class="n">sftp</span> 
+<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">openssh</span><span class="o">-</span><span class="n">sftp</span><span class="o">-</span><span class="n">server</span> 
+<span class="p">[</span> <span class="p">]</span> <span class="n">openssh</span><span class="o">-</span><span class="n">keygen</span> 
+<span class="p">[</span> <span class="p">]</span> <span class="n">openssh</span><span class="o">-</span><span class="n">dbg</span> 
+<span class="p">[</span> <span class="p">]</span> <span class="n">openssh</span><span class="o">-</span><span class="n">dev</span> 
+<span class="p">[</span> <span class="p">]</span> <span class="n">openssh</span><span class="o">-</span><span class="n">misc</span> 
+<span class="p">[</span> <span class="p">]</span> <span class="n">openssh</span><span class="o">-</span><span class="n">sshd</span> 
+<span class="p">[</span> <span class="p">]</span> <span class="n">openssh</span><span class="o">-</span><span class="n">scp</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Save the configuration and exit.</p></li>
+<li><p>Build:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">build</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Sysroot:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">build</span> <span class="o">--</span><span class="n">sdk</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> You can skip all the above steps by using the <code class="docutils literal notranslate"><span class="pre">petalinux_build.sh</span></code> script to build the Linux images.</p>
+<p><em>Copyright 2021 Xilinx Inc. Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</em></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../2-debugging-bare-metal-applications/README.html" class="btn btn-neutral float-left" title="Debugging Bare-Metal Applications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../4-advanced-debug-techniques/README.html" class="btn btn-neutral float-right" title="Advanced Debug Techniques" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2022, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on August 1, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
