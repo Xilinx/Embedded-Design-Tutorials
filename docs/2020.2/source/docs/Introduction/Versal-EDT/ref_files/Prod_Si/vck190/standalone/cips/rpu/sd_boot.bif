@@ -1,0 +1,11 @@
+all:
+{
+    image
+    {
+        { type = bootimage, file = edt_versal_wrapper_rtos.pdi }
+    }
+    image
+    {
+        { core=r5-0, file = r5_tcm.elf }
+    }
+} 
