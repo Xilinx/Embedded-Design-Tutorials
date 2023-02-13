@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Getting Started with SPM &mdash; Embedded Design Tutorials 2022.2 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Evaluating Software Performance" href="5-evaluating-software-performance.html" />
+    <link rel="prev" title="Monitor Framework" href="3-monitor-framework.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../../index.html" class="icon icon-home"> Embedded Design Tutorials
+            <img src="../../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2022.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Introduction/Versal-EDT/Versal-EDT.html">Versal ACAP Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Introduction/ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Introduction/Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/microblaze-system/README.html">Programming an Embedded MicroBlaze Processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../SPA-UG.html">System Performance Analysis</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-system-performance-modeling-project.html">System Performance Modeling Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-monitor-framework.html">Monitor Framework</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting Started with SPM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#atg-configuration">ATG Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performance-analysis-perspective">Performance Analysis Perspective</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="5-evaluating-software-performance.html">Evaluating Software Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-evaluating-high-performance-ports.html">Evaluating High-Performance Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-evaluating-DDR-controller-settings.html">Evaluating DDR Controller Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8-evaluating-memory-hierarchy-ACP.html">Evaluating Memory Hierarchy and the ACP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9-using-spa-with-custom-target.html">Using SPA with a Custom Target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10-end-to-end-performance-analysis.html">End-To-End Performance Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A-performance-checklist.html">Appendix: Performance Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SPA-UG.html#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">All Releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Embedded Design Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../SPA-UG.html">System Performance Analysis</a> &raquo;</li>
+      <li>Getting Started with SPM</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/docs/User_Guides/SPA-UG/docs/4-getting-started-with-SPM.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started-with-spm">
+<h1>Getting Started with SPM<a class="headerlink" href="#getting-started-with-spm" title="Permalink to this heading">¶</a></h1>
+<p>The predefined SPM project can be automatically loaded into the workspace with the following steps</p>
+<ol>
+<li><p>Select <strong>File → New → Other</strong> in the Vitis™ IDE.</p></li>
+<li><p>Select <strong>Xilinx → SPM Project</strong> in the popup menu.</p>
+<p><img alt="../../../../_images/vitis_new_spm_proj.png" src="../../../../_images/vitis_new_spm_proj.png" /></p>
+</li>
+<li><p>When prompted, select the SPM target.</p>
+<p>The SPM project name is defined based on the specified target. For example, selecting a target supported by the ZC702 board will automatically assign SPM_ZC_702_HwPlatform as the name of the SPM project.</p>
+<p><img alt="../../../../_images/vitis_spm_proj_target.png" src="../../../../_images/vitis_spm_proj_target.png" /></p>
+<blockquote>
+<div><p><strong><em>Note</em>:</strong> This tutorial uses the ZC702 workflow example. Differences with ZCU102, if any, are highlighted.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong><em>Note</em>:</strong> Even if your board is not listed in the pre-built project list, you can use most of the SPA features with a custom target. See <a class="reference internal" href="9-using-spa-with-custom-target.html"><span class="doc">Using SPA with a Custom Target</span></a> for more information.</p>
+</div></blockquote>
+</li>
+<li><p>Click <strong>Finish</strong>.</p>
+<p>The SPM project is created. You can now edit the configuration for your test, including the target setup, software application, and traffic to use for the  ATGs. The target setup includes board connection information, bitstream selection, and Processing System 7 (PS7) initialization. The bitstream is specified by default to be the SPM bitstream, while the PS7 settings are defined in the SPM system definition files. If you do not have a local or direct connection to a target board from your host machine, refer to the <em>Vivado Design Suite User Guide: Embedded Processor Hardware Design</em> (<a class="reference external" href="https://www.xilinx.com/cgi-bin/docs/rdoc?=latest%3Bd=ug898-vivado-embedded-design.pdf">UG898</a>) for help in setting up your board connection.</p>
+</li>
+</ol>
+<p>The following figure shows the software application setup for the SPM.</p>
+<div id="fig9"><p><em>Figure 9:</em> <strong>Application Setup in the Vitis IDE Configuration Wizard</strong></p>
+<p><img alt="../../../../_images/image84.png" src="../../../../_images/image84.png" /></p>
+</div><p>By default, the software run in this configuration is the executable <code class="docutils literal notranslate"><span class="pre">beebs_benchmarks.elf</span></code>, an excellent starting application because it contains significant amounts of data processing and memory accesses
+(see <a class="reference internal" href="2-system-performance-modeling-project.html"><span class="doc">System Performance Modeling Project</span></a>).</p>
+<p>This default application was chosen to prepare your design for evaluating software performance, which is described in the next chapter. Later in this guide, this setting will be modified and memory stride, which is the other application that is supplied with the SPM project, will be used.</p>
+<section id="atg-configuration">
+<h2>ATG Configuration<a class="headerlink" href="#atg-configuration" title="Permalink to this heading">¶</a></h2>
+<p>The Vitis IDE enables you to specify traffic scenarios for configuring the ATGs. The following figure shows the ATG Configuration tab, where this traffic can be specified.</p>
+<p><em>Figure 10:</em> <strong>ATG Configuration Setup in the Vitis IDE Configuration Wizard</strong></p>
+<p><img alt="../../../../_images/image97.png" src="../../../../_images/image97.png" /></p>
+<p>In the fixed bitstream of SPM (see <a class="reference external" href="../docs/2-system-performance-modeling-project.html#spm-software">SPM Software</a> for more details), one ATG is attached to every High Performance (HP) port and the Accelerator Coherency Port (ACP) – all interfaces between the PL and the PS. Memory access patterns are modeled by the ATGs issuing AXI transactions with various lengths, frequencies, and memory addresses onto each port. Different combinations of read/write traffic patterns across all four HP and the ACP ports can be specified. This ATG Configuration table includes the following:</p>
+<ul class="simple">
+<li><p><strong>Port Location:</strong> The ATG that is being configured (in SPM, the names are self-explanatory).</p></li>
+<li><p><strong>Template ID:</strong> Disable/enable the traffic defined on that row. When set to <strong>None</strong> no traffic is generated.</p></li>
+<li><p><strong>Operation:</strong> The type of AXI transactions to issue on the AXI port. Valid values include <strong>RD</strong> for memory read transactions (via the AXI read port) and <strong>WR</strong> for memory write transactions (via the AXI write port).</p></li>
+<li><p><strong>Address Start:</strong> The starting address of the AXI transactions. Valid values include the following preset addresses: <code class="docutils literal notranslate"><span class="pre">ddr</span></code> (an alias of ddr0), <code class="docutils literal notranslate"><span class="pre">ddr0</span></code>, <code class="docutils literal notranslate"><span class="pre">ddr1</span></code>, <code class="docutils literal notranslate"><span class="pre">ddr2</span></code>, <code class="docutils literal notranslate"><span class="pre">ddr3</span></code>, and <code class="docutils literal notranslate"><span class="pre">ocm</span></code>.</p></li>
+<li><p><strong>Address_Next:</strong> The method by which every subsequent address is generated after Address_Start (that is, <strong>incremental</strong> or <strong>random</strong> within an address range).</p></li>
+<li><p><strong>Beats/tranx:</strong> The burst length or number of beats per AXI transaction. Valid values are between 1 and 256.</p></li>
+<li><p><strong>Tranx Interval:</strong> The number of PL clock cycles between the start of two consecutive AXI transactions. Valid values are between 5 and 1024.</p></li>
+<li><p><strong>Est. Throughput:</strong> An estimated throughput (in MB/s) of the current traffic settings; the throughput is calculated using: <code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">×</span> <span class="pre">(Lburst/(MAX(Linterval,</span> <span class="pre">Lburst)))</span> <span class="pre">×</span> <span class="pre">f</span></code>, where <code class="docutils literal notranslate"><span class="pre">Lburst</span></code> is the Beats/tranx, <code class="docutils literal notranslate"><span class="pre">Linterval</span></code> is the Tranx interval, and <code class="docutils literal notranslate"><span class="pre">f</span></code> is the PL clock frequency.</p></li>
+</ul>
+</section>
+<section id="performance-analysis-perspective">
+<h2>Performance Analysis Perspective<a class="headerlink" href="#performance-analysis-perspective" title="Permalink to this heading">¶</a></h2>
+<p>After editing your configuration, you can start a performance analysis session by clicking <strong>Debug</strong> in the Edit Configuration dialog box. The Vitis IDE opens the Performance Analysis perspective.</p>
+<div id="fig11"><p><em>Figure 11:</em> <strong>Performance Analysis Perspective in the Vitis IDE</strong></p>
+<p><img alt="../../../../_images/image10.jpeg" src="../../../../_images/image10.jpeg" /></p>
+</div><p>The previous figure shows the Eclipse perspective, which provides a dashboard of performance results. There are five important panels to introduce:</p>
+<ul class="simple">
+<li><p><strong>PS Performance Graphs:</strong> PS (Arm) metrics will be displayed using these graphs.</p></li>
+<li><p><strong>PS Performance Counters:</strong> PS (Arm) metrics listed in a tabular format.</p></li>
+<li><p><strong>APM Performance Graphs:</strong> Plots showing the APM performance metrics listed in <a class="reference external" href="../docs/3-monitor-framework.html#table3">Table 3: Profile Counters per AXI Interface in AXI Performance Monitor</a> using these graphs.</p></li>
+<li><p><strong>APM Performance Counters:</strong> Plots showing the APM performance metrics listed in <a class="reference external" href="../docs/3-monitor-framework.html#table3">Table 3: Profile Counters per AXI Interface in AXI Performance Monitor</a> in a tabular format.</p></li>
+<li><p><strong>MicroBlaze™ Performance Graphs:</strong> Various plots showing the MicroBlaze performance metrics on a shared timeline. This is not used by SPM and therefore not covered in this guide.</p></li>
+<li><p><strong>MicroBlaze Performance Counters:</strong> A table summarizing MicroBlaze performance metrics. This is not used by SPM and therefore not covered in this guide.</p></li>
+</ul>
+<div id="fig12"><p><em>Figure 12:</em> <strong>Terminal Settings to View Transcript in the Vitis IDE</strong></p>
+<p><img alt="../../../../_images/image11.jpeg" src="../../../../_images/image11.jpeg" /></p>
+</div><p>This guide uses various results that are output by the target applications and viewed in the Terminal 1 panel in the Vitis IDE. These results include software run-times, achieved bandwidths, and average latencies. If you would like to re-create these results and/or run your own, you must connect a USB cable (Type-A to USB Mini-B) between the UART on the ZC702 board and a USB port on your host machine.</p>
+<p><a class="reference external" href="#fig12">Figure 12: Terminal Settings to View Transcript in the Vitis IDE</a> shows the terminal settings required to view this UART transcript in the Vitis IDE. To view this pop-up menu, click on the Connect button <img alt="../../../../_images/image121.png" src="../../../../_images/image121.png" /> as shown in the upper-right of <a class="reference external" href="#fig11">Figure 11: Performance Analysis Perspective in the Vitis IDE</a></p>
+<blockquote>
+<div><p><strong><em>Note</em>:</strong> Your port may be different than COM5, but all other settings are valid.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="3-monitor-framework.html" class="btn btn-neutral float-left" title="Monitor Framework" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="5-evaluating-software-performance.html" class="btn btn-neutral float-right" title="Evaluating Software Performance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2023, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on February 03, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
