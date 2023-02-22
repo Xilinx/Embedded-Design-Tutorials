@@ -455,7 +455,7 @@ Input and Output Files
 
    -  Platform: zcu102_edt with standalone domains for Arm Cortex-A53 and Arm Cortex-R5F
    -  Source code for Arm Cortex-R5F:
-      `ref_files/example5/testapp_r5.c <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/example5>`_
+      `ref_files/example5/testapp_r5.c <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/ZynqMPSoC-EDT/ref_files/example5>`_
 
 -  Output:
 

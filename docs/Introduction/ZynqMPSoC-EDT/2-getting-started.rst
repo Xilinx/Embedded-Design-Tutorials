@@ -61,7 +61,7 @@ When you install PetaLinux tools on your system of choice, you must do the follo
 Tutorial Design Files
 ~~~~~~~~~~~~~~~~~~~~~
 
-The reference design files for this tutorial are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files>`_ directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
+The reference design files for this tutorial are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/ZynqMPSoC-EDT/ref_files>`_ directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific ``ref_files`` subdirectory.
 
 -  If the examples are GUI based, the ``ref_files`` directory provides the source files for the examples.
 -  If the examples can be run in script mode, the ``ref_files`` directory contains the Makefile to help you run through the flow easily. Run ``make`` in this directory to run through the implementation flow.

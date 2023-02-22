@@ -249,7 +249,7 @@ Creating the Standalone CDMA Application
 
 4. In the Explorer view, expand the **cdma_app** project, right-click the **src** directory, and select **Import Sources** to open the Import Sources dialog box.
 
-5. In the Import Sources dialog box, click the **Browse** button next to the **From directory** field and specify the design files folder to `ref_files/example7 <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT/ref_files/example7>`_.
+5. In the Import Sources dialog box, click the **Browse** button next to the **From directory** field and specify the design files folder to `ref_files/example7 <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/Zynq7000-EDT/ref_files/example7>`_.
 
 6. Select the **cdma_app.c** file and click **Finish**.
 

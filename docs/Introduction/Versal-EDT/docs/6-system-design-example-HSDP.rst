@@ -27,7 +27,7 @@ This chapter demonstrates how to build a Versal |reg|-based system that utilizes
 Design Example: Enabling the HSDP
 =================================
 
-To enable the HSDP, start with the VCK190 or VMK180 project that you built in the preceding chapter and modify the project to include HSDP support.  It is also possible to start this chapter standalone by sourcing the included block design Tcl to create the HSDP capable design. See `pl_hsdp <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Versal-EDT/ref_files/ug1305-embedded-design-tutorial/vck190/pl/pl_hsdp>`__.
+To enable the HSDP, start with the VCK190 or VMK180 project that you built in the preceding chapter and modify the project to include HSDP support.  It is also possible to start this chapter standalone by sourcing the included block design Tcl to create the HSDP capable design. See `pl_hsdp <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/Versal-EDT/ref_files/EDT_2023.1_PACKAGE/ug1305-embedded-design-tutorial/vck190/pl/pl_hsdp>`__.
 
 Modifying the Design to Enable the HSDP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

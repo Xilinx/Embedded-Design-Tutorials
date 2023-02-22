@@ -775,7 +775,7 @@ Modify PetaLinux U-Boot so that it can load the ``image.ub`` image. The device t
          dr_mode = "peripheral"; maximum-speed = "super-speed";
          };
 
-   The modified ``system-user.dtsi`` file can be found in `ref_files/usb_boot <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/usb_boot>`_ released with this tutorial.
+   The modified ``system-user.dtsi`` file can be found in `ref_files/usb_boot <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/ZynqMPSoC-EDT/ref_files/usb_boot>`_ released with this tutorial.
 
 2. Build PetaLinux with the following changes:
 

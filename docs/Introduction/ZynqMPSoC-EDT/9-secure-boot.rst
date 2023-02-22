@@ -157,7 +157,7 @@ Example: Practical Methods in Secure Boot
 This section outlines the steps to develop secure boot in a Zynq UltraScale+ system. Producing a secure embedded system is a two-step
 process. In the first phase, the cryptographic keys are generated and programmed into NVM. In the second phase, the secure system is developed and tested. Both steps use the Vitis IDE to create software projects, generate the image, and program the image. For the second phase, a test system can be as simple as fsbl.elf and hello.elf files. In this section, you will use the same images used in :ref:`boot-sequence-for-sd-boot`, but this time the images will be assembled together, and have the secure attributes enabled as part of the secure boot sequence.
 
-This section starts by showing how to generate AES and RSA keys. Following key generation, systems using the advanced AES and RSA methods are developed and tested. Keys generated in this section are also included in the `ref_files/secure_boot_sd <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/secure_boot_sd>`_ directory.
+This section starts by showing how to generate AES and RSA keys. Following key generation, systems using the advanced AES and RSA methods are developed and tested. Keys generated in this section are also included in the `ref_files/secure_boot_sd <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/ZynqMPSoC-EDT/ref_files/secure_boot_sd>`_ directory.
 
 The methods used to develop AES functionality are provided in the following sections:
 

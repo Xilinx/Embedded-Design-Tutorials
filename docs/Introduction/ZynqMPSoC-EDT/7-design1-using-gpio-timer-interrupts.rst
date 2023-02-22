@@ -516,7 +516,7 @@ steps.
 Reference Design Automation
 ---------------------------
 
-The `ref_design <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/design1>`_ for this example provides not only the source code for applications, but also a Makefile to run
+The `ref_design <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/ZynqMPSoC-EDT/ref_files/design1>`_ for this example provides not only the source code for applications, but also a Makefile to run
 through the design generation process. To generate the binaries, run the following command:
 
 .. code:: bash
