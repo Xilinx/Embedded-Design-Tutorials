@@ -13,13 +13,13 @@
 Boot and Configuration
 **********************
 
-The purpose of this chapter is to show how to integrate and load boot loaders, bare-metal applications (For APU/RPU), and the Linux Operating System for a Versal |reg| ACAP. This chapter discusses the following topics:
+The purpose of this chapter is to show how to integrate and load boot loaders, bare-metal applications (For APU/RPU), and the Linux Operating System for AMD Versal |trade| devices. This chapter discusses the following topics:
 
 - System software: PLM, Trusted firmware-A (TF-A), U-Boot
 - Steps to generate boot image for standalone application.
 - Boot sequences for SD boot, and QSPI and OSPI boot modes.
 
-You can achieve these configurations using the Vitis |trade| software platform and the PetaLinux tool flow. While :doc:`../docs/2-cips-noc-ip-config` focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a larger system.
+You can achieve these configurations using the AMD Vitis |trade| software platform and the PetaLinux tool flow. While :doc:`../docs/2-cips-noc-ip-config` focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a larger system.
 
 ===============
 System Software
@@ -30,7 +30,7 @@ The following system software blocks cover most of the boot and configuration fo
 Platform Loader and Manager
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The platform loader and manager (PLM) is the software that runs on one of the dedicated processors in the Platform Management Controller (PMC) block of the Versal ACAP. It is responsible for boot and run time management, including platform management, error management, partial reconfiguration, and subsystem restart of the device. The PLM can reload images, and load partial PDIs and service interrupts. The PLM reads the programmable device image from the boot source and configures the components of the system, including the NoC initialization, DDR memory initialization, programmable logic, and processing system, and then completes the device boot.
+The platform loader and manager (PLM) is the software that runs on one of the dedicated processors in the Platform Management Controller (PMC) block of the Versal device. It is responsible for boot and run time management, including platform management, error management, partial reconfiguration, and subsystem restart of the device. The PLM can reload images, and load partial PDIs and service interrupts. The PLM reads the programmable device image from the boot source and configures the components of the system, including the NoC initialization, DDR memory initialization, programmable logic, and processing system, and then completes the device boot.
 
 U-Boot
 ~~~~~~
@@ -40,7 +40,7 @@ U-Boot acts as a secondary boot loader. After the PLM handoff, U-Boot loads Linu
 Trusted Firmware-A
 ~~~~~~~~~~~~~~~~~~~~
 
-The Trusted Firmware-A (ATF) is a transparent bare-metal application layer executed in Exception Level 3 (EL3) on the APU. The ATF includes a Secure Monitor layer for switching between the secure and the non-secure world. The Secure Monitor calls and implementation of Trusted Board Boot Requirements (TBBR) makes the ATF layer a mandatory requirement to load Linux on the APU on Versal ACAP. The PLM loads the ATF to be executed by the APU, which keeps running in EL3 awaiting a service request. The PLM also loads U-Boot into the DDR memory to be executed by the APU. The DDR memory loads the Linux OS in the SMP mode on the APU. The ATF (`bl31.elf`) is built, by default, in PetaLinux. You can find it in the PetaLinux project images directory.
+The Trusted Firmware-A (ATF) is a transparent bare-metal application layer executed in Exception Level 3 (EL3) on the APU. The ATF includes a Secure Monitor layer for switching between the secure and the non-secure world. The Secure Monitor calls and implementation of Trusted Board Boot Requirements (TBBR) makes the ATF layer a mandatory requirement to load Linux on the APU on Versal devices. The PLM loads the ATF to be executed by the APU, which keeps running in EL3 awaiting a service request. The PLM also loads U-Boot into the DDR memory to be executed by the APU. The DDR memory loads the Linux OS in the SMP mode on the APU. The ATF (`bl31.elf`) is built, by default, in PetaLinux. You can find it in the PetaLinux project images directory.
 
 .. _generating-boot-image-for-standalone-application:
 
@@ -48,7 +48,7 @@ The Trusted Firmware-A (ATF) is a transparent bare-metal application layer execu
 Generating Boot Image for Standalone Application
 ================================================
 
-The Vitis software platform supports boot image creation wizard for Versal ACAP. To generate a boot image PDI or ``Boot.bin``, you can either use Bootgen command line options or use the wizard in Vitis. This tutorial shows how to create Boot image using Bootgen, which is released as a part of the Vitis software platform package. The primary function of Bootgen is to integrate the various partitions of the bootable image. Bootgen uses a BIF file (Bootgen Image Format) as an input and generates a single file image in binary BIN or PDI format. It outputs a single file image which can be loaded into non-volatile memory (QSPI or SD card). Use the following steps to generate a PDI/BIN file:
+The Vitis software platform supports boot image creation wizard for Versal devices. To generate a boot image PDI or ``Boot.bin``, you can either use Bootgen command line options or use the wizard in Vitis. This tutorial shows how to create Boot image using Bootgen, which is released as a part of the Vitis software platform package. The primary function of Bootgen is to integrate the various partitions of the bootable image. Bootgen uses a BIF file (Bootgen Image Format) as an input and generates a single file image in binary BIN or PDI format. It outputs a single file image which can be loaded into non-volatile memory (QSPI or SD card). Use the following steps to generate a PDI/BIN file:
 
 1. Open the XSCT Console view in the Vitis IDE, if not already open, by clicking on **Window → Show View**. Type `xsct console` within the search bar of the Show View wizard. Click **Open** to open the console.
 
@@ -310,7 +310,7 @@ To configure the design for the eMMC boot mode, see eMMC Boot Mode Configuration
    
 .. note:: For the VPK180 production board, emmc images are not provided as part of the design package. Only VCK190 and VMK180 emmc images are shared as part of the design package.
 
-To format the eMMC flash on the Versal ACAP board for the first time, use the following steps:
+To format the eMMC flash on the Versal board for the first time, use the following steps:
 
 1. With the card powered off, install the eMMC daughter card.
 

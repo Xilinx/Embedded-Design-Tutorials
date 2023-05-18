@@ -11,7 +11,7 @@
 System Design Example using Scalar Engine and Adaptable Engine
 **************************************************************
 
-This chapter guides you through building a system based on Versal |reg| devices using available tools and supported software blocks. This chapter demonstrates how to use the Vivado |reg| tool to create an embedded design using PL AXI GPIO and PL AXI UART. It also describes how to configure and build the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU on a Versal ACAP device.
+This chapter guides you through building a system based on Versal |trade| devices using available tools and supported software blocks. This chapter demonstrates how to use the AMD Vivado |trade| Design Suite to create an embedded design using PL AXI GPIO and PL AXI UART. It also describes how to configure and build the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU on a Versal device.
 
 Examples using the PetaLinux tool are provided in this chapter.
 
@@ -47,7 +47,7 @@ Connecting IP Blocks to Create a Complete System
 
 To connect IP blocks to create a system, follow these steps.
 
-1. Double-click the Versal ACAP CIPS IP core.
+1. Double-click the Versal CIPS IP core.
 
 2. Click **PS-PMC→ PS-PL Interfaces**.
 
@@ -310,7 +310,7 @@ This section explains how to configure and build the FreeRTOS application for an
 
 The following steps demonstrate the procedure to create a FreeRTOS Application from Arm Cortex-R5F:
 
-1. Start the Vitis |trade| IDE and create a new workspace, for example, ``c:/edt/freertos``.
+1. Start the AMD Vitis |trade| IDE and create a new workspace, for example, ``c:/edt/freertos``.
    
 2. Select **File→ New → Application Project**. The **Creating a New Application Project** wizard opens. If this is the first time that you have launched the Vitis IDE, you can select **Create Application Project** on the Welcome screen as shown in the following figure.
 
@@ -488,7 +488,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
     .. image:: ./media/versal_2021_gpio_debug.png
 
-12. Navigate to **Memory mapped GPIO drivers** and enable Xilinx GPIO support and Xilinx Zynq GPIO support by pressing **<Y>** key as shown in the following figure.
+12. Navigate to **Memory mapped GPIO drivers** and enable GPIO support and Zynq GPIO support by pressing **<Y>** key as shown in the following figure.
 
     .. image:: ./media/versal_2021_gpio_xilinx.png
 

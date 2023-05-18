@@ -19,7 +19,7 @@ System Design Example for High-Speed Debug Port with SmartLynq+ Module
 Introduction
 ============
 
-This chapter demonstrates how to build a Versal |reg|-based system that utilizes the SmartLynq+ module and the High-Speed Debug Port (HSDP). You will also learn to set up the SmartLynq+ module and download a Linux image using either JTAG or the HSDP.
+This chapter demonstrates how to build an AMD Versal |trade|-based system that utilizes the SmartLynq+ module and the High-Speed Debug Port (HSDP). You will also learn to set up the SmartLynq+ module and download a Linux image using either JTAG or the HSDP.
 
 .. important:: This tutorial requires a SmartLynq+ module, a VCK190 or VMK180 evaluation board, and a Linux host machine.
 
@@ -42,7 +42,7 @@ This design uses the project built in :doc:`../docs/5-system-design-example` and
 
    .. image:: ./media/image5.png
 
-3. Double-click the Versal ACAP CIPS IP core to recustomize the IP. Click the **Next** button and click on the blue box labeled **PS PMC** to customize the Processing System (PS) and the Platform Management Controller (PMC). On the left pane, select **Debug**, then click on the **HSDP** tab.
+3. Double-click the Versal CIPS IP core to recustomize the IP. Click the **Next** button and click on the blue box labeled **PS PMC** to customize the Processing System (PS) and the Platform Management Controller (PMC). On the left pane, select **Debug**, then click on the **HSDP** tab.
    
    .. image:: ./media/ch6-image1.png
 
@@ -170,7 +170,7 @@ The SmartLynq+ can also be used as a serial terminal to remotely view the UART o
 
    For example, if your SmartLynq+ displays an IP address `192.168.0.10`, you should issue the following command: `ssh xilinx@192.168.0.10`.
 
-2. By default, the minicom application uses the hardware flow control. To successfully connect to the UART on Xilinx boards, hardware flow control should be disabled as it is not used on the VCK190 UART. To do this, enter the minicom setup mode by issuing `sudo minicom -s` and disabling the feature. Alternatively, issue the following command as root to modify the minicom default configuration:
+2. By default, the minicom application uses the hardware flow control. To successfully connect to the UART on AMD boards, hardware flow control should be disabled as it is not used on the VCK190 UART. To do this, enter the minicom setup mode by issuing `sudo minicom -s` and disabling the feature. Alternatively, issue the following command as root to modify the minicom default configuration:
 
    .. code-block::
 

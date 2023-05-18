@@ -15,7 +15,7 @@ Getting Started
 Navigating Content by Design Process
 =====================================
 
-Xilinx documentation is organized around a set of standard design processes to help you find relevant content for your current development task. This document covers the following design processes:
+AMD documentation is organized around a set of standard design processes to help you find relevant content for your current development task. This document covers the following design processes:
 
 * **System and Solution Planning**: Identifying the components, performance, I/O, and data transfer requirements at a system level. Includes application mapping for the solution to PS, PL, and AI Engine.
   
@@ -28,7 +28,7 @@ Xilinx documentation is organized around a set of standard design processes to h
   * :ref:`running-applications-in-jtag-mode`
   * :ref:`bare-metal-hello-world-on-ddr`
 
-* **Hardware, IP, and Platform Development**: Creating the PL IP blocks for the hardware platform, creating PL kernels, subsystem functional simulation, and evaluating the Vivado timing, resource use, and power closure. Also involves developing the hardware platform for system integration. Topics in this document that apply to this design process include:
+* **Hardware, IP, and Platform Development**: Creating the PL IP blocks for the hardware platform, creating PL kernels, subsystem functional simulation, and evaluating the AMD Vivado |trade| timing, resource use, and power closure. Also involves developing the hardware platform for system integration. Topics in this document that apply to this design process include:
   
   * :doc:`../docs/2-cips-noc-ip-config`
   * :ref:`noc-ip-core-configuration`
@@ -45,7 +45,7 @@ Xilinx documentation is organized around a set of standard design processes to h
 Hardware Requirements
 =====================
 
-This tutorial targets the Versal |reg| ACAP VCK190, VMK180, and VPK180 evaluation boards. To use this guide, you need the following hardware items. These are included with the evaluation board. Ensure that the required tools are installed properly and your environments match the requirements.
+This tutorial targets the Versal |trade| VCK190, VMK180, and VPK180 evaluation boards. To use this guide, you need the following hardware items. These are included with the evaluation board. Ensure that the required tools are installed properly and your environments match the requirements.
 
 The evaluation board kit includes:
 
@@ -76,7 +76,7 @@ Installation Requirements
 Vitis Integrated Design Environment and Vivado Design Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ensure that you have the Vitis |trade| 2021.2 software development platform installed. The Vitis IDE is a Xilinx |reg| unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado |reg| Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
+Ensure that you have the AMD Vitis |trade| 2023.1 software development platform installed. The Vitis IDE is a unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
 
 .. note:: Visit `https://www.xilinx.com/support/download.html <https://www.xilinx.com/support/download.html>`__ to confirm that you have the latest tools version.
 
@@ -95,7 +95,7 @@ This can use either a dedicated Linux host system or a virtual machine running o
 
 When you install PetaLinux tools on your system of choice, you must do the following:
 
-- Download PetaLinux 2021.2 software from the Xilinx website.
+- Download PetaLinux 2023.1 software from the website.
 
 - Download the respective BSP as described in :ref:`creating-linux-images-using-petalinux`.
 
