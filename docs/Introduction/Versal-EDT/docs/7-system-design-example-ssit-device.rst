@@ -98,11 +98,14 @@ Configuring NoC and CIPS
 
 3. Enable PMC to NoC and NoC to PMC connectivity for slave SLRs (SLR-1, SLR-2, SLR3) as shown below.
 
-   .. image:: media/vpk_noc-interface-slr-1.png      
+   .. image:: media/vpk_noc-interface-slr-1.png
+      :width: 600
 
-   .. image:: media/vpk_noc-interface-slr-2.png      	
+   .. image:: media/vpk_noc-interface-slr-2.png
+      :width: 600
 
-   .. image:: media/vpk_noc-interface-slr-3.png      	
+   .. image:: media/vpk_noc-interface-slr-3.png
+      :width: 600    	
 
 4. Click **Finish** and **Finish** to close the CIPS GUI.	  
 
@@ -408,6 +411,8 @@ To validate the design and to generate the output product, follow these steps:
 
     .. image:: ./media/vpk_180_ip-sources-ch5-final.png
 
+.. _synthesize-hardware-7:
+
 Synthesizing, Implementing, and Generating the Device Image
 -----------------------------------------------------------
 
@@ -423,9 +428,19 @@ Follow these steps to generate a device image for the design.
 
 4. Click **Cancel** to close the window.
 
-5. Export hardware after you generate the Device Image.
+   .. note:: The generated device image needs to be overlaid with the ``secio-sysmon.v2.cdo`` file to enable accessing secondary SLRs power rails. For more information refer to the Answer Record (`#000034400 <https://support.xilinx.com/s/article/000034400?language=en_US>`__.)
 
-.. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-7` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.
+5. Copy ``secio-sysmon.v2.cdo`` from ``<design-package>/ref_files/EDT_2023.1_PACKAGE/ug1305-embedded-design-tutorial/vpk180/pl/pl_gpio_uart`` to the working directory.
+
+6. Navigate to the generated device image path ``../project_1/project_1.runs/impl/`` and run the following command as mentioned in (AR#000034400).
+
+   .. code-block::
+
+       exec [exec which bootgen] -arch versal -image ./edt_versal_wrapper.bif -w -o ./edt_versal_wrapper.pdi -overlay_cdo ../../../secio-sysmon.v2.cdo  
+
+7. Export hardware after you generate the new Device Image.
+
+   .. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-7` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.
 
    1. Go to **Flow Navigator→ Synthesis** and click **Run Synthesis**.
 
@@ -643,7 +658,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
     .. image:: ./media/versal_2021_gpio_debug.png
 
-12. Navigate to **Memory mapped GPIO drivers** and enable Xilinx GPIO support and Xilinx Zynq GPIO support by pressing **<Y>** key as shown in the following figure.
+12. Navigate to **Memory mapped GPIO drivers** and enable GPIO support and Zynq GPIO support by pressing **<Y>** key as shown in the following figure.
 
     .. image:: ./media/versal_2021_gpio_xilinx.png
 
@@ -655,7 +670,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
    
        petalinux-config -c rootfs
 
-15. Navigate to User Packages and disable aie-notebooks, openamp-demo-notebooks, packagegroup-petalinux-jupyter, pm-notebooks, python3-ipywidgets support by pressing <Y> key as shown in the following figure.
+15. Navigate to User Packages and disable aie-notebooks, openamp-demo-notebooks, packagegroup-petalinux-jupyter, pm-notebooks, and python3-ipywidgets support by pressing <Y> key as shown in the following figure.
 
     .. image:: media/rootfs_config_aie.JPG
 
@@ -676,6 +691,8 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
     .. code-block::
        
         $ petalinux-build
+
+   .. note:: Skipping steps 5 and 6 in the :ref:`synthesize-hardware-7` section will result in `PLM Error Status: 0x22220001` while booting PetaLinux.
 
 After flashing the built images, all four LEDs which are connected to slave SLR will be turned on on the VPK180 board.
 

@@ -105,7 +105,7 @@ When you install PetaLinux tools on your system of choice, you must do the follo
 Prerequisites
 =============
 
-- 8 GB RAM (recommended minimum for Xilinx tools)
+- 8 GB RAM (recommended minimum for AMD tools)
 - 2 GHz CPU clock or equivalent (minimum of eight cores)
 - 100 GB free HDD space
 
@@ -129,7 +129,7 @@ For more information, see *PetaLinux Tools Documentation: Reference Guide* (`UG1
 Software Licensing
 ==================
 
-Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* (`UG973 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug973-vivado-release-notes-install-license>`__).
+AMD software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* (`UG973 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug973-vivado-release-notes-install-license>`__).
 
 =====================
 Tutorial Design Files
