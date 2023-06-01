@@ -2,7 +2,7 @@ all:
 {
     image
     {
-        { type = bootimage, file = /wrk/paeg1/users/bhavanat/vpk180_edt/vpk180_edt/vpk180_platform/hw/edt_versal.pdi }
+        { type = bootimage, file = /wrk/paeg1/users/bhavanat/vpk180_edt/vpk180_edt/vpk180_platform/hw/edt_versal_wrapper_rtos.pdi }
     }
     image
     {
