@@ -1,7 +1,7 @@
 the_ROM_image:
 {
 image {
-	{ type=bootimage, file=/wrk/paeg1/users/bhavanat/vpk180_edt/vpk180_edt/vpk180_platform/hw/edt_versal.pdi}
+	{ type=bootimage, file=/wrk/paeg1/users/bhavanat/vpk180_edt/vpk180_edt/vpk180_platform/hw/edt_versal_wrapper.pdi}
 	{ type=bootloader, file=plm.elf }
 	{ core=psm, file=psmfw.elf }
 }
