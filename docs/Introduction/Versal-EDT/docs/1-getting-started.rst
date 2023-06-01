@@ -45,7 +45,7 @@ AMD documentation is organized around a set of standard design processes to help
 Hardware Requirements
 =====================
 
-This tutorial targets the Versal |trade| VCK190, VMK180, and VPK180 evaluation boards. To use this guide, you need the following hardware items. These are included with the evaluation board. Ensure that the required tools are installed properly and your environments match the requirements.
+This tutorial targets the AMD Versal |trade| VCK190, VMK180, and VPK180 evaluation boards. To use this guide, you need the following hardware items. These are included with the evaluation board. Ensure that the required tools are installed properly and your environments match the requirements.
 
 The evaluation board kit includes:
 
