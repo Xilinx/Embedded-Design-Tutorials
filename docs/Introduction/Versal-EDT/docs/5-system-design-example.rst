@@ -15,8 +15,6 @@ This chapter guides you through building a system based on Versal |trade| device
 
 Examples using the PetaLinux tool are provided in this chapter.
 
-.. note:: The design files for this chapter have been validated with Vivado Design Suite 2022.1.
-
 .. _5-using-axi-gpio:
 
 ==============================
