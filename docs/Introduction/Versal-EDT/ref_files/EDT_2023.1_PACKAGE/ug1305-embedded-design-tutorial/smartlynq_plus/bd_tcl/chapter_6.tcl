@@ -20,7 +20,7 @@ set script_folder [_tcl::get_script_folder]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2022.1
+set scripts_vivado_version 2021.2
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -44,7 +44,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
    create_project project_1 myproj -part xcvc1902-vsva2197-2MP-e-S
-   set_property BOARD_PART xilinx.com:vck190:part0:3.0 [current_project]
+   set_property BOARD_PART xilinx.com:vck190:part0:2.2 [current_project]
 }
 
 
@@ -128,7 +128,7 @@ xilinx.com:ip:axi_gpio:2.0\
 xilinx.com:ip:axi_noc:1.0\
 xilinx.com:ip:smartconnect:1.0\
 xilinx.com:ip:proc_sys_reset:5.0\
-xilinx.com:ip:versal_cips:3.2\
+xilinx.com:ip:versal_cips:3.1\
 "
 
    set list_ips_missing ""
@@ -225,27 +225,10 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.CH0_DDR4_0_BOARD_INTERFACE {ddr4_dimm1} \
    CONFIG.CONTROLLERTYPE {DDR4_SDRAM} \
-   CONFIG.HBM_CHNL0_CONFIG {\
-HBM_PC0_PRE_DEFINED_ADDRESS_MAP ROW_BANK_COLUMN HBM_PC1_PRE_DEFINED_ADDRESS_MAP\
-ROW_BANK_COLUMN HBM_PC0_USER_DEFINED_ADDRESS_MAP NONE\
-HBM_PC1_USER_DEFINED_ADDRESS_MAP NONE} \
-   CONFIG.LOGO_FILE {data/noc_mc.png} \
-   CONFIG.MC0_CONFIG_NUM {config17} \
-   CONFIG.MC1_CONFIG_NUM {config17} \
-   CONFIG.MC2_CONFIG_NUM {config17} \
-   CONFIG.MC3_CONFIG_NUM {config17} \
-   CONFIG.MC_BOARD_INTRF_EN {true} \
-   CONFIG.MC_CASLATENCY {22} \
    CONFIG.MC_CHAN_REGION1 {DDR_LOW1} \
    CONFIG.MC_COMPONENT_WIDTH {x8} \
-   CONFIG.MC_CONFIG_NUM {config17} \
    CONFIG.MC_DATAWIDTH {64} \
-   CONFIG.MC_DDR4_2T {Disable} \
-   CONFIG.MC_DDR_INIT_TIMEOUT {0x00096602} \
-   CONFIG.MC_F1_TRCD {13750} \
-   CONFIG.MC_F1_TRCDMIN {13750} \
    CONFIG.MC_INPUTCLK0_PERIOD {5000} \
-   CONFIG.MC_INPUT_FREQUENCY0 {200.000} \
    CONFIG.MC_INTERLEAVE_SIZE {128} \
    CONFIG.MC_MEMORY_DEVICETYPE {UDIMMs} \
    CONFIG.MC_MEMORY_SPEEDGRADE {DDR4-3200AA(22-22-22)} \
@@ -254,12 +237,6 @@ HBM_PC1_USER_DEFINED_ADDRESS_MAP NONE} \
    CONFIG.MC_ROWADDRESSWIDTH {16} \
    CONFIG.MC_STACKHEIGHT {1} \
    CONFIG.MC_SYSTEM_CLOCK {Differential} \
-   CONFIG.MC_TRC {45750} \
-   CONFIG.MC_TRCD {13750} \
-   CONFIG.MC_TRCDMIN {13750} \
-   CONFIG.MC_TRCMIN {45750} \
-   CONFIG.MC_TRP {13750} \
-   CONFIG.MC_TRPMIN {13750} \
    CONFIG.NUM_CLKS {7} \
    CONFIG.NUM_MC {1} \
    CONFIG.NUM_MCP {4} \
@@ -358,7 +335,7 @@ HBM_PC1_USER_DEFINED_ADDRESS_MAP NONE} \
   set rst_versal_cips_0_333M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_versal_cips_0_333M ]
 
   # Create instance: versal_cips_0, and set properties
-  set versal_cips_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:versal_cips:3.2 versal_cips_0 ]
+  set versal_cips_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:versal_cips:3.1 versal_cips_0 ]
   set_property -dict [ list \
    CONFIG.DDR_MEMORY_MODE {Custom} \
    CONFIG.DEBUG_MODE {Custom} \
@@ -370,8 +347,7 @@ HBM_PC1_USER_DEFINED_ADDRESS_MAP NONE} \
      DESIGN_MODE {1}\
      PMC_GPIO0_MIO_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 0 .. 25}}}\
      PMC_GPIO1_MIO_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 26 .. 51}}}\
-     PMC_I2CPMC_PERIPHERAL {{ENABLE 0} {IO {PMC_MIO 2 .. 3}}}\
-     PS_I2C0_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 46 .. 47}}}\
+     PMC_I2CPMC_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 46 .. 47}}}\
      PMC_MIO37 {{AUX_IO 0} {DIRECTION out} {DRIVE_STRENGTH 8mA} {OUTPUT_DATA high}\
 {PULL pullup} {SCHMITT 0} {SLEW slow} {USAGE GPIO}}\
      PMC_OSPI_PERIPHERAL {{ENABLE 0} {IO {PMC_MIO 0 .. 11}} {MODE Single}}\
@@ -386,10 +362,7 @@ HBM_PC1_USER_DEFINED_ADDRESS_MAP NONE} \
 1}}}\
      PMC_SD1_COHERENCY {0}\
      PMC_SD1_DATA_TRANSFER_MODE {8Bit}\
-     PMC_SD1_PERIPHERAL {{CLK_100_SDR_OTAP_DLY 0x3} {CLK_200_SDR_OTAP_DLY 0x2}\
-{CLK_50_DDR_ITAP_DLY 0x36} {CLK_50_DDR_OTAP_DLY 0x3}\
-{CLK_50_SDR_ITAP_DLY 0x2C} {CLK_50_SDR_OTAP_DLY 0x4} {ENABLE\
-1} {IO {PMC_MIO 26 .. 36}}}\
+     PMC_SD1_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 26 .. 36}}}\
      PMC_SD1_SLOT_TYPE {SD 3.0}\
      PMC_USE_PMC_NOC_AXI0 {1}\
      PS_BOARD_INTERFACE {ps_pmc_fixed_io}\
@@ -429,7 +402,6 @@ HBM_PC1_USER_DEFINED_ADDRESS_MAP NONE} \
      SMON_ALARMS {Set_Alarms_On}\
      SMON_ENABLE_TEMP_AVERAGING {0}\
      SMON_TEMP_AVERAGING_SAMPLES {0}\
-     PMC_OT_CHECK {{DELAY 0} {ENABLE 0}}\
    } \
    CONFIG.PS_PMC_CONFIG_APPLIED {1} \
  ] $versal_cips_0
