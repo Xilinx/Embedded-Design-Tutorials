@@ -1,7 +1,7 @@
 <p align="right"><a href="../docs-cn/README.md">简体中文</a> | <a href="../docs-jp/README.md">日本語</a></p>
 <table width="100%" class="sphinxhide">
   <tr width="100%">
-    <td align="center"><img src="https://github.com/Xilinx/Image-Collateral/blob/main/xilinx-logo_30percent.png?raw=true"/><h1>Embedded Design Documentation</h1>
+    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Embedded Design Documentation</h1>
     </td>
  </tr>
  </table>
@@ -10,7 +10,9 @@ AMD and its Ecosystem Partners deliver embedded tools and runtime environments d
 
 <img src="Introduction\Versal-EDT\docs\media\embedded-tutorials-landing.png"></a>
 
-For more information about available embedded tools available from AMD, see [ Embedded Software Infrastructure](https://www.xilinx.com/products/design-tools/embedded-software.html).
+![Embedded Tutorials Landing](./Introduction/Versal-EDT/docs/media/embedded-tutorials-landing.png)
+
+For more information about available embedded tools available from AMD, see [Embedded Software Infrastructure](https://www.xilinx.com/products/design-tools/embedded-software.html).
 
 This repository provides information about creating embedded designs. The following documents are available.
 
@@ -80,5 +82,6 @@ Provides an introduction for using the Vivado Design Suite flow for using the Zy
  
 
 
+<p class="sphinxhide" align="center"><sub>Copyright © 2020–2023 Advanced Micro Devices, Inc</sub></p>
 
-<p align="center"><sup>Copyright &copy; 2020–2023 Advanced Micro Devices, Inc</sup></p>
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>
