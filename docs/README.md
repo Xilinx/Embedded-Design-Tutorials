@@ -6,17 +6,17 @@
  </tr>
  </table>
 
-Xilinx and its Ecosystem Partners deliver embedded tools and runtime environments designed to enable you to efficiently and quickly move from concept to release. We provide you with all the components needed to create your embedded system using Xilinx Zynq® SoC and Zynq UltraScale+ MPSoC devices, MicroBlaze™ processor cores, and Arm Cortex-M1/M3 micro controllers including open source operating systems and bare metal drivers, multiple runtimes and Multi-OS environments, sophisticated Integrated Development Environments, and compilers, debuggers, and profiling tools.
+AMD and its Ecosystem Partners deliver embedded tools and runtime environments designed to enable you to efficiently and quickly move from concept to release. We provide you with all the components needed to create your embedded system using AMD Zynq™ SoC and AMD Zynq UltraScale+™ MPSoC devices, AMD MicroBlaze™ processor cores, and Arm Cortex-M1/M3 micro controllers including open source operating systems and bare metal drivers, multiple runtimes and Multi-OS environments, sophisticated Integrated Development Environments, and compilers, debuggers, and profiling tools.
 
 <img src="Introduction\Versal-EDT\docs\media\embedded-tutorials-landing.png"></a>
 
-For more information about available embedded tools available from Xilinx, see [Xilinx Embedded Software Infrastructure](https://www.xilinx.com/products/design-tools/embedded-software.html).
+For more information about available embedded tools available from AMD, see [ Embedded Software Infrastructure](https://www.xilinx.com/products/design-tools/embedded-software.html).
 
 This repository provides information about creating embedded designs. The following documents are available.
 
 # Introduction Tutorials
 
-The Embedded Design Tutorials provide an introduction to the embedded flow for Xilinx devices.
+The Embedded Design Tutorials provide an introduction to the embedded flow for AMD devices.
 
  <table style="width:100%">
  <tr>
@@ -25,18 +25,18 @@ The Embedded Design Tutorials provide an introduction to the embedded flow for X
  <td align="center"><b>Description</b></td>
  </tr>
  <tr>
- <td align="center"><a href="Introduction/Versal-EDT/README.md">Versal Adaptive Compute Acceleration Platform</a></td>
+ <td align="center"><a href="Introduction/Versal-EDT/README.md">Versal Adaptive SoC Design Tutorial</a></td>
  <td>
- Versal&trade; ACAP devices</td><td>
-Provides an introduction for using the Xilinx&reg; Vivado&reg; Design Suite flow for a Versal&trade; VMK180/VCK190 evaluation board.</td></tr>
+ Versal devices</td><td>
+Provides an introduction for using the AMD Vivado&trade; Design Suite flow for a Versal VMK180/VCK190 evaluation board.</td></tr>
 <tr>
 <td align="center"><a href="Introduction/ZynqMPSoC-EDT/README.md">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></td>
-<td>Zynq&reg; UltraScale+&trade; MPSoC devices</td><td>
-Provides an introduction for using the Xilinx Vivado Design Suite flow for using the Zynq UltraScale+ MPSoC device.</td></tr>
+<td>Zynq UltraScale+ MPSoC devices</td><td>
+Provides an introduction for using the Vivado Design Suite flow for using the Zynq UltraScale+ MPSoC device.</td></tr>
 <tr>
 <td align="center"><a href="Introduction/Zynq7000-EDT/README.md">Zynq-7000 SoC Embedded Design Tutorial</a></td>
-<td>Zynq-7000 SoC devices</td><td>
-Provides an introduction for using the Xilinx Vivado Design Suite flow for using the Zynq-7000 SoC device.</td></tr>
+<td>Zynq 7000 SoC devices</td><td>
+Provides an introduction for using the Vivado Design Suite flow for using the Zynq 7000 SoC device.</td></tr>
 </table>
 
 # Feature Tutorials
@@ -81,4 +81,4 @@ Provides an introduction for using the Xilinx Vivado Design Suite flow for using
 
 
 
-<p align="center"><sup>Copyright&copy; 2019-2021 Xilinx</sup></p>
+<p align="center"><sup>Copyright &copy; 2020–2023 Advanced Micro Devices, Inc</sup></p>
