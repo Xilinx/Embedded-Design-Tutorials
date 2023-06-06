@@ -25,7 +25,7 @@ The NoC IP core configures the DDR memory and data path across the DDR memory an
 - Creating and running a Hello World software application on Arm Cortex-A72 using DDR as memory.
 - Creating and running a Hello World software application on Arm Cortex-R5F using DDR as memory.
 
-.. note: The design files for this chapter have been validated with Vivado Design Suite 2022.1.
+.. note:: The design files for this chapter have been validated with Vivado Design Suite 2022.1.
 
 =============
 Prerequisites
