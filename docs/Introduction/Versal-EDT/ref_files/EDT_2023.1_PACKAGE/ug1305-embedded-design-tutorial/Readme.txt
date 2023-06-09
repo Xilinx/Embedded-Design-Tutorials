@@ -1,3 +1,7 @@
+*************************************************************************
+#--Copyright (C) 2022 - 2023, Advanced Micro Devices, Inc 
+#--SPDX-License-Identifier: MIT
+
 ************************************************************************
 
 Vendor: Advanced Micro Devices, Inc
@@ -5,8 +9,8 @@ Current readme.txt Version: 3.5
 Date Created: 23JAN2023
 
 Associated Filename: ug1305-embedded-design-tutorial.zip
-Associated Document: ug1305-Versal ACAP Embedded Design Tutorial
-Supported Device(s): Versal ACAP
+Associated Document: UG1305 Versal Adaptive SoC Embedded Design Tutorial
+Supported Device(s): Versal Adaptive SoC
    
 *************************************************************************
 
@@ -36,7 +40,9 @@ Date             Version      Revision Description
 22APR2022          3.4 	       UPDATED VCK190,VMK180 PRODUCTION SILICON BOARD FILES
 			       AND APPLICATION BINARIES for 2022.1 release	
 23JAN2023          3.5	       UPDATED VPK180 PRODUCTION SILICON BOARD FILES
-			       AND APPLICATION BINARIES for 2022.2 release			   
+			       AND APPLICATION BINARIES for 2022.2 release
+10JUN2023	   3.6			   UPDATED VPK180 PRODUCTION SILICON BOARD FILES
+                   AND APPLICATION BINARIES for 2023.1 release				   
 ========================================================================
 
 
@@ -170,12 +176,12 @@ below:
 3. INSTALLATION AND OPERATING INSTRUCTIONS 
 
 Hardware project creation and device image generation 
-	- Set vivado tool version to 2022.2
+	- Set vivado tool version to 2023.1
 	- Open Vivado tool
         - Browse to ug1305-embedded-design-tutorial folder. Go to the pl folder.Go to pl_helloworld/pl_gpio_uart folder.
 	- In the Tcl Console, type the following command
 			/> source ./scripts/create_project.tcl
-	- Vivado� tool will open the design, loads the block diagram, and adds the required top file and XDC file to the project
+	- Vivado™ tool will open the design, loads the block diagram, and adds the required top file and XDC file to the project
 	- In the Flow Navigator pane on the left-hand side under Program and Debug, click Generate Device Image.
 
 4. SUPPORT

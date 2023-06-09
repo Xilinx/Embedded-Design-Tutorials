@@ -1,12 +1,3 @@
-..
-   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
 **************************************************************
 System Design Example using Scalar Engine and Adaptable Engine
 **************************************************************
@@ -14,6 +5,8 @@ System Design Example using Scalar Engine and Adaptable Engine
 This chapter guides you through building a system based on Versal |trade| devices using available tools and supported software blocks. This chapter demonstrates how to use the AMD Vivado |trade| Design Suite to create an embedded design using PL AXI GPIO and PL AXI UART. It also describes how to configure and build the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU on a Versal device.
 
 Examples using the PetaLinux tool are provided in this chapter.
+
+.. note:: The design files for this chapter have been validated with Vivado Design Suite 2022.1.
 
 .. _5-using-axi-gpio:
 
@@ -564,3 +557,5 @@ Combining FreeRTOS and APU Images using a BIF File
    :ltrim:
 
 
+.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
