@@ -1,5 +1,7 @@
 /*
-* Copyright (C) 2012 - 2023 Advanced Micro Devices, Inc.  All rights reserved.
+*--(C) Copyright 2020 - 2021 Xilinx, Inc. 
+*--(C) Copyright 2022 - 2023, Advanced Micro Devices, Inc.
+*--SPDX-License-Identifier: MIT
 *
 * Permission is hereby granted, free of charge, to any person
 * obtaining a copy of this software and associated documentation
