@@ -1,3 +1,6 @@
+# Copyright (C) 2022 -2023, Advanced Micro Devices, Inc. All rights reserved.
+# SPDX-License-Identifier: MIT
+
 # Misc
 #GPIO_LED_0_LS
 set_property PACKAGE_PIN BA49 [get_ports Dout_0]

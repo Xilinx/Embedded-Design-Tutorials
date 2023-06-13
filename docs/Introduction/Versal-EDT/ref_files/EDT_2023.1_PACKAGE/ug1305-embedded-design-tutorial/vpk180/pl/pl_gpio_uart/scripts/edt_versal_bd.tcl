@@ -1,11 +1,14 @@
 
-################################################################
+#############################################################################
+# Copyright (C) 2022 -2023, Advanced Micro Devices, Inc. All rights reserved. 
+# SPDX-License-Identifier: MIT
+#
 # This is a generated script based on design: edt_versal
 #
 # Though there are limitations about the generated script,
 # the main purpose of this utility is to make learning
 # IP Integrator Tcl commands easier.
-################################################################
+#############################################################################
 
 namespace eval _tcl {
 proc get_script_folder {} {

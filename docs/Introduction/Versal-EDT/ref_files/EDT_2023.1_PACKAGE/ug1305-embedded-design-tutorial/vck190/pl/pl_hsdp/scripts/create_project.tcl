@@ -1,3 +1,6 @@
+# Copyright (C) 2022 -2023, Advanced Micro Devices, Inc. All rights reserved. 
+# SPDX-License-Identifier: MIT
+
 #enable_beta_device *  
 
 #xhub::refresh_catalog [xhub::get_xstores xilinx_board_store]

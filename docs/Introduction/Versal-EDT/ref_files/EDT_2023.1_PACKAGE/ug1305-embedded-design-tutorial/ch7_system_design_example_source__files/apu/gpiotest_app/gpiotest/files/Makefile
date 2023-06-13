@@ -1,3 +1,6 @@
+# Copyright (C) 2022 -2023, Advanced Micro Devices, Inc. All rights reserved. 
+# SPDX-License-Identifier: MIT
+
 APP = gpiotest
 
 # Add any other object files to this list below

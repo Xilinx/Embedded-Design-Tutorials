@@ -1,8 +1,7 @@
-*************************************************************************
-#--Copyright (C) 2022 - 2023, Advanced Micro Devices, Inc 
-#--SPDX-License-Identifier: MIT
-
-************************************************************************
+******************************************************************************
+# Copyright (C) 2022 - 2023, Advanced Micro Devices, Inc. All rights reserved. 
+# SPDX-License-Identifier: MIT
+******************************************************************************
 
 Vendor: Advanced Micro Devices, Inc
 Current readme.txt Version: 3.5

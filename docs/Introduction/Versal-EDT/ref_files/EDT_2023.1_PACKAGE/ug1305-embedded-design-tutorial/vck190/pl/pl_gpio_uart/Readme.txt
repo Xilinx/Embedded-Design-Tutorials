@@ -1,8 +1,9 @@
-*************************************************************************
-#--(C) Copyright 2020 - 2021 Xilinx, Inc. 
-#--Copyright (C) 2022 - 2023, Advanced Micro Devices, Inc 
+********************************************************************************
+#--Copyright (C)2020 - 2021, Xilinx, Inc. All right reserved.
+#--Copyright (C) 2022 - 2023, Advanced Micro Devices, Inc. All rights reserved.
 #--SPDX-License-Identifier: MIT
-*************************************************************************
+********************************************************************************
+
 Hardware project creation and device image generation 
 	- Set vivado tool version to 2022.1
 	- Open Vivado tool
