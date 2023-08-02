@@ -8,9 +8,9 @@
 
 | Tutorial | Description |
 | ------ | ----------- |
-| [Versal ACAP Embedded Design Tutorial (UG1305)](./Versal-EDT)   | An introduction to using the Xilinx&reg; Vivado&reg; Design Suite flow for a Versal&trade; VMK180/VCK190 evaluation board. |
-| [Zynq-7000 Embedded Design Tutorial (UG1165)](./Zynq7000-EDT) | An introduction to using the Vivado Design Suite flow and the Vitis™ unified software platform with a Zynq®-7000 SoC device. The examples are targeted for the Xilinx ZC702 Rev 1.0 evaluation board. |
-| [Zynq MPSoC Embedded Design Tutorial (UG1209)](./ZynqMPSoC-EDT)    | An introduction to using the Vivado Design Suite flow and the Vitis software platform with a Zynq® UltraScale+™ MPSoC. The examples are targeted for the Xilinx ZCU102 Rev 1.0 and Rev 1.1 evaluation boards. |
+| [Versal Adaptive SoC Embedded Design Tutorial (UG1305)](./Versal-EDT)   | An introduction to using the AMD Vivado&trade; Design Suite flow for a Versal&trade; VMK180/VCK190/VPK180 evaluation board. |
+| [Zynq-7000 Embedded Design Tutorial (UG1165)](./Zynq7000-EDT) | An introduction to using the Vivado Design Suite flow and the Vitis™ unified software platform with a Zynq&trade; -7000 SoC device. The examples are targeted for the ZC702 Rev 1.0 evaluation board. |
+| [Zynq MPSoC Embedded Design Tutorial (UG1209)](./ZynqMPSoC-EDT)    | An introduction to using the Vivado Design Suite flow and the Vitis software platform with a Zynq UltraScale+&trade; MPSoC. The examples are targeted for the ZCU102 Rev 1.0 and Rev 1.1 evaluation boards. |
 
 
-<p align="center"><sup>Copyright&copy; 2019-2022 Xilinx</sup></p>
+<p align="center"><sup>Copyright&copy; 2019-2023 Advanced Micro Devices, Inc.</sup></p>
