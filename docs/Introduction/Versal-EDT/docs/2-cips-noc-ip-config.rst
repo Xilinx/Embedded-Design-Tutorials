@@ -1,22 +1,12 @@
-..
-   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
-
 ****************************************************
-Versal ACAP CIPS and NoC (DDR) IP Core Configuration
+Versal CIPS and NoC (DDR) IP Core Configuration
 ****************************************************
 
-The Versal |reg| ACAP CIPS IP core allows you to configure the processing system and the PMC block, including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.
+The AMD Versal |trade| CIPS IP core allows you to configure the processing system and the PMC block, including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.
 
 This chapter describes how to perform the following tasks:
 
-- Creating a Vivado |reg| project for the Versal ACAP  to select the appropriate boot devices and peripherals by configuring the CIPS IP core.
+- Creating an AMD Vivado |trade| project for Versal devices to select the appropriate boot devices and peripherals by configuring the CIPS IP core.
 - Creating and running a Hello World software application on the On-chip-memory (OCM) of Arm |reg| Cortex |trade|-A72.
 - Creating and running a Hello World software application on the Tightly-coupled-memory (TCM) of Arm Cortex-R5F.
   
@@ -25,11 +15,13 @@ The NoC IP core configures the DDR memory and data path across the DDR memory an
 - Creating and running a Hello World software application on Arm Cortex-A72 using DDR as memory.
 - Creating and running a Hello World software application on Arm Cortex-R5F using DDR as memory.
 
+.. note:: The design files for this chapter have been validated with Vivado Design Suite 2022.1.
+
 =============
 Prerequisites
 =============
 
-To create and run Hello World applications discussed in this chapter, install the Vitis |trade| unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded>`__).
+To create and run Hello World applications discussed in this chapter, install the AMD Vitis |trade| unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded>`__).
 
 .. _cips-ip-core-configuration:
 
@@ -37,11 +29,11 @@ To create and run Hello World applications discussed in this chapter, install th
 CIPS IP Core Configuration
 ==========================
 
-Creating a Versal ACAP system design involves configuring the CIPS IP core to select the appropriate boot devices and peripherals. To start with, if the CIPS IP core peripherals and available multiplexed I/O (MIO) connections meet the requirements, no PL component is required. This chapter guides you through creating a simple CIPS IP core-based design.
+Creating a Versal system design involves configuring the CIPS IP core to select the appropriate boot devices and peripherals. To start with, if the CIPS IP core peripherals and available multiplexed I/O (MIO) connections meet the requirements, no PL component is required. This chapter guides you through creating a simple CIPS IP core-based design.
 
-.. _creating-new-embedded-project-versal-acap:
+.. _creating-new-embedded-project-versal-devices:
 
-Creating a New Embedded Project with the Versal ACAP
+Creating a New Embedded Project with a Versal Device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For this example, launch the Vivado Design Suite and create a project with an embedded processor system as the top level.
@@ -151,10 +143,10 @@ To create an embedded processor project:
    .. image:: media/image7.png
       :width: 600
 
-Managing the Versal ACAP CIPS IP Core in the Vivado Design Suite
+Managing the Versal CIPS IP Core in the Vivado Design Suite
 ----------------------------------------------------------------
 
-Now that you have added the processor system for Versal ACAP to the design, you can begin managing the available options.
+Now that you have added the processor system for Versal devices to the design, you can begin managing the available options.
 
 1. Click **Run Block Automation**.
 
@@ -219,13 +211,13 @@ To validate the design and to generate the output products, follow these steps:
 
 5. In the Block Design Sources window, under Design Sources, expand edt_versal_wrapper.
 
-6. Right-click the top-level block diagram, titled edt_versal_i: edt_versal (edt_versal.bd) and select Generate Output Products.
+6. Right-click the top-level block diagram, titled `edt_versal_i: edt_versal (edt_versal.bd)` and select Generate Output Products.
 
    The Generate Output Products dialog box opens, as shown in the following figure.
 
    .. image:: media/Generate_op_products_dial_box.png
 
-   .. note:: If you are running the Vivado |reg| Design Suite on a Windows machine, you might see different options under Run Settings. In this case, continue with the default settings.
+   .. note:: If you are running the Vivado Design Suite on a Windows machine, you might see different options under Run Settings. In this case, continue with the default settings.
 
 7. Click **Generate**.
 
@@ -327,7 +319,7 @@ The following steps demonstrate the procedure to make the required cable connect
 
 7. Verify the port details in the Windows device manager.
 
-   UART-0 terminal corresponds to Com-Port with Interface-0. For this example, UART-0 terminal is set by default, so for the Com-Port, select the port with interface-0. The following figure shows the standard configuration for the Versal ACAP processing system.
+   UART-0 terminal corresponds to Com-Port with Interface-0. For this example, UART-0 terminal is set by default, so for the Com-Port, select the port with interface-0. The following figure shows the standard configuration for the Versal devices processing system.
 
    .. image:: media/image23.png
 
@@ -768,19 +760,19 @@ Method II
 NoC (and DDR) IP Core Configuration
 ===================================
 
-This section describes the NoC (and DDR) configuration and related connections required for use with the CIPS configured earlier in this chapter. The Versal ACAP CIPS IP core allows you to configure two superscalar, multi-core Arm Cortex-A72 based APUs, two Arm Cortex-R5F RPUs, a platform management controller (PMC), and a CCIX PCIe |reg| module (CPM). The NoC IP core allows configuring the NoC and enabling the DDR memory controllers.
+This section describes the NoC (and DDR) configuration and related connections required for use with the CIPS configured earlier in this chapter. The Versal CIPS IP core allows you to configure two superscalar, multi-core Arm Cortex-A72 based APUs, two Arm Cortex-R5F RPUs, a platform management controller (PMC), and a CCIX PCIe |reg| module (CPM). The NoC IP core allows configuring the NoC and enabling the DDR memory controllers.
 
 Configuring the NoC IP Core in an Existing Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For this example, launch the Vivado Design Suite and the project with basic CIPS configuration as shown in `Creating a New Embedded Project with the Versal ACAP <#creating-a-new-embedded-project-with-the-versal-acap>`__.
+For this example, launch the Vivado Design Suite and the project with basic CIPS configuration as shown in `Creating a New Embedded Project with Versal Devices <#creating-a-new-embedded-project-with-versal-devices>`__.
 
 Configuring Your Design
 -----------------------
 
 To configure your design, follow these steps:
 
-1. Open the design created in `Creating a New Embedded Project with the Versal ACAP <#creating-a-new-embedded-project-with-the-versal-acap>`__, ``edt_versal.xpr``.
+1. Open the design created in `Creating a New Embedded Project with Versal Devices <#creating-a-new-embedded-project-with-versal-devices>`__, ``edt_versal.xpr``.
 
 2. Open the block design, ``edt_versal.bd``.
    
@@ -927,7 +919,7 @@ Exporting Hardware
 Running a Bare-Metal Hello World Application on DDR Memory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Xilinx Vitis software platform.
+In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Vitis software platform.
 
 You will create a new Vitis project, similar to the one in :ref:`running-bare-metal-hello-world-application`, except that it will use the default linker scripts, which will reference the DDR memory.
 
@@ -957,7 +949,7 @@ OSPI Boot Mode
 
 To boot check the OSPI boot mode, follow these steps:
 
-1. Open the design created in :ref:`creating-new-embedded-project-versal-acap`, ``edt_versal.xpr``.
+1. Open the design created in :ref:`creating-new-embedded-project-versal-devices`, ``edt_versal.xpr``.
 
 2. Double-click the **Versal CIPS IP**.
 
@@ -987,7 +979,7 @@ eMMC Boot Mode
 
 To boot check the eMMC boot mode, follow these steps:
 
-1. Open the design created in :ref:`creating-new-embedded-project-versal-acap`, ``edt_versal.xpr``.
+1. Open the design created in :ref:`creating-new-embedded-project-versal-devices`, ``edt_versal.xpr``.
 
 2. Double-click the **Versal CIPS IP**.
 
@@ -1020,3 +1012,5 @@ To boot check the eMMC boot mode, follow these steps:
 .. |image30| image:: ./media/image30.png
 
 
+.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

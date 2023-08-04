@@ -1,12 +1,3 @@
-..
-   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
 ***************
 Getting Started
 ***************
@@ -15,7 +6,7 @@ Getting Started
 Navigating Content by Design Process
 =====================================
 
-Xilinx documentation is organized around a set of standard design processes to help you find relevant content for your current development task. This document covers the following design processes:
+AMD documentation is organized around a set of standard design processes to help you find relevant content for your current development task. This document covers the following design processes:
 
 * **System and Solution Planning**: Identifying the components, performance, I/O, and data transfer requirements at a system level. Includes application mapping for the solution to PS, PL, and AI Engine.
   
@@ -28,7 +19,7 @@ Xilinx documentation is organized around a set of standard design processes to h
   * :ref:`running-applications-in-jtag-mode`
   * :ref:`bare-metal-hello-world-on-ddr`
 
-* **Hardware, IP, and Platform Development**: Creating the PL IP blocks for the hardware platform, creating PL kernels, subsystem functional simulation, and evaluating the Vivado timing, resource use, and power closure. Also involves developing the hardware platform for system integration. Topics in this document that apply to this design process include:
+* **Hardware, IP, and Platform Development**: Creating the PL IP blocks for the hardware platform, creating PL kernels, subsystem functional simulation, and evaluating the AMD Vivado |trade| timing, resource use, and power closure. Also involves developing the hardware platform for system integration. Topics in this document that apply to this design process include:
   
   * :doc:`../docs/2-cips-noc-ip-config`
   * :ref:`noc-ip-core-configuration`
@@ -45,7 +36,7 @@ Xilinx documentation is organized around a set of standard design processes to h
 Hardware Requirements
 =====================
 
-This tutorial targets the Versal |reg| ACAP VCK190, VMK180, and VPK180 evaluation boards. To use this guide, you need the following hardware items. These are included with the evaluation board. Ensure that the required tools are installed properly and your environments match the requirements.
+This tutorial targets the AMD Versal |trade| VCK190, VMK180, and VPK180 evaluation boards. To use this guide, you need the following hardware items. These are included with the evaluation board. Ensure that the required tools are installed properly and your environments match the requirements.
 
 The evaluation board kit includes:
 
@@ -76,7 +67,7 @@ Installation Requirements
 Vitis Integrated Design Environment and Vivado Design Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ensure that you have the Vitis |trade| 2021.2 software development platform installed. The Vitis IDE is a Xilinx |reg| unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado |reg| Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
+Ensure that you have the AMD Vitis |trade| 2023.1 software development platform installed. The Vitis IDE is a unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
 
 .. note:: Visit `https://www.xilinx.com/support/download.html <https://www.xilinx.com/support/download.html>`__ to confirm that you have the latest tools version.
 
@@ -95,7 +86,7 @@ This can use either a dedicated Linux host system or a virtual machine running o
 
 When you install PetaLinux tools on your system of choice, you must do the following:
 
-- Download PetaLinux 2021.2 software from the Xilinx website.
+- Download PetaLinux 2023.1 software from the website.
 
 - Download the respective BSP as described in :ref:`creating-linux-images-using-petalinux`.
 
@@ -105,7 +96,7 @@ When you install PetaLinux tools on your system of choice, you must do the follo
 Prerequisites
 =============
 
-- 8 GB RAM (recommended minimum for Xilinx tools)
+- 8 GB RAM (recommended minimum for AMD tools)
 - 2 GHz CPU clock or equivalent (minimum of eight cores)
 - 100 GB free HDD space
 
@@ -129,15 +120,18 @@ For more information, see *PetaLinux Tools Documentation: Reference Guide* (`UG1
 Software Licensing
 ==================
 
-Xilinx software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* (`UG973 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug973-vivado-release-notes-install-license>`__).
+AMD software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing* (`UG973 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug973-vivado-release-notes-install-license>`__).
 
 =====================
 Tutorial Design Files
 =====================
 
-The reference design files for Production Silicon are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Versal-EDT/ref_files>`__ directory.
+The reference design files for Production Silicon are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/Versal-EDT/ref_files>`__ directory.
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
+
+.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

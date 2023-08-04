@@ -1,19 +1,12 @@
-..
-   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
 **************************************************************
 System Design Example using Scalar Engine and Adaptable Engine
 **************************************************************
 
-This chapter guides you through building a system based on Versal |reg| devices using available tools and supported software blocks. This chapter demonstrates how to use the Vivado |reg| tool to create an embedded design using PL AXI GPIO and PL AXI UART. It also describes how to configure and build the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU on a Versal ACAP device.
+This chapter guides you through building a system based on Versal |trade| devices using available tools and supported software blocks. This chapter demonstrates how to use the AMD Vivado |trade| Design Suite to create an embedded design using PL AXI GPIO and PL AXI UART. It also describes how to configure and build the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU on a Versal device.
 
 Examples using the PetaLinux tool are provided in this chapter.
+
+.. note:: The design files for this chapter have been validated with Vivado Design Suite 2022.1.
 
 .. _5-using-axi-gpio:
 
@@ -47,7 +40,7 @@ Connecting IP Blocks to Create a Complete System
 
 To connect IP blocks to create a system, follow these steps.
 
-1. Double-click the Versal ACAP CIPS IP core.
+1. Double-click the Versal CIPS IP core.
 
 2. Click **PS-PMC→ PS-PL Interfaces**.
 
@@ -310,7 +303,7 @@ This section explains how to configure and build the FreeRTOS application for an
 
 The following steps demonstrate the procedure to create a FreeRTOS Application from Arm Cortex-R5F:
 
-1. Start the Vitis |trade| IDE and create a new workspace, for example, ``c:/edt/freertos``.
+1. Start the AMD Vitis |trade| IDE and create a new workspace, for example, ``c:/edt/freertos``.
    
 2. Select **File→ New → Application Project**. The **Creating a New Application Project** wizard opens. If this is the first time that you have launched the Vitis IDE, you can select **Create Application Project** on the Welcome screen as shown in the following figure.
 
@@ -398,11 +391,11 @@ Example Project: Creating Linux Images Using PetaLinux
 
 This section explains how to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.
 
-This example needs a Linux host machine. Refer to the PetaLinux Tools Documentation Reference Guide `UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`__ for information on dependencies and installation procedure for the PetaLinux tool.
+This example needs a Linux host machine. Refer to the PetaLinux Tools Documentation Reference Guide `[UG1144] <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`__ for information on dependencies and installation procedure for the PetaLinux tool.
 
 .. important:: 
 
-   This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180).
+   This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180/VPK180).
 
    .. list-table::
       :widths: 25 25 25 25
@@ -422,6 +415,11 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
         - `xilinx-vmk180-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
         - `xilinx-vmk180-ospi-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
         - `xilinx-vmk180-emmc-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
+
+      * - VPK180 Production Board
+        - `xilinx-vpk180-v2023.1-final.bsp <https://www.xilinx.com/member/vpk180_headstart.html>`__
+        - N/A 
+        - N/A
 
     
 
@@ -488,7 +486,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
     .. image:: ./media/versal_2021_gpio_debug.png
 
-12. Navigate to **Memory mapped GPIO drivers** and enable Xilinx GPIO support and Xilinx Zynq GPIO support by pressing **<Y>** key as shown in the following figure.
+12. Navigate to **Memory mapped GPIO drivers** and enable GPIO support and Zynq GPIO support by pressing **<Y>** key as shown in the following figure.
 
     .. image:: ./media/versal_2021_gpio_xilinx.png
 
@@ -564,3 +562,5 @@ Combining FreeRTOS and APU Images using a BIF File
    :ltrim:
 
 
+.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

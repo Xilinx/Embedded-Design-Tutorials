@@ -11,7 +11,7 @@
 Debugging Using the Vitis Software Platform
 *******************************************
 
-This chapter describes debugging possibilities with the design flow you have already been working with. The first option is debugging using the Xilinx |reg| Vitis |trade| software platform.
+This chapter describes debugging possibilities with the design flow you have already been working with. The first option is debugging using the AMD Vitis |trade| software platform.
 
 The Vitis software platform debugger provides the following debug capabilities:
 
@@ -27,17 +27,15 @@ The Vitis software platform debugger provides the following debug capabilities:
 
 The Vitis software platform debugger enables you to see what is happening to a program while it executes. You can set breakpoints or watchpoints to stop the processor, step through program execution, view the program variables and stack, and view the memory contents in the system.
 
-The Vitis software platform supports debugging through Xilinx system debugger.
+The Vitis software platform supports debugging through system debugger.
 
-======================
-Xilinx System Debugger
-======================
+==========================
+Customized System Debugger
+==========================
 
 The Vitis software platform debugger enables you to step through your code line by line. You can set breakpoints or watchpoints to stop the processor, step through program execution, view the program variables and stack, and view the memory contents in the system.
 
-The debugger supports debugging through Single Application Debug and GNU Debugger (GDB). The Xilinx customized system debugger is derived from open-source tools and is integrated with the Vitis software platform.
-
-The Xilinx system debugger uses the Xilinx hw_server as the underlying debug engine. The Vitis software platform translates each user interface action into a sequence of target communication framework (TCF) commands. It then processes the output from System Debugger to display the current state of the program being debugged. It communicates to the processor on the hardware using Xilinx hw_server. The debug workflow is described in the following figure.
+The debugger supports debugging through Single Application Debug and GNU Debugger (GDB). The customized system debugger is derived from open-source tools and is integrated with the Vitis software platform. It uses the hw_server as the underlying debug engine. The Vitis software platform translates each user interface action into a sequence of target communication framework (TCF) commands. It then processes the output from System Debugger to display the current state of the program being debugged. It communicates to the processor on the hardware using hw_server. The debug workflow is described in the following figure.
 
 *Figure 1:* **System Debugger Flow**
 
@@ -115,7 +113,7 @@ You can debug in the command line mode using XSDB, which is available as a part 
 
 The following steps indicate how to load a bare-metal application on Arm Cortex-R5F using XSCT.
 
-This example demonstrates the command line debugging possibility using XSDB/XSCT. Based on the requirement, you can debug the code using either the system debugger graphical interface or the command line debugger in XSCT. All XSCT commands are scriptable and this applies to the commands covered in this example.
+This example demonstrates the command line debugging possibility using XSDB/XSCT. Based on the requirement, you can debug the code using either the system debugger graphical interface or the command line debugger in XSCT. All XSCT commands can be scripted and this applies to the commands covered in this example.
 
 Setting Up a Target
 ~~~~~~~~~~~~~~~~~~~
@@ -173,7 +171,7 @@ Following are the steps to load the application using XSCT.
             xsct% targets 3
             xsct% rst -processor
 
-   The command `rst -processor` clears the reset on an individual processor core. This step is important because when the Versal ACAP boots up the JTAG boot mode, all the Cortex- A72 and Cortex-R5F cores are held in reset. You must clear the resets on each core, before debugging on these cores. The `rst` command in XSDB can be used to clear the resets.
+   The command `rst -processor` clears the reset on an individual processor core. This step is important because when the AMD Versal |trade| device boots the JTAG boot mode, all the Cortex- A72 and Cortex-R5F cores are held in reset. You must clear the resets on each core, before debugging on these cores. The `rst` command in XSDB can be used to clear the resets.
 
    .. note:: 
     

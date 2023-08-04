@@ -1,11 +1,11 @@
 #####################################################
-Versal ACAP Embedded Design Tutorial
+Versal Adaptive SoC Embedded Design Tutorial
 #####################################################
 
 
 .. toctree::
    :maxdepth: 3
-   :caption: Versal ACAP Embedded Design Tutorial
+   :caption: Versal Adaptive SoC Embedded Design Tutorial
    :hidden:
 
    Getting Started <docs/1-getting-started>
@@ -20,10 +20,9 @@ Versal ACAP Embedded Design Tutorial
 
 
 
-This document provides an introduction for using the Xilinx |reg| Vivado |reg| Design Suite flow for a VCK190/VMK180/VPK180 evaluation board. The tools used are Vivado Design Suite and the Vitis |trade| unified software platform, version 2022.2. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* `[UG1400] <https://www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;d=ug1400-vitis-embedded.pdf>`__.
+This document provides an introduction for using the AMD Vivado |trade| Design Suite flow for a VCK190/VMK180/VPK180 evaluation board. The tools used are Vivado Design Suite and the AMD Vitis |trade| unified software platform, version 2023.1. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* `[UG1400] <https://www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;d=ug1400-vitis-embedded.pdf>`__.
 
-.. note:: 
-   In this tutorial, the instructions for booting Linux on the hardware is specific to the PetaLinux tools released for 2022.2, which must be installed on a Linux host machine for exercising the Linux portions of this document.
+.. note:: In this tutorial, the instructions for booting Linux on the hardware is specific to the PetaLinux tools released for 2023.1, which must be installed on a Linux host machine for exercising the Linux portions of this document.
 
 .. important:: 
    
@@ -31,19 +30,19 @@ This document provides an introduction for using the Xilinx |reg| Vivado |reg| D
  
 The examples in this document are created using the Xilinx tools running on a Windows 10, 64-bit operating system, Vitis software platform and PetaLinux on a Linux 64-bit operating system. Other versions of the tools running on other Windows installs might provide varied results. These examples focus on introducing you to the following aspects of embedded design.
 
-- :doc:`../Versal-EDT/docs/2-cips-noc-ip-config`: Describes creation of a design with Versal |trade| ACAP Control, Interfaces, and Processing System (CIPS) IP core and an NoC and running a simple "Hello World" application on Arm |reg| Cortex |trade|-A72, and Cortex-R5F processors. This chapter is an introduction to the hardware and software tools using a simple design as the example.
+- :doc:`../Versal-EDT/docs/2-cips-noc-ip-config`: Describes creation of a design with AMD Versal |trade| Adaptive SoC Control, Interfaces, and Processing System (CIPS) IP core and an NoC and running a simple "Hello World" application on Arm |reg| Cortex |trade|-A72, and Cortex-R5F processors. This chapter is an introduction to the hardware and software tools using a simple design as the example.
 
-- :doc:`../Versal-EDT/docs/4-boot-and-config`: Shows  integration of components to configure and create boot images for Versal ACAP. The purpose of this chapter is to understand how to integrate and load boot loaders.
+- :doc:`../Versal-EDT/docs/4-boot-and-config`: Shows integration of components to configure and create boot images for Versal devices. The purpose of this chapter is to understand how to integrate and load boot loaders.
 
-- :doc:`../Versal-EDT/docs/3-debugging`: Introduces debugging features of the Xilinx Vitis software platform. This chapter uses the previous design and runs the software on bare metal (without an OS) to show the debugging features of the Vitis IDE. This chapter also lists debug configurations for Versal ACAP.
+- :doc:`../Versal-EDT/docs/3-debugging`: Introduces debugging features of the Vitis software platform. This chapter uses the previous design and runs the software on bare metal (without an OS) to show the debugging features of the Vitis IDE. This chapter also lists debug configurations for Versal devices.
 
-- :doc:`../Versal-EDT/docs/5-system-design-example`: Describes building a system on Versal ACAP using available tools and supported software blocks. This chapter demonstrates how to use the Vivado tool to create an embedded design using PL AXI GPIO. It also demonstrates the steps to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device.
+- :doc:`../Versal-EDT/docs/5-system-design-example`: Describes building a system on a Versal device using available tools and supported software blocks. This chapter demonstrates how to use the Vivado tool to create an embedded design using PL AXI GPIO. It also demonstrates the steps to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device.
   
-- :doc:`../Versal-EDT/docs/6-system-design-example-HSDP`: Describes building a system on Versal ACAP that utilizes the High-Speed Debug Port (HSDP). This chapter demonstrates how to use the Vivado tool to create an embedded design that utilizes HSDP and uses the SmartLynq+ module for downloading Linux images.
+- :doc:`../Versal-EDT/docs/6-system-design-example-HSDP`: Describes building a system on a Versal device that utilizes the High-Speed Debug Port (HSDP). This chapter demonstrates how to use the Vivado tool to create an embedded design that utilizes HSDP and uses the SmartLynq+ module for downloading Linux images.
 
 - :doc:`../Versal-EDT/docs/7-system-design-example-ssit-device`: Describes building a system based on Versal devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) devices.
 
-This design tutorial requires use of a number of files provided by Xilinx. These are contained in a ZIP file that can be downloaded from the Xilinx web site. (See :doc:`../Versal-EDT/docs/1-getting-started`). The tutorial assumes the contents of the ZIP file are extracted to ``C:\edt``.
+This design tutorial requires use of a number of files provided by AMD. These are contained in a ZIP file that can be downloaded from the web site. (See :doc:`../Versal-EDT/docs/1-getting-started`). The tutorial assumes the contents of the ZIP file are extracted to ``C:\edt``.
 
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
