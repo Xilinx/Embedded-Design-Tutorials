@@ -1,1 +1,1 @@
-# View the [Documentation](https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.2/build/html/index.html)
+# View the [Documentation](https://xilinx.github.io/Embedded-Design-Tutorials/docs/2023.1/build/html/index.html)
