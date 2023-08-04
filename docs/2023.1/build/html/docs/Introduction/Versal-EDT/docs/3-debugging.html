@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>Debugging Using the Vitis Software Platform &mdash; Embedded Design Tutorials 2023.1 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="System Design Example using Scalar Engine and Adaptable Engine" href="5-system-design-example.html" />
+    <link rel="prev" title="Boot and Configuration" href="4-boot-and-config.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../../index.html" class="icon icon-home"> Embedded Design Tutorials
+            <img src="../../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2023.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">简体中文</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-cn/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">日本語</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">Master</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Versal-EDT.html">Versal Adaptive SoC Embedded Design Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-getting-started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-cips-noc-ip-config.html">Versal CIPS and NoC (DDR) IP Core Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-boot-and-config.html">Boot and Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Debugging Using the Vitis Software Platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#customized-system-debugger">Customized System Debugger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-software-using-the-vitis-software-platform">Debugging Software Using the Vitis Software Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-using-xsct">Debugging Using XSCT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-a-target">Setting Up a Target</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loading-the-application-using-xsct">Loading the Application Using XSCT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-the-serial-terminal">Configuring the Serial Terminal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-and-debugging-application-using-xsct">Running and Debugging Application Using XSCT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="5-system-design-example.html">System Design Example using Scalar Engine and Adaptable Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-system-design-example-HSDP.html">System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-system-design-example-ssit-device.html">System Design Example for SSI Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A-creating-plm.html">Appendix: Creating the PLM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ZynqMPSoC-EDT/ZynqMPSoC-EDT.html">Zynq UltraScale+ MPSoC Embedded Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Zynq7000-EDT/Zynq7000-EDT.html">Zynq-7000 Embedded Design Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/debuggable-fsbl/debuggable-fsbl.html">First Stage Boot Loader (FSBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/microblaze-system/README.html">Programming an Embedded MicroBlaze Processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Feature_Tutorials/sw-profiling/sw-profiling.html">Profiling Applications with System Debugger</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design_Tutorials/MPSoC_Graphic_Subsystem/README.html">Example Setup for a Graphics and DisplayPort Based Sub-System</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Vitis-Embedded-Software-Debugging/Debugging.html">Vitis Embedded Software Debugging Guide (UG1515) 2021.1</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/SPA-UG/SPA-UG.html">System Performance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../User_Guides/Performance_Benchmark/Dhrystone/README.html">Versal Dhrystone Benchmark</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">All Releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.2/build/html/index.html">2022.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2021.1/build/html/index.html">2021.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/index.html">2020.2</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Embedded Design Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../Versal-EDT.html">Versal Adaptive SoC Embedded Design Tutorial</a> &raquo;</li>
+      <li>Debugging Using the Vitis Software Platform</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/docs/Introduction/Versal-EDT/docs/3-debugging.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="debugging-using-the-vitis-software-platform">
+<h1>Debugging Using the Vitis Software Platform<a class="headerlink" href="#debugging-using-the-vitis-software-platform" title="Permalink to this heading">¶</a></h1>
+<p>This chapter describes debugging possibilities with the design flow you have already been working with. The first option is debugging using the AMD Vitis™ software platform.</p>
+<p>The Vitis software platform debugger provides the following debug capabilities:</p>
+<ul class="simple">
+<li><p>Supports debugging of programs on Arm® Cortex™-A72, Arm Cortex-R5F, and MicroBlaze™ processor architectures (heterogeneous multi-processor hardware system debugging).</p></li>
+<li><p>Supports debugging of programs on hardware boards.</p></li>
+<li><p>Supports debugging on remote hardware systems.</p></li>
+<li><p>Provides a feature-rich IDE to debug programs.</p></li>
+<li><p>Provides a tool command language (Tcl) interface for running test scripts and automation.</p></li>
+</ul>
+<p>The Vitis software platform debugger enables you to see what is happening to a program while it executes. You can set breakpoints or watchpoints to stop the processor, step through program execution, view the program variables and stack, and view the memory contents in the system.</p>
+<p>The Vitis software platform supports debugging through system debugger.</p>
+<section id="customized-system-debugger">
+<h2>Customized System Debugger<a class="headerlink" href="#customized-system-debugger" title="Permalink to this heading">¶</a></h2>
+<p>The Vitis software platform debugger enables you to step through your code line by line. You can set breakpoints or watchpoints to stop the processor, step through program execution, view the program variables and stack, and view the memory contents in the system.</p>
+<p>The debugger supports debugging through Single Application Debug and GNU Debugger (GDB). The customized system debugger is derived from open-source tools and is integrated with the Vitis software platform. It uses the hw_server as the underlying debug engine. The Vitis software platform translates each user interface action into a sequence of target communication framework (TCF) commands. It then processes the output from System Debugger to display the current state of the program being debugged. It communicates to the processor on the hardware using hw_server. The debug workflow is described in the following figure.</p>
+<p><em>Figure 1:</em> <strong>System Debugger Flow</strong></p>
+<img alt="../../../../_images/quz1567060977342_LowRes.png" src="../../../../_images/quz1567060977342_LowRes.png" />
+<p>The debug workflow is made up of the following components.</p>
+<ul class="simple">
+<li><p><strong>Executable ELF File:</strong> To debug your application, you must use an elf file compiled for debugging. The debug elf file contains additional debug information for the debugger to make direct associations between the source code and the binaries generated from the original source. To manage the build configurations, right-click the software application and select <strong>Build Configurations → Manage</strong>.</p></li>
+<li><p><strong>Debug Configuration:</strong> To launch the debug session, you must create a debug configuration in the Vitis software platform. This configuration captures options required to start a debug session, including the executable name, processor target to debug, and other information. To create a debug configuration, right-click your software application and select <strong>Debug As→ Debug Configurations</strong>.</p></li>
+<li><p><strong>The Vitis Software Platform Debug Perspective:</strong> Using the Debug perspective, you can manage the debugging or running of a program in the workbench. You can control the execution of your program by setting breakpoints, suspending launched programs, stepping through your code, and examining the contents of variables. To view the <strong>Debug</strong> perspective, select <strong>Window → Open Perspective → Debug</strong>.</p></li>
+</ul>
+<p>You can repeat the cycle of modifying the code, building the executable, and debugging the program in the Vitis software platform.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you edit the source after compiling, it changes the line numbering as the debug information is linked directly to the source. Similarly, debugging optimized binaries can also cause unexpected jumps in the execution trace.</p>
+</div>
+</section>
+<section id="debugging-software-using-the-vitis-software-platform">
+<h2>Debugging Software Using the Vitis Software Platform<a class="headerlink" href="#debugging-software-using-the-vitis-software-platform" title="Permalink to this heading">¶</a></h2>
+<p>This example describes debugging a hello world application.</p>
+<p>If you did not create a hello world application on APU or RPU, follow the steps in <a class="reference internal" href="2-cips-noc-ip-config.html#running-bare-metal-hello-world-application"><span class="std std-ref">Running a Bare-Metal Hello World Application</span></a> or <a class="reference internal" href="2-cips-noc-ip-config.html#bare-metal-hello-world-on-ddr"><span class="std std-ref">Running a Bare-Metal Hello World Application on DDR Memory</span></a>.</p>
+<p>After you create the Hello World Application, work through the following example to debug the software using the Vitis software platform.</p>
+<ol class="arabic">
+<li><p>Right-click the application and click <strong>Build Project</strong> to build the application.</p></li>
+<li><p>Right-click the application project and select <strong>Debug As→ Launch on Hardware (Single Application Debug)</strong> as shown in the following figure.</p>
+<a class="reference internal image-reference" href="../../../../_images/image40.jpeg"><img alt="../../../../_images/image40.jpeg" src="../../../../_images/image40.jpeg" style="width: 500px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Debug perspective can also be launched by selecting <strong>Window→ Debug Perspective</strong>.</p>
+</div>
+<a class="reference internal image-reference" href="../../../../_images/image41.jpeg"><img alt="../../../../_images/image41.jpeg" src="../../../../_images/image41.jpeg" style="width: 500px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The addresses shown on this page might slightly differ from the addresses shown on your system.</p>
+</div>
+<p>The processor is currently sitting at the beginning of <cite>main()</cite> method with program execution suspended at line 0x00000000fffc0cf0. You can confirm this information in the Disassembly view, which shows the assembly-level program execution also suspended at <cite>0x00000000fffc0cf0</cite>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the <strong>Disassembly</strong> view is not visible, select <strong>Window → Disassembly</strong>.</p>
+</div>
+</li>
+<li><p>The <cite>helloworld.c</cite> window also shows execution suspended at the first executable line of C code. Select the <strong>Registers</strong> view to confirm that the program counter, pc register, contains <cite>0x00000000fffc0cf0</cite>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the Registers view is not visible, select <strong>Window → Registers</strong>.</p>
+</div>
+</li>
+<li><p>Double-click in the margin (to the left of the line numbers) of the <cite>helloworld.c</cite> window next to the line of code that reads <cite>printf(“Hello World from APUnr”);</cite>. This sets a breakpoint at the <cite>printf</cite> command. To confirm the breakpoint, review the Breakpoints view.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the Breakpoints view is not visible, select <strong>Window → Breakpoints</strong>.</p>
+</div>
+</li>
+<li><p>Select <strong>Run → Step Into</strong> to step into the <cite>init_platform()</cite> routine. Program execution suspends at location <cite>0x00000000fffc0cf0</cite>. The call stack is now two levels deep.</p></li>
+<li><p>Select <strong>Run → Resume</strong> to continue running the program to the breakpoint.</p>
+<p>Program execution stops at the line of code that includes the <cite>printf</cite> command. The <strong>Disassembly</strong> and <strong>Debug</strong> windows both show program execution stopped at <cite>0x00000000fffc0cf4</cite>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The execution address in your debugging window might differ if you modified the helloworld source code in any way.</p>
+</div>
+</li>
+<li><p>Select <strong>Run → Resume</strong> to run the program to conclusion.</p>
+<p>When the program completes, the <strong>Debug</strong> window shows that the program is suspended in a routine called <strong>exit</strong>. This happens when you are running under control of the debugger.</p>
+</li>
+<li><p>Re-run your code several times. Experiment with single-stepping, examining memory, breakpoints, modifying code, and adding print statements. Try adding and moving views.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can use the Vitis software platform debugging shortcuts for step-into (F5), step-return (F7), step-over (F6), and resume (F8). Alternatively, you can use the toolbar buttons.</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="debugging-using-xsct">
+<h2>Debugging Using XSCT<a class="headerlink" href="#debugging-using-xsct" title="Permalink to this heading">¶</a></h2>
+<p>You can debug in the command line mode using XSDB, which is available as a part of XSCT. This example describes debugging the bare-metal application hello_world_r5 using XSCT.</p>
+<p>The following steps indicate how to load a bare-metal application on Arm Cortex-R5F using XSCT.</p>
+<p>This example demonstrates the command line debugging possibility using XSDB/XSCT. Based on the requirement, you can debug the code using either the system debugger graphical interface or the command line debugger in XSCT. All XSCT commands can be scripted and this applies to the commands covered in this example.</p>
+<section id="setting-up-a-target">
+<h3>Setting Up a Target<a class="headerlink" href="#setting-up-a-target" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>Connect a USB cable between USB-JTAG connector on the target and the USB port on the host machine.</p></li>
+<li><p>Set the board in the JTAG Boot mode, where SW1 is set as shown in following figure.</p>
+<img alt="../../../../_images/image43.jpeg" src="../../../../_images/image43.jpeg" />
+</li>
+<li><p>Power on the board using the power switch SW13.</p></li>
+<li><p>Click the <strong>XSCT Console</strong> button in the Vitis IDE toolbar to open the XSCT Console view. Alternatively, you can open the XSCT Console view by clicking <strong>Xilinx → XSCT Console</strong>.</p>
+<img alt="../../../../_images/image44.jpeg" src="../../../../_images/image44.jpeg" />
+</li>
+<li><p>In the <strong>XSCT Console</strong> view, connect to the target over JTAG using the <cite>connect</cite> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">connect</span>
+</pre></div>
+</div>
+<p>The connect command returns the channel ID of the connection.</p>
+</li>
+<li><p>Load the pdi/bin file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="n">program</span> <span class="o">&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="o">.</span><span class="n">pdi</span> <span class="n">file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The PDI file can be found at <code class="docutils literal notranslate"><span class="pre">C:\edt\edt_versal\edt_versal.runs\impl_1\edt_versal_wrapper.pdi</span></code>. In Windows, path names should be enclosed in braces, for example, {<code class="docutils literal notranslate"><span class="pre">C:\path\to\file.pdi</span></code>} to prevent the backslash being interpreted as an escape character. This is not necessary for Linux, which uses forward slashes.</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="loading-the-application-using-xsct">
+<h3>Loading the Application Using XSCT<a class="headerlink" href="#loading-the-application-using-xsct" title="Permalink to this heading">¶</a></h3>
+<p>Following are the steps to load the application using XSCT.</p>
+<ol class="arabic">
+<li><p>Run <cite>xsct% targets</cite>.</p>
+<p>The targets command lists the available targets and allows you to select a target through its ID. Target IDs can change from session to session as the targets are assigned IDs as they are discovered on the JTAG chain.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For non-interactive usage such as scripting, the <cite>-filter</cite> option can be used to select a target instead of selecting the target through its ID.</p>
+</div>
+<p>The targets are listed as shown in the following figure.</p>
+<img alt="../../../../_images/image45.png" src="../../../../_images/image45.png" />
+</li>
+<li><p>Download the hello_world_r5 application on the Arm Cortex-R5F Core 0.</p></li>
+<li><p>Select RPU Cortex-R5F Core 0 target ID.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tcl</span>
+<span class="n">xsct</span><span class="o">%</span> <span class="n">targets</span> <span class="mi">3</span>
+<span class="n">xsct</span><span class="o">%</span> <span class="n">rst</span> <span class="o">-</span><span class="n">processor</span>
+</pre></div>
+</div>
+<p>The command <cite>rst -processor</cite> clears the reset on an individual processor core. This step is important because when the AMD Versal™ device boots the JTAG boot mode, all the Cortex- A72 and Cortex-R5F cores are held in reset. You must clear the resets on each core, before debugging on these cores. The <cite>rst</cite> command in XSDB can be used to clear the resets.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The command <cite>rst -cores</cite> clears resets on all the processor cores in the group (such as APU or RPU), of which the current target is a child. For example, when Cortex-A72 #0 is the current target, <cite>rst -cores</cite> clears resets on all the Cortex-A72 cores in APU.</p>
+<p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">dow</span> <span class="pre">{C:\edt\edt_vck190\helloworld_r5\Debug\helloworld_r5.elf}</span></code></p>
+<p>or</p>
+<p><code class="docutils literal notranslate"><span class="pre">xsct%</span> <span class="pre">dow</span> <span class="pre">C:/edt/edt_vck190/helloworld_r5/Debug/helloworld_r5.elf</span></code></p>
+</div>
+<p>At this point, you can see the sections from the elf file downloaded sequentially. The XSCT prompt can be seen after a successful download. Now, configure a serial terminal (Tera Term, Mini com, or the Vitis software platform Serial Terminal interface for UART-0 USB-serial connection).</p>
+</li>
+</ol>
+</section>
+<section id="configuring-the-serial-terminal">
+<h3>Configuring the Serial Terminal<a class="headerlink" href="#configuring-the-serial-terminal" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>Start a terminal session using Tera Term or Mini com depending on the host machine being used and the COM port and baud rate as shown in following figure.</p>
+<img alt="../../../../_images/image46.png" src="../../../../_images/image46.png" />
+</li>
+<li><p>For port settings, verify the COM port in the device manager. There are three USB UART interfaces exposed by the VCK190 board. Select the COM port associated with the interface with the lowest number. In this example, for UART-0, select the com-port with interface-0.</p></li>
+</ol>
+</section>
+<section id="running-and-debugging-application-using-xsct">
+<h3>Running and Debugging Application Using XSCT<a class="headerlink" href="#running-and-debugging-application-using-xsct" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>Before you run the application, set a breakpoint at <cite>main()</cite>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">bpadd</span> <span class="o">-</span><span class="n">addr</span> <span class="o">&amp;</span><span class="n">main</span>
+</pre></div>
+</div>
+<p>This command returns the breakpoint ID. You can verify the breakpoints planted using command bplist. For more details on breakpoints in XSCT, type <cite>help breakpoint</cite> in XSCT.</p>
+</li>
+<li><p>Resume the processor core.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">con</span>
+</pre></div>
+</div>
+<p>The following message is displayed when the core hits the breakpoint.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">Info</span><span class="p">:</span> <span class="n">Cortex</span><span class="o">-</span><span class="n">R5</span> \<span class="c1">#0 Stopped at 0x10021C (Breakpoint)</span>
+</pre></div>
+</div>
+</li>
+<li><p>At this point, you can view registers when the core is stopped.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">rrd</span>
+</pre></div>
+</div>
+</li>
+<li><p>View local variables.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="nb">locals</span>
+</pre></div>
+</div>
+</li>
+<li><p>Step over a line of the source code and view the stack trace.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tcl</span>
+<span class="n">xsct</span><span class="o">%</span> <span class="n">nxt</span>
+<span class="n">Info</span><span class="p">:</span> <span class="n">Cortex</span><span class="o">-</span><span class="n">R5</span> <span class="c1">#0 Stopped at 0x100490 (Step)</span>
+<span class="n">xsct</span><span class="o">%</span> <span class="n">bt</span>
+</pre></div>
+</div>
+<p>You can use the <cite>help</cite> command to find other options.</p>
+<img alt="../../../../_images/image47.png" src="../../../../_images/image47.png" />
+<p>You can use the <cite>help running</cite> command to get a list of possible options for running or debugging an application using XSCT.</p>
+<img alt="../../../../_images/image48.png" src="../../../../_images/image48.png" />
+</li>
+<li><p>You can now run the code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xsct</span><span class="o">%</span> <span class="n">con</span>
+</pre></div>
+</div>
+<p>At this point, you can see the Cortex-R5F application print messages on the UART-0 terminal.</p>
+</li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="4-boot-and-config.html" class="btn btn-neutral float-left" title="Boot and Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="5-system-design-example.html" class="btn btn-neutral float-right" title="System Design Example using Scalar Engine and Adaptable Engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2023, AMD, Inc..
+      <span class="lastupdated">Last updated on August 04, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
