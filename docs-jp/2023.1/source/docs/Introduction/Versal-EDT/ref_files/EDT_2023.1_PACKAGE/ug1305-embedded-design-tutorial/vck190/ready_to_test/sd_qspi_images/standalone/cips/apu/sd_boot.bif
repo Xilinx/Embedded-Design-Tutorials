@@ -1,0 +1,15 @@
+/* Copyright (C) 2022 -2023, Advanced Micro Devices, Inc. All rights reserved. */
+/* SPDX-License-Identifier: MIT */
+
+all:
+{
+    image
+    {
+        { type = bootimage, file = edt_versal_wrapper_cips_only.pdi }
+    }
+    image
+    {
+        name = default_subsys, id = 0x1c000000
+        { core=a72-0, file = a72_ocm.elf }
+    }
+} 
