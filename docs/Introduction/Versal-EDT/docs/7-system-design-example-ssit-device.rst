@@ -2,10 +2,11 @@
 System Design Example for Versal Stacked Silicon Interconnect Devices
 *********************************************************************************
 
-This chapter guides you through building a system based on AMD Versal |trade| devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) devices. It explains how to create an embedded design utilizing PL AXI GPIO and PL AXI UART using the Vivado |reg| tool for the Versal Premium VP1802 SSI device based VPK180 board. Refer to the Documentation Reference Guide `(UG949) <https://docs.xilinx.com/r/en-US/ug949-vivado-design-methodology/Designing-with-SSI-Devices>`__ for information on designing with SSI devices. It also describes configuring and building the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU for a targeted Versal device.
+This chapter guides you through building a system based on AMD Versal |trade| devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) devices. It explains how to create an embedded design utilizing PL AXI GPIO and PL AXI UART using the Vivado |trade| tool for the Versal Premium VP1802 SSI device based VPK180 board. Refer to the Documentation Reference Guide `(UG949) <https://docs.xilinx.com/r/en-US/ug949-vivado-design-methodology/Designing-with-SSI-Devices>`__ for information on designing with SSI devices. It also describes configuring and building the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU for a targeted Versal device.
 
 .. _7-using-axi-gpio:
 
+.. note:: The design files for this chapter have been validated with Vivado Design Suite 2023.1.
 ===============================
 Design Example: Using AXI GPIO
 ===============================
@@ -54,7 +55,7 @@ Managing the Versal CIPS IP Core in the Vivado Design Suite
       
 9. Click **Next**, then click **PS PMC**.
 
-   .. image:: media/ps-pmc.png
+   .. image:: media/ch7_ps-pmc.png
 	  
 10. Go to Peripherals and enable the TTC peripherals as shown in figure below:
 
@@ -68,9 +69,9 @@ Managing the Versal CIPS IP Core in the Vivado Design Suite
    
 12. Click **Interrupts** and configure settings as shown in figure below:
 
-   .. image:: media/interrupts.png
+   .. image:: media/ch7_interrupts.png
 
-13. Click **Finish** and **Finish** to close the CIPS GUI.	
+13. Click **OK** and **Finish** to close the CIPS GUI.	
 
 
 NoC (and DDR) IP Core Configuration
@@ -98,7 +99,7 @@ Configuring NoC and CIPS
    .. image:: media/vpk_noc-interface-slr-3.png
       :width: 600    	
 
-4. Click **Finish** and **Finish** to close the CIPS GUI.	  
+4. Click **OK** and **Finish** to close the CIPS GUI.	  
 
 5. Add two **AXI NoC IP** from the IP catalog.
 
@@ -159,15 +160,15 @@ To connect the PL IPs to CIPS, follow these steps.
 
 3. Enable the **M_AXI_FPD interface** and set the **Number of PL Resets** to 1, as shown in the Image.
 
-   .. image:: ./media/PS_PL_Interfaces.png
+   .. image:: ./media/ch7_PS_PL_Interfaces.png
 	
 4. Click **Clocking**, and then click on the Output Clocks tab.
 
 5. Expand PMC Domain Clocks. Then expand PL Fabric Clocks. Configure the PL0_REF_CLK (PL CLK 0) to 300 MHz as shown in the following figure:
 
-   .. image:: ./media/clocking_ps_PMC.png      
+   .. image:: ./media/ch7_clocking_ps_PMC.png      
 
-6. Click **Finish** and **OK** to complete the configuration and return to the block diagram.
+6. Click **OK** and **Finish** to complete the configuration and return to the block diagram.
 
 Configuring PL Hardware
 -----------------------
@@ -223,7 +224,7 @@ To configure the PL IPs used in this design example, follow these steps.
 
 14. Click **ext_reset_in** and configure the setting as shown below.
 
-   .. image:: media/image66.jpeg      
+   .. image:: media/ch7_image66.jpeg      
 
 This connects the `ext_reset_in` of the processor system reset IP to the ``pl_resetn`` of the CIPS.
 
@@ -392,7 +393,7 @@ To validate the design and to generate the output product, follow these steps:
 
 7. Right-click the top-level block design, edt_versal_i : edt_versal (``edt_versal.bd``), and select **Generate Output Products**.
 
-   .. image:: ./media/GOP.png
+   .. image:: ./media/ch7_GOP.png
 
 8. Click **Generate**.
 
@@ -419,17 +420,7 @@ Follow these steps to generate a device image for the design.
 
 4. Click **Cancel** to close the window.
 
-   .. note:: The generated device image needs to be overlaid with the ``secio-sysmon.v2.cdo`` file to enable accessing secondary SLRs power rails. For more information refer to the Answer Record (`#000034400 <https://support.xilinx.com/s/article/000034400?language=en_US>`__.)
-
-5. Copy ``secio-sysmon.v2.cdo`` from ``<design-package>/ref_files/EDT_2023.1_PACKAGE/ug1305-embedded-design-tutorial/vpk180/pl/pl_gpio_uart`` to the working directory.
-
-6. Navigate to the generated device image path ``../project_1/project_1.runs/impl/`` and run the following command as mentioned in (AR#000034400).
-
-   .. code-block::
-
-       exec [exec which bootgen] -arch versal -image ./edt_versal_wrapper.bif -w -o ./edt_versal_wrapper.pdi -overlay_cdo ../../../secio-sysmon.v2.cdo  
-
-7. Export hardware after you generate the new Device Image.
+5. Export hardware after you generate the new Device Image.
 
    .. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-7` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.
 

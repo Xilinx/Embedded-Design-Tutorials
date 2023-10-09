@@ -54,7 +54,7 @@ To connect IP blocks to create a system, follow these steps.
 
    .. image:: ./media/clocking_ps_PMC.png
 
-6. Click **Finish** and **OK** to complete the configuration and return to the block diagram.
+6. Click **OK** and **Finish** to complete the configuration and return to the block diagram.
 
 Adding and Configuring IP Addresses
 -----------------------------------
@@ -229,7 +229,7 @@ To validate the design and to generate the output product, follow these steps:
 
 7. Right-click the top-level block design, edt_versal_i : edt_versal (`edt_versal.bd`), and select **Generate Output Products**.
 
-   .. image:: ./media/GOP.png
+   .. image:: /media/GOP.png
 
 8. Click **Generate**.
 

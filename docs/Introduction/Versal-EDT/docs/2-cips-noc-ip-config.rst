@@ -2,13 +2,13 @@
 Versal CIPS and NoC (DDR) IP Core Configuration
 ****************************************************
 
-The AMD Versal |trade| CIPS IP core allows you to configure the processing system and the PMC block, including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.
+The AMD Versal |trade| Control, Interfaces and Processing System (CIPS) IP core allows you to configure the processing system and the PMC block, including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.
 
 This chapter describes how to perform the following tasks:
 
 - Creating an AMD Vivado |trade| project for Versal devices to select the appropriate boot devices and peripherals by configuring the CIPS IP core.
-- Creating and running a Hello World software application on the On-chip-memory (OCM) of Arm |reg| Cortex |trade|-A72.
-- Creating and running a Hello World software application on the Tightly-coupled-memory (TCM) of Arm Cortex-R5F.
+- Creating and running a Hello World software application on the on-chip-memory (OCM) of the Arm |reg| Cortex |trade|-A72 processor.
+- Creating and running a Hello World software application on the tightly-coupled-memory (TCM) of the Arm Cortex-R5F processor.
   
 The NoC IP core configures the DDR memory and data path across the DDR memory and processing engines in the system (Scalar Engines, Adaptable Engines, and AI Engines).
 
@@ -158,8 +158,6 @@ Now that you have added the processor system for Versal devices to the design, y
 3. Double-click **versal_cips_0** in the Block Diagram window.
 
 4. Ensure that all the settings for **Design Flow** and **Presets** are as shown in the following figure.
-
-   You may have to change the Board Interface from **ps pmc fixed IO** to **Custom**. While doing so, click **Yes** if you get a Apply Preset pop-up.
    
    .. image:: media/4-full-system.png
       :width: 600
@@ -169,24 +167,14 @@ Now that you have added the processor system for Versal devices to the design, y
    .. image:: media/ps-pmc.png
       :width: 600
 
-6. Go to Peripherals and enable the peripherals as shown in figure below:
-
-   .. image:: media/peripherals.png
-      :width: 600
-
-7. Click **IO** and set the I/O configurations as shown below:
-
-   .. image:: media/io.png
-      :width: 600
-
    .. note:: VCK190 preset values will set QSPI and SD as the default boot modes. No changes are required.
 
-8. Click **Interrupts** and configure settings as shown in figure below:
+6. Click **Interrupts** and configure settings as shown in figure below:
 
    .. image:: media/interrupts.png
       :width: 600
 
-9.  Click **Finish** and **Finish** to close the CIPS GUI.
+7.  Click **OK** and **Finish** to close the CIPS GUI.
 
 Validating the Design and Generating the Output
 -----------------------------------------------
@@ -787,12 +775,12 @@ To configure your design, follow these steps:
 
 6. Open **CIPS → PS-PMC**.
    
-7. Click **NoC**. Enable the NoC Coherent Interfaces PS to NoC Interface 0/1 as shown below.
+7. Click **NoC**. Enable the NoC Non-Coherent Interfaces PS to NoC Interface 0/1 as shown below.
 
    .. image:: media/noc-interface.png
       :width: 600
 
-8. Click **Finish** to complete and exit CIPS configuration.
+8. Click **OK** and **Finish** to complete and exit CIPS configuration.
 
 9. Double-click the **NoC IP**. From the General Tab, set **Number of AXI Slave interfaces** and **AXI Clocks** to 8:
 
@@ -895,9 +883,9 @@ Follow these steps to generate a device image for the design.
 
       When Device Image Generation completes, the Device Image Generation Completed dialog box opens.
 
-   5.  Click **Cancel** to close the window.
+   5. Click **Cancel** to close the window.
 
-       Export hardware, after you generate Device Image.
+      Export hardware after you generate the Device Image.
 
 .. _exporting-hardware-1: 
 

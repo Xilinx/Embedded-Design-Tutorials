@@ -1,13 +1,4 @@
-..
-   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-   
-*******************************************
+ *******************************************
 Debugging Using the Vitis Software Platform
 *******************************************
 
@@ -105,11 +96,11 @@ After you create the Hello World Application, work through the following example
 
    .. tip:: You can use the Vitis software platform debugging shortcuts for step-into (F5), step-return (F7), step-over (F6), and resume (F8). Alternatively, you can use the toolbar buttons.
 
-====================
-Debugging Using XSCT
-====================
+======================================================
+Debugging Using the Software Command Line Tool (XSCT)
+======================================================
 
-You can debug in the command line mode using XSDB, which is available as a part of XSCT. This example describes debugging the bare-metal application hello_world_r5 using XSCT.
+You can debug in the command line mode using the Xilinx System Debugger (XSDB), which is available as a part of XSCT. This example describes debugging the bare-metal application hello_world_r5 using XSCT.
 
 The following steps indicate how to load a bare-metal application on Arm Cortex-R5F using XSCT.
 
@@ -203,7 +194,7 @@ Running and Debugging Application Using XSCT
     
     	xsct% bpadd -addr &main
 
-   This command returns the breakpoint ID. You can verify the breakpoints planted using command bplist. For more details on breakpoints in XSCT, type `help breakpoint` in XSCT.
+   This command returns the breakpoint ID. You can verify the breakpoints planted using command `bplist`. For more details on breakpoints in XSCT, type `help breakpoint` in XSCT.
 
 2. Resume the processor core.
 
@@ -260,3 +251,5 @@ Running and Debugging Application Using XSCT
    :ltrim:
 	
 
+.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

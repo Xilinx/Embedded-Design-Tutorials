@@ -47,13 +47,6 @@ The evaluation board kit includes:
 - SD-MMC flash card for Linux booting
 - QSPI daughter card X_EBM-01, REV_A01
 
-Additional flash daughter cards:
-
-.. note:: These modules will be required for eMMC or OSPI related steps in the tutorial. Ignore this if you do not have or do not intend to use the eMMC/OSPI modules.
-
-- OSPI daughter card X-EBM-03 REV_A02
-- eMMC daughter card X-EBM-02 REV_A02
-
 .. note:: 
 
    - QSPI/SD were tested on VCK190/VMK180/VPK180 Production boards.
@@ -64,8 +57,8 @@ Additional flash daughter cards:
 Installation Requirements
 =========================
 
-Vitis Integrated Design Environment and Vivado Design Suite
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vitis Integrated Design Environment (IDE) and Vivado Design Suite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Ensure that you have the AMD Vitis |trade| 2023.1 software development platform installed. The Vitis IDE is a unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
 
@@ -111,8 +104,6 @@ For example, to install PetaLinux tools under ``/opt/pkg/petalinux/<petalinux-ve
 
     $ mkdir -p /opt/pkg/petalinux/<petalinux-version>
     $ ./petalinux-v<petalinux-version>-final-installer.run --dir /opt/pkg/petalinux/<petalinux-version>
-
-.. note:: Do not change the install directory permissions to CHMOD 775 as it might cause BitBake errors. This installs the PetaLinux tool into the ``/opt/pkg/petalinux/<petalinux-version>`` directory.
 
 For more information, see *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1144-petalinux-tools-reference-guide>`__).
 

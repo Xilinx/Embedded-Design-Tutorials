@@ -34,7 +34,7 @@ Provides an introduction for using the AMD Vivado&trade; Design Suite flow for a
 <td>Zynq UltraScale+ MPSoC devices</td><td>
 Provides an introduction for using the Vivado Design Suite flow for using the Zynq UltraScale+ MPSoC device.</td></tr>
 <tr>
-<td align="center"><a href="Introduction/Zynq7000-EDT/README.md">Zynq-7000 SoC Embedded Design Tutorial</a></td>
+<td align="center"><a href="Introduction/Zynq7000-EDT/README.md">Zynq 7000 SoC Embedded Design Tutorial</a></td>
 <td>Zynq 7000 SoC devices</td><td>
 Provides an introduction for using the Vivado Design Suite flow for using the Zynq 7000 SoC device.</td></tr>
 </table>
