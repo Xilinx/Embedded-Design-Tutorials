@@ -927,65 +927,6 @@ You will create a new Vitis project, similar to the one in :ref:`running-bare-me
 
 Refer to `Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform <#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform>`__ for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to :ref:`generating-boot-image-for-standalone-application` for generating boot images for standalone applications.
 
-===============
-OSPI Boot Mode
-===============
-
-.. note:: Skip this section if you do not have the OSPI module, X-EBM-03-revA.
-
-.. important:: OSPI configuration is only supported for VCK190/VMK180 rev B production boards.
-
-To boot check the OSPI boot mode, follow these steps:
-
-1. Open the design created in :ref:`creating-new-embedded-project-versal-devices`, ``edt_versal.xpr``.
-
-2. Double-click the **Versal CIPS IP**.
-
-3. Under **Presets** Choose Board Interface as **ps pmc fixed io OSPI**. While doing so, click **Yes** if you get a Apply Preset pop-up.
-
-   .. image:: ./media/ospi-boot1.png
-      :width: 600
-	  
-4. Click **Next** and choose **PS PMC**.
-
-5. In the Boot Mode settings, click **OSPI** and check if the configurations are set as shown in the following figure:
-
-   .. image:: ./media/ospi-boot2.png
-      :width: 600
-
-6. Click **Finish**.
-
-This configures the design in OSPI boot mode.
-
-================
-eMMC Boot Mode
-================
-
-.. note:: This section requires the X-EBM-02-revA eMMC module. Skip this section if you do not have this module.
-
-.. important:: eMMC configuration is only supported for VCK190/VMK180 rev B production boards.
-
-To boot check the eMMC boot mode, follow these steps:
-
-1. Open the design created in :ref:`creating-new-embedded-project-versal-devices`, ``edt_versal.xpr``.
-
-2. Double-click the **Versal CIPS IP**.
-
-3. Under **Presets** Choose Board Interface as **ps pmc fixed io eMMC**.  While doing so, click **Yes** if you get a Apply Preset pop-up.
- 
-   .. image:: ./media/emmc-boot1.png
-      :width: 600 
-
-4. Click **Next** and choose **PS PMC**.
-
-5. In the Boot Mode settings, click **SD1/eMMC** and check if the configurations are set as shown in the following figure:
-
-   .. image:: ./media/emmc-boot2.png
-      :width: 600
-   
-6. Click **Finish**.
-
-   This configures the design in eMMC boot mode.
 
 
 
