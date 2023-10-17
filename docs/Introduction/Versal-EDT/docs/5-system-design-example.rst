@@ -398,28 +398,20 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
    This example uses the VCK190 PetaLinux BSP to create a PetaLinux project. Ensure that you have downloaded the respective BSP for PetaLinux (VCK190/VMK180/VPK180).
 
    .. list-table::
-      :widths: 25 25 25 25
+      :widths: 50 50
       :header-rows: 1
 
       * - Board
         - QSPI/SD
-        - OSPI
-        - eMMC
 
       * - VCK190 Production Board
         - `xilinx-vck190-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
-        - `xilinx-vck190-ospi-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
-        - `xilinx-vck190-emmc-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
       
       * - VMK180 Production Board
         - `xilinx-vmk180-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
-        - `xilinx-vmk180-ospi-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
-        - `xilinx-vmk180-emmc-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
 
       * - VPK180 Production Board
         - `xilinx-vpk180-v2023.1-final.bsp <https://www.xilinx.com/member/vpk180_headstart.html>`__
-        - N/A 
-        - N/A
 
     
 
@@ -492,7 +484,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
 13. Click **<Save>** to save the above configuration and then **<Exit>** option to exit the configuration wizard.
 
-14. Configure ROOTFS to disable the AIE, STDC++, and Tcl options to reduce the rootfs size to fit into both SD and OSPI/QSPI Flash partitions. 
+14. Configure ROOTFS to disable the AIE, STDC++, and Tcl options to reduce the rootfs size to fit into both SD and QSPI flash partitions. 
  
     .. code-block::
    
@@ -511,8 +503,6 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
     .. image:: media/rootfs_config_tcl.JPG
 
 18. Click **<Save>** to save the above configuration and then click **<Exit>** to exit the configuration wizard.
-
-    .. note:: OSPI and eMMC boot modes will work only on VCK190/VMK180 REVB Production boards.
 
 19. Build the Linux images using the following command.
 
