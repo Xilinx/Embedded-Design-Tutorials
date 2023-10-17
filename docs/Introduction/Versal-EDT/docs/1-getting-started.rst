@@ -45,13 +45,9 @@ The evaluation board kit includes:
 - USB Type-A to USB Micro cable (for UART communications)
 - USB Micro cable for programming and debugging via USB-Micro JTAG connection
 - SD-MMC flash card for Linux booting
-- QSPI daughter card X_EBM-01, REV_A01
 
-.. note:: 
+.. note:: QSPI/SD were tested on VCK190/VMK180/VPK180 Production boards.
 
-   - QSPI/SD were tested on VCK190/VMK180/VPK180 Production boards.
-   - OSPI/eMMC were tested on VCK190 and VMK180 RevB production boards.
-   - OSPI and eMMC boot modes are only supported on the VCK190 and VMK180 RevB production boards.
 
 =========================
 Installation Requirements
