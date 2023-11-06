@@ -316,58 +316,65 @@ The following steps demonstrate the procedure to make the required cable connect
 .. _creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm:
 
 Creating a Hello World Application for the Arm Cortex-A72 on OCM
-----------------------------------------------------------------
+-----------------------------------------------------------------
 
-The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM.
+The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM. Follow these steps to create the platform for VCK190:
 
-1. Select **File→ New → Application Project**. Creating a New Application Project wizard opens. If this is the first time the Vitis IDE has been launched, you can select Create Application Project on the Welcome screen, as shown in the following figure.
+1. Select the Workspace:
+   
+   .. image:: media/new-create-platform-vck190.png
 
-   .. note:: Optionally, you can check the box next to "Skip welcome page next time" to skip seeing the welcome page every time.
+2. Select **File→ New Component → Platform** to open the Creating a New Application Project wizard. If this is the first time the Vitis IDE has been launched, you can select **Create Application Project** on the Welcome screen.
 
-2. Use the following information to make your selections on the wizard screens.
+   +--------------+---------------------+--------------------------------+
+   | **Wizard     | **System            | **Setting or command to use**  |
+   | Screen**     | Properties**        |                                |
+   +==============+=====================+================================+
+   | Platform     | Component name      | Vck190_platform                |
+   +--------------+---------------------+--------------------------------+
+   |              | Component location  | < platform path >              |
+   +----       ----------+---------------------+--------------------------------+
+   |              | Hardware Design     | Click the browser button to    |
+   |              | (XSA)               | add your XSA file              |
+   +--------------+---------------------+--------------------------------+
+   | Domain       | Operating System    | Standalone                     |
+   +--------------+---------------------+--------------------------------+
+   |              | Processor           | Psv_cortexa72_0                |
+   +--------------+---------------------+--------------------------------+
 
-   *Table 3:* **System Property Settings**
+3. Select **Hardware Design (XSA)** and click **Next**.
 
-   +----------------+---------------------+-----------------------------------------+
-   | Wizard Screen  | System Properties   | Setting or Command to Use               |
-   +================+=====================+=========================================+
-   | Platform       | Create a new        | Click the Browse button to              |
-   |                | platform from       | add your XSA file.                      |
-   |                | hardware (XSA)      |                                         |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Platform Name       | vck190_platform                         |
-   +----------------+---------------------+-----------------------------------------+
-   | Application    | Application project | helloworld_a72                          |
-   | Project        | name                |                                         |
-   | Details        |                     |                                         |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Select a system     | +Create New                             |
-   |                | project             |                                         |
-   +----------------+---------------------+-----------------------------------------+
-   |                | System project name | helloworld_system                       |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Processor           | versal_cips_0_pspmc_0_psv_cortexa72_0   |
-   +----------------+---------------------+-----------------------------------------+
-   | Domain         | Select a domain     | +Create New                             |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Name                | The default name assigned               |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Display Name        | The default name assigned               |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Operating System    | Standalone                              |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Processor           | versal_cips_0_pspmc_0_psv_cortexa72_0   |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Architecture        | 64-bit                                  |
-   +----------------+---------------------+-----------------------------------------+
-   | Templates      | Available Templates | Hello World                             |
-   +----------------+---------------------+-----------------------------------------+
+4. Select Operating System and Processor, then click **Next** and **Finish**.
 
-   The Vitis software platform creates the board support package for the Platform project (vck190_platform) and the system project (helloworld_system) containing an application project named helloworld_a72 under the Explorer view after performing the above steps.
+   Platform will be created Successfully.
+   
+   .. image:: media/new-platform.png
 
-3. Right-click **vck190_platform** and select **Build Project**. Alternatively, you can also click |build|.
+Creating a Hello World Application from Example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. note:: If you cannot see the project explorer, click the restore icon |restore| on the left panel, then follow step 3.
+Follow these steps to create a Hello world application using the created platform:
+
+1. Select **File** > **New Components** > **From Example**
+2. Select **Hello World** and click on **Create Application Component from Template**.
+
+   +--------------+---------------------+--------------------------------+
+   | **Wizard     | **System            | **Setting or command to use**  |
+   | Screen**     | Properties**        |                                |
+   +==============+=====================+================================+
+   | Application  | Component name      | Hello_world                    |
+   | Details      |                     |                                |
+   +--------------+---------------------+--------------------------------+
+   |              | Component location  | < Application path >           |
+   +--------------+---------------------+--------------------------------+
+   |              | Hardware Design     | Select the platform created    |
+   |              | (XSA)               | (Vck190_platform)              |
+   +--------------+---------------------+--------------------------------+
+   | Domain       | Operating System    | Standalone                     |
+   +--------------+---------------------+--------------------------------+
+   |              | Processor           | Psv_cortexa72_0                |
+   +--------------+---------------------+--------------------------------+
+
 
 Modifying the helloworld_a72 Application Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

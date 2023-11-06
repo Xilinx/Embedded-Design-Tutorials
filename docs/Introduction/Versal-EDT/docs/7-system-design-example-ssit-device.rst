@@ -467,85 +467,98 @@ This section explains how to configure and build the FreeRTOS application for an
 
 The following steps demonstrate the procedure to create a FreeRTOS Application from Arm Cortex-R5F:
 
-1. Start the AMD Vitis |trade| IDE and create a new workspace, for example, ``c:/edt/freertos``.
+Creating the Platform
+~~~~~~~~~~~~~~~~~~~~~
+
+To create the platform for VPK180, follow these steps:
+
+1. Select the workspace.
    
-2. Select **File→ New → Application Project**. The **Creating a New Application Project** wizard opens. If this is the first time that you have launched the Vitis IDE, you can select **Create Application Project** on the Welcome screen as shown in the following figure.
+   .. image:: media/new-create-platform-vck190.png
 
-   .. image:: ./media/image75.jpeg
+2. Select **File > New Component > Platform**.
 
-   .. note:: Optionally, you can check the box next to **Skip welcome page next time** to skip seeing the welcome page every time.
+   +--------------+-------------------+----------------------------------+
+   |    **Wizard  |    **System       |    **Setting or command to use** |
+   |    Screen**  |    Properties**   |                                  |
+   +==============+===================+==================================+
+   |    Platform  |    Component name |    Vpk180_platform               |
+   +--------------+-------------------+----------------------------------+
+   |              |    Component      |    < platform path >             |
+   |              |    location       |                                  |
+   +--------------+-------------------+----------------------------------+
+   |              |    Hardware       |    Click the browser button to   |
+   |              |    Design (XSA)   |    add your XSA file             |
+   +--------------+-------------------+----------------------------------+
+   |    Domain    |    Operating      |    freertos                      |
+   |              |    System         |                                  |
+   +--------------+-------------------+----------------------------------+
+   |              |    Processor      |    Psv_cortexr5_0                |
+   +--------------+-------------------+----------------------------------+
 
-3. There are four components of an application project in the Vitis IDE: a target platform, a system project, a domain and a template. To create a new application project in the Vitis IDE, follow these steps:
+3. Select the Hardware Design (XSA) and click **Next**.
 
-   1. A target platform is composed of a base hardware design and the meta-data used in attaching accelerators to declared interfaces. Choose a platform or create a platform project from the XSA that you exported from the Vivado Design Suite.
-   2. Put the application project in a system project, and associate it with a processor.
-   3. The domain defines the processor and operating system used for running the host program on the target platform.
-   4. Choose a template for the application, to quick start development. Use the following information to make your selections in the wizard screens.
+4. Select Operating System and Processor, click **Next**, then click **Finish**.
 
-      *Table:* **Wizard Information**
-
-      +---------------+-------------------------+---------------------------+
-      | Wizard Screen | System Properties       | Setting or Command to Use |
-      +===============+=========================+===========================+
-      | Platform      | Create a new platform   | Click Browse to add your  |
-      |               | from hardware (XSA)     | XSA file                  |
-      +---------------+-------------------------+---------------------------+
-      |               | Platform Name           | vpk180_platform           |
-      +---------------+-------------------------+---------------------------+
-      | Application   | Application project     | freertos_gpio_test        |
-      | Project       | name                    |                           |
-      | Detail        |                         |                           |
-      +---------------+-------------------------+---------------------------+
-      |               | Select a system project | +Create New               |
-      +---------------+-------------------------+---------------------------+
-      |               | System project name     | freertos_gpio_test_system |
-      +---------------+-------------------------+---------------------------+
-      |               | Processor               | versal_cips               |
-      |               |                         | _0_pspmc_0_psv_cortexr5_0 |
-      +---------------+-------------------------+---------------------------+
-      | Dom           | Select a domain         | +Create New               |
-      +---------------+-------------------------+---------------------------+
-      |               | Name                    | The default name assigned |
-      +---------------+-------------------------+---------------------------+
-      |               | Display Name            | The default name assigned |
-      +---------------+-------------------------+---------------------------+
-      |               | Operating System        | freertos10_xilinx         |
-      +---------------+-------------------------+---------------------------+
-      |               | Processor               | versal_cips               |
-      |               |                         | _0_pspmc_0_psv_cortexr5_0 |
-      +---------------+-------------------------+---------------------------+
-      | Templates     | Available               | Empty                     |
-      +---------------+-------------------------+---------------------------+
-      |               | Templates               | Application (C)           |
-      +---------------+-------------------------+---------------------------+
- 
-   The Vitis software platform creates the board support package for the Platform project (**vpk180_platform**) and the system project (**freertos_gpio_test_system**) containing an application project named **freertos_gpio_test** under the Explorer view after performing the preceding steps.
-  
-4. Delete the source files under `src/` directory and Copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``src/`` directory.
-
-5. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
-
-   Navigate to `platform.spr` under vpk180_platform project, and then select **Modify BSP** settings under Board support package, and modify stdin and stdout to **axi_uarlite_0** by pressing <Y> option as shown in the figure.
-
-   .. image:: media/vitis_uartlite_enable.JPG
-
-6. Click **<OK>** to save the above configuration and exit the configuration wizard.
+   Platform is created successfully.
    
-7. Right-click **freertos_gpio_test_system** and select **Build Project**. Alternatively, you can click |build|.
+   .. image:: media/new-plat-vpk180.png
 
-   For building the Linux images and incorporating the FreeRTOS elf into the image, see :ref:`creating-linux-images-using-petalinux`.
+Creating an Empty Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-8. On PL AXI UART Serial Console, RPU debug logs will be printed as below:
+1. Launch Vitis IDE and open the workspace where the platform is created.
 
-   .. code-block::
+2. Select **File > New Component > Application**. The **Creating a New Application Components** wizard opens. If this is the first time that you have launched the Vitis IDE, you can select **Create Application Component** on the Welcome screen.
+
+3. Add the Component name and the component location.
+
+   +----------------+-----------------------------+-------------------------------+
+   |    **Wizard    |    **System Properties**    |    **Setting or               |  
+   |    Screen**    |                             |    command to use**           |
+   +================+=============================+===============================+
+   |    Application |    Component name           |    freertos_gpio_test         |
+   |    Details     |                             |                               |
+   +----------------+-----------------------------+-------------------------------+
+   |                |    Component location       |    < Application path >       |
+   +----------------+-----------------------------+-------------------------------+
+   |                |    Select a platform from   |    Vpk180_platform            |
+   |                |    repository               |                               |
+   +----------------+-----------------------------+-------------------------------+
+   |    Domain      |    Select a Domain          |    +Create New                |
+   +----------------+-----------------------------+-------------------------------+
+   |                |    Name                     |    freertos_gpio_test_system  |
+   +----------------+-----------------------------+-------------------------------+
+   |                |    Operating System         |    freertos                   |
+   +----------------+-----------------------------+-------------------------------+
+   |                |    Processor                |    Psv_cortexa5_0             |
+   +----------------+-----------------------------+-------------------------------+
+
+4. Select the Created Platform and click **Next**.
+
+5. Add name and OS “\ *freertos*\ ”.
    
-      Gpio Initialization started
-      Counter 0
-      Counter 1
-      Counter 2
-      Counter 3
-      Counter 4
-      Counter 5
+6. Select domain “\ *psv_cortexr5_0*\ ” and click **Next**.
+
+7. Click **Finish** and the Empty Application is created Successfully.
+   
+   .. image:: media/new-ch7-empty-app.png
+
+8. Delete the source files under ``source/directory`` and copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``source/directory``.
+
+9.  | **Pending the screenshot because of the STDIN/STDOUT missing.**
+   | Reference - `[CR-1180061] STDIN/STDOUT parameters are missing in
+     BSP settings for FreeRTOS BSP - Xilinx Engineering
+     JIRA <https://jira.xilinx.com/browse/CR-1180061>`__
+
+Building the Application
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Select the **Component** (Application) to be built.
+
+2. Click **Build**.
+   
+   Project is build successfully.
 
 .. _creating-linux-images-using-petalinux:
 

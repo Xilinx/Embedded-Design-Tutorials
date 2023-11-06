@@ -54,47 +54,34 @@ If you did not create a hello world application on APU or RPU, follow the steps 
 
 After you create the Hello World Application, work through the following example to debug the software using the Vitis software platform.
 
-1. Right-click the application and click **Build Project** to build the application.
+1. Select the **Component** (Application) to be built.
 
-2. Right-click the application project and select **Debug As→ Launch on Hardware (Single Application Debug)** as shown in the following figure.
+2. Click **Build**.
 
-   .. image:: ./media/image40.jpeg
-      :width: 500
+   .. image:: media/new-debug.png
 
-   .. note:: The Debug perspective can also be launched by selecting **Window→ Debug Perspective**.
+   The Project Build Successfully screen is displayed.
+   
+   .. image:: media/new-debug-build.png
 
-   .. image:: ./media/image41.jpeg
-      :width: 500
+Connecting with the Target
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   .. note:: The addresses shown on this page might slightly differ from the addresses shown on your system.
+To connect with the target (board form), follow these steps:
 
-   The processor is currently sitting at the beginning of `main()` method with program execution suspended at line 0x00000000fffc0cf0. You can confirm this information in the Disassembly view, which shows the assembly-level program execution also suspended at `0x00000000fffc0cf0`.
+1. Click **Debug settings**.
+   
+   .. image:: media/new-debug-vitis.png
 
-   .. note:: If the **Disassembly** view is not visible, select **Window → Disassembly**.
+2. Set the Target Connection to **New**.
 
-3. The `helloworld.c` window also shows execution suspended at the first executable line of C code. Select the **Registers** view to confirm that the program counter, pc register, contains `0x00000000fffc0cf0`.
+3. Add the name for the Target Connection and the host and click **Test Connection**.
 
-   .. note:: If the Registers view is not visible, select **Window → Registers**.
+4. Click **OK**.
 
-4. Double-click in the margin (to the left of the line numbers) of the `helloworld.c` window next to the line of code that reads `printf("Hello World from APU\n\r");`. This sets a breakpoint at the `printf` command. To confirm the breakpoint, review the Breakpoints view.
-
-   .. note:: If the Breakpoints view is not visible, select **Window → Breakpoints**.
-
-5. Select **Run → Step Into** to step into the `init_platform()` routine. Program execution suspends at location `0x00000000fffc0cf0`. The call stack is now two levels deep.
-
-6. Select **Run → Resume** to continue running the program to the breakpoint.
-
-   Program execution stops at the line of code that includes the `printf` command. The **Disassembly** and **Debug** windows both show program execution stopped at `0x00000000fffc0cf4`.
-
-   .. note:: The execution address in your debugging window might differ if you modified the helloworld source code in any way.
-
-7. Select **Run → Resume** to run the program to conclusion.
-
-   When the program completes, the **Debug** window shows that the program is suspended in a routine called **exit**. This happens when you are running under control of the debugger.
-
-8. Re-run your code several times. Experiment with single-stepping, examining memory, breakpoints, modifying code, and adding print statements. Try adding and moving views.
-
-   .. tip:: You can use the Vitis software platform debugging shortcuts for step-into (F5), step-return (F7), step-over (F6), and resume (F8). Alternatively, you can use the toolbar buttons.
+5. Click **Run** and observe the output.
+   
+   .. image:: media/new-debug-output.png
 
 ======================================================
 Debugging Using the Software Command Line Tool (XSCT)
@@ -113,29 +100,13 @@ Setting Up a Target
 
 2. Set the board in the JTAG Boot mode, where SW1 is set as shown in following figure.
 
-   .. image:: ./media/image43.jpeg
+   .. image:: media/new-circuit-board.png
 
 3. Power on the board using the power switch SW13.
 
-4. Click the **XSCT Console** button in the Vitis IDE toolbar to open the XSCT Console view. Alternatively, you can open the XSCT Console view by clicking **Xilinx → XSCT Console**.
+4. Click **Terminal** in the Vitis toolbar, and select **New Terminal**. Type ``xsct``.
 
-   .. image:: ./media/image44.jpeg
-
-5. In the **XSCT Console** view, connect to the target over JTAG using the `connect` command:
-
-   .. code-block::
-    
-    	xsct% connect
-
-   The connect command returns the channel ID of the connection.
-
-6. Load the pdi/bin file:
-   
-   .. code-block::
-    
-	    device program <path to .pdi file>
-
-   .. note:: The PDI file can be found at ``C:\edt\edt_versal\edt_versal.runs\impl_1\edt_versal_wrapper.pdi``. In Windows, path names should be enclosed in braces, for example, {``C:\path\to\file.pdi``} to prevent the backslash being interpreted as an escape character. This is not necessary for Linux, which uses forward slashes.
+   .. image:: media/new-xsct.png
 
 Loading the Application Using XSCT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
