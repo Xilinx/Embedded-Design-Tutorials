@@ -496,7 +496,7 @@ Building the Application
    
    The project is built successfully.
 
-   .. image:: media/build_button_new_vitis.PNG
+   .. image:: media/build_button_new_vitis.png
 
 Modifying the Application Linker Script for the Application Project helloworld_r5
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
