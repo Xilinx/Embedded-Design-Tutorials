@@ -379,21 +379,53 @@ Follow these steps to create a Hello world application using the created platfor
 Modifying the helloworld_a72 Application Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Double-click **helloworld_a72**, then double-click **src** and select **helloworld.c**.
+1. Double-click **hello_world_r5**, then double-click **Source > src** and select **helloworld.c**.
 
-   This opens the `helloworld.c` source file for the helloworld_a72 application.
+   This opens the ``helloworld.c`` source file for the hello_world_r5 application.
 
-2. Modify the code to add ``sleep(1)`` and arguments in the ``print`` commands as shown below:
+2. Modify the arguments in the print commands as shown below:
 
-   .. code-block::
+   .. code::
+      
+      print("Hello World from RPU\n\r");
+      print("Successfully ran Hello World application from RPU\n\r");
 
-        sleep(1);
-        print("Hello World from APU\n\r");
-        print("Successfully ran Hello World application from APU\n\r");
+   .. image:: media/new-modify-hello-word-arg.png
 
-   .. image:: media/image28.JPG
+Building the Application
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-3. Click |build| to build the project.
+1. Select the Component (Application) to be built.
+
+   .. image:: media/new-hello-world-R5.png
+   
+2. Click on Build.
+   
+   The project is built successfully.
+
+Modifying the Application Linker Script for the Application Project hello_world_r5
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following steps demonstrate the procedure to modify the application linker script for the application project helloworld_r5.
+
+.. note::
+
+   The Vitis software platform provides a linker script generator to simplify the task of creating a linker script for GCC. The linker script generator GUI examines the target hardware platform and determines the available memory sections. All you need to do is assign the different code and data sections in the ELF file to different memory regions.
+
+1. Select the application project (helloworld_r5) in the Vitis Explorer view.
+
+   .. note::
+
+      The linker uses the DDR memory if it exists on the platform. Otherwise, it defaults to the on-chip memory (OCM).
+
+2. In the ``src`` directory, delete the default ``lscript.ld`` file.
+3. Right-click **helloworld_r5** and click **Reset Linker Script**.
+
+   .. image:: media/new-reset-linker-script.png
+ 
+.. note::
+
+   In the Generate linker script dialog box, the left side is read-only, except for the Output Script name and project build settings in the Modify project build settings as follows field. On the right side, you have two options to allocate memory: Basic tab and Advanced tab. Both perform the same tasks; however, the Basic tab is less granular and treats all types of data as "data" and all types of instructions as "code." This is often sufficient to accomplish most tasks. Use the Advanced tab for precise allocation of software blocks into various types of memory.
 
 Adding a New RPU Domain to the Platform Project
 -----------------------------------------------
