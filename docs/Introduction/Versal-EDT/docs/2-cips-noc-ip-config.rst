@@ -318,13 +318,18 @@ The following steps demonstrate the procedure to make the required cable connect
 Creating a Hello World Application for the Arm Cortex-A72 on OCM
 -----------------------------------------------------------------
 
-The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM. Follow these steps to create the platform for VCK190:
+The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM. 
 
-1. Select the Workspace:
+Creating the Platform
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Follow these steps to create the platform for VCK190:
+
+1. Select the Workspace.
    
    .. image:: media/new-create-platform-vck190.png
 
-2. Select **File→ New Component → Platform** to open the Creating a New Application Project wizard. If this is the first time the Vitis IDE has been launched, you can select **Create Application Project** on the Welcome screen.
+2. Select **File→ New Component → Platform**. Use the following information to make your selections on the Wizard screens:
 
    +--------------+---------------------+--------------------------------+
    | **Wizard     | **System            | **Setting or command to use**  |
@@ -333,7 +338,7 @@ The following steps demonstrate the procedure to create a Hello World applicatio
    | Platform     | Component name      | Vck190_platform                |
    +--------------+---------------------+--------------------------------+
    |              | Component location  | < platform path >              |
-   +----       ----------+---------------------+--------------------------------+
+   +--------------+---------------------+--------------------------------+
    |              | Hardware Design     | Click the browser button to    |
    |              | (XSA)               | add your XSA file              |
    +--------------+---------------------+--------------------------------+
@@ -342,11 +347,11 @@ The following steps demonstrate the procedure to create a Hello World applicatio
    |              | Processor           | Psv_cortexa72_0                |
    +--------------+---------------------+--------------------------------+
 
-3. Select **Hardware Design (XSA)** and click **Next**.
+3. Select the Hardware Design (XSA) and click **Next**.
 
 4. Select Operating System and Processor, then click **Next** and **Finish**.
 
-   Platform will be created Successfully.
+   The platform is created successfully.
    
    .. image:: media/new-platform.png
 
@@ -355,29 +360,117 @@ Creating a Hello World Application from Example
 
 Follow these steps to create a Hello world application using the created platform:
 
-1. Select **File** > **New Components** > **From Example**
-2. Select **Hello World** and click on **Create Application Component from Template**.
+1. Select **File** > **New Components** > **From Example**.
+   
+2. Select **Hello World** and click **Create Application Component from Template**.
+
+   .. image:: media/Hello_world_new_vitis.PNG
 
    +--------------+---------------------+--------------------------------+
-   | **Wizard     | **System            | **Setting or command to use**  |
-   | Screen**     | Properties**        |                                |
+   |    **Wizard  | **System            | **Setting or Command to Use**  |
+   |    Screen**  | Properties**        |                                |
    +==============+=====================+================================+
-   | Application  | Component name      | Hello_world                    |
-   | Details      |                     |                                |
+   |              | Component name      | hello_world_a72                |
+   |  Application |                     |                                |
+   |    Details   |                     |                                |
    +--------------+---------------------+--------------------------------+
    |              | Component location  | < Application path >           |
    +--------------+---------------------+--------------------------------+
    |              | Hardware Design     | Select the platform created    |
    |              | (XSA)               | (Vck190_platform)              |
    +--------------+---------------------+--------------------------------+
-   | Domain       | Operating System    | Standalone                     |
+   |    Domain    | Operating System    | standalone                     |
    +--------------+---------------------+--------------------------------+
-   |              | Processor           | Psv_cortexa72_0                |
+   |              | Processor           | psv_cortexa72_0                |
    +--------------+---------------------+--------------------------------+
 
+3. Add the Component name and click **Next**.
+
+4. Select the Created Platform and click **Next**.
+
+5. Select Domain “\ *standalone_psv_cortexa72_0*\ ” and click **Next**.
+
+6. Click on **Finish** the Hello world Application is created
+   Successfully.
+
+   .. image:: media/apu_helloworld_example.PNG
+
+.. note::
+   
+   The Vitis software platform creates the board support package for the platform project (vck190_platform) and the system project (hello_world_a72_system) containing an application project named helloworld_a72 under the Explorer view after performing the above steps.
 
 Modifying the helloworld_a72 Application Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Double-click **hello_world_a72**, then double-click **Source > src** and select **helloworld.c**.
+
+   This opens the ``helloworld.c`` source file for the hello_world_a72 application.
+
+2. Modify the code to add `sleep (1)`` arguments in the print commands as
+   shown below:
+
+   .. code::
+
+      sleep (1);
+      print("Hello World from APU\\n\\r");
+      print("Successfully ran Hello World application from APU\\n\\r");
+
+   .. image:: media/apu_example_code.PNG
+
+Building the Application
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Select the Component (Application) to be built.
+
+   .. image:: media/build_apu.PNG
+   
+2. Click **Build**.
+   
+   The project is built successfully.
+
+Creating the Standalone Application Project for the Arm Cortex-R5F
+------------------------------------------------------------------
+
+The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-R5F.
+
+1. Select **File > New Components > From Example**.
+
+2. Select **Hello World** and click **Create Application Component from Template**.
+
+   .. image:: media/Hello_world_new_vitis.PNG
+
+   Use the following information to make your selections on the wizard
+   screens:
+
+   +--------------+--------------------+----------------------------------+
+   | **Wizard     | **System           | **Setting or command to use**    |
+   | Screen**     | Properties**       |                                  |
+   +==============+====================+==================================+
+   | Application  | Component name     | hello_world_r5                   |
+   | Details      |                    |                                  |
+   +--------------+--------------------+----------------------------------+
+   |              | Component location | < Application path >             |
+   +--------------+--------------------+----------------------------------+
+   |              | Hardware Design    | Select the platform created      |
+   |              | (XSA)              | (Vck190_platform)                |
+   +--------------+--------------------+----------------------------------+
+   | Domain       | Operating System   | standalone                       |
+   +--------------+--------------------+----------------------------------+
+   |              | Processor          | psv_cortexr5_0                   |
+   +--------------+--------------------+----------------------------------+
+
+3. Add the **Component name** and click **Next**.
+   
+4. Select the Created Platform and click **Next**.
+
+5. Select Domain “\ *standalone_psv_cortexr5_0*\ ” and click **Next**.
+
+6. Click **Finish** and the Hello world Application is created successfully.
+
+   .. image:: media/hello_world_r5.PNG
+
+Modifying the helloworld_r5 Application Source Code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Double-click **hello_world_r5**, then double-click **Source > src** and select **helloworld.c**.
 
@@ -390,140 +483,18 @@ Modifying the helloworld_a72 Application Source Code
       print("Hello World from RPU\n\r");
       print("Successfully ran Hello World application from RPU\n\r");
 
-   .. image:: media/new-modify-hello-word-arg.png
+   .. image:: media/rpu_source_code.png
 
 Building the Application
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Select the Component (Application) to be built.
+1. Select the **Component** (Application) to be built.
 
-   .. image:: media/new-hello-world-R5.png
-   
-2. Click on Build.
+2. Click **Build**.
    
    The project is built successfully.
 
-Modifying the Application Linker Script for the Application Project hello_world_r5
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The following steps demonstrate the procedure to modify the application linker script for the application project helloworld_r5.
-
-.. note::
-
-   The Vitis software platform provides a linker script generator to simplify the task of creating a linker script for GCC. The linker script generator GUI examines the target hardware platform and determines the available memory sections. All you need to do is assign the different code and data sections in the ELF file to different memory regions.
-
-1. Select the application project (helloworld_r5) in the Vitis Explorer view.
-
-   .. note::
-
-      The linker uses the DDR memory if it exists on the platform. Otherwise, it defaults to the on-chip memory (OCM).
-
-2. In the ``src`` directory, delete the default ``lscript.ld`` file.
-3. Right-click **helloworld_r5** and click **Reset Linker Script**.
-
-   .. image:: media/new-reset-linker-script.png
- 
-.. note::
-
-   In the Generate linker script dialog box, the left side is read-only, except for the Output Script name and project build settings in the Modify project build settings as follows field. On the right side, you have two options to allocate memory: Basic tab and Advanced tab. Both perform the same tasks; however, the Basic tab is less granular and treats all types of data as "data" and all types of instructions as "code." This is often sufficient to accomplish most tasks. Use the Advanced tab for precise allocation of software blocks into various types of memory.
-
-Adding a New RPU Domain to the Platform Project
------------------------------------------------
-
-The following steps demonstrate the procedure to create a bare-metal Hello World application for the Arm Cortex-R5F on TCM. The application needs to be linked to a domain. Before creating the application project, make sure that the target domain software environment is available. If not, add the required domain to your platform using the following steps.
-
-1. Double-click the `platform.spr` file in the Vitis Explorer view. (In this example, **vck190_platform → platform.spr**).
-
-2. Click the |image30| button in the Main view.
-
-3. Use the following information to make your selections in the Domain wizard screen.
-
-   *Table 4:* **New  Domain Settings**  
-
-   +------------------+------------------+----------------------------------------+
-   | Wizard Screen    | Fields           | Setting or Command to Use              |
-   +==================+==================+========================================+
-   | Domain           | Name             | r5_domain                              |
-   +------------------+------------------+----------------------------------------+
-   |                  | Display Name     | autogenerated                          |
-   +------------------+------------------+----------------------------------------+
-   |                  | OS               | standalone                             |
-   +------------------+------------------+----------------------------------------+
-   |                  | Processor        | versal_cips_0_pspmc_0_psv_cortexr5_0   |
-   +------------------+------------------+----------------------------------------+
-   |                  | Supported        | C/C++                                  |
-   |                  | Runtimes         |                                        |
-   +------------------+------------------+----------------------------------------+
-   |                  | Architecture     | 32-bit                                 |
-   +------------------+------------------+----------------------------------------+
-
-4. Click **OK**. The newly generated r5_domain is configured.
-
-   .. note:: At this point, you will notice an Out-of-date decorator next to the platform in the Explorer view.
-
-5. Click the |build| icon to build the platform. The Explorer view shows the generated image files in the platform project.
-
-Creating the Standalone Application Project for the Arm Cortex-R5F
-------------------------------------------------------------------
-
-The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-R5F.
-
-1. Select **File → New → Application Project**. Creating a New Application Project wizard opens. If this is the first time the Vitis IDE has been launched, you can select Create Application Project on the Welcome screen.
-
-   .. note:: Optionally, you can check the box next to "Skip welcome page next time" to skip seeing the welcome page every time.
-
-2. Use the following information to make your selections in the wizard screens.
-
-   *Table 5:* **System Property Settings**
-
-   +----------------------+----------------------+----------------------------------------+
-   | Wizard Screen        | System Properties    | Setting or Command to Use              |
-   +======================+======================+========================================+
-   | Platform             | Select a platform    | Select                                 |
-   |                      | from repository      | **vck190_platform**                    |
-   +----------------------+----------------------+----------------------------------------+
-   | Application Project  | Application project  | helloworld_r5                          |
-   | Details              | name                 |                                        |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | Select a system      | helloworld_system                      |
-   |                      | project              |                                        |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | System project name  | helloworld_system                      |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | Target processor     | versal_cips_0_pspmc_0_psv_cortexr5_0   |
-   +----------------------+----------------------+----------------------------------------+
-   | Domain               | Select a domain      | r5_domain                              |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | Name                 | r5_domain                              |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | Display Name         | r5_domain                              |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | Operating System     | standalone                             |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | Processor            | versal_cips_0_pspmc_0_psv_cortexr5_0   |
-   +----------------------+----------------------+----------------------------------------+
-   | Templates            | Available Templates  | Hello World                            |
-   +----------------------+----------------------+----------------------------------------+
-
-   .. note:: The standalone application helloworld_r5 is generated within the existing system project helloworld_system.
-
-3. Right-click **vck190_platform** and select **Build Project**. Alternatively, you can also click |build| to build the project.
-
-Modifying the helloworld_r5 Application Source Code
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Expand **helloworld_r5** and double-click **src** and select **helloworld.c** to open the `helloworld.c` source file for the helloworld_r5 application.
-
-2. Modify the arguments in the print commands:
-
-   .. code-block::
-
-        print("Hello World from RPU\n\r");
-        print("Successfully ran Hello World application from RPU\n\r");
-
-   .. image:: ./media/image31.JPG
-
-3. Click |build| to build the project.
+   .. image:: media/rpu_build_select.PNG
 
 Modifying the Application Linker Script for the Application Project helloworld_r5
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -538,19 +509,17 @@ The following steps demonstrate the procedure to modify the application linker s
 
 2. In the `src` directory, delete the default ``lscript.ld`` file.
 
-3. Right-click **helloworld_r5** and click **Generate Linker Script**. Alternatively, you can select **Xilinx → Generate Linker Script**.
+3. Right-click **helloworld_r5** and click **Reset Linker Script**.
 
-   .. image:: ./media/image32.png
+   .. image:: ./media/linker_script.PNG
 
    .. note:: In the Generate linker script dialog box, the left side is read-only, except for the Output Script name and project build settings in the Modify project build settings as follows field. On the right side, you have two options to allocate memory: The Basic tab and the Advanced tab. Both perform the same tasks; however, the Basic tab is less granular and treats all types of data as "data" and all types of instructions as "code." This is often sufficient to accomplish most tasks. Use the Advanced tab for precise allocation of software blocks into various types of memory.
 
-4. Under the Basic tab, select **versal_cips_0_pspmc_0_psv_r5_0_atcm_MEM_0** in the drop-down menu for all the three sections, then click **Generate**.
+   .. image:: media/output_new_vitis.PNG
 
-   .. image:: ./media/r5_atcm_capture.jpg
+   .. note:: To terminate the debug configuration, delete the debug configuration.
 
-   .. note:: A new linker script (``lscript.ld``) will be generated in the src folder within the application project.
-
-5. Right-click **helloworld_system** and select **Build Project** or |build|. This generates the project elf files within the Debug folder of the helloworld_r5 project.
+      .. image:: media/terminate_new_vitis.PNG
 
 .. _running-applications-in-jtag-mode:
 
