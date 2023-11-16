@@ -100,7 +100,7 @@ Select the component (application) and click **Build**.
 
 .. image:: media/versal-plm-build.png
 
-This generates the ``versal_plm.elf`` file within the Debug folder of the application project. After building the project, build the platform as well.
+This generates the ``versal_plm.elf`` file within the `Output` folder of the application project. After building the project, build the platform as well.
 
 .. image:: media/build-target-plm.png
 
