@@ -406,7 +406,7 @@ Modifying the helloworld_a72 Application Source Code
 
    This opens the ``helloworld.c`` source file for the hello_world_a72 application.
 
-2. Modify the code to add `sleep (1)`` arguments in the print commands as
+2. Modify the code to add ``sleep (1)`` arguments in the print commands as
    shown below:
 
    .. code::
@@ -425,6 +425,8 @@ Building the Application
    .. image:: media/build_apu.PNG
    
 2. Click **Build**.
+
+   .. image:: media/build_button_new_vitis.png
    
    The project is built successfully.
 
@@ -493,10 +495,10 @@ Building the Application
    .. image:: media/rpu_build_select.PNG
 
 2. Click **Build**.
-   
-   The project is built successfully.
 
    .. image:: media/build_button_new_vitis.png
+   
+   The project is built successfully.
 
 Modifying the Application Linker Script for the Application Project helloworld_r5
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -516,8 +518,6 @@ The following steps demonstrate the procedure to modify the application linker s
    .. image:: ./media/linker_script.PNG
 
    .. note:: In the Generate linker script dialog box, the left side is read-only, except for the Output Script name and project build settings in the Modify project build settings as follows field. On the right side, you have two options to allocate memory: The Basic tab and the Advanced tab. Both perform the same tasks; however, the Basic tab is less granular and treats all types of data as "data" and all types of instructions as "code." This is often sufficient to accomplish most tasks. Use the Advanced tab for precise allocation of software blocks into various types of memory.
-
-   .. image:: media/output_new_vitis.png
 
    .. note:: To terminate the debug configuration, delete the debug configuration.
 

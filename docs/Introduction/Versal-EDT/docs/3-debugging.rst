@@ -108,6 +108,23 @@ Setting Up a Target
 
    .. image:: media/new-xsct.png
 
+5. In the XSCT Console view, use the ``connect`` command to connect to the target via JTAG:
+ 
+   .. code::
+      
+      xsct% connect
+ 
+   The connect command returns the connected channel ID.
+ 
+6. Load the pdi/bin file.
+
+   .. code::
+      
+      device program <path to .pdi file>
+ 
+.. note:: This PDI file can be found in . In Windows, path names should be enclosed in parentheses (e.g., {}) to avoid backslashes being treated as escape characters. This is not the case for Linux which uses forward 
+slashes. C:\edt\edt_versal\edt_versal.runs\impl_1\edt_versal_wrapper.pdi C:\path\to\file.pdi
+
 Loading the Application Using XSCT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -119,9 +136,25 @@ Following are the steps to load the application using XSCT.
 
    .. note:: For non-interactive usage such as scripting, the `-filter` option can be used to select a target instead of selecting the target through its ID.
 
-   The targets are listed as shown in the following figure.
+   The targets are listed below:
 
-   .. image:: ./media/image45.png
+   .. code::
+
+      xsct% target                                                                    
+      1  Versal xcvc1902
+         2  RPU
+            3  Cortex-R5 #0 (Halted)
+            4  Cortex-R5 #1 (Lock Step Mode)
+         5  APU
+            6  Cortex-A72 #0 (Running)
+            7  Cortex-A72 #1 (Running)
+         8  PPU
+            9  MicroBlaze PPU (Sleeping)
+         10  PSM
+            11  MicroBlaze PSM (Sleeping)
+         12  PMC
+         13  PL
+      14  DPC
 
 2. Download the hello_world_r5 application on the Arm Cortex-R5F Core 0.
 

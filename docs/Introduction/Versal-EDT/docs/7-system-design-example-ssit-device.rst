@@ -509,7 +509,7 @@ Creating an Empty Application
 
 1. Launch Vitis IDE and open the workspace where the platform is created.
 
-2. Select **File > New Component > Application**. The **Creating a New Application Components** wizard opens. If this is the first time that you have launched the Vitis IDE, you can select **Create Application Component** on the Welcome screen.
+2. Select **File > New Component > Application**. The **Creating a New Application Components** wizard opens. If this is the first time that you have launched the Vitis IDE, you can select **Create Application Component** on the Welcome screen.
 
 3. Add the Component name and the component location.
 
@@ -546,17 +546,16 @@ Creating an Empty Application
 
 8. Delete the source files under ``source/directory`` and copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``source/directory``.
 
-9.  | **Pending the screenshot because of the STDIN/STDOUT missing.**
-   | Reference - `[CR-1180061] STDIN/STDOUT parameters are missing in
-     BSP settings for FreeRTOS BSP - Xilinx Engineering
-     JIRA <https://jira.xilinx.com/browse/CR-1180061>`__
-
 Building the Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Select the **Component** (Application) to be built.
 
+   .. image:: media/new-flow.png
+
 2. Click **Build**.
+
+   .. image:: media/new-proj-built.png
    
    Project is build successfully.
 

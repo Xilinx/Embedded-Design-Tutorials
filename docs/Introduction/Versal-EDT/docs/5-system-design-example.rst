@@ -89,7 +89,7 @@ To add and configure IP addresses, follow these steps.
 
    .. image:: ./media/gpio_config0.png
    
-9. Do Repeat previous step 7 and Step 8 for `axi_gpio_1`.
+9. Repeat previous step 7 and Step 8 for `axi_gpio_1`.
 
 10. Click **S_AXI** of `axi_uartlite_0`. Set the configurations as shown in the following figure:
 
@@ -363,11 +363,9 @@ Creating an Empty Application
    .. image:: media/new-vitis-launch.png
 
 2. Select **File > New Component > Application**. **Creating a
-   New Application Components** wizard opens. If this is the first time that you have launched the Vitis IDE, you can select **Create
+   New Application Components** wizard opens. If this is the first time that you have launched the Vitis IDE, you can select **Create
    Application Component** on the Welcome screen as shown in the
    following figure.
-   
-   .. image:: media/new-welcome-screen.png
 
 3. Add the component name and the component location.
 
@@ -401,27 +399,23 @@ Creating an Empty Application
 
 7. Click **Finish** the Empty Application is created successfully.
    
-   .. image:: media/new-empty-app.png
+   .. image:: media/new-welcome-screen.png
 
 8. Delete the source files under ``source/directory`` and copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``source/ directory``.
 
-9. | **Pending the screenshot because of the STDIN/STDOUT missing.**
-   | Reference - `[CR-1180061] STDIN/STDOUT parameters are missing in
-     BSP settings for FreeRTOS BSP - Xilinx Engineering
-     JIRA <https://jira.xilinx.com/browse/CR-1180061>`__
 
 Building the Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Select the **Component** (Application) to be built.
 
-2. Click **Build**.
-   
    .. image:: media/new-flow.png
 
-   Project is built successfully.
-   
+2. Click **Build**.
+
    .. image:: media/new-proj-built.png
+
+   Project is built successfully.
 
 .. _creating-linux-images-using-petalinux:
 
