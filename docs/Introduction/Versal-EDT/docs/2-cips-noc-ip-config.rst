@@ -430,6 +430,8 @@ Building the Application
    
    The project is built successfully.
 
+.. _creating-a-hello-world-application-for-the-arm-cortex-r5f:
+
 Creating the Standalone Application Project for the Arm Cortex-R5F
 ------------------------------------------------------------------
 
