@@ -325,7 +325,7 @@ Creating the Platform
 
 Follow these steps to create the platform for VCK190:
 
-1. Select the Workspace.
+1. Select the workspace.
    
    .. image:: media/new-create-platform-vck190.png
 

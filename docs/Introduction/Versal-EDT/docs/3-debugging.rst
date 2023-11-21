@@ -50,7 +50,7 @@ Debugging Software Using the Vitis Software Platform
 
 This example describes debugging a hello world application.
 
-If you did not create a hello world application on APU or RPU, follow the steps in :ref:`running-bare-metal-hello-world-application` or :ref:`bare-metal-hello-world-on-ddr`.
+If you did not create a hello world application on APU or RPU, follow the steps in :ref:`creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm` or :ref:`creating-a-hello-world-application-for-the-arm-cortex-r5f`.
 
 After you create the Hello World Application, work through the following example to debug the software using the Vitis software platform.
 

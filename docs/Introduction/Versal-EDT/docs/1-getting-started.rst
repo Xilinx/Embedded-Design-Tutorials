@@ -56,7 +56,7 @@ Installation Requirements
 Vitis Integrated Design Environment (IDE) and Vivado Design Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ensure that you have the AMD Vitis |trade| 2023.1 software development platform installed. The Vitis IDE is a unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
+Ensure that you have the AMD Vitis |trade| 2023.2 software development platform installed. The Vitis IDE is a unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
 
 .. note:: Visit `https://www.xilinx.com/support/download.html <https://www.xilinx.com/support/download.html>`__ to confirm that you have the latest tools version.
 
@@ -75,7 +75,7 @@ This can use either a dedicated Linux host system or a virtual machine running o
 
 When you install PetaLinux tools on your system of choice, you must do the following:
 
-- Download PetaLinux 2023.1 software from the website.
+- Download PetaLinux 2023.2 software from the website.
 
 - Download the respective BSP as described in :ref:`creating-linux-images-using-petalinux`.
 
