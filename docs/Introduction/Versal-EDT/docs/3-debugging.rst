@@ -1,12 +1,3 @@
-..
-   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-   
 *******************************************
 Debugging Using the Vitis Software Platform
 *******************************************
@@ -59,57 +50,44 @@ Debugging Software Using the Vitis Software Platform
 
 This example describes debugging a hello world application.
 
-If you did not create a hello world application on APU or RPU, follow the steps in :ref:`running-bare-metal-hello-world-application` or :ref:`bare-metal-hello-world-on-ddr`.
+If you did not create a hello world application on APU or RPU, follow the steps in :ref:`creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm` or :ref:`creating-a-hello-world-application-for-the-arm-cortex-r5f`.
 
 After you create the Hello World Application, work through the following example to debug the software using the Vitis software platform.
 
-1. Right-click the application and click **Build Project** to build the application.
+1. Select the **Component** (Application) to be built.
 
-2. Right-click the application project and select **Debug As→ Launch on Hardware (Single Application Debug)** as shown in the following figure.
+2. Click **Build**.
 
-   .. image:: ./media/image40.jpeg
-      :width: 500
+   .. image:: media/new-debug.png
 
-   .. note:: The Debug perspective can also be launched by selecting **Window→ Debug Perspective**.
+   The Project Build Successfully screen is displayed.
+   
+   .. image:: media/new-debug-build.png
 
-   .. image:: ./media/image41.jpeg
-      :width: 500
+Connecting with the Target
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   .. note:: The addresses shown on this page might slightly differ from the addresses shown on your system.
+To connect with the target (board form), follow these steps:
 
-   The processor is currently sitting at the beginning of `main()` method with program execution suspended at line 0x00000000fffc0cf0. You can confirm this information in the Disassembly view, which shows the assembly-level program execution also suspended at `0x00000000fffc0cf0`.
+1. Click **Debug settings**.
+   
+   .. image:: media/new-debug-vitis.png
 
-   .. note:: If the **Disassembly** view is not visible, select **Window → Disassembly**.
+2. Set the Target Connection to **New**.
 
-3. The `helloworld.c` window also shows execution suspended at the first executable line of C code. Select the **Registers** view to confirm that the program counter, pc register, contains `0x00000000fffc0cf0`.
+3. Add the name for the Target Connection and the host and click **Test Connection**.
 
-   .. note:: If the Registers view is not visible, select **Window → Registers**.
+4. Click **OK**.
 
-4. Double-click in the margin (to the left of the line numbers) of the `helloworld.c` window next to the line of code that reads `printf("Hello World from APU\n\r");`. This sets a breakpoint at the `printf` command. To confirm the breakpoint, review the Breakpoints view.
+5. Click **Run** and observe the output.
+   
+   .. image:: media/new-debug-output.png
 
-   .. note:: If the Breakpoints view is not visible, select **Window → Breakpoints**.
+======================================================
+Debugging Using the Software Command Line Tool (XSCT)
+======================================================
 
-5. Select **Run → Step Into** to step into the `init_platform()` routine. Program execution suspends at location `0x00000000fffc0cf0`. The call stack is now two levels deep.
-
-6. Select **Run → Resume** to continue running the program to the breakpoint.
-
-   Program execution stops at the line of code that includes the `printf` command. The **Disassembly** and **Debug** windows both show program execution stopped at `0x00000000fffc0cf4`.
-
-   .. note:: The execution address in your debugging window might differ if you modified the helloworld source code in any way.
-
-7. Select **Run → Resume** to run the program to conclusion.
-
-   When the program completes, the **Debug** window shows that the program is suspended in a routine called **exit**. This happens when you are running under control of the debugger.
-
-8. Re-run your code several times. Experiment with single-stepping, examining memory, breakpoints, modifying code, and adding print statements. Try adding and moving views.
-
-   .. tip:: You can use the Vitis software platform debugging shortcuts for step-into (F5), step-return (F7), step-over (F6), and resume (F8). Alternatively, you can use the toolbar buttons.
-
-====================
-Debugging Using XSCT
-====================
-
-You can debug in the command line mode using XSDB, which is available as a part of XSCT. This example describes debugging the bare-metal application hello_world_r5 using XSCT.
+You can debug in the command line mode using the Xilinx System Debugger (XSDB), which is available as a part of XSCT. This example describes debugging the bare-metal application hello_world_r5 using XSCT.
 
 The following steps indicate how to load a bare-metal application on Arm Cortex-R5F using XSCT.
 
@@ -122,29 +100,30 @@ Setting Up a Target
 
 2. Set the board in the JTAG Boot mode, where SW1 is set as shown in following figure.
 
-   .. image:: ./media/image43.jpeg
+   .. image:: media/new-circuit-board.png
 
 3. Power on the board using the power switch SW13.
 
-4. Click the **XSCT Console** button in the Vitis IDE toolbar to open the XSCT Console view. Alternatively, you can open the XSCT Console view by clicking **Xilinx → XSCT Console**.
+4. Click **Terminal** in the Vitis toolbar, and select **New Terminal**. Type ``xsct``.
 
-   .. image:: ./media/image44.jpeg
+   .. image:: media/new-xsct.png
 
-5. In the **XSCT Console** view, connect to the target over JTAG using the `connect` command:
+5. In the XSCT Console view, use the ``connect`` command to connect to the target via JTAG:
+ 
+   .. code::
+      
+      xsct% connect
+ 
+   The connect command returns the connected channel ID.
+ 
+6. Load the pdi/bin file.
 
-   .. code-block::
-    
-    	xsct% connect
-
-   The connect command returns the channel ID of the connection.
-
-6. Load the pdi/bin file:
-   
-   .. code-block::
-    
-	    device program <path to .pdi file>
-
-   .. note:: The PDI file can be found at ``C:\edt\edt_versal\edt_versal.runs\impl_1\edt_versal_wrapper.pdi``. In Windows, path names should be enclosed in braces, for example, {``C:\path\to\file.pdi``} to prevent the backslash being interpreted as an escape character. This is not necessary for Linux, which uses forward slashes.
+   .. code::
+      
+      device program <path to .pdi file>
+ 
+.. note:: This PDI file can be found in . In Windows, path names should be enclosed in parentheses (e.g., {}) to avoid backslashes being treated as escape characters. This is not the case for Linux which uses forward 
+slashes. C:\edt\edt_versal\edt_versal.runs\impl_1\edt_versal_wrapper.pdi C:\path\to\file.pdi
 
 Loading the Application Using XSCT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -157,9 +136,25 @@ Following are the steps to load the application using XSCT.
 
    .. note:: For non-interactive usage such as scripting, the `-filter` option can be used to select a target instead of selecting the target through its ID.
 
-   The targets are listed as shown in the following figure.
+   The targets are listed below:
 
-   .. image:: ./media/image45.png
+   .. code::
+
+      xsct% target                                                                    
+      1  Versal xcvc1902
+         2  RPU
+            3  Cortex-R5 #0 (Halted)
+            4  Cortex-R5 #1 (Lock Step Mode)
+         5  APU
+            6  Cortex-A72 #0 (Running)
+            7  Cortex-A72 #1 (Running)
+         8  PPU
+            9  MicroBlaze PPU (Sleeping)
+         10  PSM
+            11  MicroBlaze PSM (Sleeping)
+         12  PMC
+         13  PL
+      14  DPC
 
 2. Download the hello_world_r5 application on the Arm Cortex-R5F Core 0.
 
@@ -203,7 +198,7 @@ Running and Debugging Application Using XSCT
     
     	xsct% bpadd -addr &main
 
-   This command returns the breakpoint ID. You can verify the breakpoints planted using command bplist. For more details on breakpoints in XSCT, type `help breakpoint` in XSCT.
+   This command returns the breakpoint ID. You can verify the breakpoints planted using command `bplist`. For more details on breakpoints in XSCT, type `help breakpoint` in XSCT.
 
 2. Resume the processor core.
 
@@ -260,3 +255,5 @@ Running and Debugging Application Using XSCT
    :ltrim:
 	
 
+.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

@@ -75,7 +75,7 @@ Introduction
 
    * - :doc:`Zynq-7000 Embedded Design Tutorial <docs/Introduction/Zynq7000-EDT/Zynq7000-EDT>`
      - ZC702 Rev 1.0
-     - Provides an introduction to using the Vivado Design Suite flow and the Vitis unified software platform for embedded development on a Zynq-7000 SoC device. 
+     - Provides an introduction to using the Vivado Design Suite flow and the Vitis unified software platform for embedded development on a Zynq 7000 SoC device. 
 
 
 
@@ -107,7 +107,7 @@ Feature Tutorials
      - First Stage Boot Loader (FSBL) can initialize the SoC device, load the required application or data to memory, and launch applications on the target CPU core. An FSBL is provided in the Vitis platform project (if you enabled creating boot components while creating the platform project), but you are free to create additional FSBL applications as general applications for further modification or debugging purposes.
 	 
    * - :doc:`Programming an Embedded MicroBlaze Processor <docs/Feature_Tutorials/microblaze-system/README>`
-     - Create a simple MicroBlaze™ system for a Spartan™-7 FPGA using Vivado IP integrator.
+     - Create a simple MicroBlaze™ system for a Spartan™ 7 FPGA using Vivado IP integrator.
 
    * - :doc:`Profiling Applications with System Debugger <docs/Feature_Tutorials/sw-profiling/sw-profiling>`
      - Enable profiling features for the standalone domain or board support package (BSP) and the application related to AXI CDMA, which you created in :doc:`Linux Booting and Debug in the Vitis Software Platform <docs/Introduction/Zynq7000-EDT/7-linux-booting-debug>`.
