@@ -4,9 +4,10 @@ System Design Example for Versal Stacked Silicon Interconnect Devices
 
 This chapter guides you through building a system based on AMD Versal |trade| devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) devices. It explains how to create an embedded design utilizing PL AXI GPIO and PL AXI UART using the Vivado |trade| tool for the Versal Premium VP1802 SSI device based VPK180 board. Refer to the Documentation Reference Guide `(UG949) <https://docs.xilinx.com/r/en-US/ug949-vivado-design-methodology/Designing-with-SSI-Devices>`__ for information on designing with SSI devices. It also describes configuring and building the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU for a targeted Versal device.
 
+.. note:: The design files for this chapter have been validated with Vivado Design Suite 2023.1.
+
 .. _7-using-axi-gpio:
 
-.. note:: The design files for this chapter have been validated with Vivado Design Suite 2023.1.
 ===============================
 Design Example: Using AXI GPIO
 ===============================
