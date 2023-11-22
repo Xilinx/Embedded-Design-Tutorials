@@ -23,7 +23,7 @@ AMD documentation is organized around a set of standard design processes to help
   
   * :doc:`../docs/2-cips-noc-ip-config`
   * :ref:`noc-ip-core-configuration`
-  * :ref:`using-axi-gpio`
+  * :ref:`7-using-axi-gpio`
 
 * **System Integration and Validation**: Integrating and validating the system functional performance, including timing, resource use, and power closure. Topics in this document that apply to this design process include:
   
@@ -113,7 +113,7 @@ AMD software uses FLEXnet licensing. When the software is first run, it performs
 Tutorial Design Files
 =====================
 
-The reference design files for Production Silicon are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/Versal-EDT/ref_files>`__ directory.
+The reference design files for Production Silicon are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.2/docs/Introduction/Versal-EDT/ref_files>`__ directory.
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
