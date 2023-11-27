@@ -518,6 +518,7 @@ The Vitis software platform launches in a separate window.
     ![](./media/image43-3.png)
 
 9. A new ```peripheral_tests``` application is created. To build the application select **peripheral_tests** under **Flow > Component** and click on **Build**. Click **OK** on the pop-up window to build the associated platform.
+
     ![](./media/image44-1.png)
 
 10. Wait for the application to finish compiling.
