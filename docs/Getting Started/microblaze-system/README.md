@@ -1,3 +1,5 @@
+<!--- Copyright (C) 2023, Advanced Micro Devices, Inc. All rights reserved.
+SPDX-License-Identifier: MIT --->
 <p class="sphinxhide" align="right"><a href="../../docs-cn/README.md">简体中文</a> | <a href="../../docs-jp/README.md">日本語</a></p>
 <table width="100%">
   <tr width="100%">
@@ -91,6 +93,7 @@ Although Tcl commands are available for many of the actions performed in the Viv
    ![](./media/image5-1.png)
 
 7. Click **OK**. This instantiates the MIG core and connects the I/O interfaces to the I/O interfaces for the DDR memory on the SP701 board.
+
    ![](./media/image6-1.png)
 
 8. Right-click anywhere in the block design canvas, and select **Add IP**. The IP catalog opens.
@@ -99,7 +102,7 @@ Although Tcl commands are available for many of the actions performed in the Viv
 
  ***Note:*** If not displayed by default, the IP Details window can be displayed by clicking **CTRL+Q** on the keyboard while searching for IP.
 
-  ![](./media/image8-1.png) ![](./media/image7-1.png)
+  ![](./media/image7-1.png) ![](./media/image8-1.png)
 
 ### Use the Board Window to Connect to Board Interfaces
 
@@ -114,11 +117,11 @@ There are several ways to use an existing interface in IP integrator. Use the Bo
 
    ![](./media/image11-1.png)
 
-3. From the Board window, select **UART** under the Miscellaneous folder, and drag and drop it into the block design canvas. Click **OK** on the **Auto Connect** pop-up.
+3. From the Board window, select **UART** under the Miscellaneous folder, and drag and drop it into the block design canvas.
 
     This instantiates the AXI Uartlite IP on the block design.
 
-4. From the Board window, select **LED** under the General Purpose Input or Output folder, and drag and drop it into the block design canvas. Click **OK** on the **Auto Connect** pop-up.
+4. From the Board window, select **LED** under the General Purpose Input or Output folder, and drag and drop it into the block design canvas.
 
     This instantiates the GPIO IP on the block design and connects it to the on-board LEDs. 
 
@@ -133,7 +136,7 @@ There are several ways to use an existing interface in IP integrator. Use the Bo
 
 1. Add the AXI block RAM Controller, shown in the following figure, by right-clicking the IP integrator canvas and selecting **Add IP**.
 
-   ![](./media/image14-1.png)![](./media/image13-1.png)
+   ![](./media/image13-1.png) ![](./media/image14-1.png)
 
     The block design now should look like the following figure.
 
@@ -372,7 +375,8 @@ This connection connects the AXI4 master port of the MicroBlaze Debug Module (MD
 
     a. Expand the microblaze_0 instance by clicking on the Expand All icon ![](./media/image27-1.png) in the toolbar to the top of the Address Editor window.
 
-    b. Change the range of microblaze_0/mig_7_series_0/memmap IP in both the Data and the Instruction section to **512 MB**, and mdm_1/mig_7_series_0/memmap also to **512 MB**, as shown in the following figure.
+    b. Ensure the range of microblaze_0/mig_7_series_0/memmap IP in both the Data and the Instruction section are **512 MB**, and mdm_1/mig_7_series_0/memmap also tis **512 MB**, as shown in the following figure.
+
    ![](./media/image29-1.png)
 
     c. The top of the Address Editor window should show Assigned (11), indicating all 11 interfaces were assigned addresses. If Unassigned shows any interfaces unassigned, click on the **Assign All** arrow ![](./media/image28-1.png).
@@ -453,7 +457,7 @@ Next, open the design and export to the Vitis software platform.
 2. Click **Next**.
 
 3. Select the **Include bitstream** option using the radio button in the Output view and click **Next**.
-    ![](./media/image34-1.png)
+    ![](./media/image34-2.png)
 
 4. Leave the XSA file name field at its default value and click **Next**. (The following figure shows Windows-specific settings.)
     ![](./media/image35-1.png)
