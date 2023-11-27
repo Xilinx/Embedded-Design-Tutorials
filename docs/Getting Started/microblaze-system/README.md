@@ -166,6 +166,7 @@ There are several ways to use an existing interface in IP integrator. Use the Bo
     g. Leave the Interrupt Controller option unchecked.
 
     h. Leave The Clock source option set to **/mig_7series_0/ui_addn_clk_0 (100 MHz)**.
+
     ![](./media/image16-1.png)
 
 3. Click **OK**.
@@ -467,75 +468,71 @@ Next, open the design and export to the Vitis software platform.
 
 6. To launch the Vitis software platform, select **Tools > Launch Vitis IDE**. The Eclipse Launcher dialog box opens.
 
-7. Specify the desired Workspace location such as C:\Projects\Vitis_Workspaces\microblaze-system (Windows-specific).
-
-8. Click **Launch**.
-
-## Step 9: Create a "Peripheral Test" Application
+## Step 9: Create a "Platform Component"
 
 The Vitis software platform launches in a separate window.
 ![](./media/image37-1.png)
 
-1. Close the Welcome screen if it appears.
+1. Select **Open Workspace** and select an new folder for the desired Workspace location, such as C:\Projects\Vitis_Workspaces\microblaze-system (Windows-specific).
 
-2. Select **File > New > Application Project** or under **Project** click **Create Application Project**.
+2. Select **File > New Component > Platform** or under **Embedded Development** click **Create Platform Component**.
     ![](./media/image38-1.png)
 
-3. Select the **Skip welcome page next time** check box if you do not want the welcome to appear when the Vitis software platform is launched again.
+3. Click **Next**.
 
-4. Click **Next**.
-
-5. In the Platform page, select the **Create a new platform from hardware (XSA)** tab.
+4. In the Platform Creation Flow window, select the **Hardware Design** option and Click **Browse** to open the Select Hardware Design (XSA) window. Navigate to the directory where the XSA file was created in Vivado and click **Open**.
     ![](./media/image39-1.png)
 
-6. Click **Browse** to open the Create Platform from XSA window. Navigate to the directory where the XSA file was created in Vivado and click **Open**.
+5. Click **Next**.
+
+6. In the Operating System and Processor window, select the **standalone** for the operating sytem and **microblaze_0** for the processor.
     ![](./media/image40-1.png)
 
 7. Click **Next**.
 
-8. In the Application project name field, type the name desired, such as `peri_test`. Leave all other fields to their default values, and click **Next**.
+8. Review the Platform Component Creation Summary and click **Finish**.
+    ![](./media/image40-2.png)
 
-    ![](./media/image41-1.png)
+## Step 10: Create a "Peripheral Test" Application
 
-9. In the Domain page leave all the fields at their default values and click **Next**.
+1. Select **File > New Component > From Examples** or under **Get Started** click **Examples**.
+    ![](./media/image38-1.png)
+
+2. Select **Peripheral Tests**.
+    ![](./media/image41-2.png)
+
+3. Click on **Create Application Component from Template**.
     ![](./media/image42-1.png)
 
-10. In the Templates page, select **Peripheral Tests**.
+4. Click **Next**.
+
+5. In the Platform page, select the previously created platform.
     ![](./media/image43-1.png)
+    
+6. Click **Next**.
 
-11. Click **Finish**.
+7. In the Domain page leave all the fields at their default values and click **Next**.
+    ![](./media/image43-2.png)
 
-12. A new ```peri_test``` application is created. To build the application click the hammer icon![](./media/image44-1.png) in the toolbar.
+8. Review the Summary and click **Finish**.
+    ![](./media/image43-3.png)
 
-13. Wait for the application to finish compiling.
+9. A new ```peripheral_tests``` application is created. To build the application select **peripheral_tests** under **Flow > Component** and click on **Build**. Click **OK** on the pop-up window to build the associated platform.
+    ![](./media/image44-1.png)
 
-14. Right-click the peri_test application in the Project Explorer, and select **Generate Linker Script**.
+10. Wait for the application to finish compiling.
 
-    The Generate Linker Script dialog box opens.
-
-15. Select the **Basic** tab, and change the Assigned Memory for Heap and Stack, Code, and Data to DDR memory. Change the Place Code Sections in:, 
-    Place Data Sections in: and Place Heap and Stack in: sections to **mig_7series_0_memaddr**.
-    ![](./media/image45-1.png)
-
-    Setting these values to **mig_7series_0** ensures that the compiled code executes from the DDR3 Memory IP.
-
-16. Click **Generate**.
-
-17. Click **Yes** to overwrite it in the **Linker Already Exists!** dialog box.
-
-18. Click the hammer icon![](./media/image44-1.png) in the toolbar again to rebuild the application with the modified linker script.
-
-## Step 10: Execute the Software Application on a SP701 Board
+## Step 11: Execute the Software Application on a SP701 Board
 
 ![](./media/image29.png)**IMPORTANT!** *Make sure that you have connected the target board to the host computer and it is turned on.*
 
-1. Select and right-click the peri_test application in the Project Explorer, and select **Debug As → Debug Configurations**.
+1. To start the debug session, click on the Debug icon under **Flow > Component [peripheral_tests] > Debug**.
+
+    ![](./media/image46-1.png)
 
     The Debug Configurations dialog box opens, as shown in the following figure.
 
 2. Right-click **Single Application Debug**, and select **New Configuration**.
-
-    ![](./media/image46-1.png)
 
 3. The configurations page opens. Click **Debug**.
 
