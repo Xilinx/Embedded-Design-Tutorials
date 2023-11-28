@@ -517,11 +517,15 @@ The Vitis software platform launches in a separate window.
 8. Review the Summary and click **Finish**.
     ![](./media/image43-3.png)
 
-9. A new ```peripheral_tests``` application is created. To build the application select **peripheral_tests** under **Flow > Component** and click on **Build**. Click **OK** on the pop-up window to build the associated platform.
+9. A new ```peripheral_tests``` application is created. If the `testperiph.c` file is not already open, select **MICROBLAZE-SYSTEM/peripheral_tests [Application]/Sources/src/testperiph.c**, and double-click to open the source file. Modify the source file by inserting a while statement at approximately line 18. Press **Ctrl + S** to save the file.
+    a. In line 18, add ` while(1)` above the curly brace as shown in the following figure.
+   ![](./media/image51-1.png)
+
+10. To build the application select **peripheral_tests** under **Flow > Component** and click on **Build**. Click **OK** on the pop-up window to build the associated platform.
 
     ![](./media/image44-1.png)
 
-10. Wait for the application to finish compiling.
+11. Wait for the application to finish compiling.
 
 ## Step 11: Execute the Software Application on a SP701 Board
 
@@ -531,41 +535,22 @@ The Vitis software platform launches in a separate window.
 
     ![](./media/image46-1.png)
 
-    The Debug Configurations dialog box opens, as shown in the following figure.
-
-2. Right-click **Single Application Debug**, and select **New Configuration**.
-
-3. The configurations page opens. Click **Debug**.
+2. The Debug perspective window opens, if the `testperiph.c` file is not already open, select **../src/testperiph.c**, and double-click to open the source file.
 
     ![](./media/image47-1.png)
 
-    The Debug perspective window opens.
+3. Add a breakpoint in the code so that the processor stops code execution when the breakpoint is encountered. To do so, scroll down to line 24 and click on the left pane red dot, which adds a breakpoint on that line of code, as shown in the following figure.
 
-4. Set the terminal by selecting the Vitis Terminal tab and clicking the ![](./media/image48-1.png) button.
+    ![](./media/image48-1.png)
 
-5. Use the settings shown in the following figure for the SP701 board and click **OK**.
+4. Configure your terminal program (e.g., TeraTerm, Putty) to connect to the SP701 Serial Port with the settings shown below.
+    - Baud rate = 9600
+    - Data bits = 8
+    - Stop bits = 1
+    - Flow control = None
+    - Parity = None
 
-    ![](./media/image49-1.png)
-
-6. Verify the terminal connection by checking the status at the top of the Vitis software platform Terminal tab, as shown in the following figure.
-
-    ![](./media/image50-1.png)
-
-7. If the `testperiph.c` file is not already open, select **../src/testperiph.c**, and double-click to open the source file.
-
-8. Modify the source file by inserting a while statement at approximately line 41.
-
-    a. In line 41, add ` while(1)` above the curly brace as shown in the following figure.
-   ![](./media/image51-1.png)
-
-9. Add a breakpoint in the code so that the processor stops code execution when the breakpoint is encountered. To do so, scroll down to line 50 and double-click on the left pane, which adds a breakpoint on that line of code, as shown in the following figure.
-
-10. Press **Ctrl + S** to save the file. Alternatively, you can select **File → Save**.
-    ![](./media/image52-1.png)
-
-11. Click the hammer icon![](./media/image44-1.png) to rebuild the file with the modified code. Now you are ready to execute the code from the Vitis software platform.
-
-## Step 11: Connect to Vivado Logic Analyzer
+## Step 12: Connect to Vivado Logic Analyzer
 
 Connect to the SP701 board using the Vivado Logic Analyzer.
 
@@ -585,12 +570,11 @@ Connect to the SP701 board using the Vivado Logic Analyzer.
 
 5. On the Select Hardware Target page, click **Next**.
 
-6. Ensure that all the settings are correct on the Open Hardware Target Summary dialog box, as shown in the following figure, and click **Finish**.
-![](./media/image56-1.png)
+6. Ensure that all the settings are correct on the Open Hardware Target Summary dialog box and click **Finish**.
 
  ***Note*:** You can also use the Auto Connect option to connect to the target hardware.
 
-## Step 12: Set the MicroBlaze to Logic Cross Trigger
+## Step 13: Set the MicroBlaze to Logic Cross Trigger
 When the Vivado Hardware Session successfully connects to the SP701 board, you see the information shown in the following figure:
 ![](./media/image57-1.png)
 
@@ -610,35 +594,36 @@ When the Vivado Hardware Session successfully connects to the SP701 board, you s
 
     ![](./media/image60-1.png)
 
-3. In the Vitis software platform Debug window, click **MicroBlaze #0** and then click the **Resume** button.
+3. In the Vitis software platform Debug window, click **MicroBlaze #0** and then click the **Continue** button ![](./media/image60-2.png).
 
-The code will execute until the breakpoint set on line 50 in `testperiph.c` file is reached. As the breakpoint is reached, this triggers the ILA, as shown in the following figure.
+The code will execute until the breakpoint set on line 24 in `testperiph.c` file is reached. As the breakpoint is reached, this triggers the ILA, as shown in the following figure.
 ![](./media/image61-1.png)
 
 This demonstrates that when the breakpoint is encountered during code execution, the MicroBlaze triggers the ILA that is set up to trigger. This way you can monitor the state of the hardware at a certain point of code execution.
 
-## Step 13: Set the Logic to Processor Cross- Trigger
+## Step 14: Set the Logic to Processor Cross- Trigger
 
 Now try the logic to processor side of the cross-trigger mechanism. In other words, remove the breakpoint that you set earlier on line 50 to have the ILA trigger the processor and stop code execution.
 
-1. Select the **Breakpoints** tab towards the top right corner of the window, and clear the **testperiph.c [line: 50]** check box. This removes 
-    the breakpoint that you set up earlier.
+1. Select the **Breakpoints** tab towards the bottom left corner of the window, and clear the **testperiph.c [line: 50]** check box. This removes the breakpoint that you set up earlier.
 
     Alternatively, you can also right click on the breakpoint in the `testperiph.c` file, and select **Disable Breakpoint**.
 
-2. In the Debug window, right-click the **MicroBlaze #0 target** and select **Resume**.
+2. In the Debug window, right-click the **MicroBlaze #0 target** and select **Continue** button ![](./media/image60-2.png).
 
     The code runs continuously because it has an infinite loop.
 
-    You can see the code executing in the Terminal Window in the Vitis software platform.
+    You can see the code executing in the Terminal Window.
 
 3. In Vivado, select the **Settings - hw_ila_1** tab. Change the Trigger Mode to **BASIC_OR_TRIG_IN** and the TRIG_OUT mode to **TRIGGER_OR_TRIG_IN**.
 
-4. Click on the (+) sign in the Trigger Setup window to add the `slot_0:microblaze_0_axi_periph_M00:AWVALID` signal from the Add Probes window.
+4. Click on the (+) sign in the Trigger Setup window to add the `slot_0 : microblaze_0_axi_periph_M00_AXI : AWVALID` signal from the Add Probes window.
 
-5. In the Trigger Setup window, for `slot_0:microblaze_0_axi_periph_M00:AWVALID` signal, ensure that the Radix field is set to **[B] (Binary)** and set the Value field to **1 (logical one)**.
+5. In the Trigger Setup window, for `slot_0 : microblaze_0_axi_periph_M00_AXI : AWVALID` signal, ensure that the Operator field is set to **==**, the Radix field to **[B] (Binary)** and the Value field to **1 (logical one)**.
 
     This essentially sets up the ILA to trigger when the `awvalid` transitions to a value of 1.
+
+    ![](./media/image61-3.png)
 
 6. Click the Run Trigger button to 'arm' the ILA in the Status - hw_ila_1 window.
 
@@ -667,19 +652,3 @@ In this tutorial, you:
 ## Lab Files
 
 The Tcl script `lab.tcl` is included with the design files to perform all the tasks in Vivado. The Vitis software platform operations must be done in the Vitis GUI. You will need to modify the Tcl script to match the desired project path and project name on your machine.
-
----
-
- Copyright 2020 Xilinx, Inc.
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
