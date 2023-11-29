@@ -401,7 +401,9 @@ Creating an Empty Application
    
    .. image:: media/new-welcome-screen.png
 
-8. Delete the source files under ``source/directory`` and copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``source/ directory``.
+8. Delete the source files under ``source/directory`` and copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``source/directory``.
+   
+9. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package. See `AR-35819 <https://support.xilinx.com/s/article/000035819?language=en_US>`__ to configure AXIUARTLITE.
 
 
 Building the Application
@@ -415,7 +417,17 @@ Building the Application
 
    .. image:: media/new-proj-built.png
 
-   Project is built successfully.
+   Project is built successfully. On the PL AXI UART Serial Console, RPU debug logs is printed as shown below:
+
+   .. code::
+
+      Gpio Initialization started
+      Counter 0
+      Counter 1
+      Counter 2
+      Counter 3
+      Counter 4
+      Counter 5
 
 .. _creating-linux-images-using-petalinux:
 
