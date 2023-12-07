@@ -232,7 +232,7 @@ Updating Hardware in the Vitis Software Platform
 Open the Vitis Unified IDE and manually update the exported hardware from
 Vivado.
 
-1.  Click **zc702_platform** → **Settings** → **vitis-comp.json**. 
+1.  Click **edt_zc702** → **Settings** → **vitis-comp.json**. 
 
    .. figure:: ./media/image52.png
       :alt: Switch XSA
@@ -255,7 +255,7 @@ Testing the PL IP with Prepared Software
 
    -  Select **File → New Component → Application Project**.
    -  Give the Application Name: **hello_pl** and select **Next**.
-   -  Select the zc702_platform and select **Next**.
+   -  Select the **edt_zc702** and select **Next**.
    -  Choose the default domain in the Platform and select **Next**.
    -  Click **Finish**. The Vitis IDE creates an empty applicaiton template called **hello_pl**.
 
