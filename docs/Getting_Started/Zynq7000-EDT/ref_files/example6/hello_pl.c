@@ -93,7 +93,7 @@ int ScuGicInterrupt_Init(u16 DeviceId,XTmrCtr *TimerInstancePtr)
 	}
 	
 	Status = XScuGic_Connect(&InterruptController,
-	XPAR_FABRIC_AXI_TIMER_0_INTERRUPT_INTR,
+	XPAR_AXI_TIMER_0_INTERRUPTS,
 	(Xil_ExceptionHandler)XTmrCtr_InterruptHandler,
 	(void *)TimerInstancePtr);
 	
@@ -103,7 +103,7 @@ int ScuGicInterrupt_Init(u16 DeviceId,XTmrCtr *TimerInstancePtr)
 	
 
 
-	XScuGic_Enable(&InterruptController, XPAR_FABRIC_AXI_TIMER_0_INTERRUPT_INTR);
+	XScuGic_Enable(&InterruptController, XPAR_AXI_TIMER_0_INTERRUPTS);
 	
 	return XST_SUCCESS;
 }
