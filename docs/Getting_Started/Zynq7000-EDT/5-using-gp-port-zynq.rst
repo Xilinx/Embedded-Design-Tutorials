@@ -229,115 +229,72 @@ Assigning Location Constraints to External Pins
 Updating Hardware in the Vitis Software Platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Open the Vitis IDE and manually update the exported hardware from
+Open the Vitis Unified IDE and manually update the exported hardware from
 Vivado.
 
-1. In the Explorer view, right-click on the **zc702_edt** platform project and click the **Update Hardware Specification** option as shown in the following figure.
+1.  Click **zc702_platform** → **Settings** → **vitis-comp.json**. 
 
    .. figure:: ./media/image52.png
-      :alt: Update Hardware Specification
+      :alt: Switch XSA
 
-      Update Hardware Specification
+      Switch XSA
 
-2. In the Update Hardware Specification view, browse for the exported XSA file (``C:/edt/edt_zc702/system_wrapper.xsa``) from Vitis and click **OK**.
+2. In the **Switch XSA** view, browse for the exported XSA file (``C:/edt/edt_zc702/system_wrapper.xsa``) from Vivado and click **OK**.
 
-   -  A view opens stating that the hardware specification for the platform project has been updated. Click **OK** to close it.
+3. Users can select the **Hardware Specification** in the same window, and the user should see the updated IP here.
 
-3. Rebuild the out-of-date platform project.
+4. Rebuild the out-of-date platform project.
 
-   -  Right-click the **zc702_edt** project, then select **Clean Project** followed by **Build Project**.
+   -  Highlight the Platform Component and under **FLOW** select the hammer icon to build.
 
-   After the zc702_edt project build completes, the ``zc702_edt.xpfm`` file is generated.
 
 Testing the PL IP with Prepared Software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Create a new standalone application for Arm Cortex-A9:
 
-   -  Select **File → New → Application Project**.
-
-   The New Application Project wizard opens. Use the information in the following table to make your selections in the wizard screens.
-
-   +----------------------+----------------------+----------------------+
-   | Screen               | System Properties    | Setting or Command   |
-   |                      |                      | to Use               |
-   +======================+======================+======================+
-   | Platform             | Select a platform    | Click zc702_edt      |
-   |                      | from repository      | [custom].            |
-   +----------------------+----------------------+----------------------+
-   | Application Project  | Application project  | Enter hello_pl.      |
-   | Details              | name                 |                      |
-   +----------------------+----------------------+----------------------+
-   |                      | System project name  | Keep                 |
-   |                      |                      | hello_pl_system.     |
-   +----------------------+----------------------+----------------------+
-   |                      | Target Processor     | Keep ps7_cortexa9_0  |
-   |                      |                      | selected.            |
-   +----------------------+----------------------+----------------------+
-   |                      | Show all processors  | Keep unchecked.      |
-   |                      | in hardware          |                      |
-   |                      | specification        |                      |
-   +----------------------+----------------------+----------------------+
-   | Domain               | Select a domain      | Keep standalone on   |
-   |                      |                      | ps7_cortex9_0        |
-   |                      |                      | selected.            |
-   +----------------------+----------------------+----------------------+
-   | Templates            | Available Templates  | Hello World          |
-   +----------------------+----------------------+----------------------+
-
-   -  Click **Finish**. The Vitis software platform creates the hello_world application project and hello_world_system project in the Explorer view.
+   -  Select **File → New Component → Application Project**.
+   -  Give the Application Name: **hello_pl** and select **Next**.
+   -  Select the zc702_platform and select **Next**.
+   -  Choose the default domain in the Platform and select **Next**.
+   -  Click **Finish**. The Vitis IDE creates an empty applicaiton template called **hello_pl**.
 
 2. Import the provided source file to hello_pl project:
 
-   -  Right-click the **hello_pl** project and select **Import Sources**.
-   -  Click **Browse** in the pop-up Import Sources window.
-   -  Point to the **ref_files/example3** directory of this repository.
+   -  In Vitis Components view, go to **hello_pl → Sources abd right-click on **src** and select **Import** → **files**.
+   -  Point to the **ref_files/example6** directory of this repository.
    -  Select **hello_pl.c**.
    -  Click **Finish**.
 
-3. Remove ``helloworld.c`` in the ``src`` directory:
+3. Build the hello_pl project:
 
-   -  Right-click **helloworld.c** in the src directory.
-   -  Select **Delete**.
+   - Highlight the **hello_pl** Application Component and under **FLOW** select the hammer icon to build.
 
-4. Build the hello_pl project:
+4. Connect the USB cable for JTAG and serial.
 
-   -  Right-click the **hello_pl** project.
-   -  Select **Build Project**.
-
-   The ``hello_pl.elf`` file will be generated. The next step is to test the newly created hardware and software on the board.
-
-5. Connect the USB cable for JTAG and serial.
-
-6. Open your preferred serial communication utility with baud rate set to **115200**. In this example, we used MobaXterm.
+5. Open your preferred serial communication utility with baud rate set to **115200**. In this example, we used MobaXterm.
 
    .. note:: This is the baud rate that the UART is programmed to on Zynq devices.
 
-7. Change boot mode back to JTAG mode (as in :ref:`setting-up-the-board`).
+6. Change boot mode back to JTAG mode (as in :ref:`setting-up-the-board`).
 
    - Set **SW16** to 00000.
 
-8. Run the project similar to the steps in :ref:`running-the-hello-world-application-on-a-zc702-board`.
+7. Run the project similar to the steps in :ref:`running-the-hello-world-application-on-a-zc702-board`.
 
-   - Right-click **hello_pl**, and select **Run as → Launch on Hardware**.
+   - Highlight the *hello_pl* Application Component and under **FLOW** select **Run**, and select the **Open Settings** to launch the Launch Configuration.
+   - Check the Target Connection is correct for your host to target board connection, and select the **Run** icon
 
-   If the running fails, open the **Run as → Run Configurations** view, check the Target Setup configuration against the following screenshot, update the settings, and click **Run**.
-
-    . figure:: ./media/image56.png
+    .. figure:: ./media/image56.png
        :alt: Run Configuration
 
        Run Configuration
 
-   Because you updated the hardware specification with the XSA that includes a post-implementation bitstream, the run configuration sets the bitstream file automatically. If your XSA file does not contain a bitstream, click the **Browse** button to point to your bitstream. You can also leave the Bitstream option blank and go to **Xilinx → Program Device** to program the bitstream before launching the application manually.
+Because you updated the hardware specification with the XSA that includes a post-implementation bitstream, the run configuration sets the bitstream file automatically. If your XSA file does not contain a bitstream, click the **Browse** button to point to your bitstream. 
 
-   .. figure:: ./media/image55.png
-       :alt: Program Device
+8. In the system, the AXI GPIO pin is connected to push button **SW5** on the board, and the PS section GPIO pin is connected to push button **SW7** on the board through an EMIO interface.
 
-       Program Device
-
-9. In the system, the AXI GPIO pin is connected to push button **SW5** on the board, and the PS section GPIO pin is connected to push button **SW7** on the board through an EMIO interface.
-
-10. Follow the instructions printed on the serial terminal to run the application. See the following figure for the serial output logs.
+9. Follow the instructions printed on the serial terminal to run the application. See the following figure for the serial output logs.
 
     .. figure:: ./media/image57.png
        :alt: UART prints
