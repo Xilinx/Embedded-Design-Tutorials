@@ -290,7 +290,10 @@ Testing the PL IP with Prepared Software
 
        Run Configuration
 
-Because you updated the hardware specification with the XSA that includes a post-implementation bitstream, the run configuration sets the bitstream file automatically. If your XSA file does not contain a bitstream, click the **Browse** button to point to your bitstream. 
+Because you updated the hardware specification with the XSA that includes a post-implementation bitstream, the launch configuration sets the bitstream file automatically. If your XSA file does not contain a bitstream, click the **Browse** button to point to your bitstream. 
+
+**Note** There are two ways to configure the ps7 susbsystem with the settings made in Vivado; using the fsbl or the ps7_init.tcl. When users export the XSA file, this will contain (amongst other files) the ps7_init.c/.h and the ps7_init.tcl. The ps7_init.tcl is a script that will have all the register writes to configure the ps7 subsystem over the debugger. The fsbl will use the ps7_init.c/.h files. Since the debugger will do the register writes sequentially, this could take a long time. The fsbl is deployed on the target, so thisis quicker. Therefore, I would recommend using the fsbl.
+ 
 
 8. In the system, the AXI GPIO pin is connected to push button **SW5** on the board, and the PS section GPIO pin is connected to push button **SW7** on the board through an EMIO interface.
 
