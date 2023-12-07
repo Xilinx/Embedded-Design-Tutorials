@@ -294,7 +294,7 @@ Creating a Vitis Unified Platform Project
    2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Xilinx Vitis 2023.2**.
    3. On Linux, run ``source <Vitis Installation Directory>/settings64.sh`` to set up the environment and run ``vitis &``.
 
-2. Select the workspace location as **C:/edt/edt_zc702_workspace** or any given location path.
+2. Select **Open Workspace** and give the location as **C:/edt/edt_zc702_workspace** or any given location path.
 
    -  Unlike Vitis Classic IDE, the platform is not automatically generated. Users will need to do this manually
 
