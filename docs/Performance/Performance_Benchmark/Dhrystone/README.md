@@ -20,7 +20,7 @@
 
 ## Introduction
 
-Versal™ ACAP combines adaptable processing and acceleration engines with programmable logic and configurable connectivity to enable custom, heterogeneous hardware solutions for a wide variety of applications in data center, automotive, 5G wireless, wired network, and defense.
+AMD Versal™ adaptive SoC combines adaptable processing and acceleration engines with programmable logic and configurable connectivity to enable custom, heterogeneous hardware solutions for a wide variety of applications in data center, automotive, 5G wireless, wired network, and defense.
 
 This tutorial provides step-by-step instructions for generating a reference design for the Dhrystone benchmark and building and running the Dhrystone application.
 
@@ -86,8 +86,8 @@ Recommended general knowledge of:
 
 - VCK190 evaluation board
 - Versal JTAG boot mode
-- Xilinx&reg; Vivado&reg; Design Suite
-- Vitis&trade; Unified Software Platform Tool
+- AMD Vivado&trade; Design Suite
+- AMD Vitis&trade; Unified Software Platform Tool
 
 Key Versal reference documents
 
@@ -103,7 +103,7 @@ Key Dhrystone documents
 
 ### Tutorial Requirements
 
-This tutorial is demonstrated on the VCK190 evaluation kit. Install the necessary licenses for Vivado, Vitis, and XSCT/XSDB tools. Contact your Xilinx sales representative for any assistance. For more information, see [https://www.xilinx.com/products/boards-and-kits/vck190.html](https://www.xilinx.com/products/boards-and-kits/vck190.html).
+This tutorial is demonstrated on the VCK190 evaluation kit. Install the necessary licenses for Vivado, Vitis, and XSCT/XSDB tools. Contact your AMD sales representative for any assistance. For more information, see [https://www.xilinx.com/products/boards-and-kits/vck190.html](https://www.xilinx.com/products/boards-and-kits/vck190.html).
 
 #### Hardware Requirements
 
@@ -119,7 +119,7 @@ This tutorial is demonstrated on the VCK190 evaluation kit. Install the necessar
 
 The following tools are necessary to build the tutorial design and execute the Dhrystone application:
 
-- Vivado Design Suite and Vitis tool
+- Vivado Design Suite and AMD Vitis tool
   - For the latest tool version details, see [https://www.xilinx.com/support/download.html](https://www.xilinx.com/support/download.html).
   - For more information on installation, see [UG1400 Vitis Unified Software Platform Embedded Software Development](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1400-vitis-embedded.pdf).
 - The [Build Tutorial Design](#build-tutorial-design) section of this document provides the scripts to create the tutorial design.
@@ -136,29 +136,29 @@ Follow these steps to build the Dhrystone Benchmark design and create the PDI/XS
    └── Dhrystone
        ├── Design
        │   ├── design.tcl
-       │ └── run.tcl
+       │   └── run.tcl
    ```
 
 2. Launch Vivado Design Suite.
 
-3. In the Vivado Tcl console, cd to the tutorial directory:
+3. In the Vivado Tcl console, navigate to the tutorial directory:
 
    ```
-   /<Path to workspace>/Performance_Benchmark/Dhrystone/Design/).
+   cd /<Path to workspace>/Performance_Benchmark/Dhrystone/Design/
    ```
 
-4. Source [`run.tcl`](./Design/run.tcl) from the tutorial directory.
+4. Execute [`source run.tcl`](./Design/run.tcl) from the tutorial directory.
 
    ![Alt Text](Images/source_run_tcl.png)
 
-   Sourcing the [`run.tcl`](./Design/run.tcl) script does the following:
+   Sourcing the `run.tcl` script does the following:
 
-   - Creates a project directory
+   - Creates a project named dhrystone-tutorrial' in the tutorial directory 
    - Sources and runs the [`design.tcl`](./Design/design.tcl), which in turn does the following:
      - Selects the target Versal VC1902 device
      - Creates IPs and ports
      - Creates blocks
-     - Configures and connects IP (Control, interfaces, and processing system (CIPS), Smartconnect)
+     - Configures and connects IP (Control, interfaces, and Processing System (CIPS), Smartconnect)
      - Runs placement and routing
      - Creates a programmable device image (PDI) and Xilinx Support Archive (XSA).
 
@@ -177,6 +177,7 @@ The tutorial design creates a block design with CIPS-IP and NoC IP upon sourcing
 
 #### APU Clock Configuration
 
+Double-clck on the Control, Interfaces & Processing System to launch the Configure PS PMC window.
 ![Alt Text](./Images/apu_clock_configuration.png)
 
 #### NoC Interfaces Details
