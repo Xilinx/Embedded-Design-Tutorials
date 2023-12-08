@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "C:\\Users\\mohanad\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "restructuredtext.sphinxBuildPath": "${workspaceRoot}/env/bin/sphinx-build",
+    "restructuredtext.confPath": ""
+}
