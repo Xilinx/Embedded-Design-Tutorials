@@ -345,7 +345,7 @@ You will use a Linux workstation for this example project. The device driver sof
 
 We will discuss two ways to create a Linux Module; using the Petalinux Utility and using Vitis Unified IDE.
 
-** Using Petalinux to Create the Module **
+**Using Petalinux to Create the Module**
 
 1. Under the PetaLinux project directory, use the command below to create your module:
 
@@ -379,7 +379,7 @@ We will discuss two ways to create a Linux Module; using the Petalinux Utility a
 
 6. You can install the driver using the ``modprobe`` command, which will be explained in further detail in the next section.
 
-** Using Vitis to Create the Module **
+**Using Vitis to Create the Module**
 
 The advatange of using Vitis to create a linux module is that the user can develop the code, deploy it on the target, evaluate and modify and re-deploy if needed. 
 
