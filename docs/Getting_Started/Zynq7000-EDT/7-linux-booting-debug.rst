@@ -362,7 +362,7 @@ Following the steps below, you can program QSPI Flash with the flash programming
 
 1. Power on the ZC702 board in JTAG boot mode (SW16 = 00000).
 
-2. Select **Xilinx → Program Flash** in the Vitis IDE.
+2. Select **Vitis → Program Flash** in the Vitis Unified IDE.
 
 3. Set the Image File to the **BOOT.bin** file.
 
@@ -392,7 +392,7 @@ This is an alternative way for programming QSPI Flash with the flash programming
 
    .. note:: This is the baud rate that the UART is programmed to on Zynq devices.
 
-3. Select **Xilinx → XSCT Console** to open the XSCT tool.
+3. Select **Vitis → XSDB Console...** to open the XSCT tool.
 
 4. From the XSCT prompt, do the following:
 
