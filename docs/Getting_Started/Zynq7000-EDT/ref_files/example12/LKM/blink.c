@@ -29,8 +29,8 @@
 #include <linux/of_device.h>
 #include <linux/of_platform.h>
 
-#include <asm/uaccess.h> /* for get_user and put_user */
-#include <asm/io.h>
+//#include <asm/uaccess.h> /* for get_user and put_user */
+//#include <asm/io.h>
 #include "blink.h"
 #define SUCCESS 0
 #define DEVICE_NAME "/dev/blink_Dev"
@@ -331,9 +331,9 @@ static int __init blink_init(void)
 	
 	mmio = ioremap(BLINK_CTRL_REG,0x100);
         
-        printk("%s: Registers mapped to mmio = 0x%x  \n",__FUNCTION__,mmio);
+    printk("%s: Registers mapped to mmio = 0x%x  \n",__FUNCTION__,mmio);
 	
-        printk(KERN_INFO "%s the major device number is %d.\n","Registeration is a success", major_num);
+    printk(KERN_INFO "%s the major device number is %d.\n","Registeration is a success", major_num);
 	printk(KERN_INFO "If you want to talk to the device driver,\n");
 	printk(KERN_INFO "create a device file by following command. \n \n");
 	printk(KERN_INFO "mknod %s c %d 0\n\n", DEVICE_NAME, major_num);

@@ -166,6 +166,18 @@ Booting Linux in JTAG Mode
 
 11. At the command prompt of the serial terminal, run `bootm 0x30000000`. The Linux OS boots.
 
+Booting Linux in JTAG Mode using QEMU
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Users can boot Linux (or u-Boot) from Petalinux over QEMU. QEMU is helpful for use cases where the hardware is in development or is unavailable for other reasons. Or, users just want to evaluate a device.
+
+To boot Linux using QEMU use the command below:
+
+      .. code-block::
+
+            petalinux-boot --qemu --kernel --qemu-args "-net nic,netdev=gem0 -netdev user,id=gem0,hostfwd=tcp:127.0.0.1:1540-10.0.2.15:1534 -net nic"
+
+
 Example 10: Booting Linux from QSPI Flash
 -----------------------------------------
 
