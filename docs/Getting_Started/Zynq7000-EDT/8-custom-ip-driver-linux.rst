@@ -409,7 +409,7 @@ The advatange of using Vitis to create a linux module is that the user can devel
 	
 	.. image:: ./media/build_configurations.png
 	
-	**Note:** Users need to pass the **KVERSION** to the make file. This is the path to the **linux-zynq_generic_7z020-standard-build** in the petlainux project TMP_DIR. Users can get the TMP_DIR in the <i>petalinux-config</i>
+	**Note:** Users need to pass the **KVERSION** to the make file. This is the path to the **linux-zynq_generic_7z020-standard-build** in the petlainux project TMP_DIR. Users can get the TMP_DIR in **petalinux-config**
 
 6. To build, right click in ther Explorer view and select **Build**. Then select the Build configuration. This will create a **blink.ko** file
 
