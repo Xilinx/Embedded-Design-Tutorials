@@ -397,6 +397,24 @@ The advatange of using Vitis to create a linux module is that the user can devel
 
       petalinux-build
 
+3. Launch Vitis Unified IDE, and create a workspace. 
+
+4. Select **User Managed Mode**, and add all the files from LKM folder. 
+
+**Note** User Managed Mode is a new feature in Vitis Unified IDE that allows users to build makefile based applications without using the IDE
+
+5. Create the **Build Configurations** 
+	a. Right click anywhere in the Explorer View and select **Edit Build Configurations**
+	b. Below is an example of two build conifgurations; build and clean
+	
+	.. image:: ./media/build_configurations.png
+	
+	**Note:** Users need to pass the **KVERSION** to the make file. This is the path to the **linux-zynq_generic_7z020-standard-build** in the petlainux project TMP_DIR. Users can get the TMP_DIR in the <i>petalinux-config</i>
+
+6. To build, right click in ther Explorer view and select **Build**. Then select the Build configuration. This will create a **blink.ko** file
+
+7. Use scp to copy the blink.ko onto the kernel, and insmod/rmmod to load and remove the module.
+
 .. _example-13-loading-the-module-into-a-kernel-and-application-execution:
 
 Example 13: Loading a Module into a Kernel and Executing the Application
