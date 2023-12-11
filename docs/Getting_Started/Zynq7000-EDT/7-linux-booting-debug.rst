@@ -304,27 +304,26 @@ Making a Linux Bootable Image for QSPI Flash with the Vitis IDE
 
 This method is an alternative to the PetaLinux method. If the PetaLinux tools and Vitis software platform are not installed on the same machine, copy the PetaLinux generated boot component files to the Vitis environment first.
 
-1. In the Vitis IDE, go to **Xilinx → Create Boot Image** to open the Create Boot Image wizard.
+1. In the Vitis Unified IDE, go to **Vitis** → Create Boot Image** → **Zynq** to open the Create Boot Image wizard.
 
    .. image:: ./media/image86.png
 
    .. note:: You might see a different initial screen for the Create Boot Image wizard. When a system project is selected, the Vitis IDE tries to generate an initial BIF for that project. When a platform project is selected, or if it is in an empty workspace, the Vitis IDE will show the wizard with no initial values.
 
-2. From the **Architecture** drop-down list, select **Zynq**.
 
-3. Choose **Create New BIF File**.
+2. Choose **Create New BIF File**.
 
-4. Specify the output BIF file path:
+3. Specify the output BIF file path:
 
    -  Click **Browse** next to the **Output BIF file path** field.
-   -  Navigate to any path. For example, `C:\edt\boot\output.bif`.
+   -  Navigate to any path. For example, `C:/edt/boot/output.bif`.
    -  Click **Save**.
    -  The **Output path** field will be updated automatically. The output ``BOOT.bin`` will be in the same directory with the BIF by default. You can also change the output path.
 
-5. Click **Add** to add the following boot image partitions:
+5. Click the **+** icon (Add Partition) to add the following boot image partitions:
 
    +-------------+-----------------+-----------+
-   | File Path   | Partition Type  | Offset    |
+   | File Path   | Partition Type  | Load      |
    +=============+=================+===========+
    | fsbl.elf    | bootloader      |           |
    +-------------+-----------------+-----------+    
@@ -349,8 +348,8 @@ This method is an alternative to the PetaLinux method. If the PetaLinux tools an
           [bootloader]C:\edt\edt_zc702_linux\qspi\fsbl.elf
           C:\edt\edt_zc702_linux\qspi\system.bit
           C:\edt\edt_zc702_linux\qspi\u-boot.elf
-          [offset = 0x520000]C:\edt\edt_zc702_linux\qspi\image.ub
-          [offset = 0xFC0000]C:\edt\edt_zc702_linux\qspi\boot.scr
+          [load = 0x10000000]C:\edt\edt_zc702_linux\qspi\image.ub
+          [load = 0xFC0000]C:\edt\edt_zc702_linux\qspi\boot.scr
       }
 
 Programming QSPI Flash with the Flash Programming Tool
