@@ -343,6 +343,10 @@ Example 12: Device Driver Development
 
 You will use a Linux workstation for this example project. The device driver software is provided in the LKM folder of the ZIP file that accompanies this guide.
 
+We will discuss two ways to create a Linux Module; using the Petalinux Utility and using Vitis Unified IDE.
+
+** Using Petalinux to Create the Module **
+
 1. Under the PetaLinux project directory, use the command below to create your module:
 
    .. code-block::
@@ -374,6 +378,24 @@ You will use a Linux workstation for this example project. The device driver sof
       <petalinux-build_directory>/build/tmp/sysroots-components/zc702_zynq7/blink/lib/modules/5.15.0-xilinx-v2022.2/extra/blink.ko
 
 6. You can install the driver using the ``modprobe`` command, which will be explained in further detail in the next section.
+
+** Using Vitis to Create the Module **
+
+The advatange of using Vitis to create a linux module is that the user can develop the code, deploy it on the target, evaluate and modify and re-deploy if needed. 
+
+1. Users will need to provide the Vitis IDE with the linux-xlnx generated in Petalinux. By default, Petalinux will delete the intermittent binaries such as the linux-xlnx. Users will need to tell Petalinux to keep these files.
+
+   To do this, users can open the petalinuxbsp.conf in project-spec/meta-user/conf and append the content below:
+
+   .. code-block::
+
+      RM_WORK_EXCLUDE += "linux-xlnx"
+
+2. Next, we can beuild the Petalinux project
+
+   .. code-block::
+
+      petalinux-build
 
 .. _example-13-loading-the-module-into-a-kernel-and-application-execution:
 
