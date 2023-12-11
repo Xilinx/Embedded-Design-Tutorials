@@ -216,44 +216,42 @@ The application software does the following tasks:
 Creating the Standalone CDMA Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Launch the Vitis software platform and open the workspace you worked on before.
+1. Launch the Vitis Unified IDE and open the workspace you worked on before.
 
 2. Update the hardware specification:
 
-   1. Right-click the **zc702_edt** platform, and select **Update Hardware Specification**.
-   2. Confirm the path and click **OK**.
-   3. Build the platform by clicking the hammer button on the toolbar.
+   1. Select the **zc702_edt** platform Component, and select **Settings** and click on **vitis-comp.json**.
+   2. Select **Switch XSA** and browse to the updated XSA above..
 
-3. Select **File → New → Application Project**.
+**Note:** Users can verify that the platform has updated by selecting the **Hardware Specification** and verify that the CDMA driver is present
 
-   The New Application Project wizard opens. Use the information in the table below to make your selections in the wizard screens.
+3. Select **File → New Component → Application Project**.
 
-   +----------------------+----------------------+----------------------+
-   | Screen               | System Property      | Setting or Command   |
-   |                      |                      | to Use               |
-   +======================+======================+======================+
-   | Platform             | Select a platform    | Click zc702_edt      |
-   |                      | from repository      | [custom].            |
-   +----------------------+----------------------+----------------------+
-   | Application Project  | Application project  | Enter cdma_app.      |
-   | Details              | name                 |                      |
-   +----------------------+----------------------+----------------------+
-   | Domain               | Select a domain      | Click standalone on  |
-   |                      |                      | ps7_cortex9_0.       |
-   +----------------------+----------------------+----------------------+
-   | Templates            | Available Templates  | Empty Application    |
-   +----------------------+----------------------+----------------------+
+   The Create Application Component wizard opens. Use the information in the table below to make your selections in the wizard screens.
 
-   Click **Finish**. The New Application Project wizard closes and the Vitis software platform creates the cdma_app application project
-   under the Explorer view.
+   +----------------------+----------------------+---------------------------+
+   | Screen               | System Property      | Setting or Command        |
+   |                      |                      | to Use                    |
+   +======================+======================+===========================+
+   | Name and Location    | Name                 | cdma_app                  |
+   |                      | Location             | default                   |
+   +----------------------+----------------------+---------------------------+
+   | Select Platform      | Name                 | zc702_edt                 |
+   +----------------------+----------------------+---------------------------+
+   | Select Domain        | Name                 | standalone_ps7_cortex9_0  |
+   +----------------------+----------------------+---------------------------+
 
-4. In the Explorer view, expand the **cdma_app** project, right-click the **src** directory, and select **Import Sources** to open the Import Sources dialog box.
+
+   Click **Finish**. The New Application Project wizard closes and the Vitis software platform creates the cdma_app application component
+   under the Vitis Components view.
+
+4. In the Vitis Components view, expand the **cdma_app** component, right-click the **src** directory, and select **Import** -> *Files* to open the Import Sources dialog box.
 
 5. In the Import Sources dialog box, click the **Browse** button next to the **From directory** field and specify the design files folder to `ref_files/example7 <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT/ref_files/example7>`_.
 
 6. Select the **cdma_app.c** file and click **Finish**.
 
-7. Build the CDMA application project either by clicking the hammer button or by right-clicking on the **cdma_app** project and selecting **Build Project**.
+7. Build the CDMA application component by clicking the hammer button on the **cdma_app** under **FLOWS**.
 
 Running CDMA the App on ZC702
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
