@@ -460,14 +460,14 @@ In this section, you will use the Vitis software platform installed on a Windows
     | Screen                                | System Property          | Setting or Command to Use     |
     +=======================================+==========================+===============================+
     | Create Platform Component             | Component Name           | linux_platform      		   |
-    |                                       | Component Location       | default                       | 
+    |                                       | Component Location       | default                       |
     +---------------------------------------+--------------------------+-------------------------------+
     | Select Platform Creation Flow         | Hardware Design          | Select                        |
     |                                       | Hardware Design (XSA)    | Browse to XSA                 |	
     +---------------------------------------+--------------------------+-------------------------------+
     | Select Operating System and Processor | Operating System         | linux                         |
     |                                       | Processor                | ps7_cortexa9                  |
-    |                                       | Generate Boot artifiacts | Unselect                      |	
+    |                                       | Generate Boot artifiacts | Unselect                      |
     +---------------------------------------+--------------------------+-------------------------------+
 
 4.  In the Vitis Unified IDE, select **File → New Component → Application** and populate using the table below.
