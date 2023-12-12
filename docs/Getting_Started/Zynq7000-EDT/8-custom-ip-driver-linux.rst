@@ -454,38 +454,39 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 2.  In the XSCT Console view, type ``connect`` to connect to the Xilinx Software Command-Line Tool (XSCT).
 
-3.  In the Vitis software platform, select **File → New → Application Project** to open the New Application Project wizard.
+3.  In the Vitis Unified IDE, select **File → New Component → Platform**  and populate using the table below.
 
-4.  Use the information in the table below to make your selections in the wizard screens.
+    +---------------------------------------+--------------------------+-------------------------------+
+    | Screen                                | System Property          | Setting or Command to Use     |
+    +=======================================+==========================+===============================+
+    | Create Platform Component             | Component Name           | linux_platform      		   |
+    |                                       | Component Location       | default                       | 
+    +---------------------------------------+--------------------------+-------------------------------+
+    | Select Platform Creation Flow         | Hardware Design          | Select                        |
+    |                                       | Hardware Design (XSA)    | Browse to XSA                 |	
+    +---------------------------------------+--------------------------+-------------------------------+
+    | Select Operating System and Processor | Operating System         | linux                         |
+    |                                       | Processor                | ps7_cortexa9                  |
+    |                                       | Generate Boot artifiacts | Unselect                      |	
+    +---------------------------------------+--------------------------+-------------------------------+
 
-    +-------------+-------------------+---------------------------------------+
-    | Screen      | System Property   | Setting or Command to Use             |
-    +=============+===================+=======================================+
-    | Platform    | Select a platform | Click hw_platform [custom].           |
-    |             | from repository   |                                       |
-    +-------------+-------------------+---------------------------------------+
-    | Application | Application       | Enter linux_blinkled_app              |
-    | Project     | project name      |                                       |
-    | Details     |                   |                                       |
-    +-------------+-------------------+---------------------------------------+
-    |             | Select target     | Select ps7_cortexa9 SMP.              |
-    |             | processor for the |                                       |
-    |             | Application       |                                       |
-    |             | project           |                                       |
-    +-------------+-------------------+---------------------------------------+
-    | Domain      | Select a domain   | Click linux_application_domain.       |
-    +-------------+-------------------+---------------------------------------+
-    |             | Application       | If known, enter the sysroot, root FS, |
-    |             | settings          | and kernel image paths. Otherwise,    |
-    |             |                   | leave these options blank.            |
-    +-------------+-------------------+---------------------------------------+
-    | Templates   | Available         | Linux Empty Application               |
-    |             | Templates         |                                       |
-    +-------------+-------------------+---------------------------------------+
+4.  In the Vitis Unified IDE, select **File → New Component → Application** and populate using the table below.
 
-5.  Click **Finish**. The New Application Project wizard closes and the Vitis software platform creates the linux_blinkled_app project under the Explorer view.
+    +---------------------------------------+------------------------------+-------------------------------+
+    | Screen                                | System Property              | Setting or Command to Use     |
+    +=======================================+==============================+===============================+
+    | Create Application Component          | Platform                     | linux_blinkled_app      	   |
+    |                                       | Component Location           | default                       | 
+    +---------------------------------------+------------------------------+-------------------------------+
+    | Select Platform                       | Platform                     | linux_platform                |	
+    +---------------------------------------+------------------------------+-------------------------------+
+    | Sysroot                               | Sysroot                      | Browse to sysroot             |
+    |                                       | Update Workspace Perference  | Select                        |	
+    +---------------------------------------+------------------------------+-------------------------------+
 
-6.  In the Explorer view, expand the **linux_blinkled_app** project, right-click the **src** directory, and select **Import**. The Import
+5.  Click **Finish**. The New Application linux_blinkled_app component is created in **Components** view.
+
+6.  In the Components View, expand the **linux_blinkled_app** Component, right-click the **src** directory, and select **Import**. The Import
     Sources view opens.
 
 7.  Browse for the **LKM_App** folder and select the **linux_blinkled_app.c** and **blink.h** files.
@@ -496,15 +497,11 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 8.  Click **Finish**.
 
-    Right-click on the **linux_blinkled_app** project and select **Build Project** to generate the ``linux_blinkled_app.elf`` file in binary folders. Check the Console window for the status of this action.
+    Under **FLOW** select (or highlight) the **linux_blinkled_app** component and click on the hammer icon to generate the ``linux_blinkled_app.elf`` file in binary folders. Check the Console window for the status of this action.
 
 9.  Connect the board.
 
-10. Because you have a bitstream for the PL fabric, you must download the bitstream. Select **Xilinx → Program FPGA**. The Program FPGA view opens. It displays the bitstream exported from Vivado.
-
-11. Click **Program** to download the bitstream and program the PL fabric.
-
-12. Follow the steps described in :doc:`Linux Booting and Debug in the Vitis Software Platform <./7-linux-booting-debug>` to load the Linux image and start it.
+10. Follow the steps described in :doc:`Linux Booting and Debug in the Vitis Software Platform <./7-linux-booting-debug>` to load the Linux image and start it.
 
     After the kernel boots successfully, in a serial terminal, navigate to ``/lib/modules/\<kernel-version\>/extr`` and run the command:
 
@@ -525,14 +522,14 @@ In this section, you will use the Vitis software platform installed on a Windows
 
     The device file name is important, because the ioctl program assumes that is the file you will use.
 
-13. Create a device node. Run the ``mknod`` command and select the the string from the printed message.
+11. Create a device node. Run the ``mknod`` command and select the the string from the printed message.
 
     For example, the command ``mknod /dev/blink_Dev c 244 0`` creates the ``/dev/blink_Dev`` node.
 
-14. Select **Window → Open perspective → Remote System Explorer** and click **Open**. The Vitis software platform opens the Remote Systems
+12. Select **Window → Open perspective → Remote System Explorer** and click **Open**. The Vitis software platform opens the Remote Systems
     Explorer perspective.
 
-15. In the Remote Systems view, do the following:
+13. In the Remote Systems view, do the following:
 
     a. Right-click and select **New → Connection** to open the New Connection wizard.
 
@@ -546,29 +543,31 @@ In this section, you will use the Vitis software platform installed on a Windows
 
     f. Expand **blink → sftp Files → Root**. The Enter Password wizard opens.
 
-    g. Enter the user ID and password (**root/root**). Select the **Save user ID** and **Save password** options.
+    g. Enter the Login (petalinux) and user will be prompted to enter new Login and Password.
 
     h. Click **OK**.
 
        The window displays the root directory content, because you previously established the connection between the Windows host machine and the target board.
+	
+	i. User can change the permissions here with **sudo -i**
 
-    i. Right-click the **/** in the path name and create a new directory; name it “Apps”.
+    j. Right-click the **/** in the path name and create a new directory; name it “Apps”.
 
-    j. Using the Remote System Explorer perspective, copy the **linux_blinkled_app.elf** file from the **/linux_blinkled_app/Debug** folder and paste it into the **/Apps** directory under **blink connection**.
+    k. Using the Remote System Explorer perspective, copy the **linux_blinkled_app.elf** file from the **/linux_blinkled_app/Debug** folder and paste it into the **/Apps** directory under **blink connection**.
 
-16. In the serial terminal, type ``cd Apps`` to open the ``/Apps`` directory.
+14. In the serial terminal, type ``cd Apps`` to open the ``/Apps`` directory.
 
-17. Go to the **Apps** directory. Type ``chmod 777 linux_blinkled_app.elf`` to change the ``linux_blinkled_app.elf`` file mode to executable mode.
+15. Go to the **Apps** directory. Type ``chmod 777 linux_blinkled_app.elf`` to change the ``linux_blinkled_app.elf`` file mode to executable mode.
 
-18. At the prompt, type ``./linux_blinkled_app.elf`` to execute the application.
+16. At the prompt, type ``./linux_blinkled_app.elf`` to execute the application.
 
-19. Follow the instruction printed on the serial terminal to run the application. The application asks you to enter 1 or 0 as input.
+17. Follow the instruction printed on the serial terminal to run the application. The application asks you to enter 1 or 0 as input.
 
     -  Type 1, and observe the LEDs DS15, DS16, DS17, and DS18. They start glowing.
 
     -  Type 0, and observe that the LEDs stop at their state. No more blinking changes. Repeat your inputs and observe the LEDs.
 
-20. After you finish debugging the Linux application, close the Vitis software platform.
+18. After you finish debugging the Linux application, close the Vitis software platform.
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
     :ltrim:
