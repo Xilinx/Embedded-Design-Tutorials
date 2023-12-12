@@ -468,6 +468,22 @@ In this section, you will use the Vitis software platform installed on a Windows
     | Select Operating System and Processor | Operating System         | linux                         |
     |                                       | Processor                | ps7_cortexa9                  |
     +---------------------------------------+--------------------------+-------------------------------+
+	
+   +-----------+-----------------------------------------------+--------------+
+   | Screen    | System Property                               | Setting or   |
+   |           |                                               | Command to   |
+   |           |                                               | Use          |
+   +===========+===============================================+==============+
+   | Create    |                                               |              |
+   | Platform  | Project name                                  | edt_zc702    |
+   | Component |                                               |              |
+   +-----------+-----------------------------------------------+--------------+
+   |           | Project Location                              | C:/edt       |
+   +-----------+-----------------------------------------------+--------------+
+   |           | Create Project Subdirectory                   | Leave this   |
+   |           |                                               | checked.     |
+   +-----------+-----------------------------------------------+--------------+
+
 
 4.  In the Vitis Unified IDE, select **File → New Component → Application** and populate using the table below.
 
