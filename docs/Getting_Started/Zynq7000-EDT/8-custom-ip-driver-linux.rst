@@ -456,33 +456,37 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 3.  In the Vitis Unified IDE, select **File → New Component → Platform**  and populate using the table below.
 
-    +---------------------------------------+--------------------------+-------------------------------+
-    | Screen                                | System Property          | Setting or Command to Use     |
-    +=======================================+==========================+===============================+
-    | Create Platform Component             | Component Name           | linux_platform      		   |
-    |                                       | Component Location       | default                       |
-    +---------------------------------------+--------------------------+-------------------------------+
-    | Select Platform Creation Flow         | Hardware Design          | Select                        |
-    |                                       | Hardware Design (XSA)    | Browse to XSA                 |
-    +---------------------------------------+--------------------------+-------------------------------+
-    | Select Operating System and Processor | Operating System         | linux                         |
-    |                                       | Processor                | ps7_cortexa9                  |
-    +---------------------------------------+--------------------------+-------------------------------+
-	
-   +-----------+-----------------------------------------------+--------------+
-   | Screen    | System Property                               | Setting or   |
-   |           |                                               | Command to   |
-   |           |                                               | Use          |
-   +===========+===============================================+==============+
-   | Create    |                                               |              |
-   | Platform  | Project name                                  | edt_zc702    |
-   | Component |                                               |              |
-   +-----------+-----------------------------------------------+--------------+
-   |           | Project Location                              | C:/edt       |
-   +-----------+-----------------------------------------------+--------------+
-   |           | Create Project Subdirectory                   | Leave this   |
-   |           |                                               | checked.     |
-   +-----------+-----------------------------------------------+--------------+
+    +-----------+-----------------------------------------------+----------------+
+    | Screen    | System Property                               | Setting or     |
+    |           |                                               | Command to     |
+    |           |                                               | Use            |
+    +===========+===============================================+================+
+    | Create    |                                               |                |
+    | Platform  | Component Name                                | linux_platform |
+    | Component |                                               |                |
+    +-----------+-----------------------------------------------+----------------+
+    |           |                                               |                |
+    |           | Component Location                            | default        |
+    |           |                                               |                |
+    +-----------+-----------------------------------------------+----------------+
+    | Select    |                                               |                |
+    | Platform  | Hardware Design                               | Select         |
+    | Creation  |                                               |                |
+    | Flow      |                                               |                |
+    +-----------+-----------------------------------------------+----------------+
+    |           |                                               |                |
+    |           | Hardware Design (XSA)                         | Browse to XSA  |
+    |           |                                               |                |
+    +-----------+-----------------------------------------------+----------------+
+    | Select    |                                               |                |
+    | Operating | Operating System                              | linux          |
+    | System &  |                                               |                |
+    | Processor |                                               |                |
+    +-----------+-----------------------------------------------+----------------+
+    |           |                                               |                |
+    |           | Processor                                     | ps7_cortexa9   |
+    |           |                                               |                |
+    +-----------+-----------------------------------------------+----------------+
 
 
 4.  In the Vitis Unified IDE, select **File → New Component → Application** and populate using the table below.
