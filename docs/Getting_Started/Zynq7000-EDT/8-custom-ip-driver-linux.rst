@@ -468,6 +468,18 @@ In this section, you will use the Vitis software platform installed on a Windows
     | Select Operating System and Processor | Operating System         | linux                         |
     |                                       | Processor                | ps7_cortexa9                  |
     +---------------------------------------+--------------------------+-------------------------------+
+	
+	+---------------------------------------+------------------------------+-------------------------------+
+    | Screen                                | System Property              | Setting or Command to Use     |
+    +=======================================+==============================+===============================+
+    | Create Application Component          | Platform                     | linux_blinkled_app      	   |
+    |                                       | Component Location           | default                       | 
+    +---------------------------------------+------------------------------+-------------------------------+
+    | Select Platform                       | Platform                     | linux_platform                |	
+    +---------------------------------------+------------------------------+-------------------------------+
+    | Sysroot                               | Sysroot                      | Browse to sysroot             |
+    |                                       | Update Workspace Perference  | Select                        |	
+    +---------------------------------------+------------------------------+-------------------------------+
 
 4.  In the Vitis Unified IDE, select **File → New Component → Application** and populate using the table below.
 
