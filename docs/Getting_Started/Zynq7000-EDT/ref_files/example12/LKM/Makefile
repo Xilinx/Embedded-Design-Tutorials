@@ -1,3 +1,9 @@
+#******************************************************************************
+# Copyright (C) 2022-2023, Advanced Micro Devices, Inc. All rights reserved. 
+# SPDX-License-Identifier: MIT
+#******************************************************************************
+
+
 export ARCH:=arm
 export CROSS_COMPILE:= arm-linux-gnueabihf-
 
