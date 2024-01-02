@@ -1,3 +1,5 @@
+# Copyright (C) 2022 -2023, Advanced Micro Devices, Inc. All rights reserved.
+# SPDX-License-Identifier: MIT
 #*****************************************************************************************
 # Vivado (TM) v2022.1 (64-bit)
 #
