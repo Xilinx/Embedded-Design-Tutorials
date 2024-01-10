@@ -1,6 +1,6 @@
 # System Performance Modeling Project
 
- The Vitis™ IDE is delivered with a predefined project that enables System Performance Modeling (SPM) and helps enable performance analysis at an early design stage. The SPM project contains both software executable and a post-bitstream, configurable hardware system. The SPM serves multiple purposes, including the following:
+ The Vitis IDE is delivered with a predefined project that enables System Performance Modeling (SPM) and helps enable performance analysis at an early design stage. The SPM project contains both software executable and a post-bitstream, configurable hardware system. The SPM serves multiple purposes, including the following:
 
 - **Target Evaluation:** Gain a better understanding of the target platform with minimal hardware design knowledge or experience. A complex SoC such as the Zynq®-7000 SoC can be characterized and evaluated, enabling critical partitioning trade-offs between the Arm® Cortex-A9s and the programmable logic. Most importantly, this evaluation can be done independently of the progression or completion of a design. You can always decide to gain a better understanding of your target platform.
 
@@ -106,15 +106,15 @@ The memory stride program is also instrumented; however, the transcript reports 
 
 ## SPM Hardware
 
-The SPM project contains a predefined hardware design that can be used for early performance exploration. This design is delivered in the project as a fixed bitstream to configure the Zynq-7000 SoC PL.
+The SPM project contains a predefined hardware design that can be used for early performance exploration. This design is delivered in the project as a fixed bitstream to configure the Zynq 7000 SoC PL.
 
-*Figure 6:* **Pre-Defined SPM Design in Zynq-7000 SoC**
+*Figure 6:* **Pre-Defined SPM Design in Zynq 7000 SoC**
 
 ![](media/x14651-Pre-Defined-SPM-Design-Zynq-7000-APSoC.png)
 
 The previous figure shows a block diagram of this predefined SPM design targeting the
 
-Zynq-7000 SoC. It is a highly-configurable design involving five AXI traffic generator (ATGs) and one AXI performance monitor (APM). One ATG is connected to each of the four high- performance (HP) ports as well as one to the ACP. The configuration of these cores is performed via the general purpose (GP) port 0 master. CPU performance metrics are obtained using the Performance Monitor Units (PMUs).
+Zynq 7000 SoC. It is a highly-configurable design involving five AXI traffic generator (ATGs) and one AXI performance monitor (APM). One ATG is connected to each of the four high- performance (HP) ports as well as one to the ACP. The configuration of these cores is performed via the general purpose (GP) port 0 master. CPU performance metrics are obtained using the Performance Monitor Units (PMUs).
 
 ### AXI Traffic Generator
 
