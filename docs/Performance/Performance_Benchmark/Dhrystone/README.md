@@ -290,7 +290,7 @@ From the Left Menu bar, Expand **FLOW**
 
 2. Select **dhrystone** from the Component drop-down menu.
 
-   ![Alt Text](./Images/build-platform.png)
+   ![Alt Text](./Images/build-project.png)
 
    For executable file path:
    ```
