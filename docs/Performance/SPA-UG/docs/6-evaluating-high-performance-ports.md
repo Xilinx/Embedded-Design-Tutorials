@@ -12,7 +12,7 @@ You can calculate the total theoretical bandwidth of the DDR using the following
 DDR Data Rate x DDR Width (byte)
 ```
 
-For example, Zynq-7000 devices:
+For example, Zynq 7000 devices:
 
 ```
 1066M tranx/sec × (4 bytes)/tranx = 4264 MB/s
@@ -26,7 +26,7 @@ Zynq UltraScale+ MPSoC with 64-bit DDR4
 
 While this is the maximum bandwidth achievable by this memory, the actual DDR utilization is based on many factors, including number of requesting masters and the types of memory accesses. As shown in this chapter, requesting bandwidth that approaches or exceeds this maximum will potentially impact the achieved throughput and latency of all requesting masters. The System Performance Analysis (SPA) toolbox in the Vitis™ IDE aids in this analysis.
 
-## Example: HD Video Traffic on Zynq-7000
+## Example: HD Video Traffic on Zynq 7000
 
 <!-- A general case -->
 
@@ -38,7 +38,7 @@ The following figure shows the first traffic scenario used (see [Getting Started
 
 ![](./media/image18.jpeg)
 
-This HD video traffic was run on a ZC702 board. As shown in the following figure, all four HP ports were able to sustain the requested throughput of 376 MB/s. The high throughput was even achieved while the BEEBS benchmarks were running on CPU0. The total bandwidth used by the four HP ports was 1510 MB/s, or 35% of the available bandwidth of the DDR. Thus, the Zynq-7000 SoC device was capable of achieving these throughput requirements. However, due to arbitration and scheduling in the DDR controller, some contention was introduced, impacting the performance of the software application (see [Figure 24: Relative Run-Times of BEEBS Benchmarks with Varying HP Port Traffic (Data Array Size: 1024 KB](#fig24) for a summary).
+This HD video traffic was run on a ZC702 board. As shown in the following figure, all four HP ports were able to sustain the requested throughput of 376 MB/s. The high throughput was even achieved while the BEEBS benchmarks were running on CPU0. The total bandwidth used by the four HP ports was 1510 MB/s, or 35% of the available bandwidth of the DDR. Thus, the Zynq 7000 SoC device was capable of achieving these throughput requirements. However, due to arbitration and scheduling in the DDR controller, some contention was introduced, impacting the performance of the software application (see [Figure 24: Relative Run-Times of BEEBS Benchmarks with Varying HP Port Traffic (Data Array Size: 1024 KB](#fig24) for a summary).
 
 Most benchmarks had minimal impact on their run-time; however, the benchmarks that have a high number of memory accesses were impacted the most. The worst case was the integer matrix multiplication, which had a run-time increase of 14.0%.
 
@@ -48,7 +48,7 @@ Most benchmarks had minimal impact on their run-time; however, the benchmarks th
 
 In this example, SPM helps to show whether the throughput requirement from PL can be achieved and whether it will impact software application performance.
 
-## Example: High-Bandwidth Traffic on Zynq-7000
+## Example: High-Bandwidth Traffic on Zynq 7000
 
 <!--Stress test case-->
 
@@ -104,9 +104,9 @@ The impact of increased HP traffic can be seen in the software performance. A us
 
 </div>
 
-## Example: HD Video Traffic on Zynq-7000 Devices
+## Example: HD Video Traffic on Zynq 7000 Devices
 
-Similar to Zynq-7000 tests, you can run HD Video Traffic test on Zynq UltraScale+ MPSoC. Since 4K Video is now a common requirement, you can upgrade the 1080P60 data rate requirement on ZC702 test case to 4KP60 data rate requirement on ZCU102.
+Similar to Zynq 7000 tests, you can run HD Video Traffic test on Zynq UltraScale+ MPSoC. Since 4K Video is now a common requirement, you can upgrade the 1080P60 data rate requirement on ZC702 test case to 4KP60 data rate requirement on ZCU102.
 
 The SPM project of ZCU102 does not come with the HD Video Traffic preset. You have to set it up as follows:
 

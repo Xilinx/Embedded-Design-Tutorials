@@ -14,7 +14,7 @@ For more information about available embedded tools available from AMD, see [ Em
 
 This repository provides information about creating embedded designs. The following documents are available.
 
-# Introduction Tutorials
+# Getting Started
 
 The Embedded Design Tutorials provide an introduction to the embedded flow for AMD devices.
 
@@ -37,9 +37,13 @@ Provides an introduction for using the Vivado Design Suite flow for using the Zy
 <td align="center"><a href="Getting_Started/Zynq7000-EDT">Zynq-7000 SoC Embedded Design Tutorial</a></td>
 <td>Zynq 7000 SoC devices</td><td>
 Provides an introduction for using the Vivado Design Suite flow for using the Zynq 7000 SoC device.</td></tr>
+<tr>
+<td align="center"><a href="Getting_Started/microblaze-system">Programming an Embedded MicroBlaze Processor</a></td>
+<td>Spartan®-7 device</td><td>
+Create an AMD MicroBlaze™ system for a Spartan-7 FPGA using Vivado IP integrator.</td></tr>
 </table>
 
-# Feature Tutorials
+# Design Tutorials
 
 <table style="width:100%">
 <tr>
@@ -47,12 +51,12 @@ Provides an introduction for using the Vivado Design Suite flow for using the Zy
 <td align="center"><b>Description</b></td>
 </tr>
 <tr>
- <td align="center"><a href="Feature_Tutorials/README.MD">Advanced Feature Tutorials for Embedded Systems</a></td>
+ <td align="center"><a href="Design_Tutorials/README.MD">Advanced Feature Tutorials for Embedded Systems</a></td>
  <td>
  Showcases advanced features of the Vitis software platform, including examples to demonstrate software profiling and creating a debuggable FSBL.</a></td></tr>
  </table>
 
- # Debugging Guides
+ # Debugging
 
  <table style="width:100%">
 <tr>
@@ -65,7 +69,7 @@ Provides an introduction for using the Vivado Design Suite flow for using the Zy
  This guide provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help.</td></tr>
  </table>
 
-# User Guides
+# Performance
 
 <table style="width:100%">
 <tr>

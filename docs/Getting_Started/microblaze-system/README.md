@@ -10,9 +10,9 @@
 
 ## Introduction
 
- In this tutorial, you create a simple MicroBlaze system for a Spartan-7 FPGA using Vivado IP integrator.
+ In this tutorial, you create a simple AMD MicroBlaze™ system for a Spartan-7 FPGA using AMD Vivado™ IP integrator.
 
- The MicroBlaze system includes native Xilinx IP including:
+ The MicroBlaze system includes native AMD IP including:
 * MicroBlaze processor
 * AXI block RAM
 * Double Data Rate 3 (DDR3) memory
@@ -28,7 +28,7 @@
 
  The feature is demonstrated using a software application code developed in the Vitis software platform in a stand-alone application mode.
 
- This lab targets the Xilinx SP701 FPGA Evaluation Kit.
+ This lab targets the AMD SP701 FPGA Evaluation Kit.
 
 ## Step 1: Start the Vivado IDE and Create a Project
 
@@ -58,7 +58,7 @@ Because you selected the SP701 board when you created the Vivado IDE project, yo
 
 ```set_property board_part xilinx.com:sp701:part0:1.1 [current_project]```
 
-Although Tcl commands are available for many of the actions performed in the Vivado IDE, they are not explained in this tutorial. Instead, a Tcl script is provided that can be used to recreate this entire project. See the Tcl Console for more information. You can also refer to the *Vivado Design Suite Tcl Command Reference Guide*([UG835](https://www.xilinx.com/cgi-bin/docs/rdoc?v=2021.2%3Bd%3Dug835-vivado-tcl-commands.pdf)) for information about the `write_bd_tcl` commands.
+Although Tcl commands are available for many of the actions performed in the Vivado IDE, they are not explained in this tutorial. Instead, a Tcl script is provided that can be used to recreate this entire project. See the Tcl Console for more information. You can also refer to the *Vivado Design Suite Tcl Command Reference Guide*([UG835](https://docs.xilinx.com/access/sources/dita/map?Doc_Version=2023.2%20English&url=ug835-vivado-tcl-commands)) for information about the `write_bd_tcl` commands.
 
 ## Step 2: Create an IP Integrator Design
 
@@ -103,9 +103,10 @@ Although Tcl commands are available for many of the actions performed in the Viv
 
 ### Use the Board Window to Connect to Board Interfaces
 
-There are several ways to use an existing interface in IP integrator. Use the Board window to instantiate some of the interfaces that are present on the SP701 board.
+There are several ways to use an existing interface in IP integrator. Use the Board window to instantiate some of the interfaces that are present on the SP701 board. 
 
-1. Select the **Board** window to see the interfaces present on the SP701 board.
+1. Navigate to the **Windows>Board**.
+2. Select the **Board** window to see the interfaces present on the SP701 board.
 
    ![](./media/image9-1.png)
 
@@ -113,15 +114,15 @@ There are several ways to use an existing interface in IP integrator. Use the Bo
 
    ![](./media/image11-1.png)
 
-2. From the Board window, select **UART** under the Miscellaneous folder, and drag and drop it into the block design canvas.
+3. From the Board window, select **UART** under the Miscellaneous folder, and drag and drop it into the block design canvas. Click **OK** on the **Auto Connect** pop-up.
 
     This instantiates the AXI Uartlite IP on the block design.
 
-3. Likewise, from the Board window, select **LED** under the General Purpose Input or Output folder, and drag and drop it into the block design canvas.
+4. From the Board window, select **LED** under the General Purpose Input or Output folder, and drag and drop it into the block design canvas. Click **OK** on the **Auto Connect** pop-up.
 
     This instantiates the GPIO IP on the block design and connects it to the on-board LEDs. 
 
-4. Next, from the Board window, select **FPGA Reset** under the Reset folder, and drag and drop it into the block design canvas.
+5. Next, from the Board window, select **FPGA Reset** under the Reset folder, and drag and drop it into the block design canvas.
 
     This connects the CPU push button reset to the MIG core IP. 
 
@@ -665,12 +666,20 @@ In this tutorial, you:
 
 The Tcl script `lab.tcl` is included with the design files to perform all the tasks in Vivado. The Vitis software platform operations must be done in the Vitis GUI. You will need to modify the Tcl script to match the desired project path and project name on your machine.
 
----
+## License
 
-© Copyright 2017-2022 Xilinx, Inc.
+___
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+The MIT License (MIT)
 
-http://www.apache.org/licenses/LICENSE-2.0
+Copyright (c) 2023 Advanced Micro Devices, Inc.
 
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+<p align="center"><sup>XD131 | &copy; Copyright 2022–2023 AMD, Inc.</sup></p>

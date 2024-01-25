@@ -97,8 +97,8 @@ Requirements
 
 - Hardware:
 
-  - Xilinx evaluation boards for SPM projects, like `ZCU102 <https://www.xilinx.com/products/boards-and-kits/ek-u1-zcu102-g.html>` or `ZC702 <https://www.xilinx.com/products/boards-and-kits/EK-Z7-ZC702-G.htm>`
-  - Any Zynq UltraScale+ MPSoC or Zynq-7000 SoC based boards for :doc:`Using SPA with a Custom Target <docs/9-using-spa-with-custom-target>`.
+  - AMD evaluation boards for SPM projects, like `ZCU102 <https://www.xilinx.com/products/boards-and-kits/ek-u1-zcu102-g.html>` or `ZC702 <https://www.xilinx.com/products/boards-and-kits/EK-Z7-ZC702-G.htm>`
+  - Any AMD Zynq&trade; UltraScale+&trade; MPSoC or AMD Zynq&trade; 7000 SoC based boards for :doc:`Using SPA with a Custom Target <docs/9-using-spa-with-custom-target>`.
   - AC power adapter for the evaluation boards
-  - Xilinx programming cable; either platform cable or Digilent USB cable
+  - AMD programming cable; either platform cable or Digilent USB cable
   - UART cable for the evaluation board.

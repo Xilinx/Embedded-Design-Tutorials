@@ -2,7 +2,7 @@
 
 The predefined SPM project can be automatically loaded into the workspace with the following steps
 
-1. Select **File → New → Other** in the Vitis™ IDE.
+1. Select **File → New → Other** in the Vitis IDE.
 2. Select **Xilinx → SPM Project** in the popup menu.
 
      ![](./media/vitis_new_spm_proj.png)
