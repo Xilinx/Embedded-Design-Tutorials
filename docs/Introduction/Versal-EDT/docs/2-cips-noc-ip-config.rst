@@ -2,13 +2,13 @@
 Versal CIPS and NoC (DDR) IP Core Configuration
 ****************************************************
 
-The AMD Versal |trade| CIPS IP core allows you to configure the processing system and the PMC block, including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.
+The AMD Versal |trade| Control, Interfaces and Processing System (CIPS) IP core allows you to configure the processing system and the PMC block, including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.
 
 This chapter describes how to perform the following tasks:
 
 - Creating an AMD Vivado |trade| project for Versal devices to select the appropriate boot devices and peripherals by configuring the CIPS IP core.
-- Creating and running a Hello World software application on the On-chip-memory (OCM) of Arm |reg| Cortex |trade|-A72.
-- Creating and running a Hello World software application on the Tightly-coupled-memory (TCM) of Arm Cortex-R5F.
+- Creating and running a Hello World software application on the on-chip-memory (OCM) of the Arm |reg| Cortex |trade|-A72 processor.
+- Creating and running a Hello World software application on the tightly-coupled-memory (TCM) of the Arm Cortex-R5F processor.
   
 The NoC IP core configures the DDR memory and data path across the DDR memory and processing engines in the system (Scalar Engines, Adaptable Engines, and AI Engines).
 
@@ -158,8 +158,6 @@ Now that you have added the processor system for Versal devices to the design, y
 3. Double-click **versal_cips_0** in the Block Diagram window.
 
 4. Ensure that all the settings for **Design Flow** and **Presets** are as shown in the following figure.
-
-   You may have to change the Board Interface from **ps pmc fixed IO** to **Custom**. While doing so, click **Yes** if you get a Apply Preset pop-up.
    
    .. image:: media/4-full-system.png
       :width: 600
@@ -169,24 +167,14 @@ Now that you have added the processor system for Versal devices to the design, y
    .. image:: media/ps-pmc.png
       :width: 600
 
-6. Go to Peripherals and enable the peripherals as shown in figure below:
-
-   .. image:: media/peripherals.png
-      :width: 600
-
-7. Click **IO** and set the I/O configurations as shown below:
-
-   .. image:: media/io.png
-      :width: 600
-
    .. note:: VCK190 preset values will set QSPI and SD as the default boot modes. No changes are required.
 
-8. Click **Interrupts** and configure settings as shown in figure below:
+6. Click **Interrupts** and configure settings as shown in figure below:
 
    .. image:: media/interrupts.png
       :width: 600
 
-9.  Click **Finish** and **Finish** to close the CIPS GUI.
+7.  Click **OK** and **Finish** to close the CIPS GUI.
 
 Validating the Design and Generating the Output
 -----------------------------------------------
@@ -328,175 +316,191 @@ The following steps demonstrate the procedure to make the required cable connect
 .. _creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm:
 
 Creating a Hello World Application for the Arm Cortex-A72 on OCM
-----------------------------------------------------------------
+-----------------------------------------------------------------
 
-The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM.
+The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM. 
 
-1. Select **File→ New → Application Project**. Creating a New Application Project wizard opens. If this is the first time the Vitis IDE has been launched, you can select Create Application Project on the Welcome screen, as shown in the following figure.
+Creating the Platform
+^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. note:: Optionally, you can check the box next to "Skip welcome page next time" to skip seeing the welcome page every time.
+Follow these steps to create the platform for VCK190:
 
-2. Use the following information to make your selections on the wizard screens.
+1. Select the workspace.
+   
+   .. image:: media/new-create-platform-vck190.png
 
-   *Table 3:* **System Property Settings**
+2. Select **File→ New Component → Platform**. Use the following information to make your selections on the Wizard screens:
 
-   +----------------+---------------------+-----------------------------------------+
-   | Wizard Screen  | System Properties   | Setting or Command to Use               |
-   +================+=====================+=========================================+
-   | Platform       | Create a new        | Click the Browse button to              |
-   |                | platform from       | add your XSA file.                      |
-   |                | hardware (XSA)      |                                         |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Platform Name       | vck190_platform                         |
-   +----------------+---------------------+-----------------------------------------+
-   | Application    | Application project | helloworld_a72                          |
-   | Project        | name                |                                         |
-   | Details        |                     |                                         |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Select a system     | +Create New                             |
-   |                | project             |                                         |
-   +----------------+---------------------+-----------------------------------------+
-   |                | System project name | helloworld_system                       |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Processor           | versal_cips_0_pspmc_0_psv_cortexa72_0   |
-   +----------------+---------------------+-----------------------------------------+
-   | Domain         | Select a domain     | +Create New                             |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Name                | The default name assigned               |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Display Name        | The default name assigned               |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Operating System    | Standalone                              |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Processor           | versal_cips_0_pspmc_0_psv_cortexa72_0   |
-   +----------------+---------------------+-----------------------------------------+
-   |                | Architecture        | 64-bit                                  |
-   +----------------+---------------------+-----------------------------------------+
-   | Templates      | Available Templates | Hello World                             |
-   +----------------+---------------------+-----------------------------------------+
+   +--------------+---------------------+--------------------------------+
+   | **Wizard     | **System            | **Setting or command to use**  |
+   | Screen**     | Properties**        |                                |
+   +==============+=====================+================================+
+   | Platform     | Component name      | Vck190_platform                |
+   +--------------+---------------------+--------------------------------+
+   |              | Component location  | < platform path >              |
+   +--------------+---------------------+--------------------------------+
+   |              | Hardware Design     | Click the browser button to    |
+   |              | (XSA)               | add your XSA file              |
+   +--------------+---------------------+--------------------------------+
+   | Domain       | Operating System    | Standalone                     |
+   +--------------+---------------------+--------------------------------+
+   |              | Processor           | Psv_cortexa72_0                |
+   +--------------+---------------------+--------------------------------+
 
-   The Vitis software platform creates the board support package for the Platform project (vck190_platform) and the system project (helloworld_system) containing an application project named helloworld_a72 under the Explorer view after performing the above steps.
+3. Select the Hardware Design (XSA) and click **Next**.
 
-3. Right-click **vck190_platform** and select **Build Project**. Alternatively, you can also click |build|.
+4. Select Operating System and Processor, then click **Next** and **Finish**.
 
-   .. note:: If you cannot see the project explorer, click the restore icon |restore| on the left panel, then follow step 3.
+   The platform is created successfully.
+   
+   .. image:: media/new-platform.png
+
+Creating a Hello World Application from Example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Follow these steps to create a Hello world application using the created platform:
+
+1. Select **File** > **New Components** > **From Example**.
+   
+2. Select **Hello World** and click **Create Application Component from Template**.
+
+   .. image:: media/Hello_world_new_vitis.PNG
+
+   +--------------+---------------------+--------------------------------+
+   |    **Wizard  | **System            | **Setting or Command to Use**  |
+   |    Screen**  | Properties**        |                                |
+   +==============+=====================+================================+
+   |              | Component name      | hello_world_a72                |
+   |  Application |                     |                                |
+   |    Details   |                     |                                |
+   +--------------+---------------------+--------------------------------+
+   |              | Component location  | < Application path >           |
+   +--------------+---------------------+--------------------------------+
+   |              | Hardware Design     | Select the platform created    |
+   |              | (XSA)               | (Vck190_platform)              |
+   +--------------+---------------------+--------------------------------+
+   |    Domain    | Operating System    | standalone                     |
+   +--------------+---------------------+--------------------------------+
+   |              | Processor           | psv_cortexa72_0                |
+   +--------------+---------------------+--------------------------------+
+
+3. Add the Component name and click **Next**.
+
+4. Select the Created Platform and click **Next**.
+
+5. Select Domain “\ *standalone_psv_cortexa72_0*\ ” and click **Next**.
+
+6. Click on **Finish** the Hello world Application is created
+   Successfully.
+
+   .. image:: media/apu_helloworld_example.PNG
+
+.. note::
+   
+   The Vitis software platform creates the board support package for the platform project (vck190_platform) and the system project (hello_world_a72_system) containing an application project named helloworld_a72 under the Explorer view after performing the above steps.
 
 Modifying the helloworld_a72 Application Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Double-click **helloworld_a72**, then double-click **src** and select **helloworld.c**.
+1. Double-click **hello_world_a72**, then double-click **Source > src** and select **helloworld.c**.
 
-   This opens the `helloworld.c` source file for the helloworld_a72 application.
+   This opens the ``helloworld.c`` source file for the hello_world_a72 application.
 
-2. Modify the code to add ``sleep(1)`` and arguments in the ``print`` commands as shown below:
+2. Modify the code to add ``sleep (1)`` arguments in the print commands as
+   shown below:
 
-   .. code-block::
+   .. code::
 
-        sleep(1);
-        print("Hello World from APU\n\r");
-        print("Successfully ran Hello World application from APU\n\r");
+      sleep (1);
+      print("Hello World from APU\\n\\r");
+      print("Successfully ran Hello World application from APU\\n\\r");
 
-   .. image:: media/image28.JPG
+   .. image:: media/apu_example_code.PNG
 
-3. Click |build| to build the project.
+Building the Application
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-Adding a New RPU Domain to the Platform Project
------------------------------------------------
+1. Select the Component (Application) to be built.
 
-The following steps demonstrate the procedure to create a bare-metal Hello World application for the Arm Cortex-R5F on TCM. The application needs to be linked to a domain. Before creating the application project, make sure that the target domain software environment is available. If not, add the required domain to your platform using the following steps.
+   .. image:: media/build_apu.PNG
+   
+2. Click **Build**.
 
-1. Double-click the `platform.spr` file in the Vitis Explorer view. (In this example, **vck190_platform → platform.spr**).
+   .. image:: media/build_button_new_vitis.png
+   
+   The project is built successfully.
 
-2. Click the |image30| button in the Main view.
-
-3. Use the following information to make your selections in the Domain wizard screen.
-
-   *Table 4:* **New  Domain Settings**  
-
-   +------------------+------------------+----------------------------------------+
-   | Wizard Screen    | Fields           | Setting or Command to Use              |
-   +==================+==================+========================================+
-   | Domain           | Name             | r5_domain                              |
-   +------------------+------------------+----------------------------------------+
-   |                  | Display Name     | autogenerated                          |
-   +------------------+------------------+----------------------------------------+
-   |                  | OS               | standalone                             |
-   +------------------+------------------+----------------------------------------+
-   |                  | Processor        | versal_cips_0_pspmc_0_psv_cortexr5_0   |
-   +------------------+------------------+----------------------------------------+
-   |                  | Supported        | C/C++                                  |
-   |                  | Runtimes         |                                        |
-   +------------------+------------------+----------------------------------------+
-   |                  | Architecture     | 32-bit                                 |
-   +------------------+------------------+----------------------------------------+
-
-4. Click **OK**. The newly generated r5_domain is configured.
-
-   .. note:: At this point, you will notice an Out-of-date decorator next to the platform in the Explorer view.
-
-5. Click the |build| icon to build the platform. The Explorer view shows the generated image files in the platform project.
+.. _creating-a-hello-world-application-for-the-arm-cortex-r5f:
 
 Creating the Standalone Application Project for the Arm Cortex-R5F
 ------------------------------------------------------------------
 
 The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-R5F.
 
-1. Select **File → New → Application Project**. Creating a New Application Project wizard opens. If this is the first time the Vitis IDE has been launched, you can select Create Application Project on the Welcome screen.
+1. Select **File > New Components > From Example**.
 
-   .. note:: Optionally, you can check the box next to "Skip welcome page next time" to skip seeing the welcome page every time.
+2. Select **Hello World** and click **Create Application Component from Template**.
 
-2. Use the following information to make your selections in the wizard screens.
+   .. image:: media/Hello_world_new_vitis.PNG
 
-   *Table 5:* **System Property Settings**
+   Use the following information to make your selections on the wizard
+   screens:
 
-   +----------------------+----------------------+----------------------------------------+
-   | Wizard Screen        | System Properties    | Setting or Command to Use              |
-   +======================+======================+========================================+
-   | Platform             | Select a platform    | Select                                 |
-   |                      | from repository      | **vck190_platform**                    |
-   +----------------------+----------------------+----------------------------------------+
-   | Application Project  | Application project  | helloworld_r5                          |
-   | Details              | name                 |                                        |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | Select a system      | helloworld_system                      |
-   |                      | project              |                                        |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | System project name  | helloworld_system                      |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | Target processor     | versal_cips_0_pspmc_0_psv_cortexr5_0   |
-   +----------------------+----------------------+----------------------------------------+
-   | Domain               | Select a domain      | r5_domain                              |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | Name                 | r5_domain                              |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | Display Name         | r5_domain                              |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | Operating System     | standalone                             |
-   +----------------------+----------------------+----------------------------------------+
-   |                      | Processor            | versal_cips_0_pspmc_0_psv_cortexr5_0   |
-   +----------------------+----------------------+----------------------------------------+
-   | Templates            | Available Templates  | Hello World                            |
-   +----------------------+----------------------+----------------------------------------+
+   +--------------+--------------------+----------------------------------+
+   | **Wizard     | **System           | **Setting or command to use**    |
+   | Screen**     | Properties**       |                                  |
+   +==============+====================+==================================+
+   | Application  | Component name     | hello_world_r5                   |
+   | Details      |                    |                                  |
+   +--------------+--------------------+----------------------------------+
+   |              | Component location | < Application path >             |
+   +--------------+--------------------+----------------------------------+
+   |              | Hardware Design    | Select the platform created      |
+   |              | (XSA)              | (Vck190_platform)                |
+   +--------------+--------------------+----------------------------------+
+   | Domain       | Operating System   | standalone                       |
+   +--------------+--------------------+----------------------------------+
+   |              | Processor          | psv_cortexr5_0                   |
+   +--------------+--------------------+----------------------------------+
 
-   .. note:: The standalone application helloworld_r5 is generated within the existing system project helloworld_system.
+3. Add the **Component name** and click **Next**.
+   
+4. Select the Created Platform and click **Next**.
 
-3. Right-click **vck190_platform** and select **Build Project**. Alternatively, you can also click |build| to build the project.
+5. Select Domain “\ *standalone_psv_cortexr5_0*\ ” and click **Next**.
+
+6. Click **Finish** and the Hello world Application is created successfully.
+
+   .. image:: media/hello_world_r5.PNG
 
 Modifying the helloworld_r5 Application Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Expand **helloworld_r5** and double-click **src** and select **helloworld.c** to open the `helloworld.c` source file for the helloworld_r5 application.
+1. Double-click **hello_world_r5**, then double-click **Source > src** and select **helloworld.c**.
 
-2. Modify the arguments in the print commands:
+   This opens the ``helloworld.c`` source file for the hello_world_r5 application.
 
-   .. code-block::
+2. Modify the arguments in the print commands as shown below:
 
-        print("Hello World from RPU\n\r");
-        print("Successfully ran Hello World application from RPU\n\r");
+   .. code::
+      
+      print("Hello World from RPU\n\r");
+      print("Successfully ran Hello World application from RPU\n\r");
 
-   .. image:: ./media/image31.JPG
+   .. image:: media/rpu_source_code.PNG
 
-3. Click |build| to build the project.
+Building the Application
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Select the **Component** (Application) to be built.
+   
+   .. image:: media/rpu_build_select.PNG
+
+2. Click **Build**.
+
+   .. image:: media/build_button_new_vitis.png
+   
+   The project is built successfully.
 
 Modifying the Application Linker Script for the Application Project helloworld_r5
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -511,19 +515,15 @@ The following steps demonstrate the procedure to modify the application linker s
 
 2. In the `src` directory, delete the default ``lscript.ld`` file.
 
-3. Right-click **helloworld_r5** and click **Generate Linker Script**. Alternatively, you can select **Xilinx → Generate Linker Script**.
+3. Right-click **helloworld_r5** and click **Reset Linker Script**.
 
-   .. image:: ./media/image32.png
+   .. image:: ./media/linker_script.PNG
 
    .. note:: In the Generate linker script dialog box, the left side is read-only, except for the Output Script name and project build settings in the Modify project build settings as follows field. On the right side, you have two options to allocate memory: The Basic tab and the Advanced tab. Both perform the same tasks; however, the Basic tab is less granular and treats all types of data as "data" and all types of instructions as "code." This is often sufficient to accomplish most tasks. Use the Advanced tab for precise allocation of software blocks into various types of memory.
 
-4. Under the Basic tab, select **versal_cips_0_pspmc_0_psv_r5_0_atcm_MEM_0** in the drop-down menu for all the three sections, then click **Generate**.
+   .. note:: To terminate the debug configuration, delete the debug configuration.
 
-   .. image:: ./media/r5_atcm_capture.jpg
-
-   .. note:: A new linker script (``lscript.ld``) will be generated in the src folder within the application project.
-
-5. Right-click **helloworld_system** and select **Build Project** or |build|. This generates the project elf files within the Debug folder of the helloworld_r5 project.
+      .. image:: media/terminate_new_vitis.PNG
 
 .. _running-applications-in-jtag-mode:
 
@@ -787,12 +787,12 @@ To configure your design, follow these steps:
 
 6. Open **CIPS → PS-PMC**.
    
-7. Click **NoC**. Enable the NoC Coherent Interfaces PS to NoC Interface 0/1 as shown below.
+7. Click **NoC**. Enable the NoC Non-Coherent Interfaces PS to NoC Interface 0/1 as shown below.
 
    .. image:: media/noc-interface.png
       :width: 600
 
-8. Click **Finish** to complete and exit CIPS configuration.
+8. Click **OK** and **Finish** to complete and exit CIPS configuration.
 
 9. Double-click the **NoC IP**. From the General Tab, set **Number of AXI Slave interfaces** and **AXI Clocks** to 8:
 
@@ -895,9 +895,9 @@ Follow these steps to generate a device image for the design.
 
       When Device Image Generation completes, the Device Image Generation Completed dialog box opens.
 
-   5.  Click **Cancel** to close the window.
+   5. Click **Cancel** to close the window.
 
-       Export hardware, after you generate Device Image.
+      Export hardware after you generate the Device Image.
 
 .. _exporting-hardware-1: 
 
@@ -939,65 +939,6 @@ You will create a new Vitis project, similar to the one in :ref:`running-bare-me
 
 Refer to `Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform <#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform>`__ for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to :ref:`generating-boot-image-for-standalone-application` for generating boot images for standalone applications.
 
-===============
-OSPI Boot Mode
-===============
-
-.. note:: Skip this section if you do not have the OSPI module, X-EBM-03-revA.
-
-.. important:: OSPI configuration is only supported for VCK190/VMK180 rev B production boards.
-
-To boot check the OSPI boot mode, follow these steps:
-
-1. Open the design created in :ref:`creating-new-embedded-project-versal-devices`, ``edt_versal.xpr``.
-
-2. Double-click the **Versal CIPS IP**.
-
-3. Under **Presets** Choose Board Interface as **ps pmc fixed io OSPI**. While doing so, click **Yes** if you get a Apply Preset pop-up.
-
-   .. image:: ./media/ospi-boot1.png
-      :width: 600
-	  
-4. Click **Next** and choose **PS PMC**.
-
-5. In the Boot Mode settings, click **OSPI** and check if the configurations are set as shown in the following figure:
-
-   .. image:: ./media/ospi-boot2.png
-      :width: 600
-
-6. Click **Finish**.
-
-This configures the design in OSPI boot mode.
-
-================
-eMMC Boot Mode
-================
-
-.. note:: This section requires the X-EBM-02-revA eMMC module. Skip this section if you do not have this module.
-
-.. important:: eMMC configuration is only supported for VCK190/VMK180 rev B production boards.
-
-To boot check the eMMC boot mode, follow these steps:
-
-1. Open the design created in :ref:`creating-new-embedded-project-versal-devices`, ``edt_versal.xpr``.
-
-2. Double-click the **Versal CIPS IP**.
-
-3. Under **Presets** Choose Board Interface as **ps pmc fixed io eMMC**.  While doing so, click **Yes** if you get a Apply Preset pop-up.
- 
-   .. image:: ./media/emmc-boot1.png
-      :width: 600 
-
-4. Click **Next** and choose **PS PMC**.
-
-5. In the Boot Mode settings, click **SD1/eMMC** and check if the configurations are set as shown in the following figure:
-
-   .. image:: ./media/emmc-boot2.png
-      :width: 600
-   
-6. Click **Finish**.
-
-   This configures the design in eMMC boot mode.
 
 
 

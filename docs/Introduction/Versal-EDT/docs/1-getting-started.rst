@@ -23,7 +23,7 @@ AMD documentation is organized around a set of standard design processes to help
   
   * :doc:`../docs/2-cips-noc-ip-config`
   * :ref:`noc-ip-core-configuration`
-  * :ref:`using-axi-gpio`
+  * :ref:`7-using-axi-gpio`
 
 * **System Integration and Validation**: Integrating and validating the system functional performance, including timing, resource use, and power closure. Topics in this document that apply to this design process include:
   
@@ -45,29 +45,18 @@ The evaluation board kit includes:
 - USB Type-A to USB Micro cable (for UART communications)
 - USB Micro cable for programming and debugging via USB-Micro JTAG connection
 - SD-MMC flash card for Linux booting
-- QSPI daughter card X_EBM-01, REV_A01
 
-Additional flash daughter cards:
+.. note:: QSPI/SD were tested on VCK190/VMK180/VPK180 Production boards.
 
-.. note:: These modules will be required for eMMC or OSPI related steps in the tutorial. Ignore this if you do not have or do not intend to use the eMMC/OSPI modules.
-
-- OSPI daughter card X-EBM-03 REV_A02
-- eMMC daughter card X-EBM-02 REV_A02
-
-.. note:: 
-
-   - QSPI/SD were tested on VCK190/VMK180/VPK180 Production boards.
-   - OSPI/eMMC were tested on VCK190 and VMK180 RevB production boards.
-   - OSPI and eMMC boot modes are only supported on the VCK190 and VMK180 RevB production boards.
 
 =========================
 Installation Requirements
 =========================
 
-Vitis Integrated Design Environment and Vivado Design Suite
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vitis Integrated Design Environment (IDE) and Vivado Design Suite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ensure that you have the AMD Vitis |trade| 2023.1 software development platform installed. The Vitis IDE is a unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
+Ensure that you have the AMD Vitis |trade| 2023.2 software development platform installed. The Vitis IDE is a unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
 
 .. note:: Visit `https://www.xilinx.com/support/download.html <https://www.xilinx.com/support/download.html>`__ to confirm that you have the latest tools version.
 
@@ -86,7 +75,7 @@ This can use either a dedicated Linux host system or a virtual machine running o
 
 When you install PetaLinux tools on your system of choice, you must do the following:
 
-- Download PetaLinux 2023.1 software from the website.
+- Download PetaLinux 2023.2 software from the website.
 
 - Download the respective BSP as described in :ref:`creating-linux-images-using-petalinux`.
 
@@ -112,8 +101,6 @@ For example, to install PetaLinux tools under ``/opt/pkg/petalinux/<petalinux-ve
     $ mkdir -p /opt/pkg/petalinux/<petalinux-version>
     $ ./petalinux-v<petalinux-version>-final-installer.run --dir /opt/pkg/petalinux/<petalinux-version>
 
-.. note:: Do not change the install directory permissions to CHMOD 775 as it might cause BitBake errors. This installs the PetaLinux tool into the ``/opt/pkg/petalinux/<petalinux-version>`` directory.
-
 For more information, see *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1144-petalinux-tools-reference-guide>`__).
 
 ==================
@@ -126,7 +113,7 @@ AMD software uses FLEXnet licensing. When the software is first run, it performs
 Tutorial Design Files
 =====================
 
-The reference design files for Production Silicon are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/Versal-EDT/ref_files>`__ directory.
+The reference design files for Production Silicon are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.2/docs/Getting_Started/Versal-EDT/ref_files/>`__ directory.
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:

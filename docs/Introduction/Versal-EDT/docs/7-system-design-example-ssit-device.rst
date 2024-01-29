@@ -2,7 +2,9 @@
 System Design Example for Versal Stacked Silicon Interconnect Devices
 *********************************************************************************
 
-This chapter guides you through building a system based on AMD Versal |trade| devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) devices. It explains how to create an embedded design utilizing PL AXI GPIO and PL AXI UART using the Vivado |reg| tool for the Versal Premium VP1802 SSI device based VPK180 board. Refer to the Documentation Reference Guide `(UG949) <https://docs.xilinx.com/r/en-US/ug949-vivado-design-methodology/Designing-with-SSI-Devices>`__ for information on designing with SSI devices. It also describes configuring and building the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU for a targeted Versal device.
+This chapter guides you through building a system based on AMD Versal |trade| devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) devices. It explains how to create an embedded design utilizing PL AXI GPIO and PL AXI UART using the Vivado |trade| tool for the Versal Premium VP1802 SSI device based VPK180 board. Refer to the Documentation Reference Guide `(UG949) <https://docs.xilinx.com/r/en-US/ug949-vivado-design-methodology/Designing-with-SSI-Devices>`__ for information on designing with SSI devices. It also describes configuring and building the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU for a targeted Versal device.
+
+.. note:: The design files for this chapter have been validated with Vivado Design Suite 2023.1.
 
 .. _7-using-axi-gpio:
 
@@ -54,7 +56,7 @@ Managing the Versal CIPS IP Core in the Vivado Design Suite
       
 9. Click **Next**, then click **PS PMC**.
 
-   .. image:: media/ps-pmc.png
+   .. image:: media/ch7_ps-pmc.png
 	  
 10. Go to Peripherals and enable the TTC peripherals as shown in figure below:
 
@@ -68,9 +70,9 @@ Managing the Versal CIPS IP Core in the Vivado Design Suite
    
 12. Click **Interrupts** and configure settings as shown in figure below:
 
-   .. image:: media/interrupts.png
+   .. image:: media/ch7_interrupts.png
 
-13. Click **Finish** and **Finish** to close the CIPS GUI.	
+13. Click **OK** and **Finish** to close the CIPS GUI.	
 
 
 NoC (and DDR) IP Core Configuration
@@ -98,7 +100,7 @@ Configuring NoC and CIPS
    .. image:: media/vpk_noc-interface-slr-3.png
       :width: 600    	
 
-4. Click **Finish** and **Finish** to close the CIPS GUI.	  
+4. Click **OK** and **Finish** to close the CIPS GUI.	  
 
 5. Add two **AXI NoC IP** from the IP catalog.
 
@@ -159,15 +161,15 @@ To connect the PL IPs to CIPS, follow these steps.
 
 3. Enable the **M_AXI_FPD interface** and set the **Number of PL Resets** to 1, as shown in the Image.
 
-   .. image:: ./media/PS_PL_Interfaces.png
+   .. image:: ./media/ch7_PS_PL_Interfaces.png
 	
 4. Click **Clocking**, and then click on the Output Clocks tab.
 
 5. Expand PMC Domain Clocks. Then expand PL Fabric Clocks. Configure the PL0_REF_CLK (PL CLK 0) to 300 MHz as shown in the following figure:
 
-   .. image:: ./media/clocking_ps_PMC.png      
+   .. image:: ./media/ch7_clocking_ps_PMC.png      
 
-6. Click **Finish** and **OK** to complete the configuration and return to the block diagram.
+6. Click **OK** and **Finish** to complete the configuration and return to the block diagram.
 
 Configuring PL Hardware
 -----------------------
@@ -223,7 +225,7 @@ To configure the PL IPs used in this design example, follow these steps.
 
 14. Click **ext_reset_in** and configure the setting as shown below.
 
-   .. image:: media/image66.jpeg      
+   .. image:: media/ch7_image66.jpeg      
 
 This connects the `ext_reset_in` of the processor system reset IP to the ``pl_resetn`` of the CIPS.
 
@@ -392,7 +394,7 @@ To validate the design and to generate the output product, follow these steps:
 
 7. Right-click the top-level block design, edt_versal_i : edt_versal (``edt_versal.bd``), and select **Generate Output Products**.
 
-   .. image:: ./media/GOP.png
+   .. image:: ./media/ch7_GOP.png
 
 8. Click **Generate**.
 
@@ -419,17 +421,7 @@ Follow these steps to generate a device image for the design.
 
 4. Click **Cancel** to close the window.
 
-   .. note:: The generated device image needs to be overlaid with the ``secio-sysmon.v2.cdo`` file to enable accessing secondary SLRs power rails. For more information refer to the Answer Record (`#000034400 <https://support.xilinx.com/s/article/000034400?language=en_US>`__.)
-
-5. Copy ``secio-sysmon.v2.cdo`` from ``<design-package>/ref_files/EDT_2023.1_PACKAGE/ug1305-embedded-design-tutorial/vpk180/pl/pl_gpio_uart`` to the working directory.
-
-6. Navigate to the generated device image path ``../project_1/project_1.runs/impl/`` and run the following command as mentioned in (AR#000034400).
-
-   .. code-block::
-
-       exec [exec which bootgen] -arch versal -image ./edt_versal_wrapper.bif -w -o ./edt_versal_wrapper.pdi -overlay_cdo ../../../secio-sysmon.v2.cdo  
-
-7. Export hardware after you generate the new Device Image.
+5. Export hardware after you generate the new Device Image.
 
    .. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-7` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.
 
@@ -476,78 +468,102 @@ This section explains how to configure and build the FreeRTOS application for an
 
 The following steps demonstrate the procedure to create a FreeRTOS Application from Arm Cortex-R5F:
 
-1. Start the AMD Vitis |trade| IDE and create a new workspace, for example, ``c:/edt/freertos``.
+Creating the Platform
+~~~~~~~~~~~~~~~~~~~~~
+
+To create the platform for VPK180, follow these steps:
+
+1. Select the workspace.
    
-2. Select **File→ New → Application Project**. The **Creating a New Application Project** wizard opens. If this is the first time that you have launched the Vitis IDE, you can select **Create Application Project** on the Welcome screen as shown in the following figure.
+   .. image:: media/new-create-platform-vck190.png
 
-   .. image:: ./media/image75.jpeg
+2. Select **File > New Component > Platform**.
 
-   .. note:: Optionally, you can check the box next to **Skip welcome page next time** to skip seeing the welcome page every time.
+   +--------------+-------------------+----------------------------------+
+   |    **Wizard  |    **System       |    **Setting or command to use** |
+   |    Screen**  |    Properties**   |                                  |
+   +==============+===================+==================================+
+   |    Platform  |    Component name |    Vpk180_platform               |
+   +--------------+-------------------+----------------------------------+
+   |              |    Component      |    < platform path >             |
+   |              |    location       |                                  |
+   +--------------+-------------------+----------------------------------+
+   |              |    Hardware       |    Click the browser button to   |
+   |              |    Design (XSA)   |    add your XSA file             |
+   +--------------+-------------------+----------------------------------+
+   |    Domain    |    Operating      |    freertos                      |
+   |              |    System         |                                  |
+   +--------------+-------------------+----------------------------------+
+   |              |    Processor      |    Psv_cortexr5_0                |
+   +--------------+-------------------+----------------------------------+
 
-3. There are four components of an application project in the Vitis IDE: a target platform, a system project, a domain and a template. To create a new application project in the Vitis IDE, follow these steps:
+3. Select the Hardware Design (XSA) and click **Next**.
 
-   1. A target platform is composed of a base hardware design and the meta-data used in attaching accelerators to declared interfaces. Choose a platform or create a platform project from the XSA that you exported from the Vivado Design Suite.
-   2. Put the application project in a system project, and associate it with a processor.
-   3. The domain defines the processor and operating system used for running the host program on the target platform.
-   4. Choose a template for the application, to quick start development. Use the following information to make your selections in the wizard screens.
+4. Select Operating System and Processor, click **Next**, then click **Finish**.
 
-      *Table:* **Wizard Information**
-
-      +---------------+-------------------------+---------------------------+
-      | Wizard Screen | System Properties       | Setting or Command to Use |
-      +===============+=========================+===========================+
-      | Platform      | Create a new platform   | Click Browse to add your  |
-      |               | from hardware (XSA)     | XSA file                  |
-      +---------------+-------------------------+---------------------------+
-      |               | Platform Name           | vpk180_platform           |
-      +---------------+-------------------------+---------------------------+
-      | Application   | Application project     | freertos_gpio_test        |
-      | Project       | name                    |                           |
-      | Detail        |                         |                           |
-      +---------------+-------------------------+---------------------------+
-      |               | Select a system project | +Create New               |
-      +---------------+-------------------------+---------------------------+
-      |               | System project name     | freertos_gpio_test_system |
-      +---------------+-------------------------+---------------------------+
-      |               | Processor               | versal_cips               |
-      |               |                         | _0_pspmc_0_psv_cortexr5_0 |
-      +---------------+-------------------------+---------------------------+
-      | Dom           | Select a domain         | +Create New               |
-      +---------------+-------------------------+---------------------------+
-      |               | Name                    | The default name assigned |
-      +---------------+-------------------------+---------------------------+
-      |               | Display Name            | The default name assigned |
-      +---------------+-------------------------+---------------------------+
-      |               | Operating System        | freertos10_xilinx         |
-      +---------------+-------------------------+---------------------------+
-      |               | Processor               | versal_cips               |
-      |               |                         | _0_pspmc_0_psv_cortexr5_0 |
-      +---------------+-------------------------+---------------------------+
-      | Templates     | Available               | Empty                     |
-      +---------------+-------------------------+---------------------------+
-      |               | Templates               | Application (C)           |
-      +---------------+-------------------------+---------------------------+
- 
-   The Vitis software platform creates the board support package for the Platform project (**vpk180_platform**) and the system project (**freertos_gpio_test_system**) containing an application project named **freertos_gpio_test** under the Explorer view after performing the preceding steps.
-  
-4. Delete the source files under `src/` directory and Copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``src/`` directory.
-
-5. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
-
-   Navigate to `platform.spr` under vpk180_platform project, and then select **Modify BSP** settings under Board support package, and modify stdin and stdout to **axi_uarlite_0** by pressing <Y> option as shown in the figure.
-
-   .. image:: media/vitis_uartlite_enable.JPG
-
-6. Click **<OK>** to save the above configuration and exit the configuration wizard.
+   Platform is created successfully.
    
-7. Right-click **freertos_gpio_test_system** and select **Build Project**. Alternatively, you can click |build|.
+   .. image:: media/new-plat-vpk180.png
 
-   For building the Linux images and incorporating the FreeRTOS elf into the image, see :ref:`creating-linux-images-using-petalinux`.
+Creating an Empty Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-8. On PL AXI UART Serial Console, RPU debug logs will be printed as below:
+1. Launch Vitis IDE and open the workspace where the platform is created.
 
-   .. code-block::
+2. Select **File > New Component > Application**. The **Creating a New Application Components** wizard opens. If this is the first time that you have launched the Vitis IDE, you can select **Create Application Component** on the Welcome screen.
+
+3. Add the Component name and the component location.
+
+   +----------------+-----------------------------+-------------------------------+
+   |    **Wizard    |    **System Properties**    |    **Setting or               |  
+   |    Screen**    |                             |    command to use**           |
+   +================+=============================+===============================+
+   |    Application |    Component name           |    freertos_gpio_test         |
+   |    Details     |                             |                               |
+   +----------------+-----------------------------+-------------------------------+
+   |                |    Component location       |    < Application path >       |
+   +----------------+-----------------------------+-------------------------------+
+   |                |    Select a platform from   |    Vpk180_platform            |
+   |                |    repository               |                               |
+   +----------------+-----------------------------+-------------------------------+
+   |    Domain      |    Select a Domain          |    +Create New                |
+   +----------------+-----------------------------+-------------------------------+
+   |                |    Name                     |    freertos_gpio_test_system  |
+   +----------------+-----------------------------+-------------------------------+
+   |                |    Operating System         |    freertos                   |
+   +----------------+-----------------------------+-------------------------------+
+   |                |    Processor                |    Psv_cortexa5_0             |
+   +----------------+-----------------------------+-------------------------------+
+
+4. Select the Created Platform and click **Next**.
+
+5. Add name and OS “\ *freertos*\ ”.
    
+6. Select domain “\ *psv_cortexr5_0*\ ” and click **Next**.
+
+7. Click **Finish** and the Empty Application is created Successfully.
+   
+   .. image:: media/new-ch7-empty-app.png
+
+8. Delete the source files under ``source/directory`` and copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``source/directory``.
+
+9. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package. See `AR-35819 <https://support.xilinx.com/s/article/000035819?language=en_US>`__ to configure AXIUARTLITE. 
+
+Building the Application
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Select the **Component** (Application) to be built.
+
+   .. image:: media/new-flow.png
+
+2. Click **Build**.
+
+   .. image:: media/new-proj-built.png
+   
+   Project is built successfully. On PL AXI UART Serial Console, RPU debug logs is printed as shown below:
+
+   .. code::
+
       Gpio Initialization started
       Counter 0
       Counter 1

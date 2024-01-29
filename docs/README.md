@@ -26,8 +26,8 @@ The Embedded Design Tutorials provide an introduction to the embedded flow for A
  <td align="center"><b>Description</b></td>
  </tr>
  <tr>
- <td><a href="https://xilinx.github.io/Embedded-Design-Tutorials/docs/2023.1/build/html/docs/Introduction/Versal-EDT/Versal-EDT.html">Versal Adaptive Compute Acceleration Platform</a></td>
- <td>2023.1</td>
+ <td><a href="https://docs.xilinx.com/access/sources/ftml/map?isLatest=true&url=ug1305-versal-embedded-tutorial&ft:locale=en-US">Versal Adaptive Compute Acceleration Platform</a></td>
+ <td>2023.2</td>
  <td>AMD Versal&trade; devices</td><td>
 Provides an introduction for using the AMD Vivado&trade; Design Suite flow for a Versal&trade; VMK180/VCK190/VPK180 evaluation board.</td></tr>
 <tr>

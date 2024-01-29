@@ -1,80 +1,115 @@
-..
-   Copyright 2023 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and
-   limitations under the License.
-
-
-**************************
+****************************
 Appendix: Creating the PLM
-**************************
+****************************
 
-Following are the steps to create a platform loader and manager (PLM) elf file in the AMD Vitis |trade| software platform. In Versal |reg| devices, the PLM executes in the PMC, and is used to bootstrap the APU and RPU.
+Following are the steps to create a platform loader and manager (PLM) elf file in the AMD Vitis |trade| software platform. In Versal |trade| devices, the PLM executes in the PMC, and is used to bootstrap the APU and RPU.
 
-1. Select **File → New → Application Project**. The New Application Project wizard opens.
+======================
+Creating the Platform
+======================
 
-2. Use the following information in the table to make your selections in the wizard screens.
+Follow these steps to create a platform for the PLM:
 
-   *Table 10:* **System Property Settings**
+1. Select the workspace.
 
-   +-----------------+-----------------------+---------------------------+
-   | Wizard Screen   | System Properties     | Setting or Command to Use |
-   +=================+=======================+===========================+
-   | Platform        | Create a new platform | Click the **Browse**      |
-   |                 | from hardware (XSA)   | button to add your XSA    |
-   |                 |                       | file.                     |
-   +-----------------+-----------------------+---------------------------+
-   |                 | Platform name         | plm_platform              |
-   +-----------------+-----------------------+---------------------------+
-   | Application     | Application project   | plm                       |
-   | Project Details | name                  |                           |
-   +-----------------+-----------------------+---------------------------+
-   |                 | Select a system       | +Create New               |
-   |                 | project               |                           |
-   +-----------------+-----------------------+---------------------------+
-   |                 | System project name   | plm_system                |
-   +-----------------+-----------------------+---------------------------+
-   |                 | Target processor      | psv_pmc_0                 |
-   +-----------------+-----------------------+---------------------------+
-   | Domain          | Select a domain       | +Create New               |
-   +-----------------+-----------------------+---------------------------+
-   |                 | Name                  | The default name assigned |
-   +-----------------+-----------------------+---------------------------+
-   |                 | Display Name          | The default name assigned |
-   +-----------------+-----------------------+---------------------------+
-   |                 | Operating System      | standalone                |
-   +-----------------+-----------------------+---------------------------+
-   |                 | Processor             | psv_pmc_0                 |
-   |                 |                       |                           |
-   |                 |                       | .. note::                 |
-   |                 |                       |   If the psv_pmc_0 option | 
-   |                 |                       |   is not visible under the|
-   |                 |                       |   list of processors,     |
-   |                 |                       |   check the box next to   |
-   |                 |                       |   Show All processors in  |
-   |                 |                       |   the hardware            |
-   |                 |                       |   specification option to |
-   |                 |                       |   view all the available  |
-   |                 |                       |   target processors for   |
-   |                 |                       |   the application project.|
-   +-----------------+-----------------------+---------------------------+
-   |                 | Architecture          | 32-bit                    |
-   +-----------------+-----------------------+---------------------------+
-   | Templates       | Available Templates   | Versal PLM                |
-   +-----------------+-----------------------+---------------------------+
+   .. image:: media/location_new_vitis.PNG
 
-The Vitis software platform creates the PLM application project and edt_versal_wrapper platform under the Explorer view. Right-click the platform project and select **Build Project**. After building the platform project, right-click the plm_system project and click on **Build Project**. This generates the `plm.elf` file within the Debug folder of the application project. After building the project, build the platform as well.
+2. Select **File > New Component > Platform**. The new application project wizard opens.
+
+   Use the following information to make your selections on the wizard
+   screens:
+
+   +--------------+-------------------+-----------------------------------+
+   |    **Wizard  |    **System       |    **Setting or command to use**  |
+   |    Screen**  |    Properties**   |                                   |
+   +==============+===================+===================================+
+   |    Platform  |    Component name |    plm_platform                   |
+   +--------------+-------------------+-----------------------------------+
+   |              |    Component      |    < platform path >              |
+   |              |    location       |                                   |
+   +--------------+-------------------+-----------------------------------+
+   |              |    Hardware       |    Click the browser button to    |
+   |              |    Design (XSA)   |    add your XSA file              |
+   +--------------+-------------------+-----------------------------------+
+   |    Domain    |    Operating      |    standalone                     |
+   |              |    System         |                                   |
+   +--------------+-------------------+-----------------------------------+
+   |              |    Processor      |    psv_pmc_0                      |
+   +--------------+-------------------+-----------------------------------+
+
+3. Select the Hardware Design (XSA) and click **Next**.
+
+4. Select Operating System and Processor, click **Next** and **Finish**.
+
+   Platform will be created successfully.
+   
+   .. image:: media/plm-platform.png
+
+===============================================
+Creating a Versal PLM Application from Example
+===============================================
+
+Follow these steps to create a Versal PLM application using the created platform:
+
+1. Select **File > New Components > From Example**.
+
+2. Select ``versal_plm`` and click **Create Application Component from Template**.
+
+   .. image:: media/versal-plm.png
+
+   Use the following information to make your selections on the wizard
+   screens:
+
+   +--------------+---------------------+--------------------------------+
+   |    **Wizard  |    **System         |    **Setting or command to     |
+   |    Screen**  |    Properties**     |    use**                       |
+   +==============+=====================+================================+
+   |              |    Component name   |    plm                         |
+   |  Application |                     |                                |
+   |    Details   |                     |                                |
+   +--------------+---------------------+--------------------------------+
+   |              |    Component        |    < Application path >        |
+   |              |    location         |                                |
+   +--------------+---------------------+--------------------------------+
+   |              |    Hardware Design  |    Select the platform created |
+   |              |    (XSA)            |    (plm_platform)              |
+   +--------------+---------------------+--------------------------------+
+   |    Domain    |    Operating System |    standalone                  |
+   +--------------+---------------------+--------------------------------+
+   |              |    Processor        |    psv_pmc_0                   |
+   +--------------+---------------------+--------------------------------+
+
+3. Add the **Component name** and click **Next**.
+
+4. Select the Created Platform and click **Next**.
+
+5. Select Domain “\ *standalone*\ ” and Processor “\ *psv_pmc_0*\ ” and
+   click **Next**.
+
+6. Click **Finish** and the ``versal_plm`` application is created successfully.
+   
+   .. image:: media/plm-success.png
+
+The Vitis software platform creates the PLM application project and ``edt_versal_wrapper`` platform under the Explorer view.
+
+Select the component (platform) and click **Build**.
+
+.. image:: media/build-plm.png
+
+Select the component (application) and click **Build**.
+
+.. image:: media/versal-plm-build.png
+
+This generates the ``versal_plm.elf`` file within the `Output` folder of the application project. After building the project, build the platform as well.
+
+.. image:: media/build-target-plm.png
+
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
  
+.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
 
