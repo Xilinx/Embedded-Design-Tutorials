@@ -157,3 +157,11 @@ After the APM run is complete, you can see that the BEEBS benchmark completes in
 The PL AXI read performance is similar to our configuration target, but the write performance is lower. That is because read channels have higher priority than write channels when DDR Controller has congestions. Throughput of HP1 and HP2 is lower than HP0 and HP3. It is because HP1 and HP2 shares one DDR input port.
 
 In this example, a high performance target was set. The SPM test result shows that the system cannot achieve this target. It also shows the level to which the requirements can be satisfied. If this is the real design requirement, you will need to change the configuration and test the system to find the best way to achieve the requirement.
+
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>
