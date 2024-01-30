@@ -1,12 +1,12 @@
 # Evaluating DDR Controller Settings
 
-The Zynq®-7000 SoC family of devices offers some control over the allocation of bandwidth to the DDR memory. These settings are provided in the on-chip DDR controller (DDRC). You can modify clock frequencies and DDRC settings for the SPM design in the Vitis™ IDE. This chapter shows that while bandwidth cannot necessarily be created, it can indeed be re-allocated.
+The Zynq 7000 SoC family of devices offers some control over the allocation of bandwidth to the DDR memory. These settings are provided in the on-chip DDR controller (DDRC). You can modify clock frequencies and DDRC settings for the SPM design in the Vitis IDE. This chapter shows that while bandwidth cannot necessarily be created, it can indeed be re-allocated.
 
-It is important to understand the connectivity to the DDRC. The following figure shows the block diagram of the Zynq-7000 SoC DDRC. There are four ports on the DDRC which service traffic from the CPUs and the Accelerator Coherency Port (ACP) (port 0), other masters via the central interconnect (port 1), HP ports HP2 and HP3 (port 2), and HP ports HP0 and HP1 (port 3). The settings for the DDRC are part of the PS7 or First Stage Boot Loader (FSBL) which configures various system settings early in the boot process. For more information, see the "DDR Memory Controller" chapter of the *Zynq-7000 SoC Technical Reference Manual* ([UG585](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf)).
+It is important to understand the connectivity to the DDRC. The following figure shows the block diagram of the Zynq 7000 SoC DDRC. There are four ports on the DDRC which service traffic from the CPUs and the Accelerator Coherency Port (ACP) (port 0), other masters via the central interconnect (port 1), HP ports HP2 and HP3 (port 2), and HP ports HP0 and HP1 (port 3). The settings for the DDRC are part of the PS7 or First Stage Boot Loader (FSBL) which configures various system settings early in the boot process. For more information, see the "DDR Memory Controller" chapter of the *Zynq-7000 SoC Technical Reference Manual* ([UG585](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf)).
 
 <div id="fig25">
 
- *Figure 25:* **Block Diagram of Zynq-7000 SoC DDR Controller**
+ *Figure 25:* **Block Diagram of Zynq 7000 SoC DDR Controller**
 
  ![](media/X24581-ddrc.png)
 
@@ -14,7 +14,7 @@ It is important to understand the connectivity to the DDRC. The following figure
 
 From the Vitis IDE Project Explorer, select the System Performance Modeling (SPM) project (default name is SPM_ZC_702_HwPlatform), and then right-click and select **Configure FSBL Parameters**.
  
-> ***Note*:** Configure FSBL Parameters** feature is only available to Zynq-7000.
+> ***Note*:** Configure FSBL Parameters** feature is only available to Zynq 7000.
 
 The following figure shows the dialog box that opens, containing the default FSBL settings for the SPM design. The settings include the following:
 
@@ -32,7 +32,7 @@ The following figure shows the dialog box that opens, containing the default FSB
 
 ![](./media/image25.jpeg)
 
-These DDRC settings can also be modified in the Vivado® Design Suite. In a Vivado IP integrator based design, you can double-click on the Zynq-7000 Processing System IP block in the block diagram. A configuration dialog box opens, in which you can re-customize the IP. The DDR Controller settings are listed under DDR Configuration, and the specific options of interest are under Enable Advanced options. When that box is checked, you can view and modify settings such as read/write priority, high-priority read (HPR), and other important settings that can impact performance. The functionality of these settings is described in depth in the *Zynq-7000 SoC Technical Reference Manual* ([UG585](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf)).
+These DDRC settings can also be modified in the Vivado® Design Suite. In a Vivado IP integrator based design, you can double-click on the Zynq 7000 Processing System IP block in the block diagram. A configuration dialog box opens, in which you can re-customize the IP. The DDR Controller settings are listed under DDR Configuration, and the specific options of interest are under Enable Advanced options. When that box is checked, you can view and modify settings such as read/write priority, high-priority read (HPR), and other important settings that can impact performance. The functionality of these settings is described in depth in the *Zynq-7000 SoC Technical Reference Manual* ([UG585](https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf)).
 
 ## Default DDRC Settings
 
@@ -58,7 +58,7 @@ You can modify the DDRC settings and re-run the HP only test above to compare pe
 
 ![](./media/image27.jpeg)
 
-Consider the scenario where high priority is desired for the read traffic on HP0 and HP1. In a Zynq-7000 SoC, these HP ports are serviced by DDR port 3 (see [Figure 25: Block Diagram of Zynq-7000 SoC DDR Controller](#fig25)). As shown in the previous figure, this can be accomplished by adding HPR to DDR port 3. The request queue was also partitioned by assigning 24 requests for HPR and eight requests for LPR. The HPR requests were further prioritized by decreasing its critical priority level to two while increasing the LPR and write critical levels to 15. This was an important step to ensure the HPRs received the desired priority.
+Consider the scenario where high priority is desired for the read traffic on HP0 and HP1. In a Zynq 7000 SoC, these HP ports are serviced by DDR port 3 (see [Figure 25: Block Diagram of Zynq 7000 SoC DDR Controller](#fig25)). As shown in the previous figure, this can be accomplished by adding HPR to DDR port 3. The request queue was also partitioned by assigning 24 requests for HPR and eight requests for LPR. The HPR requests were further prioritized by decreasing its critical priority level to two while increasing the LPR and write critical levels to 15. This was an important step to ensure the HPRs received the desired priority.
 
  *Figure 29:* **HP Port Performance Using Modified DDR Controller Settings**
 
@@ -78,7 +78,7 @@ Another way to observe this re-allocation of priorities can be seen in the read 
 
 ## Utilizing On-Chip Memory
 
-Consider the case where it is a design requirement to obtain 512 MB/sec for both write and read traffic from all HP ports. How do you leverage other memory to augment the DDRC bandwidth? This would require a total bandwidth of 8 \* 512 = 4096 MB/sec, or 96.0% of the theoretical maximum throughput of the DDR. While this is not achievable from a typical DDR controller and memory with an even mix of writes and reads, the on-chip memory (OCM) can be explored for additional data buffering. This is an independent 256 KB memory within the Zynq-7000 SoC PS that provides an excellent low-latency scratch pad.
+Consider the case where it is a design requirement to obtain 512 MB/sec for both write and read traffic from all HP ports. How do you leverage other memory to augment the DDRC bandwidth? This would require a total bandwidth of 8 \* 512 = 4096 MB/sec, or 96.0% of the theoretical maximum throughput of the DDR. While this is not achievable from a typical DDR controller and memory with an even mix of writes and reads, the on-chip memory (OCM) can be explored for additional data buffering. This is an independent 256 KB memory within the Zynq 7000 SoC PS that provides an excellent low-latency scratch pad.
 
 The following figure shows one particular traffic scenario that utilizes the OCM. Compare this scenario to the original one shown in Figure 7-3. While the requested throughputs are kept the same for all operations and types, the traffic on HP2 and HP3 now uses the OCM.
 
@@ -99,3 +99,11 @@ There are other combinations of HPRs and critical levels that could work well fo
 With the performance analysis capabilities provided in the Vitis IDE, you now have the ability to verify these performance results.
 
 > ***Note*:** The Zynq UltraScale+ MPSoC also provides many ways to tune the DDR parameters and AXI QoR. The Vitis IDE does not provide a specific GUI to do it. You need to modify the registers with XSCT or customized FSBL.
+
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

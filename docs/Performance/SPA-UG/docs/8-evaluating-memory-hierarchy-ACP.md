@@ -1,6 +1,6 @@
 # Evaluating Memory Hierarchy and the ACP
 
-The System Performance Modeling (SPM) design can be used to evaluate the performance effects of the Zynq®-7000 SoC cache. You can assess baseline performance using software only, and then you can evaluate the effects of traffic on the Accelerator Coherency Port (ACP). While running software only can produce fairly predictable memory performance, introducing other traffic activity into the system may lead to less intuitive results. Specifically, CPU and ACP traffic have the potential to impact each other at the shared L2 cache. The SPM design allows you to do this analysis very easily.
+The System Performance Modeling (SPM) design can be used to evaluate the performance effects of the Zynq 7000 SoC cache. You can assess baseline performance using software only, and then you can evaluate the effects of traffic on the Accelerator Coherency Port (ACP). While running software only can produce fairly predictable memory performance, introducing other traffic activity into the system may lead to less intuitive results. Specifically, CPU and ACP traffic have the potential to impact each other at the shared L2 cache. The SPM design allows you to do this analysis very easily.
 
 ## Assess Memory Performance
 
@@ -311,3 +311,10 @@ The following figure shows the bandwidth when memory stride used the 1024 KB set
 ![](./media/image42.png)
 
 When running the memory stride software with a working set size of 4 KB, the CPU bandwidth was unaffected by the traffic on the ACP. When using set sizes of 64 KB and 1024 KB, the ACP traffic does have a measurable impact on the CPU bandwidth. The largest decrease in CPU0 bandwidth was 14.6% for the Linear Bandwidth - Copy benchmark operating on a set size of 64 KB.
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

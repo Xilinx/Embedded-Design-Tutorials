@@ -1,6 +1,6 @@
 # Evaluating Software Performance
 
-There are a number of monitoring capabilities that evaluate software performance on a Zynq®-7000 SoC. These capabilities can inform you about the efficiency of your application and provide visualizations for you to better understand and optimize your software.
+There are a number of monitoring capabilities that evaluate software performance on a Zynq 7000 SoC. These capabilities can inform you about the efficiency of your application and provide visualizations for you to better understand and optimize your software.
 
 ## Software Performance Monitoring
 
@@ -209,3 +209,10 @@ This is confirmed with software run times. A summary of the measured run-times i
 </tbody>
 </table>
 
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

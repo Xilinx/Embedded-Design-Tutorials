@@ -1,20 +1,21 @@
-<p align="right"><a href="../docs-cn/README.md">简体中文</a> | <a href="../docs-jp/README.md">日本語</a></p>
-<table width="100%" class="sphinxhide">
-  <tr width="100%">
-    <td align="center"><img src="https://github.com/Xilinx/Image-Collateral/blob/main/xilinx-logo_30percent.png?raw=true"/><h1>Embedded Design Documentation</h1>
+<p class="sphinxhide" align="right"><a href="../docs-cn/README.md">简体中文</a> | <a href="../docs-jp/README.md">日本語</a></p>
+<table class="sphinxhide">
+ <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Embedded Design Documentation</h1>
     </td>
  </tr>
- </table>
+</table>
 
-AMD and its Ecosystem Partners deliver embedded tools and runtime environments designed to enable you to efficiently and quickly move from concept to release. We provide you with all the components needed to create your embedded system using AMD Zynq™ SoC and AMD Zynq UltraScale+™ MPSoC devices, AMD MicroBlaze™ processor cores, and Arm Cortex-M1/M3 micro controllers including open source operating systems and bare metal drivers, multiple runtimes and Multi-OS environments, sophisticated Integrated Development Environments, and compilers, debuggers, and profiling tools.
+# Embedded Design Tutorials
 
-<img src="Getting_Started\Versal-EDT\docs\media\embedded-tutorials-landing.png"></a>
+AMD and its Ecosystem Partners deliver embedded tools and runtime environments designed to enable you to efficiently and quickly move from concept to release. We provide you with all the components needed to create your embedded system using AMD Zynq™ SoC and AMD Zynq UltraScale+™ MPSoC devices, AMD MicroBlaze™ processor cores, and Arm Cortex-M1/M3 micro controllers. This includes open source operating systems and bare metal drivers, multiple runtimes and Multi-OS environments, sophisticated Integrated Development Environments, and compilers, debuggers, and profiling tools.
 
-For more information about available embedded tools available from AMD, see [ Embedded Software Infrastructure](https://www.xilinx.com/products/design-tools/embedded-software.html).
+![Embedded Design software stack](./images/embedded-tutorials-landing.png)
 
-This repository provides information about creating embedded designs. The following documents are available.
+> For more information about available embedded tools available from AMD, see [Embedded Software Infrastructure](https://www.xilinx.com/products/design-tools/embedded-software.html).
 
-# Introduction Tutorials
+
+## Getting Started
 
 The Embedded Design Tutorials provide an introduction to the embedded flow for AMD devices.
 
@@ -37,35 +38,27 @@ Provides an introduction for using the Vivado Design Suite flow for using the Zy
 <td align="center"><a href="Getting_Started/Zynq7000-EDT">Zynq-7000 SoC Embedded Design Tutorial</a></td>
 <td>Zynq 7000 SoC devices</td><td>
 Provides an introduction for using the Vivado Design Suite flow for using the Zynq 7000 SoC device.</td></tr>
+<tr>
+<td align="center"><a href="Getting_Started/microblaze-system">Programming an Embedded MicroBlaze Processor</a></td>
+<td>Spartan®-7 devices</td><td>
+Create an AMD MicroBlaze™ system for a Spartan-7 FPGA using Vivado IP integrator.</td></tr>
 </table>
 
-# Feature Tutorials
+## Design Tutorials
 
-<table style="width:100%">
-<tr>
-<td align="center"><b>Guide</b></td>
-<td align="center"><b>Description</b></td>
-</tr>
-<tr>
- <td align="center"><a href="Feature_Tutorials/README.MD">Advanced Feature Tutorials for Embedded Systems</a></td>
- <td>
- Showcases advanced features of the Vitis software platform, including examples to demonstrate software profiling and creating a debuggable FSBL.</a></td></tr>
- </table>
+This content has moved to a [new location](https://github.com/Xilinx/SDKOpenGLES).
 
- # Debugging Guides
+## Debugging
 
- <table style="width:100%">
-<tr>
-<td align="center"><b>Guide</b></td>
-<td align="center"><b>Description</b></td>
-</tr>
-<tr>
- <td align="center"><a href="Debugging/README.MD">Vitis Embedded Software Debugging Guide</a></td>
- <td>
- This guide provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help.</td></tr>
- </table>
+| Tutorial | Description |
+|---|---|
+| [Creating a Debuggable First Stage Boot Loader](./debugging/debuggable-fsbl/debuggable-fsbl.md) | First Stage Boot Loader (FSBL) can initialize the SoC device, load the required application or data to memory, and launch applications on the target CPU core. |
+| [Software Profiling Using the Vitis Software Platform](./debugging/sw-profiling/sw-profiling.md) | Enable profiling features for the standalone domain or board support package (BSP) and the application related to AXI CDMA. |
+| [Vitis Embedded Software Debugging Guide](./debugging/Vitis-Embedded-Software-Debugging/README.md) | This guide provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help. |
 
-# User Guides
+
+
+## Performance
 
 <table style="width:100%">
 <tr>
@@ -81,8 +74,11 @@ Provides an introduction for using the Vivado Design Suite flow for using the Zy
  <td>Provides step-by-step instructions for generating a reference design for the Dhrystone benchmark and building and running the Dhrystone application.</td>
  </tr> 
  </table>
- 
 
 
 
-<p align="center"><sup>Copyright &copy; 2020–2023 Advanced Micro Devices, Inc</sup></p>
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

@@ -2,7 +2,7 @@
 
 The predefined SPM project can be automatically loaded into the workspace with the following steps
 
-1. Select **File → New → Other** in the Vitis™ IDE.
+1. Select **File → New → Other** in the Vitis IDE.
 2. Select **Xilinx → SPM Project** in the popup menu.
 
      ![](./media/vitis_new_spm_proj.png)
@@ -101,3 +101,11 @@ This guide uses various results that are output by the target applications and v
 [Figure 12: Terminal Settings to View Transcript in the Vitis IDE](#fig12) shows the terminal settings required to view this UART transcript in the Vitis IDE. To view this pop-up menu, click on the Connect button ![](./media/image12.png) as shown in the upper-right of [Figure 11: Performance Analysis Perspective in the Vitis IDE](#fig11)
 
 > ***Note*:** Your port may be different than COM5, but all other settings are valid.
+
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>
