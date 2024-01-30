@@ -10,9 +10,9 @@
 
 AMD and its Ecosystem Partners deliver embedded tools and runtime environments designed to enable you to efficiently and quickly move from concept to release. We provide you with all the components needed to create your embedded system using AMD Zynq™ SoC and AMD Zynq UltraScale+™ MPSoC devices, AMD MicroBlaze™ processor cores, and Arm Cortex-M1/M3 micro controllers. This includes open source operating systems and bare metal drivers, multiple runtimes and Multi-OS environments, sophisticated Integrated Development Environments, and compilers, debuggers, and profiling tools.
 
-![Embedded Design software stack](Getting_Started\Versal-EDT\docs\media\embedded-tutorials-landing.png)
+![Embedded Design software stack](./images/embedded-tutorials-landing.png)
 
-For more information about available embedded tools available from AMD, see [Embedded Software Infrastructure](https://www.xilinx.com/products/design-tools/embedded-software.html).
+> For more information about available embedded tools available from AMD, see [Embedded Software Infrastructure](https://www.xilinx.com/products/design-tools/embedded-software.html).
 
 
 ## Getting Started
@@ -40,7 +40,7 @@ Provides an introduction for using the Vivado Design Suite flow for using the Zy
 Provides an introduction for using the Vivado Design Suite flow for using the Zynq 7000 SoC device.</td></tr>
 <tr>
 <td align="center"><a href="Getting_Started/microblaze-system">Programming an Embedded MicroBlaze Processor</a></td>
-<td>Spartan®-7 device</td><td>
+<td>Spartan®-7 devices</td><td>
 Create an AMD MicroBlaze™ system for a Spartan-7 FPGA using Vivado IP integrator.</td></tr>
 </table>
 
