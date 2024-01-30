@@ -50,16 +50,13 @@ This content has moved to a [new location](https://github.com/Xilinx/SDKOpenGLES
 
 ## Debugging
 
- <table style="width:100%">
-<tr>
-<td align="center"><b>Guide</b></td>
-<td align="center"><b>Description</b></td>
-</tr>
-<tr>
- <td align="center"><a href="Debugging/README.MD">Vitis Embedded Software Debugging Guide</a></td>
- <td>
- This guide provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help.</td></tr>
- </table>
+| Tutorial | Description |
+|---|---|
+| [Creating a Debuggable First Stage Boot Loader](./debugging/debuggable-fsbl/debuggable-fsbl.md) | First Stage Boot Loader (FSBL) can initialize the SoC device, load the required application or data to memory, and launch applications on the target CPU core. |
+| [Software Profiling Using the Vitis Software Platform](./debugging/sw-profiling/sw-profiling.md) | Enable profiling features for the standalone domain or board support package (BSP) and the application related to AXI CDMA. |
+| [Vitis Embedded Software Debugging Guide](./debugging/Vitis-Embedded-Software-Debugging/README.md) | This guide provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help. |
+
+
 
 ## Performance
 
