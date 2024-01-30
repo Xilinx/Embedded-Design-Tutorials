@@ -9,10 +9,11 @@
 # Debugging
 
 | Tutorial | Description |
-| ------ | ----------- |
-| [Versal Adaptive SoC Embedded Design Tutorial (UG1305)](./Versal-EDT)   | An introduction to using the AMD Vivado&trade; Design Suite flow for a Versal&trade; VMK180/VCK190/VPK180 evaluation board. |
-| [Zynq-7000 Embedded Design Tutorial (UG1165)](./Zynq7000-EDT) | An introduction to using the Vivado Design Suite flow and the Vitis™ unified software platform with a Zynq&trade; -7000 SoC device. The examples are targeted for the ZC702 Rev 1.0 evaluation board. |
-| [Zynq MPSoC Embedded Design Tutorial (UG1209)](./ZynqMPSoC-EDT)    | An introduction to using the Vivado Design Suite flow and the Vitis software platform with a Zynq UltraScale+&trade; MPSoC. The examples are targeted for the ZCU102 Rev 1.0 and Rev 1.1 evaluation boards. |
+|---|---|
+| [Creating a Debuggable First Stage Boot Loader](./debuggable-fsbl/debuggable-fsbl.md) | First Stage Boot Loader (FSBL) can initialize the SoC device, load the required application or data to memory, and launch applications on the target CPU core. |
+| [Software Profiling Using the Vitis Software Platform](./sw-profiling/sw-profiling.md) | Enable profiling features for the standalone domain or board support package (BSP) and the application related to AXI CDMA. |
+| [Vitis Embedded Software Debugging Guide](./Vitis-Embedded-Software-Debugging/README.md) | This guide provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help. |
+
 
 
 <hr class="sphinxhide"></hr>
