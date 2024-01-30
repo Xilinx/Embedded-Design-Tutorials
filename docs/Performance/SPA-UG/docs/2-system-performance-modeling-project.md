@@ -127,3 +127,11 @@ The APM is a core designed to measure the real-time performance of every connect
 ### Performance Monitor Units
 
 Each Arm Cortex-A9 CPU contains a Performance Monitor Unit (PMU). These PMUs are configured to monitor a number of different performance metrics, including CPU utilization and Instructions Per Cycle (IPC). The PMUs are accessed as part of the performance monitor framework used by the Vitis IDE. See [Chapter 3: Monitor Framework](3-monitor-framework.md) to understand how these PMU counters are used.
+
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

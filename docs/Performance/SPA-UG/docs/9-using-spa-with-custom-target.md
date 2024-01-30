@@ -193,3 +193,10 @@ The steps to use performance monitor and ATG in Vitis IDE are as follows:
         ![](./media/vitis_atg_configuration.png)
 
 5. Click **Run** to launch the run and see the performance analysis.
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

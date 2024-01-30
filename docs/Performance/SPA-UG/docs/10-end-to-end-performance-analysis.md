@@ -273,3 +273,10 @@ In summary, instrumenting the Zynq 7000 SoC Base TRD provided two benefits:
 - Validating the performance results originally modeled by the SPM
 
 - Providing a deeper analysis into various design settings
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

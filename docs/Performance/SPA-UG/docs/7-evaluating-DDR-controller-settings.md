@@ -99,3 +99,11 @@ There are other combinations of HPRs and critical levels that could work well fo
 With the performance analysis capabilities provided in the Vitis IDE, you now have the ability to verify these performance results.
 
 > ***Note*:** The Zynq UltraScale+ MPSoC also provides many ways to tune the DDR parameters and AXI QoR. The Vitis IDE does not provide a specific GUI to do it. You need to modify the registers with XSCT or customized FSBL.
+
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>
