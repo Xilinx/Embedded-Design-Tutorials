@@ -284,7 +284,5 @@ Running CDMA the App on ZC702
 
 Up until now, the examples you have been working with have all been developed and debugged in a lab environment. JTAG is required to configure and control the applications. How can you deploy applications to the board so that it can run the applications after booting by itself? See the :doc:`next chapter <./7-linux-booting-debug>` for Linux boot image configuration.
 
-.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
-   :ltrim:
-.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
-   :ltrim:
+Copyright © 2020–2024 Advanced Micro Devices, Inc 
+`Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
