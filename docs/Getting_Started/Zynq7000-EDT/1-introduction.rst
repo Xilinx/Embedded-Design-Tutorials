@@ -124,8 +124,5 @@ The reference design files for this tutorial are provided in the `ref_files <htt
 
 Start with the first examples in the :doc:`next chapter <./2-using-zynq>`.
 
-.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
-   :ltrim:
-.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
-   :ltrim:
+`Terms and Conditions <https://www.amd.com/en/corporate/copyright>`
 
