@@ -465,7 +465,5 @@ Booting Linux from QSPI Flash
 
 See the :doc:`next chapter <./8-custom-ip-driver-linux>` to connect the dots and create a more complicated design.
 
-.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
-   :ltrim:
-.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
-   :ltrim:
+Copyright © 2020–2024 Advanced Micro Devices, Inc 
+`Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
