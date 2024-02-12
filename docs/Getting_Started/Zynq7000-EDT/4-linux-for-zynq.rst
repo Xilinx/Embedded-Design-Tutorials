@@ -364,7 +364,5 @@ In this chapter, you learned how to:
 
 Up until now, all your development and debugging activities have been running on the processing system. In the :doc:`next chapter <./5-using-gp-port-zynq>`, you will start to add components to the PL (programmable logic). First, you will see how to use the GP port in Zynq devices.
 
-.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
-   :ltrim:
-.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
-   :ltrim:
+Copyright © 2020–2024 Advanced Micro Devices, Inc 
+`Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
