@@ -33,7 +33,5 @@ When reading this tutorial and running the examples, you might find the followin
 - `Vitis Embedded Software Development Flow Documentation <https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded>`_
 - :doc:`Vitis Embedded Software Debugging <../../Vitis-Embedded-Software-Debugging/Debugging>`
 
-.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
-   :ltrim:
-.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
-   :ltrim:
+Copyright © 2020–2024 Advanced Micro Devices, Inc 
+`Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
