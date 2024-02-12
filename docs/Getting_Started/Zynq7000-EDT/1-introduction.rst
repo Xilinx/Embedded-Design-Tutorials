@@ -124,6 +124,6 @@ The reference design files for this tutorial are provided in the `ref_files <htt
 
 Start with the first examples in the :doc:`next chapter <./2-using-zynq>`.
 
-.. class:: center
+.center {text-align: center;}
 `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
 
