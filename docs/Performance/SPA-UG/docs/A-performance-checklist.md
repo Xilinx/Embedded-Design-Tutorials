@@ -1,7 +1,6 @@
 # Performance Checklist
 
-The goal of this appendix is to provide you with a checklist of items to consider when evaluating the performance of your Zynq®-7000 SoC design. This should by no means be considered an exhaustive list, but
-instead a starting point for things to look out for and possible "gotchas" that are not easy to find. The Vitis™ IDE can also be a helpful tool in evaluating your system performance, and some of its features and benefits are also highlighted here.
+The goal of this appendix is to provide you with a checklist of items to consider when evaluating the performance of your Zynq 7000 SoC design. This should by no means be considered an exhaustive list, but instead a starting point for things to look out for and possible issues that are not easy to find. The Vitis IDE can also be a helpful tool in evaluating your system performance, and some of the  features and benefits are also highlighted here.
 
 - **Use SPM:** SPM is ideal for investigating system performance
      without any reliance on prior hardware design work or knowledge.
@@ -63,7 +62,7 @@ instead a starting point for things to look out for and possible "gotchas" that 
      how this is done as well as how it might affect the DDR bandwidth
      of the CPUs and the HP ports.
 
-- **Use the Zynq-7000 SoC On-Chip Memory:** The OCM is a 256 KB memory
+- **Use the Zynq 7000 SoC On-Chip Memory:** The OCM is a 256 KB memory
      block accessible to both CPUs and the programmable logic from the
      ACP, GP, and HP ports. The OCM provides low-latency access and is
      an ideal component for use in synchronization or scratch pad
@@ -85,3 +84,10 @@ instead a starting point for things to look out for and possible "gotchas" that 
      is shared by HP2 and HP3. These port pairings can be used together
      (if modifying DDRC settings) or separately (to maximize bandwidth
      across multiple DDRC ports).
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

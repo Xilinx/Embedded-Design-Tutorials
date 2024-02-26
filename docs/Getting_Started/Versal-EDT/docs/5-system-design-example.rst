@@ -229,7 +229,7 @@ To validate the design and to generate the output product, follow these steps:
 
 7. Right-click the top-level block design, edt_versal_i : edt_versal (`edt_versal.bd`), and select **Generate Output Products**.
 
-   .. image:: /media/GOP.png
+   .. image:: media/GOP.png
 
 8. Click **Generate**.
 

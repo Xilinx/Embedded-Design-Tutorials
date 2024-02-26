@@ -1,6 +1,6 @@
 # Using SPA with a Custom Target
 
-To use the Vitis™ IDE system performance analysis toolbox with your design, there are three important items to be aware of:
+To use the Vitis IDE system performance analysis toolbox with your design, there are three important items to be aware of:
 
 - Instrumenting your hardware
 - Instrumenting your software
@@ -16,13 +16,13 @@ The Zynq UltraScale+ MPSoC has some hardened APM IP blocks in the PS. They can b
 
 ![](./media/X21026-060818.png)
 
-The Vitis IDE performance analysis can make use of the PS built-in APM (blocks in yellow in the diagram above) as well as user-instantiated APM IPs in the PL. You can instantiate the APM in PL to monitor the performance of AXI interfaces between PS and PL for Zynq-7000 devices and Zynq UltraScale+ MPSoCs.
+The Vitis IDE performance analysis can make use of the PS built-in APM (blocks in yellow in the diagram above) as well as user-instantiated APM IPs in the PL. You can instantiate the APM in PL to monitor the performance of AXI interfaces between PS and PL for Zynq 7000 devices and Zynq UltraScale+ MPSoCs.
 
  *Figure 44:* **AXI Performance Monitor**
 
 ![](./media/vivado_apm.png)
 
-The previous figure shows how an instance of an APM appears in a Vivado® Design Suite IP integrator block diagram, as well as its configuration panel. The following steps give an example of adding an IP, connecting it, and configuring it. For more information about the Vivado IP Integrator, see the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* [UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug940-vivado-tutorial-embedded-design.pdf) and *Zynq UltraScale+ MPSoC Embedded Design Tutorial* [UG1209](https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/Introduction/ZynqMPSoC-EDT/README.html).
+The previous figure shows how an instance of an APM appears in a Vivado Design Suite IP integrator block diagram, as well as its configuration panel. The following steps give an example of adding an IP, connecting it, and configuring it. For more information about the Vivado IP Integrator, see the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design* [UG940](https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug940-vivado-tutorial-embedded-design.pdf) and *Zynq UltraScale+ MPSoC Embedded Design Tutorial* [UG1209](https://xilinx.github.io/Embedded-Design-Tutorials/master/docs/Introduction/ZynqMPSoC-EDT/README.html).
 
 1. Add the APM IP to your Vivado design:
 
@@ -43,7 +43,7 @@ The previous figure shows how an instance of an APM appears in a Vivado® Design
 
     - Connect **s_axi_aclk** and **s_axi_aresetn** to the clock and reset associated with **S_AXI** above.
 
-    - Connect the **SLOT_x_AXI** ports (where x=0...4) to any AXI interfaces you want to monitor, such as S_AXI_HPx, and ACP on Zynq-7000 devices, and S_AXI_HPx, S_AXI_HPCx, or S_AXI_ACE on Zynq UltraScale+ MPSoCs.
+    - Connect the **SLOT_x_AXI** ports (where x=0...4) to any AXI interfaces you want to monitor, such as S_AXI_HPx, and ACP on Zynq 7000 devices, and S_AXI_HPx, S_AXI_HPCx, or S_AXI_ACE on Zynq UltraScale+ MPSoCs.
 
     - Connect all inputs **slot_x_axi_aclk** and **slot_x_axi_aresetn** to the appropriate clocks and resets. They are used for the monitor AXI interfaces.
 
@@ -76,7 +76,7 @@ Follow these steps to add, configure, and connect the ATG IP to your Vivado desi
 
     - Connect **s_axi_aclk** and **s_axi_aresetn** to the clock and reset associated with **S_AXI** above.
 
-    - Connect the **M_AXI** ports to any AXI interfaces you want to test, such as S_AXI_HPx, and ACP on Zynq-7000 devices and S_AXI_HPx_FPD, S_AXI_HPCx, or S_AXI_ACE on Zynq UltraScale+ MPSoCs (through AXI Interconnect or AXI SmartConnect).
+    - Connect the **M_AXI** ports to any AXI interfaces you want to test, such as S_AXI_HPx, and ACP on Zynq 7000 devices and S_AXI_HPx_FPD, S_AXI_HPCx, or S_AXI_ACE on Zynq UltraScale+ MPSoCs (through AXI Interconnect or AXI SmartConnect).
   
     - Connect **irq_out** to the PL-PS IRQ input of PS. You can connect it through a Concat IP, if there are multiple interrupt inputs to the PS.
 
@@ -96,7 +96,7 @@ The following up steps in Vitis IDE are described in [Monitoring a Custom Target
 
 ## Instrumenting Software
 
-The processing system of Zynq-7000 devices and Zynq UltraScale+ MPSoCs have built-in modules to monitor the characteristics like processor utilization, CPU instructions per cycle, L1 cache miss rate, L1 data cache access per ms, CPU write stall cycle per instruction, and CPU read stall cycle per instructions. They are reported during live monitoring with any PS applications.
+The processing system of Zynq 7000 devices and Zynq UltraScale+ MPSoCs have built-in modules to monitor the characteristics like processor utilization, CPU instructions per cycle, L1 cache miss rate, L1 data cache access per ms, CPU write stall cycle per instruction, and CPU read stall cycle per instructions. They are reported during live monitoring with any PS applications.
 
 Monitoring function runtime, throughput, and latency are metrics to measure the software performance. They can be calculated using straightforward instrumentation available in the standalone BSP defined in the **xtime_l.h** header.
 
@@ -149,13 +149,13 @@ int main(void)
 }
 ```
 
-The software run time calculation is controlled by the application itself. The Vitis IDE would show a PS-related performance matrix from the **Performance Analysis** perspective. Check the steps in [Monitoring a Custom Target](#monitoring-a-custom-target) to configure this. Function level software runtime can also be checked by profiling tools. Profiling is beyond the scope of this document. See the *Vitis Unified Platform Embedded Software Development Guide* [UG1400](https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/profileanalyze.html) for more details.
+The software run time calculation is controlled by the application itself. The Vitis IDE would show a PS-related performance matrix from the **Performance Analysis** perspective. Check the steps in [Monitoring a Custom Target](#monitoring-a-custom-target) to configure this. Function level software runtime can also be checked by profiling tools. Profiling is beyond the scope of this document. See the *Vitis Unified Platform Embedded Software Development Guide* [UG1400](https://docs.xilinx.com/access/sources/dita/map?Doc_Version=2023.2%20English&url=ug1400-vitis-embedded) for more details.
 
 ## Monitoring a Custom Target
 
 The Vitis IDE provides the capability to monitor a running target, as well as controlling the ATG IP in the hardware design.
 
-Prepare a platform project before running the performance analysis because the Vitis IDE must be able to understand your hardware setup. For more details about creating a platform project, see the *Vitis Unified Platform Embedded Software Development Guide* [UG1400](https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/profileanalyze.html).
+Prepare a platform project before running the performance analysis because the Vitis IDE must be able to understand your hardware setup. For more details about creating a platform project, see the *Vitis Unified Platform Embedded Software Development Guide* [UG1400](https://docs.xilinx.com/access/sources/dita/map?Doc_Version=2023.2%20English&url=ug1400-vitis-embedded).
 
 1. Select **File -> New -> Platform Project**
 2. Click **Next** in the welcome window.
@@ -193,3 +193,10 @@ The steps to use performance monitor and ATG in Vitis IDE are as follows:
         ![](./media/vitis_atg_configuration.png)
 
 5. Click **Run** to launch the run and see the performance analysis.
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

@@ -1,7 +1,7 @@
 <p align="right"><a href="../../docs-cn/README.md">简体中文</a> | <a href="../../docs-jp/README.md">日本語</a></p>
 <table width="100%">
   <tr width="100%">
-    <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Embedded Design Tutorials</h1>
+    <td align="center"><img src="https://github.com/Xilinx/Image-Collateral/blob/main/xilinx-logo_30percent.png?raw=true" width="30%"/><h1>Embedded Design Tutorials</h1>
     </td>
  </tr>
  </table>
@@ -13,4 +13,8 @@
 | [Zynq MPSoC Embedded Design Tutorial (UG1209)](./ZynqMPSoC-EDT)    | An introduction to using the Vivado Design Suite flow and the Vitis software platform with a Zynq UltraScale+&trade; MPSoC. The examples are targeted for the ZCU102 Rev 1.0 and Rev 1.1 evaluation boards. |
 
 
-<p align="center"><sup>Copyright&copy; 2019-2023 Advanced Micro Devices, Inc.</sup></p>
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

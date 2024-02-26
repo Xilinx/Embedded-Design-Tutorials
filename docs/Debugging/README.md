@@ -1,16 +1,23 @@
-<p align="right"><a href="../../docs-cn/README.md">简体中文</a> | <a href="../../docs-jp/README.md">日本語</a></p>
-<table width="100%">
-  <tr width="100%">
-    <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>Embedded Design Tutorials</h1>
+<p class="sphinxhide" align="right"><a href="../../docs-cn/README.md">简体中文</a> | <a href="../../docs-jp/README.md">日本語</a></p>
+<table class="sphinxhide">
+ <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Embedded Design Tutorials</h1>
     </td>
  </tr>
- </table>
+</table>
+
+# Debugging
 
 | Tutorial | Description |
-| ------ | ----------- |
-| [Versal Adaptive SoC Embedded Design Tutorial (UG1305)](./Versal-EDT)   | An introduction to using the AMD Vivado&trade; Design Suite flow for a Versal&trade; VMK180/VCK190/VPK180 evaluation board. |
-| [Zynq-7000 Embedded Design Tutorial (UG1165)](./Zynq7000-EDT) | An introduction to using the Vivado Design Suite flow and the Vitis™ unified software platform with a Zynq&trade; -7000 SoC device. The examples are targeted for the ZC702 Rev 1.0 evaluation board. |
-| [Zynq MPSoC Embedded Design Tutorial (UG1209)](./ZynqMPSoC-EDT)    | An introduction to using the Vivado Design Suite flow and the Vitis software platform with a Zynq UltraScale+&trade; MPSoC. The examples are targeted for the ZCU102 Rev 1.0 and Rev 1.1 evaluation boards. |
+|---|---|
+| [Creating a Debuggable First Stage Boot Loader](./debuggable-fsbl/debuggable-fsbl.md) | First Stage Boot Loader (FSBL) can initialize the SoC device, load the required application or data to memory, and launch applications on the target CPU core. |
+| [Software Profiling Using the Vitis Software Platform](./sw-profiling/sw-profiling.md) | Enable profiling features for the standalone domain or board support package (BSP) and the application related to AXI CDMA. |
+| [Vitis Embedded Software Debugging Guide](./Vitis-Embedded-Software-Debugging/README.md) | This guide provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help. |
 
 
-<p align="center"><sup>Copyright&copy; 2019-2023 Advanced Micro Devices, Inc.</sup></p>
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>
