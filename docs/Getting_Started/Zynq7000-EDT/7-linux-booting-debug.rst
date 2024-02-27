@@ -1,9 +1,6 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
 
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+.. Copyright (C) 2024, Advanced Micro Devices, Inc. All rights reserved.
+.. SPDX-License-Identifier: X11
 
 ==============================
 Linux Boot Image Configuration
@@ -14,7 +11,7 @@ In previous chapters, you used SD boot mode for all Linux examples. SD boot mode
 Boot Methods
 ------------
 
-The boot method of Zynq |reg|-7000 devices can be categorized into these two groups:
+The boot method of Zynq |trade| 7000 devices can be categorized into these two groups:
 
 -  Master boot method
 -  Slave boot method
@@ -22,7 +19,7 @@ The boot method of Zynq |reg|-7000 devices can be categorized into these two gro
 Master Boot Method
 ~~~~~~~~~~~~~~~~~~
 
-In the master boot method, the CPU loads and executes the external boot images from non-volatile memory into the processor system (PS). Different kinds of non-volatile memories such as QSPI, NAND, NOR flash, and SD cards are used to store boot images. In this method, the master boot method is further divided into secure and non-secure modes. Refer to the *Zynq-7000 SoC Technical Reference Manual* (`UG585 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf>`_) for more details.
+In the master boot method, the CPU loads and executes the external boot images from non-volatile memory into the processor system (PS). Different kinds of non-volatile memories such as QSPI, NAND, NOR flash, and SD cards are used to store boot images. In this method, the master boot method is further divided into secure and non-secure modes. Refer to the *Zynq 7000 SoC Technical Reference Manual* (`UG585 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf>`_) for more details.
 
 The boot process is initiated by one of the Arm |reg| Cortex |trade|-A9 CPUs in the processing system (PS) and it executes on-chip ROM code. The on-chip ROM code is responsible for loading the first stage boot loader (FSBL). The FSBL does the following:
 
@@ -89,7 +86,7 @@ Booting Linux in JTAG Mode
 
          JTAG Boot Mode
 
-   -  Connect an Ethernet cable from the Zynq-7000 SoC board to your network or directly to your host machine.
+   -  Connect an Ethernet cable from the Zynq 7000 SoC board to your network or directly to your host machine.
 
    -  Connect the Windows host machine to your network.
 
@@ -285,7 +282,7 @@ Building the PetaLinux Image
 
    PetaLinux will generate the new U-Boot and `boot.scr`.
 
-   .. note:: For more information, refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf>`_).
+   .. note:: For more information, refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.xilinx.com/r/2022.2-English/ug1144-petalinux-tools-reference-guide>`_).
 
 Making a Linux Bootable Image for QSPI Flash with PetaLinux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -317,7 +314,7 @@ Making a Linux Bootable Image for QSPI Flash with the Vitis IDE
 
 This method is an alternative to the PetaLinux method. If the PetaLinux tools and Vitis software platform are not installed on the same machine, copy the PetaLinux generated boot component files to the Vitis environment first.
 
-1. In the Vitis Unified IDE, go to **Vitis** → Create Boot Image** → **Zynq** to open the Create Boot Image wizard.
+1. In the Vitis Unified IDE, go to **Vitis** → **Create Boot Image** → **Zynq** to open the Create Boot Image wizard.
 
    .. image:: ./media/image86.png
 

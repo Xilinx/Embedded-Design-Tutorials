@@ -1,27 +1,24 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
 
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+.. Copyright (C) 2024, Advanced Micro Devices, Inc. All rights reserved.
+.. SPDX-License-Identifier: X11
 
 =================================
 Using the GP Port in Zynq Devices
 =================================
 
-One of the unique features of using the Xilinx |reg| Zynq |reg|-7000 SoC as an embedded design platform is in using the Zynq SoC processing system (PS) for its Arm |trade| Cortex-A9 dual core processing system as well as the programmable logic (PL) available on it.
+One of the unique features of using the AMD |trade| Zynq |trade| 7000 SoC as an embedded design platform is in using the Zynq SoC processing system (PS) for its Arm |trade| Cortex-A9 dual core processing system as well as the programmable logic (PL) available on it.
 
 In this chapter, you will create a design with:
 
 -  An AXI GPIO block and AXI Timer block instantiated in the fabric (PL). The interrupt signals of AXI Timer will be connected to the PS.
--  A Zynq SoC PS GPIO pin connected to the fabric (PL) side pin using the EMIO interface
+-  A Zynq SoC PS GPIO pin connected to the fabric (PL) side pin using the EMIO interface.
 
 The flow of this chapter is similar to that in :doc:`Using the Zynq SoC Processing System <2-using-zynq>` and uses the Zynq device as a base hardware design. It is assumed that you understand the concepts discussed in :doc:`Using the Zynq SoC Processing System <./2-using-zynq>` regarding adding the Zynq device into a Vivado IP integrator block diagram design.
 
 Adding IP in PL to the Zynq SoC Processing System
 -------------------------------------------------
 
-There is no restriction on the complexity of an intellectual property (IP) that can be added in fabric to be tightly coupled with the Zynq |reg| SoC PS. This section covers a simple example with an AXI GPIO, an AXI Timer with interrupt, and a PS section GPIO pin connected to a PL side pin using the EMIO interface. The block diagram for the system is as shown in the following figure.
+There is no restriction on the complexity of an intellectual property (IP) that can be added in fabric to be tightly coupled with the Zynq |trade| SoC PS. This section covers a simple example with an AXI GPIO, an AXI Timer with interrupt, and a PS section GPIO pin connected to a PL side pin using the EMIO interface. The block diagram for the system is as shown in the following figure.
 
 .. figure:: ./media/image38.jpeg
    :alt: Target design block diagram
@@ -30,7 +27,7 @@ There is no restriction on the complexity of an intellectual property (IP) that 
 
 You can use the system created in :doc:`Using the Zynq SoC Processing System <2-using-zynq>` and continue with the following examples.
 
-In the examples in this chapter, we will expand on the design with the following design changes:
+In the examples provided within this chapter, we will expand on the design with the following design changes:
 
 -  The fabric-side AXI GPIO is assigned a 1-bit channel width and is connected to the **SW5** push-button switch on the ZC702 board.
 
@@ -73,7 +70,7 @@ In this example, you will add the AXI GPIO, AXI Timer, the interrupt instantiate
 
 1. Open the Vivado design created in :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`:
 
-   1. Launch the Vivado |reg| IDE.
+   1. Launch the AMD Vivado |trade| IDE.
    2. Under the Recent Projects column, click the **edt_zc702** design that you created in :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`.
    3. In Flow Navigator window, click **Open Block Design** under **IP Integrator**.
 
@@ -241,7 +238,7 @@ Vivado.
 
 2. In the **Switch XSA** view, browse for the exported XSA file (``C:/edt/edt_zc702/system_wrapper.xsa``) from Vivado and click **OK**.
 
-3. Users can select the **Hardware Specification** in the same window, and the user should see the updated IP here.
+3. Select the **Hardware Specification** using the same window, and you will be able to see the updated IP.
 
 4. Rebuild the out-of-date platform project.
 
@@ -254,14 +251,14 @@ Testing the PL IP with Prepared Software
 1. Create a new standalone application for Arm Cortex-A9:
 
    -  Select **File → New Component → Application Project**.
-   -  Give the Application Name: **hello_pl** and select **Next**.
-   -  Select the **edt_zc702** and select **Next**.
-   -  Choose the default domain in the Platform and select **Next**.
-   -  Click **Finish**. The Vitis IDE creates an empty applicaiton template called **hello_pl**.
+   -  Give the Application Name: **hello_pl** and click **Next**.
+   -  Select the **edt_zc702** and click **Next**.
+   -  Choose the default domain in the Platform and click **Next**.
+   -  Click **Finish**. The Vitis Unified IDE creates an empty application template called **hello_pl**.
 
 2. Import the provided source file to hello_pl project:
 
-   -  In Vitis Components view, go to **hello_pl → Sources abd right-click on **src** and select **Import** → **files**.
+   -  In Vitis Components view, go to **hello_pl → Sources** and right-click **src** and select **Import → files**.
    -  Point to the **ref_files/example6** directory of this repository.
    -  Select **hello_pl.c**.
    -  Click **Finish**.
@@ -282,8 +279,8 @@ Testing the PL IP with Prepared Software
 
 7. Run the project similar to the steps in :ref:`running-the-hello-world-application-on-a-zc702-board`.
 
-   - Highlight the *hello_pl* Application Component and under **FLOW** select **Run**, and select the **Open Settings** to launch the Launch Configuration.
-   - Check the Target Connection is correct for your host to target board connection, and select the **Run** icon
+   - Highlight the *hello_pl* Application Component and under **FLOW** select **Run**, and click **Open Settings** to launch the **Launch Configuration**.
+   - Check the Target Connection is correct for your host to target board connection, and click **Run** icon.
 
     .. figure:: ./media/image56.png
        :alt: Run Configuration

@@ -1,9 +1,6 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
 
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+.. Copyright (C) 2024, Advanced Micro Devices, Inc. All rights reserved.
+.. SPDX-License-Identifier: X11
 
 ==========================================
 Using the HP Slave Port with AXI CDMA IP
@@ -16,7 +13,7 @@ You will write standalone application software and Linux OS based application so
 Integrating AXI CDMA with the Zynq SoC PS HP Slave Port
 -------------------------------------------------------
 
-Xilinx  Zynq |reg|-7000 SoC devices internally provide four high performance (HP) AXI slave interface ports that connect the programmable logic (PL) to asynchronous FIFO interface (AFI) blocks in the processing system (PS). The HP ports enable a high throughput data path between AXI masters in the programmable logic and the processing system’s memory system (DDR and on- chip memory). HP slave ports are configurable to 64-bit or 32-bit interfaces.
+AMD Zynq |trade| 7000 SoC devices internally provide four high performance (HP) AXI slave interface ports that connect the programmable logic (PL) to asynchronous FIFO interface (AFI) blocks in the processing system (PS). The HP ports enable a high throughput data path between AXI masters in the programmable logic and the processing system’s memory system (DDR and on- chip memory). HP slave ports are configurable to 64-bit or 32-bit interfaces.
 
 In this section, you will create a design using AXI CDMA intellectual property (IP) as master in fabric and integrate it with the PS HP 64 bit slave port. The block diagram for the system is as shown in the following figure.
 
