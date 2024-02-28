@@ -1,9 +1,6 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
 
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+.. Copyright (C) 2024, Advanced Micro Devices, Inc. All rights reserved.
+.. SPDX-License-Identifier: X11
 
 ==================================================================
 Debugging Standalone Applications with the Vitis Unified Software Platform
@@ -22,7 +19,7 @@ capabilities:
 
 The Vitis debugger enables you to see what is happening to a program while it executes. You can set breakpoints or watch points to stop the processor, step through program execution, view the program variables and stack, and view the contents of the memory in the system.
 
-The Vitis software platform supports debugging through Xilinx System Debugger and GNU Debugger (GDB).
+The Vitis software platform supports debugging through Vitis Unified System Debugger and GNU Debugger (GDB).
 
 .. note:: The GDB flow is deprecated and might not be available in the future releases.
 
@@ -37,11 +34,11 @@ The debug workflow is described in the following figure.
 
 The workflow is made up of the following components:
 
--  **Executable ELF File:** To debug your application, you must use an Executable and Linkable Format (ELF) file compiled for debugging. The debug ELF file contains additional debug information for the debugger to make direct associations between the source code and the binaries generated from that original source. Users has the option to Debug or Run in the Vitis Unified IDE. Both Debug and Run will have the same compile options. However, in Run the debugger will not be run and no Breakpoints will be hit. Highlight your application, and under FLOW. Select Build and click the hammer icon.
+-  **Executable ELF File:** To debug your application, you must use an Executable and Linkable Format (ELF) file compiled for debugging. The debug ELF file contains additional debug information for the debugger to make direct associations between the source code and the binaries generated from that original source. In the Vitis Unified IDE, you can opt to Debug or Run, both functionalities contain the same compile options. However, in **Run** mode, the debugger will not be activated, and no Breakpoints will be hit. Highlight your application under FLOW, select Build and click the hammer icon.
 
 -  **Launch Configuration:** To launch the debug session, you must create a Launch Configuration in the Vitis IDE. This configuration captures the options required to start a debug session, including the executable name, processor target to debug, and other information. To create a Launch Configuration, click on the open settings icon for either Debug or Run under FLOW and select **New Launch Configuration**.
 
--  **Debug View:** Using the Debug View, you can manage the debugging or running of a program in the Vitis IDE. You can control the execution of your program by setting breakpoints, suspending launched programs, stepping through your code, and examining the contents of variables. To launch the Debug View from a Launch Configuration select the Debug icon. You can also quickly switch to the Debug View using the Debug icon on the left hand side of the Vitis IDE.
+-  **Debug View:** Using the Debug View, you can manage the debugging or running of a program in the Vitis IDE. You can control the execution of your program by setting breakpoints, suspending launched programs, stepping through your code, and examining the contents of variables. Select **Debug**, to launch the Debug View from a Launch Configuration. You can also quickly switch to the Debug View using the Debug icon on the left hand side of the Vitis IDE.
 
 You can repeat the cycle of modifying the code, building the executable, and debugging the program in the Vitis software platform.
 
@@ -55,13 +52,13 @@ Example 3: Debugging Standalone Software Using the Vitis Software Platform
 Setup Target Connections
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, there is a target connection set up for the localhost (127.0.0.1) at port 3121. However, users may be connecting remotely. If this is the case, then users need to set up the target connection that will be used in the Launch Configuration later in this tutorial. 
+A target connection is established for the localhost (127.0.0.1) at port 3121, by default. However, if you opt for a remote connection, you need to set up the target connection for the Launch Configuration later in this tutorial. 
 
-To view the target connections, go to Vitis -> Target Connections. 
+To view the target connections, go to **Vitis -> Target Connections**. 
 
 .. image:: ./media/new_target.PNG
 
-Right click on the Hardware Server and select New Target and add your connection details
+Right click on the **Hardware Server** and select **New Target** and add your connection details.
 
 .. image:: ./media/target_details.PNG
 
@@ -77,9 +74,9 @@ Input and Output Files
 Debugging Standalone Applications in the Vitis IDE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Highlight your application under Vitis Components, and then click on the open settings icon for either Debug or Run under FLOW and select **New Launch Configuration**.
+1. Highlight your application under Vitis Components, click the open settings icon for either **Debug** or **Run** under FLOW, and select **New Launch Configuration**.
 
-   Users may need to change the , and click the **Debug** button.
+   In Target Setup tab, fill the Hardware Platform field with the one exported by the Vivado |trade| Design Suite, and click the **Debug** button.
 
    .. image:: ./media/image58.png
 
@@ -109,7 +106,7 @@ Debugging Standalone Applications in the Vitis IDE
 
    Program execution stops at the line of code that includes the print command.
 
-   .. note:: The execution address in your debugging window might differ if you modified the “Hello World” source code in any way.
+   .. note:: The execution address in your debugging window might differ if you modify the “Hello World” source code in any way.
 
 6. Select **Run → Resume** to run the program to conclusion.
 
@@ -121,7 +118,7 @@ Debugging Standalone Applications in the Vitis IDE
 
 .. image:: ./media/debug_icons.PNG
 
-This chapter introduced standalone software building and debugging. In the :doc:`next chapter <./4-linux-for-zynq>`, you can start working on Linux applications for Zynq-7000 SoCs.
+This chapter introduced standalone software building and debugging. In the :doc:`next chapter <./4-linux-for-zynq>`, you can start working on Linux applications for Zynq 7000 SoCs.
 
 Copyright © 2020–2024 Advanced Micro Devices, Inc 
 `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_

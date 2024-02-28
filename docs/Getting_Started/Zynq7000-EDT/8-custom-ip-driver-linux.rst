@@ -1,19 +1,16 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
 
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+.. Copyright (C) 2024, Advanced Micro Devices, Inc. All rights reserved.
+.. SPDX-License-Identifier: X11
 
 ===============================================
 Creating Custom IP and Device Drivers for Linux
 ===============================================
 
-In this chapter, you will create an intellectual property (IP) using the Create and Package New IP wizard. You will also design a system to include the new IP created for the Xilinx |reg| Zynq |reg|-7000 SoC device.
+In this chapter, you will create an intellectual property (IP) using the Create and Package New IP wizard. You will also design a system to include the new IP created for the AMD |trade| Zynq |trade| 7000 SoC device.
 
 For the IP, you will develop a Linux-based device driver as a module that can be dynamically loaded onto the running kernel.
 
-You will also develop Linux-based application software for the system to execute on the Zynq SoC ZC702 board.
+You will also develop Linux-based application software for the system to execute on the AMD Zynq |trade| SoC ZC702 board.
 
 .. important:: 
        
@@ -332,7 +329,7 @@ For kernel compilation and device driver development, you must use the Linux wor
 
 1. Set the toolchain path in your Linux workstation.
 
-2. Download the kernel source code and compile it. For downloading and compilation, refer to the steps mentioned in the `Xilinx Zynq Linux
+2. Download the kernel source code and compile it. For downloading and compilation, refer to the steps mentioned in the `AMD Zynq Linux
    Wiki Page <https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841961/Zynq+Linux>`_.
 
 
@@ -420,7 +417,7 @@ The advatange of using Vitis to create a linux module is that the user can devel
 Example 13: Loading a Module into a Kernel and Executing the Application
 ------------------------------------------------------------------------
 
-In this example, you will boot Linux onto the Zynq SoC Board and load the peripheral IP as an LKM onto it. You will develop the application for the system and execute it onto the hardware.
+In this example, you will boot Linux onto the Zynq |trade| SoC Board and load the peripheral IP as an LKM onto it. You will develop the application for the system and execute it onto the hardware.
 
 Loading the Module into Kernel Memory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -443,7 +440,7 @@ Example Steps
 Booting Linux on the Target Board
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Boot Linux on the Zynq SoC ZC702 target board.
+Boot Linux on the AMD Zynq SoC ZC702 target board.
 
 Loading Modules and Executing Applications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
