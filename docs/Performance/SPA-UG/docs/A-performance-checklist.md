@@ -84,3 +84,10 @@ The goal of this appendix is to provide you with a checklist of items to conside
      is shared by HP2 and HP3. These port pairings can be used together
      (if modifying DDRC settings) or separately (to maximize bandwidth
      across multiple DDRC ports).
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

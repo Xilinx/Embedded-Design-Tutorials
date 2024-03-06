@@ -1,4 +1,4 @@
-<p class="sphinxhide" align="right"><a href="../../docs-cn/README.md">简体中文</a> | <a href="../../docs-jp/README.md">日本語</a></p>
+<p class="sphinxhide" align="right"><a href="../../../docs-cn/README.md">简体中文</a> | <a href="../../../docs-jp/README.md">日本語</a></p>
 <table width="100%">
   <tr width="100%">
     <td align="center"> <img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"> 
@@ -666,20 +666,9 @@ In this tutorial, you:
 
 The Tcl script `lab.tcl` is included with the design files to perform all the tasks in Vivado. The Vitis software platform operations must be done in the Vitis GUI. You will need to modify the Tcl script to match the desired project path and project name on your machine.
 
-## License
 
-___
+<hr class="sphinxhide"></hr>
 
-The MIT License (MIT)
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
 
-Copyright (c) 2023 Advanced Micro Devices, Inc.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-<p align="center"><sup>XD131 | &copy; Copyright 2022–2023 AMD, Inc.</sup></p>
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

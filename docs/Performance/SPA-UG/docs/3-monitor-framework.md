@@ -83,3 +83,10 @@ The PS profile counters comprise the Arm Performance Monitor Unit (PMU) included
 Now that you appreciate the profile counters and how they are processed and displayed in the SPA toolbox, it is also important to understand how those counters are sampled and transferred from the target to the host machine.
 
 The Vitis IDE tool itself runs on a host machine and includes a hardware server using the Target Communication Framework (TCF). TCF can efficiently communicate with the target over the JTAG programming cable. This TCF-based hardware server controls and samples the profile counters listed in [Table 1: BEEBS Benchmarks Provided in Pre-Compiled Program Table](../docs/2-system-performance-modeling-project.md#table1) and [Table 2: Memory Stride Benchmarks Provided in Pre-Compiled Program](../docs/2-system-performance-modeling-project.md#table2) in the least intrusive manner possible. The APM and PMU counters are read using memory-mapped access via the Zynq 7000 SoC central interconnect. The counter values are then processed as described previously and displayed in the Vitis IDE.
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>
