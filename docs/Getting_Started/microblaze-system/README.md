@@ -1,5 +1,5 @@
 <p class="sphinxhide" align="right"><a href="../../../docs-cn/README.md">简体中文</a> | <a href="../../../docs-jp/README.md">日本語</a></p>
-<table width="100%">
+<table class="sphinxhide" width="100%">
   <tr width="100%">
     <td align="center"> <img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"> 
     </td>
@@ -91,6 +91,7 @@ Although Tcl commands are available for many of the actions performed in the Viv
    ![](./media/image5-1.png)
 
 7. Click **OK**. This instantiates the MIG core and connects the I/O interfaces to the I/O interfaces for the DDR memory on the SP701 board.
+
    ![](./media/image6-1.png)
 
 8. Right-click anywhere in the block design canvas, and select **Add IP**. The IP catalog opens.
@@ -99,7 +100,7 @@ Although Tcl commands are available for many of the actions performed in the Viv
 
  ***Note:*** If not displayed by default, the IP Details window can be displayed by clicking **CTRL+Q** on the keyboard while searching for IP.
 
-  ![](./media/image8-1.png) ![](./media/image7-1.png)
+  ![](./media/image7-1.png) ![](./media/image8-1.png)
 
 ### Use the Board Window to Connect to Board Interfaces
 
@@ -114,11 +115,11 @@ There are several ways to use an existing interface in IP integrator. Use the Bo
 
    ![](./media/image11-1.png)
 
-3. From the Board window, select **UART** under the Miscellaneous folder, and drag and drop it into the block design canvas. Click **OK** on the **Auto Connect** pop-up.
+3. From the Board window, select **UART** under the Miscellaneous folder, and drag and drop it into the block design canvas.
 
     This instantiates the AXI Uartlite IP on the block design.
 
-4. From the Board window, select **LED** under the General Purpose Input or Output folder, and drag and drop it into the block design canvas. Click **OK** on the **Auto Connect** pop-up.
+4. From the Board window, select **LED** under the General Purpose Input or Output folder, and drag and drop it into the block design canvas.
 
     This instantiates the GPIO IP on the block design and connects it to the on-board LEDs. 
 
@@ -133,7 +134,7 @@ There are several ways to use an existing interface in IP integrator. Use the Bo
 
 1. Add the AXI block RAM Controller, shown in the following figure, by right-clicking the IP integrator canvas and selecting **Add IP**.
 
-   ![](./media/image14-1.png)![](./media/image13-1.png)
+   ![](./media/image13-1.png) ![](./media/image14-1.png)
 
     The block design now should look like the following figure.
 
@@ -163,6 +164,7 @@ There are several ways to use an existing interface in IP integrator. Use the Bo
     g. Leave the Interrupt Controller option unchecked.
 
     h. Leave The Clock source option set to **/mig_7series_0/ui_addn_clk_0 (100 MHz)**.
+
     ![](./media/image16-1.png)
 
 3. Click **OK**.
@@ -372,7 +374,8 @@ This connection connects the AXI4 master port of the MicroBlaze Debug Module (MD
 
     a. Expand the microblaze_0 instance by clicking on the Expand All icon ![](./media/image27-1.png) in the toolbar to the top of the Address Editor window.
 
-    b. Change the range of microblaze_0/mig_7_series_0/memmap IP in both the Data and the Instruction section to **512 MB**, and mdm_1/mig_7_series_0/memmap also to **512 MB**, as shown in the following figure.
+    b. Ensure the range of microblaze_0/mig_7_series_0/memmap IP in both the Data and the Instruction section are **512 MB**, and mdm_1/mig_7_series_0/memmap also tis **512 MB**, as shown in the following figure.
+
    ![](./media/image29-1.png)
 
     c. The top of the Address Editor window should show Assigned (11), indicating all 11 interfaces were assigned addresses. If Unassigned shows any interfaces unassigned, click on the **Assign All** arrow ![](./media/image28-1.png).
@@ -453,7 +456,7 @@ Next, open the design and export to the Vitis software platform.
 2. Click **Next**.
 
 3. Select the **Include bitstream** option using the radio button in the Output view and click **Next**.
-    ![](./media/image34-1.png)
+    ![](./media/image34-2.png)
 
 4. Leave the XSA file name field at its default value and click **Next**. (The following figure shows Windows-specific settings.)
     ![](./media/image35-1.png)
@@ -463,107 +466,89 @@ Next, open the design and export to the Vitis software platform.
 
 6. To launch the Vitis software platform, select **Tools > Launch Vitis IDE**. The Eclipse Launcher dialog box opens.
 
-7. Specify the desired Workspace location such as C:\Projects\Vitis_Workspaces\microblaze-system (Windows-specific).
-
-8. Click **Launch**.
-
-## Step 9: Create a "Peripheral Test" Application
+## Step 9: Create a "Platform Component"
 
 The Vitis software platform launches in a separate window.
 ![](./media/image37-1.png)
 
-1. Close the Welcome screen if it appears.
+1. Select **Open Workspace** and select an new folder for the desired Workspace location, such as C:\Projects\Vitis_Workspaces\microblaze-system (Windows-specific).
 
-2. Select **File > New > Application Project** or under **Project** click **Create Application Project**.
+2. Select **File > New Component > Platform** or under **Embedded Development** click **Create Platform Component**.
     ![](./media/image38-1.png)
 
-3. Select the **Skip welcome page next time** check box if you do not want the welcome to appear when the Vitis software platform is launched again.
+3. Click **Next**.
 
-4. Click **Next**.
-
-5. In the Platform page, select the **Create a new platform from hardware (XSA)** tab.
+4. In the Platform Creation Flow window, select the **Hardware Design** option and Click **Browse** to open the Select Hardware Design (XSA) window. Navigate to the directory where the XSA file was created in Vivado and click **Open**.
     ![](./media/image39-1.png)
 
-6. Click **Browse** to open the Create Platform from XSA window. Navigate to the directory where the XSA file was created in Vivado and click **Open**.
+5. Click **Next**.
+
+6. In the Operating System and Processor window, select the **standalone** for the operating sytem and **microblaze_0** for the processor.
     ![](./media/image40-1.png)
 
 7. Click **Next**.
 
-8. In the Application project name field, type the name desired, such as `peri_test`. Leave all other fields to their default values, and click **Next**.
+8. Review the Platform Component Creation Summary and click **Finish**.
+    ![](./media/image40-2.png)
 
-    ![](./media/image41-1.png)
+## Step 10: Create a "Peripheral Test" Application
 
-9. In the Domain page leave all the fields at their default values and click **Next**.
+1. Select **File > New Component > From Examples** or under **Get Started** click **Examples**.
+    ![](./media/image38-1.png)
+
+2. Select **Peripheral Tests**.
+    ![](./media/image41-2.png)
+
+3. Click on **Create Application Component from Template**.
     ![](./media/image42-1.png)
 
-10. In the Templates page, select **Peripheral Tests**.
+4. Click **Next**.
+
+5. In the Platform page, select the previously created platform.
     ![](./media/image43-1.png)
+    
+6. Click **Next**.
 
-11. Click **Finish**.
+7. In the Domain page leave all the fields at their default values and click **Next**.
+    ![](./media/image43-2.png)
 
-12. A new ```peri_test``` application is created. To build the application click the hammer icon![](./media/image44-1.png) in the toolbar.
+8. Review the Summary and click **Finish**.
+    ![](./media/image43-3.png)
 
-13. Wait for the application to finish compiling.
+9. A new ```peripheral_tests``` application is created. If the `testperiph.c` file is not already open, select **MICROBLAZE-SYSTEM/peripheral_tests [Application]/Sources/src/testperiph.c**, and double-click to open the source file. Modify the source file by inserting a while statement at approximately line 18. Press **Ctrl + S** to save the file.
+    a. In line 18, add ` while(1)` above the curly brace as shown in the following figure.
+   ![](./media/image51-1.png)
 
-14. Right-click the peri_test application in the Project Explorer, and select **Generate Linker Script**.
+10. To build the application select **peripheral_tests** under **Flow > Component** and click on **Build**. Click **OK** on the pop-up window to build the associated platform.
 
-    The Generate Linker Script dialog box opens.
+    ![](./media/image44-1.png)
 
-15. Select the **Basic** tab, and change the Assigned Memory for Heap and Stack, Code, and Data to DDR memory. Change the Place Code Sections in:, 
-    Place Data Sections in: and Place Heap and Stack in: sections to **mig_7series_0_memaddr**.
-    ![](./media/image45-1.png)
+11. Wait for the application to finish compiling.
 
-    Setting these values to **mig_7series_0** ensures that the compiled code executes from the DDR3 Memory IP.
-
-16. Click **Generate**.
-
-17. Click **Yes** to overwrite it in the **Linker Already Exists!** dialog box.
-
-18. Click the hammer icon![](./media/image44-1.png) in the toolbar again to rebuild the application with the modified linker script.
-
-## Step 10: Execute the Software Application on a SP701 Board
+## Step 11: Execute the Software Application on a SP701 Board
 
 ![](./media/image29.png)**IMPORTANT!** *Make sure that you have connected the target board to the host computer and it is turned on.*
 
-1. Select and right-click the peri_test application in the Project Explorer, and select **Debug As → Debug Configurations**.
-
-    The Debug Configurations dialog box opens, as shown in the following figure.
-
-2. Right-click **Single Application Debug**, and select **New Configuration**.
+1. To start the debug session, click on the Debug icon under **Flow > Component [peripheral_tests] > Debug**.
 
     ![](./media/image46-1.png)
 
-3. The configurations page opens. Click **Debug**.
+2. The Debug perspective window opens, if the `testperiph.c` file is not already open, select **../src/testperiph.c**, and double-click to open the source file.
 
     ![](./media/image47-1.png)
 
-    The Debug perspective window opens.
+3. Add a breakpoint in the code so that the processor stops code execution when the breakpoint is encountered. To do so, scroll down to line 24 and click on the left pane red dot, which adds a breakpoint on that line of code, as shown in the following figure.
 
-4. Set the terminal by selecting the Vitis Terminal tab and clicking the ![](./media/image48-1.png) button.
+    ![](./media/image48-1.png)
 
-5. Use the settings shown in the following figure for the SP701 board and click **OK**.
+4. Configure your terminal program (e.g., TeraTerm, Putty) to connect to the SP701 Serial Port with the settings shown below.
+    - Baud rate = 9600
+    - Data bits = 8
+    - Stop bits = 1
+    - Flow control = None
+    - Parity = None
 
-    ![](./media/image49-1.png)
-
-6. Verify the terminal connection by checking the status at the top of the Vitis software platform Terminal tab, as shown in the following figure.
-
-    ![](./media/image50-1.png)
-
-7. If the `testperiph.c` file is not already open, select **../src/testperiph.c**, and double-click to open the source file.
-
-8. Modify the source file by inserting a while statement at approximately line 41.
-
-    a. In line 41, add ` while(1)` above the curly brace as shown in the following figure.
-   ![](./media/image51-1.png)
-
-9. Add a breakpoint in the code so that the processor stops code execution when the breakpoint is encountered. To do so, scroll down to line 50 and double-click on the left pane, which adds a breakpoint on that line of code, as shown in the following figure.
-
-10. Press **Ctrl + S** to save the file. Alternatively, you can select **File → Save**.
-    ![](./media/image52-1.png)
-
-11. Click the hammer icon![](./media/image44-1.png) to rebuild the file with the modified code. Now you are ready to execute the code from the Vitis software platform.
-
-## Step 11: Connect to Vivado Logic Analyzer
+## Step 12: Connect to Vivado Logic Analyzer
 
 Connect to the SP701 board using the Vivado Logic Analyzer.
 
@@ -583,12 +568,11 @@ Connect to the SP701 board using the Vivado Logic Analyzer.
 
 5. On the Select Hardware Target page, click **Next**.
 
-6. Ensure that all the settings are correct on the Open Hardware Target Summary dialog box, as shown in the following figure, and click **Finish**.
-![](./media/image56-1.png)
+6. Ensure that all the settings are correct on the Open Hardware Target Summary dialog box and click **Finish**.
 
  ***Note*:** You can also use the Auto Connect option to connect to the target hardware.
 
-## Step 12: Set the MicroBlaze to Logic Cross Trigger
+## Step 13: Set the MicroBlaze to Logic Cross Trigger
 When the Vivado Hardware Session successfully connects to the SP701 board, you see the information shown in the following figure:
 ![](./media/image57-1.png)
 
@@ -608,35 +592,36 @@ When the Vivado Hardware Session successfully connects to the SP701 board, you s
 
     ![](./media/image60-1.png)
 
-3. In the Vitis software platform Debug window, click **MicroBlaze #0** and then click the **Resume** button.
+3. In the Vitis software platform Debug window, click **MicroBlaze #0** and then click the **Continue** button ![](./media/image60-2.png).
 
-The code will execute until the breakpoint set on line 50 in `testperiph.c` file is reached. As the breakpoint is reached, this triggers the ILA, as shown in the following figure.
+The code will execute until the breakpoint set on line 24 in `testperiph.c` file is reached. As the breakpoint is reached, this triggers the ILA, as shown in the following figure.
 ![](./media/image61-1.png)
 
 This demonstrates that when the breakpoint is encountered during code execution, the MicroBlaze triggers the ILA that is set up to trigger. This way you can monitor the state of the hardware at a certain point of code execution.
 
-## Step 13: Set the Logic to Processor Cross- Trigger
+## Step 14: Set the Logic to Processor Cross- Trigger
 
 Now try the logic to processor side of the cross-trigger mechanism. In other words, remove the breakpoint that you set earlier on line 50 to have the ILA trigger the processor and stop code execution.
 
-1. Select the **Breakpoints** tab towards the top right corner of the window, and clear the **testperiph.c [line: 50]** check box. This removes 
-    the breakpoint that you set up earlier.
+1. Select the **Breakpoints** tab towards the bottom left corner of the window, and clear the **testperiph.c [line: 50]** check box. This removes the breakpoint that you set up earlier.
 
     Alternatively, you can also right click on the breakpoint in the `testperiph.c` file, and select **Disable Breakpoint**.
 
-2. In the Debug window, right-click the **MicroBlaze #0 target** and select **Resume**.
+2. In the Debug window, right-click the **MicroBlaze #0 target** and select **Continue** button ![](./media/image60-2.png).
 
     The code runs continuously because it has an infinite loop.
 
-    You can see the code executing in the Terminal Window in the Vitis software platform.
+    You can see the code executing in the Terminal Window.
 
 3. In Vivado, select the **Settings - hw_ila_1** tab. Change the Trigger Mode to **BASIC_OR_TRIG_IN** and the TRIG_OUT mode to **TRIGGER_OR_TRIG_IN**.
 
-4. Click on the (+) sign in the Trigger Setup window to add the `slot_0:microblaze_0_axi_periph_M00:AWVALID` signal from the Add Probes window.
+4. Click on the (+) sign in the Trigger Setup window to add the `slot_0 : microblaze_0_axi_periph_M00_AXI : AWVALID` signal from the Add Probes window.
 
-5. In the Trigger Setup window, for `slot_0:microblaze_0_axi_periph_M00:AWVALID` signal, ensure that the Radix field is set to **[B] (Binary)** and set the Value field to **1 (logical one)**.
+5. In the Trigger Setup window, for `slot_0 : microblaze_0_axi_periph_M00_AXI : AWVALID` signal, ensure that the Operator field is set to **==**, the Radix field to **[B] (Binary)** and the Value field to **1 (logical one)**.
 
     This essentially sets up the ILA to trigger when the `awvalid` transitions to a value of 1.
+
+    ![](./media/image61-3.png)
 
 6. Click the Run Trigger button to 'arm' the ILA in the Status - hw_ila_1 window.
 

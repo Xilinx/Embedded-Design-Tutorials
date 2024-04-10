@@ -1,100 +1,576 @@
 /*
-# Copyright 2021 Xilinx Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+******************************************************************************
+# Copyright (C) 2022-2024, Advanced Micro Devices, Inc. All rights reserved. 
+# SPDX-License-Identifier: MIT
+******************************************************************************
 */
 
-/*
- * helloworld.c: simple test application
- */
-
-#include <stdio.h>
-//#include "platform.h"
+/*****************************************************************************/
+/**
+ *
+ * @file xaxicdma_example_simple_intr.c
+ *
+ * This file demonstrates how to use the xaxicdma driver on the Xilinx AXI
+ * CDMA core (AXICDMA) to transfer packets in simple transfer mode through
+ * interrupt.
+ *
+ * Modify the NUMBER_OF_TRANSFER constant to have different number of simple
+ * transfers done in this test.
+ *
+ * This example assumes that the system has an interrupt controller.
+ *
+ * To see the debug print, you need a Uart16550 or uartlite in your system,
+ * and please set "-DDEBUG" in your compiler options for the example, also
+ * comment out the "#undef DEBUG" in xdebug.h. You need to rebuild your
+ * software executable.
+ *
+ * <pre>
+ * MODIFICATION HISTORY:
+ *
+ *  . Updated the debug print on type casting to avoid warnings on u32. Cast
+ *    u32 to (unsigned int) to use the %x format.
+ *
+ * Ver   Who  Date     Changes
+ * ----- ---- -------- -------------------------------------------------------
+ * 1.00a jz   07/30/10 First release
+ * 2.01a rkv  01/28/11 Changed function prototype of XAxiCdma_SimpleIntrExample
+ * 		       to a function taking arguments interrupt instance,device
+ * 		       instance,device id,device interrupt id
+ *		       Added interrupt support for Cortex A9
+ * 2.01a srt  03/05/12 Modified interrupt support for Zynq.
+ * 		       Modified Flushing and Invalidation of Caches to fix CRs
+ *		       648103, 648701.
+ * 4.3   ms   01/22/17 Modified xil_printf statement in main function to
+ *            ensure that "Successfully ran" and "Failed" strings are
+ *            available in all examples. This is a fix for CR-965028.
+ *       ms   04/05/17 Modified Comment lines in functions to
+ *                     recognize it as documentation block for doxygen
+ *                     generation of examples.
+ * 4.4   rsp  02/22/18 Support data buffers above 4GB.Use UINTPTR for
+ *                     typecasting buffer address(CR-995116).
+ * 4.6   rsp  09/13/19 Add error prints for failing scenarios.
+ *                     Fix cache maintenance ops for source and dest buffer.
+ * 4.7   rsp  12/06/19 For aarch64 include xil_mmu.h. Fixes gcc warning.
+ * 4.8	 sk   09/28/20 Fix the compilation error for xreg_cortexa9.h
+ * 		       preprocessor on R5 processor.
+ * 4.11  sa   09/29/22 Fix infinite loops in the example.
+ * </pre>
+ *
+ ****************************************************************************/
 #include "xaxicdma.h"
 #include "xdebug.h"
 #include "xil_exception.h"
 #include "xil_cache.h"
 #include "xparameters.h"
-#include "xscugic.h"
+#include "xil_util.h"
 
-#define NUMBER_OF_TRANSFERS	2	/* Number of simple transfers to do */
+#ifndef SDT
+#ifdef XPAR_INTC_0_DEVICE_ID
+#include "xintc.h"
+#else
+#include "xscugic.h"
+#endif
+#else
+#include "xinterrupt_wrap.h"
+#endif
+
+#ifndef __MICROBLAZE__
+#include "xpseudo_asm_gcc.h"
+#endif
+
+#ifdef __aarch64__
+#include "xreg_cortexa53.h"
+#include "xil_mmu.h"
+#endif
+
+
+/******************** Constant Definitions **********************************/
+
+#ifndef SDT
+#ifndef TESTAPP_GEN
+/*
+ * The following constants map to the XPAR parameters created in the
+ * xparameters.h file. They are defined here such that a user can easily
+ * change all the needed parameters in one place.
+ */
+#ifdef XPAR_INTC_0_DEVICE_ID
+#define DMA_CTRL_DEVICE_ID	XPAR_AXICDMA_0_DEVICE_ID
+#define INTC_DEVICE_ID		XPAR_INTC_0_DEVICE_ID
+#define DMA_CTRL_IRPT_INTR	XPAR_INTC_0_AXICDMA_0_VEC_ID
+#else
 #define DMA_CTRL_DEVICE_ID 	XPAR_AXICDMA_0_DEVICE_ID
 #define INTC_DEVICE_ID		XPAR_SCUGIC_SINGLE_DEVICE_ID
-#define DMA_CTRL_IRPT_INTR	XPAR_FABRIC_AXI_CDMA_0_CDMA_INTROUT_INTR
+#define DMA_CTRL_IRPT_INTR	XPAR_FABRIC_AXICDMA_0_VEC_ID
+#endif
+#endif
+#else
+#define AXICDMA_BASE_ADDR       XPAR_XAXICDMA_0_BASEADDR
+#endif
 
-volatile static int Done = 0;	/* Dma transfer is done */
-volatile static int Error = 0;	/* Dma Bus Error occurs */
+#define BUFFER_BYTESIZE		64	/* Length of the buffers for DMA
+					 * transfer
+					 */
+
+#define NUMBER_OF_TRANSFERS	4	/* Number of simple transfers to do */
+#define POLL_TIMEOUT_COUNTER    1000000U
+#define NUMBER_OF_EVENTS	1
+/**************************** Type Definitions *******************************/
+
+
+/***************** Macros (Inline Functions) Definitions *********************/
+
+
+/************************** Function Prototypes ******************************/
+#if (!defined(DEBUG))
+extern void xil_printf(const char *format, ...);
+#endif
+
+
+static int DoSimpleTransfer(XAxiCdma *InstancePtr, int Length, int Retries);
+
+static void Example_CallBack(void *CallBackRef, u32 IrqMask, int *IgnorePtr);
+
+#ifndef SDT
+#ifdef XPAR_INTC_0_DEVICE_ID
+static int SetupIntrSystem(XIntc *IntcInstancePtr, XAxiCdma *InstancePtr,
+			   u32 IntrId);
+
+static void DisableIntrSystem(XIntc *IntcInstancePtr, u32 IntrId);
+
+int XAxiCdma_SimpleIntrExample(XIntc *IntcInstancePtr, XAxiCdma *InstancePtr,
+			       u16 DeviceId, u32 IntrId);
+#else
+static int SetupIntrSystem(XScuGic *IntcInstancePtr, XAxiCdma *InstancePtr,
+			   u32 IntrId);
+
+static void DisableIntrSystem(XScuGic *IntcInstancePtr, u32 IntrId);
+
+int XAxiCdma_SimpleIntrExample(XScuGic *IntcInstancePtr, XAxiCdma *InstancePtr,
+			       u16 DeviceId, u32 IntrId);
+
+#endif
+#else
+int XAxiCdma_SimpleIntrExample(XAxiCdma *InstancePtr, UINTPTR BaseAddress);
+#endif
+
+/************************** Variable Definitions *****************************/
+
+#ifndef TESTAPP_GEN
+static XAxiCdma AxiCdmaInstance;	/* Instance of the XAxiCdma */
+#ifndef SDT
+#ifdef XPAR_INTC_0_DEVICE_ID
+static XIntc IntcController;	/* Instance of the Interrupt Controller */
+#else
+static XScuGic IntcController;	/* Instance of the Interrupt Controller */
+#endif
+#endif
+#endif
+
+/* Source and Destination buffer for DMA transfer.
+ */
+volatile static u8 SrcBuffer[BUFFER_BYTESIZE] __attribute__ ((aligned (64)));
+volatile static u8 DestBuffer[BUFFER_BYTESIZE] __attribute__ ((aligned (64)));
+
+/* Shared variables used to test the callbacks.
+ */
+volatile static u32 Done = 0;	/* Dma transfer is done */
+volatile static u32 Error = 0;	/* Dma Bus Error occurs */
 
 static u32 SourceAddr 	= 0x20000000;
 static u32 DestAddr 	= 0x30000000;
 
-static XAxiCdma AxiCdmaInstance;	/* Instance of the XAxiCdma */
-static XScuGic IntcController;	/* Instance of the Interrupt Controller */
 
-
-
-static int Array_3[32][16];
-static int Array_4[32][16];
-
-static int Array_1[32][16];
-static int Array_2[32][16];
-
-int const input[16] = {0xb504f33, 0xabeb4a0, 0xa267994, 0x987fbfc, 0x8e39d9c, 0x839c3cc, 0x78ad74c, 0x6d743f4, 0x61f78a8, 0x563e6a8, 0x4a5018c, 0x3e33f2c, 0x31f1704, 0x259020c, 0x1917a64, 0xc8fb2c};
-/* Length of the buffers for DMA transfer */
-static u32 BUFFER_BYTESIZE	= (XPAR_AXI_CDMA_0_M_AXI_DATA_WIDTH * XPAR_AXI_CDMA_0_M_AXI_MAX_BURST_LEN);
-
-
-static int CDMATransfer(XAxiCdma *InstancePtr, int Length, int Retries);
-
-static void DisableIntrSystem(XScuGic *IntcInstancePtr , u32 IntrId)
-
+/*****************************************************************************/
+/**
+* The entry point for this example. It invokes the example function,
+* and reports the execution status.
+*
+* @param	None.
+*
+* @return
+*		- XST_SUCCESS if example finishes successfully
+*		- XST_FAILURE if example fails.
+*
+* @note		None
+*
+******************************************************************************/
+#ifndef TESTAPP_GEN
+int main()
 {
-		XScuGic_Disable(IntcInstancePtr ,IntrId );
-		XScuGic_Disconnect(IntcInstancePtr ,IntrId );
+
+	int Status;
+
+	xil_printf("\r\n--- Entering main() --- \r\n");
+
+	/* Run the interrupt example for simple transfer
+	 */
+#ifndef SDT
+	Status = XAxiCdma_SimpleIntrExample(&IntcController, &AxiCdmaInstance,
+					    DMA_CTRL_DEVICE_ID, DMA_CTRL_IRPT_INTR);
+#else
+	Status = XAxiCdma_SimpleIntrExample(&AxiCdmaInstance, AXICDMA_BASE_ADDR);
+#endif
+	if (Status != XST_SUCCESS) {
+		xil_printf("XAxiCdma_Interrupt: Failed\r\n");
+		return XST_FAILURE;
+	}
+
+	xil_printf("XAxiCdma_Interrupt: Passed\r\n");
+	xil_printf("--- Exiting main() --- \r\n");
+
+	return XST_SUCCESS;
 
 }
-//Multiply and Shift
-int MUL_SHIFT_30(int x, int y)
+#endif
+
+/*****************************************************************************/
+/**
+* The example to do the simple transfer through interrupt.
+*
+* @param	IntcInstancePtr is a pointer to the INTC instance
+* @param	InstancePtr is a pointer to the XAxiCdma instance
+* @param	DeviceId is the Device Id of the XAxiCdma instance
+* @param	IntrId is the interrupt Id for the XAxiCdma instance in build
+*
+* @return
+* 		- XST_SUCCESS if example finishes successfully
+* 		- XST_FAILURE if error occurs
+*
+* @note		If the hardware build has problems with interrupt,
+*		then this function hangs
+*
+******************************************************************************/
+#ifndef SDT
+#ifdef XPAR_INTC_0_DEVICE_ID
+int XAxiCdma_SimpleIntrExample(XIntc *IntcInstancePtr, XAxiCdma *InstancePtr,
+			       u16 DeviceId, u32 IntrId)
+#else
+int XAxiCdma_SimpleIntrExample(XScuGic *IntcInstancePtr, XAxiCdma *InstancePtr,
+			       u16 DeviceId, u32 IntrId)
+#endif
+#else
+int XAxiCdma_SimpleIntrExample(XAxiCdma *InstancePtr, UINTPTR BaseAddress)
+#endif
 {
-  return ((int) (((long long) (x) * (y)) >> 30));
+	XAxiCdma_Config *CfgPtr;
+	int Status;
+	int SubmitTries = 10;		/* Retry to submit */
+	int Tries = NUMBER_OF_TRANSFERS;
+	int Index;
+
+	/* Initialize the XAxiCdma device.
+	 */
+#ifndef SDT
+	CfgPtr = XAxiCdma_LookupConfig(DeviceId);
+#else
+	CfgPtr = XAxiCdma_LookupConfig(BaseAddress);
+#endif
+	if (!CfgPtr) {
+		return XST_FAILURE;
+	}
+
+	Status = XAxiCdma_CfgInitialize(InstancePtr, CfgPtr, CfgPtr->BaseAddress);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+	/* Setup the interrupt system
+	 */
+#ifndef SDT
+	Status = SetupIntrSystem(IntcInstancePtr, InstancePtr, IntrId);
+#else
+	Status = XSetupInterruptSystem(InstancePtr, &XAxiCdma_IntrHandler,
+				       CfgPtr->IntrId, CfgPtr->IntrParent,
+				       XINTERRUPT_DEFAULT_PRIORITY);
+#endif
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+	/* Enable all (completion/error/delay) interrupts
+	 */
+	XAxiCdma_IntrEnable(InstancePtr, XAXICDMA_XR_IRQ_ALL_MASK);
+
+	for (Index = 0; Index < Tries; Index++) {
+		Status = DoSimpleTransfer(InstancePtr,
+					  BUFFER_BYTESIZE, SubmitTries);
+
+		if (Status != XST_SUCCESS) {
+#ifndef SDT
+			DisableIntrSystem(IntcInstancePtr, IntrId);
+#else
+			XDisconnectInterruptCntrl(CfgPtr->IntrId, CfgPtr->IntrParent);
+#endif
+			return XST_FAILURE;
+		}
+	}
+
+	/* Test finishes successfully, clean up and return
+	 */
+#ifndef SDT
+	DisableIntrSystem(IntcInstancePtr, IntrId);
+#else
+	XDisconnectInterruptCntrl(CfgPtr->IntrId, CfgPtr->IntrParent);
+#endif
+
+	return XST_SUCCESS;
 }
 
-
-void MULT_SHIFT_LOOP(int Value )
+/*****************************************************************************/
+/*
+*
+* This function does one simple transfer
+*
+* @param	InstancePtr is a pointer to the XAxiCdma instance
+* @param	Length is the transfer length
+* @param	Retries is how many times to retry on submission
+*
+* @return
+*		- XST_SUCCESS if transfer is successful
+*		- XST_FAILURE if either the transfer fails or the data has
+*		  error
+*
+* @note		None
+*
+******************************************************************************/
+static int DoSimpleTransfer(XAxiCdma *InstancePtr, int Length, int Retries)
 {
-   int i, j;
-   for (i = 0; i < 32; i++) {
+	u32 Index;
+	u32  *SrcPtr;
+	u32  *DestPtr;
+	int Status;
 
-      for (j = 0; j < 16; j++) {
+	Done = 0;
+	Error = 0;
+	
+	xil_printf("Start Transfer \n\r");
 
-    	  Array_3[i][j] = (int)((MUL_SHIFT_30(input[j],Array_1[j][i])) + Value);
-    	  Array_4[i][j] = (int)((MUL_SHIFT_30(input[j],Array_2[j][i])) + Value);
-      }
-   }
+	/* Initialize the source buffer bytes with a pattern and the
+	 * the destination buffer bytes to zero
+	 */
+	//SrcPtr = (u8 *)SrcBuffer;
+	//DestPtr = (u8 *)DestBuffer;
+	SrcPtr = (u32 *)SourceAddr;
+	DestPtr = (u32 *)DestAddr;
+	for (Index = 0; Index < Length; Index++) {
+		SrcPtr[Index] = Index & 0xFF;
+		DestPtr[Index] = 0;
+	}
+
+	/* Flush the SrcBuffer before the DMA transfer, in case the Data Cache
+	 * is enabled
+	 */
+	Xil_DCacheFlushRange((u32)SourceAddr, Length);
+	Xil_DCacheFlushRange((u32)DestAddr, Length);
+
+	/* Try to start the DMA transfer
+	 */
+	while (Retries) {
+		Retries -= 1;
+
+		Status = XAxiCdma_SimpleTransfer(InstancePtr, (u32)SourceAddr,
+						 (u32)DestAddr, Length, Example_CallBack,
+						 (void *)InstancePtr);
+
+		if (Status == XST_SUCCESS) {
+			break;
+		}
+	}
+
+	if (!Retries) {
+		xdbg_printf(XDBG_DEBUG_ERROR,
+			    "Failed to submit the transfer with %d\r\n", Status);
+		return XST_FAILURE;
+	}
+
+	/* Check for any error events to occur */
+	Status = Xil_WaitForEventSet(POLL_TIMEOUT_COUNTER, NUMBER_OF_EVENTS, &Error);
+	if (Status == XST_SUCCESS) {
+		xdbg_printf(XDBG_DEBUG_ERROR, "DMA transfer error\r\n");
+		return XST_FAILURE;
+	}
+
+	/* Wait until the DMA transfer is done or timeout
+	 */
+	Status = Xil_WaitForEventSet(POLL_TIMEOUT_COUNTER, NUMBER_OF_EVENTS, &Done);
+	if (Status != XST_SUCCESS) {
+		xdbg_printf(XDBG_DEBUG_ERROR, "DMA transfer failed\r\n");
+		return XST_FAILURE;
+	}
+
+	/* Invalidate the DestBuffer before receiving the data, in case the
+	 * Data Cache is enabled
+	 */
+	Xil_DCacheInvalidateRange((UINTPTR)&DestBuffer, Length);
+
+	/* Transfer completes successfully, check data
+	 *
+	 * Compare the contents of destination buffer and source buffer
+	 */
+	for (Index = 0; Index < Length; Index++) {
+		if ( DestPtr[Index] != SrcPtr[Index]) {
+			xdbg_printf(XDBG_DEBUG_ERROR,
+				    "Data check failure %d: %x/%x\r\n",
+				    Index, DestPtr[Index], SrcPtr[Index]);
+			return XST_FAILURE;
+		}
+	}
+
+	return XST_SUCCESS;
+}
+#ifndef SDT
+/******************************************************************************/
+/*
+* Setup the interrupt system, including:
+*  	- Initialize the interrupt controller,
+*  	- Register the XAxiCdma interrupt handler to the interrupt controller
+*  	- Enable interrupt
+*
+* @param	IntcInstancePtr is a pointer to the instance of the INTC
+* @param	InstancePtr is a pointer to the instance of the XAxiCdma
+* @param	IntrId is the interrupt Id for XAxiCdma
+*
+* @return
+* 		- XST_SUCCESS if interrupt system setup successfully
+* 		- XST_FAILURE if error occurs
+*
+* @note		None
+*
+*******************************************************************************/
+#ifdef XPAR_INTC_0_DEVICE_ID
+static int SetupIntrSystem(XIntc *IntcInstancePtr, XAxiCdma *InstancePtr,
+			   u32 IntrId)
+{
+	int Status;
+
+#ifndef TESTAPP_GEN
+	/*
+	 * Initialize the interrupt controller driver
+	 */
+	Status = XIntc_Initialize(IntcInstancePtr, INTC_DEVICE_ID);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+#endif
+
+	/*
+	 * Connect the driver interrupt handler
+	 * It will call the example callback upon transfer completion
+	 */
+	Status = XIntc_Connect(IntcInstancePtr, IntrId,
+			       (XInterruptHandler)XAxiCdma_IntrHandler,
+			       (void *)InstancePtr);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+#ifndef TESTAPP_GEN
+	/*
+	 * Start the interrupt controller such that interrupts are enabled for
+	 * all devices that cause interrupts. Specify real mode so that the DMA
+	 * engine can generate interrupts through the interrupt controller
+	 */
+	Status = XIntc_Start(IntcInstancePtr, XIN_REAL_MODE);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+#endif
+
+	/*
+	 * Enable the interrupt for the DMA engine
+	 */
+	XIntc_Enable(IntcInstancePtr, IntrId);
+
+#ifndef TESTAPP_GEN
+
+	Xil_ExceptionInit();
+	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
+				     (Xil_ExceptionHandler)XIntc_InterruptHandler,
+				     (void *)IntcInstancePtr);
+
+	Xil_ExceptionEnable();
+
+#endif /* TESTAPP_GEN */
+
+	return XST_SUCCESS;
 }
 
-void TestPattern_Initialization(void)
+#else
+
+static int SetupIntrSystem(XScuGic *IntcInstancePtr, XAxiCdma *InstancePtr,
+			   u32 IntrId)
+
 {
-	 int i, j;
-	   for (i = 0; i < 32; i++)
-	   {
-	      for (j = 0; j < 16; j++)
-	      {
-	    	  Array_1[i][j] =  (int ) ((0xA5A5A5A5 >> 1) * i );
-	    	  Array_2[i][j] =  (int ) ((0xA5A5A5A5 << 1) * i );
-	      }
-	   }
+	int Status;
+
+#ifndef TESTAPP_GEN
+	/*
+	 * Initialize the interrupt controller driver
+	 */
+	XScuGic_Config *IntcConfig;
+
+
+	/*
+	 * Initialize the interrupt controller driver so that it is ready to
+	 * use.
+	 */
+	IntcConfig = XScuGic_LookupConfig(INTC_DEVICE_ID);
+	if (NULL == IntcConfig) {
+		return XST_FAILURE;
+	}
+
+	Status = XScuGic_CfgInitialize(IntcInstancePtr, IntcConfig,
+				       IntcConfig->CpuBaseAddress);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+#endif
+
+	XScuGic_SetPriorityTriggerType(IntcInstancePtr, IntrId, 0xA0, 0x3);
+
+	/*
+	 * Connect the device driver handler that will be called when an
+	 * interrupt for the device occurs, the handler defined above performs
+	 * the specific interrupt processing for the device.
+	 */
+	Status = XScuGic_Connect(IntcInstancePtr, IntrId,
+				 (Xil_InterruptHandler)XAxiCdma_IntrHandler,
+				 InstancePtr);
+	if (Status != XST_SUCCESS) {
+		return Status;
+	}
+
+	/*
+	 * Enable the interrupt for the DMA device.
+	 */
+	XScuGic_Enable(IntcInstancePtr, IntrId);
+
+
+
+#ifndef TESTAPP_GEN
+
+	Xil_ExceptionInit();
+
+	/*
+	 * Connect the interrupt controller interrupt handler to the hardware
+	 * interrupt handling logic in the processor.
+	 */
+	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_IRQ_INT,
+				     (Xil_ExceptionHandler)XScuGic_InterruptHandler,
+				     IntcInstancePtr);
+
+
+	/*
+	 * Enable interrupts in the Processor.
+	 */
+	Xil_ExceptionEnable();
+
+#endif /* TESTAPP_GEN */
+
+	return XST_SUCCESS;
 }
+#endif
+#endif
 /*****************************************************************************/
 /*
 * Callback function for the simple transfer. It is called by the driver's
@@ -113,7 +589,7 @@ void TestPattern_Initialization(void)
 * @note		None
 *
 ******************************************************************************/
-static void Cdma_CallBack(void *CallBackRef, u32 IrqMask, int *IgnorePtr)
+static void Example_CallBack(void *CallBackRef, u32 IrqMask, int *IgnorePtr)
 {
 
 	if (IrqMask & XAXICDMA_XR_IRQ_ERROR_MASK) {
@@ -128,277 +604,40 @@ static void Cdma_CallBack(void *CallBackRef, u32 IrqMask, int *IgnorePtr)
 
 }
 
-static int SetupIntrSystem(XScuGic *IntcInstancePtr, XAxiCdma *InstancePtr,
-			u32 IntrId)
-
-{
-	int Status;
-
-
-	/*
-	 * Initialize the interrupt controller driver
-	 */
-	XScuGic_Config *IntcConfig;
-
-
-	/*
-	 * Initialize the interrupt controller driver so that it is ready to
-	 * use.
-	 */
-	IntcConfig = XScuGic_LookupConfig(INTC_DEVICE_ID);
-	if (NULL == IntcConfig) {
-		return XST_FAILURE;
-	}
-
-	Status = XScuGic_CfgInitialize(IntcInstancePtr, IntcConfig,
-					IntcConfig->CpuBaseAddress);
-	if (Status != XST_SUCCESS) {
-		return XST_FAILURE;
-	}
-
-	XScuGic_SetPriorityTriggerType(IntcInstancePtr, IntrId, 0xA0, 0x3);
-
-	/*
-	 * Connect the device driver handler that will be called when an
-	 * interrupt for the device occurs, the handler defined above performs
-	 * the specific interrupt processing for the device.
-	 */
-	Status = XScuGic_Connect(IntcInstancePtr, IntrId,
-				(Xil_InterruptHandler)XAxiCdma_IntrHandler,
-				InstancePtr);
-	if (Status != XST_SUCCESS) {
-		return Status;
-	}
-
-	/*
-	 * Enable the interrupt for the DMA device.
-	 */
-	XScuGic_Enable(IntcInstancePtr, IntrId);
-
-
-
-
-	Xil_ExceptionInit();
-
-	/*
-	 * Connect the interrupt controller interrupt handler to the hardware
-	 * interrupt handling logic in the processor.
-	 */
-	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_IRQ_INT,
-				(Xil_ExceptionHandler)XScuGic_InterruptHandler,
-				IntcInstancePtr);
-
-
-	/*
-	 * Enable interrupts in the Processor.
-	 */
-	Xil_ExceptionEnable();
-
-
-	return XST_SUCCESS;
-}
-
-
-int XAxiCdma_Interrupt(XScuGic *IntcInstancePtr, XAxiCdma *InstancePtr,
-	u16 DeviceId, u32 IntrId)
-{
-	{
-		XAxiCdma_Config *CfgPtr;
-		int Status;
-		int SubmitTries = 1;		/* Retry to submit */
-		int Tries = NUMBER_OF_TRANSFERS;
-		int Index;
-
-		/* Initialize the XAxiCdma device.
-		 */
-		CfgPtr = XAxiCdma_LookupConfig(DeviceId);
-		if (!CfgPtr) {
-			return XST_FAILURE;
-		}
-
-		Status = XAxiCdma_CfgInitialize(InstancePtr, CfgPtr, CfgPtr->BaseAddress);
-		if (Status != XST_SUCCESS) {
-			return XST_FAILURE;
-		}
-
-		/* Setup the interrupt system
-		 */
-		Status = SetupIntrSystem(IntcInstancePtr, InstancePtr, IntrId);
-		if (Status != XST_SUCCESS) {
-			return XST_FAILURE;
-		}
-
-		/* Enable all (completion/error/delay) interrupts
-		 */
-		XAxiCdma_IntrEnable(InstancePtr, XAXICDMA_XR_IRQ_ALL_MASK);
-
-		for (Index = 0; Index < Tries; Index++) {
-			Status = CDMATransfer(InstancePtr,
-				   BUFFER_BYTESIZE, SubmitTries);
-
-			if(Status != XST_SUCCESS) {
-				DisableIntrSystem(IntcInstancePtr, IntrId);
-				return XST_FAILURE;
-			}
-		}
-
-		/* Test finishes successfully, clean up and return
-		 */
-		DisableIntrSystem(IntcInstancePtr, IntrId);
-
-		return XST_SUCCESS;
-	}
-}
+#ifndef SDT
 /*****************************************************************************/
 /*
 *
-* This function does  CDMA transfer
+* This function disables the interrupt for the XAxiCdma device
 *
-* @param	InstancePtr is a pointer to the XAxiCdma instance
-* @param	Length is the transfer length
-* @param	Retries is how many times to retry on submission
+* @param	IntcInstancePtr is the pointer to the instance of the INTC
+* @param	IntrId is the interrupt Id for the XAxiCdma instance
 *
-* @return
-*		- XST_SUCCESS if transfer is successful
-*		- XST_FAILURE if either the transfer fails or the data has
-*		  error
+* @return	None.
 *
-* @note		None
+* @note		None.
 *
 ******************************************************************************/
-static int CDMATransfer(XAxiCdma *InstancePtr, int Length, int Retries)
+#ifdef XPAR_INTC_0_DEVICE_ID
+static void DisableIntrSystem(XIntc *IntcInstancePtr, u32 IntrId)
 {
 
-	int Status;
-
-	Done = 0;
-	Error = 0;
-
-
-	printf("Start Transfer \n\r");
-	/* Try to start the DMA transfer
+	/* Disconnect the interrupt
 	 */
-		Done = 0;
-		Error = 0;
+	XIntc_Disconnect(IntcInstancePtr, IntrId);
 
-		/* Flush the SrcBuffer before the DMA transfer, in case the Data Cache
-		 * is enabled
-		 */
-		Xil_DCacheFlushRange((u32)SourceAddr, Length);
-
-		Status = XAxiCdma_SimpleTransfer(InstancePtr,
-										(u32)(u8 *) (SourceAddr ),
-										(u32)(DestAddr),
-										Length,
-										Cdma_CallBack,
-										(void *)InstancePtr);
-
-		if (Status == XST_FAILURE) {
-			printf("Error in Transfer  \n\r");
-			return 1;
-		}
-
-
-
-		/* Wait until the DMA transfer is done
-			 */
-			while (!Done && !Error) {
-				/* Wait */
-			}
-
-			if (Error) {
-				return XST_FAILURE;
-				return 1;
-			}
-		/* Invalidate the DestBuffer before receiving the data, in case the
-		 * Data Cache is enabled
-		 */
-		Xil_DCacheInvalidateRange((u32)DestAddr, Length);
-
-	return XST_SUCCESS;
 }
-int main()
+#else
+static void DisableIntrSystem(XScuGic *IntcInstancePtr, u32 IntrId)
 {
-	int Status;
-	u32  *SrcPtr;
-	u32  *DestPtr;
-	unsigned int  Index;
-	int i, j;
 
-    printf("\r\n--- Entering main() --- \r\n");
-
-	/*********************************************************************************
-		Step : 1 : Intialization of the SOurce Memory with the Specified test pattern
-			   	   Clear Destination memory
-	**********************************************************************************/
-    TestPattern_Initialization();
-
-    /* Initialize the source buffer bytes with a pattern and the
-    	 * the destination buffer bytes to zero
-   	 */
-   	SrcPtr = (u32*)SourceAddr;
-   	DestPtr = (u32 *)DestAddr;
-   	for (Index = 0; Index < (BUFFER_BYTESIZE/1024); Index++)
-   	{
-   		MULT_SHIFT_LOOP((Index*100));
-   		for (i = 0; i < 32; i++)
-   		{
-   			for (j = 0; j < 16; j++)
-   			{
-   				SrcPtr[((i+j))*(Index+1)] 		= Array_3[i][j];
-   				SrcPtr[((i+j)*(Index+1)) + 1] 	= Array_4[i][j];
-   				DestPtr[(i+j)*(Index+1)] 		= 0;
-   				DestPtr[((i+j)*(Index+1)) + 1] = 0;
-   			}
-
-   		}
-
-   	}
-	/*********************************************************************************
-		Step : 2 : AXI CDMA Intialization
-				   Association of the CDMA ISR with the Interrupt
-				   Enable the CDMA Interrupt
-			   	   Provide Source and destination location to CDMA
-			   	   Specified Number of byte to be transfer to CDMA register
-			       Start the CDMA
-			   	   Wait for the Interrupt and return the status
-	**********************************************************************************/
-
-    Status = XAxiCdma_Interrupt( &IntcController,
-    							&AxiCdmaInstance,
-    							DMA_CTRL_DEVICE_ID,
-   								DMA_CTRL_IRPT_INTR
-   								);
-
-   	if (Status != XST_SUCCESS) {
-
-    		printf("XAxiCdma_Interrupt: Failed\r\n");
-    		return XST_FAILURE;
-    	}
-
-    	xil_printf("XAxiCdma_Interrupt: Passed\r\n");
+	/* Disconnect the interrupt
+	 */
+	XScuGic_Disable(IntcInstancePtr, IntrId);
+	XScuGic_Disconnect(IntcInstancePtr, IntrId);
 
 
-    /*********************************************************************************
-		Step : 3 : Compare Source memory with Destination memory
-				   Return the Status
-	**********************************************************************************/
-    	for (Index = 0; Index < (BUFFER_BYTESIZE/4); Index++)
-    	{
-    		if ( DestPtr[Index] != SrcPtr[Index])
-    		{
-    			printf("Error in Comparison : Index : %x \n\r", Index);
-    			return XST_FAILURE;
-    		}
-    	}
-
-    	printf("DMA Transfer is Successful \n\r");
-    	return XST_SUCCESS;
-
-
-    return 0;
 }
 
-
-
-
+#endif
+#endif

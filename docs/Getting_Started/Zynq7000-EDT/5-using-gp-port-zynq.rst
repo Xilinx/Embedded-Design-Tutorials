@@ -1,27 +1,20 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
 =================================
 Using the GP Port in Zynq Devices
 =================================
 
-One of the unique features of using the Xilinx |reg| Zynq |reg|-7000 SoC as an embedded design platform is in using the Zynq SoC processing system (PS) for its Arm |trade| Cortex-A9 dual core processing system as well as the programmable logic (PL) available on it.
+One of the unique features of using the AMD |trade| Zynq |trade| 7000 SoC as an embedded design platform is in using the Zynq SoC processing system (PS) for its Arm |trade| Cortex-A9 dual core processing system as well as the programmable logic (PL) available on it.
 
 In this chapter, you will create a design with:
 
 -  An AXI GPIO block and AXI Timer block instantiated in the fabric (PL). The interrupt signals of AXI Timer will be connected to the PS.
--  A Zynq SoC PS GPIO pin connected to the fabric (PL) side pin using the EMIO interface
+-  A Zynq SoC PS GPIO pin connected to the fabric (PL) side pin using the EMIO interface.
 
 The flow of this chapter is similar to that in :doc:`Using the Zynq SoC Processing System <2-using-zynq>` and uses the Zynq device as a base hardware design. It is assumed that you understand the concepts discussed in :doc:`Using the Zynq SoC Processing System <./2-using-zynq>` regarding adding the Zynq device into a Vivado IP integrator block diagram design.
 
 Adding IP in PL to the Zynq SoC Processing System
 -------------------------------------------------
 
-There is no restriction on the complexity of an intellectual property (IP) that can be added in fabric to be tightly coupled with the Zynq |reg| SoC PS. This section covers a simple example with an AXI GPIO, an AXI Timer with interrupt, and a PS section GPIO pin connected to a PL side pin using the EMIO interface. The block diagram for the system is as shown in the following figure.
+There is no restriction on the complexity of an intellectual property (IP) that can be added in fabric to be tightly coupled with the Zynq |trade| SoC PS. This section covers a simple example with an AXI GPIO, an AXI Timer with interrupt, and a PS section GPIO pin connected to a PL side pin using the EMIO interface. The block diagram for the system is as shown in the following figure.
 
 .. figure:: ./media/image38.jpeg
    :alt: Target design block diagram
@@ -30,7 +23,7 @@ There is no restriction on the complexity of an intellectual property (IP) that 
 
 You can use the system created in :doc:`Using the Zynq SoC Processing System <2-using-zynq>` and continue with the following examples.
 
-In the examples in this chapter, we will expand on the design with the following design changes:
+In the examples provided within this chapter, we will expand on the design with the following design changes:
 
 -  The fabric-side AXI GPIO is assigned a 1-bit channel width and is connected to the **SW5** push-button switch on the ZC702 board.
 
@@ -73,7 +66,7 @@ In this example, you will add the AXI GPIO, AXI Timer, the interrupt instantiate
 
 1. Open the Vivado design created in :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`:
 
-   1. Launch the Vivado |reg| IDE.
+   1. Launch the AMD Vivado |trade| IDE.
    2. Under the Recent Projects column, click the **edt_zc702** design that you created in :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`.
    3. In Flow Navigator window, click **Open Block Design** under **IP Integrator**.
 
@@ -229,115 +222,76 @@ Assigning Location Constraints to External Pins
 Updating Hardware in the Vitis Software Platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Open the Vitis IDE and manually update the exported hardware from
+Open the Vitis Unified IDE and manually update the exported hardware from
 Vivado.
 
-1. In the Explorer view, right-click on the **zc702_edt** platform project and click the **Update Hardware Specification** option as shown in the following figure.
+1.  Click **edt_zc702** → **Settings** → **vitis-comp.json**. 
 
    .. figure:: ./media/image52.png
-      :alt: Update Hardware Specification
+      :alt: Switch XSA
 
-      Update Hardware Specification
+      Switch XSA
 
-2. In the Update Hardware Specification view, browse for the exported XSA file (``C:/edt/edt_zc702/system_wrapper.xsa``) from Vitis and click **OK**.
+2. In the **Switch XSA** view, browse for the exported XSA file (``C:/edt/edt_zc702/system_wrapper.xsa``) from Vivado and click **OK**.
 
-   -  A view opens stating that the hardware specification for the platform project has been updated. Click **OK** to close it.
+3. Select the **Hardware Specification** using the same window, and you will be able to see the updated IP.
 
-3. Rebuild the out-of-date platform project.
+4. Rebuild the out-of-date platform project.
 
-   -  Right-click the **zc702_edt** project, then select **Clean Project** followed by **Build Project**.
+   -  Highlight the Platform Component and under **FLOW** select the hammer icon to build.
 
-   After the zc702_edt project build completes, the ``zc702_edt.xpfm`` file is generated.
 
 Testing the PL IP with Prepared Software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Create a new standalone application for Arm Cortex-A9:
 
-   -  Select **File → New → Application Project**.
-
-   The New Application Project wizard opens. Use the information in the following table to make your selections in the wizard screens.
-
-   +----------------------+----------------------+----------------------+
-   | Screen               | System Properties    | Setting or Command   |
-   |                      |                      | to Use               |
-   +======================+======================+======================+
-   | Platform             | Select a platform    | Click zc702_edt      |
-   |                      | from repository      | [custom].            |
-   +----------------------+----------------------+----------------------+
-   | Application Project  | Application project  | Enter hello_pl.      |
-   | Details              | name                 |                      |
-   +----------------------+----------------------+----------------------+
-   |                      | System project name  | Keep                 |
-   |                      |                      | hello_pl_system.     |
-   +----------------------+----------------------+----------------------+
-   |                      | Target Processor     | Keep ps7_cortexa9_0  |
-   |                      |                      | selected.            |
-   +----------------------+----------------------+----------------------+
-   |                      | Show all processors  | Keep unchecked.      |
-   |                      | in hardware          |                      |
-   |                      | specification        |                      |
-   +----------------------+----------------------+----------------------+
-   | Domain               | Select a domain      | Keep standalone on   |
-   |                      |                      | ps7_cortex9_0        |
-   |                      |                      | selected.            |
-   +----------------------+----------------------+----------------------+
-   | Templates            | Available Templates  | Hello World          |
-   +----------------------+----------------------+----------------------+
-
-   -  Click **Finish**. The Vitis software platform creates the hello_world application project and hello_world_system project in the Explorer view.
+   -  Select **File → New Component → Application Project**.
+   -  Give the Application Name: **hello_pl** and click **Next**.
+   -  Select the **edt_zc702** and click **Next**.
+   -  Choose the default domain in the Platform and click **Next**.
+   -  Click **Finish**. The Vitis Unified IDE creates an empty application template called **hello_pl**.
 
 2. Import the provided source file to hello_pl project:
 
-   -  Right-click the **hello_pl** project and select **Import Sources**.
-   -  Click **Browse** in the pop-up Import Sources window.
-   -  Point to the **ref_files/example3** directory of this repository.
+   -  In Vitis Components view, go to **hello_pl → Sources** and right-click **src** and select **Import → files**.
+   -  Point to the **ref_files/example6** directory of this repository.
    -  Select **hello_pl.c**.
    -  Click **Finish**.
 
-3. Remove ``helloworld.c`` in the ``src`` directory:
+3. Build the hello_pl project:
 
-   -  Right-click **helloworld.c** in the src directory.
-   -  Select **Delete**.
+   - Highlight the **hello_pl** Application Component and under **FLOW** select the hammer icon to build.
 
-4. Build the hello_pl project:
+4. Connect the USB cable for JTAG and serial.
 
-   -  Right-click the **hello_pl** project.
-   -  Select **Build Project**.
-
-   The ``hello_pl.elf`` file will be generated. The next step is to test the newly created hardware and software on the board.
-
-5. Connect the USB cable for JTAG and serial.
-
-6. Open your preferred serial communication utility with baud rate set to **115200**. In this example, we used MobaXterm.
+5. Open your preferred serial communication utility with baud rate set to **115200**. In this example, we used MobaXterm.
 
    .. note:: This is the baud rate that the UART is programmed to on Zynq devices.
 
-7. Change boot mode back to JTAG mode (as in :ref:`setting-up-the-board`).
+6. Change boot mode back to JTAG mode (as in :ref:`setting-up-the-board`).
 
    - Set **SW16** to 00000.
 
-8. Run the project similar to the steps in :ref:`running-the-hello-world-application-on-a-zc702-board`.
+7. Run the project similar to the steps in :ref:`running-the-hello-world-application-on-a-zc702-board`.
 
-   - Right-click **hello_pl**, and select **Run as → Launch on Hardware**.
+   - Highlight the *hello_pl* Application Component and under **FLOW** select **Run**, and click **Open Settings** to launch the **Launch Configuration**.
+   - Check the Target Connection is correct for your host to target board connection, and click **Run** icon.
 
-   If the running fails, open the **Run as → Run Configurations** view, check the Target Setup configuration against the following screenshot, update the settings, and click **Run**.
-
-    . figure:: ./media/image56.png
+    .. figure:: ./media/image56.png
        :alt: Run Configuration
 
        Run Configuration
 
-   Because you updated the hardware specification with the XSA that includes a post-implementation bitstream, the run configuration sets the bitstream file automatically. If your XSA file does not contain a bitstream, click the **Browse** button to point to your bitstream. You can also leave the Bitstream option blank and go to **Xilinx → Program Device** to program the bitstream before launching the application manually.
+Because you updated the hardware specification with the XSA that includes a post-implementation bitstream, the launch configuration sets the bitstream file automatically. If your XSA file does not contain a bitstream, click the **Browse** button to point to your bitstream. 
 
-   .. figure:: ./media/image55.png
-       :alt: Program Device
+**Note** There are two ways to configure the ps7 susbsystem with the settings made in Vivado; using the FSBL or the ps7_init.tcl. When users export the XSA file, this will contain (amongst other files) the ps7_init.c/.h and the ps7_init.tcl. The ps7_init.tcl is a script that will have all the register writes to configure the ps7 subsystem over the debugger. The FSBL will use the ps7_init.c/.h files. Since the debugger will do the register writes sequentially, this could take a long time. The fsbl is deployed on the target, so this is quicker. Therefore, I would recommend using the FSBL.
 
-       Program Device
+**Note** When using the FSBL to configure the ps7 susbsystem, the debugger will set a breakpoint on the exit function of the FSBL. The debugger will wait until this breakpoint is hit, or a timeout occurs. If the timeout occurs, then this could mean that the breakpoint was not hit. This could be due to the symbol info not resolved by the debugger. If users are connecting remotely then a **symbol server** in the Target Connections can be used to try resolve this issue.
 
-9. In the system, the AXI GPIO pin is connected to push button **SW5** on the board, and the PS section GPIO pin is connected to push button **SW7** on the board through an EMIO interface.
+8. In the system, the AXI GPIO pin is connected to push button **SW5** on the board, and the PS section GPIO pin is connected to push button **SW7** on the board through an EMIO interface.
 
-10. Follow the instructions printed on the serial terminal to run the application. See the following figure for the serial output logs.
+9. Follow the instructions printed on the serial terminal to run the application. See the following figure for the serial output logs.
 
     .. figure:: ./media/image57.png
        :alt: UART prints
@@ -384,8 +338,11 @@ steps:
 
 See the :doc:`next chapter <./6-using-hp-port>` for information about using the AXI HP (High Performance) slave port with the AXI Central DMA IP.
 
-.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
-   :ltrim:
-.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
-   :ltrim:
 
+
+
+.. include:: ../docs/substitutions.txt
+
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
