@@ -1,10 +1,3 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
 ==========================================
 Using the HP Slave Port with AXI CDMA IP
 ==========================================
@@ -16,7 +9,7 @@ You will write standalone application software and Linux OS based application so
 Integrating AXI CDMA with the Zynq SoC PS HP Slave Port
 -------------------------------------------------------
 
-Xilinx  Zynq |reg|-7000 SoC devices internally provide four high performance (HP) AXI slave interface ports that connect the programmable logic (PL) to asynchronous FIFO interface (AFI) blocks in the processing system (PS). The HP ports enable a high throughput data path between AXI masters in the programmable logic and the processing system’s memory system (DDR and on- chip memory). HP slave ports are configurable to 64-bit or 32-bit interfaces.
+AMD Zynq |trade| 7000 SoC devices internally provide four high performance (HP) AXI slave interface ports that connect the programmable logic (PL) to asynchronous FIFO interface (AFI) blocks in the processing system (PS). The HP ports enable a high throughput data path between AXI masters in the programmable logic and the processing system’s memory system (DDR and on- chip memory). HP slave ports are configurable to 64-bit or 32-bit interfaces.
 
 In this section, you will create a design using AXI CDMA intellectual property (IP) as master in fabric and integrate it with the PS HP 64 bit slave port. The block diagram for the system is as shown in the following figure.
 
@@ -216,44 +209,42 @@ The application software does the following tasks:
 Creating the Standalone CDMA Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Launch the Vitis software platform and open the workspace you worked on before.
+1. Launch the Vitis Unified IDE and open the workspace you worked on before.
 
 2. Update the hardware specification:
 
-   1. Right-click the **zc702_edt** platform, and select **Update Hardware Specification**.
-   2. Confirm the path and click **OK**.
-   3. Build the platform by clicking the hammer button on the toolbar.
+   1. Select the **zc702_edt** platform Component, and select **Settings** and click on **vitis-comp.json**.
+   2. Select **Switch XSA** and browse to the updated XSA above..
 
-3. Select **File → New → Application Project**.
+**Note:** Users can verify that the platform has updated by selecting the **Hardware Specification** and verify that the CDMA driver is present
 
-   The New Application Project wizard opens. Use the information in the table below to make your selections in the wizard screens.
+3. Select **File → New Component → Application Project**.
 
-   +----------------------+----------------------+----------------------+
-   | Screen               | System Property      | Setting or Command   |
-   |                      |                      | to Use               |
-   +======================+======================+======================+
-   | Platform             | Select a platform    | Click zc702_edt      |
-   |                      | from repository      | [custom].            |
-   +----------------------+----------------------+----------------------+
-   | Application Project  | Application project  | Enter cdma_app.      |
-   | Details              | name                 |                      |
-   +----------------------+----------------------+----------------------+
-   | Domain               | Select a domain      | Click standalone on  |
-   |                      |                      | ps7_cortex9_0.       |
-   +----------------------+----------------------+----------------------+
-   | Templates            | Available Templates  | Empty Application    |
-   +----------------------+----------------------+----------------------+
+   The Create Application Component wizard opens. Use the information in the table below to make your selections in the wizard screens.
 
-   Click **Finish**. The New Application Project wizard closes and the Vitis software platform creates the cdma_app application project
-   under the Explorer view.
+   +----------------------+----------------------+---------------------------+
+   | Screen               | System Property      | Setting or Command        |
+   |                      |                      | to Use                    |
+   +======================+======================+===========================+
+   | Name and Location    | Name                 | cdma_app                  |
+   |                      | Location             | default                   |
+   +----------------------+----------------------+---------------------------+
+   | Select Platform      | Name                 | zc702_edt                 |
+   +----------------------+----------------------+---------------------------+
+   | Select Domain        | Name                 | standalone_ps7_cortex9_0  |
+   +----------------------+----------------------+---------------------------+
 
-4. In the Explorer view, expand the **cdma_app** project, right-click the **src** directory, and select **Import Sources** to open the Import Sources dialog box.
 
-5. In the Import Sources dialog box, click the **Browse** button next to the **From directory** field and specify the design files folder to `ref_files/example7 <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/Zynq7000-EDT/ref_files/example7>`_.
+   Click **Finish**. The New Application Project wizard closes and the Vitis software platform creates the cdma_app application component
+   under the Vitis Components view.
+
+4. In the Vitis Components view, expand the **cdma_app** component, right-click the **src** directory, and select **Import** → *Files* to open the Import Sources dialog box.
+
+5. In the Import Sources dialog box, click the **Browse** button next to the **From directory** field and specify the design files folder to `ref_files/example7 <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT/ref_files/example7>`_.
 
 6. Select the **cdma_app.c** file and click **Finish**.
 
-7. Build the CDMA application project either by clicking the hammer button or by right-clicking on the **cdma_app** project and selecting **Build Project**.
+7. Build the CDMA application component by clicking the hammer button on the **cdma_app** under **FLOWS**.
 
 Running CDMA the App on ZC702
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -286,7 +277,10 @@ Running CDMA the App on ZC702
 
 Up until now, the examples you have been working with have all been developed and debugged in a lab environment. JTAG is required to configure and control the applications. How can you deploy applications to the board so that it can run the applications after booting by itself? See the :doc:`next chapter <./7-linux-booting-debug>` for Linux boot image configuration.
 
-.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
-   :ltrim:
-.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
-   :ltrim:
+
+
+.. include:: ../docs/substitutions.txt
+
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

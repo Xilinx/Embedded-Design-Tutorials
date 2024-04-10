@@ -1,12 +1,5 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
 ============================================================
-Building and Debugging Linux Applications for Zynq-7000 SoCs
+Building and Debugging Linux Applications for Zynq 7000 SoCs
 ============================================================
 
 This chapter demonstrates how to develop and debug Linux applications.
@@ -19,7 +12,7 @@ This chapter demonstrates how to develop and debug Linux applications.
 Example 4: Creating Linux Images
 --------------------------------
 
-In this example, you will configure and build a Linux operating system platform for an Arm |trade| Cortex-A9 core based APU on a Zynq |reg| 7000 device. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.
+In this example, you will configure and build a Linux operating system platform for an Arm |trade| Cortex-A9 core based APU on a Zynq |trade| 7000 device. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.
 
 Input and Output Files
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -27,7 +20,7 @@ Input and Output Files
 -  Input:
 
    -  Hardware XSA (``system_wrapper.xsa`` generated in :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`)
-   -  `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2022.2-final.bsp>`__
+   -  `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2023.2-final.bsp>`__
 
 -  Output:
 
@@ -38,24 +31,31 @@ Input and Output Files
 
    1. This example requires a Linux host machine with PetaLinux installed. Refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`_) for information about dependencies for PetaLinux.
 
-   2. This example uses the `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2022.2-final.bsp>`__ to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the `PetaLinux Tools download page <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_.
+   2. This example uses the `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2023.2-final.bsp>`__ to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the `PetaLinux Tools download page <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_.
 
 Creating a PetaLinux Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Create a PetaLinux project using the following command:
 
+   There are two ways to generate a petalinux project. Either using the BSP for a development board such as the ZC702, or if users have a custom board, users can use the template.
+
+
+
    .. code:: bash
 
-      petalinux-create -t project -s <path to the xilinx-zc702-v2022.2-final.bsp>
+      # Using the BSP
+      petalinux-create -t project -s <path to the xilinx-zc702-v2023.2-final.bsp>
+      # Using the template for custom boards
+      petalinux-create -t project --template zynq -n xilinx-zc702-2023.2
 
-   .. note:: **xilinx-zc702-v2022.2-final.bsp** is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.
+   .. note:: **xilinx-zc702-v2023.2-final.bsp** is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.
 
-   This creates a PetaLinux project directory, **xilinx-zc702-2022.2**.
+   This creates a PetaLinux project directory, **xilinx-zc702-2023.2**.
 
 2. Reconfigure the project with **system_wrapper.xsa**:
 
-   -  The created PetaLinux project uses the default hardware setup in the ZC702 Linux BSP. In this example, you will reconfigure the PetaLinux project based on the Zynq design that you configured using the Vivado |reg| Design Suite in :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`.
+   -  The created PetaLinux project uses the default hardware setup in the ZC702 Linux BSP. In this example, you will reconfigure the PetaLinux project based on the Zynq design that you configured using the Vivado |trade| Design Suite in :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`.
 
    -  Copy the hardware platform ``system_wrapper.xsa`` to the Linux host machine.
 
@@ -63,7 +63,7 @@ Creating a PetaLinux Image
 
       .. code:: bash
 
-         cd xilinx-zc702-2022.2
+         cd xilinx-zc702-2023.2
          petalinux-config --get-hw-description=<path that contains system_wrapper.xsa>
 
    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images. Select **Exit** and press **Enter** to exit the configuration window.
@@ -76,7 +76,7 @@ Creating a PetaLinux Image
 
 3. Build the PetaLinux project:
 
-   -  In the ``<PetaLinux-project>`` directory (for example, ``xilinx-zc702-2022.2``), build the Linux images using the following command:
+   -  In the ``<PetaLinux-project>`` directory (for example, ``xilinx-zc702-2023.2``), build the Linux images using the following command:
 
       .. code:: bash
 
@@ -89,8 +89,8 @@ Creating a PetaLinux Image
          cd images/linux
          ls -al
 
-   -  ``boot.scr`` is the script that U-Boot reads during boot time to load the kernel and rootfs
-   -  ``image.ub`` contains kernel image, device tree and rootfs.
+   -  ``boot.scr`` is the script that U-Boot reads during boot time to load the kernel and rootfs.
+   -  ``image.ub`` contains kernel image, device tree, and rootfs.
 
 4. Generate the boot image using the following command:
 
@@ -108,10 +108,23 @@ Creating a PetaLinux Image
 
    Refer to ``petalinux-package --boot --help`` for more details about the boot image package command.
 
-Booting Linux on the Target Board
+5. Generate the sysroot required for generating a linux application using the following command:
+
+   .. code:: bash
+
+      petalinux-build --sdk
+      petalinux-package --sysroot
+
+Booting Linux on the ZC702
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You will now boot Linux on the Zynq-7000 SoC ZC702 target board using the JTAG mode.
+You can boot on a physical ZC702 board, or if it is not available, use QEMU. Both flows are detailed in the following section.
+
+
+Boot on Physical ZC702 
+~~~~~~~~~~~~~~~~~~~~~~~
+
+You will now boot Linux on the Zynq |trade| 7000 SoC ZC702 target board using the JTAG mode.
 
 .. note:: Additional boot options are explained in :doc:`Linux Booting and Debug in the Software Platform <./7-linux-booting-debug>`.
 
@@ -145,7 +158,23 @@ You will now boot Linux on the Zynq-7000 SoC ZC702 target board using the JTAG m
 
 7. Power on the target board.
 
-8. The Linux login prompt will appear. Use user name ``root`` and password ``root`` to log in.
+8. The Linux login prompt will appear. Use user name ``petalinux`` and create a new password and login.
+
+.. note:: Use ``sudo -i`` to assign privileges.
+
+Boot on QEMU 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Change directory to the petalinux project, and use the petalinux-boot command to boot linux on an Emulated system
+
+   .. code:: bash
+
+      petalinux-boot --qemu --kernel --qemu-args "-net nic,netdev=gem0 -netdev user,id=gem0,hostfwd=tcp:127.0.0.1:1540-10.0.2.15:1534 -net nic"
+
+2. Launch the Vitis software platform and open the same workspace you used in :doc:`Using the Zynq SoC Processing System <2-using-zynq>`.
+
+3. The Linux login prompt will appear. Use user name ``petalinux`` and create a new password and login.
+
+.. note:: Use ``sudo -i`` to assign privileges.
 
 .. _example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide:
 
@@ -154,84 +183,48 @@ Example 5: Creating a Hello World Application for Linux in the Vitis IDE
 
 In this example, you will use the Vitis IDE to create a Linux application that runs on the embedded Linux environment.
 
-Creating Linux Domain
-~~~~~~~~~~~~~~~~~~~~~
+Creating Linux Platform Component
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-First, create a Linux domain in the Vitis IDE. The Linux domain contains the information required by the Linux application.
+Initially, create a Linux Platform Component in the Vitis Unified IDE. The Linux Platform Component contains a domain with the information required by the Linux application.
 
-The steps to create a Linux domain are given below:
+Create a Linux Platform Component using the following steps:
 
-1. Go to the Explorer view in the Vitis software platform and expand the **zc702_edt** platform project.
+1. Go to **File → New Component → Platform**.
 
-2. Open the platform by double clicking **platform.spr**.
+2. Enter the details in the Create Platform Component window.
 
-3. The platform view opens. Click the **+** button in the right corner to add a domain, as shown in the following figure.
+3. Component Name: **zc702_platform**. Click **Next**.
 
-   .. figure:: ./media/image73.png
-      :alt: platform.spr
+4. Select the **Hardware Design**, and browse to the XSA file.
 
-      platform.spr
+5. Select the Operating System: **Linux**. 
 
-4. When the New Domain dialog box opens, enter the details as given below:
+6. Select the Processor: **ps7_cortexa9_0**.
 
-   +---------------------------+--------------+
-   | Option                    | Value        |
-   +===========================+==============+
-   | Name                      | linux_domain |
-   +---------------------------+--------------+
-   |  Display Name             | linux_domain |
-   +---------------------------+--------------+
-   | OS                        | Linux        |
-   +---------------------------+--------------+
-   | Processor                 | ps7_cortexa9 |
-   +---------------------------+--------------+
-   | Supported Runtimes        | C/C++        |
-   +---------------------------+--------------+
-   | Architecture              | 32-bit       |
-   +---------------------------+--------------+
-   | Bif file                  | Keep blank   |
-   +---------------------------+--------------+
-   | Boot Components Directory | Keep blank   |
-   +---------------------------+--------------+
-   | Linux image directory     | Keep blank   |
-   +---------------------------+--------------+
+7. Enable **Generate Boot artifacts**, click **Next** and **Finish**.
 
-   .. figure:: media/image74.png
-      :alt: Creating Linux domain
+8. Build the platform Component:
 
-      Creating Linux domain
+   -  Highlight the **zc702_platform** under **Vitis Components** view, and then under **FLOW**, Click the hammer button.
 
-   -  Click **OK** to finish, and observe that the Linux domain has been added to the zc702_edt as shown below.
 
-      .. figure:: ./media/image75.png
-         :alt: Updated platform domains
+Creating Linux Application Component in the Vitis IDE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-         Updated platform domains
+1. Create a Linux application component:
 
-   .. note:: If you fill in the Bif File, Boot Components Directory, and Linux Image Directory options, Vitis can help to generate ``sd_card.img`` when you build the system project in the Linux host OS. In this case, it is helpful to use the ``ext4`` root file system. In the examples in this tutorial, which use ``initramfs``, it is only required to copy files to the FAT32 partition into the SD card, so this feature will not be used.
+There are two ways to generate the application component in Vitis Unified IDE. Either from the **File → New Component → Application**, or from the **Examples** on the left hand side of the IDE. The following steps describe the generation of application component using **Examples**.
 
-5. Build the platform:
+   1. Select the **Linux Hello World** template, click **Create Application Component from Template**.
 
-   -  Click the hammer button on the tool bar to build the platform.
+   2. Give the application a name, **hello_linux**, and click **Next**.
 
-   Now you have a Linux domain and are ready to create Linux applications.
+   3. Select the **zc702_platform** generated in the preceding step, and click **Next**.
 
-Creating Linux Applications in the Vitis IDE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   4. Choose the default domain generated in the Platform, and click **Next**.
 
-1. Create a Linux application:
-
-   1. Click **File → New → Application Project**.
-   2. Click **Next** on the welcome page.
-   3. Select platform: **zc702_edt**. Click **Next**.
-   4. Enter the application project name, **hello_linux**, and the target processor, **psu_cortexa9 SMP**.
-   5. Keep the default domain: **linux_domain**.
-   6. Keep the SYSROOT, rootfs, and kernel image empty, and click **Next**.
-   7. Select the **Linux Hello World** template. Click **Finish**.
-
-   .. Note:: If you input an extracted SYSROOT directory, Vitis can find include files and libraries in SYSROOT. SYSROOT is generated by the PetaLinux project ``petalinux-build --sdk``. Refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`_) for more information about SYSROOT generation.
-
-   .. Note:: If you input a rootfs and kernel image, Vitis can help to generate the ``SD_card.img`` when building the Linux system project.
+   5. Browse the sysroot generated in the petalinux project. Click on the **update Workspace Preference** checkbox to save the sysroot path for future applications. Click **Next**, and **Finish**.
 
 2. Build the hello_linux application.
 
@@ -245,6 +238,11 @@ Preparing the Linux Agent for Remote Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Vitis IDE needs a channel to download the application to the running target for debugging. When the target runs Linux, it uses TCF Agent running on the target. TCF Agent is added to the Linux rootfs from the PetaLinux configuration by default. When Linux boots up, it launches TCF Agent automatically. The Vitis IDE talks to TCF Agent on the board using an Ethernet connection.
+
+Setup the Ethernet Connection between Host and Physical Board
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are using the QEMU, please skip the following steps.
 
 1. Prepare for running the Linux application on the ZC702 board. Vitis can download the Linux application to the board, which runs Linux through a network connection. It is important to ensure that the connection between the host machine and the board works well.
 
@@ -261,18 +259,18 @@ The Vitis IDE needs a channel to download the application to the running target 
       -  If the host and the board are connected through a router, they should be able to get an IP address from the router. If the Ethernet cable is plugged in after the board boots up, you can get the IP address manually by running the ``udhcpc eth0`` command, which returns the board IP address.
       -  Have the host and the zc702 board ping each other to make sure the network is set up correctly.
 
+
+
 2. Set up the Linux agent in the Vitis IDE.
 
-   1. Click the **Target Connections** icon on the toolbar.
-   2. It can also be launched by going to **Window → Show View…** and then looking for the target.
+   1. Go to **Vitis → Target Connections**.
 
-      .. figure:: media/vitis_launch_target_connections.png
-         :alt: Vitis Show View search for Target Connections
+   2. In the Target Connections window, right-click **Linux TCF Agent** and select **New Target**.
+   
+   3. Enter the IP address of your board. The IP address for QEMU is **127.0.0.1**.
 
-         Vitis Show View search for Target Connections
-
-   3. In the Target Connections window, double-click **Linux TCF Agent → Linux Agent[default]**.
-   4. Input the IP address of your board.
+   4. Enter the Port number, for QEMU use **1540**. Otherwise, leave as default.
+   
    5. Click **Test Connection**.
 
       .. figure:: media/vitis_target_connection_details.png
@@ -292,24 +290,14 @@ Running the Linux Application from the Vitis IDE
 
 1. Run the Linux application:
 
-   -  Right-click **hello_linux**, and select **Run As → Run Configurations**.
-   -  Expand **Single Application Debug** and select **Debugger_hello_linux-Default**. If it doesn’t exist, click the **New Launch Configuration** button or double click **Single Application Debug** to create a new launch configuration for hello_linux.
-   -  Review the configurations:
-
-      -  Debug type: **Linux Application Debug**
-      -  Connection: **Linux Agent**
-
-   -  Click **Run**.
+   -  Highlight the **linux_hello** application, and under **FLOW**, click **Run** icon. Click **Open Settings** to create a new **Launch Configuration**.
+   -  Make sure that the **Target Connection** is set to the target connection created in the previous section.
+   -  Set the **Work Directory** to a valid location on your linux filesystem. A typical example is **/home/petalinux**, which is the destination for copying the ELF file.
 
    .. figure:: media/vitis_linux_run_configurations.png
       :alt: Vitis Linux Run Configurations
 
-      Vitis Linux Run Configurations
-
-   .. figure:: ./media/vitis_linux_run_configurations_applications.png
-      :alt: Application Tab
-
-      Application Tab
+   - Click **Run**.
 
    -  The console should print **Hello World**.
 
@@ -320,8 +308,7 @@ Running the Linux Application from the Vitis IDE
 
 2. Disconnect the connection:
 
-   -  Click the **Terminate** button on the toolbar or press **Ctrl+F2**.
-   -  Click the **Disconnect** button on the toolbar.
+   -  Click the **Stop** button on the Debug toolbar.
 
 Debugging a Linux Application from the Vitis IDE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -330,14 +317,14 @@ Debugging Linux applications requires the Linux agent to be set up properly. Ref
 
 1. Debug the Linux application:
 
-   1. Right-click **hello_linux**, then select **Debug As → Debug Configurations**.
-   2. Expand **Single Application Debug** and select **Debugger_hello_linux-Default**.
-   3. Review the configurations:
+   -  Highlight the **linux_hello** application, and under **FLOW**, select **Debug** icon and click **Open Settings**. It creates a new **Launch Configuration**.
+   -  Make sure that the **Target Connection** is set to the target connection created in the previous section.
+   -  Set the **Work Directory** to a valid location on your linux filesystem. A typical example is **/home/petalinux**, which is the destination for copying the ELF file.
 
-      -  Debug type: **Linux Application Debug**
-      -  Connection: **Linux Agent**
+   .. figure:: media/vitis_linux_run_configurations.png
+      :alt: Vitis Linux Run Configurations
 
-   4. Click **Debug**.
+- Click **Run** icon.
 
    The debug configuration has identical options to the run configuration. The difference between debugging and running is that debugging stops at the ``main()`` function.
 
@@ -345,10 +332,11 @@ Debugging Linux applications requires the Linux agent to be set up properly. Ref
 
    Hello World is a simple application. It does not contain much to debug, but you can try the following to explore the Vitis debugger:
 
-   -  Review the tabs on the upper right corner: Variables, Breakpoints, Expressions, and the rest.
+   -  Review the Debug Features on the Left Hand side of the IDE: Variables, Breakpoints, Expressions, and the rest.
+   -  If these are not visible, you can add these via **View → Select Feature** 
    -  Review the call stack on the left.
    -  The next line to execute has a green background.
-   -  Step over by clicking the icon on the toolbar or pressing **F6** on the keyboard. The printed string will be shown on the Console panel.
+   -  Debug through the code using the debug toolbar, such as **Continue**, **Step Into**, **Step Out**.
 
    .. figure:: ./media/vitis_debugger_hello_linux_zynq.png
       :alt: Debug window
@@ -357,8 +345,7 @@ Debugging Linux applications requires the Linux agent to be set up properly. Ref
 
 3. Disconnect the connection:
 
-   -  Click the **Terminate** button on the toolbar or press **Ctrl+F2**.
-   -  Click the **Disconnect** button on the toolbar.
+   -  Click the **Stop** button on the Debug toolbar.
 
 Summary
 -------
@@ -371,7 +358,10 @@ In this chapter, you learned how to:
 
 Up until now, all your development and debugging activities have been running on the processing system. In the :doc:`next chapter <./5-using-gp-port-zynq>`, you will start to add components to the PL (programmable logic). First, you will see how to use the GP port in Zynq devices.
 
-.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
-   :ltrim:
-.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
-   :ltrim:
+
+
+.. include:: ../docs/substitutions.txt
+
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
