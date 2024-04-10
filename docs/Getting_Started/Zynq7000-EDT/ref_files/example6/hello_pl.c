@@ -1,23 +1,11 @@
 /*
-# Copyright 2021 Xilinx Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+******************************************************************************
+# Copyright (C) 2022-2024, Advanced Micro Devices, Inc. All rights reserved. 
+# SPDX-License-Identifier: MIT
+******************************************************************************
 */
-/*
-* helloworld.c: simple test application
-*/
+
 #include <stdio.h>
-#include "platform.h"
 #include "xil_types.h"
 #include "xgpio.h"
 #include "xtmrctr.h"
@@ -26,91 +14,94 @@
 #include "xil_io.h"
 #include "xil_exception.h"
 #include "xscugic.h"
+#ifdef SDT
+#include "xinterrupt_wrap.h"
+#endif
 static XGpioPs psGpioInstancePtr;
 extern XGpioPs_Config XGpioPs_ConfigTable[XPAR_XGPIOPS_NUM_INSTANCES];
 static int iPinNumber = 10;
 XScuGic InterruptController; /* Instance of the Interrupt Controller */
-static XScuGic_Config *GicConfig;/* The configuration parameters of the
-controller */
 static int InterruptFlag;
 //void print(char *str);
 extern char inbyte(void);
+#define TIMER_CNTR_0	 0
 void Timer_InterruptHandler(void *data, u8 TmrCtrNumber)
 {
-print("\r\n");
-print("\r\n");
-print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n");
-print(" Inside Timer ISR \n \r ");
-XTmrCtr_Stop(data,TmrCtrNumber);
-// PS GPIO Writting
-print("LED 'DS23' Turned ON \r\n");
-XGpioPs_WritePin(&psGpioInstancePtr,iPinNumber,1);
-XTmrCtr_Reset(data,TmrCtrNumber);
-print(" Timer ISR Exit\n \n \r");
-print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n");
-print("\r\n");
-print("\r\n");
-InterruptFlag = 1;
+	print("\r\n");
+	print("\r\n");
+	print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n");
+	print(" Inside Timer ISR \n \r ");
+	XTmrCtr_Stop(data,TmrCtrNumber);
+	// PS GPIO Writting
+	print("LED 'DS23' Turned ON \r\n");
+	XGpioPs_WritePin(&psGpioInstancePtr,iPinNumber,1);
+	XTmrCtr_Reset(data,TmrCtrNumber);
+	print(" Timer ISR Exit\n \n \r");
+	print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n");
+	print("\r\n");
+	print("\r\n");
+	InterruptFlag = 1;
 }
+
 int SetUpInterruptSystem(XScuGic *XScuGicInstancePtr)
 {
-/*
-* Connect the interrupt controller interrupt handler to the hardware
-* interrupt handling logic in the Arm processor.
-*/
-Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
-(Xil_ExceptionHandler) XScuGic_InterruptHandler,
-XScuGicInstancePtr);
-/*
-* Enable interrupts in the Arm
-*/
-Xil_ExceptionEnable();
-return XST_SUCCESS;
+	/*
+	* Connect the interrupt controller interrupt handler to the hardware
+	* interrupt handling logic in the Arm processor.
+	*/
+	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
+	(Xil_ExceptionHandler) XScuGic_InterruptHandler,
+	XScuGicInstancePtr);
+	/*
+	* Enable interrupts in the Arm
+	*/
+	Xil_ExceptionEnable();
+	
+	return XST_SUCCESS;
 }
+
 int ScuGicInterrupt_Init(u16 DeviceId,XTmrCtr *TimerInstancePtr)
 {
-int Status;
-/*
-* Initialize the interrupt controller driver so that it is ready to
-* use.
-* */
-GicConfig = XScuGic_LookupConfig(DeviceId);
-if (NULL == GicConfig) {
-return XST_FAILURE;
+	int Status;
+	
+	XScuGic_Config *GicConfig;
+
+	GicConfig = XScuGic_LookupConfig(DeviceId);
+	if (NULL == GicConfig) {
+		return XST_FAILURE;
+	}
+	
+	Status = XScuGic_CfgInitialize(&InterruptController, GicConfig,
+	GicConfig->CpuBaseAddress);
+	
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+	
+	Status = SetUpInterruptSystem(&InterruptController);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+	
+	Status = XScuGic_Connect(&InterruptController,
+	XPAR_AXI_TIMER_0_INTERRUPTS,
+	(Xil_ExceptionHandler)XTmrCtr_InterruptHandler,
+	(void *)TimerInstancePtr);
+	
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+	
+
+
+	XScuGic_Enable(&InterruptController, XPAR_AXI_TIMER_0_INTERRUPTS);
+	
+	return XST_SUCCESS;
 }
-Status = XScuGic_CfgInitialize(&InterruptController, GicConfig,
-GicConfig->CpuBaseAddress);
-if (Status != XST_SUCCESS) {
-return XST_FAILURE;
-}
-/*
-* Setup the Interrupt System
-* */
-Status = SetUpInterruptSystem(&InterruptController);
-if (Status != XST_SUCCESS) {
-return XST_FAILURE;
-}
-/*
-* Connect a device driver handler that will be called when an
-* interrupt for the device occurs, the device driver handler performs
-* the specific interrupt processing for the device
-*/
-Status = XScuGic_Connect(&InterruptController,
-XPAR_FABRIC_AXI_TIMER_0_INTERRUPT_INTR,
-(Xil_ExceptionHandler)XTmrCtr_InterruptHandler,
-(void *)TimerInstancePtr);
-if (Status != XST_SUCCESS) {
-return XST_FAILURE;
-}
-/*
-* Enable the interrupt for the device and then cause (simulate) an
-* interrupt so the handlers will be called
-*/
-XScuGic_Enable(&InterruptController, XPAR_FABRIC_AXI_TIMER_0_INTERRUPT_INTR);
-return XST_SUCCESS;
-}
+
 int main()
 {
+u8 TmrCtrNumber = TIMER_CNTR_0;
 static XGpio GPIOInstance_Ptr;
 XGpioPs_Config*GpioConfigPtr;
 XTmrCtr TimerInstancePtr;
@@ -123,7 +114,7 @@ u32 uPinDirectionEMIO = 0x0;
 // Pin direction
 u32 uPinDirection = 0x1;
 int exit_flag,choice,internal_choice;
-init_platform();
+
 /* data = *(u32 *)(0x42800004);
 print("OK \n");
 data = *(u32 *)(0x41200004);
@@ -134,7 +125,12 @@ print("\r\n");
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //Step-1 :AXI GPIO Initialization
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-xStatus = XGpio_Initialize(&GPIOInstance_Ptr,XPAR_AXI_GPIO_0_DEVICE_ID);
+
+#ifndef SDT
+	xStatus = XGpio_Initialize(&GPIOInstance_Ptr, XPAR_AXI_GPIO_0_DEVICE_ID);
+#else
+	xStatus = XGpio_Initialize(&GPIOInstance_Ptr, XPAR_AXI_GPIO_0_BASEADDR);
+#endif
 if(XST_SUCCESS != xStatus)
 print("GPIO INIT FAILED\n\r");
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -144,7 +140,11 @@ XGpio_SetDataDirection(&GPIOInstance_Ptr, 1,1);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //Step-3 :AXI Timer Initialization
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-xStatus = XTmrCtr_Initialize(&TimerInstancePtr,XPAR_AXI_TIMER_0_DEVICE_ID);
+#ifndef SDT
+	xStatus = XTmrCtr_Initialize(&TimerInstancePtr, XPAR_AXI_TIMER_0_DEVICE_ID);
+#else
+	xStatus = XTmrCtr_Initialize(&TimerInstancePtr, XPAR_AXI_TIMER_0_BASEADDR);
+#endif
 if(XST_SUCCESS != xStatus)
 print("TIMER INIT FAILED \n\r");
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -163,19 +163,22 @@ XTmrCtr_SetResetValue(&TimerInstancePtr,
 //Step-6 :Setting timer Option (Interrupt Mode And Auto Reload )
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 XTmrCtr_SetOptions(&TimerInstancePtr,
-XPAR_AXI_TIMER_0_DEVICE_ID,
+TmrCtrNumber,
 (XTC_INT_MODE_OPTION | XTC_AUTO_RELOAD_OPTION ));
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //Step-7 :PS GPIO Intialization
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-GpioConfigPtr = XGpioPs_LookupConfig(XPAR_PS7_GPIO_0_DEVICE_ID);
+#ifndef SDT
+	GpioConfigPtr = XGpioPs_LookupConfig(XPAR_PS7_GPIO_0_DEVICE_ID);
+#else
+	GpioConfigPtr = XGpioPs_LookupConfig(XPAR_XGPIOPS_0_BASEADDR);
+#endif
 if(GpioConfigPtr == NULL)
 return XST_FAILURE;
-xStatus = XGpioPs_CfgInitialize(&psGpioInstancePtr,
-GpioConfigPtr,
-GpioConfigPtr->BaseAddr);
-if(XST_SUCCESS != xStatus)
-print(" PS GPIO INIT FAILED \n\r");
+xStatus = XGpioPs_CfgInitialize(&psGpioInstancePtr, GpioConfigPtr,GpioConfigPtr->BaseAddr);
+if(XST_SUCCESS != xStatus) {
+    print(" PS GPIO INIT FAILED \n\r");
+}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //Step-8 :PS GPIO pin setting to Output
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -191,8 +194,22 @@ XGpioPs_SetOutputEnablePin(&psGpioInstancePtr, iPinNumberEMIO,0);
 //Step-10 : SCUGIC interrupt controller Intialization
 //Registration of the Timer ISR
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-xStatus=
-ScuGicInterrupt_Init(XPAR_PS7_SCUGIC_0_DEVICE_ID,&TimerInstancePtr);
+
+#ifdef SDT
+	XGpio_Config *ConfigPtr;
+
+	ConfigPtr = XGpio_LookupConfig(XPAR_AXI_GPIO_0_BASEADDR);
+#endif
+
+#ifndef SDT
+	xStatus= ScuGicInterrupt_Init(XPAR_PS7_SCUGIC_0_DEVICE_ID,&TimerInstancePtr);
+#else
+	xStatus = XSetupInterruptSystem(&TimerInstancePtr, &Timer_InterruptHandler,
+				       ConfigPtr->IntrId,
+				       ConfigPtr->IntrParent,
+				       XINTERRUPT_DEFAULT_PRIORITY);
+#endif
+
 if(XST_SUCCESS != xStatus)
 print(" :( SCUGIC INIT FAILED \n\r");
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -304,7 +321,6 @@ case '2' :
 	print("***********\r\n");
 	print("BYE \r\n");
 	print("***********\r\n");
-	cleanup_platform();
 	return 0;
 	}
 
