@@ -1,7 +1,3 @@
-
-.. Copyright (C) 2024, Advanced Micro Devices, Inc. All rights reserved.
-.. SPDX-License-Identifier: X11
-
 ====================================
 Using the Zynq SoC Processing System
 ====================================
@@ -25,18 +21,18 @@ Example 1: Creating a New Embedded Project with Zynq SoC
 
 For this example, you will launch the AMD Vivado |trade| Design Suite and create a project with an embedded processor system as the top level.
 
-Input and Output Files
-~~~~~~~~~~~~~~~~~~~~~~
+Input and Output Files (Example 1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -  Input Files: N/A
--  Output Files: Vivado hardware handoff file system_wrapper.xsa
+-  Output Files: Vivado hardware handoff file ``system_wrapper.xsa``
 
 Creating Your Hardware Design
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Start the Vivado Design Suite.
 
-   -  On Windows 10, click the start menu and find **Xilinx Design Tools -> Vivado 2023.2**.
+   -  On Windows 10, click the start menu and find **Xilinx Design Tools → Vivado 2023.2**.
    -  On Linux, run `source <Vivado installation path>/settings64.sh` to set up the environment and run ``vivado &`` to launch the Vivado IDE.
 
 2. In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
@@ -228,7 +224,7 @@ Two types of hardware can be exported from Vivado: pre-synthesis and post-implem
          INFO: [Vivado 12-12467] The Hardware Platform can be used for Hardware
          INFO: [Vivado 12-4896] Successfully created Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa
 
-What’s Next?
+What's Next?
 ~~~~~~~~~~~~
 
 Now you can start developing the software for your project using the Vitis software platform. The next sections help you create a software application for your hardware platform.
@@ -239,8 +235,8 @@ Example 2: Creating and Running a “Hello World” Application
 
 In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a simple “Hello World” software application in JTAG mode using System Debugger in the Vitis IDE.
 
-Input and Output Files
-~~~~~~~~~~~~~~~~~~~~~~
+Input and Output Files (Example 2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -  Input Files: ``system_wrapper.xsa``
 -  Output Files: ``hello_world.elf``
@@ -284,11 +280,11 @@ Setting Up the Board
 5. Power on the ZC702 board.
 
 Creating a Vitis Unified Platform Project
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Launch the Vitis Unified IDE with any of the actions below:
 
-   1. From the Vivado IDE, select **Tools -> Launch Vitis IDE**.
+   1. From the Vivado IDE, select **Tools → Launch Vitis IDE**.
    2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Vitis 2023.2**.
    3. On Linux, run ``source <Vitis Installation Directory>/settings64.sh`` to set up the environment and run ``vitis &``.
 
@@ -296,7 +292,7 @@ Creating a Vitis Unified Platform Project
 
    -  Unlike Vitis Classic IDE, the platform is not generated automatically. You need to do this manually.
 
-3. Click **File → New Component → Platform**. Enter the platform project name as **zc702_edt**, as shown in following figure. Click **Next*.
+3. Click **File → New Component → Platform**. Enter the platform project name as **zc702_edt**, as shown in following figure. Click **Next**.
 
    .. figure:: ./media/image25.png
        :alt: Platform Name
@@ -319,7 +315,7 @@ Creating a Vitis Unified Platform Project
 
    .. image:: ./media/image27.png
 
-8. In the **Vitis Components** view, expand **zc702_edt -> Settings -> vitis-comp.json**. 
+8. In the **Vitis Components** view, expand **zc702_edt → Settings → vitis-comp.json**. 
 
    .. image:: ./media/image28.png
 
@@ -338,8 +334,8 @@ Creating a Vitis Unified Platform Project
 
    The build process takes some time because it is not only building the standalone BSP, but also boot components such as FSBL.
 
-What Just Happened?
-~~~~~~~~~~~~~~~~~~~
+Recap
+~~~~~~~~~~~~~~
 
 Using the Vitis IDE, you have created a platform component. Within the Platform Component the tools generated a standalone domain with a ps7_cortexa9_0 processor and an FSBL application project. You have built a Platform Component, and the generated AMD platform definition file (``zc702_edt.xpfm``) can be used as a platform for the applications that you create in the Vitis IDE.
 
@@ -363,12 +359,12 @@ This will use the domain generated in the platform by default. Click **Next** an
 
 .. _running-the-hello-world-application-on-a-zc702-board:
 
-Setup Target Connections
+Set Up Target Connections
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, there is a target connection set up for the localhost (127.0.0.1) at port 3121. However, you may connect remotely. For a remote connection you need to set up the target connection that will be used in the Launch Configuration later in this tutorial. 
 
-To view the target connections, go to **Vitis -> Target Connections**. 
+To view the target connections, go to **Vitis → Target Connections**. 
 
 .. image:: ./media/new_target.PNG
 
@@ -392,8 +388,8 @@ Running the Hello World Application on a ZC702 Board
 
    .. note:: The software application do not require bitstream download to execute on the Zynq SoC evaluation board. The Arm Cortex-A9 dual core is already present on the board. Basic initialization of this system to run a simple application is accomplished by the First Stage Boot Loader (FSBL). The FSBL has ps7_init.c/h files that are packaged in the XSA file and extracted when the platform is created. The ps7_init.c/h have the settings made in the PS7 Subsystem in Vivado.
 
-What Just Happened?
-~~~~~~~~~~~~~~~~~~~
+What Just Happened? (Example 2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The application software sent the "Hello World" string to the UART1 peripheral of the PS section.
 
@@ -419,5 +415,10 @@ In the :doc:`next chapter <./3-debugging-vitis>`, you will learn how to debug so
 
 .. |Add-IP-Button| image:: ./media/image8.png
 
-Copyright © 2020–2024 Advanced Micro Devices, Inc 
-`Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
+
+
+.. include:: ../docs/substitutions.txt
+
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

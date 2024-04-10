@@ -1,7 +1,3 @@
-
-.. Copyright (C) 2024, Advanced Micro Devices, Inc. All rights reserved.
-.. SPDX-License-Identifier: X11
-
 =================================
 Using the GP Port in Zynq Devices
 =================================
@@ -342,6 +338,11 @@ steps:
 
 See the :doc:`next chapter <./6-using-hp-port>` for information about using the AXI HP (High Performance) slave port with the AXI Central DMA IP.
 
-Copyright © 2020–2024 Advanced Micro Devices, Inc 
-`Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
 
+
+
+.. include:: ../docs/substitutions.txt
+
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

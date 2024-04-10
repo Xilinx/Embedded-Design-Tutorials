@@ -1,5 +1,5 @@
 <p class="sphinxhide" align="right"><a href="../docs-cn/README.md">简体中文</a> | <a href="../docs-jp/README.md">日本語</a></p>
-<table class="sphinxhide">
+<table class="sphinxhide" style="width:100%">
  <tr>
     <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Embedded Design Documentation</h1>
     </td>
