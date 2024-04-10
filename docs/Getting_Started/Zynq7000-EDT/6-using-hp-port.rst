@@ -1,7 +1,3 @@
-
-.. Copyright (C) 2024, Advanced Micro Devices, Inc. All rights reserved.
-.. SPDX-License-Identifier: X11
-
 ==========================================
 Using the HP Slave Port with AXI CDMA IP
 ==========================================
@@ -242,7 +238,7 @@ Creating the Standalone CDMA Application
    Click **Finish**. The New Application Project wizard closes and the Vitis software platform creates the cdma_app application component
    under the Vitis Components view.
 
-4. In the Vitis Components view, expand the **cdma_app** component, right-click the **src** directory, and select **Import** -> *Files* to open the Import Sources dialog box.
+4. In the Vitis Components view, expand the **cdma_app** component, right-click the **src** directory, and select **Import** → *Files* to open the Import Sources dialog box.
 
 5. In the Import Sources dialog box, click the **Browse** button next to the **From directory** field and specify the design files folder to `ref_files/example7 <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT/ref_files/example7>`_.
 
@@ -281,5 +277,10 @@ Running CDMA the App on ZC702
 
 Up until now, the examples you have been working with have all been developed and debugged in a lab environment. JTAG is required to configure and control the applications. How can you deploy applications to the board so that it can run the applications after booting by itself? See the :doc:`next chapter <./7-linux-booting-debug>` for Linux boot image configuration.
 
-Copyright © 2020–2024 Advanced Micro Devices, Inc 
-`Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
+
+
+.. include:: ../docs/substitutions.txt
+
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

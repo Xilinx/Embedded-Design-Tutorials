@@ -1,10 +1,6 @@
-
-.. Copyright (C) 2024, Advanced Micro Devices, Inc. All rights reserved.
-.. SPDX-License-Identifier: X11
-
-==================================================================
+===========================================================================================
 Debugging Standalone Applications with the Vitis Unified Software Platform
-==================================================================
+===========================================================================================
 
 Although a simple “Hello World” application does not require much debugging, this chapter demonstrates the debugging setup and procedure in the Vitis Unified IDE in :ref:`example-3-debugging-standalone-software-using-the-vitis-software-platform`.
 
@@ -24,7 +20,7 @@ The Vitis software platform supports debugging through Vitis Unified System Debu
 .. note:: The GDB flow is deprecated and might not be available in the future releases.
 
 Vitis Unified System Debugger
-----------------------
+-------------------------------------
 
 The Vitis Unified System Debugger uses the Vitis hw_server as the underlying debug engine. The Vitis software platform translates each user interface action into a sequence of Target Communication Framework (TCF) commands. It then processes the output from System Debugger to display the current state of the program being debugged. It communicates to the processor on the hardware using Vitis hw_server.
 
@@ -54,7 +50,7 @@ Setup Target Connections
 
 A target connection is established for the localhost (127.0.0.1) at port 3121, by default. However, if you opt for a remote connection, you need to set up the target connection for the Launch Configuration later in this tutorial. 
 
-To view the target connections, go to **Vitis -> Target Connections**. 
+To view the target connections, go to **Vitis → Target Connections**. 
 
 .. image:: ./media/new_target.PNG
 
@@ -120,5 +116,10 @@ Debugging Standalone Applications in the Vitis IDE
 
 This chapter introduced standalone software building and debugging. In the :doc:`next chapter <./4-linux-for-zynq>`, you can start working on Linux applications for Zynq 7000 SoCs.
 
-Copyright © 2020–2024 Advanced Micro Devices, Inc 
-`Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
+
+
+.. include:: ../docs/substitutions.txt
+
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

@@ -1,7 +1,3 @@
-
-.. Copyright (C) 2024, Advanced Micro Devices, Inc. All rights reserved.
-.. SPDX-License-Identifier: X11
-
 ==============================
 Linux Boot Image Configuration
 ==============================
@@ -164,7 +160,7 @@ Booting Linux in JTAG Mode
 11. At the command prompt of the serial terminal, run `bootm 0x30000000`. The Linux OS boots.
 
 Booting Linux in JTAG Mode using QEMU
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Users can boot Linux (or u-Boot) from Petalinux over QEMU. QEMU is helpful for use cases where the hardware is in development or is unavailable for other reasons. 
 
@@ -462,5 +458,10 @@ Booting Linux from QSPI Flash
 
 See the :doc:`next chapter <./8-custom-ip-driver-linux>` to connect the dots and create a more complicated design.
 
-Copyright © 2020–2024 Advanced Micro Devices, Inc 
-`Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
+
+
+.. include:: ../docs/substitutions.txt
+
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

@@ -1,7 +1,3 @@
-
-.. Copyright (C) 2024, Advanced Micro Devices, Inc. All rights reserved.
-.. SPDX-License-Identifier: X11
-
 ===============
 Getting Started
 ===============
@@ -46,14 +42,6 @@ XSCT (Xilinx Software Command Tool)
 
 The Vitis software platform provides an IDE (integrated design environment) and a command line interface (XSCT) to help you design and debug embedded software applications and generate deployment images.
 
-PetaLinux Tools
-~~~~~~~~~~~~~~~
-
-The PetaLinux tools offer everything necessary to customize, build, and deploy embedded Linux solutions on AMD processing systems. For more
-information, see the `Embedded Design Tools <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_
-web page.
-
-The PetaLinux Tools design hub provides information and links to documentation specific to the PetaLinux Tools. For more information, see `Embedded Design Hub - PetaLinux Tools <https://www.xilinx.com/support/documentation-navigation/design-hubs/dh0016-petalinux-tools-hub.html>`_.
 
 How the AMD Design Tools Expedite the Design Process
 -------------------------------------------------------
@@ -96,20 +84,18 @@ You will use Vivado for hardware design, and you will use Vitis for the developm
 PetaLinux Tools
 ~~~~~~~~~~~~~~~
 
-The PetaLinux tool offers a full Linux distribution building system which includes the Linux OS as well as a complete configuration, build, and deploy environment for AMD silicon.
+The PetaLinux tools offer everything necessary to customize, build, and deploy embedded Linux solutions on AMD processing systems. For more information, see the `Embedded Design Tools <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_ web page.
 
-Install the PetaLinux Tools to run through the embedded Linux portion of this tutorial.
+Install the PetaLinux Tools to run through the embedded Linux portion of this tutorial. PetaLinux can be installed from its own installer or from Vitis installer.
 
 PetaLinux tools run under the Linux host system only. Refer to the “Setting Up Your Environment” chapter in the *PetaLinux Tools Reference Guide* (`UG1144 <https://docs.xilinx.com/r/en-US/ug1144-petalinux-tools-reference-guide/Overview>`_) for supported operating systems and installation instructions. You can use either a dedicated Linux host system or a virtual machine running one of these Linux operating systems on your Windows development platform.
 
-PetaLinux can be installed from its own installer or from Vitis installer.
+The PetaLinux Tools design hub provides information and links to documentation specific to the PetaLinux Tools. For more information, see `Embedded Design Hub - PetaLinux Tools <https://www.xilinx.com/support/documentation-navigation/design-hubs/dh0016-petalinux-tools-hub.html>`_.
 
 Software Licensing
 ~~~~~~~~~~~~~~~~~~
 
-AMD software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the
-process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing Guide*
-(`UG973 <https://docs.xilinx.com/r/en-US/ug973-vivado-release-notes-install-license/Release-Notes>`_).
+AMD software uses FLEXnet licensing. When the software is first run, it performs a license verification process. If the license verification does not find a valid license, the license wizard guides you through the process of obtaining a license and ensuring that the license can be used with the tools installed. If you do not need the full version of the software, you can use an evaluation license. For installation instructions and information, see the *Vivado Design Suite User Guide: Release Notes, Installation, and Licensing Guide* (`UG973 <https://docs.xilinx.com/r/en-US/ug973-vivado-release-notes-install-license/Release-Notes>`_).
 
 .. _design-files-for-this-tutorial:
 
@@ -120,6 +106,10 @@ The reference design files for this tutorial are provided in the `ref_files <htt
 
 Start with the first examples in the :doc:`next chapter <./2-using-zynq>`.
 
-Copyright © 2020–2024 Advanced Micro Devices, Inc 
-`Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
 
+
+.. include:: ../docs/substitutions.txt
+
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

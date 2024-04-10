@@ -1,7 +1,3 @@
-
-.. Copyright (C) 2024, Advanced Micro Devices, Inc. All rights reserved.
-.. SPDX-License-Identifier: X11
-
 ============================================================
 Building and Debugging Linux Applications for Zynq 7000 SoCs
 ============================================================
@@ -166,8 +162,6 @@ You will now boot Linux on the Zynq |trade| 7000 SoC ZC702 target board using th
 
 .. note:: Use ``sudo -i`` to assign privileges.
 
-.. _example-5-creating-a-hello-world-application-for-linux-in-the-vitis-ide:
-
 Boot on QEMU 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1. Change directory to the petalinux project, and use the petalinux-boot command to boot linux on an Emulated system
@@ -190,7 +184,7 @@ Example 5: Creating a Hello World Application for Linux in the Vitis IDE
 In this example, you will use the Vitis IDE to create a Linux application that runs on the embedded Linux environment.
 
 Creating Linux Platform Component
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Initially, create a Linux Platform Component in the Vitis Unified IDE. The Linux Platform Component contains a domain with the information required by the Linux application.
 
@@ -216,7 +210,7 @@ Create a Linux Platform Component using the following steps:
 
 
 Creating Linux Application Component in the Vitis IDE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Create a Linux application component:
 
@@ -246,7 +240,7 @@ Preparing the Linux Agent for Remote Connection
 The Vitis IDE needs a channel to download the application to the running target for debugging. When the target runs Linux, it uses TCF Agent running on the target. TCF Agent is added to the Linux rootfs from the PetaLinux configuration by default. When Linux boots up, it launches TCF Agent automatically. The Vitis IDE talks to TCF Agent on the board using an Ethernet connection.
 
 Setup the Ethernet Connection between Host and Physical Board
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you are using the QEMU, please skip the following steps.
 
@@ -364,5 +358,10 @@ In this chapter, you learned how to:
 
 Up until now, all your development and debugging activities have been running on the processing system. In the :doc:`next chapter <./5-using-gp-port-zynq>`, you will start to add components to the PL (programmable logic). First, you will see how to use the GP port in Zynq devices.
 
-Copyright © 2020–2024 Advanced Micro Devices, Inc 
-`Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
+
+
+.. include:: ../docs/substitutions.txt
+
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
