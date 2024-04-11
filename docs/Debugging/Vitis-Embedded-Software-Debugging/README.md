@@ -10,10 +10,10 @@
 This guide provides specific examples of embedded software debug situations and explains how the various Xilinx debug features can help.
 
 1. [Xilinx Debug Solution Overview](./docs/1-xilinx-debug-solution-overview)
-2. [Debugging Bare-Metal Applications](./docs/2-debugging-bare-metal-applications)
-3. [Debugging Linux Applications](./docs/3-debugging-linux-applications)
-4. [Advanced Debug Techniques](./docs/4-advanced-debug-techniques)
-6. [Summary](./docs/5-summary)
+1. [Debugging Bare-Metal Applications](./docs/2-debugging-bare-metal-applications)
+1. [Debugging Linux Applications](./docs/3-debugging-linux-applications)
+1. [Advanced Debug Techniques](./docs/4-advanced-debug-techniques)
+1. [Summary](./docs/5-summary)
 
 
 <hr class="sphinxhide"></hr>
