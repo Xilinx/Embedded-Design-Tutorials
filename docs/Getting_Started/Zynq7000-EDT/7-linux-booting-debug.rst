@@ -1,10 +1,3 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
 ==============================
 Linux Boot Image Configuration
 ==============================
@@ -14,7 +7,7 @@ In previous chapters, you used SD boot mode for all Linux examples. SD boot mode
 Boot Methods
 ------------
 
-The boot method of Zynq |reg|-7000 devices can be categorized into these two groups:
+The boot method of Zynq |trade| 7000 devices can be categorized into these two groups:
 
 -  Master boot method
 -  Slave boot method
@@ -22,7 +15,7 @@ The boot method of Zynq |reg|-7000 devices can be categorized into these two gro
 Master Boot Method
 ~~~~~~~~~~~~~~~~~~
 
-In the master boot method, the CPU loads and executes the external boot images from non-volatile memory into the processor system (PS). Different kinds of non-volatile memories such as QSPI, NAND, NOR flash, and SD cards are used to store boot images. In this method, the master boot method is further divided into secure and non-secure modes. Refer to the *Zynq-7000 SoC Technical Reference Manual* (`UG585 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf>`_) for more details.
+In the master boot method, the CPU loads and executes the external boot images from non-volatile memory into the processor system (PS). Different kinds of non-volatile memories such as QSPI, NAND, NOR flash, and SD cards are used to store boot images. In this method, the master boot method is further divided into secure and non-secure modes. Refer to the *Zynq 7000 SoC Technical Reference Manual* (`UG585 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf>`_) for more details.
 
 The boot process is initiated by one of the Arm |reg| Cortex |trade|-A9 CPUs in the processing system (PS) and it executes on-chip ROM code. The on-chip ROM code is responsible for loading the first stage boot loader (FSBL). The FSBL does the following:
 
@@ -89,7 +82,7 @@ Booting Linux in JTAG Mode
 
          JTAG Boot Mode
 
-   -  Connect an Ethernet cable from the Zynq-7000 SoC board to your network or directly to your host machine.
+   -  Connect an Ethernet cable from the Zynq 7000 SoC board to your network or directly to your host machine.
 
    -  Connect the Windows host machine to your network.
 
@@ -165,6 +158,19 @@ Booting Linux in JTAG Mode
     -  Run `con` to start executing U-Boot.
 
 11. At the command prompt of the serial terminal, run `bootm 0x30000000`. The Linux OS boots.
+
+Booting Linux in JTAG Mode using QEMU
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Users can boot Linux (or u-Boot) from Petalinux over QEMU. QEMU is helpful for use cases where the hardware is in development or is unavailable for other reasons. 
+
+To boot Linux using QEMU use the command below:
+
+      .. code-block::
+
+            petalinux-boot --qemu --kernel --qemu-args "-net nic,netdev=gem0 -netdev user,id=gem0,hostfwd=tcp:127.0.0.1:1540-10.0.2.15:1534 -net nic"
+
+**Note:** The above command passes the qemu-args to enable GEM0 and uses host forwarding to setup a connection.
 
 Example 10: Booting Linux from QSPI Flash
 -----------------------------------------
@@ -272,7 +278,7 @@ Building the PetaLinux Image
 
    PetaLinux will generate the new U-Boot and `boot.scr`.
 
-   .. note:: For more information, refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest%3Bd%3Dug1144-petalinux-tools-reference-guide.pdf>`_).
+   .. note:: For more information, refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.xilinx.com/r/2022.2-English/ug1144-petalinux-tools-reference-guide>`_).
 
 Making a Linux Bootable Image for QSPI Flash with PetaLinux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -304,27 +310,26 @@ Making a Linux Bootable Image for QSPI Flash with the Vitis IDE
 
 This method is an alternative to the PetaLinux method. If the PetaLinux tools and Vitis software platform are not installed on the same machine, copy the PetaLinux generated boot component files to the Vitis environment first.
 
-1. In the Vitis IDE, go to **Xilinx → Create Boot Image** to open the Create Boot Image wizard.
+1. In the Vitis Unified IDE, go to **Vitis** → **Create Boot Image** → **Zynq** to open the Create Boot Image wizard.
 
    .. image:: ./media/image86.png
 
    .. note:: You might see a different initial screen for the Create Boot Image wizard. When a system project is selected, the Vitis IDE tries to generate an initial BIF for that project. When a platform project is selected, or if it is in an empty workspace, the Vitis IDE will show the wizard with no initial values.
 
-2. From the **Architecture** drop-down list, select **Zynq**.
 
-3. Choose **Create New BIF File**.
+2. Choose **Create New BIF File**.
 
-4. Specify the output BIF file path:
+3. Specify the output BIF file path:
 
    -  Click **Browse** next to the **Output BIF file path** field.
-   -  Navigate to any path. For example, `C:\edt\boot\output.bif`.
+   -  Navigate to any path. For example, `C:/edt/boot/output.bif`.
    -  Click **Save**.
    -  The **Output path** field will be updated automatically. The output ``BOOT.bin`` will be in the same directory with the BIF by default. You can also change the output path.
 
-5. Click **Add** to add the following boot image partitions:
+5. Click the **+** icon (Add Partition) to add the following boot image partitions:
 
    +-------------+-----------------+-----------+
-   | File Path   | Partition Type  | Offset    |
+   | File Path   | Partition Type  | Load      |
    +=============+=================+===========+
    | fsbl.elf    | bootloader      |           |
    +-------------+-----------------+-----------+    
@@ -349,8 +354,8 @@ This method is an alternative to the PetaLinux method. If the PetaLinux tools an
           [bootloader]C:\edt\edt_zc702_linux\qspi\fsbl.elf
           C:\edt\edt_zc702_linux\qspi\system.bit
           C:\edt\edt_zc702_linux\qspi\u-boot.elf
-          [offset = 0x520000]C:\edt\edt_zc702_linux\qspi\image.ub
-          [offset = 0xFC0000]C:\edt\edt_zc702_linux\qspi\boot.scr
+          [load = 0x10000000]C:\edt\edt_zc702_linux\qspi\image.ub
+          [load = 0xFC0000]C:\edt\edt_zc702_linux\qspi\boot.scr
       }
 
 Programming QSPI Flash with the Flash Programming Tool
@@ -363,7 +368,7 @@ Following the steps below, you can program QSPI Flash with the flash programming
 
 1. Power on the ZC702 board in JTAG boot mode (SW16 = 00000).
 
-2. Select **Xilinx → Program Flash** in the Vitis IDE.
+2. Select **Vitis → Program Flash** in the Vitis Unified IDE.
 
 3. Set the Image File to the **BOOT.bin** file.
 
@@ -393,7 +398,7 @@ This is an alternative way for programming QSPI Flash with the flash programming
 
    .. note:: This is the baud rate that the UART is programmed to on Zynq devices.
 
-3. Select **Xilinx → XSCT Console** to open the XSCT tool.
+3. Select **Vitis → XSDB Console...** to open the XSCT tool.
 
 4. From the XSCT prompt, do the following:
 
@@ -453,7 +458,10 @@ Booting Linux from QSPI Flash
 
 See the :doc:`next chapter <./8-custom-ip-driver-linux>` to connect the dots and create a more complicated design.
 
-.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
-   :ltrim:
-.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
-   :ltrim:
+
+
+.. include:: ../docs/substitutions.txt
+
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

@@ -1,20 +1,13 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
 ====================================
 Using the Zynq SoC Processing System
 ====================================
 
-The Zynq SoC consists of Arm |reg| Cortex |trade|-A9 cores, many hard intellectual property components (IPs), and programmable logic (PL). This offering can be used in two ways:
+The AMD Zynq |trade| SoC consists of Arm |reg| Cortex |trade|-A9 cores, many hard intellectual property components (IPs), and programmable logic (PL). This offering can be used in two ways:
 
 -  The Zynq SoC PS can be used in a standalone mode, without attaching any additional fabric IP.
 -  IP cores can be instantiated in fabric and attached to the Zynq PS as a PS+PL combination.
 
-This chapter looks at how to develop an embedded system with only the processing system (PS) of the Zynq |reg|-7000 SoC.
+This chapter describes how to develop an embedded system with only the processing system (PS) of the Zynq |trade| 7000 SoC.
 
 The creation of a Zynq device system design involves configuring the PS to select the appropriate boot devices and peripherals. To start with, as long as the PS peripherals and available MIO connections meet the design requirements, no bitstream is required. This chapter guides you through creating a simple PS-based design that does not require a bitstream.
 
@@ -26,20 +19,20 @@ The creation of a Zynq device system design involves configuring the PS to selec
 Example 1: Creating a New Embedded Project with Zynq SoC
 --------------------------------------------------------
 
-For this example, you will launch the Vivado Design Suite and create a project with an embedded processor system as the top level.
+For this example, you will launch the AMD Vivado |trade| Design Suite and create a project with an embedded processor system as the top level.
 
-Input and Output Files
-~~~~~~~~~~~~~~~~~~~~~~
+Input and Output Files (Example 1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -  Input Files: N/A
--  Output Files: Vivado hardware handoff file system_wrapper.xsa
+-  Output Files: Vivado hardware handoff file ``system_wrapper.xsa``
 
 Creating Your Hardware Design
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Start the Vivado Design Suite.
 
-   -  On Windows 10, click the start menu and find **Xilinx Design Tools -> Vivado 2022.2**.
+   -  On Windows 10, click the start menu and find **Xilinx Design Tools → Vivado 2023.2**.
    -  On Linux, run `source <Vivado installation path>/settings64.sh` to set up the environment and run ``vivado &`` to launch the Vivado IDE.
 
 2. In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
@@ -51,7 +44,7 @@ Creating Your Hardware Design
    |         |                                             | Command to   |
    |         |                                             | Use          |
    +=========+=============================================+==============+
-   | Project | Project name                                | edt_zc702    |
+   | Project | Project Name                                | edt_zc702    |
    | Name    |                                             |              |
    +---------+---------------------------------------------+--------------+
    |         | Project Location                            | C:/edt       |
@@ -69,11 +62,11 @@ Creating Your Hardware Design
    |         | Do not specify sources at this time         | Leave this   |
    |         |                                             | checked.     |
    +---------+---------------------------------------------+--------------+
-   |         | Project is a an extensible Vitis platform   | Leave this   |
+   |         | Project is an extensible Vitis platform     | Leave this   |
    |         |                                             | unchecked.   |
    +---------+---------------------------------------------+--------------+
-   | Default | Choose a default Xilinx part or board for   | Select the   |
-   | Part    | your project                                | Boards tab.  |
+   | Default | Choose a default AMD part or board for your | Select the   |
+   | Part    | project                                     | Boards tab.  |
    +---------+---------------------------------------------+--------------+
    |         | Boards                                      | ZYNQ-7 ZC702 |
    |         |                                             | Evaluation   |
@@ -81,8 +74,8 @@ Creating Your Hardware Design
    +---------+---------------------------------------------+--------------+
    | New     | Project Summary                             | Review the   |
    | Project |                                             | project      |
-   | roject  |                                             | summary.     |
-   | Summary |                                             |              |
+   | Summary |                                             | summary.     |
+   |         |                                             |              |
    +---------+---------------------------------------------+--------------+
 
 4. Click **Finish**. The New Project wizard closes and the project you just created opens in the Vivado design tool.
@@ -114,7 +107,7 @@ Perform the following steps to create an embedded processor project.
 
       ZYNQ7 in block diagram
 
-Configuring the Zynq-7000 Processing System with Presets in Vivado
+Configuring the Zynq 7000 Processing System with Presets in Vivado
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the Block Diagram window, notice the message stating that Designer assistance is available, as shown in the following figure.
@@ -127,7 +120,7 @@ In the Block Diagram window, notice the message stating that Designer assistance
 
 2. Click **OK** to accept the default processor system options and make default pin connections.
 
-   The automation result looks like this. It configures PS properties inside the block and connects fixed IO and DDR pins.
+   The following image illustrates the automation result. It configures PS properties inside the block and connects fixed IO and DDR pins.
 
    .. image:: ./media/vivado_zynq_automation_result.png
 
@@ -168,7 +161,7 @@ Creating an HDL Wrapper for the Block Diagram
 
 1. Click the **Sources** window.
 
-   It should be in **Hierarchy** tab by default. If it’s not there, click the **Hierarchy** tab.
+   It should be in the **Hierarchy** tab by default. If it is not there, click the **Hierarchy** tab.
 
 2. Expand **Design Sources**, right-click the block diagram file **system(system.bd)**, and select **Create HDL Wrapper**.
 
@@ -205,7 +198,7 @@ Generating the Block Design
 Exporting Hardware
 ~~~~~~~~~~~~~~~~~~
 
-Two types of hardware can be exported from Vivado: pre-synthesis and post-implementation. In the block design for this example, the hardware in the PL is the signal from ``FCLK_CLK0`` to ``M_AXI_GP0_ACLK``. It drives the clock of ``M_AXI_GP0``. Because only pure PS functions will be tested in this example and PL resources will not be used, no loads are added to the ``M_AXI_GP0`` AXI interface. You can skip the synthesis, implementation and bitstream generation phases to save time. We will export the pre-synthesis hardware in this case.
+Two types of hardware can be exported from Vivado: pre-synthesis and post-implementation. In the block design for this example, the hardware in the PL is the signal from ``FCLK_CLK0`` to ``M_AXI_GP0_ACLK``. It drives the clock of ``M_AXI_GP0``, because only pure PS functions will be tested in this example and PL resources will not be used, no loads are added to the ``M_AXI_GP0`` AXI interface. You can skip the synthesis, implementation, and bitstream generation phases to save time. We will export the pre-synthesis hardware in this case.
 
 1. From the Vivado main menu, select **File→ Export → Export Hardware**. The Export Hardware Platform wizard opens.
 
@@ -227,11 +220,11 @@ Two types of hardware can be exported from Vivado: pre-synthesis and post-implem
 
          write_hw_platform -fixed -force -file C:/edt/edt_zc702/system_wrapper.xsa
          INFO: [Vivado 12-4895] Creating Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa ...
-         INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2022.2/data/embeddedsw) loading 1 seconds
+         INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2023.2/data/embeddedsw) loading 1 seconds
          INFO: [Vivado 12-12467] The Hardware Platform can be used for Hardware
          INFO: [Vivado 12-4896] Successfully created Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa
 
-What’s Next?
+What's Next?
 ~~~~~~~~~~~~
 
 Now you can start developing the software for your project using the Vitis software platform. The next sections help you create a software application for your hardware platform.
@@ -242,8 +235,8 @@ Example 2: Creating and Running a “Hello World” Application
 
 In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a simple “Hello World” software application in JTAG mode using System Debugger in the Vitis IDE.
 
-Input and Output Files
-~~~~~~~~~~~~~~~~~~~~~~
+Input and Output Files (Example 2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -  Input Files: ``system_wrapper.xsa``
 -  Output Files: ``hello_world.elf``
@@ -259,7 +252,8 @@ Setting Up the Board
 
 3. Connect the USB JTAG cable:
 
-   1. Connect a micro USB cable between the host machine and the ZC702 target board U23. Be careful not to use J1 by mistake.
+   1. Connect a micro USB cable between the host machine and the ZC702 target board U23.
+   .. note:: Do not to use J1.
    2. Make sure that the **SW10** switch settings for JTAG selection are set to choose USB JTAG:
 
       -  Bit-1 is 0
@@ -285,62 +279,54 @@ Setting Up the Board
 
 5. Power on the ZC702 board.
 
-Creating a Vitis Platform Project
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Creating a Vitis Unified Platform Project
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Launch the Vitis IDE with any of the actions below:
+1. Launch the Vitis Unified IDE with any of the actions below:
 
-   1. From the Vivado IDE, select **Tools -> Launch Vitis IDE**.
-   2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Xilinx Vitis 2022.2**.
+   1. From the Vivado IDE, select **Tools → Launch Vitis IDE**.
+   2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Vitis 2023.2**.
    3. On Linux, run ``source <Vitis Installation Directory>/settings64.sh`` to set up the environment and run ``vitis &``.
 
-2. Select the workspace location as **C:/edt/edt_zc702_workspace** or any given location path.
+2. Select **Open Workspace** and give the location as **C:/edt/edt_zc702_workspace** or any given location path.
 
-   -  Vitis will create the workspace folder if it is not already created.
+   -  Unlike Vitis Classic IDE, the platform is not generated automatically. You need to do this manually.
 
-   .. figure:: ./media/image23.png
-       :alt: Vitis IDE Launcher
-
-       Vitis IDE Launcher
-
-   -  Click **Launch**. The Vitis IDE opens.
-
-3. Review the Welcome page and close it.
-
-4. Click **File → New → Platform Project** to create a platform project from the XSA file generated by Vivado.
-
-   .. image:: ./media/image24.jpeg
-
-5. When the New Platform Project wizard opens, enter the platform project name as **zc702_edt**, as shown in following figure. Click **Next**.
+3. Click **File → New Component → Platform**. Enter the platform project name as **zc702_edt**, as shown in following figure. Click **Next**.
 
    .. figure:: ./media/image25.png
-       :alt: Platform Project Name
+       :alt: Platform Name
 
-       Platform Project Name
+       Platform Name
 
-6. In the **Platform** page, you see the **Create a new platform from hardware (XSA)** tab by default. Under **Hardware Specification**, click **browse** to specify the XSA file ``C:\edt\edt`\_zc702\system`\_wrapper.xsa\``, and click **OK**.
+4. In the **Select Platform Creation Flow** page, Select **Hardware Design** and click **browse** to specify the XSA file ``C:\edt\edt`\_zc702\system`\_wrapper.xsa\``, and click **OK**.
 
-   -  When the XSA file is selected, the Software Specification fields are updated so that the operating system is **standalone** and the processor is **ps7_cortexa9_0**.
-   - Keep the **Generate boot components** option selected, as shown in the following figure.
-   -  Click **Finish**.
+   -  When the XSA file is selected, the System Device Tree (SDT) is generated, and the metadata here is used to populate the processor list. Once the SDT is created, choose **standalone** and the processor is **ps7_cortexa9_0**.
+   - Keep the **Generate boot Artifacts** option selected, as shown in the following figure.
 
    .. figure:: ./media/image26.png
        :alt: Select XSA
 
        Select XSA
+   
+-  Click **Finish**.
 
-7. The platform project is created. In the **Explorer** view, double-click **zc702_edt → platform.spr** to view the platform view as shown in the following figure.
+7. The platform project is created. In the **Vitis Components** view, double-click **zc702_edt → platform.spr** to view the platform view as shown in the following figure.
 
    .. image:: ./media/image27.png
 
-8. In the **Explorer** view, expand **export → zc702_edt** to find the exported Hardware Specification file, ``system_wrapper.xsa`` (under the ``hw`` folder), and the top-level platform XML file, ``zc702_edt.xpfm``. Double-click on the XSA file to see the address map for the entire processing system, as shown in the following figure.
+8. In the **Vitis Components** view, expand **zc702_edt → Settings → vitis-comp.json**. 
 
    .. image:: ./media/image28.png
 
-9. Build the platform project either by clicking the hammer button or by right-clicking on the platform project and selecting **Build Project** as shown in following figure.
+   You can select the **Hardware Specification** link to see the the address map for the entire processing system.
+
+   .. image:: ./media/hardware_spec.png
+
+9. Build the platform by highlighting the platfom in **Vitis Components** view, and under **FLOW**, clicking the hammer button as shown in following figure.
 
    .. figure:: ./media/image29.png
-       :alt: Build Project
+       :alt: Build Platform
 
        Build Project
 
@@ -348,107 +334,62 @@ Creating a Vitis Platform Project
 
    The build process takes some time because it is not only building the standalone BSP, but also boot components such as FSBL.
 
-What Just Happened?
-~~~~~~~~~~~~~~~~~~~
+Recap
+~~~~~~~~~~~~~~
 
-Using the Vitis IDE, you have created a platform project and exported the XSA file to the workspace in the ``C:\designs\workspace``. The export operation generated a standalone domain with a ps7_cortexa9_0 processor and an FSBL application project. You have built a platform project, and the generated Xilinx platform definition file (``zc702_edt.xpfm``) can be used as a platform for the applications that you create in the Vitis IDE.
+Using the Vitis IDE, you have created a platform component. Within the Platform Component the tools generated a standalone domain with a ps7_cortexa9_0 processor and an FSBL application project. You have built a Platform Component, and the generated AMD platform definition file (``zc702_edt.xpfm``) can be used as a platform for the applications that you create in the Vitis IDE.
 
 Creating the Hello World Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+There are two ways to generate an Application template in the Vitis Unified IDE. You can go to activity bar **Examples** icon on the left hand side of the IDE. Alternatively, you can also navigate to **File → New Component → Application**. However, the subsequent method uses the **Empty Application** application template.
 
-1. Select **File → New → Application Project**.
+1. Here, we can use the **Examples** icon to create the **Hello World**
 
-   The New Application Project wizard opens. Enable the option **Skip welcome page next time** and click **Next**.
+   .. image:: ./media/hello_world.png
 
-2. Use the information in the following table to make your selections in the wizard screens.
+   In the Create Application Component wizard, click **Next**.
 
-   +----------------------+----------------------+----------------------+
-   | Screen               | System Properties    | Setting or Command   |
-   |                      |                      | to Use               |
-   +======================+======================+======================+
-   | Platform             | Select a platform    | Click zc702_edt      |
-   |                      | from repository      | [custom].            |
-   +----------------------+----------------------+----------------------+
-   | Application Project  | Application project  | Enter hello_world.   |
-   | Details              | name                 |                      |
-   +----------------------+----------------------+----------------------+
-   |                      | System project name  | Keep                 |
-   |                      |                      | hello_world_system.  |
-   +----------------------+----------------------+----------------------+
-   |                      | Target Processor     | Keep ps7_cortexa9_0  |
-   |                      |                      | selected.            |
-   +----------------------+----------------------+----------------------+
-   |                      | Show all processors  | Keep unchecked.      |
-   |                      | in hardware          |                      |
-   |                      | specification        |                      |
-   +----------------------+----------------------+----------------------+
-   | Domain               | Select a domain      | Keep standalone on   |
-   |                      |                      | ps7_cortex9_0        |
-   |                      |                      | selected.            |
-   +----------------------+----------------------+----------------------+
-   | Templates            | Available Templates  | Hello World.         |
-   +----------------------+----------------------+----------------------+
+2. Select the Platform generated in the previous step.
 
-   -  Click **Finish**. The Vitis software platform creates the hello_world application project and hello_world_system project in the Explorer view.
+   .. image:: ./media/select_plat.png
 
-      While entering the application project name, the Vitis IDE populates the system project name automatically with + "_system". You are free to update the system project name if you wish.
+This will use the domain generated in the platform by default. Click **Next** and **Finish**.
 
-      By default, the New Application Wizard only shows the processors used by the domains in the platform. If you want to create a new platform during the application creation process, enable the **Show all processors in hardware specification** option.
-
-3. Right-click the **hello_world** standalone application and select **Build Project** to generate the ``hello_world.elf`` binary file.
+3. Highlight the **hello_world** application component in the **Vitis Components** view. Select the hammer icon under **FLOW**.
 
 .. _running-the-hello-world-application-on-a-zc702-board:
+
+Set Up Target Connections
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, there is a target connection set up for the localhost (127.0.0.1) at port 3121. However, you may connect remotely. For a remote connection you need to set up the target connection that will be used in the Launch Configuration later in this tutorial. 
+
+To view the target connections, go to **Vitis → Target Connections**. 
+
+.. image:: ./media/new_target.PNG
+
+Right click on the **Hardware Server**, select **New Target** and add your connection details.
+
+.. image:: ./media/target_details.PNG
+
 
 Running the Hello World Application on a ZC702 Board
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Open a serial communication utility for the COM port assigned on your system.
+1. Open a **Serial Communication Utility** for the COM port assigned to your system.
 
-   The Vitis software platform provides a serial terminal utility will be used throughout the tutorial. You can also use your preferred serial terminal application.
+3. Highlight **hello_world** application in **Vitis Components** view. Select **Run Settings** to open a **Launch Configuration**.
 
-   1. To open this utility, select **Window → Show view**.
-   2. In the Show View dialog box, type **terminal** in the search box.
-   3. Select **Vitis Serial Terminal**.
-   4. Click **Open**.
+   .. note:: Make sure that the **Target Connection** is correct.
 
-   .. figure:: ./media/image33.png
-      :alt: Open Vitis Serial Terminal
+5. Click **Run**.
 
-      Open Vitis Serial Terminal
+   “Hello World” appears on the  Serial Terminal.
 
-2. Click the **Add** button in the Vitis Serial Terminal to connect to a serial terminal.
+   .. note:: The software application do not require bitstream download to execute on the Zynq SoC evaluation board. The Arm Cortex-A9 dual core is already present on the board. Basic initialization of this system to run a simple application is accomplished by the First Stage Boot Loader (FSBL). The FSBL has ps7_init.c/h files that are packaged in the XSA file and extracted when the platform is created. The ps7_init.c/h have the settings made in the PS7 Subsystem in Vivado.
 
-   1. Select the port from the dropdown menu.
-   2. Keep the Advanced Settings as-is.
-   3. Click **OK**
-
-   .. figure:: ./media/image35.png
-      :alt: Connect UART
-
-      Connect UART
-
-3. Right-click **hello_world** and select **Run as → Run Configurations**.
-
-4. Right-click **Single Application Debug** and click **New Configuration**. The Vitis software platform creates the new run configuration, named Debugger_hello_world-Default.
-
-   The configurations associated with the application are pre-populated in the Main tab of the Run Configurations dialog box.
-
-5. Click the **Target Setup** page and review the settings. The default
-   choice is the Tcl script.
-
-6. Click **Run**.
-
-   “Hello World” appears on the Vitis Serial Terminal, as shown in the following figure.
-
-   .. figure:: ./media/image36.png
-      :alt: Terminal Print Result
-
-      Terminal Print Result
-
-   .. note:: No bitstream download is required for the above software application to be executed on the Zynq SoC evaluation board. The Arm Cortex-A9 dual core is already present on the board. Basic initialization of this system to run a simple application is accomplished by the device initialization Tcl script.
-
-What Just Happened?
-~~~~~~~~~~~~~~~~~~~
+What Just Happened? (Example 2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The application software sent the "Hello World" string to the UART1 peripheral of the PS section.
 
@@ -474,7 +415,10 @@ In the :doc:`next chapter <./3-debugging-vitis>`, you will learn how to debug so
 
 .. |Add-IP-Button| image:: ./media/image8.png
 
-.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
-   :ltrim:
-.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
-   :ltrim:
+
+
+.. include:: ../docs/substitutions.txt
+
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
