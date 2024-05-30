@@ -12,7 +12,7 @@ In this tutorial, you will create a simple AMD soft-processor system for a Spart
 You have the option of using the classic AMD MicroBlaze™ soft-processor or using the new AMD MicroBlaze™ V soft-core RISC-V processor.
 
 <details>
-    <summary style="font-size:x-large">Programming an Embedded MicroBlaze Processor</summary>
+    <summary><b><ul>Programming an Embedded MicroBlaze Processor</ul></b></summary>
 
 ## Introduction
 
