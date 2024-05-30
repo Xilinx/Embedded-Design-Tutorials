@@ -1196,7 +1196,7 @@ The Vitis software platform launches in a separate window.
 
 ![](./media/image29.png)**IMPORTANT!** *Make sure that you have connected the target board to the host computer and it is turned on.*
 
-1. To start the debug session, click on the Debug icon under **Flow > Component [peripheral_tests] > Debug**.
+1. To start the session, click on the Run icon under **Flow > Component [peripheral_tests] > Run**.
 
     ![](./media/image46-1.png)
 
@@ -1204,11 +1204,11 @@ The Vitis software platform launches in a separate window.
 
     ![](./media/image47-1v.png)
 
-3. Add a breakpoint in the code so that the processor stops code execution when the breakpoint is encountered. To do so, scroll down to line 24 and click on the left pane red dot, which adds a breakpoint on that line of code, as shown in the following figure.
+<!-- 3. Add a breakpoint in the code so that the processor stops code execution when the breakpoint is encountered. To do so, scroll down to line 24 and click on the left pane red dot, which adds a breakpoint on that line of code, as shown in the following figure.
 
-    ![](./media/image48-1.png)
+    ![](./media/image48-1.png) -->
 
-4. Configure your terminal program (e.g., TeraTerm, Putty) to connect to the SP701 Serial Port with the settings shown below.
+3. Configure your terminal program (e.g., TeraTerm, Putty) to connect to the SP701 Serial Port with the settings shown below.
     - Baud rate = 9600
     - Data bits = 8
     - Stop bits = 1
@@ -1241,19 +1241,20 @@ Connect to the SP701 board using the Vivado Logic Analyzer.
 
 ## Step 13: Set the MicroBlaze to Logic Cross Trigger
 When the Vivado Hardware Session successfully connects to the SP701 board, you see the information shown in the following figure:
+
 ![](./media/image57-1.png)
 
 
-1. Select the **Settings - hw_ila_1** tab and set the Trigger Mode Settings as follows:
+1. Select the **Settings - hw_ila_1** tab and keep the Trigger Mode Settings with the default value:
 
-    1. Set Trigger mode to **TRIG_IN_ONLY**.
+    1. Set Trigger mode to **BASIC_ONLY**.
 
-    2. Set TRIG_OUT mode to **TRIG_IN_ONLY**.
+    <!-- 2. Set TRIG_OUT mode to **TRIG_IN_ONLY**. -->
 
-    3. Under Capture Mode Settings, ensure that Trigger position in window is set to **512**.
-   ![](./media/image59-1.png)
+    2. Under Capture Mode Settings, ensure that Trigger position in window is set to **512**.
+   ![](./media/image59-1v.png)
 
-2. Arm the ILA core by clicking the Run Trigger![](./media/image58-1.png) button.
+<!-- 2. Arm the ILA core by clicking the Run Trigger![](./media/image58-1.png) button.
 
     This arms the ILA. You should see the status “Waiting for Trigger” in the **Status - hw_ila_1** tab as shown in the following figure.
 
@@ -1264,13 +1265,14 @@ When the Vivado Hardware Session successfully connects to the SP701 board, you s
 The code will execute until the breakpoint set on line 24 in `testperiph.c` file is reached. As the breakpoint is reached, this triggers the ILA, as shown in the following figure.
 ![](./media/image61-1.png)
 
-This demonstrates that when the breakpoint is encountered during code execution, the MicroBlaze triggers the ILA that is set up to trigger. This way you can monitor the state of the hardware at a certain point of code execution.
+This demonstrates that when the breakpoint is encountered during code execution, the MicroBlaze triggers the ILA that is set up to trigger. This way you can monitor the state of the hardware at a certain point of code execution. -->
 
 ## Step 14: Set the Logic to Processor Cross- Trigger
 
-Now try the logic to processor side of the cross-trigger mechanism. In other words, remove the breakpoint that you set earlier on line 24 to have the ILA trigger the processor and stop code execution.
+Now try the logic to processor side of the cross-trigger mechanism.
+<!-- In other words, remove the breakpoint that you set earlier on line 24 to have the ILA trigger the processor and stop code execution. -->
 
-1. Select the **Breakpoints** tab towards the bottom left corner of the window, and clear the **testperiph.c [line: 24]** check box. This removes the breakpoint that you set up earlier.
+<!-- 1. Select the **Breakpoints** tab towards the bottom left corner of the window, and clear the **testperiph.c [line: 24]** check box. This removes the breakpoint that you set up earlier.
 
     Alternatively, you can also right click on the breakpoint in the `testperiph.c` file, and select **Disable Breakpoint**.
 
@@ -1278,25 +1280,25 @@ Now try the logic to processor side of the cross-trigger mechanism. In other wor
 
     The code runs continuously because it has an infinite loop.
 
-    You can see the code executing in the Terminal Window.
+    You can see the code executing in the Terminal Window. -->
 
-3. In Vivado, select the **Settings - hw_ila_1** tab. Change the Trigger Mode to **BASIC_OR_TRIG_IN** and the TRIG_OUT mode to **TRIGGER_OR_TRIG_IN**.
+<!-- 3. In Vivado, select the **Settings - hw_ila_1** tab. Change the Trigger Mode to **BASIC_OR_TRIG_IN** and the TRIG_OUT mode to **TRIGGER_OR_TRIG_IN**. -->
 
-4. Click on the (+) sign in the Trigger Setup window to add the `slot_0 : microblaze_0_axi_periph_M00_AXI : AWVALID` signal from the Add Probes window.
+1. Click on the (+) sign in the Trigger Setup window to add the `slot_0 : microblaze_riscv_0_axi_periph_M00_AXI : AWVALID` signal from the Add Probes window.
 
-5. In the Trigger Setup window, for `slot_0 : microblaze_0_axi_periph_M00_AXI : AWVALID` signal, ensure that the Operator field is set to **==**, the Radix field to **[B] (Binary)** and the Value field to **1 (logical one)**.
+2. In the Trigger Setup window, for `slot_0 : microblaze_riscv_0_axi_periph_M00_AXI : AWVALID` signal, ensure that the Operator field is set to **==**, the Radix field to **[B] (Binary)** and the Value field to **1 (logical one)**.
 
     This essentially sets up the ILA to trigger when the `awvalid` transitions to a value of 1.
 
-    ![](./media/image61-3.png)
+    ![](./media/image61-3v.png)
 
-6. Click the Run Trigger button to 'arm' the ILA in the Status - hw_ila_1 window.
+<!-- 6. Click the Run Trigger button to 'arm' the ILA in the Status - hw_ila_1 window.
 
     The ILA immediately triggers as the application software is continuously performing a write to the GPIO thereby toggling the `net_slot_0\_axi_awvalid` signal, which causes the ILA to trigger. The ILA in turn, toggles the `TRIG_OUT` signal, which signals the processor to stop code execution.
 
     This is seen in Vitis in the highlighted area of the debug window.
 
-    ![](./media/image62-1.png)
+    ![](./media/image62-1.png) -->
 
 ## Conclusion
 
@@ -1316,7 +1318,7 @@ In this tutorial, you:
 
 ## Lab Files
 
-The Tcl script `lab_classic_mb.tcl` is included with the design files to perform all the tasks in Vivado. The Vitis software platform operations must be done in the Vitis GUI. You will need to modify the Tcl script to match the desired project path and project name on your machine.
+The Tcl script `lab_riscv_mb.tcl` is included with the design files to perform all the tasks in Vivado. The Vitis software platform operations must be done in the Vitis GUI. You will need to modify the Tcl script to match the desired project path and project name on your machine.
 </details>
 
 <hr class="sphinxhide"></hr>
