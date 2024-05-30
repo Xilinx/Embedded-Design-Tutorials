@@ -12,7 +12,7 @@ In this tutorial, you will create a simple AMD soft-processor system for a Spart
 You have the option of using the classic AMD MicroBlaze™ soft-processor or using the new AMD MicroBlaze™ V soft-core RISC-V processor.
 
 <details>
-    <summary><b><ul>Programming an Embedded MicroBlaze Processor</ul></b></summary>
+    <summary><b><ins>Programming an Embedded MicroBlaze Processor</ins></b></summary>
 
 ## Introduction
 
@@ -671,8 +671,8 @@ In this tutorial, you:
 The Tcl script `lab_classic_mb.tcl` is included with the design files to perform all the tasks in Vivado. The Vitis software platform operations must be done in the Vitis GUI. You will need to modify the Tcl script to match the desired project path and project name on your machine.
 </details>
 
-<details open>
-    <summary style="font-size:x-large">Programming an Embedded MicroBlaze V Processor</summary>
+<details>
+    <summary><b><ins>Programming an Embedded MicroBlaze V Processor</ins></b></summary>
 
 ## Introduction
 
