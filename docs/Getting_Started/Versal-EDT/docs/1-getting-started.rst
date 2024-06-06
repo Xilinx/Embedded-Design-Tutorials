@@ -56,7 +56,7 @@ Installation Requirements
 Vitis Integrated Design Environment (IDE) and Vivado Design Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ensure that you have the AMD Vitis |trade| 2023.2 software development platform installed. The Vitis IDE is a unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
+Ensure that you have the AMD Vitis |trade| 2024.1 software development platform installed. The Vitis IDE is a unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
 
 .. note:: Visit `https://www.xilinx.com/support/download.html <https://www.xilinx.com/support/download.html>`__ to confirm that you have the latest tools version.
 
@@ -75,7 +75,7 @@ This can use either a dedicated Linux host system or a virtual machine running o
 
 When you install PetaLinux tools on your system of choice, you must do the following:
 
-- Download PetaLinux 2023.2 software from the website.
+- Download PetaLinux 2024.1 software from the website.
 
 - Download the respective BSP as described in :ref:`creating-linux-images-using-petalinux`.
 
@@ -113,12 +113,12 @@ AMD software uses FLEXnet licensing. When the software is first run, it performs
 Tutorial Design Files
 =====================
 
-The reference design files for Production Silicon are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.2/docs/Getting_Started/Versal-EDT/ref_files/>`__ directory.
+The reference design files for Production Silicon are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2024.1/docs/Getting_Started/Versal-EDT/ref_files/>`__ directory.
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
 
-.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

@@ -712,5 +712,5 @@ After flashing the built images, all four LEDs which are connected to slave SLR 
    :ltrim:
 
 
-.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

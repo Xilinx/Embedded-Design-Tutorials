@@ -953,5 +953,5 @@ Refer to `Running Applications in the JTAG Mode using the System Debugger in the
 .. |image30| image:: ./media/image30.png
 
 
-.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

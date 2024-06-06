@@ -251,5 +251,5 @@ You need to flash the images to the daughter card using the following steps:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
 
-.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
