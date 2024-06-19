@@ -62,7 +62,7 @@ Because you selected the SP701 board when you created the Vivado IDE project, yo
 
 ```set_property board_part xilinx.com:sp701:part0:1.1 [current_project]```
 
-Although Tcl commands are available for many of the actions performed in the Vivado IDE, they are not explained in this tutorial. Instead, a Tcl script is provided that can be used to recreate this entire project. See the Tcl Console for more information. You can also refer to the *Vivado Design Suite Tcl Command Reference Guide*([UG835](https://docs.xilinx.com/access/sources/dita/map?Doc_Version=2023.2%20English&url=ug835-vivado-tcl-commands)) for information about the `write_bd_tcl` commands.
+Although Tcl commands are available for many of the actions performed in the Vivado IDE, they are not explained in this tutorial. Instead, a Tcl script is provided that can be used to recreate this entire project. See the Tcl Console for more information. You can also refer to the *Vivado Design Suite Tcl Command Reference Guide* ([UG835](https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug835-vivado-tcl-commands)) for information about the `write_bd_tcl` commands.
 
 ## Step 2: Create an IP Integrator Design
 
@@ -722,7 +722,7 @@ Because you selected the SP701 board when you created the Vivado IDE project, yo
 
 ```set_property board_part xilinx.com:sp701:part0:1.1 [current_project]```
 
-Although Tcl commands are available for many of the actions performed in the Vivado IDE, they are not explained in this tutorial. Instead, a Tcl script is provided that can be used to recreate this entire project. See the Tcl Console for more information. You can also refer to the *Vivado Design Suite Tcl Command Reference Guide*([UG835](https://docs.xilinx.com/access/sources/dita/map?Doc_Version=2023.2%20English&url=ug835-vivado-tcl-commands)) for information about the `write_bd_tcl` commands.
+Although Tcl commands are available for many of the actions performed in the Vivado IDE, they are not explained in this tutorial. Instead, a Tcl script is provided that can be used to recreate this entire project. See the Tcl Console for more information. You can also refer to the *Vivado Design Suite Tcl Command Reference Guide* ([UG835](https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug835-vivado-tcl-commands)) for information about the `write_bd_tcl` commands.
 
 ## Step 2: Create an IP Integrator Design
 
