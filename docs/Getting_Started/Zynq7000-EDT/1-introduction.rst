@@ -102,7 +102,7 @@ AMD software uses FLEXnet licensing. When the software is first run, it performs
 Design Files for this Tutorial
 ------------------------------
 
-The reference design files for this tutorial are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT/ref_files>`_ directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific `ref_files` subdirectory.
+The reference design files for this tutorial are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Getting_Started/Zynq7000-EDT/ref_files>`_ directory, organized with design number or chapter name. Chapters that need to use reference files will point to the specific `ref_files` subdirectory.
 
 Start with the first examples in the :doc:`next chapter <./2-using-zynq>`.
 

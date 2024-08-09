@@ -15,7 +15,7 @@ The boot method of Zynq |trade| 7000 devices can be categorized into these two g
 Master Boot Method
 ~~~~~~~~~~~~~~~~~~
 
-In the master boot method, the CPU loads and executes the external boot images from non-volatile memory into the processor system (PS). Different kinds of non-volatile memories such as QSPI, NAND, NOR flash, and SD cards are used to store boot images. In this method, the master boot method is further divided into secure and non-secure modes. Refer to the *Zynq 7000 SoC Technical Reference Manual* (`UG585 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf>`_) for more details.
+In the master boot method, the CPU loads and executes the external boot images from non-volatile memory into the processor system (PS). Different kinds of non-volatile memories such as QSPI, NAND, NOR flash, and SD cards are used to store boot images. In this method, the master boot method is further divided into secure and non-secure modes. Refer to the *Zynq 7000 SoC Technical Reference Manual* (`UG585 <https://docs.amd.com/go/en-US/ug585-zynq-7000-SoC-TRM>`_) for more details.
 
 The boot process is initiated by one of the Arm |reg| Cortex |trade|-A9 CPUs in the processing system (PS) and it executes on-chip ROM code. The on-chip ROM code is responsible for loading the first stage boot loader (FSBL). The FSBL does the following:
 
@@ -139,7 +139,7 @@ Booting Linux in JTAG Mode
 
     4.  Change working directory to `images/linux` in your PetaLinux project.
 
-    .. note:: On Windows, the XSCT shell regards the Windows path divider `\` as escape character. Use ``/`` or ``\\`` instead, or add curly brackets ``{}`` for the Windows path name to make sure it is interpreted correctly.
+    .. note:: On Windows, the XSCT shell regards the Windows path divider ``\`` as escape character. Use ``/`` or ``\\`` instead, or add curly brackets ``{}`` for the Windows path name to make sure it is interpreted correctly.
 
     -  Run `dow zynq_fsbl.elf` to download PetaLinux FSBL.
 
@@ -278,7 +278,7 @@ Building the PetaLinux Image
 
    PetaLinux will generate the new U-Boot and `boot.scr`.
 
-   .. note:: For more information, refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.xilinx.com/r/2022.2-English/ug1144-petalinux-tools-reference-guide>`_).
+   .. note:: For more information, refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2023.2%20English&url=ug1144-petalinux-tools-reference-guide>`_).
 
 Making a Linux Bootable Image for QSPI Flash with PetaLinux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -410,7 +410,7 @@ This is an alternative way for programming QSPI Flash with the flash programming
 
    -  Run ``dow fsbl.elf`` to download the FSBL image.
 
-   -  Run ``con`` and then run ``stop`` to use FSBL to initialize the Zynq-7000 device.
+   -  Run ``con`` and then run ``stop`` to use FSBL to initialize the Zynq 7000 device.
 
    -  Run ``dow u-boot.elf`` to download the Linux U-Boot.
 
