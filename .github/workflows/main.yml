@@ -1,0 +1,72 @@
+name: Publish To New Branch and TIP Staging
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: write-all
+
+jobs:
+  publish_to_repo:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@main
+
+    - name: Install Python
+      uses: actions/setup-python@v2.3.0
+      with:
+        python-version: 3.9
+
+    - name: Install sphinx and dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        pip3 install rst2pdf==0.99  rinohtype==0.5.3 recommonmark==0.7.1 sphinx_markdown_tables==0.0.17 sphinx==5.1.1 docutils==0.16 bs4 linuxdoc
+    - name: Build HTML
+      working-directory: './build_html'
+      run: make html
+
+    - name: Delete _sources and _static
+      working-directory: './build_html/build/html'
+      run: |
+        rm -rf _sources
+        rm -rf _static
+    - name: Create index.ftmap
+      working-directory: './build_html/source'
+      run: |
+        cp ../../assets/ftmap.py .
+        python ftmap.py
+    - name: Clean HTML
+      working-directory: './build_html/build/html'
+      run: |
+        cp ../../../assets/handle_html.py .
+        python handle_html.py
+    - name: ZIP for FT
+      working-directory: './build_html/build/html'
+      run: |
+        zip -r xd131.zip .
+    - name: Publish to Fluid Topics
+      working-directory: './build_html/build/html'
+      run: |
+        echo "$PWD"
+        curl -X POST  -F "file=@xd131.zip" -H "Authorization: ${{ env.FLUID_TOPICS_AUTH_VALUE }}" https://xilinx-staging.fluidtopics.net/api/admin/khub/sources/ftml/upload
+      env:
+        FLUID_TOPICS_AUTH_VALUE: 'Bearer ${{ secrets.FLUID_TOPICS_AUTH_TOKEN }}'
+    - name: Move xd131.zip to prep4upload directory
+      working-directory: './build_html/build/html'
+      run: |
+        mkdir -p ../../prep4upload
+        cp -f xd131.zip ../../prep4upload
+
+
+    - name: Push changes to new branch
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Action"
+        git checkout -b $(date +"%m-%d-%y-%H-%M")-ftml
+        git add -A
+        git commit -m "Creating new build"
+        git push origin $(date +"%m-%d-%y-%H-%M")-ftml
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
