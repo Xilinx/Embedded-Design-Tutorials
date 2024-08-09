@@ -43,7 +43,7 @@ This tutorial uses the new AMD MicroBlaze™ V soft-core RISC-V processor.
 3. In the New Project dialog box, use the following settings:
 
     a. In the Project Name dialog box, type the project name and location.
-    
+
     b. Make sure that the **Create project subdirectory** check box is selected. Click **Next**.
 
     c. In the Project Type dialog box, select **RTL project**. Ensure that the **Do not specify sources at this time** check box is cleared. Click **Next**.
