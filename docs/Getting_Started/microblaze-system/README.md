@@ -8,14 +8,12 @@
 
 # Programming an Embedded MicroBlaze and MicroBlaze V Processor
 
-In these tutorials, you can create a simple AMD soft-processor system for a Spartan-7 FPGA using AMD Vivado™ IP integrator.
-
-You have the option of using the classic AMD MicroBlaze™ soft-processor or using the new AMD MicroBlaze™ V soft-core RISC-V processor.
+In these tutorials, you have two options for creating a simple AMD soft-processor system for a Spartan-7 FPGA using AMD Vivado™ IP integrator:
 
 
-## [Programming an Embedded MicroBlaze Processor](./tutorials/program_microblaze.md)
+## [Use the classic AMD MicroBlaze™ soft-processor](./tutorials/program_microblaze.md)
 
-## [Programming an Embedded MicroBlaze V Processor](./tutorials/program_microblaze_v.md)
+## [Use the new AMD MicroBlaze™ V soft-core RISC-V processor](./tutorials/program_microblaze_v.md)
 
 
 <hr class="sphinxhide"></hr>
