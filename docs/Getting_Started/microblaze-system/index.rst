@@ -6,8 +6,7 @@ Create an AMD MicroBlaze™ system for a Spartan-7 FPGA using Vivado IP integrat
 
 
 .. toctree::
-   :maxdepth: 3
-   :hidden:
+   :maxdepth: 1
 
    docs/tutorials/program_microblaze.md
    docs/tutorials/program_microblaze_v.md
