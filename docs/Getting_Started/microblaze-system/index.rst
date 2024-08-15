@@ -12,4 +12,4 @@ Create an AMD MicroBlaze™ system for a Spartan-7 FPGA using Vivado IP integrat
    docs/tutorials/program_microblaze_v.md
 
 
-we did it
+hi Jue! Hi Anne!
