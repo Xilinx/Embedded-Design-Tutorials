@@ -90,7 +90,7 @@ Although Tcl commands are available for many of the actions performed in the Viv
 
    ![](../media/image4-1.png)
 
-    The Run Block Automation dialog box opens.
+   The Run Block Automation dialog box opens.
 
    ![](../media/image5-1.png)
 
