@@ -140,7 +140,7 @@ There are several ways to use an existing interface in IP integrator. Use the Bo
 
    ![](../media/image13-1.png) ![](../media/image14-1.png)
 
-    The block design now should look like the following figure.
+   The block design now should look like the following figure.
 
    ![](../media/image14-2.png)
 
