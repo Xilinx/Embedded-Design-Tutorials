@@ -3,7 +3,6 @@ Programming an Embedded MicroBlaze Processor
 #####################################################
 
 
-Hi, Aakrati!
 
 
 .. meta::
