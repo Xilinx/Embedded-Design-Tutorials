@@ -2,7 +2,7 @@
 Programming an Embedded MicroBlaze Processor
 #####################################################
 
-Hi, TDL!
+Something different?
 
 
 .. meta::
