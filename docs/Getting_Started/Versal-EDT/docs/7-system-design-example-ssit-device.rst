@@ -2,9 +2,7 @@
 System Design Example for Versal Stacked Silicon Interconnect Devices
 *********************************************************************************
 
-This chapter guides you through building a system based on AMD Versal |trade| devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) devices. It explains how to create an embedded design utilizing PL AXI GPIO and PL AXI UART using the Vivado |trade| tool for the Versal Premium VP1802 SSI device based VPK180 board. Refer to the Documentation Reference Guide `(UG949) <https://docs.xilinx.com/r/en-US/ug949-vivado-design-methodology/Designing-with-SSI-Devices>`__ for information on designing with SSI devices. It also describes configuring and building the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU for a targeted Versal device.
-
-.. note:: The design files for this chapter have been validated with Vivado Design Suite 2023.1.
+This chapter guides you through building a system based on AMD Versal |trade| devices using available tools and supported software blocks for Stacked Silicon Interconnect (SSI) devices. It explains how to create an embedded design using PL AXI GPIO and PL AXI UART using the AMD Vivado |trade| tool for the Versal Premium VP1802 SSI device based VPK180 board. Refer to the Documentation Reference Guide `(UG949) <https://docs.amd.com/r/en-US/ug949-vivado-design-methodology/Designing-with-SSI-Devices>`__ for information on designing with SSI devices. It also describes configuring and building the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU for a targeted Versal device.
 
 .. _7-using-axi-gpio:
 
@@ -12,7 +10,7 @@ This chapter guides you through building a system based on AMD Versal |trade| de
 Design Example: Using AXI GPIO
 ===============================
 
-The design example uses PL-based AXI GPIO interfaces to control the LEDs on the board using a Linux application (``gpiotest``). To utilize the four Super Logic Regions (SLR) available in the VP1802 SSI technology device, the PL AXI GPIO interface paths for LED0, LED1, LED2, and LED3 are routed via SLR-0, SLR-1, SLR-2, and SLR-3, respectively.
+The design example uses PL-based AXI GPIO interfaces to control the LEDs on the board using a Linux application (``gpiotest``). To use the four Super Logic Regions (SLR) available in the VP1802 SSI technology device, the PL AXI GPIO interface paths for LED0, LED1, LED2, and LED3 are routed through SLR-0, SLR-1, SLR-2, and SLR-3, respectively.
 
 The RPU bare-metal example application uses the PL-based AXI UART lite to print the debug messages on the AXI UART console instead of using the PS UART console. 
  
@@ -22,7 +20,7 @@ The steps to configure the following are described in this design example:
  
 - NoC (DDR) IP Core configuration and related connections required for SSI technology devices.
 
-- Configure AXI GPIO and AXI UART PL IPs and related connections to the CIPS via PS and PL interfaces.
+- Configure AXI GPIO and AXI UART PL IPs and related connections to the CIPS through PS and PL interfaces.
 
 Versal CIPS IP Core Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,7 +36,7 @@ Managing the Versal CIPS IP Core in the Vivado Design Suite
 
 3. In the search box, type CIPS to find the Control, Interfaces, and Processing System.
 
-4. Double-click the **Control, Interface & Processing System IP** to add it to the block design. The CIPS IP core appears in the diagram view, as shown in the following figure:
+4. Double-click the **Control, Interface and Processing System IP** to add it to the block design. The CIPS IP core appears in the diagram view, as shown in the following figure:
 
    .. image:: media/image7.png
 
@@ -66,9 +64,9 @@ Managing the Versal CIPS IP Core in the Vivado Design Suite
 
    .. image:: media/vpk_io.png
       	  
-   .. note:: VPK180 preset values will set QSPI and SD as the default boot modes. No changes are required.
+   .. note:: VPK180 preset values sets QSPI and SD as the default boot modes. No changes are required.
    
-12. Click **Interrupts** and configure settings as shown in figure below:
+12. Click **Interrupts** and configure settings as shown in the figure below:
 
    .. image:: media/ch7_interrupts.png
 
@@ -78,7 +76,7 @@ Managing the Versal CIPS IP Core in the Vivado Design Suite
 NoC (and DDR) IP Core Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This section describes the NoC (and DDR) configuration and related connections required for use with the CIPS configured earlier in previous section. The NoC IP core allows configuring the NoC and enabling the DDR memory controllers.
+This section describes the NoC (and DDR) configuration and related connections required for use with the CIPS configured earlier in the previous section. The NoC IP core allows configuring the NoC and enabling the DDR memory controllers.
 
 Configuring NoC and CIPS
 ------------------------
@@ -112,7 +110,7 @@ Configuring NoC and CIPS
 
    .. image:: media/vpk_noc-settings.png      
 
-8. From the Inputs tab, configure the following settings for the 8 **AXI Slave interfaces** as shown below.
+8. From the Inputs tab, configure the following settings for the eight **AXI Slave interfaces** as shown below.
 
    .. image:: media/noc-axi.png      
 
@@ -315,7 +313,7 @@ This connects the `ext_reset_in` of the processor system reset IP to the ``pl_re
 	  
 42. Repeat step 39, step 40, and step 41 for the second instance of the AXI Register Slice IP and rename as ``axi_register_slice_3_s3``.
 
-43. Disconnect `axi_gpio_0` , `axi_gpio_1` , `axi_gpio_2` and `axi_gpio_3` from axi smart connect and connect the register slices as shown below.
+43. Disconnect `axi_gpio_0` , `axi_gpio_1` , `axi_gpio_2` and `axi_gpio_3` from AXI smart connect and connect the register slices as shown below.
    
     .. image:: ./media/vpk_register_slice_con.PNG            
 
@@ -345,7 +343,7 @@ This connects the `ext_reset_in` of the processor system reset IP to the ``pl_re
 
 52. Connect the output of clocking wizard to ``slowest_sync_clock`` of Processor System Reset IP.
 
-    This will help in avoiding timing failure. 
+    This helps in avoiding timing failure. 
 
 The overall block design is shown in the following figure:
 
@@ -360,13 +358,13 @@ To validate the design and to generate the output product, follow these steps:
 
 2. Right-click in the white space of the Block Diagram view and select **Validate Design**. Alternatively, you can press the F6 key. A message dialog box opens as shown below.
    
-   The Vivado tool will prompt you to map the IPs in the design to an address. Click **Yes**.
+   The Vivado tool prompts you to map the IPs in the design to an address. Click **Yes**.
 
    .. image:: media/vpk_assign-address.png
 
    .. note:: The number of address segments may vary depending on the number of memory mapped IPs in the design.
 
-   Once the validation is complete, A message dialog box opens as shown below:
+   Once the validation is complete, a message dialog box opens as shown below:
 
    .. image:: media/validation_message.PNG
 
@@ -421,7 +419,17 @@ Follow these steps to generate a device image for the design.
 
 4. Click **Cancel** to close the window.
 
-5. Export hardware after you generate the new Device Image.
+.. note:: The generated device image needs to be overlayed with `secio-sysmon.v3.cdo` file to enable accessing slave SLRs power rails. For more information refer to the Answer Record (`#000034400 <https://support.xilinx.com/s/article/000034400?language=en_US>`__.)
+   
+5. Copy secio-sysmon.v3.cdo from ``<design-package>/ref_files/EDT_2024.1_PACKAGE/ug1305-embedded-design-tutorial/vpk180/pl/pl_gpio_uart`` to the working directory.
+
+6. Navigate to the generated device image path ``../project_1/project_1.runs/impl/`` and run the below command as mentioned in (AR#000034400)
+
+   .. code-block::
+    
+       exec [exec which bootgen] -arch versal -image ./edt_versal_wrapper.bif -w -o ./edt_versal_wrapper.pdi -overlay_cdo ../../../secio-sysmon.v3.cdo  
+
+7. Export hardware after you generate the new Device Image.
 
    .. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-7` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. If you need to understand the flow for generating the device image, follow the steps provided below.
 
@@ -468,6 +476,8 @@ This section explains how to configure and build the FreeRTOS application for an
 
 The following steps demonstrate the procedure to create a FreeRTOS Application from Arm Cortex-R5F:
 
+.. image:: media/welcome-page.png
+
 Creating the Platform
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -510,6 +520,8 @@ Creating an Empty Application
 
 1. Launch Vitis IDE and open the workspace where the platform is created.
 
+   .. image:: media/welcome-vitis-ide.png
+
 2. Select **File > New Component > Application**. The **Creating a New Application Components** wizard opens. If this is the first time that you have launched the Vitis IDE, you can select **Create Application Component** on the Welcome screen.
 
 3. Add the Component name and the component location.
@@ -547,7 +559,10 @@ Creating an Empty Application
 
 8. Delete the source files under ``source/directory`` and copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``source/directory``.
 
-9. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package. See `AR-35819 <https://support.xilinx.com/s/article/000035819?language=en_US>`__ to configure AXIUARTLITE. 
+9. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
+   Navigate to vitis-comp.json under vpk180_platform project under Settings. Then select **Navigate to BSP Settings** under Board support package. Modify stdin and stdout to **axi_uarlite_0** by selecting it from the drop-down options, as shown in the following snippet.
+   
+    .. image:: media/configure-vitis-ide.png
 
 Building the Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -596,7 +611,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
         - eMMC
 
       * - VPK180 Production Board
-        - `xilinx-vpk180-v2022.2-11160035.bsp <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-vpk120-v2022.2-10141622.bsp>`__
+        - `xilinx-vpk180-v2024.1-05230256.bsp <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-vpk180-v2024.1-05230256.bsp>`
         - N/A 
         - N/A
     
@@ -712,5 +727,5 @@ After flashing the built images, all four LEDs which are connected to slave SLR 
    :ltrim:
 
 
-.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
