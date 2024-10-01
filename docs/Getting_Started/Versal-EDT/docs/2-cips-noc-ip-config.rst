@@ -276,44 +276,29 @@ Exporting Hardware
 
 Running a Bare-Metal Hello World Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Vitis software platform.
 
-In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your system, and run a Hello World software application from Arm Cortex-A72 on On-chip-memory (OCM) and Arm Cortex- R5F on Tightly-coupled-memory (TCM) on the Vitis software platform.
+You will create a new Vitis project, similar to the one in `running-bare-metal-hello-world-application`, except that it will use the default linker scripts, which will reference the DDR memory.
 
-The following steps demonstrate the procedure to make the required cable connections, connect the board through your system, and launch the Vitis software platform.
+1. Manage board settings, make cable connections, and connect to the board through your system and launch the Vitis software platform as discussed in steps 1 through 7 in `running-bare-metal-hello-world-application`.
 
-1. Connect the power cable to the board.
+   .. note:: Create a new Vitis workspace for this. Do not use the workspace created in `running-bare-metal-hello-world-application`.
 
-2. Connect a USB Micro cable between the Windows host machine and USB JTAG connector on the target board. This cable is used for USB to serial transfer.
+2. Create a bare-metal Hello World system project with an application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 and 2 of `creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm` and steps 1 and 2 of Modifying the helloworld_a72 Application Source Code.
 
    .. note:: Ensure that the SW1 switch is set to JTAG boot mode as shown in the following figure.
 
    .. image:: media/image19.jpeg
 
-3. Power on the VMK180/VCK190 board using the power switch as shown in the following figure.
+3. Select the component (hello_world_a72) application and select **Build** to generate the project elf files within the Debug folder of the application project.
 
-   .. image:: media/vck190_production_board.jpg
+4. Create an additional RPU domain for your platform (created in Step 2) as discussed in Creating the Standalone Application Project for the Arm Cortex-R5F.
 
-   .. note:: If the Vitis software platform is already running, jump to step 6.
+5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 and 2 of Creating the Standalone Application Project for the Arm Cortex-R5F and steps 1 and 2 of Modifying the helloworld_r5 Application Source Code.
 
-4. Launch the Vitis software platform by selecting **Tools → Launch Vitis IDE from Vivado** and set the workspace path, which in this example is ``c:\edt\edt_vck190``.
+6. Select the component (hello_world_r5) application and select **Build** to generate the project elf files within the Debug folder of the application project.
 
-   Alternatively, you can open the Vitis software platform with a default workspace and later switch it to the correct workspace by selecting **File → Switch Workspace** and then selecting the workspace.
-
-5. Open a serial communication utility for the COM port assigned to your system. The Vitis software platform provides a serial terminal utility, which is used throughout the tutorial. Select **Window → Show View → Xilinx → Vitis Serial Terminal** to open it.
-
-   .. image:: media/image21.jpeg
-
-6. Click the **Connect to a serial port** button in the Vitis terminal context to set the serial configuration and connect it.
-
-7. Verify the port details in the Windows device manager.
-
-   UART-0 terminal corresponds to Com-Port with Interface-0. For this example, UART-0 terminal is set by default, so for the Com-Port, select the port with interface-0. The following figure shows the standard configuration for the Versal devices processing system.
-
-   .. image:: media/image23.png
-
-.. note:: You can use external terminal Serial Port Consoles like Tera Term or Putty. You can find the relevant COM port information from the Device Manager menu in Control Panel.
-
-.. _creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm:
+Refer to Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to `generating-boot-image-for-standalone-application` for generating boot images for standalone applications.
 
 Creating a Hello World Application for the Arm Cortex-A72 on OCM
 -----------------------------------------------------------------
@@ -530,76 +515,16 @@ The following steps demonstrate the procedure to modify the application linker s
 Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To run an application, you must create a **Run configuration** that captures the settings for executing the application. You can either create a Run configuration for the whole system project or independent applications.
+To run an application, you must create a Run configuration that captures the settings for executing the application. You can either create a Run configuration for the whole system project or independent applications.
 
 Creating a Run Configuration for the System Project
 ---------------------------------------------------
 
-1. Right-click on the system project **helloworld_system** and select **Run As → Run Configurations**. The Run Configuration dialog box opens.
+1. Select the component (hello_wolrd) application and Click On **Run** 
 
-2. Double-click **System Project Debug** to create a Run Configuration.
+2. Create a Run Configuration.
 
-   The Vitis software platform creates a new run configuration with the name: SystemDebugger_helloworld_system. For the remaining options, refer to the following table.
-
-   *Table 6:* **Create, Manage, and Run Configurations Settings**
-
-   +-----------------------+-----------------------+-----------------------+
-   | Wizard Tab            | System Properties     | Setting or Command to |
-   |                       |                       | Use                   |
-   +=======================+=======================+=======================+
-   | Main                  | Project               | helloworld_system     |
-   +-----------------------+-----------------------+-----------------------+
-   |                       | Target → Hardware     | Attach to the running |
-   |                       | Server                | target (local). If    |
-   |                       |                       | not already added,    |
-   |                       |                       | add using the New     |
-   |                       |                       | button.               |
-   +-----------------------+-----------------------+-----------------------+
-
-3. Click **Run**.
-
-   .. note:: If there is an existing launch configuration, a dialog box appears asking whether you want to terminate the process. Click **Yes**. The following logs are displayed on the terminal.
-
-   .. code-block::
-
-		[0.015]****************************************
-		[0.070]Xilinx Versal Platform Loader and Manager
-		[0.126]Release 2022.1   Apr 21 2022  -  12:04:39
-		[0.184]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-		[0.247]BOOTMODE: 0x0, MULTIBOOT: 0x0
-		[0.299]****************************************
-		[0.527]Non Secure Boot
-		[3.406]PLM Initialization Time
-		[3.454]***********Boot PDI Load: Started***********
-		[3.514]Loading PDI from SBI
-		[3.560]Monolithic/Master Device
-		[3.651]0.113 ms: PDI initialization time
-		[3.707]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
-		[3.774]---Loading Partition#: 0x1, Id: 0xC
-		[53.487] 49.630 ms for Partition#: 0x1, Size: 2960 Bytes
-		[58.306]---Loading Partition#: 0x2, Id: 0xB
-		[62.641] 0.505 ms for Partition#: 0x2, Size: 48 Bytes
-		[66.764]---Loading Partition#: 0x3, Id: 0xB
-		[108.496] 37.898 ms for Partition#: 0x3, Size: 59376 Bytes
-		[110.799]---Loading Partition#: 0x4, Id: 0xB
-		[114.721] 0.008 ms for Partition#: 0x4, Size: 1936 Bytes
-		[119.596]---Loading Partition#: 0x5, Id: 0xB
-		[123.521] 0.011 ms for Partition#: 0x5, Size: 3536 Bytes
-		[128.567]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
-		[133.722]---Loading Partition#: 0x6, Id: 0x3
-		[639.838] 502.198 ms for Partition#: 0x6, Size: 759632 Bytes
-		[642.314]---Loading Partition#: 0x7, Id: 0x5
-		[1026.252] 380.021 ms for Partition#: 0x7, Size: 577856 Bytes
-		[1028.839]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
-		[1033.972]---Loading Partition#: 0x8, Id: 0x8
-		[1038.375] 0.403 ms for Partition#: 0x8, Size: 1552 Bytes
-		[1042.990]***********Boot PDI Load: Done***********
-		[1047.448]3283.750 ms: ROM Time
-		[1050.212]Total PLM Boot Time
-		Hello World from APU
-		Successfully ran Hello World application from APU
-		Hello World from RPU
-		Successfully ran Hello World application from RPU
+   .. image:: media/run-configuration-1.jpg
 
 
 Creating a Run Configuration for a Single Application within a System Project
@@ -953,5 +878,5 @@ Refer to `Running Applications in the JTAG Mode using the System Debugger in the
 .. |image30| image:: ./media/image30.png
 
 
-.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
