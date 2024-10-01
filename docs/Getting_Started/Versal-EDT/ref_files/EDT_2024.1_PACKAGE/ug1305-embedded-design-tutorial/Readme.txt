@@ -1,5 +1,5 @@
 ******************************************************************************
-# Copyright (C) 2022 - 2023, Advanced Micro Devices, Inc. All rights reserved. 
+# Copyright (C) 2022 - 2024, Advanced Micro Devices, Inc. All rights reserved. 
 # SPDX-License-Identifier: MIT
 ******************************************************************************
 
@@ -42,7 +42,7 @@ Date             Version      Revision Description
 			       AND APPLICATION BINARIES for 2022.2 release
 10JUN2023	   3.6			   UPDATED VPK180 PRODUCTION SILICON BOARD FILES
                    AND APPLICATION BINARIES for 2023.1 release			
-05AUG2024	   3.7		   	   UPDATED VPK180 PRODUCTION SILICON BOARD FILES
+01OCT2024	   3.7		   	   UPDATED VPK180 PRODUCTION SILICON BOARD FILES
                    AND APPLICATION BINARIES for 2024.1 release
 ========================================================================
 
@@ -192,5 +192,4 @@ Hardware project creation and device image generation
 4. SUPPORT
 
 To obtain technical support for this reference design, go to 
-www.xilinx.com/support to locate answers to known issues in the Xilinx
-Answers Database.  
+www.xilinx.com/support to locate answers to known issues in the Answers Database.  
