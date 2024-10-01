@@ -39,9 +39,22 @@ Generating Boot Image for Standalone Application
 
 The Vitis software platform supports boot image creation wizard for Versal devices. To generate a boot image PDI or ``Boot.bin``, you can either use Bootgen command line options or use the wizard in Vitis. This tutorial shows how to create Boot image using Bootgen, which is released as a part of the Vitis software platform package. The primary function of Bootgen is to integrate the various partitions of the bootable image. Bootgen uses a BIF file (Bootgen Image Format) as an input and generates a single file image in binary BIN or PDI format. It outputs a single file image which can be loaded into non-volatile memory (QSPI or SD card). Use the following steps to generate a PDI/BIN file:
 
-1. Open the XSCT Console view in the Vitis IDE, if not already open, by clicking on **Window → Show View**. Type `xsct console` within the search bar of the Show View wizard. Click **Open** to open the console.
+1. Open Vitis IDE and go to **Terminal -> New Terminal** to launch XSCT.
 
-   .. image:: ./media/image49.png
+   xsct
+
+****** Software Commandline Tool (XSCT) v2024.1.0
+  **** SW Build 0 on 2024-05-19-14:06:07
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+Warning: XSCT has been deprecated. It will still be available for several releases.It's recommended to start new projects with new python command line tool.
+         Use "vitis -s <script>" (script mode) and "vitis -i" (interactive mode) to load new Python CLI for Vitis.
+
+
+xsct% 
+
 
 2. Create a folder where you want to generate the boot image by typing the following command in the XSCT Console:
 
@@ -62,7 +75,7 @@ The Vitis software platform supports boot image creation wizard for Versal devic
 
    The following log is displayed in the XSCT Console view.
 
-   .. image:: ./media/image51.jpeg
+   .. image:: ./media/xsct-console.png
 
 .. _loading-petalinux-images-versal-board-using-jtag:
 
@@ -251,5 +264,5 @@ You need to flash the images to the daughter card using the following steps:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
 
-.. Copyright © 2020–2023 Advanced Micro Devices, Inc
+.. Copyright © 2020–2024 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
