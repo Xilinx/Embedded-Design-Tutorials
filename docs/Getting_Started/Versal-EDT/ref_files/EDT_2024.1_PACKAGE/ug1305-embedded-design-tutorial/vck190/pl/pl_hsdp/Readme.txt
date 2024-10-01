@@ -1,11 +1,11 @@
 ********************************************************************************
 #--Copyright (C)2020 - 2021, Xilinx, Inc. All right reserved.
-#--Copyright (C) 2022 - 2023, Advanced Micro Devices, Inc. All rights reserved.
+#--Copyright (C) 2022 - 2024, Advanced Micro Devices, Inc. All rights reserved.
 #--SPDX-License-Identifier: MIT
 ********************************************************************************
 
 Vivado Project Creation
-	- Open Vivado 2022.1
+	- Open Vivado 2024.1
         - Browse to ug1305-embedded-design-tutorial/vck190/pl/pl_hsdp
 	- In the Tcl Console, type the following command
 			/> source build.tcl
