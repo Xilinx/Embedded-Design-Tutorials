@@ -2,8 +2,6 @@
 Programming an Embedded MicroBlaze Processor
 #####################################################
 
-Something different?
-
 
 .. meta::
    :keywords: MicroBlaze,
