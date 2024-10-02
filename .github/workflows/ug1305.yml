@@ -1,11 +1,11 @@
-name: Update XD131
+name: Update UG1305
 
 on:
   push:
     branches:
       - 2024.1_next
     paths:
-      - 'docs/Getting_Started/microblaze-system/**'
+      - 'docs/Getting_Started/Versal-EDT/**'
 
 # Permissions to write to the repository are required
 permissions: write-all
@@ -34,27 +34,28 @@ jobs:
           ssh-add private_key.pem
           rm -f private_key.pem
           ssh-keyscan gitenterprise.xilinx.com >> "$HOME/.ssh/known_hosts"
-      - name: Checkout techdocs/XD131 repository
+      - name: Checkout techdocs/UG1305 repository
         uses: actions/checkout@v2
         with:
-          repository: techdocs/XD131
+          repository: techdocs/UG1305
           ssh-key: ${{ secrets.DEPLOY_KEY }}
-          path: XD131_repo
+          path: UG1305_repo
           ref: main
 
-      - name: Delete and replace 'docs' folder contents, and 'index.rst' in techdocs-XD131
+      - name: Delete and replace 'docs' and 'ref_files' folder contents, and 'Versal-EDT.rst' in techdocs-UG1305
         run: |
-          rm -rf XD131_repo/build_html/source/docs/*
-          rm -f XD131_repo/build_html/source/index.rst
-          cp -r docs/Getting_Started/microblaze-system/media XD131_repo/build_html/source/docs/media
-          cp -r docs/Getting_Started/microblaze-system/tutorials XD131_repo/build_html/source/docs/tutorials
-          cp docs/Getting_Started/microblaze-system/index.rst XD131_repo/build_html/source/index.rst
+          rm -rf UG1305_repo/build_html/source/docs/*
+          rm -rf UG1305_repo/build_html/source/ref_files/*
+          rm -f UG1305_repo/build_html/source/Versal-EDT.rst
+          cp -r docs/Getting_Started/Versal-EDT/docs UG1305_repo/build_html/source/docs
+          cp -r docs/Getting_Started/Versal-EDT/ref_files UG1305_repo/build_html/source/ref_files
+          cp docs/Getting_Started/Versal-EDT/Versal-EDT.rst UG1305_repo/build_html/source/Versal-EDT.rst
 
-      - name: Commit and push changes to techdocs-XD131
+      - name: Commit and push changes to techdocs-UG1305
         run: |
-          cd XD131_repo
+          cd UG1305_repo
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Action"
           git add -A
-          git commit -m "Update XD131 documentation from Emb-Design-Tutorials repository"
+          git commit -m "Update UG1305 documentation from Emb-Design-Tutorials repository"
           git push
