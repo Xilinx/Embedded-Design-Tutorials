@@ -1,17 +1,12 @@
 ..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 ===============================================
 Use Secure Boot Features to Protect Your Design
 ===============================================
 
-The secure boot functionality in Xilinx |trade| devices allows you to support the confidentiality, integrity, and authentication of partitions.
+The secure boot functionality in Zynq devices allows you to support the confidentiality, integrity, and authentication of partitions.
 
-Secure boot in Zynq |reg| UltraScale+ |trade| MPSoCs is accomplished by combining the Hardware Root of Trust (HWRoT) capabilities with the option of encrypting all boot partitions. The HWRoT is based on the RSA-4096 asymmetric algorithm with SHA-3/384, which is hardware accelerated. Confidentiality is provided using 256-bit Advanced Encryption Standard Galois Counter Mode (AES-GCM).
+Secure boot in Zynq UltraScale+ MPSoCs is accomplished by combining the Hardware Root of Trust (HWRoT) capabilities with the option of encrypting all boot partitions. The HWRoT is based on the RSA-4096 asymmetric algorithm with SHA-3/384, which is hardware accelerated. Confidentiality is provided using 256-bit Advanced Encryption Standard Galois Counter Mode (AES-GCM).
 
 This section focuses on how to use and implement the following:
 
@@ -143,9 +138,9 @@ The PUF enables storing the AES key in encrypted (black) format. The black key c
 needed for decryption, the encrypted key in eFUSEs or the boot header is decrypted using the PUF generated key encrypting key (KEK).
 
 There are two steps in using the PUF for black key storage. In the first, PUF registration software is used to generate PUF helper data and the PUF KEK. The PUF registration data allows the PUF to re-generate the identical key each time the PUF generates the KEK. For more details on the use of PUF registration software, see :ref:`puf-registration-in-boot-header-mode`. For more information on PUF Registration - eFUSE mode, see *Programming BBRAM and eFUSEs*
-(`XAPP1319 <https://docs.xilinx.com/v/u/en-US/xapp1319-zynq-usp-prog-nvm>`_).
+(`XAPP1319 <https://docs.amd.com/go/en-US/xapp1319-zynq-usp-prog-nvm>`_).
 
-The helper data and encrypted user key must both be stored in eFUSEs if the PUF eFUSE mode is used, and in the boot header if the PUF boot header mode is used. The procedure for the PUF boot header mode is discussed in :ref:`using-puf-in-boot-header-mode`. For the procedure to use PUF in eFUSE mode, see *Programming BBRAM and eFUSEs* (`XAPP1319 <https://docs.xilinx.com/v/u/en-US/xapp1319-zynq-usp-prog-nvm>`_).
+The helper data and encrypted user key must both be stored in eFUSEs if the PUF eFUSE mode is used, and in the boot header if the PUF boot header mode is used. The procedure for the PUF boot header mode is discussed in :ref:`using-puf-in-boot-header-mode`. For the procedure to use PUF in eFUSE mode, see *Programming BBRAM and eFUSEs* (`XAPP1319 <https://docs.amd.com/go/en-US/xapp1319-zynq-usp-prog-nvm>`_).
 
 This tutorial uses PUF boot header mode as it does not require programming of eFUSEs, and is therefore useful for test and debug However, the most common mode is PUF eFUSE mode, as the PUB boot header mode requires a unique run of Bootgen for each and every device. 
 
@@ -157,7 +152,7 @@ Example: Practical Methods in Secure Boot
 This section outlines the steps to develop secure boot in a Zynq UltraScale+ system. Producing a secure embedded system is a two-step
 process. In the first phase, the cryptographic keys are generated and programmed into NVM. In the second phase, the secure system is developed and tested. Both steps use the Vitis IDE to create software projects, generate the image, and program the image. For the second phase, a test system can be as simple as fsbl.elf and hello.elf files. In this section, you will use the same images used in :ref:`boot-sequence-for-sd-boot`, but this time the images will be assembled together, and have the secure attributes enabled as part of the secure boot sequence.
 
-This section starts by showing how to generate AES and RSA keys. Following key generation, systems using the advanced AES and RSA methods are developed and tested. Keys generated in this section are also included in the `ref_files/secure_boot_sd <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/ZynqMPSoC-EDT/ref_files/secure_boot_sd>`_ directory.
+This section starts by showing how to generate AES and RSA keys. Following key generation, systems using the advanced AES and RSA methods are developed and tested. Keys generated in this section are also included in the `ref_files/secure_boot_sd <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Getting_Started/ZynqMPSoC-EDT/ref_files/secure_boot_sd>`_ directory.
 
 The methods used to develop AES functionality are provided in the following sections:
 
@@ -519,7 +514,7 @@ When all the desired encryption features have been enabled, you can generate all
 Using Key Revocation
 ~~~~~~~~~~~~~~~~~~~~
 
-Key revocation allows you to revoke a RSA primary or secondary public key. Key revocation can be used due to elapsed time of key use, or if there is an indication that the key is compromised. The primary and secondary key revocation is controlled by one-time programmable eFUSEs. The Xilinx Secure Key Library is used for key revocation, allowing key revocation in fielded devices. Key revocation is discussed further in the *Zynq UltraScale+ Device Technical Reference Manual* (`UG1085 <https://docs.xilinx.com/v/u/en-US/ug1085-zynq-ultrascale-trm>`_).
+Key revocation allows you to revoke a RSA primary or secondary public key. Key revocation can be used due to elapsed time of key use, or if there is an indication that the key is compromised. The primary and secondary key revocation is controlled by one-time programmable eFUSEs. AMD Secure Key Library is used for key revocation, allowing key revocation in fielded devices. Key revocation is discussed further in the *Zynq UltraScale+ Device Technical Reference Manual* (`UG1085 <https://docs.xilinx.com/v/u/en-US/ug1085-zynq-ultrascale-trm>`_).
 
 .. _using-the-puf:
 
@@ -696,7 +691,7 @@ storage) by hand editing the BIF file. This section performs the same operations
        cp ../keys/image.ub .
        cp ../keys/black_key.txt.
 
-3. Click **Programs → Xilinx Design Tools → Vitis <version number> → Xilinx Vitis 2022.2** to launch the Vitis IDE.
+3. Click **Programs → Xilinx Design Tools → Vitis <version number> → Vitis 2024.1** to launch the Vitis IDE.
 
 4. Click **Xilinx Tools → Create Boot Image** from the menu bar to launch the Create Boot Image wizard.
 

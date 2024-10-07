@@ -1,9 +1,4 @@
 ..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 =====================================================
 Design Example 1: Using GPIOs, Timers, and Interrupts
@@ -25,7 +20,7 @@ The Zynq |reg| UltraScale+ |trade| MPSoC ZCU102 evaluation board comes with a fe
 Configuring Hardware
 --------------------
 
-The first step in this design is to configure the PS and PL sections. This can be done in Vivado |reg| IP integrator. Start with adding the required IPs from the Vivado IP catalog, and then connect the components to blocks in the PS subsystem.
+The first step in this design is to configure the PS and PL sections. This can be done in Vivado IP integrator. Start with adding the required IPs from the Vivado IP catalog, and then connect the components to blocks in the PS subsystem.
 
 1. If the Vivado Design Suite is already open, start from the block diagram shown in and jump to step 4.
 
@@ -516,7 +511,7 @@ steps.
 Reference Design Automation
 ---------------------------
 
-The `ref_design <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/ZynqMPSoC-EDT/ref_files/design1>`_ for this example provides not only the source code for applications, but also a Makefile to run
+The `ref_design <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Getting_Started/ZynqMPSoC-EDT/ref_files/design1>`_ for this example provides not only the source code for applications, but also a Makefile to run
 through the design generation process. To generate the binaries, run the following command:
 
 .. code:: bash
