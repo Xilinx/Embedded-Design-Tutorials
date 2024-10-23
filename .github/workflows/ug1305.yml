@@ -54,8 +54,8 @@ jobs:
       - name: Commit and push changes to techdocs-UG1305
         run: |
           cd UG1305_repo
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Action"
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Action"
           git add -A
           git commit -m "Update UG1305 documentation from Emb-Design-Tutorials repository"
           git push
