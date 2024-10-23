@@ -8,14 +8,14 @@ Versal Adaptive SoC Embedded Design Tutorial
    :caption: Versal Adaptive SoC Embedded Design Tutorial
    :hidden:
 
-   Getting Started <docs/1-getting-started>
-   Versal ACAP CIPS and NoC (DDR) IP Core Configuration <docs/2-cips-noc-ip-config>
-   Boot and Configuration <docs/4-boot-and-config>
-   Debugging Using the Vitis Software Platform <docs/3-debugging>
-   System Design Example using Scalar Engine and Adaptable Engine <docs/5-system-design-example>
-   System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module <docs/6-system-design-example-HSDP>
-   System Design Example for SSI Devices <docs/7-system-design-example-ssit-device>
-   Appendix: Creating the PLM <docs/A-creating-plm>
+   Getting Started <docs/1-getting-started.rst>
+   Versal ACAP CIPS and NoC (DDR) IP Core Configuration <docs/2-cips-noc-ip-config.rst>
+   Boot and Configuration <docs/4-boot-and-config.rst>
+   Debugging Using the Vitis Software Platform <docs/3-debugging.rst>
+   System Design Example using Scalar Engine and Adaptable Engine <docs/5-system-design-example.rst>
+   System Design Example for High-Speed Debug Port (HSDP) with SmartLynq+ Module <docs/6-system-design-example-HSDP.rst>
+   System Design Example for SSI Devices <docs/7-system-design-example-ssit-device.rst>
+   Appendix: Creating the PLM <docs/A-creating-plm.rst>
 
 
 
@@ -49,9 +49,5 @@ This design tutorial requires use of a number of files provided by AMD. These ar
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
 
-© Copyright 2024 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
 
-*Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.*
-
-*Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.*
 
