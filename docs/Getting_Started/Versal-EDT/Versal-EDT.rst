@@ -19,13 +19,13 @@ Versal Adaptive SoC Embedded Design Tutorial
 
 
 
-This document provides an introduction for using the AMD Vivado |trade| Design Suite flow for a VCK190/VMK180/VPK180 evaluation board. The tools used are Vivado Design Suite and the AMD Vitis |trade| unified software platform, version 2024.1. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* `[UG1400] <https://www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;d=ug1400-vitis-embedded.pdf>`__.
+This document provides an introduction for using the AMD Vivado |trade| Design Suite flow for a VCK190/VMK180/VPK180 evaluation board. The tools used are Vivado Design Suite and the AMD Vitis |trade| unified software platform, version 2024.1. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* `[UG1400] <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1400-vitis-embedded>`__.
 
 .. note:: In this tutorial, the instructions for booting Linux on the hardware is specific to the PetaLinux tools released for 2024.1, which must be installed on a Linux host machine for exercising the Linux portions of this document.
 
 .. important:: 
    
-   The VCK190/VMK180 Evaluation kit has a Silicon Labs CP210x VCP USB-UART Bridge. Ensure that these drivers are installed. See the *Silicon Labs CP210x USB-to-UART Installation Guide* (`UG1033 <https://www.xilinx.com/cgi-bin/docs/bkdoc?k=install;v=latest;d=ug1033-cp210x-usb-uart-install.pdf>`_) for more information.
+   The VCK190/VMK180 Evaluation kit has a Silicon Labs CP210x VCP USB-UART Bridge. Ensure that these drivers are installed. See the *Silicon Labs CP210x USB-to-UART Installation Guide* (`UG1033 <https://docs.amd.com/go/en-US/ug1033-cp210x-usb-uart-install>`_) for more information.
  
 The examples in this document are created using the Xilinx tools running on a Windows 10, 64-bit operating system, Vitis software platform and PetaLinux on a Linux 64-bit operating system. Other versions of the tools running on other Windows installs might provide varied results. These examples focus on introducing you to the following aspects of embedded design.
 
