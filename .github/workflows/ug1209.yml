@@ -42,14 +42,10 @@ jobs:
           path: UG1209_repo
           ref: main
 
-      - name: Delete and replace 'docs' and 'ref_files' folder contents, and 'ZynqMPSoC-EDT.rst' in techdocs-UG1209
+      - name: Move contents of ZynqMPSoC-EDT to ug1209_repo
         run: |
-          rm -rf UG1209_repo/build_html/source/docs/*
-          rm -rf UG1209_repo/build_html/source/ref_files/*
-          rm -f UG1209_repo/build_html/source/ZynqMPSoC-EDT.rst
-          cp -r docs/Getting_Started/ZynqMPSoC-EDT/docs UG1209_repo/build_html/source/docs
-          cp -r docs/Getting_Started/ZynqMPSoC-EDT/ref_files UG1209_repo/build_html/source/ref_files
-          cp docs/Getting_Started/ZynqMPSoC-EDT/ZynqMPSoC-EDT.rst UG1209_repo/build_html/source/ZynqMPSoC-EDT.rst
+          cp -r docs/Getting_Started/ZynqMPSoC-EDT/* UG1209_repo/build_html/source/
+
 
       - name: Commit and push changes to techdocs-UG1209
         run: |
