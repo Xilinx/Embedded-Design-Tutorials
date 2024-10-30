@@ -53,7 +53,6 @@ The examples in this document were created using AMD Design tools running on Win
 
 
 
-
 .. Copyright © 2016-2024 Advanced Micro Devices, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
