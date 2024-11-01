@@ -58,11 +58,13 @@ $(ABS_SW_PATH)/images/linux: $(ABS_XSA)
 	petalinux-build -p $(ABS_SW_PATH) && \
 	petalinux-package --boot --u-boot -p $(ABS_SW_PATH)
 
-vitis_apps: 
-	xsct app.tcl
-	echo "These applications are created:"
-	find $(ABS_BUILD_PATH)/ws -name "*.elf"
+# vitis_apps: 
+# 	xsct app.tcl
+# 	echo "These applications are created:"
+# 	find $(ABS_BUILD_PATH)/ws -name "*.elf"
 
+vitis_apps:
+	vitis -s ./vitis_apps.py
 
 clean:
 	$(RM) -r $(ABS_BUILD_PATH) vivado*.log vivado*.jou 
