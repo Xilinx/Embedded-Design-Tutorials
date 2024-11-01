@@ -84,7 +84,7 @@ The following steps show how to create a platform project with a standalone doma
    +---------------------------------+-----------------+
    | Architecture                    | 64-bit          |
    +---------------------------------+-----------------+
-   | Generate Boot Components        | Keep it checked |
+   | Generate Boot Artifacts         | Keep it checked |
    +---------------------------------+-----------------+
    | Target processor to create FSBL | psu_cortexa53_0 |
    +---------------------------------+-----------------+
