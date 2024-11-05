@@ -54,18 +54,15 @@ The following steps show how to create a platform project with a standalone doma
 
 2. Select the workspace ``C\edt\edt_zcu102_workspace`` and continue.
 
-   .. figure:: ./media/image21.png
-
-      Vitis IDE Launcher
-
    .. note:: If the directory doesn’t exist, the Vitis software platform will create it.
 
-3. In the Vitis IDE, go to **File → New → Platform Project**.
+3. In the Vitis IDE, go to **File → New Component → Platform**.
 
-4. In the Create New Platform page, enter the platform name ``zcu102_edt`` and click **Next**.
+     .. figure:: ./media/image21.png
 
-5. In the Platform view, go with the default tab **Create from hardware
-   specification (XSA)**.
+4. In the Create Platform Component page, enter the platform name ``zcu102_edt`` and click **Next**.
+
+5. In the Platform view, go with the default tab **Hardware Design**.
 
    .. note:: Use the **Select a platform from repository** tab when you have a pre-built platform and you’d like to copy it to local to modify it.
 
@@ -86,8 +83,6 @@ The following steps show how to create a platform project with a standalone doma
    +---------------------------------+-----------------+
    | Generate Boot Artifacts         | Keep it checked |
    +---------------------------------+-----------------+
-   | Target processor to create FSBL | psu_cortexa53_0 |
-   +---------------------------------+-----------------+
 
 8. Click **Finish**.
 
@@ -96,11 +91,11 @@ The following steps show how to create a platform project with a standalone doma
    .. image:: ./media/image23.png
 
    -  There is a standalone domain in the platform under psu_cortexa53_0 processor. New applications for Cortex-A53 can link against it.
-   -  Default domains for FSBL and PMU firmware come with the platform project when **Generate Boot Components** is selected during application or platform project creation.
+   -  Default domains for FSBL and PMU firmware come with the platform project when **Generate Boot Artifacts** is selected during application or platform project creation.
    -  You are free to add and remove domains in the platform project.
    -  You can customize the domain configurations.
 
-10. Build the hardware by right-clicking the platform, then selecting **Build Project**.
+10. Build the hardware by selecting the **Build** button within the flow tab.
 
     .. image:: ./media/image24.jpeg
 
