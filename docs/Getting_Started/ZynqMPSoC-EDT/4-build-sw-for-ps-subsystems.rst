@@ -141,11 +141,11 @@ Connecting the Serial Port
 
 1. Open your preferred serial communication utility for the COM port.
 
-   .. note:: You can use any serial communication utility in your system. The Vitis IDE provides a serial terminal utility. We will use it throughout the tutorial; select **Window → Show View → Vitis Serial Terminal** in Vitis IDE to open it.
+   .. note:: You can use any serial communication utility in your system. The Vitis IDE provides a serial terminal utility. We will use it throughout the tutorial; select Vitis → Serial Monitor in Vitis IDE to open it.
 
    .. note:: In Linux, root privilege is required to use UART.
 
-2. Click the **+** button to set the serial configuration.
+2. Navigate to Vits → Serial Monitor (If you have not yet enabled the serial monitor or you cannot see it under the vitis tab then enable it by navigating to Vits → New Feature Preview, select Serial Monitor and then select Enable).
 
    .. figure:: ./media/vitis_serial_terminal.png
 
@@ -161,9 +161,13 @@ Connecting the Serial Port
 
    In the above example, use **COM5** for Interface-0 and baud rate **115200**.
 
-4. From the **Port** dropdown menu, select the port number for Interface-0 (**COM5** in this example).
+4. From the **Port** dropdown menu, select the port number for Interface-0 (**COM3** in this example).
 
    .. image:: ./media/vitis_serial_terminal_connect.png
+
+4. Select **115200** as the baud rate.
+
+   .. image:: ./media/vitis_serial_terminal_connect_baud_rate.png
 
 5. Keep the other settings as-is and click **OK** to connect. The connection status is shown in the Vitis Serial Terminal window.
 
@@ -174,11 +178,9 @@ Creating a Hello World Application on Arm Cortex-A53
 
 To send the “Hello World” string to the UART0 peripheral, follow these steps:
 
-1. Select **File → New → Application Project**. The Create New Application Project wizard opens.
+1. Select **File → New Example → Hello World → Create Application Component from Template**. The Create Application Component - Hello World wizard opens.
 
-2. Click **Next**.
-
-3. Use the information in the table below to make your selections in the wizard screens.
+2. Use the information in the table below to make your selections in the wizard screens.
 
    +----------------------+----------------------+----------------------+
    | Screen               | System Properties    | Settings             |
@@ -186,35 +188,49 @@ To send the “Hello World” string to the UART0 peripheral, follow these steps
    | Platform             | Select platform from | zcu102_edt           |
    |                      | repository           |                      |
    +----------------------+----------------------+----------------------+
-   | Application project  | Application project  | hello_a53            |
-   | details              | name                 |                      |
-   +----------------------+----------------------+----------------------+
-   |                      | System project name  | hello_a53_system     |
-   +----------------------+----------------------+----------------------+
-   |                      | Target processor     | psu_cortexa53_0      |
+   | Application project  | Component Name       | hello_a53            |
+   | details              |                      |                      |
    +----------------------+----------------------+----------------------+
    | Domain               | Domain               | standalone on        |
    |                      |                      | psu_cortexa53_0      |
    +----------------------+----------------------+----------------------+
-   | Templates            | Available templates  | Hello World          |
+
+   The Vitis IDE creates the **hello_a53** application component in the Explorer view.
+
+3. Select **File → New Component → System Project**. The Create System Project wizard opens.
+
+4. Use the information in the table below to make your selections in the wizard screens.
+
+   +----------------------+----------------------+----------------------+
+   | Screen               | System Properties    | Settings             |
+   +======================+======================+======================+
+   | Platform             | Select platform from | zcu102_edt           |
+   |                      | repository           |                      |
+   +----------------------+----------------------+----------------------+
+   | System project       | System Project Name  | hello_a53_system     |
+   | details              |                      |                      |
    +----------------------+----------------------+----------------------+
 
-   The Vitis IDE creates the **hello_a53_system** project in the Explorer view. **hello_a53** sits inside **hello_a53_system**.
+5. Select the 'vitis-sys.json' file under settings within hello_a53_system in the Explorer view and click Add Existing Component.
+
+6. Select Application and then select 'hello_a53'. Now the hello_a53 application resides inside the hello_a53_system component.
+
+   Now the **hello_a53** application resides inside the **hello_a53_system** component.
 
 Running Hello World on the Board
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Right-click the **hello_a53 application project** and select **Build** to build the application.
+1. Select the **hello_a53 application project** and select **Build** to build the application.
 
-2. Right-click **hello_a53** and select **Run as → Run Configurations**.
+2. Select **hello_a53** and select the settings icon beside the **Run** button in the flow tab.
 
-3. Right-click **Xilinx Application Debugger** and click **New Configuration**.
+3. Select **New Launch Configuration**
 
-   The Vitis IDE creates the new run configuration, named ``Debugger_hello_a53-Default``.
+   The Vitis Unified IDE creates the new run configuration, named ``hello_a53_system_app_hw_1``.
 
    The configurations associated with the application are pre-populated in the Main page of the launch configurations.
 
-4. Click the **Target Setup** page to review the settings.
+4. Review the settings in the **launch.json** file.
 
    .. note:: The board should be in JTAG boot mode before power cycling.
 
@@ -226,13 +242,13 @@ Running Hello World on the Board
 
    .. code-block::
 
-      Xilinx Zynq MP First Stage Boot loader
+      Zynq MP First Stage Boot Loader 
 
-      Release 2022.2 <build time>
+      Release 2024.2   Oct 23 2024  -  10:06:42
       PMU-FW is not running, certain applications may not be supported.
 
       Hello World
-
+      
       Successfully ran Hello World application
 
    .. note:: No bitstream download is required for the above software application to be executed on the Zynq UltraScale+ evaluation board. The Arm Cortex-A53 quad-core is already present in the processing system. Basic initialization of this system to run a simple application is accomplised by the device initialization Tcl script.
