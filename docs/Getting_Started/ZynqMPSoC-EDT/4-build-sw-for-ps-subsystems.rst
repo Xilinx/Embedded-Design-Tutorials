@@ -322,9 +322,9 @@ Creating a Standalone BSP Domain for cortexr5_0
 
 In this step, you will prepare for the next example design: running a “Hello World” application on Arm Cortex-R5. The first step is to create a standalone BSP domain for cortexr5_0 by performing the following steps:
 
-1. Double-click ``platform.spr``. The platform opens in the Explorer view.
+1. Double-click ``vitis-comp.json`` under the platform settings. The platform opens in the Explorer view.
 
-2. Click in the top-right corner to add a domain |Add Icon|.
+2. Click in the top-left corner to add a domain |Add Icon|.
 
 3. Create a domain with the following settings:
 
@@ -337,16 +337,14 @@ In this step, you will prepare for the next example design: running a “Hello W
    +----------------------+-----------------------------+
    | OS                   | Standalone                  |
    +----------------------+-----------------------------+
-   | Version              | Standalone (7.3)            |
-   +----------------------+-----------------------------+
    | Processor            | psu_cortexr5_0              |
-   +----------------------+-----------------------------+
-   | Supported Runtime    | C/C++                       |
    +----------------------+-----------------------------+
    | Architecture         | 32-bit                      |
    +----------------------+-----------------------------+
 
 4. The Vitis IDE creates a new domain and **standalone_r5** appears under the **zcu102_edt** platform.
+
+5. Build the platform.
 
 .. _what-just-happened-1:
 
@@ -358,11 +356,9 @@ The edt_zcu102_wrapper platform is, by default, assigned the default domain for 
 Creating a “Hello World” Application on Arm Cortex-R5F
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Select **File → New → Application Project**. The Create New Application Project wizard welcome screen opens.
+1. Select **File → New Example → Hello World → Create Application Component from Template**. The Create New Application Component - Hello World wizard welcome screen opens.
 
-2. Click **Next**.
-
-3. Use the information in the table below to make your selections in the wizard screens.
+2. Use the information in the table below to make your selections in the wizard screens.
 
    +------------------------+------------------------+-----------------+
    | Screen                 | System Properties      | Settings        |
@@ -373,29 +369,42 @@ Creating a “Hello World” Application on Arm Cortex-R5F
    | Application project    | Application project    | hello_r5        |
    | details                | name                   |                 |
    +------------------------+------------------------+-----------------+
-   |                        | System project name    | hello_r5_system |
-   +------------------------+------------------------+-----------------+
-   |                        | Target processor       | psu_cortexr5_0  |
-   +------------------------+------------------------+-----------------+
    | Domain                 | Domain                 | standalone_r5   |
    +------------------------+------------------------+-----------------+
-   | Templates              | Available templates    | Hello World     |
+
+
+3. Select **File → New Component → Hello World → Create Application Component from Template**. The Create New Application Component - Hello World wizard welcome screen opens.
+
+4. Use the information in the table below to make your selections in the wizard screens.
+
    +------------------------+------------------------+-----------------+
+   | Screen                 | System Properties      | Settings        |
+   +========================+========================+=================+
+   | Platform               | Select platform from   | zcu102_edt      |
+   |                        | repository             |                 |
+   +------------------------+------------------------+-----------------+
+   | System project         | System project         | hello_r5_system |
+   | details                | name                   |                 |
+   +------------------------+------------------------+-----------------+  
 
-   The Vitis IDE creates the **hello_r5_system** project in the Explorer view. **hello_r5** sits inside **hello_r5_system**.
+   The Vitis IDE creates the **hello_r5_system** project in the Explorer view.
 
-4. Select **hello_r5_system** and click the hammer icon in the toolbar to build the system project.
+5. Select the 'vitis-sys.json' file under settings within hello_r5_system in the Explorer view and click Add Existing Component.
+
+6. Select Application and then select 'hello_r5'. Now the hello_r5 application resides inside the hello_r5_system component.
+
+7. Select **hello_r5_system** and click the hammer icon in the toolbar to build the system project.
 
 Running the “Hello World” Application on Arm Cortex-R5F
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Right-click **hello_r5** and select **Run as → Run Configurations**.
+1. Select **hello_r5** and select the **settings** icon beside the **Run** button in the flow tab.
 
-2. Right-click **Xilinx Application Debugger** and click **New Configuration**.
+2. Select **New Launch Configuration".
 
-   The Vitis IDE creates the new run configuration, named Debugger_hello_r5-Default. The configurations associated with the application are pre-populated in the Main page of the launch configurations.
+   The Vitis IDE creates the new run configuration, named hello_r5_app_hw_1. The configurations associated with the application are pre-populated in the Main page of the launch configurations.
 
-3. Click the **Target Setup** page and review the settings.
+3. Select the **launch.json** file and review the settings.
 
    This file is exported when you create the platform using the Vitis IDE; it contains the initialization information for the processing
    system.
@@ -409,32 +418,32 @@ Running the “Hello World” Application on Arm Cortex-R5F
    Because the “Hello World” applications for Cortex-A53 and Cortex-R5F are identical, they cannot be differentiated based on the print
    contents, but you can view the details in the **Debug Perspective**.
 
-   If you view the XSCT console, it shows the XSCT command history as shown in the following example:
+   If you view the XSDB console, it shows the XSDB command history as shown in the following example:
 
    .. code-block::
 
-         Downloading Program -- C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
-         section, .vectors: 0x00000000 - 0x00000637
-         section, .text: 0x00100000 - 0x00101947
-         section, .init: 0x00101948 - 0x00101953
-         section, .fini: 0x00101954 - 0x0010195f
-         section, .note.gnu.build-id: 0x00101960 - 0x00101983
-         section, .rodata: 0x00101988 - 0x00101f3c
-         section, .data: 0x00101f40 - 0x001023af
-         section, .bootdata: 0x001023b0 - 0x0010252f
-         section, .eh_frame: 0x00102530 - 0x00102533
-         section, .ARM.exidx: 0x00102534 - 0x0010253b
-         section, .init_array: 0x0010253c - 0x0010253f
-         section, .fini_array: 0x00102540 - 0x00102543
-         section, .bss: 0x00102544 - 0x0010256b
-         section, .heap: 0x0010256c - 0x0010456f
-         section, .stack: 0x00104570 - 0x00107d6f
+        Downloading Program -- C:/edt/edt_zcu102_workspace/hello_r5/build/hello_r5.elf
+        section, .vectors: 0x00000000 - 0x00000653
+        section, .bootdata: 0x00000658 - 0x000007d7
+        section, .text: 0x00100000 - 0x0010105f
+        section, .init: 0x00101060 - 0x0010106b
+        section, .fini: 0x0010106c - 0x00101077
+        section, .note.gnu.build-id: 0x00101078 - 0x0010109b
+        section, .rodata: 0x001010a0 - 0x001014a7
+        section, .data: 0x001014a8 - 0x00101917
+        section, .eh_frame: 0x00101918 - 0x0010191b
+        section, .init_array: 0x0010191c - 0x0010191f
+        section, .fini_array: 0x00101920 - 0x00101923
+        section, .drvcfg_sec: 0x00101924 - 0x00101933
+        section, .bss: 0x00101934 - 0x0010195b
+        section, .heap: 0x0010195c - 0x0010395f
+        section, .stack: 0x00103960 - 0x0010715f
 
-         0%    0MB   0.0MB/s  ??:?? ETA
-         100%    0MB   0.2MB/s  00:00    
-
-         Setting PC to Program Start Address 0x0000003c
-         Successfully downloaded C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
+        100%    0MB   0.2MB/s  00:00
+        
+        Setting PC to Program Start Address 0x0000003c
+        Successfully downloaded C:/edt/edt_zcu102_workspace/hello_r5/build/hello_r5.elf
+         
 
    More debugging techniques are explored in the :doc:`next chapter <./5-debugging-with-vitis-debugger>`.
 
