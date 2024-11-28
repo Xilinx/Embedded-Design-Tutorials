@@ -1,11 +1,11 @@
-name: Update UG1305
+name: Update UG1209
 
 on:
   push:
     branches:
       - 2024.1_next
     paths:
-      - 'docs/Getting_Started/Versal-EDT/**'
+      - 'docs/Getting_Started/ZynqMPSoC-EDT/**'
 
 # Permissions to write to the repository are required
 permissions: write-all
@@ -34,28 +34,24 @@ jobs:
           ssh-add private_key.pem
           rm -f private_key.pem
           ssh-keyscan gitenterprise.xilinx.com >> "$HOME/.ssh/known_hosts"
-      - name: Checkout techdocs/UG1305 repository
+      - name: Checkout techdocs/UG1209 repository
         uses: actions/checkout@v2
         with:
-          repository: techdocs/UG1305
-          ssh-key: ${{ secrets.ug1305_deploy_key }}
-          path: UG1305_repo
+          repository: techdocs/UG1209
+          ssh-key: ${{ secrets.ug1209_deploy_key }}
+          path: UG1209_repo
           ref: main
 
-      - name: Delete and replace 'docs' and 'ref_files' folder contents, and 'Versal-EDT.rst' in techdocs-UG1305
+      - name: Move contents of ZynqMPSoC-EDT to ug1209_repo
         run: |
-          rm -rf UG1305_repo/build_html/source/docs/*
-          rm -rf UG1305_repo/build_html/source/ref_files/*
-          rm -f UG1305_repo/build_html/source/Versal-EDT.rst
-          cp -r docs/Getting_Started/Versal-EDT/docs UG1305_repo/build_html/source/docs
-          cp -r docs/Getting_Started/Versal-EDT/ref_files UG1305_repo/build_html/source/ref_files
-          cp docs/Getting_Started/Versal-EDT/Versal-EDT.rst UG1305_repo/build_html/source/Versal-EDT.rst
+          cp -r docs/Getting_Started/ZynqMPSoC-EDT/* UG1209_repo/build_html/source/
 
-      - name: Commit and push changes to techdocs-UG1305
+
+      - name: Commit and push changes to techdocs-UG1209
         run: |
-          cd UG1305_repo
+          cd UG1209_repo
           git config user.email "actions@github.com"
           git config user.name "GitHub Action"
           git add -A
-          git commit -m "Update UG1305 documentation from Emb-Design-Tutorials repository"
+          git commit -m "Update UG1209 documentation from Emb-Design-Tutorials repository"
           git push

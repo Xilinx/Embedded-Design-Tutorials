@@ -1,11 +1,4 @@
 ..
-   Copyright 2000-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 ######################################################
 Zynq UltraScale+ MPSoC Embedded Design Tutorial
@@ -28,12 +21,12 @@ Zynq UltraScale+ MPSoC Embedded Design Tutorial
    Secure Boot <./9-secure-boot>
 
 
-This document provides an introduction to using the Vivado |reg| Design Suite flow for the Xilinx |reg| Zynq|reg| UltraScale+ |trade| MPSoC ZCU102 Rev 1.0 and Rev 1.1 evaluation boards. The tool used is the Vitis |trade| unified software platform.
+This document provides an introduction to using the Vivado Design Suite flow for the Zynq UltraScale+ MPSoC ZCU102 Rev 1.0 and Rev 1.1 evaluation boards. The tool used is the Vitis |trade| unified software platform.
 
 The best way to learn a tool is to use it. This guide provides opportunities for you to work with the tools under discussion. Specifications for sample projects are given in the example sections, along with an explanation of what is happening behind the scenes. Each chapter and examples are meant to showcase different aspects of embedded design. The example takes you through the entire flow to
 complete the learning and then moves on to another topic.
 
-The examples in this document were created using Xilinx tools running on Windows 10, 64-bit operating system, and PetaLinux on Linux 64-bit operating system. Other versions of the tools running on other Windows installations might provide varied results. These examples focus on introducing you to the following aspects of embedded design.
+The examples in this document were created using AMD Design tools running on Windows 10, 64-bit operating system, and PetaLinux on Linux 64-bit operating system. Other versions of the tools running on other Windows installations might provide varied results. These examples focus on introducing you to the following aspects of embedded design.
 
 .. note:: The sequence mentioned in the tutorial steps for booting Linux on the hardware is specific to 2022.2, which must be installed on the Linux host machine to execute the Linux portions of this document.
 
@@ -56,3 +49,10 @@ The examples in this document were created using Xilinx tools running on Windows
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
+
+
+
+
+.. Copyright © 2016-2024 Advanced Micro Devices, Inc
+
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

@@ -1,9 +1,4 @@
 ..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 =========================================================
 Debugging Standalone Applications with the Vitis Debugger
@@ -26,13 +21,13 @@ The Vitis debugger provides the following debug capabilities:
 The Vitis debugger enables you to see what is happening to a program while it executes. You can set breakpoints or watchpoints to stop the
 processor, step through program execution, view the program variables and stack, and view the contents of the memory in the system.
 
-The Vitis debugger supports debugging through Xilinx |reg| System Debugger.
+The Vitis debugger supports debugging through Vitis System Debugger.
 
-Xilinx System Debugger
+Vitis System Debugger
 ----------------------
 
-The Xilinx System Debugger uses the Xilinx hardware server as the underlying debug engine. The Vitis IDE translates each user interface
-action into a sequence of Target Communication Framework (TCF) commands. It then processes the output from System Debugger to display the current state of the program being debugged. It communicates to the processor on the hardware using Xilinx hardware server.
+The System Debugger uses the AMD hardware server as the underlying debug engine. The Vitis IDE translates each user interface
+action into a sequence of Target Communication Framework (TCF) commands. It then processes the output from System Debugger to display the current state of the program being debugged. It communicates to the processor on the hardware using AMD hardware server.
 
 The debug workflow is described in the following figure.
 
