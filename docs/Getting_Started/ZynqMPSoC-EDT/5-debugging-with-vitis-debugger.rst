@@ -57,8 +57,7 @@ following example to debug the software using the Vitis debugger.
 
 1. Connect the JTAG cable, set the boot mode to JTAG, and power on the board. Refer to the steps in :ref:`example-3-running-the-hello-world-application-from-arm-cortex-a53`.
 
-2. In the C/C++ Perspective, right-click the **hello_a53 Project** and select **Debug As→ Launch on Hardware → Single Application Debug**.
-
+2. Select the hello_a53 application and then click the Open Settings button beside Debug in the flow tab.
    .. note:: The above step launches the Application Debugger in the Debug perspective based on the project settings. Alternatively, you can create a debug configuration which looks like the following figure.
 
    .. figure:: ./media/vitis_single_app_debug_configurations.png
@@ -69,7 +68,7 @@ following example to debug the software using the Vitis debugger.
 
    If the Confirm Perspective Switch popup window appears, click **Yes**. The Debug perspective opens.
 
-   .. note:: If the Debug perspective window does not open automatically, select **Window→ Perspective → Open Perspective → Other**, then select **Debug** in the Open Perspective wizard. You can quickly switch between Design Perspective and Debug Perspective with buttons on upper right corner.
+   .. note:: If the Debug perspective window does not open automatically, select **View → Debug**. 
 
    .. figure:: media/vitis_perspectives.png
 
@@ -84,16 +83,16 @@ following example to debug the software using the Vitis debugger.
    The processor is currently sitting at the beginning of `main()` with program execution suspended at line `0000000000000cf0`. You can confirm this information in the Disassembly view, which shows the assembly-level program execution also suspended at
    `0000000000000cf0`.
 
-   .. note:: If the Disassembly view is not visible, select **Window→Show View→ Disassembly**.
+   .. note:: If the Disassembly view is not visible, select **View → Disassembly View**.
 
 3. The helloworld.c window also shows execution suspended at the first executable line of C code. Select the **Registers** view to confirm
    that the program counter, pc register, contains `0000000000000cf0`.
 
-   .. note:: If the Registers window is not visible, select **Window → Show View → Registers**.
+   .. note:: If the Registers window is not visible, select **View → Register Inspector**.
 
 4. Double-click in the margin of the **helloworld.c** window next to the line of code that reads print (“Hello World”);. This sets a breakpoint at the `printf` command. To confirm the breakpoint, review the Breakpoints window.
 
-   .. note:: If the Breakpoints window is not visible, select **Window → Show View → Breakpoints**.
+   .. note:: Breakpoints can be viewed in the debug view.
 
 5. Select **Run → Step Into (F5)** to step into the `init_platform()` routine.
 
@@ -127,14 +126,13 @@ capability of XSDB/XSCT. Based on your requirements, you can choose to debug the
 Setting Up the Target
 ~~~~~~~~~~~~~~~~~~~~~
 
-1. Open the XSCT console:
+1. Open the XSDB console:
 
-   -  Click the **XSCT Console** button |image1| in the toolbar.
-   -  Alternatively, you can open the XSCT console from **Xilinx → XSCT Console**.
+   -  Click the **XSDB Console** button |image1| in the toolbar.
 
 2. Connect to the target over JTAG:
 
-   -  In the XSCT console, run `xsct% connect`.
+   -  In the XSDB console, run `xsdb% connect`.
 
    The `connect` command returns the channel ID of the connection.
 
@@ -152,7 +150,7 @@ Setting Up the Target
 
    .. figure:: ./media/image49.png
 
-      XSCT - targets
+      xsdb - targets
 
 4. Select the PSU target. The Arm APU and RPU clusters are grouped under PSU. Select Cortex-A53#0 as the target using the following command:
 
@@ -165,7 +163,7 @@ Setting Up the Target
 
    .. figure:: ./media/image50.png
 
-      XSCT - selected target
+      XSDB - selected target
 
 5. The processor is now held in reset. To clear the processor reset, use the following command:
 
@@ -177,9 +175,9 @@ Setting Up the Target
 
    .. code-block:: tcl
 
-         xsct% dow {C:\edt\fsbl_a53\Debug\fsbl_a53.elf}
-         xsct% con
-         xsct% stop
+         xsdb% dow {C:\edt\edt_zcu102_workspace\zcu102\zynqmp_fsbl\build.elf}
+         xsdb% con
+         xsdb% stop
 
    .. note:: The {} used in the above command are required on Windows machines to enable backward slashes () in file paths. These brackets can be avoided by using forward "/" in paths. For Linux paths, use forward slashes; the paths in XSCT in Linux can work as-is, without any brackets.
 
@@ -190,9 +188,9 @@ Loading the Application Using XSCT
 
    .. code-block::
 
-      xsct% targets
-      xsct% targets -set -filter {name =~ "Cortex-R5 #0"}
-      xsct% rst -processor
+      xsdb% targets
+      xsdb% targets -set -filter {name =~ "Cortex-R5 #0"}
+      xsdb% rst -processor
 
    The command ``rst -processor`` clears the reset on an individual processor core.
 
@@ -203,7 +201,7 @@ Loading the Application Using XSCT
 
 2. Download the testapp_r5 application on Arm Cortex-R5F Core 0.
 
-   -  Run `xsct% dow {C:\edt\testapp_r5\Debug\testapp_r5.elf}` or `xsct% dow {C:/edt/testapp_r5/Debug/testapp_r5.elf}`.
+   -  Run `xsdb% dow {C:/edt/edt_zcu102_workspace/testapp_r5/buildtestapp_r5.elf}` or `xsdb% dow {C:/edt/edt_zcu102_workspace/testapp_r5/build/testapp_r5.elf}`.
 
    At this point, you can see the sections from the ELF file downloaded sequentially. The XSCT prompt can be seen after successful download. Now, configure a serial terminal (Tera Term, Minicom, or the serial terminal interface for a UART-1 USB-serial connection).
 
@@ -225,7 +223,7 @@ Running and Debugging the Application Using XSCT
 
    .. code-block::
 
-        xsct% bpadd -addr &main
+        xsdb% bpadd -addr &main
 
    This command returns the breakpoint ID. You can verify the breakpoints planted using the command ``bplist``. For more details on
    breakpoints in XSCT, type ``help breakpoint`` in the XSCT console.
@@ -234,33 +232,33 @@ Running and Debugging the Application Using XSCT
 
    .. code-block::
    
-        xsct% con
+        xsdb% con
 
    The following informative messages will be displayed when the core hits the breakpoint.
 
    .. code-block::
 
-         xsct% Info: Cortex-R5 \#0 (target 7) Stopped at 0x10021C (Breakpoint)
+         xsdb% Info: Cortex-R5 \#0 (target 7) Stopped at 0x10021C (Breakpoint)
 
 3. At this point, you can view registers when the core is stopped:
 
    .. code-block::
 
-         xsct% rrd
+         xsdb% rrd
 
 4. View local variables:
 
    .. code-block::
       
-         xsct% locals
+         xsdb% locals
 
 5. Step over a line of the source code and view the stack trace:
 
    .. code-block::
 
-         xsct% nxt
+         xsdb% nxt
          Info: Cortex-R5 #0 (target 6) Stopped at 0x100490 (Step)
-         xsct% bt
+         xsdb% bt
 
    You can use the ``help`` command to find other options:
 
@@ -274,7 +272,7 @@ Running and Debugging the Application Using XSCT
 
    .. code-block::
    
-         xsct% con
+         xsdb% con
 
    At this point, you can see the Cortex-R5F application print a message on the UART-1 terminal.
 

@@ -373,7 +373,7 @@ Creating a “Hello World” Application on Arm Cortex-R5F
    +------------------------+------------------------+-----------------+
 
 
-3. Select **File → New Component → Hello World → Create Application Component from Template**. The Create New Application Component - Hello World wizard welcome screen opens.
+3. Select **File → New Example → Hello World → Create Application Component from Template**. The Create New Application Component - Hello World wizard welcome screen opens.
 
 4. Use the information in the table below to make your selections in the wizard screens.
 
@@ -480,11 +480,9 @@ Creating the hello_system System Project
 
 Use the same steps as :ref:`example-3-running-the-hello-world-application-from-arm-cortex-a53`, but this time create the system project with name ``hello_system``.
 
-1. Select **File → New → Application Project**. The Create New Application Project wizard welcome screen opens.
+1. Select **File → New Example → Hello World → Create Application Component from Template**. The Create New Application Project wizard welcome screen opens.
 
-2. Click **Next**.
-
-3. Use the information in the table below to make your selections in the wizard screens.
+2. Use the information in the table below to make your selections in the wizard screens.
 
    +----------------------+----------------------+----------------------+
    | Screen               | System Properties    | Settings             |
@@ -495,15 +493,15 @@ Use the same steps as :ref:`example-3-running-the-hello-world-application-from-a
    | Application project  | Application project  | **hello_sys_a53**    |
    | details              | name                 |                      |
    +----------------------+----------------------+----------------------+
-   |                      | System project name  | **hello_system**     |
-   +----------------------+----------------------+----------------------+
-   |                      | Target processor     | psu_cortexa53_0      |
-   +----------------------+----------------------+----------------------+
    | Domain               | Domain               | standalone on        |
    |                      |                      | psu_cortexa53_0      |
    +----------------------+----------------------+----------------------+
-   | Templates            | Available templates  | Hello World          |
-   +----------------------+----------------------+----------------------+
+
+3. Select the 'vitis-sys.json' file under settings within hello_system in the Explorer view and click Add Existing Component.
+
+4. Select Application and then select 'hello_sys_a53'. Now the hello_r5 application resides inside the hello_r5_system component.
+
+5. Select **hello_r5_system** and click the hammer icon in the toolbar to build the system project.
 
    .. note:: Application projects in one workspace cannot have the same name even if they belong to different system projects, because they store flat in the workspace directory.
 
@@ -530,8 +528,7 @@ Modifying the hello_sys_a53 Application Source Code
 
 4. Build the hello_a53 application:
 
-   -  Right-click the **hello_sys_a53** application and select **Build Project**.
-   -  Alternatively, it can be done by clicking the save button on the toolbar.
+   -  Click the hello_sys_a53 application and then click Build under the flow tab
 
 5. Verify that the application is compiled and linked successfully:
 
@@ -539,15 +536,20 @@ Modifying the hello_sys_a53 Application Source Code
 
    .. code-block::
 
-         'Finished building target: hello_sys_a53.elf'
-         ' '
-         'Invoking: ARM v8 Print Size'
-         aarch64-none-elf-size hello_sys_a53.elf  |tee "hello_sys_a53.elf.size"
-            text      data     bss     dec     hex filename
-         30212    2048   20676   52936    cec8 hello_sys_a53.elf
-         'Finished building: hello_sys_a53.elf.size'
+         --------------------------------------------------------------------------------
+          [11/5/2024, 9:04:29 AM]: Build for hello_sys_a53::build with id '77931894-7d34-44dd-b932-093a068621d7' started.
+          --------------------------------------------------------------------------------
+         -- Configuring done
+         -- Generating done
+         ...
+            text	   data	    bss	    dec	    hex	filename
+            29561	    292	  21275	  51128	   c7b8	hello_sys_a53.elf
+         Build Finished successfully
+         --------------------------------------------------------------------------------
+         [11/5/2024, 9:04:31 AM]: Build for hello_sys_a53::build with id '77931894-7d34-44dd-b932-093a068621d7' ended.
 
-   -  The **hello_sys_a53.elf** file is generated in the **hello_sys_a53 → Debug** folder.
+
+   -  The **hello_sys_a53.elf** file is generated in the **hello_sys_a53 → build** folder.
 
 .. _creating-a-custom-bare-metal-application-for-an-arm-cortex-r5f-based-rpu-in-the-same-system-project:
 
@@ -559,7 +561,7 @@ directory. They will be imported in the next steps.
 
 1. Create an empty bare-metal application for Cortex-R5F Core 0 in the **hello_system** system project:
 
-   1. In the Explorer View, select **hello_system**, right-click it, and select **Add Application Project** to open the New Project wizard.
+   1. In the Explorer View, select **File → New Example → Empty Application → Create Application Component from Template **. The Create Application Component wizard welcome screen opens. 
    2. Use the information in the following table to make your selections in the wizard.
 
       +----------------------+----------------------+----------------------+
@@ -568,31 +570,22 @@ directory. They will be imported in the next steps.
       | Application project  | Application project  | **testapp_r5**       |
       | details              | name                 |                      |
       +----------------------+----------------------+----------------------+
-      |                      | System project name  | hello_system         |
-      +----------------------+----------------------+----------------------+
-      |                      | Show all processors  | unchecked            |
-      |                      | in hardware          |                      |
-      |                      | specification        |                      |
-      +----------------------+----------------------+----------------------+
-      |                      | Target processor     | psu_cortexr5_0       |
+      |                      | Platform             | zcu102               |
       +----------------------+----------------------+----------------------+
       | Domain               | Domain               | standalone_r5        |
       +----------------------+----------------------+----------------------+
-      | Templates            | Available templates  | Empty application(C) |
-      +----------------------+----------------------+----------------------+
+   
+   3. Select the 'vitis-sys.json' file under settings within hello_system in the Explorer view and click Add Existing Component.
 
-   3. Click **Finish**. The New Project wizard closes and the Vitis IDE creates the testapp_r5 application project in the hello_system system project.
+   4. Select Application and then select 'testapp_r5'. Now the testapp_r5 application resides inside the hello_system component.
 
 2. Import the prepared source code for **testapp_r5**:
 
    1. In the Explorer view, expand the **hello_system** project to find the **testapp_r5** project.
-   2. Right-click the **testapp_r5** and select **Import Sources** to open the Import view.
-   3. In the **From directory** field, select **Browse** and navigate to the design files folder (`ref_files/example5/testapp_r5.c <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Getting_Started/ZynqMPSoC-EDT/ref_files/example5/testapp_r5.c>`_).
-   4. Click **OK**.
-   5. Select the **testapp.c** file.
-   6. Click **Finish**.
-
-      .. figure:: ./media/vitis_import_source.png
+   2. Right-click the src folder within Sources inside the **testapp_r5** and select **Import → Files** to open the Import view.
+   3. Navigate to the design files folder (ref_files/example5/testapp_r5.c)
+   4. Select the **testapp.c** file.
+   5. Click **Open**.
 
 3. Open **testapp_r5.c** in to review the source code for this application:
 
@@ -626,35 +619,34 @@ When two applications needs to run at the same time, they cannot use resources i
 
 4. Press **Ctrl + S** to save the changes.
 
-5. Right-click the **testapp_r5** project and select **Build Project**.
+5. Select the **testapp_r5** project in the component box within the flow tab and then click **Build**.
 
-6. Verify that the application is compiled and linked successfully, and that the ``testapp_r5.elf`` file has been generated in the ``testapp_r5/Debug`` folder.
+6. Verify that the application is compiled and linked successfully, and that the ``testapp_r5.elf`` file has been generated in the ``testapp_r5/build`` folder.
 
 Modifying the Board Support Package for testapp_r5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ZCU102 Evaluation kit has a USB-TO-QUAD-UART Bridge IC from Silicon Labs (CP2108). This enables you to select a different UART port for applications running on Cortex-A53 and Cortex-R5F cores. For this example, let Cortex-A53 use the UART 0 by default, and send and receive RPU serial data over UART 1. This requires a small modification in the standalone_r5 bsp configuration.
 
-1. Open the platform details tab by double-clicking **zcu102_edt → platform.spr**.
+1. Open the platform details tab by clicking vitis-comp.json under zcu102_edt.
 
 2. Open the standalone domain BSP setting details for Cortex-R5F:
 
-   1. Navigate to **psu_cortexr5 → standalone_r5 → Board Support Package**.
-   2. Click **Modify BSP Settings**.
+   1. Navigate to psu_cortexr5_0 → standalone_r5 → Board Support Package → standalone.
 
 3. Change the UART settings for standalone_r5:
 
-   1. Select the **Standalone** tab.
-   2. Change **stdin** to **psu_uart_1**.
-   3. Change **stdout** to **psu_uart_1**.
+   1. Change stdin_standalone to psu_uart_1.
+
+   2. Change stdout_standalone to psu_uart_1
 
       .. image:: ./media/image37.png
 
    4. Click **OK**.
 
-4. Build the psu_cortexr5_0 domain and the testapp_r5 application.
+4. Build the zcu102 platform and the testapp_r5 application.
 
-5. Verify that the application is compiled and linked successfully and that the ``testapp_r5.elf`` has been generated in the ``testapp_r5/Debug`` folder.
+5. Verify that the application is compiled and linked successfully and that the ``testapp_r5.elf`` has been generated in the ``testapp_r5/build`` folder.
 
 Running the hello_system System Project on Hardware
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -671,7 +663,7 @@ Running the hello_system System Project on Hardware
    2. Open USB UART Interface-0 for UART-0 for APU.
    3. Open USB UART Interface-1 for UART-1 for RPU.
 
-3. Run hello_system on hardware by right-clicking **hello_system** in the Explorer window, and selecting **Run As → Launch Hardware**.
+3. Run hello_system on hardware by selecting **hello_system** in the Explorer window, and clicking the **Run** button within the flow tab.
 
    The message from MobaXterm shows prints from the APU and RPU.
 
@@ -693,7 +685,7 @@ The Vitis tool uses JTAG to control the board, and performed the following tasks
 -  Ran applications on both processors.
 -  The application on APU printed on UART-0 and the application on RPU printed on UART-1.
 
-You can view the detailed steps by right-clicking **hello_system**, selecting **Run As → Run Configurations**, and viewing the Target Setup tab.
+You can view the detailed steps by clicking **hello_system** and selecting **Open Settings** beside Run in the flow tab to display the ``launch.json`` configuration file..
 
 .. figure:: media/vitis_run_configurations.png
 
