@@ -802,7 +802,7 @@ Follow these steps to generate a device image for the design.
 
 5. Export hardware after you generate the Device Image and click **OK**.
    
-.. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-1` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. To understand the flow for generating the device image, follow the steps provided below.
+.. note:: The following steps are optional and you can skip these and go to the :ref:`Exporting Hardware <exporting-hardware-1>` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. To understand the flow for generating the device image, follow the steps provided below.
 
    1. Go to **Flow Navigator → Synthesis** and click **Run Synthesis**.
 
