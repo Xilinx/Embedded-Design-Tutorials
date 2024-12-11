@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: techdocs/UG1305
-          ssh-key: ${{ secrets.DEPLOY_KEY }}
+          ssh-key: ${{ secrets.ug1305_deploy_key }}
           path: UG1305_repo
           ref: 2024.2_next
 
