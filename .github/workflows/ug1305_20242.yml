@@ -3,7 +3,7 @@ name: Update UG1305
 on:
   push:
     branches:
-      - 2024.1_next
+      - 2024.2_next
     paths:
       - 'docs/Getting_Started/Versal-EDT/**'
 
@@ -40,7 +40,7 @@ jobs:
           repository: techdocs/UG1305
           ssh-key: ${{ secrets.DEPLOY_KEY }}
           path: UG1305_repo
-          ref: main
+          ref: 2024.2_next
 
       - name: Delete and replace 'docs' and 'ref_files' folder contents, and 'Versal-EDT.rst' in techdocs-UG1305
         run: |
@@ -54,8 +54,8 @@ jobs:
       - name: Commit and push changes to techdocs-UG1305
         run: |
           cd UG1305_repo
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Action"
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Action"
           git add -A
           git commit -m "Update UG1305 documentation from Emb-Design-Tutorials repository"
           git push

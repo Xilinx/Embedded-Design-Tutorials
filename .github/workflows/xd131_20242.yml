@@ -1,9 +1,9 @@
-name: Update XD131
+name: Update XD131 2024.2
 
 on:
   push:
     branches:
-      - 2024.1_next
+      - 2024.2_next
     paths:
       - 'docs/Getting_Started/microblaze-system/**'
 
@@ -40,7 +40,7 @@ jobs:
           repository: techdocs/XD131
           ssh-key: ${{ secrets.DEPLOY_KEY }}
           path: XD131_repo
-          ref: main
+          ref: 2024.2_next
 
       - name: Delete and replace 'docs' folder contents, and 'index.rst' in techdocs-XD131
         run: |
@@ -53,8 +53,8 @@ jobs:
       - name: Commit and push changes to techdocs-XD131
         run: |
           cd XD131_repo
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Action"
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Action"
           git add -A
-          git commit -m "Update XD131 documentation from Emb-Design-Tutorials repository"
+          git commit -m "Update XD131 2024.2 documentation from Emb-Design-Tutorials repository"
           git push
