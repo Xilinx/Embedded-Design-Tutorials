@@ -103,7 +103,7 @@ Starting Your Design
 
 5. Click **Finish**. The New Project wizard closes and the project you just created opens in the Vivado design tool.
 
-   .. note:: Check the version number while choosing a board. For ES1 silicon, the board version is 1.3. For production silicon, the board version is 2.2. Select the version based on the silicon on the board.
+   .. note:: Select the version based on the silicon on the board.For production silicon, select the board revision as Rev A01 with board file version as 1.2. 
 
 Creating an Embedded Processor Project
 --------------------------------------
@@ -802,7 +802,7 @@ Follow these steps to generate a device image for the design.
 
 5. Export hardware after you generate the Device Image and click **OK**.
    
-.. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-1` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. To understand the flow for generating the device image, follow the steps provided below.
+.. note:: The following steps are optional and you can skip these and go to the :ref:`Exporting Hardware <exporting-hardware-1>` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. To understand the flow for generating the device image, follow the steps provided below.
 
    1. Go to **Flow Navigator → Synthesis** and click **Run Synthesis**.
 
@@ -852,17 +852,17 @@ You will create a new Vitis project, similar to the one in :ref:`running-bare-me
 
    .. note:: Create a new Vitis workspace for this. Do not use the workspace created in :ref:`running-bare-metal-hello-world-application`.
 
-2. Create a bare-metal Hello World system project with an application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 through 3 of :ref:`creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm` and steps 1 through 3 of `Modifying the helloworld_a72 Application Source Code <#modifying-the-helloworld-a72-application-source-code>`__.
+2. Create a bare-metal Hello World system project with an application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 and 2 of :ref:`creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm` and steps 1 and 2 of Modifying the helloworld_a72 Application Source Code.
 
-3. Right-click **helloworld_system** and select **Build Project** or click |build| to generate the project elf files within the Debug folder of the application project.
+3. Select the component (hello_world_a72) application and select Build or click .. image:: media/build_button_new_vitis.png to generate the project elf files within the Debug folder of the application project.
         
-4. Create an additional RPU domain for your platform (created in Step 2) as discussed in `Adding a New RPU Domain to the Platform Project <#adding-a-new-rpu-domain-to-the-platform-project>`__.
+4. Create an additional RPU domain for your platform (created in Step 2) as discussed in :ref: `Creating the Standalone Application Project for the Arm Cortex-R5F`.
         
-5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 through 3 of `Creating the Standalone Application Project for the Arm Cortex-R5F <#creating-the-standalone-application-project-for-the-arm-cortex-r5f>`__ and steps 1 through 3 of `Modifying the helloworld_r5 Application Source Code <#modifying-the-helloworld-r5-application-source-code>`__.
+5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 and 2 of :ref: `Creating the Standalone Application Project for the Arm Cortex-R5F` and steps 1 and 2 of :ref: `Modifying the helloworld_r5 Application Source Code`.
 
-6. Right-click **helloworld_system** and select Build Project or click |build| to generate the project elf files within the Debug folder of the application project.
+6. 6.	Select the component (hello_world_r5) application and select Build or click .. image:: media/build_button_new_vitis.png to generate the project elf files within the Debug folder of the application project.
 
-Refer to `Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform <#running-applications-in-the-jtag-mode-using-the-system-debugger-in-the-vitis-software-platform>`__ for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to :ref:`generating-boot-image-for-standalone-application` for generating boot images for standalone applications.
+Refer to :ref: `Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform` for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to :ref:`generating-boot-image-for-standalone-application` for generating boot images for standalone applications. 
 
 
 
