@@ -1,0 +1,55 @@
+name: Update UG1209 2024.2
+
+on:
+  push:
+    branches:
+      - 2024.2_next
+    paths:
+      - 'docs/Getting_Started/ZynqMPSoC-EDT/**'
+
+# Permissions to write to the repository are required
+permissions: write-all
+
+jobs:
+  update_docs:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Emb-Design-Tutorials repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up SSH folder and file
+        run: |
+          SSH_DIR="${HOME}/.ssh"
+          mkdir -p "$SSH_DIR"
+          touch "${SSH_DIR}/known_hosts"
+          chmod 700 "$SSH_DIR"
+          chmod 600 "${SSH_DIR}/known_hosts"
+      - name: Set up SSH
+        run: |
+          echo "${{ secrets.DEPLOY_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+          eval $(ssh-agent -s)
+          ssh-add private_key.pem
+          rm -f private_key.pem
+          ssh-keyscan gitenterprise.xilinx.com >> "$HOME/.ssh/known_hosts"
+      - name: Checkout techdocs/UG1209 repository
+        uses: actions/checkout@v2
+        with:
+          repository: techdocs/UG1209
+          ssh-key: ${{ secrets.ug1209_deploy_key }}
+          path: UG1209_repo
+          ref: 2024.2_next
+
+      - name: Move contents of ZynqMPSoC-EDT to ug1209_repo
+        run: |
+          cp -r docs/Getting_Started/ZynqMPSoC-EDT/* UG1209_repo/build_html/source/
+      - name: Commit and push changes to techdocs-UG1209
+        run: |
+          cd UG1209_repo
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Action"
+          git add -A
+          git commit -m "Update UG1209 2024.2 documentation from Emb-Design-Tutorials repository"
+          git push
