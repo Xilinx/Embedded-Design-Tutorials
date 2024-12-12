@@ -42,19 +42,10 @@ Starting Your Design
 --------------------
 
 1. Start the Vivado Design Suite.
-2. Optional: This step is required only if you have an ES1 board. In the Tcl Console, type the following command to enable ES1 boards:
 
-   .. code-block::
+2. In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
 
-        enable_beta_device
-
-   Press **Enter**.
-
-   .. note:: You have to add ``enable_beta_device`` in the ``~/.Xilinx/Vivado/Vivado_init.tcl`` (Linux host) too.
-
-3. In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
-
-4. Use the following information in the table to make selections in each of the wizard screens.
+3. Use the following information in the table to make selections in each of the wizard screens.
 
    *Table 1:* **System Property Settings**
 
@@ -101,7 +92,7 @@ Starting Your Design
 
    .. note:: Select **Display Name** as VPK180 Evaluation platform for creating project for SSI devices.
 
-5. Click **Finish**. The New Project wizard closes and the project you just created opens in the Vivado design tool.
+4. Click **Finish**. The New Project wizard closes and the project you just created opens in the Vivado design tool.
 
    .. note:: Select the version based on the silicon on the board.For production silicon, select the board revision as Rev A01 with board file version as 1.2. 
 
@@ -802,7 +793,7 @@ Follow these steps to generate a device image for the design.
 
 5. Export hardware after you generate the Device Image and click **OK**.
    
-.. note:: The following steps are optional and you can skip these and go to the :ref:`Exporting Hardware <exporting-hardware-1>` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. To understand the flow for generating the device image, follow the steps provided below.
+.. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-1` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating device image. To understand the flow for generating the device image, follow the steps provided below.
 
    1. Go to **Flow Navigator → Synthesis** and click **Run Synthesis**.
 
