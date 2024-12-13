@@ -879,4 +879,5 @@ Refer to :ref: `Running Applications in the JTAG Mode using the System Debugger 
 
 
 .. Copyright © 2020–2024 Advanced Micro Devices, Inc
+
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
