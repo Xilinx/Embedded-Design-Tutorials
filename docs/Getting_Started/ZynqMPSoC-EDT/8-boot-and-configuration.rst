@@ -29,7 +29,7 @@ Functionally, Bootgen uses a BIF (Bootgen image format) file as an input, and ge
 This chapter makes use of a processing system block. :doc:`7-design1-using-gpio-timer-interrupts` covers the boot image which will include the PS partitions used in this chapter and a bitstream targeted for the PL fabric.
 
 System Software
----------------
+----------------
 
 The following system software blocks cover most of the boot and configuration for this chapter. For detailed boot flow and various boot sequences, refer to the *System Boot and Configuration* chapter in the *Zynq UltraScale+ MPSoC: Software Developers Guide*
 (`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
