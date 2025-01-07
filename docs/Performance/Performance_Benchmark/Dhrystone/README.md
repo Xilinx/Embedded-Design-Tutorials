@@ -1,16 +1,24 @@
+<p class="sphinxhide" align="right"><a href="../../../../docs-cn/README.md">简体中文</a> | <a href="../../../../docs-jp/README.md">日本語</a></p>
+<table class="sphinxhide" style="width:100%">
+ <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Embedded Design Documentation</h1>
+    </td>
+ </tr>
+</table>
+
 # Versal Dhrystone Benchmark User Guide
 
 ## Table of Contents
 
 - [Introduction](#introduction)
 
-- [Prerequisites](#before-you-begin)
+- [Prerequisites](#prerequisites)
 
 - [Tutorial Requirements](#tutorial-requirements)
 
-- [Build Tutorial Design](#build-tutorial-design)
+- [Build Tutorial Design](#build-the-tutorial-design)
 
-- [Create New Application Project for Dhrystone](#create-new-application-project-for-dhrystone)
+- [Create New Application Project for Dhrystone](#create-a-new-application-project-for-dhrystone)
 
 - [Build Dhrystone Application](#build-dhrystone-application)
 
@@ -122,7 +130,7 @@ The following tools are necessary to build the tutorial design and execute the D
 - Vivado Design Suite and AMD Vitis tool
   - For the latest tool version details, see [https://www.xilinx.com/support/download.html](https://www.xilinx.com/support/download.html).
   - For more information on installation, see [UG1400 Vitis Unified Software Platform Embedded Software Development](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1400-vitis-embedded.pdf).
-- The [Build Tutorial Design](#build-tutorial-design) section of this document provides the scripts to create the tutorial design.
+- The [Build Tutorial Design](#build-the-tutorial-design) section of this document provides the scripts to create the tutorial design.
 - UART serial terminal recommended:
   - Vitis serial terminal or a terminal emulator program for UART (Putty or Tera Term) can be used to display the valuable PLM log boot status and the Dhrystone Benchmark logs.
 
@@ -147,14 +155,14 @@ Follow these steps to build the Dhrystone Benchmark design and create the PDI/XS
    cd /<Path to workspace>/Performance_Benchmark/Dhrystone/Design/
    ```
 
-4. Execute [`source run.tcl`](./Design/run.tcl) from the tutorial directory.
+4. From the tutorial directory, where the [`run.tcl`](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2023.2/docs/Performance/Performance_Benchmark/Dhrystone/Design/run.tcl) script is, execute `source run.tcl`.
 
    ![Alt Text](Images/source_run_tcl.png)
 
    Sourcing the `run.tcl` script does the following:
 
    - Creates a project named dhrystone-tutorrial' in the tutorial directory 
-   - Sources and runs the [`design.tcl`](./Design/design.tcl), which in turn does the following:
+   - Sources and runs [`design.tcl`](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2023.2/docs/Performance/Performance_Benchmark/Dhrystone/Design/design.tcl), which in turn does the following:
      - Selects the target Versal VC1902 device
      - Creates IPs and ports
      - Creates blocks
@@ -171,7 +179,7 @@ Follow these steps to build the Dhrystone Benchmark design and create the PDI/XS
 
 ### Hardware Design Details
 
-The tutorial design creates a block design with CIPS-IP and NoC IP upon sourcing the [`run.tcl`](./Design/run.tcl) script. The following image shows the details of the IP configuration.
+The tutorial design creates a block design with CIPS-IP and NoC IP upon sourcing the [`run.tcl` script](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2023.2/docs/Performance/Performance_Benchmark/Dhrystone/Design/run.tcl) script. The following image shows the details of the IP configuration.
 
 ![Alt Text](./Images/processor_cips_block_diagram.png)
 
@@ -234,7 +242,7 @@ Double-clck on the Control, Interfaces & Processing System to launch the Configu
 7. Browse to the XSA file generated from the Vivado Design Suite in Build the   Tutorial Design steps of this tutorial.
 
    ![Alt Text](./Images/select_platform_creation_flow.png)
-8. Verify that the **Operating system** and **Processor** are pre-filled from the XSA file as shown in the following figure. 
+8. Verify that the **Operating system** and **Processor** are pre-filled from the XSA file as shown in the following figure.
 
    ![Alt Text](./Images/select_operating_system_processor.png)
 
@@ -271,7 +279,7 @@ Double-clck on the Control, Interfaces & Processing System to launch the Configu
 2. Click **Optimization**
 
    2.1 Select **Optimization Level** to **-03**.
-   
+
    2.2 Add **-fno-common** in the Other optimization flags.
 
    2.3 Select **Debug Level** as **None**.
@@ -280,7 +288,7 @@ Double-clck on the Control, Interfaces & Processing System to launch the Configu
 
 ### Build the Project
 
-From the Left Menu bar, Expand **FLOW** 
+From the Left Menu bar, Expand **FLOW**
 
 1. Select **platform** from the Component drop-down menu.
 
@@ -293,6 +301,7 @@ From the Left Menu bar, Expand **FLOW**
    ![Alt Text](./Images/build-project.png)
 
    For executable file path:
+
    ```
    /<path for workspace>/<application project name>/build/dhrystone.elf
    ```
@@ -332,7 +341,8 @@ From the Left Menu bar, Expand **FLOW**
 
 11. Select the A72_0 target and reset.
 
-    ```xsct% target -set -filter {name =~ "*A72*#0"}
+    ```
+    xsct% target -set -filter {name =~ "*A72*#0"}
     xsct% rst -processor -skip-activate-subsystem
     ```
 

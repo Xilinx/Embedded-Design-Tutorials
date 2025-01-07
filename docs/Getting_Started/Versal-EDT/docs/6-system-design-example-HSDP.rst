@@ -212,7 +212,7 @@ Useful Links
 
 * For more information on using PL hardware debug cores such as the AXIS-ILA, AXIS-VIO, PCIe |trade| Debugger, and/or DDRMC Calibration Interfaces refer to the *Vivado Design Suite User Guide Programming and Debugging* `[UG908] <https://www.xilinx.com/support/documentation/sw_manuals/xilinx2022_1/ug908-vivado-programming-debugging.pdf>`__.
 
-* For more information on the SmartLynq+ Module, refer to `SmartLynq+ Module User Guide <https://www.xilinx.com/support/documentation/boards_and_kits/smartlynq/ug1258-smartlynq-cable.pdf>`__.
+* For more information on the SmartLynq+ Module, refer to `SmartLynq+ Module User Guide <https://www.xilinx.com/products/boards-and-kits/smartlynq-plus.html >`__.
 
 =======
 Summary
