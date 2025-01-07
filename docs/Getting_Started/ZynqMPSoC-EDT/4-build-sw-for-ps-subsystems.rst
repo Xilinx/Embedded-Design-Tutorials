@@ -1,9 +1,3 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 ==============================================
 Building Standalone Software for PS Subsystems
@@ -33,7 +27,7 @@ The main processing units in the Zynq UltraScale+ processing system are listed b
 -  **Application processing unit:** Quad-core Arm |reg| Cortex |trade|-A53 MPCore processors
 -  **Real time processing unit:** Dual-core Arm Cortex |trade|-R5F MPCore processors
 -  **Graphics processing unit:** Arm Mali |trade| 400 MP2 GPU
--  **Platform management unit (PMU):** Xilinx MicroBlaze |trade| based platform management unit
+-  **Platform management unit (PMU):** AMD MicroBlaze |trade| based platform management unit
 
 The platform project reads in hardware information from the XSA file and contains the runtime environment for the above processing units.
 Application software can link against the libraries generated in the platform project.
@@ -55,8 +49,8 @@ The following steps show how to create a platform project with a standalone doma
 1. Launch the Vitis IDE:
 
    -  From the open Vivado IDE, click **Tools → Launch Vitis IDE**; or
-   -  From Windows Start menu, select **Xilinx Design Tools → Xilinx Vitis 2022.2**; or
-   -  Double-click the ``C:\Xilinx\Vitis\2022.2\bin\vitis.bat`` file.
+   -  From Windows Start menu, select **Xilinx Design Tools → Vitis**; or
+   -  Double-click the ``C:\Xilinx\Vitis\2024.1\bin\vitis.bat`` file.
 
 2. Select the workspace ``C\edt\edt_zcu102_workspace`` and continue.
 
@@ -455,7 +449,7 @@ Input and Output Files
 
    -  Platform: zcu102_edt with standalone domains for Arm Cortex-A53 and Arm Cortex-R5F
    -  Source code for Arm Cortex-R5F:
-      `ref_files/example5/testapp_r5.c <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/ZynqMPSoC-EDT/ref_files/example5>`_
+      `ref_files/example5/testapp_r5.c`
 
 -  Output:
 
@@ -573,7 +567,7 @@ directory. They will be imported in the next steps.
 
    1. In the Explorer view, expand the **hello_system** project to find the **testapp_r5** project.
    2. Right-click the **testapp_r5** and select **Import Sources** to open the Import view.
-   3. In the **From directory** field, select **Browse** and navigate to the design files folder (`ref_files/example5/testapp_r5.c <https://github.com/Xilinx/Embedded-Design-Tutorials/blob/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/example5/testapp_r5.c>`_).
+   3. In the **From directory** field, select **Browse** and navigate to the design files folder (`ref_files/example5/testapp_r5.c <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Getting_Started/ZynqMPSoC-EDT/ref_files/example5/testapp_r5.c>`_).
    4. Click **OK**.
    5. Select the **testapp.c** file.
    6. Click **Finish**.
