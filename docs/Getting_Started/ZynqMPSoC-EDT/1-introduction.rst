@@ -82,7 +82,7 @@ PetaLinux Tools
 
 The PetaLinux toolset is an embedded Linux system development kit. It offers a multi-faceted Linux tool flow, which enables complete configuration, build, and deploy environment for Linux OS for the Zynq devices, including Zynq UltraScale+ devices.
 
-For more information, see the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <	https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1144-petalinux-tools-reference-guide>`_).
+For more information, see the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1144-petalinux-tools-reference-guide>`_).
 
 How the AMD Design Tools Expedite the Design
 -----------------------------------------------
