@@ -50,13 +50,15 @@ Managing the Versal CIPS IP Core in the Vivado Design Suite
 
 8. Ensure that all the settings for **Design Flow** and **Presets** are as shown in the following figure.
    
-   .. image:: media/4_1-full-system.png
+   .. image:: media/4-full-system.png
       
 9. Click **Next**, then click **PS PMC**.
 
    .. image:: media/ch7_ps-pmc.png
+   
+   .. note:: For non SSI technology devices, one PS PMC is available.
 	  
-10. Go to Peripherals and enable the TTC peripherals as shown in figure below:
+10. In **PSPMC** tab, go to Peripherals and enable the TTC peripherals as shown in figure below:
 
    .. image:: media/vpk_peripherals.png
 	  
@@ -140,7 +142,7 @@ Configuring NoC and CIPS
 
 16. Make connections between CIPS and NoC as shown below. 
 
-   .. image:: media/vpk_noc-ip-new_view.png      
+   .. image:: media/vpk_noc-ip-new_view.png    
       
 
 Configuring PL AXI GPIO and AXI UART
@@ -386,19 +388,27 @@ To validate the design and to generate the output product, follow these steps:
     
    5. Click **Finish**.
 
-5. Click **Hierarchy**.
+5. In the Block Design view, click **Sources** tab  
 
-6. In the Sources window, under Design Sources, expand **edt_versal_wrapper**.
+6. Click **Hierarchy** and Expand Design Sources Folder, right-click **edt_versal** and select **Create HDL Wrapper**.
 
-7. Right-click the top-level block design, edt_versal_i : edt_versal (``edt_versal.bd``), and select **Generate Output Products**.
+   The Create HDL Wrapper dialog box opens. Use this dialog box to create an HDL wrapper file for the processor subsystem.
+
+   .. tip:: The HDL wrapper is a top-level entity required by the design tools.
+   
+7. Select **Let Vivado manage wrapper and auto-update** and click **OK**.
+
+8. In the Sources window, under Design Sources, expand **edt_versal_wrapper**.
+
+9. Right-click the top-level block design, edt_versal_i : edt_versal (``edt_versal.bd``), and select **Generate Output Products**.
 
    .. image:: ./media/ch7_GOP.png
 
-8. Click **Generate**.
+10. Click **Generate**.
 
-9. When the Generate Output Products process completes, click **OK**.
+11. When the Generate Output Products process completes, click **OK**.
 
-10. In the Sources window, click the **IP Sources** view. Here, you can see the output products that you just generated, as shown in the following figure.
+12. In the Sources window, click the **IP Sources** view. Here, you can see the output products that you just generated, as shown in the following figure.
 
     .. image:: ./media/vpk_180_ip-sources-ch5-final.png
 

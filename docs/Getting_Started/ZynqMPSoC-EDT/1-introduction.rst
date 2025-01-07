@@ -1,16 +1,12 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
+***************
+Introduction
+***************
 
 =========================================================
 How Zynq UltraScale+ Devices Offer a Single Chip Solution
 =========================================================
 
-Zynq |reg| UltraScale+ |trade| MPSoC, the next generation Zynq device, is designed with the idea of using the right engine for the right task. The Zynq UltraScale+ MPSoC comes with a versatile processing system (PS) integrated with a highly flexible and high-performance programmable logic (PL) section, all on a single system-on-a-chip (SoC). The Zynq UltraScale+ MPSoC PS block includes engines such as the following:
+Zynq UltraScale+ MPSoC, the next generation Zynq device, is designed with the idea of using the right engine for the right task. The Zynq UltraScale+ MPSoC comes with a versatile processing system (PS) integrated with a highly flexible and high-performance programmable logic (PL) section, all on a single system-on-a-chip (SoC). The Zynq UltraScale+ MPSoC PS block includes engines such as the following:
 
 -  Quad-core Arm |reg| Cortex |trade|-A53-based Application Processing Unit (APU)
 
@@ -38,13 +34,13 @@ The programmable logic section, in addition to the programmable logic cells, als
 
 The PS and the PL in Zynq UltraScale+ devices can be tightly or loosely coupled with a variety of high-performance and high-bandwidth PS-PL interfaces.
 
-To simplify the design process for such sophisticated devices, Xilinx offers the Vivado |reg| Design Suite, the Vitis |trade| unified software platform, and PetaLinux tools for Linux. This set of tools provides you with everything you need to simplify embedded system design for a device that merges an SoC with an FPGA. This combination of tools enables hardware and software application design, code execution and debug, and transfer of the design onto actual boards for verification and validation.
+To simplify the design process for such sophisticated devices, AMD offers the Vivado |reg| Design Suite, the Vitis |trade| unified software platform, and PetaLinux tools for Linux. This set of tools provides you with everything you need to simplify embedded system design for a device that merges an SoC with an FPGA. This combination of tools enables hardware and software application design, code execution and debug, and transfer of the design onto actual boards for verification and validation.
 
 Vitis Integrated Design Environment
 -----------------------------------
 
 The Vitis unified software platform is an integrated development environment (IDE) for the development of embedded software applications
-targeted towards Xilinx embedded processors. The Vitis software platform works with hardware designs created with the Vivado Design Suite. The Vitis software platform is based on the Eclipse open source standard. Xilinx has added many features for software developers, including the following features:
+targeted towards embedded processors. The Vitis software platform works with hardware designs created with the Vivado Design Suite. The Vitis software platform is based on the Eclipse open source standard. AMD has added many features for software developers, including the following features:
 
 -  Feature-rich C/C++ code editor and compilation environment
 
@@ -68,7 +64,7 @@ targeted towards Xilinx embedded processors. The Vitis software platform works w
 
 -  Script-based command-line tool (XSCT)
 
-For more information about the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1400-vitis-embedded.pdf>`_).
+For more information about the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1400-vitis-embedded>`_).
 
 Other components include:
 
@@ -84,11 +80,11 @@ The Vivado Design Suite offers a broad range of development system tools for FPG
 PetaLinux Tools
 ---------------
 
-The PetaLinux toolset is an embedded Linux system development kit. It offers a multi-faceted Linux tool flow, which enables complete configuration, build, and deploy environment for Linux OS for the Xilinx Zynq devices, including Zynq UltraScale+ devices.
+The PetaLinux toolset is an embedded Linux system development kit. It offers a multi-faceted Linux tool flow, which enables complete configuration, build, and deploy environment for Linux OS for the Zynq devices, including Zynq UltraScale+ devices.
 
-For more information, see the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`_).
+For more information, see the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1144-petalinux-tools-reference-guide>`_).
 
-How the Xilinx Design Tools Expedite the Design
+How the AMD Design Tools Expedite the Design
 -----------------------------------------------
 
 You can use the Vivado Design Suite tools to add design sources to your hardware. These include the IP integrator, which simplifies the process of adding IP to your existing project and creating connections for ports (such as clock and reset).
@@ -97,10 +93,10 @@ You can accomplish all your hardware system development using the Vivado tools a
 
 The Zynq UltraScale+ PS can be booted and run without programming the PL. However, to use any soft IP in the fabric, or to bond out PS peripherals using EMIO, you must program the PL using the Vitis IDE or the Vivado hardware manager.
 
-For more information on the embedded design process, refer to the *Vivado Design Suite Tutorial: Embedded Processor Hardware Design*
-(`UG940 <https://docs.xilinx.com/v/u/en-US/ug940-vivado-tutorial-embedded-design>`_).
+For more information on the embedded design process, refer to the *Programming an Embedded MicroBlaze Processor*
+(`XD131 <https://docs.amd.com/access/sources/ftml/map?Doc_Version=2024.1%20English&url=xd131-zynq-embedded-design-tutorial>`_).
 
-For more information about the Zynq UltraScale+ processing system, refer to the *Zynq UltraScale + MPSoC Processing System LogiCORE IP Product Guide* (`PG201 <https://docs.xilinx.com/v/u/en-US/pg201-zynq-ultrascale-plus-processing-system>`_).
+For more information about the Zynq UltraScale+ processing system, refer to the *Zynq UltraScale + MPSoC Processing System LogiCORE IP Product Guide* (`PG201 <https://docs.amd.com/access/sources/framemaker/map?Doc_Version=3.5%20English&url=pg201-zynq-ultrascale-plus-processing-system>`_).
 
 In the :doc:`next chapter <./2-getting-started>`, we will get started. 
 
