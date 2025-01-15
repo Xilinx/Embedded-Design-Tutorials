@@ -45,13 +45,13 @@ Creating a PetaLinux Image
    .. code:: bash
 
       # Using the BSP
-      petalinux-create -t project -s <path to the xilinx-zc702-v2023.2-final.bsp>
+      petalinux-create -t project -s <path to the xilinx-zc702-v2024.2-final.bsp>
       # Using the template for custom boards
-      petalinux-create -t project --template zynq -n xilinx-zc702-2023.2
+      petalinux-create -t project --template zynq -n xilinx-zc702-2024.2
 
-   .. note:: **xilinx-zc702-v2023.2-final.bsp** is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.
+   .. note:: **xilinx-zc702-v2024.2-final.bsp** is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.
 
-   This creates a PetaLinux project directory, **xilinx-zc702-2023.2**.
+   This creates a PetaLinux project directory, **xilinx-zc702-2024.2**.
 
 2. Reconfigure the project with **system_wrapper.xsa**:
 
@@ -63,7 +63,7 @@ Creating a PetaLinux Image
 
       .. code:: bash
 
-         cd xilinx-zc702-2023.2
+         cd xilinx-zc702-2024.2
          petalinux-config --get-hw-description=<path that contains system_wrapper.xsa>
 
    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images. Select **Exit** and press **Enter** to exit the configuration window.
