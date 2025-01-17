@@ -147,10 +147,6 @@ Connecting the Serial Port
 
 2. Navigate to Vits → Serial Monitor (If you have not yet enabled the serial monitor or you cannot see it under the vitis tab then enable it by navigating to Vits → New Feature Preview, select Serial Monitor and then select Enable).
 
-   .. figure:: ./media/vitis_serial_terminal.png
-
-      Vitis Terminal Window
-
 3. To find the correct COM port in Windows, verify the port details in the **Device Manager**. In Linux, check the COM port in ``/dev``.
 
    MPSoC UART-0 corresponds to the COM port with Interface-0. Windows Device Manager provides mapping between Interface-x and COM-x.
@@ -214,8 +210,6 @@ To send the “Hello World” string to the UART0 peripheral, follow these steps
 5. Select the 'vitis-sys.json' file under settings within hello_a53_system in the Explorer view and click Add Existing Component.
 
 6. Select Application and then select 'hello_a53'. Now the hello_a53 application resides inside the hello_a53_system component.
-
-   Now the **hello_a53** application resides inside the **hello_a53_system** component.
 
 Running Hello World on the Board
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -335,11 +329,9 @@ In this step, you will prepare for the next example design: running a “Hello W
    +----------------------+-----------------------------+
    | Display name         | standalone_r5               |
    +----------------------+-----------------------------+
-   | OS                   | Standalone                  |
+   | OS                   | standalone                  |
    +----------------------+-----------------------------+
    | Processor            | psu_cortexr5_0              |
-   +----------------------+-----------------------------+
-   | Architecture         | 32-bit                      |
    +----------------------+-----------------------------+
 
 4. The Vitis IDE creates a new domain and **standalone_r5** appears under the **zcu102_edt** platform.
@@ -373,7 +365,7 @@ Creating a “Hello World” Application on Arm Cortex-R5F
    +------------------------+------------------------+-----------------+
 
 
-3. Select **File → New Example → Hello World → Create Application Component from Template**. The Create New Application Component - Hello World wizard welcome screen opens.
+3. Select **File → New Component → System Project**. The Create System Project wizard welcome screen opens.
 
 4. Use the information in the table below to make your selections in the wizard screens.
 
@@ -400,7 +392,7 @@ Running the “Hello World” Application on Arm Cortex-R5F
 
 1. Select **hello_r5** and select the **settings** icon beside the **Run** button in the flow tab.
 
-2. Select **New Launch Configuration".
+2. Select **New Launch Configuration**.
 
    The Vitis IDE creates the new run configuration, named hello_r5_app_hw_1. The configurations associated with the application are pre-populated in the Main page of the launch configurations.
 
@@ -499,9 +491,9 @@ Use the same steps as :ref:`example-3-running-the-hello-world-application-from-a
 
 3. Select the 'vitis-sys.json' file under settings within hello_system in the Explorer view and click Add Existing Component.
 
-4. Select Application and then select 'hello_sys_a53'. Now the hello_r5 application resides inside the hello_r5_system component.
+4. Select Application and then select 'hello_sys_a53'. Now the hello_sys_a53 application resides inside the hello_system component.
 
-5. Select **hello_r5_system** and click the hammer icon in the toolbar to build the system project.
+5. Select **hello_system** and click the hammer icon in the toolbar to build the system project.
 
    .. note:: Application projects in one workspace cannot have the same name even if they belong to different system projects, because they store flat in the workspace directory.
 
@@ -561,7 +553,7 @@ directory. They will be imported in the next steps.
 
 1. Create an empty bare-metal application for Cortex-R5F Core 0 in the **hello_system** system project:
 
-   1. In the Explorer View, select **File → New Example → Empty Application → Create Application Component from Template **. The Create Application Component wizard welcome screen opens. 
+   1. In the Explorer View, select **File → New Example → Empty Application → Create Application Component from Template**. The Create Application Component wizard welcome screen opens. 
    2. Use the information in the following table to make your selections in the wizard.
 
       +----------------------+----------------------+----------------------+
@@ -636,9 +628,9 @@ The ZCU102 Evaluation kit has a USB-TO-QUAD-UART Bridge IC from Silicon Labs (CP
 
 3. Change the UART settings for standalone_r5:
 
-   1. Change stdin_standalone to psu_uart_1.
+   1. Change standalone_stdin to psu_uart_1.
 
-   2. Change stdout_standalone to psu_uart_1
+   2. Change standalone_stdout to psu_uart_1
 
       .. image:: ./media/image37.png
 
