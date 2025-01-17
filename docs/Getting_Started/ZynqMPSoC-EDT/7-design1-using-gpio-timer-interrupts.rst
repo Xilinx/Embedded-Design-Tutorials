@@ -233,7 +233,7 @@ Configuring and Building Linux Using PetaLinux
 Creating the Bare-Metal Application Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Launch Vitis and use a new workspace: ``\edt\design\_example_1*\*`` for this project.
+1. Launch Vitis and use a new workspace: ``\edt\design\example1\`` for this project.
 
 2. In the Vitis IDE, select **File → New Component → Platform**. The New Project wizard opens.
 
@@ -268,8 +268,7 @@ Creating the Bare-Metal Application Project
    +----------------------+----------------------+-----------------------------+
    |                      | Target processor     | **psu_cortexr5_0**          |
    +----------------------+----------------------+-----------------------------+
-   | Domain               | Domain               | **Standalone on             |     
-   |                      |                      |  psu_cortexr5_0**           |
+   | Domain               | Domain               |**standalone_psu_cortexr5_0**|     
    +----------------------+----------------------+-----------------------------+
 
 6. Click **Finish**.
@@ -294,6 +293,7 @@ Creating the Bare-Metal Application Project
 10. Select Application and then select 'tmr_psled_r5'. Now the tmr_psled_r5 application resides inside the tmr_psled_r5_system component.
 
 11. In the Explorer view, expand the **tmr_psled_r5**.
+
    1. Right-click the src folder within Sources inside **tmr_psled_r5** and select **Import → Files** to open the Import view.
    2. Navigate to the design files folder (ref_files/design1)
    3. Select the **timer_psled_r5.c** file.
@@ -334,13 +334,15 @@ To create a Linux domain for generating Linux applications, follow these steps:
 
 1. In the Explorer view of the Vitis IDE, expand the zcu102 platform project.
 2. Double-click vitis-comp.json under settings to open the platform explorer.
-3. Click image1 in the top left hand corner to add the domain.
+3. Click the **+** button in the top left hand corner to add the domain.
 4. When the new domain window opens, enter the following details:
+
    1. Name: Linux_Domain
    2. Display name: Linux_Domain
    3. OS: Linux
    4. Processor: psu_cortexa53
    5. Architecture: 64-bit
+
 5. Build the platform to make the domain change take effects.
 
 Creating the Linux Application Project
@@ -386,7 +388,7 @@ Creating the Linux Application Project
 
 8. In the Project Explorer view, expand the **ps_pl_linux_app** project.
 
-   1. Right-click the src folder within Sources inside **tmr_psled_r5** and select **Import → Files** to open the Import view.
+   1. Right-click the src folder within Sources inside **ps_pl_linux_app** and select **Import → Files** to open the Import view.
    2. Navigate to the design files folder (ref_files/design1)
    3. Select the **ps_pl_linux_app.c** file.
    4. Click **Open**.
@@ -410,7 +412,7 @@ This application makes use of pthreads from the pthread library. Add the pthread
 
 3. Click **OK** in both the windows.
 
-4. Right-click the application and select **Build** to build the application.
+4. Click the application and then select **Build** to build the application.
 
 Creating a Boot Image
 ~~~~~~~~~~~~~~~~~~~~~
