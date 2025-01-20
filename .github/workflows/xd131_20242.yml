@@ -1,0 +1,103 @@
+# This YAML file is used to configure a GitHub Actions workflow that automatically publishes the UG1209 documentation to a new branch and TIP staging.
+# The file is divided into multiple sections, each playing a specific role in the automation process.
+# Make sure you have the necessary permissions (write-all) and tokens before running the workflow.
+
+# Workflow triggers
+on:
+  # This workflow is triggered on every push to the `2024.2_next` branch.
+  push:
+    branches: [2024.2_next]
+  # This workflow can also be triggered manually using the GitHub Actions web interface.
+  workflow_dispatch:
+
+permissions: write-all
+
+# Job definitions
+jobs:
+  publish_to_repo:
+    # The job uses the specified Ubuntu version as the workflow environment.
+    runs-on: ubuntu-22.04
+    steps:
+    # Step 1: Get the code
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: '2024.2_next'
+        fetch-depth: 0
+
+    # Step 2: Install Python
+    - name: Install Python
+      uses: actions/setup-python@v2.3.0
+      with:
+        python-version: 3.9
+
+    # Step 3: Install Sphinx and its dependencies.
+    - name: Install sphinx and dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        pip3 install rst2pdf==0.99  rinohtype==0.5.3 recommonmark==0.7.1 sphinx_markdown_tables==0.0.17 sphinx==5.1.1 docutils==0.16 bs4 linuxdoc
+
+    # Step 4: Build the HTML documentation
+    - name: Build HTML
+      working-directory: './build_html'
+      run: make html
+
+    # Step 5: Delete the _sources and _static folders from the output HTML
+    - name: Delete _sources and _static
+      working-directory: './build_html/build/html'
+      run: |
+        rm -rf _sources
+        rm -rf _static
+
+    # Step 6: Create index.ftmap, which is required by Fluid Topics
+    - name: Create index.ftmap
+      working-directory: './build_html/source'
+      run: |
+        cp ../../assets/ftmap.py .
+        python ftmap.py
+
+    # Step 7: Clean up the generated HTML to meet Fluid Topics requirements
+    - name: Clean HTML
+      working-directory: './build_html/build/html'
+      run: |
+        cp ../../../assets/handle_html.py .
+        python handle_html.py
+
+    - name: Fix code links
+      working-directory: './assets'
+      run: |
+        python code_link_fixer.py
+  
+    # Step 8: Create a ZIP archive of the HTML documentation for Fluid Topics
+    - name: ZIP for FT
+      working-directory: './build_html/build/html'
+      run: |
+        zip -r xd131.zip .
+
+    # Step 9: Move the created ug1209.zip file to the 'prep4upload' directory
+    - name: Move ug1209.zip to prep4upload directory
+      working-directory: './build_html/build/html'
+      run: |
+        mkdir -p ../../../prep4upload
+        cp -f xd131.zip ../../../prep4upload
+
+    # Step 10: Publish the ZIP archive to Fluid Topics staging
+    - name: Publish to Fluid Topics
+      working-directory: './build_html/build/html'
+      run: |
+        echo "$PWD"
+        curl -X POST  -F "file=@xd131.zip" -H "Authorization: ${{ env.FLUID_TOPICS_AUTH_VALUE }}" https://xilinx-staging.fluidtopics.net/api/admin/khub/sources/ftml/upload
+      env:
+        FLUID_TOPICS_AUTH_VALUE: 'Bearer ${{ secrets.FLUID_TOPICS_AUTH_TOKEN }}'
+
+    # Step 11: Push the changes to a new branch named after the current date and time
+    - name: Push changes to new branch
+      run: |
+        git config user.email "actions@github.com"
+        git config user.name "GitHub Action"
+        git checkout -b $(date +"%m-%d-%y-%H-%M")-ftml
+        git add -A
+        git commit -m "Creating new build"
+        git push origin $(date +"%m-%d-%y-%H-%M")-ftml
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
