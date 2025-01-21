@@ -12,6 +12,7 @@ on:
       - 2024.2_next
     paths:
       - 'docs/Getting_Started/microblaze-system/**'
+    workflow_dispatch: # New event to manually trigger the workflow
 
 # Permissions to write to the repository are required.
 permissions: write-all
