@@ -13,7 +13,7 @@ on:
     paths:
       - 'docs/Getting_Started/Versal-EDT/**'
 
-# Permissions to write to the repository are required..
+# Permissions to write to the repository are required.
 permissions: write-all
 
 # The 'jobs' section lists the jobs that compose the workflow.
