@@ -76,7 +76,7 @@ Creating a PetaLinux Image
 
 3. Build the PetaLinux project:
 
-   -  In the ``<PetaLinux-project>`` directory (for example, ``xilinx-zc702-2023.2``), build the Linux images using the following command:
+   -  In the ``<PetaLinux-project>`` directory (for example, ``xilinx-zc702-2024.2``), build the Linux images using the following command:
 
       .. code:: bash
 
