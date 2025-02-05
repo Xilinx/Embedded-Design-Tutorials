@@ -67,7 +67,7 @@ jobs:
         run: |
           cp -r docs/Getting_Started/Zynq7000-EDT/* UG1165_repo/build_html/source/
       
-      # Step 6: Commit the changes in the UG1165 repository and push them.
+      # Step 6: Commit the changes in the UG1165 repository, and push them.
       - name: Commit and push changes to techdocs-UG1165
         run: |
           cd UG1165_repo
