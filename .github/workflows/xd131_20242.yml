@@ -1,9 +1,9 @@
 # This YAML file defines a GitHub Actions workflow for updating the
-# UG1209 documentation whenever changes are pushed to the '2024.2_next'
+# XD131 documentation whenever changes are pushed to the '2024.2_next'
 # branch of the Emb-Design-Tutorials repository affecting files under
-# the 'docs/Getting_Started/Versal-EDT/' directory.
+# the 'docs/Getting_Started/microblaze-system/' directory.
 
-name: Update UG1305 2024.2
+name: Update XD131 2024.2
 
 # The 'on' section defines the events that trigger the workflow.
 on:
@@ -11,7 +11,8 @@ on:
     branches:
       - 2024.2_next
     paths:
-      - 'docs/Getting_Started/Versal-EDT/**'
+      - 'docs/Getting_Started/microblaze-system/**'
+  workflow_dispatch: # New event to manually trigger the workflow
 
 # Permissions to write to the repository are required.
 permissions: write-all
@@ -50,29 +51,29 @@ jobs:
           rm -f private_key.pem
           ssh-keyscan gitenterprise.xilinx.com >> "$HOME/.ssh/known_hosts"
       
-      # Step 4: Check out the '2024.2_next' branch of the techdocs/UG1305
-      # repository with the SSH key stored in the 'ug1305_deploy_key' secret,
-      # placing its contents in the 'UG1305_repo' directory.
-      - name: Checkout techdocs/UG1305 repository
+      # Step 4: Check out the '2024.2_next' branch of the techdocs/XD131
+      # repository with the SSH key stored in the 'xd131_deploy_key' secret,
+      # placing its contents in the 'XD131_repo' directory.
+      - name: Checkout techdocs/XD131 repository
         uses: actions/checkout@v2
         with:
-          repository: techdocs/UG1305
-          ssh-key: ${{ secrets.ug1305_deploy_key }}
-          path: UG1305_repo
+          repository: techdocs/XD131
+          ssh-key: ${{ secrets.xd131_deploy_key }}
+          path: XD131_repo
           ref: 2024.2_next
 
-      # Step 5: Copy the contents of the 'docs/Getting_Started/Versal-EDT/'
-      # directory to the 'build_html/source/' directory of the UG1305 repository.
-      - name: Move contents of Versal-EDT to ug1305_repo
+      # Step 5: Copy the contents of the 'docs/Getting_Started/microblaze-system/'
+      # directory to the 'build_html/source/' directory of the XD131 repository.
+      - name: Move contents of microblaze-system to xd131_repo
         run: |
-          cp -r docs/Getting_Started/Versal-EDT/* UG1305_repo/build_html/source/
+          cp -r docs/Getting_Started/microblaze-system/* XD131_repo/build_html/source/
       
-      # Step 6: Commit the changes in the UG1305 repository and push them.
-      - name: Commit and push changes to techdocs-UG1305
+      # Step 6: Commit the changes in the XD131 repository and push them.
+      - name: Commit and push changes to techdocs-XD131
         run: |
-          cd UG1305_repo
+          cd XD131_repo
           git config user.email "actions@github.com"
           git config user.name "GitHub Action"
           git add -A
-          git commit -m "Update UG1305 2024.2 documentation from Emb-Design-Tutorials repository"
+          git commit -m "Update XD131 2024.2 documentation from Emb-Design-Tutorials repository"
           git push
