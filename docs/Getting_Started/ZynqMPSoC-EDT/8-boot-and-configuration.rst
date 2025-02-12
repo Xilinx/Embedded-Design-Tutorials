@@ -720,8 +720,6 @@ Create First Stage Boot Loader for USB Boot
 
 6. Select Application and then select 'fsbl_usb_boot'. Now the fsbl_usb_boot application resides inside the fsbl_usb_boot_system component.
 
-   Now the **fsbl_usb_boot** application resides inside the **hfsbl_usb_boot_system** component.
-
 7. In the Explorer view, expand the **fsbl_usb_boot** project and open **xfsbl_config.h** from **fsbl_usb_boot→ src→xfsbl_config.h**.
 
 8. In ``xfsbl_config.h`` change or set following settings:
