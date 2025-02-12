@@ -1,7 +1,7 @@
 # This YAML file defines a GitHub Actions workflow for updating the
 # UG1145 documentation whenever changes are pushed to the '2024.2_next'
 # branch of the Emb-Design-Tutorials repository affecting files under
-# the 'docs/Performance/SPA-UG/' directory.
+# the 'docs/Performance/SPA-UG/' directory. 
 
 name: Update UG1145 2024.2
 
