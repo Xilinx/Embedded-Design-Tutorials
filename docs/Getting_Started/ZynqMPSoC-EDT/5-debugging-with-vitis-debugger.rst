@@ -37,9 +37,9 @@ The workflow is made up of the following components:
 
 -  **Executable ELF File:** To debug your application, you must use an executable and linkable format (ELF) file compiled for debugging. The debug ELF file contains additional debug information for the debugger to make direct associations between the source code and the binaries generated from that original source. To manage the build configurations, right-click the software application and select **Build Configurations → Manage**.
 
--  **Debug Configuration:** To launch the debug session, you must create a debug configuration in the Vitis debugger. This configuration captures the options required to start a debug session, including the executable name, processor target to debug, and other information. To create a debug configuration, right-click your software application and select **Debug As → Debug Configurations**.
+-  **Debug Configuration:** To launch the debug session, you must create a debug configuration in the Vitis debugger. This configuration captures the options required to start a debug session, including the executable name, processor target to debug, and other information. To create a debug configuration, select the **Settings** button beside **Debug** in the flow tab.
 
--  **Vitis Debug Perspective:** Using the Debug perspective, you can manage the debugging or running of a program in the workbench. You can control the execution of your program by setting breakpoints, suspending launched programs, stepping through your code, and examining the contents of variables. To view the Debug Perspective, select **Window → Open Perspective → Debug**.
+-  **Vitis Debug Perspective:** Using the Debug perspective, you can manage the debugging or running of a program in the workbench. You can control the execution of your program by setting breakpoints, suspending launched programs, stepping through your code, and examining the contents of variables. To view the Debug Perspective, select **Window → Debug**.
 
 You can repeat the cycle of modifying the code, building the executable, and debugging the program in the Vitis debugger.
 
@@ -57,7 +57,8 @@ following example to debug the software using the Vitis debugger.
 
 1. Connect the JTAG cable, set the boot mode to JTAG, and power on the board. Refer to the steps in :ref:`example-3-running-the-hello-world-application-from-arm-cortex-a53`.
 
-2. Select the hello_a53 application and then click the Open Settings button beside Debug in the flow tab.
+2. Select the hello_a53 application and then click the Open Settings button beside Debug in the flow tab to review the launch settings. The select the **Debug** button. 
+   
    .. note:: The above step launches the Application Debugger in the Debug perspective based on the project settings. Alternatively, you can create a debug configuration which looks like the following figure.
 
    .. figure:: ./media/vitis_single_app_debug_configurations.png
@@ -70,23 +71,19 @@ following example to debug the software using the Vitis debugger.
 
    .. note:: If the Debug perspective window does not open automatically, select **View → Debug**. 
 
-   .. figure:: media/vitis_perspectives.png
-
-      Switch between Vitis Perspectives
-
    The Debug Perspective looks like this:
 
    .. image:: ./media/image46.jpeg
 
    .. note:: The addresses shown on this page might slightly differ from the addresses shown on your system.
 
-   The processor is currently sitting at the beginning of `main()` with program execution suspended at line `0000000000000cf0`. You can confirm this information in the Disassembly view, which shows the assembly-level program execution also suspended at
-   `0000000000000cf0`.
+   The processor is currently sitting at the beginning of `main()` with program execution suspended at program address `0000000000000c90`. You can confirm this information in the Disassembly view, which shows the assembly-level program execution also suspended at
+   `0000000000000c90`.
 
    .. note:: If the Disassembly view is not visible, select **View → Disassembly View**.
 
 3. The helloworld.c window also shows execution suspended at the first executable line of C code. Select the **Registers** view to confirm
-   that the program counter, pc register, contains `0000000000000cf0`.
+   that the program counter, pc register, equals the program address in disassembly view. In this example, it is `0000000000000c90`.
 
    .. note:: If the Registers window is not visible, select **View → Register Inspector**.
 
@@ -94,17 +91,17 @@ following example to debug the software using the Vitis debugger.
 
    .. note:: Breakpoints can be viewed in the debug view.
 
-5. Select **Run → Step Into (F5)** to step into the `init_platform()` routine.
+5. Select the **Step Into** button in the debug view to step into the `init_platform()` routine.
 
-   Program execution suspends at location `0000000000000d3c`. The call stack is now two levels deep.
+   Program execution suspends at the next instruction. In this example it would be `0000000000000c98`. The call stack is now two levels deep.
 
-6. Select **Run → Resume (F8)** to continue running the program to the breakpoint.
+6. Select the **Continue** button in the debug view to continue running the program to the breakpoint.
 
-   Program execution stops at the line of code that includes the `printf` command. The Disassembly and Debug windows both show program execution stopped at `0000000000001520`.
+   Program execution stops at the line of code that includes the `printf` command. The Disassembly and Debug windows both show program execution stopped at the program address of the `printf` command, in this example, its `000000000000c9c`.
 
    .. note:: The execution address in your debugging window might differ if you modified the “Hello World” source code in any way.
 
-7. Select **Run → Resume (F8)** to run the program to conclusion.
+7. Select **Continue** to run the program to conclusion.
 
    When the program completes, the Debug window shows that the program is suspended in a routine called `exit`. This happens when you are running under control of the debugger.
 
@@ -112,16 +109,16 @@ following example to debug the software using the Vitis debugger.
 
    .. tip:: You can use the Vitis debugger debugging shortcuts for step-into (F5), step-return (F7), step-over (F6), and resume (F8).
 
-Example 7: Debugging Using XSCT
+Example 7: Debugging Using XSDB
 -------------------------------
 
 You can use the previous steps to debug bare-metal applications running on RPU and PMU using the Vitis application debugger GUI.
 
-Additionally, you can debug in command line mode using XSDB, which is encapsulated as a part of XSCT. In this example, you will debug the
-bare-metal application testapp_r5 using XSCT.
+Additionally, you can debug in command line mode using XSDB, which is encapsulated as a part of XSDB. In this example, you will debug the
+bare-metal application testapp_r5 using XSDB.
 
-The following steps indicate how to load a bare-metal application on R5 using XSCT. This example demonstrates the command line debugging
-capability of XSDB/XSCT. Based on your requirements, you can choose to debug the code using either the System Debugger GUI or the command line debugger in XSCT. All XSCT commands are scriptable, and this also applies to the commands covered in this example.
+The following steps indicate how to load a bare-metal application on R5 using XSDB. This example demonstrates the command line debugging
+capability of XSDB. Based on your requirements, you can choose to debug the code using either the System Debugger GUI or the command line debugger in XSDB. All XSDB commands are scriptable, and this also applies to the commands covered in this example.
 
 Setting Up the Target
 ~~~~~~~~~~~~~~~~~~~~~
@@ -144,7 +141,7 @@ Setting Up the Target
 
    .. code-block::
 
-         xsct% targets
+         xsdb% targets
 
    The targets are listed as shown in the following figure.
 
@@ -156,7 +153,7 @@ Setting Up the Target
 
    .. code-block::
    
-         xsct% targets -set -filter {name =\~ \"Cortex-A53 \#0\"}
+         xsdb% targets -set -filter {name =\~ \"Cortex-A53 \#0\"}
 
    The command ``targets`` now lists the targets and also shows the selected target highlighted with an asterisk (*) mark. You can also
    use the target number to select a target, as shown in the following figure.
@@ -181,7 +178,7 @@ Setting Up the Target
 
    .. note:: The {} used in the above command are required on Windows machines to enable backward slashes () in file paths. These brackets can be avoided by using forward "/" in paths. For Linux paths, use forward slashes; the paths in XSCT in Linux can work as-is, without any brackets.
 
-Loading the Application Using XSCT
+Loading the Application Using XSDB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Check and select the RPU Cortex-R5F Core 0 target ID.
@@ -216,7 +213,7 @@ Serial Terminal Configuration
 
 3. Similarly, for UART-1, select the COM port with interface-1. Remember that the R5 BSP has been configured to use UART-1, so R5 application messages will appear on the COM port with the UART-1 terminal.
 
-Running and Debugging the Application Using XSCT
+Running and Debugging the Application Using XSDB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Before you run the application, set a breakpoint at `main()`:
@@ -264,7 +261,7 @@ Running and Debugging the Application Using XSCT
 
    .. image:: ./media/image51.png
 
-   You can use the ``help running`` command to get a list of possible options for running or debugging an application using XSCT.
+   You can use the ``help running`` command to get a list of possible options for running or debugging an application using XSDB.
 
    .. image:: ./media/image52.png
 
