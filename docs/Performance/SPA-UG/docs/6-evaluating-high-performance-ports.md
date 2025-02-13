@@ -12,7 +12,7 @@ You can calculate the total theoretical bandwidth of the DDR using the following
 DDR Data Rate x DDR Width (byte)
 ```
 
-For example, Zynq 7000 devices:
+For example, in Zynq 7000 devices:
 
 ```
 1066M tranx/sec × (4 bytes)/tranx = 4264 MB/s
