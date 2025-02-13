@@ -56,7 +56,7 @@ jobs:
       - name: Checkout techdocs/UG1145 repository
         uses: actions/checkout@v2
         with:
-          repository: techdocs/UG1145
+          repository: techdocs/UG1145_System_Performance_Analysis 
           ssh-key: ${{ secrets.ug1145_deploy_key }}
           path: UG1145_repo
           ref: 2024.2_next
