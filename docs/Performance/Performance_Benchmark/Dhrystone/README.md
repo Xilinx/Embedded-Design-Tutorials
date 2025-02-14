@@ -90,7 +90,7 @@ After completing this tutorial, users can:
 
 ## Prerequisites
 
-Recommended general knowledge of:
+Recommended general knowledge of:  
 
 - VCK190 evaluation board
 - Versal JTAG boot mode
