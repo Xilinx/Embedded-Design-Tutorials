@@ -4,7 +4,7 @@ A great benefit provided by System Performance Modeling (SPM) is to perform what
 
 You can configure the SPM design to model specific traffic scenarios while running a software application in the PS. You can then use PL master performance metrics, such as throughput and latency, to verify that the desired system performance can be sustained in such an environment. This process can be repeated multiple times using different traffic scenarios.
 
-One critical shared resource on the device is the DDR controller. This resource is shared by APUs, RPUs if they are on the MPSoC, the High-Performance (HP or HPM) ports, the Accelerator Coherency Port (ACP) ports, and other masters via the central interconnect (see [Evaluating DDR Controller Settings](../docs/7-evaluating-DDR-controller-settings.md) for more details). Because of this sharing, it is important to understand the available DDR bandwidth.
+One critical shared resource on the device is the DDR controller. This resource is shared by APUs, RPUs if they are on the MPSoC, the High-Performance (HP or HPM) ports, the Accelerator Coherency Port (ACP) ports, and other masters via the central interconnect (see [Evaluating DDR Controller Settings](../docs/7-evaluating-DDR-controller-settings.md) for more details). Because of this sharing, it is important to understand the available DDR bandwidth.  
 
 You can calculate the total theoretical bandwidth of the DDR using the following equation:
 
@@ -12,7 +12,7 @@ You can calculate the total theoretical bandwidth of the DDR using the following
 DDR Data Rate x DDR Width (byte)
 ```
 
-For example, Zynq 7000 devices:
+For example, in Zynq 7000 devices:
 
 ```
 1066M tranx/sec × (4 bytes)/tranx = 4264 MB/s
