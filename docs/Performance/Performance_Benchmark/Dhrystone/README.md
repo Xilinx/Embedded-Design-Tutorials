@@ -161,7 +161,7 @@ Follow these steps to build the Dhrystone Benchmark design and create the PDI/XS
 
    Sourcing the `run.tcl` script does the following:
 
-   - Creates a project named dhrystone-tutorrial' in the tutorial directory 
+   - Creates a project named dhrystone-tutorial' in the tutorial directory 
    - Sources and runs [`design.tcl`](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2023.2/docs/Performance/Performance_Benchmark/Dhrystone/Design/design.tcl), which in turn does the following:
      - Selects the target Versal VC1902 device
      - Creates IPs and ports
