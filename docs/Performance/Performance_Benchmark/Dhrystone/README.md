@@ -34,7 +34,7 @@ This tutorial provides step-by-step instructions for generating a reference desi
 
 ### Objectives
 
-After completing this tutorial, users can:
+After completing this tutorial, users can:  
 
 - Generate programmable device image (PDI) for tutorial design.
 - Build a Dhrystone application and execute it on the VCK190 evaluation kit.
