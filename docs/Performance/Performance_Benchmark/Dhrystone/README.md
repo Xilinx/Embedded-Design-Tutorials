@@ -239,7 +239,7 @@ Double-clck on the Control, Interfaces & Processing System to launch the Configu
    ![Alt Text](./Images/create_platform_component.png)
 
 6. In the Select Platform Creation Flow window, select Hardware Design.
-7. Browse to the XSA file generated from the Vivado Design Suite in Build the   Tutorial Design steps of this tutorial.
+7. Browse to the XSA file generated from the Vivado Design Suite in Build the Tutorial Design steps of this tutorial.
 
    ![Alt Text](./Images/select_platform_creation_flow.png)
 8. Verify that the **Operating system** and **Processor** are pre-filled from the XSA file as shown in the following figure.
