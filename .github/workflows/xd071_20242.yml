@@ -1,103 +1,78 @@
-# This YAML file is used to configure a GitHub Actions workflow that automatically publishes the UG1209 documentation to a new branch and TIP staging.
-# The file is divided into multiple sections, each playing a specific role in the automation process.
-# Make sure you have the necessary permissions (write-all) and tokens before running the workflow.
+# This YAML file defines a GitHub Actions workflow for updating the
+# UG1209 documentation whenever changes are pushed to the '2024.2_next'
+# branch of the Emb-Design-Tutorials repository affecting files under
+# the 'docs/Performance/Performance_Benchmark/Dhrystone/' directory.
 
-# Workflow triggers
+name: Update XD071 2024.2
+
+# The 'on' section defines the events that trigger the workflow.
 on:
-  # This workflow is triggered on every push to the `2024.2_next` branch.
   push:
-    branches: [2024.2_next]
-  # This workflow can also be triggered manually using the GitHub Actions web interface.
-  workflow_dispatch:
+    branches:
+      - 2024.2_next
+    paths:
+      - 'docs/Performance/Performance_Benchmark/Dhrystone/**'
 
+# Permissions to write to the repository are required.
 permissions: write-all
 
-# Job definitions
+# The 'jobs' section lists the jobs that compose the workflow.
 jobs:
-  publish_to_repo:
-    # The job uses the specified Ubuntu version as the workflow environment.
+  update_docs:
+    # This job runs on an Ubuntu 22.04 virtual environment.
     runs-on: ubuntu-22.04
     steps:
-    # Step 1: Get the code
-    - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-        ref: '2024.2_next'
-        fetch-depth: 0
+      # Step 1: Check out the Emb-Design-Tutorials repository with a full
+      # Git history by setting fetch-depth to 0.
+      - name: Checkout Emb-Design-Tutorials repository
+        uses: actions/checkout@v2
+        with:
+          ref: '2024.2_next'
+          fetch-depth: 0
 
-    # Step 2: Install Python
-    - name: Install Python
-      uses: actions/setup-python@v2.3.0
-      with:
-        python-version: 3.9
+      # Step 2: Set up the SSH directory and known_hosts file.
+      - name: Set up SSH folder and file
+        run: |
+          SSH_DIR="${HOME}/.ssh"
+          mkdir -p "$SSH_DIR"
+          touch "${SSH_DIR}/known_hosts"
+          chmod 700 "$SSH_DIR"
+          chmod 600 "${SSH_DIR}/known_hosts"
+      
+      # Step 3: Set up the SSH agent using the private deployment key
+      # stored in the 'DEPLOY_KEY' secret.
+      - name: Set up SSH
+        run: |
+          echo "${{ secrets.DEPLOY_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+          eval $(ssh-agent -s)
+          ssh-add private_key.pem
+          rm -f private_key.pem
+          ssh-keyscan gitenterprise.xilinx.com >> "$HOME/.ssh/known_hosts"
+      
+      # Step 4: Check out the '2024.2_next' branch of the techdocs/XD071
+      # repository with the SSH key stored in the 'xd071_deploy_key' secret,
+      # placing its contents in the 'XD071_repo' directory.
+      - name: Checkout techdocs/XD071 repository
+        uses: actions/checkout@v2
+        with:
+          repository: techdocs/XD071
+          ssh-key: ${{ secrets.xd071_deploy_key }}
+          path: XD071_repo
+          ref: 2024.2_next
 
-    # Step 3: Install Sphinx and its dependencies.
-    - name: Install sphinx and dependencies
-      run: |
-        python3 -m pip install --upgrade pip
-        pip3 install rst2pdf==0.99  rinohtype==0.5.3 recommonmark==0.7.1 sphinx_markdown_tables==0.0.17 sphinx==5.1.1 docutils==0.16 bs4 linuxdoc sphinx-math-dollar
-
-    # Step 4: Build the HTML documentation
-    - name: Build HTML
-      working-directory: './build_html'
-      run: make html
-
-    # Step 5: Delete the _sources and _static folders from the output HTML
-    - name: Delete _sources and _static
-      working-directory: './build_html/build/html'
-      run: |
-        rm -rf _sources
-        rm -rf _static
-
-    # Step 6: Create index.ftmap, which is required by Fluid Topics
-    - name: Create index.ftmap
-      working-directory: './build_html/source'
-      run: |
-        cp ../../assets/ftmap.py .
-        python ftmap.py
-
-    # Step 7: Clean up the generated HTML to meet Fluid Topics requirements
-    - name: Clean HTML
-      working-directory: './build_html/build/html'
-      run: |
-        cp ../../../assets/handle_html.py .
-        python handle_html.py
-
-    - name: Fix code links
-      working-directory: './assets'
-      run: |
-        python code_link_fixer.py
-  
-    # Step 8: Create a ZIP archive of the HTML documentation for Fluid Topics
-    - name: ZIP for FT
-      working-directory: './build_html/build/html'
-      run: |
-        zip -r xd071.zip .
-
-    # Step 9: Move the created xd071.zip file to the 'prep4upload' directory
-    - name: Move xd071.zip to prep4upload directory
-      working-directory: './build_html/build/html'
-      run: |
-        mkdir -p ../../../prep4upload
-        cp -f xd071.zip ../../../prep4upload
-
-    # Step 10: Publish the ZIP archive to Fluid Topics staging
-    - name: Publish to Fluid Topics
-      working-directory: './build_html/build/html'
-      run: |
-        echo "$PWD"
-        curl -X POST  -F "file=@xd071.zip" -H "Authorization: ${{ env.FLUID_TOPICS_AUTH_VALUE }}" https://xilinx-staging.fluidtopics.net/api/admin/khub/sources/ftml/upload
-      env:
-        FLUID_TOPICS_AUTH_VALUE: 'Bearer ${{ secrets.FLUID_TOPICS_AUTH_TOKEN }}'
-
-    # Step 11: Push the changes to a new branch named after the current date and time
-    - name: Push changes to new branch
-      run: |
-        git config user.email "actions@github.com"
-        git config user.name "GitHub Action"
-        git checkout -b $(date +"%m-%d-%y-%H-%M")-ftml
-        git add -A
-        git commit -m "Creating new build"
-        git push origin $(date +"%m-%d-%y-%H-%M")-ftml
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Step 5: Copy the contents of the 'docs/Performance/Performance_Benchmark/Dhrystone/'
+      # directory to the 'build_html/source/' directory of the XD071 repository.
+      - name: Move contents of Performance_Benchmark/Dhrystone to xd071_repo
+        run: |
+          cp -r docs/Performance/Performance_Benchmark/Dhrystone/* XD071_repo/build_html/source/
+      
+      # Step 6: Commit the changes in the XD071 repository and push them.
+      - name: Commit and push changes to techdocs-XD071
+        run: |
+          cd XD071_repo
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Action"
+          git add -A
+          git commit -m "Update XD071 2024.2 documentation from Emb-Design-Tutorials repository"
+          git push
