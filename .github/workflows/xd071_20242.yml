@@ -3,8 +3,8 @@
 # branch of the Emb-Design-Tutorials repository affecting files under
 # the 'docs/Performance/Performance_Benchmark/Dhrystone/' directory.
 
-name: Update XD071 2024.2
-  
+name: Update XD071 2024.2  
+
 # The 'on' section defines the events that trigger the workflow.
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
       - name: Checkout Emb-Design-Tutorials repository
         uses: actions/checkout@v2
         with:
-          ref: '2024.2_next'
+          ref: '2024.2_next'  
           fetch-depth: 0
 
       # Step 2: Set up the SSH directory and known_hosts file.
