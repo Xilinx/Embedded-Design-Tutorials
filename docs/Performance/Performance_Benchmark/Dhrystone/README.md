@@ -8,7 +8,7 @@
 
 # Versal Dhrystone Benchmark User Guide
 
-## Table of Contents
+## Table of Contents 
 
 - [Introduction](#introduction)
 
