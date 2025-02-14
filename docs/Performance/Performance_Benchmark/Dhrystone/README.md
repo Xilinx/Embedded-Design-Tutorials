@@ -381,7 +381,7 @@ A more commonly reported figure is DMIPS / MHz, where MHz is CPU Frequency
 
 ## Support
 
-GitHub issues will be used for tracking requests and bugs. For questions go to [forums.xilinx.com](http://forums.xilinx.com/).
+GitHub issues will be used for tracking requests and bugs. For questions, go to [forums.xilinx.com](http://forums.xilinx.com/).
 
 
 <hr class="sphinxhide"></hr>
