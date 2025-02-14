@@ -55,7 +55,7 @@ After completing this tutorial, users can:
     │   ├── axi_noc_0_ddr_configuration.png.............DDR memory configuration
     │   ├── axi_noc_0_general.png.......................NoC0 general configuration
     │   ├── axi_noc_0_inputs.png........................NoC0 input clock configuration
-    │   ├── browse_and_add_xsa.png......................Add XSA
+    │   ├── browse_and_add_xsa.png......................Add XSA  
     │   ├── browse_import_source_code_finish.png........Complete importing source code
     │   ├── build_complete.png..........................Build complete
     │   ├── build_project.png...........................Build project
