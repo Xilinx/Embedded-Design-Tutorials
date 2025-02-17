@@ -40,7 +40,7 @@ Creating a PetaLinux Image
 
    There are two ways to generate a petalinux project. Either using the BSP for a development board such as the ZC702, or if users have a custom board, users can use the template.
 
-   .. note:: There are now two different BSP flows available for you petalinux project. There is an xsct BSP and an SDT BSP. 
+   .. note:: There are petalinux flows for both XSCT and SDT. BSPs built using the System Device Tree (SDT) flow are recommended for new designs. BSPs listed with 'XSCT' are for the legacy flow for users who are upgrading existing projects and do not wish to change generation methods.
 
 
    .. code:: bash
