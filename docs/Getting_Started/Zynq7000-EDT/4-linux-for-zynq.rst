@@ -40,6 +40,7 @@ Creating a PetaLinux Image
 
    There are two ways to generate a petalinux project. Either using the BSP for a development board such as the ZC702, or if users have a custom board, users can use the template.
 
+   .. note:: There are now two different BSP flows available for you petalinux project. There is an xsct BSP and an SDT BSP. 
 
 
    .. code:: bash
@@ -68,7 +69,10 @@ Creating a PetaLinux Image
 
    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images. Select **Exit** and press **Enter** to exit the configuration window.
 
+   .. note:: The above command will not work within the SDT flow.
+
    If you would prefer to skip the configuration window and keep the default settings, run the following command instead:
+
 
    .. code:: bash
 
