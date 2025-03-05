@@ -50,7 +50,7 @@ Creating a PetaLinux Image
       # Using the template for custom boards
       petalinux-create -t project --template zynq -n xilinx-zc702-2024.2
 
-   .. note:: **xilinx-zc702-v2024.2-final.bsp** is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.
+   .. note:: **xilinx-zc702-xsct-v2024.2-final.bsp** is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.
 
    This creates a PetaLinux project directory, **xilinx-zc702-xsct-2024.2**.
 
