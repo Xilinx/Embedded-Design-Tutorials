@@ -5,8 +5,7 @@ Building Standalone Software for PS Subsystems
 
 This chapter lists the steps to configure and build software for PS subsystems.
 
-In the previous chapter, :doc:`Zynq UltraScale+ MPSoC Processing System Configuration <3-system-configuration>`, you created and exported
-the hardware design from Vivado. The exported XSA file contains the hardware handoff, the processing system initialization (``psu_init``),
+In the previous chapter, you created and exported the hardware design from Vivado. The exported XSA file contains the hardware handoff, the processing system initialization (``psu_init``),
 and the PL bitstream (if the hardware is exported as post-implementation). In this chapter, you will import the XSA into the Vitis |trade| IDE to generate software for the processing system.
 
 You will use the Vitis IDE to perform the following tasks:
@@ -50,11 +49,11 @@ The following steps show how to create a platform project with a standalone doma
 
    -  From the open Vivado IDE, click **Tools → Launch Vitis IDE**; or
    -  From Windows Start menu, select **Xilinx Design Tools → Vitis**; or
-   -  Double-click the ``C:\Xilinx\Vitis\2024.1\bin\vitis.bat`` file.
+   -  Double-click the ``C:\Xilinx\Vitis\2024.2\bin\vitis.bat`` file.
 
 2. Select the workspace ``C\edt\edt_zcu102_workspace`` and continue.
 
-   .. note:: If the directory doesn’t exist, the Vitis software platform will create it.
+   .. note:: If the directory does not exist, the Vitis software platform creates it.
 
 3. In the Vitis IDE, go to **File → New Component → Platform**.
 
@@ -64,7 +63,7 @@ The following steps show how to create a platform project with a standalone doma
 
 5. In the Platform view, go with the default tab **Hardware Design**.
 
-   .. note:: Use the **Select a platform from repository** tab when you have a pre-built platform and you’d like to copy it to local to modify it.
+   .. note:: Use the **Select a platform from repository** tab when you have a pre-built platform and you prefer to copy it to local to modify.
 
 6. Click **Browse…** to select the XSA file exported from previous chapter.
 
@@ -720,3 +719,6 @@ In the :doc:`next chapter <./5-debugging-with-vitis-debugger>`, you will learn a
    :ltrim:
 
 .. |Add Icon| image:: ./media/image31.png
+
+.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

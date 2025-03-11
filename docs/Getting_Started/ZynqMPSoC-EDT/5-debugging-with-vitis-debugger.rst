@@ -281,3 +281,7 @@ Running and Debugging the Application Using XSDB
    :ltrim:
 
 .. |image1| image:: ./media/image48.png
+
+
+.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
