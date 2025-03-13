@@ -42,9 +42,8 @@ Creating a PetaLinux Image
 
    .. note:: There are petalinux flows for both XSA and SDT. BSPs built using the System Device Tree (SDT) flow are recommended for new designs. BSPs listed with 'XSCT' are for the legacy XSA flow for users who are upgrading existing projects and do not wish to change generation methods. In this tutorial we will follow the XSA flow.
 
-
    .. code:: bash
-
+   
       # Using the XSCT BSP
       petalinux-create -t project -s <path to the xilinx-zc702-xsct-v2024.2-final.bsp>
       # Using the template for custom boards
@@ -65,14 +64,21 @@ Creating a PetaLinux Image
       .. code:: bash
 
          cd xilinx-zc702-xsct-2024.2
+         
          petalinux-config --get-hw-description=<path that contains system_wrapper.xsa>
 
    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images. Select **Exit** and press **Enter** to exit the configuration window.
 
-   .. note:: The above command will not work within the SDT flow.
+   .. note:: The above command will not work within the SDT flow. For the SDT flow please point the '--get-hw-description' to your SDT directory.
+   
+   .. code:: bash
+
+      cd xilinx-zcu102-2024.2
+      petalinux-config --get-hw-description=<path to SDT directory>
+
+   `Generate the SDT with the SDT Generator Tool <https://github.com/Xilinx/system-device-tree-xlnx/blob/master/README.md>`_
 
    If you would prefer to skip the configuration window and keep the default settings, run the following command instead:
-
 
    .. code:: bash
 

@@ -32,7 +32,7 @@ System Software
 ---------------
 
 The following system software blocks cover most of the boot and configuration for this chapter. For detailed boot flow and various boot sequences, refer to the *System Boot and Configuration* chapter in the *Zynq UltraScale+ MPSoC: Software Developers Guide*
-(`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
+(`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.2%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
 
 First Stage Boot Loader
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,7 +40,7 @@ First Stage Boot Loader
 In non-secure boot mode, the platform management unit (PMU) releases the reset of the configuration security unit, and enters the PMU server mode to monitor power. At this stage, the configuration security unit loads the first stage boot loader (FSBL) into on-chip memory (OCM). The FSBL can be run from either APU A53_0, RPU R5_0, or RPU R5_lockstep. In this example, the FSBL is targeted for APU Cortex |trade|-A53 Core 0. The last 512 bytes of this region are used by FSBL to share the hand-off parameters corresponding to the applications handed off by the TF-A.
 
 The first stage boot loader initializes important blocks in the processing subsystem. This includes clearing the reset of the processors and initializing clocks, memory, UART, and so on before handing over the control of the next partition in DDR, to either the RPU or APU. In this example, the FSBL loads a bare-metal application in DDR and hands off to the RPU Cortex-R5F in lockstep mode, and then loads U-Boot to be executed by the APU Cortex-A53 Core-0. For more information, see the *Zynq UltraScale+ MPSoC: Software Developers Guide*
-(`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
+(`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.2%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
 
 For this chapter, you can use the FSBL executable that you created in :doc:`Building Software for PS
 Subsystems <4-build-sw-for-ps-subsystems>`. In the FSBL application, the ``xfsbl_translation_table.S`` differs from the ``translation_table.S`` of the Cortex-A53 in only one aspect, to mark the DDR region as reserved. This is to avoid speculative access to DDR memory controller before it is initialized. When the DDR initialization is completed in FSBL, the memory attributes for the DDR region are changed to “memory” so that they are cacheable.
@@ -720,8 +720,6 @@ Create First Stage Boot Loader for USB Boot
 
 6. Select Application and then select 'fsbl_usb_boot'. Now the fsbl_usb_boot application resides inside the fsbl_usb_boot_system component.
 
-   Now the **fsbl_usb_boot** application resides inside the **hfsbl_usb_boot_system** component.
-
 7. In the Explorer view, expand the **fsbl_usb_boot** project and open **xfsbl_config.h** from **fsbl_usb_boot→ src→xfsbl_config.h**.
 
 8. In ``xfsbl_config.h`` change or set following settings:
@@ -965,3 +963,7 @@ Boot Commands for Windows Host Machine
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
+
+
+.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
