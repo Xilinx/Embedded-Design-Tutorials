@@ -50,6 +50,9 @@ Creating a PetaLinux Image
    -  The created PetaLinux project uses the default hardware setup in the ZCU102 Linux BSP. In this example, you will reconfigure the
       PetaLinux project based on the Zynq UltraScale+ hardware platform that you configured using the Vivado |reg| Design Suite in :doc:`Zynq
       UltraScale+ MPSoC Processing System Configuration <3-system-configuration>`.
+      
+
+   .. note:: There are petalinux flows for both XSA and SDT. BSPs built using the System Device Tree (SDT) flow are recommended for new designs. BSPs listed with 'XSCT' are for the legacy XSA flow for users who are upgrading existing projects and do not wish to change generation methods. In this tutorial we will follow the XSA flow.
 
    -  Copy the hardware platform `edt_zcu102_wrapper.xsa` to the Linux host machine.
 
@@ -67,6 +70,15 @@ Creating a PetaLinux Image
    .. code:: bash
 
       petalinux-config --get-hw-description=<path containing edt_zcu102_wrapper.xsa> --silentconfig
+
+   .. note:: The above command will not work with the petalinux SDT flow. For the SDT flow please point the '--get-hw-description' to your SDT directory.
+
+   .. code:: bash
+
+      cd xilinx-zcu102-2024.2
+      petalinux-config --get-hw-description=<path to SDT directory>
+
+   `Generate the SDT with the SDT Generator Tool <https://github.com/Xilinx/system-device-tree-xlnx/blob/master/README.md>`_. The System Device Tree Generator (SDTGen) Tool is a package containing TCL scripts and Hardware HSI API's to extract hardware information from the XSA file into a System Device Tree (SDT) format. 
 
 3. Build the PetaLinux project:
 
