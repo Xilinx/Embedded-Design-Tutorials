@@ -76,7 +76,7 @@ Creating a PetaLinux Image
       cd xilinx-zcu102-2024.2
       petalinux-config --get-hw-description=<path to SDT directory>
 
-   `Generate the SDT with the SDT Generator Tool <https://github.com/Xilinx/system-device-tree-xlnx/blob/master/README.md>`_
+   `Generate the SDT with the SDT Generator Tool <https://github.com/Xilinx/system-device-tree-xlnx/blob/master/README.md>`_. The System Device Tree Generator (SDTGen) Tool is a package containing TCL scripts and Hardware HSI API's to extract hardware information from the XSA file into a System Device Tree (SDT) forma
 
    If you would prefer to skip the configuration window and keep the default settings, run the following command instead:
 
