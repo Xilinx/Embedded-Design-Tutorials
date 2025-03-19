@@ -141,7 +141,7 @@ Creating Linux Applications in the Vitis IDE
 
    1. Open the vitis-comp.json from settings in the zcu102 platform to open platform configurations.
 
-   2. Click the + button to add a domain.
+   2. Click the **+** button to add a domain.
 
    3. Input the following domain parameters:
 
@@ -159,8 +159,8 @@ Creating Linux Applications in the Vitis IDE
 
 2. Create a Linux application:
 
-   1. Click File → New Example → Linux Hello World.
-   2. Click Create Application Component from Template.
+   1. Click **File → New Example → Linux Hello World**.
+   2. Click **Create Application Component from Template**.
    3. Enter the application project name, linux_hello_world.
    4. Select platform: zcu102_edt. Click Next.
    5. Keep the default domain: linux.
@@ -197,7 +197,7 @@ The Vitis IDE needs a channel to download the application to the running target.
 
    4. Set up a networking software environment.
 
-      1. If the host and the board are connected directly, run ``ifconfig eth0 192.168.1.1`` to setup an IP address on the board. 
+      1. If the host and the board are connected directly, run ``ifconfig end0 192.168.1.1`` to setup an IP address on the board. 
       2. Go to **Control Panel → Network and Internet → Network and Sharing Center**, and click **Change Adapter Settings**. 
       3. Find your Ethernet adapter, then right-click and select **Properties**. 
       4. Double-click **Internet Protocol Version 4 (TCP/IPv4)**, and select **Use the following IP address**. 
@@ -267,11 +267,13 @@ Debugging Linux applications requires the Linux agent to be set up properly. Ref
 
 1. Debug the Linux application:
 
-   1. Select **hello_linux**, and click **Open Settings** button beside it to open the ``launch.json`` file.
+   1. Select **hello_linux**, and click the **Open Settings** button beside it to open the ``launch.json`` file.
    2. Select Application Debug.
    3. Review the configurations:
+
       1. Target Setup Mode: Application Debug
-      2. Target Connection: Linux Agent 
+      2. Target Connection: Linux Agent
+       
    4. Click Debug.
 
    The debug configuration has identical options to the run configuration. The difference between debugging and running is that debugging stops at the main() function.
@@ -308,3 +310,6 @@ In the :doc:`next chapter <./7-design1-using-gpio-timer-interrupts>`, you will c
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
+   
+.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

@@ -1,3 +1,7 @@
+# Copyright (C) 2025, Advanced Micro Devices, Inc. All rights reserved.
+# SPDX-License-Identifier: MIT
+#*****************************************************************************************
+
 import vitis
 
 # Define reusable paths and names
