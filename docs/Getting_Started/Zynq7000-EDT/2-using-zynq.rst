@@ -4,7 +4,7 @@ Using the Zynq SoC Processing System
 
 The AMD Zynq |trade| SoC consists of Arm |reg| Cortex |trade|-A9 cores, many hard intellectual property components (IPs), and programmable logic (PL). This offering can be used in two ways:
 
--  The Zynq SoC PS can be used in a standalone mode, without attaching any additional fabric IP.
+-  The Zynq SoC processing system (PS) can be used in a standalone mode, without attaching any additional fabric IP.
 -  IP cores can be instantiated in fabric and attached to the Zynq PS as a PS+PL combination.
 
 This chapter describes how to develop an embedded system with only the processing system (PS) of the Zynq |trade| 7000 SoC.

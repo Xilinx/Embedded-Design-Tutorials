@@ -8,9 +8,9 @@
 
 # Versal Dhrystone Benchmark User Guide
 
-## Table of Contents
+## Table of Contents 
 
-- [Introduction](#introduction)
+- [Introduction](#introduction)    
 
 - [Prerequisites](#prerequisites)
 
@@ -34,7 +34,7 @@ This tutorial provides step-by-step instructions for generating a reference desi
 
 ### Objectives
 
-After completing this tutorial, users can:
+After completing this tutorial, users can:  
 
 - Generate programmable device image (PDI) for tutorial design.
 - Build a Dhrystone application and execute it on the VCK190 evaluation kit.
@@ -55,7 +55,7 @@ After completing this tutorial, users can:
     │   ├── axi_noc_0_ddr_configuration.png.............DDR memory configuration
     │   ├── axi_noc_0_general.png.......................NoC0 general configuration
     │   ├── axi_noc_0_inputs.png........................NoC0 input clock configuration
-    │   ├── browse_and_add_xsa.png......................Add XSA
+    │   ├── browse_and_add_xsa.png......................Add XSA  
     │   ├── browse_import_source_code_finish.png........Complete importing source code
     │   ├── build_complete.png..........................Build complete
     │   ├── build_project.png...........................Build project
@@ -90,7 +90,7 @@ After completing this tutorial, users can:
 
 ## Prerequisites
 
-Recommended general knowledge of:
+Recommended general knowledge of:  
 
 - VCK190 evaluation board
 - Versal JTAG boot mode
@@ -161,7 +161,7 @@ Follow these steps to build the Dhrystone Benchmark design and create the PDI/XS
 
    Sourcing the `run.tcl` script does the following:
 
-   - Creates a project named dhrystone-tutorrial' in the tutorial directory 
+   - Creates a project named dhrystone-tutorial' in the tutorial directory 
    - Sources and runs [`design.tcl`](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2023.2/docs/Performance/Performance_Benchmark/Dhrystone/Design/design.tcl), which in turn does the following:
      - Selects the target Versal VC1902 device
      - Creates IPs and ports
@@ -239,7 +239,7 @@ Double-clck on the Control, Interfaces & Processing System to launch the Configu
    ![Alt Text](./Images/create_platform_component.png)
 
 6. In the Select Platform Creation Flow window, select Hardware Design.
-7. Browse to the XSA file generated from the Vivado Design Suite in Build the   Tutorial Design steps of this tutorial.
+7. Browse to the XSA file generated from the Vivado Design Suite in Build the Tutorial Design steps of this tutorial.
 
    ![Alt Text](./Images/select_platform_creation_flow.png)
 8. Verify that the **Operating system** and **Processor** are pre-filled from the XSA file as shown in the following figure.
@@ -381,7 +381,7 @@ A more commonly reported figure is DMIPS / MHz, where MHz is CPU Frequency
 
 ## Support
 
-GitHub issues will be used for tracking requests and bugs. For questions go to [forums.xilinx.com](http://forums.xilinx.com/).
+GitHub issues will be used for tracking requests and bugs. For questions, go to [forums.xilinx.com](http://forums.xilinx.com/).
 
 
 <hr class="sphinxhide"></hr>

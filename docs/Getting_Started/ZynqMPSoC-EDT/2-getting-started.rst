@@ -5,7 +5,7 @@ Getting Started
 ***************
 
 Hardware Requirements
----------------------
+----------------------
 
 This tutorial targets the Zynq UltraScale+ ZCU102 evaluation board. The examples in this tutorial are tested using the ZCU102 Rev 1 board. To use this guide, you need the following hardware items, which are
 included with the evaluation board:

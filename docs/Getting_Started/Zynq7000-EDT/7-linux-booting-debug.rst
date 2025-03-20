@@ -15,9 +15,9 @@ The boot method of Zynq |trade| 7000 devices can be categorized into these two g
 Master Boot Method
 ~~~~~~~~~~~~~~~~~~
 
-In the master boot method, the CPU loads and executes the external boot images from non-volatile memory into the processor system (PS). Different kinds of non-volatile memories such as QSPI, NAND, NOR flash, and SD cards are used to store boot images. In this method, the master boot method is further divided into secure and non-secure modes. Refer to the *Zynq 7000 SoC Technical Reference Manual* (`UG585 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf>`_) for more details.
+In the master boot method, the CPU loads and executes the external boot images from non-volatile memory into the processing system (PS). Different kinds of non-volatile memories such as QSPI, NAND, NOR flash, and SD cards are used to store boot images. In this method, the master boot method is further divided into secure and non-secure modes. Refer to the *Zynq 7000 SoC Technical Reference Manual* (`UG585 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf>`_) for more details.
 
-The boot process is initiated by one of the Arm |reg| Cortex |trade|-A9 CPUs in the processing system (PS) and it executes on-chip ROM code. The on-chip ROM code is responsible for loading the first stage boot loader (FSBL). The FSBL does the following:
+The boot process is initiated by one of the Arm |reg| Cortex |trade|-A9 CPUs in the PS and it executes on-chip ROM code. The on-chip ROM code is responsible for loading the first stage boot loader (FSBL). The FSBL does the following:
 
 -  Configures the FPGA with the hardware bitstream (if it exists)
 -  Configures the MIO interface
