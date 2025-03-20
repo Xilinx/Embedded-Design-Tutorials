@@ -32,7 +32,7 @@ Creating Your Hardware Design
 
 1. Start the Vivado Design Suite.
 
-   -  On Windows 10, click the start menu and find **Xilinx Design Tools → Vivado 2023.2**.
+   -  On Windows 10, click the start menu and find **Xilinx Design Tools → Vivado 2024.2**.
    -  On Linux, run `source <Vivado installation path>/settings64.sh` to set up the environment and run ``vivado &`` to launch the Vivado IDE.
 
 2. In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
@@ -220,7 +220,7 @@ Two types of hardware can be exported from Vivado: pre-synthesis and post-implem
 
          write_hw_platform -fixed -force -file C:/edt/edt_zc702/system_wrapper.xsa
          INFO: [Vivado 12-4895] Creating Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa ...
-         INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2023.2/data/embeddedsw) loading 1 seconds
+         INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2024.2/data/embeddedsw) loading 1 seconds
          INFO: [Vivado 12-12467] The Hardware Platform can be used for Hardware
          INFO: [Vivado 12-4896] Successfully created Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa
 
@@ -285,7 +285,7 @@ Creating a Vitis Unified Platform Project
 1. Launch the Vitis Unified IDE with any of the actions below:
 
    1. From the Vivado IDE, select **Tools → Launch Vitis IDE**.
-   2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Vitis 2023.2**.
+   2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Vitis 2024.2**.
    3. On Linux, run ``source <Vitis Installation Directory>/settings64.sh`` to set up the environment and run ``vitis &``.
 
 2. Select **Open Workspace** and give the location as **C:/edt/edt_zc702_workspace** or any given location path.
@@ -299,7 +299,7 @@ Creating a Vitis Unified Platform Project
 
        Platform Name
 
-4. In the **Select Platform Creation Flow** page, Select **Hardware Design** and click **browse** to specify the XSA file ``C:\edt\edt`\_zc702\system`\_wrapper.xsa\``, and click **OK**.
+4. In the **Select Platform Creation Flow** page, Select **Hardware Design** and click **browse** to specify the XSA file ``C:\edt\edt_zc702\system_wrapper.xsa\``, and click **OK**.
 
    -  When the XSA file is selected, the System Device Tree (SDT) is generated, and the metadata here is used to populate the processor list. Once the SDT is created, choose **standalone** and the processor is **ps7_cortexa9_0**.
    - Keep the **Generate boot Artifacts** option selected, as shown in the following figure.
@@ -311,26 +311,22 @@ Creating a Vitis Unified Platform Project
    
 -  Click **Finish**.
 
-7. The platform project is created. In the **Vitis Components** view, double-click **zc702_edt → platform.spr** to view the platform view as shown in the following figure.
+7. The platform project is created. In the **Vitis Components** view, select **zc702_edt → settings → vitis-comp.json** to view the platform view as shown in the following figure.
 
    .. image:: ./media/image27.png
-
-8. In the **Vitis Components** view, expand **zc702_edt → Settings → vitis-comp.json**. 
-
-   .. image:: ./media/image28.png
 
    You can select the **Hardware Specification** link to see the the address map for the entire processing system.
 
    .. image:: ./media/hardware_spec.png
 
-9. Build the platform by highlighting the platfom in **Vitis Components** view, and under **FLOW**, clicking the hammer button as shown in following figure.
+8. Build the platform by highlighting the platfom in **Vitis Components** view, and under **FLOW**, clicking the hammer button as shown in following figure.
 
    .. figure:: ./media/image29.png
        :alt: Build Platform
 
        Build Project
 
-10. As the project builds, you can see the output in the Console window.
+9. As the project builds, you can see the output in the Console window.
 
    The build process takes some time because it is not only building the standalone BSP, but also boot components such as FSBL.
 
