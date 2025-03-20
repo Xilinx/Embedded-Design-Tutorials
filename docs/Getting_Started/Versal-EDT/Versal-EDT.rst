@@ -53,4 +53,4 @@ This design tutorial requires use of a number of files provided by AMD. These ar
 
 .. Copyright © 2019-2024 Advanced Micro Devices, Inc
 
-.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_

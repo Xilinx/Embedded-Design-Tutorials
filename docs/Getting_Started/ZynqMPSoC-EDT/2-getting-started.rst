@@ -5,9 +5,9 @@ Getting Started
 ***************
 
 Hardware Requirements
----------------------
+----------------------
 
-This tutorial targets the Zynq UltraScale+ ZCU102 evaluation board. The examples in this tutorial were tested using the ZCU102 Rev 1 board. To use this guide, you need the following hardware items, which are
+This tutorial targets the Zynq UltraScale+ ZCU102 evaluation board. The examples in this tutorial are tested using the ZCU102 Rev 1 board. To use this guide, you need the following hardware items, which are
 included with the evaluation board:
 
 -  ZCU102 Rev1 evaluation board
@@ -51,7 +51,7 @@ When you install PetaLinux tools on your system of choice, you must do the follo
 
 -  Download the ZCU102 PetaLinux BSP (ZCU102 BSP (prod-silicon)) from the downloads page.
 
--  Read and follow the installation instructions in the PetaLinux Tools Documentation: Reference Guide (`UG1144 <https://docs.xilinx.com/r/en-US/ug1144-petalinux-tools-reference-guide/Setting-Up-Your-Environment>`_).
+-  Read and follow the installation instructions in the PetaLinux Tools Documentation: Reference Guide (`UG1144 <https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1144-petalinux-tools-reference-guide&resourceid=setting-up-your-environment-ac364401.html>`_).
 
 Tutorial Design Files
 ~~~~~~~~~~~~~~~~~~~~~
@@ -61,12 +61,11 @@ The reference design files for this tutorial are provided in the `ref_files` dir
 -  If the examples are GUI based, the ``ref_files`` directory provides the source files for the examples.
 -  If the examples can be run in script mode, the ``ref_files`` directory contains the Makefile to help you run through the flow easily. Run ``make`` in this directory to run through the implementation flow.
 
-Next Chapter
-~~~~~~~~~~~~
-
-The :doc:`next chapter <./3-system-configuration>` details the configuration of a Zynq UltraScale+ MPSoC PS with the Vivado IDE.
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
+
+.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

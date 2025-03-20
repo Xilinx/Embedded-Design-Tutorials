@@ -10,7 +10,6 @@ Programming an Embedded MicroBlaze Processor
    :xlnxdocumenttypes: Tutorials
 
 
-Hi, Miki!
 
 In these tutorials, you have two options for creating a simple AMD soft-processor system for a Spartan-7 FPGA using AMD Vivado™ IP integrator:
 

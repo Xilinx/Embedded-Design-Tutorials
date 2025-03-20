@@ -445,7 +445,7 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 1.  Open the Vitis software platform. You must run the Target Communication Frame (TCF) agent on the host machine.
 
-2.  In the XSCT Console view, type ``connect`` to connect to the Xilinx Software Command-Line Tool (XSCT).
+2.  In the XSDB Console view, type ``connect`` to connect to the Xilinx Software Debugger (XSDB).
 
 3.  In the Vitis Unified IDE, select **File → New Component → Platform**  and populate using the table below.
 

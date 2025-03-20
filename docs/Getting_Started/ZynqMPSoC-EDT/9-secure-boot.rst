@@ -238,9 +238,9 @@ For this example, you will create the primary and secondary keys in the PEM form
 
 The following steps describe the process of creating the RSA private/public key pairs:
 
-1. Launch the shell from the Vitis IDE by clicking **Xilinx → Vitis Shell**.
+1. Launch the shell from the Vitis IDE by clicking **Terminal → New Terminal**.
 
-2. Create a file named ``key_generation.bif``.
+2. Create a file named ``key_generation.bif`` and copy the below code to it.
 
    .. note:: The ``key_generation.bif`` file will be used to create both the asymmetric keys in these steps and the symmetric keys in later steps.
 
@@ -579,9 +579,9 @@ The PUF registration software accepts a red (unencrypted) key as input, and prod
 
 10. In the Project Explorer view, right-click the **xilskey_puf_example_1** project and select **Build Project**.
 
-11. In the Vitis IDE, select **Xilinx → Create Boot Image**.
+11. In the Vitis IDE, select **Vitis → Create Boot Image**.
 
-12. Select **Zynq MP** in the Architecture view.
+12. Select **Zynq Ultrascale+** in the Architecture view.
 
 13. Specify the BIF path in the Output BIF file path view as ``C:\edt\secureboot_sd\puf_registration\puf_registration.bif``.
 
@@ -691,11 +691,11 @@ storage) by hand editing the BIF file. This section performs the same operations
        cp ../keys/image.ub .
        cp ../keys/black_key.txt.
 
-3. Click **Programs → Xilinx Design Tools → Vitis <version number> → Vitis 2024.1** to launch the Vitis IDE.
+3. Click **Programs → Xilinx Design Tools → Vitis <version number> → Vitis 2024.2** to launch the Vitis IDE.
 
-4. Click **Xilinx Tools → Create Boot Image** from the menu bar to launch the Create Boot Image wizard.
+4. Click **Vitis → Create Boot Image** from the menu bar to launch the Create Boot Image wizard.
 
-5.  elect Zynq MP as the Architecture.
+5. Select **Zynq UltraScale+** as the Architecture.
 
 6. Enter the Output BIF file path as ``C:\edt\secure_boot_sd\bootgen_files\design_bh_bkey_keyrolling.bif``.
 
@@ -705,41 +705,35 @@ storage) by hand editing the BIF file. This section performs the same operations
 
 9. Enable authentication.
 
-   1. Click the **Security** page.
+   1. Check the Use Authentication check box.
 
-   2. Check the Use Authentication check box.
+   2. Browse to select the **psk0.pem** file for the PSK File and the **ssk0.pem** for the SSK File.
 
-   3. Browse to select the **psk0.pem** file for the PSK and the **ssk0.pem** for the SSK.
+   3. Ensure PPK select is 0.
 
-   4. Ensure PPK select is 0.
+   4. Enter SPK ID as 0.
 
-   5. Enter SPK ID as 0.
-
-   6. Check the **Use BH Auth** check box.
+   5. Check the **Use BH Auth** check box.
 
       .. image:: ./media/image84.jpeg
 
 10. Enable encryption.
 
-    1. Click the **Encryption** page.
+    1. Check the **Use Encryption** check box.
 
-    2. Check the **Use Encryption** check box.
+    2. Provide the part name as **zcu9eg**.
 
-    3. Provide the part name as **zcu9eg**.
-
-    4. Check the **Operational Key** check box.
+    3. Check the **Operational Key** check box.
 
        .. image:: ./media/image85.png
 
-11. Click the **Basic** page.
+11. Add the FSBL binary to the boot image.
 
-12. Add the FSBL binary to the boot image.
+    1. Click the **Add** button.
 
-    1. Click **Add**.
+    2. Use the browse button to select the **fsbl.elf** file.
 
-    2. Use the browse button to select the **fsbl_a53.elf** file.
-
-    3. Make sure the partition type is **bootloader** and the destination CPU is **a53x64**.
+    3. Make sure the partition type is **bootloader** and the destination CPU is **a53-0**.
 
     4. Change the authentication to **RSA**.
 
@@ -751,9 +745,11 @@ storage) by hand editing the BIF file. This section performs the same operations
 
        .. image:: ./media/image86.png
 
-13. Add the PMU firmware binary to the boot image.
+       .. image:: ./media/image86.1.png
 
-    1. Click **Add**.
+12. Add the PMU firmware binary to the boot image.
+
+    1. Click the **Add** button.
 
     2. Use the browse button to select the **pmufw.elf** file.
 
@@ -771,7 +767,9 @@ storage) by hand editing the BIF file. This section performs the same operations
 
        .. image:: ./media/image87.png
 
-14. Add the PL bitstream to the boot image.
+       .. image:: ./media/image87.1.png
+
+13. Add the PL bitstream to the boot image.
 
     1. Click the **Add**.
 
@@ -785,15 +783,16 @@ storage) by hand editing the BIF file. This section performs the same operations
 
     6. Change the encryption to **AES**.
 
-    7. Add the **edt_zcu102_wrapper.bit** file as the key file.
+    7. Add the **edt_zcu102_wrapper.nky** file as the key file.
 
     8. Click **OK**.
 
        .. image:: ./media/image88.png
+       .. image:: ./media/image88.1.png
 
-15. Add the Trusted Firmware-A (TF-A) binary to the image.
+14. Add the Trusted Firmware-A (TF-A) binary to the image.
 
-    1. Click **Add**.
+    1. Click the **Add** button.
 
     2. Use the browse button to select the **bl31.elf** file.
 
@@ -810,10 +809,11 @@ storage) by hand editing the BIF file. This section performs the same operations
     8. Click **OK**.
 
        .. image:: ./media/image89.png
+       .. image:: ./media/image89.1.png
 
-16. Add the R5 software binary to the boot image.
+15. Add the R5 software binary to the boot image.
 
-    1. Click **Add**.
+    1. Click the **Add** button.
 
     2. Use the browse button to select the **tmr_psled_r5.elf** file.
 
@@ -830,10 +830,11 @@ storage) by hand editing the BIF file. This section performs the same operations
     8. Click **OK**.
 
        .. image:: ./media/image90.png
+       .. image:: ./media/image90.1.png
 
-17. Add the U-Boot software binary to the boot image.
+16. Add the U-Boot software binary to the boot image.
 
-    a. Click **Add**.
+    a. Click the **Add** button.
 
     b. Use the browse button to select the **u-boot.elf** file.
 
@@ -850,10 +851,11 @@ storage) by hand editing the BIF file. This section performs the same operations
     h. Click **OK**.
 
     .. image:: ./media/image91.png
+    .. image:: ./media/image91.1.png
 
-18. Add the Linux image to the boot image.
+17. Add the Linux image to the boot image.
 
-    1. Click **Add**.
+    1. Click the **Add** button.
 
     2. Use the browse button to select the **image.ub** file.
 
@@ -870,12 +872,13 @@ storage) by hand editing the BIF file. This section performs the same operations
     8. Click **OK**.
 
        .. image:: ./media/image92.png
+       .. image:: ./media/image92.1.png
 
-19. Click **Create image**.
+18. Click **Create image**.
 
     .. image:: ./media/image93.png
 
-20. The ``design_bh_bkey_keyrolling.bif`` file should look similar to the following:
+19. The ``design_bh_bkey_keyrolling.bif`` file should look similar to the following:
 
     .. code-block::
 
@@ -898,7 +901,7 @@ storage) by hand editing the BIF file. This section performs the same operations
 
     .. note:: This BIF file is still missing several security features that are not supported by the Create Boot Image wizard. These are features are key rolling and black key store.
 
-21. Add black key store by changing the ``keysrc_encryption`` and adding the other additional items so that the BIF file looks like the following:
+20. Add black key store by changing the ``keysrc_encryption`` and adding the other additional items so that the BIF file looks like the following:
 
     .. code-block::
 
@@ -921,7 +924,7 @@ storage) by hand editing the BIF file. This section performs the same operations
        [authentication = rsa, load = 0x2000000, destination_cpu = a53-0]C:\edt\secure_boot_sd\bootgen_files\image.ub
        }
 
-22. Enable key rolling by adding the block attributes to the encrypted partitions. The updated BIF file should now look like the following:
+21. Enable key rolling by adding the block attributes to the encrypted partitions. The updated BIF file should now look like the following:
 
     .. code-block::
 
@@ -945,7 +948,7 @@ storage) by hand editing the BIF file. This section performs the same operations
        [authentication = rsa, load = 0x2000000, destination_cpu = a53-0]C:\edt\secure_boot_sd\bootgen_files\image.ub
        }
 
-23. Generate the boot image by running the following command. Note that the ``- encryption_dump`` flag has been added. This flag causes the log file ``aes_log.txt`` to be created. The log file details all encryption operations that were used. This allows you to see which keys and IVs were used on which sections of the boot image.
+22. Generate the boot image by running the following command. Note that the ``- encryption_dump`` flag has been added. This flag causes the log file ``aes_log.txt`` to be created. The log file details all encryption operations that were used. This allows you to see which keys and IVs were used on which sections of the boot image.
 
    .. code::
 
@@ -1052,17 +1055,17 @@ Determine if PUF Registration is Running
 
 The following steps can be used to verify if the PUF registration software has been run on the device:
 
-1. In the Vitis IDE, select **Xilinx → XSCT Console**.
+1. In the Vitis IDE, select **Vits → XSDB Console**.
 
 2. Enter the following commands at the prompt:
 
    .. code-block::
 
-      xsct% connect
-      xsct% targets
-      xsct% targets -set -filter {name =~ "Cortex-A53 #0"}
-      xsct% rst -processor
-      xsct% mrd -force 0xFFCC1050 (0xFFCC1054)
+      xsdb% connect
+      xsdb% targets
+      xsdb% targets -set -filter {name =~ "Cortex-A53 #0"}
+      xsdb% rst -processor
+      xsdb% mrd -force 0xFFCC1050 (0xFFCC1054)
 
 3. This location contains the CHASH and AUX values. If non-zero, PUF registration software has been run on the device.
 
@@ -1086,3 +1089,7 @@ You can use the Bootgen utility to verify the header values and the partition da
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
+   
+   
+.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
