@@ -240,7 +240,7 @@ Creating the Standalone CDMA Application
 
 4. In the Vitis Components view, expand the **cdma_app** component, right-click the **src** directory, and select **Import** → *Files* to open the Import Sources dialog box.
 
-5. In the Import Sources dialog box, click the **Browse** button next to the **From directory** field and specify the design files folder to `ref_files/example7 <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT/ref_files/example7>`_.
+5. In the Import Sources dialog box, click the **Browse** button next to the **From directory** field and specify the design files folder to `ref_files/example7 <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Getting_Started/Zynq7000-EDT/ref_files/example7>`_.
 
 6. Select the **cdma_app.c** file and click **Finish**.
 

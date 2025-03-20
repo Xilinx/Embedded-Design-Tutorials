@@ -49,5 +49,5 @@ The examples in this document were created using AMD Design tools running on Win
    :ltrim:
 
 
-.. Copyright © 2016–2025 Advanced Micro Devices, Inc
-.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
+.. Copyright © 2016–2024 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_
