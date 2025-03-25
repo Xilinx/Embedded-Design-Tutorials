@@ -15,9 +15,9 @@ The boot method of Zynq |trade| 7000 devices can be categorized into these two g
 Master Boot Method
 ~~~~~~~~~~~~~~~~~~
 
-In the master boot method, the CPU loads and executes the external boot images from non-volatile memory into the processor system (PS). Different kinds of non-volatile memories such as QSPI, NAND, NOR flash, and SD cards are used to store boot images. In this method, the master boot method is further divided into secure and non-secure modes. Refer to the *Zynq 7000 SoC Technical Reference Manual* (`UG585 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf>`_) for more details.
+In the master boot method, the CPU loads and executes the external boot images from non-volatile memory into the processing system (PS). Different kinds of non-volatile memories such as QSPI, NAND, NOR flash, and SD cards are used to store boot images. In this method, the master boot method is further divided into secure and non-secure modes. Refer to the *Zynq 7000 SoC Technical Reference Manual* (`UG585 <https://www.xilinx.com/cgi-bin/docs/ndoc?t=user_guides;d=ug585-Zynq-7000-TRM.pdf>`_) for more details.
 
-The boot process is initiated by one of the Arm |reg| Cortex |trade|-A9 CPUs in the processing system (PS) and it executes on-chip ROM code. The on-chip ROM code is responsible for loading the first stage boot loader (FSBL). The FSBL does the following:
+The boot process is initiated by one of the Arm |reg| Cortex |trade|-A9 CPUs in the PS and it executes on-chip ROM code. The on-chip ROM code is responsible for loading the first stage boot loader (FSBL). The FSBL does the following:
 
 -  Configures the FPGA with the hardware bitstream (if it exists)
 -  Configures the MIO interface
@@ -111,11 +111,11 @@ Booting Linux in JTAG Mode
 
    .. note:: This is the baud rate that the UART is programmed to on Zynq devices.
 
-8. Download the bitstream by selecting **Xilinx → Program FPGA**, then clicking **Program**.
+8. Download the bitstream by selecting **Vitis → Program Device**, then clicking **Program**.
 
-9. Open the Xilinx System Debugger (XSCT) tool by selecting **Xilinx → XSCT Console**.
+9. Open the Xilinx System Debugger (XSDB) tool by selecting **Vitis → XSDB Console**.
 
-10. At the XSCT prompt, do the following:
+10. At the XSDB prompt, do the following:
 
     1. Run ``connect`` to connect with the PS section.
     2. Run ``targets`` to get the list of target processors.
@@ -123,13 +123,13 @@ Booting Linux in JTAG Mode
 
       .. code-block::
 
-            xsct% targets
+            xsdb% targets
             1 APU
             2 Arm Cortex-A9 MPCore #0 (Running)
             3 Arm Cortex-A9 MPCore #1 (Running)
             4 xc7z020
-            xsct% ta 2
-            xsct% targets
+            xsdb% ta 2
+            xsdb% targets
             1 APU
             2* Arm Cortex-A9 MPCore #0 (Running)
             3 Arm Cortex-A9 MPCore #1 (Running)
@@ -139,7 +139,7 @@ Booting Linux in JTAG Mode
 
     4.  Change working directory to `images/linux` in your PetaLinux project.
 
-    .. note:: On Windows, the XSCT shell regards the Windows path divider `\` as escape character. Use ``/`` or ``\\`` instead, or add curly brackets ``{}`` for the Windows path name to make sure it is interpreted correctly.
+    .. note:: On Windows, the XSDB shell regards the Windows path divider `\` as escape character. Use ``/`` or ``\\`` instead, or add curly brackets ``{}`` for the Windows path name to make sure it is interpreted correctly.
 
     -  Run `dow zynq_fsbl.elf` to download PetaLinux FSBL.
 
@@ -151,7 +151,7 @@ Booting Linux in JTAG Mode
 
     -  Press **Enter**. Automatic booting from U-Boot stops and a command prompt appears on the serial terminal.
 
-    -  At the XSCT Prompt, run `stop`. The U-Boot execution stops.
+    -  At the XSDB Prompt, run `stop`. The U-Boot execution stops.
 
     -  Run `dow -data image.ub 0x30000000` to download the Linux kernel image.
 
@@ -398,9 +398,9 @@ This is an alternative way for programming QSPI Flash with the flash programming
 
    .. note:: This is the baud rate that the UART is programmed to on Zynq devices.
 
-3. Select **Vitis → XSDB Console...** to open the XSCT tool.
+3. Select **Vitis → XSDB Console...** to open the XSDB tool.
 
-4. From the XSCT prompt, do the following:
+4. From the XSDB prompt, do the following:
 
    -  Run ``connect`` to connect with the PS section.
 

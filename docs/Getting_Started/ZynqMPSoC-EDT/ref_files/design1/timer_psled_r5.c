@@ -1,17 +1,7 @@
 /*
-# Copyright 2021 Xilinx Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# Copyright (C) 2025, Advanced Micro Devices, Inc. All rights reserved.
+# SPDX-License-Identifier: MIT
+#*****************************************************************************************
 */
 
 /**
@@ -43,7 +33,7 @@
 #include "xgpiops.h"
 #include "xil_io.h"
 #include "xgpio.h"
-#ifdef XPAR_INTC_0_DEVICE_ID
+#ifdef XPAR_INTC_0_BASEADDR
 #include "xintc.h"
 #include <stdio.h>
 #else
@@ -56,14 +46,14 @@
  * xparameters.h file. They are only defined here such that a user can easily
  * change all the needed parameters in one place.
  */
-#define TMRCTR_DEVICE_ID	XPAR_TMRCTR_0_DEVICE_ID
-#define TMRCTR_INTERRUPT_ID	XPAR_FABRIC_AXI_TIMER_0_INTERRUPT_INTR
+#define TMRCTR_BASEADDR	XPAR_AXI_TIMER_0_BASEADDR
+#define TMRCTR_INTERRUPT_ID	XPAR_FABRIC_AXI_TIMER_0_INTR
 
-#ifdef XPAR_INTC_0_DEVICE_ID
-#define INTC_DEVICE_ID		XPAR_INTC_0_DEVICE_ID
+#ifdef XPAR_INTC_0_BASEADDR
+#define INTC_BASEADDR		XPAR_INTC_0_BASEADDR
 #else
-#define INTC_DEVICE_ID		XPAR_SCUGIC_SINGLE_DEVICE_ID
-#endif /* XPAR_INTC_0_DEVICE_ID */
+#define INTC_BASEADDR		XPAR_GIC_R5_BASEADDR
+#endif /* XPAR_INTC_0_BASEADDR */
 
 /*
  * The following constant determines which timer counter of the device that is
@@ -72,13 +62,13 @@
  */
 #define TIMER_CNTR_0	 0
 
-#ifdef XPAR_INTC_0_DEVICE_ID
+#ifdef XPAR_INTC_0_BASEADDR
 #define INTC		XIntc
 #define INTC_HANDLER	XIntc_InterruptHandler
 #else
 #define INTC		XScuGic
 #define INTC_HANDLER	XScuGic_InterruptHandler
-#endif /* XPAR_INTC_0_DEVICE_ID */
+#endif /* XPAR_INTC_0_BASEADDR */
 
 /*
  * The following constant is used to set the reset value of the timer counter,
@@ -92,21 +82,20 @@
  * xparameters.h file. They are defined here such that a user can easily
  * change all the needed parameters in one place.
  */
-#ifdef XPAR_INTC_0_DEVICE_ID
+#ifdef XPAR_INTC_0_BASEADDR
 #define INTC		XIntc
-#define UART_DEVICE_ID		XPAR_XUARTPS_1_DEVICE_ID
-#define INTC_DEVICE_ID		XPAR_INTC_0_DEVICE_ID
+#define UART_BASEADDR		XPAR_XUARTPS_1_BASEADDR
+#define INTC_BASEADDR		XPAR_INTC_0_BASEADDR
 #define UART_INT_IRQ_ID		XPAR_INTC_0_UARTPS_1_VEC_ID
 #else
 //#define INTC		XScuGic
-#define UART_DEVICE_ID		XPAR_XUARTPS_1_DEVICE_ID
-#define INTC_DEVICE_ID		XPAR_SCUGIC_SINGLE_DEVICE_ID
-#define UART_INT_IRQ_ID		XPAR_XUARTPS_1_INTR
+#define UART_BASEADDR		XPAR_XUARTPS_1_BASEADDR
+#define UART_INT_IRQ_ID		XPAR_XUARTPS_1_INTERRUPTS
 #endif
 
 static XGpioPs PsGpio;
 extern XGpioPs_Config XGpioPs_ConfigTable[XPAR_XGPIOPS_NUM_INSTANCES];
-#define GPIO_DEVICE_ID  	XPAR_XGPIOPS_0_DEVICE_ID
+#define GPIO_BASEADDR  	XPAR_XGPIOPS_0_BASEADDR
 
 #define OUTPUT_PIN		23	/* Pin connected to LED/Output */
 #define INPUT_PIN		22	/* Pin connected to Switch/Input. Not used in this design */
@@ -115,13 +104,13 @@ extern XGpioPs_Config XGpioPs_ConfigTable[XPAR_XGPIOPS_NUM_INSTANCES];
 
 int TmrControllerSetup(INTC* IntcInstancePtr,
 			XTmrCtr* InstancePtr,
-			u16 DeviceId,
+			UINTPTR BaseAddr,
 			u16 IntrId,
 			u8 TmrCtrNumber);
 
 static int TmrCtrSetupIntrSystem(INTC* IntcInstancePtr,
 				XTmrCtr* InstancePtr,
-				u16 DeviceId,
+				UINTPTR BaseAddr,
 				u16 IntrId,
 				u8 TmrCtrNumber);
 
@@ -129,10 +118,10 @@ void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber);
 
 void TmrCtrDisableIntr(INTC* IntcInstancePtr, u16 IntrId);
 
-int PsGpioSetup(XGpioPs* PsGpioInstancePtr, u16 DeviceId);
+int PsGpioSetup(XGpioPs* PsGpioInstancePtr, UINTPTR BaseAddr);
 
 int UartPsSetup(INTC *IntcInstPtr, XUartPs *UartInstPtr,
-			u16 DeviceId, u16 UartIntrId);
+			UINTPTR BaseAddr, u16 UartIntrId);
 
 
 static int SetupInterruptSystem(INTC *IntcInstancePtr,
@@ -171,14 +160,14 @@ int main(void)
 	int Status;
 	int exit_flag;
 	Status = UartPsSetup(&InterruptController, &UartPs,
-				UART_DEVICE_ID, UART_INT_IRQ_ID);
+				UART_BASEADDR, UART_INT_IRQ_ID);
 	if (Status != XST_SUCCESS) {
 		xil_printf("UART Interrupt application Failed\r\n");
 		return XST_FAILURE;
 	}
 	
 	
-	Status = PsGpioSetup(&PsGpio, GPIO_DEVICE_ID);
+	Status = PsGpioSetup(&PsGpio, GPIO_BASEADDR);
 
 	printf ("R5_App_started\n");
 
@@ -189,7 +178,7 @@ int main(void)
 	
 	Status = TmrControllerSetup(&InterruptController,
 				  &TimerCounterInst,
-				  TMRCTR_DEVICE_ID,
+				  TMRCTR_BASEADDR,
 				  TMRCTR_INTERRUPT_ID,
 				  TIMER_CNTR_0);
 	if (Status != XST_SUCCESS) {
@@ -241,7 +230,7 @@ int main(void)
 		asm volatile ("wfi");
 		Xil_ExceptionEnable();
 	}
-	TmrCtrDisableIntr(&InterruptController, TMRCTR_DEVICE_ID);
+	TmrCtrDisableIntr(&InterruptController, TMRCTR_INTERRUPT_ID);
 
 	return XST_SUCCESS;
 }
@@ -252,15 +241,15 @@ int main(void)
 * It initializes the PS GPIO and sets the direction of the Output Pin.
 *
 * @param	PsGpioInstancePtr is a pointer to the XGpioPs driver Instance
-* @param	DeviceId is the XPAR_<GPIOPS_instance>_DEVICE_ID value from	xparameters.h
+* @param	BaseAddr is the XPAR_<GPIOPS_instance>_BASEADDR value from	xparameters.h
 * @return	XST_SUCCESS if the Test is successful, otherwise XST_FAILURE
 *
 *****************************************************************************/
-int PsGpioSetup(XGpioPs* PsGpioInstancePtr, u16 DeviceId)
+int PsGpioSetup(XGpioPs* PsGpioInstancePtr, UINTPTR BaseAddr)
 {
 	int Status;
 	XGpioPs_Config*GpioConfigPtr;
-	GpioConfigPtr = XGpioPs_LookupConfig(GPIO_DEVICE_ID);
+	GpioConfigPtr = XGpioPs_LookupConfig(GPIO_BASEADDR);
 	if(GpioConfigPtr == NULL){
 		return XST_FAILURE;
 		}
@@ -289,7 +278,7 @@ int PsGpioSetup(XGpioPs* PsGpioInstancePtr, u16 DeviceId)
 * @param	IntcInstancePtr is a pointer to the Interrupt Controller
 *		driver Instance
 * @param	TmrCtrInstancePtr is a pointer to the XTmrCtr driver Instance
-* @param	DeviceId is the XPAR_<TmrCtr_instance>_DEVICE_ID value from
+* @param	BaseAddr is the XPAR_<TmrCtr_instance>_BASEADDR value from
 *		xparameters.h
 * @param	IntrId is XPAR_<INTC_instance>_<TmrCtr_instance>_INTERRUPT_INTR
 *		value from xparameters.h
@@ -304,7 +293,7 @@ int PsGpioSetup(XGpioPs* PsGpioInstancePtr, u16 DeviceId)
 *****************************************************************************/
 int TmrControllerSetup(INTC* IntcInstancePtr,
 			XTmrCtr* TmrCtrInstancePtr,
-			u16 DeviceId,
+			UINTPTR BaseAddr,
 			u16 IntrId,
 			u8 TmrCtrNumber)
 {
@@ -313,7 +302,7 @@ int TmrControllerSetup(INTC* IntcInstancePtr,
 	 * Initialize the timer counter so that it's ready to use,
 	 * specify the device ID that is generated in xparameters.h
 	 */
-	Status = XTmrCtr_Initialize(TmrCtrInstancePtr, DeviceId);
+	Status = XTmrCtr_Initialize(TmrCtrInstancePtr, BaseAddr);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
@@ -333,7 +322,7 @@ int TmrControllerSetup(INTC* IntcInstancePtr,
 	 */
 	Status = TmrCtrSetupIntrSystem(IntcInstancePtr,
 					TmrCtrInstancePtr,
-					DeviceId,
+					BaseAddr,
 					IntrId,
 					TmrCtrNumber);
 	if (Status != XST_SUCCESS) {
@@ -409,7 +398,7 @@ void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
 * @param	IntcInstancePtr is a pointer to the Interrupt Controller
 *		driver Instance.
 * @param	TmrCtrInstancePtr is a pointer to the XTmrCtr driver Instance.
-* @param	DeviceId is the XPAR_<TmrCtr_instance>_DEVICE_ID value from
+* @param	BaseAddr is the XPAR_<TmrCtr_instance>_BASEADDR value from
 *		xparameters.h.
 * @param	IntrId is XPAR_<INTC_instance>_<TmrCtr_instance>_VEC_ID
 *		value from xparameters.h.
@@ -424,20 +413,20 @@ void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
 ******************************************************************************/
 static int TmrCtrSetupIntrSystem(INTC* IntcInstancePtr,
 				 XTmrCtr* TmrCtrInstancePtr,
-				 u16 DeviceId,
+				 UINTPTR BaseAddr,
 				 u16 IntrId,
 				 u8 TmrCtrNumber)
 {
 	 int Status;
 
-#ifdef XPAR_INTC_0_DEVICE_ID
+#ifdef XPAR_INTC_0_BASEADDR
 
 	/*
 	 * Initialize the interrupt controller driver so that
 	 * it's ready to use, specify the device ID that is generated in
 	 * xparameters.h
 	 */
-	Status = XIntc_Initialize(IntcInstancePtr, INTC_DEVICE_ID);
+	Status = XIntc_Initialize(IntcInstancePtr, INTC_BASEADDR);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
@@ -477,7 +466,7 @@ static int TmrCtrSetupIntrSystem(INTC* IntcInstancePtr,
 	 * Initialize the interrupt controller driver so that it is ready to
 	 * use.
 	 */
-	IntcConfig = XScuGic_LookupConfig(INTC_DEVICE_ID);
+	IntcConfig = XScuGic_LookupConfig(INTC_BASEADDR);
 	if (NULL == IntcConfig) {
 		return XST_FAILURE;
 	}
@@ -506,7 +495,7 @@ static int TmrCtrSetupIntrSystem(INTC* IntcInstancePtr,
 	 * Enable the interrupt for the Timer device.
 	 */
 	XScuGic_Enable(IntcInstancePtr, IntrId);
-#endif /* XPAR_INTC_0_DEVICE_ID */
+#endif /* XPAR_INTC_0_BASEADDR */
 
 
 	/*
@@ -551,7 +540,7 @@ void TmrCtrDisableIntr(INTC* IntcInstancePtr, u16 IntrId)
 	/*
 	 * Disable the interrupt for the timer counter
 	 */
-#ifdef XPAR_INTC_0_DEVICE_ID
+#ifdef XPAR_INTC_0_BASEADDR
 	XIntc_Disable(IntcInstancePtr, IntrId);
 #else
 	/* Disconnect the interrupt */
@@ -573,8 +562,8 @@ void TmrCtrDisableIntr(INTC* IntcInstancePtr, u16 IntrId)
 * @param	IntcInstPtr is a pointer to the instance of the Scu Gic driver.
 * @param	UartInstPtr is a pointer to the instance of the UART driver
 *		which is going to be connected to the interrupt controller.
-* @param	DeviceId is the device Id of the UART device and is typically
-*		XPAR_<UARTPS_instance>_DEVICE_ID value from xparameters.h.
+* @param	BaseAddr is the device Id of the UART device and is typically
+*		XPAR_<UARTPS_instance>_BASEADDR value from xparameters.h.
 * @param	UartIntrId is the interrupt Id and is typically
 *		XPAR_<UARTPS_instance>_INTR value from xparameters.h.
 *
@@ -584,15 +573,15 @@ void TmrCtrDisableIntr(INTC* IntcInstancePtr, u16 IntrId)
 *
 **************************************************************************/
 int UartPsSetup(INTC *IntcInstPtr, XUartPs *UartInstPtr,
-			u16 DeviceId, u16 UartIntrId)
+			UINTPTR BaseAddr, u16 UartIntrId)
 {
 	int Status;
 	XUartPs_Config *Config;
 	u32 IntrMask;
 
 	if (XGetPlatform_Info() == XPLAT_ZYNQ_ULTRA_MP) {
-#ifdef XPAR_XUARTPS_1_DEVICE_ID
-		DeviceId = XPAR_XUARTPS_1_DEVICE_ID;
+#ifdef XPAR_XUARTPS_1_BASEADDR
+		BaseAddr = XPAR_XUARTPS_1_BASEADDR;
 #endif
 	}
 
@@ -600,7 +589,7 @@ int UartPsSetup(INTC *IntcInstPtr, XUartPs *UartInstPtr,
 	 * Initialize the UART driver so that it's ready to use
 	 * Look up the configuration in the config table, then initialize it.
 	 */
-	Config = XUartPs_LookupConfig(DeviceId);
+	Config = XUartPs_LookupConfig(BaseAddr);
 	if (NULL == Config) {
 		return XST_FAILURE;
 	}
@@ -720,7 +709,7 @@ static int SetupInterruptSystem(INTC *UartIntcInstancePtr,
 	XScuGic_Config *IntcConfig; /* Config for interrupt controller */
 
 	/* Initialize the interrupt controller driver */
-	IntcConfig = XScuGic_LookupConfig(INTC_DEVICE_ID);
+	IntcConfig = XScuGic_LookupConfig(INTC_BASEADDR);
 	if (NULL == IntcConfig) {
 		return XST_FAILURE;
 	}

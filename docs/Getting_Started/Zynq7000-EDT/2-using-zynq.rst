@@ -4,7 +4,7 @@ Using the Zynq SoC Processing System
 
 The AMD Zynq |trade| SoC consists of Arm |reg| Cortex |trade|-A9 cores, many hard intellectual property components (IPs), and programmable logic (PL). This offering can be used in two ways:
 
--  The Zynq SoC PS can be used in a standalone mode, without attaching any additional fabric IP.
+-  The Zynq SoC processing system (PS) can be used in a standalone mode, without attaching any additional fabric IP.
 -  IP cores can be instantiated in fabric and attached to the Zynq PS as a PS+PL combination.
 
 This chapter describes how to develop an embedded system with only the processing system (PS) of the Zynq |trade| 7000 SoC.
@@ -32,7 +32,7 @@ Creating Your Hardware Design
 
 1. Start the Vivado Design Suite.
 
-   -  On Windows 10, click the start menu and find **Xilinx Design Tools → Vivado 2023.2**.
+   -  On Windows 10, click the start menu and find **Xilinx Design Tools → Vivado 2024.2**.
    -  On Linux, run `source <Vivado installation path>/settings64.sh` to set up the environment and run ``vivado &`` to launch the Vivado IDE.
 
 2. In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
@@ -180,7 +180,9 @@ Generating the Block Design
 
 2. Change the Synthesis Options to **Global**.
 
-   .. note:: If the synthesis option is **Global**, only wrapper files are generated during the block design generation phase, and the design will be synthesized as a whole at the synthesis stage. If the synthesis option is **Out of context per IP** or **Out of context per Block design**, the wrapper of the IP or block design will be generated and synthesized during block design generation, and the generated netlists will be combined together at the synthesis stage.
+   .. note:: 
+   
+      If the synthesis option is **Global**, only wrapper files are generated during the block design generation phase, and the design will be synthesized as a whole at the synthesis stage. If the synthesis option is **Out of context per IP** or **Out of context per Block design**, the wrapper of the IP or block design will be generated and synthesized during block design generation, and the generated netlists will be combined together at the synthesis stage.
 
 3. Click **Generate**.
 
@@ -220,7 +222,7 @@ Two types of hardware can be exported from Vivado: pre-synthesis and post-implem
 
          write_hw_platform -fixed -force -file C:/edt/edt_zc702/system_wrapper.xsa
          INFO: [Vivado 12-4895] Creating Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa ...
-         INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2023.2/data/embeddedsw) loading 1 seconds
+         INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2024.2/data/embeddedsw) loading 1 seconds
          INFO: [Vivado 12-12467] The Hardware Platform can be used for Hardware
          INFO: [Vivado 12-4896] Successfully created Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa
 
@@ -253,7 +255,11 @@ Setting Up the Board
 3. Connect the USB JTAG cable:
 
    1. Connect a micro USB cable between the host machine and the ZC702 target board U23.
-   .. note:: Do not to use J1.
+   
+   .. note:: 
+      
+	  Do not use J1.
+   
    2. Make sure that the **SW10** switch settings for JTAG selection are set to choose USB JTAG:
 
       -  Bit-1 is 0
@@ -285,7 +291,7 @@ Creating a Vitis Unified Platform Project
 1. Launch the Vitis Unified IDE with any of the actions below:
 
    1. From the Vivado IDE, select **Tools → Launch Vitis IDE**.
-   2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Vitis 2023.2**.
+   2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Vitis 2024.2**.
    3. On Linux, run ``source <Vitis Installation Directory>/settings64.sh`` to set up the environment and run ``vitis &``.
 
 2. Select **Open Workspace** and give the location as **C:/edt/edt_zc702_workspace** or any given location path.
@@ -299,7 +305,7 @@ Creating a Vitis Unified Platform Project
 
        Platform Name
 
-4. In the **Select Platform Creation Flow** page, Select **Hardware Design** and click **browse** to specify the XSA file ``C:\edt\edt`\_zc702\system`\_wrapper.xsa\``, and click **OK**.
+4. In the **Select Platform Creation Flow** page, Select **Hardware Design** and click **browse** to specify the XSA file ``C:\edt\edt_zc702\system_wrapper.xsa\``, and click **OK**.
 
    -  When the XSA file is selected, the System Device Tree (SDT) is generated, and the metadata here is used to populate the processor list. Once the SDT is created, choose **standalone** and the processor is **ps7_cortexa9_0**.
    - Keep the **Generate boot Artifacts** option selected, as shown in the following figure.
@@ -311,26 +317,22 @@ Creating a Vitis Unified Platform Project
    
 -  Click **Finish**.
 
-7. The platform project is created. In the **Vitis Components** view, double-click **zc702_edt → platform.spr** to view the platform view as shown in the following figure.
+7. The platform project is created. In the **Vitis Components** view, select **zc702_edt → settings → vitis-comp.json** to view the platform view as shown in the following figure.
 
    .. image:: ./media/image27.png
-
-8. In the **Vitis Components** view, expand **zc702_edt → Settings → vitis-comp.json**. 
-
-   .. image:: ./media/image28.png
 
    You can select the **Hardware Specification** link to see the the address map for the entire processing system.
 
    .. image:: ./media/hardware_spec.png
 
-9. Build the platform by highlighting the platfom in **Vitis Components** view, and under **FLOW**, clicking the hammer button as shown in following figure.
+8. Build the platform by highlighting the platfom in **Vitis Components** view, and under **FLOW**, clicking the hammer button as shown in following figure.
 
    .. figure:: ./media/image29.png
        :alt: Build Platform
 
        Build Project
 
-10. As the project builds, you can see the output in the Console window.
+9. As the project builds, you can see the output in the Console window.
 
    The build process takes some time because it is not only building the standalone BSP, but also boot components such as FSBL.
 
@@ -380,13 +382,17 @@ Running the Hello World Application on a ZC702 Board
 
 3. Highlight **hello_world** application in **Vitis Components** view. Select **Run Settings** to open a **Launch Configuration**.
 
-   .. note:: Make sure that the **Target Connection** is correct.
+   .. note:: 
+      
+	  Make sure that the **Target Connection** is correct.
 
 5. Click **Run**.
 
    “Hello World” appears on the  Serial Terminal.
 
-   .. note:: The software application do not require bitstream download to execute on the Zynq SoC evaluation board. The Arm Cortex-A9 dual core is already present on the board. Basic initialization of this system to run a simple application is accomplished by the First Stage Boot Loader (FSBL). The FSBL has ps7_init.c/h files that are packaged in the XSA file and extracted when the platform is created. The ps7_init.c/h have the settings made in the PS7 Subsystem in Vivado.
+   .. note:: 
+   
+      The software application do not require bitstream download to execute on the Zynq SoC evaluation board. The Arm Cortex-A9 dual core is already present on the board. Basic initialization of this system to run a simple application is accomplished by the First Stage Boot Loader (FSBL). The FSBL has ps7_init.c/h files that are packaged in the XSA file and extracted when the platform is created. The ps7_init.c/h have the settings made in the PS7 Subsystem in Vivado.
 
 What Just Happened? (Example 2)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

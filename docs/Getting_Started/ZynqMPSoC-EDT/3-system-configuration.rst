@@ -240,11 +240,12 @@ Example Summary
 
 In this example, you created a Vivado design with an MPSoC processing system and configured it for the ZCU102 board. You exported the hardware XSA file for future software development example projects.
 
-In the :doc:`next chapter <./4-build-sw-for-ps-subsystems>`, you will learn how to develop software based on the hardware created in this example.
-
 .. |image1| image:: ./media/image8.png
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
+   
+.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
