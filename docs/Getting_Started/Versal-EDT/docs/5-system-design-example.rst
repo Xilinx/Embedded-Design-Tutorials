@@ -6,7 +6,7 @@ This chapter guides you through building a system based on Versal |trade| device
 
 Examples using the PetaLinux tool are provided in this chapter.
 
-.. note:: The design files for this chapter have been validated with Vivado Design Suite 2022.1.
+.. note:: The reference files for this chapter have been validated with Vivado Design Suite 2022.1.
 
 .. _5-using-axi-gpio:
 
@@ -223,19 +223,27 @@ To validate the design and to generate the output product, follow these steps:
     
    5. Click **Finish**.
 
-5. Click **Hierarchy**.
+5. In the Block Design view, click **Sources** tab  
 
-6. In the Sources window, under Design Sources, expand **edt_versal_wrapper**.
+6. Click **Hierarchy** and Expand Design Sources Folder, right-click **edt_versal** and select **Create HDL Wrapper**.
 
-7. Right-click the top-level block design, edt_versal_i : edt_versal (`edt_versal.bd`), and select **Generate Output Products**.
+   The Create HDL Wrapper dialog box opens. Use this dialog box to create an HDL wrapper file for the processor subsystem.
+
+   .. tip:: The HDL wrapper is a top-level entity required by the design tools.
+   
+7. Select **Let Vivado manage wrapper and auto-update** and click **OK**.
+
+8. In the Sources window, under Design Sources, expand **edt_versal_wrapper**.
+
+9. Right-click the top-level block design, edt_versal_i : edt_versal (`edt_versal.bd`), and select **Generate Output Products**.
 
    .. image:: media/GOP.png
 
-8. Click **Generate**.
+10. Click **Generate**.
 
-9. When the Generate Output Products process completes, click **OK**.
+11. When the Generate Output Products process completes, click **OK**.
 
-10. In the Sources window, click the **IP Sources** view. Here, you can see the output products that you just generated, as shown in the following figure.
+12. In the Sources window, click the **IP Sources** view. Here, you can see the output products that you just generated, as shown in the following figure.
 
     .. image:: ./media/ip-sources-ch5-final.png
 
@@ -403,7 +411,10 @@ Creating an Empty Application
 
 8. Delete the source files under ``source/directory`` and copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``source/directory``.
    
-9. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package. See `AR-35819 <https://support.xilinx.com/s/article/000035819?language=en_US>`__ to configure AXIUARTLITE.
+9. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
+   Navigate to vitis-comp.json under vpk180_platform project under Settings. Then select **Navigate to BSP Settings** under Board support package. Modify stdin and stdout to **axi_uarlite_0** by selecting it from the drop-down options, as shown in the following snippet.
+   
+    .. image:: media/configure-vitis-ide.png
 
 
 Building the Application
@@ -451,13 +462,13 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
         - QSPI/SD
 
       * - VCK190 Production Board
-        - `xilinx-vck190-v2022.2-final.bsp <https://www.xilinx.com/member/vck190_headstart.html>`__
+        - `xilinx-vck190-v2022.2-final.bsp <https://account.amd.com/en/forms/downloads/xef.html?filename=xilinx-vck190-v2024.1-05230256.bsp>`__
       
       * - VMK180 Production Board
-        - `xilinx-vmk180-v2022.2-final.bsp <https://www.xilinx.com/member/vmk180_headstart.html>`__
+        - `xilinx-vmk180-v2022.2-final.bsp <https://account.amd.com/en/forms/downloads/xef.html?filename=xilinx-vmk180-v2024.1-05230256.bsp>`__
 
       * - VPK180 Production Board
-        - `xilinx-vpk180-v2023.1-final.bsp <https://www.xilinx.com/member/vpk180_headstart.html>`__
+        - `xilinx-vpk180-v2023.1-final.bsp <https://account.amd.com/en/forms/downloads/xef.html?filename=xilinx-vpk180-v2024.1-05230256.bsp>`__
 
     
 

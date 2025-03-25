@@ -1,3 +1,4 @@
+# Copyright (c) 2025 Advanced Micro Devices, Inc.
 # -*- coding: utf-8 -*-
 #
 # Configuration file for the Sphinx documentation builder.

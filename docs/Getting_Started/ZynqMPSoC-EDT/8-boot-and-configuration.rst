@@ -1,9 +1,4 @@
 ..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 ======================
 Boot and Configuration
@@ -34,10 +29,10 @@ Functionally, Bootgen uses a BIF (Bootgen image format) file as an input, and ge
 This chapter makes use of a processing system block. :doc:`7-design1-using-gpio-timer-interrupts` covers the boot image which will include the PS partitions used in this chapter and a bitstream targeted for the PL fabric.
 
 System Software
----------------
+----------------
 
 The following system software blocks cover most of the boot and configuration for this chapter. For detailed boot flow and various boot sequences, refer to the *System Boot and Configuration* chapter in the *Zynq UltraScale+ MPSoC: Software Developers Guide*
-(`UG1137 <https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev>`_).
+(`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.2%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
 
 First Stage Boot Loader
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,7 +40,7 @@ First Stage Boot Loader
 In non-secure boot mode, the platform management unit (PMU) releases the reset of the configuration security unit, and enters the PMU server mode to monitor power. At this stage, the configuration security unit loads the first stage boot loader (FSBL) into on-chip memory (OCM). The FSBL can be run from either APU A53_0, RPU R5_0, or RPU R5_lockstep. In this example, the FSBL is targeted for APU Cortex |trade|-A53 Core 0. The last 512 bytes of this region are used by FSBL to share the hand-off parameters corresponding to the applications handed off by the TF-A.
 
 The first stage boot loader initializes important blocks in the processing subsystem. This includes clearing the reset of the processors and initializing clocks, memory, UART, and so on before handing over the control of the next partition in DDR, to either the RPU or APU. In this example, the FSBL loads a bare-metal application in DDR and hands off to the RPU Cortex-R5F in lockstep mode, and then loads U-Boot to be executed by the APU Cortex-A53 Core-0. For more information, see the *Zynq UltraScale+ MPSoC: Software Developers Guide*
-(`UG1137 <https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev>`_).
+(`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.2%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
 
 For this chapter, you can use the FSBL executable that you created in :doc:`Building Software for PS
 Subsystems <4-build-sw-for-ps-subsystems>`. In the FSBL application, the ``xfsbl_translation_table.S`` differs from the ``translation_table.S`` of the Cortex-A53 in only one aspect, to mark the DDR region as reserved. This is to avoid speculative access to DDR memory controller before it is initialized. When the DDR initialization is completed in FSBL, the memory attributes for the DDR region are changed to “memory” so that they are cacheable.
@@ -53,7 +48,7 @@ Subsystems <4-build-sw-for-ps-subsystems>`. In the FSBL application, the ``xfsbl
 Platform Management Unit Firmware (PMUFW)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The platform management unit (PMU) and the configuration security unit manage and perform the multi-staged booting process. The PMU primarily controls the pre-configuration stage that executes the PMU ROM to set up the system. The PMU handles all of the processes related to reset and wake-up. The Vitis IDE provides PMU firmware that can be built to run on the PMU. For more details on the platform management and PMU firmware, see the *Zynq UltraScale+ MPSoC: Software Developers Guide* (`UG1137 <https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev>`_).
+The platform management unit (PMU) and the configuration security unit manage and perform the multi-staged booting process. The PMU primarily controls the pre-configuration stage that executes the PMU ROM to set up the system. The PMU handles all of the processes related to reset and wake-up. The Vitis IDE provides PMU firmware that can be built to run on the PMU. For more details on the platform management and PMU firmware, see the *Zynq UltraScale+ MPSoC: Software Developers Guide* (`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
 
 The PMU firmware can be loaded in the following ways:
 
@@ -80,7 +75,7 @@ FSBL loads the TF-A to be executed by the APU, which keeps running in EL3 awaiti
 
 The TF-A (``bl31.elf``) is built by default in PetaLinux and can be found in the PetaLinux project images directory.
 
-For more details on TF-A, refer to the *Arm Trusted Firmware* section in the *Security* chapter of the *Zynq UltraScale+ MPSoC: Software Developers Guide* `UG1137 <https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev>`_).
+For more details on TF-A, refer to the *Arm Trusted Firmware* section in the *Security* chapter of the *Zynq UltraScale+ MPSoC: Software Developers Guide* `UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
 
 Linux on APU
 ~~~~~~~~~~~~
@@ -113,7 +108,8 @@ Now that all the individual images are ready, create the boot image to load all 
 
 1. Launch the Create Boot Image wizard in the Vitis IDE:
 
-   -  In the Vitis IDE, select **Xilinx → Create Boot Image**.
+   -  In the Vitis IDE, select **Vitis → Create Boot Image**.
+   -  Select **Zynq Ultrascale+**
 
 2. Select all the partitions referred to in earlier sections in this chapter, and set them as shown in the following figure.
 
@@ -121,7 +117,7 @@ Now that all the individual images are ready, create the boot image to load all 
 
 3. Add the FSBL partition:
 
-   1. In the Create Boot Image wizard, click **Add** to open the Add Partition view.
+   1. In the Create Boot Image wizard, click the **+** button to open the Add Partition view.
    2. In the Add Partition view, click **Browse** to select the FSBL executable.
    3. For FSBL, ensure that the partition type is selected as boot loader and the correct destination CPU is selected by the tool. The tool is configured to make this selection based on the FSBL executable.
 
@@ -133,7 +129,7 @@ Now that all the individual images are ready, create the boot image to load all 
 
 4. Add the PMU and TF-A firmware partitions:
 
-   1. Click **Add** to open the Add Partition view, shown in the following figure.
+   1. Click the **+** button to open the Add Partition view, shown in the following figure.
 
       .. image:: ./media/image57.png
 
@@ -141,7 +137,7 @@ Now that all the individual images are ready, create the boot image to load all 
 
    3. Browse to and select the **PMU Firmware executable**.
 
-   4. For this partition, select **pmu** as the partition type.
+   4. For this partition, select **pmufw_image** as the partition type.
 
    5. Leave the Exception Level and TrustZone settings unselected.
 
@@ -268,7 +264,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
 
    .. code:: shell
 
-       $ cd <Petalinux-project-path>/xilinx-zcu102-2022.2/images/linux/
+       $ cd <Petalinux-project-path>/xilinx-zcu102-2024.2/images/linux/
        $ mkdir sd_boot
        $ cp image.ub sd_boot/
        $ cp u-boot.elf sd_boot/
@@ -278,7 +274,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
 
    .. code:: shell
    
-      $ cd <Petalinux-project-path>/xilinx-zcu102-2022.2
+      $ cd <Petalinux-project-path>/xilinx-zcu102-2024.2
 
 3. Launch the top-level system configuration menu:
 
@@ -330,9 +326,9 @@ Boot Image Setup in Vitis
 
 1. If the Vitis IDE is not already running, start it and set the workspace as indicated in :doc:`Build Software for PS Subsystems <4-build-sw-for-ps-subsystems>`.
 
-2. Select **Xilinx → Create Boot Image**.
+2. Select **Vitis → Create Boot Image**.
 
-3. Select **Zynq MP** as the Architecture.
+3. Select **Zynq Ultrascale+** as the Architecture.
 
 4. Select the **Create new BIF** file option.
 
@@ -344,7 +340,7 @@ Boot Image Setup in Vitis
 
 7. Next, add boot partitions using the following steps:
 
-   1. Click **Add** to open the Add Partition view.
+   1. Click the **+** button to open the Add Partition view.
 
    2. In the Add Partition view, click the **Browse** button to select the **FSBL executable**.
 
@@ -356,7 +352,7 @@ Boot Image Setup in Vitis
 
       3. Click **OK** to select the FSBL and go back to the Create Boot Image wizard.
 
-   3. Click **Add** to open the Add Partition window to add the next partition.
+   3. Click the **+** button to open the Add Partition window to add the next partition.
 
    4. The next partition is the PMU firmware for the Platform Management Unit.
 
@@ -380,7 +376,7 @@ Boot Image Setup in Vitis
 
       4. Click **OK**.
 
-   6. Click **Add** to add the R5 bare-metal executable.
+   6. Click the **+** button to add the R5 bare-metal executable.
 
       1. Add the R5 executable and enable it in lockstep mode, as shown in the following image.
 
@@ -388,7 +384,7 @@ Boot Image Setup in Vitis
 
          .. image:: ./media/image68.jpeg
 
-   7. Click **Add** to add the U-Boot partition. u-boot.elf can be found in ``<PetaLinux_Project>/images/linux/``.
+   7. Click the **+** button to add the U-Boot partition. u-boot.elf can be found in ``<PetaLinux_Project>/images/linux/``.
 
       1. For U-Boot, make the following selections:
 
@@ -401,7 +397,7 @@ Boot Image Setup in Vitis
 
       2. Click **OK**.
 
-   8. Click **Add** to add the image.ub Linux image file.
+   8. Click the **+** button to add the image.ub Linux image file.
 
       1. The image.ub image file can be found in PetaLinux project in the ``images/Linux`` directory.
 
@@ -415,7 +411,7 @@ Boot Image Setup in Vitis
 
       4. Leave Exception Level and TrustZone unselected.
 
-   9. Click **Add** to add the ``boot.scr`` script file.
+   9. Click the **+** button to add the ``boot.scr`` script file.
 
       1. The ``boot.scr`` file is located in the ``images/linux`` directory of the PetaLinux project.
 
@@ -431,9 +427,7 @@ Boot Image Setup in Vitis
 
          .. image:: ./media/image70.png
 
-8. Click **OK** to go back to the Create Boot Image wizard.
-
-9. Click **Create Image** to create the ``qspi_BOOT.bin`` image.
+8. Click **Create Image** to create the ``qspi_BOOT.bin`` image.
 
    You can also create qspi_BOOT.bin images using the BIF attributes and the Bootgen command. You can view the BIF attributes for this configuration by clicking **Preview BIF Changes**. For this configuration, the BIF file contains the following attributes:
 
@@ -457,20 +451,20 @@ The Vitis IDE calls the following Bootgen command to generate the qspi_BOOT.bin 
 
    bootgen -image qspi_boot.bif -arch zynqmp -o C:\edt\qspi_BOOT.bin``
 
-.. note:: In this boot sequence, the First Stage Boot Loader (FSBL) loads PMU firmware. This is because the PMU firmware was added as a datafile partition type. Ideally, the boot ROM code can load the PMU firmware for PMU as seen in the earlier section. For more details on PMU firmware, refer to the “Platform Management” chapter in the *Zynq UltraScale+ MPSoC: Software Developers Guide* (`UG1137 <https://docs.xilinx.com/r/en-US/ug1137-zynq-ultrascale-mpsoc-swdev>`_).
+.. note:: In this boot sequence, the First Stage Boot Loader (FSBL) loads PMU firmware. This is because the PMU firmware was added as a datafile partition type. Ideally, the boot ROM code can load the PMU firmware for PMU as seen in the earlier section. For more details on PMU firmware, refer to the “Platform Management” chapter in the *Zynq UltraScale+ MPSoC: Software Developers Guide* (`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
 
 Running the Image in QSPI Boot Mode on ZCU102 Board
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To test the image in this example, load the boot image (``qspi_BOOT.bin``) onto QSPI on the ZCU102 board using the program flash utility in the Vitis IDE. Alternatively, you can use the XSDB debugger.
 
-1. In the Vitis IDE, select **Xilinx → Program Flash**.
+1. In the Vitis IDE, select **Vitis → Program Flash**.
 
 2. In the Program Flash wizard, browse to and select the ``qspi_BOOT.bin`` image file that was created as a part of this example.
 
 3. Select **qspi-x8-dual_parallel** as the Flash type.
 
-4. Set the Offset as **0** and select the **FSBL ELF file (fsbl_a53.elf)**
+4. Set the Offset as **0** and select the **FSBL ELF file (fsbl.elf)**
 
 5. Ensure that a USB cable is connected between the USB-JTAG connector on ZCU102 target and the USB port on the host machine using the following steps.
 
@@ -538,7 +532,7 @@ Boot Sequence for QSPI-Boot Mode Using JTAG
 -------------------------------------------
 
 The Zynq UltraScale+ MPSoC supports many methods of loading the boot image. One method is to use the JTAG interface. This example XSCT
-session demonstrates how to download a boot image file (``qspi_BOOT.bin``) in QSPI using the XSDB debugger. After the QSPI is loaded, the ``qspi_BOOT.bin`` image executes in the same way as QSPI boot mode in Zynq UltraScale+ MPSoC. You can use the same XSCT session or the System Debugger for debugging similar boot flows.
+session demonstrates how to download a boot image file (``qspi_BOOT.bin``) in QSPI using the XSDB debugger. After the QSPI is loaded, the ``qspi_BOOT.bin`` image executes in the same way as QSPI boot mode in Zynq UltraScale+ MPSoC. You can use the same XSDB session or the System Debugger for debugging similar boot flows.
 
 The following sections demonstrate the basic steps involved in this boot mode.
 
@@ -551,14 +545,14 @@ Setting Up the Target
 
    .. image:: ./media/image26.jpeg
 
-3. Power on the board using switch SW1. Open the XSCT console in the Vitis IDE by clicking the XSCT button. Alternatively, you can also
-   open the XSCT console by selecting **Xilinx → XSCT Console**.
+3. Power on the board using switch SW1. Open the XSDB console in the Vitis IDE by clicking the XSCT button. Alternatively, you can also
+   open the XSDB console by selecting **Vitis → XSDB Console**.
 
-4. In the XSCT console, connect to the target over JTAG using the ``connect`` command:
+4. In the XSDB console, connect to the target over JTAG using the ``connect`` command:
 
    .. code::
    
-      xsct% connect
+      xsdb% connect
 
    The ``connect`` command returns the channel ID of the connection.
 
@@ -568,7 +562,7 @@ Setting Up the Target
 
    .. code::
    
-      xsct% targets
+      xsdb% targets
 
    The targets are listed as shown in the following figure.
 
@@ -583,21 +577,21 @@ Loading U-Boot Using XSCT/XSDB
 
       .. code::
 
-         xsct% targets -set -filter {name =~ "PSU"}
-         xsct% mwr 0xffca0038 0x1ff
-         xsct% targets
+         xsdb% targets -set -filter {name =~ "PSU"}
+         xsdb% mwr 0xffca0038 0x1ff
+         xsdb% targets
 
    2. Verify if the PMU MB target is listed under the PMU device. Now, load and run the PMU firmware.
    3. Reset APU Cortex-A53 Core 0 to load and run FSBL.
 
       .. code::
 
-         xsct% targets -set -filter {name =~ "Cortex-A53 #0"}
-         xsct% rst -processor
+         xsdb% targets -set -filter {name =~ "Cortex-A53 #0"}
+         xsdb% rst -processor
 
       .. note:: ``rst -processor`` clears the reset on an individual processor core.
 
-      This step is important, because when the Zynq UltraScale+ MPSoC boots up in JTAG boot mode, all the APU and RPU cores are held in reset. You must clear the resets on each core before performing debugging on these cores. You can use the ``rst`` command in XSCT to clear the resets.
+      This step is important, because when the Zynq UltraScale+ MPSoC boots up in JTAG boot mode, all the APU and RPU cores are held in reset. You must clear the resets on each core before performing debugging on these cores. You can use the ``rst`` command in XSDB to clear the resets.
 
       .. note:: The ``rst -cores`` command clears the resets on all the processor cores in the group (that is, the APU or RPU) of which the current target is a child. For example, when A53 #0 is the current target, ``rst -cores`` clears resets on all the Cortex-A53 cores in the APU.
 
@@ -605,22 +599,22 @@ Loading U-Boot Using XSCT/XSDB
 
       .. code::
 
-         xsct% dow {C:\edt\fsbl_a53\Debug\fsbl_a53.elf}
-         xsct% con
+         xsdb% dow {C:\edt\fsbl_a53\Debug\fsbl_a53.elf}
+         xsdb% con
 
    5. Verify the FSBL messages on the Serial Terminal and stop FSBL after a couple of seconds.
 
       .. code::
       
-         xsct% stop
+         xsdb% stop
 
    6. Load and run the TF-A.
 
       .. code::
 
-         xsct% dow {C:\edt\qspi_boot\bl31.elf}
-         xsct% con
-         xsct% stop
+         xsdb% dow {C:\edt\qspi_boot\bl31.elf}
+         xsdb% con
+         xsdb% stop
 
 2. Configure a Serial Terminal (Tera Term, Minicom, or the Serial Terminal interface for a UART-0 USB-serial connection).
 
@@ -632,13 +626,13 @@ Loading U-Boot Using XSCT/XSDB
 
    .. code::
    
-      xsct% dow {C:\edt\qspi_boot\u-boot.elf}
+      xsdb% dow {C:\edt\qspi_boot\u-boot.elf}
 
 5. Run U-Boot, using the ``con`` command in XSDB.
 
    .. code::
    
-      xsct% con
+      xsdb% con
 
 6. In the target Serial Terminal, press any key to stop the U-Boot auto-boot.
 
@@ -646,7 +640,7 @@ Loading U-Boot Using XSCT/XSDB
 
    .. code::
    
-      xsct% stop
+      xsdb% stop
 
 Load boot.bin in the DDR Memory Using XSDB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -655,13 +649,13 @@ Load boot.bin in the DDR Memory Using XSDB
 
    .. code::
 
-         xsct% dow -data {C:\edt\qspi_boot\qspi_BOOT.bin} 0x2000000
+         xsdb% dow -data {C:\edt\qspi_boot\qspi_BOOT.bin} 0x2000000
 
 2. Continue the U-Boot again, using the ``con`` command in XSDB.
 
    .. code::
    
-         xsct% con
+         xsdb% con
 
 Loading the boot.bin Image in QSPI Using U-Boot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -690,7 +684,7 @@ Because it is mostly intended to be used during the initial development phase, i
 Create First Stage Boot Loader for USB Boot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. In the Vitis IDE, select **File → New → Application Project** to open the New Project wizard.
+1. In the Vitis IDE, select **File → New Example → Zynq MP FSBL** to open the New Project wizard.
 
 2. Use the information in the table below to make your selections in the
    wizard.
@@ -704,21 +698,31 @@ Create First Stage Boot Loader for USB Boot
    | Application project  | Application project  | fsbl_usb_boot        |
    | details              | name                 |                      |
    +----------------------+----------------------+----------------------+
-   |                      | System project name  | fsbl_usb_boot_system |
-   +----------------------+----------------------+----------------------+
-   |                      | Target processor     | psu_cortexa53_0      |
-   +----------------------+----------------------+----------------------+
    | Domain               | Domain               | standalone on        |
    |                      |                      | psu_cortexa53_0      |
    +----------------------+----------------------+----------------------+
-   | Templates            | Available templates  | Zynq MP FSBL         |
+
+3. Select **File → New Component → System Project**. The Create System Project wizard opens.
+
+4. Use the information in the table below to make your selections in the wizard screens.
+
+   +----------------------+----------------------+----------------------+
+   | Screen               | System Properties    | Settings             |
+   +======================+======================+======================+
+   | Platform             | Select platform from | zcu102_edt           |
+   |                      | repository           |                      |
+   +----------------------+----------------------+----------------------+
+   | System project       | System Project Name  | fsbl_usb_boot_system |
+   | details              |                      |                      |
    +----------------------+----------------------+----------------------+
 
-3. Click **Finish**.
+5. Select the 'vitis-sys.json' file under settings within fsbl_usb_boot_system in the Explorer view and click Add Existing Component.
 
-4. In the Explorer view, expand the **fsbl_usb_boot** project and open **xfsbl_config.h** from **fsbl_usb_boot→ src→xfsbl_config.h**.
+6. Select Application and then select 'fsbl_usb_boot'. Now the fsbl_usb_boot application resides inside the fsbl_usb_boot_system component.
 
-5. In ``xfsbl_config.h`` change or set following settings:
+7. In the Explorer view, expand the **fsbl_usb_boot** project and open **xfsbl_config.h** from **fsbl_usb_boot→ src→xfsbl_config.h**.
+
+8. In ``xfsbl_config.h`` change or set following settings:
 
    .. code::
 
@@ -726,9 +730,9 @@ Create First Stage Boot Loader for USB Boot
       #define FSBL_SD_EXCLUDE_VAL (1U)
       #define FSBL_USB_EXCLUDE_VAL (0U)
 
-6. Press **Ctrl+S** to save these changes.
+9. Press **Ctrl+S** to save these changes.
 
-7. Build FSBL (``fsbl_usb_boot``).
+10. Build FSBL (``fsbl_usb_boot``).
 
 .. _creating-boot-images-for-usb-boot:
 
@@ -737,7 +741,7 @@ Creating Boot Images for USB Boot
 
 In this section, you will create the boot images to be loaded through a USB using the DFU utility. Device firmware upgrade (DFU) is intended to download and upload firmware to/from devices connected over USB. In this boot mode, the boot loader (FSBL) and the PMU firmware which are loaded by bootROM are copied to Zynq UltraScale+ on-chip memory (OCM) from the host machine USB port using the DFU utility. The size of the OCM (256 KB) limits the size of the boot image downloaded by bootROM in USB boot mode. Considering this, and subject to the size requirement being met, only FSBL and PMU firmware are stitched into the first ``boot.bin``, which is copied to the OCM. The remaining boot partitions will be stitched in another boot image and copied to DDR to be loaded by the FSBL which is already loaded and running at this stage. Follow these steps to create boot images for this boot mode.
 
-1. In the Vitis IDE, select **Xilinx → Create Boot Image**.
+1. In the Vitis IDE, select **Vitis → Create Boot Image**.
 
 2. Select ``fsbl_usb_boot.elf`` and ``pmufw.elf`` partitions and set them as shown in the following figure.
 
@@ -787,7 +791,7 @@ The following steps describe how to create a ``usb_boot.bin`` comprising rest of
 
 .. note:: Copy the newly generated U-Boot to ``C:\edt\usb_boot\``.
 
-1. In the Vitis IDE, select **Xilinx → Create Boot Image**.
+1. In the Vitis IDE, select **Vitis → Create Boot Image**.
 
 2. Select **FSBL** and rest of the partitions and set them as shown in the following figure. You can also choose to import the BIF file from the SD boot sequence.
 
@@ -894,7 +898,7 @@ Boot Commands for Linux Host Machine
 Boot Commands for Windows Host Machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. In the Vitis IDE, select **Xilinx → Launch Shell**.
+1. In the Vitis IDE, select **Terminal → New Terminal**.
 
 2. In the shell, verify if the DFU can detect the USB target:
 
@@ -959,3 +963,7 @@ Boot Commands for Windows Host Machine
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
+
+
+.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
