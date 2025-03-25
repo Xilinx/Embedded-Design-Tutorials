@@ -12,7 +12,7 @@ This chapter demonstrates how to develop and debug Linux applications.
 Example 4: Creating Linux Images
 --------------------------------
 
-In this example, you will configure and build a Linux operating system platform for an Arm |trade| Cortex-A9 core based APU on a Zynq |trade| 7000 device. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.
+In this example, you will configure and build a Linux operating system platform for an Arm |reg| Cortex-A9 core based APU on a Zynq |trade| 7000 device. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.
 
 Input and Output Files
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -29,7 +29,7 @@ Input and Output Files
 
 .. important::
 
-   1. This example requires a Linux host machine with PetaLinux installed. Refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`_) for information about dependencies for PetaLinux.
+   1. This example requires a Linux host machine with PetaLinux installed. Refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2023.2%20English&url=ug1144-petalinux-tools-reference-guide>`_) for information about dependencies for PetaLinux.
 
    2. This example uses the `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2023.2-final.bsp>`__ to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the `PetaLinux Tools download page <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_.
 
@@ -40,18 +40,18 @@ Creating a PetaLinux Image
 
    There are two ways to generate a petalinux project. Either using the BSP for a development board such as the ZC702, or if users have a custom board, users can use the template.
 
-
+   .. note:: There are petalinux flows for both XSA and SDT. BSPs built using the System Device Tree (SDT) flow are recommended for new designs. BSPs listed with 'XSCT' are for the legacy XSA flow for users who are upgrading existing projects and do not wish to change generation methods. In this tutorial we will follow the XSA flow.
 
    .. code:: bash
-
-      # Using the BSP
-      petalinux-create -t project -s <path to the xilinx-zc702-v2023.2-final.bsp>
+   
+      # Using the XSCT BSP
+      petalinux-create -t project -s <path to the xilinx-zc702-xsct-v2024.2-final.bsp>
       # Using the template for custom boards
-      petalinux-create -t project --template zynq -n xilinx-zc702-2023.2
+      petalinux-create -t project --template zynq -n xilinx-zc702-xsct-2024.2
 
-   .. note:: **xilinx-zc702-v2023.2-final.bsp** is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.
+   .. note:: **xilinx-zc702-xsct-v2024.2-final.bsp** is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.
 
-   This creates a PetaLinux project directory, **xilinx-zc702-2023.2**.
+   This creates a PetaLinux project directory, **xilinx-zc702-xsct-2024.2**.
 
 2. Reconfigure the project with **system_wrapper.xsa**:
 
@@ -63,10 +63,20 @@ Creating a PetaLinux Image
 
       .. code:: bash
 
-         cd xilinx-zc702-2023.2
+         cd xilinx-zc702-xsct-2024.2
+         
          petalinux-config --get-hw-description=<path that contains system_wrapper.xsa>
 
    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images. Select **Exit** and press **Enter** to exit the configuration window.
+
+   .. note:: The above command will not work within the SDT flow. For the SDT flow please point the '--get-hw-description' to your SDT directory.
+   
+   .. code:: bash
+
+      cd xilinx-zcu102-2024.2
+      petalinux-config --get-hw-description=<path to SDT directory>
+
+   `Generate the SDT with the SDT Generator Tool <https://github.com/Xilinx/system-device-tree-xlnx/blob/master/README.md>`_. The System Device Tree Generator (SDTGen) Tool is a package containing TCL scripts and Hardware HSI API's to extract hardware information from the XSA file into a System Device Tree (SDT) forma
 
    If you would prefer to skip the configuration window and keep the default settings, run the following command instead:
 
@@ -76,7 +86,7 @@ Creating a PetaLinux Image
 
 3. Build the PetaLinux project:
 
-   -  In the ``<PetaLinux-project>`` directory (for example, ``xilinx-zc702-2023.2``), build the Linux images using the following command:
+   -  In the ``<PetaLinux-project>`` directory (for example, ``xilinx-zc702-2024.2``), build the Linux images using the following command:
 
       .. code:: bash
 
@@ -362,6 +372,7 @@ Up until now, all your development and debugging activities have been running on
 
 .. include:: ../docs/substitutions.txt
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2022–2025 Advanced Micro Devices, Inc
+.. Copyright © 2021 Xilinx, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

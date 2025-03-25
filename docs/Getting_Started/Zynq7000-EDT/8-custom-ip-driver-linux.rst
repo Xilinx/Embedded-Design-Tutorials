@@ -297,7 +297,7 @@ In this section, you will connect the AXI4-Lite compliant custom slave periphera
 Linux-Based Device Driver Development
 -------------------------------------
 
-Modules in Linux are pieces of code that can be loaded and unloaded into the kernel on demand. A piece of code that you add in this way is called a loadable kernel module (LKM). These modules extend the functionality of the kernel without the need to reboot the system. Without modules, you would need to build monolithic kernels and add new functionality directly into the kernel image. Besides having larger kernels, this has the disadvantage of requiring you to rebuild and reboot the kernel every time you want new functionality. > LKMs typically are one of the following things:
+Modules in Linux are pieces of code that can be loaded and unloaded into the kernel on demand. A piece of code that you add in this way is called a loadable kernel module (LKM). These modules extend the functionality of the kernel without the need to reboot the system. Without modules, you would need to build monolithic kernels and add new functionality directly into the kernel image. Besides having larger kernels, this has the disadvantage of requiring you to rebuild and reboot the kernel every time you want new functionality. LKMs typically are one of the following things:
 
 -  **Device drivers:** A device driver is designed for a specific piece of hardware. The kernel uses it to communicate with that piece of hardware without having to know any details of how the hardware works.
 
@@ -445,7 +445,7 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 1.  Open the Vitis software platform. You must run the Target Communication Frame (TCF) agent on the host machine.
 
-2.  In the XSCT Console view, type ``connect`` to connect to the Xilinx Software Command-Line Tool (XSCT).
+2.  In the XSDB Console view, type ``connect`` to connect to the Xilinx Software Debugger (XSDB).
 
 3.  In the Vitis Unified IDE, select **File → New Component → Platform**  and populate using the table below.
 

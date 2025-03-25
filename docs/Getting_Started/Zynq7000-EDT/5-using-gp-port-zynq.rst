@@ -2,7 +2,7 @@
 Using the GP Port in Zynq Devices
 =================================
 
-One of the unique features of using the AMD |trade| Zynq |trade| 7000 SoC as an embedded design platform is in using the Zynq SoC processing system (PS) for its Arm |trade| Cortex-A9 dual core processing system as well as the programmable logic (PL) available on it.
+One of the unique features of using the AMD |trade| Zynq |reg| 7000 SoC as an embedded design platform is in using the Zynq SoC processing system (PS) for its Arm |trade| Cortex-A9 dual core processing system as well as the programmable logic (PL) available on it.
 
 In this chapter, you will create a design with:
 
@@ -182,7 +182,7 @@ Assigning Location Constraints to External Pins
 
       Pin Assigned
 
-   .. note:: For additional information about creating other design constraints, refer to the *Vivado Design Suite User Guide: Using Constraints* (`UG903 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug903-vivado-using-constraints.pdf>`_).
+   .. note:: For additional information about creating other design constraints, refer to the *Vivado Design Suite User Guide: Using Constraints* (`UG903 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2023.2%20English&url=ug903-vivado-using-constraints>`_).
 
 6. In the Flow Navigator, under Program and Debug, select **Generate Bitstream**.
 
