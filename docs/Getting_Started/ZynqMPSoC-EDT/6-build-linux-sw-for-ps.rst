@@ -6,7 +6,7 @@ Building and Debugging Linux Applications
 The earlier examples highlighted the creation of bootloader images and bare-metal applications for APU, RPU, and PMU using the Vitis |trade| IDE. This chapter demonstrates how to develop Linux applications.
 
 Example 8: Creating Linux Images and Applications using PetaLinux
-------------------------------------------------------------------
+-------------------------------------------------------------------
 
 In this example, you will configure and build a Linux operating system platform for an Arm |trade| Cortex-A53 core based APU on a Zynq |reg| UltraScale+ |trade| MPSoC. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.
 
@@ -39,17 +39,20 @@ Creating a PetaLinux Image
 
    .. code:: bash
 
-      petalinux-create -t project -s <path to the xilinx-zcu102-v2024.1-final.bsp>
+      petalinux-create -t project -s <path to the xilinx-zcu102-v2024.2-final.bsp>
 
-   .. note:: ``xilinx-zcu102-v2024.1-final.bsp`` is the PetaLinux BSP for the ZCU102 Production Silicon Rev 1.0 Board.
+   .. note:: ``xilinx-zcu102-v2024.2-final.bsp`` is the PetaLinux BSP for the ZCU102 Production Silicon Rev 1.0 Board.
 
-   This creates a PetaLinux project directory, ``xilinx-zcu102-2024.1``.
+   This creates a PetaLinux project directory, ``xilinx-zcu102-2024.2``.
 
 2. Reconfigure the project with `edt_zcu102_wrapper.xsa`:
 
    -  The created PetaLinux project uses the default hardware setup in the ZCU102 Linux BSP. In this example, you will reconfigure the
       PetaLinux project based on the Zynq UltraScale+ hardware platform that you configured using the Vivado |reg| Design Suite in :doc:`Zynq
       UltraScale+ MPSoC Processing System Configuration <3-system-configuration>`.
+      
+
+   .. note:: There are petalinux flows for both XSA and SDT. BSPs built using the System Device Tree (SDT) flow are recommended for new designs. BSPs listed with 'XSCT' are for the legacy XSA flow for users who are upgrading existing projects and do not wish to change generation methods. In this tutorial we will follow the XSA flow.
 
    -  Copy the hardware platform `edt_zcu102_wrapper.xsa` to the Linux host machine.
 
@@ -57,7 +60,7 @@ Creating a PetaLinux Image
 
       .. code:: bash
 
-         cd xilinx-zcu102-2024.1
+         cd xilinx-zcu102-2024.2
          petalinux-config --get-hw-description=<path containing edt_zcu102_wrapper.xsa>
 
    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images.
@@ -68,9 +71,18 @@ Creating a PetaLinux Image
 
       petalinux-config --get-hw-description=<path containing edt_zcu102_wrapper.xsa> --silentconfig
 
+   .. note:: The above command will not work with the petalinux SDT flow. For the SDT flow please point the '--get-hw-description' to your SDT directory.
+
+   .. code:: bash
+
+      cd xilinx-zcu102-2024.2
+      petalinux-config --get-hw-description=<path to SDT directory>
+
+   `Generate the SDT with the SDT Generator Tool <https://github.com/Xilinx/system-device-tree-xlnx/blob/master/README.md>`_. The System Device Tree Generator (SDTGen) Tool is a package containing TCL scripts and Hardware HSI API's to extract hardware information from the XSA file into a System Device Tree (SDT) format. 
+
 3. Build the PetaLinux project:
 
-   1. In the ``<PetaLinux-project>`` directory, for example, ``xilinx-zcu102-2024.1``, build the Linux images using the
+   1. In the ``<PetaLinux-project>`` directory, for example, ``xilinx-zcu102-2024.2``, build the Linux images using the
       following command:
 
       .. code:: bash
@@ -139,16 +151,19 @@ Creating Linux Applications in the Vitis IDE
 
 1. Create a Linux domain:
 
-   1. Double-click **platform.spr** in the zcu102_edt platform to open platform configurations.
+   1. Open the vitis-comp.json from settings in the zcu102 platform to open platform configurations.
+
    2. Click the **+** button to add a domain.
+
    3. Input the following domain parameters:
 
-      -  Name: **linux**
-      -  OS: **linux**
-      -  Keep the other options as-is and click **OK**.
+      1. Name: linux
+      2. OS: linux
+      3. Keep the other options as-is and click OK.
 
    4. Review the Linux domain configuration details.
-   5. Build the platform project by clicking the hammer icon.
+
+   5. Build the platform project by clicking the build button under the flow section.
 
       .. figure:: media/linux_domain_details.png
 
@@ -156,22 +171,24 @@ Creating Linux Applications in the Vitis IDE
 
 2. Create a Linux application:
 
-   1. Click **File → New → Application Project**.
-   2. Click **Next** on the welcome page.
-   3. Select platform: **zcu102_edt**. Click **Next**.
-   4. Enter the application project name, **hello_linux**, and the target processor, **psu_cortexa53 SMP**.
-   5. Keep the default domain: **linux**.
-   6. Keep the SYSROOT, rootfs, and kernel image empty, and click **Next**.
-   7. Select the **Linux Hello World** template. Click **Finish**.
+   1. Click **File → New Example → Linux Hello World**.
+   2. Click **Create Application Component from Template**.
+   3. Enter the application project name, linux_hello_world.
+   4. Select platform: zcu102_edt. Click Next.
+   5. Keep the default domain: linux.
+   6. Keep the SYSROOT empty, and click Next then Finish.
+   Note
 
-   .. note:: If you input an extracted SYSROOT directory, Vitis can find include files and libraries in SYSROOT. SYSROOT is generated by the PetaLinux project ``petalinux-build --sdk``. Refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1144-petalinux-tools-reference-guide>`_) for more information about SYSROOT generation.
+   If you input an extracted SYSROOT directory, Vitis can find include files and libraries in SYSROOT. SYSROOT is generated by the PetaLinux project petalinux-build --sdk. Refer to the PetaLinux Tools Documentation: Reference Guide (UG1144) for more information about SYSROOT generation.
 
-   .. note:: If you input a rootfs and kernel image, Vitis can help to generate the ``SD_card.img`` when building the Linux system project.
+   Note
+
+   If you input a rootfs and kernel image, Vitis can help to generate the SD_card.img when building the Linux system project.
 
 3. Build the hello_linux application.
 
-   - Select **hello_linux**.
-   - Click the hammer button to build the application.
+   1. Select linux_hello_world.
+   2. Click the build button under the flow tab to build the application.
 
 .. _preparing-the-linux-agent-for-remote-connection:
 
@@ -192,7 +209,7 @@ The Vitis IDE needs a channel to download the application to the running target.
 
    4. Set up a networking software environment.
 
-      1. If the host and the board are connected directly, run ``ifconfig eth0 192.168.1.1`` to setup an IP address on the board. 
+      1. If the host and the board are connected directly, run ``ifconfig end0 192.168.1.1`` to setup an IP address on the board. 
       2. Go to **Control Panel → Network and Internet → Network and Sharing Center**, and click **Change Adapter Settings**. 
       3. Find your Ethernet adapter, then right-click and select **Properties**. 
       4. Double-click **Internet Protocol Version 4 (TCP/IPv4)**, and select **Use the following IP address**. 
@@ -203,7 +220,7 @@ The Vitis IDE needs a channel to download the application to the running target.
 
 2. Set up the Linux agent in the Vitis IDE.
 
-   1. Click the **Target Connections** icon on the toolbar. It can also be launched by going to **Window → Show View…** and then looking for the target.
+   1. Click **Vitis → Target Connections** icon on the toolbar.
 
       .. figure:: media/vitis_launch_target_connections.png
          :alt: Vitis Show View search for Target Connections
@@ -231,14 +248,16 @@ Running the Linux Application from the Vitis IDE
 
 1. Run the Linux application:
 
-   1. Right-click **hello_linux**, and select **Run As → Run Configurations**.
-   2. Expand **Single Application Debug** and select **Debugger_hello_linux-Default**.
+   1. Select linux_hello_world, and click Open Settings button beside it to open the launch.json file.
+
+   2. Select Application Debug.
+
    3. Review the configurations:
 
-      - Debug type: **Linux Application Debug**
-      - Connection: **Linux Agent**
-  
-   4. Click **Run**.
+      1. Target Setup Mode: Application Debug
+      2. Target Connection: Linux Agent
+
+   4. Click Run.
 
       .. figure:: media/vitis_linux_run_configurations.png
          :alt: Vitis Linux Run Configurations
@@ -260,16 +279,16 @@ Debugging Linux applications requires the Linux agent to be set up properly. Ref
 
 1. Debug the Linux application:
 
-   1. Right-click **hello_linux**, then select **Debug As → Debug Configurations**.
-   2. Expand **Single Application Debug** and select **Debugger_hello_linux-Default**.
+   1. Select **hello_linux**, and click the **Open Settings** button beside it to open the ``launch.json`` file.
+   2. Select Application Debug.
    3. Review the configurations:
 
-      -  Debug type: **Linux Application Debug**
-      -  Connection: **Linux Agent**
+      1. Target Setup Mode: Application Debug
+      2. Target Connection: Linux Agent
+       
+   4. Click Debug.
 
-   4. Click **Debug**.
-
-   The debug configuration has identical options to the run configuration. The difference between debugging and running is that debugging stops at the ``main()`` function.
+   The debug configuration has identical options to the run configuration. The difference between debugging and running is that debugging stops at the main() function.
 
 2. Try the debugging features:
 
@@ -303,3 +322,6 @@ In the :doc:`next chapter <./7-design1-using-gpio-timer-interrupts>`, you will c
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
+
+.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
