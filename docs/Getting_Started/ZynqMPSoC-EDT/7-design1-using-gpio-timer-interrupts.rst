@@ -1,9 +1,4 @@
 ..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 =====================================================
 Design Example 1: Using GPIOs, Timers, and Interrupts
@@ -25,7 +20,7 @@ The Zynq |reg| UltraScale+ |trade| MPSoC ZCU102 evaluation board comes with a fe
 Configuring Hardware
 --------------------
 
-The first step in this design is to configure the PS and PL sections. This can be done in Vivado |reg| IP integrator. Start with adding the required IPs from the Vivado IP catalog, and then connect the components to blocks in the PS subsystem.
+The first step in this design is to configure the PS and PL sections. This can be done in Vivado IP integrator. Start with adding the required IPs from the Vivado IP catalog, and then connect the components to blocks in the PS subsystem.
 
 1. If the Vivado Design Suite is already open, start from the block diagram shown in and jump to step 4.
 
@@ -238,11 +233,9 @@ Configuring and Building Linux Using PetaLinux
 Creating the Bare-Metal Application Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Launch Vitis and use a new workspace: ``\edt\design\_example_1*\*`` for this project.
+1. Launch Vitis and use a new workspace: ``\edt\design\example1\`` for this project.
 
-2. In the Vitis IDE, select **File → New → Application Project**. The New Project wizard opens.
-
-3. Use the information in the table below to make your selections in the wizard.
+2. In the Vitis IDE, select **File → New Component → Platform**. The New Project wizard opens.
 
    +----------------------+----------------------+-----------------------------+
    | Screen               | System Properties    | Settings                    |
@@ -251,42 +244,62 @@ Creating the Bare-Metal Application Project
    |                      | Platform from        |                             |
    |                      | Hardware             |                             |
    +----------------------+----------------------+-----------------------------+
+   |                      | Platform Name        | zcu102                      |
+   +----------------------+----------------------+-----------------------------+
    |                      | Generate Boot        | **uncheck**                 |
-   |                      | Components           |                             |
+   |                      | Artifacts            |                             |
    +----------------------+----------------------+-----------------------------+
-   | Application Project  | Application project  | **tmr_psled_r5**            |
-   | Details              | name                 |                             |
-   +----------------------+----------------------+-----------------------------+
-   |                      | System project name  | tmr_psled_r5_system         |
+   |                      | Operating System     | Standalone                  |
    +----------------------+----------------------+-----------------------------+
    |                      | Target processor     | **psu_cortexr5_0**          |
    +----------------------+----------------------+-----------------------------+
-   | Domain               | Domain               | **psu_cortexr5_0**          |
+
+3. Select the **Build** button under the flow tab to build the **zcu102** platform.
+
+4. In the Vitis IDE, select **File → New Example → Empty Application → Create Application Component from Template**. The Create Application Component - Empty Application wizard opens.
+
+5. Use the information in the table below to make your selections in the wizard.
+
    +----------------------+----------------------+-----------------------------+
-   | Templates            | Available templates  | Empty Application(C)        |
+   | Screen               | System Properties    | Settings                    |
+   +======================+======================+=============================+
+   | Application Project  | Application project  | **tmr_psled_r5**            |
+   | Details              | name                 |                             |
+   +----------------------+----------------------+-----------------------------+
+   |                      | Target processor     | **psu_cortexr5_0**          |
+   +----------------------+----------------------+-----------------------------+
+   | Domain               | Domain               |**standalone_psu_cortexr5_0**|     
    +----------------------+----------------------+-----------------------------+
 
-4. Click **Finish**.
+6. Click **Finish**.
 
    The New Project wizard closes and the Vitis IDE creates the tmr_psled_r5 application project, which you can view in the Project Explorer.
 
-5. In the Project Explorer tab, expand the **tmr_psled_r5** project.
+7. In the Vitis IDE, select **File → New Component → System Project**. The Create System Project wizard opens.
 
-6. Right-click the **src** directory, and select **Import** to open the Import dialog box.
+8. Use the information in the table below to make your selections in the wizard.
 
-7. Expand General in the Import dialog box and select **File System**.
+   +----------------------+----------------------+-----------------------------+
+   | Screen               | System Properties    | Settings                    |
+   +======================+======================+=============================+
+   | System Project       | System project       | **tmr_psled_r5_system**     |
+   | Details              | name                 |                             |
+   +----------------------+----------------------+-----------------------------+
+   |                      | Platform             | **zcu102**                  |
+   +----------------------+----------------------+-----------------------------+
 
-8. Click **Next**.
+9. Select the 'vitis-sys.json' file under settings within tmr_psled_r5_system in the Explorer view and click Add Existing Component.
 
-9. Select **Browse** and navigate to the ``ref_files/design1`` folder.
+10. Select Application and then select 'tmr_psled_r5'. Now the tmr_psled_r5 application resides inside the tmr_psled_r5_system component.
 
-10. Click **OK**.
+11. In the Explorer view, expand the **tmr_psled_r5**.
 
-11. Select and add the **timer_psled_r5.c** file.
+   1. Right-click the src folder within Sources inside **tmr_psled_r5** and select **Import → Files** to open the Import view.
+   2. Navigate to the design files folder (ref_files/design1)
+   3. Select the **timer_psled_r5.c** file.
+   4. Click **Open**.
 
-12. Click **Finish**.
-
-The Vitis IDE automatically builds the application and displays the status in the console window.
+12. Build the tmr_psled_r5_system
 
 Modifying the Linker Script
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -310,79 +323,75 @@ Modifying the Linker Script
 
 5. Modify the BSP to configure UART with UART_1. For more information, see :ref:`modifying-the-board-support-package-for-testapp_r5`.
 
-6. Right-click the **tmr_psled_r5** project and select **Build Project**.
+6. Click the **tmr_psled_r5** project and select **Build** under the flow tab.
 
-7. Verify that the application is compiled and linked successfully and that the ``tmr_psled_r5.elf`` file is generated in the ``tmr_psled_r5\Debug`` folder.
+7. Verify that the application is compiled and linked successfully and that the ``tmr_psled_r5.elf`` file is generated in the ``tmr_psled_r5\build`` folder.
 
 Creating the Linux Domain for Linux Applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To create a Linux domain for generating Linux applications, follow these steps:
 
-1. In the Explorer view of the Vitis IDE, expand the edt_zcu102_wrapper platform project.
-
-2. Double-click **platform.spr** in the Explorer view to open the platform explorer.
-
-3. Click |image1| in the top right hand corner to add the domain.
-
+1. In the Explorer view of the Vitis IDE, expand the zcu102 platform project.
+2. Double-click vitis-comp.json under settings to open the platform explorer.
+3. Click the **+** button in the top left hand corner to add the domain.
 4. When the new domain window opens, enter the following details:
 
-   -  Name: Linux_Domain
-   -  Display name: Linux_Domain
-   -  OS: Linux
-   -  Processor: psu_cortexa53
-   -  Supported runtimes: C/C++
-   -  Architecture: 64-bit
-   -  Bif file: Provide a sample bif file.
-   -  Boot Component Directory: Create a boot directory and provide the path.
-   -  Linux Image Directory: Provide the same boot directory path.
+   1. Name: Linux_Domain
+   2. Display name: Linux_Domain
+   3. OS: Linux
+   4. Processor: psu_cortexa53
+   5. Architecture: 64-bit
 
 5. Build the platform to make the domain change take effects.
 
 Creating the Linux Application Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. In the Vitis IDE, select **File → New → Application Project**. The New Project wizard opens.
+1. In the Vitis IDE, select **File → New Example → Linux Empty Application → Create Application Component from Template**. The Create Application Component - Linux Empty Application wizard opens.
 
 2. Use the information in the table below to make your selections in the wizard.
 
    +----------------------+----------------------+-------------------------+
    | Screen               | System Properties    | Settings                |
    +======================+======================+=========================+
-   | Platform             | Select platform from | edt_zcu102_wrapper      |
-   |                      | repository           |                         |
+   | Application Project  | Select platform from | zcu102                  |
+   | Details              | repository           |                         |
    +----------------------+----------------------+-------------------------+
-   | Application project  | Application project  | ps_pl_linux_app         |
-   | details              | name                 |                         |
-   +----------------------+----------------------+-------------------------+
-   |                      | System project name  | ps_pl_linux_app_system  |
-   +----------------------+----------------------+-------------------------+
-   |                      | Target processor     | psu_cortexa53 SMP       |
+   |                      | Application project  | ps_pl_linux_app         |
+   |                      | name                 |                         |
    +----------------------+----------------------+-------------------------+
    | Domain               | Domain               | Linux_Domain            |
    +----------------------+----------------------+-------------------------+
-   | Templates            | Available templates  | Linux Empty Application |
-   +----------------------+----------------------+-------------------------+
-
-   Since we have already created the Linux domain on psu_cortexa53, it shows up in the target processor list. If you’d like to create the domain during application creation process, you need to check “Show all processors in the hardware specification” to let the wizard show all processors. By default, it only shows the processors that have been used by the domains in the platform.
 
 3. Click **Finish**.
 
    The New Project wizard closes and the Vitis IDE creates the ps_pl_linux_app application project, which can be found in the Project Explorer view.
 
-4. In the Project Explorer view, expand the **ps_pl_linux_app** project.
+4. In the Vitis IDE, select **File → New Component → System Project**. The Create System Project wizard opens.
 
-5. Right-click the ``src`` directory, and select **Import** to open the Import view.
+5. Use the information in the table below to make your selections in the wizard.
 
-6. Expand General in the Import dialog box and select **File System**.
+   +----------------------+----------------------+-------------------------+
+   | Screen               | System Properties    | Settings                |
+   +======================+======================+=========================+
+   | System Project       | Select platform from | zcu102                  |
+   | Details              | repository           |                         |
+   +----------------------+----------------------+-------------------------+
+   |                      | System project       | ps_pl_linux_app_system  |
+   |                      | name                 |                         |
+   +----------------------+----------------------+-------------------------+
 
-7. Click **Next**.
+6. Select the 'vitis-sys.json' file under settings within ps_pl_linux_app_system in the Explorer view and click Add Existing Component.
 
-8. Select **Browse** and navigate to the **ref_files/design1** folder.
+7. Select Application and then select 'ps_pl_linux_app'. Now the ps_pl_linux_app application resides inside the ps_pl_linux_app_system component.
 
-9. Click **OK**.
+8. In the Project Explorer view, expand the **ps_pl_linux_app** project.
 
-10. Select and add the **ps_pl_linux_app.c** file.
+   1. Right-click the src folder within Sources inside **ps_pl_linux_app** and select **Import → Files** to open the Import view.
+   2. Navigate to the design files folder (ref_files/design1)
+   3. Select the **ps_pl_linux_app.c** file.
+   4. Click **Open**.
 
     .. note:: The application might fail to build because of a missing reference to the pthread library. The next section shows how to add the pthread library.
 
@@ -393,17 +402,17 @@ Modifying the Build Settings
 
 This application makes use of pthreads from the pthread library. Add the pthread library as follows:
 
-1. Right-click **ps_pl_linux_app**, and click **C/C++ Build Settings**.
+1. Select the ps_pl_linux_app, and select UserConfig.cmake under Settings.
 
 2. Refer to the following figures to add the pthread library.
 
-   .. image:: ./media/image110.jpeg
+   .. image:: ./media/image110.png
 
    .. image:: ./media/image111.png
 
 3. Click **OK** in both the windows.
 
-4. Right-click the application and select **Build** to build the application.
+4. Click the application and then select **Build** to build the application.
 
 Creating a Boot Image
 ~~~~~~~~~~~~~~~~~~~~~
@@ -414,9 +423,9 @@ Now that all the individual images are ready, you will create the boot image to 
 
 2. Set the workspace based on the project you created in :doc:`Zynq UltraScale+ MPSoC Processing System Configuration <3-system-configuration>`. For example: ``C:\edt``.
 
-3. Select **Xilinx → Create Boot Image**.
+3. Select **Vitis → Create Boot Image → Zynq UltraScale+**.
 
-4. In the Create Boot Image wizard, add the settings and partitions as shown in the following figure.
+4. In the Create Zynq UltraScale+ Boot Image wizard, add the settings and partitions as shown in the following figure.
 
    .. note:: For detailed steps on how to add partitions, see :ref:`boot-sequence-for-sd-boot`.
 
@@ -516,7 +525,7 @@ steps.
 Reference Design Automation
 ---------------------------
 
-The `ref_design <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/ZynqMPSoC-EDT/ref_files/design1>`_ for this example provides not only the source code for applications, but also a Makefile to run
+The `ref_design <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Getting_Started/ZynqMPSoC-EDT/ref_files/design1>`_ for this example provides not only the source code for applications, but also a Makefile to run
 through the design generation process. To generate the binaries, run the following command:
 
 .. code:: bash
@@ -537,3 +546,6 @@ The :doc:`next chapter <./8-boot-and-configuration>` introduces more boot and co
    :ltrim:
 
 .. |image1| image:: ./media/image31.png
+
+.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

@@ -1,9 +1,3 @@
-..
-   Copyright 2015-2022 Xilinx, Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 ==============================================
 Building Standalone Software for PS Subsystems
@@ -11,8 +5,7 @@ Building Standalone Software for PS Subsystems
 
 This chapter lists the steps to configure and build software for PS subsystems.
 
-In the previous chapter, :doc:`Zynq UltraScale+ MPSoC Processing System Configuration <3-system-configuration>`, you created and exported
-the hardware design from Vivado. The exported XSA file contains the hardware handoff, the processing system initialization (``psu_init``),
+In the previous chapter, you created and exported the hardware design from Vivado. The exported XSA file contains the hardware handoff, the processing system initialization (``psu_init``),
 and the PL bitstream (if the hardware is exported as post-implementation). In this chapter, you will import the XSA into the Vitis |trade| IDE to generate software for the processing system.
 
 You will use the Vitis IDE to perform the following tasks:
@@ -33,7 +26,7 @@ The main processing units in the Zynq UltraScale+ processing system are listed b
 -  **Application processing unit:** Quad-core Arm |reg| Cortex |trade|-A53 MPCore processors
 -  **Real time processing unit:** Dual-core Arm Cortex |trade|-R5F MPCore processors
 -  **Graphics processing unit:** Arm Mali |trade| 400 MP2 GPU
--  **Platform management unit (PMU):** Xilinx MicroBlaze |trade| based platform management unit
+-  **Platform management unit (PMU):** AMD MicroBlaze |trade| based platform management unit
 
 The platform project reads in hardware information from the XSA file and contains the runtime environment for the above processing units.
 Application software can link against the libraries generated in the platform project.
@@ -55,25 +48,22 @@ The following steps show how to create a platform project with a standalone doma
 1. Launch the Vitis IDE:
 
    -  From the open Vivado IDE, click **Tools → Launch Vitis IDE**; or
-   -  From Windows Start menu, select **Xilinx Design Tools → Xilinx Vitis 2022.2**; or
-   -  Double-click the ``C:\Xilinx\Vitis\2022.2\bin\vitis.bat`` file.
+   -  From Windows Start menu, select **Xilinx Design Tools → Vitis**; or
+   -  Double-click the ``C:\Xilinx\Vitis\2024.2\bin\vitis.bat`` file.
 
 2. Select the workspace ``C\edt\edt_zcu102_workspace`` and continue.
 
-   .. figure:: ./media/image21.png
+   .. note:: If the directory does not exist, the Vitis software platform creates it.
 
-      Vitis IDE Launcher
+3. In the Vitis IDE, go to **File → New Component → Platform**.
 
-   .. note:: If the directory doesn’t exist, the Vitis software platform will create it.
+     .. figure:: ./media/image21.png
 
-3. In the Vitis IDE, go to **File → New → Platform Project**.
+4. In the Create Platform Component page, enter the platform name ``zcu102_edt`` and click **Next**.
 
-4. In the Create New Platform page, enter the platform name ``zcu102_edt`` and click **Next**.
+5. In the Platform view, go with the default tab **Hardware Design**.
 
-5. In the Platform view, go with the default tab **Create from hardware
-   specification (XSA)**.
-
-   .. note:: Use the **Select a platform from repository** tab when you have a pre-built platform and you’d like to copy it to local to modify it.
+   .. note:: Use the **Select a platform from repository** tab when you have a pre-built platform and you prefer to copy it to local to modify.
 
 6. Click **Browse…** to select the XSA file exported from previous chapter.
 
@@ -90,9 +80,7 @@ The following steps show how to create a platform project with a standalone doma
    +---------------------------------+-----------------+
    | Architecture                    | 64-bit          |
    +---------------------------------+-----------------+
-   | Generate Boot Components        | Keep it checked |
-   +---------------------------------+-----------------+
-   | Target processor to create FSBL | psu_cortexa53_0 |
+   | Generate Boot Artifacts         | Keep it checked |
    +---------------------------------+-----------------+
 
 8. Click **Finish**.
@@ -102,11 +90,11 @@ The following steps show how to create a platform project with a standalone doma
    .. image:: ./media/image23.png
 
    -  There is a standalone domain in the platform under psu_cortexa53_0 processor. New applications for Cortex-A53 can link against it.
-   -  Default domains for FSBL and PMU firmware come with the platform project when **Generate Boot Components** is selected during application or platform project creation.
+   -  Default domains for FSBL and PMU firmware come with the platform project when **Generate Boot Artifacts** is selected during application or platform project creation.
    -  You are free to add and remove domains in the platform project.
    -  You can customize the domain configurations.
 
-10. Build the hardware by right-clicking the platform, then selecting **Build Project**.
+10. Build the hardware by selecting the **Build** button within the flow tab.
 
     .. image:: ./media/image24.jpeg
 
@@ -152,15 +140,11 @@ Connecting the Serial Port
 
 1. Open your preferred serial communication utility for the COM port.
 
-   .. note:: You can use any serial communication utility in your system. The Vitis IDE provides a serial terminal utility. We will use it throughout the tutorial; select **Window → Show View → Vitis Serial Terminal** in Vitis IDE to open it.
+   .. note:: You can use any serial communication utility in your system. The Vitis IDE provides a serial terminal utility. We will use it throughout the tutorial; select Vitis → Serial Monitor in Vitis IDE to open it.
 
    .. note:: In Linux, root privilege is required to use UART.
 
-2. Click the **+** button to set the serial configuration.
-
-   .. figure:: ./media/vitis_serial_terminal.png
-
-      Vitis Terminal Window
+2. Navigate to Vits → Serial Monitor (If you have not yet enabled the serial monitor or you cannot see it under the vitis tab then enable it by navigating to Vits → New Feature Preview, select Serial Monitor and then select Enable).
 
 3. To find the correct COM port in Windows, verify the port details in the **Device Manager**. In Linux, check the COM port in ``/dev``.
 
@@ -172,9 +156,13 @@ Connecting the Serial Port
 
    In the above example, use **COM5** for Interface-0 and baud rate **115200**.
 
-4. From the **Port** dropdown menu, select the port number for Interface-0 (**COM5** in this example).
+4. From the **Port** dropdown menu, select the port number for Interface-0 (**COM3** in this example).
 
    .. image:: ./media/vitis_serial_terminal_connect.png
+
+4. Select **115200** as the baud rate.
+
+   .. image:: ./media/vitis_serial_terminal_connect_baud_rate.png
 
 5. Keep the other settings as-is and click **OK** to connect. The connection status is shown in the Vitis Serial Terminal window.
 
@@ -185,11 +173,9 @@ Creating a Hello World Application on Arm Cortex-A53
 
 To send the “Hello World” string to the UART0 peripheral, follow these steps:
 
-1. Select **File → New → Application Project**. The Create New Application Project wizard opens.
+1. Select **File → New Example → Hello World → Create Application Component from Template**. The Create Application Component - Hello World wizard opens.
 
-2. Click **Next**.
-
-3. Use the information in the table below to make your selections in the wizard screens.
+2. Use the information in the table below to make your selections in the wizard screens.
 
    +----------------------+----------------------+----------------------+
    | Screen               | System Properties    | Settings             |
@@ -197,35 +183,47 @@ To send the “Hello World” string to the UART0 peripheral, follow these steps
    | Platform             | Select platform from | zcu102_edt           |
    |                      | repository           |                      |
    +----------------------+----------------------+----------------------+
-   | Application project  | Application project  | hello_a53            |
-   | details              | name                 |                      |
-   +----------------------+----------------------+----------------------+
-   |                      | System project name  | hello_a53_system     |
-   +----------------------+----------------------+----------------------+
-   |                      | Target processor     | psu_cortexa53_0      |
+   | Application project  | Component Name       | hello_a53            |
+   | details              |                      |                      |
    +----------------------+----------------------+----------------------+
    | Domain               | Domain               | standalone on        |
    |                      |                      | psu_cortexa53_0      |
    +----------------------+----------------------+----------------------+
-   | Templates            | Available templates  | Hello World          |
+
+   The Vitis IDE creates the **hello_a53** application component in the Explorer view.
+
+3. Select **File → New Component → System Project**. The Create System Project wizard opens.
+
+4. Use the information in the table below to make your selections in the wizard screens.
+
+   +----------------------+----------------------+----------------------+
+   | Screen               | System Properties    | Settings             |
+   +======================+======================+======================+
+   | Platform             | Select platform from | zcu102_edt           |
+   |                      | repository           |                      |
+   +----------------------+----------------------+----------------------+
+   | System project       | System Project Name  | hello_a53_system     |
+   | details              |                      |                      |
    +----------------------+----------------------+----------------------+
 
-   The Vitis IDE creates the **hello_a53_system** project in the Explorer view. **hello_a53** sits inside **hello_a53_system**.
+5. Select the 'vitis-sys.json' file under settings within hello_a53_system in the Explorer view and click Add Existing Component.
+
+6. Select Application and then select 'hello_a53'. Now the hello_a53 application resides inside the hello_a53_system component.
 
 Running Hello World on the Board
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Right-click the **hello_a53 application project** and select **Build** to build the application.
+1. Select the **hello_a53 application project** and select **Build** to build the application.
 
-2. Right-click **hello_a53** and select **Run as → Run Configurations**.
+2. Select **hello_a53** and select the settings icon beside the **Run** button in the flow tab.
 
-3. Right-click **Xilinx Application Debugger** and click **New Configuration**.
+3. Select **New Launch Configuration**
 
-   The Vitis IDE creates the new run configuration, named ``Debugger_hello_a53-Default``.
+   The Vitis Unified IDE creates the new run configuration, named ``hello_a53_system_app_hw_1``.
 
    The configurations associated with the application are pre-populated in the Main page of the launch configurations.
 
-4. Click the **Target Setup** page to review the settings.
+4. Review the settings in the **launch.json** file.
 
    .. note:: The board should be in JTAG boot mode before power cycling.
 
@@ -237,13 +235,13 @@ Running Hello World on the Board
 
    .. code-block::
 
-      Xilinx Zynq MP First Stage Boot loader
+      Zynq MP First Stage Boot Loader 
 
-      Release 2022.2 <build time>
+      Release 2024.2   Oct 23 2024  -  10:06:42
       PMU-FW is not running, certain applications may not be supported.
 
       Hello World
-
+      
       Successfully ran Hello World application
 
    .. note:: No bitstream download is required for the above software application to be executed on the Zynq UltraScale+ evaluation board. The Arm Cortex-A53 quad-core is already present in the processing system. Basic initialization of this system to run a simple application is accomplised by the device initialization Tcl script.
@@ -317,9 +315,9 @@ Creating a Standalone BSP Domain for cortexr5_0
 
 In this step, you will prepare for the next example design: running a “Hello World” application on Arm Cortex-R5. The first step is to create a standalone BSP domain for cortexr5_0 by performing the following steps:
 
-1. Double-click ``platform.spr``. The platform opens in the Explorer view.
+1. Double-click ``vitis-comp.json`` under the platform settings. The platform opens in the Explorer view.
 
-2. Click in the top-right corner to add a domain |Add Icon|.
+2. Click in the top-left corner to add a domain |Add Icon|.
 
 3. Create a domain with the following settings:
 
@@ -330,18 +328,14 @@ In this step, you will prepare for the next example design: running a “Hello W
    +----------------------+-----------------------------+
    | Display name         | standalone_r5               |
    +----------------------+-----------------------------+
-   | OS                   | Standalone                  |
-   +----------------------+-----------------------------+
-   | Version              | Standalone (7.3)            |
+   | OS                   | standalone                  |
    +----------------------+-----------------------------+
    | Processor            | psu_cortexr5_0              |
    +----------------------+-----------------------------+
-   | Supported Runtime    | C/C++                       |
-   +----------------------+-----------------------------+
-   | Architecture         | 32-bit                      |
-   +----------------------+-----------------------------+
 
 4. The Vitis IDE creates a new domain and **standalone_r5** appears under the **zcu102_edt** platform.
+
+5. Build the platform.
 
 .. _what-just-happened-1:
 
@@ -353,11 +347,9 @@ The edt_zcu102_wrapper platform is, by default, assigned the default domain for 
 Creating a “Hello World” Application on Arm Cortex-R5F
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Select **File → New → Application Project**. The Create New Application Project wizard welcome screen opens.
+1. Select **File → New Example → Hello World → Create Application Component from Template**. The Create New Application Component - Hello World wizard welcome screen opens.
 
-2. Click **Next**.
-
-3. Use the information in the table below to make your selections in the wizard screens.
+2. Use the information in the table below to make your selections in the wizard screens.
 
    +------------------------+------------------------+-----------------+
    | Screen                 | System Properties      | Settings        |
@@ -368,29 +360,42 @@ Creating a “Hello World” Application on Arm Cortex-R5F
    | Application project    | Application project    | hello_r5        |
    | details                | name                   |                 |
    +------------------------+------------------------+-----------------+
-   |                        | System project name    | hello_r5_system |
-   +------------------------+------------------------+-----------------+
-   |                        | Target processor       | psu_cortexr5_0  |
-   +------------------------+------------------------+-----------------+
    | Domain                 | Domain                 | standalone_r5   |
    +------------------------+------------------------+-----------------+
-   | Templates              | Available templates    | Hello World     |
+
+
+3. Select **File → New Component → System Project**. The Create System Project wizard welcome screen opens.
+
+4. Use the information in the table below to make your selections in the wizard screens.
+
    +------------------------+------------------------+-----------------+
+   | Screen                 | System Properties      | Settings        |
+   +========================+========================+=================+
+   | Platform               | Select platform from   | zcu102_edt      |
+   |                        | repository             |                 |
+   +------------------------+------------------------+-----------------+
+   | System project         | System project         | hello_r5_system |
+   | details                | name                   |                 |
+   +------------------------+------------------------+-----------------+  
 
-   The Vitis IDE creates the **hello_r5_system** project in the Explorer view. **hello_r5** sits inside **hello_r5_system**.
+   The Vitis IDE creates the **hello_r5_system** project in the Explorer view.
 
-4. Select **hello_r5_system** and click the hammer icon in the toolbar to build the system project.
+5. Select the 'vitis-sys.json' file under settings within hello_r5_system in the Explorer view and click Add Existing Component.
+
+6. Select Application and then select 'hello_r5'. Now the hello_r5 application resides inside the hello_r5_system component.
+
+7. Select **hello_r5_system** and click the hammer icon in the toolbar to build the system project.
 
 Running the “Hello World” Application on Arm Cortex-R5F
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Right-click **hello_r5** and select **Run as → Run Configurations**.
+1. Select **hello_r5** and select the **settings** icon beside the **Run** button in the flow tab.
 
-2. Right-click **Xilinx Application Debugger** and click **New Configuration**.
+2. Select **New Launch Configuration**.
 
-   The Vitis IDE creates the new run configuration, named Debugger_hello_r5-Default. The configurations associated with the application are pre-populated in the Main page of the launch configurations.
+   The Vitis IDE creates the new run configuration, named hello_r5_app_hw_1. The configurations associated with the application are pre-populated in the Main page of the launch configurations.
 
-3. Click the **Target Setup** page and review the settings.
+3. Select the **launch.json** file and review the settings.
 
    This file is exported when you create the platform using the Vitis IDE; it contains the initialization information for the processing
    system.
@@ -404,32 +409,32 @@ Running the “Hello World” Application on Arm Cortex-R5F
    Because the “Hello World” applications for Cortex-A53 and Cortex-R5F are identical, they cannot be differentiated based on the print
    contents, but you can view the details in the **Debug Perspective**.
 
-   If you view the XSCT console, it shows the XSCT command history as shown in the following example:
+   If you view the XSDB console, it shows the XSDB command history as shown in the following example:
 
    .. code-block::
 
-         Downloading Program -- C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
-         section, .vectors: 0x00000000 - 0x00000637
-         section, .text: 0x00100000 - 0x00101947
-         section, .init: 0x00101948 - 0x00101953
-         section, .fini: 0x00101954 - 0x0010195f
-         section, .note.gnu.build-id: 0x00101960 - 0x00101983
-         section, .rodata: 0x00101988 - 0x00101f3c
-         section, .data: 0x00101f40 - 0x001023af
-         section, .bootdata: 0x001023b0 - 0x0010252f
-         section, .eh_frame: 0x00102530 - 0x00102533
-         section, .ARM.exidx: 0x00102534 - 0x0010253b
-         section, .init_array: 0x0010253c - 0x0010253f
-         section, .fini_array: 0x00102540 - 0x00102543
-         section, .bss: 0x00102544 - 0x0010256b
-         section, .heap: 0x0010256c - 0x0010456f
-         section, .stack: 0x00104570 - 0x00107d6f
+        Downloading Program -- C:/edt/edt_zcu102_workspace/hello_r5/build/hello_r5.elf
+        section, .vectors: 0x00000000 - 0x00000653
+        section, .bootdata: 0x00000658 - 0x000007d7
+        section, .text: 0x00100000 - 0x0010105f
+        section, .init: 0x00101060 - 0x0010106b
+        section, .fini: 0x0010106c - 0x00101077
+        section, .note.gnu.build-id: 0x00101078 - 0x0010109b
+        section, .rodata: 0x001010a0 - 0x001014a7
+        section, .data: 0x001014a8 - 0x00101917
+        section, .eh_frame: 0x00101918 - 0x0010191b
+        section, .init_array: 0x0010191c - 0x0010191f
+        section, .fini_array: 0x00101920 - 0x00101923
+        section, .drvcfg_sec: 0x00101924 - 0x00101933
+        section, .bss: 0x00101934 - 0x0010195b
+        section, .heap: 0x0010195c - 0x0010395f
+        section, .stack: 0x00103960 - 0x0010715f
 
-         0%    0MB   0.0MB/s  ??:?? ETA
-         100%    0MB   0.2MB/s  00:00    
-
-         Setting PC to Program Start Address 0x0000003c
-         Successfully downloaded C:/edt/edt_zcu102_workspace/hello_r5/Debug/hello_r5.elf
+        100%    0MB   0.2MB/s  00:00
+        
+        Setting PC to Program Start Address 0x0000003c
+        Successfully downloaded C:/edt/edt_zcu102_workspace/hello_r5/build/hello_r5.elf
+         
 
    More debugging techniques are explored in the :doc:`next chapter <./5-debugging-with-vitis-debugger>`.
 
@@ -455,7 +460,7 @@ Input and Output Files
 
    -  Platform: zcu102_edt with standalone domains for Arm Cortex-A53 and Arm Cortex-R5F
    -  Source code for Arm Cortex-R5F:
-      `ref_files/example5/testapp_r5.c <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/ZynqMPSoC-EDT/ref_files/example5>`_
+      `ref_files/example5/testapp_r5.c`
 
 -  Output:
 
@@ -466,11 +471,9 @@ Creating the hello_system System Project
 
 Use the same steps as :ref:`example-3-running-the-hello-world-application-from-arm-cortex-a53`, but this time create the system project with name ``hello_system``.
 
-1. Select **File → New → Application Project**. The Create New Application Project wizard welcome screen opens.
+1. Select **File → New Example → Hello World → Create Application Component from Template**. The Create New Application Project wizard welcome screen opens.
 
-2. Click **Next**.
-
-3. Use the information in the table below to make your selections in the wizard screens.
+2. Use the information in the table below to make your selections in the wizard screens.
 
    +----------------------+----------------------+----------------------+
    | Screen               | System Properties    | Settings             |
@@ -481,15 +484,15 @@ Use the same steps as :ref:`example-3-running-the-hello-world-application-from-a
    | Application project  | Application project  | **hello_sys_a53**    |
    | details              | name                 |                      |
    +----------------------+----------------------+----------------------+
-   |                      | System project name  | **hello_system**     |
-   +----------------------+----------------------+----------------------+
-   |                      | Target processor     | psu_cortexa53_0      |
-   +----------------------+----------------------+----------------------+
    | Domain               | Domain               | standalone on        |
    |                      |                      | psu_cortexa53_0      |
    +----------------------+----------------------+----------------------+
-   | Templates            | Available templates  | Hello World          |
-   +----------------------+----------------------+----------------------+
+
+3. Select the 'vitis-sys.json' file under settings within hello_system in the Explorer view and click Add Existing Component.
+
+4. Select Application and then select 'hello_sys_a53'. Now the hello_sys_a53 application resides inside the hello_system component.
+
+5. Select **hello_system** and click the hammer icon in the toolbar to build the system project.
 
    .. note:: Application projects in one workspace cannot have the same name even if they belong to different system projects, because they store flat in the workspace directory.
 
@@ -516,8 +519,7 @@ Modifying the hello_sys_a53 Application Source Code
 
 4. Build the hello_a53 application:
 
-   -  Right-click the **hello_sys_a53** application and select **Build Project**.
-   -  Alternatively, it can be done by clicking the save button on the toolbar.
+   -  Click the hello_sys_a53 application and then click Build under the flow tab
 
 5. Verify that the application is compiled and linked successfully:
 
@@ -525,15 +527,20 @@ Modifying the hello_sys_a53 Application Source Code
 
    .. code-block::
 
-         'Finished building target: hello_sys_a53.elf'
-         ' '
-         'Invoking: ARM v8 Print Size'
-         aarch64-none-elf-size hello_sys_a53.elf  |tee "hello_sys_a53.elf.size"
-            text      data     bss     dec     hex filename
-         30212    2048   20676   52936    cec8 hello_sys_a53.elf
-         'Finished building: hello_sys_a53.elf.size'
+         --------------------------------------------------------------------------------
+          [11/5/2024, 9:04:29 AM]: Build for hello_sys_a53::build with id '77931894-7d34-44dd-b932-093a068621d7' started.
+          --------------------------------------------------------------------------------
+         -- Configuring done
+         -- Generating done
+         ...
+            text	   data	    bss	    dec	    hex	filename
+            29561	    292	  21275	  51128	   c7b8	hello_sys_a53.elf
+         Build Finished successfully
+         --------------------------------------------------------------------------------
+         [11/5/2024, 9:04:31 AM]: Build for hello_sys_a53::build with id '77931894-7d34-44dd-b932-093a068621d7' ended.
 
-   -  The **hello_sys_a53.elf** file is generated in the **hello_sys_a53 → Debug** folder.
+
+   -  The **hello_sys_a53.elf** file is generated in the **hello_sys_a53 → build** folder.
 
 .. _creating-a-custom-bare-metal-application-for-an-arm-cortex-r5f-based-rpu-in-the-same-system-project:
 
@@ -545,7 +552,7 @@ directory. They will be imported in the next steps.
 
 1. Create an empty bare-metal application for Cortex-R5F Core 0 in the **hello_system** system project:
 
-   1. In the Explorer View, select **hello_system**, right-click it, and select **Add Application Project** to open the New Project wizard.
+   1. In the Explorer View, select **File → New Example → Empty Application → Create Application Component from Template**. The Create Application Component wizard welcome screen opens. 
    2. Use the information in the following table to make your selections in the wizard.
 
       +----------------------+----------------------+----------------------+
@@ -554,31 +561,22 @@ directory. They will be imported in the next steps.
       | Application project  | Application project  | **testapp_r5**       |
       | details              | name                 |                      |
       +----------------------+----------------------+----------------------+
-      |                      | System project name  | hello_system         |
-      +----------------------+----------------------+----------------------+
-      |                      | Show all processors  | unchecked            |
-      |                      | in hardware          |                      |
-      |                      | specification        |                      |
-      +----------------------+----------------------+----------------------+
-      |                      | Target processor     | psu_cortexr5_0       |
+      |                      | Platform             | zcu102               |
       +----------------------+----------------------+----------------------+
       | Domain               | Domain               | standalone_r5        |
       +----------------------+----------------------+----------------------+
-      | Templates            | Available templates  | Empty application(C) |
-      +----------------------+----------------------+----------------------+
+   
+   3. Select the 'vitis-sys.json' file under settings within hello_system in the Explorer view and click Add Existing Component.
 
-   3. Click **Finish**. The New Project wizard closes and the Vitis IDE creates the testapp_r5 application project in the hello_system system project.
+   4. Select Application and then select 'testapp_r5'. Now the testapp_r5 application resides inside the hello_system component.
 
 2. Import the prepared source code for **testapp_r5**:
 
    1. In the Explorer view, expand the **hello_system** project to find the **testapp_r5** project.
-   2. Right-click the **testapp_r5** and select **Import Sources** to open the Import view.
-   3. In the **From directory** field, select **Browse** and navigate to the design files folder (`ref_files/example5/testapp_r5.c <https://github.com/Xilinx/Embedded-Design-Tutorials/blob/master/docs/Introduction/ZynqMPSoC-EDT/ref_files/example5/testapp_r5.c>`_).
-   4. Click **OK**.
-   5. Select the **testapp.c** file.
-   6. Click **Finish**.
-
-      .. figure:: ./media/vitis_import_source.png
+   2. Right-click the src folder within Sources inside the **testapp_r5** and select **Import → Files** to open the Import view.
+   3. Navigate to the design files folder (ref_files/example5/testapp_r5.c)
+   4. Select the **testapp.c** file.
+   5. Click **Open**.
 
 3. Open **testapp_r5.c** in to review the source code for this application:
 
@@ -612,35 +610,34 @@ When two applications needs to run at the same time, they cannot use resources i
 
 4. Press **Ctrl + S** to save the changes.
 
-5. Right-click the **testapp_r5** project and select **Build Project**.
+5. Select the **testapp_r5** project in the component box within the flow tab and then click **Build**.
 
-6. Verify that the application is compiled and linked successfully, and that the ``testapp_r5.elf`` file has been generated in the ``testapp_r5/Debug`` folder.
+6. Verify that the application is compiled and linked successfully, and that the ``testapp_r5.elf`` file has been generated in the ``testapp_r5/build`` folder.
 
 Modifying the Board Support Package for testapp_r5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ZCU102 Evaluation kit has a USB-TO-QUAD-UART Bridge IC from Silicon Labs (CP2108). This enables you to select a different UART port for applications running on Cortex-A53 and Cortex-R5F cores. For this example, let Cortex-A53 use the UART 0 by default, and send and receive RPU serial data over UART 1. This requires a small modification in the standalone_r5 bsp configuration.
 
-1. Open the platform details tab by double-clicking **zcu102_edt → platform.spr**.
+1. Open the platform details tab by clicking vitis-comp.json under zcu102_edt.
 
 2. Open the standalone domain BSP setting details for Cortex-R5F:
 
-   1. Navigate to **psu_cortexr5 → standalone_r5 → Board Support Package**.
-   2. Click **Modify BSP Settings**.
+   1. Navigate to psu_cortexr5_0 → standalone_r5 → Board Support Package → standalone.
 
 3. Change the UART settings for standalone_r5:
 
-   1. Select the **Standalone** tab.
-   2. Change **stdin** to **psu_uart_1**.
-   3. Change **stdout** to **psu_uart_1**.
+   1. Change standalone_stdin to psu_uart_1.
+
+   2. Change standalone_stdout to psu_uart_1
 
       .. image:: ./media/image37.png
 
    4. Click **OK**.
 
-4. Build the psu_cortexr5_0 domain and the testapp_r5 application.
+4. Build the zcu102 platform and the testapp_r5 application.
 
-5. Verify that the application is compiled and linked successfully and that the ``testapp_r5.elf`` has been generated in the ``testapp_r5/Debug`` folder.
+5. Verify that the application is compiled and linked successfully and that the ``testapp_r5.elf`` has been generated in the ``testapp_r5/build`` folder.
 
 Running the hello_system System Project on Hardware
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -657,7 +654,7 @@ Running the hello_system System Project on Hardware
    2. Open USB UART Interface-0 for UART-0 for APU.
    3. Open USB UART Interface-1 for UART-1 for RPU.
 
-3. Run hello_system on hardware by right-clicking **hello_system** in the Explorer window, and selecting **Run As → Launch Hardware**.
+3. Run hello_system on hardware by selecting **hello_system** in the Explorer window, and clicking the **Run** button within the flow tab.
 
    The message from MobaXterm shows prints from the APU and RPU.
 
@@ -679,7 +676,7 @@ The Vitis tool uses JTAG to control the board, and performed the following tasks
 -  Ran applications on both processors.
 -  The application on APU printed on UART-0 and the application on RPU printed on UART-1.
 
-You can view the detailed steps by right-clicking **hello_system**, selecting **Run As → Run Configurations**, and viewing the Target Setup tab.
+You can view the detailed steps by clicking **hello_system** and selecting **Open Settings** beside Run in the flow tab to display the ``launch.json`` configuration file..
 
 .. figure:: media/vitis_run_configurations.png
 
@@ -722,3 +719,6 @@ In the :doc:`next chapter <./5-debugging-with-vitis-debugger>`, you will learn a
    :ltrim:
 
 .. |Add Icon| image:: ./media/image31.png
+
+.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
