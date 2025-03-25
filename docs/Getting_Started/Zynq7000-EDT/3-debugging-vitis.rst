@@ -2,7 +2,7 @@
 Debugging Standalone Applications with the Vitis Unified Software Platform
 ===========================================================================================
 
-Although a simple “Hello World” application does not require much debugging, this chapter demonstrates the debugging setup and procedure in the Vitis Unified IDE in :ref:`example-3-debugging-standalone-software-using-the-vitis-software-platform`.
+Although a simple “Hello World” application does not require much debugging, this chapter demonstrates the debugging setup and procedure in the AMD Vitis |trade| Unified IDE in :ref:`example-3-debugging-standalone-software-using-the-vitis-software-platform`.
 
 The Vitis software platform debugger provides the following debug
 capabilities:

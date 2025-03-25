@@ -138,13 +138,13 @@ Update the Vivado Design
 
    3. In the Range column for **S_AXI_HP0**, select **256M**.
 
-   4. Under Offset Address for **S_AXI_HP0**, set a value of **0x2000_0000**.
+   4. Under Master Base Address for **S_AXI_HP0**, set a value of **0x2000_0000**.
 
    5. In the Address Editor window, expand **axi_cdma_0 → axi_cdma_0/Data → Unassigned**. Right-click **HP2_DDR_LOWOCM** and select **Assign**.
 
    6. In the Range column for **S_AXI_HP2**, select **256M**.
 
-   7. Under Offset Address for **S_AXI_HP2**, set a value of **0x3000_0000**.
+   7. Under Master Base Address for **S_AXI_HP2**, set a value of **0x3000_0000**.
 
       .. figure:: ./media/image64.png
          :alt: Final Address Settings
@@ -240,7 +240,7 @@ Creating the Standalone CDMA Application
 
 4. In the Vitis Components view, expand the **cdma_app** component, right-click the **src** directory, and select **Import** → *Files* to open the Import Sources dialog box.
 
-5. In the Import Sources dialog box, click the **Browse** button next to the **From directory** field and specify the design files folder to `ref_files/example7 <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Introduction/Zynq7000-EDT/ref_files/example7>`_.
+5. In the Import Sources dialog box, click the **Browse** button next to the **From directory** field and specify the design files folder to `ref_files/example7 <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Getting_Started/Zynq7000-EDT/ref_files/example7>`_.
 
 6. Select the **cdma_app.c** file and click **Finish**.
 
@@ -257,7 +257,7 @@ Running CDMA the App on ZC702
 
    .. note:: Refer to :ref:`setting-up-the-board` for information about setting up the board.
 
-3. Run the project by right-clicking **cdma_app** and selecting **Run as → Run on Hardware**
+3. Run the project by clicking **cdma_app** and selecting **Run** in the flow tab.
 
 4. Check the status of the CDMA transfer in the serial terminal. If the transfer is successful, the message “DMA Transfer is Successful displays. Otherwise, the serial terminal displays an error message.
 
