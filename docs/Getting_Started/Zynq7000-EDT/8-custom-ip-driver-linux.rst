@@ -598,6 +598,7 @@ In this section, you will use the Vitis software platform installed on a Windows
 
 .. include:: ../docs/substitutions.txt
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2022–2025 Advanced Micro Devices, Inc
+.. Copyright © 2021 Xilinx, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
