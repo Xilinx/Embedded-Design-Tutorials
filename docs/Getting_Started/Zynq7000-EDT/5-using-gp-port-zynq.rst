@@ -126,7 +126,7 @@ In this example, you will add the AXI GPIO, AXI Timer, the interrupt instantiate
 6. Customize the **AXI GPIO** IP block:
 
    1. Double-click the **AXI GPIO** IP block to customize it.
-   2. Under the **Board** page, make sure that both **GPIO** and **GPIO2** are set to **Custom**.
+   2. Under the **Board Interface** page, make sure that both **GPIO** and **GPIO2** are set to **Custom**.
    3. Select the **IP Configuration** page. In the GPIO section, change the **GPIO Width** to **1** because you only need one GPIO port.
    4. Ensure that **All Inputs** and **All Outputs** are both unchecked.
    5. Click **OK** to accept the changes.
@@ -225,7 +225,7 @@ Updating Hardware in the Vitis Software Platform
 Open the Vitis Unified IDE and manually update the exported hardware from
 Vivado.
 
-1.  Click **edt_zc702** → **Settings** → **vitis-comp.json**. 
+1.  Click **zc702_edt** → **Settings** → **vitis-comp.json**. 
 
    .. figure:: ./media/image52.png
       :alt: Switch XSA
@@ -246,9 +246,9 @@ Testing the PL IP with Prepared Software
 
 1. Create a new standalone application for Arm Cortex-A9:
 
-   -  Select **File → New Component → Application Project**.
+   -  Select **File → New Component → Application**.
    -  Give the Application Name: **hello_pl** and click **Next**.
-   -  Select the **edt_zc702** and click **Next**.
+   -  Select the **zc702_edt** and click **Next**.
    -  Choose the default domain in the Platform and click **Next**.
    -  Click **Finish**. The Vitis Unified IDE creates an empty application template called **hello_pl**.
 
@@ -343,6 +343,7 @@ See the :doc:`next chapter <./6-using-hp-port>` for information about using the 
 
 .. include:: ../docs/substitutions.txt
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2022–2025 Advanced Micro Devices, Inc
+.. Copyright © 2021 Xilinx, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
