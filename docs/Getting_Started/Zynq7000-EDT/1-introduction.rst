@@ -110,6 +110,7 @@ Start with the first examples in the :doc:`next chapter <./2-using-zynq>`.
 
 .. include:: ../docs/substitutions.txt
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2022–2024 Advanced Micro Devices, Inc
+.. Copyright © 2021 Xilinx, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
