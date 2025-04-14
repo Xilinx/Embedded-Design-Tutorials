@@ -27,6 +27,7 @@ extern char inbyte(void);
 #define TIMER_CNTR_0	 0
 void Timer_InterruptHandler(void *data, u8 TmrCtrNumber)
 {
+    TmrCtrNumber = TIMER_CNTR_0;
 	print("\r\n");
 	print("\r\n");
 	print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n");
@@ -196,10 +197,11 @@ XGpioPs_SetOutputEnablePin(&psGpioInstancePtr, iPinNumberEMIO,0);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #ifdef SDT
-	XGpio_Config *ConfigPtr;
-
-	ConfigPtr = XGpio_LookupConfig(XPAR_AXI_GPIO_0_BASEADDR);
+    XTmrCtr_Config *ConfigPtr;
+	
+    ConfigPtr = XTmrCtr_LookupConfig(XPAR_AXI_TIMER_0_BASEADDR);
 #endif
+
 
 #ifndef SDT
 	xStatus= ScuGicInterrupt_Init(XPAR_PS7_SCUGIC_0_DEVICE_ID,&TimerInstancePtr);
