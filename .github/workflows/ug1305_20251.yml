@@ -1,17 +1,17 @@
 # This YAML file defines a GitHub Actions workflow for updating the
-# UG1165 documentation whenever changes are pushed to the '2024.2_next'
+# UG1209 documentation whenever changes are pushed to the '2025.1_next'
 # branch of the Emb-Design-Tutorials repository affecting files under
-# the 'docs/Getting_Started/Zynq7000-EDT/' directory.
+# the 'docs/Getting_Started/Versal-EDT/' directory.
 
-name: Update UG1165 2024.2
+name: Update UG1305 2025.1
 
 # The 'on' section defines the events that trigger the workflow.
 on:
   push:
     branches:
-      - 2024.2_next
+      - 2025.1_next
     paths:
-      - 'docs/Getting_Started/Zynq7000-EDT/**'
+      - 'docs/Getting_Started/Versal-EDT/**'
 
 # Permissions to write to the repository are required.
 permissions: write-all
@@ -27,7 +27,7 @@ jobs:
       - name: Checkout Emb-Design-Tutorials repository
         uses: actions/checkout@v2
         with:
-          ref: '2024.2_next'
+          ref: '2025.1_next'
           fetch-depth: 0
 
       # Step 2: Set up the SSH directory and known_hosts file.
@@ -50,29 +50,29 @@ jobs:
           rm -f private_key.pem
           ssh-keyscan gitenterprise.xilinx.com >> "$HOME/.ssh/known_hosts"
       
-      # Step 4: Check out the '2024.2_next' branch of the techdocs/UG1165
-      # repository with the SSH key stored in the 'ug1165_deploy_key' secret,
-      # placing its contents in the 'UG1165_repo' directory.
-      - name: Checkout techdocs/UG1165 repository
+      # Step 4: Check out the '2025.1_next' branch of the techdocs/UG1305
+      # repository with the SSH key stored in the 'ug1305_deploy_key' secret,
+      # placing its contents in the 'UG1305_repo' directory.
+      - name: Checkout techdocs/UG1305 repository
         uses: actions/checkout@v2
         with:
-          repository: techdocs/UG1165
-          ssh-key: ${{ secrets.ug1165_deploy_key }}
-          path: UG1165_repo
-          ref: 2024.2_next
+          repository: techdocs/UG1305
+          ssh-key: ${{ secrets.ug1305_deploy_key }}
+          path: UG1305_repo
+          ref: 2025.1_next
 
-      # Step 5: Copy the contents of the 'docs/Getting_Started/Zynq7000-EDT/'
-      # directory to the 'build_html/source/' directory of the UG1165 repository.
-      - name: Move contents of Zynq7000-EDT to ug1165_repo
+      # Step 5: Copy the contents of the 'docs/Getting_Started/Versal-EDT/'
+      # directory to the 'build_html/source/' directory of the UG1305 repository.
+      - name: Move contents of Versal-EDT to ug1305_repo
         run: |
-          cp -r docs/Getting_Started/Zynq7000-EDT/* UG1165_repo/build_html/source/
+          cp -r docs/Getting_Started/Versal-EDT/* UG1305_repo/build_html/source/
       
-      # Step 6: Commit the changes in the UG1165 repository, and push them.
-      - name: Commit and push changes to techdocs-UG1165
+      # Step 6: Commit the changes in the UG1305 repository and push them.
+      - name: Commit and push changes to techdocs-UG1305
         run: |
-          cd UG1165_repo
+          cd UG1305_repo
           git config user.email "actions@github.com"
           git config user.name "GitHub Action"
           git add -A
-          git commit -m "Update UG1165 2024.2 documentation from Emb-Design-Tutorials repository"
+          git commit -m "Update UG1305 2025.1 documentation from Emb-Design-Tutorials repository"
           git push

@@ -1,17 +1,19 @@
 # This YAML file defines a GitHub Actions workflow for updating the
-# UG1145 documentation whenever changes are pushed to the '2024.2_next'
+# XD071 documentation whenever changes are pushed to the '2025.1_next'
 # branch of the Emb-Design-Tutorials repository affecting files under
-# the 'docs/Performance/SPA-UG/' directory. 
+# the 'docs/Performance/Performance_Benchmark/Dhrystone/' directory.
 
-name: Update UG1145 2024.2
+name: Update XD071 2025.1
 
-# The 'on' section defines the events that trigger the workflow.
+# The 'on' section defines the events that trigger the workflow.  
 on:
   push:
     branches:
-      - 2024.2_next
+      - 2025.1_next
     paths:
-      - 'docs/Performance/SPA-UG/**'
+      - 'docs/Performance/Performance_Benchmark/Dhrystone/**'
+  # This workflow can also be triggered manually using the GitHub Actions web interface.
+  workflow_dispatch:
 
 # Permissions to write to the repository are required.
 permissions: write-all
@@ -27,7 +29,7 @@ jobs:
       - name: Checkout Emb-Design-Tutorials repository
         uses: actions/checkout@v2
         with:
-          ref: '2024.2_next'
+          ref: '2025.1_next'
           fetch-depth: 0
 
       # Step 2: Set up the SSH directory and known_hosts file.
@@ -50,29 +52,29 @@ jobs:
           rm -f private_key.pem
           ssh-keyscan gitenterprise.xilinx.com >> "$HOME/.ssh/known_hosts"
       
-      # Step 4: Check out the '2024.2_next' branch of the techdocs/UG1145
-      # repository with the SSH key stored in the 'ug1145_deploy_key' secret,
-      # placing its contents in the 'UG1145_repo' directory.
-      - name: Checkout techdocs/UG1145 repository
+      # Step 4: Check out the '2025.1_next' branch of the techdocs/XD071
+      # repository with the SSH key stored in the 'xd071_deploy_key' secret,
+      # placing its contents in the 'XD071_repo' directory.
+      - name: Checkout techdocs/XD071 repository
         uses: actions/checkout@v2
         with:
-          repository: techdocs/UG1145_System_Performance_Analysis 
-          ssh-key: ${{ secrets.ug1145_deploy_key }}
-          path: UG1145_repo
-          ref: 2024.2_next
+          repository: techdocs/XD071
+          ssh-key: ${{ secrets.xd071_deploy_key }}
+          path: XD071_repo
+          ref: 2025.1_next
 
-      # Step 5: Copy the contents of the 'docs/Performance/SPA-UG/'
-      # directory to the 'build_html/source/' directory of the UG1145 repository.
-      - name: Move contents of SPA-UG to ug1145_repo
+      # Step 5: Copy the contents of the 'docs/Performance/Performance_Benchmark/Dhrystone/'
+      # directory to the 'build_html/source/' directory of the XD071 repository.
+      - name: Move contents of Performance_Benchmark/Dhrystone to xd071_repo 
         run: |
-          cp -r docs/Performance/SPA-UG/* UG1145_repo/build_html/source/
+          cp -r docs/Performance/Performance_Benchmark/Dhrystone/* XD071_repo/build_html/source/
       
-      # Step 6: Commit the changes in the UG1145 repository, and push them.
-      - name: Commit and push changes to techdocs-UG1145
+      # Step 6: Commit the changes in the XD071 repository and push them.
+      - name: Commit and push changes to techdocs-XD071
         run: |
-          cd UG1145_repo
+          cd XD071_repo
           git config user.email "actions@github.com"
           git config user.name "GitHub Action"
           git add -A
-          git commit -m "Update UG1145 2024.2 documentation from Emb-Design-Tutorials repository"
+          git commit -m "Update XD071 2025.1 documentation from Emb-Design-Tutorials repository"
           git push
