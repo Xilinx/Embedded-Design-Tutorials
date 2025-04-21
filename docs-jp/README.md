@@ -1,10 +1,11 @@
-<p align="right"><a href="../docs-cn/README.md">简体中文</a> | <a href="../docs/README.md">English</a></p>
+﻿<p align="right"><a href="../docs-cn/README.md">简体中文</a> | <a href="../docs/README.md">English</a></p>
 <table width="100%">
  <tr width="100%">
-    <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>エンベデッド デザインの資料</h1><p>この資料の最新日本語版は、<a href="https://xilinx.github.io/Embedded-Design-Tutorials/master/docs-jp/index.html">GitHub IO サイト</a>でのみ提供されています。</p>
+    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>エンベデッド デザインの資料</h1>
     </td>
  </tr>
 </table>
+<p><b>注記</b>:最新の日本語版は、<a href="https://github.io/Embedded-Design-Tutorials">https://github.io/Embedded-Design-Tutorials</a> を参照してください。</p>
 ザイリンクスおよびそのエコシステム パートナーは、コンセプトからリリースまでを効率的で迅速に移行するエンベデッド ツールおよびランタイム環境を提供しています。ザイリンクス Zynq® SoC および Zynq UltraScale+ MPSoC デバイス、MicroBlaze™ プロセッサ コア、オープンソース オペレーティング システムやベアメタル ドライバーを含む Arm Cortex-M1/M3 マイクロ コントローラー、複数のランタイムとマルチ OS 環境、高度な統合開発環境、コンパイラ、デバッガー、およびプロファイリング ツールを使用したエンベデッド システムの作成に必要なすべてのコンポーネントが提供されます。
 
 ![エンベデッド チュートリアル](../docs/Introduction/Versal-EDT/docs/media/embedded-tutorials-landing.png)
