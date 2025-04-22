@@ -45,6 +45,7 @@ Creating a PetaLinux Image
    .. code:: bash
    
       # Using the XSCT BSP
+
       petalinux-create -t project -s <path to the xilinx-zc702-xsct-v2024.2-final.bsp>
       # Using the template for custom boards
       petalinux-create -t project --template zynq -n xilinx-zc702-xsct-2024.2
@@ -64,19 +65,18 @@ Creating a PetaLinux Image
       .. code:: bash
 
          cd xilinx-zc702-xsct-2024.2
-         
          petalinux-config --get-hw-description=<path that contains system_wrapper.xsa>
 
    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images. Select **Exit** and press **Enter** to exit the configuration window.
 
    .. note:: The above command will not work within the SDT flow. For the SDT flow please point the '--get-hw-description' to your SDT directory.
-   
+
    .. code:: bash
 
-      cd xilinx-zcu102-2024.2
+      cd xilinx-zc702-xsct-2024.2
       petalinux-config --get-hw-description=<path to SDT directory>
 
-   `Generate the SDT with the SDT Generator Tool <https://github.com/Xilinx/system-device-tree-xlnx/blob/master/README.md>`_. The System Device Tree Generator (SDTGen) Tool is a package containing TCL scripts and Hardware HSI API's to extract hardware information from the XSA file into a System Device Tree (SDT) forma
+   `Generate the SDT with the SDT Generator Tool <https://github.com/Xilinx/system-device-tree-xlnx/blob/master/README.md>`__.. The System Device Tree Generator (SDTGen) Tool is a package containing TCL scripts and Hardware HSI API's to extract hardware information from the XSA file into a System Device Tree (SDT) format.
 
    If you would prefer to skip the configuration window and keep the default settings, run the following command instead:
 
@@ -86,7 +86,7 @@ Creating a PetaLinux Image
 
 3. Build the PetaLinux project:
 
-   -  In the ``<PetaLinux-project>`` directory (for example, ``xilinx-zc702-2024.2``), build the Linux images using the following command:
+   -  In the ``<PetaLinux-project>`` directory (for example, ``xilinx-zc702-xsct-2024.2``), build the Linux images using the following command:
 
       .. code:: bash
 
