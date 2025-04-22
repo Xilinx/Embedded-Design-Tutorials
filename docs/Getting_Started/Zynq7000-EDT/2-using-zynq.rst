@@ -4,7 +4,7 @@ Using the Zynq SoC Processing System
 
 The AMD Zynq |trade| SoC consists of Arm |reg| Cortex |trade|-A9 cores, many hard intellectual property components (IPs), and programmable logic (PL). This offering can be used in two ways:
 
--  The Zynq SoC PS can be used in a standalone mode, without attaching any additional fabric IP.
+-  The Zynq SoC processing system (PS) can be used in a standalone mode, without attaching any additional fabric IP.
 -  IP cores can be instantiated in fabric and attached to the Zynq PS as a PS+PL combination.
 
 This chapter describes how to develop an embedded system with only the processing system (PS) of the Zynq |trade| 7000 SoC.
@@ -180,7 +180,9 @@ Generating the Block Design
 
 2. Change the Synthesis Options to **Global**.
 
-   .. note:: If the synthesis option is **Global**, only wrapper files are generated during the block design generation phase, and the design will be synthesized as a whole at the synthesis stage. If the synthesis option is **Out of context per IP** or **Out of context per Block design**, the wrapper of the IP or block design will be generated and synthesized during block design generation, and the generated netlists will be combined together at the synthesis stage.
+   .. note:: 
+   
+      If the synthesis option is **Global**, only wrapper files are generated during the block design generation phase, and the design will be synthesized as a whole at the synthesis stage. If the synthesis option is **Out of context per IP** or **Out of context per Block design**, the wrapper of the IP or block design will be generated and synthesized during block design generation, and the generated netlists will be combined together at the synthesis stage.
 
 3. Click **Generate**.
 
@@ -253,7 +255,11 @@ Setting Up the Board
 3. Connect the USB JTAG cable:
 
    1. Connect a micro USB cable between the host machine and the ZC702 target board U23.
-   .. note:: Do not to use J1.
+   
+   .. note:: 
+      
+	  Do not use J1.
+   
    2. Make sure that the **SW10** switch settings for JTAG selection are set to choose USB JTAG:
 
       -  Bit-1 is 0
@@ -376,13 +382,17 @@ Running the Hello World Application on a ZC702 Board
 
 3. Highlight **hello_world** application in **Vitis Components** view. Select **Run Settings** to open a **Launch Configuration**.
 
-   .. note:: Make sure that the **Target Connection** is correct.
+   .. note:: 
+      
+	  Make sure that the **Target Connection** is correct.
 
 5. Click **Run**.
 
    “Hello World” appears on the  Serial Terminal.
 
-   .. note:: The software application do not require bitstream download to execute on the Zynq SoC evaluation board. The Arm Cortex-A9 dual core is already present on the board. Basic initialization of this system to run a simple application is accomplished by the First Stage Boot Loader (FSBL). The FSBL has ps7_init.c/h files that are packaged in the XSA file and extracted when the platform is created. The ps7_init.c/h have the settings made in the PS7 Subsystem in Vivado.
+   .. note:: 
+   
+      The software application do not require bitstream download to execute on the Zynq SoC evaluation board. The Arm Cortex-A9 dual core is already present on the board. Basic initialization of this system to run a simple application is accomplished by the First Stage Boot Loader (FSBL). The FSBL has ps7_init.c/h files that are packaged in the XSA file and extracted when the platform is created. The ps7_init.c/h have the settings made in the PS7 Subsystem in Vivado.
 
 What Just Happened? (Example 2)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

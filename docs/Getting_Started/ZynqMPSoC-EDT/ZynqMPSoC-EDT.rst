@@ -1,8 +1,6 @@
-..
-
-######################################################
+#####################################################
 Zynq UltraScale+ MPSoC Embedded Design Tutorial
-######################################################
+#####################################################
 
 
 .. toctree::
@@ -10,15 +8,15 @@ Zynq UltraScale+ MPSoC Embedded Design Tutorial
    :caption: Zynq UltraScale+ MPSoC Embedded Design Tutorial
    :hidden:
 
-   Introduction <./1-introduction>
-   Getting Started <./2-getting-started>
-   Zynq UltraScale+ MPSoC System Configuration with Vivado <./3-system-configuration>
-   Building Software for PS Subsystems <./4-build-sw-for-ps-subsystems>
-   Debugging Standalone Applications with the Vitis Debugger <./5-debugging-with-vitis-debugger>
-   Building and Debugging Linux Applications <./6-build-linux-sw-for-ps>
-   System Design Example: Using GPIO, Timer and Interrupts <./7-design1-using-gpio-timer-interrupts>
-   Boot and Configuration <./8-boot-and-configuration>
-   Secure Boot <./9-secure-boot>
+   Introduction <./1-introduction.rst>
+   Getting Started <./2-getting-started.rst>
+   Zynq UltraScale+ MPSoC System Configuration with Vivado <./3-system-configuration.rst>
+   Building Software for PS Subsystems <./4-build-sw-for-ps-subsystems.rst>
+   Debugging Standalone Applications with the Vitis Debugger <./5-debugging-with-vitis-debugger.rst>
+   Building and Debugging Linux Applications <./6-build-linux-sw-for-ps.rst>
+   System Design Example: Using GPIO, Timer and Interrupts <./7-design1-using-gpio-timer-interrupts.rst>
+   Boot and Configuration <./8-boot-and-configuration.rst>
+   Secure Boot <./9-secure-boot.rst>
 
 
 This document provides an introduction to using the Vivado Design Suite flow for the Zynq UltraScale+ MPSoC ZCU102 Rev 1.0 and Rev 1.1 evaluation boards. The tool used is the Vitis |trade| unified software platform.
@@ -51,5 +49,5 @@ The examples in this document were created using AMD Design tools running on Win
    :ltrim:
 
 
-.. Copyright © 2016–2025 Advanced Micro Devices, Inc
-.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
+.. Copyright © 2016–2024 Advanced Micro Devices, Inc
+.. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_

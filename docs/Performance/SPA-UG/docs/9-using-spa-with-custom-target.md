@@ -1,6 +1,6 @@
 # Using SPA with a Custom Target
 
-To use the Vitis IDE system performance analysis toolbox with your design, there are three important items to be aware of:
+To use the AMD Vitis&trade; IDE system performance analysis toolbox with your design, there are three important items to be aware of:
 
 - Instrumenting your hardware
 - Instrumenting your software

@@ -6,7 +6,7 @@ Building and Debugging Linux Applications
 The earlier examples highlighted the creation of bootloader images and bare-metal applications for APU, RPU, and PMU using the Vitis |trade| IDE. This chapter demonstrates how to develop Linux applications.
 
 Example 8: Creating Linux Images and Applications using PetaLinux
------------------------------------------------------------------
+-------------------------------------------------------------------
 
 In this example, you will configure and build a Linux operating system platform for an Arm |trade| Cortex-A53 core based APU on a Zynq |reg| UltraScale+ |trade| MPSoC. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.
 
@@ -322,6 +322,6 @@ In the :doc:`next chapter <./7-design1-using-gpio-timer-interrupts>`, you will c
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
-   
+
 .. Copyright © 2016–2025 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
