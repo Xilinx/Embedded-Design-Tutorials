@@ -29,7 +29,7 @@
 #include "xil_exception.h"
 #include "xil_printf.h"
 
-#ifdef XPAR_INTC_0_DEVICE_ID
+#ifdef XPAR_INTC_0_BASEADDR
 #include "xintc.h"
 #else
 #include "xscugic.h"
@@ -41,15 +41,15 @@
  * xparameters.h file. They are defined here such that a user can easily
  * change all the needed parameters in one place.
  */
-#ifdef XPAR_INTC_0_DEVICE_ID
+#ifdef XPAR_INTC_0_BASEADDR
 #define INTC		XIntc
-#define UART_DEVICE_ID		XPAR_XUARTPS_0_DEVICE_ID
-#define INTC_DEVICE_ID		XPAR_INTC_0_DEVICE_ID
+#define UART_BASEADDR		XPAR_XUARTPS_0_BASEADDR
+#define INTC_BASEADDR		XPAR_INTC_0_BASEADDR
 #define UART_INT_IRQ_ID		XPAR_INTC_0_UARTPS_0_VEC_ID
 #else
 #define INTC		XScuGic
-#define UART_DEVICE_ID		XPAR_XUARTPS_1_DEVICE_ID
-#define INTC_DEVICE_ID		XPAR_SCUGIC_SINGLE_DEVICE_ID
+#define UART_BASEADDR		XPAR_XUARTPS_1_BASEADDR
+#define INTC_BASEADDR		XPAR_SCUGIC_DIST_BASEADDR
 #define UART_INT_IRQ_ID		XPAR_XUARTPS_1_INTR
 #endif
 
@@ -87,7 +87,7 @@ int main()
     int Status;
 
     Status = PsUartSetup(&InterruptController, &UartPs,
-				UART_DEVICE_ID, UART_INT_IRQ_ID);
+				UART_BASEADDR, UART_INT_IRQ_ID);
 	if (Status != XST_SUCCESS) {
 		xil_printf("UART Interrupt application Failed\r\n");
 		return XST_FAILURE;
@@ -135,8 +135,8 @@ int PsUartSetup(INTC *IntcInstPtr, XUartPs *UartInstPtr,
 	u32 IntrMask;
 
 	if (XGetPlatform_Info() == XPLAT_ZYNQ_ULTRA_MP) {
-#ifdef XPAR_XUARTPS_1_DEVICE_ID
-		DeviceId = XPAR_XUARTPS_1_DEVICE_ID;
+#ifdef XPAR_XUARTPS_1_BASEADDR
+		DeviceId = XPAR_XUARTPS_1_BASEADDR;
 #endif
 	}
 
@@ -262,13 +262,13 @@ static int SetupInterruptSystem(INTC *IntcInstancePtr,
 {
 	int Status;
 
-#ifdef XPAR_INTC_0_DEVICE_ID
+#ifdef XPAR_INTC_0_BASEADDR
 #ifndef TESTAPP_GEN
 	/*
 	 * Initialize the interrupt controller driver so that it's ready to
 	 * use.
 	 */
-	Status = XIntc_Initialize(IntcInstancePtr, INTC_DEVICE_ID);
+	Status = XIntc_Initialize(IntcInstancePtr, INTC_BASEADDR);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
@@ -317,7 +317,7 @@ static int SetupInterruptSystem(INTC *IntcInstancePtr,
 	XScuGic_Config *IntcConfig; /* Config for interrupt controller */
 
 	/* Initialize the interrupt controller driver */
-	IntcConfig = XScuGic_LookupConfig(INTC_DEVICE_ID);
+	IntcConfig = XScuGic_LookupConfig(INTC_BASEADDR);
 	if (NULL == IntcConfig) {
 		return XST_FAILURE;
 	}
