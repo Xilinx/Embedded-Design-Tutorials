@@ -2,11 +2,11 @@
 Creating Custom IP and Device Drivers for Linux
 ===============================================
 
-In this chapter, you will create an intellectual property (IP) using the Create and Package New IP wizard. You will also design a system to include the new IP created for the AMD |trade| Zynq |trade| 7000 SoC device.
+In this chapter, you will create an intellectual property (IP) using the Create and Package New IP wizard. You will also design a system to include the new IP created for the AMD Zynq 7000 SoC device.
 
 For the IP, you will develop a Linux-based device driver as a module that can be dynamically loaded onto the running kernel.
 
-You will also develop Linux-based application software for the system to execute on the AMD Zynq |trade| SoC ZC702 board.
+You will also develop Linux-based application software for the system to execute on the AMD Zynq SoC ZC702 board.
 
 .. important:: 
        
@@ -83,7 +83,7 @@ In this section, you will create an AXI4-Lite compliant slave peripheral IP.
    +---------------------+-------------------------+---------------------------------+
    |                     | IP location             | C:/designs/ip_repro             |
    +---------------------+-------------------------+---------------------------------+
-   |                     | Overwrite               | existing unchecked              |
+   |                     | Overwrite Existing      | unchecked                       |
    +---------------------+-------------------------+---------------------------------+
 
 5.  Click **Next**.
@@ -368,7 +368,13 @@ We will discuss two ways to create a Linux Module; using the Petalinux Utility a
 
    .. code-block::
 
-      <petalinux-build_directory>/build/tmp/sysroots-components/zc702_zynq7/blink/lib/modules/5.15.0-xilinx-v2022.2/extra/blink.ko
+      <petalinux-project_directory>/images/linux/lib/modules/6.12.10-xilinx-g61098d783f90/updates/blink.ko
+
+    **Note** To access this location you will need to untat the 'rootfs.tar.gz' file using the below command:
+
+   .. code-block::
+
+      tar -xvzf rootfs.tar.gz
 
 6. You can install the driver using the ``modprobe`` command, which will be explained in further detail in the next section.
 
@@ -550,34 +556,31 @@ In this section, you will use the Vitis software platform installed on a Windows
 
     For example, the command ``mknod /dev/blink_Dev c 244 0`` creates the ``/dev/blink_Dev`` node.
 
-12. Select **Window → Open perspective → Remote System Explorer** and click **Open**. The Vitis software platform opens the Remote Systems
-    Explorer perspective.
+12. Load Mobaxterm
 
 13. In the Remote Systems view, do the following:
 
-    a. Right-click and select **New → Connection** to open the New Connection wizard.
+    a. Right-click and select **New → Session** to open the SSH Sessions settings wizard.
 
-    b. Select the **SSH Only** and click **Next**.
+    b. Select the **SSH**.
 
     c. In the Host name field, type the target board IP. To determine the target IP, type “ifconfig eth0” at the Zynq prompt in the serial terminal. The target IP assigned to the board displays.
 
-    d. Set the connection name as **blink** and type a description.
+    d. Click **Ok** to launch the connection.
 
-    e. Click **Finish** to create the connection.
+    e. Expand **blink → sftp Files → Root**. The Enter Password wizard opens.
 
-    f. Expand **blink → sftp Files → Root**. The Enter Password wizard opens.
+    f. Enter the Login (petalinux) and user will be prompted to enter new Login and Password.
 
-    g. Enter the Login (petalinux) and user will be prompted to enter new Login and Password.
-
-    h. Click **OK**.
+    g. Click **OK**.
 
        The window displays the root directory content, because you previously established the connection between the Windows host machine and the target board.
 	
-	i. User can change the permissions here with **sudo -i**
+	h. User can change the permissions here with **sudo -i**
 
-    j. Right-click the **/** in the path name and create a new directory; name it “Apps”.
+    i. Right-click the **/** in the path name and create a new directory; name it “Apps”.
 
-    k. Using the Remote System Explorer perspective, copy the **linux_blinkled_app.elf** file from the **/linux_blinkled_app/Debug** folder and paste it into the **/Apps** directory under **blink connection**.
+    j. Copy the **linux_blinkled_app.elf** file from the **/linux_blinkled_app/Debug** folder and paste it into the **/Apps** directory.
 
 14. In the serial terminal, type ``cd Apps`` to open the ``/Apps`` directory.
 
