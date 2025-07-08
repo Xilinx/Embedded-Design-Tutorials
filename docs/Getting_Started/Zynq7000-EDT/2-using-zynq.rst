@@ -32,7 +32,7 @@ Creating Your Hardware Design
 
 1. Start the Vivado Design Suite.
 
-   -  On Windows 10, click the start menu and find **Xilinx Design Tools → Vivado 2024.2**.
+   -  On Windows 10, click the start menu and find **Xilinx Design Tools → Vivado 2025.1**.
    -  On Linux, run `source <Vivado installation path>/settings64.sh` to set up the environment and run ``vivado &`` to launch the Vivado IDE.
 
 2. In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
@@ -291,7 +291,7 @@ Creating a Vitis Unified Platform Project
 1. Launch the Vitis Unified IDE with any of the actions below:
 
    1. From the Vivado IDE, select **Tools → Launch Vitis IDE**.
-   2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Vitis 2024.2**.
+   2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Vitis 2025.1**.
    3. On Linux, run ``source <Vitis Installation Directory>/settings64.sh`` to set up the environment and run ``vitis &``.
 
 2. Select **Open Workspace** and give the location as **C:/edt/edt_zc702_workspace** or any given location path.
@@ -309,6 +309,7 @@ Creating a Vitis Unified Platform Project
 
    -  When the XSA file is selected, the System Device Tree (SDT) is generated, and the metadata here is used to populate the processor list. Once the SDT is created, choose **standalone** and the processor is **ps7_cortexa9_0**.
    - Keep the **Generate boot Artifacts** option selected, as shown in the following figure.
+   - Keep the **Compiler** as gcc.
 
    .. figure:: ./media/image26.png
        :alt: Select XSA
