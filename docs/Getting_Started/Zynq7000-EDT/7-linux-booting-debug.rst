@@ -135,7 +135,7 @@ Booting Linux in JTAG Mode
             3 Arm Cortex-A9 MPCore #1 (Running)
             4 xc7z02022
 
-      .. note:: `ta` is a short command for `target`. XSCT accepts short commands. Enter any numbers of the preceding characters of the XSCT commands. As long as there are no conflicts, they can be recognized by XSCT.
+      .. note:: `ta` is a short command for `target`. XSDB accepts short commands. Enter any numbers of the preceding characters of the XSDB commands. As long as there are no conflicts, they can be recognized by XSDB.
 
     4.  Change working directory to `images/linux` in your PetaLinux project.
 
