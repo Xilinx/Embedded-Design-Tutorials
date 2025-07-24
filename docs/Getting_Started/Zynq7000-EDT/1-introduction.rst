@@ -104,7 +104,7 @@ Design Files for this Tutorial
 
 The reference design files for this tutorial are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Getting_Started/Zynq7000-EDT/ref_files>`_ directory, organized by design number or chapter name. Chapters that need to use reference files points to the specific `ref_files` subdirectory.
 
-Start with the first examples in the :doc:`next chapter <./2-using-zynq>`.
+Start with the first examples in the :doc:`next chapter <2-using-zynq>`.
 
 
 

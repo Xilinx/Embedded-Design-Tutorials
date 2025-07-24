@@ -458,7 +458,7 @@ Booting Linux from QSPI Flash
 
 4. Check the board IP address connectivity as described in :ref:`booting-linux-in-jtag-mode`.
 
-See the :doc:`next chapter <./8-custom-ip-driver-linux>` to connect the dots and create a more complicated design.
+See the :doc:`next chapter <8-custom-ip-driver-linux>` to connect the dots and create a more complicated design.
 
 
 

@@ -417,7 +417,7 @@ Standalone is a simple, low-level software layer. It provides access to basic pr
 
 The application you ran in this chapter was created on top of the standalone OS. The domain/BSP that your software application targets is selected during the New Platform Project creation process.
 
-In the :doc:`next chapter <./3-debugging-vitis>`, you will learn how to debug software applications using the Vitis software platform.
+In the :doc:`next chapter <3-debugging-vitis>`, you will learn how to debug software applications using the Vitis software platform.
 
 
 .. |Add-IP-Button| image:: ./media/image8.png

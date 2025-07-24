@@ -275,7 +275,7 @@ Running CDMA the App on ZC702
       XAxiCdma_Interrupt: Passed
       DMA Transfer is Successful
 
-Up until now, the examples you have been working with have all been developed and debugged in a lab environment. JTAG is required to configure and control the applications. How can you deploy applications to the board so that it can run the applications after booting by itself? See the :doc:`next chapter <./7-linux-booting-debug>` for Linux boot image configuration.
+Up until now, the examples you have been working with have all been developed and debugged in a lab environment. JTAG is required to configure and control the applications. How can you deploy applications to the board so that it can run the applications after booting by itself? See the :doc:`next chapter <7-linux-booting-debug>` for Linux boot image configuration.
 
 
 

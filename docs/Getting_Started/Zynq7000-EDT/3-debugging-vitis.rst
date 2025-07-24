@@ -114,7 +114,7 @@ Debugging Standalone Applications in the Vitis IDE
 
    .. image:: ./media/debug_icons.PNG
 
-This chapter introduced standalone software building and debugging. In the :doc:`next chapter <./4-linux-for-zynq>`, you can start working on Linux applications for Zynq 7000 SoCs.
+This chapter introduced standalone software building and debugging. In the :doc:`next chapter <4-linux-for-zynq>`, you can start working on Linux applications for Zynq 7000 SoCs.
 
 
 

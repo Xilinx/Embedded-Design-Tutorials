@@ -336,7 +336,7 @@ steps:
 
     Based on the serial terminal selection, the system executes the procedure accordingly. After the selection of the use case through the serial terminal, you must press a push button on the board as per the instruction on the terminal. This action switches off the LED DS23, starts the timer, and tells the function to wait infinitely for the timer interrupt to happen. After the timer interrupt happens, LED DS23 switches ON and restarts execution.
 
-See the :doc:`next chapter <./6-using-hp-port>` for information about using the AXI HP (High Performance) slave port with the AXI Central DMA IP.
+See the :doc:`next chapter <6-using-hp-port>` for information about using the AXI HP (High Performance) slave port with the AXI Central DMA IP.
 
 
 
