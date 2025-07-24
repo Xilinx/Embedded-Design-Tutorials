@@ -45,7 +45,7 @@ The flowchart in the following figure describes the process used to boot Linux o
 
 .. image:: ./media/X24074-Page-1.png
 
-This chapter will give you several examples with different boot mode configuration.
+This chapter gives several examples with different boot mode configuration.
 
 -  Example 9: Booting Linux with JTAG (Slave boot mode, non-secure)
 -  Example 10: Booting Linux from QSPI Flash (Master boot mode, non-secure)
@@ -82,7 +82,7 @@ Booting Linux in JTAG Mode
 
          JTAG Boot Mode
 
-   -  Connect an Ethernet cable from the Zynq 7000 SoC board to your network or directly to your host machine.
+   -  Connect an Ethernet cable from the Zynq 7000 SoC board to your network or directly to the host machine.
 
    -  Connect the Windows host machine to your network.
 
@@ -135,7 +135,7 @@ Booting Linux in JTAG Mode
             3 Arm Cortex-A9 MPCore #1 (Running)
             4 xc7z02022
 
-      .. note:: `ta` is a short command for `target`. XSCT accepts short commands. Enter any numbers of the preceding characters of the XSCT commands. As long as there are no conflicts, they can be recognized by XSCT.
+      .. note:: `ta` is a short command for `target`. XSDB accepts short commands. Enter any numbers of the preceding characters of the XSDB commands. As long as there are no conflicts, they can be recognized by XSDB.
 
     4.  Change working directory to `images/linux` in your PetaLinux project.
 
@@ -175,12 +175,12 @@ To boot Linux using QEMU use the command below:
 Example 10: Booting Linux from QSPI Flash
 -----------------------------------------
 
-In this example, you will make a Linux boot image for QSPI Flash, write it into Flash, and let it boot.
+This example helps you make a Linux boot image for QSPI Flash, write it into Flash, and let it boot.
 
 QSPI Flash on a board normally has less capacity than an SD card or eMMC because of its relatively high price. It layout should be planned
 carefully. The Linux kernel image and rootfs can be stored in the same QSPI as this example, or stored in another non-volatile form of storage such as an SD card, NAND Flash, or eMMC. The only difference is the `BOOT.BIN` packaging contents.
 
-In this example, you will not only package normal boot components, such as FSBL, bitstream, and U-Boot into `BOOT.BIN`, but also the
+In this example, you not only package normal boot components, such as FSBL, bitstream, and U-Boot into `BOOT.BIN`, but also the
 following:
 
 -  The `boot.scr` file (read by U-Boot)
@@ -196,7 +196,7 @@ By default, it is programmed in `boot.scr` that if the boot mode is QSPI, `image
 However, because ZC702 has only 16 MB QSPI Flash, `boot.scr` needs to be modified to load it from around the 5 MB area. Because the
 `petalinux-package` command uses 0x00520000 by default, you can keep using this address.
 
-The following table shows the memory address layout you will create in this example.
+The following table shows the memory address layout created in this example.
 
 +---------------------+---------------------------------+--------+---------------------+
 | Partition           | Flash Offset Address            | Size   | DDR Loading Address |
@@ -257,17 +257,19 @@ Changing boot.scr for image.ub Offset Address and Size
 By default, `boot.scr` loads image.ub from 0x01000000. It is possible to open `boot.scr` with a text editor to check the behavior. If your
 system has more than 16 MB QSPI Flash, this step can be skipped, but it is important to pay attention to the boot image packaging step to make sure that the `image.ub` offset address is set to match the offset address in `boot.scr`.
 
-1. Use a text editor to open `<PetaLinux Project>/project-spec/meta-user/recipes-bsp/u-boot/u-boot-zynq-scr.bbappend`.
-
-2. Change `QSPI_KERNEL_OFFSET_zynq` to `0x520000` and `QSPI_FIT_IMAGE_SIZE_zynq` to `0xAE0000`, because these two
-   variables are used in `/project-spec/meta-user/recipes-bsp/u-boot/u-boot-zynq-scr/boot.cmd.default.initrd` as `sf read @@QSPI_FIT_IMAGE_LOAD_ADDRESS@@ @@QSPI_KERNEL_OFFSET@@ @@QSPI_FIT_IMAGE_SIZE@@;`:
+1. Use the following command to launch project configuration settings:
 
    .. code-block::
 
-      QSPI_KERNEL_OFFSET_zynq = "0x520000"
-      QSPI_FIT_IMAGE_SIZE_zynq = "0xAE0000"
+   petalinux-config
 
-   Save the file and quit the text editor.
+2. Navigate to **Subsystem Hardware Settings -> Flash Settings**
+
+3. Change partition 0 to `qspi-boot` and set the size to `0xF40000`. Change partiton 1 to `qspi-kernel` and set the size to `0x900000`. Delete any other partitions if they exist.
+
+   .. image:: ./media/flash_settings.png
+
+   Save the settings and exit the configuration window.
 
 Building the PetaLinux Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -276,7 +278,7 @@ Building the PetaLinux Image
 
    - Run the `petalinux-build` command.
 
-   PetaLinux will generate the new U-Boot and `boot.scr`.
+   PetaLinux generates the new U-Boot and `boot.scr`.
 
    .. note:: For more information, refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.xilinx.com/r/2022.2-English/ug1144-petalinux-tools-reference-guide>`_).
 
@@ -290,13 +292,13 @@ The `BOOT.BIN` file is generated by the Bootgen utility. It reads in the BIF for
    .. code-block::
 
       cd images/linux
-      petalinux-package --boot --fpga ./system.bit --u-boot --kernel --force
+      petalinux-package --boot --fpga ./system.bit --u-boot --add boot.scr --kernel --force
 
    The `BOOT.BIN` file should be generated in the `images/linux` directory.
 
    -  The `--fpga` option assigns the optional FPGA bit file.
    -  `--u-boot` packages `u-boot.elf` into `BOOT.BIN`.
-   -  `--add --offset` will add a data file to a specific Flash offset.
+   -  `--add` adds a data file.
    -  `--kernel` adds `image.ub` to Flash offset 0x520000.
    -  `--force` forces an overwrite if `BOOT.BIN` already exists.
    -  FSBL is added by default. You don’t need to add an option to assign it.
@@ -314,7 +316,7 @@ This method is an alternative to the PetaLinux method. If the PetaLinux tools an
 
    .. image:: ./media/image86.png
 
-   .. note:: You might see a different initial screen for the Create Boot Image wizard. When a system project is selected, the Vitis IDE tries to generate an initial BIF for that project. When a platform project is selected, or if it is in an empty workspace, the Vitis IDE will show the wizard with no initial values.
+   .. note:: You might see a different initial screen for the Create Boot Image wizard. When a system project is selected, the Vitis IDE tries to generate an initial BIF for that project. When a platform project is selected, or if it is in an empty workspace, the Vitis IDE shows the wizard with no initial values.
 
 
 2. Choose **Create New BIF File**.
@@ -324,9 +326,9 @@ This method is an alternative to the PetaLinux method. If the PetaLinux tools an
    -  Click **Browse** next to the **Output BIF file path** field.
    -  Navigate to any path. For example, `C:/edt/boot/output.bif`.
    -  Click **Save**.
-   -  The **Output path** field will be updated automatically. The output ``BOOT.bin`` will be in the same directory with the BIF by default. You can also change the output path.
+   -  The **Output path** field is updated automatically. The output ``BOOT.bin`` is in the same directory with the BIF by default. You can also change the output path.
 
-5. Click the **+** icon (Add Partition) to add the following boot image partitions:
+4. Click the **+** icon (Add Partition) to add the following boot image partitions:
 
    +-------------+-----------------+-----------+
    | File Path   | Partition Type  | Load      |
@@ -342,9 +344,9 @@ This method is an alternative to the PetaLinux method. If the PetaLinux tools an
    | boot.scr    | datafile        | 0xfc0000  |
    +-------------+-----------------+-----------+
 
-6. Click **Create Image** to create the `BOOT.bin` file in the specified output path folder.
+5. Click **Create Image** to create the `BOOT.bin` file in the specified output path folder.
 
-7. Review the generated BIF. It should look like this example.
+6. Review the generated BIF. It should look like this example.
 
    .. code-block::
 
@@ -362,7 +364,7 @@ Programming QSPI Flash with the Flash Programming Tool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can use the Flash Programming Tool in the Vitis IDE to program `BOOT.BIN` into the QSPI Flash. The Program Flash wizard in the Vitis
-IDE provides an easy way to select files and programming modes. When the settings are ready, it can call the ``program_flash`` command line tool to do the programming task. This is an easy-to-use method. You can also use JTAG to load U-Boot to DDR and use the U-Boot to program QSPI Flash. This method will be introduced in the next section.
+IDE provides an easy way to select files and programming modes. When the settings are ready, it can call the ``program_flash`` command line tool to do the programming task. This is an easy-to-use method. You can also use JTAG to load U-Boot to DDR and use the U-Boot to program QSPI Flash. This method is introduced in the next section.
 
 Following the steps below, you can program QSPI Flash with the flash programming tool in the Vitis software platform:
 
@@ -456,7 +458,7 @@ Booting Linux from QSPI Flash
 
 4. Check the board IP address connectivity as described in :ref:`booting-linux-in-jtag-mode`.
 
-See the :doc:`next chapter <./8-custom-ip-driver-linux>` to connect the dots and create a more complicated design.
+See the :doc:`next chapter <8-custom-ip-driver-linux>` to connect the dots and create a more complicated design.
 
 
 
@@ -466,3 +468,7 @@ See the :doc:`next chapter <./8-custom-ip-driver-linux>` to connect the dots and
 .. Copyright © 2021 Xilinx, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
+.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
+   :ltrim:
+.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
+   :ltrim:

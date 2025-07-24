@@ -35,11 +35,11 @@ The debug workflow is described in the following figure.
 
 The workflow is made up of the following components:
 
--  **Executable ELF File:** To debug your application, you must use an executable and linkable format (ELF) file compiled for debugging. The debug ELF file contains additional debug information for the debugger to make direct associations between the source code and the binaries generated from that original source. To manage the build configurations, right-click the software application and select **Build Configurations → Manage**.
+-  **Executable ELF File:** To debug your application, you must use an executable and linkable format (ELF) file compiled for debugging. The debug ELF file contains additional debug information for the debugger to make direct associations between the source code and the binaries generated from that original source. To manage the build configurations, select the UserConfig.cmake file under the applications **Settings**.
 
--  **Debug Configuration:** To launch the debug session, you must create a debug configuration in the Vitis debugger. This configuration captures the options required to start a debug session, including the executable name, processor target to debug, and other information. To create a debug configuration, select the **Settings** button beside **Debug** in the flow tab.
+-  **Debug Configuration:** To launch the debug session, you must create a debug configuration in the Vitis debugger. This configuration captures the options required to start a debug session, including the executable name, processor target to debug, and other information. To create a debug configuration, select the **Settings** button beside **Debug** in the flow tab. This will load the 'launch.json' file for the application.
 
--  **Vitis Debug Perspective:** Using the Debug perspective, you can manage the debugging or running of a program in the workbench. You can control the execution of your program by setting breakpoints, suspending launched programs, stepping through your code, and examining the contents of variables. To view the Debug Perspective, select **Window → Debug**.
+-  **Vitis Debug Perspective:** Using the Debug perspective, you can manage the debugging or running of a program in the workbench. You can control the execution of your program by setting breakpoints, suspending launched programs, stepping through your code, and examining the contents of variables. To view the Debug Perspective, select **View → Debug**.
 
 You can repeat the cycle of modifying the code, building the executable, and debugging the program in the Vitis debugger.
 
@@ -153,7 +153,7 @@ Setting Up the Target
 
    .. code-block::
    
-         xsdb% targets -set -filter {name =\~ \"Cortex-A53 \#0\"}
+         xsdb% targets -set -filter {name =~ "Cortex-A53 #0"}
 
    The command ``targets`` now lists the targets and also shows the selected target highlighted with an asterisk (*) mark. You can also
    use the target number to select a target, as shown in the following figure.
@@ -172,7 +172,7 @@ Setting Up the Target
 
    .. code-block:: tcl
 
-         xsdb% dow {C:\edt\edt_zcu102_workspace\zcu102\zynqmp_fsbl\build.elf}
+         xsdb% dow {C:\edt\edt_zcu102_workspace\zcu102_edt\zynqmp_fsbl\build\fsbl.elf}
          xsdb% con
          xsdb% stop
 
@@ -198,7 +198,9 @@ Loading the Application Using XSDB
 
 2. Download the testapp_r5 application on Arm Cortex-R5F Core 0.
 
-   -  Run `xsdb% dow {C:/edt/edt_zcu102_workspace/testapp_r5/buildtestapp_r5.elf}` or `xsdb% dow {C:/edt/edt_zcu102_workspace/testapp_r5/build/testapp_r5.elf}`.
+   .. code-block::
+   
+         xsdb% dow {C:/edt/edt_zcu102_workspace/testapp_r5/build/testapp_r5.elf}
 
    At this point, you can see the sections from the ELF file downloaded sequentially. The XSCT prompt can be seen after successful download. Now, configure a serial terminal (Tera Term, Minicom, or the serial terminal interface for a UART-1 USB-serial connection).
 
@@ -235,7 +237,8 @@ Running and Debugging the Application Using XSDB
 
    .. code-block::
 
-         xsdb% Info: Cortex-R5 \#0 (target 7) Stopped at 0x10021C (Breakpoint)
+         xsdb% Info: Cortex-R5 #0 (target 7) Stopped at 0x100050 (Breakpoint)main() at testapp_r5.c: 86
+         86: {
 
 3. At this point, you can view registers when the core is stopped:
 
@@ -254,7 +257,7 @@ Running and Debugging the Application Using XSDB
    .. code-block::
 
          xsdb% nxt
-         Info: Cortex-R5 #0 (target 6) Stopped at 0x100490 (Step)
+         Info: Cortex-R5 #0 (target 7) Stopped at 0x10005c (Step)89:     Status = PsUartSetup(&InterruptController, &UartPs,
          xsdb% bt
 
    You can use the ``help`` command to find other options:

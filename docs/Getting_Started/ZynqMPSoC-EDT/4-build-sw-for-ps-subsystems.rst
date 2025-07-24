@@ -49,7 +49,7 @@ The following steps show how to create a platform project with a standalone doma
 
    -  From the open Vivado IDE, click **Tools → Launch Vitis IDE**; or
    -  From Windows Start menu, select **Xilinx Design Tools → Vitis**; or
-   -  Double-click the ``C:\Xilinx\Vitis\2024.2\bin\vitis.bat`` file.
+   -  Double-click the ``C:\Xilinx\Vitis\2025.1\bin\vitis.bat`` file.
 
 2. Select the workspace ``C\edt\edt_zcu102_workspace`` and continue.
 
@@ -144,7 +144,7 @@ Connecting the Serial Port
 
    .. note:: In Linux, root privilege is required to use UART.
 
-2. Navigate to Vits → Serial Monitor (If you have not yet enabled the serial monitor or you cannot see it under the vitis tab then enable it by navigating to Vits → New Feature Preview, select Serial Monitor and then select Enable).
+2. Navigate to Vits → Serial Monitor.
 
 3. To find the correct COM port in Windows, verify the port details in the **Device Manager**. In Linux, check the COM port in ``/dev``.
 
@@ -237,7 +237,7 @@ Running Hello World on the Board
 
       Zynq MP First Stage Boot Loader 
 
-      Release 2024.2   Oct 23 2024  -  10:06:42
+      Release 2025.1   Apr 22 2025  -  14:51:42
       PMU-FW is not running, certain applications may not be supported.
 
       Hello World
@@ -284,7 +284,7 @@ Board Support Package
 
 The board support package (BSP) is the support code for a given hardware platform or board that helps in basic initialization at power-up and helps software applications to be run on top of it. It can be specific to some operating systems with boot loader and device drivers.
 
-.. tip:: To reset the BSP source, double-click **platform.prj**, select a BSP in a domain, and click **Reset BSP Source**. This action only resets the source files while settings are not touched. To change the target domain after application project creation, double-click the **project.prj** file in Explorer view. In the Application Project Settings, select **Domain → Domain change option → Drop-down Domain**, then select the available domains for this application.
+.. tip:: To regenerate the BSP, double-click **vitis-comp.json**, select a BSP in a domain, and click **Regenerate BSP**. This action only resets the source files while settings are not touched.
 
 Standalone BSP
 ~~~~~~~~~~~~~~
@@ -528,7 +528,7 @@ Modifying the hello_sys_a53 Application Source Code
    .. code-block::
 
          --------------------------------------------------------------------------------
-          [11/5/2024, 9:04:29 AM]: Build for hello_sys_a53::build with id '77931894-7d34-44dd-b932-093a068621d7' started.
+          [4/22/2025, 3:23:25 AM]: Build for hello_sys_a53::build with id '5911c841-46d0-4dca-8114-7ee4ea7d2c80' started.
           --------------------------------------------------------------------------------
          -- Configuring done
          -- Generating done
@@ -537,7 +537,7 @@ Modifying the hello_sys_a53 Application Source Code
             29561	    292	  21275	  51128	   c7b8	hello_sys_a53.elf
          Build Finished successfully
          --------------------------------------------------------------------------------
-         [11/5/2024, 9:04:31 AM]: Build for hello_sys_a53::build with id '77931894-7d34-44dd-b932-093a068621d7' ended.
+         [4/22/2025, 3:23:38 AM]: Build for hello_sys_a53::build with id '5911c841-46d0-4dca-8114-7ee4ea7d2c80' ended.
 
 
    -  The **hello_sys_a53.elf** file is generated in the **hello_sys_a53 → build** folder.
@@ -572,7 +572,7 @@ directory. They will be imported in the next steps.
 
 2. Import the prepared source code for **testapp_r5**:
 
-   1. In the Explorer view, expand the **hello_system** project to find the **testapp_r5** project.
+   1. In the Explorer view, expand the **testapp_r5** project.
    2. Right-click the src folder within Sources inside the **testapp_r5** and select **Import → Files** to open the Import view.
    3. Navigate to the design files folder (ref_files/example5/testapp_r5.c)
    4. Select the **testapp.c** file.
@@ -619,7 +619,7 @@ Modifying the Board Support Package for testapp_r5
 
 The ZCU102 Evaluation kit has a USB-TO-QUAD-UART Bridge IC from Silicon Labs (CP2108). This enables you to select a different UART port for applications running on Cortex-A53 and Cortex-R5F cores. For this example, let Cortex-A53 use the UART 0 by default, and send and receive RPU serial data over UART 1. This requires a small modification in the standalone_r5 bsp configuration.
 
-1. Open the platform details tab by clicking vitis-comp.json under zcu102_edt.
+1. Open the platform details tab by clicking vitis-comp.json under **Settings** within zcu102_edt.
 
 2. Open the standalone domain BSP setting details for Cortex-R5F:
 

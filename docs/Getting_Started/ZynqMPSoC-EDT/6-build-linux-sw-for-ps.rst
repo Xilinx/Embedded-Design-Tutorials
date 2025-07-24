@@ -39,11 +39,11 @@ Creating a PetaLinux Image
 
    .. code:: bash
 
-      petalinux-create -t project -s <path to the xilinx-zcu102-v2024.2-final.bsp>
+      petalinux-create -t project -s <path to the xilinx-zcu102-xsct-v2025.1-final.bsp>
 
-   .. note:: ``xilinx-zcu102-v2024.2-final.bsp`` is the PetaLinux BSP for the ZCU102 Production Silicon Rev 1.0 Board.
+   .. note:: ``xilinx-zcu102-xsct-v2025.1-final.bsp`` is the PetaLinux BSP for the ZCU102 Production Silicon Rev 1.0 Board.
 
-   This creates a PetaLinux project directory, ``xilinx-zcu102-2024.2``.
+   This creates a PetaLinux project directory, ``xilinx-zcu102-xsct-2025.1``.
 
 2. Reconfigure the project with `edt_zcu102_wrapper.xsa`:
 
@@ -60,7 +60,7 @@ Creating a PetaLinux Image
 
       .. code:: bash
 
-         cd xilinx-zcu102-2024.2
+         cd xilinx-zcu102-xsct-2025.1
          petalinux-config --get-hw-description=<path containing edt_zcu102_wrapper.xsa>
 
    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images.
@@ -75,14 +75,14 @@ Creating a PetaLinux Image
 
    .. code:: bash
 
-      cd xilinx-zcu102-2024.2
+      cd xilinx-zcu102-xsct-2025.1
       petalinux-config --get-hw-description=<path to SDT directory>
 
    `Generate the SDT with the SDT Generator Tool <https://github.com/Xilinx/system-device-tree-xlnx/blob/master/README.md>`_. The System Device Tree Generator (SDTGen) Tool is a package containing TCL scripts and Hardware HSI API's to extract hardware information from the XSA file into a System Device Tree (SDT) format. 
 
 3. Build the PetaLinux project:
 
-   1. In the ``<PetaLinux-project>`` directory, for example, ``xilinx-zcu102-2024.2``, build the Linux images using the
+   1. In the ``<PetaLinux-project>`` directory, for example, ``xilinx-zcu102-xsct-2025.1``, build the Linux images using the
       following command:
 
       .. code:: bash
@@ -256,6 +256,7 @@ Running the Linux Application from the Vitis IDE
 
       1. Target Setup Mode: Application Debug
       2. Target Connection: Linux Agent
+      3. Work Directory: '/tmp/'
 
    4. Click Run.
 
@@ -285,6 +286,7 @@ Debugging Linux applications requires the Linux agent to be set up properly. Ref
 
       1. Target Setup Mode: Application Debug
       2. Target Connection: Linux Agent
+      3. Work Directory: '/tmp/'
        
    4. Click Debug.
 
