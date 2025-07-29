@@ -365,7 +365,7 @@ In this chapter, you learned how to:
 -  Create simple Linux applications with the Vitis IDE.
 -  Run and debug using the Vitis IDE.
 
-Up until now, all your development and debugging activities have been running on the processing system. In the :doc:`next chapter <5-using-gp-port-zynq>`, you begin adding components to the programmable logic (PL). The first step involves using the GP port in Zynq devices.
+Up until now, all your development and debugging activities have been running on the processing system. In the next chapter, you begin adding components to the programmable logic (PL). The first step involves using the GP port in Zynq devices.
 
 .. include:: ../docs/substitutions.txt
 
