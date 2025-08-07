@@ -256,7 +256,7 @@ Creating the Bare-Metal Application Project
 
 3. Select the **Build** button under the flow tab to build the **zcu102** platform.
 
-4. In the Vitis IDE, select **File → New Example → Empty Application → Create Application Component from Template**. The Create Application Component - Empty Application wizard opens.
+4. In the Vitis IDE, select **File → New Component → Application**. The Create Application Component - Empty Application wizard opens.
 
 5. Use the information in the table below to make your selections in the wizard.
 
@@ -265,8 +265,6 @@ Creating the Bare-Metal Application Project
    +======================+======================+=============================+
    | Application Project  | Application project  | **tmr_psled_r5**            |
    | Details              | name                 |                             |
-   +----------------------+----------------------+-----------------------------+
-   |                      | Target processor     | **psu_cortexr5_0**          |
    +----------------------+----------------------+-----------------------------+
    | Domain               | Domain               |**standalone_psu_cortexr5_0**|     
    +----------------------+----------------------+-----------------------------+
@@ -341,7 +339,6 @@ To create a Linux domain for generating Linux applications, follow these steps:
    2. Display name: Linux_Domain
    3. OS: Linux
    4. Processor: psu_cortexa53
-   5. Architecture: 64-bit
 
 5. Build the platform to make the domain change take effects.
 

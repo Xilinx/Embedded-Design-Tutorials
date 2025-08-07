@@ -2,17 +2,17 @@
 Using the GP Port in Zynq Devices
 =================================
 
-One of the unique features of using the AMD |trade| Zynq |reg| 7000 SoC as an embedded design platform is in using the Zynq SoC processing system (PS) for its Arm |trade| Cortex-A9 dual core processing system as well as the programmable logic (PL) available on it.
+One of the unique features of using the AMD |trade| Zynq |trade| 7000 SoC as an embedded design platform is in using the Zynq SoC processing system (PS) for its Arm |trade| Cortex-A9 dual core processing system as well as the programmable logic (PL) available on it.
 
-In this chapter, you will create a design with:
+This chapter guides you on how to create a design with:
 
--  An AXI GPIO block and AXI Timer block instantiated in the fabric (PL). The interrupt signals of AXI Timer will be connected to the PS.
+-  An AXI GPIO block and AXI Timer block instantiated in the fabric (PL). The interrupt signals of AXI Timer is connected to the PS.
 -  A Zynq SoC PS GPIO pin connected to the fabric (PL) side pin using the EMIO interface.
 
 The flow of this chapter is similar to that in :doc:`Using the Zynq SoC Processing System <2-using-zynq>` and uses the Zynq device as a base hardware design. It is assumed that you understand the concepts discussed in :doc:`Using the Zynq SoC Processing System <./2-using-zynq>` regarding adding the Zynq device into a Vivado IP integrator block diagram design.
 
 Adding IP in PL to the Zynq SoC Processing System
--------------------------------------------------
+--------------------------------------------------
 
 There is no restriction on the complexity of an intellectual property (IP) that can be added in fabric to be tightly coupled with the Zynq |trade| SoC PS. This section covers a simple example with an AXI GPIO, an AXI Timer with interrupt, and a PS section GPIO pin connected to a PL side pin using the EMIO interface. The block diagram for the system is as shown in the following figure.
 
@@ -21,9 +21,9 @@ There is no restriction on the complexity of an intellectual property (IP) that 
 
    Target design block diagram
 
-You can use the system created in :doc:`Using the Zynq SoC Processing System <2-using-zynq>` and continue with the following examples.
+Use the system created in :doc:`Using the Zynq SoC Processing System <2-using-zynq>` and continue with the following examples.
 
-In the examples provided within this chapter, we will expand on the design with the following design changes:
+The examples in this chapter expand the design with the following changes:
 
 -  The fabric-side AXI GPIO is assigned a 1-bit channel width and is connected to the **SW5** push-button switch on the ZC702 board.
 
@@ -33,7 +33,7 @@ In the examples provided within this chapter, we will expand on the design with 
 
 -  The AXI timer interrupt is connected from the fabric to the PS section interrupt controller. The timer starts when you press any of the selected push buttons on the board. After the timer expires, the timer interrupt is triggered.
 
--  Along with making the above hardware changes, you will write the application software code. The code will function as follows:
+-  Along with making the above hardware changes, write the application software code. The code functions as follows:
 
    -  A message appears in the serial terminal and asks you to select the push button switch to use on the board (either **SW7** or **SW5**).
 
@@ -62,7 +62,7 @@ Input and Output Files
 Update Vivado Design Diagram
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this example, you will add the AXI GPIO, AXI Timer, the interrupt instantiated in the fabric, and the EMIO interface. You will then validate the fabric additions.
+In this example, add the AXI GPIO, AXI Timer, the interrupt instantiated in the fabric, and the EMIO interface, then validate the fabric additions.
 
 1. Open the Vivado design created in :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`:
 
@@ -126,7 +126,7 @@ In this example, you will add the AXI GPIO, AXI Timer, the interrupt instantiate
 6. Customize the **AXI GPIO** IP block:
 
    1. Double-click the **AXI GPIO** IP block to customize it.
-   2. Under the **Board** page, make sure that both **GPIO** and **GPIO2** are set to **Custom**.
+   2. Under the **Board Interface** page, make sure that both **GPIO** and **GPIO2** are set to **Custom**.
    3. Select the **IP Configuration** page. In the GPIO section, change the **GPIO Width** to **1** because you only need one GPIO port.
    4. Ensure that **All Inputs** and **All Outputs** are both unchecked.
    5. Click **OK** to accept the changes.
@@ -134,13 +134,13 @@ In this example, you will add the AXI GPIO, AXI Timer, the interrupt instantiate
 7. Connect interrupt signals:
 
    -  Notice that the Interrupt port is not automatically connected to the AXI Timer IP Core. In the Block Diagram view, locate the **IRQ_F2P[0:0]** port on the ZYNQ7 Processing System.
-   -  Scroll your mouse over the connector port until the pencil button appears, then click the **IRQ_F2P[0:0]** port and drag to the **interrupt** output port on the **axi_timer_0** to make a connection between the two ports.
+   -  Scroll the mouse over the connector port until the pencil button appears, then click the **IRQ_F2P[0:0]** port and drag to the **interrupt** output port on the **axi_timer_0** to make a connection between the two ports.
 
 8. Make the PS GPIO port external:
 
    -  Notice that the ZYNQ7 Processing System GPIO_0 port is not connected. Right-click the **GPIO_0** output port on the **ZYNQ7 Processing System** and select **Make External**.
 
-   The pins are external but do not have the required constraints for our board. To constrain your hardware pins to specific device locations, follow the steps below. These steps can be used for any manual pin placements.
+   The pins are external but do not have the required constraints for our board. To constrain hardware pins to specific device locations, follow the steps below. These steps can be used for any manual pin placements.
 
 Assigning Location Constraints to External Pins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -154,7 +154,7 @@ Assigning Location Constraints to External Pins
 
    -  Click **OK** on the pop-up message.
 
-      .. tip:: The design might take a few minutes to elaborate. If you want to do something else in Vivado while the design elaborates, you can click the **Background** button to have Vivado continue running the process in the background.
+      .. tip:: Elaborating the design may take a few minutes. To continue working in Vivado while the process runs, click the **Background** button to run the process in the background.
 
 2. Select **I/O Planning** from the dropdown menu, as shown in the following figure, to display the **I/O Ports** window.
 
@@ -225,7 +225,7 @@ Updating Hardware in the Vitis Software Platform
 Open the Vitis Unified IDE and manually update the exported hardware from
 Vivado.
 
-1.  Click **edt_zc702** → **Settings** → **vitis-comp.json**. 
+1.  Click **zc702_edt** → **Settings** → **vitis-comp.json**. 
 
    .. figure:: ./media/image52.png
       :alt: Switch XSA
@@ -234,7 +234,7 @@ Vivado.
 
 2. In the **Switch XSA** view, browse for the exported XSA file (``C:/edt/edt_zc702/system_wrapper.xsa``) from Vivado and click **OK**.
 
-3. Select the **Hardware Specification** using the same window, and you will be able to see the updated IP.
+3. Select the **Hardware Specification** using the same window, to see the updated IP.
 
 4. Rebuild the out-of-date platform project.
 
@@ -246,9 +246,9 @@ Testing the PL IP with Prepared Software
 
 1. Create a new standalone application for Arm Cortex-A9:
 
-   -  Select **File → New Component → Application Project**.
+   -  Select **File → New Component → Application**.
    -  Give the Application Name: **hello_pl** and click **Next**.
-   -  Select the **edt_zc702** and click **Next**.
+   -  Select the **zc702_edt** and click **Next**.
    -  Choose the default domain in the Platform and click **Next**.
    -  Click **Finish**. The Vitis Unified IDE creates an empty application template called **hello_pl**.
 
@@ -276,18 +276,18 @@ Testing the PL IP with Prepared Software
 7. Run the project similar to the steps in :ref:`running-the-hello-world-application-on-a-zc702-board`.
 
    - Highlight the *hello_pl* Application Component and under **FLOW** select **Run**, and click **Open Settings** to launch the **Launch Configuration**.
-   - Check the Target Connection is correct for your host to target board connection, and click **Run** icon.
+   - Check the Target Connection is correct for the host to target board connection, and click **Run** icon.
 
     .. figure:: ./media/image56.png
        :alt: Run Configuration
 
        Run Configuration
 
-Because you updated the hardware specification with the XSA that includes a post-implementation bitstream, the launch configuration sets the bitstream file automatically. If your XSA file does not contain a bitstream, click the **Browse** button to point to your bitstream. 
+    Because you updated the hardware specification with the XSA that includes a post-implementation bitstream, the launch configuration sets the bitstream file automatically. If the XSA file does not contain a bitstream, click the **Browse** button to point to bitstream. 
 
-**Note** There are two ways to configure the ps7 susbsystem with the settings made in Vivado; using the FSBL or the ps7_init.tcl. When users export the XSA file, this will contain (amongst other files) the ps7_init.c/.h and the ps7_init.tcl. The ps7_init.tcl is a script that will have all the register writes to configure the ps7 subsystem over the debugger. The FSBL will use the ps7_init.c/.h files. Since the debugger will do the register writes sequentially, this could take a long time. The fsbl is deployed on the target, so this is quicker. Therefore, I would recommend using the FSBL.
+**Note** There are two ways to configure the ps7 susbsystem with the settings made in Vivado; using the FSBL or the ``ps7_init.tcl``. When users export the XSA file, this contains (amongst other files) the ``ps7_init.c/.h`` and the ``ps7_init.tcl``. The ``ps7_init.tcl`` is a script that contains all the register writes to configure the ps7 subsystem over the debugger. The FSBL uses the ``ps7_init.c/.h`` files. Since the debugger runs the register writes sequentially, this could take a long time. The fsbl is deployed on the target, so this is quicker. Therefore, I would recommend using the FSBL.
 
-**Note** When using the FSBL to configure the ps7 susbsystem, the debugger will set a breakpoint on the exit function of the FSBL. The debugger will wait until this breakpoint is hit, or a timeout occurs. If the timeout occurs, then this could mean that the breakpoint was not hit. This could be due to the symbol info not resolved by the debugger. If users are connecting remotely then a **symbol server** in the Target Connections can be used to try resolve this issue.
+**Note** When using the FSBL to configure the ps7 susbsystem, the debugger sets a breakpoint on the exit function of the FSBL. The debugger waits until this breakpoint is hit, or a timeout occurs. If the timeout occurs, then this could mean that the breakpoint was not hit. This could be due to the symbol info not resolved by the debugger. If users are connecting remotely then a **symbol server** in the Target Connections can be used to try resolve this issue.
 
 8. In the system, the AXI GPIO pin is connected to push button **SW5** on the board, and the PS section GPIO pin is connected to push button **SW7** on the board through an EMIO interface.
 
@@ -301,9 +301,9 @@ Because you updated the hardware specification with the XSA that includes a post
 Hello_PL Standalone Software Details
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The system you designed in this chapter requires application software for the execution on the board. This section describes the details about the application software.
+The system designed in this chapter requires application software for the execution on the board. This section describes the details about the application software.
 
-The ``main()`` function in the application software is the entry point for the execution. This function includes initialization and the required settings for all peripherals connected in the system. It also has a selection procedure for the execution of the different use cases, such as AXI GPIO and PS GPIO using EMIO interface. You can select different use cases by following the instructions on the serial terminal.
+The ``main()`` function in the application software is the entry point for the execution. This function includes initialization and the required settings for all peripherals connected in the system. It also has a selection procedure for the execution of the different use cases, such as AXI GPIO and PS GPIO using EMIO interface. Select different use cases by following the instructions on the serial terminal.
 
 The application software is programmed to accomplish the following
 steps:
@@ -334,15 +334,20 @@ steps:
 
 11. Execute a sequence in the loop to select between the AXI GPIO or PS GPIO use case using the serial terminal.
 
-    The software accepts your selection from the serial terminal and executes the procedure accordingly. After the selection of the use case through the serial terminal, you must press a push button on the board as per the instruction on the terminal. This action switches off the LED DS23, starts the timer, and tells the function to wait infinitely for the timer interrupt to happen. After the timer interrupt happens, LED DS23 switches ON and restarts execution.
+    Based on the serial terminal selection, the system executes the procedure accordingly. After the selection of the use case through the serial terminal, you must press a push button on the board as per the instruction on the terminal. This action switches off the LED DS23, starts the timer, and tells the function to wait infinitely for the timer interrupt to happen. After the timer interrupt happens, LED DS23 switches ON and restarts execution.
 
-See the :doc:`next chapter <./6-using-hp-port>` for information about using the AXI HP (High Performance) slave port with the AXI Central DMA IP.
+See the next chapter for information about using the AXI HP (High Performance) slave port with the AXI Central DMA IP.
 
 
 
 
 .. include:: ../docs/substitutions.txt
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2022–2025 Advanced Micro Devices, Inc
+.. Copyright © 2021 Xilinx, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
+.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
+   :ltrim:
+.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
+   :ltrim:

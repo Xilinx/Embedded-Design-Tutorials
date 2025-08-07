@@ -4,12 +4,12 @@ Using the Zynq SoC Processing System
 
 The AMD Zynq |trade| SoC consists of Arm |reg| Cortex |trade|-A9 cores, many hard intellectual property components (IPs), and programmable logic (PL). This offering can be used in two ways:
 
--  The Zynq SoC processing system (PS) can be used in a standalone mode, without attaching any additional fabric IP.
+-  The Zynq SoC processing system (PS) can operate in standalone mode, without attaching any additional fabric IP.
 -  IP cores can be instantiated in fabric and attached to the Zynq PS as a PS+PL combination.
 
 This chapter describes how to develop an embedded system with only the processing system (PS) of the Zynq |trade| 7000 SoC.
 
-The creation of a Zynq device system design involves configuring the PS to select the appropriate boot devices and peripherals. To start with, as long as the PS peripherals and available MIO connections meet the design requirements, no bitstream is required. This chapter guides you through creating a simple PS-based design that does not require a bitstream.
+The creation of a Zynq device system design involves configuring the PS to select the appropriate boot devices and peripherals. If the PS peripherals and available MIO connections satisfy the design requirements, you do not need a bitstream to proceed. This chapter guides you through the process of developing a simple PS-based design that does not require a bitstream.
 
 -  Example 1 uses Vivado to design the hardware project of this embedded system.
 -  Example 2 designs a “Hello World” software application in the Vitis IDE based on the Example 1 hardware.
@@ -19,7 +19,7 @@ The creation of a Zynq device system design involves configuring the PS to selec
 Example 1: Creating a New Embedded Project with Zynq SoC
 --------------------------------------------------------
 
-For this example, you will launch the AMD Vivado |trade| Design Suite and create a project with an embedded processor system as the top level.
+For this example, launch the AMD Vivado |trade| Design Suite and create a project with an embedded processor system as the top level.
 
 Input and Output Files (Example 1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32,7 +32,7 @@ Creating Your Hardware Design
 
 1. Start the Vivado Design Suite.
 
-   -  On Windows 10, click the start menu and find **Xilinx Design Tools → Vivado 2024.2**.
+   -  On Windows 10, click the start menu and find **Xilinx Design Tools → Vivado 2025.1**.
    -  On Linux, run `source <Vivado installation path>/settings64.sh` to set up the environment and run ``vivado &`` to launch the Vivado IDE.
 
 2. In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
@@ -92,7 +92,7 @@ Perform the following steps to create an embedded processor project.
    3. Update **Design Name** if necessary. In this example, change it to **system**.
    4. Click **OK**.
 
-   The Diagram window opens with a message that states that this design is empty. To get started, you will next add some IP from the catalog.
+   The Diagram window opens with a message that states that this design is empty. To get started, add some IP from the catalog.
 
 2. Add the Zynq Processing System IP to the block diagram:
 
@@ -110,7 +110,7 @@ Perform the following steps to create an embedded processor project.
 Configuring the Zynq 7000 Processing System with Presets in Vivado
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the Block Diagram window, notice the message stating that Designer assistance is available, as shown in the following figure.
+In the Block Diagram window, message appears indicating that designer assistance is available, as shown in the following figure.
 
 .. image:: ./media/image13.png
 
@@ -127,9 +127,9 @@ In the Block Diagram window, notice the message stating that Designer assistance
 Validating the Design and Connecting Ports
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now, let’s validate the design.
+Now, let us validate the design.
 
-1. Right-click in the white space of the Diagram window and select **Validate Design**. Alternatively, you can press the **F6** key or
+1. Right-click in the white space of the Diagram window and select **Validate Design**. Alternatively, press the **F6** key or
    the check button on the block diagram toolbar.
 
    -  A critical message appears, indicating that the ``M_AXI_GP0_ACLK`` must be connected.
@@ -165,7 +165,7 @@ Creating an HDL Wrapper for the Block Diagram
 
 2. Expand **Design Sources**, right-click the block diagram file **system(system.bd)**, and select **Create HDL Wrapper**.
 
-   The Create HDL Wrapper view opens. You will use this view to create an HDL wrapper file for the processor subsystem.
+   The Create HDL Wrapper view opens. Use this view to create an HDL wrapper file for the processor subsystem.
 
    .. tip:: The HDL wrapper is a top-level entity required by the design tools.
 
@@ -182,7 +182,7 @@ Generating the Block Design
 
    .. note:: 
    
-      If the synthesis option is **Global**, only wrapper files are generated during the block design generation phase, and the design will be synthesized as a whole at the synthesis stage. If the synthesis option is **Out of context per IP** or **Out of context per Block design**, the wrapper of the IP or block design will be generated and synthesized during block design generation, and the generated netlists will be combined together at the synthesis stage.
+      If the synthesis option is **Global**, only wrapper files are generated during the block design generation phase, and the design is synthesized as a whole at the synthesis stage. If the synthesis option is **Out of context per IP** or **Out of context per Block design**, the wrapper of the IP or block design is generated and synthesized during block design generation, and the generated netlists is combined together at the synthesis stage.
 
 3. Click **Generate**.
 
@@ -190,7 +190,7 @@ Generating the Block Design
 
 4. When the Generate Output Products process completes, click **OK**.
 
-5. In the Sources window, click the **IP Sources** view. Here you can see the output products that you just generated, as shown in the following figure.
+5. In the Sources window, click the **IP Sources** view. Here you can see the output products that are generated, as shown in the following figure.
 
    .. figure:: ./media/image18.png
       :alt: Generated IP Source Files
@@ -200,7 +200,7 @@ Generating the Block Design
 Exporting Hardware
 ~~~~~~~~~~~~~~~~~~
 
-Two types of hardware can be exported from Vivado: pre-synthesis and post-implementation. In the block design for this example, the hardware in the PL is the signal from ``FCLK_CLK0`` to ``M_AXI_GP0_ACLK``. It drives the clock of ``M_AXI_GP0``, because only pure PS functions will be tested in this example and PL resources will not be used, no loads are added to the ``M_AXI_GP0`` AXI interface. You can skip the synthesis, implementation, and bitstream generation phases to save time. We will export the pre-synthesis hardware in this case.
+Two types of hardware can be exported from Vivado: pre-synthesis and post-implementation. In the block design for this example, the hardware in the PL is the signal from ``FCLK_CLK0`` to ``M_AXI_GP0_ACLK``. It drives the clock of ``M_AXI_GP0``, because only pure PS functions are tested in this example and PL resources are not used, no loads are added to the ``M_AXI_GP0`` AXI interface. You can skip the synthesis, implementation, and bitstream generation phases to save time. Export the pre-synthesis hardware in this case.
 
 1. From the Vivado main menu, select **File→ Export → Export Hardware**. The Export Hardware Platform wizard opens.
 
@@ -229,13 +229,13 @@ Two types of hardware can be exported from Vivado: pre-synthesis and post-implem
 What's Next?
 ~~~~~~~~~~~~
 
-Now you can start developing the software for your project using the Vitis software platform. The next sections help you create a software application for your hardware platform.
+Now start developing the software for your project using the Vitis software platform. The next sections help you create a software application for your hardware platform.
 
 
 Example 2: Creating and Running a “Hello World” Application
 -----------------------------------------------------------
 
-In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a simple “Hello World” software application in JTAG mode using System Debugger in the Vitis IDE.
+In this example, you learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a simple “Hello World” software application in JTAG mode using System Debugger in the Vitis IDE.
 
 Input and Output Files (Example 2)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -294,7 +294,7 @@ Creating a Vitis Unified Platform Project
    2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Vitis 2024.2**.
    3. On Linux, run ``source <Vitis Installation Directory>/settings64.sh`` to set up the environment and run ``vitis &``.
 
-2. Select **Open Workspace** and give the location as **C:/edt/edt_zc702_workspace** or any given location path.
+2. Select **Open Workspace** and specify the location as **C:/edt/edt_zc702_workspace** or any desired path.
 
    -  Unlike Vitis Classic IDE, the platform is not generated automatically. You need to do this manually.
 
@@ -309,6 +309,7 @@ Creating a Vitis Unified Platform Project
 
    -  When the XSA file is selected, the System Device Tree (SDT) is generated, and the metadata here is used to populate the processor list. Once the SDT is created, choose **standalone** and the processor is **ps7_cortexa9_0**.
    - Keep the **Generate boot Artifacts** option selected, as shown in the following figure.
+   - Keep the **Compiler** as gcc.
 
    .. figure:: ./media/image26.png
        :alt: Select XSA
@@ -321,7 +322,7 @@ Creating a Vitis Unified Platform Project
 
    .. image:: ./media/image27.png
 
-   You can select the **Hardware Specification** link to see the the address map for the entire processing system.
+   Select the **Hardware Specification** link to see the the address map for the entire processing system.
 
    .. image:: ./media/hardware_spec.png
 
@@ -355,7 +356,7 @@ There are two ways to generate an Application template in the Vitis Unified IDE.
 
    .. image:: ./media/select_plat.png
 
-This will use the domain generated in the platform by default. Click **Next** and **Finish**.
+   This uses the domain generated in the platform by default. Click **Next** and **Finish**.
 
 3. Highlight the **hello_world** application component in the **Vitis Components** view. Select the hammer icon under **FLOW**.
 
@@ -364,7 +365,7 @@ This will use the domain generated in the platform by default. Click **Next** an
 Set Up Target Connections
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, there is a target connection set up for the localhost (127.0.0.1) at port 3121. However, you may connect remotely. For a remote connection you need to set up the target connection that will be used in the Launch Configuration later in this tutorial. 
+By default, there is a target connection set up for the localhost (127.0.0.1) at port 3121. However, you may connect remotely. For a remote connection you need to set up the target connection that is used in the Launch Configuration later in this tutorial. 
 
 To view the target connections, go to **Vitis → Target Connections**. 
 
@@ -380,19 +381,19 @@ Running the Hello World Application on a ZC702 Board
 
 1. Open a **Serial Communication Utility** for the COM port assigned to your system.
 
-3. Highlight **hello_world** application in **Vitis Components** view. Select **Run Settings** to open a **Launch Configuration**.
+2. Highlight **hello_world** application in **Vitis Components** view. Select **Run Settings** to open a **Launch Configuration**.
 
    .. note:: 
       
 	  Make sure that the **Target Connection** is correct.
 
-5. Click **Run**.
+3. Click **Run**.
 
    “Hello World” appears on the  Serial Terminal.
 
    .. note:: 
    
-      The software application do not require bitstream download to execute on the Zynq SoC evaluation board. The Arm Cortex-A9 dual core is already present on the board. Basic initialization of this system to run a simple application is accomplished by the First Stage Boot Loader (FSBL). The FSBL has ps7_init.c/h files that are packaged in the XSA file and extracted when the platform is created. The ps7_init.c/h have the settings made in the PS7 Subsystem in Vivado.
+      The software application does not require bitstream download to execute on the Zynq SoC evaluation board. The Arm Cortex-A9 dual core is already present on the board. Basic initialization of this system to run a simple application is accomplished by the First Stage Boot Loader (FSBL). The FSBL has ps7_init.c/h files that are packaged in the XSA file and extracted when the platform is created. The ps7_init.c/h have the settings made in the PS7 Subsystem in Vivado.
 
 What Just Happened? (Example 2)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -407,7 +408,7 @@ Additional Information
 Domain or Board Support Package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A domain or board support package (BSP) is a collection of software drivers and, optionally, the operating system on which to build your application. It is the support code for a given hardware platform or board that helps in basic initialization at power up and helps software applications to be run on top of it. You can create multiple applications to run on the domain. A domain is tied to a single processor in the platform.
+A domain or board support package (BSP) is a collection of software drivers and, optionally, the operating system on which you can build application. It is the support code for a given hardware platform or board that helps in basic initialization at power up and helps software applications to be run on top of it. You can create multiple applications to run on the domain. A domain is tied to a single processor in the platform.
 
 Standalone OS
 ~~~~~~~~~~~~~
@@ -416,7 +417,7 @@ Standalone is a simple, low-level software layer. It provides access to basic pr
 
 The application you ran in this chapter was created on top of the standalone OS. The domain/BSP that your software application targets is selected during the New Platform Project creation process.
 
-In the :doc:`next chapter <./3-debugging-vitis>`, you will learn how to debug software applications using the Vitis software platform.
+In the next chapter, you will learn how to debug software applications using the Vitis software platform.
 
 
 .. |Add-IP-Button| image:: ./media/image8.png
@@ -425,6 +426,11 @@ In the :doc:`next chapter <./3-debugging-vitis>`, you will learn how to debug so
 
 .. include:: ../docs/substitutions.txt
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2022–2025 Advanced Micro Devices, Inc
+.. Copyright © 2021 Xilinx, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
+.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
+   :ltrim:
+.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
+   :ltrim:

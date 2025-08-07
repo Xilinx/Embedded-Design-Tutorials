@@ -1,12 +1,12 @@
-#####################################################
+#################################################
 Zynq 7000 Embedded Design Tutorial
-#####################################################
+#################################################
 
 
 
-This document provides an introduction to using the AMD Vitis |trade| unified software platform with the AMD Zynq |trade| 7000 SoC device. The examples are targeted for the AMD ZC702 rev 1.0 evaluation board and the tools used are the AMD Vivado |trade| Design Suite, the Vitis software platform, and PetaLinux.
+This document provides an introduction to using the AMD Vitis |trade| unified software platform with the AMD Zynq |trade| 7000 SoC device. The examples target for the AMD ZC702 rev 1.0 evaluation board and the tools used are the AMD Vivado |trade| Design Suite, the Vitis software platform, and PetaLinux.
 
-The examples in this document were created using the AMD tools running on a Windows 10 64-bit operating system, and PetaLinux on Linux 64-bit operating system. These examples focus on introducing you to the following aspects of embedded design.
+The examples in this document were created using the AMD tools running on a Windows 10 64-bit operating system, and PetaLinux on a Linux 64-bit operating system. These examples focus on introducing you to the following aspects of embedded design.
 
 
 .. toctree::
@@ -23,7 +23,7 @@ The examples in this document were created using the AMD tools running on a Wind
    docs/8-custom-ip-driver-linux.rst
 
 
-The best way to learn a tool is to use it. This guide provides opportunities for you to work with the tools under discussion. Specifications for sample projects are given in the example sections, along with an explanation of what is happening behind the scenes. The chapter and examples are intended to showcase different aspects of embedded design. The examples takes you through the entire flow to complete the learning and then moves on to another topic.
+The best way to learn how to use a tool is by practicing with it. This guide offers you opportunities to work with the tools under discussion. Each section provides details about sample projects and explains what happens behind the scenes. The chapters and examples focus on different aspects of embedded design. The examples guide you through the entire flow, helping you gain hands-on experience before moving on to new topics.
 
 
 When reading this tutorial and running the examples, you might find the following references useful:

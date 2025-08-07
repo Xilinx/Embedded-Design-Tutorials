@@ -2,16 +2,16 @@
 Using the HP Slave Port with AXI CDMA IP
 ==========================================
 
-In this chapter, you will instantiate AXI CDMA (Central DMA) IP in fabric and integrate it with the processing system high performance (HP) 64-bit slave port. In this system, a AXI CDMA instance acts as a master device to copy an array of the data from the source buffer location to the destination buffer location in the DDR system memory. The AXI CDMA uses the processing system HP slave port to get read/write access to the DDR system memory.
+This chapter explains how to instantiate the AXI CDMA (Central Direct Memory Access) IP in the programmable logic (PL) and integrate it with the processing system’s high-performance (HP) 64-bit slave port. In this system, the AXI CDMA instance acts as a master device to copy an array of data from a source buffer to a destination buffer located in DDR system memory. The AXI CDMA accesses the DDR memory through the processing system's HP slave port for read/write operations.
 
-You will write standalone application software and Linux OS based application software using mmap() for the data transfer using the AXI CDMA block. You will also execute both standalone and Linux-based application software separately on the ZC702 board.
+The chapter also includes steps to develop standalone and Linux-based application software to perform data transfers using the AXI CDMA block. The Linux application uses the mmap() system call. Both applications are executed separately on the ZC702 evaluation board.
 
 Integrating AXI CDMA with the Zynq SoC PS HP Slave Port
 -------------------------------------------------------
 
 AMD Zynq |trade| 7000 SoC devices internally provide four high performance (HP) AXI slave interface ports that connect the programmable logic (PL) to asynchronous FIFO interface (AFI) blocks in the processing system (PS). The HP ports enable a high throughput data path between AXI masters in the programmable logic and the processing system’s memory system (DDR and on- chip memory). HP slave ports are configurable to 64-bit or 32-bit interfaces.
 
-In this section, you will create a design using AXI CDMA intellectual property (IP) as master in fabric and integrate it with the PS HP 64 bit slave port. The block diagram for the system is as shown in the following figure.
+This section helps creating a design using AXI CDMA intellectual property (IP) as master in fabric and integrate it with the PS HP 64 bit slave port. The block diagram for the system is as shown in the following figure.
 
 .. image:: ./media/image61.jpeg
 
@@ -25,13 +25,13 @@ This system covers the following connections:
 
 -  The AXI CDMA interrupt is connected from the fabric to the PS section interrupt controller. After data transfer or errors during data transaction, the AXI CDMA interrupt is triggered.
 
-In this system, you will configure the HP slave port 0 to access a DDR memory location range from 0x20000000 to 0x2fffffff. This DDR system memory location acts as the source buffer location to CDMA for reading the data.
+This system configures HP slave port 0 to access a DDR memory range from 0x20000000 to 0x2FFFFFFF. The AXI CDMA reads data from this region, which serves as the source buffer.
 
-You will also configure HP slave port 2 to access a DDR memory location range from 0x30000000 to 0x3fffffff. This DDR system memory location acts as a destination location to CDMA for writing the data.
+It configures HP slave port 2 to access a DDR memory range from 0x30000000 to 0x3FFFFFFF, designating it as the destination buffer for data writes.
 
-You will also configure the AXI CDMA IP data width of the data transfer channel to 1024 bits with the maximum burst length set to 32. With this setting, the CDMA maximum transfer size is set to 1024x32 bits in one transaction.
+The configuration sets the AXI CDMA IP to use a 1024-bit data width and a maximum burst length of 32, enabling transfers of up to 1024 × 32 bits in a single transaction.
 
-You will write the application software code for the above system. When you execute the code, it first initializes the source buffer memory with the specified data pattern and also clears the destination buffer memory by writing all zeroes to the memory location. It then starts configuring the CDMA register for the DMA transfer. It writes the source buffer location, destination buffer location, and number of bytes to be transferred to the CDMA registers and waits for the CDMA interrupt. When the interrupt occurs, it checks the status of the DMA transfers.
+The application software initializes the source buffer with a predefined data pattern and clears the destination buffer by writing zeros. It then writes the source address, destination address, and transfer size to the CDMA registers to configure the DMA transfer. After starting the transfer, it waits for a CDMA interrupt. When the interrupt occurs, the software checks the CDMA status registers to verify that the transfer completed successfully.
 
 If the data transfer status is successful, it compares the source buffer data with the destination buffer data and displays the comparison result on the serial terminal.
 
@@ -56,7 +56,7 @@ Input and Output Files
 Update the Vivado Design
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Start with the system you created in :ref:`example-6-adding-peripheral-pl-ip`.
+1. Start with the system created in :ref:`example-6-adding-peripheral-pl-ip`.
 
    1. Open the Vivado |reg| design from :ref:`example-6-adding-peripheral-pl-ip`.
    2. Open the block design from Flow Navigator **Open Block Design**.
@@ -164,7 +164,7 @@ Update the Vivado Design
 Designing Standalone Application Software for the Design
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The CDMA-based system that you designed in this chapter requires application software to execute on the board. This section describes the details of this software.
+The CDMA-based system that is designed in this chapter requires application software to execute on the board. This section describes the details of this software.
 
 The ``main()`` function in the application software is the entry point for the execution. It initializes the source memory buffer with the specified test pattern and clears the destination memory buffer by writing all zeroes.
 
@@ -275,12 +275,17 @@ Running CDMA the App on ZC702
       XAxiCdma_Interrupt: Passed
       DMA Transfer is Successful
 
-Up until now, the examples you have been working with have all been developed and debugged in a lab environment. JTAG is required to configure and control the applications. How can you deploy applications to the board so that it can run the applications after booting by itself? See the :doc:`next chapter <./7-linux-booting-debug>` for Linux boot image configuration.
+Up until now, the examples you have been working with have all been developed and debugged in a lab environment. JTAG is required to configure and control the applications. How can you deploy applications to the board so that it can run the applications after booting by itself? See the next chapter for Linux boot image configuration.
 
 
 
 .. include:: ../docs/substitutions.txt
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2022–2025 Advanced Micro Devices, Inc
+.. Copyright © 2021 Xilinx, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
+.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
+   :ltrim:
+.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
+   :ltrim:
