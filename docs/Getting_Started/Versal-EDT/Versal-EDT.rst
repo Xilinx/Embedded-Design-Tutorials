@@ -19,7 +19,7 @@ Versal Adaptive SoC Embedded Design Tutorial
 
 
 
-This document provides an introduction for using the AMD Vivado |trade| Design Suite flow for a VCK190/VMK180/VPK180 evaluation board. The tools used are Vivado Design Suite and the AMD Vitis |trade| unified software platform, version 2024.1. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* `[UG1400] <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1400-vitis-embedded>`__.
+This document provides an introduction for using the AMD Vivado |trade| Design Suite flow for a VCK190/VMK180/VPK180 evaluation board. The tools used are Vivado Design Suite and the AMD Vitis |trade| unified software platform, version 2024.2. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* `[UG1400] <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1400-vitis-embedded>`__.
 
 .. note:: In this tutorial, the instructions for booting Linux on the hardware is specific to the PetaLinux tools released for 2024.1, which must be installed on a Linux host machine for exercising the Linux portions of this document.
 
