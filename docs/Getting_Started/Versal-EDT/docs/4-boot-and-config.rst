@@ -10,9 +10,9 @@ The purpose of this chapter is to show how to integrate and load boot loaders, b
 
 You can achieve these configurations using the AMD Vitis |trade| software platform and the PetaLinux tool flow. While :doc:`../docs/2-cips-noc-ip-config` focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a larger system.
 
-===============
+---------------
 System Software
-===============
+---------------
 
 The following system software blocks cover most of the boot and configuration for this chapter.
 
@@ -33,9 +33,9 @@ The Trusted Firmware-A (ATF) is a transparent bare-metal application layer execu
 
 .. _generating-boot-image-for-standalone-application:
 
-================================================
+------------------------------------------------
 Generating Boot Image for Standalone Application
-================================================
+------------------------------------------------
 
 The Vitis software platform supports boot image creation wizard for Versal devices. To generate a boot image PDI or ``Boot.bin``, you can either use Bootgen command line options or use the wizard in Vitis. This tutorial shows how to create Boot image using Bootgen, which is released as a part of the Vitis software platform package. The primary function of Bootgen is to integrate the various partitions of the bootable image. Bootgen uses a BIF file (Bootgen Image Format) as an input and generates a single file image in binary BIN or PDI format. It outputs a single file image which can be loaded into non-volatile memory (QSPI or SD card). Use the following steps to generate a PDI/BIN file:
 
@@ -79,9 +79,9 @@ xsct%
 
 .. _loading-petalinux-images-versal-board-using-jtag:
 
-======================================================
+------------------------------------------------------
 Loading PetaLinux Images on a Versal Board using JTAG
-======================================================
+------------------------------------------------------
 
 This section describes how to load Versal PetaLinux images using JTAG mode on the Versal board. 
 
@@ -182,9 +182,9 @@ This section describes how to load Versal PetaLinux images using JTAG mode on th
 
 .. _boot-sequence-sd-boot-mode:
  	
-==============================
+-------------------------------
 Boot Sequence for SD-Boot Mode
-==============================
+-------------------------------
 
 The following steps demonstrate the boot sequence for the SD-boot mode.
 
@@ -218,9 +218,9 @@ The following steps demonstrate the boot sequence for the SD-boot mode.
 
    .. image:: ./media/led_example_console_prints.PNG
 
-================================
+---------------------------------
 Boot Sequence for QSPI Boot Mode
-================================
+---------------------------------
 
 This section demonstrates the boot sequence for the QSPI boot mode. For this, you need to connect a QSPI daughter card (part number: X_EBM-01, REV_A01) as shown in the following figure:
 
