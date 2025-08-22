@@ -43,8 +43,8 @@ The Vitis software platform supports boot image creation wizard for Versal devic
 
    xsct
 
-**** Software Commandline Tool (XSCT) v2024.1.0
-  **** SW Build 0 on 2024-05-19-14:06:07
+***Software Commandline Tool (XSCT) v2024.1.0***
+  ****SW Build 0 on 2024-05-19-14:06:07***
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 

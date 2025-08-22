@@ -10,9 +10,9 @@ Examples using the PetaLinux tool are provided in this chapter.
 
 .. _5-using-axi-gpio:
 
-==============================
+-------------------------------
 Design Example: Using AXI GPIO
-==============================
+-------------------------------
 
 The Linux application uses a PL-based AXI GPIO interface to monitor the DIP switch of the board and accordingly control the LEDs on the board. The LED application can run on VCK190 and VMK180 boards.
 
@@ -303,9 +303,9 @@ Exporting Hardware
 
 .. _freertos-axi-uartlite-application-project:
 
-====================================================================
+--------------------------------------------------------------------
 Example Project: FreeRTOS AXI UARTLITE Application Project with RPU
-====================================================================
+--------------------------------------------------------------------
 
 This section explains how to configure and build the FreeRTOS application for an Arm Cortex-R5F core-based RPU on a Versal device.
 
@@ -442,9 +442,9 @@ Building the Application
 
 .. _creating-linux-images-using-petalinux:
 
-======================================================
+-------------------------------------------------------
 Example Project: Creating Linux Images Using PetaLinux
-======================================================
+-------------------------------------------------------
 
 This section explains how to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.
 
