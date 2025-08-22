@@ -17,17 +17,17 @@ The NoC IP core configures the DDR memory and data path across the DDR memory an
 
 .. note:: The design files for this chapter have been validated with Vivado Design Suite 2022.1.
 
-=============
+--------------
 Prerequisites
-=============
+--------------
 
 To create and run Hello World applications discussed in this chapter, install the AMD Vitis |trade| unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded>`__).
 
 .. _cips-ip-core-configuration:
 
-==========================
+---------------------------
 CIPS IP Core Configuration
-==========================
+---------------------------
 
 Creating a Versal system design involves configuring the CIPS IP core to select the appropriate boot devices and peripherals. To start with, if the CIPS IP core peripherals and available multiplexed I/O (MIO) connections meet the requirements, no PL component is required. This chapter guides you through creating a simple CIPS IP core-based design.
 
@@ -402,7 +402,7 @@ Building the Application
    
 2. Click **Build**.
 
-   .. image:: media/build_button_new_vitis.png
+   .. image:: media/build_button_new_vitis.png.png
    
    The project is built successfully.
 
@@ -847,13 +847,13 @@ You will create a new Vitis project, similar to the one in :ref:`running-bare-me
 
 2. Create a bare-metal Hello World system project with an application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 and 2 of :ref:`creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm` and steps 1 and 2 of Modifying the helloworld_a72 Application Source Code.
 
-3. Select the component (hello_world_a72) application and select Build or click .. image:: media/build-button-vitis.png to generate the project elf files within the Debug folder of the application project.
+3. Select the component (hello_world_a72) application and select **Build** to generate the project elf files within the Debug folder of the application project.
         
 4. Create an additional RPU domain for your platform (created in Step 2) as discussed in :ref:`creating-a-hello-world-application-for-the-arm-cortex-r5f`.
         
 5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 and 2 of :ref:`creating-a-hello-world-application-for-the-arm-cortex-r5f` and steps 1 and 2 of :ref:`modifying-the-helloworld_r5-application-source-code`.
 
-6. Select the component (hello_world_r5) application and select Build or click .. image:: media/build-button-vitis.png to generate the project elf files within the Debug folder of the application project.
+6. Select the component (hello_world_r5) application and select **Build** to generate the project elf files within the Debug folder of the application project.
 
 Refer to :ref:`running-applications-in-jtag-mode` for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to :ref:`generating-boot-image-for-standalone-application` for generating boot images for standalone applications. 
 
