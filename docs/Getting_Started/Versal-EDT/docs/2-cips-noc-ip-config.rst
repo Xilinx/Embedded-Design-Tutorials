@@ -871,6 +871,6 @@ Refer to :ref:`running-applications-in-jtag-mode` for running the applications b
 .. |image30| image:: ./media/image30.png
 
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2020–2025 Advanced Micro Devices, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
