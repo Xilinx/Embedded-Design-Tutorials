@@ -449,6 +449,8 @@ The following steps demonstrate the procedure to create a Hello World applicatio
 
    .. image:: media/hello_world_r5.PNG
 
+.. _modifying-the-helloworld_r5-application-source-code:   
+
 Modifying the helloworld_r5 Application Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -835,9 +837,9 @@ Exporting Hardware
 Running a Bare-Metal Hello World Application on DDR Memory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Vitis software platform.
+In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Vitis Software Platform.
 
-You will create a new Vitis project, similar to the one in `running-bare-metal-hello-world-application`, except that it will use the default linker scripts, which will reference the DDR memory.
+You will create a new Vitis project, similar to the one in :ref:`running-bare-metal-hello-world-application`, except that it will use the default linker scripts, which will reference the DDR memory.
 
 1. Manage board settings, make cable connections, and connect to the board through your system and launch the Vitis software platform as discussed in steps 1 through 7 in :ref:`running-bare-metal-hello-world-application`.
 
@@ -845,15 +847,15 @@ You will create a new Vitis project, similar to the one in `running-bare-metal-h
 
 2. Create a bare-metal Hello World system project with an application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 and 2 of :ref:`creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm` and steps 1 and 2 of Modifying the helloworld_a72 Application Source Code.
 
-3. Select the component (hello_world_a72) application and select Build or click .. image:: media/build_button_new_vitis.png to generate the project elf files within the Debug folder of the application project.
+3. Select the component (hello_world_a72) application and select Build or click .. image:: media/build-button-vitis.png to generate the project elf files within the Debug folder of the application project.
         
-4. Create an additional RPU domain for your platform (created in Step 2) as discussed in `creating-a-hello-world-application-for-the-arm-cortex-r5f`.
+4. Create an additional RPU domain for your platform (created in Step 2) as discussed in :ref:`creating-a-hello-world-application-for-the-arm-cortex-r5f`.
         
-5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 and 2 of :ref: `Creating the Standalone Application Project for the Arm Cortex-R5F` and steps 1 and 2 of :ref: `Modifying the helloworld_r5 Application Source Code`.
+5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 and 2 of :ref:`creating-a-hello-world-application-for-the-arm-cortex-r5f` and steps 1 and 2 of :ref:`modifying-the-helloworld_r5-application-source-code`.
 
-6. 6.	Select the component (hello_world_r5) application and select Build or click .. image:: media/build_button_new_vitis.png to generate the project elf files within the Debug folder of the application project.
+6. Select the component (hello_world_r5) application and select Build or click .. image:: media/build-button-vitis.png to generate the project elf files within the Debug folder of the application project.
 
-Refer to :ref: `Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform` for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to :ref:`generating-boot-image-for-standalone-application` for generating boot images for standalone applications. 
+Refer to :ref:`running-applications-in-jtag-mode` for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to :ref:`generating-boot-image-for-standalone-application` for generating boot images for standalone applications. 
 
 
 
