@@ -6,9 +6,9 @@ This chapter guides you through building a system based on AMD Versal |trade| de
 
 .. _7-using-axi-gpio:
 
-===============================
+-------------------------------
 Design Example: Using AXI GPIO
-===============================
+-------------------------------
 
 The design example uses PL-based AXI GPIO interfaces to control the LEDs on the board using a Linux application (``gpiotest``). To use the four Super Logic Regions (SLR) available in the VP1802 SSI technology device, the PL AXI GPIO interface paths for LED0, LED1, LED2, and LED3 are routed through SLR-0, SLR-1, SLR-2, and SLR-3, respectively.
 
@@ -478,9 +478,9 @@ Exporting Hardware
 
 4. Click **Finish**.
 
-====================================================================
+--------------------------------------------------------------------
 Example Project: FreeRTOS AXI UARTLITE Application Project with RPU
-====================================================================
+--------------------------------------------------------------------
 
 This section explains how to configure and build the FreeRTOS application for an Arm Cortex-R5F core based RPU on a Versal device.
 
@@ -599,9 +599,9 @@ Building the Application
 
 .. _creating-linux-images-using-petalinux:
 
-======================================================
+-------------------------------------------------------
 Example Project: Creating Linux Images Using PetaLinux
-======================================================
+-------------------------------------------------------
 
 This section explains how to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.
 
