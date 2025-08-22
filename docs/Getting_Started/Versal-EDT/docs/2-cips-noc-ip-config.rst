@@ -39,7 +39,7 @@ Creating a New Embedded Project with a Versal Device
 For this example, launch the Vivado Design Suite and create a project with an embedded processor system as the top level.
 
 Starting Your Design
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 1. Start the Vivado Design Suite.
 
@@ -97,7 +97,7 @@ Starting Your Design
    .. note:: Select the version based on the silicon on the board.For production silicon, select the board revision as Rev A01 with board file version as 1.2. 
 
 Creating an Embedded Processor Project
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To create an embedded processor project:
 
@@ -674,9 +674,9 @@ Method II
 
 .. _noc-ip-core-configuration:
 
-===================================
+------------------------------------
 NoC (and DDR) IP Core Configuration
-===================================
+------------------------------------
 
 This section describes the NoC (and DDR) configuration and related connections required for use with the CIPS configured earlier in this chapter. The Versal CIPS IP core allows you to configure two superscalar, multi-core Arm Cortex-A72 based APUs, two Arm Cortex-R5F RPUs, a platform management controller (PMC), and a CCIX PCIe |reg| module (CPM). The NoC IP core allows configuring the NoC and enabling the DDR memory controllers.
 
