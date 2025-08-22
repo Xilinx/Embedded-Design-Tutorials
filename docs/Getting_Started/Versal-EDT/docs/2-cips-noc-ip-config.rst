@@ -1,6 +1,6 @@
-=================================================
+****************************************************
 Versal CIPS and NoC (DDR) IP Core Configuration
-=================================================
+****************************************************
 
 The AMD Versal |trade| Control, Interfaces and Processing System (CIPS) IP core allows you to configure the processing system and the PMC block, including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.
 
@@ -17,9 +17,9 @@ The NoC IP core configures the DDR memory and data path across the DDR memory an
 
 .. note:: The design files for this chapter have been validated with Vivado Design Suite 2022.1.
 
---------------
+=============
 Prerequisites
---------------
+=============
 
 To create and run Hello World applications discussed in this chapter, install the AMD Vitis |trade| unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded>`__).
 
@@ -283,15 +283,13 @@ You will create a new Vitis project, similar to the one in `running-bare-metal-h
 
 3. Select the component (hello_world_a72) application and select **Build** to generate the project elf files within the Debug folder of the application project.
 
-4. Create an additional RPU domain for your platform (created in Step 2) as discussed in `creating-a-hello-world-application-for-the-arm-cortex-r5f`.
+4. Create an additional RPU domain for your platform (created in Step 2) as discussed in Creating the Standalone Application Project for the Arm Cortex-R5F.
 
-5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 and 2 of `creating-a-hello-world-application-for-the-arm-cortex-r5f` and steps 1 and 2 of `modifying-the-helloworld_r5-application-source-code`.
+5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 and 2 of Creating the Standalone Application Project for the Arm Cortex-R5F and steps 1 and 2 of Modifying the helloworld_r5 Application Source Code.
 
 6. Select the component (hello_world_r5) application and select **Build** to generate the project elf files within the Debug folder of the application project.
 
-Refer to `running-applications-in-jtag-mode` for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to `generating-boot-image-for-standalone-application` for generating boot images for standalone applications.
-
-.. _creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm:
+Refer to Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to `generating-boot-image-for-standalone-application` for generating boot images for standalone applications.
 
 Creating a Hello World Application for the Arm Cortex-A72 on OCM
 -----------------------------------------------------------------
@@ -450,8 +448,6 @@ The following steps demonstrate the procedure to create a Hello World applicatio
 6. Click **Finish** and the Hello world Application is created successfully.
 
    .. image:: media/hello_world_r5.PNG
-
-.. _modifying-the-helloworld_r5-application-source-code:
 
 Modifying the helloworld_r5 Application Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -841,7 +837,7 @@ Running a Bare-Metal Hello World Application on DDR Memory
 
 In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Vitis software platform.
 
-You will create a new Vitis project, similar to the one in :ref:`running-bare-metal-hello-world-application`, except that it will use the default linker scripts, which will reference the DDR memory.
+You will create a new Vitis project, similar to the one in `running-bare-metal-hello-world-application`, except that it will use the default linker scripts, which will reference the DDR memory.
 
 1. Manage board settings, make cable connections, and connect to the board through your system and launch the Vitis software platform as discussed in steps 1 through 7 in :ref:`running-bare-metal-hello-world-application`.
 
@@ -851,7 +847,7 @@ You will create a new Vitis project, similar to the one in :ref:`running-bare-me
 
 3. Select the component (hello_world_a72) application and select Build or click .. image:: media/build_button_new_vitis.png to generate the project elf files within the Debug folder of the application project.
         
-4. Create an additional RPU domain for your platform (created in Step 2) as discussed in :ref: `Creating the Standalone Application Project for the Arm Cortex-R5F`.
+4. Create an additional RPU domain for your platform (created in Step 2) as discussed in `creating-a-hello-world-application-for-the-arm-cortex-r5f`.
         
 5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 and 2 of :ref: `Creating the Standalone Application Project for the Arm Cortex-R5F` and steps 1 and 2 of :ref: `Modifying the helloworld_r5 Application Source Code`.
 
