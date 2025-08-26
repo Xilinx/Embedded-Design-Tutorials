@@ -10,9 +10,9 @@ The purpose of this chapter is to show how to integrate and load boot loaders, b
 
 You can achieve these configurations using the AMD Vitis |trade| software platform and the PetaLinux tool flow. While :doc:`../docs/2-cips-noc-ip-config` focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a larger system.
 
-===============
+---------------
 System Software
-===============
+---------------
 
 The following system software blocks cover most of the boot and configuration for this chapter.
 
@@ -33,9 +33,9 @@ The Trusted Firmware-A (ATF) is a transparent bare-metal application layer execu
 
 .. _generating-boot-image-for-standalone-application:
 
-================================================
+------------------------------------------------
 Generating Boot Image for Standalone Application
-================================================
+------------------------------------------------
 
 The Vitis software platform supports boot image creation wizard for Versal devices. To generate a boot image PDI or ``Boot.bin``, you can either use Bootgen command line options or use the wizard in Vitis. This tutorial shows how to create Boot image using Bootgen, which is released as a part of the Vitis software platform package. The primary function of Bootgen is to integrate the various partitions of the bootable image. Bootgen uses a BIF file (Bootgen Image Format) as an input and generates a single file image in binary BIN or PDI format. It outputs a single file image which can be loaded into non-volatile memory (QSPI or SD card). Use the following steps to generate a PDI/BIN file:
 
@@ -43,8 +43,8 @@ The Vitis software platform supports boot image creation wizard for Versal devic
 
    xsct
 
-****** Software Commandline Tool (XSCT) v2024.1.0
-  **** SW Build 0 on 2024-05-19-14:06:07
+***Software Commandline Tool (XSCT) v2024.1.0***
+  ****SW Build 0 on 2024-05-19-14:06:07***
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -79,9 +79,9 @@ xsct%
 
 .. _loading-petalinux-images-versal-board-using-jtag:
 
-======================================================
+------------------------------------------------------
 Loading PetaLinux Images on a Versal Board using JTAG
-======================================================
+------------------------------------------------------
 
 This section describes how to load Versal PetaLinux images using JTAG mode on the Versal board. 
 
@@ -182,9 +182,9 @@ This section describes how to load Versal PetaLinux images using JTAG mode on th
 
 .. _boot-sequence-sd-boot-mode:
  	
-==============================
+-------------------------------
 Boot Sequence for SD-Boot Mode
-==============================
+-------------------------------
 
 The following steps demonstrate the boot sequence for the SD-boot mode.
 
@@ -218,51 +218,11 @@ The following steps demonstrate the boot sequence for the SD-boot mode.
 
    .. image:: ./media/led_example_console_prints.PNG
 
-================================
-Boot Sequence for QSPI Boot Mode
-================================
-
-This section demonstrates the boot sequence for the QSPI boot mode. For this, you need to connect a QSPI daughter card (part number: X_EBM-01, REV_A01) as shown in the following figure:
-
-*Figure 2:* **Daughter Card on VCK190**
-
-.. image:: ./media/vck190_production_board_QSPI_daughter_card.jpg
-
-You need to flash the images to the daughter card using the following steps:
-
-1. With the card powered off, install the QSPI daughter card.
-
-2. Power on the board. Run modified version of Versal Tcl from the :ref:`loading-petalinux-images-versal-board-using-jtag` section, to ensure that U-Boot is running and also to have Boot.BIN copied to DDR location. 
-
-3. At the U-Boot stage, when the message **Hit any key to stop autoboot:** appears, hit any key, then run the following commands to flash the images on the QSPI daughter card:
-
-   .. code-block::
-      
-         // check QSPI is available or not
-         sf probe 0 0 0
-         // Erase QSPI Flash of size 256 MB
-         sf erase 0x0 0x10000000
-         // Copy BOOT.BIN file from DDR address,0x70000000 to QSPI Flash address,0x0
-         sf write 0x70000000 0x0 <BOOT.BIN_filesize_in_hex>
-         // Copy Image file from DDR address,0x00200000 to QSPI Flash address,0xF00000
-         sf write 0x00200000 0xF00000 <Image_filesize_in_hex>
-         // Copy rootfs.cpio.gz.u-boot file from DDR address,0x04000000 to QSPI Flash address,0x2E00000
-         sf write 0x04000000 0x2E00000 <rootfs.cpio.gz.u-boot_filesize_in_hex>
-         // Copy boot.scr file from DDR address,0x20000000  to QSPI Flash address,0x7F80000
-         sf write 0x20000000 0x7F80000 <boot.scr_filesize_in_hex>
-
-4. After flashing the images, turn off the power switch on the board, and change the SW1 boot mode pin settings to QSPI boot mode (ON-OFF-ON-ON, M[0:3] = 0100) as shown in the following figure:
-
-   .. image:: ./media/image52.png
-      
-
-5. Power cycle the board. The board now boots up using the images in the QSPI flash.
-
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2020–2025 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

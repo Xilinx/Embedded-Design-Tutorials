@@ -17,17 +17,17 @@ The NoC IP core configures the DDR memory and data path across the DDR memory an
 
 .. note:: The design files for this chapter have been validated with Vivado Design Suite 2022.1.
 
-=============
+--------------
 Prerequisites
-=============
+--------------
 
 To create and run Hello World applications discussed in this chapter, install the AMD Vitis |trade| unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded>`__).
 
 .. _cips-ip-core-configuration:
 
-==========================
+---------------------------
 CIPS IP Core Configuration
-==========================
+---------------------------
 
 Creating a Versal system design involves configuring the CIPS IP core to select the appropriate boot devices and peripherals. To start with, if the CIPS IP core peripherals and available multiplexed I/O (MIO) connections meet the requirements, no PL component is required. This chapter guides you through creating a simple CIPS IP core-based design.
 
@@ -402,7 +402,7 @@ Building the Application
    
 2. Click **Build**.
 
-   .. image:: media/build_button_new_vitis.png
+   .. image:: media/build_button_new_vitis.png.png
    
    The project is built successfully.
 
@@ -448,6 +448,8 @@ The following steps demonstrate the procedure to create a Hello World applicatio
 6. Click **Finish** and the Hello world Application is created successfully.
 
    .. image:: media/hello_world_r5.PNG
+
+.. _modifying-the-helloworld_r5-application-source-code:   
 
 Modifying the helloworld_r5 Application Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -672,9 +674,9 @@ Method II
 
 .. _noc-ip-core-configuration:
 
-===================================
+-----------------------------------
 NoC (and DDR) IP Core Configuration
-===================================
+-----------------------------------
 
 This section describes the NoC (and DDR) configuration and related connections required for use with the CIPS configured earlier in this chapter. The Versal CIPS IP core allows you to configure two superscalar, multi-core Arm Cortex-A72 based APUs, two Arm Cortex-R5F RPUs, a platform management controller (PMC), and a CCIX PCIe |reg| module (CPM). The NoC IP core allows configuring the NoC and enabling the DDR memory controllers.
 
@@ -835,7 +837,7 @@ Exporting Hardware
 Running a Bare-Metal Hello World Application on DDR Memory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Vitis software platform.
+In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Vitis Software Platform.
 
 You will create a new Vitis project, similar to the one in :ref:`running-bare-metal-hello-world-application`, except that it will use the default linker scripts, which will reference the DDR memory.
 
@@ -845,15 +847,15 @@ You will create a new Vitis project, similar to the one in :ref:`running-bare-me
 
 2. Create a bare-metal Hello World system project with an application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 and 2 of :ref:`creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm` and steps 1 and 2 of Modifying the helloworld_a72 Application Source Code.
 
-3. Select the component (hello_world_a72) application and select Build or click .. image:: media/build_button_new_vitis.png to generate the project elf files within the Debug folder of the application project.
+3. Select the component (hello_world_a72) application and select **Build** to generate the project elf files within the Debug folder of the application project.
         
-4. Create an additional RPU domain for your platform (created in Step 2) as discussed in :ref: `Creating the Standalone Application Project for the Arm Cortex-R5F`.
+4. Create an additional RPU domain for your platform (created in Step 2) as discussed in :ref:`creating-a-hello-world-application-for-the-arm-cortex-r5f`.
         
-5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 and 2 of :ref: `Creating the Standalone Application Project for the Arm Cortex-R5F` and steps 1 and 2 of :ref: `Modifying the helloworld_r5 Application Source Code`.
+5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 and 2 of :ref:`creating-a-hello-world-application-for-the-arm-cortex-r5f` and steps 1 and 2 of :ref:`modifying-the-helloworld_r5-application-source-code`.
 
-6. 6.	Select the component (hello_world_r5) application and select Build or click .. image:: media/build_button_new_vitis.png to generate the project elf files within the Debug folder of the application project.
+6. Select the component (hello_world_r5) application and select **Build** to generate the project elf files within the Debug folder of the application project.
 
-Refer to :ref: `Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform` for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to :ref:`generating-boot-image-for-standalone-application` for generating boot images for standalone applications. 
+Refer to :ref:`running-applications-in-jtag-mode` for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to :ref:`generating-boot-image-for-standalone-application` for generating boot images for standalone applications. 
 
 
 
@@ -869,6 +871,6 @@ Refer to :ref: `Running Applications in the JTAG Mode using the System Debugger 
 .. |image30| image:: ./media/image30.png
 
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2020–2025 Advanced Micro Devices, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

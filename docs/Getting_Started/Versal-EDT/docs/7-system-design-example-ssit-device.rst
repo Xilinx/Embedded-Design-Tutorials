@@ -6,9 +6,9 @@ This chapter guides you through building a system based on AMD Versal |trade| de
 
 .. _7-using-axi-gpio:
 
-===============================
+-------------------------------
 Design Example: Using AXI GPIO
-===============================
+-------------------------------
 
 The design example uses PL-based AXI GPIO interfaces to control the LEDs on the board using a Linux application (``gpiotest``). To use the four Super Logic Regions (SLR) available in the VP1802 SSI technology device, the PL AXI GPIO interface paths for LED0, LED1, LED2, and LED3 are routed through SLR-0, SLR-1, SLR-2, and SLR-3, respectively.
 
@@ -478,9 +478,9 @@ Exporting Hardware
 
 4. Click **Finish**.
 
-====================================================================
+--------------------------------------------------------------------
 Example Project: FreeRTOS AXI UARTLITE Application Project with RPU
-====================================================================
+--------------------------------------------------------------------
 
 This section explains how to configure and build the FreeRTOS application for an Arm Cortex-R5F core based RPU on a Versal device.
 
@@ -554,7 +554,7 @@ Creating an Empty Application
    +----------------+-----------------------------+-------------------------------+
    |                |    Operating System         |    freertos                   |
    +----------------+-----------------------------+-------------------------------+
-   |                |    Processor                |    Psv_cortexa5_0             |
+   |                |    Processor                |    psv_cortexr5_0             |
    +----------------+-----------------------------+-------------------------------+
 
 4. Select the Created Platform and click **Next**.
@@ -567,7 +567,7 @@ Creating an Empty Application
    
    .. image:: media/new-ch7-empty-app.png
 
-8. Delete the source files under ``source/directory`` and copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``source/directory``.
+8. Delete the source files under ``freertos_gpio_test/Sources/src`` and copy the freertos source code files from the FreeRTOS project path, ``<design-package>/ch5_system_design_example_source__files/rpu/`` to the ``source/directory``.
 
 9. Configure the Vitis IDE to enable AXI UARTLITE for RPU application debug console under the FreeRTOS Board Support Package.
    Navigate to vitis-comp.json under vpk180_platform project under Settings. Then select **Navigate to BSP Settings** under Board support package. Modify stdin and stdout to **axi_uarlite_0** by selecting it from the drop-down options, as shown in the following snippet.
@@ -599,9 +599,9 @@ Building the Application
 
 .. _creating-linux-images-using-petalinux:
 
-======================================================
+-------------------------------------------------------
 Example Project: Creating Linux Images Using PetaLinux
-======================================================
+-------------------------------------------------------
 
 This section explains how to configure and build the Linux operating system for an Arm Cortex-A72 core-based APU on a Versal device. You can use the PetaLinux tool with the board-specific BSP to configure and build Linux images.
 
@@ -737,5 +737,5 @@ After flashing the built images, all four LEDs which are connected to slave SLR 
    :ltrim:
 
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2020–2025 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

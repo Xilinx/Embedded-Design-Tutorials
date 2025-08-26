@@ -20,9 +20,9 @@ The Vitis software platform debugger enables you to see what is happening to a p
 
 The Vitis software platform supports debugging through system debugger.
 
-==========================
+---------------------------
 Customized System Debugger
-==========================
+---------------------------
 
 The Vitis software platform debugger enables you to step through your code line by line. You can set breakpoints or watchpoints to stop the processor, step through program execution, view the program variables and stack, and view the memory contents in the system.
 
@@ -44,9 +44,9 @@ You can repeat the cycle of modifying the code, building the executable, and deb
 
 .. note:: If you edit the source after compiling, it changes the line numbering as the debug information is linked directly to the source. Similarly, debugging optimized binaries can also cause unexpected jumps in the execution trace.
 
-====================================================
+-----------------------------------------------------
 Debugging Software Using the Vitis Software Platform
-====================================================
+-----------------------------------------------------
 
 This example describes debugging a hello world application.
 
@@ -83,9 +83,9 @@ To connect with the target (board form), follow these steps:
    
    .. image:: media/new-debug-output.png
 
-======================================================
+------------------------------------------------------
 Debugging Using the Software Command Line Tool (XSCT)
-======================================================
+------------------------------------------------------
 
 You can debug in the command line mode using the Xilinx System Debugger (XSDB), which is available as a part of XSCT. This example describes debugging the bare-metal application hello_world_r5 using XSCT.
 
@@ -255,5 +255,5 @@ Running and Debugging Application Using XSCT
    :ltrim:
 	
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2020–2025 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

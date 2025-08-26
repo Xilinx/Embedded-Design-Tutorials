@@ -4,9 +4,9 @@ Appendix: Creating the PLM
 
 Following are the steps to create a platform loader and manager (PLM) elf file in the AMD Vitis |trade| software platform. In Versal |trade| devices, the PLM executes in the PMC, and is used to bootstrap the APU and RPU.
 
-======================
+----------------------
 Creating the Platform
-======================
+----------------------
 
 Follow these steps to create a platform for the PLM:
 
@@ -45,9 +45,9 @@ Follow these steps to create a platform for the PLM:
    
    .. image:: media/plm-platform.png
 
-===============================================
+-----------------------------------------------
 Creating a Versal PLM Application from Example
-===============================================
+-----------------------------------------------
 
 Follow these steps to create a Versal PLM application using the created platform:
 
@@ -110,6 +110,6 @@ This generates the ``versal_plm.elf`` file within the `Output` folder of the app
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
  
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2020–2025 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
 
