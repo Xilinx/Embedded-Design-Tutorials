@@ -532,7 +532,7 @@ Method I
 
 2. Double-click **System Project Debug** to create a run configuration.
 
-   The Vitis software platform creates a new run configuration with the name: SystemDebugger_helloworld_system_1. Rename this to SystemDebugger_helloworld_system_A72. For the remaining options, refer to the following table.
+   The Vitis software platform creates a new run configuration with the name: SystemDebugger_helloworld_system_1. Rename this to SystemDebugger_helloworld_system_a72. For the remaining options, refer to the following table.
 
    *Table 7:* **Create, Manage, and Run Configurations Settings**
 
