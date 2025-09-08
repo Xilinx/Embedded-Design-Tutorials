@@ -351,7 +351,7 @@ To create a platform for the VCK190 device, follow these steps:
    +--------------+---------------------+--------------------------------+
    |    Domain    |    Operating System |    freertos                    |
    +--------------+---------------------+--------------------------------+
-   |              |    Processor        |    Psv_cortexr5_0              |
+   |              |    Processor        |    psv_cortexr5_0              |
    +--------------+---------------------+--------------------------------+
 
 3. Select the Hardware Design (XSA) and click **Next**.
@@ -387,7 +387,7 @@ Creating an Empty Application
    +--------------+----------------------------+---------------------------+
    |              |    Component location      |    < Application path >   |
    +--------------+----------------------------+---------------------------+
-   |              |    Select a platform from  |    Vck190_platform        |
+   |              |    Select a platform from  |    vck190_platform        |
    |              |    repository              |                           |
    +--------------+----------------------------+---------------------------+
    |    Domain    |    Select a Domain         |    +Create New            |

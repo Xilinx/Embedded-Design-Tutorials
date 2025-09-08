@@ -49,8 +49,6 @@ This design tutorial requires use of a number of files provided by AMD. These ar
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
 
-
-
-.. Copyright © 2019-2025 Advanced Micro Devices, Inc
+.. Copyright © 2019-2025 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_

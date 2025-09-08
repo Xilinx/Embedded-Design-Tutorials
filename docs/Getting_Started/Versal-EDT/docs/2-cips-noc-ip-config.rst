@@ -311,16 +311,16 @@ Follow these steps to create the platform for VCK190:
    | **Wizard     | **System            | **Setting or command to use**  |
    | Screen**     | Properties**        |                                |
    +==============+=====================+================================+
-   | Platform     | Component name      | Vck190_platform                |
+   | Platform     | Component name      | vck190_platform                |
    +--------------+---------------------+--------------------------------+
    |              | Component location  | < platform path >              |
    +--------------+---------------------+--------------------------------+
    |              | Hardware Design     | Click the browser button to    |
    |              | (XSA)               | add your XSA file              |
    +--------------+---------------------+--------------------------------+
-   | Domain       | Operating System    | Standalone                     |
+   | Domain       | Operating System    | standalone                     |
    +--------------+---------------------+--------------------------------+
-   |              | Processor           | Psv_cortexa72_0                |
+   |              | Processor           | psv_cortexa72_0                |
    +--------------+---------------------+--------------------------------+
 
 3. Select the Hardware Design (XSA) and click **Next**.
@@ -353,7 +353,7 @@ Follow these steps to create a Hello world application using the created platfor
    |              | Component location  | < Application path >           |
    +--------------+---------------------+--------------------------------+
    |              | Hardware Design     | Select the platform created    |
-   |              | (XSA)               | (Vck190_platform)              |
+   |              | (XSA)               | (vck190_platform)              |
    +--------------+---------------------+--------------------------------+
    |    Domain    | Operating System    | standalone                     |
    +--------------+---------------------+--------------------------------+
@@ -432,7 +432,7 @@ The following steps demonstrate the procedure to create a Hello World applicatio
    |              | Component location | < Application path >             |
    +--------------+--------------------+----------------------------------+
    |              | Hardware Design    | Select the platform created      |
-   |              | (XSA)              | (Vck190_platform)                |
+   |              | (XSA)              | (vck190_platform)                |
    +--------------+--------------------+----------------------------------+
    | Domain       | Operating System   | standalone                       |
    +--------------+--------------------+----------------------------------+
@@ -532,7 +532,7 @@ Method I
 
 2. Double-click **System Project Debug** to create a run configuration.
 
-   The Vitis software platform creates a new run configuration with the name: SystemDebugger_helloworld_system_1. Rename this to SystemDebugger_helloworld_system_A72. For the remaining options, refer to the following table.
+   The Vitis software platform creates a new run configuration with the name: SystemDebugger_helloworld_system_1. Rename this to SystemDebugger_helloworld_system_a72. For the remaining options, refer to the following table.
 
    *Table 7:* **Create, Manage, and Run Configurations Settings**
 

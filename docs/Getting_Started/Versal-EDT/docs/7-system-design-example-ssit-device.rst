@@ -503,7 +503,7 @@ To create the platform for VPK180, follow these steps:
    |    **Wizard  |    **System       |    **Setting or command to use** |
    |    Screen**  |    Properties**   |                                  |
    +==============+===================+==================================+
-   |    Platform  |    Component name |    Vpk180_platform               |
+   |    Platform  |    Component name |    vpk180_platform               |
    +--------------+-------------------+----------------------------------+
    |              |    Component      |    < platform path >             |
    |              |    location       |                                  |
@@ -514,7 +514,7 @@ To create the platform for VPK180, follow these steps:
    |    Domain    |    Operating      |    freertos                      |
    |              |    System         |                                  |
    +--------------+-------------------+----------------------------------+
-   |              |    Processor      |    Psv_cortexr5_0                |
+   |              |    Processor      |    psv_cortexr5_0                |
    +--------------+-------------------+----------------------------------+
 
 3. Select the Hardware Design (XSA) and click **Next**.
@@ -545,7 +545,7 @@ Creating an Empty Application
    +----------------+-----------------------------+-------------------------------+
    |                |    Component location       |    < Application path >       |
    +----------------+-----------------------------+-------------------------------+
-   |                |    Select a platform from   |    Vpk180_platform            |
+   |                |    Select a platform from   |    vpk180_platform            |
    |                |    repository               |                               |
    +----------------+-----------------------------+-------------------------------+
    |    Domain      |    Select a Domain          |    +Create New                |
