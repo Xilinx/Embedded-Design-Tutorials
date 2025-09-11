@@ -1,0 +1,10 @@
+# Copyright (C) 2025, Advanced Micro Devices, Inc. All rights reserved.
+# SPDX-License-Identifier: MIT
+#*****************************************************************************************
+
+//arch = zynqmp; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader]C:\edt\fsbl_usb_boot\Debug\fsbl_usb_boot.elf
+	[pmufw_image]C:\edt\edt_zcu102_wrapper\export\edt_zcu102_wrapper\sw\edt_zcu102_wrapper\boot\pmufw.elf
+}

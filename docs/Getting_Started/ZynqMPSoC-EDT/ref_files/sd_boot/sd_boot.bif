@@ -1,0 +1,13 @@
+# Copyright (C) 2025, Advanced Micro Devices, Inc. All rights reserved.
+# SPDX-License-Identifier: MIT
+#*****************************************************************************************
+
+//arch = zynqmp; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader, destination_cpu = a53-0]C:\edt\fsbl_a53\Debug\fsbl_a53.elf
+	[pmufw_image]C:\edt\edt_zcu102_wrapper\export\edt_zcu102_wrapper\sw\edt_zcu102_wrapper\boot\pmufw.elf
+	[destination_cpu = a53-0, exception_level = el-3, trustzone]C:\edt\sd_boot\bl31.elf
+	[destination_cpu = r5-lockstep]C:\edt\testapp_r5\Debug\testapp_r5.elf
+	[destination_cpu = a53-0, exception_level = el-2]C:\edt\sd_boot\u-boot.elf
+}

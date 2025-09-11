@@ -1,0 +1,40 @@
+# Copyright (C) 2025, Advanced Micro Devices, Inc. All rights reserved.
+# SPDX-License-Identifier: MIT
+#*****************************************************************************************
+
+/include/ "system-conf.dtsi"
+/{
+	gpio-keys {
+		sw19 {
+			status = "disabled";
+		};
+	};
+	
+};
+
+&uart1 {
+	status = "disabled";
+};
+
+
+&i2c1 {
+
+	/* FIXME PL i2c via PCA9306 - u45 */
+	/* FIXME MSP430 - u41 - not detected */
+	i2c-mux@74 { /* u34 */
+		i2c@0 { /* i2c mw 74 0 1 */
+			/*
+			 * IIC_EEPROM 1kB memory which uses 256B blocks
+			 * where every block has different address.
+			 *    0 - 256B address 0x54
+			 * 256B - 512B address 0x55
+			 * 512B - 768B address 0x56
+			 * 768B - 1024B address 0x57
+			 */
+			eeprom: eeprom@54 { /* u23 */
+				compatible = "atmel,24c08";
+				reg = <0x54>;
+			};
+		};
+	};
+};

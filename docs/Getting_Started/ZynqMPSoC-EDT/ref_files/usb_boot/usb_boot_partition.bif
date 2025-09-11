@@ -1,0 +1,12 @@
+# Copyright (C) 2025, Advanced Micro Devices, Inc. All rights reserved.
+# SPDX-License-Identifier: MIT
+#*****************************************************************************************
+
+//arch = zynqmp; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader]C:\edt\fsbl_usb_boot\Debug\fsbl_usb_boot.elf
+	[destination_cpu = a53-0, exception_level = el-3, trustzone]C:\edt\usb_boot\bl31.elf
+	[destination_cpu = r5-lockstep]C:\edt\testapp_r5\Debug\testapp_r5.elf
+	[destination_cpu = a53-0, exception_level = el-2]C:\edt\usb_boot\u-boot.elf
+}
