@@ -264,7 +264,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
 
    .. code:: shell
 
-       $ cd <Petalinux-project-path>/xilinx-zcu102-2025.1/images/linux/
+       $ cd <Petalinux-project-path>/xilinx-zcu102-2025.2/images/linux/
        $ mkdir sd_boot
        $ cp image.ub sd_boot/
        $ cp u-boot.elf sd_boot/
@@ -274,7 +274,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
 
    .. code:: shell
    
-      $ cd <Petalinux-project-path>/xilinx-zcu102-xsct-2025.1
+      $ cd <Petalinux-project-path>/xilinx-zcu102-xsct-2025.2
 
 3. Launch the top-level system configuration menu:
 
