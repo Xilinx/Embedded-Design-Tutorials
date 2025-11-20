@@ -691,7 +691,7 @@ storage) by hand editing the BIF file. This section performs the same operations
        cp ../keys/image.ub .
        cp ../keys/black_key.txt.
 
-3. Click **Programs → Xilinx Design Tools → Vitis <version number> → Vitis 2024.2** to launch the Vitis IDE.
+3. Click **Programs → AMDDesignTools → Vitis <version number> → Vitis 2025.2** to launch the Vitis IDE.
 
 4. Click **Vitis → Create Boot Image** from the menu bar to launch the Create Boot Image wizard.
 
