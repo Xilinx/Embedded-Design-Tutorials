@@ -39,7 +39,7 @@ After completing this tutorial, users should be able to:
 - Build Dhrystone application and execute it on VCK190 evaluation kit.
 - Calculate Dhrystone performance number.
 
-## Directory structure
+## Directory Structure
 
 ```
 .
@@ -88,7 +88,7 @@ After completing this tutorial, users should be able to:
 
 ```
 
-# Before you Begin
+# Before you begin
 Recommended general knowledge of:
 * VCK190 evaluation board
 * Versal JTAG boot mode
@@ -165,38 +165,38 @@ Tutorial design creates a block design with CIPS-IP and NoC IP upon sourcing run
 
 ![Alt Text](Images/processor_cips_block_diagram.png)
 
-### APU clock configuration
+### APU Clock Configuration
 
 ![Alt Text](Images/apu_clock_configuration.png)
 
-### NoC interfaces details
+### NoC Interfaces Details
 
 ![Alt Text](Images/axi_noc_0_general.png)
 
-### NoC inputs
+### NoC Inputs
 
 ![Alt Text](Images/axi_noc_0_inputs.png)
 
-### NoC port connectivity
+### NoC Port Connectivity
 
 ![Alt Text](Images/axi_noc_0_connectivity.png)
 
-### DDR configurations
+### DDR Configurations
 
 ![Alt Text](Images/axi_noc_0_configuration_ddr_basic.png)
 
-### DDR memory options
+### DDR Memory Options
 
 ![Alt Text](Images/axi_noc_0_ddr_configuration.png)
 
-# Create new application project for Dhrystone
+# Create New Application Project for Dhrystone
 To create Dhrystone application project please follow below steps.
 1.	Create workspace and launch Vitis tool.
 2.	Provide your workspace path with the help of browse button as shown below and click Launch button to open VITIS IDE wizard.
 	Here browse till,
 	```/<path for workspace>/Performance_Benchmark/Dhrystone/```
 
-## Create application project
+## Create Application Project
 Go to menu bar, then select ***File->New Component->Platform***. Choose the file name and folder where the platform must be created. Click Next.
 
   ![Alt Text](Images/create_application_project.png)
@@ -208,7 +208,7 @@ Click Next.
 
 ![Alt Text](Images/browse_and_add_xsa.png)
 
-#### Set Domain configuration
+#### Set Domain Configuration
 Now, you see the see the following page that shows the Operating System ***standalone***, Processor ***psv_cortexa72_0***, Compiler ***gcc***. Click Next button.
 
 ![Alt Text](Images/name_new_application_project.png)
@@ -216,8 +216,8 @@ Now, you see the see the following page that shows the Operating System ***stand
 You see the following Summary Page to review your specifications. Click Finish.
 ![Alt Text](Images/configure_domain_settings.png)
 
-## Create Dhrystone application
-#### Create Empty Application template
+## Create Dhrystone Application
+#### Create Empty Application Template
 Now, navigate to Examples in the sidebar. Select the Empty Application from the list of examples. Click Create Application Component from the Template.
 
 ![Alt Text](Images/create_empty_application_template.png)
@@ -231,10 +231,10 @@ Select the same platform that was initially created. Click Next.
 Leave the Domain with default details. Click Next.
 ![Alt Text](Images/domain_details.png)
 
-Review the Summary Page. CLick Next.
+Review the Summary Page. Click Next.
 ![Alt Text](Images/summary_page.png)
 
-#### Import Dhrystone source code
+#### Import Dhrystone Source Code
 After the application in created, navigate to the ***src*** folder under the application as shown and import the Source_code files. 
 ![Alt Text](Images/import_source_code.png)
 
@@ -244,7 +244,7 @@ Browse source path ``` /<Path to workspace>/Performance_Benchmark/Dhrystone/Sour
 All the source files are imported and you can view them as shown in the following image.
 ![Alt Text](Images/expand_and_view_source_files.png)
 
-# Build Dhrystone application
+# Build Dhrystone Application
 ## Optimization Level
 Navigate to the UserConfig.cmake which is present in the src folder of empty_application. Modify the optimization Level to ***-O3*** and set other optimisaation flags to ***-fno-common*** for better performance.
 ![Alt Text](Images/optimization_properties.png)
@@ -256,7 +256,7 @@ Navigate to Debugging and set the Debug level as None.
 Under the Flow Navigator, click Build. After the build is over, the executable is generated and you can verify the build logs in the console. 
 ![Alt Text](Images/build_image.png)
 
-# Run the Dhrystone application
+# Run the Dhrystone Application
 Execute the following steps to run the Dhrystone application.
 
 * Insert the SD card with system controller image into the VCK190 board, in the J302 connector. Set System controller boot mode to SD1 (SW11 = 0111).
@@ -307,7 +307,7 @@ Observe the prints in Putty Terminal
 
 For performance number calculation, use the Dhrystones per second value from last UART log print.
 
-# Performance calculation
+# Performance Calculation
 
 You can calculate the DMIPS (Dhrystone MIPS) number using the following formula:
 ```
