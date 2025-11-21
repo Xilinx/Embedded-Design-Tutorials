@@ -198,16 +198,19 @@ To create Dhrystone application project please follow below steps.
 
 ## Create application project
 Go to menu bar, then select ***File->New Component->Platform***. Choose the file name and folder where the platform must be created. Click Next.
+
   ![Alt Text](Images/create_application_project.png)
 
 ## Add Hardware Description file
 Add hardware description file (XSA) by navigating to the folder containing the (.xsa) file by clicking on the Browse button. 
 ```/<path for workspace>/Performance_Benchmark/Dhrystone/Design/dhrystone_tutorial.xsa``` 
 Click Next.
+
 ![Alt Text](Images/browse_and_add_xsa.png)
 
 #### Set Domain configuration
 Now, you see the see the following page that shows the Operating System ***standalone***, Processor ***psv_cortexa72_0***, Compiler ***gcc***. Click Next button.
+
 ![Alt Text](Images/name_new_application_project.png)
 
 You see the following Summary Page to review your specifications. Click Finish.
@@ -216,6 +219,7 @@ You see the following Summary Page to review your specifications. Click Finish.
 ## Create Dhrystone application
 #### Create Empty Application template
 Now, navigate to Examples in the sidebar. Select the Empty Application from the list of examples. Click Create Application Component from the Template.
+
 ![Alt Text](Images/create_empty_application_template.png)
 
 Choose a Component Name. Click Next.
@@ -298,7 +302,9 @@ xsct% con
 ![Alt Text](Images/select_a72_0_target_and_reset.png)
 
 Observe the prints in Putty Terminal
+
 ![Alt Text](Images/download_and_run_dhrystone_application.png)
+
 For performance number calculation, use the Dhrystones per second value from last UART log print.
 
 # Performance calculation
