@@ -8,38 +8,39 @@
 
 # Versal Dhrystone Benchmark User Guide
 
-# Table of Contents
+## Table of Contents 
 
-- [Introduction](#introduction)
+- [Introduction](#introduction)    
 
-- [Before You Begin](#before-you-begin)
+- [Prerequisites](#prerequisites)
 
 - [Tutorial Requirements](#tutorial-requirements)
 
-- [Build Tutorial Design](#build-tutorial-design)
+- [Build Tutorial Design](#build-the-tutorial-design)
 
-- [Create new application project for Dhrystone](#create-new-application-project-for-dhrystone)
+- [Create New Application Project for Dhrystone](#create-a-new-application-project-for-dhrystone)
 
-- [Build Dhrystone application](#build-dhrystone-application)
+- [Build Dhrystone Application](#build-dhrystone-application)
 
-- [Run the Dhrystone application](#run-the-dhrystone-application)
+- [Run Dhrystone Application](#run-the-dhrystone-application)
 
-- [Performance calculation](#performance-calculation)
+- [Performance Calculation](#performance-calculation)
 
+## Introduction
 
-# Introduction
-AMD Versal™ Adaptive SoC combines adaptable processing and acceleration engines with programmable logic and configurable connectivity to enable custom, heterogeneous hardware solutions for a wide variety of applications in Data Center, automotive, 5G wireless, wired network, and defense.
+AMD Versal&trade; adaptive SoC combines adaptable processing and acceleration engines with programmable logic and configurable connectivity to enable custom, heterogeneous hardware solutions for a wide variety of applications in data center, automotive, 5G wireless, wired network, and defense.
 
-This tutorial provides step by step instructions to generate reference design for Dhrystone benchmark, building & running Dhrystone application.
+This tutorial provides step-by-step instructions for generating a reference design for the Dhrystone benchmark and building and running the Dhrystone application.
 
-## Objectives
-After completing this tutorial, users should be able to:
+### Objectives
+
+After completing this tutorial, users can:  
 
 - Generate programmable device image (PDI) for tutorial design.
-- Build Dhrystone application and execute it on VCK190 evaluation kit.
+- Build a Dhrystone application and execute it on the VCK190 evaluation kit.
 - Calculate Dhrystone performance number.
 
-## Directory Structure
+### Directory Structure
 
 ```
 .
@@ -48,13 +49,13 @@ After completing this tutorial, users should be able to:
     │   ├── design.tcl..................................Generates reference design PDI/XSA
     │   └── run.tcl.....................................Top tcl for project setup, calls design.tcl
     ├── Images.......................Contains images that appear in README.md
-    │   ├── apu_clock_configuration.png.................APU clock configuration
-    │   ├── axi_noc_0_configuration_ddr_basic.png.......DDR basic configuration
-    │   ├── axi_noc_0_connectivity.png..................NoC0 connectivity
-    │   ├── axi_noc_0_ddr_configuration.png.............DDR memory configuration
-    │   ├── axi_noc_0_general.png.......................NoC0 general configuration
-    │   ├── axi_noc_0_inputs.png........................NoC0 input clock configuration
-    │   ├── browse_and_add_xsa.png......................Add XSA
+    │   ├── apu_clock_configuration.png.................APU clock configuration
+    │   ├── axi_noc_0_configuration_ddr_basic.png.......DDR basic configuration
+    │   ├── axi_noc_0_connectivity.png..................NoC0 connectivity
+    │   ├── axi_noc_0_ddr_configuration.png.............DDR memory configuration
+    │   ├── axi_noc_0_general.png.......................NoC0 general configuration
+    │   ├── axi_noc_0_inputs.png........................NoC0 input clock configuration
+    │   ├── browse_and_add_xsa.png......................Add XSA  
     │   ├── browse_import_source_code_finish.png........Complete importing source code
     │   ├── build_complete.png..........................Build complete
     │   ├── build_project.png...........................Build project
@@ -71,13 +72,13 @@ After completing this tutorial, users should be able to:
     │   ├── name_new_application_project.png............Added new application
     │   ├── optimization_optimize_most_O3.png...........Add optimization level
     │   ├── optimization_properties.png.................Go to optimization properties
-    │   ├── processor_cips_block_diagram.png............CIPS block diagram
-    │   ├── program_pdi.png.............................Load the PDI over JTAG
-    │   ├── project_templ ate.png........................Added project template
-    │   ├── select_a72_0_target_and_reset.png...........Select A72_0 and Reset
-    │   ├── source_run_tcl.png..........................Source run.tcl in Vivado 
-    │   ├── vck190_sw1_jtag_bootmode.png................VCK190 JTAG boot mode settings on SW1
-    │   └── vck190_targets_list.png.....................List the VCK190 targets
+    │   ├── processor_cips_block_diagram.png............CIPS block diagram
+    │   ├── program_pdi.png.............................Load the PDI over JTAG
+    │   ├── project_template.png........................Added project template
+    │   ├── select_a72_0_target_and_reset.png...........Select A72_0 and Reset
+    │   ├── source_run_tcl.png..........................Source run.tcl in Vivado
+    │   ├── vck190_sw1_jtag_bootmode.png................VCK190 JTAG boot mode settings on SW1
+    │   └── vck190_targets_list.png.....................List the VCK190 targets
     ├── README.md....................Includes tutorial overview
     └── Source_code..................Source code for Dhrystone application
         ├── dhry_1.c
@@ -85,240 +86,306 @@ After completing this tutorial, users should be able to:
         ├── dhry.h
         ├── LICENSE
         └── README.md
-
 ```
 
-# Before you begin
-Recommended general knowledge of:
-* VCK190 evaluation board
-* Versal JTAG boot mode
-* AMD Vivado™ Design Suite
-* AMD Vitis™ Unified Software Platform Tool
+## Prerequisites
 
-Key Versal Reference Documents:
-* VCK190 Evaluation Board User Guide [(UG1366)](https://www.xilinx.com/support/documentation/boards_and_kits/vck190/ug1366-vck190-eval-bd.pdf)
-* Versal Adaptive SoC Technical Reference Manual [(AM011)](https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf)
-* Versal Adaptive SoC System Software Developers Guide [(UG1304)](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2021_1/ug1304-versal-acap-ssdg.pdf)
-* Control Interfaces and Processing System v3.0 (CIPS) [(PG352)](https://www.xilinx.com/support/documentation/ip_documentation/versal_cips/v3_0/pg352-cips.pdf)
+Recommended general knowledge of:  
 
-Key Dhrystone Documents:
-* Dhrystone Benchmarking for ARM Cortex Processors - https://developer.arm.com/documentation/dai0273/a/
-* Dhrystone Benchmark - https://www.eembc.org/techlit/datasheets/dhrystone_wp.pdf
+- VCK190 evaluation board
+- Versal JTAG boot mode
+- AMD Vivado&trade; Design Suite
+- AMD Vitis&trade; Unified Software Platform Tool
 
-## Tutorial Requirements
-This tutorial is demonstrated on the VCK190 evaluation kit. Install necessary licenses for Vivado, Vitis and XSCT/XSDB tools. Contact your AMD sales representative incase of any license issues. Refet to https://www.xilinx.com/products/boards-and-kits/vck190.html for more information.
+Key Versal reference documents
 
-#### Hardware Requirements:
-* Host machine with an operating system supported by Vivado Design Suite, Vitis tool and XSCT/XSDB.
-* VCK190 EV2 evaluation board, which includes:
-  * Versal ACAP EK-VCK190-G-ED
-  * AC power adapter (100-240VAC input, 12VDC 15.0A output).
-  * System controller microSD card in socket (J302).
-  * USB Type-C cable (for JTAG and UART communications).
+- VCK190 Evaluation Board User Guide [(UG1366)](https://www.xilinx.com/support/documentation/boards_and_kits/vck190/ug1366-vck190-eval-bd.pdf)
+- Versal Adaptive SoC Technical Reference Manual [(AM011)](https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf)
+- Versal Adaptive SoC System Software Developers Guide [(UG1304)](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2021_1/ug1304-versal-acap-ssdg.pdf)
+- Control Interfaces and Processing System v3.0 (CIPS) [(PG352)](https://www.xilinx.com/support/documentation/ip_documentation/versal_cips/v3_0/pg352-cips.pdf)
 
-#### Software Requirements:
-To build tutorial design and execute Dhrystone application, following tools must be available or installed:
-  * Vivado Design Suite and Vitis tool
-     - Visit https://www.xilinx.com/support/download.html for details on latest tool versions.
-     - For more information on installation, refer to [UG1400 Vitis Unified Software Platform Embedded Software Development](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1400-vitis-embedded.pdf).
-  * Scripts to create tutorial designs are provided in the [Build Tutorial Design](#build-tutorial-design) section of this document.
-  * UART serial terminal recommended:
-     - You can use Vitis serial Terminal or a terminal emulator program for UART (that is, Putty or Tera Term) to display valuable PLM log boot status and Dhrystone Benchmark logs.
+Key Dhrystone documents
 
-# Build Tutorial Design
-The following instructions detail how to build the Dhrystone Benchmark design and create the PDI/XSA.
+- [Dhrystone Benchmarking for ARM&reg; Cortex&reg; Processors](https://developer.arm.com/documentation/dai0273/a/)
+- [Dhrystone Benchmark](https://www.eembc.org/techlit/datasheets/dhrystone_wp.pdf)
 
-* Copy the Design directory and files to a local project directory. Following is a snippet of the top level directory Performance_Benchmark/Dhrystone/
+### Tutorial Requirements
 
-```
-└── Dhrystone
-    ├── Design
-    │   ├── design.tcl
-    │	└── run.tcl
-```
+This tutorial is demonstrated on the VCK190 evaluation kit. Install the necessary licenses for Vivado, Vitis, and XSCT/XSDB tools. Contact your AMD sales representative for any assistance. For more information, see [https://www.xilinx.com/products/boards-and-kits/vck190.html](https://www.xilinx.com/products/boards-and-kits/vck190.html).
 
-* Launch Vivado Design Suite
+#### Hardware Requirements
 
-* In the Vivdado Tcl console, cd to the tutorial directory, ```
- (i.e., /<Path to workspace>/Performance_Benchmark/Dhrystone/Design/). ```
+- A host machine with an operating system supported by Vivado Design Suite, Vitis tool, and XSCT/XSDB.
 
-* Source the run.tcl from the tutorial directory as follows:
+- VCK190 EV2 evaluation board with:
+  - Versal adaptive SoC EK-VCK190-G-ED.
+  - AC power adapter (100-240VAC input, 12VDC 15.0A output).
+  - System controller microSD card in the socket (J302).
+  - USB Type-C cable (for JTAG and UART communications).
 
-![Alt Text](Images/source_run_tcl.png)
+#### Software Requirements
 
-Sourcing the run.tcl script does the following:
- * Creates a project directory
- * Sources and runs the *design.tcl*, which does the following:
-     * Selects target Versal VC1902 device. 
-     * Creates IPs and ports.
-     * Creates blocks, configures and connects IP (that is), control, interfaces, and processing system (CIPS), Smartconnect).
-     * Runs placement and routing.
-     * Creates a programmable device image (PDI) and Xilinx Support Archive (XSA).
-	You can find PDI and XSA at,
-	```
-	PDI - /<path for workspace>/Performance_Benchmark/Dhrystone/Design/runs/dperf_<*>/dhrystone_tutorial.runs/impl_1/dhrystone_perf_wrapper.pdi
-	XSA - /<path for workspace>/Performance_Benchmark/Dhrystone/Design/dhrystone_tutorial.xsa
-	```
+The following tools are necessary to build the tutorial design and execute the Dhrystone application:
 
-## Hardware Design Details
-Tutorial design creates a block design with CIPS-IP and NoC IP upon sourcing run.tcl script. Details on IP configuration are captured below.
+- Vivado Design Suite and AMD Vitis tool
+  - For the latest tool version details, see [https://www.xilinx.com/support/download.html](https://www.xilinx.com/support/download.html).
+  - For more information on installation, see [UG1400 Vitis Unified Software Platform Embedded Software Development](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1400-vitis-embedded.pdf).
+- The [Build Tutorial Design](#build-the-tutorial-design) section of this document provides the scripts to create the tutorial design.
+- UART serial terminal recommended:
+  - Vitis serial terminal or a terminal emulator program for UART (Putty or Tera Term) can be used to display the valuable PLM log boot status and the Dhrystone Benchmark logs.
 
-![Alt Text](Images/processor_cips_block_diagram.png)
+## Build the Tutorial Design
 
-### APU Clock Configuration
+Follow these steps to build the Dhrystone Benchmark design and create the PDI/XSA.
 
-![Alt Text](Images/apu_clock_configuration.png)
+1. Copy the Design directory and files to a local project directory. The following is a snippet of the top-level directory: `Performance_Benchmark/Dhrystone/`
 
-### NoC Interfaces Details
+   ```
+   └── Dhrystone
+       ├── Design
+       │   ├── design.tcl
+       │   └── run.tcl
+   ```
 
-![Alt Text](Images/axi_noc_0_general.png)
+2. Launch Vivado Design Suite.
 
-### NoC Inputs
+3. In the Vivado Tcl console, navigate to the tutorial directory:
 
-![Alt Text](Images/axi_noc_0_inputs.png)
+   ```
+   cd /<Path to workspace>/Performance_Benchmark/Dhrystone/Design/
+   ```
 
-### NoC Port Connectivity
+4. From the tutorial directory, where the [`run.tcl`](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2023.2/docs/Performance/Performance_Benchmark/Dhrystone/Design/run.tcl) script is, execute `source run.tcl`.
 
-![Alt Text](Images/axi_noc_0_connectivity.png)
+   ![Alt Text](Images/source_run_tcl.png)
 
-### DDR Configurations
+   Sourcing the `run.tcl` script does the following:
 
-![Alt Text](Images/axi_noc_0_configuration_ddr_basic.png)
+   - Creates a project named dhrystone-tutorial' in the tutorial directory 
+   - Sources and runs [`design.tcl`](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2023.2/docs/Performance/Performance_Benchmark/Dhrystone/Design/design.tcl), which in turn does the following:
+     - Selects the target Versal VC1902 device
+     - Creates IPs and ports
+     - Creates blocks
+     - Configures and connects IP (Control, interfaces, and Processing System (CIPS), Smartconnect)
+     - Runs placement and routing
+     - Creates a programmable device image (PDI) and Xilinx Support Archive (XSA).
 
-### DDR Memory Options
+   You can find PDI and XSA at:
 
-![Alt Text](Images/axi_noc_0_ddr_configuration.png)
+   ```
+   PDI - /<path for workspace>/Performance_Benchmark/Dhrystone/Design/runs/dperf_<*>/dhrystone_tutorial.runs/impl_1/dhrystone_perf_wrapper.pdi
+   XSA - /<path for workspace>/Performance_Benchmark/Dhrystone/Design/dhrystone_tutorial.xsa
+   ```
 
-# Create New Application Project for Dhrystone
-To create Dhrystone application project please follow below steps.
-1.	Create workspace and launch Vitis tool.
-2.	Provide your workspace path with the help of browse button as shown below and click Launch button to open VITIS IDE wizard.
-	Here browse till,
-	```/<path for workspace>/Performance_Benchmark/Dhrystone/```
+### Hardware Design Details
 
-## Create Application Project
-Go to menu bar, then select ***File->New Component->Platform***. Choose the file name and folder where the platform must be created. Click Next.
+The tutorial design creates a block design with CIPS-IP and NoC IP upon sourcing the [`run.tcl` script](https://github.com/Xilinx/Embedded-Design-Tutorials/blob/2023.2/docs/Performance/Performance_Benchmark/Dhrystone/Design/run.tcl) script. The following image shows the details of the IP configuration.
 
-  ![Alt Text](Images/create_application_project.png)
+![Alt Text](./Images/processor_cips_block_diagram.png)
 
-## Add Hardware Description file
-Add hardware description file (XSA) by navigating to the folder containing the (.xsa) file by clicking on the Browse button. 
-```/<path for workspace>/Performance_Benchmark/Dhrystone/Design/dhrystone_tutorial.xsa``` 
-Click Next.
+#### APU Clock Configuration
 
-![Alt Text](Images/browse_and_add_xsa.png)
+Double-clck on the Control, Interfaces & Processing System to launch the Configure PS PMC window.
+![Alt Text](./Images/apu_clock_configuration.png)
 
-#### Set Domain Configuration
-Now, you see the see the following page that shows the Operating System ***standalone***, Processor ***psv_cortexa72_0***, Compiler ***gcc***. Click Next button.
+#### NoC Interfaces Details
 
-![Alt Text](Images/name_new_application_project.png)
+![Alt Text](./Images/axi_noc_0_general.png)
 
-You see the following Summary Page to review your specifications. Click Finish.
-![Alt Text](Images/configure_domain_settings.png)
+#### NoC Inputs
 
-## Create Dhrystone Application
-#### Create Empty Application Template
-Now, navigate to Examples in the sidebar. Select the Empty Application from the list of examples. Click Create Application Component from the Template.
+![Alt Text](./Images/axi_noc_0_inputs.png)
 
-![Alt Text](Images/create_empty_application_template.png)
+#### NoC Port Connectivity
 
-Choose a Component Name. Click Next.
-![Alt Text](Images/project_template.png)
+![Alt Text](./Images/axi_noc_0_connectivity.png)
 
-Select the same platform that was initially created. Click Next.
-![Alt Text](Images/platform_selection.png)
+#### DDR Configurations
 
-Leave the Domain with default details. Click Next.
-![Alt Text](Images/domain_details.png)
+![Alt Text](./Images/axi_noc_0_configuration_ddr_basic.png)
 
-Review the Summary Page. Click Next.
-![Alt Text](Images/summary_page.png)
+#### DDR Memory Options
 
-#### Import Dhrystone Source Code
-After the application in created, navigate to the ***src*** folder under the application as shown and import the Source_code files. 
-![Alt Text](Images/import_source_code.png)
+![Alt Text](./Images/axi_noc_0_ddr_configuration.png)
 
-Browse source path ``` /<Path to workspace>/Performance_Benchmark/Dhrystone/Source_code/ ```, select all source files and click ***Open*** to import. 
-![Alt Text](Images/browse_import_source_code_finish.png)
+## Create a New Application Project for Dhrystone
 
-All the source files are imported and you can view them as shown in the following image.
-![Alt Text](Images/expand_and_view_source_files.png)
+### Create and Browse to the Workspace
 
-# Build Dhrystone Application
-## Optimization Level
-Navigate to the UserConfig.cmake which is present in the src folder of empty_application. Modify the optimization Level to ***-O3*** and set other optimisaation flags to ***-fno-common*** for better performance.
-![Alt Text](Images/optimization_properties.png)
+1. Create a workspace and launch the Vitis tool.
+2. Browse to the workspace.
+3. Click **Launch** to open the VITIS IDE wizard.
+4. Browse to `/<path for workspace>/Performance_Benchmark/Dhrystone/`.
 
-Navigate to Debugging and set the Debug level as None.
-![Alt Text](Images/debug_level.png)
+   ![Alt Text](./Images/vitis_ide_launcher.png)
 
-## Build Project
-Under the Flow Navigator, click Build. After the build is over, the executable is generated and you can verify the build logs in the console. 
-![Alt Text](Images/build_image.png)
+### Create Dhrystone Application Project from Examples
 
-# Run the Dhrystone Application
-Execute the following steps to run the Dhrystone application.
+1. Select **Welcome tab->Get Started->Examples->Embedded Software Examples->Dhrystone** from the menu.
 
-* Insert the SD card with system controller image into the VCK190 board, in the J302 connector. Set System controller boot mode to SD1 (SW11 = 0111).
+2. Click **Create Application Component from Template**
 
-* Connect the USB Type-C cable into the VCK190 Board USB Type-C port (J207), and the other end into an open USB port on the host machine.
+   ![Alt Text](./Images/dhrystone_example_project.png)
 
-* Configure the board to boot in JTAG mode by setting switch SW1 = 0000 as shown in the following figure.
+3. In the **Name and Location** window, **dhrystone** is the default **Component name**. Change **Component location** if required.
 
- ![Alt Text](Images/vck190_sw1_jtag_bootmode.png)
+   ![Alt Text](./Images/create_a_new_application_project.png)
 
-* Connect 180W (12V) power to the VCK190 6-Pin Molex connector(J16).
+4. In the **Select Platform window**, select **Create Platform**.
+   
+   ![Alt Text](./Images/select_platform.png)
 
-* Power on the VCK190 board using the power switch (SW13).
+5. In the **Name and Location** window, **platform** is the default 
+   ![Alt Text](./Images/create_platform_component.png)
 
-* Open serial port in Tera Term/Putty and set baud rate (115200) for logs.
+6. In the Select Platform Creation Flow window, select Hardware Design.
+7. Browse to the XSA file generated from the Vivado Design Suite in Build the Tutorial Design steps of this tutorial.
 
-* Go to Vitis command prompt, run *xsdb* or *xsct* command.
-	Note - Refer to Vivado/Vitis installation paths for this tools.
+   ![Alt Text](./Images/select_platform_creation_flow.png)
+8. Verify that the **Operating system** and **Processor** are pre-filled from the XSA file as shown in the following figure.
 
-* Now run *connect* command to launch hw_server
+   ![Alt Text](./Images/select_operating_system_processor.png)
 
-* List the targets by running *targets* command.
+9. Click **Finish**
+   ![Alt Text](./Images/platform_summary.png)
 
- ![Alt Text](Images/vck190_targets_list.png)
+10. The Newly created Platform opens in the vitis-comp.json tab
+   ![Alt Text](./Images/platform-vitis-comp.png)
 
-* Program the design
-```
-xsdb% device program /<path for workspace>/Performance_Benchmark/Dhrystone/Design/runs/dperf_<*>/dhrystone_tutorial.runs/impl_1/dhrystone_perf_wrapper.pdi
-```
-![Alt Text](./Images/program_pdi.png)
 
-* Select the A72_0 target and Reset
-```
-xsct% target -set -filter {name =~ "*A72*#0"}
-xsct% rst -processor -skip-activate-subsystem
-```
-* Download and run the Dhrystone benchmark application.
-Before executing Dhrystone Benchmark, please refer ***4 Running Dhrystone section*** of Dhrystone Benchmarking for ARM Cortex Processors - https://developer.arm.com/documentation/dai0273/a/
-```
-xsct% dow -force /<path for workspace>/Performance_Benchmark/Dhrystone/Dhrystone_Benchmark/Debug/Dhrystone_Benchmark.elf
-xsct% con
-```
-![Alt Text](Images/select_a72_0_target_and_reset.png)
+### Create Application Component in the Dhrystone
 
-Observe the prints in Putty Terminal
+1. Navigate to the **Dhrystone tab**
+2. Click **Create Application Component from Template**
+3. In the Name and Location window, **dhrystone** is the default Component name. Click **Next**.
+4. Select **platform** and click **Next**.
+   ![Alt Text](./Images/select_platform_created_from_xsa.png)
+5. Validate the Domain and click **Next**.
+   ![Alt Text](./Images/select_domain.png)
+6. Click **Finish**.
+7. Application Component Settings appear in **vitis-comp.json dhrystone** tab
+   ![Alt Text](./Images/app_component_settings.png)
 
-![Alt Text](Images/download_and_run_dhrystone_application.png)
+## Build Dhrystone Application
 
-For performance number calculation, use the Dhrystones per second value from last UART log print.
+### Set Optimization Level
 
-# Performance Calculation
+**Note**: Add the optimization Level **-O3**  and **-fno-common** for better performance.
 
-You can calculate the DMIPS (Dhrystone MIPS) number using the following formula:
+1. Navigate to **VITIS COMPONENTS->dhrystone>Settings** and open ``UserConfig.cmake`` file
+
+   ![Alt Text](./Images/user-config-cmake-file.png)
+
+2. Click **Optimization**
+
+   2.1 Select **Optimization Level** to **-03**.
+
+   2.2 Add **-fno-common** in the Other optimization flags.
+
+   2.3 Select **Debug Level** as **None**.
+
+   ![Alt Text](./Images/select-optimization.png)
+
+### Build the Project
+
+From the Left Menu bar, Expand **FLOW**
+
+1. Select **platform** from the Component drop-down menu.
+
+   ![Alt Text](./Images/build-platform.png)
+
+   Successful build indicates a right-green icon. After the build is over, the executable is generated.
+
+2. Select **dhrystone** from the Component drop-down menu.
+
+   ![Alt Text](./Images/build-project.png)
+
+   For executable file path:
+
+   ```
+   /<path for workspace>/<application project name>/build/dhrystone.elf
+   ```
+
+## Run the Dhrystone Application
+
+1. Insert the SD card with the system controller image into the System controller boot mode to SD1 (SW11 = 0111).
+2. On the host machine, connect the USB Type-C cable into the VCK190 Board USB Type-C port (J207) and the other end into an open USB port.
+3. Configure the board to boot in JTAG mode by setting switch SW1 = 0000 as shown in the following image.
+
+   ![Alt Text](./Images/vck190_sw1_jtag_bootmode.png)
+
+4. Connect 180W(12V) power to the VCK190 6-Pin Molex connector(J16).
+
+5. Power on the VCK190 board using the power switch (SW13).
+
+6. Open the serial port in Tera Term/Putty and set baud rate(115200) for logs.
+
+7. Go to Vitis command prompt, run `xsdb` or `xsct` commands.
+ **Note:** Refer Vivado/Vitis installation paths for this tools.
+
+8. Run the `connect` command to launch hw_server.
+
+   ![Alt Text](./Images/launch_xsct_and_connect_board.png)
+
+9. List the targets by running the `targets` command.
+
+   ![Alt Text](./Images/vck190_targets_list.png)
+
+10. Program the design.
+
+    ```
+    xsct% device program /<path for workspace>/Performance_Benchmark/Dhrystone/Design/runs/dperf_<*>/dhrystone_tutorial.runs/impl_1/dhrystone_perf_wrapper.pdi
+    ```
+
+    ![Alt Text](./Images/program_pdi.png)
+
+11. Select the A72_0 target and reset.
+
+    ```
+    xsct% target -set -filter {name =~ "*A72*#0"}
+    xsct% rst -processor -skip-activate-subsystem
+    ```
+
+    ![Alt Text](./Images/select_a72_0_target_and_reset.png)
+
+12. Download and run the Dhrystone benchmark application.
+
+    Before executing Dhrystone Benchmark, see **4 Running Dhrystone section** of the Dhrystone Benchmarking for ARM Cortex Processors- <https://developer.arm.com/documentation/dai0273/a/>
+
+    ```
+    xsct% dow -force /<path for workspace>/Performance_Benchmark/Dhrystone/Dhrystone_Benchmark/Debug/Dhrystone_Benchmark.elf
+    xsct% con
+    ```
+
+    ![Alt Text](./Images/download_and_run_dhrystone_application.png)
+
+    For performance number calculation, use the Dhrystones per second value from the last UART log print (highlighted in the previous image).
+
+## Performance Calculation
+
+Calculate DMIPS (Dhrystone MIPS) number by using the following formula:
+
 ```
 DMIPS = Dhrystones per second / 1757
-     14583183/1757
-     = 8300.0472
-
+      = 14285565/1757
+      = 8130.6573
 
 A more commonly reported figure is DMIPS / MHz, where MHz is CPU Frequency
-      i.e 8300.0472/1400 = 5.92
+      i.e 8130.6573/1400 =  5.80
 ```
-Note: 
-1. For more details on formula please refer ***5 Measurement characteristics*** of Dhrystone Benchmarking for ARM Cortex Processors - https://developer.arm.com/documentation/dai0273/a/
-2. For CPU Frequency configured in design please refer ***APU clock configuration*** section.
+
+**Note:**
+
+1. For more details on the formula, see **5 Measurement characteristics** of Dhrystone Benchmarking for ARM Cortex Processors - <https://developer.arm.com/documentation/dai0273/a/>
+2. For CPU Frequency configured in design, see the **APU clock configuration** section.
+
+## Support
+
+GitHub issues will be used for tracking requests and bugs. For questions, go to [forums.xilinx.com](http://forums.xilinx.com/).
+
+
+<hr class="sphinxhide"></hr>
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>
