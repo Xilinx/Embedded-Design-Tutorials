@@ -100,8 +100,8 @@ Recommended general knowledge of:
 Key Versal reference documents
 
 - VCK190 Evaluation Board User Guide [(UG1366)](https://www.xilinx.com/support/documentation/boards_and_kits/vck190/ug1366-vck190-eval-bd.pdf)
-- Versal ACAP Technical Reference Manual [(AM011)](https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf)
-- Versal ACAP System Software Developers Guide [(UG1304)](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2021_1/ug1304-versal-acap-ssdg.pdf)
+- Versal Adaptive SoC Technical Reference Manual [(AM011)](https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf)
+- Versal Adaptive SoC System Software Developers Guide [(UG1304)](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2021_1/ug1304-versal-acap-ssdg.pdf)
 - Control Interfaces and Processing System v3.0 (CIPS) [(PG352)](https://www.xilinx.com/support/documentation/ip_documentation/versal_cips/v3_0/pg352-cips.pdf)
 
 Key Dhrystone documents
@@ -118,7 +118,7 @@ This tutorial is demonstrated on the VCK190 evaluation kit. Install the necessar
 - A host machine with an operating system supported by Vivado Design Suite, Vitis tool, and XSCT/XSDB.
 
 - VCK190 EV2 evaluation board with:
-  - Versal ACAP EK-VCK190-G-ED.
+  - Versal adaptive SoC EK-VCK190-G-ED.
   - AC power adapter (100-240VAC input, 12VDC 15.0A output).
   - System controller microSD card in the socket (J302).
   - USB Type-C cable (for JTAG and UART communications).
