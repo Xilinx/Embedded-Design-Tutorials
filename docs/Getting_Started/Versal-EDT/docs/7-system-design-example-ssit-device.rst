@@ -654,23 +654,40 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
    .. note:: For the VPK180 board, use the XSA file that you generated in the :ref:`7-using-axi-gpio`.
 
-6. Reconfigure the BSP using the following commands.
+6. Follow these commands to create the ``sdtout`` file using the XSA.
+
+   1. Source the Vivado tool (2025.2 release version):
+
+    .. code-block::
+
+        $ source < vivado-tools-path >/settings64.sh
+
+   2. Run the ``sdtgen`` command to generate the ``sdtout``:
+
+      .. code-block::
+
+         $ sdtgen
+         sdtgen% set_dt_param -dir sdt_out -xsa <XSA_PATH> -board_dts versal-vpk180-reva
+         sdtgen% generate_sdt
+         sdtgen% exit
+
+7. Reconfigure the BSP using the following commands.
 
    .. code-block::
 
-        $ petalinux-config --get-hw-description=<path till the directory containing the respective xsa file>
+        petalinux-config --get-hw-description=<path till the directory containing the generated sdtout>
 
    This command opens the PetaLinux Configuration window. For this example, no need to change anything in this window.
 
-7. Click **<Save>** to save the above configuration and then **<Exit>** to exit the configuration wizard.
+8. Click **<Save>** to save the above configuration and then **<Exit>** to exit the configuration wizard.
 
-8. Create a Linux application named gpiotest within the PetaLinux project using the following command.
+9. Create a Linux application named gpiotest within the PetaLinux project using the following command.
 
    .. code-block::
 
         $petalinux-create -t apps --template install --name gpiotest --enable
 
-9. Copy application files from ``<design-package>/<vpk180>/linux/bootimages`` to the project using the following commands.
+10. Copy application files from ``<design-package>/<vpk180>/linux/bootimages`` to the project using the following commands.
 
    .. code-block::
     
@@ -678,7 +695,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
         $cp <design-package>/ch7_system_design_example_source__files/apu/gpiotest_app/gpiotest/gpiotest.bb <plnx-proj-root>/project-spec/meta-user/recipes-apps/gpiotest/gpiotest.bb
         $cp <design-package>/ch7_system_design_example_source__files/apu/device_tree/system-user.dtsi <plnx-proj-root>/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
 
-10. Enable GPIO support within kernel configuration.
+11. Enable GPIO support within kernel configuration.
 
     .. code-block::
         
@@ -686,39 +703,39 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
     .. note:: This command opens the kernel configuration wizard for the PetaLinux project.
 
-11. Navigate to **Device drivers→ GPIO Support** and enable it by pressing the **<Y>** key. Press **Enter** and enable the Debug GPIO calls and ``/sys/class/gpio/...(sysfs interface)`` entries by pressing the **<Y>** key as shown in the following figure.
+12. Navigate to **Device drivers→ GPIO Support** and enable it by pressing the **<Y>** key. Press **Enter** and enable the Debug GPIO calls and ``/sys/class/gpio/...(sysfs interface)`` entries by pressing the **<Y>** key as shown in the following figure.
 
-    .. image:: ./media/versal_2021_gpio_debug.png
+    .. image:: ./media/ch7_gpio_debug.png
 
-12. Navigate to **Memory mapped GPIO drivers** and enable GPIO support and Zynq GPIO support by pressing **<Y>** key as shown in the following figure.
+13. To verify GPIO support and Zynq GPIO support are enabled, navigate to **Memory mapped GPIO drivers** and ensure GPIO support and Zynq GPIO support are enabled (press **<Y>** to enable) as shown in the following figure.
 
-    .. image:: ./media/versal_2021_gpio_xilinx.png
+    .. image:: ./media/ch7_gpio_xilinx.png
 
-13. Click **<Save>** to save the above configuration and then **<Exit>** option to exit the configuration wizard.
+14. Click **<Save>** to save the above configuration and then **<Exit>** option to exit the configuration wizard.
 
-14. Configure ROOTFS to disable the AIE, STDC++, and Tcl options to reduce the rootfs size to fit into both SD and OSPI/QSPI Flash partitions. 
+15. Configure ROOTFS to disable the AIE, STDC++, and Tcl options to reduce the rootfs size to fit into both SD and OSPI/QSPI Flash partitions. 
  
     .. code-block::
    
        petalinux-config -c rootfs
 
-15. Navigate to User Packages and disable aie-notebooks, openamp-demo-notebooks, packagegroup-petalinux-jupyter, pm-notebooks, and python3-ipywidgets support by pressing <Y> key as shown in the following figure.
+16. Navigate to User Packages and disable **openamp-demo-notebooks** by pressing **<Y>** key as shown in the following figure and ensure the following configurations are disabled: **aie-notebooks, packagegroup-petalinux-jupyter, pm-notebooks, and python3-ipywidgets support**.
 
-    .. image:: media/rootfs_config_aie.JPG
+    .. image:: media/ch7_rootfs_config_aie.png
 
-16. Navigate to **Filesystem Packages → misc → gcc-runtime** and disable **libstdc++ support** by pressing <Y> key as shown in the following figure.
+17. To verify libstdc++ is disabled, navigate to **Filesystem Packages → misc → gcc-runtime** and ensure **libstdc++ support** is disabled (Press **<Y>** to disable) as shown in the following figure.
 
-    .. image:: media/rootfs_config_stdc++.JPG
+    .. image:: media/ch7_rootfs_config_stdc++.png
 
-17. Navigate to **Filesystem Packages → devel → tcltk → tcl** and disable **tcl support** by pressing <Y> key as shown in the following figure. 
+18. To verify tcl support is disabled, navigate to **Filesystem Packages → devel → tcltk → tcl** and ensure **tcl support** is disabled (Press **<Y>** to disable) as shown in the following figure. 
 
-    .. image:: media/rootfs_config_tcl.JPG
+    .. image:: media/ch7_rootfs_config_tcl.png
 
-18. Click **<Save>** to save the above configuration and then click **<Exit>** to exit the configuration wizard.
+19. Click **<Save>** to save the above configuration and then click **<Exit>** to exit the configuration wizard.
 
     .. note:: Only SD and QSPI boot modes will work on VPK180 Production boards.
 
-19. Build the Linux images using the following command.
+20. Build the Linux images using the following command.
 
     .. code-block::
        
