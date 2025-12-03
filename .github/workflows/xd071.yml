@@ -29,7 +29,7 @@ jobs:
       - name: Checkout Emb-Design-Tutorials repository
         uses: actions/checkout@v3
         with:
-          ref: '2025.1_next'
+          ref: '2025.2_next'
           fetch-depth: 0
 
       # Step 2: Set up the SSH directory and known_hosts file.
