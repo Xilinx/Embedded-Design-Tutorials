@@ -675,7 +675,7 @@ This example needs a Linux host machine. Refer to the PetaLinux Tools Documentat
 
    .. code-block::
 
-        petalinux-config --get-hw-description=<path till the directory containing the generated sdtout>
+        $ petalinux-config --get-hw-description=<path till the directory containing the generated sdtout>
 
    This command opens the PetaLinux Configuration window. For this example, no need to change anything in this window.
 
