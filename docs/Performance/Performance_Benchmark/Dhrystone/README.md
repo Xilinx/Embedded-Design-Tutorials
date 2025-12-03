@@ -384,6 +384,7 @@ A more commonly reported figure is DMIPS / MHz, where MHz is CPU Frequency
 GitHub issues will be used for tracking requests and bugs. For questions, go to [forums.xilinx.com](http://forums.xilinx.com/).
 
 
+
 <hr class="sphinxhide"></hr>
 
 <p class="sphinxhide" align="center"><sub>Copyright © 2019–2025 Advanced Micro Devices, Inc.</sub></p>
