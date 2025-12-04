@@ -26,6 +26,7 @@
 
 - [Performance Calculation](#performance-calculation)
 
+
 ## Introduction
 
 AMD Versal&trade; adaptive SoC combines adaptable processing and acceleration engines with programmable logic and configurable connectivity to enable custom, heterogeneous hardware solutions for a wide variety of applications in data center, automotive, 5G wireless, wired network, and defense.
@@ -382,7 +383,6 @@ A more commonly reported figure is DMIPS / MHz, where MHz is CPU Frequency
 ## Support
 
 GitHub issues will be used for tracking requests and bugs. For questions, go to [forums.xilinx.com](http://forums.xilinx.com/).
-
 
 
 
