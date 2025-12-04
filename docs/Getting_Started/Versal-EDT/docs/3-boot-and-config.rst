@@ -261,7 +261,7 @@ GPIOTEST Application Running Steps
 
       You can observe that LED R331 will glow as shown in the below snapshot.
 
-   .. image:: ./media/ch3_gpiotest_image1.jpg
+      .. image:: ./media/ch3_gpiotest_image1.jpg
 
    2. For GPIO 513:
 
@@ -271,7 +271,7 @@ GPIOTEST Application Running Steps
 
       You can observe that LED R332 will glow as shown in the below snapshot.
 
-   .. image:: ./media/ch3_gpiotest_image2.jpg
+      .. image:: ./media/ch3_gpiotest_image2.jpg
 
    3. For GPIO 514:
 
@@ -281,12 +281,12 @@ GPIOTEST Application Running Steps
 
       You can observe that LED R333 will glow as shown in the below snapshot.
 
-   .. image:: ./media/ch3_gpiotest_image3.jpg
+      .. image:: ./media/ch3_gpiotest_image3.jpg
 
 7. To turn off the LEDs, write the value 0 to the respective GPIO pins:
 
    .. code-block::
-      
+
       $ echo 0 > /sys/class/gpio/gpio512/value
       $ echo 0 > /sys/class/gpio/gpio513/value
       $ echo 0 > /sys/class/gpio/gpio514/value
