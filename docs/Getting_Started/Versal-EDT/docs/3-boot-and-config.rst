@@ -181,7 +181,7 @@ This section describes how to load Versal PetaLinux images using JTAG mode on th
                Versal>
 
 .. _boot-sequence-sd-boot-mode:
- 	
+	
 -------------------------------
 Boot Sequence for SD-Boot Mode
 -------------------------------
@@ -217,7 +217,80 @@ The following steps demonstrate the boot sequence for the SD-boot mode.
    .. note:: Logs for standalone images are displayed on the terminal. For Linux images, you can log in using `user: root` and `pw: root` after the boot-up sequence on the terminal. After that, run `gpiotest` on the terminal. You will see logs as shown in the following figure.
 
    .. image:: ./media/led_example_console_prints.PNG
-   
+
+GPIOTEST Application Running Steps
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. After booting, log in with username as petalinux and set your password when prompted.
+
+2. Run the following command to gain root privileges:
+
+   .. code::
+
+      $ sudo -i
+
+3. Navigate to the GPIO class directory:
+
+   .. code::
+
+      $ cd /sys/class/gpio
+
+4. Export the required GPIO pins (512, 513, and 514):
+
+   .. code::
+
+      $ echo 512 > Set 
+      $ echo 513 > /sys/class/gpio/export
+      $ echo 514 > /sys/class/gpio/export
+
+5. Set the direction to output for all three GPIO pins:
+
+   .. code::
+
+      $ echo out > /sys/class/gpio/gpio512/direction 
+      $ echo out > /sys/class/gpio/gpio513/direction
+      $ echo out > /sys/class/gpio/gpio514/direction
+
+6. Write the value 1 to turn ON the respective LEDs:
+
+   1. For GPIO 512:
+
+      .. code-block::
+
+         $ echo 1 > /sys/class/gpio/gpio512/value
+
+      You can observe that LED R331 will glow as shown in the below snapshot.
+
+      .. image:: ./media/ch3_gpiotest_image1.jpg
+
+   2. For GPIO 513:
+
+      .. code-block::
+
+         $ echo 1 > /sys/class/gpio/gpio513/value
+
+      You can observe that LED R332 will glow as shown in the below snapshot.
+
+      .. image:: ./media/ch3_gpiotest_image2.jpg
+
+   3. For GPIO 514:
+
+      .. code-block::
+
+         $ echo 1 > /sys/class/gpio/gpio514/value
+
+      You can observe that LED R333 will glow as shown in the below snapshot.
+
+      .. image:: ./media/ch3_gpiotest_image3.jpg
+
+7. To turn off the LEDs, write the value 0 to the respective GPIO pins:
+
+   .. code-block::
+
+      $ echo 0 > /sys/class/gpio/gpio512/value
+      $ echo 0 > /sys/class/gpio/gpio513/value
+      $ echo 0 > /sys/class/gpio/gpio514/value
+
 --------------------------------
 Boot Sequence for QSPI Boot Mode
 --------------------------------
