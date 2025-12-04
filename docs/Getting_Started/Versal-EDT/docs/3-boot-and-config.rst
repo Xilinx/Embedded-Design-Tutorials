@@ -225,25 +225,29 @@ GPIOTEST Application Running Steps
 
 2. Run the following command to gain root privileges:
 
-   .. code-block::
+   .. code::
+
       $ sudo -i
 
 3. Navigate to the GPIO class directory:
 
-   .. code-block::
+   .. code::
+
       $ cd /sys/class/gpio
 
 4. Export the required GPIO pins (512, 513, and 514):
 
-   .. code-block::
-      $ echo 512 > /sys/class/gpio/export
+   .. code::
+
+      $ echo 512 > Set 
       $ echo 513 > /sys/class/gpio/export
       $ echo 514 > /sys/class/gpio/export
 
 5. Set the direction to output for all three GPIO pins:
 
-   .. code-block::
-      $ echo out > /sys/class/gpio/gpio512/direction
+   .. code::
+
+      $ echo out > /sys/class/gpio/gpio512/direction 
       $ echo out > /sys/class/gpio/gpio513/direction
       $ echo out > /sys/class/gpio/gpio514/direction
 
@@ -252,6 +256,7 @@ GPIOTEST Application Running Steps
    1. For GPIO 512:
 
       .. code-block::
+
          $ echo 1 > /sys/class/gpio/gpio512/value
 
       You can observe that LED R331 will glow as shown in the below snapshot.
@@ -261,6 +266,7 @@ GPIOTEST Application Running Steps
    2. For GPIO 513:
 
       .. code-block::
+
          $ echo 1 > /sys/class/gpio/gpio513/value
 
       You can observe that LED R332 will glow as shown in the below snapshot.
@@ -270,6 +276,7 @@ GPIOTEST Application Running Steps
    3. For GPIO 514:
 
       .. code-block::
+
          $ echo 1 > /sys/class/gpio/gpio514/value
 
       You can observe that LED R333 will glow as shown in the below snapshot.
@@ -279,6 +286,7 @@ GPIOTEST Application Running Steps
 7. To turn off the LEDs, write the value 0 to the respective GPIO pins:
 
    .. code-block::
+      
       $ echo 0 > /sys/class/gpio/gpio512/value
       $ echo 0 > /sys/class/gpio/gpio513/value
       $ echo 0 > /sys/class/gpio/gpio514/value
