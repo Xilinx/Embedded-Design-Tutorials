@@ -47,7 +47,7 @@ Creating a PetaLinux Image
 
 2. Reconfigure the project with `edt_zcu102_wrapper.xsa`:
 
-   -  The created PetaLinux project uses the default hardware setup in the ZCU102 Linux BSP. In this example, you will reconfigure the
+   -  The PetaLinux project you created uses the default hardware setup in the ZCU102 Linux BSP. In this example, you will reconfigure the
       PetaLinux project based on the Zynq UltraScale+ hardware platform that you configured using the Vivado |reg| Design Suite in :doc:`Zynq
       UltraScale+ MPSoC Processing System Configuration <3-system-configuration>`.
       

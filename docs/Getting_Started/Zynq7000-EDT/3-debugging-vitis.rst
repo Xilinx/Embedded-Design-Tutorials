@@ -4,8 +4,7 @@ Debugging Standalone Applications with the Vitis Unified Software Platform
 
 Although a simple “Hello World” application does not require much debugging, this chapter demonstrates the debugging setup and procedure in the AMD Vitis |trade| Unified IDE in :ref:`example-3-debugging-standalone-software-using-the-vitis-software-platform`.
 
-The Vitis software platform debugger provides the following debug
-capabilities:
+The Vitis software platform debugger provides the following debug capabilities:
 
 -  Debugging of programs on MicroBlaze |trade| and Arm Cortex |trade|-A9 processor architectures (heterogeneous multi-processor hardware system debugging)
 -  Debugging of programs on hardware boards
@@ -54,7 +53,7 @@ To view the target connections, go to **Vitis → Target Connections**.
 
 .. image:: ./media/new_target.PNG
 
-Right click on the **Hardware Server** and select **New Target** and add your connection details.
+Right-click on the **Hardware Server** and select **New Target** and add your connection details.
 
 .. image:: ./media/target_details.PNG
 

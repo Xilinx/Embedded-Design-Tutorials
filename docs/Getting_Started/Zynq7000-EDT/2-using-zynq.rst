@@ -202,7 +202,7 @@ Exporting Hardware
 
 Two types of hardware can be exported from Vivado: pre-synthesis and post-implementation. In the block design for this example, the hardware in the PL is the signal from ``FCLK_CLK0`` to ``M_AXI_GP0_ACLK``. It drives the clock of ``M_AXI_GP0``, because only pure PS functions are tested in this example and PL resources are not used, no loads are added to the ``M_AXI_GP0`` AXI interface. You can skip the synthesis, implementation, and bitstream generation phases to save time. Export the pre-synthesis hardware in this case.
 
-1. From the Vivado main menu, select **File→ Export → Export Hardware**. The Export Hardware Platform wizard opens.
+1. From the Vivado main menu, select **File → Export → Export Hardware**. The Export Hardware Platform wizard opens.
 
 2. Use the information in the following table to make selections in each of the wizard screens. Click **Next** wherever necessary.
 
@@ -371,7 +371,7 @@ To view the target connections, go to **Vitis → Target Connections**.
 
 .. image:: ./media/new_target.PNG
 
-Right click on the **Hardware Server**, select **New Target** and add your connection details.
+Right-click on the **Hardware Server**, select **New Target** and add your connection details.
 
 .. image:: ./media/target_details.PNG
 

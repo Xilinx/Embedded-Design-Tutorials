@@ -243,7 +243,7 @@ The bare-metal application has been modified to include the UART interrupt examp
 
 Meanwhile, the boot sequence continues on the APU and the images loaded can be understood from the messages appearing on the UART-0 terminal. The messages are highlighted in the following figure.
 
-The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 APU in SMP mode. The terminal messages indicate when the
+The U-Boot then loads Linux kernel and other images on the Arm Cortex-A53 APU in SMP mode. The terminal messages indicate when the
 U-Boot loads the kernel image. When the kernel starts up, a user interface prompt is shown in the target Linux OS. The kernel loading and starting sequence can be seen in the following figure.
 
 .. image:: ./media/image63.png

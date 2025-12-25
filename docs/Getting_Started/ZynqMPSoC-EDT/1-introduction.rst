@@ -34,7 +34,7 @@ The programmable logic section, in addition to the programmable logic cells, als
 
 The PS and the PL in Zynq UltraScale+ devices can be tightly or loosely coupled with a variety of high-performance and high-bandwidth PS-PL interfaces.
 
-To simplify the design process for such sophisticated devices, AMD offers the Vivado |reg| Design Suite, the Vitis |trade| unified software platform, and PetaLinux tools for Linux. This set of tools provides verything you need to simplify embedded system design for a device that merges an SoC with an FPGA. This combination of tools enables hardware and software application design, code execution and debug, and transfer of the design onto actual boards for verification and validation.
+To simplify the design process for such sophisticated devices, AMD offers the Vivado |reg| Design Suite, the Vitis |trade| unified software platform, and PetaLinux tools for Linux. This set of tools provides everything you need to simplify embedded system design for a device that merges an SoC with an FPGA. This combination of tools enables hardware and software application design, code execution and debug, and transfer of the design onto actual boards for verification and validation.
 
 Vitis Integrated Design Environment
 -----------------------------------
@@ -64,7 +64,7 @@ targeted towards embedded processors. The Vitis software platform works with har
 
 -  Script-based command-line tool (XSCT)
 
-For more information about the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.2%20English&url=ug1400-vitis-embedded>`_).
+For more information about the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2025.2%20English&url=ug1400-vitis-embedded>`_).
 
 Other components include:
 
@@ -82,7 +82,7 @@ PetaLinux Tools
 
 The PetaLinux toolset is an embedded Linux system development kit. It offers a multi-faceted Linux tool flow, which enables complete configuration, build, and deploy environment for Linux OS for the Zynq devices, including Zynq UltraScale+ devices.
 
-For more information, see the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.2%20English&url=ug1144-petalinux-tools-reference-guide>`_).
+For more information, see the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2025.2%20English&url=ug1144-petalinux-tools-reference-guide>`_).
 
 How the AMD Design Tools Expedite the Design
 -----------------------------------------------
@@ -94,7 +94,7 @@ You can accomplish all your hardware system development using the Vivado tools a
 The Zynq UltraScale+ PS can be booted and run without programming the PL. However, to use any soft IP in the fabric, or to bond out PS peripherals using EMIO, you must program the PL using the Vitis IDE or the Vivado hardware manager.
 
 For more information on the embedded design process, refer to the *Programming an Embedded MicroBlaze Processor*
-(`XD131 <https://docs.amd.com/access/sources/ftml/map?Doc_Version=2024.2%20English&url=xd131-zynq-embedded-design-tutorial>`_).
+(`XD131 <https://docs.amd.com/access/sources/ftml/map?Doc_Version=2025.2%20English&url=xd131-zynq-embedded-design-tutorial>`_).
 
 For more information about the Zynq UltraScale+ processing system, refer to the *Zynq UltraScale + MPSoC Processing System LogiCORE IP Product Guide* (`PG201 <https://docs.amd.com/access/sources/framemaker/map?Doc_Version=3.5%20English&url=pg201-zynq-ultrascale-plus-processing-system>`_).
 

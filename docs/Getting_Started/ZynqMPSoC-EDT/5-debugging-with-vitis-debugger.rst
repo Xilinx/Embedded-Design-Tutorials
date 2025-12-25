@@ -4,7 +4,7 @@
 Debugging Standalone Applications with the Vitis Debugger
 =========================================================
 
-This chapter describes debug possibilities with the design flow you have already been working with. The first option is debugging with software using the Vitis |trade| debugger.
+This chapter describes debugging possibilities with the design flow you have already been working with. The first option is debugging with software using the Vitis |trade| debugger.
 
 The Vitis debugger provides the following debug capabilities:
 
