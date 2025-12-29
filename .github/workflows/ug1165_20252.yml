@@ -1,15 +1,15 @@
 # This YAML file defines a GitHub Actions workflow for updating the
-# UG1165 documentation whenever changes are pushed to the '2025.1_next'
+# UG1165 documentation whenever changes are pushed to the '2025.2_next'
 # branch of the Emb-Design-Tutorials repository affecting files under
 # the 'docs/Getting_Started/Zynq7000-EDT/' directory.
 
-name: Update UG1165 2025.1
+name: Update UG1165 2025.2
 
 # The 'on' section defines the events that trigger the workflow.
 on:
   push:
     branches:
-      - 2025.1_next
+      - 2025.2_next
     paths:
       - 'docs/Getting_Started/Zynq7000-EDT/**'
 
@@ -27,7 +27,7 @@ jobs:
       - name: Checkout Emb-Design-Tutorials repository
         uses: actions/checkout@v2
         with:
-          ref: '2025.1_next'
+          ref: '2025.2_next'
           fetch-depth: 0
 
       # Step 2: Set up the SSH directory and known_hosts file. 
@@ -49,7 +49,7 @@ jobs:
           rm -f private_key.pem
           ssh-keyscan gitenterprise.xilinx.com >> "$HOME/.ssh/known_hosts"
       
-      # Step 4: Check out the '2025.1_next' branch of the techdocs/UG1165
+      # Step 4: Check out the '2025.2_next' branch of the techdocs/UG1165
       # repository with the SSH key stored in the 'ug1165_deploy_key' secret,
       # placing its contents in the 'UG1165_repo' directory.
       - name: Checkout techdocs/UG1165 repository
@@ -58,7 +58,7 @@ jobs:
           repository: techdocs/UG1165
           ssh-key: ${{ secrets.ug1165_deploy_key }}
           path: UG1165_repo
-          ref: 2025.1_next
+          ref: 2025.2_next
 
       # Step 5: Copy the contents of the 'docs/Getting_Started/Zynq7000-EDT/'
       # directory to the 'build_html/source/' directory of the UG1165 repository.
@@ -73,5 +73,5 @@ jobs:
           git config user.email "actions@github.com"
           git config user.name "GitHub Action"
           git add -A
-          git commit -m "Update UG1165 2025.1 documentation from Emb-Design-Tutorials repository"
+          git commit -m "Update UG1165 2025.2 documentation from Emb-Design-Tutorials repository"
           git push
