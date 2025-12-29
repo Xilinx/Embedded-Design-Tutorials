@@ -180,7 +180,7 @@ design so that the synthesizer can consume and process them. You also need to ge
 
 5. Under Design Sources, right-click **edt_zcu102** and select **Create HDL Wrapper**.
 
-   The Create HDL Wrapper dialog box opens. Use this dialog box to create a HDL wrapper file for the processor subsystem.
+   The Create HDL Wrapper dialog box opens. Use this dialog box to create an HDL wrapper file for the processor subsystem.
 
    .. tip:: The HDL wrapper is a top-level entity required by the design tools.
 

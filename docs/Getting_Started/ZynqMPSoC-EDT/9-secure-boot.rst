@@ -528,7 +528,7 @@ In this section, the PUF is used for black key storage in the PUF boot header mo
 PUF Registration in Boot Header Mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The PUF registration software is included in the XILSKEY library. The PUF registration software operates in a boot header mode or eFUSE mode. The boot header mode allows development without programming the OTP eFUSEs. The eFUSE mode is used in production. This lab runs through PUF registration in boot header mode only. For PUF registration using eFUSE, see *Programming BBRAM and eFUSEs* (`XAPP1319 <https://docs.xilinx.com/v/u/en-US/xapp1319-zynq-usp-prog-nvm>`_).
+The PUF registration software is included in the XILSKEY library. The PUF registration software operates in boot header mode or eFUSE mode. The boot header mode allows development without programming the OTP eFUSEs. The eFUSE mode is used in production. This lab runs through PUF registration in boot header mode only. For PUF registration using eFUSE, see *Programming BBRAM and eFUSEs* (`XAPP1319 <https://docs.xilinx.com/v/u/en-US/xapp1319-zynq-usp-prog-nvm>`_).
 
 The PUF registration software accepts a red (unencrypted) key as input, and produces syndrome data (helper data), which also contains CHASH and AUX, and a black (encrypted) key. When the PUF boot header mode is used, the output is put in the boot header. When the PUF eFUSE mode is used, the output is programmed into eFUSEs.
 
@@ -620,7 +620,7 @@ The PUF registration software accepts a red (unencrypted) key as input, and prod
 
 27. Save the black key to a file named ``black_key.txt``.
 
-28. The files ``helperdata.txt``, ``black_key.txt``, and ``black_iv.txt`` can be saved in ``C:\edt\secure_boot_sd\keys``.
+28. Save the ``helperdata.txt``, ``black_key.txt``, and ``black_iv.txt`` files to ``C:\edt\secure_boot_sd\keys``.
 
 .. _using-puf-in-boot-header-mode:
 
@@ -691,7 +691,7 @@ storage) by hand editing the BIF file. This section performs the same operations
        cp ../keys/image.ub .
        cp ../keys/black_key.txt.
 
-3. Click **Programs → Xilinx Design Tools → Vitis <version number> → Vitis 2024.2** to launch the Vitis IDE.
+3. Click **Programs → AMDDesignTools → Vitis <version number> → Vitis 2025.2** to launch the Vitis IDE.
 
 4. Click **Vitis → Create Boot Image** from the menu bar to launch the Create Boot Image wizard.
 

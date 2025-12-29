@@ -137,7 +137,7 @@ Booting Linux in JTAG Mode
 
       .. note:: `ta` is a short command for `target`. XSDB accepts short commands. Enter any numbers of the preceding characters of the XSDB commands. As long as there are no conflicts, they can be recognized by XSDB.
 
-    4.  Change working directory to `images/linux` in your PetaLinux project.
+    4.  Change the working directory to `images/linux` in your PetaLinux project.
 
     .. note:: On Windows, the XSDB shell regards the Windows path divider `\` as escape character. Use ``/`` or ``\\`` instead, or add curly brackets ``{}`` for the Windows path name to make sure it is interpreted correctly.
 
@@ -177,8 +177,7 @@ Example 10: Booting Linux from QSPI Flash
 
 This example helps you make a Linux boot image for QSPI Flash, write it into Flash, and let it boot.
 
-QSPI Flash on a board normally has less capacity than an SD card or eMMC because of its relatively high price. It layout should be planned
-carefully. The Linux kernel image and rootfs can be stored in the same QSPI as this example, or stored in another non-volatile form of storage such as an SD card, NAND Flash, or eMMC. The only difference is the `BOOT.BIN` packaging contents.
+QSPI Flash on a board normally has less capacity than an SD card or eMMC because of its relatively high price. Its layout should be planned carefully. The Linux kernel image and rootfs can be stored in the same QSPI as this example, or stored in another non-volatile form of storage such as an SD card, NAND Flash, or eMMC. The only difference is the `BOOT.BIN` packaging contents.
 
 In this example, you not only package normal boot components, such as FSBL, bitstream, and U-Boot into `BOOT.BIN`, but also the
 following:
@@ -240,7 +239,7 @@ Because there is limited QSPI Flash size, you need to shrink the rootfs size so 
 
 1. Use your preferred editor to open the `rootfs_config` file in the `<PetaLinux Project>/project-spec/configs` directory.
 
-2. Comment the following lines:
+2. Comment out the following lines:
 
    .. code-block::
 

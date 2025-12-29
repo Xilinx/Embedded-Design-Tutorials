@@ -243,7 +243,7 @@ The bare-metal application has been modified to include the UART interrupt examp
 
 Meanwhile, the boot sequence continues on the APU and the images loaded can be understood from the messages appearing on the UART-0 terminal. The messages are highlighted in the following figure.
 
-The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 APU in SMP mode. The terminal messages indicate when the
+The U-Boot then loads Linux kernel and other images on the Arm Cortex-A53 APU in SMP mode. The terminal messages indicate when the
 U-Boot loads the kernel image. When the kernel starts up, a user interface prompt is shown in the target Linux OS. The kernel loading and starting sequence can be seen in the following figure.
 
 .. image:: ./media/image63.png
@@ -264,7 +264,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
 
    .. code:: shell
 
-       $ cd <Petalinux-project-path>/xilinx-zcu102-2025.1/images/linux/
+       $ cd <Petalinux-project-path>/xilinx-zcu102-2025.2/images/linux/
        $ mkdir sd_boot
        $ cp image.ub sd_boot/
        $ cp u-boot.elf sd_boot/
@@ -274,7 +274,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
 
    .. code:: shell
    
-      $ cd <Petalinux-project-path>/xilinx-zcu102-xsct-2025.1
+      $ cd <Petalinux-project-path>/xilinx-zcu102-xsct-2025.2
 
 3. Launch the top-level system configuration menu:
 
