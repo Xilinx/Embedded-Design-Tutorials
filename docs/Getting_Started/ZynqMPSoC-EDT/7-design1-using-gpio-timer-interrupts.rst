@@ -8,7 +8,7 @@ The Zynq |reg| UltraScale+ |trade| MPSoC ZCU102 evaluation board comes with a fe
 
 -  The Linux APU runs Linux, while the RPU R5-0 hosts another bare-metal application.
 
--  The Linux applications configure a set of PL LEDs to toggle using a PS dip switch, and another set of PL LEDs to toggle using a PL Dip
+-  The Linux applications configure a set of PL LEDs to toggle using a PS DIP switch, and another set of PL LEDs to toggle using a PL DIP
    Switch (SW17).
 
 -  The R5-Core 0 application uses an AXI Timer IP in the programmable logic to toggle PS LED (DS50). The application is configured to
@@ -70,7 +70,7 @@ Adding the AXI Timer and AXI GPIO IP
 
    1. Copy the **axi_gpio_0** IP by typing **Ctrl+C**.
    2. Paste it by typing **Ctrl+V**.
-   3. You can see that axi_gpio_1 is created.
+   3. The tool creates axi_gpio_1.
 
 5. Configure **axi_gpio_0** for push buttons:
 

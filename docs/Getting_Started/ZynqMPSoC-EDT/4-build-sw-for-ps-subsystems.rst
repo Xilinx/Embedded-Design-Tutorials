@@ -5,7 +5,7 @@ Building Standalone Software for PS Subsystems
 
 This chapter lists the steps to configure and build software for PS subsystems.
 
-In the previous chapter, you created and exported the hardware design from Vivado. The exported XSA file contains the hardware handoff, the processing system initialization (``psu_init``),
+In the previous chapter, you created and exported the hardware design from the Vivado Design Suite. The exported XSA file contains the hardware handoff, the processing system initialization (``psu_init``),
 and the PL bitstream (if the hardware is exported as post-implementation). In this chapter, you will import the XSA into the Vitis |trade| IDE to generate software for the processing system.
 
 You will use the Vitis IDE to perform the following tasks:
@@ -49,7 +49,7 @@ The following steps show how to create a platform project with a standalone doma
 
    -  From the open Vivado IDE, click **Tools → Launch Vitis IDE**; or
    -  From Windows Start menu, select **Xilinx Design Tools → Vitis**; or
-   -  Double-click the ``C:\Xilinx\Vitis\2025.1\bin\vitis.bat`` file.
+   -  Double-click the ``C:\Xilinx\Vitis\2025.2\bin\vitis.bat`` file.
 
 2. Select the workspace ``C\edt\edt_zcu102_workspace`` and continue.
 
@@ -144,7 +144,7 @@ Connecting the Serial Port
 
    .. note:: In Linux, root privilege is required to use UART.
 
-2. Navigate to Vits → Serial Monitor.
+2. Navigate to Vitis → Serial Monitor.
 
 3. To find the correct COM port in Windows, verify the port details in the **Device Manager**. In Linux, check the COM port in ``/dev``.
 
@@ -237,7 +237,7 @@ Running Hello World on the Board
 
       Zynq MP First Stage Boot Loader 
 
-      Release 2025.1   Apr 22 2025  -  14:51:42
+      Release 2025.2   Nov 16 2025  -  11:22:27
       PMU-FW is not running, certain applications may not be supported.
 
       Hello World

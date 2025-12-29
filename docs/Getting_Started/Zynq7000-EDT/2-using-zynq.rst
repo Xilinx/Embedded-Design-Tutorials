@@ -32,7 +32,7 @@ Creating Your Hardware Design
 
 1. Start the Vivado Design Suite.
 
-   -  On Windows 10, click the start menu and find **Xilinx Design Tools → Vivado 2025.1**.
+   -  On Windows 10, click the start menu and find **AMD Design Tools → Vivado 2025.2**.
    -  On Linux, run `source <Vivado installation path>/settings64.sh` to set up the environment and run ``vivado &`` to launch the Vivado IDE.
 
 2. In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
@@ -202,7 +202,7 @@ Exporting Hardware
 
 Two types of hardware can be exported from Vivado: pre-synthesis and post-implementation. In the block design for this example, the hardware in the PL is the signal from ``FCLK_CLK0`` to ``M_AXI_GP0_ACLK``. It drives the clock of ``M_AXI_GP0``, because only pure PS functions are tested in this example and PL resources are not used, no loads are added to the ``M_AXI_GP0`` AXI interface. You can skip the synthesis, implementation, and bitstream generation phases to save time. Export the pre-synthesis hardware in this case.
 
-1. From the Vivado main menu, select **File→ Export → Export Hardware**. The Export Hardware Platform wizard opens.
+1. From the Vivado main menu, select **File → Export → Export Hardware**. The Export Hardware Platform wizard opens.
 
 2. Use the information in the following table to make selections in each of the wizard screens. Click **Next** wherever necessary.
 
@@ -222,7 +222,7 @@ Two types of hardware can be exported from Vivado: pre-synthesis and post-implem
 
          write_hw_platform -fixed -force -file C:/edt/edt_zc702/system_wrapper.xsa
          INFO: [Vivado 12-4895] Creating Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa ...
-         INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2024.2/data/embeddedsw) loading 1 seconds
+         INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2025.2/data/embeddedsw) loading 1 seconds
          INFO: [Vivado 12-12467] The Hardware Platform can be used for Hardware
          INFO: [Vivado 12-4896] Successfully created Hardware Platform: C:/edt/edt_zc702/system_wrapper.xsa
 
@@ -291,7 +291,7 @@ Creating a Vitis Unified Platform Project
 1. Launch the Vitis Unified IDE with any of the actions below:
 
    1. From the Vivado IDE, select **Tools → Launch Vitis IDE**.
-   2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → Xilinx Design Suite → Vitis 2024.2**.
+   2. On Windows, launch the Vitis IDE by using the desktop shortcut or **Windows start menu → AMD Design Suite → Vitis 2025.2**.
    3. On Linux, run ``source <Vitis Installation Directory>/settings64.sh`` to set up the environment and run ``vitis &``.
 
 2. Select **Open Workspace** and specify the location as **C:/edt/edt_zc702_workspace** or any desired path.
@@ -371,7 +371,7 @@ To view the target connections, go to **Vitis → Target Connections**.
 
 .. image:: ./media/new_target.PNG
 
-Right click on the **Hardware Server**, select **New Target** and add your connection details.
+Right-click on the **Hardware Server**, select **New Target** and add your connection details.
 
 .. image:: ./media/target_details.PNG
 
