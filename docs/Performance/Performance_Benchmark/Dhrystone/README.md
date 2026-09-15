@@ -26,6 +26,7 @@
 
 - [Performance Calculation](#performance-calculation)
 
+
 ## Introduction
 
 AMD Versal&trade; adaptive SoC combines adaptable processing and acceleration engines with programmable logic and configurable connectivity to enable custom, heterogeneous hardware solutions for a wide variety of applications in data center, automotive, 5G wireless, wired network, and defense.
@@ -100,8 +101,8 @@ Recommended general knowledge of:
 Key Versal reference documents
 
 - VCK190 Evaluation Board User Guide [(UG1366)](https://www.xilinx.com/support/documentation/boards_and_kits/vck190/ug1366-vck190-eval-bd.pdf)
-- Versal ACAP Technical Reference Manual [(AM011)](https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf)
-- Versal ACAP System Software Developers Guide [(UG1304)](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2021_1/ug1304-versal-acap-ssdg.pdf)
+- Versal Adaptive SoC Technical Reference Manual [(AM011)](https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf)
+- Versal Adaptive SoC System Software Developers Guide [(UG1304)](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2021_1/ug1304-versal-acap-ssdg.pdf)
 - Control Interfaces and Processing System v3.0 (CIPS) [(PG352)](https://www.xilinx.com/support/documentation/ip_documentation/versal_cips/v3_0/pg352-cips.pdf)
 
 Key Dhrystone documents
@@ -118,7 +119,7 @@ This tutorial is demonstrated on the VCK190 evaluation kit. Install the necessar
 - A host machine with an operating system supported by Vivado Design Suite, Vitis tool, and XSCT/XSDB.
 
 - VCK190 EV2 evaluation board with:
-  - Versal ACAP EK-VCK190-G-ED.
+  - Versal adaptive SoC EK-VCK190-G-ED.
   - AC power adapter (100-240VAC input, 12VDC 15.0A output).
   - System controller microSD card in the socket (J302).
   - USB Type-C cable (for JTAG and UART communications).
@@ -384,8 +385,9 @@ A more commonly reported figure is DMIPS / MHz, where MHz is CPU Frequency
 GitHub issues will be used for tracking requests and bugs. For questions, go to [forums.xilinx.com](http://forums.xilinx.com/).
 
 
+
 <hr class="sphinxhide"></hr>
 
-<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2025 Advanced Micro Devices, Inc.</sub></p>
 
 <p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>

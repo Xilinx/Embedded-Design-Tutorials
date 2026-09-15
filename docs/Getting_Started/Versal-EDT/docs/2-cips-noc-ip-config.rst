@@ -2,266 +2,352 @@
 Versal CIPS and NoC (DDR) IP Core Configuration
 ****************************************************
 
-The AMD Versal |trade| Control, Interfaces and Processing System (CIPS) IP core allows you to configure the processing system and the PMC block, including boot mode, peripherals, clocks, interfaces, and interrupts, among other things.
+This chapter describes the steps required to create an embedded design in the AMD Vivado |trade| Design Suite using the *Versal Embedded Common Platform Simple PL Example* design. It also describes how to configure and build the Linux operating system for an Arm |reg| Cortex |trade|-A72 core-based APU on a Versal device.
 
-This chapter describes how to perform the following tasks:
+Examples using the Yocto are provided in this chapter.
 
-- Creating an AMD Vivado |trade| project for Versal devices to select the appropriate boot devices and peripherals by configuring the CIPS IP core.
-- Creating and running a Hello World software application on the on-chip-memory (OCM) of the Arm |reg| Cortex |trade|-A72 processor.
-- Creating and running a Hello World software application on the tightly-coupled-memory (TCM) of the Arm Cortex-R5F processor.
-  
-The NoC IP core configures the DDR memory and data path across the DDR memory and processing engines in the system (Scalar Engines, Adaptable Engines, and AI Engines).
+.. note:: The design files for this chapter have been validated with Vivado Design Suite 2026.1.
 
-- Creating and running a Hello World software application on Arm Cortex-A72 using DDR as memory.
-- Creating and running a Hello World software application on Arm Cortex-R5F using DDR as memory.
-
-.. note:: The design files for this chapter have been validated with Vivado Design Suite 2022.1.
-
-=============
-Prerequisites
-=============
-
-To create and run Hello World applications discussed in this chapter, install the AMD Vitis |trade| unified software platform. For installation procedures, see *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded>`__).
-
-.. _cips-ip-core-configuration:
-
-==========================
-CIPS IP Core Configuration
-==========================
-
-Creating a Versal system design involves configuring the CIPS IP core to select the appropriate boot devices and peripherals. To start with, if the CIPS IP core peripherals and available multiplexed I/O (MIO) connections meet the requirements, no PL component is required. This chapter guides you through creating a simple CIPS IP core-based design.
-
-.. _creating-new-embedded-project-versal-devices:
+.. _5-creating-embedded-project:
 
 Creating a New Embedded Project with a Versal Device
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For this example, launch the Vivado Design Suite and create a project with an embedded processor system as the top level.
+For example, launch the Vivado Design Suite and create a project with an embedded processor system at the top level.
 
-Starting Your Design
---------------------
+Starting the Design
+-------------------
 
-1. Start the Vivado Design Suite.
+1. Launch the **Vivado Design Suite**.
 
-2. In the Vivado Quick Start page, click **Create Project** to open the New Project wizard.
+2. In the Vivado Quick Start page, click **Example Project** to Open Example Project wizard.
 
-3. Use the following information in the table to make selections in each of the wizard screens.
+   .. image:: ./media/ch5_vivado_quick_start_page.png
 
-   *Table 1:* **System Property Settings**
+3. In the Example Project dialog, click **Refresh** to ensure the latest example designs are available.
 
-   +----------+--------------------------+--------------------------------+
-   | Wizard   | System Property          | Setting or Command to Use      |
-   | Screen   |                          |                                |
-   | System   |                          |                                |
-   +==========+==========================+================================+
-   | Project  | Project Name             | edt_versal                     |
-   | Name     |                          |                                |
-   +----------+--------------------------+--------------------------------+
-   |          | Project Location         | C:/edt                         |
-   +----------+--------------------------+--------------------------------+
-   |          | Create Project           | Leave this checked             |
-   |          | Subdirectory             |                                |
-   +----------+--------------------------+--------------------------------+
-   | Project  | Specify the type of      | RTL Project                    |
-   | Type     | project to create. You   |                                |
-   |          | can start with RTL or a  |                                |
-   |          | synthesized EDIF         |                                |
-   +----------+--------------------------+--------------------------------+
-   |          | Do not specify sources   | Leave this unchecked           |
-   |          | at this time check box   |                                |
-   +----------+--------------------------+--------------------------------+
-   |          | Project is an extensible | Leave this unchecked           |
-   |          | Vitis platform checkbox  |                                |
-   +----------+--------------------------+--------------------------------+
-   | Add      | Do not make any changes  |                                |
-   | Sources  | to this screen           |                                |
-   +----------+--------------------------+--------------------------------+
-   | Add      | Do not make any changes  |                                |
-   | Con      | to this screen           |                                |
-   | straints |                          |                                |
-   +----------+--------------------------+--------------------------------+
-   | Default  | Select                   | **Boards**                     |
-   | Part     |                          |                                |
-   +----------+--------------------------+--------------------------------+
-   |          | Display Name             | Versal VMK180/VCK190/VPK180    |
-   |          |                          | Evaluation Platform            |
-   +----------+--------------------------+--------------------------------+
-   | Project  | Project Summary          | Review the project summary     |
-   | Summary  |                          |                                |
-   +----------+--------------------------+--------------------------------+
+4. From the available design categories, select **Versal Embedded Common Platform – Simple PL**, as shown in the following figure:
 
-   .. note:: Select **Display Name** as VPK180 Evaluation platform for creating project for SSI devices.
+   .. image:: ./media/ch5_design_categories.png
 
-4. Click **Finish**. The New Project wizard closes and the project you just created opens in the Vivado design tool.
+5. Click **Next**.
 
-   .. note:: Select the version based on the silicon on the board.For production silicon, select the board revision as Rev A01 with board file version as 1.2. 
+6. Use the information provided in the following table to make the selections on each screen of the wizard.
 
-Creating an Embedded Processor Project
---------------------------------------
+   .. note:: Make sure that there is no existing folder named ``edt`` on the ``C:`` drive, as the project is currently configured to use ``C:\edt`` as its location.
 
-To create an embedded processor project:
+   *Table 8:* **System Property Settings**
 
-1. In the Flow Navigator, under IP integrator, click **Create Block Design**.
-   
-   .. image:: media/image5.png
-   
-   The Create Block Design wizard opens.
+   +--------------------------+-----------------------+-------------------------------+
+   | **Wizard Screen System** | **System Properties** | **Setting or command to use** |
+   +==========================+=======================+===============================+
+   | Project Name             | Project Name          | edt_versal                    |
+   +--------------------------+-----------------------+-------------------------------+
+   |                          | Project Location      | C:/edt                        |
+   +--------------------------+-----------------------+-------------------------------+
+   |                          | Create Project        | Leave the check box selected  |
+   |                          | Subdirectory          |                               |
+   +--------------------------+-----------------------+-------------------------------+  
+   | Default Part             | Select                | Boards                        |
+   +--------------------------+-----------------------+-------------------------------+
+   |                          | Display Name          | Versal VMK180/VCK190/VPK180   |
+   |                          |                       | Evaluation Platform           |
+   +--------------------------+-----------------------+-------------------------------+
+   | Project Summary          | Project Summary       | Review the Project Summary    |
+   +--------------------------+-----------------------+-------------------------------+
 
-2. Use the following information to make selections in the Create Block Design wizard.
+   The following screenshots display the wizard screens for configuring the Project Configuration Settings.
 
-   +-------------------+---------------------+------------------------+
-   | Wizard Screen     | System Property     | Setting or Command to  |
-   |                   |                     | Use                    |
-   +===================+=====================+========================+
-   | Create Block      | Design Name         | edt_versal             |
-   | Design            |                     |                        |
-   +-------------------+---------------------+------------------------+
-   |                   | Directory           | ``<Local to Project>`` |
-   +-------------------+---------------------+------------------------+
-   |                   | Specify Source Set  | Design Sources         |
-   +-------------------+---------------------+------------------------+
+   .. image:: ./media/ch5_project_name.png
 
-3. Click **OK**.
+   .. image:: ./media/ch5_default_part.png
 
-   The diagram window view opens with a message that states that this design is empty. To get started, add an IP from the IP catalog.
+   .. image:: ./media/ch5_new_project_summary.png
 
-4. Click the **Add IP** button |add_ip|.
+7. Click **Finish** to create the project.
 
-5. In the search box, type CIPS to find the Control, Interfaces and Processing System.
+The Vivado Design Suite creates the project and automatically opens the example block design as shown in the following figure:
 
-6. Double-click the **Control, Interface & Processing System IP** to add it to the block design. The CIPS IP core appears in the diagram view, as shown in the following figure:
+   .. image:: ./media/ch5_example_block_design.png
 
-   .. image:: media/image7.png
-      :width: 600
+Modifying the CIPS_0 Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Managing the Versal CIPS IP Core in the Vivado Design Suite
-----------------------------------------------------------------
+After the project is created, perform the following configuration updates:
 
-Now that you have added the processor system for Versal devices to the design, you can begin managing the available options.
+1.	In the Example Block Design, locate the **CIPS_0** block.
 
-1. Click **Run Block Automation**.
+2.	Double-click the **CIPS_0** block. The Re-customize IP dialog box opens, displaying the configuration as shown in the following image:
 
-2. Configure the run block settings as shown in the following figure:
+   .. image:: ./media/ch5_CIPS_0.png
 
-   .. image:: media/run-automation-1.png
-      :width: 600
+3. Click **Next** 
 
-3. Double-click **versal_cips_0** in the Block Diagram window.
+4. Click on **PS PMC**
 
-4. Ensure that all the settings for **Design Flow** and **Presets** are as shown in the following figure.
-   
-   .. image:: media/4-full-system.png
-      :width: 600
+   .. image:: ./media/ch5_PS_PMC_tab.png
 
-5. Click **Next**, then click **PS PMC**.
+5.	Navigate to **Interrupts and Errors** section.
 
-   .. image:: media/ps-pmc.png
-      :width: 600
+   .. image:: ./media/ch5_interrupts_and_errors.png
 
-   .. note:: VCK190 preset values will set QSPI and SD as the default boot modes. No changes are required.
+6. Disable the interrupt feature as follows: 
 
-6. Click **Interrupts** and configure settings as shown in figure below:
+   - Uncheck all interrupt-related options.
 
-   .. image:: media/interrupts.png
-      :width: 600
+      .. image:: ./media/ch5_disable_interrupts.png
 
-7.  Click **OK** and **Finish** to close the CIPS GUI.
+7. Click **OK** to apply the changes.
+
+8.	Click **Finish**.
+
+The overall block design is shown in the following figure:
+
+   .. image:: ./media/ch2_block_design.png
+
+..
+   Configuring Hardware
+   ~~~~~~~~~~~~~~~~~~~~
+
+   The first step in this design is to configure the PS and PL sections. You can do this using the Vivado IP integrator. Start with adding the required IPs from the Vivado IP catalog and then connect the components to blocks in the PS subsystem. To configure the hardware, follow these steps:
+
+   .. note:: If the Vivado Design Suite is open already, jump to step 3.
+
+   1. Open the Vivado project you created in :doc:`../docs/2-cips-noc-ip-config`.
+
+      `C:/edt/edt_versal/edt_versal.xpr`
+
+   2. In the Flow Navigator, under **IP Integrator**, click **Open Block Design**.
+
+      .. image:: ./media/image5.png
+
+   3. Right-click the block diagram and select **Add IP**.
+
+   Connecting IP Blocks to Create a Complete System
+   ------------------------------------------------
+
+   To connect IP blocks to create a system, follow these steps.
+
+   1. Double-click the Versal CIPS IP core.
+
+   2. Click **PS-PMC→ PS-PL Interfaces**.
+
+   3. Enable the M_AXI_FPD interface and set the **Number of PL Resets** to 1, as shown in the Image.
+
+      .. image:: ./media/PS_PL_Interfaces.png
+      
+   4. Click **Clocking**, and then click on the Output Clocks tab.
+
+   5. Expand PMC Domain Clocks. Then expand PL Fabric Clocks. Configure the PL0_REF_CLK to 300 MHz as shown in the following figure:
+
+      .. image:: ./media/clocking_ps_PMC.png
+
+   6. Click **OK** and **Finish** to complete the configuration and return to the block diagram.
+
+   Adding and Configuring IP Addresses
+   -----------------------------------
+
+   To add and configure IP addresses, follow these steps.
+
+   1. Right-click the block diagram and select **Add IP** from the IP catalog.
+
+   2. Search for AXI GPIO and double-click the **AXI GPIO IP** to add it to your design.
+
+   3. Add another instance of the AXI GPIO IP into the design.
+
+   4. Search for **AXI Uartlite** in the IP catalog and add it into the design.
+
+   5. Click **Run Connection Automation** in the Block Design view.
+      
+      .. image:: ./media/image62.png
+
+      The Run Connection Automation dialog box opens.
+
+   6. In the Run Connection Automation dialog box, select the All Automation check box.
+
+      .. image:: ./media/image63.png
+
+      This checks the automation for all the ports of the AXI GPIO IP.
+
+   7. Click **GPIO** of `axi_gpio_0` and set the Select Board Part Interface to **Custom** as shown below.
+
+      .. image:: ./media/image64.jpg
+
+   8. Click **S_AXI** of `axi_gpio_0`. Set the configurations as shown in the following figure:
+
+      .. image:: ./media/gpio_config0.png
+      
+   9. Repeat previous step 7 and Step 8 for `axi_gpio_1`.
+
+   10. Click **S_AXI** of `axi_uartlite_0`. Set the configurations as shown in the following figure:
+
+      .. image:: media/s-axi-uartlite.png
+
+   11. This configuration sets the following connections:
+
+      - Connects the `S_AXI of AXI_GPIO` and AXI Uartlite to `M_AXI_FPD` of CIPS with SmartConnect as a bridge IP between CIPS and AXI GPIO IPs.
+      - Enables the processor system reset IP.
+      - Connects the `pl0_ref_clk` to the processor system reset, AXI GPIO, and the SmartConnect IP clocks.
+      - Connects the reset of the SmartConnect and AXI GPIO to the `peripheral_aresetn` of the processor system reset IP.
+
+   12. Click **UART** of `axi_uartlite_0`. Set the configurations as shown in the following figure:
+
+      .. image:: media/uart.png
+
+   13. Click **OK**.
+
+   14. Click **Run Connection Automation** in the block design window and select the All Automation check box.
+
+   15. Click **ext_reset_in** and configure the setting as shown below.
+
+      .. image:: ./media/image66.jpg
+
+      This connects the `ext_reset_in` of the processor system reset IP to the `pl_resetn` of the CIPS.
+
+   16. Click **OK**.
+
+   17. Disconnect the `aresetn` of SmartConnect IP from `peripheral_aresetn` of processor system reset IP.
+
+   18. Connect the `aresetn` of SmartConnect IP to `interconnect_aresetn` of processor system reset IP.
+
+      .. image:: ./media/image67.jpeg
+
+   19. Double-click the axi_gpio_0 IP to open it.
+
+   20. Go to the IP Configuration tab and configure the settings as shown in the following figure.
+
+      .. image:: ./media/image68.png
+
+   21. Make the same setting for axi_gpio_1.
+
+   22. Add four more instances of Slice IP.
+
+   23. Delete the external pins of the AXI GPIO IP and expand the interfaces.
+
+   24. Connect the output pin gpio_io_0 of axi_gpio_0 to slice 0 and slice 1.
+
+   25. Similarly, connect the output pin gpio_io_0 of axi_gpio_1 to slice 2 and slice 3.
+
+   26. Make the output of Slice IP as External.
+
+   27. Configure each Slice IP as shown below.
+
+      .. image:: ./media/image69.png
+
+      .. image:: ./media/image70.png
+
+      .. image:: ./media/image71.png
+
+      .. image:: ./media/image72.png
+
+   28. Double-click **axi_uartlite_0** to open the IP.
+
+   29. In the Board tab, set Board interface as shown below:
+
+      .. image:: media/board-interface.png
+      
+   30. Go to the IP Configuration tab and configure the settings as shown in the following figure.
+
+      .. image:: media/configure-ip-settings.png
+
+   31. Add **Clock Wizard IP**. Double-click to open the IP.
+
+   32. Go to Clocking Features tab and set the configuration as shown below:
+
+      .. image:: media/clocking-features.png
+
+   33. Make sure the Source option in **Input Clock Information** is set to **Global buffer**.
+      
+   34. Go to Output clocks tab and configure as follows:
+
+      .. image:: media/output-clocks-tab.png
+
+   35. Right-click `pl0_ref_clk` of CIPS and click **Disconnect Pin**.
+
+   36. Connect the `pl0_ref_clk` from CIPS to input `clk_in1` of the Clocking wizard.
+
+   37. Connect the output of clocking wizard to `slowest_sync_clock` of Processor System Reset IP.
+
+      This will help in avoiding timing failure. 
+
+   The overall block design is shown in the following figure:
+
+   .. image:: media/image73.png
 
 Validating the Design and Generating the Output
 -----------------------------------------------
 
-To validate the design and to generate the output products, follow these steps:
+To validate the design and to generate the product output, follow these steps:
 
-1. Right-click in the white space of the Block Diagram view and select **Validate Design**. Alternatively, you can press the F6 key. A message dialog box opens as shown below.
+1. Right-click in the white space of the Block Diagram view and select **Validate Design** or press the **F6** Key.
 
-   Once the validation is complete, A message dialog box opens as shown below:
+2.	The tool verifies the design connections, clocking, and configuration.
 
-   .. image:: media/validation_message.PNG
+   Once the validation is complete, A message dialog box opens:
 
-2. In the Block Design view, click **Sources** tab  
+   .. image:: ./media/ch5_validation_successful.png
 
-3. Click **Hierarchy** and Expand Design Sources Folder, right-click **edt_versal** and select **Create HDL Wrapper**.
+3. In the Block Diagram window, press **Ctrl+S** to save the block design.
 
-   The Create HDL Wrapper dialog box opens. Use this dialog box to create an HDL wrapper file for the processor subsystem.
+4. In the Sources window, under Design Sources, expand ``edf_base_pl_wrapper``.
 
-   .. tip:: The HDL wrapper is a top-level entity required by the design tools.
-   
-4. Select **Let Vivado manage wrapper and auto-update** and click **OK**.
+5. Right-click the top-level block design, ``edf_base_pl_i : edf_base_pl`` (``edf_base_pl.bd``), and select **Generate Output Products**.
 
-5. In the Block Design Sources window, under Design Sources, expand edt_versal_wrapper.
+   .. image:: ./media/ch5_generate_output_products.png
 
-6. Right-click the top-level block diagram, titled `edt_versal_i: edt_versal (edt_versal.bd)` and select Generate Output Products.
+6. Click **Generate**.
 
-   The Generate Output Products dialog box opens, as shown in the following figure.
+7.	When the Generate Output Products process is completed, click **OK**.
 
-   .. image:: media/Generate_op_products_dial_box.png
+8.	In the Sources window, click the **IP Sources** view. Here, you can see the output products that you just generated, as shown in the following figure.
 
-   .. note:: If you are running the Vivado Design Suite on a Windows machine, you might see different options under Run Settings. In this case, continue with the default settings.
-
-7. Click **Generate**.
-
-   This step builds all the required output products for the selected source. You do not need to manually create constraints for the IP processor system. The Vivado Design Suite automatically generates the XDC file for the processor subsystem when you select **Generate Output Products**.
-
-8. In the Block Design Sources window, click the **IP Sources** tab. Here you can see the output products that you just generated, as shown in the following figure.
-
-   .. image:: media/ip-sources.png
+   .. image:: ./media/ch2_output_products.png
 
 Synthesizing, Implementing, and Generating the Device Image
 -----------------------------------------------------------
 
 Follow these steps to generate a device image for the design.
 
-1. Go to **Flow Navigator→ Program and Debug** and click **Generate Device Image**.
+1.	Go to **Flow Navigator → Program and Debug**, and click **Generate Device Image**. 
 
-2. A No Implementation Results Available menu appears. Click **Yes**.
+2.	A No Implementation Results Available menu appears. Click **Yes**.
 
-3. A Launch Run menu appears. Click **OK**.
+   .. image:: ./media/ch5_no_implementation_results_available.png
 
-   When the Device Image Generation completes, the Device Image Generation Completed dialog box opens.
+3. A Launch Runs menu appears. Click **OK**.
 
-4. Click **Cancel** to close the window.
+   .. image:: ./media/ch5_launch_runs.png
 
-5. Export hardware after you generate the Device Image.
+4. When the Device Image Generation is completed, the Device Image Generation Completed dialog box opens.
 
-.. note:: The following steps are optional and you can skip these and go to the :ref:`exporting-hardware-2` section. These steps provide the detailed flow for generating the device image by running synthesis and implementation before generating the device image. To understand the flow for generating the device image, follow these steps.
+   .. image:: ./media/ch5_device_image_generation_completed.png
 
-   1. Go to **Flow Navigator→ Synthesis**, click **Run Synthesis** and click **OK**.
+5. Click **Cancel** to close the dialog box.
 
-      .. image:: media/image17.png
+6. After generating the Device Image, export the **Hardware**.
 
-   2. If Vivado prompts you to save your project before launching synthesis, click **Save**.
-
-      While synthesis is running, a status bar is displayed in the upper right-hand window. This status bar spools for various reasons throughout the design process. The status bar signifies that a process is working in the background. When synthesis is complete, the Synthesis Completed dialog box opens.
-
-   3. Select **Run Implementation** and click **OK**.
-
-      When implementation completes, the Implementation Completed dialog box opens.
-
-   4. Select **Generate Device Image** and click **OK**.
-
-      The Device Image Generation Completed dialog box opens.
-
-   5. Click **Cancel** to close the window.
-
-      Export the hardware after you generate the device image.
-
-.. _exporting-hardware-2:
+.. _exporting-hardware-5:
 
 Exporting Hardware
 ------------------
 
-1. From the Vivado toolbar, select **File → Export→ Export Hardware**.
+1.	From the Vivado main menu, select **File → Export → Export Hardware**. The Export Hardware Platform dialog box opens.
 
-   The Export Hardware dialog box opens.
+2.	Choose **Include Device Image** and click **Next**.
 
-2. Choose **Include device image** and click **Next**.
+   .. image:: ./media/ch5_export_hardware_platform.png
 
-3. Provide a name for your exported file (or use the default provided) and choose the location. Click **Next**.
+3. Provide a name for your exported file (or use the default provided), choose the Location and click **Next**.
 
-   A warning message appears if a Hardware Module has already been exported. Click **Yes** to overwrite the existing XSA file, if the overwrite message is displayed.
+   .. image:: ./media/ch5_export_hardware_platform_files.png
 
-4. Click **Finish**.
+   .. note:: A warning message appears if a hardware module is already been exported. 
+      
+   1. If the overwrite message is displayed, click **Yes** to overwrite the existing XSA file.
 
+4. Click **Finish** to complete the export process.
+
+.. note:: This procedure can also be used to create embedded projects targeting the other Versal platforms, such as VMK180 and VPK180.
 
 .. _running-bare-metal-hello-world-application:
 
@@ -292,12 +378,12 @@ You will create a new Vitis project, similar to the one in `running-bare-metal-h
 Refer to Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to `generating-boot-image-for-standalone-application` for generating boot images for standalone applications.
 
 Creating a Hello World Application for the Arm Cortex-A72 on OCM
------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-A72 on OCM. 
 
 Creating the Platform
-^^^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
 Follow these steps to create the platform for VCK190:
 
@@ -311,16 +397,16 @@ Follow these steps to create the platform for VCK190:
    | **Wizard     | **System            | **Setting or command to use**  |
    | Screen**     | Properties**        |                                |
    +==============+=====================+================================+
-   | Platform     | Component name      | Vck190_platform                |
+   | Platform     | Component name      | vck190_platform                |
    +--------------+---------------------+--------------------------------+
    |              | Component location  | < platform path >              |
    +--------------+---------------------+--------------------------------+
    |              | Hardware Design     | Click the browser button to    |
    |              | (XSA)               | add your XSA file              |
    +--------------+---------------------+--------------------------------+
-   | Domain       | Operating System    | Standalone                     |
+   | Domain       | Operating System    | standalone                     |
    +--------------+---------------------+--------------------------------+
-   |              | Processor           | Psv_cortexa72_0                |
+   |              | Processor           | psv_cortexa72_0                |
    +--------------+---------------------+--------------------------------+
 
 3. Select the Hardware Design (XSA) and click **Next**.
@@ -332,11 +418,13 @@ Follow these steps to create the platform for VCK190:
    .. image:: media/new-platform.png
 
 Creating a Hello World Application from Example
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------
 
 Follow these steps to create a Hello world application using the created platform:
 
-1. Select **File** > **New Components** > **From Example**.
+1. In the left navigation pane, click the **Examples** icon.
+
+   .. image:: media/ch2-examples_icon.png
    
 2. Select **Hello World** and click **Create Application Component from Template**.
 
@@ -353,7 +441,7 @@ Follow these steps to create a Hello world application using the created platfor
    |              | Component location  | < Application path >           |
    +--------------+---------------------+--------------------------------+
    |              | Hardware Design     | Select the platform created    |
-   |              | (XSA)               | (Vck190_platform)              |
+   |              | (XSA)               | (vck190_platform)              |
    +--------------+---------------------+--------------------------------+
    |    Domain    | Operating System    | standalone                     |
    +--------------+---------------------+--------------------------------+
@@ -376,7 +464,7 @@ Follow these steps to create a Hello world application using the created platfor
    The Vitis software platform creates the board support package for the platform project (vck190_platform) and the system project (hello_world_a72_system) containing an application project named helloworld_a72 under the Explorer view after performing the above steps.
 
 Modifying the helloworld_a72 Application Source Code
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------------------
 
 1. Double-click **hello_world_a72**, then double-click **Source > src** and select **helloworld.c**.
 
@@ -394,13 +482,21 @@ Modifying the helloworld_a72 Application Source Code
    .. image:: media/apu_example_code.PNG
 
 Building the Application
-^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------
 
-1. Select the Component (Application) to be built.
+1. Select the Component (platform) to be built.
+
+   .. image:: media/ch2_build_platform.png
+
+2. Click **Build**.
+
+   .. image:: media/build_button_new_vitis.png
+
+3. Select the Component (Application) to be built.
 
    .. image:: media/build_apu.PNG
    
-2. Click **Build**.
+4. Click **Build**.
 
    .. image:: media/build_button_new_vitis.png
    
@@ -409,11 +505,13 @@ Building the Application
 .. _creating-a-hello-world-application-for-the-arm-cortex-r5f:
 
 Creating the Standalone Application Project for the Arm Cortex-R5F
-------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following steps demonstrate the procedure to create a Hello World application from Arm Cortex-R5F.
 
-1. Select **File > New Components > From Example**.
+1. In the left navigation pane, click the **Example** icon.
+
+   .. image:: media/ch2-examples_icon_new_vitis.png
 
 2. Select **Hello World** and click **Create Application Component from Template**.
 
@@ -432,7 +530,7 @@ The following steps demonstrate the procedure to create a Hello World applicatio
    |              | Component location | < Application path >             |
    +--------------+--------------------+----------------------------------+
    |              | Hardware Design    | Select the platform created      |
-   |              | (XSA)              | (Vck190_platform)                |
+   |              | (XSA)              | (vck190_platform)                |
    +--------------+--------------------+----------------------------------+
    | Domain       | Operating System   | standalone                       |
    +--------------+--------------------+----------------------------------+
@@ -443,14 +541,18 @@ The following steps demonstrate the procedure to create a Hello World applicatio
    
 4. Select the Created Platform and click **Next**.
 
-5. Select Domain “\ *standalone_psv_cortexr5_0*\ ” and click **Next**.
+5. In the Domain page, click **Create New**, select `standalone_psv_cortexr5_0` and click **Next**.
+
+   .. image:: media/ch2_domain_page.png
 
 6. Click **Finish** and the Hello world Application is created successfully.
 
    .. image:: media/hello_world_r5.PNG
 
+.. _modifying-the-helloworld_r5-application-source-code:   
+
 Modifying the helloworld_r5 Application Source Code
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------------------
 
 1. Double-click **hello_world_r5**, then double-click **Source > src** and select **helloworld.c**.
 
@@ -466,7 +568,7 @@ Modifying the helloworld_r5 Application Source Code
    .. image:: media/rpu_source_code.PNG
 
 Building the Application
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 1. Select the **Component** (Application) to be built.
    
@@ -479,7 +581,7 @@ Building the Application
    The project is built successfully.
 
 Modifying the Application Linker Script for the Application Project helloworld_r5
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------------------------------------------------
 
 The following steps demonstrate the procedure to modify the application linker script for the application project helloworld_r5.
 
@@ -517,164 +619,52 @@ Creating a Run Configuration for the System Project
 
    .. image:: media/run-configuration-1.jpg
 
-
-Creating a Run Configuration for a Single Application within a System Project
-------------------------------------------------------------------------------
-
-You can create a run configuration for a single application within a system project in two ways:
-
-Method I
-^^^^^^^^
-
-1. Right-click on the system project **helloworld_system** and select **Run As → Run Configurations**. The Run configuration dialog box opens.
-
-2. Double-click **System Project Debug** to create a run configuration.
-
-   The Vitis software platform creates a new run configuration with the name: SystemDebugger_helloworld_system_1. Rename this to SystemDebugger_helloworld_system_A72. For the remaining options, refer to the following table.
-
-   *Table 7:* **Create, Manage, and Run Configurations Settings**
-
-   +-----------------+-----------------------+---------------------------+
-   | Wizard Tab      | System Properties     | Setting or Command to Use |
-   +=================+=======================+===========================+
-   | Main            | Project               | helloworld_system         |
-   +-----------------+-----------------------+---------------------------+
-   |                 | Debug only selected   | Check this box            |
-   |                 | applications          |                           |
-   +-----------------+-----------------------+---------------------------+
-   |                 | Selected Applications | Click the **Edit** button |
-   |                 |                       | and check helloworld_a72  |
-   +-----------------+-----------------------+---------------------------+
-   |                 | Target → Hardware     | Attach to the running     |
-   |                 | Server                | target (local). If not    |
-   |                 |                       | already added, add using  |
-   |                 |                       | the New button.           |
-   +-----------------+-----------------------+---------------------------+
-
-3. Click **Apply**.
-
-4. Click **Run**.
-
-   .. note:: If there is an existing run configuration, a dialog box appears asking whether you want to terminate the process. Click **Yes**. The following logs are displayed on the terminal.
+The following logs are displayed on the terminal:
 
    .. code-block::
 
-		[0.015]****************************************
-		[0.070]Xilinx Versal Platform Loader and Manager
-		[0.126]Release 2022.1   Apr 21 2022  -  12:04:39
-		[0.183]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-		[0.247]BOOTMODE: 0x0, MULTIBOOT: 0x0
-		[0.299]****************************************
-		[0.527]Non Secure Boot
-		[3.404]PLM Initialization Time
-		[3.452]***********Boot PDI Load: Started***********
-		[3.512]Loading PDI from SBI
-		[3.559]Monolithic/Master Device
-		[3.649]0.113 ms: PDI initialization time
-		[3.706]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
-		[3.772]---Loading Partition#: 0x1, Id: 0xC
-		[53.571] 49.716 ms for Partition#: 0x1, Size: 2960 Bytes
-		[58.402]---Loading Partition#: 0x2, Id: 0xB
-		[62.748] 0.506 ms for Partition#: 0x2, Size: 48 Bytes
-		[66.880]---Loading Partition#: 0x3, Id: 0xB
-		[107.887] 37.165 ms for Partition#: 0x3, Size: 59376 Bytes
-		[110.195]---Loading Partition#: 0x4, Id: 0xB
-		[114.126] 0.008 ms for Partition#: 0x4, Size: 1936 Bytes
-		[119.012]---Loading Partition#: 0x5, Id: 0xB
-		[122.946] 0.011 ms for Partition#: 0x5, Size: 3536 Bytes
-		[128.004]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
-		[133.169]---Loading Partition#: 0x6, Id: 0x3
-		[640.261] 503.167 ms for Partition#: 0x6, Size: 759632 Bytes
-		[642.740]---Loading Partition#: 0x7, Id: 0x5
-		[1025.311] 378.646 ms for Partition#: 0x7, Size: 577856 Bytes
-		[1027.903]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
-		[1033.047]---Loading Partition#: 0x8, Id: 0x8
-		[1037.459] 0.403 ms for Partition#: 0x8, Size: 1552 Bytes
-		[1042.085]***********Boot PDI Load: Done***********
-		[1046.554]3348.594 ms: ROM Time
-		[1049.325]Total PLM Boot Time
-		Hello World from APU
-		Successfully ran Hello World application from APU
+      [0.012]****************************************
+      [0.049]Xilinx Versal Platform Loader and Manager 
+      [0.087]Release 2026.1   Sep  1 2026  -  21:39:23
+      [0.126]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+      [0.171]BOOTMODE: 0x0, MULTIBOOT: 0x0
+      [0.204]****************************************
+      [0.421]Non Secure Boot
+      [3.573]PLM Initialization Time 
+      [3.604]***********Boot PDI Load: Started***********
+      [3.666]Loading PDI from SBI
+      [3.694]Monolithic/Master Device
+      [3.941]0.291 ms: PDI initialization time
+      [3.982]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+      [4.032]---Loading Partition#: 0x1, Id: 0xC
+      [57.737] 53.658 ms for Partition#: 0x1, Size: 10944 Bytes
+      [62.703]---Loading Partition#: 0x2, Id: 0xB
+      [86.690] 20.144 ms for Partition#: 0x2, Size: 36528 Bytes
+      [89.093]+++Loading Image#: 0x2, Name: fpd, Id: 0x0420C003
+      [93.935]---Loading Partition#: 0x3, Id: 0x8
+      [98.468] 0.694 ms for Partition#: 0x3, Size: 4544 Bytes
+      [102.643]+++Loading Image#: 0x3, Name: pl_cfi, Id: 0x18700000
+      [107.996]---Loading Partition#: 0x4, Id: 0x3
+      [743.330] 631.404 ms for Partition#: 0x4, Size: 994064 Bytes
+      [745.807]---Loading Partition#: 0x5, Id: 0x5
+      [1593.667] 843.930 ms for Partition#: 0x5, Size: 1318720 Bytes
+      [1596.329]+++Loading Image#: 0x4, Name: aie_subsys, Id: 0x0421C005
+      [1602.113]---Loading Partition#: 0x6, Id: 0x7
+      [1611.623] 5.496 ms for Partition#: 0x6, Size: 1936 Bytes
+      [1613.879]***********Boot PDI Load: Done***********
+      [1618.372]5228.975 ms: ROM Time
+      [1621.177]Total PLM Boot Time 
+      Hello World from APU
+      Successfully ran Hello World application from APU 
+
 	
 .. note:: Both the APU and RPU applications print on the same console as both applications are using UART0 for these applications. The application software sends the hello world strings for both APU and RPU to the UART0 peripheral of the PS section. From UART0, the hello world string goes byte-by-byte to the serial terminal application running on the host machine, which displays it as a string.
 
-Method II
-^^^^^^^^^
-
-1. Right-click on the application project hello_world_r5 and select **Run As → Run Configurations**. The Run Configuration dialog box opens.
-
-2. Verify if this should be "Single Application Debug".
-
-3. Double-click **Single Project Debug** to create a run configuration.
-
-   The Vitis software platform creates a new run configuration with the name: Debugger_helloworld_r5-Default. For the remaining options, refer to the following table.
-
-   *Table 8:*  **Create, Manage, and Run Configurations Settings**
-
-   +-------------+---------------------+---------------------------------+
-   | Wizard Tab  | System Properties   | Setting or Command to Use       |
-   +=============+=====================+=================================+
-   | Main        | Debug Type          | Standalone Application Debug    |
-   +-------------+---------------------+---------------------------------+
-   |             | Connection          | Connect to the board. If        |
-   |             |                     | connected already, select the   |
-   |             |                     | connection here.                |
-   +-------------+---------------------+---------------------------------+
-   |             | Project             | helloworld_r5                   |
-   +-------------+---------------------+---------------------------------+
-   |             | Configuration       | Debug                           |
-   +-------------+---------------------+---------------------------------+
-
-4. Click **Apply**.
-
-5. Click **Run**.
-
-   .. note:: If there is an existing run configuration, a dialog box appears asking whether you want to terminate the process. Click **Yes**. The following logs are displayed on the terminal.
-
-   .. code-block::
-
-		[0.015]****************************************
-		[0.070]Xilinx Versal Platform Loader and Manager
-		[0.126]Release 2022.1   Apr 21 2022  -  12:04:39
-		[0.183]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-		[0.247]BOOTMODE: 0x0, MULTIBOOT: 0x0
-		[0.299]****************************************
-		[0.527]Non Secure Boot
-		[3.404]PLM Initialization Time
-		[3.452]***********Boot PDI Load: Started***********
-		[3.512]Loading PDI from SBI
-		[3.559]Monolithic/Master Device
-		[3.649]0.113 ms: PDI initialization time
-		[3.706]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
-		[3.772]---Loading Partition#: 0x1, Id: 0xC
-		[53.571] 49.716 ms for Partition#: 0x1, Size: 2960 Bytes
-		[58.402]---Loading Partition#: 0x2, Id: 0xB
-		[62.748] 0.506 ms for Partition#: 0x2, Size: 48 Bytes
-		[66.880]---Loading Partition#: 0x3, Id: 0xB
-		[107.887] 37.165 ms for Partition#: 0x3, Size: 59376 Bytes
-		[110.195]---Loading Partition#: 0x4, Id: 0xB
-		[114.126] 0.008 ms for Partition#: 0x4, Size: 1936 Bytes
-		[119.012]---Loading Partition#: 0x5, Id: 0xB
-		[122.946] 0.011 ms for Partition#: 0x5, Size: 3536 Bytes
-		[128.004]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
-		[133.169]---Loading Partition#: 0x6, Id: 0x3
-		[640.261] 503.167 ms for Partition#: 0x6, Size: 759632 Bytes
-		[642.740]---Loading Partition#: 0x7, Id: 0x5
-		[1025.311] 378.646 ms for Partition#: 0x7, Size: 577856 Bytes
-		[1027.903]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
-		[1033.047]---Loading Partition#: 0x8, Id: 0x8
-		[1037.459] 0.403 ms for Partition#: 0x8, Size: 1552 Bytes
-		[1042.085]***********Boot PDI Load: Done***********
-		[1046.554]3348.594 ms: ROM Time
-		[1049.325]Total PLM Boot Time
-		Hello World from RPU
-		Successfully ran Hello World application from RPU
-
 .. _noc-ip-core-configuration:
 
-===================================
+-----------------------------------
 NoC (and DDR) IP Core Configuration
-===================================
+-----------------------------------
 
 This section describes the NoC (and DDR) configuration and related connections required for use with the CIPS configured earlier in this chapter. The Versal CIPS IP core allows you to configure two superscalar, multi-core Arm Cortex-A72 based APUs, two Arm Cortex-R5F RPUs, a platform management controller (PMC), and a CCIX PCIe |reg| module (CPM). The NoC IP core allows configuring the NoC and enabling the DDR memory controllers.
 
@@ -835,7 +825,7 @@ Exporting Hardware
 Running a Bare-Metal Hello World Application on DDR Memory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Vitis software platform.
+In this example, you will learn how to manage the board settings, make cable connections, connect to the board through your PC, and run a Hello World software application from Arm Cortex-A72 and Arm Cortex-R5F on DDR memory in the Vitis Software Platform.
 
 You will create a new Vitis project, similar to the one in :ref:`running-bare-metal-hello-world-application`, except that it will use the default linker scripts, which will reference the DDR memory.
 
@@ -845,15 +835,15 @@ You will create a new Vitis project, similar to the one in :ref:`running-bare-me
 
 2. Create a bare-metal Hello World system project with an application running on Arm Cortex-A72 and modify its source code as discussed in steps 1 and 2 of :ref:`creating-a-hello-world-application-for-the-arm-cortex-a72-on-ocm` and steps 1 and 2 of Modifying the helloworld_a72 Application Source Code.
 
-3. Select the component (hello_world_a72) application and select Build or click .. image:: media/build_button_new_vitis.png to generate the project elf files within the Debug folder of the application project.
+3. Select the component (hello_world_a72) application and select **Build** to generate the project elf files within the Debug folder of the application project.
         
-4. Create an additional RPU domain for your platform (created in Step 2) as discussed in :ref: `Creating the Standalone Application Project for the Arm Cortex-R5F`.
+4. Create an additional RPU domain for your platform (created in Step 2) as discussed in :ref:`creating-a-hello-world-application-for-the-arm-cortex-r5f`.
         
-5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 and 2 of :ref: `Creating the Standalone Application Project for the Arm Cortex-R5F` and steps 1 and 2 of :ref: `Modifying the helloworld_r5 Application Source Code`.
+5. Create a bare-metal Hello World application running on Arm Cortex-R5F within the existing system project (Step 2) and modify its source code as discussed in steps 1 and 2 of :ref:`creating-a-hello-world-application-for-the-arm-cortex-r5f` and steps 1 and 2 of :ref:`modifying-the-helloworld_r5-application-source-code`.
 
-6. 6.	Select the component (hello_world_r5) application and select Build or click .. image:: media/build_button_new_vitis.png to generate the project elf files within the Debug folder of the application project.
+6. Select the component (hello_world_r5) application and select **Build** to generate the project elf files within the Debug folder of the application project.
 
-Refer to :ref: `Running Applications in the JTAG Mode using the System Debugger in the Vitis Software Platform` for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to :ref:`generating-boot-image-for-standalone-application` for generating boot images for standalone applications. 
+Refer to :ref:`running-applications-in-jtag-mode` for running the applications built above in JTAG mode using system debugger in the Vitis software platform and to :ref:`generating-boot-image-for-standalone-application` for generating boot images for standalone applications. 
 
 
 
@@ -869,6 +859,6 @@ Refer to :ref: `Running Applications in the JTAG Mode using the System Debugger 
 .. |image30| image:: ./media/image30.png
 
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2020–2025 Advanced Micro Devices, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

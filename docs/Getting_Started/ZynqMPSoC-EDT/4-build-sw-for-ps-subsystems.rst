@@ -5,7 +5,7 @@ Building Standalone Software for PS Subsystems
 
 This chapter lists the steps to configure and build software for PS subsystems.
 
-In the previous chapter, you created and exported the hardware design from Vivado. The exported XSA file contains the hardware handoff, the processing system initialization (``psu_init``),
+In the previous chapter, you created and exported the hardware design from the Vivado Design Suite. The exported XSA file contains the hardware handoff, the processing system initialization (``psu_init``),
 and the PL bitstream (if the hardware is exported as post-implementation). In this chapter, you will import the XSA into the Vitis |trade| IDE to generate software for the processing system.
 
 You will use the Vitis IDE to perform the following tasks:
@@ -49,7 +49,7 @@ The following steps show how to create a platform project with a standalone doma
 
    -  From the open Vivado IDE, click **Tools → Launch Vitis IDE**; or
    -  From Windows Start menu, select **Xilinx Design Tools → Vitis**; or
-   -  Double-click the ``C:\Xilinx\Vitis\2024.2\bin\vitis.bat`` file.
+   -  Double-click the ``C:\Xilinx\Vitis\2026.1\bin\vitis.bat`` file.
 
 2. Select the workspace ``C\edt\edt_zcu102_workspace`` and continue.
 
@@ -144,7 +144,7 @@ Connecting the Serial Port
 
    .. note:: In Linux, root privilege is required to use UART.
 
-2. Navigate to Vits → Serial Monitor (If you have not yet enabled the serial monitor or you cannot see it under the vitis tab then enable it by navigating to Vits → New Feature Preview, select Serial Monitor and then select Enable).
+2. Navigate to Vitis → Serial Monitor.
 
 3. To find the correct COM port in Windows, verify the port details in the **Device Manager**. In Linux, check the COM port in ``/dev``.
 
@@ -237,7 +237,7 @@ Running Hello World on the Board
 
       Zynq MP First Stage Boot Loader 
 
-      Release 2024.2   Oct 23 2024  -  10:06:42
+      Release 2026.1   Mar 16 2026  -  11:22:27
       PMU-FW is not running, certain applications may not be supported.
 
       Hello World
@@ -284,7 +284,7 @@ Board Support Package
 
 The board support package (BSP) is the support code for a given hardware platform or board that helps in basic initialization at power-up and helps software applications to be run on top of it. It can be specific to some operating systems with boot loader and device drivers.
 
-.. tip:: To reset the BSP source, double-click **platform.prj**, select a BSP in a domain, and click **Reset BSP Source**. This action only resets the source files while settings are not touched. To change the target domain after application project creation, double-click the **project.prj** file in Explorer view. In the Application Project Settings, select **Domain → Domain change option → Drop-down Domain**, then select the available domains for this application.
+.. tip:: To regenerate the BSP, double-click **vitis-comp.json**, select a BSP in a domain, and click **Regenerate BSP**. This action only resets the source files while settings are not touched.
 
 Standalone BSP
 ~~~~~~~~~~~~~~
@@ -342,7 +342,7 @@ In this step, you will prepare for the next example design: running a “Hello W
 What Just Happened?
 ^^^^^^^^^^^^^^^^^^^
 
-The edt_zcu102_wrapper platform is, by default, assigned the default domain for psu_cortexa53_0. You created a new domain for cortexr5_0 in this platform..
+The edt_zcu102_wrapper platform is, by default, assigned the default domain for psu_cortexa53_0. You created a new domain for cortexr5_0 in this platform.
 
 Creating a “Hello World” Application on Arm Cortex-R5F
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -528,7 +528,7 @@ Modifying the hello_sys_a53 Application Source Code
    .. code-block::
 
          --------------------------------------------------------------------------------
-          [11/5/2024, 9:04:29 AM]: Build for hello_sys_a53::build with id '77931894-7d34-44dd-b932-093a068621d7' started.
+          [3/16/2026, 3:23:25 AM]: Build for hello_sys_a53::build with id '5911c841-46d0-4dca-8114-7ee4ea7d2c80' started.
           --------------------------------------------------------------------------------
          -- Configuring done
          -- Generating done
@@ -537,7 +537,7 @@ Modifying the hello_sys_a53 Application Source Code
             29561	    292	  21275	  51128	   c7b8	hello_sys_a53.elf
          Build Finished successfully
          --------------------------------------------------------------------------------
-         [11/5/2024, 9:04:31 AM]: Build for hello_sys_a53::build with id '77931894-7d34-44dd-b932-093a068621d7' ended.
+         [3/16/2026, 3:23:38 AM]: Build for hello_sys_a53::build with id '5911c841-46d0-4dca-8114-7ee4ea7d2c80' ended.
 
 
    -  The **hello_sys_a53.elf** file is generated in the **hello_sys_a53 → build** folder.
@@ -572,7 +572,7 @@ directory. They will be imported in the next steps.
 
 2. Import the prepared source code for **testapp_r5**:
 
-   1. In the Explorer view, expand the **hello_system** project to find the **testapp_r5** project.
+   1. In the Explorer view, expand the **testapp_r5** project.
    2. Right-click the src folder within Sources inside the **testapp_r5** and select **Import → Files** to open the Import view.
    3. Navigate to the design files folder (ref_files/example5/testapp_r5.c)
    4. Select the **testapp.c** file.
@@ -586,7 +586,7 @@ directory. They will be imported in the next steps.
 Modifying the Linker Script for testapp_r5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When two applications needs to run at the same time, they cannot use resources in conflict. They should not each other’s memory space. They should use their own peripherals, or share peripherals by time. In this step, memory space is assigned by updating the linker scripts.
+When two applications need to run at the same time, they cannot use resources in conflict. They should not use each other’s memory space. They should use their own peripherals, or share peripherals by time. In this step, memory space is assigned by updating the linker scripts.
 
 1. In the Explorer view, expand the **testapp_r5 project**.
 
@@ -619,7 +619,7 @@ Modifying the Board Support Package for testapp_r5
 
 The ZCU102 Evaluation kit has a USB-TO-QUAD-UART Bridge IC from Silicon Labs (CP2108). This enables you to select a different UART port for applications running on Cortex-A53 and Cortex-R5F cores. For this example, let Cortex-A53 use the UART 0 by default, and send and receive RPU serial data over UART 1. This requires a small modification in the standalone_r5 bsp configuration.
 
-1. Open the platform details tab by clicking vitis-comp.json under zcu102_edt.
+1. Open the platform details tab by clicking vitis-comp.json under **Settings** within zcu102_edt.
 
 2. Open the standalone domain BSP setting details for Cortex-R5F:
 
@@ -676,7 +676,7 @@ The Vitis tool uses JTAG to control the board, and performed the following tasks
 -  Ran applications on both processors.
 -  The application on APU printed on UART-0 and the application on RPU printed on UART-1.
 
-You can view the detailed steps by clicking **hello_system** and selecting **Open Settings** beside Run in the flow tab to display the ``launch.json`` configuration file..
+You can view the detailed steps by clicking **hello_system** and selecting **Open Settings** beside Run in the flow tab to display the ``launch.json`` configuration file.
 
 .. figure:: media/vitis_run_configurations.png
 
@@ -720,5 +720,5 @@ In the :doc:`next chapter <./5-debugging-with-vitis-debugger>`, you will learn a
 
 .. |Add Icon| image:: ./media/image31.png
 
-.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. Copyright © 2016–2026 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

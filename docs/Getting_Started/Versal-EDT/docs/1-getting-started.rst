@@ -29,7 +29,7 @@ AMD documentation is organized around a set of standard design processes to help
   
   * :doc:`../docs/4-boot-and-config`
   * :ref:`freertos-axi-uartlite-application-project`
-  * :ref:`creating-linux-images-using-petalinux`
+  * :ref:`creating-linux-images-using-yocto`
 
 
 =====================
@@ -42,7 +42,7 @@ The evaluation board kit includes:
 
 - VCK190/VMK180/VPK180 Production board
 - AC power adapter (12 VDC)
-- USB Type-A to USB Micro cable (for UART communications)
+- USB Type-A to Type-C (for UART communications)
 - USB Micro cable for programming and debugging via USB-Micro JTAG connection
 - SD-MMC flash card for Linux booting
 
@@ -56,11 +56,13 @@ Installation Requirements
 Vitis Integrated Design Environment (IDE) and Vivado Design Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ensure that you have the AMD Vitis |trade| 2024.1 software development platform installed. The Vitis IDE is a unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
+Ensure that you have the AMD Vitis |trade| 2026.1 software development platform installed. The Vitis IDE is a unified tool which comes with all the hardware and software as a package. If you install the Vitis IDE, you will automatically get both the Vivado Design Suite and the Vitis development tools. You do not have to make any extra selections in the installer.
 
-.. note:: Visit `https://www.xilinx.com/support/download.html <https://www.xilinx.com/support/download.html>`__ to confirm that you have the latest tools version.
+.. note:: Visit `https://www.amd.com/en/support/downloads/adaptive-socs-and-fpgas/development-tools/2026-1.html <https://www.amd.com/en/support/downloads/adaptive-socs-and-fpgas/development-tools/2026-1.html>`__ to confirm that you have the latest tools version.
 
 For more information on installing the Vivado Design Suite, refer to the *Vitis Unified Software Platform Documentation: Embedded Software Development* (`UG1400 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1400-vitis-embedded>`__).
+
+.. _petalinux-tools:
 
 PetaLinux Tools
 ~~~~~~~~~~~~~~~
@@ -75,9 +77,9 @@ This can use either a dedicated Linux host system or a virtual machine running o
 
 When you install PetaLinux tools on your system of choice, you must do the following:
 
-- Download PetaLinux 2024.1 software from the website.
+- Download PetaLinux 2026.1 software from the website.
 
-- Download the respective BSP as described in :ref:`creating-linux-images-using-petalinux`.
+- Download the respective BSP as described in :ref:`creating-linux-images-using-yocto`.
 
 - Add common system packages and libraries to the workstation or virtual machine. For more information, see the Installation Requirements from the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.xilinx.com/access/sources/dita/map?isLatest=true&ft:locale=en-US&url=ug1144-petalinux-tools-reference-guide>`__) and the `PetaLinux Release Notes <https://support.xilinx.com/s/article/000032521>`__.
 
@@ -113,12 +115,12 @@ AMD software uses FLEXnet licensing. When the software is first run, it performs
 Tutorial Design Files
 =====================
 
-The reference design files for Production Silicon are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2024.1/docs/Getting_Started/Versal-EDT/ref_files/>`__ directory.
+The reference design files for Production Silicon are provided in the `ref_files <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/master/docs/Getting_Started/Versal-EDT/ref_files>`_ directory.
 
 .. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
    :ltrim:
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2020–2025 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

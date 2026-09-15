@@ -1,0 +1,12 @@
+all:
+{
+    image
+    {
+        { type = bootimage, file = edf_edt_versel_vpk180.pdi }
+    }
+    image
+    {
+        name = default_subsys, id = 0x1c000000
+        { core=a72-0, file =  hello_world.elf }
+    }
+} 

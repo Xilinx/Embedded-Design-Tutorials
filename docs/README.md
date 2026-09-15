@@ -1,9 +1,14 @@
 <p class="sphinxhide" align="right"><a href="../docs-cn/README.md">简体中文</a> | <a href="../docs-jp/README.md">日本語</a></p>
-<table class="sphinxhide" style="width:100%">
- <tr>
-    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Embedded Design Documentation</h1>
+<table class="sphinxhide" style="width:100%;">
+  <tr>
+    <td align="center">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/logo-white-text.png">
+        <img alt="AMD logo" src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%">
+      </picture>
+      <h1>Embedded Design Documentation</h1>
     </td>
- </tr>
+  </tr>
 </table>
 
 # Embedded Design Tutorials
@@ -13,7 +18,6 @@ AMD and its Ecosystem Partners deliver embedded tools and runtime environments d
 ![Embedded Design software stack](./images/embedded-tutorials-landing.png)
 
 > For more information about available embedded tools available from AMD, see [Embedded Software Infrastructure](https://www.xilinx.com/products/design-tools/embedded-software.html).
-
 
 ## Getting Started
 
@@ -76,9 +80,8 @@ This content has moved to a [new location](https://github.com/Xilinx/SDKOpenGLES
  </table>
 
 
+<hr class="sphinxhide">
 
-<hr class="sphinxhide"></hr>
+<p class="sphinxhide" align="center"><sub>Copyright © 2019–2026 Advanced Micro Devices, Inc.</sub></p>
 
-<p class="sphinxhide" align="center"><sub>Copyright © 2019–2024 Advanced Micro Devices, Inc.</sub></p>
-
-<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/legal/copyright.html">Terms and Conditions</a></sup></p>
