@@ -1,6 +1,5 @@
-
 # ############################################################################
-# Copyright (C) 2022-2023, Advanced Micro Devices, Inc. All rights reserved. 
+# Copyright (C) 2022-2025, Advanced Micro Devices, Inc. All rights reserved. 
 # SPDX-License-Identifier: MIT
 #
 # This is a generated script based on design: edt_versal
@@ -10,8 +9,6 @@
 # IP Integrator Tcl commands easier.
 # ############################################################################
 
-
-
 set design_name dhrystone_perf
 create_bd_design "$design_name"
 proc create_root_design { parentCell} {
@@ -19,7 +16,7 @@ proc create_root_design { parentCell} {
 puts "create_root_design"
 
  #Create NoC IP
- create_bd_cell -type ip -vlnv xilinx.com:ip:axi_noc:1.0 axi_noc_0
+set axi_noc_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_noc:1.1 axi_noc_0 ]
 set_property -dict [list CONFIG.NUM_SI {8} CONFIG.NUM_MI {0} CONFIG.NUM_CLKS {8}] [get_bd_cells axi_noc_0]
 set_property -dict [list CONFIG.CATEGORY {ps_cci}] [get_bd_intf_pins /axi_noc_0/S00_AXI]
 set_property -dict [list CONFIG.CATEGORY {ps_cci}] [get_bd_intf_pins /axi_noc_0/S01_AXI]
@@ -41,6 +38,7 @@ set_property -dict [list CONFIG.ASSOCIATED_BUSIF {S07_AXI}] [get_bd_pins /axi_no
  set_property -dict [list CONFIG.NUM_MC {1} CONFIG.NUM_MCP {1} CONFIG.MC_BOARD_INTRF_EN {true} CONFIG.MC0_CONFIG_NUM {config17} CONFIG.MC1_CONFIG_NUM {config17} CONFIG.MC2_CONFIG_NUM {config17} CONFIG.MC3_CONFIG_NUM {config17} CONFIG.CH0_DDR4_0_BOARD_INTERFACE {ddr4_dimm1} CONFIG.LOGO_FILE {data/noc_mc.png} CONFIG.MC_INPUT_FREQUENCY0 {200.000} CONFIG.MC_INPUTCLK0_PERIOD {5000} CONFIG.MC_MEMORY_DEVICETYPE {UDIMMs} CONFIG.MC_MEMORY_SPEEDGRADE {DDR4-3200AA(22-22-22)} CONFIG.MC_TRCD {13750} CONFIG.MC_TRP {13750} CONFIG.MC_DDR4_2T {Disable} CONFIG.MC_CASLATENCY {22} CONFIG.MC_TRC {45750} CONFIG.MC_TRPMIN {13750} CONFIG.MC_CONFIG_NUM {config17} CONFIG.MC_F1_TRCD {13750} CONFIG.MC_F1_TRCDMIN {13750} CONFIG.MC_F1_LPDDR4_MR1 {0x000} CONFIG.MC_F1_LPDDR4_MR2 {0x000} CONFIG.MC_F1_LPDDR4_MR3 {0x000} CONFIG.MC_F1_LPDDR4_MR11 {0x000} CONFIG.MC_F1_LPDDR4_MR13 {0x000} CONFIG.MC_F1_LPDDR4_MR22 {0x000}] [get_bd_cells axi_noc_0]
 	apply_bd_automation -rule xilinx.com:bd_rule:board -config { Board_Interface {ddr4_dimm1 ( DDR4 DIMM1 ) } Manual_Source {Auto}}  [get_bd_intf_pins axi_noc_0/CH0_DDR4_0]
 	apply_bd_automation -rule xilinx.com:bd_rule:board -config { Board_Interface {ddr4_dimm1_sma_clk ( DDR4 DIMM1 SMA Clock ) } Manual_Source {Auto}}  [get_bd_intf_pins axi_noc_0/sys_clk0]
+
 
   # Create instance: versal_cips_0, and set properties
   set versal_cips_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:versal_cips versal_cips_0 ]

@@ -19,15 +19,15 @@ Versal Adaptive SoC Embedded Design Tutorial
 
 
 
-This document provides an introduction for using the AMD Vivado |trade| Design Suite flow for a VCK190/VMK180/VPK180 evaluation board. The tools used are Vivado Design Suite and the AMD Vitis |trade| unified software platform, version 2024.1. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* `[UG1400] <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1400-vitis-embedded>`__.
+This document provides an introduction for using the AMD Vivado |trade| Design Suite flow for a VCK190/VMK180/VPK180 evaluation board. The tools used are Vivado Design Suite and the AMD Vitis |trade| unified software platform, version 2026.1. To install the Vitis unified software platform, see *Vitis Unified Software Platform Documentation: Embedded Software Development* `[UG1400] <https://docs.amd.com/r/en-US/ug1400-vitis-embedded>`__.
 
-.. note:: In this tutorial, the instructions for booting Linux on the hardware is specific to the PetaLinux tools released for 2024.1, which must be installed on a Linux host machine for exercising the Linux portions of this document.
+.. note:: In this tutorial, the instructions for booting Linux on the hardware is specific to the Yocto tools released for 2026.1, which must be installed on a Linux host machine for exercising the Linux portions of this document.
 
 .. important:: 
    
    The VCK190/VMK180 Evaluation kit has a Silicon Labs CP210x VCP USB-UART Bridge. Ensure that these drivers are installed. See the *Silicon Labs CP210x USB-to-UART Installation Guide* (`UG1033 <https://docs.amd.com/go/en-US/ug1033-cp210x-usb-uart-install>`_) for more information.
  
-The examples in this document are created using the Xilinx tools running on a Windows 10, 64-bit operating system, Vitis software platform and PetaLinux on a Linux 64-bit operating system. Other versions of the tools running on other Windows installs might provide varied results. These examples focus on introducing you to the following aspects of embedded design.
+The examples in this document are created using the Xilinx tools running on a Windows 11, 64-bit operating system, Vitis software platform and Yocto on a Linux 64-bit operating system. Other versions of the tools running on other Windows installs might provide varied results. These examples focus on introducing you to the following aspects of embedded design.
 
 - :doc:`./docs/2-cips-noc-ip-config`: Describes creation of a design with AMD Versal |trade| Adaptive SoC Control, Interfaces, and Processing System (CIPS) IP core and an NoC and running a simple "Hello World" application on Arm |reg| Cortex |trade|-A72, and Cortex-R5F processors. This chapter is an introduction to the hardware and software tools using a simple design as the example.
 
@@ -49,8 +49,6 @@ This design tutorial requires use of a number of files provided by AMD. These ar
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
 
-
-
-.. Copyright © 2019-2024 Advanced Micro Devices, Inc
+.. Copyright © 2019-2025 Advanced Micro Devices, Inc. All rights reserved. Xilinx, the Xilinx logo, AMD, the AMD Arrow logo, Alveo, Artix, Kintex, Kria, Spartan, Versal, Vitis, Virtex, Vivado, Zynq, and other designated brands included herein are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_

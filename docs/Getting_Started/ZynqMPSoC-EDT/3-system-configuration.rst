@@ -180,13 +180,13 @@ design so that the synthesizer can consume and process them. You also need to ge
 
 5. Under Design Sources, right-click **edt_zcu102** and select **Create HDL Wrapper**.
 
-   The Create HDL Wrapper dialog box opens. Use this dialog box to create a HDL wrapper file for the processor subsystem.
+   The Create HDL Wrapper dialog box opens. Use this dialog box to create an HDL wrapper file for the processor subsystem.
 
    .. tip:: The HDL wrapper is a top-level entity required by the design tools.
 
 6. Select **Let Vivado Manage Wrapper** and auto-update and click **OK**.
 
-7. In the Block Diagram, Sources window, under Design Sources, you can see **edt_zcu102_wrapper** is created by Vivado. Expand the hierarchy, you can see **edt_zcu102.bd** is instantiated.
+7. In the Block Diagram, Sources window, under Design Sources, you can see **edt_zcu102_wrapper** is created by Vivado. Expand the hierarchy; you can see **edt_zcu102.bd** is instantiated.
 
 8. Select **Generate Block Design** from Flow Navigator -> IP INTEGRATOR.
 
@@ -229,7 +229,7 @@ To write a hardware platform using the GUI, follow these steps:
 
       Files window for Export Hardware
 
-5. Click **Finish** to generate the hardware platform file in the specified path. It will be the input file of next examples.
+5. Click **Finish** to generate the hardware platform file in the specified path. It will be the input file for the next examples.
 
    .. note:: The difference between the pre-synthesis XSA and the post-implementation XSA for embedded designs is whether the bitstream is included. If you are running applications in the Vitis IDE, you can configure the bitstream to hardware before running the application. If there is a bitstream in the XSA file, the Vitis IDE uses it by default. If a bitstream is not available, or if you wish to use another bitstream file, specify the bitstream path in the Vitis IDE.
 
@@ -247,5 +247,5 @@ In this example, you created a Vivado design with an MPSoC processing system and
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
    
-.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. Copyright © 2016–2026 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

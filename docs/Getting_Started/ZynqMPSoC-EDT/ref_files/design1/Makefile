@@ -1,4 +1,4 @@
-# Copyright 2021 Xilinx Inc.
+# Copyright 2026 Xilinx Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,15 +15,16 @@
 ROOT_DIR=$(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 ABS_BUILD_PATH=$(ROOT_DIR)/build
 ABS_HW_PATH=$(ABS_BUILD_PATH)/vivado
-PETALINUX_PROJ_NAME = xilinx-zcu102-2024.2
+PETALINUX_PROJ_NAME = xilinx-zcu102-2026.1
 
-PETALINUX_BSP=~/Downloads/xilinx-zcu102-v2024.2-final.bsp
+PETALINUX_BSP=~/Downloads/xilinx-zcu102-v2026.1-final.bsp
 ABS_SW_PATH=$(ABS_BUILD_PATH)/$(PETALINUX_PROJ_NAME)
 BD_TCL=hw.tcl
 ABS_BD_TCL=$(ROOT_DIR)/$(BD_TCL)
 PETALINUX_DIR=$(ABS_SW_PATH)
 PETALINUX_CONFIG=$(PETALINUX_DIR)/project-spec/configs/config
 ABS_XSA=$(ABS_HW_PATH)/edt_zcu102_wrapper.xsa
+SDT_PATH=$(ABS_BUILD_PATH)/vitis/platform/hw/sdt/system-top.dts
 
 
 .PHONY: all petalinux hw xsa
@@ -50,7 +51,7 @@ $(ABS_SW_PATH)/images/linux: $(ABS_XSA)
 	cd $(ABS_BUILD_PATH); petalinux-create -t project -s $(PETALINUX_BSP)
 # Import XSA  
 	echo "CONFIG_YOCTO_BUILDTOOLS_EXTENDED=y" >> $(PETALINUX_CONFIG)
-	cd $(ABS_SW_PATH);      petalinux-config --get-hw-description=$(ABS_HW_PATH) --silentconfig
+	cd $(ABS_SW_PATH);      petalinux-config --get-hw-description=$(SDT_PATH) --silentconfig
 # Update configuration
 #	echo "CONFIG_YOCTO_BUILDTOOLS_EXTENDED=y" >> $(PETALINUX_CONFIG)
 #	petalinux-config --silentconfig -p $(ABS_SW_PATH)
@@ -58,7 +59,7 @@ $(ABS_SW_PATH)/images/linux: $(ABS_XSA)
 	petalinux-build -p $(ABS_SW_PATH) && \
 	petalinux-package --boot --u-boot -p $(ABS_SW_PATH)
 
-# vitis_apps: 
+# vitis_apps:
 # 	xsct app.tcl
 # 	echo "These applications are created:"
 # 	find $(ABS_BUILD_PATH)/ws -name "*.elf"

@@ -18,7 +18,7 @@ The following key points are covered in this chapter:
 
 -  Creating and loading a secure boot image
 
-.. note:: For more information on RPU lockstep, see the *Zynq UltraScale+ Device Technical Reference Manual* (`UG1085 <https://docs.xilinx.com/v/u/en-US/ug1085-zynq-ultrascale-trm>`_).
+.. note:: For more information on RPU lockstep, see the *Zynq UltraScale+ Device Technical Reference Manual* (`UG1085 <https://docs.amd.com/go/en-US/ug1085-zynq-ultrascale-trm>`_).
 
 While previous sections focused only on creating software blocks for each processing unit in the PS, this chapter explains how these blocks can be loaded as a part of a bigger system.
 
@@ -32,7 +32,7 @@ System Software
 ----------------
 
 The following system software blocks cover most of the boot and configuration for this chapter. For detailed boot flow and various boot sequences, refer to the *System Boot and Configuration* chapter in the *Zynq UltraScale+ MPSoC: Software Developers Guide*
-(`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.2%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
+(`UG1137 <https://docs.amd.com/access/sources/dita/map?isLatest=true&url=ug1137-zynq-ultrascale-mpsoc-swdev&ft:locale=en-US>`_).
 
 First Stage Boot Loader
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,7 +40,7 @@ First Stage Boot Loader
 In non-secure boot mode, the platform management unit (PMU) releases the reset of the configuration security unit, and enters the PMU server mode to monitor power. At this stage, the configuration security unit loads the first stage boot loader (FSBL) into on-chip memory (OCM). The FSBL can be run from either APU A53_0, RPU R5_0, or RPU R5_lockstep. In this example, the FSBL is targeted for APU Cortex |trade|-A53 Core 0. The last 512 bytes of this region are used by FSBL to share the hand-off parameters corresponding to the applications handed off by the TF-A.
 
 The first stage boot loader initializes important blocks in the processing subsystem. This includes clearing the reset of the processors and initializing clocks, memory, UART, and so on before handing over the control of the next partition in DDR, to either the RPU or APU. In this example, the FSBL loads a bare-metal application in DDR and hands off to the RPU Cortex-R5F in lockstep mode, and then loads U-Boot to be executed by the APU Cortex-A53 Core-0. For more information, see the *Zynq UltraScale+ MPSoC: Software Developers Guide*
-(`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.2%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
+(`UG1137 <https://docs.amd.com/access/sources/dita/map?isLatest=true&url=ug1137-zynq-ultrascale-mpsoc-swdev&ft:locale=en-US>`_).
 
 For this chapter, you can use the FSBL executable that you created in :doc:`Building Software for PS
 Subsystems <4-build-sw-for-ps-subsystems>`. In the FSBL application, the ``xfsbl_translation_table.S`` differs from the ``translation_table.S`` of the Cortex-A53 in only one aspect, to mark the DDR region as reserved. This is to avoid speculative access to DDR memory controller before it is initialized. When the DDR initialization is completed in FSBL, the memory attributes for the DDR region are changed to “memory” so that they are cacheable.
@@ -48,7 +48,7 @@ Subsystems <4-build-sw-for-ps-subsystems>`. In the FSBL application, the ``xfsbl
 Platform Management Unit Firmware (PMUFW)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The platform management unit (PMU) and the configuration security unit manage and perform the multi-staged booting process. The PMU primarily controls the pre-configuration stage that executes the PMU ROM to set up the system. The PMU handles all of the processes related to reset and wake-up. The Vitis IDE provides PMU firmware that can be built to run on the PMU. For more details on the platform management and PMU firmware, see the *Zynq UltraScale+ MPSoC: Software Developers Guide* (`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
+The platform management unit (PMU) and the configuration security unit manage and perform the multi-staged booting process. The PMU primarily controls the pre-configuration stage that executes the PMU ROM to set up the system. The PMU handles all of the processes related to reset and wake-up. The Vitis IDE provides PMU firmware that can be built to run on the PMU. For more details on the platform management and PMU firmware, see the *Zynq UltraScale+ MPSoC: Software Developers Guide* (`UG1137 <https://docs.amd.com/access/sources/dita/map?isLatest=true&url=ug1137-zynq-ultrascale-mpsoc-swdev&ft:locale=en-US>`_).
 
 The PMU firmware can be loaded in the following ways:
 
@@ -75,7 +75,7 @@ FSBL loads the TF-A to be executed by the APU, which keeps running in EL3 awaiti
 
 The TF-A (``bl31.elf``) is built by default in PetaLinux and can be found in the PetaLinux project images directory.
 
-For more details on TF-A, refer to the *Arm Trusted Firmware* section in the *Security* chapter of the *Zynq UltraScale+ MPSoC: Software Developers Guide* `UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
+For more details on TF-A, refer to the *Arm Trusted Firmware* section in the *Security* chapter of the *Zynq UltraScale+ MPSoC: Software Developers Guide* `UG1137 <https://docs.amd.com/access/sources/dita/map?isLatest=true&url=ug1137-zynq-ultrascale-mpsoc-swdev&ft:locale=en-US>`_).
 
 Linux on APU
 ~~~~~~~~~~~~
@@ -172,7 +172,7 @@ Now that all the individual images are ready, create the boot image to load all 
 
    5. Click **OK**.
 
-6. Now, add the U-Boot partition. You can find ``u-boot.elf`` for sd_boot mode in ``<PetaLinux_project>/images/linux/sd_boot``.
+6. Now, add the U-Boot partition. You can find ``u-boot.elf`` for sd_boot mode in ``<PetaLinux_project>/images/linux/``.
 
    1. Click **Add** to add the u-boot.elf partition.
 
@@ -237,13 +237,13 @@ Running the Image on the ZCU102 Board
 
 You can see that the terminal screen configured for UART-1 also prints a message. This is the print message from the R5 bare-metal application running on the RPU, configured to use the UART-1 interface. This application is loaded by the FSBL onto the RPU.
 
-The bare-metal application has been modified to include the UART interrupt example. This application now is now in a waiting for interrupt (WFI) state until user input is detected from the keyboard at the UART-1 terminal.
+The bare-metal application has been modified to include the UART interrupt example. This application is now in a waiting-for-interrupt (WFI) state until user input is detected from the keyboard at the UART-1 terminal.
 
 .. image:: ./media/image61.png
 
 Meanwhile, the boot sequence continues on the APU and the images loaded can be understood from the messages appearing on the UART-0 terminal. The messages are highlighted in the following figure.
 
-The U-Boot then loads the Linux kernel and other images on the Arm Cortex-A53 APU in SMP mode. The terminal messages indicate when the
+The U-Boot then loads Linux kernel and other images on the Arm Cortex-A53 APU in SMP mode. The terminal messages indicate when the
 U-Boot loads the kernel image. When the kernel starts up, a user interface prompt is shown in the target Linux OS. The kernel loading and starting sequence can be seen in the following figure.
 
 .. image:: ./media/image63.png
@@ -258,13 +258,13 @@ The ZCU102 board also comes with dual parallel QSPI flashes adding up to 128 MB 
 Creating Linux Images Using PetaLinux for QSPI Flash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The earlier example highlighted creation of the Linux Images and Boot images to boot from an SD card. This section explains the configuration of PetaLinux to generate Linux images for QSPI flash. For more information about the dependencies for PetaLinux, see the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`_).
+The earlier example highlighted creation of the Linux Images and Boot images to boot from an SD card. This section explains the configuration of PetaLinux to generate Linux images for QSPI flash. For more information about the dependencies for PetaLinux, see the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.amd.com/access/sources/dita/map?isLatest=true&url=ug1144-petalinux-tools-reference-guide&ft:locale=en-US>`_).
 
 1. Before starting this example, create a backup of the boot images created for SD card setup using the following commands:
 
    .. code:: shell
 
-       $ cd <Petalinux-project-path>/xilinx-zcu102-2024.2/images/linux/
+       $ cd <Petalinux-project-path>/xilinx-zcu102-2026.1/images/linux/
        $ mkdir sd_boot
        $ cp image.ub sd_boot/
        $ cp u-boot.elf sd_boot/
@@ -274,7 +274,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
 
    .. code:: shell
    
-      $ cd <Petalinux-project-path>/xilinx-zcu102-2024.2
+      $ cd <Petalinux-project-path>/xilinx-zcu102-xsct-2026.1
 
 3. Launch the top-level system configuration menu:
 
@@ -284,23 +284,15 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
    
    The Configuration wizard opens.
 
-4. Select **Subsystem AUTO Hardware Settings**.
+4. Select **Subsystem Hardware Settings**.
 
-5. Under the advanced bootable images storage settings, do the following:
+5. Select **Flash Settings**.
 
-   1. Select **boot image settings**.
-   2. Select **image storage media**.
-   3. Select **primary flash** as the boot device.
+6. Select a flash device as the Primary Flash.
 
-6. Under the advanced bootable images storage settings submenu, do the following:
+7. Within **Flash Settings**:
 
-   1. Select **kernel image settings**.
-   2. Select **image storage media**.
-   3. Select **primary flash** as the storage device.
-
-7. One level above (under Subsystem AUTO Hardware Settings) do the following:
-
-   1. Select **Flash Settings** and notice the entries listed in the partition table.
+   1. Notice the entries listed in the partition table.
 
       .. note:: Some memory (0x1E00000 + 0x40000) is set aside for initial boot partitions and U-Boot settings. These values can be modified on need basis.
 
@@ -319,7 +311,7 @@ The earlier example highlighted creation of the Linux Images and Boot images to 
 
 11. Take a backup of u-boot.elf and the other images. These will be used when creating boot images.
 
-.. note:: For more information, refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`_).
+.. note:: For more information, refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.amd.com/access/sources/dita/map?isLatest=true&url=ug1144-petalinux-tools-reference-guide&ft:locale=en-US>`_).
 
 Boot Image Setup in Vitis
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -451,7 +443,7 @@ The Vitis IDE calls the following Bootgen command to generate the qspi_BOOT.bin 
 
    bootgen -image qspi_boot.bif -arch zynqmp -o C:\edt\qspi_BOOT.bin``
 
-.. note:: In this boot sequence, the First Stage Boot Loader (FSBL) loads PMU firmware. This is because the PMU firmware was added as a datafile partition type. Ideally, the boot ROM code can load the PMU firmware for PMU as seen in the earlier section. For more details on PMU firmware, refer to the “Platform Management” chapter in the *Zynq UltraScale+ MPSoC: Software Developers Guide* (`UG1137 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2024.1%20English&url=ug1137-zynq-ultrascale-mpsoc-swdev>`_).
+.. note:: In this boot sequence, the First Stage Boot Loader (FSBL) loads PMU firmware. This is because the PMU firmware was added as a datafile partition type. Ideally, the boot ROM code can load the PMU firmware for PMU as seen in the earlier section. For more details on PMU firmware, refer to the “Platform Management” chapter in the *Zynq UltraScale+ MPSoC: Software Developers Guide* (`UG1137 <https://docs.amd.com/access/sources/dita/map?isLatest=true&url=ug1137-zynq-ultrascale-mpsoc-swdev&ft:locale=en-US>`_).
 
 Running the Image in QSPI Boot Mode on ZCU102 Board
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -965,5 +957,5 @@ Boot Commands for Windows Host Machine
    :ltrim:
 
 
-.. Copyright © 2016–2025 Advanced Micro Devices, Inc
+.. Copyright © 2016–2026 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

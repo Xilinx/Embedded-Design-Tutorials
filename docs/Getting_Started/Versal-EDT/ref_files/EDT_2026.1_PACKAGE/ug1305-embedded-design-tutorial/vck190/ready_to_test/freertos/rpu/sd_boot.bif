@@ -1,0 +1,12 @@
+all:
+{
+    image
+    {
+        { type = bootimage, file = edf_edt_versel_vck190.pdi }
+    }
+    image
+    {
+        name = default_subsys, id = 0x1c000000
+        { core=r5-0, file =  freertos_hello_world.elf }
+    }
+} 

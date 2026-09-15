@@ -2,17 +2,17 @@
 System Design Example for High-Speed Debug Port with SmartLynq+ Module
 **********************************************************************
 
-============
+-------------
 Introduction
-============
+-------------
 
 This chapter demonstrates how to build an AMD Versal |trade|-based system that utilizes the SmartLynq+ module and the High-Speed Debug Port (HSDP). You will also learn to set up the SmartLynq+ module and download a Linux image using either JTAG or the HSDP.
 
 .. important:: This tutorial requires a SmartLynq+ module, a VCK190 or VMK180 evaluation board, and a Linux host machine.
 
-=================================
+----------------------------------
 Design Example: Enabling the HSDP
-=================================
+----------------------------------
 
 To enable the HSDP, start with the VCK190 or VMK180 project that you built in the preceding chapter and modify the project to include HSDP support.  It is also possible to start this chapter standalone by sourcing the included block design Tcl to create the HSDP capable design. See `pl_hsdp <https://github.com/Xilinx/Embedded-Design-Tutorials/tree/2023.1/docs/Introduction/Versal-EDT/ref_files/EDT_2023.1_PACKAGE/ug1305-embedded-design-tutorial/vck190/pl/pl_hsdp>`__.
 
@@ -78,49 +78,68 @@ Exporting Hardware (XSA)
 
 5. Click **Finish**.
 
-=====================================================
-Creating the HSDP-enabled Linux Image Using PetaLinux
-=====================================================
+------------------------------------------------------
+Creating the HSDP-enabled Linux Image Using Yocto
+------------------------------------------------------
 
-This example rebuilds the PetaLinux project using the HSDP-enabled XSA that was built in the preceding step. The assumption is that the PetaLinux project has been created as per the instructions in :doc:`../docs/5-system-design-example`.
+This example rebuilds the Yocto project using the HSDP-enabled XSA generated in the preceding step. The assumption is that the Yocto workspace has already been created as described in the Creating Linux Images Using Yocto section.
 
-.. important:: If you are building this tutorial without having created a PetaLinux project in the preceding chapter, follow steps 1 through 12 in the :ref:`creating-Linux-images-using-petalinux` section to create a new PetaLinux project.
+.. important:: If you are building this tutorial without having created a Yocto workspace in the preceding chapter, follow the :ref:`creating-Linux-images-using-yocto` section to create and configure a new Yocto project.
 
 This example needs a Linux host machine. Refer to the *PetaLinux Tools Documentation Reference Guide* `[UG1144] <https://www.xilinx.com/cgi-bin/docs/rdoc?v=latest;d=ug1144-petalinux-tools-reference-guide.pdf>`__ for information on dependencies and installation procedure for the PetaLinux tool.
 
-1. Change to the PetaLinux project directory that was created in :ref:`creating-Linux-images-using-petalinux` using the following command.
+1. Change to the Yocto project directory that was created in :ref:`creating-Linux-images-using-yocto` using the following command:
 
    .. code-block::
 
-        $ cd led_example
+        $ cd yocto_project
 
-2. Copy the new hardware platform project XSA to the Linux host machine one directory above the PetaLinux build root.
+2. Copy the new hardware platform XSA to the Linux host machine.
 
    .. note:: Make sure that you are using the updated the XSA file which you generated in the prior step.
 
-3. Reconfigure the BSP using the following commands.
+3. Source the Vivado 2026.1 tool environment and generate the System Device Tree from the updated XSA.
 
    .. code-block::
         
-        $ petalinux-config --get-hw-description=<path till the directory containing the respective xsa file>
+        $ source <vivado-tools-path>/settings64.sh
 
-4. Build the Linux images using the following command.
+   .. code-block::
+        
+        $ sdtgen
+        sdtgen% set_dt_param -dir sdt_out -xsa <HSDP-enabled_XSA_PATH> -board_dts <BOARD_DTS>
+        sdtgen% generate_sdt
+        sdtgen% exit
+     
+4. Generate the Yocto machine configuration from the generated SDT:
 
    .. code-block::
     
-        $ petalinux-build
+        $ gen-machineconf parse-sdt --hw-description <path/to/sdt_out> -c conf -l conf/local.conf --native-sysroot <native-sysroot-path> --machine-name <machine-name> -O <BOARD_DTS>
 
-5. Once the build completes, package the boot images with the following command:
+5. Build the Versal boot image using the following command:
 
    .. code-block::
 
-        $ petalinux-package --force --boot --atf --u-boot
+        $ MACHINE=<machine-name> bitbake xilinx-bootbin
 
-   .. note:: The packaged Linux boot images are located in the ``<petaLinux-project>/images/Linux/`` directory in the PetaLinux build root. Make a note of this directory location as it will be used in the following steps. If you intend to use a different machine than the one that was used to build PetaLinux (for example, a Windows Based PC) to download the Linux boot images using SmartLynq+, the contents of this directory should be transferred to that machine before proceeding with this tutorial.
+6. Build the Linux kernel and root filesystem image using the following command:
 
-================================
+   .. code-block::
+
+        $ MACHINE=amd-cortexa72-common bitbake core-image-full-cmdline
+
+7. After the build completes, the generated boot and Linux images are available in the deploy directory:
+
+   .. code-block::
+
+        $ /tmp/<user>/2026_1/<board_name>/deploy/images/<machine-name>
+
+   .. note:: Make a note of this directory location. If you intend to use a different machine, such as a Windows-based PC, to download the Linux boot images using SmartLynq+, transfer the required contents of this directory before proceeding with this tutorial.
+
+---------------------------------
 Setting Up the SmartLynq+ Module
-================================
+---------------------------------
 
 Once the Linux images have been built and packaged, they can be loaded onto the VCK190 or VMK180 board using either JTAG or HSDP. To set up the SmartLynq+ module for connectivity using HSDP, follow these steps:
 
@@ -206,17 +225,17 @@ The design package included with this tutorial contains a script that downloads 
 
    .. image:: ./media/ch6-image18.png
 
-============
+-------------
 Useful Links
-============
+-------------
 
 * For more information on using PL hardware debug cores such as the AXIS-ILA, AXIS-VIO, PCIe |trade| Debugger, and/or DDRMC Calibration Interfaces refer to the *Vivado Design Suite User Guide Programming and Debugging* `[UG908] <https://www.xilinx.com/support/documentation/sw_manuals/xilinx2022_1/ug908-vivado-programming-debugging.pdf>`__.
 
 * For more information on the SmartLynq+ Module, refer to `SmartLynq+ Module User Guide <https://www.xilinx.com/products/boards-and-kits/smartlynq-plus.html >`__.
 
-=======
+--------
 Summary
-=======
+--------
 
 In this section you have built a design that uses the HSDP, connected the SmartLynq+ module, configured the SmartLynq+ for remote UART access, and used the HSDP to download Linux images onto your board.
 
@@ -225,5 +244,5 @@ In this section you have built a design that uses the HSDP, connected the SmartL
 .. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
    :ltrim:
 
-.. Copyright © 2020–2024 Advanced Micro Devices, Inc
+.. Copyright © 2020–2025 Advanced Micro Devices, Inc
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.

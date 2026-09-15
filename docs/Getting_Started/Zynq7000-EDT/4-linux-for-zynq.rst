@@ -12,7 +12,7 @@ This chapter demonstrates how to develop and debug Linux applications.
 Example 4: Creating Linux Images
 --------------------------------
 
-In this example, you will configure and build a Linux operating system platform for an Arm |reg| Cortex-A9 core based APU on a Zynq |trade| 7000 device. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.
+This example helps configuring and build a Linux operating system platform for an Arm |reg| Cortex-A9 core based APU on a Zynq |trade| 7000 device. You can configure and build Linux images using the PetaLinux tool flow, along with the board-specific BSP. The Linux application is developed in the Vitis IDE.
 
 Input and Output Files
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -20,7 +20,7 @@ Input and Output Files
 -  Input:
 
    -  Hardware XSA (``system_wrapper.xsa`` generated in :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`)
-   -  `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2023.2-final.bsp>`__
+   -  `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2026.1-final.bsp>`__
 
 -  Output:
 
@@ -29,54 +29,53 @@ Input and Output Files
 
 .. important::
 
-   1. This example requires a Linux host machine with PetaLinux installed. Refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.amd.com/access/sources/dita/map?Doc_Version=2023.2%20English&url=ug1144-petalinux-tools-reference-guide>`_) for information about dependencies for PetaLinux.
+   1. This example requires a Linux host machine with PetaLinux installed. Refer to the *PetaLinux Tools Documentation: Reference Guide* (`UG1144 <https://docs.amd.com/access/sources/dita/map?isLatest=true&url=ug1144-petalinux-tools-reference-guide&ft:locale=en-US>`_) for information about dependencies for PetaLinux.
 
-   2. This example uses the `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2023.2-final.bsp>`__ to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the `PetaLinux Tools download page <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_.
+   2. This example uses the `PetaLinux ZC702 BSP <https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-zc702-v2026.1-final.bsp>`__ to create a PetaLinux project. Ensure that you have downloaded the ZC702 BSP for PetaLinux as instructed on the `PetaLinux Tools download page <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>`_.
 
 Creating a PetaLinux Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Create a PetaLinux project using the following command:
 
-   There are two ways to generate a petalinux project. Either using the BSP for a development board such as the ZC702, or if users have a custom board, users can use the template.
+   There are two ways to generate a PetaLinux project: either by using the BSP for a development board such as the ZC702, or by using the template if you have a custom board.
 
-   .. note:: There are petalinux flows for both XSA and SDT. BSPs built using the System Device Tree (SDT) flow are recommended for new designs. BSPs listed with 'XSCT' are for the legacy XSA flow for users who are upgrading existing projects and do not wish to change generation methods. In this tutorial we will follow the XSA flow.
+   .. note:: There are petalinux flows for both XSA and SDT. BSPs built using the System Device Tree (SDT) flow are recommended for new designs. BSPs listed with 'XSCT' are for the legacy XSA flow for users who are upgrading existing projects and do not wish to change generation methods. This tutorial follows the XSA flow.
 
    .. code:: bash
    
       # Using the XSCT BSP
-      petalinux-create -t project -s <path to the xilinx-zc702-xsct-v2024.2-final.bsp>
+      petalinux-create -t project -s <path to the xilinx-zc702-xsct-v2026.1-final.bsp>
       # Using the template for custom boards
-      petalinux-create -t project --template zynq -n xilinx-zc702-xsct-2024.2
+      petalinux-create -t project --template zynq -n xilinx-zc702-xsct-2026.1
 
-   .. note:: **xilinx-zc702-xsct-v2024.2-final.bsp** is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.
+   .. note:: **xilinx-zc702-xsct-v2025.2-final.bsp** is the PetaLinux BSP for the ZC702 Production Silicon Rev 1.0 board.
 
-   This creates a PetaLinux project directory, **xilinx-zc702-xsct-2024.2**.
+   This creates a PetaLinux project directory, **xilinx-zc702-xsct-2026.1**.
 
 2. Reconfigure the project with **system_wrapper.xsa**:
 
-   -  The created PetaLinux project uses the default hardware setup in the ZC702 Linux BSP. In this example, you will reconfigure the PetaLinux project based on the Zynq design that you configured using the Vivado |trade| Design Suite in :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`.
+   -  The created PetaLinux project uses the default hardware setup in the ZC702 Linux BSP. In this example, reconfigure the PetaLinux project based on the Zynq design that you configured using the Vivado |trade| Design Suite in :ref:`example-1-creating-a-new-embedded-project-with-zynq-soc`.
 
-   -  Copy the hardware platform ``system_wrapper.xsa`` to the Linux host machine.
+   -  Copy the hardware platform file ``system_wrapper.xsa`` to the Linux host machine.
 
    -  Reconfigure the project using the following command:
 
       .. code:: bash
 
-         cd xilinx-zc702-xsct-2024.2
-         
+         cd xilinx-zc702-xsct-2026.1
          petalinux-config --get-hw-description=<path that contains system_wrapper.xsa>
 
    This command opens the PetaLinux Configuration window. You can review these settings. If required, make changes in the configuration. For this example, the default settings from the BSP are sufficient to generate the required boot images. Select **Exit** and press **Enter** to exit the configuration window.
 
-   .. note:: The above command will not work within the SDT flow. For the SDT flow please point the '--get-hw-description' to your SDT directory.
-   
+   .. note:: The above command does not work within the SDT flow. For the SDT flow please point the '--get-hw-description' to your SDT directory.
+
    .. code:: bash
 
-      cd xilinx-zcu102-2024.2
+      cd xilinx-zcu102-2026.1
       petalinux-config --get-hw-description=<path to SDT directory>
 
-   `Generate the SDT with the SDT Generator Tool <https://github.com/Xilinx/system-device-tree-xlnx/blob/master/README.md>`_. The System Device Tree Generator (SDTGen) Tool is a package containing TCL scripts and Hardware HSI API's to extract hardware information from the XSA file into a System Device Tree (SDT) forma
+   `Generate the SDT with the SDTGEN Tool <https://github.com/Xilinx/system-device-tree-xlnx/blob/master/README.md>`__. The System Device Tree Generator (SDTGen) Tool is a package containing TCL scripts and Hardware HSI API's to extract hardware information from the XSA file into a System Device Tree (SDT) format.
 
    If you would prefer to skip the configuration window and keep the default settings, run the following command instead:
 
@@ -86,7 +85,7 @@ Creating a PetaLinux Image
 
 3. Build the PetaLinux project:
 
-   -  In the ``<PetaLinux-project>`` directory (for example, ``xilinx-zc702-2024.2``), build the Linux images using the following command:
+   -  In the ``<PetaLinux-project>`` directory (for example, ``xilinx-zc702-2026.1``), build the Linux images using the following command:
 
       .. code:: bash
 
@@ -134,7 +133,7 @@ You can boot on a physical ZC702 board, or if it is not available, use QEMU. Bot
 Boot on Physical ZC702 
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-You will now boot Linux on the Zynq |trade| 7000 SoC ZC702 target board using the JTAG mode.
+Boot Linux on the Zynq |trade| 7000 SoC ZC702 target board using the JTAG mode.
 
 .. note:: Additional boot options are explained in :doc:`Linux Booting and Debug in the Software Platform <./7-linux-booting-debug>`.
 
@@ -168,13 +167,13 @@ You will now boot Linux on the Zynq |trade| 7000 SoC ZC702 target board using th
 
 7. Power on the target board.
 
-8. The Linux login prompt will appear. Use user name ``petalinux`` and create a new password and login.
+8. The Linux login prompt appears, use user name ``petalinux`` and create a new password and login.
 
 .. note:: Use ``sudo -i`` to assign privileges.
 
 Boot on QEMU 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-1. Change directory to the petalinux project, and use the petalinux-boot command to boot linux on an Emulated system
+1. Change directory to the petalinux project, and use the petalinux-boot command to boot Linux on an emulated system.
 
    .. code:: bash
 
@@ -182,7 +181,7 @@ Boot on QEMU
 
 2. Launch the Vitis software platform and open the same workspace you used in :doc:`Using the Zynq SoC Processing System <2-using-zynq>`.
 
-3. The Linux login prompt will appear. Use user name ``petalinux`` and create a new password and login.
+3. The Linux login prompt appears, use user name ``petalinux`` and create a new password and login.
 
 .. note:: Use ``sudo -i`` to assign privileges.
 
@@ -191,10 +190,10 @@ Boot on QEMU
 Example 5: Creating a Hello World Application for Linux in the Vitis IDE
 ------------------------------------------------------------------------
 
-In this example, you will use the Vitis IDE to create a Linux application that runs on the embedded Linux environment.
+In this example, use the Vitis IDE to create a Linux application that runs on the embedded Linux environment.
 
 Creating Linux Platform Component
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Initially, create a Linux Platform Component in the Vitis Unified IDE. The Linux Platform Component contains a domain with the information required by the Linux application.
 
@@ -249,7 +248,7 @@ Preparing the Linux Agent for Remote Connection
 
 The Vitis IDE needs a channel to download the application to the running target for debugging. When the target runs Linux, it uses TCF Agent running on the target. TCF Agent is added to the Linux rootfs from the PetaLinux configuration by default. When Linux boots up, it launches TCF Agent automatically. The Vitis IDE talks to TCF Agent on the board using an Ethernet connection.
 
-Setup the Ethernet Connection between Host and Physical Board
+Set Up the Ethernet Connection between Host and Physical Board
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you are using the QEMU, please skip the following steps.
@@ -300,14 +299,14 @@ Running the Linux Application from the Vitis IDE
 
 1. Run the Linux application:
 
-   -  Highlight the **linux_hello** application, and under **FLOW**, click **Run** icon. Click **Open Settings** to create a new **Launch Configuration**.
+   -  Highlight the **linux_hello** application, and under **FLOW**, click the **Run** icon. Click **Open Settings** to create a new **Launch Configuration**.
    -  Make sure that the **Target Connection** is set to the target connection created in the previous section.
-   -  Set the **Work Directory** to a valid location on your linux filesystem. A typical example is **/home/petalinux**, which is the destination for copying the ELF file.
+   -  Set the **Work Directory** to a valid location on your Linux filesystem. A typical example is **/home/petalinux**, which is the destination for copying the ELF file.
 
    .. figure:: media/vitis_linux_run_configurations.png
       :alt: Vitis Linux Run Configurations
 
-   - Click **Run**.
+   -  Click **Run**.
 
    -  The console should print **Hello World**.
 
@@ -329,12 +328,12 @@ Debugging Linux applications requires the Linux agent to be set up properly. Ref
 
    -  Highlight the **linux_hello** application, and under **FLOW**, select **Debug** icon and click **Open Settings**. It creates a new **Launch Configuration**.
    -  Make sure that the **Target Connection** is set to the target connection created in the previous section.
-   -  Set the **Work Directory** to a valid location on your linux filesystem. A typical example is **/home/petalinux**, which is the destination for copying the ELF file.
+   -  Set the **Work Directory** to a valid location on your Linux filesystem. A typical example is **/home/petalinux**, which is the destination for copying the ELF file.
 
    .. figure:: media/vitis_linux_run_configurations.png
       :alt: Vitis Linux Run Configurations
 
-- Click **Run** icon.
+   -  Click the **Run** icon.
 
    The debug configuration has identical options to the run configuration. The difference between debugging and running is that debugging stops at the ``main()`` function.
 
@@ -343,7 +342,7 @@ Debugging Linux applications requires the Linux agent to be set up properly. Ref
    Hello World is a simple application. It does not contain much to debug, but you can try the following to explore the Vitis debugger:
 
    -  Review the Debug Features on the Left Hand side of the IDE: Variables, Breakpoints, Expressions, and the rest.
-   -  If these are not visible, you can add these via **View → Select Feature** 
+   -  If these are not visible, add these via **View → Select Feature** 
    -  Review the call stack on the left.
    -  The next line to execute has a green background.
    -  Debug through the code using the debug toolbar, such as **Continue**, **Step Into**, **Step Out**.
@@ -366,13 +365,15 @@ In this chapter, you learned how to:
 -  Create simple Linux applications with the Vitis IDE.
 -  Run and debug using the Vitis IDE.
 
-Up until now, all your development and debugging activities have been running on the processing system. In the :doc:`next chapter <./5-using-gp-port-zynq>`, you will start to add components to the PL (programmable logic). First, you will see how to use the GP port in Zynq devices.
-
-
+Up until now, all your development and debugging activities have been running on the processing system. In the next chapter, you begin adding components to the programmable logic (PL). The first step involves using the GP port in Zynq devices.
 
 .. include:: ../docs/substitutions.txt
 
-.. Copyright © 2022–2025 Advanced Micro Devices, Inc
+.. Copyright © 2022–2026 Advanced Micro Devices, Inc
 .. Copyright © 2021 Xilinx, Inc
 
 .. `Terms and Conditions <https://www.amd.com/en/corporate/copyright>`_.
+.. |trade|  unicode:: U+02122 .. TRADEMARK SIGN
+   :ltrim:
+.. |reg|    unicode:: U+000AE .. REGISTERED TRADEMARK SIGN
+   :ltrim:
